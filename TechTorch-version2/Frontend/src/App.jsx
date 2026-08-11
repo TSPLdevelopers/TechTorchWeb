@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
@@ -120,3 +121,11 @@ function App() {
 }
 
 export default App
+=======
+
+import TechTorchNavbar from "./TechTorchNavbar";
+
+function App() {
+  return <h1>TechTorch Solutions</h1>
+}
+>>>>>>> 472b42ed79e38b1fc002b48a7fdbf56c076bf5e3
