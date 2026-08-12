@@ -1,68 +1,66 @@
 import React from "react";
-import { Search } from "lucide-react";
+import logo from "../assets/TechTorchLogo.png"; 
 
-/**
- * Navbar
- * Standalone navigation bar component matching the TechTorch Solutions site header.
- * Usage: import Navbar from "./Navbar"; then render <Navbar />
- */
-export default function Navbar() {
-  const navLinks = [
-    "About Us",
-    "Capabilities",
-    "Industries",
-    "Insights",
-    "Careers",
-    "Contact Us",
-  ];
+const navLinks = [
+  "About Us",
+  "Capabilities",
+  "Industries",
+  "Insights",
+  "Careers",
+  "Contact Us",
+];
 
+function SearchIcon() {
   return (
-    <header className="w-full bg-white">
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <div className="flex items-center gap-3">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-            <circle cx="22" cy="22" r="21" stroke="#9B1B4A" strokeWidth="1.5" fill="white" />
-            <path
-              d="M14 15h16M22 15v14M22 24c3 0 5-1.8 5-4.2S25 15.6 22 15.6"
-              stroke="#9B1B4A"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              fill="none"
-            />
-          </svg>
-          <div className="leading-tight">
-            <div className="flex items-baseline gap-1">
-              <span className="text-[22px] font-semibold text-[#7a1740]">TechTorch</span>
-            </div>
-            <div className="text-[11px] font-bold tracking-wide text-[#9B1B4A] -mt-1">
-              SOLUTIONS
-            </div>
-            <div className="text-[9px] italic text-gray-500 -mt-0.5">Lighting Future</div>
-          </div>
-        </div>
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#222"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
 
-        {/* Nav links */}
-        <nav className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-[15px] text-gray-800 hover:text-[#9B1B4A] transition-colors"
-            >
-              {link}
-            </a>
-          ))}
-        </nav>
-
-        {/* Search icon */}
-        <button
-          aria-label="Search"
-          className="text-gray-800 hover:text-[#9B1B4A] transition-colors"
-        >
-          <Search size={20} strokeWidth={2} />
-        </button>
+export default function Navbar() {
+  return (
+    <nav
+      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+      className="w-full flex items-center justify-between px-10 py-3 border-b border-gray-200 bg-white"
+    >
+      {/* Logo */}
+      <div className="flex items-center gap-2.5">
+        <img src={logo} alt="TechTorch Solutions" className="h-11 w-auto flex-shrink-0" />
       </div>
-    </header>
+
+      {/* Links */}
+      <ul className="flex items-center gap-12 list-none ml-auto mr-10">
+        {navLinks.map((label) => (
+          <li key={label}>
+            <a
+              href="#"
+              className="text-[17px] text-gray-900 no-underline transition-colors duration-200 hover:text-[#8a1538]"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {/* Search */}
+      <button
+        type="button"
+        aria-label="Search"
+        className="flex items-center justify-center bg-transparent border-none cursor-pointer p-0"
+      >
+        <SearchIcon />
+      </button>
+    </nav>
   );
 }

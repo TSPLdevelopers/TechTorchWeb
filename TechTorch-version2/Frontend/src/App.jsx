@@ -1,6 +1,12 @@
-
-import TechTorchNavbar from "./TechTorchNavbar";
+import React from "react";
+import Navbar from "./components/Navbar";
 
 function App() {
-  return <h1>TechTorch Solutions</h1>
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 }
+
+export default App;
