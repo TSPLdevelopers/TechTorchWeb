@@ -1,6 +1,10 @@
 import React from "react";
-import logo from "../assets/TechTorchLogo.png"; 
-import NavbarItem from "./NavbarItem";
+import logo from "../assets/TechTorchLogo.png";
+import NavAboutUs from "./NavbarItem/NavAboutUs";
+import NavCapabilities from "./NavbarItem/NavCapabilities";
+import NavIndustries from "./NavbarItem/NavIndustries";
+import NavInsights from "./NavbarItem/NavInsights";
+import NavCareers from "./NavbarItem/NavCareers";
 
 const navLinks = [
   "About Us",
@@ -42,12 +46,43 @@ export default function Navbar() {
 
       {/* Links */}
       <ul className="flex items-center gap-12 list-none ml-auto mr-10">
-        {navLinks.map((label) =>
-          label === "About Us" ? (
-            <li key={label}>
-              <NavbarItem label={label} />
-            </li>
-          ) : (
+        {navLinks.map((label) => {
+          if (label === "About Us") {
+            return (
+              <li key={label}>
+                <NavAboutUs label={label} />
+              </li>
+            );
+          }
+          if (label === "Capabilities") {
+            return (
+              <li key={label}>
+                <NavCapabilities />
+              </li>
+            );
+          }
+            if (label === "Industries") {
+            return (
+              <li key={label}>
+                <NavIndustries />
+              </li>
+            );
+          }
+          if (label === "Insights") {
+            return (
+              <li key={label}>
+                <NavInsights />
+              </li>
+            );
+          }
+          if (label === "Careers") {
+            return (
+              <li key={label}>
+                <NavCareers />
+              </li>
+            );
+          }
+          return (
             <li key={label}>
               <a
                 href="#"
@@ -56,8 +91,8 @@ export default function Navbar() {
                 {label}
               </a>
             </li>
-          )
-        )}
+          );
+        })}
       </ul>
 
       {/* Search */}
