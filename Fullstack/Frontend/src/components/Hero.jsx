@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Swap these for your real background photos (the plain, text-free versions).
 import slide1Bg from "../../public/Slide1.png";
@@ -56,6 +56,16 @@ const Hero = () => {
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prevSlide = () =>
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+   
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, []);
+
 
   const active = slides[current];
 
@@ -117,7 +127,7 @@ const Hero = () => {
 </div>
 
 {/* Arrows */}
-<div className="absolute z-[4] right-3 md:right-10 bottom-7 md:bottom-7  flex gap-3">
+<div className="absolute z-[4] right-8 md:right-16 bottom-7 md:bottom-7  flex gap-3">
   <button
     onClick={prevSlide}
     aria-label="Previous slide"
