@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/TechTorchLogo.png"; 
+import NavbarItem from "./NavbarItem";
 
 const navLinks = [
   "About Us",
@@ -41,16 +42,22 @@ export default function Navbar() {
 
       {/* Links */}
       <ul className="flex items-center gap-12 list-none ml-auto mr-10">
-        {navLinks.map((label) => (
-          <li key={label}>
-            <a
-              href="#"
-              className="text-[17px] text-gray-900 no-underline transition-colors duration-200 hover:text-[#8a1538]"
-            >
-              {label}
-            </a>
-          </li>
-        ))}
+        {navLinks.map((label) =>
+          label === "About Us" ? (
+            <li key={label}>
+              <NavbarItem label={label} />
+            </li>
+          ) : (
+            <li key={label}>
+              <a
+                href="#"
+                className="text-[17px] text-gray-900 no-underline transition-colors duration-200 hover:text-[#8a1538]"
+              >
+                {label}
+              </a>
+            </li>
+          )
+        )}
       </ul>
 
       {/* Search */}
