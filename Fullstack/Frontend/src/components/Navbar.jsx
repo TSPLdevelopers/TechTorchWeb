@@ -20,7 +20,7 @@ function SearchIcon() {
   return (
     <svg
       width="20"
-      height="20"
+      height="60"
       viewBox="0 0 24 24"
       fill="none"
       stroke="#222"
@@ -95,7 +95,7 @@ function NavbarInner() {
           <img
             src={logo}
             alt="TechTorch Solutions"
-            className="h-9 md:h-10 lg:h-11 w-auto flex-shrink-0"
+            className="h-12 sm:h-13 lg:h-13 w-auto"
           />
         </div>
 
