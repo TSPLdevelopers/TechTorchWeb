@@ -131,7 +131,7 @@ function NavAboutUs() {
 
             <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
               <div className="mt-8">
-                <h2 className="text-[20px] font-bold font-plus-jakarta">
+                <h2 className="text-[18px] font-bold font-plus-jakarta">
                   AI That Works for
                   <br />
                   Your Business
@@ -140,8 +140,8 @@ function NavAboutUs() {
                 <div className="w-[255px] h-[2px] bg-white mt-2" />
               </div>
 
-            <a href="#" className="text-[20px] font-bold font-inter text-white mb-6">
-              Learn More
+            <a href="#" className="text-[16px] font-bold font-inter text-white mb-8">
+              LEARN MORE
             </a>
             </div>
           </div>

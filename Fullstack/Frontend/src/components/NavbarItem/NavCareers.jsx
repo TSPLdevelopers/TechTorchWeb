@@ -125,11 +125,11 @@ function NavCareers() {
                 </span>
 
                 <div className="mt-[65px]">
-                  <h2 className="text-[24px] font-medium">
+                  <h2 className="text-[18px] font-medium font-plus-jakarta">
                     Life & Culture at TechTorch
                   </h2>
 
-                  <p className="text-[17px] leading-tight mt-[20px] max-w-[330px]">
+                  <p className="text-[16px] font-inter mt-[20px] max-w-[330px]">
                     Discover our people, culture and the
                     <br />
                     values that shape the way we work
@@ -140,7 +140,7 @@ function NavCareers() {
 
                 <a
                   href="#"
-                  className="mt-auto text-[16px] font-bold text-white hover:text-gray-300 transition-colors"
+                  className="mt-[10px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   READ MORE
                 </a>
@@ -156,16 +156,16 @@ function NavCareers() {
               />
 
               <div className="absolute inset-0 p-5 flex flex-col text-white">
-                <span className="text-[16px]">
+                <span className="text-[16px] font-plus-jakarta">
                   Featured Story
                 </span>
 
                 <div className="mt-[65px]">
-                  <h2 className="text-[24px] font-medium">
+                  <h2 className="text-[18px] font-medium font-plus-jakarta">
                     Opportunities at TechTorch
                   </h2>
 
-                  <p className="text-[17px] leading-tight mt-[20px] max-w-[330px]">
+                  <p className="text-[16px] font-inter mt-[20px] max-w-[330px]">
                     Explore opportunities to learn, contribute
                     <br />
                     and build your career with a growing
@@ -176,7 +176,7 @@ function NavCareers() {
 
                 <a
                   href="#"
-                  className="mt-auto text-[18px] font-bold text-white hover:text-gray-300 transition-colors"
+                  className="mt-[10px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   READ MORE
                 </a>

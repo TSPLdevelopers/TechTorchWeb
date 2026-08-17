@@ -126,7 +126,7 @@ function NavInsights() {
                 </span>
 
                 <div>
-                  <p className="text-[20px] font-bold font-plus-jakarta">
+                  <p className="text-[16px] font-inter  ">
                     TorchX Suite: Bringing
                     <br />
                     Business Operations
@@ -136,7 +136,7 @@ function NavInsights() {
 
                   <a
                     href="#"
-                    className="inline-block mt-[20px] text-[18px] font-medium text-white hover:text-gray-300 transition-colors"
+                    className="inline-block mt-[20px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                   >
                     READ MORE →
                   </a>
@@ -159,7 +159,7 @@ function NavInsights() {
 
                 <a
                   href="#"
-                  className="text-[18px] font-medium text-white hover:text-gray-300 transition-colors"
+                  className="text-[16px] font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   VIEW EVENT →
                 </a>
