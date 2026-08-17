@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-// Swap these for your real background photos (the plain, text-free versions).
 import slide1Bg from "../../public/Slide1.png";
 import slide2Bg from "../../public/Slide2.png";
 import slide3Bg from "../../public/Slide3.png";
@@ -98,7 +97,7 @@ const Hero = () => {
         key={current}
         className="relative z-[3] h-full flex flex-col justify-center max-w-[640px] px-6 md:px-12 text-white animate-[fadeIn_0.5s_ease]"
       >
-        <h1 className="text-[26px] md:text-[36px] lg:text-[44px] leading-[1.12] font-bold tracking-tight mb-5">
+        <h1 className="text-[26px] md:text-[36px] lg:text-[44px] leading-[1.12] font-Plus Jakarta Sans mb-5">
           {active.headline}
         </h1>
         <p className="text-base leading-relaxed font-medium text-white/90 max-w-[520px] mb-8">
@@ -106,7 +105,7 @@ const Hero = () => {
         </p>
         <a
           href={active.ctaHref}
-          className="self-start px-7 py-3.5 border-[1.5px] border-white text-white text-[13px] font-bold tracking-widest uppercase transition-colors duration-200 hover:bg-white hover:text-[#7a1440]"
+          className="self-start px-7 py-3.5 border-[1.5px] border-white text-white text-[13px] font-Plus Jakarta Sans uppercase transition-colors duration-200 hover:bg-white hover:text-[#7a1440]"
         >
           {active.ctaText}
         </a>

@@ -84,6 +84,7 @@ function NavbarInner() {
   }, [setNavHeight]);
 
   return (
+<<<<<<< HEAD
     <>
       <nav
         ref={navRef}
@@ -91,6 +92,15 @@ function NavbarInner() {
         className="fixed top-0 left-0 w-full z-[1000] flex items-center justify-between
         px-4 sm:px-6 lg:px-10 py-2.5 lg:py-3 border-b border-gray-200 bg-white"
       >
+=======
+    <nav
+      style={{ fontFamily: "Plus Jakarta Sans Primary ', serif" }}
+      className="w-full bg-white border-b border-gray-200"
+    >
+      {/* Main Navbar */}
+      <div className="w-full flex items-center justify-between px-5 sm:px-8 lg:px-10 py-3">
+        
+>>>>>>> e5a361d9523562b7f1dd0f3325c661eb5aa68a45
         {/* Logo */}
         <div className="flex items-center gap-2.5">
           <img
