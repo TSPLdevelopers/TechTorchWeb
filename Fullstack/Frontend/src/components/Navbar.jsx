@@ -55,7 +55,7 @@ export default function Navbar() {
 
   return (
     <nav
-      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+      style={{ fontFamily: "Plus Jakarta Sans Primary ', serif" }}
       className="w-full bg-white border-b border-gray-200"
     >
       {/* Main Navbar */}
