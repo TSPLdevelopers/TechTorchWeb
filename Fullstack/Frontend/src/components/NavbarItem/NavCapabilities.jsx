@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 const columns = [
   {
@@ -42,71 +42,141 @@ const columns = [
   },
 ];
 
+const CLOSE_DELAY = 150;
+
 function NavCapabilities() {
   const [isOpen, setIsOpen] = useState(false);
+  const [navBottom, setNavBottom] = useState(0);
+
+  const wrapperRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      if (!wrapperRef.current) return;
+
+      const navEl =
+        wrapperRef.current.closest("header, nav") || wrapperRef.current;
+
+      setNavBottom(navEl.getBoundingClientRect().bottom);
+    };
+
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+
+    return () => window.removeEventListener("resize", updatePosition);
+  }, [isOpen]);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  }, []);
+
+  const openMenu = useCallback(() => {
+    cancelClose();
+    setIsOpen(true);
+  }, [cancelClose]);
+
+  const closeMenu = useCallback(() => {
+    cancelClose();
+
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+      closeTimeoutRef.current = null;
+    }, CLOSE_DELAY);
+  }, [cancelClose]);
+
+  useEffect(() => {
+    return () => cancelClose();
+  }, [cancelClose]);
 
   return (
     <div
-      className="relative"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      ref={wrapperRef}
+      className="relative h-full"
+      onMouseEnter={openMenu}
+      onMouseLeave={closeMenu}
     >
-      <span className="text-[17px] text-gray-900 cursor-pointer py-3 inline-block">
+      {/* NAV LINK */}
+      <span
+        className="relative inline-flex items-center h-full cursor-pointer text-[17px]
+          text-gray-900 hover:text-[#8a1538]
+          transition-colors duration-200
+          after:absolute after:left-0 after:bottom-0
+          after:h-[2px] after:w-0
+          after:bg-[#8a1538]
+          after:transition-all after:duration-200
+          hover:after:w-full"
+      >
         Capabilities
       </span>
 
+      {/* MEGA MENU */}
       {isOpen && (
         <div
-          className="
-            absolute left-1/2 -translate-x-1/2 top-full mt-0
-            w-[92vw] max-w-[1100px]
-            bg-white shadow-2xl z-50
-            grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20
-            px-8 py-10 md:px-12 md:py-14
-            overflow-hidden
-          "
+          style={{
+            top: navBottom,
+            bottom: 0,
+          }}
+          onMouseEnter={openMenu}
+          onMouseLeave={closeMenu}
+          className="fixed left-0 right-0 w-full
+            bg-white shadow-2xl z-[9999] overflow-y-auto"
         >
-          {columns.map((col) => (
-            <div key={col.heading} className="flex flex-col gap-3">
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                {col.heading}
-              </h3>
+          <div className="h-px bg-gray-100 mx-[5px]" />
 
-              {/* Flat list column */}
-              {col.items &&
-                col.items.map((title) => (
-                  <a
-                    key={title}
-                    href="#"
-                    className="text-base md:text-lg text-gray-500 hover:text-[#8a1538] transition-colors"
-                  >
-                    {title}
-                  </a>
-                ))}
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20
+              px-[11%] py-10 md:py-14"
+          >
+            {columns.map((col) => (
+              <div key={col.heading} className="flex flex-col gap-3">
 
-              {/* Nested sections: Our Services / Platforms */}
-              {col.sections &&
-                col.sections.map((section, idx) => (
-                  <div
-                    key={section.subheading}
-                    className={`flex flex-col gap-3 ${idx > 0 ? "mt-4" : ""}`}
-                  >
-                    <h4 className="text-lg md:text-xl font-bold text-gray-900">
-                      {section.subheading}
-                    </h4>
-                    {section.items.map((title) => (
-                      <a
-                        key={title}
-                        href="#"
-                        className="text-base md:text-lg text-gray-500 hover:text-[#8a1538] transition-colors"
-                      >
-                        {title}
-                      </a>
-                    ))}
-                  </div>
-                ))}
-            </div>
-          ))}
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 font-plus-jakarta mb-2">
+                  {col.heading}
+                </h3>
+
+                {col.items &&
+                  col.items.map((title) => (
+                    <a
+                      key={title}
+                      href="#"
+                      className="text-base md:text-lg text-gray-800 font-inter
+                        hover:text-[#8a1538] transition-colors"
+                    >
+                      {title}
+                    </a>
+                  ))}
+
+                {col.sections &&
+                  col.sections.map((section, idx) => (
+                    <div
+                      key={section.subheading}
+                      className={`flex flex-col gap-3 ${
+                        idx > 0 ? "mt-4" : ""
+                      }`}
+                    >
+                      <h4 className="text-lg md:text-xl font-bold text-gray-900 font-plus-jakarta">
+                        {section.subheading}
+                      </h4>
+
+                      {section.items.map((title) => (
+                        <a
+                          key={title}
+                          href="#"
+                          className="text-base md:text-lg text-gray-800 font-inter
+                            hover:text-[#8a1538] transition-colors"
+                        >
+                          {title}
+                        </a>
+                      ))}
+                    </div>
+                  ))}
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

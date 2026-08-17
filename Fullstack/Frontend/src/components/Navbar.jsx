@@ -1,5 +1,11 @@
-import React from "react";
-import logo from "../assets/TechTorchLogo.png"; 
+import React, { useLayoutEffect, useRef, useState } from "react";
+import logo from "../assets/TechTorchLogo.png";
+import { NavMenuProvider, useNavMenu } from "./NavbarItem/NavMenuContext";
+import NavAboutUs from "./NavbarItem/NavAboutUs";
+import NavCapabilities from "./NavbarItem/NavCapabilities";
+import NavIndustries from "./NavbarItem/NavIndustries";
+import NavInsights from "./NavbarItem/NavInsights";
+import NavCareers from "./NavbarItem/NavCareers";
 
 const navLinks = [
   "About Us",
@@ -29,62 +35,132 @@ function SearchIcon() {
 }
 
 function MenuIcon({ open }) {
-  return (
-    <div className="w-6 h-6 flex flex-col justify-center gap-1.5">
-      <span
-        className={`block h-0.5 w-6 bg-gray-900 transition-all ${
-          open ? "rotate-45 translate-y-2" : ""
-        }`}
-      />
-      <span
-        className={`block h-0.5 w-6 bg-gray-900 transition-all ${
-          open ? "opacity-0" : ""
-        }`}
-      />
-      <span
-        className={`block h-0.5 w-6 bg-gray-900 transition-all ${
-          open ? "-rotate-45 -translate-y-2" : ""
-        }`}
-      />
-    </div>
+  return open ? (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#222"
+      strokeWidth="2"
+      strokeLinecap="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  ) : (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#222"
+      strokeWidth="2"
+      strokeLinecap="round"
+    >
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
   );
 }
 
-export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+function NavbarInner() {
+  const { setActiveMenu, navHeight, setNavHeight } = useNavMenu();
+  const navRef = useRef(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      if (navRef.current) {
+        setNavHeight(navRef.current.getBoundingClientRect().height);
+      }
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+
+    return () => window.removeEventListener("resize", measure);
+  }, [setNavHeight]);
 
   return (
-    <nav
-      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-      className="w-full bg-white border-b border-gray-200"
-    >
-      {/* Main Navbar */}
-      <div className="w-full flex items-center justify-between px-5 sm:px-8 lg:px-10 py-3">
-        
+    <>
+      <nav
+        ref={navRef}
+        style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+        className="fixed top-0 left-0 w-full z-[1000] flex items-center justify-between
+        px-4 sm:px-6 lg:px-10 py-2.5 lg:py-3 border-b border-gray-200 bg-white"
+      >
         {/* Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center gap-2.5">
           <img
             src={logo}
             alt="TechTorch Solutions"
-            className="h-9 sm:h-10 lg:h-11 w-auto"
+            className="h-9 md:h-10 lg:h-11 w-auto flex-shrink-0"
           />
         </div>
 
-      {/* Links */}
-      <ul className="flex items-center gap-12 list-none ml-auto mr-10">
-        {navLinks.map((label) => (
-          <li key={label}>
-            <a
-              href="#"
-              className="text-[17px] text-gray-900 no-underline transition-colors duration-200 hover:text-[#8a1538]"
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
+        {/* Desktop Links */}
+        <ul
+          onMouseLeave={() => setActiveMenu(null)}
+          className="hidden lg:flex items-center gap-8 xl:gap-12 list-none ml-auto mr-6 xl:mr-10"
+        >
+          {navLinks.map((label) => {
+            if (label === "About Us") {
+              return (
+                <li key={label}>
+                  <NavAboutUs />
+                </li>
+              );
+            }
 
-          {/* Search */}
+            if (label === "Capabilities") {
+              return (
+                <li key={label}>
+                  <NavCapabilities />
+                </li>
+              );
+            }
+
+            if (label === "Industries") {
+              return (
+                <li key={label}>
+                  <NavIndustries />
+                </li>
+              );
+            }
+
+            if (label === "Insights") {
+              return (
+                <li key={label}>
+                  <NavInsights />
+                </li>
+              );
+            }
+
+            if (label === "Careers") {
+              return (
+                <li key={label}>
+                  <NavCareers />
+                </li>
+              );
+            }
+
+            return (
+              <li key={label}>
+                <a
+                  href="#"
+                  className="text-[17px] text-gray-900 no-underline transition-colors duration-200 hover:text-[#8a1538]"
+                >
+                  {label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Search */}
+        <div className="hidden lg:flex items-center">
           <button
             type="button"
             aria-label="Search"
@@ -94,49 +170,50 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile/Tablet Menu Button */}
+        {/* Mobile Menu Button */}
         <button
           type="button"
-          aria-label="Toggle Menu"
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden bg-transparent border-none cursor-pointer p-1"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMobileOpen((v) => !v)}
+          className="lg:hidden flex items-center justify-center bg-transparent border-none cursor-pointer p-1"
         >
-          <MenuIcon open={menuOpen} />
+          <MenuIcon open={mobileOpen} />
         </button>
-      </div>
 
-      {/* Mobile/Tablet Menu */}
-      <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <ul className="flex flex-col px-5 sm:px-8 pb-4 pt-2">
-          {navLinks.map((label) => (
-            <li key={label} className="border-b border-gray-100">
-              <a
-                href="#"
-                onClick={() => setMenuOpen(false)}
-                className="block py-3 text-[16px] text-gray-900 no-underline hover:text-[#8a1538] transition-colors duration-200"
-              >
-                {label}
-              </a>
-            </li>
-          ))}
+        {/* Mobile Menu */}
+        {mobileOpen && (
+          <div
+            style={{ top: navHeight }}
+            className="lg:hidden fixed left-0 right-0 w-full bg-white shadow-2xl z-[999]
+            max-h-[80vh] overflow-y-auto border-t border-gray-100"
+          >
+            <ul className="flex flex-col divide-y divide-gray-100">
+              {navLinks.map((label) => (
+                <li key={label}>
+                  <a
+                    href="#"
+                    onClick={() => setMobileOpen(false)}
+                    className="block px-6 py-4 text-[17px] text-gray-900 hover:text-[#8a1538] hover:bg-gray-50 transition-colors"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </nav>
 
-          {/* Mobile Search */}
-          <li className="pt-4">
-            <button
-              type="button"
-              aria-label="Search"
-              className="flex items-center gap-2 bg-transparent border-none cursor-pointer p-0 text-gray-900"
-            >
-              <SearchIcon />
-              <span>Search</span>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      {/* Spacer */}
+      <div style={{ height: navHeight }} />
+    </>
+  );
+}
+
+export default function Navbar() {
+  return (
+    <NavMenuProvider>
+      <NavbarInner />
+    </NavMenuProvider>
   );
 }
