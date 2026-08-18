@@ -20,7 +20,7 @@ function SearchIcon() {
   return (
     <svg
       width="20"
-      height="20"
+      height="60"
       viewBox="0 0 24 24"
       fill="none"
       stroke="#222"
@@ -87,7 +87,7 @@ function NavbarInner() {
     <>
       <nav
         ref={navRef}
-        style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+        style={{ fontFamily: "Plus Jakarta Sans, 'Times New Roman', serif" }}
         className="fixed top-0 left-0 w-full z-[1000] flex items-center justify-between px-4 sm:px-6 lg:px-10 py-2.5 lg:py-3 border-b border-gray-200 bg-white"
       >
         {/* Logo */}
@@ -95,7 +95,7 @@ function NavbarInner() {
           <img
             src={logo}
             alt="TechTorch Solutions"
-            className="h-9 md:h-10 lg:h-11 w-auto flex-shrink-0"
+            className="h-12 sm:h-13 lg:h-13 w-auto"
           />
         </div>
 

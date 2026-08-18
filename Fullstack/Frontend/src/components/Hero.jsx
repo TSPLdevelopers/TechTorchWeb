@@ -55,8 +55,8 @@ const Hero = () => {
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prevSlide = () =>
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-   
-  
+
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
@@ -76,9 +76,8 @@ const Hero = () => {
           key={i}
           src={slide.image}
           alt={slide.headline}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-            i === current ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${i === current ? "opacity-100" : "opacity-0"
+            }`}
           style={{ objectPosition: slide.focus }}
         />
       ))}
@@ -95,70 +94,69 @@ const Hero = () => {
       {/* Copy, keyed so it re-mounts (and re-animates) on slide change */}
       <div
         key={current}
-        className="relative z-[3] h-full flex flex-col justify-center max-w-[640px] px-6 md:px-12 text-white animate-[fadeIn_0.5s_ease]"
+        className="relative z-[3] h-full flex flex-col justify-center max-w-[640px] px-6 md:px-16 lg:px-20 text-white animate-[fadeIn_0.5s_ease]"
       >
-        <h1 className="text-[26px] md:text-[36px] lg:text-[44px] leading-[1.12] font-Plus Jakarta Sans mb-5">
+        <h1 className="text-[26px] md:text-[36px] lg:text-[44px] leading-[1.12] font-Plus Jakarta Sans mb-10">
           {active.headline}
         </h1>
-        <p className="text-base leading-relaxed font-medium text-white/90 max-w-[520px] mb-8">
+        <p className="text-base leading-relaxed font-medium text-white/90 max-w-[520px] mb-14">
           {active.body}
         </p>
         <a
           href={active.ctaHref}
-          className="self-start px-7 py-3.5 border-[1.5px] border-white text-white text-[13px] font-Plus Jakarta Sans uppercase transition-colors duration-200 hover:bg-white hover:text-[#7a1440]"
+          className="self-start px-7 py-3.5 border-[1.5px] border-white text-white text-[13px] font-bold uppercase transition-colors duration-200 hover:bg-white hover:text-[#7a1440]"
         >
           {active.ctaText}
         </a>
       </div>
 
       {/* Dots */}
-<div className="absolute z-[4] right-3 md:right-8 bottom-[90px] flex gap-4.5">
-  {slides.map((_, i) => (
-    <button
-      key={i}
-      onClick={() => setCurrent(i)}
-      aria-label={`Go to slide ${i + 1}`}
-      className={`w-[11px] h-[11px] rounded-full transition-transform duration-200 ${
-        i === current ? "bg-white scale-110" : "bg-white/55"
-      }`}
-    />
-  ))}
-</div>
+      <div className="absolute z-[4] right-3 md:right-8 bottom-[90px] flex gap-4.5">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`w-[11px] h-[11px] rounded-full transition-transform duration-200 ${i === current ? "bg-white scale-110" : "bg-white/55"
+              }`}
+          />
+        ))}
+      </div>
 
-{/* Arrows */}
-<div className="absolute z-[4] right-8 md:right-16 bottom-7 md:bottom-7  flex gap-3">
-  <button
-    onClick={prevSlide}
-    aria-label="Previous slide"
-    className="w-[32px] h-[32px] rounded-full bg-[#9b1a4f] hover:bg-[#7a1440] text-white flex items-center justify-center transition-colors"
-  >
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      className="w-5 h-5"
-    >
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-  </button>
+      {/* Arrows */}
+      <div className="absolute z-[4] right-8 md:right-16 bottom-7 md:bottom-7  flex gap-3">
+        <button
+          onClick={prevSlide}
+          aria-label="Previous slide"
+          className="w-[32px] h-[32px] rounded-full bg-[#9b1a4f] hover:bg-[#7a1440] text-white flex items-center justify-center transition-colors"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            className="w-5 h-5"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
 
-  <button
-    onClick={nextSlide}
-    aria-label="Next slide"
-    className="w-[32px] h-[32px] rounded-full bg-[#9b1a4f] hover:bg-[#7a1440] text-white flex items-center justify-center transition-colors"
-  >
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      className="w-5 h-5"
-    >
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
-  </button>
-</div>
+        <button
+          onClick={nextSlide}
+          aria-label="Next slide"
+          className="w-[32px] h-[32px] rounded-full bg-[#9b1a4f] hover:bg-[#7a1440] text-white flex items-center justify-center transition-colors"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            className="w-5 h-5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
     </section>
   );
 };
