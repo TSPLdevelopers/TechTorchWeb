@@ -32,23 +32,22 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={() => setActiveView(null)}
-                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-12 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
                 <span className="text-[30px] leading-none">←</span>
                 <span>Back</span>
               </button>
-
             </div>
 
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end">
 
-              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden">
+              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden animate-imageSlide">
 
                 <img
                   src="/Sec3.2.png"
                   alt="Understand"
-                  className="w-full h-auto object-cover animate-imageReveal"
+                  className="w-full h-auto object-cover"
                 />
 
               </div>
@@ -91,7 +90,7 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={() => setActiveView(null)}
-                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-12 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
                 <span className="text-[30px] leading-none">←</span>
                 <span>Back</span>
@@ -102,12 +101,12 @@ export default function Hero3() {
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end">
 
-              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden">
+              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden animate-imageSlide">
 
                 <img
                   src="/Sec3.3.png"
                   alt="Build"
-                  className="w-full h-auto object-cover animate-imageReveal"
+                  className="w-full h-auto object-cover"
                 />
 
               </div>
@@ -150,7 +149,7 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={() => setActiveView(null)}
-                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-12 flex items-center gap-3 border border-white px-3 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
                 <span className="text-[30px] leading-none">←</span>
                 <span>Back</span>
@@ -161,12 +160,12 @@ export default function Hero3() {
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end">
 
-              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden">
+              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden animate-imageSlide">
 
                 <img
                   src="/Sec3.4.png"
                   alt="Grow"
-                  className="w-full h-auto object-cover animate-imageReveal"
+                  className="w-full h-auto object-cover"
                 />
 
               </div>
