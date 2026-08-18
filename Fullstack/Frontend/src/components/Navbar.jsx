@@ -87,7 +87,7 @@ function NavbarInner() {
     <>
       <nav
         ref={navRef}
-        style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+        style={{ fontFamily: "Plus Jakarta Sans, 'Times New Roman', serif" }}
         className="fixed top-0 left-0 w-full z-[1000] flex items-center justify-between px-4 sm:px-6 lg:px-10 py-2.5 lg:py-3 border-b border-gray-200 bg-white"
       >
         {/* Logo */}
