@@ -241,7 +241,7 @@ export default function Hero3() {
           {/* RIGHT IMAGE */}
           <div className="flex justify-center lg:justify-end">
 
-            <div className="relative w-[500px] h-[500px] max-w-full border-[5px] border-white overflow-hidden">
+            <div className="relative w-[470px] h-[470px] max-w-full border-[5px] border-white overflow-hidden">
 
               <img
                 src="/Sec3.1.png"
