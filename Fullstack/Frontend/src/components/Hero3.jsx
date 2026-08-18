@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 export default function Hero3() {
@@ -7,20 +6,20 @@ export default function Hero3() {
   // UNDERSTAND VIEW
   if (activeView === "understand") {
     return (
-      <section className="w-full bg-[#730042] h-[600px]">
+      <section className="w-full bg-[#730042] min-h-[600px]">
 
-        <div className="w-full px-6 sm:px-10 lg:px-16 py-16">
+        <div className="w-full px-4 sm:px-6 lg:px-16 py-16">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="text-4xl lg:text-5xl font-bold font-plus-jakarta text-[#FF0080]">
-                Understand
+              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
+                UNDERSTAND
               </h2>
 
-              <p className="mt-16 text-lg lg:text-xl font-inter leading-relaxed max-w-[650px]">
+              <p className="mt-16 text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
                 We take the time to understand your business, requirements,
                 challenges, processes, users, and long-term goals. By gaining a
                 clear understanding of how your business operates and where
@@ -33,9 +32,9 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={() => setActiveView(null)}
-                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-lg font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
-                <span className="text-3xl leading-none">←</span>
+                <span className="text-[30px] leading-none">←</span>
                 <span>Back</span>
               </button>
 
@@ -66,20 +65,20 @@ export default function Hero3() {
   // BUILD VIEW
   if (activeView === "build") {
     return (
-      <section className="w-full bg-[#730042] h-[600px]">
+      <section className="w-full bg-[#730042] min-h-[600px]">
 
-        <div className="w-full px-6 sm:px-10 lg:px-16 py-16">
+        <div className="w-full px-4 sm:px-6 lg:px-16 py-16">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="text-4xl lg:text-5xl font-bold font-plus-jakarta text-[#FF0080]">
+              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
                 BUILD
               </h2>
 
-              <p className="mt-16 text-lg lg:text-xl font-inter leading-relaxed max-w-[650px]">
+              <p className="mt-16 text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
                 Once we understand your business needs, we turn ideas and
                 requirements into practical digital solutions. We design and
                 develop technology around your specific goals, processes, and
@@ -92,9 +91,9 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={() => setActiveView(null)}
-                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-lg font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
-                <span className="text-3xl leading-none">←</span>
+                <span className="text-[30px] leading-none">←</span>
                 <span>Back</span>
               </button>
 
@@ -125,20 +124,20 @@ export default function Hero3() {
   // GROW VIEW
   if (activeView === "grow") {
     return (
-      <section className="w-full bg-[#730042] h-[600px]">
+      <section className="w-full bg-[#730042] min-h-[600px]">
 
-        <div className="w-full px-6 sm:px-10 lg:px-16 py-16">
+        <div className="w-full px-4 sm:px-6 lg:px-16 py-16">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="text-4xl lg:text-5xl font-bold font-plus-jakarta text-[#FF0080]">
+              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
                 GROW
               </h2>
 
-              <p className="mt-16 text-lg lg:text-xl font-inter leading-relaxed max-w-[650px]">
+              <p className="mt-16 text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
                 Our relationship continues beyond deployment. We provide ongoing
                 support, maintenance, optimization, and continuous improvements
                 to ensure your solutions remain effective as your business
@@ -151,9 +150,9 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={() => setActiveView(null)}
-                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-lg font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-16 flex items-center gap-3 border border-white px-5 py-2.5 text-white text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
-                <span className="text-3xl leading-none">←</span>
+                <span className="text-[30px] leading-none">←</span>
                 <span>Back</span>
               </button>
 
@@ -183,24 +182,25 @@ export default function Hero3() {
 
   // HOW WE WORK VIEW
   return (
-    <section className="w-full bg-[#730042] h-[600px]">
+    <section className="w-full bg-[#730042] min-h-[600px]">
 
-      <div className="w-full px-6 sm:px-10 lg:px-16 py-16">
+      <div className="w-full px-4 sm:px-6 lg:px-16 py-16">
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* LEFT CONTENT */}
           <div className="text-white">
 
-            <h2 className="text-4xl lg:text-4xl font-bold font-plus-jakarta">
+            <h2 className="text-[36px] lg:text-[36px] font-bold font-plus-jakarta">
               HOW  WE  WORK
             </h2>
 
-            <h3 className="mt-8 text-2xl lg:text-2xl font-inter text-[#FF0080] max-w-[650px]">
-              We understand your needs, build practical <br/> solutions, and help your
-              business grow <br/> with technology.
+            <h3 className="mt-8 text-[20px] lg:text-[24px] font-inter text-[#FF0080] max-w-[650px]">
+              We understand your needs, build practical <br /> solutions, and help your
+              business grow <br /> with technology.
             </h3>
 
-            <p className="mt-12 text-lg lg:text-xl font-inter leading-relaxed max-w-[650px]">
+            <p className="mt-12 text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
               Our approach is simple:
               <br />
               first understand the business, then build the
@@ -215,21 +215,21 @@ export default function Hero3() {
 
               <button
                 onClick={() => setActiveView("understand")}
-                className="bg-white text-[#78004B] px-5 py-2 text-lg font-bold font-inter hover:bg-[#FF007B] transition"
+                className="bg-white text-[#78004B] px-5 py-2 text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
               >
                 UNDERSTAND
               </button>
 
               <button
                 onClick={() => setActiveView("build")}
-                className="bg-white text-[#78004B] px-5 py-2 text-lg font-bold font-inter hover:bg-[#FF007B] transition"
+                className="bg-white text-[#78004B] px-5 py-2 text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
               >
                 BUILD
               </button>
 
               <button
                 onClick={() => setActiveView("grow")}
-                className="bg-white text-[#78004B] px-5 py-2 text-lg font-bold font-inter hover:bg-[#FF007B] transition"
+                className="bg-white text-[#78004B] px-5 py-2 text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
               >
                 GROW
               </button>
@@ -259,4 +259,3 @@ export default function Hero3() {
     </section>
   );
 }
-
