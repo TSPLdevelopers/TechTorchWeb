@@ -25,7 +25,7 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#ffff]">
                 UNDERSTAND
               </h2>
 
@@ -92,7 +92,7 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#ffff]">
                 BUILD
               </h2>
 
@@ -159,7 +159,7 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FFFF]">
                 GROW
               </h2>
 
@@ -229,7 +229,7 @@ export default function Hero3() {
               HOW WE WORK
             </h2>
 
-            <h3 className="mt-6 sm:mt-8 text-[18px] sm:text-[20px] lg:text-[22px] font-inter text-[#FF0080] max-w-[650px] leading-relaxed">
+            <h3 className="mt-6 sm:mt-8 text-[18px] sm:text-[20px] lg:text-[22px] font-inter text-[#FFFF  max-w-[650px] leading-relaxed">
               We understand your needs, build practical
               <br className="hidden sm:block" /> solutions, and help your
               business grow
@@ -247,30 +247,30 @@ export default function Hero3() {
             </p>
 
             {/* BUTTONS */}
-            <div className="mt-8 sm:mt-10 flex flex-wrap gap-4 sm:gap-6 lg:gap-10">
+<div className="mt-16 flex flex-wrap gap-5">
 
-              <button
-                onClick={() => setActiveView("understand")}
-                className="bg-white text-[#78004B] px-4 sm:px-5 py-2 text-[16px] sm:text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
-              >
-                UNDERSTAND
-              </button>
+  <button
+    onClick={() => setActiveView("understand")}
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+  >
+    UNDERSTAND
+  </button>
 
-              <button
-                onClick={() => setActiveView("build")}
-                className="bg-white text-[#78004B] px-4 sm:px-5 py-2 text-[16px] sm:text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
-              >
-                BUILD
-              </button>
+  <button
+    onClick={() => setActiveView("build")}
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+  >
+    BUILD
+  </button>
 
-              <button
-                onClick={() => setActiveView("grow")}
-                className="bg-white text-[#78004B] px-4 sm:px-5 py-2 text-[16px] sm:text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
-              >
-                GROW
-              </button>
+  <button
+    onClick={() => setActiveView("grow")}
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+  >
+    GROW
+  </button>
 
-            </div>
+</div>
 
           </div>
 
