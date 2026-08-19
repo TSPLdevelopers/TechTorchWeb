@@ -43,12 +43,12 @@ export default function Hero3() {
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end">
 
-              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden animate-imageSlide">
+              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden">
 
                 <img
                   src="/Sec3.2.png"
                   alt="Understand"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover animate-imageReveal"
                 />
 
               </div>
@@ -102,12 +102,12 @@ export default function Hero3() {
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end">
 
-              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden animate-imageSlide">
+              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden">
 
                 <img
                   src="/Sec3.3.png"
                   alt="Build"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover animate-imageReveal"
                 />
 
               </div>
@@ -161,12 +161,12 @@ export default function Hero3() {
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end">
 
-              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden animate-imageSlidel">
+              <div className="relative w-[450px] max-w-full border-[5px] border-white overflow-hidden">
 
                 <img
                   src="/Sec3.4.png"
                   alt="Grow"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover animate-imageReveal"
                 />
 
               </div>
