@@ -60,7 +60,7 @@ export default function BuildConnectGrow() {
         "
       >
         <img
-          src="/Frame1.png"
+          src="/Frame 1160.png"
           alt="TechTorch Solutions office building"
           className="
             w-full
