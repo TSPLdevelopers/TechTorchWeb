@@ -13,7 +13,9 @@ const upcomingEventRoutes = require("./routes/upcomingEvent.routes");
 const featuredStoryRoutes = require("./routes/featuredStory.routes");
 const companyEnvironmentRoutes = require("./routes/companyEnvironment.routes");
 const opportunityRoutes = require("./routes/opportunity.routes");
+const cookieParser = require("cookie-parser");
 
+app.use(cookieParser());
 app.use("/api/company-environments", companyEnvironmentRoutes);
 app.use("/api/opportunities", opportunityRoutes);
 
