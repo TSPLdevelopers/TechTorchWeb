@@ -6,9 +6,9 @@ const { generateToken } = require("../utils/generateToken");
 
 
 const registerAdmin = asyncHandler(async (req, res) => {
-  const { contact, emergency, email, password } = req.body;
+  const { name, contact, emergency, email, password } = req.body;
 
-  if (!contact || !emergency || !email || !password) {
+  if (!name || !contact || !emergency || !email || !password) {
     return res.status(400).json({
       success: false,
       message: "All fields are required",
@@ -30,6 +30,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   const newAdmin = new Admin({
+    name,
     contact,
     emergency,
     email,
