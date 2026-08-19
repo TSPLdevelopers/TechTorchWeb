@@ -2,79 +2,53 @@ import React from "react";
 
 export default function BigVision() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-[#f9f8f3]">
-
-      {/* Background curved lines */}
-      <div className="absolute right-[-80px] top-[-180px] h-[1000px] w-[900px] opacity-60 pointer-events-none">
-        {[0, 35, 70, 105, 140, 175, 210].map((inset) => (
-          <div
-            key={inset}
-            className="absolute rounded-full border-l border-[#d9e1e8] rotate-[25deg]"
-            style={{ inset }}
-          />
-        ))}
-      </div>
+    <section className="relative w-full min-h-[550px] overflow-hidden bg-[#f9f8f3]">
 
       {/* Main content */}
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1440px] items-center px-[55px]">
+      <div className="relative z-10 mx-auto flex flex-col min-h-[550px] w-full max-w-[1440px] px-[20px] sm:px-[30px] md:px-[40px] lg:flex-row lg:items-center lg:px-[90px]">
 
         {/* Left content */}
-        <div className="relative z-20 w-[52%] pt-[10px]">
+        <div className="relative z-20 w-full pt-[30px] sm:pt-[35px] md:w-[60%] md:pt-[40px] lg:w-[52%] lg:pt-[10px]">
 
-          <p className="mb-[42px] text-[26px] font-medium leading-none text-black">
+          <p className="mb-[15px] text-[16px] sm:text-[17px] md:text-[18px] lg:text-[19px] font-medium leading-none text-black">
             THE BIG VISION
           </p>
 
-          <h1 className="text-[40px] font-bold leading-[1.32] tracking-[-1px] text-black">
+          <h1 className="translate-y-[10px] text-[29px] sm:text-[32px] md:text-[35px] lg:text-[36px] font-bold font-plus-jakarta leading-[1.32] tracking-[-1px] text-black">
             <span className="text-[#83004f]">Leading</span> With Vision.
             <br />
             Shaping <span className="text-[#83004f]">What’s Next.</span>
           </h1>
 
-          <p className="mt-[34px] max-w-[600px] text-[20px] font-normal leading-[1.4] text-[#505050]">
+          <p className="mt-[25px] sm:mt-[27px] md:mt-[30px] lg:mt-[34px] max-w-[600px] text-[16px] sm:text-[17px] md:text-[18px] lg:text-[20px] font-normal leading-[1.4] text-[#505050]">
             The future is not simply something we prepare for
-            <br />
-            — it is something we have the opportunity to
-            <br />
-            shape. At TechTorch, our leadership is grounded in
-            <br />
-            a clear belief: technology should create
-            <br />
-            meaningful progress, strengthen businesses and
-            <br />
-            open new possibilities for the future.
+            <br className="hidden sm:block" />
+            — it is something we have the opportunity to shape.
+            <br className="hidden sm:block" />
+            At TechTorch, our leadership is grounded in a clear
+            <br className="hidden sm:block" />
+            belief: technology should create meaningful progress,
+            <br className="hidden sm:block" />
+            strengthen businesses and open new possibilities
+            <br className="hidden sm:block" />
+            for the future.
           </p>
 
           {/* Bottom section */}
-          <div className="mt-[86px] flex items-center">
+          <div className="mt-[30px] sm:mt-[32px] md:mt-[35px] lg:mt-[20px] flex flex-wrap items-center">
 
             {/* Learn More button */}
-            <button
-              className="
-                border border-[#8a0055]
-                bg-transparent
-                px-[11px]
-                py-[9px]
-                text-[24px]
-                font-semibold
-                leading-none
-                text-[#83004f]
-                transition-all
-                duration-300
-                hover:bg-[#83004f]
-                hover:text-white
-              "
-            >
+            <button className="border border-[#8a0055] rounded-[4px] bg-transparent px-[9px] py-[7px] sm:px-[10px] sm:py-[8px] lg:px-[11px] lg:py-[9px] text-[17px] sm:text-[19px] lg:text-[20px] font-semibold font-plus-jakarta leading-none text-[#83004f] transition-all duration-300 hover:bg-[#83004f] hover:text-white">
               Learn More
             </button>
 
             {/* Name */}
-            <div className="ml-[102px] text-center">
-              <h2 className="text-[34px] font-normal leading-none text-black">
+            <div className="ml-[25px] sm:ml-[40px] md:ml-[55px] lg:ml-[102px] mt-[16px] text-center">
+              <h2 className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[28px] font-medium font-plus-jakarta leading-none text-black">
                 Siddharth Pathak
               </h2>
 
-              <p className="mt-[12px] text-[21px] font-medium leading-[1.2] text-[#83004f]">
+              <p className="mt-[10px] text-[13px] sm:text-[14px] md:text-[15px] lg:text-[17px] font-normal font-inter leading-[1.2] text-[#83004f]">
                 Chief Executive Officer,
                 <br />
                 TechTorch Solutions
@@ -85,11 +59,11 @@ export default function BigVision() {
         </div>
 
         {/* Right image */}
-        <div className="absolute bottom-0 right-[65px] z-20 flex items-end">
+        <div className="relative z-20 mt-[30px] flex w-full justify-center md:absolute md:right-[20px] md:bottom-0 md:mt-0 md:w-auto md:justify-normal lg:right-[100px]">
           <img
             src="/img.png"
             alt="Siddharth Pathak"
-            className="block h-auto w-[450px] object-contain"
+            className="block h-auto w-[180px] sm:w-[210px] md:w-[250px] lg:w-[350px] object-contain"
           />
         </div>
 
