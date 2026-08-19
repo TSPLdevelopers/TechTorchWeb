@@ -25,13 +25,13 @@ export default function BigVision() {
             THE BIG VISION
           </p>
 
-          <h1 className="text-[44px] font-bold leading-[1.32] tracking-[-1px] text-black">
+          <h1 className="text-[40px] font-bold leading-[1.32] tracking-[-1px] text-black">
             <span className="text-[#83004f]">Leading</span> With Vision.
             <br />
             Shaping <span className="text-[#83004f]">What’s Next.</span>
           </h1>
 
-          <p className="mt-[34px] max-w-[600px] text-[25px] font-normal leading-[1.4] text-[#505050]">
+          <p className="mt-[34px] max-w-[600px] text-[20px] font-normal leading-[1.4] text-[#505050]">
             The future is not simply something we prepare for
             <br />
             — it is something we have the opportunity to
@@ -89,7 +89,7 @@ export default function BigVision() {
           <img
             src="/img.png"
             alt="Siddharth Pathak"
-            className="block h-auto w-[510px] object-contain"
+            className="block h-auto w-[450px] object-contain"
           />
         </div>
 
