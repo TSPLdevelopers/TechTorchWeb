@@ -15,7 +15,7 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
+              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FFFF]">
                 UNDERSTAND
               </h2>
 
@@ -74,7 +74,7 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
+              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FFFF]">
                 BUILD
               </h2>
 
@@ -133,7 +133,7 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FF0080]">
+              <h2 className="translate-y-[10px] text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FFFF]">
                 GROW
               </h2>
 
@@ -195,7 +195,7 @@ export default function Hero3() {
               HOW  WE  WORK
             </h2>
 
-            <h3 className="mt-8 text-[20px] lg:text-[24px] font-inter text-[#FF0080] max-w-[650px]">
+            <h3 className="mt-8 text-[20px] lg:text-[24px] font-inter text-[#FFff] max-w-[650px]">
               We understand your needs, build practical <br /> solutions, and help your
               business grow <br /> with technology.
             </h3>
@@ -210,31 +210,31 @@ export default function Hero3() {
               it as your needs evolve.
             </p>
 
-            {/* BUTTONS */}
-            <div className="mt-16 flex flex-wrap gap-10">
+           {/* BUTTONS */}
+<div className="mt-16 flex flex-wrap gap-5">
 
-              <button
-                onClick={() => setActiveView("understand")}
-                className="bg-white text-[#78004B] px-5 py-2 text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
-              >
-                UNDERSTAND
-              </button>
+  <button
+    onClick={() => setActiveView("understand")}
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+  >
+    UNDERSTAND
+  </button>
 
-              <button
-                onClick={() => setActiveView("build")}
-                className="bg-white text-[#78004B] px-5 py-2 text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
-              >
-                BUILD
-              </button>
+  <button
+    onClick={() => setActiveView("build")}
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+  >
+    BUILD
+  </button>
 
-              <button
-                onClick={() => setActiveView("grow")}
-                className="bg-white text-[#78004B] px-5 py-2 text-[18px] font-bold font-inter hover:bg-[#FF007B] transition"
-              >
-                GROW
-              </button>
+  <button
+    onClick={() => setActiveView("grow")}
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+  >
+    GROW
+  </button>
 
-            </div>
+</div>
 
           </div>
 
