@@ -1,13 +1,13 @@
-@keyframes imageReveal {
+@keyframes imageSlide {
   from {
-    clip-path: inset(0 100% 0 0);
+    transform: translateX(100%);
   }
 
   to {
-    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
   }
 }
 
-.animate-imageReveal {
-  animation: imageReveal 0.8s ease-in-out forwards;
+.animate-imageSlide {
+  animation: imageSlide 0.7s ease-out forwards;
 }
