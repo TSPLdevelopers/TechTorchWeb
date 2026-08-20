@@ -1,629 +1,296 @@
-import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-/**
- * Capabilities section
- * - Infinite auto marquee
- * - Previous / Next controls
- * - White card border
- * - Responsive
- */
-
-const CARDS = [
-  {
-    title: "Platforms",
-    img: "/card1.png",
-    href: "/platforms",
-  },
-  {
-    title: "Digital Solutions",
-    img: "/card2.png",
-    href: "/digital-solutions",
-  },
-  {
-    title: "Our Services",
-    img: "/card3.png",
-    href: "/services",
-  },
-  {
-    title: "Business Process Outsourcing",
-    img: "/card4.png",
-    href: "/business-process-outsourcing",
-  },
-  {
-    title: "IT Augmentation Service",
-    img: "/card5.png",
-    href: "/it-augmentation",
-  },
-  {
-    title: "Artificial Intelligent",
-    img: "/card6.png",
-    href: "/artificial-intelligence",
-  },
-];
-
-// Duplicate cards for infinite marquee
-const TRACK = [...CARDS, ...CARDS];
-
-function Card({ title, img, href }) {
+export default function BigVision() {
   return (
-    <div className="cap-card">
-      <div className="cap-card-art">
-        <img
-          src={img}
-          alt={title}
-          className="cap-card-img"
-          draggable={false}
-        />
-      </div>
+    <section className="relative w-full overflow-hidden bg-[#f9f8f3]">
 
-      <Link to={href} className="cap-card-label">
-        <span className="cap-card-title">{title}</span>
-
-        <span className="cap-card-arrow">
-          →
-        </span>
-      </Link>
-    </div>
-  );
-}
-
-export default function CapabilitiesMarquee() {
-  const viewportRef = useRef(null);
-
-  // Move cards to next
-  const handleNext = () => {
-  if (viewportRef.current) {
-    viewportRef.current.scrollBy({
-      left: 400,
-      behavior: "smooth",
-    });
-  }
-};
-
-  // Move cards to previous
-  const handlePrevious = () => {
-    if (viewportRef.current) {
-      viewportRef.current.scrollBy({
-        left: -400,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  return (
-    <section className="cap-section">
-
-      <style>{`
-
-        /* ================= SECTION ================= */
-
-        .cap-section {
-          background: #6d0e42;
-
-          background-image:
-            linear-gradient(
-              rgba(255,255,255,0.05) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              90deg,
-              rgba(255,255,255,0.05) 1px,
-              transparent 1px
-            );
-
-          background-size: 28px 28px;
-
-          padding: 56px 0 64px;
-
-          overflow: hidden;
-
-          font-family:
-            "Plus Jakarta Sans",
-            "Segoe UI",
-            Roboto,
-            sans-serif;
-        }
-
-
-        /* ================= HEADER ================= */
-
-        .cap-header {
-          max-width: 1200px;
-
-          margin: 0 auto 40px;
-
-          padding: 0 40px;
-
-          display: flex;
-
-          flex-wrap: wrap;
-
-          justify-content: space-between;
-
-          gap: 24px;
-        }
-
-
-        /* ================= TITLE ================= */
-
-        .cap-title {
-          color: #fff;
-
-          font-family: "Plus Jakarta Sans";
-
-          font-size: 42px;
-
-          font-weight: 700;
-
-          margin: 0;
-
-          letter-spacing: -0.02em;
-        }
-
-
-        /* ================= DESCRIPTION ================= */
-
-        .cap-desc {
-          color: rgba(255,255,255,0.92);
-
-          font-family: "Plus Jakarta Sans";
-
-          font-size: 18px;
-
-          line-height: 1.5;
-
-          max-width: 700px;
-
-          margin: 0;
-
-          position: relative;
-
-          top: -15px;
-        }
-
-
-        /* ================= MARQUEE ================= */
-
-        .cap-marquee-viewport {
-  width: 100%;
-  max-width: 1176px;
-  margin: 0 auto;
-  overflow: visible;
-  padding: 12px 0;
-}
-
-        .cap-marquee-viewport::-webkit-scrollbar {
-          display: none;
-        }
-
-
-        .cap-track {
-          display: flex;
-
-          gap: 24px;
-
-          width: max-content;
-
-          padding: 0 24px;
-
-          animation:
-            cap-scroll
-            26s
-            linear
-            infinite;
-        }
-
-
-        /* Pause animation when hovering cards */
-
-        .cap-marquee-viewport:hover .cap-track {
-          animation-play-state: paused;
-        }
-
-
-        /* ================= AUTO SCROLL ================= */
-
-        @keyframes cap-scroll {
-
-          from {
-            transform: translateX(0);
-          }
-
-          to {
-            transform: translateX(-50%);
-          }
-
-        }
-
-
-        /* Respect reduced motion */
-
-        @media (prefers-reduced-motion: reduce) {
-
-          .cap-track {
-            animation: none;
-          }
-
-        }
-
-
-        /* ================= CARD ================= */
-
-        .cap-card {
-  flex: 0 0 auto;
-  width: 376px;
-  background: #fff;
-
-  border: 4px solid #fff;
-  border-radius: 16px;
-  overflow: hidden;
-
-  cursor: pointer;
-
-  position: relative;
-  z-index: 1;
-
-  box-shadow: 0 14px 34px rgba(0,0,0,0.3);
-
-  transform-origin: center center;
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.cap-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 24px 50px rgba(0,0,0,0.35);
-  z-index: 10;
-}
-
-
-        /* ================= IMAGE ================= */
-
-        .cap-card-art {
-
-          position: relative;
-
-          width: 100%;
-
-          aspect-ratio: 1 / 1;
-
-          overflow: hidden;
-        }
-
-
-        .cap-card-img {
-
-          width: 100%;
-
-          height: 100%;
-
-          object-fit: cover;
-
-          display: block;
-        }
-
-
-        /* ================= LABEL ================= */
-
-        .cap-card-label {
-
-          padding:
-            20px
-            22px
-            24px;
-
-          display: flex;
-
-          align-items: center;
-
-          justify-content: space-between;
-
-          gap: 14px;
-
-          font-size: 20px;
-
-          font-weight: 600;
-
-          color: #16161a;
-
-          white-space: nowrap;
-
-          text-decoration: none;
-
-          transition:
-            color 0.3s ease;
-        }
-
-
-        .cap-card-title {
-          white-space: nowrap;
-        }
-
-
-        .cap-card:hover .cap-card-label {
-
-          color: #730042;
-        }
-
-
-        /* ================= ARROW ================= */
-
-        .cap-card-arrow {
-
-          width: 40px;
-
-          height: 40px;
-
-          flex-shrink: 0;
-
-          display: flex;
-
-          align-items: center;
-
-          justify-content: center;
-
-          border-radius: 10px;
-
-          background:
-            rgba(115, 0, 66, 0.08);
-
-          border:
-            1px solid
-            rgba(115, 0, 66, 0.25);
-
-          color: #730042;
-
-          font-size: 21px;
-
-          opacity: 0;
-
-          visibility: hidden;
-
-          transform:
-            translate(-8px, -4px);
-
-          transition:
-            all 0.3s ease;
-        }
-
-
-        .cap-card:hover .cap-card-arrow {
-
-          opacity: 1;
-
-          visibility: visible;
-
-          transform:
-            translate(0, -4px);
-        }
-
-
-        .cap-card-arrow:hover {
-
-          background: #730042;
-
-          border-color: #730042;
-
-          color: #fff;
-
-          transform:
-            translate(0, -4px)
-            scale(1.08);
-
-          box-shadow:
-            0 6px 16px
-            rgba(115, 0, 66, 0.25);
-        }
-
-
-        /* ================= CONTROLS ================= */
-
-        .cap-controls {
-
-          display: flex;
-
-          align-items: center;
-
-          justify-content: center;
-
-          gap: 14px;
-
-          margin-top: 28px;
-        }
-
-
-        .cap-control-btn {
-
-          width: 48px;
-
-          height: 48px;
-
-          border-radius: 50%;
-
-          border:
-            2px solid #fff;
-
-          background: transparent;
-
-          color: #fff;
-
-          display: flex;
-
-          align-items: center;
-
-          justify-content: center;
-
-          font-size: 24px;
-
-          font-weight: 500;
-
-          cursor: pointer;
-
-          transition:
-            all 0.3s ease;
-        }
-
-
-        .cap-control-btn:hover {
-
-          background: #fff;
-
-          color: #6d0e42;
-
-          transform: scale(1.08);
-        }
-
-
-        .cap-control-btn:active {
-
-          transform: scale(0.95);
-        }
-
-
-        /* ================= RESPONSIVE ================= */
-
-        @media (max-width: 900px) {
-
-          .cap-card {
-
-            width: 420px;
-          }
-
-          .cap-marquee-viewport {
-
-            max-width: 948px;
-          }
-
-        }
-
-
-        @media (max-width: 700px) {
-
-          .cap-title {
-
-            font-size: 30px;
-          }
-
-
-          .cap-header {
-
-            padding:
-              0 20px;
-          }
-
-
-          .cap-desc {
-
-            font-size: 16px;
-
-            max-width: 100%;
-
-            top: 0;
-          }
-
-
-          .cap-card {
-
-            width: 280px;
-          }
-
-
-          .cap-card-label {
-
-            font-size: 18px;
-
-            padding: 16px;
-          }
-
-
-          .cap-marquee-viewport {
-
-            max-width: 92vw;
-          }
-
-
-          .cap-control-btn {
-
-            width: 42px;
-
-            height: 42px;
-
-            font-size: 20px;
-          }
-
-        }
-
-      `}</style>
-
-
-      {/* ================= HEADER ================= */}
-
-      <div className="cap-header">
-
-        <h2 className="cap-title">
-          Capabilities
-        </h2>
-
-        <p className="cap-desc">
-          We bring together technology, expertise and practical solutions to
-          solve complex business challenges. From digital platforms to AI, we
-          help businesses work smarter, adapt and grow.
-        </p>
-
-      </div>
-
-
-      {/* ================= CARDS ================= */}
-
+      {/* ================= CURVED BACKGROUND ================= */}
       <div
-        className="cap-marquee-viewport"
-        ref={viewportRef}
+        className="
+          pointer-events-none
+          absolute
+          z-0
+          h-[500px]
+          w-[650px]
+          -right-[280px]
+          -top-[60px]
+          opacity-40
+
+          sm:h-[600px]
+          sm:w-[750px]
+          sm:-right-[300px]
+
+          md:h-[700px]
+          md:w-[900px]
+          md:-right-[320px]
+
+          lg:h-[850px]
+          lg:w-[1200px]
+          lg:-right-[300px]
+          lg:-top-[80px]
+        "
+        style={{
+          backgroundImage: "url('/Section.png')",
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          transform: "rotate(-55deg)",
+        }}
+      />
+
+      {/* ================= MAIN CONTAINER ================= */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          flex
+          w-full
+          max-w-[1440px]
+          flex-col
+
+          px-5
+          py-10
+
+          sm:px-8
+          sm:py-12
+
+          md:px-10
+          md:py-14
+
+          lg:min-h-[550px]
+          lg:flex-row
+          lg:items-center
+          lg:px-[90px]
+          lg:py-0
+        "
       >
 
-        <div className="cap-track">
+        {/* ================= LEFT CONTENT ================= */}
+        <div
+          className="
+            relative
+            z-20
+            w-full
 
-          {TRACK.map((card, i) => (
+            lg:w-[53%]
+          "
+        >
 
-            <Card
-              key={i}
-              {...card}
-            />
+          {/* Small Heading */}
+          <p
+            className="
+              mb-4
+              text-[14px]
+              font-medium
+              leading-none
+              text-black
 
-          ))}
+              sm:text-[16px]
 
+              md:text-[17px]
+
+              lg:text-[19px]
+            "
+          >
+            THE BIG VISION
+          </p>
+
+          {/* Main Heading */}
+          <h1
+            className="
+              text-[28px]
+              font-bold
+              leading-[1.25]
+              tracking-[-0.8px]
+              text-black
+
+              sm:text-[32px]
+              sm:tracking-[-1px]
+
+              md:text-[36px]
+
+              lg:text-[40px]
+            "
+          >
+            <span className="text-[#83004f]">Leading</span> With Vision.
+            <br />
+            Shaping <span className="text-[#83004f]">What’s Next.</span>
+          </h1>
+
+          {/* Description */}
+          <p
+            className="
+              mt-6
+              max-w-[620px]
+              text-[15px]
+              font-normal
+              leading-[1.55]
+              text-[#505050]
+
+              sm:mt-7
+              sm:text-[16px]
+
+              md:mt-8
+              md:text-[17px]
+
+              lg:mt-8
+              lg:text-[19px]
+              lg:leading-[1.5]
+            "
+          >
+            The future is not simply something we prepare for — it is
+            something we have the opportunity to shape. At TechTorch, our
+            leadership is grounded in a clear belief: technology should create
+            meaningful progress, strengthen businesses and open new
+            possibilities for the future.
+          </p>
+
+          {/* ================= BOTTOM CONTENT ================= */}
+          <div
+            className="
+              mt-7
+              flex
+              flex-col
+              items-start
+              gap-6
+
+              sm:mt-8
+              sm:flex-row
+              sm:items-center
+              sm:gap-8
+
+              md:mt-9
+              md:gap-12
+
+              lg:mt-8
+              lg:gap-[80px]
+            "
+          >
+
+            {/* Learn More Button */}
+            <button
+              className="
+                rounded-[4px]
+                border
+                border-[#8a0055]
+                bg-transparent
+
+                px-4
+                py-2
+
+                text-[15px]
+                font-semibold
+                leading-none
+                text-[#83004f]
+
+                transition-all
+                duration-300
+
+                hover:bg-[#83004f]
+                hover:text-white
+
+                sm:px-5
+                sm:py-2.5
+                sm:text-[17px]
+
+                md:text-[18px]
+
+                lg:px-4
+                lg:py-2.5
+                lg:text-[19px]
+              "
+            >
+              Learn More
+            </button>
+
+            {/* CEO Name */}
+            <div className="text-left sm:text-center">
+
+              <h2
+                className="
+                  text-[19px]
+                  font-medium
+                  leading-none
+                  text-black
+
+                  sm:text-[21px]
+
+                  md:text-[23px]
+
+                  lg:text-[27px]
+                "
+              >
+                Siddharth Pathak
+              </h2>
+
+              <p
+                className="
+                  mt-2
+                  text-[12px]
+                  font-normal
+                  leading-[1.3]
+                  text-[#83004f]
+
+                  sm:text-[13px]
+
+                  md:text-[14px]
+
+                  lg:text-[16px]
+                "
+              >
+                Chief Executive Officer,
+                <br />
+                TechTorch Solutions
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        {/* ================= PERSON IMAGE ================= */}
+        <div
+          className="
+            relative
+            z-20
+            mt-10
+            flex
+            w-full
+            justify-center
+
+            sm:mt-12
+
+            md:mt-14
+
+            lg:absolute
+            lg:right-[50px]
+            lg:bottom-0
+            lg:mt-0
+            lg:w-auto
+            lg:justify-normal
+          "
+        >
+          <img
+            src="/img.png"
+            alt="Siddharth Pathak"
+            className="
+              block
+              h-auto
+              w-[180px]
+              object-contain
+
+              sm:w-[220px]
+
+              md:w-[270px]
+
+              lg:w-[350px]
+
+              xl:w-[380px]
+            "
+          />
         </div>
 
       </div>
-
-
-      {/* ================= PREVIOUS / NEXT ================= */}
-
-      <div className="cap-controls">
-
-        <button
-          type="button"
-          className="cap-control-btn"
-          onClick={handlePrevious}
-          aria-label="Previous cards"
-        >
-          ←
-        </button>
-
-
-        <button
-          type="button"
-          className="cap-control-btn"
-          onClick={handleNext}
-          aria-label="Next cards"
-        >
-          →
-        </button>
-
-      </div>
-
     </section>
   );
 }
