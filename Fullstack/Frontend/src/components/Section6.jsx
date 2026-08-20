@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -7,6 +8,16 @@ import { Link } from "react-router-dom";
  * - Previous / Next controls
  * - White card border
  * - Responsive
+=======
+import React from "react";
+import { Link } from "react-router-dom";
+
+/**
+ * Capabilities section — cards move slowly and continuously forward
+ * (infinite marquee). Shows 3 cards in view at a time, next card
+ * scrolls in slowly. Pure CSS animation, pauses on hover, and
+ * respects prefers-reduced-motion.
+>>>>>>> ac2b6bd2b2741d82f7485d81b594d33eb55f8145
  */
 
 const CARDS = [

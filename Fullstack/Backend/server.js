@@ -7,6 +7,7 @@ const upcomingEventRoutes = require("./src/routes/upcomingEventRoutes");
 const {connectDB} = require("./src/config/db");
 const errorMiddleware = require("./src/middlewares/error.middleware");
 const authRoutes = require("./src/routes/authRoutes");
+const adminRoutes = require("./src/routes/adminRoutes");
 connectDB();
 const express = require("express");
 const cors = require("cors");
@@ -23,6 +24,7 @@ app.use("/api/featured-stories", featuredStoryRoutes);
 app.use("/api/opportunities", opportunityRoutes);
 app.use("/api/upcoming-events", upcomingEventRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
 app.use(errorMiddleware);
 
 

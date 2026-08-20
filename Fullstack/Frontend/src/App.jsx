@@ -7,9 +7,9 @@ import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
 import Section5 from "./components/Section5";
 import Section6 from "./components/Section6";
-import section7 from "./components/section7";
-import section8 from "./components/section8";
-import section9 from "./components/section9";
+import Section7 from "./components/section7";
+import Section8 from "./components/section8";
+import Section9 from "./components/section9";
 
 
 
