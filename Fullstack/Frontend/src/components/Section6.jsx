@@ -1,295 +1,310 @@
 import React from "react";
+import { Link } from "react-router-dom";
+   
 
-export default function BigVision() {
+/**
+ * Capabilities section — cards move slowly and continuously forward
+ * (infinite marquee). Shows 3 cards in view at a time, next card
+ * scrolls in slowly. Pure CSS animation, pauses on hover, and
+ * respects prefers-reduced-motion.
+ */
+
+const CARDS = [
+  {
+    title: "Platforms",
+    img: "/card1.png",
+    href: "/platforms",
+  },
+  {
+    title: "Digital Solutions",
+    img: "/card2.png",
+    href: "/digital-solutions",
+  },
+  {
+    title: "Our Services",
+    img: "/card3.png",
+    href: "/services",
+  },
+  {
+    title: "Business Process Outsourcing",
+    img: "/card4.png",
+    href: "/business-process-outsourcing",
+  },
+  {
+    title: "IT Augmentation Service",
+    img: "/card5.png",
+    href: "/it-augmentation",
+  },
+  {
+    title: "Artificial Intelligent",
+    img: "/card6.png",
+    href: "/artificial-intelligence",
+  },
+];
+
+// Duplicate the set so the strip totals 6 cards and loops seamlessly.
+const TRACK = [...CARDS, ...CARDS];
+
+function Card({ title, img, href }) {
   return (
-    <section className="relative w-full overflow-hidden bg-[#f9f8f3]">
+    <div className="cap-card">
+      <div className="cap-card-art">
+        <img
+          src={img}
+          alt={title}
+          className="cap-card-img"
+          draggable={false}
+        />
+      </div>
 
-      {/* ================= CURVED BACKGROUND ================= */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          z-0
-          h-[500px]
-          w-[650px]
-          -right-[280px]
-          -top-[60px]
-          opacity-40
+      <Link to={href} className="cap-card-label">
+        <span>{title}</span>
 
-          sm:h-[600px]
-          sm:w-[750px]
-          sm:-right-[300px]
+        <span className="cap-card-arrow">
+          →
+        </span>
+      </Link>
+    </div>
+  );
+}
 
-          md:h-[700px]
-          md:w-[900px]
-          md:-right-[320px]
+export default function CapabilitiesMarquee() {
+  return (
+    <section className="cap-section">
+      <style>{`
+  .cap-section {
+    background: #6d0e42;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    padding: 56px 0 64px;
+    overflow: hidden;
+    font-family: Plus Jakarta San, "Segoe UI", Roboto, sans-serif;
+  }
 
-          lg:h-[850px]
-          lg:w-[1200px]
-          lg:-right-[300px]
-          lg:-top-[80px]
-        "
-        style={{
-          backgroundImage: "url('/Section.png')",
-          backgroundSize: "contain",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          transform: "rotate(-55deg)",
-        }}
-      />
+  /* ================= HEADER ================= */
 
-      {/* ================= MAIN CONTAINER ================= */}
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          flex
-          w-full
-          max-w-[1440px]
-          flex-col
+  .cap-header {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 24px;
+  }
 
-          px-5
-          py-10
+  .cap-title {
+    color: #000000;
+    font-family: Plus Jakarta Sans;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
 
-          sm:px-8
-          sm:py-12
+  .cap-desc {
+  color: rgba(255,255,255,0.92);
+  font-family: "Plus Jakarta Sans";
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 700px;
+  margin: 0;
+  position: relative;
+  top: -15px;
+}
 
-          md:px-10
-          md:py-14
+  /* ================= MARQUEE ================= */
 
-          lg:min-h-[550px]
-          lg:flex-row
-          lg:items-center
-          lg:px-[90px]
-          lg:py-0
-        "
-      >
+  .cap-marquee-viewport {
+    width: 100%;
+    max-width: 1176px;
+    margin: 0 auto;
+    overflow: hidden;
 
-        {/* ================= LEFT CONTENT ================= */}
-        <div
-          className="
-            relative
-            z-20
-            w-full
+    
+  }
 
-            lg:w-[53%]
-          "
-        >
+  .cap-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    padding: 0 24px;
+    animation: cap-scroll 26s linear infinite;
+  }
 
-          {/* Small Heading */}
-          <p
-            className="
-              mb-4
-              text-[14px]
-              font-medium
-              leading-none
-              text-black
+  .cap-marquee-viewport:hover .cap-track {
+    animation-play-state: paused;
+  }
 
-              sm:text-[16px]
+  @keyframes cap-scroll {
+    from {
+      transform: translateX(0);
+    }
 
-              md:text-[17px]
+    to {
+      transform: translateX(-50%);
+    }
+  }
 
-              lg:text-[19px]
-            "
-          >
-            THE BIG VISION
-          </p>
+  @media (prefers-reduced-motion: reduce) {
+    .cap-track {
+      animation: none;
+    }
+  }
 
-          {/* Main Heading */}
-          <h1
-            className="
-              text-[28px]
-              font-bold
-              leading-[1.25]
-              tracking-[-0.8px]
-              text-black
+  /* ================= CARD ================= */
 
-              sm:text-[32px]
-              sm:tracking-[-1px]
+  .cap-card {
+  flex: 0 0 auto;
+  width: 376px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
 
-              md:text-[36px]
+  box-shadow: 0 14px 34px rgba(0,0,0,0.3);
 
-              lg:text-[40px]
-            "
-          >
-            <span className="text-[#83004f]">Leading</span> With Vision.
-            <br />
-            Shaping <span className="text-[#83004f]">What’s Next.</span>
-          </h1>
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
 
-          {/* Description */}
-          <p
-            className="
-              mt-6
-              max-w-[620px]
-              text-[15px]
-              font-normal
-              leading-[1.55]
-              text-[#505050]
+.cap-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+  z-index: 5;
+}
+  
+.cap-card-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
 
-              sm:mt-7
-              sm:text-[16px]
+.cap-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-              md:mt-8
-              md:text-[17px]
 
-              lg:mt-8
-              lg:text-[19px]
-              lg:leading-[1.5]
-            "
-          >
-            The future is not simply something we prepare for — it is
-            something we have the opportunity to shape. At TechTorch, our
-            leadership is grounded in a clear belief: technology should create
-            meaningful progress, strengthen businesses and open new
-            possibilities for the future.
-          </p>
+  /* ================= LABEL ================= */
 
-          {/* ================= BOTTOM CONTENT ================= */}
-          <div
-            className="
-              mt-7
-              flex
-              flex-col
-              items-start
-              gap-6
+  .cap-card-label {
+  padding: 20px 22px 24px;
 
-              sm:mt-8
-              sm:flex-row
-              sm:items-center
-              sm:gap-8
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
 
-              md:mt-9
-              md:gap-12
+  font-size: 2px;
+  font-weight: 600;
+  color: #16161a;
 
-              lg:mt-8
-              lg:gap-[80px]
-            "
-          >
+  white-space: nowrap;
 
-            {/* Learn More Button */}
-            <button
-              className="
-                rounded-[4px]
-                border
-                border-[#8a0055]
-                bg-transparent
+  transition: color 0.3s ease;
+}
 
-                px-4
-                py-2
+  .cap-card:hover .cap-card-label {
+    color: #730042;
+  }
 
-                text-[15px]
-                font-semibold
-                leading-none
-                text-[#83004f]
+  /* ================= ARROW ================= */
 
-                transition-all
-                duration-300
+  .cap-card-arrow {
+  width: 40px;
+  height: 40px;
 
-                hover:bg-[#83004f]
-                hover:text-white
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-                sm:px-5
-                sm:py-2.5
-                sm:text-[17px]
+  border-radius: 10px;
 
-                md:text-[18px]
+  background: rgba(115, 0, 66, 0.08);
+  border: 1px solid rgba(115, 0, 66, 0.25);
 
-                lg:px-4
-                lg:py-2.5
-                lg:text-[19px]
-              "
-            >
-              Learn More
-            </button>
+  color: #730042;
+  font-size: 21px;
 
-            {/* CEO Name */}
-            <div className="text-left sm:text-center">
+  opacity: 0;
+  visibility: hidden;
 
-              <h2
-                className="
-                  text-[19px]
-                  font-medium
-                  leading-none
-                  text-black
+  transform: translate(-8px, -4px);
 
-                  sm:text-[21px]
+  transition: all 0.3s ease;
+}
 
-                  md:text-[23px]
+.cap-card:hover .cap-card-arrow {
+  opacity: 1;
+  visibility: visible;
 
-                  lg:text-[27px]
-                "
-              >
-                Siddharth Pathak
-              </h2>
+  transform: translate(0, -4px);
+}
 
-              <p
-                className="
-                  mt-2
-                  text-[12px]
-                  font-normal
-                  leading-[1.3]
-                  text-[#83004f]
+.cap-card-arrow:hover {
+  background: #730042;
+  border-color: #730042;
+  color: #fff;
 
-                  sm:text-[13px]
+  transform: translate(0, -4px) scale(1.08);
 
-                  md:text-[14px]
+  box-shadow: 0 6px 16px rgba(115, 0, 66, 0.25);
+}
+  /* ================= RESPONSIVE ================= */
 
-                  lg:text-[16px]
-                "
-              >
-                Chief Executive Officer,
-                <br />
-                TechTorch Solutions
-              </p>
+  @media (max-width: 900px) {
+    .cap-card {
+      width: 420px;
+    }
 
-            </div>
-          </div>
+    .cap-marquee-viewport {
+      max-width: 948px;
+    }
+  }
+
+  @media (max-width: 700px) {
+
+    .cap-title {
+      font-size: 30px;
+    }
+
+    .cap-card {
+      width: 240px;
+    }
+
+    .cap-card-label {
+      font-size: 18px;
+      padding: 16px;
+    }
+
+    .cap-marquee-viewport {
+      max-width: 92vw;
+    }
+  }
+`}</style>
+
+      <div className="cap-header">
+        <h2 className="cap-title">Capabilities</h2>
+        <p className="cap-desc">
+          We bring together technology, expertise and practical solutions to
+          solve complex business challenges. From digital platforms to AI, we
+          help businesses work smarter, adapt and grow.
+        </p>
+      </div>
+
+      <div className="cap-marquee-viewport">
+        <div className="cap-track">
+          {TRACK.map((card, i) => (
+            <Card key={i} {...card} />
+          ))}
         </div>
-
-        {/* ================= PERSON IMAGE ================= */}
-        <div
-          className="
-            relative
-            z-20
-            mt-10
-            flex
-            w-full
-            justify-center
-
-            sm:mt-12
-
-            md:mt-14
-
-            lg:absolute
-            lg:right-[50px]
-            lg:bottom-0
-            lg:mt-0
-            lg:w-auto
-            lg:justify-normal
-          "
-        >
-          <img
-            src="/img.png"
-            alt="Siddharth Pathak"
-            className="
-              block
-              h-auto
-              w-[180px]
-              object-contain
-
-              sm:w-[220px]
-
-              md:w-[270px]
-
-              lg:w-[350px]
-
-              xl:w-[380px]
-            "
-          />
-        </div>
-
       </div>
     </section>
   );
