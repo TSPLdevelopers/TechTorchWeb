@@ -4,10 +4,16 @@ export default function BigVision() {
   return (
     <section className="relative w-full min-h-[550px] overflow-hidden bg-[#f9f8f3]">
 
-      {/* Main content */}
+      {/* ================= CURVED LINES BEHIND PERSON ================= */}
+      <div
+        className="absolute z-0 pointer-events-none opacity-50"
+        style={{ width: "1200px", height: "850px", right: "-300px", top: "-80px", backgroundImage: "url('/Section.png')", backgroundSize: "100% 150%", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", transform: "rotate(-55deg)" }}
+      />
+
+      {/* ================= MAIN CONTENT ================= */}
       <div className="relative z-10 mx-auto flex flex-col min-h-[550px] w-full max-w-[1440px] px-[20px] sm:px-[30px] md:px-[40px] lg:flex-row lg:items-center lg:px-[90px]">
 
-        {/* Left content */}
+        {/* ================= LEFT CONTENT ================= */}
         <div className="relative z-20 w-full pt-[30px] sm:pt-[35px] md:w-[60%] md:pt-[40px] lg:w-[52%] lg:pt-[10px]">
 
           <p className="mb-[15px] text-[16px] sm:text-[17px] md:text-[18px] lg:text-[19px] font-medium leading-none text-black">
@@ -34,7 +40,7 @@ export default function BigVision() {
             for the future.
           </p>
 
-          {/* Bottom section */}
+          {/* ================= BOTTOM SECTION ================= */}
           <div className="mt-[30px] sm:mt-[32px] md:mt-[35px] lg:mt-[20px] flex flex-wrap items-center">
 
             {/* Learn More button */}
@@ -44,6 +50,7 @@ export default function BigVision() {
 
             {/* Name */}
             <div className="ml-[25px] sm:ml-[40px] md:ml-[55px] lg:ml-[102px] mt-[16px] text-center">
+
               <h2 className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[28px] font-medium font-plus-jakarta leading-none text-black">
                 Siddharth Pathak
               </h2>
@@ -53,18 +60,21 @@ export default function BigVision() {
                 <br />
                 TechTorch Solutions
               </p>
+
             </div>
 
           </div>
         </div>
 
-        {/* Right image */}
+        {/* ================= RIGHT PERSON IMAGE ================= */}
         <div className="relative z-20 mt-[30px] flex w-full justify-center md:absolute md:right-[20px] md:bottom-0 md:mt-0 md:w-auto md:justify-normal lg:right-[100px]">
+
           <img
             src="/img.png"
             alt="Siddharth Pathak"
-            className="block h-auto w-[180px] sm:w-[210px] md:w-[250px] lg:w-[350px] object-contain"
+            className="relative z-20 block h-auto w-[180px] sm:w-[210px] md:w-[250px] lg:w-[350px] object-contain"
           />
+
         </div>
 
       </div>
