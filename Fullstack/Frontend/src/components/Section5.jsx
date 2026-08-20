@@ -6,12 +6,12 @@ export default function BigVision() {
 
       {/* ================= CURVED LINES BEHIND PERSON ================= */}
       <div
-        className="absolute z-0 pointer-events-none opacity-50"
+        className="absolute z-0 pointer-events-none opacity-30"
         style={{ width: "1200px", height: "850px", right: "-300px", top: "-80px", backgroundImage: "url('/Section.png')", backgroundSize: "100% 150%", backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", transform: "rotate(-55deg)" }}
       />
 
       {/* ================= MAIN CONTENT ================= */}
-      <div className="relative z-10 mx-auto flex flex-col min-h-[550px] w-full max-w-[1440px] px-[20px] sm:px-[30px] md:px-[40px] lg:flex-row lg:items-center lg:px-[90px]">
+      <div className="relative z-10 mx-auto flex flex-col min-h-[550px] w-full max-w-[1440px] px-[20px] sm:px-[30px] md:px-[40px] lg:flex-row lg:items-center lg:px-[100px]">
 
         {/* ================= LEFT CONTENT ================= */}
         <div className="relative z-20 w-full pt-[30px] sm:pt-[35px] md:w-[60%] md:pt-[40px] lg:w-[52%] lg:pt-[10px]">

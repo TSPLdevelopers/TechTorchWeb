@@ -6,6 +6,7 @@ import Hero2 from "./components/Hero2";
 import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
 import Section5 from "./components/Section5";
+import Section6 from "./components/Section6";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Hero3 />
       <Section4 />
       <Section5 />
+      <Section6 />
     </div>
   );
 }

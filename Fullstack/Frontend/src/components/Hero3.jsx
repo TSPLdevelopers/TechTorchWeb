@@ -18,7 +18,7 @@ export default function Hero3() {
     return (
       <section className="w-full bg-[#730042] min-h-[600px]">
 
-        <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-12 lg:py-16">
+        <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-12 lg:py-16">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
@@ -85,7 +85,7 @@ export default function Hero3() {
     return (
       <section className="w-full bg-[#730042] min-h-[600px]">
 
-        <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-12 lg:py-16">
+        <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-12 lg:py-16">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
@@ -152,7 +152,7 @@ export default function Hero3() {
     return (
       <section className="w-full bg-[#730042] min-h-[600px]">
 
-        <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-12 lg:py-16">
+        <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20 py-10 sm:py-12 lg:py-16">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
@@ -163,7 +163,7 @@ export default function Hero3() {
                 GROW
               </h2>
 
-              <p className="mt- sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
+              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
                 Our relationship continues beyond deployment. We provide ongoing
                 support, maintenance, optimization, and continuous improvements
                 to ensure your solutions remain effective as your business
@@ -218,7 +218,7 @@ export default function Hero3() {
   return (
     <section className="w-full bg-[#730042] min-h-[600px]">
 
-      <div className="w-full px-4 sm:px-6 md:px-10 lg:px-16 py-10 sm:py-12 lg:py-16">
+      <div className="w-full px-4 sm:px-6 md:px-10 lg:px-[100px] py-10 sm:py-12 lg:py-16">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
