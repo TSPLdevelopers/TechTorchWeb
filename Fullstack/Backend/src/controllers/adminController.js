@@ -1,18 +1,15 @@
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const Admin = require("../models/admin.model");
+const {generateToken} = require("../utils/generateToken");
 const asyncHandler = require("../utils/asyncHandler");
-const { generateToken } = require("../utils/generateToken");
-
 
 const registerAdmin = asyncHandler(async (req, res) => {
-  const { name, contact, emergency, email, password } = req.body;
+  const {name, contact, emergency, email, password } = req.body;
 
   if (!name || !contact || !emergency || !email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: "All fields are required",
-    });
+    res.status(400);
+    throw new Error("All fields are required");
   }
 
   const existingAdmin = await Admin.findOne({
@@ -20,10 +17,8 @@ const registerAdmin = asyncHandler(async (req, res) => {
   });
 
   if (existingAdmin) {
-    return res.status(409).json({
-      success: false,
-      message: "Admin already exists with this email",
-    });
+    res.status(409);
+    throw new Error("Admin already exists with this email");
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -33,7 +28,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
     name,
     contact,
     emergency,
-    email,
+    email: email.toLowerCase(),
     password: hashedPassword,
   });
 
@@ -43,12 +38,12 @@ const registerAdmin = asyncHandler(async (req, res) => {
     success: true,
     data: {
       _id: savedAdmin._id,
+        name: savedAdmin.name,
       contact: savedAdmin.contact,
       emergency: savedAdmin.emergency,
       email: savedAdmin.email,
       activeStatus: savedAdmin.activeStatus,
-  
-    }, 
+    },
   });
 });
 
@@ -56,10 +51,8 @@ const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: "Email and password are required",
-    });
+    res.status(400);
+    throw new Error("Email and password are required");
   }
 
   const admin = await Admin.findOne({
@@ -67,26 +60,20 @@ const loginAdmin = asyncHandler(async (req, res) => {
   });
 
   if (!admin) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid email or password",
-    });
+    res.status(401);
+    throw new Error("Invalid email or password");
   }
 
   if (!admin.activeStatus) {
-    return res.status(403).json({
-      success: false,
-      message: "Admin account is inactive",
-    });
+    res.status(403);
+    throw new Error("Admin account is inactive");
   }
 
   const isMatch = await bcrypt.compare(password, admin.password);
 
   if (!isMatch) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid email or password",
-    });
+    res.status(401);
+    throw new Error("Invalid email or password");
   }
 
   const token = generateToken(admin._id);
@@ -100,8 +87,10 @@ const loginAdmin = asyncHandler(async (req, res) => {
 
   return res.status(200).json({
     success: true,
+    message: "Admin login successful",
     data: {
       _id: admin._id,
+       name: admin.name,
       contact: admin.contact,
       emergency: admin.emergency,
       email: admin.email,
@@ -109,9 +98,6 @@ const loginAdmin = asyncHandler(async (req, res) => {
     },
   });
 });
-  
-
-
 
 const getAdminProfile = asyncHandler(async (req, res) => {
   return res.status(200).json({
@@ -120,24 +106,19 @@ const getAdminProfile = asyncHandler(async (req, res) => {
   });
 });
 
-
 const getAdminById = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
+    res.status(400);
+    throw new Error("Invalid ID format");
   }
 
   const admin = await Admin.findById(id).select("-password");
 
   if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
+    res.status(404);
+    throw new Error("Admin not found");
   }
 
   return res.status(200).json({
@@ -145,14 +126,13 @@ const getAdminById = asyncHandler(async (req, res) => {
     data: admin,
   });
 });
+
 const updateAdmin = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
+    res.status(400);
+    throw new Error("Invalid ID format");
   }
 
   const { contact, emergency, email } = req.body;
@@ -162,7 +142,7 @@ const updateAdmin = asyncHandler(async (req, res) => {
     {
       contact,
       emergency,
-      email,
+      email: email?.toLowerCase(),
     },
     {
       new: true,
@@ -171,47 +151,43 @@ const updateAdmin = asyncHandler(async (req, res) => {
   ).select("-password");
 
   if (!updatedAdmin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
+    res.status(404);
+    throw new Error("Admin not found");
   }
 
   return res.status(200).json({
     success: true,
+    message: "Admin updated successfully",
     data: updatedAdmin,
   });
 });
-
-
 
 const updateAdminPassword = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { oldPassword, newPassword } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
+    res.status(400);
+    throw new Error("Invalid ID format");
+  }
+
+  if (!oldPassword || !newPassword) {
+    res.status(400);
+    throw new Error("Old password and new password are required");
   }
 
   const admin = await Admin.findById(id);
 
   if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
+    res.status(404);
+    throw new Error("Admin not found");
   }
 
   const isMatch = await bcrypt.compare(oldPassword, admin.password);
 
   if (!isMatch) {
-    return res.status(401).json({
-      success: false,
-      message: "Old password is incorrect",
-    });
+    res.status(401);
+    throw new Error("Old password is incorrect");
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -225,25 +201,19 @@ const updateAdminPassword = asyncHandler(async (req, res) => {
   });
 });
 
-
-
 const toggleAdminStatus = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
+    res.status(400);
+    throw new Error("Invalid ID format");
   }
 
   const admin = await Admin.findById(id);
 
   if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
+    res.status(404);
+    throw new Error("Admin not found");
   }
 
   admin.activeStatus = !admin.activeStatus;
@@ -252,29 +222,24 @@ const toggleAdminStatus = asyncHandler(async (req, res) => {
 
   return res.status(200).json({
     success: true,
+    message: "Admin status updated successfully",
     data: admin,
   });
 });
-
-
 
 const deleteAdmin = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
+    res.status(400);
+    throw new Error("Invalid ID format");
   }
 
   const deletedAdmin = await Admin.findByIdAndDelete(id);
 
   if (!deletedAdmin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
+    res.status(404);
+    throw new Error("Admin not found");
   }
 
   return res.status(200).json({
@@ -282,20 +247,10 @@ const deleteAdmin = asyncHandler(async (req, res) => {
     message: "Admin deleted successfully",
   });
 });
-const logoutAdmin = asyncHandler(async (req, res) => {
-  res.clearCookie("token");
-
-  return res.status(200).json({
-    success: true,
-    message: "Logged out successfully",
-  });
-});
-
 
 module.exports = {
   registerAdmin,
   loginAdmin,
-  logoutAdmin,  
   getAdminProfile,
   getAdminById,
   updateAdmin,
