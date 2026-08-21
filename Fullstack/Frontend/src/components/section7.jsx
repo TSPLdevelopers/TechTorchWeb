@@ -8,8 +8,6 @@ const colors = {
   brand: "#730042",
 };
 
-//const VIDEO_SRC = "sec7.mp4";
-
 // ---- Small building blocks ---------------------------------------------
 
 function Eyebrow({ children }) {
@@ -32,7 +30,13 @@ function Eyebrow({ children }) {
 
 function ArrowIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      className="shrink-0"
+    >
       <path
         d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5"
         stroke="currentColor"
@@ -49,12 +53,14 @@ function CTAButton({ children }) {
     <button
       className="tx-cta inline-flex items-center justify-center gap-2.5 self-start rounded-lg whitespace-nowrap w-full sm:w-auto"
       style={{
-        marginTop: "clamp(16px, 2vw, 0px)",
+        marginTop: "clamp(16px, 2vw, 24px)",
         border: `1.5px solid ${colors.brand}`,
         color: colors.brand,
-        padding: "clamp(12px, 1.4vw, 12px) clamp(20px, 2.2vw, 22px)",
+        padding: "12px 22px",
         fontSize: "clamp(14px, 1vw, 16px)",
         fontWeight: 700,
+        backgroundColor: "transparent",
+        cursor: "pointer",
       }}
     >
       {children}
@@ -66,9 +72,10 @@ function CTAButton({ children }) {
 function CopyPanel() {
   return (
     <div
-      className="flex w-full max-w-2xl flex-col justify-center"
+      className="flex w-full flex-col justify-center"
       style={{
-        padding: "clamp(40px, 6vw, 80px) clamp(20px, 4vw, 80px)",
+        padding:
+          "clamp(40px, 6vw, 80px) clamp(24px, 5vw, 80px)",
       }}
     >
       <Eyebrow>The Next Chapter</Eyebrow>
@@ -123,17 +130,15 @@ function CopyPanel() {
 
 function ImagePanel() {
   return (
-    <div className="relative w-full overflow-hidden flex items-center justify-center lg:justify-end leading-none">
+    <div className="tx-image-panel relative w-full overflow-hidden">
       <img
         src="/sec7.png"
         alt="TorchX"
-        className="block w-full h-auto object-contain lg:object-right"
+        className="tx-image block w-full h-full"
       />
     </div>
   );
 }
-
-  
 
 // ---- Main component ------------------------------------------------------
 
@@ -141,15 +146,25 @@ export default function TorchXVideoSection() {
   return (
     <div
       className="w-full font-sans overflow-hidden"
-      style={{ backgroundColor: "#fff", isolation: "isolate" }}
+      style={{
+        backgroundColor: "#fff",
+        isolation: "isolate",
+      }}
     >
       <style>{`
+        /* ---------------------------------------------------------------
+           CTA
+        ---------------------------------------------------------------- */
+
         .tx-cta {
-          transition: all 0.25s ease;
+          transition:
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease;
         }
 
         .tx-cta:hover {
-          background-color: ${colors.brand};
+          background-color: ${colors.brand} !important;
           color: ${colors.cream} !important;
           transform: translateY(-1px);
         }
@@ -161,41 +176,158 @@ export default function TorchXVideoSection() {
         .tx-cta:hover svg {
           transform: translateX(3px);
         }
+
+
+        /* ---------------------------------------------------------------
+           MAIN SECTION
+        ---------------------------------------------------------------- */
+
+        .tx-section {
+          width: 100%;
+          background: ${colors.cream};
+        }
+
+
+        /* ---------------------------------------------------------------
+           IMAGE
+        ---------------------------------------------------------------- */
+
+        .tx-image-panel {
+          width: 100%;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: ${colors.cream};
+        }
+
+        .tx-image {
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: contain;
+          object-position: center;
+        }
+
+
+        /* ---------------------------------------------------------------
+           TABLET / MEDIUM
+        ---------------------------------------------------------------- */
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+          .tx-section {
+            display: grid;
+            grid-template-columns: 1fr;
+          }
+
+          .tx-image-panel {
+            max-height: 500px;
+          }
+
+          .tx-image {
+            max-height: 500px;
+            object-fit: contain;
+          }
+        }
+
+
+        /* ---------------------------------------------------------------
+           LAPTOP
+        ---------------------------------------------------------------- */
+
+        @media (min-width: 1024px) {
+          .tx-section {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            min-height: 560px;
+          }
+
+          .tx-image-panel {
+            height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+          }
+
+          .tx-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: right center;
+          }
+        }
+
+
+        /* ---------------------------------------------------------------
+           LARGE DESKTOP
+        ---------------------------------------------------------------- */
+
+        @media (min-width: 1280px) {
+          .tx-section {
+            grid-template-columns: 50% 50%;
+            min-height: 600px;
+          }
+
+          .tx-image-panel {
+            height: 600px;
+          }
+
+          .tx-image {
+            object-position: right center;
+          }
+        }
+
+
+        /* ---------------------------------------------------------------
+           EXTRA LARGE DESKTOP
+        ---------------------------------------------------------------- */
+
+        @media (min-width: 1536px) {
+          .tx-section {
+            grid-template-columns: 48% 52%;
+            min-height: 620px;
+          }
+
+          .tx-image-panel {
+            height: 620px;
+          }
+        }
+
+
+        /* ---------------------------------------------------------------
+           MOBILE
+        ---------------------------------------------------------------- */
+
+        @media (max-width: 639px) {
+          .tx-section {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .tx-image-panel {
+            order: 1;
+          }
+
+          .tx-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+          }
+        }
       `}</style>
 
-      <section
-        className="tx-section grid grid-cols-1 md:grid-cols-2 w-full overflow-hidden"
-        style={{ backgroundColor: colors.cream }}
-      >
-        {/* IMAGE: first on mobile/tablet, right column from md up.
-            No forced minHeight below md — the row just wraps to
-            whatever height the full, uncropped image needs. */}
-        <div className="order-1 md:order-2">
+      <section className="tx-section">
+        {/* IMAGE */}
+        <div className="order-1 lg:order-2 w-full">
           <ImagePanel />
         </div>
 
         {/* COPY */}
-        <div className="order-2 md:order-1 flex items-center">
+        <div className="order-2 lg:order-1 flex items-center w-full">
           <CopyPanel />
         </div>
       </section>
-
-      {/* Desktop/laptop (md+) still needs a defined row height so the
-          two columns line up — scoped to this section only, and only
-          active from md up, so it never fights with the natural
-          mobile/tablet sizing above. */}
-      <style>{`
-        @media (min-width: 768px) {
-          .tx-section {
-            min-height: clamp(420px, 46vw, 450px);
-          }
-        }
-        @media (min-width: 1024px) {
-          .tx-section {
-            min-height: clamp(450px, 40vw, 550px);
-          }
-        }
-      `}</style>
     </div>
   );
 }
