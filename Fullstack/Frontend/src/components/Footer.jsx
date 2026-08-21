@@ -274,7 +274,7 @@ export default function Footer() {
         .legal-links a {
           color: white;
           text-decoration: none;
-          font-size: 18px;
+          font-size: 17px;
           font-weight: 500;
           white-space: nowrap;
         }
