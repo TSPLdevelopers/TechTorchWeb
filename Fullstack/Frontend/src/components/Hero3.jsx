@@ -25,11 +25,13 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#ffff]">
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px]
+               font-bold font-plus-jakarta text-[#ffff]">
                 UNDERSTAND
               </h2>
 
-              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
+              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px]
+               font-inter leading-relaxed max-w-[650px]">
                 We take the time to understand your business, requirements,
                 challenges, processes, users, and long-term goals. By gaining a
                 clear understanding of how your business operates and where
@@ -42,7 +44,9 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={handleBack}
-                className="mt-10 sm:mt-12 lg:mt-16 flex items-center gap-2 sm:gap-3 border border-white px-4 sm:px-5 py-2 sm:py-2.5 text-white text-[16px] sm:text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-10 sm:mt-12 lg:mt-16 flex items-center gap-2 sm:gap-3 border
+                border-white px-4 sm:px-5 py-2 sm:py-2.5 text-white text-[16px] sm:text-[18px] 
+                font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
                 <span className="text-[26px] sm:text-[30px] leading-none">
                   ←
@@ -56,7 +60,8 @@ export default function Hero3() {
             <div className="flex justify-center lg:justify-end">
 
               <div
-                className={`relative w-full max-w-[450px] border-[5px] border-white overflow-hidden ${
+                className={`relative w-full max-w-[450px] border-[5px] border-white
+                   overflow-hidden ${
                   isExiting
                     ? "animate-imageSlideBack"
                     : "animate-imageSlide"
@@ -92,11 +97,13 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#ffff]">
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px]
+               font-bold font-plus-jakarta text-[#ffff]">
                 BUILD
               </h2>
 
-              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
+              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px] 
+              font-inter leading-relaxed max-w-[650px]">
                 Once we understand your business needs, we turn ideas and
                 requirements into practical digital solutions. We design and
                 develop technology around your specific goals, processes, and
@@ -109,7 +116,8 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={handleBack}
-                className="mt-10 sm:mt-12 lg:mt-16 flex items-center gap-2 sm:gap-3 border border-white px-4 sm:px-5 py-2 sm:py-2.5 text-white text-[16px] sm:text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-10 sm:mt-12 lg:mt-16 flex items-center gap-2 sm:gap-3 border
+                border-white px-4 sm:px-5 py-2 sm:py-2.5 text-white text-[16px] sm:text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
                 <span className="text-[26px] sm:text-[30px] leading-none">
                   ←
@@ -123,7 +131,8 @@ export default function Hero3() {
             <div className="flex justify-center lg:justify-end">
 
               <div
-                className={`relative w-full max-w-[450px] border-[5px] border-white overflow-hidden ${
+                className={`relative w-full max-w-[450px] border-[5px] border-white
+                  overflow-hidden ${
                   isExiting
                     ? "animate-imageSlideBack"
                     : "animate-imageSlide"
@@ -159,7 +168,8 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] font-bold font-plus-jakarta text-[#FFFF]">
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] 
+              font-bold font-plus-jakarta text-[#FFFF]">
                 GROW
               </h2>
 
@@ -176,7 +186,8 @@ export default function Hero3() {
               {/* BACK BUTTON */}
               <button
                 onClick={handleBack}
-                className="mt-10 sm:mt-12 lg:mt-16 flex items-center gap-2 sm:gap-3 border border-white px-4 sm:px-5 py-2 sm:py-2.5 text-white text-[16px] sm:text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
+                className="mt-10 sm:mt-12 lg:mt-16 flex items-center gap-2 sm:gap-3 border
+                 border-white px-4 sm:px-5 py-2 sm:py-2.5 text-white text-[16px] sm:text-[18px] font-inter hover:text-[#FF0080] hover:border-[#FF0080] transition"
               >
                 <span className="text-[26px] sm:text-[30px] leading-none">
                   ←
@@ -190,7 +201,8 @@ export default function Hero3() {
             <div className="flex justify-center lg:justify-end">
 
               <div
-                className={`relative w-full max-w-[450px] border-[5px] border-white overflow-hidden ${
+                className={`relative w-full max-w-[450px] border-[5px] border-white 
+                  overflow-hidden ${
                   isExiting
                     ? "animate-imageSlideBack"
                     : "animate-imageSlide"
@@ -229,14 +241,16 @@ export default function Hero3() {
               HOW WE WORK
             </h2>
 
-            <h3 className="mt-6 sm:mt-8 text-[18px] sm:text-[20px] lg:text-[22px] font-inter text-[#FFFF  max-w-[650px] leading-relaxed">
+            <h3 className="mt-6 sm:mt-8 text-[18px] sm:text-[20px] lg:text-[22px] font-inter
+             text-[#FFFF  max-w-[650px] leading-relaxed">
               We understand your needs, build practical
               <br className="hidden sm:block" /> solutions, and help your
               business grow
               <br className="hidden sm:block" /> with technology.
             </h3>
 
-            <p className="mt-6 text-[15px] sm:text-[16px] lg:text-[18px] font-inter leading-relaxed max-w-[650px]">
+            <p className="mt-6 text-[15px] sm:text-[16px] lg:text-[18px] font-inter leading-relaxed 
+            max-w-[650px]">
               Our approach is simple:
               <br />
               first understand the business, then build the
@@ -251,21 +265,24 @@ export default function Hero3() {
 
   <button
     onClick={() => setActiveView("understand")}
-    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border
+     border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
   >
     UNDERSTAND
   </button>
 
   <button
     onClick={() => setActiveView("build")}
-    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border
+     border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
   >
     BUILD
   </button>
 
   <button
     onClick={() => setActiveView("grow")}
-    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
+    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border
+     border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
   >
     GROW
   </button>
@@ -277,7 +294,8 @@ export default function Hero3() {
           {/* RIGHT IMAGE */}
           <div className="flex justify-center lg:justify-end">
 
-            <div className="relative w-full max-w-[470px] aspect-square border-[5px] border-white overflow-hidden">
+            <div className="relative w-full max-w-[470px] aspect-square border-[5px]
+             border-white overflow-hidden">
 
               <img
                 src="/Sec3.1.png"
