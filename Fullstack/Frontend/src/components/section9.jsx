@@ -19,8 +19,6 @@ export default function CtaSection({
           position: relative;
           width: 100%;
           min-height: 560px;
-
-          border-radius: 10px;
           overflow: hidden;
 
           display: flex;
@@ -137,19 +135,23 @@ export default function CtaSection({
 
           width: fit-content;
 
-          margin-top: 30px;
+          margin-top: 80px;
+          
 
           transition:
             transform 0.15s ease,
             box-shadow 0.15s ease;
         }
 
-        .cta-button:hover {
-          transform: translateY(-2px);
+     .cta-button:hover {
+  background: ${COLORS.maroon};
+  color: ${COLORS.white};
 
-          box-shadow:
-            0 8px 20px rgba(0,0,0,0.25);
-        }
+  transform: translateY(-2px);
+
+  box-shadow: 
+    0 8px 20px rgba(0,0,0,0.25);
+}
 
         .cta-button svg {
           flex-shrink: 0;
