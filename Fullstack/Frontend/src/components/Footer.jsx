@@ -128,7 +128,7 @@ export default function Footer() {
           display: grid;
           grid-template-columns: 1.15fr 0.5fr 1fr;
           column-gap: 18%;
-          min-height: 280px;
+          min-height: 200px;
         }
 
 

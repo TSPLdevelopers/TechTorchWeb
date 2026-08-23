@@ -242,7 +242,7 @@ export default function CapabilitiesMarquee() {
         .cap-card {
           flex: 0 0 auto;
 
-          width: 336px;
+          width: 326px;
 
           background: #fff;
 
