@@ -127,7 +127,7 @@ function ImagePanel() {
       <img
         src="/sec7.png"
         alt="TorchX"
-        className="block w-full h-auto object-contain lg:object-right"
+        className="block w-[75%] h-[auto] object-contain lg:object-right"
       />
     </div>
   );
