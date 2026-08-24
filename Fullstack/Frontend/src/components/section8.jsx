@@ -684,10 +684,11 @@ export default function IndustriesCarousel() {
           <span>Industries</span>
         </h1>
 
-        <p className="industries-subtitle">
-          Technology solutions shaped around the unique needs of
-          industry we serve.
-        </p>
+       <p className="industries-subtitle">
+  Technology solutions shaped around the unique needs of
+  <br />
+  industry we serve.
+</p>
       </div>
 
 
