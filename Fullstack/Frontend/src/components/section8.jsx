@@ -320,8 +320,8 @@ export default function IndustriesCarousel() {
         ===================================================== */
 
         .industry-icon-box {
-          width: 96px;
-          height: 96px;
+          width: 100px;
+          height: 100px;
 
           margin-bottom: 24px;
 
@@ -342,31 +342,32 @@ export default function IndustriesCarousel() {
         }
 
         .industry-image {
-          width: 100%;
-          height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 
-          object-fit: contain;
+  transition: transform 0.4s ease, filter 0.3s ease;
 
-          transition:
-            transform 0.4s cubic-bezier(.34,1.56,.64,1),
-            filter 0.3s ease;
+  transform: translate(0, 0) scale(1);
+}
 
-          transform:
-            scale(1)
-            translateY(0);
-        }
+.industry-image-hovered {
+  animation: softFloat 1.5s ease-in-out infinite;
+}
 
-        .industry-image-hovered {
-          transform:
-            scale(1.12)
-            translateY(-4px);
+@keyframes softFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
 
-          filter:
-            drop-shadow(
-              0 8px 14px
-              rgba(122,19,80,0.25)
-            );
-        }
+  50% {
+    transform: translateY(-10px) scale(1.06);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
 
 
         /* =====================================================

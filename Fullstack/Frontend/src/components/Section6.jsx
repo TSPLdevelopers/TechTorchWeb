@@ -1,13 +1,6 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-/**
- * Capabilities section
- * - Infinite auto marquee
- * - Previous / Next controls
- * - White card border
- * - Responsive
- */
 
 const CARDS = [
   {
@@ -60,40 +53,34 @@ function Card({ title, img, href }) {
       <Link to={href} className="cap-card-label">
         <span className="cap-card-title">{title}</span>
 
-        <span className="cap-card-arrow">
-          →
-        </span>
+        {/* Arrow appears beside text on hover */}
+        <span className="cap-card-arrow">→</span>
       </Link>
     </div>
   );
 }
 
 export default function CapabilitiesMarquee() {
-  const viewportRef = useRef(null);
+  const [buttonOffset, setButtonOffset] = useState(0);
 
-  // Move cards to next
+  // Move one card forward
   const handleNext = () => {
-  if (viewportRef.current) {
-    viewportRef.current.scrollBy({
-      left: 400,
-      behavior: "smooth",
-    });
-  }
-};
-
-  // Move cards to previous
-  const handlePrevious = () => {
-    if (viewportRef.current) {
-      viewportRef.current.scrollBy({
-        left: -400,
-        behavior: "smooth",
-      });
-    }
+    setButtonOffset((prev) => prev + 1);
   };
+
+  // Move one card backward
+  const handlePrevious = () => {
+    setButtonOffset((prev) => prev - 1);
+  };
+
+  /*
+    The animation is 26 seconds long and there are 6 original cards.
+    Therefore one card movement equals 26 / 6 seconds.
+  */
+  const animationDelay = `${-(buttonOffset * (26 / CARDS.length))}s`;
 
   return (
     <section className="cap-section">
-
       <style>{`
 
         /* ================= SECTION ================= */
@@ -186,12 +173,13 @@ export default function CapabilitiesMarquee() {
         /* ================= MARQUEE ================= */
 
         .cap-marquee-viewport {
-  width: 100%;
-  max-width: 1176px;
-  margin: 0 auto;
-  overflow: visible;
-  padding: 12px 0;
-}
+          width: 100%;
+          max-width: 1176px;
+          margin: 0 auto;
+          overflow: visible;
+          padding: 12px 0;
+        }
+
 
         .cap-marquee-viewport::-webkit-scrollbar {
           display: none;
@@ -212,6 +200,8 @@ export default function CapabilitiesMarquee() {
             26s
             linear
             infinite;
+
+          animation-delay: ${animationDelay};
         }
 
 
@@ -251,39 +241,48 @@ export default function CapabilitiesMarquee() {
         /* ================= CARD ================= */
 
         .cap-card {
-  flex: 0 0 auto;
-  width: 376px;
-  background: #fff;
+          flex: 0 0 auto;
 
-  border: 4px solid #fff;
-  border-radius: 16px;
-  overflow: hidden;
+          width: 326px;
 
-  cursor: pointer;
+          background: #fff;
 
-  position: relative;
-  z-index: 1;
+          border: 4px solid #fff;
 
-  box-shadow: 0 14px 34px rgba(0,0,0,0.3);
+          border-radius: 16px;
 
-  transform-origin: center center;
+          overflow: hidden;
 
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
+          cursor: pointer;
 
-.cap-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 24px 50px rgba(0,0,0,0.35);
-  z-index: 10;
-}
+          position: relative;
+
+          z-index: 1;
+
+          box-shadow:
+            0 14px 34px rgba(0,0,0,0.3);
+
+          transform-origin: center center;
+
+          transition:
+            transform 0.35s ease,
+            box-shadow 0.35s ease;
+        }
+
+
+        .cap-card:hover {
+          transform: scale(1.05);
+
+          box-shadow:
+            0 24px 50px rgba(0,0,0,0.35);
+
+          z-index: 10;
+        }
 
 
         /* ================= IMAGE ================= */
 
         .cap-card-art {
-
           position: relative;
 
           width: 100%;
@@ -295,7 +294,6 @@ export default function CapabilitiesMarquee() {
 
 
         .cap-card-img {
-
           width: 100%;
 
           height: 100%;
@@ -309,21 +307,20 @@ export default function CapabilitiesMarquee() {
         /* ================= LABEL ================= */
 
         .cap-card-label {
-
           padding:
-            20px
-            22px
-            24px;
+            14px
+            18px
+            16px;
 
           display: flex;
 
           align-items: center;
 
-          justify-content: space-between;
+          justify-content: flex-start;
 
-          gap: 14px;
+          gap: 0;
 
-          font-size: 20px;
+          font-size: 16px;
 
           font-weight: 600;
 
@@ -343,8 +340,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        .cap-card:hover .cap-card-label {
+        /* Text hover */
 
+        .cap-card-label:hover {
           color: #730042;
         }
 
@@ -352,77 +350,43 @@ export default function CapabilitiesMarquee() {
         /* ================= ARROW ================= */
 
         .cap-card-arrow {
+          display: inline-block;
 
-          width: 40px;
-
-          height: 40px;
-
-          flex-shrink: 0;
-
-          display: flex;
-
-          align-items: center;
-
-          justify-content: center;
-
-          border-radius: 10px;
-
-          background:
-            rgba(115, 0, 66, 0.08);
-
-          border:
-            1px solid
-            rgba(115, 0, 66, 0.25);
+          margin-left: 8px;
 
           color: #730042;
 
-          font-size: 21px;
+          font-size: 20px;
+
+          font-weight: 600;
 
           opacity: 0;
 
           visibility: hidden;
 
-          transform:
-            translate(-8px, -4px);
+          transform: translateX(-8px);
 
           transition:
-            all 0.3s ease;
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease;
         }
 
 
-        .cap-card:hover .cap-card-arrow {
+        /* Arrow appears beside text */
 
+        .cap-card-label:hover .cap-card-arrow {
           opacity: 1;
 
           visibility: visible;
 
-          transform:
-            translate(0, -4px);
-        }
-
-
-        .cap-card-arrow:hover {
-
-          background: #730042;
-
-          border-color: #730042;
-
-          color: #fff;
-
-          transform:
-            translate(0, -4px)
-            scale(1.08);
-
-          box-shadow:
-            0 6px 16px
-            rgba(115, 0, 66, 0.25);
+          transform: translateX(0);
         }
 
 
         /* ================= CONTROLS ================= */
 
         .cap-controls {
-
           display: flex;
 
           align-items: center;
@@ -436,10 +400,9 @@ export default function CapabilitiesMarquee() {
 
 
         .cap-control-btn {
+          width: 40px;
 
-          width: 48px;
-
-          height: 48px;
+          height: 40px;
 
           border-radius: 50%;
 
@@ -468,7 +431,6 @@ export default function CapabilitiesMarquee() {
 
 
         .cap-control-btn:hover {
-
           background: #fff;
 
           color: #6d0e42;
@@ -478,7 +440,6 @@ export default function CapabilitiesMarquee() {
 
 
         .cap-control-btn:active {
-
           transform: scale(0.95);
         }
 
@@ -488,12 +449,10 @@ export default function CapabilitiesMarquee() {
         @media (max-width: 900px) {
 
           .cap-card {
-
             width: 420px;
           }
 
           .cap-marquee-viewport {
-
             max-width: 948px;
           }
 
@@ -503,20 +462,17 @@ export default function CapabilitiesMarquee() {
         @media (max-width: 700px) {
 
           .cap-title {
-
             font-size: 30px;
           }
 
 
           .cap-header {
-
             padding:
               0 20px;
           }
 
 
           .cap-desc {
-
             font-size: 16px;
 
             max-width: 100%;
@@ -526,27 +482,23 @@ export default function CapabilitiesMarquee() {
 
 
           .cap-card {
-
             width: 280px;
           }
 
 
           .cap-card-label {
+            font-size: 15px;
 
-            font-size: 18px;
-
-            padding: 16px;
+            padding: 14px 16px;
           }
 
 
           .cap-marquee-viewport {
-
             max-width: 92vw;
           }
 
 
           .cap-control-btn {
-
             width: 42px;
 
             height: 42px;
@@ -578,20 +530,15 @@ export default function CapabilitiesMarquee() {
 
       {/* ================= CARDS ================= */}
 
-      <div
-        className="cap-marquee-viewport"
-        ref={viewportRef}
-      >
+      <div className="cap-marquee-viewport">
 
         <div className="cap-track">
 
           {TRACK.map((card, i) => (
-
             <Card
               key={i}
               {...card}
             />
-
           ))}
 
         </div>
