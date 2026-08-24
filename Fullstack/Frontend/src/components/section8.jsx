@@ -183,8 +183,8 @@ export default function IndustriesCarousel() {
             );
 
           font-family:
-            -apple-system,
-            BlinkMacSystemFont,
+            Plus Jakarta Sans,
+            Plus Jakarta Sans,
             "Segoe UI",
             Roboto,
             Helvetica,

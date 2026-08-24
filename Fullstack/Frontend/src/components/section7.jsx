@@ -69,48 +69,51 @@ function CopyPanel() {
       className="flex w-full max-w-2xl flex-col justify-center"
       style={{
         padding: "clamp(40px, 6vw, 80px) clamp(20px, 4vw, 80px)",
+        transform: "translateY(-50px)",
       }}
     >
       <Eyebrow>The Next Chapter</Eyebrow>
 
       <h1
-        style={{
-          marginBottom: "clamp(12px, 1.6vw, 24px)",
-          fontSize: "clamp(26px, 3.2vw, 42px)",
-          lineHeight: 1.18,
-          fontWeight: 700,
-          color: colors.ink,
-          letterSpacing: "-0.01em",
-        }}
-      >
+  style={{
+    marginBottom: "clamp(12px, 1.6vw, 24px)",
+    fontSize: "clamp(26px, 3.2vw, 42px)",
+    lineHeight: 1.18,
+    fontWeight: 700,
+    color: colors.ink,
+    letterSpacing: "-0.01em",
+    transform: "translateY(10px)",
+  }}
+>
         One suite.{" "}
         <span style={{ color: colors.brand }}>Every screen,</span> working
         together.
       </h1>
 
       <p
-        style={{
-          marginBottom: "clamp(12px, 1.4vw, 20px)",
-          fontSize: "clamp(18px, 1.8vw, 30px)",
-          fontWeight: 600,
-          lineHeight: 1.25,
-          color: colors.brand,
-          letterSpacing: "-0.005em",
-        }}
-      >
+  style={{
+    marginBottom: "clamp(12px, 1.4vw, 20px)",
+    fontSize: "clamp(18px, 1.8vw, 30px)",
+    fontWeight: 600,
+    lineHeight: 1.25,
+    color: colors.brand,
+    transform: "translateY(10px)",
+  }}
+>
         Watch TorchX in motion
       </p>
 
       <p
-        style={{
-          marginBottom: "clamp(20px, 3vw, 40px)",
-          maxWidth: "28rem",
-          fontSize: "clamp(14px, 1vw, 17px)",
-          lineHeight: 1.65,
-          fontWeight: 400,
-          color: colors.inkSoft,
-        }}
-      >
+  style={{
+    marginBottom: "clamp(20px, 3vw, 40px)",
+    maxWidth: "28rem",
+    fontSize: "clamp(14px, 1vw, 17px)",
+    lineHeight: 1.65,
+    fontWeight: 400,
+    color: colors.inkSoft,
+    transform: "translate(-6px, 20px)",
+  }}
+>
         HR, finance, payroll, inventory, and customer data — moving through
         one connected experience. This is what your team opens every
         morning, not a slide about it.
@@ -140,9 +143,13 @@ function ImagePanel() {
 export default function TorchXVideoSection() {
   return (
     <div
-      className="w-full font-sans overflow-hidden"
-      style={{ backgroundColor: "#fff", isolation: "isolate" }}
-    >
+  className="w-full overflow-hidden"
+  style={{
+    backgroundColor: "#fff",
+    isolation: "isolate",
+    fontFamily: '"Plus Jakarta Sans", sans-serif',
+  }}
+>
       <style>{`
         .tx-cta {
           transition: all 0.25s ease;
