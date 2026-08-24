@@ -13,7 +13,6 @@ import Section9 from "./components/section9";
 import Footer from "./components/Footer";
 
 
-
 function App() {
   return (
     <div>

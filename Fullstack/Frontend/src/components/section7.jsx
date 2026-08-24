@@ -8,8 +8,6 @@ const colors = {
   brand: "#730042",
 };
 
-//const VIDEO_SRC = "sec7.mp4";
-
 // ---- Small building blocks ---------------------------------------------
 
 function Eyebrow({ children }) {
@@ -32,7 +30,13 @@ function Eyebrow({ children }) {
 
 function ArrowIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      className="shrink-0"
+    >
       <path
         d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5"
         stroke="currentColor"
@@ -66,9 +70,12 @@ function CTAButton({ children }) {
 function CopyPanel() {
   return (
     <div
-      className="flex w-full max-w-2xl flex-col justify-center"
+      className="flex w-full max-w-2xl flex-col justify-center tx-copy"
       style={{
-        padding: "clamp(40px, 6vw, 80px) clamp(20px, 4vw, 80px)",
+        paddingTop: "clamp(35px, 5vw, 65px)",
+        paddingBottom: "clamp(35px, 5vw, 65px)",
+        paddingLeft: "clamp(20px, 4vw, 70px)",
+        paddingRight: "clamp(20px, 4vw, 70px)",
       }}
     >
       <Eyebrow>The Next Chapter</Eyebrow>
@@ -121,19 +128,19 @@ function CopyPanel() {
   );
 }
 
+// ---- Image --------------------------------------------------------------
+
 function ImagePanel() {
   return (
-    <div className="relative w-full overflow-hidden flex items-center justify-center lg:justify-end leading-none">
+    <div className="relative w-full h-full overflow-hidden flex items-center justify-center md:justify-end">
       <img
         src="/sec7.png"
         alt="TorchX"
-        className="block w-[75%] h-[auto] object-contain lg:object-right"
+        className="tx-image block h-auto md:h-full object-contain md:object-fill"
       />
     </div>
   );
 }
-
-  
 
 // ---- Main component ------------------------------------------------------
 
@@ -141,7 +148,10 @@ export default function TorchXVideoSection() {
   return (
     <div
       className="w-full font-sans overflow-hidden"
-      style={{ backgroundColor: "#fff", isolation: "isolate" }}
+      style={{
+        backgroundColor: "#fff",
+        isolation: "isolate",
+      }}
     >
       <style>{`
         .tx-cta {
@@ -161,41 +171,112 @@ export default function TorchXVideoSection() {
         .tx-cta:hover svg {
           transform: translateX(3px);
         }
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (max-width: 767px) {
+          .tx-section {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+          }
+
+          /* CONTENT FIRST */
+          .tx-copy-wrapper {
+            order: 1;
+          }
+
+          /* IMAGE AFTER CONTENT */
+          .tx-image-wrapper {
+            order: 2;
+          }
+
+          .tx-copy {
+            transform: none !important;
+            padding: 40px 20px 35px;
+          }
+
+          .tx-image-wrapper {
+            width: 100%;
+            height: auto;
+          }
+
+          .tx-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+          }
+        }
+
+        /* =====================================================
+           TABLET
+           ===================================================== */
+
+        @media (min-width: 768px) {
+          .tx-section {
+            height: 500px;
+          }
+
+          .tx-image {
+            width: 100%;
+          }
+        }
+
+        /* =====================================================
+           DESKTOP
+           ===================================================== */
+
+        @media (min-width: 1024px) {
+          .tx-section {
+            height: 520px;
+          }
+
+          .tx-image {
+            width: 110%;
+          }
+
+          .tx-copy {
+            transform: translateX(40px);
+          }
+        }
+
+        /* =====================================================
+           LARGE DESKTOP
+           ===================================================== */
+
+        @media (min-width: 1280px) {
+          .tx-section {
+            height: 550px;
+          }
+
+          .tx-image {
+            width: 88%;
+          }
+
+          .tx-copy {
+            transform: translateX(60px);
+          }
+        }
       `}</style>
 
       <section
         className="tx-section grid grid-cols-1 md:grid-cols-2 w-full overflow-hidden"
-        style={{ backgroundColor: colors.cream }}
+        style={{
+          backgroundColor: colors.cream,
+        }}
       >
-        {/* IMAGE: first on mobile/tablet, right column from md up.
-            No forced minHeight below md — the row just wraps to
-            whatever height the full, uncropped image needs. */}
-        <div className="order-1 md:order-2">
+        {/* ================= IMAGE ================= */}
+        <div className="tx-image-wrapper order-1 md:order-2 h-full min-h-0 flex justify-end">
           <ImagePanel />
         </div>
 
-        {/* COPY */}
-        <div className="order-2 md:order-1 flex items-center">
+        {/* ================= COPY ================= */}
+        <div className="tx-copy-wrapper order-2 md:order-1 flex items-center">
           <CopyPanel />
         </div>
       </section>
-
-      {/* Desktop/laptop (md+) still needs a defined row height so the
-          two columns line up — scoped to this section only, and only
-          active from md up, so it never fights with the natural
-          mobile/tablet sizing above. */}
-      <style>{`
-        @media (min-width: 768px) {
-          .tx-section {
-            min-height: clamp(420px, 46vw, 450px);
-          }
-        }
-        @media (min-width: 1024px) {
-          .tx-section {
-            min-height: clamp(450px, 40vw, 550px);
-          }
-        }
-      `}</style>
     </div>
   );
 }
