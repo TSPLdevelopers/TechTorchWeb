@@ -61,7 +61,7 @@ const industries = [
     id: "energy",
     title: "Energy",
     description: "Technology for efficient, evolving energy ecosystems.",
-    image: "/Energy 3 [Vectorized].svg",
+    image: "/Energy 3 [Vectorized] (1).svg",
   },
   {
     id: "telecommunications",
@@ -76,13 +76,7 @@ const industries = [
       "Connected solutions for smarter movement and operations.",
     image: "/Transportation 2 [Vectorized].svg",
   },
-  {
-    id: "e-commerce",
-    title: "E-Commerce",
-    description:
-      "Scalable experiences for a connected marketplace.",
-    image: "/TechTorch_E-Commerce_Icon 1.svg",
-  },
+  
 ];
 
 function IndustryImage({ src, alt, hovered }) {
