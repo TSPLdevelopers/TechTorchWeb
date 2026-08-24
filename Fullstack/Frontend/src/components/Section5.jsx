@@ -6,7 +6,7 @@ export default function BigVision() {
 
       {/* ================= CURVED LINES ================= */}
       <div
-        className="absolute z-0 pointer-events-none opacity-30"
+        className="absolute z-0 pointer-events-none hidden sm:block opacity-30"
         style={{
           width: "1650px",
           height: "850px",
