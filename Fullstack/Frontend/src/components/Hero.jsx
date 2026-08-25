@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Slide1 from "./hero1slides/Slide1.jsx";
+// import Slide1 from "./hero1slides/Slide1.jsx";
 
 import slide1Bg from "../../public/Slide1.png";
 import slide2Bg from "../../public/Slide2.png";

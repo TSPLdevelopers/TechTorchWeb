@@ -6,12 +6,11 @@ import Hero2 from "./components/Hero2";
 import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
 import Section5 from "./components/Section5";
-import Section6 from "./components/section6";
+import Section6 from "./components/Section6"
 import Section7 from "./components/section7";
 import Section8 from "./components/section8";
 import Section9 from "./components/section9";
 import Footer from "./components/Footer";
-import Slide1 from "./components/hero1slides/Slide1";
 
 
 function App() {
