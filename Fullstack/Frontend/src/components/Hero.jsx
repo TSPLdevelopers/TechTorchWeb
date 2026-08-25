@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Slide1 from "./hero1slides/Slide1.jsx";
 
 import slide1Bg from "../../public/Slide1.png";
 import slide2Bg from "../../public/Slide2.png";
@@ -12,7 +13,7 @@ const slides = [
     headline: "Turning Business Challenges Into Digital Possibilities",
     body: "We bring technology, business processes and people together to create practical digital solutions that help businesses work smarter and grow with confidence.",
     ctaText: "EXPLORE OUR SOLUTIONS",
-    ctaHref: "#",
+    ctaHref: "/Slide1.jsx",
     focus: "center", // background image focal point
   },
   {

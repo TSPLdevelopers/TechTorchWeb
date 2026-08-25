@@ -98,7 +98,7 @@ function Card({ item }) {
 
   return (
     <div
-      className={`industry-card ${
+      className={`industry-card ${ 
         hovered ? "industry-card-hovered" : ""
       }`}
       onMouseEnter={() => setHovered(true)}
