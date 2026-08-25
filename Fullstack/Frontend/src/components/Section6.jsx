@@ -134,7 +134,7 @@ export default function CapabilitiesMarquee() {
   margin: 0;
   letter-spacing: -0.02em;
 
-  transform: translateY(-15px);
+  transform: translateY(-1px);
 }.cap-title {
   color: #fff;
   font-family: "Plus Jakarta Sans";

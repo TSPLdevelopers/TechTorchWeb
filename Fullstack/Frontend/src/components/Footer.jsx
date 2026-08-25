@@ -110,7 +110,7 @@ export default function Footer() {
           width: 100%;
           background: #730042;
           color: white;
-          font-family: Arial, Helvetica, sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           overflow: hidden;
         }
 
