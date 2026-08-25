@@ -72,15 +72,10 @@ function CopyPanel() {
     <div
       className="flex w-full max-w-2xl flex-col justify-center tx-copy"
       style={{
-<<<<<<< HEAD
         paddingTop: "clamp(35px, 5vw, 65px)",
         paddingBottom: "clamp(35px, 5vw, 65px)",
         paddingLeft: "clamp(20px, 4vw, 70px)",
         paddingRight: "clamp(20px, 4vw, 70px)",
-=======
-        padding: "clamp(40px, 6vw, 80px) clamp(20px, 4vw, 80px)",
-        transform: "translateY(-50px)",
->>>>>>> 898f8eb2977794ea044f600a0a3d6a2679fa2d33
       }}
     >
       <Eyebrow>The Next Chapter</Eyebrow>
@@ -154,22 +149,12 @@ function ImagePanel() {
 export default function TorchXVideoSection() {
   return (
     <div
-<<<<<<< HEAD
       className="w-full font-sans overflow-hidden"
       style={{
         backgroundColor: "#fff",
         isolation: "isolate",
       }}
     >
-=======
-  className="w-full overflow-hidden"
-  style={{
-    backgroundColor: "#fff",
-    isolation: "isolate",
-    fontFamily: '"Plus Jakarta Sans", sans-serif',
-  }}
->
->>>>>>> 898f8eb2977794ea044f600a0a3d6a2679fa2d33
       <style>{`
         .tx-cta {
           transition: all 0.25s ease;
