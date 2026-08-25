@@ -61,7 +61,7 @@ const industries = [
     id: "energy",
     title: "Energy",
     description: "Technology for efficient, evolving energy ecosystems.",
-    image: "/Energy 3 [Vectorized].svg",
+    image: "/Energy 3 [Vectorized] (1).svg",
   },
   {
     id: "telecommunications",
@@ -76,13 +76,7 @@ const industries = [
       "Connected solutions for smarter movement and operations.",
     image: "/Transportation 2 [Vectorized].svg",
   },
-  {
-    id: "e-commerce",
-    title: "E-Commerce",
-    description:
-      "Scalable experiences for a connected marketplace.",
-    image: "/TechTorch_E-Commerce_Icon 1.svg",
-  },
+  
 ];
 
 function IndustryImage({ src, alt, hovered }) {
@@ -189,8 +183,8 @@ export default function IndustriesCarousel() {
             );
 
           font-family:
-            -apple-system,
-            BlinkMacSystemFont,
+            Plus Jakarta Sans,
+            Plus Jakarta Sans,
             "Segoe UI",
             Roboto,
             Helvetica,
@@ -326,8 +320,8 @@ export default function IndustriesCarousel() {
         ===================================================== */
 
         .industry-icon-box {
-          width: 96px;
-          height: 96px;
+          width: 100px;
+          height: 100px;
 
           margin-bottom: 24px;
 
@@ -348,31 +342,32 @@ export default function IndustriesCarousel() {
         }
 
         .industry-image {
-          width: 100%;
-          height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 
-          object-fit: contain;
+  transition: transform 0.4s ease, filter 0.3s ease;
 
-          transition:
-            transform 0.4s cubic-bezier(.34,1.56,.64,1),
-            filter 0.3s ease;
+  transform: translate(0, 0) scale(1);
+}
 
-          transform:
-            scale(1)
-            translateY(0);
-        }
+.industry-image-hovered {
+  animation: softFloat 1.5s ease-in-out infinite;
+}
 
-        .industry-image-hovered {
-          transform:
-            scale(1.12)
-            translateY(-4px);
+@keyframes softFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
 
-          filter:
-            drop-shadow(
-              0 8px 14px
-              rgba(122,19,80,0.25)
-            );
-        }
+  50% {
+    transform: translateY(-10px) scale(1.06);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
 
 
         /* =====================================================
@@ -689,10 +684,11 @@ export default function IndustriesCarousel() {
           <span>Industries</span>
         </h1>
 
-        <p className="industries-subtitle">
-          Technology solutions shaped around the unique needs of
-          industry we serve.
-        </p>
+       <p className="industries-subtitle">
+  Technology solutions shaped around the unique needs of
+  <br />
+  industry we serve.
+</p>
       </div>
 
 

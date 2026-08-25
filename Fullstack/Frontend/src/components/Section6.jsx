@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+
 const CARDS = [
   {
     title: "Platforms",
@@ -126,18 +127,24 @@ export default function CapabilitiesMarquee() {
         /* ================= TITLE ================= */
 
         .cap-title {
-          color: #fff;
+  color: #fff;
+  font-family: "Plus Jakarta Sans";
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
 
-          font-family: "Plus Jakarta Sans";
+  transform: translateY(-15px);
+}.cap-title {
+  color: #fff;
+  font-family: "Plus Jakarta Sans";
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
 
-          font-size: 42px;
-
-          font-weight: 700;
-
-          margin: 0;
-
-          letter-spacing: -0.02em;
-        }
+  transform: translate(-10px, -10px);
+}
 
 
         /* ================= DESCRIPTION ================= */
