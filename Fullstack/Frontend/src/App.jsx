@@ -10,14 +10,13 @@ import Hero2 from "./components/Hero2";
 import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
 import Section5 from "./components/Section5";
-import Section6 from "./components/section6";
+import Section6 from "./components/Section6"
 import Section7 from "./components/section7";
 import Section8 from "./components/section8";
 import Section9 from "./components/section9";
 import Footer from "./components/Footer";
-
-// ================= SLIDE 1 PAGE =================
 import Slide1 from "./components/hero1slides/Slide1.jsx";
+import Slide13 from "./components/hero1slides/Slide13.jsx";
 
 
 // =================================================
@@ -51,6 +50,16 @@ function Home() {
   );
 }
 
+function Slide1Page() {
+  return (
+    <div>
+      <Slide1 />
+
+      <Slide13 />
+    </div>
+  );
+}
+
 
 // =================================================
 // APP
@@ -68,8 +77,9 @@ function App() {
       {/* ================= SLIDE 1 / SOLUTIONS PAGE ================= */}
       <Route
         path="/Slide1"
-        element={<Slide1 />}
+        element={<Slide1Page />}
       />
+
 
     </Routes>
   );

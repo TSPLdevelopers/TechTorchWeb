@@ -268,7 +268,7 @@ export default function IndustriesCarousel() {
           width: max-content;
 
           animation:
-            industriesScroll 30s linear infinite;
+            industriesScroll 50s linear infinite;
         }
 
         .industries-track.paused {
