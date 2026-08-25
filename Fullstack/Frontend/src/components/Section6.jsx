@@ -34,7 +34,6 @@ const CARDS = [
   },
 ];
 
-// Duplicate cards for infinite marquee
 const TRACK = [...CARDS, ...CARDS];
 
 function Card({ title, img, href }) {
@@ -52,7 +51,6 @@ function Card({ title, img, href }) {
       <Link to={href} className="cap-card-label">
         <span className="cap-card-title">{title}</span>
 
-        {/* Arrow appears beside text on hover */}
         <span className="cap-card-arrow">→</span>
       </Link>
     </div>
@@ -62,20 +60,14 @@ function Card({ title, img, href }) {
 export default function CapabilitiesMarquee() {
   const [buttonOffset, setButtonOffset] = useState(0);
 
-  // Move one card forward
   const handleNext = () => {
     setButtonOffset((prev) => prev + 1);
   };
 
-  // Move one card backward
   const handlePrevious = () => {
     setButtonOffset((prev) => prev - 1);
   };
 
-  /*
-    The animation is 26 seconds long and there are 6 original cards.
-    Therefore one card movement equals 26 / 6 seconds.
-  */
   const animationDelay = `${-(buttonOffset * (26 / CARDS.length))}s`;
 
   return (
@@ -172,11 +164,40 @@ export default function CapabilitiesMarquee() {
         /* ================= MARQUEE ================= */
 
         .cap-marquee-viewport {
-          width: 100%;
-          max-width: 1176px;
+           width: 88%;
+           margin-left: 6%;
+           margin-right: 6f%;
+
+           max-width: none;
+
           margin: 0 auto;
-          overflow: visible;
+
+          overflow: hidden;
+
           padding: 12px 0;
+
+          position: relative;
+
+          /*
+            Very small left/right blur.
+            Only 1.5% of the viewport.
+          */
+
+          mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            black 1.5%,
+            black 98.5%,
+            transparent 100%
+          );
+
+          -webkit-mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            black 1.5%,
+            black 98.5%,
+            transparent 100%
+          );
         }
 
 
@@ -185,6 +206,8 @@ export default function CapabilitiesMarquee() {
         }
 
 
+        /* ================= MARQUEE TRACK ================= */
+
         .cap-track {
           display: flex;
 
@@ -192,7 +215,7 @@ export default function CapabilitiesMarquee() {
 
           width: max-content;
 
-          padding: 0 24px;
+          padding: 0;
 
           animation:
             cap-scroll
@@ -204,7 +227,7 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* Pause animation when hovering cards */
+        /* Pause animation when hovering */
 
         .cap-marquee-viewport:hover .cap-track {
           animation-play-state: paused;
@@ -226,7 +249,7 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* Respect reduced motion */
+        /* ================= REDUCED MOTION ================= */
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -268,6 +291,8 @@ export default function CapabilitiesMarquee() {
             box-shadow 0.35s ease;
         }
 
+
+        /* ================= CARD HOVER ================= */
 
         .cap-card:hover {
           transform: scale(1.05);
@@ -339,7 +364,7 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* Text hover */
+        /* ================= TEXT HOVER ================= */
 
         .cap-card-label:hover {
           color: #730042;
@@ -371,8 +396,6 @@ export default function CapabilitiesMarquee() {
             transform 0.25s ease;
         }
 
-
-        /* Arrow appears beside text */
 
         .cap-card-label:hover .cap-card-arrow {
           opacity: 1;
@@ -443,7 +466,7 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= RESPONSIVE ================= */
+        /* ================= TABLET ================= */
 
         @media (max-width: 900px) {
 
@@ -452,11 +475,13 @@ export default function CapabilitiesMarquee() {
           }
 
           .cap-marquee-viewport {
-            max-width: 948px;
+            max-width: 100%;
           }
 
         }
 
+
+        /* ================= MOBILE ================= */
 
         @media (max-width: 700px) {
 
@@ -493,7 +518,7 @@ export default function CapabilitiesMarquee() {
 
 
           .cap-marquee-viewport {
-            max-width: 92vw;
+            max-width: 100%;
           }
 
 

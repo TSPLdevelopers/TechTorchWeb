@@ -44,7 +44,7 @@ export default function BigVision() {
           </h1>
 
           <p className="mt-[25px] sm:mt-[27px] md:mt-[30px] lg:mt-[34px] max-w-[600px] text-[16px] 
-           sm:text-[17px] md:text-[18px] lg:text-[20px] font-normal leading-[1.4] text-[#505050]">
+           sm:text-[17px] md:text-[18px] lg:text-[20px] font-normal leading-[1.4]text-[#1e1e1e]">
 
             The future is not simply something we prepare for
             <br className="hidden sm:block" />
