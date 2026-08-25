@@ -6,7 +6,7 @@ export default function BigVision() {
 
       {/* ================= CURVED LINES ================= */}
       <div
-        className="absolute z-0 pointer-events-none opacity-30"
+        className="absolute z-0 pointer-events-none hidden sm:block opacity-30"
         style={{
           width: "1650px",
           height: "850px",
@@ -44,7 +44,7 @@ export default function BigVision() {
           </h1>
 
           <p className="mt-[25px] sm:mt-[27px] md:mt-[30px] lg:mt-[34px] max-w-[600px] text-[16px] 
-           sm:text-[17px] md:text-[18px] lg:text-[20px] font-normal leading-[1.4] text-[#505050]">
+           sm:text-[17px] md:text-[18px] lg:text-[20px] font-normal leading-[1.4]text-[#1e1e1e]">
 
             The future is not simply something we prepare for
             <br className="hidden sm:block" />

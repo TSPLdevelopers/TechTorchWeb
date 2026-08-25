@@ -148,6 +148,7 @@ function NavCapabilities() {
              h-[650px]
               pointer-events-none
               select-none
+               opacity-35
             "
           />
 

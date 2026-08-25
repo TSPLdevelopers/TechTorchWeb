@@ -152,7 +152,7 @@ export default function Footer() {
         .footer-brand h3 {
           margin: 0 0 15px;
           font-size: 18px;
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans";
           line-height: 1;
           font-weight: 600;
         }
@@ -199,15 +199,13 @@ export default function Footer() {
         }
 
 
-        /* INDUSTRIES
-           Original desktop font preserved
-        */
+        /* INDUSTRIES */
 
         .industries-column a {
           color: white;
           text-decoration: none;
-          font-size: 20px;
-          font-family: "Inter", sans-serif;
+          font-size: 18px;
+          font-family: "Inter";
           line-height: 0.8;
           font-weight: 500;
           margin-bottom: 29px;
@@ -219,7 +217,7 @@ export default function Footer() {
         .footer-column h2 {
           margin: 0 0 29px;
           font-size: 20px;
-          font-family: "Inter", sans-serif;
+          font-family:"Inter";
           line-height: 0.8;
           font-weight: 500;
           color: white;
@@ -277,23 +275,23 @@ export default function Footer() {
 
         .copyright {
           margin: 0 0 32px;
-          font-size: 17px;
+          font-size: 16px;
           font-family: "Inter", sans-serif;
           line-height: 1.3;
           font-weight: 400;
           position: relative;
-          transform: translateY(40px);
+          transform: translateY(60px);
         }
 
         .disclaimer {
           margin: 0;
           max-width: 1240px;
-          font-size: 17px;
+          font-size: 16px;
           font-family: "Inter", sans-serif;
           line-height: 1.28;
           font-weight: 400;
           position: relative;
-          transform: translateY(40px);
+          transform: translateY(60px);
         }
 
 
