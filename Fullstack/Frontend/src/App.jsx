@@ -1,5 +1,9 @@
 import React from "react";
 import "./App.css";
+
+import { Routes, Route } from "react-router-dom";
+
+// ================= COMPONENTS =================
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Hero2 from "./components/Hero2";
@@ -11,25 +15,63 @@ import Section7 from "./components/section7";
 import Section8 from "./components/section8";
 import Section9 from "./components/section9";
 import Footer from "./components/Footer";
-import Slide1 from "./components/hero1slides/Slide1";
+
+// ================= SLIDE 1 PAGE =================
+import Slide1 from "./components/hero1slides/Slide1.jsx";
 
 
-function App() {
+// =================================================
+// HOME PAGE
+// =================================================
+function Home() {
   return (
     <div>
       <Navbar />
+
       <Hero />
+
       <Hero2 />
+
       <Hero3 />
+
       <Section4 />
+
       <Section5 />
+
       <Section6 />
+
       <Section7 />
+
       <Section8 />
+
       <Section9 />
+
       <Footer />
-      
     </div>
+  );
+}
+
+
+// =================================================
+// APP
+// =================================================
+function App() {
+  return (
+    <Routes>
+
+      {/* ================= HOME PAGE ================= */}
+      <Route
+        path="/"
+        element={<Home />}
+      />
+
+      {/* ================= SLIDE 1 / SOLUTIONS PAGE ================= */}
+      <Route
+        path="/Slide1"
+        element={<Slide1 />}
+      />
+
+    </Routes>
   );
 }
 
