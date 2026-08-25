@@ -22,25 +22,24 @@ export default function TechHero() {
       />
 
       {/* ================= CONTENT ================= */}
-      <div className="relative z-10 flex flex-col justify-center h-full min-h-[600px] px-6 sm:px-12 md:px-16 max-w-2xl">
+      <div className="relative z-10 flex flex-col justify-center h-full min-h-[500px] px-6 sm:px-12 md:px-16 max-w-2xl">
 
-        <h1 className="text-white font-semibold leading-[1.08] text-[2.1rem] sm:text-[2.6rem] md:text-[3rem] tracking-tight">
+        <h1 className="text-white font-semibold leading-[1.08] text-[2.1rem] sm:text-[2.6rem] md:text-[2.8rem] tracking-tight translate-y-14">
   Technology Solutions Built
   <br />
   Around Your Business
 </h1>
 
-        <p className="mt-6 text-white/85 text-base sm:text-lg leading-relaxed max-w-md">
-          Every business has its own challenges, priorities and goals. We
-          bring together technology, expertise and practical thinking to
-          create solutions that fit the way your business works.
-        </p>
-
-        <div className="mt-9">
-          <button className="border border-white/70 text-white text-sm font-medium tracking-wide px-3 py-1.5 hover:bg-white hover:text-[#0a1128] transition-colors duration-300">
-            Talk to Our Experts
-          </button>
-        </div>
+     <p className="mt-30 text-white/85 text-base sm:text-lg leading-relaxed max-w-md">
+  Every business has its own challenges, priorities and goals. We
+  bring together technology, expertise and practical thinking to
+  create solutions that fit the way your business works.
+</p>
+        <div className="mt-28">
+  <button className="border border-white/70 text-white text-sm font-medium tracking-wide px-3 py-1.5 hover:bg-white hover:text-[#0a1128] transition-colors duration-300">
+    Talk to Our Experts
+  </button>
+</div>
 
       </div>
     </div>
