@@ -34,7 +34,7 @@ const slides = [
 
     ctaText: "EXPLORE ERP",
 
-    ctaHref: "",
+    ctaHref: "/Slide2",
 
     focus: "65% 40%",
   },

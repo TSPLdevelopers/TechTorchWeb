@@ -2,102 +2,110 @@ import React from "react";
 
 export default function ERPApproach() {
   return (
-    <section className="w-full overflow-hidden bg-[#F8F7F0] text-[#191919]">
+    <section
+      className="
+        w-full
+        min-h-[700px]
+        overflow-hidden
+        bg-[#F8F7F0]
+        text-[#191919]
+        sm:min-h-[680px]
+        md:min-h-[620px]
+        lg:min-h-[600px]
+        xl:min-h-[590px]
+      "
+    >
       <div
         className="
           mx-auto
           w-full
           max-w-[1240px]
           px-5
-          py-8
+          py-3
           sm:px-7
-          sm:py-9
+          sm:py-4
           md:px-9
-          md:py-10
+          md:py-5
           lg:px-10
-          lg:py-11
+          lg:py-8
           xl:px-12
         "
       >
         {/* ================= TOP LABEL ================= */}
         <p
           className="
+          lg:-translate-x-6 xl:-translate-x-8
             font-['Plus_Jakarta_Sans']
-            text-[12px]
             font-bold
             uppercase
             leading-none
             tracking-[0.01em]
             text-[#151515]
-            sm:text-[13px]
           "
+          style={{ fontSize: "17px" }}
         >
           OUR ERP APPROACH
         </p>
 
-        {/* ================= MAIN GRID ================= */}
+        {/* ================= MAIN CONTENT ================= */}
         <div
           className="
-            mt-6
+            mt-5
             grid
             grid-cols-1
             gap-8
 
-            sm:mt-7
+            sm:mt-6
+            sm:gap-7
 
-            md:mt-7
-            md:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)]
-            md:gap-8
+            md:mt-6
+            md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]
+            md:gap-7
 
-            lg:mt-8
+            lg:mt-7
             lg:grid-cols-[minmax(0,0.98fr)_minmax(0,1.02fr)]
-            lg:gap-10
+            lg:gap-8
 
-            xl:gap-12
+            xl:gap-10
           "
         >
-          {/* =====================================================
-              LEFT CONTENT
-          ===================================================== */}
-          <div className="min-w-0">
-
-            {/* HEADING */}
+          {/* ================= LEFT CONTENT ================= */}
+          <div className="min-w-0 lg:-translate-x-6 xl:-translate-x-10">
             <h1
               className="
                 font-['Plus_Jakarta_Sans']
-                text-[32px]
+                text-[30px]
                 font-semibold
                 leading-[1.06]
                 tracking-[-0.045em]
 
-                sm:text-[35px]
-                md:text-[37px]
+                sm:text-[34px]
+                md:text-[36px]
                 lg:text-[40px]
-                xl:text-[42px]
+                xl:text-[32px]
               "
             >
               A Business That
               <br />
-              <span className="text-[#850052]">
-                Works as One
-              </span>
+              <span className="text-[#850052]">Works as One</span>
             </h1>
 
-            {/* ================= PARAGRAPH 1 ================= */}
             <p
               className="
-                mt-6
+                mt-5
                 max-w-[550px]
                 font-['Inter']
-                text-[15px]
+                text-[14px]
                 font-normal
                 leading-[1.5]
                 text-[#303030]
 
-                sm:text-[16px]
-                md:text-[16px]
-                lg:text-[17px]
-                lg:leading-[1.5]
+                sm:mt-6
+                sm:text-[15px]
+
+                md:text-[15px]
+
+                lg:text-[16px]
               "
             >
               As businesses grow, their operations become more connected —
@@ -107,21 +115,22 @@ export default function ERPApproach() {
               using it.
             </p>
 
-            {/* ================= PARAGRAPH 2 ================= */}
             <p
               className="
-                mt-6
+                mt-5
                 max-w-[550px]
                 font-['Inter']
-                text-[15px]
+                text-[14px]
                 font-normal
                 leading-[1.5]
                 text-[#303030]
 
-                sm:text-[16px]
-                md:text-[16px]
-                lg:text-[17px]
-                lg:leading-[1.5]
+                sm:mt-6
+                sm:text-[15px]
+
+                md:text-[15px]
+
+                lg:text-[16px]
               "
             >
               An ERP brings these essential business functions together in one
@@ -130,21 +139,22 @@ export default function ERPApproach() {
               creates a more consistent way of working.
             </p>
 
-            {/* ================= PARAGRAPH 3 ================= */}
             <p
               className="
-                mt-6
+                mt-5
                 max-w-[550px]
                 font-['Inter']
-                text-[15px]
+                text-[14px]
                 font-normal
                 leading-[1.5]
                 text-[#303030]
 
-                sm:text-[16px]
-                md:text-[16px]
-                lg:text-[17px]
-                lg:leading-[1.5]
+                sm:mt-6
+                sm:text-[15px]
+
+                md:text-[15px]
+
+                lg:text-[16px]
               "
             >
               At TechTorch, we take a practical approach to ERP. We first
@@ -154,42 +164,44 @@ export default function ERPApproach() {
             </p>
           </div>
 
-          {/* =====================================================
-              RIGHT SIDE
-          ===================================================== */}
-          <div
-            className="
-              relative
-              min-w-0
-              flex
-              flex-col
-              items-center
-              md:items-center
-            "
-          >
-            {/* ================= ERP DIAGRAM ================= */}
+          {/* ================= RIGHT DIAGRAM ================= */}
+          <div className="  relative min-w-0 flex flex-col
+    items-center md:items-center
+    lg:translate-x-8 xl:translate-x-22">
+
             <div
               className="
                 relative
-                h-[390px]
+                h-[330px]
                 w-full
-                max-w-[500px]
+                max-w-[420px]
 
-                sm:h-[410px]
-                md:h-[420px]
-                lg:h-[440px]
-                xl:h-[460px]
+                sm:h-[350px]
+                sm:max-w-[440px]
+
+                md:h-[370px]
+                md:max-w-[450px]
+
+                lg:h-[390px]
+                lg:max-w-[470px]
+
+                xl:h-[410px]
+                xl:max-w-[490px]
               "
             >
-              {/* ================= CONNECTING LINES ================= */}
+              {/* ==================================================
+                  CONNECTING LINES
+                  Thin dotted lines.
+                  Icons se connect hoti hain aur TX se thoda gap.
+              ================================================== */}
 
-              {/* Finance line */}
+              {/* Finance → TX */}
               <div
                 className="
                   absolute
-                  left-[43%]
-                  top-[25%]
-                  h-[65px]
+                  left-[44%]
+                  top-[23%]
+                  h-[53px]
                   w-px
                   origin-bottom
                   -rotate-[42deg]
@@ -199,13 +211,13 @@ export default function ERPApproach() {
                 "
               />
 
-              {/* Payroll line */}
+              {/* Payroll → TX */}
               <div
                 className="
                   absolute
-                  left-[57%]
-                  top-[25%]
-                  h-[65px]
+                  left-[56%]
+                  top-[23%]
+                  h-[53px]
                   w-px
                   origin-bottom
                   rotate-[42deg]
@@ -215,13 +227,13 @@ export default function ERPApproach() {
                 "
               />
 
-              {/* Inventory line */}
+              {/* Inventory → TX */}
               <div
                 className="
                   absolute
-                  left-[39%]
-                  top-[47%]
-                  h-[65px]
+                  left-[40%]
+                  top-[45%]
+                  h-[48px]
                   w-px
                   origin-top
                   rotate-[68deg]
@@ -231,13 +243,13 @@ export default function ERPApproach() {
                 "
               />
 
-              {/* Engage line */}
+              {/* Engage → TX */}
               <div
                 className="
                   absolute
-                  left-[61%]
-                  top-[47%]
-                  h-[65px]
+                  left-[60%]
+                  top-[45%]
+                  h-[48px]
                   w-px
                   origin-top
                   -rotate-[68deg]
@@ -247,13 +259,13 @@ export default function ERPApproach() {
                 "
               />
 
-              {/* Talent line */}
+              {/* Talent → TX */}
               <div
                 className="
                   absolute
                   left-1/2
-                  top-[59%]
-                  h-[65px]
+                  top-[55%]
+                  h-[43px]
                   w-px
                   border-l
                   border-dotted
@@ -265,10 +277,10 @@ export default function ERPApproach() {
               <ERPItem
                 title="Finance"
                 subtitle="(Accounting)"
-                icon={<RupeeIcon />}
+                icon={<FinanceIcon />}
                 className="
-                  left-[26%]
-                  top-[4%]
+                  left-[30%]
+                  top-[5%]
                   -translate-x-1/2
                 "
               />
@@ -279,8 +291,8 @@ export default function ERPApproach() {
                 subtitle="(Payroll)"
                 icon={<WalletIcon />}
                 className="
-                  left-[74%]
-                  top-[7%]
+                  left-[70%]
+                  top-[8%]
                   -translate-x-1/2
                 "
               />
@@ -291,8 +303,8 @@ export default function ERPApproach() {
                 subtitle="(Stock)"
                 icon={<InventoryIcon />}
                 className="
-                  left-[20%]
-                  top-[37%]
+                  left-[25%]
+                  top-[39%]
                   -translate-x-1/2
                 "
               />
@@ -303,8 +315,8 @@ export default function ERPApproach() {
                 subtitle="(CRM)"
                 icon={<UsersIcon />}
                 className="
-                  left-[80%]
-                  top-[42%]
+                  left-[75%]
+                  top-[43%]
                   -translate-x-1/2
                 "
               />
@@ -316,7 +328,7 @@ export default function ERPApproach() {
                 icon={<TalentIcon />}
                 className="
                   left-1/2
-                  top-[61%]
+                  top-[59%]
                   -translate-x-1/2
                 "
               />
@@ -327,34 +339,41 @@ export default function ERPApproach() {
                   absolute
                   left-1/2
                   top-[34%]
+                  z-[3]
                   flex
-                  h-[96px]
-                  w-[96px]
+                  h-[70px]
+                  w-[70px]
                   -translate-x-1/2
                   items-center
                   justify-center
                   rounded-full
                   bg-black
-                  shadow-sm
 
-                  sm:h-[104px]
-                  sm:w-[104px]
+                  sm:h-[76px]
+                  sm:w-[76px]
 
-                  lg:h-[110px]
-                  lg:w-[110px]
+                  md:h-[80px]
+                  md:w-[80px]
+
+                  lg:h-[86px]
+                  lg:w-[86px]
+
+                  xl:h-[90px]
+                  xl:w-[90px]
                 "
               >
                 <div
                   className="
                     font-['Arial']
-                    text-[43px]
+                    text-[31px]
                     font-black
                     leading-none
                     tracking-[-0.12em]
                     text-white
 
-                    sm:text-[47px]
-                    lg:text-[50px]
+                    sm:text-[34px]
+                    md:text-[36px]
+                    lg:text-[39px]
                   "
                 >
                   T<span className="text-[#850052]">X</span>
@@ -362,37 +381,40 @@ export default function ERPApproach() {
               </div>
             </div>
 
-            {/* =====================================================
-                GOAL CARD
-            ===================================================== */}
+            {/* ================= GOAL CARD ================= */}
             <div
               className="
-                -mt-2
+                -mt-6
                 w-full
-                max-w-[390px]
+                max-w-[360px]
                 rounded-[8px]
                 bg-[#FCECF6]
-                px-6
-                py-5
+                px-4
+                py-3
 
-                sm:px-7
-                sm:py-6
+                sm:-mt-5
+                sm:max-w-[380px]
+                sm:px-5
+                sm:py-4
 
-                md:self-end
+                md:-mt-4
+                md:max-w-[390px]
 
+                lg:-mt-5
                 lg:max-w-[400px]
               "
             >
               <p
                 className="
                   font-['Inter']
-                  text-[16px]
+                  text-[14px]
                   font-semibold
-                  leading-[1.4]
+                  leading-[1.35]
                   text-[#151515]
 
-                  sm:text-[17px]
-                  lg:text-[18px]
+                  sm:text-[15px]
+                  md:text-[16px]
+                  lg:text-[16px]
                 "
               >
                 The goal is simple:
@@ -410,7 +432,6 @@ export default function ERPApproach() {
   );
 }
 
-
 /* ============================================================
    ERP ITEM
 ============================================================ */
@@ -420,6 +441,7 @@ function ERPItem({ title, subtitle, icon, className = "" }) {
     <div
       className={`
         absolute
+        z-[2]
         flex
         flex-col
         items-center
@@ -431,13 +453,14 @@ function ERPItem({ title, subtitle, icon, className = "" }) {
         <p
           className="
             font-['Inter']
-            text-[16px]
+            text-[14px]
             font-bold
             leading-[1.15]
             text-[#151515]
 
-            sm:text-[17px]
-            lg:text-[18px]
+            sm:text-[15px]
+            md:text-[16px]
+            lg:text-[17px]
           "
         >
           {title}
@@ -447,34 +470,40 @@ function ERPItem({ title, subtitle, icon, className = "" }) {
           className="
             mt-0.5
             font-['Inter']
-            text-[12px]
+            text-[10px]
             font-medium
             leading-[1.1]
             text-[#151515]
 
-            sm:text-[13px]
+            sm:text-[11px]
+            md:text-[12px]
+            lg:text-[13px]
           "
         >
           {subtitle}
         </p>
       </div>
 
+      {/* ICON CIRCLE */}
       <div
         className="
           flex
-          h-[64px]
-          w-[64px]
+          h-[50px]
+          w-[50px]
           items-center
           justify-center
           rounded-full
           bg-[#850052]
           text-white
 
-          sm:h-[68px]
-          sm:w-[68px]
+          sm:h-[54px]
+          sm:w-[54px]
 
-          lg:h-[72px]
-          lg:w-[72px]
+          md:h-[58px]
+          md:w-[58px]
+
+          lg:h-[62px]
+          lg:w-[62px]
         "
       >
         {icon}
@@ -483,102 +512,242 @@ function ERPItem({ title, subtitle, icon, className = "" }) {
   );
 }
 
-
 /* ============================================================
-   ICONS
+   FINANCE ICON
 ============================================================ */
 
-function RupeeIcon() {
+function FinanceIcon() {
   return (
-    <svg
-      viewBox="0 0 48 48"
-      className="h-[34px] w-[34px]"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+    <div
+      className="
+        flex
+        h-[32px]
+        w-[32px]
+        items-center
+        justify-center
+        rounded-full
+        bg-white
+
+        sm:h-[34px]
+        sm:w-[34px]
+
+        lg:h-[38px]
+        lg:w-[38px]
+      "
     >
-      <path d="M14 10h20" />
-      <path d="M14 17h20" />
-      <path d="M18 10c7 0 12 4 12 9s-5 9-12 9h-3" />
-      <path d="M18 28l12 11" />
-    </svg>
+      <span
+        className="
+          font-['Arial']
+          text-[23px]
+          font-bold
+          leading-none
+          text-[#850052]
+
+          sm:text-[25px]
+          lg:text-[28px]
+        "
+      >
+        ₹
+      </span>
+    </div>
   );
 }
 
+/* ============================================================
+   PAYROLL ICON
+============================================================ */
 
 function WalletIcon() {
   return (
     <svg
       viewBox="0 0 48 48"
-      className="h-[34px] w-[34px]"
+      className="
+        h-[29px]
+        w-[29px]
+
+        sm:h-[31px]
+        sm:w-[31px]
+
+        lg:h-[34px]
+        lg:w-[34px]
+      "
       fill="none"
-      stroke="currentColor"
-      strokeWidth="3.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <rect x="7" y="12" width="34" height="26" rx="4" />
-      <path d="M7 18h34" />
-      <path d="M31 26h8" />
-      <circle cx="31" cy="26" r="1.5" fill="currentColor" />
-      <path d="M13 12v-3h21l4 3" />
+      <path
+        d="M8 15.5C8 13.6 9.6 12 11.5 12H35C37.2 12 39 13.8 39 16V36C39 38.2 37.2 40 35 40H12C9.8 40 8 38.2 8 36V15.5Z"
+        fill="currentColor"
+      />
+
+      <path
+        d="M8 18H34.5C37.5 18 40 20 40 22.5V32H30C26.7 32 24 29.3 24 26C24 22.7 26.7 20 30 20H40"
+        fill="currentColor"
+      />
+
+      <path
+        d="M30 23H39V29H30C28.3 29 27 27.7 27 26C27 24.3 28.3 23 30 23Z"
+        fill="#850052"
+      />
+
+      <circle cx="32" cy="26" r="1.8" fill="white" />
+
+      <path
+        d="M12 12V9C12 7.9 12.9 7 14 7H33L38 12"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
+/* ============================================================
+   INVENTORY ICON
+============================================================ */
 
 function InventoryIcon() {
   return (
     <svg
       viewBox="0 0 48 48"
-      className="h-[34px] w-[34px]"
-      fill="currentColor"
+      className="
+        h-[30px]
+        w-[30px]
+
+        sm:h-[32px]
+        sm:w-[32px]
+
+        lg:h-[35px]
+        lg:w-[35px]
+      "
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M7 38h34v3H7z" />
-      <path d="M10 18h8v20h-8z" />
-      <path d="M20 12h8v26h-8z" />
-      <path d="M30 22h8v16h-8z" />
+      <path
+        d="M7 20.5L24 11L41 20.5V37.5C41 39.2 39.7 40.5 38 40.5H10C8.3 40.5 7 39.2 7 37.5V20.5Z"
+        fill="white"
+      />
+
+      <path
+        d="M10 21H38V38.5H10V21Z"
+        fill="white"
+      />
+
+      <rect
+        x="16"
+        y="31"
+        width="6"
+        height="6"
+        rx="0.8"
+        fill="#850052"
+      />
+
+      <rect
+        x="23"
+        y="26"
+        width="6"
+        height="6"
+        rx="0.8"
+        fill="#850052"
+      />
+
+      <rect
+        x="23"
+        y="33"
+        width="6"
+        height="6"
+        rx="0.8"
+        fill="#850052"
+      />
     </svg>
   );
 }
 
+/* ============================================================
+   ENGAGE ICON
+============================================================ */
 
 function UsersIcon() {
   return (
     <svg
       viewBox="0 0 48 48"
-      className="h-[35px] w-[35px]"
+      className="
+        h-[30px]
+        w-[30px]
+
+        sm:h-[32px]
+        sm:w-[32px]
+
+        lg:h-[35px]
+        lg:w-[35px]
+      "
       fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="18" cy="16" r="7" />
-      <circle cx="32" cy="18" r="6" />
-      <path d="M6 37c0-7 5-11 12-11s12 4 12 11z" />
-      <path d="M28 28c6 0 11 3 12 9H28z" />
+      <circle cx="17" cy="16" r="7" />
+
+      <path d="M6 37C6 30.4 10.8 26 17 26C23.2 26 28 30.4 28 37H6Z" />
+
+      <circle cx="31" cy="17" r="6" />
+
+      <path d="M25 28C26.8 26.7 29 26 31 26C36.8 26 41 30.2 42 36H27" />
     </svg>
   );
 }
 
+/* ============================================================
+   TALENT ICON
+============================================================ */
 
 function TalentIcon() {
   return (
     <svg
       viewBox="0 0 48 48"
-      className="h-[35px] w-[35px]"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      className="
+        h-[30px]
+        w-[30px]
+
+        sm:h-[32px]
+        sm:w-[32px]
+
+        lg:h-[35px]
+        lg:w-[35px]
+      "
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="24" cy="13" r="6" fill="currentColor" />
-      <circle cx="12" cy="22" r="5" fill="currentColor" />
-      <circle cx="36" cy="22" r="5" fill="currentColor" />
-      <path d="M14 36c0-7 4-11 10-11s10 4 10 11" />
-      <path d="M6 36c0-5 3-8 7-8" />
-      <path d="M42 36c0-5-3-8-7-8" />
-      <rect x="18" y="31" width="12" height="8" rx="2" />
+      <circle cx="13" cy="17" r="5" />
+
+      <path d="M5 35C5 29.5 8.2 26 13 26C16 26 18.5 27.3 20 29.5V35H5Z" />
+
+      <circle cx="35" cy="17" r="5" />
+
+      <path d="M28 29.5C29.5 27.3 32 26 35 26C39.8 26 43 29.5 43 35H28V29.5Z" />
+
+      <circle cx="24" cy="13" r="6" />
+
+      <path d="M13 36C13 29.3 17.6 25 24 25C30.4 25 35 29.3 35 36H13Z" />
+
+      <rect
+        x="18"
+        y="31"
+        width="12"
+        height="8"
+        rx="1.5"
+        fill="#850052"
+      />
+
+      <path
+        d="M21 31V29.5C21 28.7 21.7 28 22.5 28H25.5C26.3 28 27 28.7 27 29.5V31"
+        stroke="#850052"
+        strokeWidth="2"
+      />
+
+      <path
+        d="M18 34H30"
+        stroke="white"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }
