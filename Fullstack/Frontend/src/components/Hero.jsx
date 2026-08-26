@@ -33,7 +33,7 @@ const slides = [
     ctaText: "EXPLORE ERP",
 
     // Change this when you create the ERP page
-    ctaHref: "#",
+    ctaHref: "/Slide21",
 
     focus: "65% 40%",
   },
