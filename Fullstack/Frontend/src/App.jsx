@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 
 import AdminLogin from "./pages/AdminLogin";
 import AdminForgotPassword from "./pages/AdminForgotPassword";
+import AdminVerifyOTP from "./pages/AdminVerifyOTP";
 
 function Home() {
   return (
@@ -44,6 +45,10 @@ function App() {
         path="/admin-forgot-password"
         element={<AdminForgotPassword />}
       />
+      <Route
+  path="/admin-verify-otp"
+  element={<AdminVerifyOTP />}
+/>
     </Routes>
   );
 }

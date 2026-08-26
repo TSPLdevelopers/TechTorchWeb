@@ -4,6 +4,8 @@ const router = express.Router();
 const {
   registerAdmin,
   loginAdmin,
+  forgotPassword,
+  verifyOTP,
   logoutAdmin, 
   getAdminProfile,
   getAdminById,
@@ -18,7 +20,10 @@ const authMiddleware = require("../middlewares/auth.middleware");
 router.post("/register", registerAdmin);
 
 router.post("/login", loginAdmin);
+router.post("/forgot-password", forgotPassword);
+router.post("/verify-otp", verifyOTP);
 router.post("/logout", authMiddleware, logoutAdmin);
+
 
 router.get("/profile", authMiddleware, getAdminProfile);
 
