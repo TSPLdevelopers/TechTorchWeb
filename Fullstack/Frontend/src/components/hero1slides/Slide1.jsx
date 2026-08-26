@@ -30,7 +30,7 @@ export default function TechHero() {
           Around Your Business
         </h1>
 
-        <p className="mt-20 text-white/83 text-base sm:text-lg leading-relaxed max-w-md">
+        <p className="mt-20 text-white/85 text-base sm:text-lg leading-relaxed max-w-md">
           Every business has its own challenges, priorities and goals. We
           bring together technology, expertise and practical thinking to
           create solutions that fit the way your business works.

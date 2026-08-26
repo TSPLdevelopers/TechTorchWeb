@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ErpHero() {
   return (
-    <section className="relative w-full min-h-[420px] overflow-hidden bg-[#0c140c] font-sans">
+    <section className="relative w-full min-h-[520px] overflow-hidden bg-[#0c140c] font-sans">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -27,16 +27,16 @@ export default function ErpHero() {
         <p className="text-white/90 text-xs sm:text-sm font-bold tracking-[0.15em] mb-4">
           ENTERPRISE RESOURCE PLANNING
         </p>
-        <h1 className="text-white font-extrabold leading-tight text-[1.7rem] sm:text-[2.1rem] md:text-[2.4rem] mb-5">
+        <h1 className="text-white font-semibold leading-tight text-[1.7rem] sm:text-[2.1rem] md:text-[2.4rem] mb-5">
           Connect Your Business. Work Better Together.
         </h1>
-        <p className="text-white/85 text-sm sm:text-base leading-relaxed max-w-2xl mb-8">
+        <p className="text-white/90 text-sm sm:text-base leading-relaxed max-w-2xl mb-8">
           Bring your finance, operations, people, inventory and customer
           processes together in one place. With a connected ERP system, your
           teams can spend less time managing information and more time
           getting work done.
         </p>
-        <button className="border border-white/70 text-white text-sm font-medium tracking-wide px-6 py-3 hover:bg-white hover:text-[#0c140c] transition-colors duration-300">
+        <button className="mt-8 border border-white/70 text-white text-sm font-medium tracking-wide px-6 py-2 hover:bg-white hover:text-[#0c140c] transition-colors duration-300">
           Talk to Our Experts
         </button>
       </div>
