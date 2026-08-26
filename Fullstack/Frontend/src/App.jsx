@@ -19,6 +19,7 @@ import Hero02Slide02 from "./components/Hero2Slides/Hero02Slide02.jsx";
 import HeroSlide01 from "./components/HeroSlides/HeroSlide01.jsx";
 import HeroSlide02 from "./components/HeroSlides/HeroSlide02.jsx";
 import HeroSlide04 from "./components/HeroSlides/HeroSlide04.jsx";
+import Hero02Slide04 from "./components/Hero2Slides/Hero02Slide04.jsx";
 
 
 // =================================================
@@ -66,6 +67,7 @@ function Slide2Page() {
   return (
     <div>
       <Hero02Slide02 />
+      <Hero02Slide04 />
     </div>
   );
 }
