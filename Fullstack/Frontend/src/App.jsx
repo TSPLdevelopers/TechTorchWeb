@@ -20,6 +20,7 @@ import Footer from "./components/Footer";
 import Slide1 from "./components/hero1slides/Slide1.jsx";
 
 
+
 // =================================================
 // HOME PAGE
 // =================================================
