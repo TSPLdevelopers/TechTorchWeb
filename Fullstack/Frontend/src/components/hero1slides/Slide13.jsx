@@ -1,7 +1,7 @@
 import React from "react";
 
 const MAROON = "#8f1046";
-const LINE_COLOR = "#d3a9bc";
+const LINE_COLOR = "#8f1046";
 
 const icons = {
   search: (
@@ -120,23 +120,24 @@ const steps = [
   },
 ];
 
-export default function Slide13() {
+export default function HowWeWork() {
   return (
     <section
       style={{
         width: "100%",
         background: "#ffffff",
-        fontFamily: "'Plus Jakarta Sans', Arial, sans-serif",
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        overflow: "hidden",
       }}
     >
       <div
-        className="how-work-container"
         style={{
-          maxWidth: "1100px",
+          maxWidth: "980px",
           margin: "0 auto",
-          padding: "60px 24px 70px",
+          padding: "56px 24px 64px",
         }}
       >
+
         {/* ================= HEADER ================= */}
 
         <p
@@ -147,16 +148,16 @@ export default function Slide13() {
             letterSpacing: "0.12em",
             color: "#141414",
             marginBottom: "16px",
+            marginTop: "-20px",
           }}
         >
           HOW WE WORK
         </p>
 
         <h2
-          className="how-work-title"
           style={{
             textAlign: "center",
-            fontSize: "33px",
+            fontSize: "30px",
             fontWeight: 700,
             color: "#141414",
             margin: "0 0 16px",
@@ -164,280 +165,169 @@ export default function Slide13() {
           }}
         >
           From Business Challenge to{" "}
-          <span style={{ color: MAROON }}>Practical Solutions</span>
+          <span style={{ color: MAROON }}>
+            Practical Solutions
+          </span>
         </h2>
 
         <p
-          className="how-work-subtitle"
           style={{
             textAlign: "center",
             fontSize: "17px",
             color: "#444",
             fontWeight: 400,
-            margin: "0 auto 60px",
-            maxWidth: "620px",
-            lineHeight: "1.6",
+            margin: "0 auto 56px",
+            maxWidth: "820px",
           }}
         >
-          A clear, collaborative approach focused on delivering solutions
-          that create real and lasting value.
+          A clear, collaborative approach focused on delivering solutions that
+          create real and lasting value.
         </p>
 
-        {/* ================= DESKTOP TIMELINE ================= */}
+        {/* ================= PROCESS ================= */}
 
         <div
-          className="how-work-desktop"
           style={{
             position: "relative",
             width: "100%",
             height: "520px",
           }}
         >
-          {/* Top horizontal line */}
-          <div
+
+          {/* ================= CONNECTING LINE ================= */}
+
+          <svg
+            viewBox="0 0 1000 520"
+            preserveAspectRatio="none"
             style={{
               position: "absolute",
-              left: "10%",
-              top: "33%",
-              width: "84%",
-              height: "1px",
-              background: LINE_COLOR,
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+              zIndex: 1,
             }}
-          />
+          >
+            <path
+              d="
+                M 45 35
+                H 440
+                H 857
+                H 1000
+                V 260
+                H 10
+                V 325
+                H 370
+              "
+              fill="none"
+              stroke={LINE_COLOR}
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
 
-          {/* Right vertical line */}
-          <div
-            style={{
-              position: "absolute",
-              right: "6%",
-              top: "33%",
-              width: "1px",
-              height: "45%",
-              background: LINE_COLOR,
-            }}
-          />
+          {/* ================= STEP 01 ================= */}
 
-          {/* Bottom horizontal line */}
-          <div
-            style={{
-              position: "absolute",
-              left: "10%",
-              top: "78%",
-              width: "84%",
-              height: "1px",
-              background: LINE_COLOR,
-            }}
-          />
-
-          {/* Step 01 */}
           <Step
             step={steps[0]}
-            left="10%"
-            top="33%"
+            style={{
+              left: "12%",
+              top: "100px",
+            }}
           />
 
-          {/* Step 02 */}
+          {/* ================= STEP 02 ================= */}
+
           <Step
             step={steps[1]}
-            left="42%"
-            top="33%"
+            style={{
+              left: "50%",
+              top: "100px",
+            }}
           />
 
-          {/* Step 03 */}
+          {/* ================= STEP 03 ================= */}
+
           <Step
             step={steps[2]}
-            left="74%"
-            top="33%"
+            style={{
+              left: "90%",
+              top: "100px",
+            }}
           />
 
-          {/* Step 04 */}
+          {/* ================= STEP 04 ================= */}
+
           <Step
             step={steps[3]}
-            left="10%"
-            top="78%"
+            style={{
+              left: "11%",
+              top: "400px",
+            }}
           />
 
-          {/* Step 05 */}
+          {/* ================= STEP 05 ================= */}
+
           <Step
             step={steps[4]}
-            left="42%"
-            top="78%"
+            style={{
+              left: "44%",
+              top: "400px",
+            }}
           />
-        </div>
 
-        {/* ================= MOBILE ================= */}
-
-        <div className="how-work-mobile">
-          {steps.map((step) => (
-            <div
-              key={step.num}
-              className="mobile-step"
-            >
-              <div className="mobile-icon">
-                {step.icon}
-              </div>
-
-              <div>
-                <p className="step-number">
-                  {step.num}
-                </p>
-
-                <p className="step-title">
-                  {step.title}
-                </p>
-
-                <p className="step-desc">
-                  {step.desc}
-                </p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
-
-      {/* ================= RESPONSIVE CSS ================= */}
-
-      <style>
-        {`
-          .how-work-mobile {
-            display: none;
-          }
-
-          .mobile-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 24px 0;
-            border-bottom: 1px solid ${LINE_COLOR};
-          }
-
-          .mobile-icon {
-            width: 58px;
-            height: 58px;
-            min-width: 58px;
-            border-radius: 50%;
-            border: 1.5px solid ${MAROON};
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .step-number {
-            font-size: 14px;
-            font-weight: 600;
-            color: #141414;
-            margin: 0 0 4px;
-          }
-
-          .step-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: ${MAROON};
-            margin: 0 0 8px;
-          }
-
-          .step-desc {
-            font-size: 14px;
-            color: #3a3a3a;
-            line-height: 1.55;
-            margin: 0;
-          }
-
-          @media (max-width: 768px) {
-
-            .how-work-container {
-              padding: 45px 20px 55px !important;
-            }
-
-            .how-work-title {
-              font-size: 27px !important;
-            }
-
-            .how-work-subtitle {
-              font-size: 15px !important;
-              margin-bottom: 35px !important;
-            }
-
-            .how-work-desktop {
-              display: none !important;
-            }
-
-            .how-work-mobile {
-              display: block;
-            }
-          }
-
-          @media (max-width: 480px) {
-
-            .how-work-title {
-              font-size: 24px !important;
-            }
-
-            .how-work-subtitle {
-              font-size: 14px !important;
-            }
-
-            .mobile-step {
-              gap: 15px;
-            }
-
-            .mobile-icon {
-              width: 52px;
-              height: 52px;
-              min-width: 52px;
-            }
-
-            .step-title {
-              font-size: 17px;
-            }
-
-            .step-desc {
-              font-size: 13px;
-            }
-          }
-        `}
-      </style>
     </section>
   );
 }
 
 
-// =================================================
-// STEP COMPONENT
-// =================================================
+/* ================================================= */
+/* STEP COMPONENT */
+/* ================================================= */
 
-function Step({ step, left, top }) {
+function Step({ step, style }) {
   return (
     <div
       style={{
         position: "absolute",
-        left,
-        top,
         transform: "translate(-50%, -50%)",
         width: "230px",
+        zIndex: 2,
+        fontFamily: "inter, sans-serif",
+        ...style,
       }}
     >
-      {/* Icon */}
+
+      {/* ================= ICON ================= */}
+
       <div
         style={{
           width: "62px",
           height: "62px",
           borderRadius: "50%",
           border: `1.5px solid ${MAROON}`,
-          background: "#fff",
+          background: "#ffffff",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
-          zIndex: 2,
+          zIndex: 3,
         }}
       >
         {step.icon}
       </div>
 
-      {/* Content */}
-      <div style={{ marginTop: "20px" }}>
+      {/* ================= TEXT ================= */}
+
+      <div
+        style={{
+          marginTop: "20px",
+        }}
+      >
+
         <p
           style={{
             fontSize: "15px",
@@ -471,6 +361,7 @@ function Step({ step, left, top }) {
         >
           {step.desc}
         </p>
+
       </div>
     </div>
   );

@@ -217,7 +217,7 @@ export default function BigVision() {
                   whitespace-nowrap 
                 " 
               > 
-                Co-Founder &amp; COO 
+                Chief Operating Officer
               </p> 
             </div> 
           </div>
