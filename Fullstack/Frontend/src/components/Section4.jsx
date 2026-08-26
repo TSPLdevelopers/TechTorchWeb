@@ -581,8 +581,8 @@ export default function WhatsNext() {
 `}</style>
 
       <div className="wn-header">
-        <h1 font-family="Plus Jakarta Sans">What's Next</h1>
-        <p font-family="Plus Jakarta Sans">Ideas, trends and technology shaping how businesses adapt, evolve and move forward.</p>
+        <h1 fontFamily="Plus Jakarta Sans">What's Next</h1>
+        <p fontFamily="Plus Jakarta Sans">Ideas, trends and technology shaping how businesses adapt, evolve and move forward.</p>
       </div>
 
       <div className="wn-grid">

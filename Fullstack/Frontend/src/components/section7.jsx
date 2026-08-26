@@ -15,8 +15,8 @@ function Eyebrow({ children }) {
     <div
       className="flex items-center gap-2.5"
       style={{
-        marginBottom: "clamp(16px, 2.4vw, 28px)",
-        fontSize: "clamp(10px, 0.9vw, 12px)",
+        marginBottom: "28px",
+        fontSize: "15px",
         fontWeight: 700,
         textTransform: "uppercase",
         letterSpacing: "0.14em",
@@ -53,11 +53,11 @@ function CTAButton({ children }) {
     <button
       className="tx-cta inline-flex items-center justify-center gap-2.5 self-start rounded-lg whitespace-nowrap w-full sm:w-auto"
       style={{
-        marginTop: "clamp(16px, 2vw, 0px)",
+        marginTop: "16px",
         border: `1.5px solid ${colors.brand}`,
         color: colors.brand,
-        padding: "clamp(12px, 1.4vw, 12px) clamp(20px, 2.2vw, 22px)",
-        fontSize: "clamp(14px, 1vw, 16px)",
+        padding: "12px 22px",
+        fontSize: "16px",
         fontWeight: 700,
       }}
     >
@@ -72,58 +72,78 @@ function CopyPanel() {
     <div
       className="flex w-full max-w-2xl flex-col justify-center tx-copy"
       style={{
-        padding: "clamp(40px, 6vw, 80px) clamp(20px, 4vw, 80px)",
-        transform: "translateY(-50px)",
+        paddingTop: "65px",
+        paddingBottom: "65px",
+        paddingLeft: "70px",
+        paddingRight: "70px",
       }}
     >
       <Eyebrow>The Next Chapter</Eyebrow>
 
       <h1
-  style={{
-    marginBottom: "clamp(12px, 1.6vw, 24px)",
-    fontSize: "clamp(26px, 3.2vw, 42px)",
-    lineHeight: 1.18,
-    fontWeight: 700,
-    color: colors.ink,
-    letterSpacing: "-0.01em",
-    transform: "translateY(10px)",
-  }}
->
-        One suite.{" "}
-        <span style={{ color: colors.brand }}>Every screen,</span> working
-        together.
+        style={{
+          marginBottom: "24px",
+          fontSize: "32px",
+          lineHeight: 1.18,
+          fontFamily: "Plus Jakarta Sans",
+          fontWeight: 600,
+          color: colors.ink,
+          letterSpacing: "-0.01em",
+          transform: "translateY(10px)",
+          whiteSpace: "nowrap",
+        }}
+      >
+        We had an{" "}
+        <span style={{ color: colors.brand }}>idea.</span> Then we{" "}
+        <span style={{ color: colors.brand }}>built it.</span>
       </h1>
 
       <p
-  style={{
-    marginBottom: "clamp(12px, 1.4vw, 20px)",
-    fontSize: "clamp(18px, 1.8vw, 30px)",
-    fontWeight: 600,
-    lineHeight: 1.25,
-    color: colors.brand,
-    transform: "translateY(10px)",
-  }}
->
-        Watch TorchX in motion
+        style={{
+          marginBottom: "20px",
+          fontSize: "30px",
+          fontFamily: "Plus Jakarta Sans",
+          fontWeight: 600,
+          lineHeight: 1.25,
+          color: colors.brand,
+          transform: "translateY(20px)",
+        }}
+      >
+        TorchX Suite
       </p>
 
       <p
-  style={{
-    marginBottom: "clamp(20px, 3vw, 40px)",
-    maxWidth: "28rem",
-    fontSize: "clamp(14px, 1vw, 17px)",
-    lineHeight: 1.65,
-    fontWeight: 400,
-    color: colors.inkSoft,
-    transform: "translate(-6px, 20px)",
-  }}
->
-        HR, finance, payroll, inventory, and customer data — moving through
-        one connected experience. This is what your team opens every
-        morning, not a slide about it.
+        style={{
+          marginBottom: "40px",
+          fontSize: "22px",
+          maxWidth: "28rem",
+          lineHeight: 1.65,
+          fontWeight: 500,
+          color: "#1e1e1e",
+          transform: "translate(-6px, 10px)",
+        }}
+      >
+        One connected platform for the way your business works.
       </p>
 
-      <CTAButton>Watch the full walkthrough</CTAButton>
+      <p
+        style={{
+          marginBottom: "16px",
+          fontSize: "18px",
+          fontFamily: "Inter",
+          maxWidth: "28rem",
+          lineHeight: 1.65,
+          fontWeight: 400,
+          color: "#1e1e1e",
+          transform: "translate(-6px, 10px)",
+        }}
+      >
+        TorchX Suite brings HR, finance, payroll, inventory, and customer
+        operations together in one place — helping teams work with less
+        complexity, better visibility, and more confidence.
+      </p>
+
+      <CTAButton>Explore TorchX Suite</CTAButton>
     </div>
   );
 }
@@ -132,11 +152,11 @@ function CopyPanel() {
 
 function ImagePanel() {
   return (
-    <div className="relative w-[85%] h-full overflow-hidden flex items-center justify-center md:justify-end">
+    <div className="tx-image-panel relative w-full h-full flex items-center justify-end overflow-hidden">
       <img
         src="/sec7.png"
         alt="TorchX"
-        className="tx-image block h-auto md:h-full object-contain md:object-fill"
+        className="tx-image block w-full h-full object-contain"
       />
     </div>
   );
@@ -147,13 +167,12 @@ function ImagePanel() {
 export default function TorchXVideoSection() {
   return (
     <div
-  className="w-full overflow-hidden"
-  style={{
-    backgroundColor: "#fff",
-    isolation: "isolate",
-    fontFamily: '"Plus Jakarta Sans", sans-serif',
-  }}
->
+      className="w-full font-sans"
+      style={{
+        backgroundColor: "#fff",
+        isolation: "isolate",
+      }}
+    >
       <style>{`
         .tx-cta {
           transition: all 0.25s ease;
@@ -184,30 +203,35 @@ export default function TorchXVideoSection() {
             height: auto;
           }
 
-          /* CONTENT FIRST */
           .tx-copy-wrapper {
             order: 1;
+            width: 100%;
           }
 
-          /* IMAGE AFTER CONTENT */
           .tx-image-wrapper {
             order: 2;
+            width: 100%;
+            height: auto;
           }
 
           .tx-copy {
             transform: none !important;
-            padding: 40px 20px 35px;
+            padding: 40px 20px 35px !important;
           }
 
-          .tx-image-wrapper {
+          .tx-image-panel {
             width: 100%;
             height: auto;
+            min-height: 0;
           }
 
           .tx-image {
+            display: block;
             width: 100%;
             height: auto;
+            max-width: 100%;
             object-fit: contain;
+            object-position: right center;
           }
         }
 
@@ -215,13 +239,44 @@ export default function TorchXVideoSection() {
            TABLET
            ===================================================== */
 
-        @media (min-width: 768px) {
+        @media (min-width: 768px) and (max-width: 1023px) {
           .tx-section {
             height: 500px;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+          }
+
+          .tx-copy-wrapper {
+            height: 500px;
+          }
+
+          .tx-image-wrapper {
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+          }
+
+          .tx-image-panel {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
           }
 
           .tx-image {
             width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: right center;
+          }
+
+          .tx-copy {
+            transform: translateY(-10px);
+            padding-left: 40px !important;
+            padding-right: 35px !important;
           }
         }
 
@@ -229,17 +284,42 @@ export default function TorchXVideoSection() {
            DESKTOP
            ===================================================== */
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1024px) and (max-width: 1279px) {
           .tx-section {
+            height: 520px;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+          }
+
+          .tx-copy-wrapper {
             height: 520px;
           }
 
+          .tx-image-wrapper {
+            height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+          }
+
+          .tx-image-panel {
+            width: 100%;
+            height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+          }
+
           .tx-image {
-            width: 110%;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: right center;
           }
 
           .tx-copy {
-            transform: translateX(40px);
+            transform: translate(40px, 20px);
           }
         }
 
@@ -250,30 +330,57 @@ export default function TorchXVideoSection() {
         @media (min-width: 1280px) {
           .tx-section {
             height: 550px;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+          }
+
+          .tx-copy-wrapper {
+            height: 550px;
+          }
+
+          .tx-image-wrapper {
+            height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
+          }
+
+          .tx-image-panel {
+            width: 100%;
+            height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
           }
 
           .tx-image {
-            width: 88%;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: right center;
           }
 
           .tx-copy {
-            transform: translateX(60px);
+            transform: translate(60px, -25px);
           }
         }
       `}</style>
 
       <section
-        className="tx-section grid grid-cols-1 md:grid-cols-2 w-full overflow-hidden"
+        className="tx-section grid grid-cols-1 md:grid-cols-2 w-full"
         style={{
           backgroundColor: colors.cream,
         }}
       >
         {/* ================= IMAGE ================= */}
-        <div className="tx-image-wrapper order-1 md:order-2 h-full min-h-0 flex justify-end">
+
+        <div className="tx-image-wrapper order-1 md:order-2 min-h-0 flex justify-end">
           <ImagePanel />
         </div>
 
         {/* ================= COPY ================= */}
+
         <div className="tx-copy-wrapper order-2 md:order-1 flex items-center">
           <CopyPanel />
         </div>

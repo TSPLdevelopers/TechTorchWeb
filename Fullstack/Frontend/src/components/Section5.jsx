@@ -27,7 +27,7 @@ export default function BigVision() {
         {/* ================= LEFT CONTENT ================= */}
         <div className="relative z-20 w-full pt-[30px] sm:pt-[35px] md:w-[60%] md:pt-[40px] lg:w-[45%] lg:pt-[10px]">
 
-          <p className="mb-[15px] text-[16px] sm:text-[17px] md:text-[18px] lg:text-[19px] font-medium 
+          <p className="mb-[15px] text-[16px] sm:text-[17px] md:text-[18px] lg:text-[18px] font-medium 
            leading-none text-black">
 
             THE BIG VISION
@@ -44,7 +44,7 @@ export default function BigVision() {
           </h1>
 
           <p className="mt-[25px] sm:mt-[27px] md:mt-[30px] lg:mt-[34px] max-w-[600px] text-[16px] 
-           sm:text-[17px] md:text-[18px] lg:text-[20px] font-normal leading-[1.4]text-[#1e1e1e]">
+           sm:text-[17px] md:text-[18px] lg:text-[18px] font-normal leading-[1.4]text-[#1e1e1e]">
 
             The future is not simply something we prepare for
             <br className="hidden sm:block" />
@@ -105,7 +105,7 @@ export default function BigVision() {
                 w-[180px] 
                 sm:w-[210px] 
                 md:w-[240px] 
-                lg:w-[270px] 
+                lg:w-[250px] 
                 object-contain 
               "
               style={{
@@ -175,7 +175,7 @@ export default function BigVision() {
                 w-[180px] 
                 sm:w-[210px] 
                 md:w-[240px] 
-                lg:w-[275px] 
+                lg:w-[255px] 
                 object-contain 
               "
               style={{

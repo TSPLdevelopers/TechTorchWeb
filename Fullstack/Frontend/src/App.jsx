@@ -10,16 +10,15 @@ import Hero2 from "./components/Hero2";
 import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
 import Section5 from "./components/Section5";
-import Section6 from "./components/Section6";
+import Section6 from "./components/section6";
 import Section7 from "./components/section7";
 import Section8 from "./components/section8";
 import Section9 from "./components/section9";
 import Footer from "./components/Footer";
 
+// ================= SLIDE 1 PAGE =================
 import Slide1 from "./components/hero1slides/Slide1.jsx";
-import Slide13 from "./components/hero1slides/Slide13.jsx";
-import Slide21 from "./components/hero1slides/Slide21.jsx";
-import Slide25 from "./components/hero1slides/Slide25.jsx";
+
 
 // =================================================
 // HOME PAGE
@@ -38,6 +37,24 @@ function Home() {
       <Section8 />
       <Section9 />
       <Footer />
+    </div>
+  );
+}
+
+function Slide1Page() {
+  return (
+    <div>
+      <HeroSlide01 />
+      <HeroSlide02/>
+      <HeroSlide04/>
+    </div>
+  );
+}
+
+function Slide2Page() {
+  return (
+    <div>
+      <Hero02Slide02 />
     </div>
   );
 }
@@ -81,7 +98,7 @@ function App() {
       {/* SLIDE 1 */}
       <Route
         path="/Slide1"
-        element={<Slide1Page />}
+        element={<Slide1 />}
       />
 
       {/* SLIDE 2 */}
