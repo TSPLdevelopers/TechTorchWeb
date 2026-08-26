@@ -96,6 +96,7 @@ const cards = [
 export default function ErpIntelligence() {
   return (
     <section
+      className="erp-intelligence-section"
       style={{
         width: "100%",
         background: "#f6f3ec",
@@ -104,71 +105,32 @@ export default function ErpIntelligence() {
           "repeating-linear-gradient(90deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 48px)",
 
         fontFamily: "'Plus Jakarta Sans', sans-serif",
-
-        // Reduced section height
         padding: "38px 0 48px",
-
         overflow: "hidden",
+        boxSizing: "border-box",
       }}
     >
       {/* ================= CONTAINER ================= */}
 
-      <div
-        className="erp-intelligence-container"
-        style={{
-          width: "100%",
-          maxWidth: "1450px",
-          margin: "0 auto",
-          padding: "0 32px",
-          boxSizing: "border-box",
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-        }}
-      >
+      <div className="erp-intelligence-container">
+
         {/* ================= HEADER ================= */}
 
-        <p
-          style={{
-            fontSize: "24px",
-            fontWeight: 700,
-            color: "#141414",
-            letterSpacing: "0.02em",
-
-            // Slightly higher
-            margin: "-8px 14px 12px",
-          }}
-        >
+        <p className="erp-label">
           ERP &amp; INTELLIGENCE
         </p>
 
-        <h2
-          style={{
-            fontSize: "32px",
-            fontWeight: 700,
-            lineHeight: "1.15",
-            color: "#141414",
-            margin: "0 14px 16px",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
-        >
+        <h2 className="erp-heading">
           Get More From{" "}
-          <span style={{ color: MAROON }}>
+          <span>
             Your Business Data
           </span>
         </h2>
 
-        <p
-          style={{
-            fontSize: "16px",
-            color: "#2c2c2c",
-            lineHeight: "1.6",
-            margin: "0 15px 32px",
-            maxWidth: "820px",
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
+        <p className="erp-description">
           Once your business processes and information are connected, you can
           do more with the data you already have.
-          <br />
+          <br className="desktop-break" />
           From automation and reporting to analytics and intelligent tools, a
           connected ERP system can help your teams work faster and make more
           informed decisions.
@@ -176,86 +138,27 @@ export default function ErpIntelligence() {
 
         {/* ================= CARDS ================= */}
 
-        <div
-          className="erp-intelligence-cards"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-            gap: "22px",
-            width: "100%",
-            height: "auto",
-            margin: "0 18px",
-          }}
-        >
+        <div className="erp-intelligence-cards">
           {cards.map(({ icon, title, desc }) => (
             <div
               key={title}
-              style={{
-                background: "#ffffff",
-                width: "90%",
-
-                // Reduced card height
-                minHeight: "260px",
-
-                // Reduced padding
-                padding: "32px 32px",
-
-                boxSizing: "border-box",
-
-                display: "flex",
-                flexDirection: "column",
-
-                boxShadow: "0 10px 28px rgba(20,20,20,0.05)",
-
-                // Rounded corners
-                borderRadius: "16px",
-              }}
+              className="erp-card"
             >
-              {/* ================= ICON ================= */}
+              {/* ICON */}
 
-              <div
-                style={{
-                  width: "68px",
-                  height: "68px",
-                  minWidth: "68px",
-                  borderRadius: "50%",
-                  background: MAROON,
-
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-
-                  // Reduced gap
-                  marginBottom: "24px",
-                }}
-              >
+              <div className="erp-icon">
                 {icon}
               </div>
 
-              {/* ================= TITLE ================= */}
+              {/* TITLE */}
 
-              <p
-                style={{
-                  fontSize: "22px",
-                  fontWeight: 700,
-                  color: "#141414",
-                  margin: "0 0 10px",
-                  lineHeight: "1.2",
-                }}
-              >
+              <p className="erp-card-title">
                 {title}
               </p>
 
-              {/* ================= DESCRIPTION ================= */}
+              {/* DESCRIPTION */}
 
-              <p
-                style={{
-                  fontSize: "15px",
-                  color: "#3a3a3a",
-                  lineHeight: "1.5",
-                  margin: 0,
-                }}
-              >
+              <p className="erp-card-description">
                 {desc}
               </p>
             </div>
@@ -263,36 +166,330 @@ export default function ErpIntelligence() {
         </div>
       </div>
 
-      {/* ================= RESPONSIVE ================= */}
+      {/* ================= RESPONSIVE CSS ================= */}
 
       <style>{`
+
+        /* ================= CONTAINER ================= */
+
+        .erp-intelligence-container {
+          width: 100%;
+          max-width: 1450px;
+          margin: 0 auto;
+          padding: 0 32px;
+          box-sizing: border-box;
+        }
+
+
+        /* ================= LABEL ================= */
+
+        .erp-label {
+          font-size: 24px;
+          font-weight: 700;
+          color: #141414;
+          letter-spacing: 0.02em;
+          margin: -8px 14px 12px;
+        }
+
+
+        /* ================= HEADING ================= */
+
+        .erp-heading {
+          font-size: 32px;
+          font-weight: 700;
+          line-height: 1.15;
+          color: #141414;
+          margin: 0 14px 16px;
+        }
+
+        .erp-heading span {
+          color: ${MAROON};
+        }
+
+
+        /* ================= DESCRIPTION ================= */
+
+        .erp-description {
+          font-size: 16px;
+          color: #2c2c2c;
+          line-height: 1.6;
+          margin: 0 15px 32px;
+          max-width: 820px;
+          font-family: "Inter", sans-serif;
+        }
+
+
+        /* ================= CARDS ================= */
+
+        .erp-intelligence-cards {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 22px;
+          width: 100%;
+          margin: 0;
+          box-sizing: border-box;
+        }
+
+
+        /* ================= CARD ================= */
+
+        .erp-card {
+          width: 100%;
+          min-width: 0;
+          min-height: 260px;
+
+          background: #ffffff;
+
+          padding: 32px;
+
+          box-sizing: border-box;
+
+          display: flex;
+          flex-direction: column;
+
+          border-radius: 16px;
+
+          box-shadow: 0 10px 28px rgba(20,20,20,0.05);
+        }
+
+
+        /* ================= ICON ================= */
+
+        .erp-icon {
+          width: 68px;
+          height: 68px;
+          min-width: 68px;
+
+          border-radius: 50%;
+
+          background: ${MAROON};
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          margin-bottom: 24px;
+        }
+
+
+        /* ================= CARD TITLE ================= */
+
+        .erp-card-title {
+          font-size: 22px;
+          font-weight: 700;
+          color: #141414;
+
+          margin: 0 0 10px;
+
+          line-height: 1.2;
+        }
+
+
+        /* ================= CARD DESCRIPTION ================= */
+
+        .erp-card-description {
+          font-size: 15px;
+          color: #3a3a3a;
+
+          line-height: 1.5;
+
+          margin: 0;
+        }
+
+
+        /* ================================================= */
+        /* TABLET */
+        /* ================================================= */
+
         @media (max-width: 1100px) {
+
           .erp-intelligence-container {
-            padding: 0 24px !important;
+            padding: 0 24px;
           }
 
           .erp-intelligence-cards {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            width: 100% !important;
-            margin: 0 !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+          }
+
+          .erp-card {
+            min-height: 250px;
+          }
+
+          .erp-label {
+            font-size: 22px;
+          }
+
+          .erp-heading {
+            font-size: 30px;
           }
         }
 
-        @media (max-width: 640px) {
+
+        /* ================================================= */
+        /* SMALL TABLET */
+        /* ================================================= */
+
+        @media (max-width: 768px) {
+
+          .erp-intelligence-section {
+            padding: 32px 0 40px !important;
+          }
+
           .erp-intelligence-container {
-            padding: 0 18px !important;
+            padding: 0 20px;
+          }
+
+          .erp-label {
+            font-size: 20px;
+            margin: 0 0 10px;
+          }
+
+          .erp-heading {
+            font-size: 28px;
+            margin: 0 0 14px;
+          }
+
+          .erp-description {
+            font-size: 15px;
+            line-height: 1.55;
+            margin: 0 0 28px;
           }
 
           .erp-intelligence-cards {
-            grid-template-columns: 1fr !important;
-            gap: 18px !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
           }
 
-          .erp-intelligence-cards > div {
-            min-height: 240px !important;
-            padding: 28px 24px !important;
+          .erp-card {
+            min-height: 240px;
+            padding: 28px 24px;
+          }
+
+          .erp-icon {
+            width: 62px;
+            height: 62px;
+            min-width: 62px;
+            margin-bottom: 20px;
+          }
+
+          .erp-card-title {
+            font-size: 20px;
+          }
+
+          .erp-card-description {
+            font-size: 14px;
+            line-height: 1.5;
           }
         }
+
+
+        /* ================================================= */
+        /* MOBILE */
+        /* ================================================= */
+
+        @media (max-width: 600px) {
+
+          .erp-intelligence-section {
+            padding: 28px 0 36px !important;
+          }
+
+          .erp-intelligence-container {
+            padding: 0 16px;
+          }
+
+          .erp-label {
+            font-size: 18px;
+            margin: 0 0 10px;
+          }
+
+          .erp-heading {
+            font-size: 25px;
+            line-height: 1.2;
+            margin: 0 0 14px;
+          }
+
+          .erp-description {
+            font-size: 14px;
+            line-height: 1.55;
+            margin: 0 0 24px;
+          }
+
+          .desktop-break {
+            display: none;
+          }
+
+          .erp-intelligence-cards {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .erp-card {
+            width: 100%;
+            min-height: auto;
+            padding: 26px 22px;
+            border-radius: 14px;
+          }
+
+          .erp-icon {
+            width: 58px;
+            height: 58px;
+            min-width: 58px;
+            margin-bottom: 18px;
+          }
+
+          .erp-icon svg {
+            width: 21px;
+            height: 21px;
+          }
+
+          .erp-card-title {
+            font-size: 19px;
+            margin-bottom: 8px;
+          }
+
+          .erp-card-description {
+            font-size: 14px;
+            line-height: 1.5;
+          }
+        }
+
+
+        /* ================================================= */
+        /* VERY SMALL MOBILE */
+        /* ================================================= */
+
+        @media (max-width: 400px) {
+
+          .erp-intelligence-container {
+            padding: 0 14px;
+          }
+
+          .erp-label {
+            font-size: 17px;
+          }
+
+          .erp-heading {
+            font-size: 23px;
+          }
+
+          .erp-description {
+            font-size: 13.5px;
+          }
+
+          .erp-card {
+            padding: 24px 20px;
+          }
+
+          .erp-card-title {
+            font-size: 18px;
+          }
+
+          .erp-card-description {
+            font-size: 13.5px;
+          }
+        }
+
       `}</style>
     </section>
   );
