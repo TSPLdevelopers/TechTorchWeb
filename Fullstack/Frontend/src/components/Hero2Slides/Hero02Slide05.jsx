@@ -17,7 +17,7 @@ export default function TechHero() {
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 flex flex-col justify-center min-h-[560px] px-6 sm:px-12 md:px-16 max-w-2xl">
 
-        <h1 className="text-white font-semibold leading-[1.2] text-[2.1rem] sm:text-[2.6rem] md:text-[2.8rem] tracking-tight translate-y-8">
+        <h1 className="text-white font-semibold leading-tight text-[1.7rem] sm:text-[2.1rem] md:text-[2.4rem] md:text-[2.8rem] tracking-tight translate-y-8">
           Ready to Bring Your 
           <br />
           Business Together?
