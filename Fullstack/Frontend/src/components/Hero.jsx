@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import Slide1 from "./hero1slides/Slide1.jsx";
+import { Link } from "react-router-dom";
 
 
 // =================================================
@@ -34,7 +34,7 @@ const slides = [
 
     ctaText: "EXPLORE ERP",
 
-    ctaHref: "#",
+    ctaHref: "/Slide2",
 
     focus: "65% 40%",
   },

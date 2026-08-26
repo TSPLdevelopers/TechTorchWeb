@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export default function TechHero() {
   return (
     <div className="relative w-full min-h-[600px] overflow-hidden bg-[#0a1128] font-['Plus Jakarta Sans']">
