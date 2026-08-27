@@ -23,7 +23,7 @@ export default function LoginPage() {
       setMessage("");
 
       const response = await fetch(
-        "http://localhost:5000/api/admin/login",
+        "http://localhost:5000/api/auth/login",
         {
           method: "POST",
           headers: {

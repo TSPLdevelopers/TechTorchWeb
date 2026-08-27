@@ -1,6 +1,5 @@
 
 const bcrypt = require("bcryptjs");
-const mongoose = require("mongoose");
 const Admin = require("../models/Admin.model");
 const asyncHandler = require("../utils/asyncHandler");
 const { generateToken } = require("../utils/generateToken");
@@ -427,11 +426,5 @@ module.exports = {
   forgotPassword,
   verifyOTP,
   logoutAdmin,
-  getAdminProfile,
-  getAdminById,
-  updateAdmin,
-  updateAdminPassword,
-  toggleAdminStatus,
-  deleteAdmin,
 };
 
