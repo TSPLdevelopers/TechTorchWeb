@@ -122,91 +122,37 @@ const steps = [
 
 export default function HowWeWork() {
   return (
-    <section
-      style={{
-        width: "100%",
-        background: "#ffffff",
-        fontFamily: "'Plus Jakarta Sans', sans-serif",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "980px",
-          margin: "0 auto",
-          padding: "56px 24px 64px",
-        }}
-      >
+    <section className="how-work-section">
+
+      <div className="how-work-container">
 
         {/* ================= HEADER ================= */}
 
-        <p
-          style={{
-            textAlign: "center",
-            fontSize: "12px",
-            fontWeight: 700,
-            letterSpacing: "0.12em",
-            color: "#141414",
-            marginBottom: "16px",
-            marginTop: "-20px",
-          }}
-        >
+        <p className="how-work-label">
           HOW WE WORK
         </p>
 
-        <h2
-          style={{
-            textAlign: "center",
-            fontSize: "30px",
-            fontWeight: 700,
-            color: "#141414",
-            margin: "0 0 16px",
-            lineHeight: "1.25",
-          }}
-        >
+        <h2 className="how-work-heading">
           From Business Challenge to{" "}
-          <span style={{ color: MAROON }}>
-            Practical Solutions
-          </span>
+          <span>Practical Solutions</span>
         </h2>
 
-        <p
-          style={{
-            textAlign: "center",
-            fontSize: "17px",
-            color: "#444",
-            fontWeight: 400,
-            margin: "0 auto 56px",
-            maxWidth: "820px",
-          }}
-        >
+        <p className="how-work-description">
           A clear, collaborative approach focused on delivering solutions that
           create real and lasting value.
         </p>
 
+
         {/* ================= PROCESS ================= */}
 
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "520px",
-          }}
-        >
+        <div className="process-wrapper">
 
           {/* ================= CONNECTING LINE ================= */}
 
           <svg
+            className="process-line"
             viewBox="0 0 1000 520"
             preserveAspectRatio="none"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              pointerEvents: "none",
-              zIndex: 1,
-            }}
           >
             <path
               d="
@@ -227,142 +173,580 @@ export default function HowWeWork() {
             />
           </svg>
 
-          {/* ================= STEP 01 ================= */}
+
+          {/* ================= STEPS ================= */}
 
           <Step
             step={steps[0]}
-            style={{
-              left: "12%",
-              top: "100px",
-            }}
+            className="step-1"
           />
-
-          {/* ================= STEP 02 ================= */}
 
           <Step
             step={steps[1]}
-            style={{
-              left: "50%",
-              top: "100px",
-            }}
+            className="step-2"
           />
-
-          {/* ================= STEP 03 ================= */}
 
           <Step
             step={steps[2]}
-            style={{
-              left: "90%",
-              top: "100px",
-            }}
+            className="step-3"
           />
-
-          {/* ================= STEP 04 ================= */}
 
           <Step
             step={steps[3]}
-            style={{
-              left: "11%",
-              top: "400px",
-            }}
+            className="step-4"
           />
-
-          {/* ================= STEP 05 ================= */}
 
           <Step
             step={steps[4]}
-            style={{
-              left: "44%",
-              top: "400px",
-            }}
+            className="step-5"
           />
 
         </div>
       </div>
+
+
+      {/* ================= RESPONSIVE CSS ================= */}
+
+      <style>{`
+
+        /* =================================================
+           SECTION
+        ================================================= */
+
+        .how-work-section {
+          width: 100%;
+          background: #ffffff;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          overflow: hidden;
+        }
+
+
+        /* =================================================
+           CONTAINER
+        ================================================= */
+
+        .how-work-container {
+          width: 100%;
+          max-width: 1100px;
+          margin: 0 auto;
+
+          padding: 56px 32px 70px;
+
+          box-sizing: border-box;
+        }
+
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .how-work-label {
+          text-align: center;
+
+          font-size: 12px;
+          font-weight: 700;
+
+          letter-spacing: 0.12em;
+
+          color: #141414;
+
+          margin: -15px 0 16px;
+        }
+
+        .how-work-heading {
+          text-align: center;
+
+          font-size: 30px;
+          font-weight: 700;
+
+          line-height: 1.25;
+
+          color: #141414;
+
+          margin: 0 0 16px;
+        }
+
+        .how-work-heading span {
+          color: ${MAROON};
+        }
+
+        .how-work-description {
+          text-align: center;
+
+          font-size: 17px;
+          font-weight: 400;
+
+          color: #444;
+
+          line-height: 1.5;
+
+          margin: 0 auto 56px;
+
+          max-width: 820px;
+        }
+
+
+        /* =================================================
+           PROCESS WRAPPER
+        ================================================= */
+
+        .process-wrapper {
+          position: relative;
+
+          width: 100%;
+
+          height: 520px;
+        }
+
+
+        /* =================================================
+           CONNECTING LINE
+        ================================================= */
+
+        .process-line {
+          position: absolute;
+
+          inset: 0;
+
+          width: 100%;
+          height: 100%;
+
+          pointer-events: none;
+
+          z-index: 1;
+        }
+
+
+        /* =================================================
+           STEP
+        ================================================= */
+
+        .process-step {
+          position: absolute;
+
+          transform: translate(-50%, -50%);
+
+          width: 230px;
+
+          z-index: 2;
+
+          font-family: "Inter", sans-serif;
+        }
+
+
+        /* =================================================
+           STEP POSITIONS
+        ================================================= */
+
+        .step-1 {
+          left: 12%;
+          top: 100px;
+        }
+
+        .step-2 {
+          left: 50%;
+          top: 100px;
+        }
+
+        .step-3 {
+          left: 90%;
+          top: 100px;
+        }
+
+        .step-4 {
+          left: 11%;
+          top: 400px;
+        }
+
+        .step-5 {
+          left: 44%;
+          top: 400px;
+        }
+
+
+        /* =================================================
+           ICON
+        ================================================= */
+
+        .step-icon {
+          width: 62px;
+          height: 62px;
+
+          border-radius: 50%;
+
+          border: 1.5px solid ${MAROON};
+
+          background: #ffffff;
+
+          display: flex;
+
+          align-items: center;
+          justify-content: center;
+
+          position: relative;
+
+          z-index: 3;
+        }
+
+
+        /* =================================================
+           TEXT
+        ================================================= */
+
+        .step-content {
+          margin-top: 20px;
+        }
+
+        .step-number {
+          font-size: 15px;
+          font-weight: 600;
+
+          color: #141414;
+
+          margin: 0 0 4px;
+        }
+
+        .step-title {
+          font-size: 18px;
+          font-weight: 700;
+
+          color: ${MAROON};
+
+          margin: 0 0 10px;
+        }
+
+        .step-description {
+          font-size: 14px;
+
+          color: #3a3a3a;
+
+          line-height: 1.55;
+
+          margin: 0;
+
+          max-width: 210px;
+        }
+
+
+        /* =================================================
+           LARGE TABLET
+        ================================================= */
+
+        @media (max-width: 1100px) {
+
+          .how-work-container {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .process-step {
+            width: 210px;
+          }
+
+          .step-description {
+            max-width: 195px;
+            font-size: 13.5px;
+          }
+
+          .step-1 {
+            left: 11%;
+          }
+
+          .step-2 {
+            left: 50%;
+          }
+
+          .step-3 {
+            left: 89%;
+          }
+
+          .step-4 {
+            left: 12%;
+          }
+
+          .step-5 {
+            left: 45%;
+          }
+        }
+
+
+        /* =================================================
+           TABLET
+        ================================================= */
+
+        @media (max-width: 850px) {
+
+          .how-work-container {
+            padding: 48px 22px 60px;
+          }
+
+          .how-work-heading {
+            font-size: 28px;
+          }
+
+          .how-work-description {
+            font-size: 16px;
+            margin-bottom: 45px;
+          }
+
+          .process-wrapper {
+            height: 560px;
+          }
+
+          .process-step {
+            width: 190px;
+          }
+
+          .step-icon {
+            width: 58px;
+            height: 58px;
+          }
+
+          .step-title {
+            font-size: 17px;
+          }
+
+          .step-description {
+            font-size: 13px;
+            max-width: 180px;
+          }
+
+          .step-1 {
+            left: 12%;
+            top: 100px;
+          }
+
+          .step-2 {
+            left: 50%;
+            top: 100px;
+          }
+
+          .step-3 {
+            left: 88%;
+            top: 100px;
+          }
+
+          .step-4 {
+            left: 20%;
+            top: 420px;
+          }
+
+          .step-5 {
+            left: 55%;
+            top: 420px;
+          }
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 600px) {
+
+          .how-work-container {
+            padding: 38px 18px 50px;
+          }
+
+          .how-work-label {
+            font-size: 11px;
+            margin: 0 0 12px;
+          }
+
+          .how-work-heading {
+            font-size: 24px;
+            line-height: 1.25;
+
+            margin-bottom: 12px;
+          }
+
+          .how-work-description {
+            font-size: 14px;
+
+            line-height: 1.55;
+
+            max-width: 340px;
+
+            margin-bottom: 35px;
+          }
+
+
+          /* Vertical process */
+
+          .process-wrapper {
+            height: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 38px;
+
+            padding: 5px 0 5px 8px;
+          }
+
+
+          /* Hide desktop zig-zag line */
+
+          .process-line {
+            display: none;
+          }
+
+
+          /* Reset positions */
+
+          .process-step {
+            position: relative;
+
+            left: auto !important;
+            top: auto !important;
+
+            transform: none;
+
+            width: 100%;
+
+            max-width: 420px;
+
+            display: grid;
+
+            grid-template-columns: 62px 1fr;
+
+            column-gap: 18px;
+
+            align-items: start;
+          }
+
+
+          .step-icon {
+            width: 58px;
+            height: 58px;
+
+            grid-row: span 2;
+          }
+
+
+          .step-content {
+            margin-top: 0;
+
+            padding-top: 1px;
+          }
+
+
+          .step-number {
+            font-size: 13px;
+
+            margin-bottom: 3px;
+          }
+
+
+          .step-title {
+            font-size: 18px;
+
+            margin-bottom: 7px;
+          }
+
+
+          .step-description {
+            font-size: 13.5px;
+
+            line-height: 1.55;
+
+            max-width: 100%;
+          }
+        }
+
+
+        /* =================================================
+           SMALL MOBILE
+        ================================================= */
+
+        @media (max-width: 400px) {
+
+          .how-work-container {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
+
+          .how-work-heading {
+            font-size: 22px;
+          }
+
+          .how-work-description {
+            font-size: 13.5px;
+          }
+
+          .process-wrapper {
+            gap: 32px;
+            padding-left: 4px;
+          }
+
+          .process-step {
+            grid-template-columns: 54px 1fr;
+            column-gap: 15px;
+          }
+
+          .step-icon {
+            width: 52px;
+            height: 52px;
+          }
+
+          .step-icon svg {
+            width: 21px;
+            height: 21px;
+          }
+
+          .step-number {
+            font-size: 12px;
+          }
+
+          .step-title {
+            font-size: 17px;
+          }
+
+          .step-description {
+            font-size: 13px;
+          }
+        }
+
+      `}</style>
     </section>
   );
 }
 
 
-/* ================================================= */
-/* STEP COMPONENT */
-/* ================================================= */
+/* =================================================
+   STEP COMPONENT
+================================================= */
 
-function Step({ step, style }) {
+function Step({ step, className }) {
   return (
-    <div
-      style={{
-        position: "absolute",
-        transform: "translate(-50%, -50%)",
-        width: "230px",
-        zIndex: 2,
-        fontFamily: "inter, sans-serif",
-        ...style,
-      }}
-    >
+    <div className={`process-step ${className}`}>
 
-      {/* ================= ICON ================= */}
+      {/* ICON */}
 
-      <div
-        style={{
-          width: "62px",
-          height: "62px",
-          borderRadius: "50%",
-          border: `1.5px solid ${MAROON}`,
-          background: "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          zIndex: 3,
-        }}
-      >
+      <div className="step-icon">
         {step.icon}
       </div>
 
-      {/* ================= TEXT ================= */}
 
-      <div
-        style={{
-          marginTop: "20px",
-        }}
-      >
+      {/* TEXT */}
 
-        <p
-          style={{
-            fontSize: "15px",
-            fontWeight: 600,
-            color: "#141414",
-            margin: "0 0 4px",
-          }}
-        >
+      <div className="step-content">
+
+        <p className="step-number">
           {step.num}
         </p>
 
-        <p
-          style={{
-            fontSize: "18px",
-            fontWeight: 700,
-            color: MAROON,
-            margin: "0 0 10px",
-          }}
-        >
+        <p className="step-title">
           {step.title}
         </p>
 
-        <p
-          style={{
-            fontSize: "14px",
-            color: "#3a3a3a",
-            lineHeight: "1.55",
-            margin: 0,
-            maxWidth: "210px",
-          }}
-        >
+        <p className="step-description">
           {step.desc}
         </p>
 
       </div>
+
     </div>
   );
 }
