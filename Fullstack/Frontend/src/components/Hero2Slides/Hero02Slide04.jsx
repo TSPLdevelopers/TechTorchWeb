@@ -39,46 +39,46 @@ export default function PracticalERPPath() {
           relative
           mx-auto
           w-full
-          max-w-[1440px]
-          min-h-[620px]
+          max-w-[1520px]
+          min-h-[555px]
           overflow-hidden
           bg-white
 
-          sm:min-h-[650px]
-          md:min-h-[680px]
-          lg:min-h-[700px]
-          xl:min-h-[720px]
+          sm:min-h-[575px]
+          md:min-h-[595px]
+          lg:min-h-[615px]
+          xl:min-h-[630px]
         "
       >
         {/* =====================================================
             RIGHT SIDE IMAGE
-            Image is positioned independently so it does not
-            disturb the left content.
         ====================================================== */}
         <div
           className="
             pointer-events-none
             absolute
             right-0
-            top-[205px]
+            top-[175px]
             z-[1]
-            h-[415px]
-            w-[66%]
+            h-[380px]
+            w-[72%]
             overflow-hidden
 
-            sm:top-[220px]
-            sm:h-[430px]
+            sm:top-[180px]
+            sm:h-[395px]
+            sm:w-[72%]
 
-            md:top-[225px]
-            md:h-[455px]
+            md:top-[185px]
+            md:h-[415px]
+            md:w-[73%]
 
-            lg:top-[235px]
-            lg:h-[475px]
-            lg:w-[67%]
+            lg:top-[190px]
+            lg:h-[435px]
+            lg:w-[74%]
 
-            xl:top-[240px]
-            xl:h-[480px]
-            xl:w-[68%]
+            xl:top-[195px]
+            xl:h-[450px]
+            xl:w-[75%]
           "
         >
           <img
@@ -87,11 +87,10 @@ export default function PracticalERPPath() {
             className="
               absolute
               right-0
-              top-0
-              h-full
+              top-[-10px]
+              h-[calc(100%+10px)]
               w-full
-              object-cover
-              object-right
+              object-fill
             "
           />
 
@@ -101,10 +100,10 @@ export default function PracticalERPPath() {
               absolute
               inset-y-0
               left-0
-              w-[30%]
+              w-[27%]
               bg-gradient-to-r
               from-white
-              via-white/90
+              via-white/85
               to-transparent
             "
           />
@@ -118,19 +117,20 @@ export default function PracticalERPPath() {
             relative
             z-[5]
             px-6
-            pt-8
+            pt-7
 
             sm:px-9
-            sm:pt-9
+            sm:pt-8
 
             md:px-11
-            md:pt-10
+            md:pt-9
 
             lg:px-[50px]
-            lg:pt-[36px]
+            lg:pt-[30px]
 
             xl:px-[52px]
-            xl:pt-[32px]
+            xl:pt-[28px]
+
             lg:translate-x-4
             xl:translate-x-9
           "
@@ -162,7 +162,7 @@ export default function PracticalERPPath() {
           ==================================================== */}
           <p
             className="
-              mt-[20px]
+              mt-[17px]
               max-w-[640px]
               font-['Inter']
               text-[14px]
@@ -182,93 +182,42 @@ export default function PracticalERPPath() {
           </p>
 
           {/* ===================================================
-              TORCHX LOGO
+              TORCHX SUITE IMAGE
           ==================================================== */}
           <div
             className="
               absolute
               right-6
-              top-[30px]
+              top-[25px]
               hidden
-
+              w-[180px]
               sm:right-9
               sm:block
 
               md:right-11
+              md:w-[200px]
 
               lg:right-[50px]
-              lg:top-[35px]
+              lg:top-[30px]
+              lg:w-[230px]
 
               xl:right-[52px]
+              xl:w-[250px]
             "
           >
-            <div className="flex items-end leading-none">
-              <span
-                className="
-                  font-['Arial']
-                  text-[42px]
-                  font-bold
-                  tracking-[-0.075em]
-                  text-black
-
-                  md:text-[46px]
-                  lg:text-[51px]
-                "
-              >
-                Torch
-              </span>
-
-              <span
-                className="
-                  font-['Arial']
-                  text-[48px]
-                  font-bold
-                  leading-[0.78]
-                  tracking-[-0.12em]
-                  text-[#850052]
-
-                  md:text-[53px]
-                  lg:text-[58px]
-                "
-              >
-                X
-              </span>
-
-              <sup
-                className="
-                  ml-[3px]
-                  -mt-[31px]
-                  font-['Arial']
-                  text-[8px]
-                  font-bold
-                  text-black
-
-                  lg:text-[9px]
-                "
-              >
-                TM
-              </sup>
-            </div>
-
-            <div className="mt-[1px] flex items-center justify-center">
-              <span className="mr-3 h-px w-[22px] bg-[#222]" />
-
-              <span
-                className="
-                  font-['Arial']
-                  text-[8px]
-                  font-semibold
-                  tracking-[0.48em]
-                  text-black
-
-                  lg:text-[9px]
-                "
-              >
-                SUITE
-              </span>
-
-              <span className="ml-3 h-px w-[22px] bg-[#222]" />
-            </div>
+           <img
+  src="/TorchX Suite.png"
+  alt="TorchX Suite"
+  className="
+    block
+    h-auto
+    w-[85%]
+    max-w-full
+    object-contain
+    mt-6
+    mx-auto
+  "
+/>
           </div>
 
           {/* ===================================================
@@ -276,16 +225,16 @@ export default function PracticalERPPath() {
           ==================================================== */}
           <div
             className="
-              mt-[46px]
+              mt-[40px]
               w-[390px]
               max-w-full
 
-              sm:mt-[48px]
+              sm:mt-[42px]
               sm:w-[420px]
 
-              md:mt-[50px]
+              md:mt-[44px]
 
-              lg:mt-[51px]
+              lg:mt-[45px]
               lg:w-[430px]
 
               xl:w-[440px]
@@ -303,7 +252,7 @@ export default function PracticalERPPath() {
 
                   ${
                     index !== steps.length - 1
-                      ? "mb-[22px] sm:mb-[24px] lg:mb-[25px]"
+                      ? "mb-[18px] sm:mb-[20px] lg:mb-[21px]"
                       : ""
                   }
                 `}
@@ -312,8 +261,8 @@ export default function PracticalERPPath() {
                 <div
                   className="
                     flex
-                    h-[48px]
-                    w-[48px]
+                    h-[45px]
+                    w-[45px]
                     shrink-0
                     items-center
                     justify-center
@@ -321,23 +270,23 @@ export default function PracticalERPPath() {
                     bg-[#850052]
 
                     font-['Inter']
-                    text-[19px]
+                    text-[18px]
                     font-medium
                     leading-none
                     text-white
 
-                    sm:h-[49px]
-                    sm:w-[49px]
+                    sm:h-[46px]
+                    sm:w-[46px]
 
-                    lg:h-[45px]
-                    lg:w-[45px]
+                    lg:h-[44px]
+                    lg:w-[44px]
                   "
                 >
                   {step.no}
                 </div>
 
                 {/* TEXT */}
-                <div className="min-w-0 pt-[3px]">
+                <div className="min-w-0 pt-[2px]">
                   <h2
                     className="
                       font-['Plus_Jakarta_Sans']
@@ -356,7 +305,7 @@ export default function PracticalERPPath() {
 
                   <p
                     className="
-                      mt-[5px]
+                      mt-[4px]
                       max-w-[390px]
                       font-['Inter']
                       text-[13px]
@@ -365,7 +314,7 @@ export default function PracticalERPPath() {
                       text-[#242424]
 
                       sm:text-[14px]
-                      lg:text-[14x]
+                      lg:text-[14px]
                     "
                   >
                     {step.text}

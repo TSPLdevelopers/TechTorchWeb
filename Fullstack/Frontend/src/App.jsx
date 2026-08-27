@@ -15,11 +15,20 @@ import Section7 from "./components/section7";
 import Section8 from "./components/section8";
 import Section9 from "./components/section9";
 import Footer from "./components/Footer";
-import Hero02Slide02 from "./components/Hero2Slides/Hero02Slide02.jsx";
+
 import HeroSlide01 from "./components/HeroSlides/HeroSlide01.jsx";
 import HeroSlide02 from "./components/HeroSlides/HeroSlide02.jsx";
+import HeroSlide03 from "./components/HeroSlides/HeroSlide03.jsx";
 import HeroSlide04 from "./components/HeroSlides/HeroSlide04.jsx";
 import Hero02Slide04 from "./components/Hero2Slides/Hero02Slide04.jsx";
+
+import Hero02Slide01 from "./components/Hero2Slides/Hero02Slide01.jsx";
+import Hero02Slide02 from "./components/Hero2Slides/Hero02Slide02.jsx";
+import Hero02Slide03 from "./components/Hero2Slides/Hero02Slide03.jsx";
+import Hero02Slide05 from "./components/Hero2Slides/Hero02Slide05.jsx";
+import Hero02Slide06 from "./components/Hero2Slides/Hero02Slide06.jsx";
+import Hero03Slide01 from  "./components/Hero3Slides/Hero03Slide01.jsx";
+
 
 
 // =================================================
@@ -58,6 +67,7 @@ function Slide1Page() {
     <div>
       <HeroSlide01 />
       <HeroSlide02/>
+      <HeroSlide03/>
       <HeroSlide04/>
     </div>
   );
@@ -66,12 +76,23 @@ function Slide1Page() {
 function Slide2Page() {
   return (
     <div>
+      <Hero02Slide01 />
       <Hero02Slide02 />
+      <Hero02Slide03 />
       <Hero02Slide04 />
+      <Hero02Slide05 />
+      <Hero02Slide06 />
     </div>
   );
 }
 
+function Slide3Page() {
+  return (
+    <div>
+      <Hero03Slide01 />
+    </div>
+  );
+}
 
 // =================================================
 // APP
@@ -95,6 +116,10 @@ function App() {
       <Route
       path="/Slide2"
       element={<Slide2Page />}
+      />
+       <Route
+      path="/Slide3"
+      element={<Slide3Page />}
       />
 
     </Routes>

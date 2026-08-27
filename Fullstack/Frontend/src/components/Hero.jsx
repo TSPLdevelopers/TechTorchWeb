@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 // =================================================
 // SLIDES
 // =================================================
+
 const slides = [
   {
     image: "/Slide1.png",
 
-    headline:
-      "Turning Business Challenges Into Digital Possibilities",
+    headline: "Turning Business Challenges Into Digital Possibilities",
 
     body:
       "We bring technology, business processes and people together to create practical digital solutions that help businesses work smarter and grow with confidence.",
 
     ctaText: "EXPLORE OUR SOLUTIONS",
 
-    // React Router route
-    ctaHref: "/Slide1",
+    // Route to Slide1.jsx
+    ctaHref: "/slide1",
 
     focus: "center",
   },
@@ -26,14 +25,14 @@ const slides = [
   {
     image: "/Slide2.png",
 
-    headline:
-      "One Connected System for Your Business",
+    headline: "One Connected System for Your Business",
 
     body:
       "From custom applications to enterprise platforms, we create software that fits the way your business works today—and gives you room to grow tomorrow.",
 
     ctaText: "EXPLORE ERP",
 
+    // Change this when you create the ERP page
     ctaHref: "/Slide2",
 
     focus: "65% 40%",
@@ -42,15 +41,15 @@ const slides = [
   {
     image: "/Slide3.png",
 
-    headline:
-      "Software Built Around Your Business",
+    headline: "Software Built Around Your Business",
 
     body:
       "From custom applications to enterprise platforms, we create software that fits the way your business works today—and gives you room to grow tomorrow.",
 
     ctaText: "BUILD WITH TECHTORCH",
 
-    ctaHref: "#",
+    // Slide13 page
+    ctaHref: "/slide3",
 
     focus: "70% 50%",
   },
@@ -58,8 +57,7 @@ const slides = [
   {
     image: "/Slide4.png",
 
-    headline:
-      "Technology That Keeps You Ready for What’s Next",
+    headline: "Technology That Keeps You Ready for What’s Next",
 
     body:
       "From AI and cloud to cybersecurity, we help businesses adopt modern technology with the reliability, security and flexibility they need to grow.",
@@ -74,8 +72,7 @@ const slides = [
   {
     image: "/Slide6.png",
 
-    headline:
-      "Everything Your Business Needs, Working Together",
+    headline: "Everything Your Business Needs, Working Together",
 
     body:
       "TorchX Suite brings key business functions into one connected platform, helping teams manage people, customers, finance and operations with greater clarity.",
@@ -88,29 +85,27 @@ const slides = [
   },
 ];
 
-
 // =================================================
 // HERO COMPONENT
 // =================================================
+
 const Hero = () => {
   const [current, setCurrent] = useState(0);
 
-
   // ================= NEXT SLIDE =================
+
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % slides.length);
   };
 
-
   // ================= PREVIOUS SLIDE =================
+
   const prevSlide = () => {
-    setCurrent(
-      (prev) => (prev - 1 + slides.length) % slides.length
-    );
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-
   // ================= AUTO SLIDER =================
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
@@ -119,13 +114,10 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-
   const active = slides[current];
-
 
   return (
     <section className="relative w-full h-[78vh] min-h-[420px] max-h-[620px] overflow-hidden bg-[#0e1c2e]">
-
 
       {/* ================================================= */}
       {/* BACKGROUND IMAGES */}
@@ -145,18 +137,13 @@ const Hero = () => {
             transition-opacity
             duration-700
             ease-in-out
-            ${
-              i === current
-                ? "opacity-100"
-                : "opacity-0"
-            }
+            ${i === current ? "opacity-100" : "opacity-0"}
           `}
           style={{
             objectPosition: slide.focus,
           }}
         />
       ))}
-
 
       {/* ================================================= */}
       {/* DARK OVERLAY */}
@@ -169,7 +156,6 @@ const Hero = () => {
             "linear-gradient(90deg, rgba(10,18,32,0.72) 0%, rgba(10,18,32,0.46) 38%, rgba(10,18,32,0.08) 62%, rgba(10,18,32,0) 78%)",
         }}
       />
-
 
       {/* ================================================= */}
       {/* CONTENT */}
@@ -193,7 +179,7 @@ const Hero = () => {
         "
       >
 
-        {/* ================= HEADLINE ================= */}
+        {/* HEADLINE */}
 
         <h1
           className="
@@ -201,17 +187,14 @@ const Hero = () => {
             md:text-[36px]
             lg:text-[44px]
             leading-[1.12]
-            font-Plus
-            Jakarta
-            Sans
+            font-semibold
             mb-10
           "
         >
           {active.headline}
         </h1>
 
-
-        {/* ================= BODY ================= */}
+        {/* BODY */}
 
         <p
           className="
@@ -226,14 +209,11 @@ const Hero = () => {
           {active.body}
         </p>
 
-
         {/* ================================================= */}
         {/* CTA BUTTON */}
         {/* ================================================= */}
 
         {active.ctaHref.startsWith("/") ? (
-
-          // React Router Link
           <Link
             to={active.ctaHref}
             className="
@@ -254,10 +234,7 @@ const Hero = () => {
           >
             {active.ctaText}
           </Link>
-
         ) : (
-
-          // Normal anchor for # links
           <a
             href={active.ctaHref}
             className="
@@ -278,11 +255,8 @@ const Hero = () => {
           >
             {active.ctaText}
           </a>
-
         )}
-
       </div>
-
 
       {/* ================================================= */}
       {/* DOTS */}
@@ -299,7 +273,6 @@ const Hero = () => {
           gap-4
         "
       >
-
         {slides.map((_, i) => (
           <button
             key={i}
@@ -319,9 +292,7 @@ const Hero = () => {
             `}
           />
         ))}
-
       </div>
-
 
       {/* ================================================= */}
       {/* ARROWS */}
@@ -339,7 +310,7 @@ const Hero = () => {
         "
       >
 
-        {/* ================= PREVIOUS ================= */}
+        {/* PREVIOUS */}
 
         <button
           onClick={prevSlide}
@@ -357,7 +328,6 @@ const Hero = () => {
             transition-colors
           "
         >
-
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -367,11 +337,9 @@ const Hero = () => {
           >
             <polyline points="15 18 9 12 15 6" />
           </svg>
-
         </button>
 
-
-        {/* ================= NEXT ================= */}
+        {/* NEXT */}
 
         <button
           onClick={nextSlide}
@@ -389,7 +357,6 @@ const Hero = () => {
             transition-colors
           "
         >
-
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -399,14 +366,11 @@ const Hero = () => {
           >
             <polyline points="9 18 15 12 9 6" />
           </svg>
-
         </button>
 
       </div>
-
     </section>
   );
 };
-
 
 export default Hero;

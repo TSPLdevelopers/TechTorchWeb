@@ -9,6 +9,7 @@ export default function ERPApproach() {
         overflow-hidden
         bg-[#F8F7F0]
         text-[#191919]
+
         sm:min-h-[680px]
         md:min-h-[620px]
         lg:min-h-[600px]
@@ -22,19 +23,26 @@ export default function ERPApproach() {
           max-w-[1240px]
           px-5
           py-3
+
           sm:px-7
           sm:py-4
+
           md:px-9
           md:py-5
+
+          lg:max-w-[1160px]
           lg:px-10
           lg:py-8
+
+          xl:max-w-[1180px]
           xl:px-12
         "
       >
         {/* ================= TOP LABEL ================= */}
         <p
           className="
-          lg:-translate-x-6 xl:-translate-x-8
+            lg:-translate-x-6
+            xl:-translate-x-8
             font-['Plus_Jakarta_Sans']
             font-bold
             uppercase
@@ -165,10 +173,20 @@ export default function ERPApproach() {
           </div>
 
           {/* ================= RIGHT DIAGRAM ================= */}
-          <div className="  relative min-w-0 flex flex-col
-    items-center md:items-center
-    lg:translate-x-8 xl:translate-x-22">
-
+          <div
+            className="
+              relative
+              min-w-0
+              flex
+              flex-col
+              items-center
+              md:items-center
+              lg:translate-x-10
+              xl:translate-x-24
+              lg:-translate-y-5
+              xl:-translate-y-6
+            "
+          >
             <div
               className="
                 relative
@@ -182,17 +200,15 @@ export default function ERPApproach() {
                 md:h-[370px]
                 md:max-w-[450px]
 
-                lg:h-[390px]
-                lg:max-w-[470px]
+                lg:h-[350px]
+                lg:max-w-[425px]
 
-                xl:h-[410px]
-                xl:max-w-[490px]
+                xl:h-[370px]
+                xl:max-w-[445px]
               "
             >
               {/* ==================================================
                   CONNECTING LINES
-                  Thin dotted lines.
-                  Icons se connect hoti hain aur TX se thoda gap.
               ================================================== */}
 
               {/* Finance → TX */}
@@ -326,6 +342,7 @@ export default function ERPApproach() {
                 title="Talent"
                 subtitle="(HRMS)"
                 icon={<TalentIcon />}
+                textBelow
                 className="
                   left-1/2
                   top-[59%]
@@ -333,7 +350,7 @@ export default function ERPApproach() {
                 "
               />
 
-              {/* ================= CENTER TX ================= */}
+              {/* ================= CENTER TORCHX LOGO ================= */}
               <div
                 className="
                   absolute
@@ -346,8 +363,8 @@ export default function ERPApproach() {
                   -translate-x-1/2
                   items-center
                   justify-center
+                  overflow-hidden
                   rounded-full
-                  bg-black
 
                   sm:h-[76px]
                   sm:w-[76px]
@@ -355,29 +372,24 @@ export default function ERPApproach() {
                   md:h-[80px]
                   md:w-[80px]
 
-                  lg:h-[86px]
-                  lg:w-[86px]
+                  lg:h-[80px]
+                  lg:w-[80px]
 
-                  xl:h-[90px]
-                  xl:w-[90px]
+                  xl:h-[84px]
+                  xl:w-[84px]
+                  
                 "
               >
-                <div
+                <img
+                  src="/TorchX Favicon.png"
+                  alt="TorchX"
                   className="
-                    font-['Arial']
-                    text-[31px]
-                    font-black
-                    leading-none
-                    tracking-[-0.12em]
-                    text-white
-
-                    sm:text-[34px]
-                    md:text-[36px]
-                    lg:text-[39px]
+                    block
+                    h-full
+                    w-full
+                    object-cover
                   "
-                >
-                  T<span className="text-[#850052]">X</span>
-                </div>
+                />
               </div>
             </div>
 
@@ -400,8 +412,11 @@ export default function ERPApproach() {
                 md:-mt-4
                 md:max-w-[390px]
 
-                lg:-mt-5
+                lg:-mt-1
                 lg:max-w-[400px]
+                  lg:translate-x-6
+
+    xl:translate-x-4
               "
             >
               <p
@@ -436,7 +451,13 @@ export default function ERPApproach() {
    ERP ITEM
 ============================================================ */
 
-function ERPItem({ title, subtitle, icon, className = "" }) {
+function ERPItem({
+  title,
+  subtitle,
+  icon,
+  className = "",
+  textBelow = false,
+}) {
   return (
     <div
       className={`
@@ -449,40 +470,43 @@ function ERPItem({ title, subtitle, icon, className = "" }) {
         ${className}
       `}
     >
-      <div className="mb-1 whitespace-nowrap">
-        <p
-          className="
-            font-['Inter']
-            text-[14px]
-            font-bold
-            leading-[1.15]
-            text-[#151515]
+      {/* TEXT ABOVE ICON - normal items */}
+      {!textBelow && (
+        <div className="mb-1 whitespace-nowrap">
+          <p
+            className="
+              font-['Inter']
+              text-[14px]
+              font-bold
+              leading-[1.15]
+              text-[#151515]
 
-            sm:text-[15px]
-            md:text-[16px]
-            lg:text-[17px]
-          "
-        >
-          {title}
-        </p>
+              sm:text-[15px]
+              md:text-[16px]
+              lg:text-[17px]
+            "
+          >
+            {title}
+          </p>
 
-        <p
-          className="
-            mt-0.5
-            font-['Inter']
-            text-[10px]
-            font-medium
-            leading-[1.1]
-            text-[#151515]
+          <p
+            className="
+              mt-0.5
+              font-['Inter']
+              text-[10px]
+              font-medium
+              leading-[1.1]
+              text-[#151515]
 
-            sm:text-[11px]
-            md:text-[12px]
-            lg:text-[13px]
-          "
-        >
-          {subtitle}
-        </p>
-      </div>
+              sm:text-[11px]
+              md:text-[12px]
+              lg:text-[13px]
+            "
+          >
+            {subtitle}
+          </p>
+        </div>
+      )}
 
       {/* ICON CIRCLE */}
       <div
@@ -508,6 +532,44 @@ function ERPItem({ title, subtitle, icon, className = "" }) {
       >
         {icon}
       </div>
+
+      {/* TEXT BELOW ICON - Talent only */}
+      {textBelow && (
+        <div className="mt-1 whitespace-nowrap">
+          <p
+            className="
+              font-['Inter']
+              text-[14px]
+              font-bold
+              leading-[1.15]
+              text-[#151515]
+
+              sm:text-[15px]
+              md:text-[16px]
+              lg:text-[17px]
+            "
+          >
+            {title}
+          </p>
+
+          <p
+            className="
+              mt-0.5
+              font-['Inter']
+              text-[10px]
+              font-medium
+              leading-[1.1]
+              text-[#151515]
+
+              sm:text-[11px]
+              md:text-[12px]
+              lg:text-[13px]
+            "
+          >
+            {subtitle}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

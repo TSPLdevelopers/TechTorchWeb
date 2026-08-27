@@ -20,7 +20,6 @@ export default function CtaSection({
           width: 100%;
           min-height: 560px;
 
-          border-radius: 10px;
           overflow: hidden;
 
           display: flex;
