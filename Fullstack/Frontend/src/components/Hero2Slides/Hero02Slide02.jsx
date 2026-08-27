@@ -9,6 +9,7 @@ export default function ERPApproach() {
         overflow-hidden
         bg-[#F8F7F0]
         text-[#191919]
+        
 
         sm:min-h-[680px]
         md:min-h-[620px]
