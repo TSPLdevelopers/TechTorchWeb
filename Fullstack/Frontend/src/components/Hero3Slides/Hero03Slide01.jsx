@@ -81,7 +81,7 @@ export default function SoftwareDevelopmentHero() {
               sm:text-[16px]
               lg:text-[17px]
               leading-[1.4]
-              font-medium
+              font-normal
               text-white/95
               max-w-[500px]
             "

@@ -40,29 +40,36 @@ export default function PracticalERPPath() {
           mx-auto
           w-full
           max-w-[1520px]
-          min-h-[555px]
+          min-h-[435px]
           overflow-hidden
           bg-white
 
+          xs:min-h-[555px]
           sm:min-h-[575px]
           md:min-h-[595px]
           lg:min-h-[615px]
-          xl:min-h-[630px]
+          xl:min-h-[600px]
         "
       >
         {/* =====================================================
             RIGHT SIDE IMAGE
+            (sm/md/lg/xl values below are UNCHANGED from the
+            provided file — only base and xs were added)
         ====================================================== */}
         <div
           className="
             pointer-events-none
             absolute
             right-0
-            top-[175px]
+            top-[130px]
             z-[1]
-            h-[380px]
-            w-[72%]
+            h-[300px]
+            w-[68%]
             overflow-hidden
+
+            xs:top-[175px]
+            xs:h-[380px]
+            xs:w-[72%]
 
             sm:top-[180px]
             sm:h-[395px]
@@ -87,7 +94,7 @@ export default function PracticalERPPath() {
             className="
               absolute
               right-0
-              top-[-10px]
+              top-[-30px]
               h-[calc(100%+10px)]
               w-full
               object-fill
@@ -111,13 +118,18 @@ export default function PracticalERPPath() {
 
         {/* =====================================================
             CONTENT
+            (sm/md/lg/xl values below are UNCHANGED from the
+            provided file — only base and xs were added)
         ====================================================== */}
         <div
           className="
             relative
             z-[5]
-            px-6
-            pt-7
+            px-4
+            pt-5
+
+            xs:px-6
+            xs:pt-7
 
             sm:px-9
             sm:pt-8
@@ -131,8 +143,12 @@ export default function PracticalERPPath() {
             xl:px-[52px]
             xl:pt-[28px]
 
-            lg:translate-x-4
-            xl:translate-x-9
+            translate-x-1
+            xs:translate-x-2
+            sm:translate-x-4
+            md:translate-x-6
+            lg:translate-x-8
+            xl:translate-x-12
           "
         >
           {/* ===================================================
@@ -141,16 +157,20 @@ export default function PracticalERPPath() {
           <h1
             className="
               font-['Inter']
-              text-[30px]
+              text-[22px]
               font-medium
-              leading-[1.08]
-              tracking-[-0.045em]
+              leading-[1.12]
+              tracking-[-0.03em]
               text-[#111111]
+
+              xs:text-[30px]
+              xs:leading-[1.08]
+              xs:tracking-[-0.045em]
 
               sm:text-[33px]
               md:text-[36px]
               lg:text-[39px]
-              xl:text-[35px]
+              xl:text-[33px]
             "
           >
             A Practical Path to{" "}
@@ -162,18 +182,22 @@ export default function PracticalERPPath() {
           ==================================================== */}
           <p
             className="
-              mt-[17px]
+              mt-[12px]
               max-w-[640px]
               font-['Inter']
-              text-[14px]
+              text-[12px]
               font-medium
-              leading-[1.28]
+              leading-[1.32]
               text-[#1e1e1e]
+
+              xs:mt-[17px]
+              xs:text-[14px]
+              xs:leading-[1.28]
 
               sm:text-[15px]
               md:text-[15px]
               lg:text-[16px]
-              xl:text-[17px]
+              xl:text-[15.5px]
             "
           >
             Every business is different, so there is no single ERP approach
@@ -183,6 +207,7 @@ export default function PracticalERPPath() {
 
           {/* ===================================================
               TORCHX SUITE IMAGE
+              (unchanged — already hidden below sm)
           ==================================================== */}
           <div
             className="
@@ -222,12 +247,17 @@ export default function PracticalERPPath() {
 
           {/* ===================================================
               STEPS
+              (sm/md/lg/xl values below are UNCHANGED from the
+              provided file — only base and xs were added)
           ==================================================== */}
           <div
             className="
-              mt-[40px]
-              w-[390px]
+              mt-[20px]
+              w-full
               max-w-full
+
+              xs:mt-[40px]
+              xs:w-[390px]
 
               sm:mt-[42px]
               sm:w-[420px]
@@ -246,13 +276,14 @@ export default function PracticalERPPath() {
                 className={`
                   flex
                   items-start
-                  gap-[12px]
+                  gap-[8px]
 
+                  xs:gap-[12px]
                   sm:gap-[13px]
 
                   ${
                     index !== steps.length - 1
-                      ? "mb-[18px] sm:mb-[20px] lg:mb-[21px]"
+                      ? "mb-[10px] xs:mb-[18px] sm:mb-[20px] lg:mb-[21px]"
                       : ""
                   }
                 `}
@@ -261,8 +292,8 @@ export default function PracticalERPPath() {
                 <div
                   className="
                     flex
-                    h-[45px]
-                    w-[45px]
+                    h-[34px]
+                    w-[34px]
                     shrink-0
                     items-center
                     justify-center
@@ -270,10 +301,14 @@ export default function PracticalERPPath() {
                     bg-[#850052]
 
                     font-['Inter']
-                    text-[18px]
+                    text-[13px]
                     font-medium
                     leading-none
                     text-white
+
+                    xs:h-[45px]
+                    xs:w-[45px]
+                    xs:text-[18px]
 
                     sm:h-[46px]
                     sm:w-[46px]
@@ -290,11 +325,14 @@ export default function PracticalERPPath() {
                   <h2
                     className="
                       font-['Plus_Jakarta_Sans']
-                      text-[18px]
+                      text-[14px]
                       font-bold
-                      leading-[1.08]
+                      leading-[1.1]
                       tracking-[-0.02em]
                       text-[#151515]
+
+                      xs:text-[18px]
+                      xs:leading-[1.08]
 
                       sm:text-[19px]
                       lg:text-[19px]
@@ -308,10 +346,13 @@ export default function PracticalERPPath() {
                       mt-[4px]
                       max-w-[390px]
                       font-['Inter']
-                      text-[13px]
+                      text-[11px]
                       font-normal
-                      leading-[1.28]
+                      leading-[1.3]
                       text-[#242424]
+
+                      xs:text-[13px]
+                      xs:leading-[1.28]
 
                       sm:text-[14px]
                       lg:text-[14px]

@@ -54,152 +54,169 @@ export default function OnePlatformSection() {
   const connectorRef = useRef(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const isMobile = window.matchMedia(
-        "(max-width: 700px)"
-      ).matches;
+  const ctx = gsap.context(() => {
+    const isMobile = window.matchMedia(
+      "(max-width: 700px)"
+    ).matches;
 
-      const pair1 = [
-        pair1Left.current,
-        pair1Right.current,
-      ];
+    const pair1 = [
+      pair1Left.current,
+      pair1Right.current,
+    ].filter(Boolean);
 
-      const pair2 = [
-        pair2Left.current,
-        pair2Right.current,
-      ];
+    const pair2 = [
+      pair2Left.current,
+      pair2Right.current,
+    ].filter(Boolean);
 
-      const pair3 = [
-        pair3Left.current,
-        pair3Right.current,
-      ];
+    const pair3 = [
+      pair3Left.current,
+      pair3Right.current,
+    ].filter(Boolean);
 
-      /* ==========================================
-         INITIAL STATE
-      ========================================== */
+    const connector = connectorRef.current;
 
+    /* ==========================================
+       INITIAL STATE
+    ========================================== */
+
+    if (pair1.length) {
       gsap.set(pair1, {
         opacity: 0,
-        x: isMobile ? 0 : 0,
+        x: 0,
         y: isMobile ? 40 : 0,
       });
+    }
 
+    if (pair2.length) {
       gsap.set(pair2, {
         opacity: 0,
-        x: isMobile ? 0 : 0,
+        x: 0,
         y: isMobile ? 40 : 0,
       });
+    }
 
+    if (pair3.length) {
       gsap.set(pair3, {
         opacity: 0,
-        x: isMobile ? 0 : 0,
+        x: 0,
         y: isMobile ? 40 : 0,
       });
+    }
 
-      gsap.set(connectorRef.current, {
+    if (connector) {
+      gsap.set(connector, {
         opacity: 0,
       });
+    }
 
-      /* ==========================================
-         TIMELINE
-      ========================================== */
+    /* ==========================================
+       TIMELINE
+    ========================================== */
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: isMobile
+          ? "+=2300"
+          : "+=2600",
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
 
-          start: "top top",
+    /* =================================================
+       PAIR 1
+       ENGAGE + FINANCE
+    ================================================= */
 
-          end: isMobile
-            ? "+=2300"
-            : "+=2600",
+    if (!isMobile) {
+      if (pair1Left.current) {
+        gsap.set(pair1Left.current, {
+          x: -80,
+        });
+      }
 
-          scrub: 1,
+      if (pair1Right.current) {
+        gsap.set(pair1Right.current, {
+          x: 80,
+        });
+      }
+    }
 
-          pin: true,
+    if (pair1.length) {
+      tl.to(pair1, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+    }
 
-          anticipatePin: 1,
-
-          invalidateOnRefresh: true,
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 1,
+          duration: 0.5,
         },
-      });
+        "<0.3"
+      );
+    }
 
-      /* =================================================
-         PAIR 1
-         ENGAGE + FINANCE
-      ================================================= */
+    // HOLD
+    tl.to({}, {
+      duration: 1.5,
+    });
 
-      if (!isMobile) {
-        gsap.set(pair1Left[0], {
-          x: -80,
-        });
+    /* =================================================
+       PAIR 1 OUT
+    ================================================= */
 
-        gsap.set(pair1Right[0], {
-          x: 80,
-        });
-      }
-
-      tl.to(pair1, {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      if (!isMobile) {
-        tl.to(
-          connectorRef.current,
-          {
-            opacity: 1,
-            duration: 0.5,
-          },
-          "<0.3"
-        );
-      }
-
-      // HOLD
-      tl.to({}, {
-        duration: 1.5,
-      });
-
-      /* =================================================
-         PAIR 1 OUT
-      ================================================= */
-
+    if (pair1.length) {
       tl.to(pair1, {
         opacity: 0,
         y: -40,
         duration: 0.7,
         ease: "power2.inOut",
       });
+    }
 
-      if (!isMobile) {
-        tl.to(
-          connectorRef.current,
-          {
-            opacity: 0,
-            duration: 0.4,
-          },
-          "<"
-        );
-      }
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 0,
+          duration: 0.4,
+        },
+        "<"
+      );
+    }
 
-      /* =================================================
-         PAIR 2
-         INVENTORY + PAYROLL
-      ================================================= */
+    /* =================================================
+       PAIR 2
+       INVENTORY + PAYROLL
+    ================================================= */
 
-      if (!isMobile) {
-        gsap.set(pair2Left[0], {
+    if (!isMobile) {
+      if (pair2Left.current) {
+        gsap.set(pair2Left.current, {
           x: -80,
         });
+      }
 
-        gsap.set(pair2Right[0], {
+      if (pair2Right.current) {
+        gsap.set(pair2Right.current, {
           x: 80,
         });
       }
+    }
 
+    if (pair2.length) {
       tl.to(pair2, {
         opacity: 1,
         x: 0,
@@ -207,60 +224,68 @@ export default function OnePlatformSection() {
         duration: 1,
         ease: "power3.out",
       });
+    }
 
-      if (!isMobile) {
-        tl.to(
-          connectorRef.current,
-          {
-            opacity: 1,
-            duration: 0.5,
-          },
-          "<0.3"
-        );
-      }
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 1,
+          duration: 0.5,
+        },
+        "<0.3"
+      );
+    }
 
-      // HOLD
-      tl.to({}, {
-        duration: 1.5,
-      });
+    // HOLD
+    tl.to({}, {
+      duration: 1.5,
+    });
 
-      /* =================================================
-         PAIR 2 OUT
-      ================================================= */
+    /* =================================================
+       PAIR 2 OUT
+    ================================================= */
 
+    if (pair2.length) {
       tl.to(pair2, {
         opacity: 0,
         y: -40,
         duration: 0.7,
         ease: "power2.inOut",
       });
+    }
 
-      if (!isMobile) {
-        tl.to(
-          connectorRef.current,
-          {
-            opacity: 0,
-            duration: 0.4,
-          },
-          "<"
-        );
-      }
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 0,
+          duration: 0.4,
+        },
+        "<"
+      );
+    }
 
-      /* =================================================
-         PAIR 3
-         OPERATIONS + HRMS
-      ================================================= */
+    /* =================================================
+       PAIR 3
+       OPERATIONS + HRMS
+    ================================================= */
 
-      if (!isMobile) {
-        gsap.set(pair3Left[0], {
+    if (!isMobile) {
+      if (pair3Left.current) {
+        gsap.set(pair3Left.current, {
           x: -80,
         });
+      }
 
-        gsap.set(pair3Right[0], {
+      if (pair3Right.current) {
+        gsap.set(pair3Right.current, {
           x: 80,
         });
       }
+    }
 
+    if (pair3.length) {
       tl.to(pair3, {
         opacity: 1,
         x: 0,
@@ -268,27 +293,28 @@ export default function OnePlatformSection() {
         duration: 1,
         ease: "power3.out",
       });
+    }
 
-      if (!isMobile) {
-        tl.to(
-          connectorRef.current,
-          {
-            opacity: 1,
-            duration: 0.5,
-          },
-          "<0.3"
-        );
-      }
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 1,
+          duration: 0.5,
+        },
+        "<0.3"
+      );
+    }
 
-      // HOLD
-      tl.to({}, {
-        duration: 1.5,
-      });
+    // HOLD
+    tl.to({}, {
+      duration: 1.5,
+    });
 
-    }, sectionRef);
+  }, sectionRef);
 
-    return () => ctx.revert();
-  }, []);
+  return () => ctx.revert();
+}, []);
 
   return (
     <section
