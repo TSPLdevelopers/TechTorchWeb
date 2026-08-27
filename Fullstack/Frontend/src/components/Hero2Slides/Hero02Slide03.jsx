@@ -41,47 +41,67 @@ const cards = [
 
 export default function OnePlatformSection() {
   const sectionRef = useRef(null);
-  const leftCardRef = useRef(null);
-  const rightCardRef = useRef(null);
+
+  const pair1Left = useRef(null);
+  const pair1Right = useRef(null);
+
+  const pair2Left = useRef(null);
+  const pair2Right = useRef(null);
+
+  const pair3Left = useRef(null);
+  const pair3Right = useRef(null);
+
   const connectorRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const leftCard = leftCardRef.current;
-      const rightCard = rightCardRef.current;
-      const connector = connectorRef.current;
+      const isMobile = window.matchMedia(
+        "(max-width: 700px)"
+      ).matches;
 
-      const isMobile = window.matchMedia("(max-width: 700px)").matches;
+      const pair1 = [
+        pair1Left.current,
+        pair1Right.current,
+      ];
+
+      const pair2 = [
+        pair2Left.current,
+        pair2Right.current,
+      ];
+
+      const pair3 = [
+        pair3Left.current,
+        pair3Right.current,
+      ];
 
       /* ==========================================
          INITIAL STATE
       ========================================== */
 
-      gsap.set([leftCard, rightCard], {
+      gsap.set(pair1, {
         opacity: 0,
+        x: isMobile ? 0 : 0,
+        y: isMobile ? 40 : 0,
       });
 
-      if (isMobile) {
-        gsap.set([leftCard, rightCard], {
-          x: 0,
-          y: 40,
-        });
-      } else {
-        gsap.set(leftCard, {
-          x: -80,
-        });
+      gsap.set(pair2, {
+        opacity: 0,
+        x: isMobile ? 0 : 0,
+        y: isMobile ? 40 : 0,
+      });
 
-        gsap.set(rightCard, {
-          x: 80,
-        });
-      }
+      gsap.set(pair3, {
+        opacity: 0,
+        x: isMobile ? 0 : 0,
+        y: isMobile ? 40 : 0,
+      });
 
-      gsap.set(connector, {
+      gsap.set(connectorRef.current, {
         opacity: 0,
       });
 
       /* ==========================================
-         MAIN TIMELINE
+         TIMELINE
       ========================================== */
 
       const tl = gsap.timeline({
@@ -90,7 +110,9 @@ export default function OnePlatformSection() {
 
           start: "top top",
 
-          end: isMobile ? "+=2100" : "+=2400",
+          end: isMobile
+            ? "+=2300"
+            : "+=2600",
 
           scrub: 1,
 
@@ -102,161 +124,167 @@ export default function OnePlatformSection() {
         },
       });
 
-      /* ==========================================
+      /* =================================================
          PAIR 1
-         Engage + Finance
-      ========================================== */
+         ENGAGE + FINANCE
+      ================================================= */
 
-      tl.to(leftCard, {
+      if (!isMobile) {
+        gsap.set(pair1Left[0], {
+          x: -80,
+        });
+
+        gsap.set(pair1Right[0], {
+          x: 80,
+        });
+      }
+
+      tl.to(pair1, {
+        opacity: 1,
         x: 0,
         y: 0,
-        opacity: 1,
-        duration: 0.8,
+        duration: 1,
         ease: "power3.out",
       });
 
-      tl.to(
-        rightCard,
-        {
-          x: 0,
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        "<"
-      );
-
       if (!isMobile) {
         tl.to(
-          connector,
+          connectorRef.current,
           {
             opacity: 1,
             duration: 0.5,
           },
-          "<0.2"
+          "<0.3"
         );
       }
 
-      /* HOLD */
+      // HOLD
+      tl.to({}, {
+        duration: 1.5,
+      });
 
-      tl.to({}, { duration: 1 });
+      /* =================================================
+         PAIR 1 OUT
+      ================================================= */
 
-      /* ==========================================
+      tl.to(pair1, {
+        opacity: 0,
+        y: -40,
+        duration: 0.7,
+        ease: "power2.inOut",
+      });
+
+      if (!isMobile) {
+        tl.to(
+          connectorRef.current,
+          {
+            opacity: 0,
+            duration: 0.4,
+          },
+          "<"
+        );
+      }
+
+      /* =================================================
          PAIR 2
-         Inventory + Payroll
-      ========================================== */
+         INVENTORY + PAYROLL
+      ================================================= */
 
-      tl.to([leftCard, rightCard, connector], {
-        opacity: 0,
-        y: -40,
-        duration: 0.6,
-        ease: "power2.inOut",
-      });
+      if (!isMobile) {
+        gsap.set(pair2Left[0], {
+          x: -80,
+        });
 
-      tl.call(() => {
-        leftCard.querySelector(".card-title").textContent =
-          cards[2].title;
+        gsap.set(pair2Right[0], {
+          x: 80,
+        });
+      }
 
-        leftCard.querySelector(".card-desc").textContent =
-          cards[2].desc;
-
-        leftCard.querySelector(".card-icon").textContent =
-          cards[2].icon;
-
-        rightCard.querySelector(".card-title").textContent =
-          cards[3].title;
-
-        rightCard.querySelector(".card-desc").textContent =
-          cards[3].desc;
-
-        rightCard.querySelector(".card-icon").textContent =
-          cards[3].icon;
-      });
-
-      tl.set([leftCard, rightCard], {
-        y: 40,
-      });
-
-      tl.to([leftCard, rightCard], {
+      tl.to(pair2, {
         opacity: 1,
+        x: 0,
         y: 0,
-        duration: 0.8,
+        duration: 1,
         ease: "power3.out",
       });
 
       if (!isMobile) {
         tl.to(
-          connector,
+          connectorRef.current,
           {
             opacity: 1,
             duration: 0.5,
           },
-          "<0.2"
+          "<0.3"
         );
       }
 
-      /* HOLD */
+      // HOLD
+      tl.to({}, {
+        duration: 1.5,
+      });
 
-      tl.to({}, { duration: 1 });
+      /* =================================================
+         PAIR 2 OUT
+      ================================================= */
 
-      /* ==========================================
+      tl.to(pair2, {
+        opacity: 0,
+        y: -40,
+        duration: 0.7,
+        ease: "power2.inOut",
+      });
+
+      if (!isMobile) {
+        tl.to(
+          connectorRef.current,
+          {
+            opacity: 0,
+            duration: 0.4,
+          },
+          "<"
+        );
+      }
+
+      /* =================================================
          PAIR 3
-         Operations + HRMS
-      ========================================== */
+         OPERATIONS + HRMS
+      ================================================= */
 
-      tl.to([leftCard, rightCard, connector], {
-        opacity: 0,
-        y: -40,
-        duration: 0.6,
-        ease: "power2.inOut",
-      });
+      if (!isMobile) {
+        gsap.set(pair3Left[0], {
+          x: -80,
+        });
 
-      tl.call(() => {
-        leftCard.querySelector(".card-title").textContent =
-          cards[4].title;
+        gsap.set(pair3Right[0], {
+          x: 80,
+        });
+      }
 
-        leftCard.querySelector(".card-desc").textContent =
-          cards[4].desc;
-
-        leftCard.querySelector(".card-icon").textContent =
-          cards[4].icon;
-
-        rightCard.querySelector(".card-title").textContent =
-          cards[5].title;
-
-        rightCard.querySelector(".card-desc").textContent =
-          cards[5].desc;
-
-        rightCard.querySelector(".card-icon").textContent =
-          cards[5].icon;
-      });
-
-      tl.set([leftCard, rightCard], {
-        y: 40,
-      });
-
-      tl.to([leftCard, rightCard], {
+      tl.to(pair3, {
         opacity: 1,
+        x: 0,
         y: 0,
-        duration: 0.8,
+        duration: 1,
         ease: "power3.out",
       });
 
       if (!isMobile) {
         tl.to(
-          connector,
+          connectorRef.current,
           {
             opacity: 1,
             duration: 0.5,
           },
-          "<0.2"
+          "<0.3"
         );
       }
 
-      /* HOLD */
+      // HOLD
+      tl.to({}, {
+        duration: 1.5,
+      });
 
-      tl.to({}, { duration: 1 });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -267,15 +295,9 @@ export default function OnePlatformSection() {
       ref={sectionRef}
       className="one-platform-section"
     >
-      {/* ==========================================
-          MAIN CONTAINER
-      ========================================== */}
-
       <div className="one-platform-container">
 
-        {/* ==========================================
-            HEADER
-        ========================================== */}
+        {/* ================= HEADER ================= */}
 
         <div className="one-platform-header">
 
@@ -284,22 +306,19 @@ export default function OnePlatformSection() {
           </h2>
 
           <p className="one-platform-description">
-            An ERP system should make it easier for different parts of your
-            business to work together. We help connect the functions that
-            matter most to your day-to-day operations.
+            An ERP system should make it easier for different
+            parts of your business to work together. We help
+            connect the functions that matter most to your
+            day-to-day operations.
           </p>
 
         </div>
 
-        {/* ==========================================
-            CARDS AREA
-        ========================================== */}
+        {/* ================= CARDS AREA ================= */}
 
         <div className="one-platform-cards-area">
 
-          {/* ========================================
-              CONNECTOR
-          ======================================== */}
+          {/* ================= CONNECTOR ================= */}
 
           <svg
             ref={connectorRef}
@@ -318,7 +337,6 @@ export default function OnePlatformSection() {
               strokeWidth="1.5"
               strokeDasharray="3 5"
               fill="none"
-              opacity="0.9"
             />
 
             <circle
@@ -336,59 +354,73 @@ export default function OnePlatformSection() {
             />
           </svg>
 
-          {/* ========================================
-              LEFT CARD
-          ======================================== */}
 
-          <div
-            ref={leftCardRef}
-            className="platform-card platform-card-left"
-          >
-            <div className="card-icon">
-              {cards[0].icon}
-            </div>
+          {/* =================================================
+              PAIR 1
+          ================================================= */}
 
-            <h3 className="card-title">
-              {cards[0].title}
-            </h3>
+          <PlatformCard
+            ref={pair1Left}
+            card={cards[0]}
+            className="platform-card-left"
+          />
 
-            <p className="card-desc">
-              {cards[0].desc}
-            </p>
-          </div>
+          <PlatformCard
+            ref={pair1Right}
+            card={cards[1]}
+            className="platform-card-right"
+          />
 
-          {/* ========================================
-              RIGHT CARD
-          ======================================== */}
 
-          <div
-            ref={rightCardRef}
-            className="platform-card platform-card-right"
-          >
-            <div className="card-icon">
-              {cards[1].icon}
-            </div>
+          {/* =================================================
+              PAIR 2
+          ================================================= */}
 
-            <h3 className="card-title">
-              {cards[1].title}
-            </h3>
+          <PlatformCard
+            ref={pair2Left}
+            card={cards[2]}
+            className="platform-card-left"
+          />
 
-            <p className="card-desc">
-              {cards[1].desc}
-            </p>
-          </div>
+          <PlatformCard
+            ref={pair2Right}
+            card={cards[3]}
+            className="platform-card-right"
+          />
+
+
+          {/* =================================================
+              PAIR 3
+          ================================================= */}
+
+          <PlatformCard
+            ref={pair3Left}
+            card={cards[4]}
+            className="platform-card-left"
+          />
+
+          <PlatformCard
+            ref={pair3Right}
+            card={cards[5]}
+            className="platform-card-right"
+          />
 
         </div>
       </div>
 
-      {/* ==========================================
+
+      {/* =================================================
           RESPONSIVE CSS
-      ========================================== */}
+      ================================================= */}
 
       <style>{`
 
+        * {
+          box-sizing: border-box;
+        }
+
         /* ==========================================
-           MAIN SECTION
+           SECTION
         ========================================== */
 
         .one-platform-section {
@@ -401,8 +433,6 @@ export default function OnePlatformSection() {
           font-family: 'Plus Jakarta Sans', sans-serif;
 
           overflow: hidden;
-
-          box-sizing: border-box;
         }
 
 
@@ -576,7 +606,7 @@ export default function OnePlatformSection() {
 
 
         /* ==========================================
-           CARD TITLE
+           TITLE
         ========================================== */
 
         .card-title {
@@ -593,7 +623,7 @@ export default function OnePlatformSection() {
 
 
         /* ==========================================
-           CARD DESCRIPTION
+           DESCRIPTION
         ========================================== */
 
         .card-desc {
@@ -644,7 +674,6 @@ export default function OnePlatformSection() {
           .platform-card-right {
             right: 0;
           }
-
         }
 
 
@@ -654,17 +683,11 @@ export default function OnePlatformSection() {
 
         @media (max-width: 900px) {
 
-          .one-platform-section {
-            min-height: 650px;
-          }
-
           .one-platform-container {
             padding: 55px 25px;
           }
 
           .one-platform-header {
-            grid-template-columns: 1fr 1fr;
-
             gap: 30px;
 
             margin-bottom: 25px;
@@ -680,8 +703,6 @@ export default function OnePlatformSection() {
             font-size: 13.5px;
 
             margin: 3px 0 0;
-
-            max-width: 100%;
           }
 
           .one-platform-cards-area {
@@ -698,21 +719,18 @@ export default function OnePlatformSection() {
 
           .platform-card-left {
             left: 0;
-
             top: 125px;
           }
 
           .platform-card-right {
             right: 0;
-
             top: 55px;
           }
-
         }
 
 
         /* =================================================
-           SMALL TABLET / LARGE MOBILE
+           MOBILE
         ================================================= */
 
         @media (max-width: 700px) {
@@ -779,7 +797,7 @@ export default function OnePlatformSection() {
           }
 
 
-          /* CARDS */
+          /* CARD */
 
           .platform-card {
             width: calc(100% - 10px);
@@ -833,7 +851,7 @@ export default function OnePlatformSection() {
 
 
         /* =================================================
-           MOBILE
+           SMALL MOBILE
         ================================================= */
 
         @media (max-width: 480px) {
@@ -846,32 +864,23 @@ export default function OnePlatformSection() {
             padding: 32px 16px;
           }
 
-
           .one-platform-header {
             gap: 12px;
 
             margin-bottom: 20px;
           }
 
-
           .one-platform-heading {
             font-size: 22px;
-
-            line-height: 1.2;
           }
-
 
           .one-platform-description {
             font-size: 12.5px;
-
-            line-height: 1.5;
           }
-
 
           .one-platform-cards-area {
             height: calc(100% - 175px);
           }
-
 
           .platform-card {
             width: 100%;
@@ -883,16 +892,13 @@ export default function OnePlatformSection() {
             min-height: 180px;
           }
 
-
           .platform-card-left {
             top: 5px;
           }
 
-
           .platform-card-right {
             top: 205px;
           }
-
 
           .card-icon {
             width: 42px;
@@ -903,13 +909,11 @@ export default function OnePlatformSection() {
             margin-bottom: 12px;
           }
 
-
           .card-title {
             font-size: 15px;
 
             margin-bottom: 8px;
           }
-
 
           .card-desc {
             font-size: 12.5px;
@@ -930,16 +934,13 @@ export default function OnePlatformSection() {
             padding: 28px 14px;
           }
 
-
           .one-platform-heading {
             font-size: 20px;
           }
 
-
           .one-platform-description {
             font-size: 12px;
           }
-
 
           .platform-card {
             padding: 18px 16px;
@@ -947,16 +948,13 @@ export default function OnePlatformSection() {
             min-height: 175px;
           }
 
-
           .platform-card-right {
             top: 195px;
           }
 
-
           .card-title {
             font-size: 14px;
           }
-
 
           .card-desc {
             font-size: 12px;
@@ -968,3 +966,35 @@ export default function OnePlatformSection() {
     </section>
   );
 }
+
+
+/* =================================================
+   PLATFORM CARD COMPONENT
+================================================= */
+
+const PlatformCard = React.forwardRef(
+  ({ card, className }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={`platform-card ${className}`}
+      >
+
+        <div className="card-icon">
+          {card.icon}
+        </div>
+
+        <h3 className="card-title">
+          {card.title}
+        </h3>
+
+        <p className="card-desc">
+          {card.desc}
+        </p>
+
+      </div>
+    );
+  }
+);
+
+PlatformCard.displayName = "PlatformCard";
