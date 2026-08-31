@@ -29,6 +29,7 @@ import Hero02Slide05 from "./components/Hero2Slides/Hero02Slide05.jsx";
 import Hero02Slide06 from "./components/Hero2Slides/Hero02Slide06.jsx";
 
 import Hero03Slide01 from "./components/Hero3Slides/Hero03Slide01.jsx";
+import Hero03Slide02 from "./components/Hero3Slides/Hero03Slide02.jsx";
 import Hero03Slide05 from "./components/Hero3Slides/Hero03Slide05.jsx";
 import Hero03Slide07 from "./components/Hero3Slides/Hero03Slide07.jsx";
 
@@ -93,6 +94,7 @@ function Slide3Page() {
   return (
     <div>
       <Hero03Slide01 />
+      <Hero03Slide02 />
       <Hero03Slide05 />
       <Hero03Slide07 />
     </div>
