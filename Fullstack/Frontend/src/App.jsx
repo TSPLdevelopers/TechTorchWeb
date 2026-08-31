@@ -27,16 +27,8 @@ import Hero02Slide02 from "./components/Hero2Slides/Hero02Slide02.jsx";
 import Hero02Slide03 from "./components/Hero2Slides/Hero02Slide03.jsx";
 import Hero02Slide05 from "./components/Hero2Slides/Hero02Slide05.jsx";
 import Hero02Slide06 from "./components/Hero2Slides/Hero02Slide06.jsx";
-<<<<<<< HEAD
 import Hero03Slide01 from  "./components/Hero3Slides/Hero03Slide01.jsx";
 import Hero03Slide02 from "./components/Hero3Slides/Hero03Slide02.jsx";
-=======
-
-import Hero03Slide01 from "./components/Hero3Slides/Hero03Slide01.jsx";
-import Hero03Slide02 from "./components/Hero3Slides/Hero03Slide02.jsx";
-import Hero03Slide05 from "./components/Hero3Slides/Hero03Slide05.jsx";
-import Hero03Slide07 from "./components/Hero3Slides/Hero03Slide07.jsx";
->>>>>>> 956865e95e49315f0132c056af2d2837fed1e979
 
 
 
@@ -100,11 +92,6 @@ function Slide3Page() {
     <div>
       <Hero03Slide01 />
       <Hero03Slide02 />
-<<<<<<< HEAD
-=======
-      <Hero03Slide05 />
-      <Hero03Slide07 />
->>>>>>> 956865e95e49315f0132c056af2d2837fed1e979
     </div>
   );
 }
