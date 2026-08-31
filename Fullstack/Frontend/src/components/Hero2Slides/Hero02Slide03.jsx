@@ -42,6 +42,10 @@ const cards = [
 export default function OnePlatformSection() {
   const sectionRef = useRef(null);
 
+  /* =========================
+     CARD REFS
+  ========================= */
+
   const pair1Left = useRef(null);
   const pair1Right = useRef(null);
 
@@ -51,7 +55,13 @@ export default function OnePlatformSection() {
   const pair3Left = useRef(null);
   const pair3Right = useRef(null);
 
-  const connectorRef = useRef(null);
+  /* =========================
+     CONNECTOR REFS
+  ========================= */
+
+  const connector1Ref = useRef(null);
+  const connector2Ref = useRef(null);
+  const connector3Ref = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -74,35 +84,107 @@ export default function OnePlatformSection() {
         pair3Right.current,
       ];
 
-      /* ==========================================
-         INITIAL STATE
-      ========================================== */
+      const connector1 = connector1Ref.current;
+      const connector2 = connector2Ref.current;
+      const connector3 = connector3Ref.current;
 
-      gsap.set(pair1, {
-        opacity: 0,
-        x: isMobile ? 0 : 0,
-        y: isMobile ? 40 : 0,
-      });
+      /* =================================================
+         DESKTOP
+      ================================================= */
 
-      gsap.set(pair2, {
-        opacity: 0,
-        x: isMobile ? 0 : 0,
-        y: isMobile ? 40 : 0,
-      });
+      if (!isMobile) {
+        /*
+          IMPORTANT:
 
-      gsap.set(pair3, {
-        opacity: 0,
-        x: isMobile ? 0 : 0,
-        y: isMobile ? 40 : 0,
-      });
+          Cards + their connector start
+          outside the RIGHT edge.
 
-      gsap.set(connectorRef.current, {
-        opacity: 0,
-      });
+          They will enter from exactly
+          that side.
 
-      /* ==========================================
-         TIMELINE
-      ========================================== */
+          No opacity.
+          No scale.
+          No popup.
+        */
+
+        const startX = window.innerWidth + 500;
+
+        /* PAIR 1 */
+
+        gsap.set(pair1, {
+          x: startX,
+          y: 0,
+          opacity: 1,
+        });
+
+        gsap.set(connector1, {
+          x: startX,
+          y: 0,
+          opacity: 1,
+        });
+
+        /* PAIR 2 */
+
+        gsap.set(pair2, {
+          x: startX,
+          y: 0,
+          opacity: 1,
+        });
+
+        gsap.set(connector2, {
+          x: startX,
+          y: 0,
+          opacity: 1,
+        });
+
+        /* PAIR 3 */
+
+        gsap.set(pair3, {
+          x: startX,
+          y: 0,
+          opacity: 1,
+        });
+
+        gsap.set(connector3, {
+          x: startX,
+          y: 0,
+          opacity: 1,
+        });
+      }
+
+      /* =================================================
+         MOBILE INITIAL STATE
+      ================================================= */
+
+      if (isMobile) {
+        gsap.set(
+          [
+            ...pair1,
+            ...pair2,
+            ...pair3,
+          ],
+          {
+            x: 0,
+            y: 40,
+            opacity: 0,
+          }
+        );
+
+        gsap.set(
+          [
+            connector1,
+            connector2,
+            connector3,
+          ],
+          {
+            opacity: 0,
+          }
+        );
+      }
+
+      /* =================================================
+         MAIN TIMELINE
+      ================================================= */
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -112,7 +194,7 @@ export default function OnePlatformSection() {
 
           end: isMobile
             ? "+=2300"
-            : "+=2600",
+            : "+=2800",
 
           scrub: 1,
 
@@ -130,157 +212,199 @@ export default function OnePlatformSection() {
       ================================================= */
 
       if (!isMobile) {
-        gsap.set(pair1Left[0], {
-          x: -80,
-        });
+        /*
+          RIGHT → CENTER
 
-        gsap.set(pair1Right[0], {
-          x: 80,
-        });
-      }
+          Connector moves exactly with cards.
+        */
 
-      tl.to(pair1, {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      if (!isMobile) {
         tl.to(
-          connectorRef.current,
+          [...pair1, connector1],
+          {
+            x: 0,
+            duration: 1.5,
+            ease: "power2.out",
+          }
+        );
+      } else {
+        tl.to(pair1, {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+        });
+
+        tl.to(
+          connector1,
           {
             opacity: 1,
-            duration: 0.5,
+            duration: 0.4,
           },
           "<0.3"
         );
       }
 
-      // HOLD
+      /* =================================================
+         HOLD PAIR 1
+      ================================================= */
+
       tl.to({}, {
         duration: 1.5,
       });
 
       /* =================================================
          PAIR 1 OUT
+         +
+         PAIR 2 IN
+
+         BOTH MOVE AT SAME TIME
       ================================================= */
 
-      tl.to(pair1, {
-        opacity: 0,
-        y: -40,
-        duration: 0.7,
-        ease: "power2.inOut",
-      });
-
       if (!isMobile) {
+        const slideDuration = 1.4;
+
+        /*
+          PAIR 1:
+          CENTER → LEFT OUT
+
+          PAIR 2:
+          RIGHT OUTSIDE → CENTER
+        */
+
         tl.to(
-          connectorRef.current,
+          [...pair1, connector1],
           {
-            opacity: 0,
-            duration: 0.4,
+            x: -window.innerWidth - 500,
+            duration: slideDuration,
+            ease: "power2.inOut",
           },
           "<"
         );
-      }
 
-      /* =================================================
-         PAIR 2
-         INVENTORY + PAYROLL
-      ================================================= */
-
-      if (!isMobile) {
-        gsap.set(pair2Left[0], {
-          x: -80,
-        });
-
-        gsap.set(pair2Right[0], {
-          x: 80,
-        });
-      }
-
-      tl.to(pair2, {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      if (!isMobile) {
         tl.to(
-          connectorRef.current,
+          [...pair2, connector2],
+          {
+            x: 0,
+            duration: slideDuration,
+            ease: "power2.out",
+          },
+          "<"
+        );
+      } else {
+        tl.to(
+          pair1,
+          {
+            opacity: 0,
+            y: -40,
+            duration: 0.7,
+            ease: "power2.inOut",
+          }
+        );
+
+        tl.to(
+          pair2,
           {
             opacity: 1,
-            duration: 0.5,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "<0.25"
+        );
+
+        tl.to(
+          connector2,
+          {
+            opacity: 1,
+            duration: 0.4,
           },
           "<0.3"
         );
       }
 
-      // HOLD
+      /* =================================================
+         HOLD PAIR 2
+      ================================================= */
+
       tl.to({}, {
         duration: 1.5,
       });
 
       /* =================================================
          PAIR 2 OUT
+         +
+         PAIR 3 IN
+
+         BOTH MOVE AT SAME TIME
       ================================================= */
 
-      tl.to(pair2, {
-        opacity: 0,
-        y: -40,
-        duration: 0.7,
-        ease: "power2.inOut",
-      });
-
       if (!isMobile) {
+        const slideDuration = 1.4;
+
+        /*
+          PAIR 2:
+          CENTER → LEFT
+
+          PAIR 3:
+          RIGHT → CENTER
+        */
+
         tl.to(
-          connectorRef.current,
+          [...pair2, connector2],
           {
-            opacity: 0,
-            duration: 0.4,
+            x: -window.innerWidth - 500,
+            duration: slideDuration,
+            ease: "power2.inOut",
           },
           "<"
         );
-      }
 
-      /* =================================================
-         PAIR 3
-         OPERATIONS + HRMS
-      ================================================= */
-
-      if (!isMobile) {
-        gsap.set(pair3Left[0], {
-          x: -80,
-        });
-
-        gsap.set(pair3Right[0], {
-          x: 80,
-        });
-      }
-
-      tl.to(pair3, {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      if (!isMobile) {
         tl.to(
-          connectorRef.current,
+          [...pair3, connector3],
+          {
+            x: 0,
+            duration: slideDuration,
+            ease: "power2.out",
+          },
+          "<"
+        );
+      } else {
+        tl.to(
+          pair2,
+          {
+            opacity: 0,
+            y: -40,
+            duration: 0.7,
+            ease: "power2.inOut",
+          }
+        );
+
+        tl.to(
+          pair3,
           {
             opacity: 1,
-            duration: 0.5,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+          },
+          "<0.25"
+        );
+
+        tl.to(
+          connector3,
+          {
+            opacity: 1,
+            duration: 0.4,
           },
           "<0.3"
         );
       }
 
-      // HOLD
+      /* =================================================
+         HOLD PAIR 3
+      ================================================= */
+
       tl.to({}, {
         duration: 1.5,
       });
@@ -297,7 +421,9 @@ export default function OnePlatformSection() {
     >
       <div className="one-platform-container">
 
-        {/* ================= HEADER ================= */}
+        {/* =================================================
+            HEADER
+        ================================================= */}
 
         <div className="one-platform-header">
 
@@ -314,14 +440,97 @@ export default function OnePlatformSection() {
 
         </div>
 
-        {/* ================= CARDS AREA ================= */}
+
+        {/* =================================================
+            CARDS AREA
+        ================================================= */}
 
         <div className="one-platform-cards-area">
 
-          {/* ================= CONNECTOR ================= */}
+          {/* =================================================
+              CONNECTOR 1
+          ================================================= */}
 
           <svg
-            ref={connectorRef}
+            ref={connector1Ref}
+            viewBox="0 0 1000 380"
+            preserveAspectRatio="none"
+            className="platform-connector"
+          >
+            <path
+              d="
+                M 310,260
+                C 390,150
+                  560,120
+                  690,150
+              "
+              stroke="#ffffff"
+              strokeWidth="1.5"
+              strokeDasharray="3 5"
+              fill="none"
+            />
+
+            <circle
+              cx="310"
+              cy="260"
+              r="4"
+              fill="#ffffff"
+            />
+
+            <circle
+              cx="690"
+              cy="150"
+              r="4"
+              fill="#ffffff"
+            />
+          </svg>
+
+
+          {/* =================================================
+              CONNECTOR 2
+          ================================================= */}
+
+          <svg
+            ref={connector2Ref}
+            viewBox="0 0 1000 380"
+            preserveAspectRatio="none"
+            className="platform-connector"
+          >
+            <path
+              d="
+                M 310,260
+                C 390,150
+                  560,120
+                  690,150
+              "
+              stroke="#ffffff"
+              strokeWidth="1.5"
+              strokeDasharray="3 5"
+              fill="none"
+            />
+
+            <circle
+              cx="310"
+              cy="260"
+              r="4"
+              fill="#ffffff"
+            />
+
+            <circle
+              cx="690"
+              cy="150"
+              r="4"
+              fill="#ffffff"
+            />
+          </svg>
+
+
+          {/* =================================================
+              CONNECTOR 3
+          ================================================= */}
+
+          <svg
+            ref={connector3Ref}
             viewBox="0 0 1000 380"
             preserveAspectRatio="none"
             className="platform-connector"
@@ -419,29 +628,35 @@ export default function OnePlatformSection() {
           box-sizing: border-box;
         }
 
-        /* ==========================================
+
+        /* =================================================
            SECTION
-        ========================================== */
+        ================================================= */
 
         .one-platform-section {
           width: 100%;
+
           height: 100vh;
+
           min-height: 650px;
 
           background: ${MAROON_BG};
 
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family:
+            'Plus Jakarta Sans',
+            sans-serif;
 
           overflow: hidden;
         }
 
 
-        /* ==========================================
+        /* =================================================
            CONTAINER
-        ========================================== */
+        ================================================= */
 
         .one-platform-container {
           width: 100%;
+
           max-width: 1200px;
 
           height: 100%;
@@ -454,9 +669,9 @@ export default function OnePlatformSection() {
         }
 
 
-        /* ==========================================
+        /* =================================================
            HEADER
-        ========================================== */
+        ================================================= */
 
         .one-platform-header {
           display: grid;
@@ -499,9 +714,9 @@ export default function OnePlatformSection() {
         }
 
 
-        /* ==========================================
-           CARDS AREA
-        ========================================== */
+        /* =================================================
+           CARDS WINDOW
+        ================================================= */
 
         .one-platform-cards-area {
           position: relative;
@@ -509,12 +724,30 @@ export default function OnePlatformSection() {
           width: 100%;
 
           height: 380px;
+
+          /*
+            IMPORTANT
+
+            This is the "window".
+
+            Cards are allowed to start
+            outside this area.
+
+            Only the part inside this window
+            becomes visible.
+
+            This creates the effect that
+            cards are coming from just outside
+            the window.
+          */
+
+          overflow: hidden;
         }
 
 
-        /* ==========================================
+        /* =================================================
            CONNECTOR
-        ========================================== */
+        ================================================= */
 
         .platform-connector {
           position: absolute;
@@ -522,6 +755,7 @@ export default function OnePlatformSection() {
           inset: 0;
 
           width: 100%;
+
           height: 100%;
 
           pointer-events: none;
@@ -529,12 +763,18 @@ export default function OnePlatformSection() {
           z-index: 1;
 
           overflow: visible;
+
+          /*
+            Connector moves with the cards.
+          */
+
+          will-change: transform;
         }
 
 
-        /* ==========================================
+        /* =================================================
            CARD
-        ========================================== */
+        ================================================= */
 
         .platform-card {
           position: absolute;
@@ -554,36 +794,50 @@ export default function OnePlatformSection() {
           z-index: 2;
 
           box-shadow:
-            0 15px 40px rgba(0,0,0,0.12);
+            0 15px 40px
+            rgba(0, 0, 0, 0.12);
+
+          /*
+            Only transform is animated.
+
+            No scale.
+            No transition.
+            No popup.
+          */
+
+          will-change: transform;
         }
 
 
-        /* ==========================================
+        /* =================================================
            LEFT CARD
-        ========================================== */
+        ================================================= */
 
         .platform-card-left {
           left: 2%;
+
           top: 130px;
         }
 
 
-        /* ==========================================
+        /* =================================================
            RIGHT CARD
-        ========================================== */
+        ================================================= */
 
         .platform-card-right {
           right: 2%;
+
           top: 60px;
         }
 
 
-        /* ==========================================
+        /* =================================================
            ICON
-        ========================================== */
+        ================================================= */
 
         .card-icon {
           width: 48px;
+
           height: 48px;
 
           border-radius: 50%;
@@ -593,6 +847,7 @@ export default function OnePlatformSection() {
           display: flex;
 
           align-items: center;
+
           justify-content: center;
 
           color: #ffffff;
@@ -605,9 +860,9 @@ export default function OnePlatformSection() {
         }
 
 
-        /* ==========================================
+        /* =================================================
            TITLE
-        ========================================== */
+        ================================================= */
 
         .card-title {
           font-size: 16px;
@@ -622,9 +877,9 @@ export default function OnePlatformSection() {
         }
 
 
-        /* ==========================================
+        /* =================================================
            DESCRIPTION
-        ========================================== */
+        ================================================= */
 
         .card-desc {
           font-size: 13.5px;
@@ -647,17 +902,21 @@ export default function OnePlatformSection() {
             padding: 60px 30px;
           }
 
+
           .one-platform-header {
             gap: 40px;
           }
+
 
           .one-platform-heading {
             font-size: 30px;
           }
 
+
           .one-platform-description {
             font-size: 14px;
           }
+
 
           .platform-card {
             width: 330px;
@@ -667,9 +926,11 @@ export default function OnePlatformSection() {
             padding: 28px 24px;
           }
 
+
           .platform-card-left {
             left: 0;
           }
+
 
           .platform-card-right {
             right: 0;
@@ -687,11 +948,13 @@ export default function OnePlatformSection() {
             padding: 55px 25px;
           }
 
+
           .one-platform-header {
             gap: 30px;
 
             margin-bottom: 25px;
           }
+
 
           .one-platform-heading {
             font-size: 27px;
@@ -699,15 +962,18 @@ export default function OnePlatformSection() {
             max-width: 320px;
           }
 
+
           .one-platform-description {
             font-size: 13.5px;
 
             margin: 3px 0 0;
           }
 
+
           .one-platform-cards-area {
             height: 360px;
           }
+
 
           .platform-card {
             width: 46%;
@@ -717,13 +983,17 @@ export default function OnePlatformSection() {
             padding: 26px 22px;
           }
 
+
           .platform-card-left {
             left: 0;
+
             top: 125px;
           }
 
+
           .platform-card-right {
             right: 0;
+
             top: 55px;
           }
         }
@@ -742,6 +1012,7 @@ export default function OnePlatformSection() {
 
             overflow: hidden;
           }
+
 
           .one-platform-container {
             height: 100%;
@@ -762,6 +1033,7 @@ export default function OnePlatformSection() {
             margin-bottom: 25px;
           }
 
+
           .one-platform-heading {
             font-size: 25px;
 
@@ -769,6 +1041,7 @@ export default function OnePlatformSection() {
 
             max-width: 100%;
           }
+
 
           .one-platform-description {
             font-size: 13.5px;
@@ -781,23 +1054,31 @@ export default function OnePlatformSection() {
           }
 
 
-          /* CARDS AREA */
+          /* =================================================
+             MOBILE CARD WINDOW
+          ================================================= */
 
           .one-platform-cards-area {
             height: calc(100% - 190px);
 
             min-height: 400px;
+
+            overflow: hidden;
           }
 
 
-          /* HIDE CONNECTOR */
+          /* =================================================
+             HIDE CONNECTOR
+          ================================================= */
 
           .platform-connector {
             display: none;
           }
 
 
-          /* CARD */
+          /* =================================================
+             MOBILE CARD
+          ================================================= */
 
           .platform-card {
             width: calc(100% - 10px);
@@ -824,8 +1105,11 @@ export default function OnePlatformSection() {
           }
 
 
+          /* ICON */
+
           .card-icon {
             width: 44px;
+
             height: 44px;
 
             font-size: 20px;
@@ -834,6 +1118,8 @@ export default function OnePlatformSection() {
           }
 
 
+          /* TITLE */
+
           .card-title {
             font-size: 15px;
 
@@ -841,12 +1127,13 @@ export default function OnePlatformSection() {
           }
 
 
+          /* DESCRIPTION */
+
           .card-desc {
             font-size: 13px;
 
             line-height: 1.45;
           }
-
         }
 
 
@@ -860,9 +1147,11 @@ export default function OnePlatformSection() {
             min-height: 650px;
           }
 
+
           .one-platform-container {
             padding: 32px 16px;
           }
+
 
           .one-platform-header {
             gap: 12px;
@@ -870,17 +1159,21 @@ export default function OnePlatformSection() {
             margin-bottom: 20px;
           }
 
+
           .one-platform-heading {
             font-size: 22px;
           }
+
 
           .one-platform-description {
             font-size: 12.5px;
           }
 
+
           .one-platform-cards-area {
             height: calc(100% - 175px);
           }
+
 
           .platform-card {
             width: 100%;
@@ -892,16 +1185,20 @@ export default function OnePlatformSection() {
             min-height: 180px;
           }
 
+
           .platform-card-left {
             top: 5px;
           }
+
 
           .platform-card-right {
             top: 205px;
           }
 
+
           .card-icon {
             width: 42px;
+
             height: 42px;
 
             font-size: 19px;
@@ -909,18 +1206,19 @@ export default function OnePlatformSection() {
             margin-bottom: 12px;
           }
 
+
           .card-title {
             font-size: 15px;
 
             margin-bottom: 8px;
           }
 
+
           .card-desc {
             font-size: 12.5px;
 
             line-height: 1.45;
           }
-
         }
 
 
@@ -934,13 +1232,16 @@ export default function OnePlatformSection() {
             padding: 28px 14px;
           }
 
+
           .one-platform-heading {
             font-size: 20px;
           }
 
+
           .one-platform-description {
             font-size: 12px;
           }
+
 
           .platform-card {
             padding: 18px 16px;
@@ -948,18 +1249,20 @@ export default function OnePlatformSection() {
             min-height: 175px;
           }
 
+
           .platform-card-right {
             top: 195px;
           }
+
 
           .card-title {
             font-size: 14px;
           }
 
+
           .card-desc {
             font-size: 12px;
           }
-
         }
 
       `}</style>
@@ -990,7 +1293,7 @@ const PlatformCard = React.forwardRef(
 
         <p className="card-desc">
           {card.desc}
-        </p>
+        </p>a
 
       </div>
     );
