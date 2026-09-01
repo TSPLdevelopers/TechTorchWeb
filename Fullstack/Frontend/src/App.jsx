@@ -38,7 +38,10 @@ import Hero03Slide07 from "./components/Hero3Slides/Hero03Slide07.jsx";
 
 import Hero04Slide01 from "./components/Hero4Slides/Hero04Slide01.jsx";
 import Hero04Slide03 from "./components/Hero4Slides/Hero04Slide03.jsx";
-// import Hero04Slide02 from "./components/Hero4Slides/Hero04Slide02.jsx";
+
+import Hero05Slide01 from "./components/Hero5Slides/Hero05Slide01.jsx";
+import Hero05Slide02 from "./components/Hero5Slides/Hero05Slide02.jsx";
+import Hero05Slide04 from "./components/Hero5Slides/Hero05Slide04.jsx";
 
 
 // =================================================
@@ -120,6 +123,17 @@ function Slide4Page() {
   );
 }
 
+function Slide5Page() {
+  return (
+    <div>
+      <Hero05Slide01 />
+      <Hero05Slide02 />
+      <Hero05Slide04 />
+      
+    </div>
+  );
+}
+
 // =================================================
 // APP
 // =================================================
@@ -154,7 +168,10 @@ function App() {
         element={<Slide4Page />}
       />
 
-
+       <Route
+        path="/Slide5"
+        element={<Slide5Page />}
+      />
     </Routes>
   );
 }
