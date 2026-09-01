@@ -64,7 +64,7 @@ const slides = [
 
     ctaText: "EXPLORE TECHNOLOGY SERVICES",
 
-    ctaHref: "#",
+    ctaHref: "/Slide4",
 
     focus: "100% 45%",
   },
