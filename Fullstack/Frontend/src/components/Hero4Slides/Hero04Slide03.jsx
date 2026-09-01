@@ -102,7 +102,7 @@ export default function TechnologyServicesSection() {
         background: MAROON,
         backgroundImage:
           'repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 90px)',
-        fontFamily: "'Segoe UI', Arial, sans-serif",
+        fontFamily: "'Plus jakart sans', sans-serif",
         overflow: 'hidden',
       }}
     >
