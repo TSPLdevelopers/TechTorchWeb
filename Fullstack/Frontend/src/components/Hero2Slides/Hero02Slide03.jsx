@@ -84,7 +84,7 @@ export default function OnePlatformSection() {
       pair3Right.current,
     ].filter(Boolean);
 
-    const connector = connectorRef.current;
+    const connector = connector1Ref.current;
 
     /* ==========================================
        INITIAL STATE
