@@ -9,7 +9,7 @@ export default function SoftwareWorksSection() {
       style={{
         padding: "55px 80px",
         background: "#f7f4ef",
-        fontFamily: "'Segoe UI', Arial, sans-serif",
+        fontFamily: "plus jakarta sans, sans-serif",
         overflow: "hidden",
       }}
     >
@@ -122,17 +122,17 @@ export default function SoftwareWorksSection() {
 
           <p
   style={{
-    fontSize: "17px",
+    fontSize: "18px",
     lineHeight: 1.6,
     color: "#7a1338",
     fontWeight: 700,
-    margin: "18px 0 0 0",
+    margin: "18px 0 0 60px",
     maxWidth: "540px",
   }}
 >
-  We build software to make your business
+  We build software to make your business work
   <br />
-  work better—not simply to add another system.
+    better—not simply to add another system.
 </p>
         </div>
       </div>
