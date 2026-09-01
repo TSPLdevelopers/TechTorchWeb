@@ -2,40 +2,42 @@ import React from "react";
 
 export default function SoftwareThatWorks() {
   return (
-    <section className="w-full bg-[#faf9f4] overflow-hidden">
- <div
-  className="
-    mx-auto
-    w-full
-    max-w-[1400px]
+    <section className="w-full overflow-hidden bg-[#faf9f4]">
+      <div
+        className="
+          mx-auto
+          w-full
+          max-w-[1400px]
 
-    px-6
-    py-4
+          px-5
+          py-4
 
-    sm:px-8
-    sm:py-5
+          sm:px-7
+          sm:py-5
 
-    md:px-10
-    md:py-6
+          md:px-10
+          md:py-6
 
-    lg:px-12
-    lg:py-6
+          lg:px-12
+          lg:py-6
 
-    xl:px-14
-    xl:py-6
-  "
->
+          xl:px-14
+          xl:py-6
+        "
+      >
         <div
           className="
             grid
             grid-cols-1
-            gap-12
+            gap-8
+
+            sm:gap-10
 
             md:grid-cols-[1.15fr_0.85fr]
-            md:gap-10
+            md:gap-8
 
             lg:grid-cols-[1.15fr_0.85fr]
-            lg:gap-14
+            lg:gap-10
 
             xl:grid-cols-[1.15fr_0.85fr]
             xl:gap-16
@@ -47,6 +49,7 @@ export default function SoftwareThatWorks() {
           <div
             className="
               flex
+              min-w-0
               flex-col
               justify-start
               pt-0
@@ -57,20 +60,25 @@ export default function SoftwareThatWorks() {
             {/* HEADING */}
             <h1
               className="
+                max-w-full
                 font-['Plus_Jakarta_Sans']
-                text-[38px]
-                font-medium
+                text-[30px]
+                font-semibold
                 leading-[1.08]
-                tracking-[-1.8px]
+                tracking-[-1.2px]
                 text-[#111111]
 
-                sm:text-[42px]
+                min-[380px]:text-[32px]
+
+                sm:text-[36px]
+                sm:tracking-[-1.4px]
 
                 md:text-[44px]
+                md:tracking-[-1.8px]
 
                 lg:text-[48px]
 
-                xl:text-[50px]
+                xl:text-[38px]
               "
             >
               Software That Works
@@ -84,46 +92,47 @@ export default function SoftwareThatWorks() {
             {/* FIRST PARAGRAPH */}
             <p
               className="
-                mt-9
+                mt-6
                 max-w-[700px]
                 font-['Inter']
-                text-[17px]
+                text-[15px]
                 font-normal
                 leading-[1.55]
                 text-[#292929]
 
-                sm:text-[18px]
+                sm:mt-7
+                sm:text-[16px]
 
                 md:mt-10
                 md:text-[18px]
 
-                lg:text-[19px]
+                lg:text-[16px]
               "
             >
               Every organization has different processes, priorities and
               challenges. Yet many businesses still rely on software that
-              doesn't fully fit the way their teams work.
-              <br />
-              We take a different approach.
+              doesn't fully fit the way their teams work. We take a different
+              approach.
             </p>
 
             {/* SECOND PARAGRAPH */}
             <p
               className="
-                mt-8
+                mt-6
                 max-w-[700px]
                 font-['Inter']
-                text-[17px]
+                text-[15px]
                 font-normal
                 leading-[1.55]
                 text-[#292929]
 
-                sm:text-[18px]
+                sm:mt-7
+                sm:text-[16px]
 
                 md:mt-9
                 md:text-[18px]
 
-                lg:text-[19px]
+                lg:text-[16px]
               "
             >
               At TechTorch, we start by understanding your business and the
@@ -134,20 +143,21 @@ export default function SoftwareThatWorks() {
             {/* THIRD PARAGRAPH */}
             <p
               className="
-                mt-8
+                mt-6
                 max-w-[700px]
                 font-['Inter']
-                text-[17px]
+                text-[15px]
                 font-normal
                 leading-[1.55]
                 text-[#292929]
 
-                sm:text-[18px]
+                sm:mt-7
+                sm:text-[16px]
 
                 md:mt-9
                 md:text-[18px]
 
-                lg:text-[19px]
+                lg:text-[16px]
               "
             >
               That could mean building a new application, connecting systems
@@ -158,20 +168,21 @@ export default function SoftwareThatWorks() {
             {/* FOURTH PARAGRAPH */}
             <p
               className="
-                mt-8
+                mt-6
                 max-w-[700px]
                 font-['Inter']
-                text-[17px]
+                text-[15px]
                 font-normal
                 leading-[1.55]
                 text-[#292929]
 
-                sm:text-[18px]
+                sm:mt-7
+                sm:text-[16px]
 
                 md:mt-9
                 md:text-[18px]
 
-                lg:text-[19px]
+                lg:text-[16px]
               "
             >
               The technology is important, but the business outcome comes
@@ -185,62 +196,85 @@ export default function SoftwareThatWorks() {
           <div
             className="
               flex
+              min-w-0
               flex-col
-              items-start
 
-              md:items-stretch
+              /* MOBILE */
+              items-center
+              max-md:w-full
+              max-md:translate-x-0
+
+              /* TABLET */
+              md:items-start
+              md:translate-x-[30px]
+
+              /* DESKTOP */
+              lg:translate-x-[80px]
+
+              xl:translate-x-[165px]
             "
           >
             {/* IMAGE */}
             <div
-  className="
-    w-[92%]
-    overflow-hidden
-    rounded-[18px]
+              className="
+                w-[94%]
+                max-w-[560px]
+                overflow-hidden
+                rounded-[16px]
 
-    sm:w-[70%]
-    sm:rounded-[20px]
+                sm:w-[88%]
+                sm:max-w-[580px]
+                sm:rounded-[18px]
 
-    md:w-[70%]
-    md:rounded-[20px]
+                md:w-[92%]
+                md:max-w-[500px]
+                md:rounded-[20px]
 
-    lg:w-[80%]
-    lg:rounded-[21px]
-  "
->
-  <img
-    src="/Slide3.2.png"
-    alt="Business team working together"
-    className="
-      block
-      h-auto
-      w-full
-      object-contain
-    "
-  />
-</div>
+                lg:w-[78%]
+                lg:max-w-none
+                lg:rounded-[21px]
+
+                xl:w-[72%]
+              "
+            >
+              <img
+                src="/Slide3.2.png"
+                alt="Business team working together"
+                className="
+                  block
+                  h-auto
+                  w-full
+                  object-contain
+                "
+              />
+            </div>
 
             {/* HIGHLIGHT TEXT */}
             <p
               className="
-                mt-8
-                max-w-[520px]
+                mt-6
+                w-full
+                max-w-[500px]
                 font-['Plus_Jakarta_Sans']
-                text-[21px]
+                text-[17px]
                 font-bold
                 leading-[1.25]
-                tracking-[-0.5px]
+                tracking-[-0.4px]
                 text-[#850052]
 
-                sm:text-[22px]
+                sm:mt-7
+                sm:max-w-[520px]
+                sm:text-[19px]
 
-                md:mt-9
+                md:mt-8
+                md:max-w-[500px]
                 md:text-[21px]
 
                 lg:mt-10
+                lg:max-w-[520px]
                 lg:text-[23px]
 
-                xl:text-[24px]
+                xl:text-[20px]
               "
             >
               We build software to make your business
