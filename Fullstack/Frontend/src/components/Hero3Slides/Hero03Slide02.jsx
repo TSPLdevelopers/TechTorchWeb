@@ -1,221 +1,294 @@
 import React from "react";
 
-// Public folder image
-import teamMeetingImage from "/hero03slide2.png";
-
-export default function SoftwareWorksSection() {
+export default function SoftwareThatWorks() {
   return (
     <section
+      className="w-full overflow-hidden"
       style={{
-        padding: "55px 80px",
         background: "#f7f4ef",
-        fontFamily: "plus jakarta sans, sans-serif",
-        overflow: "hidden",
+        fontFamily: "Plus Jakarta Sans, sans-serif",
       }}
     >
       <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          maxWidth: "1300px",
-          margin: "0 auto",
-          gap: "40px",
-        }}
+        className="
+          mx-auto
+          w-full
+          max-w-[1400px]
+
+          px-5
+          py-4
+
+          sm:px-7
+          sm:py-5
+
+          md:px-10
+          md:py-6
+
+          lg:px-12
+          lg:py-6
+
+          xl:px-14
+          xl:py-6
+        "
       >
-        {/* ================= LEFT CONTENT ================= */}
         <div
-          className="software-works-content"
-          style={{
-            // Text width kam ki
-            maxWidth: "450px",
-            flex: "1 1 380px",
-          }}
+          className="
+            grid
+            grid-cols-1
+            gap-8
+
+            sm:gap-10
+
+            md:grid-cols-[1.15fr_0.85fr]
+            md:gap-8
+
+            lg:grid-cols-[1.15fr_0.85fr]
+            lg:gap-10
+
+            xl:grid-cols-[1.15fr_0.85fr]
+            xl:gap-16
+          "
         >
-          <h1
-            style={{
-              fontSize: "38px",
-              lineHeight: 1.25,
-              fontWeight: 700,
-              color: "#1a1a1a",
-              margin: "0 0 22px 0",
-            }}
+          {/* =====================================================
+              LEFT CONTENT
+          ====================================================== */}
+          <div
+            className="
+              flex
+              min-w-0
+              flex-col
+              justify-start
+              pt-0
+
+              md:pt-1
+            "
           >
-            Software That Works
-            <br />
-            For <span style={{ color: "#7a1338" }}>Your Business</span>
-          </h1>
+            {/* HEADING */}
+            <h1
+              className="
+                max-w-full
+                font-['Plus_Jakarta_Sans']
+                text-[30px]
+                font-semibold
+                leading-[1.08]
+                tracking-[-1.2px]
+                text-[#111111]
 
-          <p
-            style={{
-              fontSize: "16px",
-              lineHeight: 1.7,
-              color: "#333333",
-              margin: "0 0 16px 0",
-            }}
+                min-[380px]:text-[32px]
+
+                sm:text-[36px]
+                sm:tracking-[-1.4px]
+
+                md:text-[44px]
+                md:tracking-[-1.8px]
+
+                lg:text-[48px]
+
+                xl:text-[38px]
+              "
+            >
+              Software That Works
+              <br />
+              For{" "}
+              <span className="text-[#850052]">
+                Your Business
+              </span>
+            </h1>
+
+            {/* FIRST PARAGRAPH */}
+            <p
+              className="
+                mt-6
+                max-w-[700px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.55]
+                text-[#292929]
+
+                sm:mt-7
+                sm:text-[16px]
+
+                md:mt-10
+                md:text-[18px]
+
+                lg:text-[16px]
+              "
+            >
+              Every organization has different processes, priorities and
+              challenges. Yet many businesses still rely on software that
+              doesn't fully fit the way their teams work. We take a different
+              approach.
+            </p>
+
+            {/* SECOND PARAGRAPH */}
+            <p
+              className="
+                mt-6
+                max-w-[700px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.55]
+                text-[#292929]
+
+                sm:mt-7
+                sm:text-[16px]
+
+                md:mt-9
+                md:text-[18px]
+
+                lg:text-[16px]
+              "
+            >
+              At TechTorch, we start by understanding your business and the
+              problem you want to solve. We look at your existing processes,
+              systems and user needs before defining the right solution.
+            </p>
+
+            {/* THIRD PARAGRAPH */}
+            <p
+              className="
+                mt-6
+                max-w-[700px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.55]
+                text-[#292929]
+
+                sm:mt-7
+                sm:text-[16px]
+
+                md:mt-9
+                md:text-[18px]
+
+                lg:text-[16px]
+              "
+            >
+              That could mean building a new application, connecting systems
+              that currently operate separately, or modernizing an existing
+              platform.
+            </p>
+
+            {/* FOURTH PARAGRAPH */}
+            <p
+              className="
+                mt-6
+                max-w-[700px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.55]
+                text-[#292929]
+
+                sm:mt-7
+                sm:text-[16px]
+
+                md:mt-9
+                md:text-[18px]
+
+                lg:text-[16px]
+              "
+            >
+              The technology is important, but the business outcome comes
+              first.
+            </p>
+          </div>
+
+          {/* =====================================================
+              RIGHT CONTENT
+          ====================================================== */}
+          <div
+            className="
+              flex
+              min-w-0
+              flex-col
+
+              items-center
+              max-md:w-full
+              max-md:translate-x-0
+
+              md:items-start
+              md:translate-x-[30px]
+
+              lg:translate-x-[80px]
+
+              xl:translate-x-[165px]
+            "
           >
-            Every organization has different processes, priorities and
-            challenges. Yet many businesses still rely on software that
-            doesn't fully fit the way their teams work.
-            <br />
-            We take a different approach.
-          </p>
+            {/* IMAGE */}
+            <div
+              className="
+                w-[94%]
+                max-w-[560px]
+                overflow-hidden
+                rounded-[16px]
 
-          <p
-            style={{
-              fontSize: "16px",
-              lineHeight: 1.7,
-              color: "#333333",
-              margin: "0 0 16px 0",
-            }}
-          >
-            At TechTorch, we start by understanding your business and the
-            problem you want to solve. We look at your existing processes,
-            systems and user needs before defining the right solution.
-          </p>
+                sm:w-[88%]
+                sm:max-w-[580px]
+                sm:rounded-[18px]
 
-          <p
-            style={{
-              fontSize: "16px",
-              lineHeight: 1.7,
-              color: "#333333",
-              margin: "0 0 16px 0",
-            }}
-          >
-            That could mean building a new application, connecting systems
-            that currently operate separately, or modernizing an existing
-            platform.
-          </p>
+                md:w-[92%]
+                md:max-w-[500px]
+                md:rounded-[20px]
 
-          <p
-            style={{
-              fontSize: "16px",
-              lineHeight: 1.7,
-              color: "#333333",
-              margin: 0,
-            }}
-          >
-            The technology is important, but the business outcome comes
-            first.
-          </p>
-        </div>
+                lg:w-[78%]
+                lg:max-w-none
+                lg:rounded-[21px]
 
-        {/* ================= RIGHT IMAGE ================= */}
-        <div
-          className="software-works-image"
-          style={{
-            flex: "1 1 420px",
-            maxWidth: "520px",
-          }}
-        >
-          <img
-            src={teamMeetingImage}
-            alt="Team collaborating in a meeting room"
-            style={{
-              width: "100%",
-              height: "auto",
-              display: "block",
-              borderRadius: "16px",
-            }}
-          />
+                xl:w-[72%]
+              "
+            >
+              <img
+                src="/Slide3.2.png"
+                alt="Business team working together"
+                className="
+                  block
+                  h-auto
+                  w-full
+                  object-contain
+                "
+              />
+            </div>
 
-          <p
-  style={{
-    fontSize: "18px",
-    lineHeight: 1.6,
-    color: "#7a1338",
-    fontWeight: 700,
-    margin: "18px 0 0 60px",
-    maxWidth: "540px",
-  }}
->
-  We build software to make your business work
-  <br />
-    better—not simply to add another system.
-</p>
+            {/* HIGHLIGHT TEXT */}
+            <p
+              className="
+                mt-6
+                w-full
+                max-w-[500px]
+                font-['Plus_Jakarta_Sans']
+                text-[17px]
+                font-bold
+                leading-[1.25]
+                tracking-[-0.4px]
+                text-[#850052]
+
+                sm:mt-7
+                sm:max-w-[520px]
+                sm:text-[19px]
+
+                md:mt-8
+                md:max-w-[500px]
+                md:text-[21px]
+
+                lg:mt-10
+                lg:max-w-[520px]
+                lg:text-[23px]
+
+                xl:text-[20px]
+              "
+            >
+              We build software to make your business
+              <br className="hidden sm:block" />
+              work better—not simply to add another
+              <br className="hidden sm:block" />
+              system.
+            </p>
+          </div>
         </div>
       </div>
-
-      {/* ================= RESPONSIVE ================= */}
-      <style>{`
-        @media (max-width: 1100px) {
-          section {
-            padding: 50px 50px !important;
-          }
-
-          section > div {
-            gap: 35px !important;
-          }
-
-          .software-works-content {
-            max-width: 420px !important;
-          }
-
-          .software-works-image {
-            max-width: 520px !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          section {
-            padding: 45px 40px !important;
-          }
-
-          section > div {
-            gap: 40px !important;
-          }
-
-          .software-works-content {
-            max-width: 100% !important;
-          }
-
-          .software-works-image {
-            max-width: 100% !important;
-            flex-basis: 380px !important;
-          }
-        }
-
-        @media (max-width: 768px) {
-          section {
-            padding: 40px 25px !important;
-          }
-
-          section > div {
-            gap: 35px !important;
-          }
-
-          .software-works-content {
-            width: 100% !important;
-            max-width: 100% !important;
-            flex-basis: 100% !important;
-          }
-
-          .software-works-image {
-            width: 100% !important;
-            max-width: 100% !important;
-            flex-basis: 100% !important;
-          }
-        }
-
-        @media (max-width: 480px) {
-          section {
-            padding: 35px 20px !important;
-          }
-
-          section h1 {
-            font-size: 30px !important;
-          }
-
-          section > div {
-            gap: 30px !important;
-          }
-
-          .software-works-image p {
-            font-size: 16px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -27,3 +27,11 @@
 .animate-imageSlideBack {
   animation: imageSlideBack 0.6s ease-in-out forwards;
 }
+
+/* Keep ERP layout side-by-side on mobile */
+@media (max-width: 767px) {
+  .erp-approach-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) !important;
+    gap: 12px !important;
+  }
+}

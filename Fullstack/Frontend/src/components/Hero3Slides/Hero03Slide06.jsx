@@ -1,62 +1,134 @@
-import React from 'react';
+import React from "react";
 
-export default function BusinessValueSection() {
+export default function TechnologyBusinessValue() {
   return (
-    <section
-      style={{
-        padding: '90px 80px',
-        background: '#f7f4ef',
-        fontFamily: "'Segoe UI', Arial, sans-serif",
-      }}
-    >
+    <section className="w-full overflow-hidden bg-[#faf9f4]">
       <div
-        style={{
-          maxWidth: '1250px',
-          margin: '-20px auto',
-        }}
+        className="
+          mx-auto
+          w-full
+          max-w-[1400px]
+
+          px-6
+          py-5
+
+          sm:px-8
+          sm:py-6
+
+          md:px-10
+          md:py-7
+
+          lg:px-12
+          lg:py-8
+
+          xl:px-14
+          xl:py-9
+        "
       >
-        <h1
-          style={{
-            fontSize: '32px',
-            lineHeight: 1.25,
-            fontWeight: 700,
-            color: '#1a1a1a',
-            margin: '0 0 40px 0',
-          }}
+        {/* =====================================================
+            HEADING
+        ====================================================== */}
+        <h2
+          className="
+            font-['Inter']
+            text-[30px]
+            font-semibold
+            leading-[1.08]
+            tracking-[-1.2px]
+            text-[#111111]
+
+            min-[400px]:text-[32px]
+
+            sm:text-[36px]
+            sm:tracking-[-1.5px]
+
+            md:text-[40px]
+
+            lg:text-[42px]
+
+            xl:text-[34px]
+          "
         >
           Technology That
           <br />
-          Delivers <span style={{ color: '#7a1338' }}>Business Value</span>
-        </h1>
+          Delivers{" "}
+          <span className="text-[#850052]">
+            Business Value
+          </span>
+        </h2>
 
+        {/* =====================================================
+            CONTENT
+        ====================================================== */}
         <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '80px',
-          }}
+          className="
+            mt-6
+
+            grid
+            grid-cols-1
+            gap-6
+
+            sm:mt-7
+            sm:gap-7
+
+            md:mt-8
+            md:grid-cols-2
+            md:gap-x-14
+            md:gap-y-8
+
+            lg:mt-9
+            lg:gap-x-20
+            lg:gap-y-10
+
+            xl:gap-x-24
+            xl:gap-y-12
+          "
         >
-          {/* Left column */}
-          <div style={{ flex: '1 1 380px', maxWidth: '520px' }}>
+          {/* =====================================================
+              LEFT COLUMN
+          ====================================================== */}
+          <div className="min-w-0">
+            {/* Paragraph 1 */}
             <p
-              style={{
-                fontSize: '16px',
-                lineHeight: 1.8,
-                color: '#333333',
-                margin: '0 0 28px 0',
-              }}
+              className="
+                max-w-[620px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.4]
+                text-[#5c5c5c]
+
+                sm:text-[16px]
+
+                md:text-[17px]
+
+                lg:text-[16px]
+              "
             >
               Good software should do more than introduce new technology. It
               should make the business work better.
             </p>
 
+            {/* Paragraph 2 */}
             <p
-              style={{
-                fontSize: '16px',
-                lineHeight: 1.8,
-                color: '#333333',
-                margin: '0 0 28px 0',
-              }}
+              className="
+                mt-5
+                max-w-[620px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.4]
+                text-[#5c5c5c]
+
+                sm:mt-6
+                sm:text-[16px]
+
+                md:mt-7
+                md:text-[17px]
+
+                lg:mt-8
+                lg:text-[16px]
+              "
             >
               At TechTorch, we focus on building solutions that improve
               everyday operations, connect information and make work easier
@@ -66,32 +138,70 @@ export default function BusinessValueSection() {
               outcome behind the technology.
             </p>
 
+            {/* Paragraph 3 */}
             <p
-              style={{
-                fontSize: '16px',
-                lineHeight: 1.8,
-                color: '#333333',
-                margin: 0,
-              }}
+              className="
+                mt-5
+                max-w-[620px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.4]
+                text-[#5c5c5c]
+
+                sm:mt-6
+                sm:text-[16px]
+
+                md:mt-7
+                md:text-[17px]
+
+                lg:mt-8
+                lg:text-[16px]
+              "
             >
               As businesses grow, their requirements change. Teams expand,
               processes evolve and new systems need to work alongside
               existing ones. That's why we consider scalability,
               maintainability and integration from the beginning. We build
-              software that can adapt to changing requirements without
-              adding unnecessary complexity.
+              software that can adapt to changing requirements without adding
+              unnecessary complexity.
             </p>
           </div>
 
-          {/* Right column */}
-          <div style={{ flex: '1 1 380px', maxWidth: '520px' }}>
+          {/* =====================================================
+              RIGHT COLUMN
+          ====================================================== */}
+          <div
+  className="
+    min-w-0
+
+    md:relative
+    md:-top-4
+    md:left-4
+
+    lg:-top-5
+    lg:left-6
+
+    xl:-top-6
+    xl:left-8
+  "
+>
+            {/* Paragraph 1 */}
             <p
-              style={{
-                fontSize: '16px',
-                lineHeight: 1.8,
-                color: '#333333',
-                margin: '0 0 28px 0',
-              }}
+              className="
+                max-w-[620px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.4]
+                text-[#5c5c5c]
+
+                sm:text-[16px]
+
+                md:text-[17px]
+
+                lg:text-[16px]
+              "
             >
               The right technology should also be practical. Not every
               business needs a large or complex system, and custom software
@@ -101,43 +211,86 @@ export default function BusinessValueSection() {
               difference.
             </p>
 
+            {/* Paragraph 2 */}
             <p
-              style={{
-                fontSize: '16px',
-                lineHeight: 1.8,
-                color: '#333333',
-                margin: '0 0 28px 0',
-              }}
+              className="
+                mt-5
+                max-w-[620px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.4]
+                text-[#5c5c5c]
+
+                sm:mt-6
+                sm:text-[16px]
+
+                md:mt-7
+                md:text-[17px]
+
+                lg:mt-8
+                lg:text-[16px]
+              "
             >
               Our approach is simple: understand the problem, choose the
               right technology and build a solution that creates lasting
               value.
             </p>
 
+            {/* Paragraph 3 */}
             <p
-              style={{
-                fontSize: '16px',
-                lineHeight: 1.8,
-                color: '#333333',
-                margin: '0 0 28px 0',
-              }}
+              className="
+                mt-5
+                max-w-[620px]
+                font-['Inter']
+                text-[15px]
+                font-normal
+                leading-[1.4]
+                text-[#5c5c5c]
+
+                sm:mt-6
+                sm:text-[16px]
+
+                md:mt-7
+                md:text-[17px]
+
+                lg:mt-8
+                lg:text-[16px]
+              "
             >
               Software should simplify work, connect people and information,
               support better decisions and give businesses room to grow.
             </p>
 
+            {/* =================================================
+                HIGHLIGHT
+            ================================================== */}
             <p
-              style={{
-                fontSize: '16px',
-                lineHeight: 1.6,
-                color: '#7a1338',
-                fontWeight: 700,
-                margin: 0,
-              }}
+              className="
+                mt-6
+                max-w-[620px]
+                font-['Plus_Jakarta_Sans']
+                text-[17px]
+                font-medium
+                leading-[1.25]
+                tracking-[-0.3px]
+                text-[#850052]
+
+                sm:mt-7
+                sm:text-[18px]
+
+                md:mt-8
+                md:text-[19px]
+
+                lg:mt-9
+                lg:text-[20px]
+
+                xl:text-[18px]
+              "
             >
               The goal isn't to build more technology. It's to build the
-              right technology for the business—and make sure it continues
-              to deliver value over time.
+              right technology for the business—and make sure it continues to
+              deliver value over time.
             </p>
           </div>
         </div>

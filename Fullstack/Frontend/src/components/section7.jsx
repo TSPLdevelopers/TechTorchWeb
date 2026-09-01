@@ -53,11 +53,11 @@ function CTAButton({ children }) {
     <button
       className="tx-cta inline-flex items-center justify-center gap-2.5 self-start rounded-lg whitespace-nowrap w-full sm:w-auto"
       style={{
-        marginTop: "16px",
+        marginTop: "10px",
         border: `1.5px solid ${colors.brand}`,
         color: colors.brand,
-        padding: "12px 22px",
-        fontSize: "16px",
+        padding: "6px 14px",
+        fontSize: "18px",
         fontWeight: 700,
       }}
     >
@@ -84,7 +84,7 @@ function CopyPanel() {
         className="tx-heading"
         style={{
           marginBottom: "24px",
-          fontSize: "32px",
+          fontSize: "28px",
           lineHeight: 1.18,
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 600,
@@ -101,6 +101,7 @@ function CopyPanel() {
         className="tx-suite"
         style={{
           marginBottom: "20px",
+          
           fontSize: "30px",
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 600,
@@ -115,9 +116,10 @@ function CopyPanel() {
         className="tx-intro"
         style={{
           marginBottom: "40px",
-          fontSize: "22px",
+          fontSize: "21px",
+          fontFamily: "Plus Jakarta Sans",
           maxWidth: "28rem",
-          lineHeight: 1.65,
+          lineHeight: 1.5,
           fontWeight: 500,
           color: "#1e1e1e",
         }}
@@ -129,7 +131,8 @@ function CopyPanel() {
         className="tx-description"
         style={{
           marginBottom: "16px",
-          fontSize: "18px",
+           marginTop: "-10px",
+          fontSize: "17px",
           fontFamily: "Inter",
           maxWidth: "28rem",
           lineHeight: 1.65,
@@ -231,9 +234,8 @@ export default function TorchXVideoSection() {
         }
 
         /*
-          IMPORTANT:
-          Image height remains 100%.
-          Only width is increased.
+          Image remains fully visible.
+          object-fit: contain prevents vertical cropping.
         */
 
         .tx-image {
@@ -312,11 +314,6 @@ export default function TorchXVideoSection() {
             min-height: 0;
           }
 
-          /*
-            Mobile par width normal rakhi hai.
-            Height auto rahegi.
-          */
-
           .tx-image {
             display: block;
             width: 100%;
@@ -333,22 +330,22 @@ export default function TorchXVideoSection() {
 
         @media (min-width: 768px) and (max-width: 1023px) {
           .tx-section {
-            height: 500px;
+            height: 450px;
             grid-template-columns: 46% 54%;
             align-items: stretch;
           }
 
           .tx-copy-wrapper {
-            height: 500px;
+            height: 450px;
           }
 
           .tx-image-wrapper {
-            height: 500px;
+            height: 450px;
           }
 
           .tx-image-panel {
             width: 100%;
-            height: 500px;
+            height: 450px;
           }
 
           .tx-copy {
@@ -374,12 +371,6 @@ export default function TorchXVideoSection() {
             font-size: 17px !important;
           }
 
-          /*
-            Tablet:
-            height same,
-            width increased.
-          */
-
           .tx-image {
             width: 120%;
             height: 100%;
@@ -395,22 +386,22 @@ export default function TorchXVideoSection() {
 
         @media (min-width: 1024px) and (max-width: 1279px) {
           .tx-section {
-            height: 520px;
+            height: 460px;
             grid-template-columns: 44% 56%;
             align-items: stretch;
           }
 
           .tx-copy-wrapper {
-            height: 520px;
+            height: 460px;
           }
 
           .tx-image-wrapper {
-            height: 520px;
+            height: 460px;
           }
 
           .tx-image-panel {
             width: 100%;
-            height: 520px;
+            height: 460px;
           }
 
           .tx-copy {
@@ -436,12 +427,6 @@ export default function TorchXVideoSection() {
             font-size: 17px !important;
           }
 
-          /*
-            Desktop:
-            image width 125%,
-            height exactly same.
-          */
-
           .tx-image {
             width: 125%;
             height: 100%;
@@ -457,22 +442,22 @@ export default function TorchXVideoSection() {
 
         @media (min-width: 1280px) {
           .tx-section {
-            height: 550px;
+            height: 510px;
             grid-template-columns: 43% 57%;
             align-items: stretch;
           }
 
           .tx-copy-wrapper {
-            height: 550px;
+            height: 510px;
           }
 
           .tx-image-wrapper {
-            height: 550px;
+            height: 510px;
           }
 
           .tx-image-panel {
             width: 100%;
-            height: 550px;
+            height: 510px;
           }
 
           .tx-copy {
@@ -481,11 +466,6 @@ export default function TorchXVideoSection() {
             padding-top: 60px !important;
             padding-bottom: 60px !important;
           }
-
-          /*
-            Large desktop:
-            only width increases.
-          */
 
           .tx-image {
             width: 125%;
@@ -502,6 +482,7 @@ export default function TorchXVideoSection() {
 
         @media (min-width: 1600px) {
           .tx-section {
+            height: 490px;
             grid-template-columns: 42% 58%;
           }
 

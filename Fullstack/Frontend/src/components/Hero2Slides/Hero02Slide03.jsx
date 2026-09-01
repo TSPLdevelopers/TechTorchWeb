@@ -64,355 +64,267 @@ export default function OnePlatformSection() {
   const connector3Ref = useRef(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const isMobile = window.matchMedia(
-        "(max-width: 700px)"
-      ).matches;
+  const ctx = gsap.context(() => {
+    const isMobile = window.matchMedia(
+      "(max-width: 700px)"
+    ).matches;
 
-      const pair1 = [
-        pair1Left.current,
-        pair1Right.current,
-      ];
+    const pair1 = [
+      pair1Left.current,
+      pair1Right.current,
+    ].filter(Boolean);
 
-      const pair2 = [
-        pair2Left.current,
-        pair2Right.current,
-      ];
+    const pair2 = [
+      pair2Left.current,
+      pair2Right.current,
+    ].filter(Boolean);
 
-      const pair3 = [
-        pair3Left.current,
-        pair3Right.current,
-      ];
+    const pair3 = [
+      pair3Left.current,
+      pair3Right.current,
+    ].filter(Boolean);
 
-      const connector1 = connector1Ref.current;
-      const connector2 = connector2Ref.current;
-      const connector3 = connector3Ref.current;
+    const connector = connector1Ref.current;
 
-      /* =================================================
-         DESKTOP
-      ================================================= */
+    /* ==========================================
+       INITIAL STATE
+    ========================================== */
 
-      if (!isMobile) {
-        /*
-          IMPORTANT:
+    if (pair1.length) {
+      gsap.set(pair1, {
+        opacity: 0,
+        x: 0,
+        y: isMobile ? 40 : 0,
+      });
+    }
 
-          Cards + their connector start
-          outside the RIGHT edge.
+    if (pair2.length) {
+      gsap.set(pair2, {
+        opacity: 0,
+        x: 0,
+        y: isMobile ? 40 : 0,
+      });
+    }
 
-          They will enter from exactly
-          that side.
+    if (pair3.length) {
+      gsap.set(pair3, {
+        opacity: 0,
+        x: 0,
+        y: isMobile ? 40 : 0,
+      });
+    }
 
-          No opacity.
-          No scale.
-          No popup.
-        */
+    if (connector) {
+      gsap.set(connector, {
+        opacity: 0,
+      });
+    }
 
-        const startX = window.innerWidth + 500;
+    /* ==========================================
+       TIMELINE
+    ========================================== */
 
-        /* PAIR 1 */
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: isMobile
+          ? "+=2300"
+          : "+=2600",
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
 
-        gsap.set(pair1, {
-          x: startX,
-          y: 0,
-          opacity: 1,
-        });
+    /* =================================================
+       PAIR 1
+       ENGAGE + FINANCE
+    ================================================= */
 
-        gsap.set(connector1, {
-          x: startX,
-          y: 0,
-          opacity: 1,
-        });
-
-        /* PAIR 2 */
-
-        gsap.set(pair2, {
-          x: startX,
-          y: 0,
-          opacity: 1,
-        });
-
-        gsap.set(connector2, {
-          x: startX,
-          y: 0,
-          opacity: 1,
-        });
-
-        /* PAIR 3 */
-
-        gsap.set(pair3, {
-          x: startX,
-          y: 0,
-          opacity: 1,
-        });
-
-        gsap.set(connector3, {
-          x: startX,
-          y: 0,
-          opacity: 1,
+    if (!isMobile) {
+      if (pair1Left.current) {
+        gsap.set(pair1Left.current, {
+          x: -80,
         });
       }
 
-      /* =================================================
-         MOBILE INITIAL STATE
-      ================================================= */
-
-      if (isMobile) {
-        gsap.set(
-          [
-            ...pair1,
-            ...pair2,
-            ...pair3,
-          ],
-          {
-            x: 0,
-            y: 40,
-            opacity: 0,
-          }
-        );
-
-        gsap.set(
-          [
-            connector1,
-            connector2,
-            connector3,
-          ],
-          {
-            opacity: 0,
-          }
-        );
+      if (pair1Right.current) {
+        gsap.set(pair1Right.current, {
+          x: 80,
+        });
       }
+    }
 
-      /* =================================================
-         MAIN TIMELINE
-      ================================================= */
+    if (pair1.length) {
+      tl.to(pair1, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+    }
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-
-          start: "top top",
-
-          end: isMobile
-            ? "+=2300"
-            : "+=2800",
-
-          scrub: 1,
-
-          pin: true,
-
-          anticipatePin: 1,
-
-          invalidateOnRefresh: true,
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 1,
+          duration: 0.5,
         },
+        "<0.3"
+      );
+    }
+
+    // HOLD
+    tl.to({}, {
+      duration: 1.5,
+    });
+
+    /* =================================================
+       PAIR 1 OUT
+    ================================================= */
+
+    if (pair1.length) {
+      tl.to(pair1, {
+        opacity: 0,
+        y: -40,
+        duration: 0.7,
+        ease: "power2.inOut",
       });
+    }
 
-      /* =================================================
-         PAIR 1
-         ENGAGE + FINANCE
-      ================================================= */
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 0,
+          duration: 0.4,
+        },
+        "<"
+      );
+    }
 
-      if (!isMobile) {
-        /*
-          RIGHT → CENTER
+    /* =================================================
+       PAIR 2
+       INVENTORY + PAYROLL
+    ================================================= */
 
-          Connector moves exactly with cards.
-        */
-
-        tl.to(
-          [...pair1, connector1],
-          {
-            x: 0,
-            duration: 1.5,
-            ease: "power2.out",
-          }
-        );
-      } else {
-        tl.to(pair1, {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
+    if (!isMobile) {
+      if (pair2Left.current) {
+        gsap.set(pair2Left.current, {
+          x: -80,
         });
-
-        tl.to(
-          connector1,
-          {
-            opacity: 1,
-            duration: 0.4,
-          },
-          "<0.3"
-        );
       }
 
-      /* =================================================
-         HOLD PAIR 1
-      ================================================= */
+      if (pair2Right.current) {
+        gsap.set(pair2Right.current, {
+          x: 80,
+        });
+      }
+    }
 
-      tl.to({}, {
-        duration: 1.5,
+    if (pair2.length) {
+      tl.to(pair2, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
       });
+    }
 
-      /* =================================================
-         PAIR 1 OUT
-         +
-         PAIR 2 IN
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 1,
+          duration: 0.5,
+        },
+        "<0.3"
+      );
+    }
 
-         BOTH MOVE AT SAME TIME
-      ================================================= */
+    // HOLD
+    tl.to({}, {
+      duration: 1.5,
+    });
 
-      if (!isMobile) {
-        const slideDuration = 1.4;
+    /* =================================================
+       PAIR 2 OUT
+    ================================================= */
 
-        /*
-          PAIR 1:
-          CENTER → LEFT OUT
+    if (pair2.length) {
+      tl.to(pair2, {
+        opacity: 0,
+        y: -40,
+        duration: 0.7,
+        ease: "power2.inOut",
+      });
+    }
 
-          PAIR 2:
-          RIGHT OUTSIDE → CENTER
-        */
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 0,
+          duration: 0.4,
+        },
+        "<"
+      );
+    }
 
-        tl.to(
-          [...pair1, connector1],
-          {
-            x: -window.innerWidth - 500,
-            duration: slideDuration,
-            ease: "power2.inOut",
-          },
-          "<"
-        );
+    /* =================================================
+       PAIR 3
+       OPERATIONS + HRMS
+    ================================================= */
 
-        tl.to(
-          [...pair2, connector2],
-          {
-            x: 0,
-            duration: slideDuration,
-            ease: "power2.out",
-          },
-          "<"
-        );
-      } else {
-        tl.to(
-          pair1,
-          {
-            opacity: 0,
-            y: -40,
-            duration: 0.7,
-            ease: "power2.inOut",
-          }
-        );
-
-        tl.to(
-          pair2,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          },
-          "<0.25"
-        );
-
-        tl.to(
-          connector2,
-          {
-            opacity: 1,
-            duration: 0.4,
-          },
-          "<0.3"
-        );
+    if (!isMobile) {
+      if (pair3Left.current) {
+        gsap.set(pair3Left.current, {
+          x: -80,
+        });
       }
 
-      /* =================================================
-         HOLD PAIR 2
-      ================================================= */
-
-      tl.to({}, {
-        duration: 1.5,
-      });
-
-      /* =================================================
-         PAIR 2 OUT
-         +
-         PAIR 3 IN
-
-         BOTH MOVE AT SAME TIME
-      ================================================= */
-
-      if (!isMobile) {
-        const slideDuration = 1.4;
-
-        /*
-          PAIR 2:
-          CENTER → LEFT
-
-          PAIR 3:
-          RIGHT → CENTER
-        */
-
-        tl.to(
-          [...pair2, connector2],
-          {
-            x: -window.innerWidth - 500,
-            duration: slideDuration,
-            ease: "power2.inOut",
-          },
-          "<"
-        );
-
-        tl.to(
-          [...pair3, connector3],
-          {
-            x: 0,
-            duration: slideDuration,
-            ease: "power2.out",
-          },
-          "<"
-        );
-      } else {
-        tl.to(
-          pair2,
-          {
-            opacity: 0,
-            y: -40,
-            duration: 0.7,
-            ease: "power2.inOut",
-          }
-        );
-
-        tl.to(
-          pair3,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          },
-          "<0.25"
-        );
-
-        tl.to(
-          connector3,
-          {
-            opacity: 1,
-            duration: 0.4,
-          },
-          "<0.3"
-        );
+      if (pair3Right.current) {
+        gsap.set(pair3Right.current, {
+          x: 80,
+        });
       }
+    }
 
-      /* =================================================
-         HOLD PAIR 3
-      ================================================= */
-
-      tl.to({}, {
-        duration: 1.5,
+    if (pair3.length) {
+      tl.to(pair3, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
       });
+    }
 
-    }, sectionRef);
+    if (!isMobile && connector) {
+      tl.to(
+        connector,
+        {
+          opacity: 1,
+          duration: 0.5,
+        },
+        "<0.3"
+      );
+    }
 
-    return () => ctx.revert();
-  }, []);
+    // HOLD
+    tl.to({}, {
+      duration: 1.5,
+    });
+
+  }, sectionRef);
+
+  return () => ctx.revert();
+}, []);
 
   return (
     <section

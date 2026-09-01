@@ -5,89 +5,89 @@ export default function ERPApproach() {
     <section
       className="
         w-full
-        min-h-[700px]
+        min-h-[480px]
+        sm:min-h-[460px]
+        md:min-h-[500px]
+        lg:min-h-[520px]
         overflow-hidden
         bg-[#F8F7F0]
         text-[#191919]
-
-        sm:min-h-[680px]
-        md:min-h-[620px]
-        lg:min-h-[600px]
-        xl:min-h-[590px]
       "
+      style={{ backgroundColor: "#F8F7F0" }}
     >
       <div
         className="
           mx-auto
           w-full
-          max-w-[1240px]
-          px-5
-          py-3
+          max-w-[1180px]
+          px-4
+          py-6
 
-          sm:px-7
-          sm:py-4
+          sm:px-5
+          sm:py-5
 
-          md:px-9
-          md:py-5
+          md:px-7
+          md:py-6
 
-          lg:max-w-[1160px]
           lg:px-10
           lg:py-8
 
-          xl:max-w-[1180px]
           xl:px-12
         "
       >
         {/* ================= TOP LABEL ================= */}
         <p
           className="
-            lg:-translate-x-6
-            xl:-translate-x-8
+          md:-translate-x-2 lg:-translate-x-10 xl:-translate-x-16
             font-['Plus_Jakarta_Sans']
             font-bold
             uppercase
             leading-none
             tracking-[0.01em]
             text-[#151515]
+            text-[13px]
+            sm:text-[15px]
+            md:text-[16px]
+            lg:text-[17px]
           "
-          style={{ fontSize: "17px" }}
         >
           OUR ERP APPROACH
         </p>
 
         {/* ================= MAIN CONTENT ================= */}
+        {/* Mobile-first: single column, stacked. From md up: two columns side by side. */}
         <div
           className="
             mt-5
             grid
             grid-cols-1
-            gap-8
+            gap-6
 
             sm:mt-6
             sm:gap-7
 
             md:mt-6
-            md:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]
+            md:grid-cols-2
             md:gap-7
 
             lg:mt-7
-            lg:grid-cols-[minmax(0,0.98fr)_minmax(0,1.02fr)]
             lg:gap-8
 
             xl:gap-10
           "
         >
           {/* ================= LEFT CONTENT ================= */}
-          <div className="min-w-0 lg:-translate-x-6 xl:-translate-x-10">
+          <div className="min-w-0 order-1 md:order-1 md:-translate-x-2 lg:-translate-x-10 xl:-translate-x-16">
             <h1
               className="
                 font-['Plus_Jakarta_Sans']
-                text-[30px]
+                text-[26px]
                 font-semibold
-                leading-[1.06]
-                tracking-[-0.045em]
+                leading-[1.1]
+                tracking-[-0.03em]
 
-                sm:text-[34px]
+                xs:text-[24px]
+                sm:text-[28px]
                 md:text-[36px]
                 lg:text-[40px]
                 xl:text-[32px]
@@ -100,17 +100,18 @@ export default function ERPApproach() {
 
             <p
               className="
-                mt-5
+                mt-4
                 max-w-[550px]
                 font-['Inter']
-                text-[14px]
+                text-[13px]
                 font-normal
-                leading-[1.5]
+                leading-[1.55]
                 text-[#303030]
 
-                sm:mt-6
-                sm:text-[15px]
+                sm:mt-5
+                sm:text-[13px]
 
+                md:mt-5
                 md:text-[15px]
 
                 lg:text-[16px]
@@ -125,17 +126,18 @@ export default function ERPApproach() {
 
             <p
               className="
-                mt-5
+                mt-4
                 max-w-[550px]
                 font-['Inter']
-                text-[14px]
+                text-[13px]
                 font-normal
-                leading-[1.5]
+                leading-[1.55]
                 text-[#303030]
 
-                sm:mt-6
-                sm:text-[15px]
+                sm:mt-5
+                sm:text-[13px]
 
+                md:mt-5
                 md:text-[15px]
 
                 lg:text-[16px]
@@ -149,17 +151,18 @@ export default function ERPApproach() {
 
             <p
               className="
-                mt-5
+                mt-4
                 max-w-[550px]
                 font-['Inter']
-                text-[14px]
+                text-[13px]
                 font-normal
-                leading-[1.5]
+                leading-[1.55]
                 text-[#303030]
 
-                sm:mt-6
-                sm:text-[15px]
+                sm:mt-5
+                sm:text-[13px]
 
+                md:mt-5
                 md:text-[15px]
 
                 lg:text-[16px]
@@ -177,12 +180,18 @@ export default function ERPApproach() {
             className="
               relative
               min-w-0
+              w-full
               flex
               flex-col
               items-center
+              order-2 md:order-2
+
               md:items-center
-              lg:translate-x-10
-              xl:translate-x-24
+              md:translate-x-2
+
+              lg:translate-x-14
+              xl:translate-x-32
+
               lg:-translate-y-5
               xl:-translate-y-6
             "
@@ -190,12 +199,15 @@ export default function ERPApproach() {
             <div
               className="
                 relative
-                h-[330px]
                 w-full
-                max-w-[420px]
+                mx-auto
+                aspect-[4/3]
+                max-w-[280px]
 
-                sm:h-[350px]
-                sm:max-w-[440px]
+                xs:max-w-[300px]
+                sm:h-[300px]
+                sm:max-w-[350px]
+                sm:aspect-auto
 
                 md:h-[370px]
                 md:max-w-[450px]
@@ -207,17 +219,15 @@ export default function ERPApproach() {
                 xl:max-w-[445px]
               "
             >
-              {/* ==================================================
-                  CONNECTING LINES
-              ================================================== */}
+              {/* ================= CONNECTING LINES ================= */}
 
               {/* Finance → TX */}
               <div
                 className="
                   absolute
                   left-[44%]
-                  top-[23%]
-                  h-[53px]
+                  top-[27%]
+                  h-[40px]
                   w-px
                   origin-bottom
                   -rotate-[42deg]
@@ -232,8 +242,8 @@ export default function ERPApproach() {
                 className="
                   absolute
                   left-[56%]
-                  top-[23%]
-                  h-[53px]
+                  top-[27%]
+                  h-[40px]
                   w-px
                   origin-bottom
                   rotate-[42deg]
@@ -249,7 +259,7 @@ export default function ERPApproach() {
                   absolute
                   left-[40%]
                   top-[45%]
-                  h-[48px]
+                  h-[40px]
                   w-px
                   origin-top
                   rotate-[68deg]
@@ -265,7 +275,7 @@ export default function ERPApproach() {
                   absolute
                   left-[60%]
                   top-[45%]
-                  h-[48px]
+                  h-[40px]
                   w-px
                   origin-top
                   -rotate-[68deg]
@@ -280,8 +290,8 @@ export default function ERPApproach() {
                 className="
                   absolute
                   left-1/2
-                  top-[55%]
-                  h-[43px]
+                  top-[56%]
+                  h-[40px]
                   w-px
                   border-l
                   border-dotted
@@ -358,16 +368,20 @@ export default function ERPApproach() {
                   top-[34%]
                   z-[3]
                   flex
-                  h-[70px]
-                  w-[70px]
+                  h-[46px]
+                  w-[46px]
                   -translate-x-1/2
                   items-center
                   justify-center
                   overflow-hidden
                   rounded-full
+                  bg-white
 
-                  sm:h-[76px]
-                  sm:w-[76px]
+                  xs:h-[52px]
+                  xs:w-[52px]
+
+                  sm:h-[66px]
+                  sm:w-[66px]
 
                   md:h-[80px]
                   md:w-[80px]
@@ -377,7 +391,6 @@ export default function ERPApproach() {
 
                   xl:h-[84px]
                   xl:w-[84px]
-                  
                 "
               >
                 <img
@@ -396,38 +409,40 @@ export default function ERPApproach() {
             {/* ================= GOAL CARD ================= */}
             <div
               className="
-                -mt-6
+                mt-4
                 w-full
-                max-w-[360px]
+                max-w-[320px]
                 rounded-[8px]
                 bg-[#FCECF6]
-                px-4
-                py-3
+                px-3
+                py-2.5
 
-                sm:-mt-5
-                sm:max-w-[380px]
-                sm:px-5
-                sm:py-4
+                sm:mt-4
+                sm:max-w-[300px]
+                sm:px-4
+                sm:py-3
 
                 md:-mt-4
                 md:max-w-[390px]
+                md:px-5
+                md:py-4
 
                 lg:-mt-1
                 lg:max-w-[400px]
-                  lg:translate-x-6
+                lg:translate-x-6
 
-    xl:translate-x-4
+                xl:translate-x-4
               "
             >
               <p
                 className="
                   font-['Inter']
-                  text-[14px]
+                  text-[11px]
                   font-semibold
-                  leading-[1.35]
+                  leading-[1.4]
                   text-[#151515]
 
-                  sm:text-[15px]
+                  sm:text-[11px]
                   md:text-[16px]
                   lg:text-[16px]
                 "
@@ -470,18 +485,18 @@ function ERPItem({
         ${className}
       `}
     >
-      {/* TEXT ABOVE ICON - normal items */}
       {!textBelow && (
         <div className="mb-1 whitespace-nowrap">
           <p
             className="
               font-['Inter']
-              text-[14px]
+              text-[9px]
               font-bold
               leading-[1.15]
               text-[#151515]
 
-              sm:text-[15px]
+              xs:text-[10px]
+              sm:text-[12px]
               md:text-[16px]
               lg:text-[17px]
             "
@@ -493,12 +508,13 @@ function ERPItem({
             className="
               mt-0.5
               font-['Inter']
-              text-[10px]
+              text-[7px]
               font-medium
               leading-[1.1]
               text-[#151515]
 
-              sm:text-[11px]
+              xs:text-[8px]
+              sm:text-[9px]
               md:text-[12px]
               lg:text-[13px]
             "
@@ -512,16 +528,19 @@ function ERPItem({
       <div
         className="
           flex
-          h-[50px]
-          w-[50px]
+          h-[32px]
+          w-[32px]
           items-center
           justify-center
           rounded-full
           bg-[#850052]
           text-white
 
-          sm:h-[54px]
-          sm:w-[54px]
+          xs:h-[38px]
+          xs:w-[38px]
+
+          sm:h-[45px]
+          sm:w-[45px]
 
           md:h-[58px]
           md:w-[58px]
@@ -533,18 +552,18 @@ function ERPItem({
         {icon}
       </div>
 
-      {/* TEXT BELOW ICON - Talent only */}
       {textBelow && (
         <div className="mt-1 whitespace-nowrap">
           <p
             className="
               font-['Inter']
-              text-[14px]
+              text-[9px]
               font-bold
               leading-[1.15]
               text-[#151515]
 
-              sm:text-[15px]
+              xs:text-[10px]
+              sm:text-[12px]
               md:text-[16px]
               lg:text-[17px]
             "
@@ -556,12 +575,13 @@ function ERPItem({
             className="
               mt-0.5
               font-['Inter']
-              text-[10px]
+              text-[7px]
               font-medium
               leading-[1.1]
               text-[#151515]
 
-              sm:text-[11px]
+              xs:text-[8px]
+              sm:text-[9px]
               md:text-[12px]
               lg:text-[13px]
             "
@@ -583,15 +603,21 @@ function FinanceIcon() {
     <div
       className="
         flex
-        h-[32px]
-        w-[32px]
+        h-[21px]
+        w-[21px]
         items-center
         justify-center
         rounded-full
         bg-white
 
-        sm:h-[34px]
-        sm:w-[34px]
+        xs:h-[24px]
+        xs:w-[24px]
+
+        sm:h-[28px]
+        sm:w-[28px]
+
+        md:h-[34px]
+        md:w-[34px]
 
         lg:h-[38px]
         lg:w-[38px]
@@ -600,12 +626,14 @@ function FinanceIcon() {
       <span
         className="
           font-['Arial']
-          text-[23px]
+          text-[15px]
           font-bold
           leading-none
           text-[#850052]
 
-          sm:text-[25px]
+          xs:text-[17px]
+          sm:text-[20px]
+          md:text-[25px]
           lg:text-[28px]
         "
       >
@@ -624,11 +652,17 @@ function WalletIcon() {
     <svg
       viewBox="0 0 48 48"
       className="
-        h-[29px]
-        w-[29px]
+        h-[19px]
+        w-[19px]
 
-        sm:h-[31px]
-        sm:w-[31px]
+        xs:h-[22px]
+        xs:w-[22px]
+
+        sm:h-[26px]
+        sm:w-[26px]
+
+        md:h-[31px]
+        md:w-[31px]
 
         lg:h-[34px]
         lg:w-[34px]
@@ -673,11 +707,17 @@ function InventoryIcon() {
     <svg
       viewBox="0 0 48 48"
       className="
-        h-[30px]
-        w-[30px]
+        h-[20px]
+        w-[20px]
 
-        sm:h-[32px]
-        sm:w-[32px]
+        xs:h-[23px]
+        xs:w-[23px]
+
+        sm:h-[27px]
+        sm:w-[27px]
+
+        md:h-[32px]
+        md:w-[32px]
 
         lg:h-[35px]
         lg:w-[35px]
@@ -734,11 +774,17 @@ function UsersIcon() {
     <svg
       viewBox="0 0 48 48"
       className="
-        h-[30px]
-        w-[30px]
+        h-[20px]
+        w-[20px]
 
-        sm:h-[32px]
-        sm:w-[32px]
+        xs:h-[23px]
+        xs:w-[23px]
+
+        sm:h-[27px]
+        sm:w-[27px]
+
+        md:h-[32px]
+        md:w-[32px]
 
         lg:h-[35px]
         lg:w-[35px]
@@ -766,11 +812,17 @@ function TalentIcon() {
     <svg
       viewBox="0 0 48 48"
       className="
-        h-[30px]
-        w-[30px]
+        h-[20px]
+        w-[20px]
 
-        sm:h-[32px]
-        sm:w-[32px]
+        xs:h-[23px]
+        xs:w-[23px]
+
+        sm:h-[27px]
+        sm:w-[27px]
+
+        md:h-[32px]
+        md:w-[32px]
 
         lg:h-[35px]
         lg:w-[35px]
