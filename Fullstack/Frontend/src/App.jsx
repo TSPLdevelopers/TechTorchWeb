@@ -27,12 +27,16 @@ import Hero02Slide02 from "./components/Hero2Slides/Hero02Slide02.jsx";
 import Hero02Slide03 from "./components/Hero2Slides/Hero02Slide03.jsx";
 import Hero02Slide05 from "./components/Hero2Slides/Hero02Slide05.jsx";
 import Hero02Slide06 from "./components/Hero2Slides/Hero02Slide06.jsx";
+
 import Hero03Slide01 from  "./components/Hero3Slides/Hero03Slide01.jsx";
 import Hero03Slide02 from "./components/Hero3Slides/Hero03Slide02.jsx";
 import Hero03Slide04 from "./components/Hero3Slides/Hero03Slide04.jsx";
 import Hero03Slide05 from "./components/Hero3Slides/Hero03Slide05.jsx";
 import Hero03Slide06 from "./components/Hero3Slides/Hero03Slide06.jsx";
 import Hero03Slide07 from "./components/Hero3Slides/Hero03Slide07.jsx";
+
+import Hero04Slide01 from "./components/Hero4Slides/Hero04Slide01.jsx";
+// import Hero04Slide02 from "./components/Hero4Slides/Hero04Slide02.jsx";
 
 
 // =================================================
@@ -103,6 +107,15 @@ function Slide3Page() {
   );
 }
 
+function Slide4Page() {
+  return (
+    <div>
+      <Hero04Slide01 />
+      
+    </div>
+  );
+}
+
 // =================================================
 // APP
 // =================================================
@@ -126,10 +139,17 @@ function App() {
         path="/Slide2"
         element={<Slide2Page />}
       />
+      
       <Route
         path="/Slide3"
         element={<Slide3Page />}
       />
+
+      <Route
+        path="/Slide4"
+        element={<Slide4Page />}
+      />
+
 
     </Routes>
   );
