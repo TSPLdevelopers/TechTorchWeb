@@ -2,7 +2,13 @@ import React from "react";
 
 export default function SoftwareThatWorks() {
   return (
-    <section className="w-full overflow-hidden bg-[#faf9f4]">
+    <section
+      className="w-full overflow-hidden"
+      style={{
+        background: "#f7f4ef",
+        fontFamily: "Plus Jakarta Sans, sans-serif",
+      }}
+    >
       <div
         className="
           mx-auto
@@ -199,16 +205,13 @@ export default function SoftwareThatWorks() {
               min-w-0
               flex-col
 
-              /* MOBILE */
               items-center
               max-md:w-full
               max-md:translate-x-0
 
-              /* TABLET */
               md:items-start
               md:translate-x-[30px]
 
-              /* DESKTOP */
               lg:translate-x-[80px]
 
               xl:translate-x-[165px]
