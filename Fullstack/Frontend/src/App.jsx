@@ -41,6 +41,7 @@ import Hero04Slide03 from "./components/Hero4Slides/Hero04Slide03.jsx";
 
 import Hero05Slide01 from "./components/Hero5Slides/Hero05Slide01.jsx";
 import Hero05Slide02 from "./components/Hero5Slides/Hero05Slide02.jsx";
+import Hero05Slide03 from "./components/Hero5Slides/Hero05Slide03.jsx";
 import Hero05Slide04 from "./components/Hero5Slides/Hero05Slide04.jsx";
 
 
@@ -128,6 +129,7 @@ function Slide5Page() {
     <div>
       <Hero05Slide01 />
       <Hero05Slide02 />
+      <Hero05Slide03 />
       <Hero05Slide04 />
       
     </div>

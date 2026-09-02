@@ -10,7 +10,7 @@ export default function TorchXSuiteSection() {
     <section
       style={{
         position: 'relative',
-        minHeight: '480px',
+        minHeight: '650px',
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',

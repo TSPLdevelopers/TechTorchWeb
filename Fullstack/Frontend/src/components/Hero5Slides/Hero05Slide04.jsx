@@ -1,14 +1,14 @@
 import React from 'react';
 
 // Apni background image yahan daalein (ya seedha URL string bhi de sakte ho)
-import backgroundImage from '/hero5slide4.png';
+import backgroundImage from '/Hero5Slide4.png';
 
 export default function BringBusinessTogetherSection() {
   return (
     <section
       style={{
         position: 'relative',
-        minHeight: '420px',
+        minHeight: '680px',
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
