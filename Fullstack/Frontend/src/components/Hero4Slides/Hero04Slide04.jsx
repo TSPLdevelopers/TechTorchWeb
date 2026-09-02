@@ -2,14 +2,13 @@ import React from "react";
 
 export default function HowWeWork() {
   return (
-    <section className="w-full bg-[#faf9f4] px-4 sm:px-6 lg:px-8">
+    <section className="relative block w-full bg-[#faf9f4] px-0">
 
       {/* OUTER CONTAINER */}
       <div
         className="
           mx-auto
           w-full
-          max-w-[1400px]
           overflow-hidden
           bg-[#faf9f4]
         "
@@ -21,8 +20,10 @@ export default function HowWeWork() {
             grid
             w-full
             grid-cols-1
-            lg:grid-cols-2
+            md:grid-cols-2
+            lg:grid-cols-[57%_43%]
             lg:h-[600px]
+            xl:grid-cols-[57%_43%]
             xl:h-[570px]
           "
         >
@@ -33,12 +34,16 @@ export default function HowWeWork() {
               flex
               flex-col
               justify-center
-              px-6
-              py-6
-              sm:px-8
-              md:px-10
+              px-5
+              py-10
+              sm:px-7
+              sm:py-12
+              md:px-8
+              md:py-10
               lg:px-12
-              xl:px-14
+              lg:py-6
+              xl:px-24
+              xl:py-6
             "
           >
             <p className="mb-3 text-[16px] font-medium tracking-wide text-[#333]">
@@ -47,15 +52,16 @@ export default function HowWeWork() {
 
             <h2
               className="
-                text-[30px]
+                text-[28px]
                 font-['Inter']
                 font-semibold
                 leading-[1.05]
                 tracking-[-1.2px]
                 text-[#111]
-                sm:text-[34px]
-                md:text-[37px]
-                lg:text-[36px]
+                sm:text-[31px]
+                md:text-[32px]
+                lg:text-[34px]
+                xl:text-[36px]
               "
             >
               A Clear Approach to
@@ -69,10 +75,13 @@ export default function HowWeWork() {
               className="
                 mt-5
                 max-w-[600px]
-                text-[15px]
+                text-[14px]
                 leading-[1.55]
                 text-[#333]
+                sm:text-[15px]
+                md:text-[14px]
                 lg:text-[15px]
+                xl:text-[15px]
               "
             >
               Every business has its own goals, challenges and way of
@@ -212,23 +221,59 @@ export default function HowWeWork() {
           <div
             className="
               relative
-              h-[400px]
+              flex
+              h-auto
               w-full
+              items-center
+              justify-center
               overflow-hidden
+              py-8
+
+              sm:py-10
+
+              md:h-full
+              md:items-center
+              md:justify-end
+              md:py-0
+
               lg:h-full
+              lg:items-start
+              lg:justify-end
+              lg:py-0
+
+              xl:h-full
+              xl:items-start
+              xl:justify-end
+              xl:py-0
             "
           >
             <img
               src="/Slide4.2.png"
               alt="How we work"
               className="
-                absolute
-                top-0
-                right-0
-                h-full
-                w-auto
-                max-w-none
-                
+                block
+                h-auto
+                w-[82%]
+                max-w-[500px]
+                object-contain
+
+                sm:w-[80%]
+
+                md:h-full
+                md:w-auto
+                md:max-w-none
+                md:object-contain
+
+                lg:h-full
+                lg:w-auto
+                lg:max-w-none
+
+                xl:absolute
+                xl:top-0
+                xl:right-0
+                xl:h-full
+                xl:w-[76%]
+                xl:max-w-none
               "
             />
           </div>
