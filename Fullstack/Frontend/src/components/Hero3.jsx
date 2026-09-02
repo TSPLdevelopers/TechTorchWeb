@@ -25,12 +25,12 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px]
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[38px]
                font-bold font-plus-jakarta text-[#ffff]">
                 UNDERSTAND
               </h2>
 
-              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px]
+              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[17px]
                font-inter leading-relaxed max-w-[650px]">
                 We take the time to understand your business, requirements,
                 challenges, processes, users, and long-term goals. By gaining a
@@ -97,12 +97,12 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px]
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[38px]
                font-bold font-plus-jakarta text-[#ffff]">
                 BUILD
               </h2>
 
-              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px] 
+              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[17px] 
               font-inter leading-relaxed max-w-[650px]">
                 Once we understand your business needs, we turn ideas and
                 requirements into practical digital solutions. We design and
@@ -168,12 +168,12 @@ export default function Hero3() {
             {/* LEFT CONTENT */}
             <div className="text-white">
 
-              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[48px] 
+              <h2 className="translate-y-[10px] text-[32px] sm:text-[36px] lg:text-[38px] 
               font-bold font-plus-jakarta text-[#FFFF]">
                 GROW
               </h2>
 
-              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[20px] font-inter leading-relaxed max-w-[650px]">
+              <p className="mt-4 sm:mt-12 lg:mt-16 text-[15px] sm:text-[16px] lg:text-[17px] font-inter leading-relaxed max-w-[650px]">
                 Our relationship continues beyond deployment. We provide ongoing
                 support, maintenance, optimization, and continuous improvements
                 to ensure your solutions remain effective as your business
@@ -241,7 +241,7 @@ export default function Hero3() {
               HOW WE WORK
             </h2>
 
-            <h3 className="mt-6 sm:mt-8 text-[18px] sm:text-[20px] lg:text-[22px] font-inter
+            <h3 className="mt-6 sm:mt-8 text-[18px] sm:text-[20px] lg:text-[17px] font-inter
              text-[#FFFF  max-w-[650px] leading-relaxed">
               We understand your needs, build practical
               <br className="hidden sm:block" /> solutions, and help your
@@ -249,7 +249,7 @@ export default function Hero3() {
               <br className="hidden sm:block" /> with technology.
             </h3>
 
-            <p className="mt-6 text-[15px] sm:text-[16px] lg:text-[18px] font-inter leading-relaxed 
+            <p className="mt-6 text-[15px] sm:text-[16px] lg:text-[17px] font-inter leading-relaxed 
             max-w-[650px]">
               Our approach is simple:
               <br />
@@ -265,7 +265,7 @@ export default function Hero3() {
 
   <button
     onClick={() => setActiveView("understand")}
-    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border
+    className="bg-white text-[#730042] px-4 py-2 text-[14px] font-bold font-inter border
      border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
   >
     UNDERSTAND
@@ -273,7 +273,7 @@ export default function Hero3() {
 
   <button
     onClick={() => setActiveView("build")}
-    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border
+    className="bg-white text-[#730042] px-4 py-2 text-[14px] font-bold font-inter border
      border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
   >
     BUILD
@@ -281,7 +281,7 @@ export default function Hero3() {
 
   <button
     onClick={() => setActiveView("grow")}
-    className="bg-white text-[#730042] px-4 py-2 text-[16px] font-bold font-inter border
+    className="bg-white text-[#730042] px-4 py-2 text-[14px] font-bold font-inter border
      border-white rounded-sm transition-all duration-300 hover:bg-[#730042] hover:text-white hover:border-white hover:-translate-y-1 hover:shadow-[0_6px_15px_rgba(115,0,66,0.4)]"
   >
     GROW

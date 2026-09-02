@@ -15,15 +15,15 @@ export default function BuildConnectGrow() {
       {/* ================= LEFT CONTENT ================= */}
       <div className="relative bg-[#F6F2EA]/80 flex items-center overflow-hidden h-[400px] lg:h-[540px]">
         <div className="relative z-10 px-8 sm:px-12 lg:px-16 max-w-xl">
-          <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-semibold text-gray-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-Plus Jakarta Sans text-gray-900 leading-tight">
             Build. Connect. Grow.
           </h2>
 
-          <h3 className="text-xl sm:text-2xl lg:text-[24px] font-semibold text-[#8a1538] mt-1">
+          <h3 className="text-xl sm:text-2xl lg:text-[24px] font-Plus Jakarta Sans text-[#8a1538] mt-1">
             With TechTorch Solutions
           </h3>
 
-          <p className="text-gray-600 text-[15px] sm:text-[16px] leading-relaxed mt-10 max-w-md">
+          <p className="text-gray-600 text-[15px] sm:text-[16px] Plus Jakarta Sans mt-10 max-w-md">
             We bring technology, expertise and people together to solve real
             business challenges, create practical digital solutions and help
             businesses work smarter, adapt faster, and move forward with
@@ -60,7 +60,7 @@ export default function BuildConnectGrow() {
         "
       >
         <img
-          src="/Frame 1160.png"
+          src="/frame2.png"
           alt="TechTorch Solutions office building"
           className="
             w-full

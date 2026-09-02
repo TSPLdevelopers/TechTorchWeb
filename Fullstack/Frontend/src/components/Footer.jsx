@@ -25,42 +25,36 @@ export default function Footer() {
             <h3>Follow Us</h3>
 
             <div className="social-icons">
-
-              {/* Instagram */}
               <a href="#" aria-label="Instagram">
                 <FaInstagram />
               </a>
 
-              {/* LinkedIn */}
               <a href="#" aria-label="LinkedIn">
                 <FaLinkedinIn />
               </a>
 
-              {/* Facebook */}
               <a href="#" aria-label="Facebook">
                 <FaFacebookF />
               </a>
 
-              {/* X / Twitter */}
-<a href="#" aria-label="X / Twitter">
-  <FaXTwitter />
-</a>
-
+              <a href="#" aria-label="X / Twitter">
+                <FaXTwitter />
+              </a>
             </div>
           </div>
 
 
-          {/* MIDDLE - INDUSTRIES */}
-          <div className="footer-column">
-            <h2>Industries</h2>
-            <h2>Services</h2>
-            <h2>Products</h2>
-            <h2>Digital Solutions</h2>
-            <h2>Contact Us</h2>
+          {/* ================= INDUSTRIES ================= */}
+          <div className="footer-column industries-column">
+            <a href="#">Industries</a>
+            <a href="#">Services</a>
+            <a href="#">Products</a>
+            <a href="#">Digital Solutions</a>
+            <a href="#">Contact Us</a>
           </div>
 
 
-          {/* RIGHT - IMPORTANT LINKS */}
+          {/* ================= IMPORTANT LINKS ================= */}
           <div className="footer-column important-links">
             <h2>Important Links</h2>
 
@@ -95,7 +89,7 @@ export default function Footer() {
           </p>
 
 
-          {/* BOTTOM LINKS */}
+          {/* ================= BOTTOM LINKS ================= */}
           <div className="legal-links">
             <a href="#">Terms of use</a>
             <a href="#">Accessibility</a>
@@ -116,7 +110,7 @@ export default function Footer() {
           width: 100%;
           background: #730042;
           color: white;
-          font-family: Arial, Helvetica, sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           overflow: hidden;
         }
 
@@ -132,9 +126,9 @@ export default function Footer() {
 
         .footer-top {
           display: grid;
-          grid-template-columns: 1.15fr 1fr 1fr;
-          column-gap: 7%;
-          min-height: 280px;
+          grid-template-columns: 1.15fr 0.5fr 1fr;
+          column-gap: 18%;
+          min-height: 200px;
         }
 
 
@@ -152,12 +146,13 @@ export default function Footer() {
           display: block;
           object-fit: contain;
           margin-bottom: 44px;
+          margin-left: -8px;
         }
 
         .footer-brand h3 {
           margin: 0 0 15px;
-          font-size: 19px;
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 18px;
+          font-family: "Plus Jakarta Sans";
           line-height: 1;
           font-weight: 600;
         }
@@ -203,10 +198,26 @@ export default function Footer() {
           align-items: flex-start;
         }
 
+
+        /* INDUSTRIES */
+
+        .industries-column a {
+          color: white;
+          text-decoration: none;
+          font-size: 18px;
+          font-family: "Inter";
+          line-height: 0.8;
+          font-weight: 500;
+          margin-bottom: 29px;
+        }
+
+
+        /* IMPORTANT LINKS */
+
         .footer-column h2 {
           margin: 0 0 29px;
           font-size: 20px;
-          font-family: "Inter", sans-serif;
+          font-family:"Inter";
           line-height: 0.8;
           font-weight: 500;
           color: white;
@@ -216,7 +227,7 @@ export default function Footer() {
           margin-bottom: 22px;
         }
 
-        .footer-column a {
+        .important-links a {
           color: white;
           text-decoration: none;
           font-size: 17px;
@@ -226,40 +237,8 @@ export default function Footer() {
           margin-bottom: 20px;
         }
 
-        .footer-column a:hover,
-        .legal-links a:hover {
-          opacity: 0.75;
-        }
 
-
-        /* ================= BOTTOM ================= */
-
-        .footer-bottom {
-          width: 100%;
-        }
-
-        .copyright {
-  margin: 0 0 32px;
-  font-size: 17px;
-  font-family: "Inter", sans-serif;
-  line-height: 1.3;
-  font-weight: 400;
-  position: relative;
-  transform: translateY(40px);
-}
-
-       .disclaimer {
-  margin: 0;
-  max-width: 1240px;
-  font-size: 17px;
-  font-family: "Inter", sans-serif;
-  line-height: 1.28;
-  font-weight: 400;
-  position: relative;
-  transform: translateY(40px);
-}
-
-        /* ================= LEGAL LINKS ================= */
+        /* ================= BOTTOM LINKS ================= */
 
         .legal-links {
           display: flex;
@@ -280,7 +259,43 @@ export default function Footer() {
         }
 
 
-        /* ================= TABLET ================= */
+        /* ONLY BOTTOM LEGAL LINKS GET UNDERLINE */
+
+        .legal-links a:hover {
+          text-decoration: underline;
+          text-underline-offset: 5px;
+        }
+
+
+        /* ================= BOTTOM ================= */
+
+        .footer-bottom {
+          width: 100%;
+        }
+
+        .copyright {
+          margin: 0 0 32px;
+          font-size: 16px;
+          font-family: "Inter", sans-serif;
+          line-height: 1.3;
+          font-weight: 400;
+          position: relative;
+          transform: translateY(60px);
+        }
+
+        .disclaimer {
+          margin: 0;
+          max-width: 1240px;
+          font-size: 16px;
+          font-family: "Inter", sans-serif;
+          line-height: 1.28;
+          font-weight: 400;
+          position: relative;
+          transform: translateY(60px);
+        }
+
+
+        /* ================= TABLET / MEDIUM ================= */
 
         @media (max-width: 1024px) {
 
@@ -288,6 +303,11 @@ export default function Footer() {
             padding: 42px 5%;
           }
 
+          /*
+            Brand occupies the first row.
+            Industries + Important Links stay together
+            in the second row.
+          */
           .footer-top {
             grid-template-columns: 1fr 1fr;
             gap: 60px 50px;
@@ -300,32 +320,45 @@ export default function Footer() {
           }
 
           .footer-logo {
-            width: 270px;
+            width: 210px;
+          }
+
+          /*
+            Keep Industries and Important Links
+            visually balanced on medium screens.
+          */
+          .industries-column a {
+            font-size: 20px;
+            margin-bottom: 29px;
           }
 
           .footer-column h2 {
-            font-size: 28px;
+            font-size: 20px;
+            margin-bottom: 22px;
           }
 
-          .footer-column a {
-            font-size: 22px;
+          .important-links a {
+            font-size: 20px;
+            margin-bottom: 20px;
           }
 
           .copyright {
-            font-size: 22px;
+            font-size: 20px;
+            transform: translateY(10px);
           }
 
           .disclaimer {
-            font-size: 20px;
+            font-size: 19px;
+            transform: translateY(15px);
           }
 
           .legal-links {
             justify-content: flex-start;
-            margin-top: 65px;
+            margin-top: 50px;
           }
 
           .legal-links a {
-            font-size: 19px;
+            font-size: 18px;
           }
         }
 
@@ -341,8 +374,8 @@ export default function Footer() {
           .footer-top {
             display: flex;
             flex-direction: column;
-            gap: 48px;
-            margin-bottom: 55px;
+            gap: 42px;
+            margin-bottom: 45px;
           }
 
           .footer-brand {
@@ -350,55 +383,78 @@ export default function Footer() {
           }
 
           .footer-logo {
-            width: min(280px, 90%);
+            width: 190px;
             margin-bottom: 32px;
           }
 
           .footer-brand h3 {
-            font-size: 25px;
-            margin-bottom: 22px;
+            font-size: 23px;
+            margin-bottom: 20px;
           }
 
+
+          /* Slightly smaller social icons */
+
           .social-icons {
-            gap: 24px;
+            gap: 22px;
             padding-left: 0;
           }
 
           .social-icons a {
-            width: 38px;
-            height: 38px;
+            width: 30px;
+            height: 30px;
           }
 
           .social-icons svg {
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
           }
 
-          .footer-column h2 {
-            font-size: 25px;
+
+          /*
+            Industries and Important Links remain
+            visually similar in size.
+          */
+
+          .industries-column a {
+            font-size: 20px;
             margin-bottom: 22px;
           }
 
-          .footer-column a {
+          .footer-column h2 {
             font-size: 20px;
-            margin-bottom: 17px;
+            margin-bottom: 22px;
           }
+
+          .important-links a {
+            font-size: 20px;
+            margin-bottom: 18px;
+          }
+
+
+          /* Bottom content */
 
           .copyright {
             font-size: 18px;
             line-height: 1.4;
-            margin-bottom: 26px;
+            margin-bottom: 24px;
+            transform: translateY(10px);
           }
 
           .disclaimer {
             font-size: 17px;
             line-height: 1.45;
+            transform: translateY(15px);
           }
+
+
+          /* Move final links upward */
 
           .legal-links {
             justify-content: flex-start;
-            gap: 15px 22px;
-            margin-top: 48px;
+            gap: 14px 20px;
+            margin-top: 25px;
+            padding-right: 0;
           }
 
           .legal-links a {
@@ -417,45 +473,70 @@ export default function Footer() {
           }
 
           .footer-logo {
-            width: 250px;
+            width: 175px;
           }
 
           .footer-brand h3 {
-            font-size: 23px;
+            font-size: 22px;
+          }
+
+
+          /* Smaller social icons */
+
+          .social-icons {
+            gap: 18px;
+          }
+
+          .social-icons a {
+            width: 30px;
+            height: 30px;
+          }
+
+          .social-icons svg {
+            width: 27px;
+            height: 27px;
+          }
+
+
+          /*
+            Keep all footer sections balanced.
+            No section becomes disproportionately large.
+          */
+
+          .industries-column a {
+            font-size: 18px;
+            margin-bottom: 20px;
           }
 
           .footer-column h2 {
-            font-size: 23px;
+            font-size: 18px;
+            margin-bottom: 20px;
           }
 
-          .footer-column a {
+          .important-links a {
             font-size: 18px;
+            margin-bottom: 17px;
           }
+
 
           .copyright {
             font-size: 16px;
+            transform: translateY(20px);
           }
 
           .disclaimer {
             font-size: 15px;
+            transform: translateY(20px);
+          }
+
+
+          .legal-links {
+            margin-top: 20px;
+            gap: 12px 18px;
           }
 
           .legal-links a {
             font-size: 14px;
-          }
-
-          .social-icons {
-            gap: 20px;
-          }
-
-          .social-icons a {
-            width: 34px;
-            height: 34px;
-          }
-
-          .social-icons svg {
-            width: 31px;
-            height: 31px;
           }
         }
 

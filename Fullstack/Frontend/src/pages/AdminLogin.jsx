@@ -95,7 +95,7 @@ export default function LoginPage() {
             margin: "0 0 32px 0",
           }}
         >
-          Sign in to your TorchX Suite Store
+          Sign in to your TechTorch  official website
         </p>
 
         {/* Email */}
