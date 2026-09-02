@@ -9,21 +9,21 @@ export default function TechnologyThatWorks() {
           w-full
           max-w-[1400px]
 
-          px-5
+          px-4
           py-8
 
-          min-[400px]:px-6
+          min-[400px]:px-5
 
-          sm:px-7
+          sm:px-6
           sm:py-9
 
-          md:px-10
+          md:px-8
           md:py-10
 
-          lg:px-12
+          lg:px-10
           lg:py-11
 
-          xl:px-14
+          xl:px-12
           xl:py-12
         "
       >
@@ -138,8 +138,8 @@ export default function TechnologyThatWorks() {
               w-full
               max-w-[560px]
 
-              lg:translate-x-6
-              xl:translate-x-8
+              lg:translate-x-12
+              xl:translate-x-16
 
               font-['Inter']
               text-[14px]

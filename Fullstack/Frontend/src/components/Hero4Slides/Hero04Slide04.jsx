@@ -52,14 +52,16 @@ export default function HowWeWork() {
 
             <h2
               className="
-                text-[28px]
+                text-[24px]
                 font-['Inter']
                 font-semibold
                 leading-[1.05]
-                tracking-[-1.2px]
+                tracking-[-1px]
                 text-[#111]
-                sm:text-[31px]
-                md:text-[32px]
+
+                sm:text-[27px]
+                md:text-[29px]
+
                 lg:text-[34px]
                 xl:text-[36px]
               "
@@ -99,9 +101,14 @@ export default function HowWeWork() {
             <h3
               className="
                 mt-5
-                text-[18px]
+                text-[16px]
                 font-semibold
                 text-[#222]
+
+                sm:text-[17px]
+                md:text-[17px]
+
+                lg:text-[18px]
               "
             >
               From Understanding to Execution
@@ -139,7 +146,19 @@ export default function HowWeWork() {
                   </svg>
                 </div>
 
-                <span className="text-[18px] font-medium text-[#222]">
+                <span
+                  className="
+                    text-[16px]
+                    font-medium
+                    text-[#222]
+
+                    sm:text-[17px]
+
+                    md:text-[17px]
+
+                    lg:text-[18px]
+                  "
+                >
                   Understand
                 </span>
               </div>
@@ -159,8 +178,8 @@ export default function HowWeWork() {
                   "
                 >
                   <svg
-                    width="20"
-                    height="20"
+                    width="26"
+                    height="26"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="white"
@@ -174,7 +193,19 @@ export default function HowWeWork() {
                   </svg>
                 </div>
 
-                <span className="text-[18px] font-medium text-[#222]">
+                <span
+                  className="
+                    text-[16px]
+                    font-medium
+                    text-[#222]
+
+                    sm:text-[17px]
+
+                    md:text-[17px]
+
+                    lg:text-[18px]
+                  "
+                >
                   Build
                 </span>
               </div>
@@ -209,7 +240,19 @@ export default function HowWeWork() {
                   </svg>
                 </div>
 
-                <span className="text-[18px] font-medium text-[#222]">
+                <span
+                  className="
+                    text-[16px]
+                    font-medium
+                    text-[#222]
+
+                    sm:text-[17px]
+
+                    md:text-[17px]
+
+                    lg:text-[18px]
+                  "
+                >
                   Grow
                 </span>
               </div>
@@ -267,13 +310,15 @@ export default function HowWeWork() {
                 lg:h-full
                 lg:w-auto
                 lg:max-w-none
+                lg:object-cover
 
                 xl:absolute
                 xl:top-0
                 xl:right-0
                 xl:h-full
-                xl:w-[76%]
+                xl:w-[80%]
                 xl:max-w-none
+                xl:object-cover
               "
             />
           </div>
