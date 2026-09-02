@@ -228,6 +228,7 @@ export default function HowWeWork() {
                 h-full
                 w-auto
                 max-w-none
+                
               "
             />
           </div>

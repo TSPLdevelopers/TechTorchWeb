@@ -66,7 +66,7 @@ export default function StructuredApproachSection() {
   });
 
   useLayoutEffect(() => {
-    function computePath() {
+    const computePath = () => {
       const container = containerRef.current;
 
       if (!container) return;
@@ -92,63 +92,46 @@ export default function StructuredApproachSection() {
       };
 
       const understand = getCenter("understand");
-      const define = getCenter("define");
-      const design = getCenter("design");
-
       const develop = getCenter("develop");
-      const validate = getCenter("validate");
-      const launch = getCenter("launch");
 
-      if (
-        !understand ||
-        !define ||
-        !design ||
-        !develop ||
-        !validate ||
-        !launch
-      ) {
-        return;
-      }
+      if (!understand || !develop) return;
 
-      
+      /*
+        EXACT SCREENSHOT STRUCTURE
 
-      const rightEdge = containerRect.width - 5;
+        Understand ------------------------------┐
+                                                 │
+                                                 │
+        Develop ---------------------------------┘
+      */
+
+      // Screenshot ki right side wali vertical line
+      const rightEdge = containerRect.width - 1;
 
       const path = `
         M ${understand.x} ${understand.y}
-
-        L ${define.x} ${define.y}
-
-        L ${design.x} ${design.y}
-
-        L ${rightEdge} ${design.y}
-
-        L ${rightEdge} ${launch.y}
-
-        L ${launch.x} ${launch.y}
-
-        L ${validate.x} ${validate.y}
-
-        L ${develop.x} ${develop.y}
+        H ${rightEdge}
+        V ${develop.y}
+        H ${develop.x}
       `;
 
       setLinePath(path);
-    }
+    };
 
-    computePath();
-
-    const resizeObserver = new ResizeObserver(() => {
+    const observer = new ResizeObserver(() => {
       computePath();
     });
 
     if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+      observer.observe(containerRef.current);
     }
+
+    computePath();
 
     window.addEventListener("resize", computePath);
 
     return () => {
-      resizeObserver.disconnect();
+      observer.disconnect();
       window.removeEventListener("resize", computePath);
     };
   }, []);
@@ -158,12 +141,10 @@ export default function StructuredApproachSection() {
       style={{
         padding: "70px 40px",
         background: "#ffffff",
-        fontFamily: "'plus jakart sans', Arial, sans-serif",
-        overflow: "hidden",
+        fontFamily: "'Segoe UI', Arial, sans-serif",
       }}
     >
       <div
-        className="structured-section-wrapper"
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
@@ -177,7 +158,7 @@ export default function StructuredApproachSection() {
             fontWeight: 700,
             textAlign: "center",
             color: "#1a1a1a",
-            margin: "0 0 24px 0",
+            margin: "0 0 12px 0",
           }}
         >
           A Structured Approach to{" "}
@@ -213,11 +194,11 @@ export default function StructuredApproachSection() {
           and technology together at every stage.
         </p>
 
-        {/* ================= STEPS ================= */}
+        {/* ================= GRID ================= */}
 
         <div
           ref={containerRef}
-          className="structured-steps-container"
+          className="structured-grid"
           style={{
             position: "relative",
             display: "grid",
@@ -226,18 +207,17 @@ export default function StructuredApproachSection() {
             rowGap: "70px",
           }}
         >
-          {/* ================= CONNECTOR LINE ================= */}
+          {/* ================= 3 CONNECTED LINES ================= */}
 
           {containerSize.width > 0 && linePath && (
             <svg
-              className="structured-connector"
-              width={containerSize.width}
-              height={containerSize.height}
+              width="100%"
+              height="100%"
               viewBox={`0 0 ${containerSize.width} ${containerSize.height}`}
+              preserveAspectRatio="none"
               style={{
                 position: "absolute",
-                top: 0,
-                left: 0,
+                inset: 0,
                 pointerEvents: "none",
                 zIndex: 0,
                 overflow: "visible",
@@ -248,12 +228,12 @@ export default function StructuredApproachSection() {
                 fill="none"
                 stroke={MAROON}
                 strokeWidth="1"
-                opacity="0.55"
+                opacity="0.45"
               />
             </svg>
           )}
 
-          {/* ================= CARDS ================= */}
+          {/* ================= STEPS ================= */}
 
           {steps.map((step) => {
             const Icon = step.icon;
@@ -261,14 +241,13 @@ export default function StructuredApproachSection() {
             return (
               <div
                 key={step.id}
-                className="structured-step"
                 style={{
                   position: "relative",
                   zIndex: 1,
                   maxWidth: "340px",
                 }}
               >
-                {/* ================= ICON ================= */}
+                {/* ICON */}
 
                 <div
                   ref={(element) => {
@@ -278,14 +257,12 @@ export default function StructuredApproachSection() {
                     width: "48px",
                     height: "48px",
                     borderRadius: "50%",
-                    border: `1.5px solid ${MAROON}`,
+                    border: `1px solid ${MAROON}`,
                     background: "#ffffff",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     marginBottom: "18px",
-                    position: "relative",
-                    zIndex: 2,
                   }}
                 >
                   <Icon
@@ -295,7 +272,7 @@ export default function StructuredApproachSection() {
                   />
                 </div>
 
-                {/* ================= TITLE ================= */}
+                {/* TITLE */}
 
                 <h3
                   style={{
@@ -308,7 +285,7 @@ export default function StructuredApproachSection() {
                   {step.title}
                 </h3>
 
-                {/* ================= DESCRIPTION ================= */}
+                {/* DESCRIPTION */}
 
                 <p
                   style={{
@@ -329,53 +306,29 @@ export default function StructuredApproachSection() {
       {/* ================= RESPONSIVE ================= */}
 
       <style>{`
-        @media (max-width: 900px) {
-          section {
-            padding: 60px 30px !important;
-          }
-
-          .structured-steps-container {
-            column-gap: 30px !important;
-            row-gap: 60px !important;
-          }
-        }
-
         @media (max-width: 768px) {
           section {
             padding: 50px 25px !important;
           }
 
-          .structured-steps-container {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 50px 30px !important;
+          .structured-grid {
+            grid-template-columns: 1fr !important;
+            row-gap: 45px !important;
           }
 
-          .structured-connector {
+          .structured-grid svg {
             display: none !important;
-          }
-
-          .structured-step {
-            max-width: 100% !important;
           }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 480px) {
           section {
             padding: 45px 20px !important;
           }
 
-          .structured-steps-container {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-          }
-
-          .structured-section-wrapper h1 {
-            font-size: 25px !important;
-            line-height: 1.35 !important;
-          }
-
-          .structured-connector {
-            display: none !important;
+          section h1 {
+            font-size: 24px !important;
+            line-height: 1.3 !important;
           }
         }
       `}</style>
