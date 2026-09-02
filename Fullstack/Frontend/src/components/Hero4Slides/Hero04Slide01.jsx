@@ -7,25 +7,25 @@ export default function TechnologyMovesForward() {
           HERO BACKGROUND
       ====================================================== */}
       <div className="relative w-full">
-        <img
-          src="/Slide4.1.png"
-          alt="Technology moving business forward"
-          className="
-            block
-            h-[360px]
-            w-full
-            object-cover
-            object-center
+       <img
+  src="/Slide4.1.png"
+  alt="Technology moving business forward"
+  className="
+    block
+    h-[360px]
+    w-full
+    object-cover
+    object-center
 
-            sm:h-[380px]
+    sm:h-[380px]
 
-            md:h-[400px]
+    md:h-[400px]
 
-            lg:h-[460px]
+    lg:h-[500px]
 
-            xl:h-[480px]
-          "
-        />
+    xl:h-[520px]
+  "
+/>
 
         {/* =====================================================
             DARK OVERLAY
