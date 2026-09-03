@@ -6,40 +6,47 @@ export default function SoftwareDevelopmentHero() {
       className="
         relative
         w-full
-        min-h-[500px]
         overflow-hidden
         bg-[#0b0b0b]
 
-        sm:min-h-[520px]
+        min-h-[560px]
 
-        md:min-h-[500px]
+        sm:min-h-[580px]
+
+        md:min-h-[540px]
 
         lg:h-[500px]
         lg:min-h-0
       "
     >
       {/* ================= BACKGROUND IMAGE ================= */}
+
       <img
         src="/Slide3.1.png"
         alt="Software Development"
         className="
           absolute
           inset-0
+
           h-full
           w-full
+
           object-cover
 
-          object-[62%_center]
+          object-[65%_center]
 
-          sm:object-[58%_center]
+          sm:object-[60%_center]
 
           md:object-[55%_center]
 
           lg:object-[52%_center]
+
+          xl:object-center
         "
       />
 
-      {/* ================= DARK GRADIENT OVERLAY ================= */}
+      {/* ================= DARK OVERLAY ================= */}
+
       <div
         className="
           absolute
@@ -48,83 +55,102 @@ export default function SoftwareDevelopmentHero() {
           bg-gradient-to-r
 
           from-black/95
-          via-black/75
-          to-black/30
+          via-black/80
+          to-black/35
 
           sm:from-black/95
-          sm:via-black/70
-          sm:to-transparent
+          sm:via-black/75
+          sm:to-black/20
+
+          md:from-black/95
+          md:via-black/70
+          md:to-transparent
 
           lg:from-black/95
-          lg:via-black/65
-          lg:via-[30%]
+          lg:via-black/70
           lg:to-transparent
-          lg:to-[68%]
         "
       />
 
       {/* ================= CONTENT ================= */}
+
       <div
         className="
           relative
           z-10
 
           flex
-          min-h-[500px]
           w-full
           items-center
 
+          min-h-[560px]
+
           px-5
-          py-12
+          py-14
 
-          sm:min-h-[520px]
+          sm:min-h-[580px]
           sm:px-8
-          sm:py-14
+          sm:py-16
 
-          md:min-h-[500px]
-          md:px-10
+          md:min-h-[540px]
+          md:px-12
+          md:py-14
 
           lg:h-full
           lg:min-h-0
           lg:px-[7%]
           lg:py-10
+
+          xl:px-[8%]
         "
       >
         <div
           className="
             w-full
-            max-w-[520px]
+            max-w-[560px]
+
             text-white
+
+            sm:max-w-[580px]
+
+            md:max-w-[540px]
+
+            lg:max-w-[520px]
           "
         >
           {/* ================= EYEBROW ================= */}
+
           <p
             className="
               mb-4
-              text-[12px]
-              font-semibold
-              tracking-[0.5px]
 
-              min-[400px]:text-[13px]
+              text-[11px]
+              font-semibold
+              tracking-[0.7px]
+
+              min-[400px]:text-[12px]
 
               sm:mb-5
-              sm:text-[14px]
+              sm:text-[13px]
 
-              md:text-[15px]
+              md:text-[14px]
 
-              lg:mb-6
-              lg:text-[15px]
+              lg:mb-5
+              lg:text-[14px]
             "
           >
             SOFTWARE DEVELOPMENT
           </p>
 
           {/* ================= HEADING ================= */}
+
           <h1
             className="
               mb-5
+
               font-medium
               leading-[1.08]
+
               tracking-[-0.8px]
 
               text-[30px]
@@ -139,7 +165,7 @@ export default function SoftwareDevelopmentHero() {
               lg:mb-6
               lg:text-[44px]
 
-              xl:text-[38px]
+              xl:text-[46px]
             "
           >
             Software Built
@@ -148,21 +174,25 @@ export default function SoftwareDevelopmentHero() {
           </h1>
 
           {/* ================= DESCRIPTION ================= */}
+
           <div
             className="
-              max-w-[500px]
+              max-w-[520px]
 
               text-[14px]
               font-normal
-              leading-[1.55]
+              leading-[1.6]
+
               text-white/95
 
               sm:text-[15px]
+              sm:leading-[1.65]
 
+              md:max-w-[500px]
               md:text-[16px]
 
-              lg:text-[17px]
-              lg:leading-[1.4]
+              lg:text-[16px]
+              lg:leading-[1.5]
             "
           >
             <p>
@@ -170,7 +200,17 @@ export default function SoftwareDevelopmentHero() {
               support that—not force you to work around it.
             </p>
 
-            <p className="mt-4 sm:mt-5">
+            <p
+              className="
+                mt-4
+
+                sm:mt-5
+
+                md:mt-5
+
+                lg:mt-5
+              "
+            >
               At TechTorch, we build software around your processes, your
               people and your business goals. From new applications to
               modernizing existing systems, we create practical digital
@@ -180,10 +220,12 @@ export default function SoftwareDevelopmentHero() {
           </div>
 
           {/* ================= BUTTON ================= */}
+
           <button
             type="button"
             className="
               mt-7
+
               inline-flex
               items-center
               justify-center
@@ -192,28 +234,29 @@ export default function SoftwareDevelopmentHero() {
 
               bg-[#970052]
 
-              px-4
-              py-2
+              px-5
+              py-[10px]
 
               text-[14px]
               font-semibold
               text-white
 
               transition-all
-              duration-200
+              duration-300
 
               hover:bg-white
               hover:text-[#970052]
 
               sm:mt-8
-              sm:px-5
-              sm:py-[9px]
+              sm:px-6
+              sm:py-[11px]
               sm:text-[15px]
 
-              lg:mt-9
-              lg:px-4
-              lg:py-2
-              lg:text-[15px]
+              md:mt-8
+
+              lg:mt-8
+              lg:px-5
+              lg:py-[10px]
             "
           >
             Talk To Experts

@@ -3,118 +3,31 @@ import React from "react";
 export default function SoftwareThatWorks() {
   return (
     <section
-      className="w-full overflow-hidden"
+      className="software-works-section"
       style={{
         background: "#f7f4ef",
-        fontFamily: "Plus Jakarta Sans, sans-serif",
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+        overflow: "hidden",
       }}
     >
-      <div
-        className="
-          mx-auto
-          w-full
-          max-w-[1400px]
-
-          px-5
-          py-4
-
-          sm:px-7
-          sm:py-5
-
-          md:px-10
-          md:py-6
-
-          lg:px-12
-          lg:py-6
-
-          xl:px-14
-          xl:py-6
-        "
-      >
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-8
-
-            sm:gap-10
-
-            md:grid-cols-[1.15fr_0.85fr]
-            md:gap-8
-
-            lg:grid-cols-[1.15fr_0.85fr]
-            lg:gap-10
-
-            xl:grid-cols-[1.15fr_0.85fr]
-            xl:gap-16
-          "
-        >
+      <div className="software-works-container">
+        <div className="software-works-grid">
           {/* =====================================================
               LEFT CONTENT
           ====================================================== */}
-          <div
-            className="
-              flex
-              min-w-0
-              flex-col
-              justify-start
-              pt-0
 
-              md:pt-1
-            "
-          >
+          <div className="software-works-content">
             {/* HEADING */}
-            <h1
-              className="
-                max-w-full
-                font-['Plus_Jakarta_Sans']
-                text-[30px]
-                font-semibold
-                leading-[1.08]
-                tracking-[-1.2px]
-                text-[#111111]
 
-                min-[380px]:text-[32px]
-
-                sm:text-[36px]
-                sm:tracking-[-1.4px]
-
-                md:text-[44px]
-                md:tracking-[-1.8px]
-
-                lg:text-[48px]
-
-                xl:text-[38px]
-              "
-            >
+            <h1 className="software-works-heading">
               Software That Works
               <br />
-              For{" "}
-              <span className="text-[#850052]">
-                Your Business
-              </span>
+              For <span>Your Business</span>
             </h1>
 
             {/* FIRST PARAGRAPH */}
-            <p
-              className="
-                mt-6
-                max-w-[700px]
-                font-['Inter']
-                text-[15px]
-                font-normal
-                leading-[1.55]
-                text-[#292929]
 
-                sm:mt-7
-                sm:text-[16px]
-
-                md:mt-10
-                md:text-[18px]
-
-                lg:text-[16px]
-              "
-            >
+            <p>
               Every organization has different processes, priorities and
               challenges. Yet many businesses still rely on software that
               doesn't fully fit the way their teams work. We take a different
@@ -122,75 +35,24 @@ export default function SoftwareThatWorks() {
             </p>
 
             {/* SECOND PARAGRAPH */}
-            <p
-              className="
-                mt-6
-                max-w-[700px]
-                font-['Inter']
-                text-[15px]
-                font-normal
-                leading-[1.55]
-                text-[#292929]
 
-                sm:mt-7
-                sm:text-[16px]
-
-                md:mt-9
-                md:text-[18px]
-
-                lg:text-[16px]
-              "
-            >
+            <p>
               At TechTorch, we start by understanding your business and the
               problem you want to solve. We look at your existing processes,
               systems and user needs before defining the right solution.
             </p>
 
             {/* THIRD PARAGRAPH */}
-            <p
-              className="
-                mt-6
-                max-w-[700px]
-                font-['Inter']
-                text-[15px]
-                font-normal
-                leading-[1.55]
-                text-[#292929]
 
-                sm:mt-7
-                sm:text-[16px]
-
-                md:mt-9
-                md:text-[18px]
-
-                lg:text-[16px]
-              "
-            >
+            <p>
               That could mean building a new application, connecting systems
               that currently operate separately, or modernizing an existing
               platform.
             </p>
 
             {/* FOURTH PARAGRAPH */}
-            <p
-              className="
-                mt-6
-                max-w-[700px]
-                font-['Inter']
-                text-[15px]
-                font-normal
-                leading-[1.55]
-                text-[#292929]
 
-                sm:mt-7
-                sm:text-[16px]
-
-                md:mt-9
-                md:text-[18px]
-
-                lg:text-[16px]
-              "
-            >
+            <p>
               The technology is important, but the business outcome comes
               first.
             </p>
@@ -199,96 +61,347 @@ export default function SoftwareThatWorks() {
           {/* =====================================================
               RIGHT CONTENT
           ====================================================== */}
-          <div
-            className="
-              flex
-              min-w-0
-              flex-col
 
-              items-center
-              max-md:w-full
-              max-md:translate-x-0
-
-              md:items-start
-              md:translate-x-[30px]
-
-              lg:translate-x-[80px]
-
-              xl:translate-x-[165px]
-            "
-          >
+          <div className="software-works-right">
             {/* IMAGE */}
-            <div
-              className="
-                w-[94%]
-                max-w-[560px]
-                overflow-hidden
-                rounded-[16px]
 
-                sm:w-[88%]
-                sm:max-w-[580px]
-                sm:rounded-[18px]
-
-                md:w-[92%]
-                md:max-w-[500px]
-                md:rounded-[20px]
-
-                lg:w-[78%]
-                lg:max-w-none
-                lg:rounded-[21px]
-
-                xl:w-[72%]
-              "
-            >
+            <div className="software-works-image">
               <img
                 src="/Slide3.2.png"
                 alt="Business team working together"
-                className="
-                  block
-                  h-auto
-                  w-full
-                  object-contain
-                "
               />
             </div>
 
             {/* HIGHLIGHT TEXT */}
-            <p
-              className="
-                mt-6
-                w-full
-                max-w-[500px]
-                font-['Plus_Jakarta_Sans']
-                text-[17px]
-                font-bold
-                leading-[1.25]
-                tracking-[-0.4px]
-                text-[#850052]
 
-                sm:mt-7
-                sm:max-w-[520px]
-                sm:text-[19px]
-
-                md:mt-8
-                md:max-w-[500px]
-                md:text-[21px]
-
-                lg:mt-10
-                lg:max-w-[520px]
-                lg:text-[23px]
-
-                xl:text-[20px]
-              "
-            >
+            <p className="software-works-highlight">
               We build software to make your business
-              <br className="hidden sm:block" />
+              <br className="desktop-break" />
               work better—not simply to add another
-              <br className="hidden sm:block" />
+              <br className="desktop-break" />
               system.
             </p>
           </div>
         </div>
       </div>
+
+      <style>{`
+        /* =====================================================
+           SECTION
+        ====================================================== */
+
+        .software-works-section {
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        /* =====================================================
+           CONTAINER
+        ====================================================== */
+
+        .software-works-container {
+          width: 100%;
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 45px 80px;
+          box-sizing: border-box;
+        }
+
+        /* =====================================================
+           GRID
+        ====================================================== */
+
+        .software-works-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+          gap: 70px;
+          align-items: start;
+        }
+
+        /* =====================================================
+           LEFT CONTENT
+        ====================================================== */
+
+        .software-works-content {
+          min-width: 0;
+          padding-top: 10px;
+          transform: translateX(25px);
+        }
+
+        /* =====================================================
+           HEADING
+        ====================================================== */
+
+        .software-works-heading {
+          margin: 0;
+          max-width: 700px;
+
+          font-size: 48px;
+          font-weight: 600;
+          line-height: 1.1;
+          letter-spacing: -1.8px;
+
+          color: #111111;
+        }
+
+        .software-works-heading span {
+          color: #850052;
+        }
+
+        /* =====================================================
+           PARAGRAPHS
+        ====================================================== */
+
+        .software-works-content > p {
+          max-width: 680px;
+          margin: 0;
+          margin-top: 28px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.65;
+
+          color: #292929;
+        }
+
+        .software-works-content > p:first-of-type {
+          margin-top: 40px;
+        }
+
+        /* =====================================================
+           RIGHT CONTENT
+        ====================================================== */
+
+        .software-works-right {
+          min-width: 0;
+
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          padding-top: 0;
+        }
+
+        /* =====================================================
+           IMAGE
+        ====================================================== */
+
+        .software-works-image {
+          width: 100%;
+          max-width: 520px;
+
+          border-radius: 20px;
+          overflow: hidden;
+        }
+
+        .software-works-image img {
+          width: 100%;
+          height: auto;
+          display: block;
+
+          object-fit: contain;
+        }
+
+        /* =====================================================
+           HIGHLIGHT TEXT
+        ====================================================== */
+
+        .software-works-highlight {
+          width: 100%;
+          max-width: 520px;
+
+          margin: 38px 0 0;
+
+          font-size: 21px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: -0.4px;
+
+          color: #850052;
+        }
+
+        /* =====================================================
+           LARGE LAPTOP
+        ====================================================== */
+
+        @media (max-width: 1200px) {
+          .software-works-container {
+            padding: 45px 55px;
+          }
+
+          .software-works-grid {
+            gap: 50px;
+          }
+
+          .software-works-content {
+            transform: translateX(15px);
+          }
+
+          .software-works-heading {
+            font-size: 42px;
+          }
+
+          .software-works-image {
+            max-width: 480px;
+          }
+
+          .software-works-highlight {
+            font-size: 20px;
+          }
+        }
+
+        /* =====================================================
+           TABLET / SMALL LAPTOP
+        ====================================================== */
+
+        @media (max-width: 1000px) {
+          .software-works-container {
+            padding: 40px 40px;
+          }
+
+          .software-works-grid {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+            gap: 35px;
+          }
+
+          .software-works-content {
+            transform: translateX(8px);
+          }
+
+          .software-works-heading {
+            font-size: 38px;
+          }
+
+          .software-works-content > p {
+            font-size: 15.5px;
+            line-height: 1.6;
+          }
+
+          .software-works-image {
+            max-width: 100%;
+          }
+
+          .software-works-highlight {
+            margin-top: 28px;
+            font-size: 18px;
+          }
+        }
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 768px) {
+          .software-works-container {
+            padding: 45px 30px;
+          }
+
+          .software-works-grid {
+            grid-template-columns: 1fr;
+            gap: 45px;
+          }
+
+          .software-works-content {
+            transform: translateX(0);
+            padding-top: 0;
+          }
+
+          .software-works-heading {
+            font-size: 36px;
+            line-height: 1.12;
+          }
+
+          .software-works-content > p {
+            max-width: 100%;
+            font-size: 16px;
+          }
+
+          .software-works-right {
+            align-items: center;
+            width: 100%;
+          }
+
+          .software-works-image {
+            width: 100%;
+            max-width: 600px;
+          }
+
+          .software-works-highlight {
+            max-width: 600px;
+            font-size: 20px;
+            margin-top: 28px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 600px) {
+          .software-works-container {
+            padding: 40px 20px;
+          }
+
+          .software-works-grid {
+            gap: 38px;
+          }
+
+          .software-works-heading {
+            font-size: 30px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+          }
+
+          .software-works-content > p {
+            margin-top: 20px;
+
+            font-size: 15px;
+            line-height: 1.6;
+          }
+
+          .software-works-content > p:first-of-type {
+            margin-top: 28px;
+          }
+
+          .software-works-image {
+            border-radius: 14px;
+          }
+
+          .software-works-highlight {
+            margin-top: 24px;
+
+            font-size: 17px;
+            line-height: 1.4;
+          }
+
+          .desktop-break {
+            display: none;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+        ====================================================== */
+
+        @media (max-width: 380px) {
+          .software-works-container {
+            padding: 35px 16px;
+          }
+
+          .software-works-heading {
+            font-size: 27px;
+          }
+
+          .software-works-content > p {
+            font-size: 14px;
+          }
+
+          .software-works-highlight {
+            font-size: 16px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
