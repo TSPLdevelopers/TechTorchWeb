@@ -44,6 +44,8 @@ export default function ConnectedExperienceSection() {
           font-family: 'Segoe UI', Arial, sans-serif;
         }
 
+        /* ================= IMAGE ================= */
+
         .connected-image-wrapper {
           flex: 1 1 50%;
           min-height: 480px;
@@ -59,6 +61,8 @@ export default function ConnectedExperienceSection() {
           object-position: center;
         }
 
+        /* ================= CONTENT ================= */
+
         .connected-content {
           flex: 1 1 50%;
           padding: 50px 60px;
@@ -68,39 +72,53 @@ export default function ConnectedExperienceSection() {
           box-sizing: border-box;
         }
 
-        /* Heading same position */
+        /* ================= HEADING ================= */
+
         .connected-content h1 {
           font-size: 32px;
           line-height: 1.35;
           font-weight: 700;
           color: #1a1a1a;
+
           margin: 0 0 20px 0;
-          transform: translateY(-80px);
+
+          /* Heading thoda aur upar */
+          transform: translateY(-160px);
         }
 
         .connected-content h1 span {
           color: ${MAROON};
         }
 
-        /* Paragraph thoda upar */
+        /* ================= PARAGRAPH ================= */
+
         .connected-content p {
           font-size: 17px;
           line-height: 1.75;
           color: #3a3a3a;
-          margin: -20px 0 28px 0;
+
           max-width: 520px;
+
+          /* Paragraph bhi upar */
+          margin: -130px 0 28px 0;
         }
+
+        /* ================= BUTTON ================= */
 
         .connected-content a {
           display: inline-flex;
           align-self: flex-start;
           align-items: center;
+
           background: ${MAROON};
           color: #ffffff;
+
           font-size: 15px;
           font-weight: 600;
+
           padding: 13px 24px;
           border-radius: 6px;
+
           text-decoration: none;
           transition: 0.3s ease;
         }
@@ -108,6 +126,8 @@ export default function ConnectedExperienceSection() {
         .connected-content a:hover {
           background: #5e0d2a;
         }
+
+        /* ================= TABLET ================= */
 
         @media (max-width: 768px) {
           .connected-experience-section {
@@ -130,14 +150,18 @@ export default function ConnectedExperienceSection() {
 
           .connected-content h1 {
             font-size: 27px;
-            transform: translateY(-10px);
+
+            /* Mobile/tablet par halka sa upar */
+            transform: translateY(-20px);
           }
 
           .connected-content p {
             font-size: 16px;
-            margin: -5px 0 28px 0;
+            margin: -15px 0 28px 0;
           }
         }
+
+        /* ================= MOBILE ================= */
 
         @media (max-width: 480px) {
           .connected-image-wrapper {
@@ -154,13 +178,16 @@ export default function ConnectedExperienceSection() {
 
           .connected-content h1 {
             font-size: 24px;
-            transform: translateY(-8px);
+            line-height: 1.3;
+
+            transform: translateY(-15px);
           }
 
           .connected-content p {
             font-size: 15px;
             line-height: 1.7;
-            margin: -3px 0 25px 0;
+
+            margin: -12px 0 25px 0;
           }
         }
       `}</style>

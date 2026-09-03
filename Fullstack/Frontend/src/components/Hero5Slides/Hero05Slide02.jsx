@@ -96,25 +96,33 @@ export default function ConnectedPlatformSection() {
       </div>
 
       <style>{`
+        /* ================= SECTION ================= */
+
         .connected-platform-section {
           width: 100%;
-          padding: 70px 80px;
           background: #f7f4ef;
           font-family: "Inter", sans-serif;
           box-sizing: border-box;
+
+          padding: 70px 80px;
         }
+
+        /* ================= CONTENT ================= */
 
         .connected-platform-content {
           width: 100%;
-          max-width: none;
-          margin: 0;
+          max-width: 1400px;
+          margin: 0 auto;
         }
 
+        /* ================= MAIN HEADING ================= */
+
         .connected-platform-content h1 {
-          font-size: 32px;
-          line-height: 1.35;
+          font-size: 36px;
+          line-height: 1.3;
           font-weight: 600;
           color: #1a1a1a;
+
           margin: 0 0 30px 0;
         }
 
@@ -122,101 +130,214 @@ export default function ConnectedPlatformSection() {
           color: ${MAROON};
         }
 
+        /* ================= PARAGRAPHS ================= */
+
         .connected-platform-content p {
           width: 100%;
-          max-width: none;
+          max-width: 1300px;
+
           font-size: 16px;
-          line-height: 1.7;
+          line-height: 1.75;
+
           color: #3a3a3a;
+
           margin: 0 0 22px 0;
         }
+
+        /* ================= HIGHLIGHT ================= */
 
         .connected-platform-content .highlight-text {
           font-weight: 700;
           color: #1a1a1a;
         }
 
+        /* ================= SECTION GAP ================= */
+
         .connected-platform-content .section-gap {
           margin-bottom: 52px;
         }
 
+        /* ================= SUB HEADINGS ================= */
+
         .connected-platform-content h2 {
-          font-size: 24px;
+          font-size: 25px;
           line-height: 1.4;
           font-weight: 700;
+
           color: ${MAROON};
+
           margin: 0 0 20px 0;
         }
+
+        /* ================= LAST PARAGRAPH ================= */
 
         .connected-platform-content .last-paragraph {
           margin-bottom: 0;
         }
 
-        @media (max-width: 900px) {
+        /* =====================================================
+           LARGE LAPTOP
+        ====================================================== */
+
+        @media (max-width: 1200px) {
           .connected-platform-section {
-            padding: 60px 50px;
-          }
-
-          .connected-platform-content h1 {
-            font-size: 32px;
-          }
-
-          .connected-platform-content p {
-            font-size: 19px;
-            line-height: 1.7;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .connected-platform-section {
-            padding: 50px 25px;
+            padding: 65px 60px;
           }
 
           .connected-platform-content {
-            width: 100%;
+            max-width: 1100px;
           }
 
           .connected-platform-content h1 {
-            font-size: 29px;
-          }
-
-          .connected-platform-content h2 {
-            font-size: 22px;
+            font-size: 34px;
           }
 
           .connected-platform-content p {
-            font-size: 18px;
-            line-height: 1.7;
+            font-size: 16px;
           }
 
-          .connected-platform-content .section-gap {
-            margin-bottom: 40px;
+          .connected-platform-content h2 {
+            font-size: 24px;
           }
         }
 
-        @media (max-width: 480px) {
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 900px) {
           .connected-platform-section {
-            padding: 40px 20px;
+            padding: 55px 45px;
+          }
+
+          .connected-platform-content {
+            max-width: 100%;
           }
 
           .connected-platform-content h1 {
-            font-size: 25px;
-            line-height: 1.35;
-            margin-bottom: 24px;
-          }
+            font-size: 31px;
+            line-height: 1.32;
 
-          .connected-platform-content h2 {
-            font-size: 20px;
+            margin-bottom: 26px;
           }
 
           .connected-platform-content p {
-            font-size: 17px;
+            font-size: 16px;
             line-height: 1.7;
+
+            margin-bottom: 20px;
+          }
+
+          .connected-platform-content h2 {
+            font-size: 23px;
+
             margin-bottom: 18px;
           }
 
           .connected-platform-content .section-gap {
-            margin-bottom: 35px;
+            margin-bottom: 42px;
+          }
+        }
+
+        /* =====================================================
+           SMALL TABLET
+        ====================================================== */
+
+        @media (max-width: 768px) {
+          .connected-platform-section {
+            padding: 50px 30px;
+          }
+
+          .connected-platform-content h1 {
+            font-size: 29px;
+            line-height: 1.35;
+
+            margin-bottom: 24px;
+          }
+
+          .connected-platform-content p {
+            font-size: 15.5px;
+            line-height: 1.7;
+
+            margin-bottom: 19px;
+          }
+
+          .connected-platform-content h2 {
+            font-size: 22px;
+            line-height: 1.4;
+
+            margin-bottom: 17px;
+          }
+
+          .connected-platform-content .section-gap {
+            margin-bottom: 38px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 600px) {
+          .connected-platform-section {
+            padding: 42px 20px;
+          }
+
+          .connected-platform-content h1 {
+            font-size: 26px;
+            line-height: 1.35;
+
+            margin-bottom: 22px;
+          }
+
+          .connected-platform-content p {
+            font-size: 15px;
+            line-height: 1.7;
+
+            margin-bottom: 18px;
+          }
+
+          .connected-platform-content h2 {
+            font-size: 21px;
+            line-height: 1.4;
+
+            margin-bottom: 16px;
+          }
+
+          .connected-platform-content .section-gap {
+            margin-bottom: 34px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+        ====================================================== */
+
+        @media (max-width: 380px) {
+          .connected-platform-section {
+            padding: 38px 16px;
+          }
+
+          .connected-platform-content h1 {
+            font-size: 23px;
+            line-height: 1.35;
+
+            margin-bottom: 20px;
+          }
+
+          .connected-platform-content p {
+            font-size: 14px;
+            line-height: 1.68;
+
+            margin-bottom: 17px;
+          }
+
+          .connected-platform-content h2 {
+            font-size: 19px;
+          }
+
+          .connected-platform-content .section-gap {
+            margin-bottom: 30px;
           }
         }
       `}</style>
