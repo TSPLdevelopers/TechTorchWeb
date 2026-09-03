@@ -31,6 +31,9 @@ export default function WithPurpose() {
             tracking-[0.01em]
             text-[#252525]
             sm:text-[12px]
+
+            lg:-translate-x-5
+            xl:-translate-x-7
           "
         >
           OUR PERSPECTIVE
@@ -63,7 +66,15 @@ export default function WithPurpose() {
           {/* =====================================================
               LEFT COLUMN
           ===================================================== */}
-          <div className="min-w-0 max-w-full">
+          <div
+            className="
+              min-w-0
+              max-w-full
+
+              lg:-translate-x-5
+              xl:-translate-x-7
+            "
+          >
 
             {/* HEADING */}
             <h1
@@ -244,8 +255,12 @@ export default function WithPurpose() {
               md:text-[15px]
               lg:text-[16px]
               lg:leading-[1.36]
-                  md:mt-2
-    lg:mt-2
+
+              md:mt-2
+              lg:mt-2
+
+              lg:translate-x-5
+              xl:translate-x-7
             "
           >
 
