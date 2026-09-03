@@ -21,9 +21,9 @@ export default function TechnologyMovesForward() {
 
             md:h-[400px]
 
-            lg:h-[460px]
+            lg:h-[500px]
 
-            xl:h-[480px]
+            xl:h-[520px]
           "
         />
 
@@ -55,9 +55,9 @@ export default function TechnologyMovesForward() {
 
             md:px-10
 
-            lg:px-12
+            lg:px-8
 
-            xl:px-14
+            xl:px-8
           "
         >
           <div
@@ -142,54 +142,69 @@ export default function TechnologyMovesForward() {
             {/* =================================================
                 BUTTON
             ================================================== */}
- <div
-  className="
-    mt-12
+            <div
+              className="
+                mt-12
 
-    sm:mt-13
+                sm:mt-13
 
-    md:mt-14
+                md:mt-14
 
-    lg:mt-15
+                lg:mt-15
 
-    xl:mt-16
-  "
->
+                xl:mt-16
+              "
+            >
               <button
                 type="button"
                 className="
+                  group
+                  relative
                   inline-flex
                   items-center
-                  justify-center
-
-                  rounded-[4px]
-                  bg-white
-
-                  px-4
-                  py-2.5
-
+                  gap-2
+                  rounded-[5px]
+                  border
+                  border-white
+                  bg-transparent
+                  !px-[9px]
+                  !py-[7px]
                   font-['Inter']
                   text-[13px]
-                  font-semibold
+                  font-medium
                   leading-none
-                  text-[#111111]
-
-                  shadow-sm
-
+                  text-white
                   transition-all
-                  duration-200
+                  duration-300
+                  hover:bg-white
+                  hover:text-[#22091f]
 
-                  hover:bg-[#f4f4f4]
-                  hover:shadow-md
+                  sm:text-[15px]
 
-                  sm:px-5
-                  sm:py-3
-                  sm:text-[14px]
+                  md:text-[16px]
 
-                  md:text-[15px]
+                  lg:text-[17px]
                 "
               >
-                Talk to Our Experts
+                <span>Talk to Our Experts</span>
+
+                <span
+                  className="
+                    text-[18px]
+                    leading-none
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+
+                    sm:text-[19px]
+
+                    md:text-[20px]
+
+                    lg:text-[21px]
+                  "
+                >
+                  →
+                </span>
               </button>
             </div>
           </div>
