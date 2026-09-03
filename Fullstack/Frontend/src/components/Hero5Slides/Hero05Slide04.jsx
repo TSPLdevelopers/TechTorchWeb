@@ -14,7 +14,7 @@ export default function BringBusinessTogetherSection() {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundColor: '#0a0a0f',
-        fontFamily: "'Segoe UI', Arial, sans-serif",
+        fontFamily: "'Plus jakarta sans', sans-serif",
         display: 'flex',
         alignItems: 'center',
       }}

@@ -68,23 +68,26 @@ export default function ConnectedExperienceSection() {
           box-sizing: border-box;
         }
 
+        /* Heading same position */
         .connected-content h1 {
           font-size: 32px;
           line-height: 1.35;
           font-weight: 700;
           color: #1a1a1a;
           margin: 0 0 20px 0;
+          transform: translateY(-80px);
         }
 
         .connected-content h1 span {
           color: ${MAROON};
         }
 
+        /* Paragraph thoda upar */
         .connected-content p {
           font-size: 17px;
           line-height: 1.75;
           color: #3a3a3a;
-          margin: 0 0 28px 0;
+          margin: -20px 0 28px 0;
           max-width: 520px;
         }
 
@@ -127,10 +130,12 @@ export default function ConnectedExperienceSection() {
 
           .connected-content h1 {
             font-size: 27px;
+            transform: translateY(-10px);
           }
 
           .connected-content p {
             font-size: 16px;
+            margin: -5px 0 28px 0;
           }
         }
 
@@ -149,11 +154,13 @@ export default function ConnectedExperienceSection() {
 
           .connected-content h1 {
             font-size: 24px;
+            transform: translateY(-8px);
           }
 
           .connected-content p {
             font-size: 15px;
             line-height: 1.7;
+            margin: -3px 0 25px 0;
           }
         }
       `}</style>
