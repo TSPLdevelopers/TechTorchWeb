@@ -100,7 +100,7 @@ export default function ConnectedPlatformSection() {
           width: 100%;
           padding: 70px 80px;
           background: #f7f4ef;
-          font-family: "Segoe UI", Arial, sans-serif;
+          font-family: "Inter", sans-serif;
           box-sizing: border-box;
         }
 
@@ -113,7 +113,7 @@ export default function ConnectedPlatformSection() {
         .connected-platform-content h1 {
           font-size: 32px;
           line-height: 1.35;
-          font-weight: 700;
+          font-weight: 600;
           color: #1a1a1a;
           margin: 0 0 30px 0;
         }
@@ -125,8 +125,8 @@ export default function ConnectedPlatformSection() {
         .connected-platform-content p {
           width: 100%;
           max-width: none;
-          font-size: 17px;
-          line-height: 1.8;
+          font-size: 16px;
+          line-height: 1.7;
           color: #3a3a3a;
           margin: 0 0 22px 0;
         }
@@ -163,6 +163,7 @@ export default function ConnectedPlatformSection() {
 
           .connected-platform-content p {
             font-size: 19px;
+            line-height: 1.7;
           }
         }
 
@@ -185,7 +186,7 @@ export default function ConnectedPlatformSection() {
 
           .connected-platform-content p {
             font-size: 18px;
-            line-height: 1.75;
+            line-height: 1.7;
           }
 
           .connected-platform-content .section-gap {

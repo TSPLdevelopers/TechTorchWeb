@@ -1,6 +1,14 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Users,
+  IndianRupee,
+  Warehouse,
+  Wallet,
+  Settings2,
+  Contact,
+} from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,1206 +18,423 @@ const cards = [
   {
     title: "Engage",
     desc: "Keep your employees connected and engaged by making communication, collaboration and everyday interactions easier across the organisation.",
-    icon: "👥",
+    icon: Users,
   },
   {
     title: "Finance & Accounting",
     desc: "Keep your financial information organised and get a clearer view of your business performance.",
-    icon: "₹",
+    icon: IndianRupee,
   },
   {
     title: "Inventory & Supply Chain",
     desc: "Keep track of stock, purchasing and movement so your teams know what is available and what needs attention.",
-    icon: "⌂",
+    icon: Warehouse,
   },
   {
     title: "Payroll",
     desc: "Manage employee salaries, payments and payroll processes more efficiently, while keeping important payroll information organised and accessible.",
-    icon: "▣",
+    icon: Wallet,
   },
   {
     title: "Operations",
     desc: "Bring everyday operational activities together and give your teams a clearer view of what is happening.",
-    icon: "⚙",
+    icon: Settings2,
   },
   {
     title: "HRMS",
     desc: "Keep employee information and important HR processes organized in one place.",
-    icon: "♟",
+    icon: Contact,
   },
 ];
 
+/* =========================================================
+   LAYOUT CONSTANTS — used both for rendering cards and for
+   drawing the connector line, so they always stay in sync.
+   (Desktop-only — tablet/mobile use a flexible, auto-height
+   layout instead so long titles never get clipped.)
+========================================================= */
+const CARD_WIDTH = 360;
+const CARD_GAP = 150;
+const CARD_HEIGHT = 260;
+const START_PADDING = 80;
+const END_PADDING = 120;
+const TOP_LOW = 150; // "down" position in the zigzag
+const TOP_HIGH = 60; // "up" position in the zigzag
+const TRACK_AREA_HEIGHT = TOP_LOW + CARD_HEIGHT + 90; // extra buffer so wrapped text never clips
+
+function getCardLeft(index) {
+  return START_PADDING + index * (CARD_WIDTH + CARD_GAP);
+}
+
+function getCardTop(index) {
+  return index % 2 === 0 ? TOP_LOW : TOP_HIGH;
+}
+
+function getCardCenter(index) {
+  return {
+    x: getCardLeft(index) + CARD_WIDTH / 2,
+    y: getCardTop(index) + CARD_HEIGHT / 2,
+  };
+}
+
+function getTrackWidth() {
+  return (
+    START_PADDING +
+    cards.length * CARD_WIDTH +
+    (cards.length - 1) * CARD_GAP +
+    END_PADDING
+  );
+}
+
+/* A smooth chain of upward-bowed arcs connecting every card
+   center, in order — this is the "all cards connected" line. */
+function buildConnectorPath() {
+  const points = cards.map((_, i) => getCardCenter(i));
+  let d = `M ${points[0].x},${points[0].y}`;
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const a = points[i];
+    const b = points[i + 1];
+    const midX = (a.x + b.x) / 2;
+    const arcY = Math.min(a.y, b.y) - 45;
+    d += ` Q ${midX},${arcY} ${b.x},${b.y}`;
+  }
+
+  return d;
+}
+
 export default function OnePlatformSection() {
   const sectionRef = useRef(null);
+  const viewportRef = useRef(null);
+  const trackRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  /* =========================
-     CARD REFS
-  ========================= */
+  // Watch the breakpoint continuously (not just once at mount) so
+  // resizing the window / rotating a tablet switches modes correctly.
+  useLayoutEffect(() => {
+    const mq = window.matchMedia("(max-width: 1024px)");
+    setIsMobile(mq.matches);
 
-  const pair1Left = useRef(null);
-  const pair1Right = useRef(null);
-
-  const pair2Left = useRef(null);
-  const pair2Right = useRef(null);
-
-  const pair3Left = useRef(null);
-  const pair3Right = useRef(null);
-
-  /* =========================
-     CONNECTOR REFS
-  ========================= */
-
-  const connector1Ref = useRef(null);
-  const connector2Ref = useRef(null);
-  const connector3Ref = useRef(null);
+    const handleChange = (e) => setIsMobile(e.matches);
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
+  }, []);
 
   useLayoutEffect(() => {
-  const ctx = gsap.context(() => {
-    const isMobile = window.matchMedia(
-      "(max-width: 700px)"
-    ).matches;
+    const ctx = gsap.context(() => {
+      if (isMobile) return; // tablet/mobile: native swipeable row, no GSAP pin
 
-    const pair1 = [
-      pair1Left.current,
-      pair1Right.current,
-    ].filter(Boolean);
+      const track = trackRef.current;
+      const viewport = viewportRef.current;
+      if (!track || !viewport) return;
 
-    const pair2 = [
-      pair2Left.current,
-      pair2Right.current,
-    ].filter(Boolean);
+      const getScrollDistance = () =>
+        Math.max(track.scrollWidth - viewport.offsetWidth, 0);
 
-    const pair3 = [
-      pair3Left.current,
-      pair3Right.current,
-    ].filter(Boolean);
-
-    const connector = connector1Ref.current;
-
-    /* ==========================================
-       INITIAL STATE
-    ========================================== */
-
-    if (pair1.length) {
-      gsap.set(pair1, {
-        opacity: 0,
-        x: 0,
-        y: isMobile ? 40 : 0,
-      });
-    }
-
-    if (pair2.length) {
-      gsap.set(pair2, {
-        opacity: 0,
-        x: 0,
-        y: isMobile ? 40 : 0,
-      });
-    }
-
-    if (pair3.length) {
-      gsap.set(pair3, {
-        opacity: 0,
-        x: 0,
-        y: isMobile ? 40 : 0,
-      });
-    }
-
-    if (connector) {
-      gsap.set(connector, {
-        opacity: 0,
-      });
-    }
-
-    /* ==========================================
-       TIMELINE
-    ========================================== */
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: isMobile
-          ? "+=2300"
-          : "+=2600",
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    });
-
-    /* =================================================
-       PAIR 1
-       ENGAGE + FINANCE
-    ================================================= */
-
-    if (!isMobile) {
-      if (pair1Left.current) {
-        gsap.set(pair1Left.current, {
-          x: -80,
-        });
-      }
-
-      if (pair1Right.current) {
-        gsap.set(pair1Right.current, {
-          x: 80,
-        });
-      }
-    }
-
-    if (pair1.length) {
-      tl.to(pair1, {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-    }
-
-    if (!isMobile && connector) {
-      tl.to(
-        connector,
-        {
-          opacity: 1,
-          duration: 0.5,
+      gsap.to(track, {
+        x: () => -getScrollDistance(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: () => "+=" + getScrollDistance() * 1.15,
+          scrub: 1, // small lag = smooth, buttery scroll feel
+          pin: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
-        "<0.3"
-      );
-    }
-
-    // HOLD
-    tl.to({}, {
-      duration: 1.5,
-    });
-
-    /* =================================================
-       PAIR 1 OUT
-    ================================================= */
-
-    if (pair1.length) {
-      tl.to(pair1, {
-        opacity: 0,
-        y: -40,
-        duration: 0.7,
-        ease: "power2.inOut",
       });
-    }
+    }, sectionRef);
 
-    if (!isMobile && connector) {
-      tl.to(
-        connector,
-        {
-          opacity: 0,
-          duration: 0.4,
-        },
-        "<"
-      );
-    }
+    return () => ctx.revert();
+  }, [isMobile]);
 
-    /* =================================================
-       PAIR 2
-       INVENTORY + PAYROLL
-    ================================================= */
-
-    if (!isMobile) {
-      if (pair2Left.current) {
-        gsap.set(pair2Left.current, {
-          x: -80,
-        });
-      }
-
-      if (pair2Right.current) {
-        gsap.set(pair2Right.current, {
-          x: 80,
-        });
-      }
-    }
-
-    if (pair2.length) {
-      tl.to(pair2, {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-    }
-
-    if (!isMobile && connector) {
-      tl.to(
-        connector,
-        {
-          opacity: 1,
-          duration: 0.5,
-        },
-        "<0.3"
-      );
-    }
-
-    // HOLD
-    tl.to({}, {
-      duration: 1.5,
-    });
-
-    /* =================================================
-       PAIR 2 OUT
-    ================================================= */
-
-    if (pair2.length) {
-      tl.to(pair2, {
-        opacity: 0,
-        y: -40,
-        duration: 0.7,
-        ease: "power2.inOut",
-      });
-    }
-
-    if (!isMobile && connector) {
-      tl.to(
-        connector,
-        {
-          opacity: 0,
-          duration: 0.4,
-        },
-        "<"
-      );
-    }
-
-    /* =================================================
-       PAIR 3
-       OPERATIONS + HRMS
-    ================================================= */
-
-    if (!isMobile) {
-      if (pair3Left.current) {
-        gsap.set(pair3Left.current, {
-          x: -80,
-        });
-      }
-
-      if (pair3Right.current) {
-        gsap.set(pair3Right.current, {
-          x: 80,
-        });
-      }
-    }
-
-    if (pair3.length) {
-      tl.to(pair3, {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-    }
-
-    if (!isMobile && connector) {
-      tl.to(
-        connector,
-        {
-          opacity: 1,
-          duration: 0.5,
-        },
-        "<0.3"
-      );
-    }
-
-    // HOLD
-    tl.to({}, {
-      duration: 1.5,
-    });
-
-  }, sectionRef);
-
-  return () => ctx.revert();
-}, []);
+  const connectorPath = buildConnectorPath();
+  const trackWidth = getTrackWidth();
 
   return (
-    <section
-      ref={sectionRef}
-      className="one-platform-section"
-    >
+    <section ref={sectionRef} className="one-platform-section">
       <div className="one-platform-container">
-
-        {/* =================================================
-            HEADER
-        ================================================= */}
-
         <div className="one-platform-header">
-
           <h2 className="one-platform-heading">
             One Platform for Your Everyday Business
           </h2>
-
           <p className="one-platform-description">
-            An ERP system should make it easier for different
-            parts of your business to work together. We help
-            connect the functions that matter most to your
-            day-to-day operations.
+            An ERP system should make it easier for different parts of your
+            business to work together. We help connect the functions that
+            matter most to your day-to-day operations.
           </p>
-
         </div>
 
-
-        {/* =================================================
-            CARDS AREA
-        ================================================= */}
-
-        <div className="one-platform-cards-area">
-
-          {/* =================================================
-              CONNECTOR 1
-          ================================================= */}
-
-          <svg
-            ref={connector1Ref}
-            viewBox="0 0 1000 380"
-            preserveAspectRatio="none"
-            className="platform-connector"
+        <div ref={viewportRef} className="one-platform-viewport">
+          <div
+            ref={trackRef}
+            className="one-platform-track"
+            style={{
+              width: isMobile ? undefined : `${trackWidth}px`,
+              height: `${TRACK_AREA_HEIGHT}px`,
+            }}
           >
-            <path
-              d="
-                M 310,260
-                C 390,150
-                  560,120
-                  690,150
-              "
-              stroke="#ffffff"
-              strokeWidth="1.5"
-              strokeDasharray="3 5"
-              fill="none"
-            />
+            {!isMobile && (
+              <svg
+                viewBox={`0 0 ${trackWidth} ${TRACK_AREA_HEIGHT}`}
+                width={trackWidth}
+                height={TRACK_AREA_HEIGHT}
+                className="platform-connector"
+              >
+                <path
+                  d={connectorPath}
+                  stroke="#ffffff"
+                  strokeOpacity="0.55"
+                  strokeWidth="1.5"
+                  strokeDasharray="3 6"
+                  fill="none"
+                />
+                {cards.map((_, i) => {
+                  const c = getCardCenter(i);
+                  return (
+                    <circle
+                      key={i}
+                      cx={c.x}
+                      cy={c.y}
+                      r="4"
+                      fill="#ffffff"
+                    />
+                  );
+                })}
+              </svg>
+            )}
 
-            <circle
-              cx="310"
-              cy="260"
-              r="4"
-              fill="#ffffff"
-            />
-
-            <circle
-              cx="690"
-              cy="150"
-              r="4"
-              fill="#ffffff"
-            />
-          </svg>
-
-
-          {/* =================================================
-              CONNECTOR 2
-          ================================================= */}
-
-          <svg
-            ref={connector2Ref}
-            viewBox="0 0 1000 380"
-            preserveAspectRatio="none"
-            className="platform-connector"
-          >
-            <path
-              d="
-                M 310,260
-                C 390,150
-                  560,120
-                  690,150
-              "
-              stroke="#ffffff"
-              strokeWidth="1.5"
-              strokeDasharray="3 5"
-              fill="none"
-            />
-
-            <circle
-              cx="310"
-              cy="260"
-              r="4"
-              fill="#ffffff"
-            />
-
-            <circle
-              cx="690"
-              cy="150"
-              r="4"
-              fill="#ffffff"
-            />
-          </svg>
-
-
-          {/* =================================================
-              CONNECTOR 3
-          ================================================= */}
-
-          <svg
-            ref={connector3Ref}
-            viewBox="0 0 1000 380"
-            preserveAspectRatio="none"
-            className="platform-connector"
-          >
-            <path
-              d="
-                M 310,260
-                C 390,150
-                  560,120
-                  690,150
-              "
-              stroke="#ffffff"
-              strokeWidth="1.5"
-              strokeDasharray="3 5"
-              fill="none"
-            />
-
-            <circle
-              cx="310"
-              cy="260"
-              r="4"
-              fill="#ffffff"
-            />
-
-            <circle
-              cx="690"
-              cy="150"
-              r="4"
-              fill="#ffffff"
-            />
-          </svg>
-
-
-          {/* =================================================
-              PAIR 1
-          ================================================= */}
-
-          <PlatformCard
-            ref={pair1Left}
-            card={cards[0]}
-            className="platform-card-left"
-          />
-
-          <PlatformCard
-            ref={pair1Right}
-            card={cards[1]}
-            className="platform-card-right"
-          />
-
-
-          {/* =================================================
-              PAIR 2
-          ================================================= */}
-
-          <PlatformCard
-            ref={pair2Left}
-            card={cards[2]}
-            className="platform-card-left"
-          />
-
-          <PlatformCard
-            ref={pair2Right}
-            card={cards[3]}
-            className="platform-card-right"
-          />
-
-
-          {/* =================================================
-              PAIR 3
-          ================================================= */}
-
-          <PlatformCard
-            ref={pair3Left}
-            card={cards[4]}
-            className="platform-card-left"
-          />
-
-          <PlatformCard
-            ref={pair3Right}
-            card={cards[5]}
-            className="platform-card-right"
-          />
-
+            {cards.map((card, i) => (
+              <PlatformCard
+                key={card.title}
+                card={card}
+                style={
+                  isMobile
+                    ? undefined
+                    : {
+                        left: `${getCardLeft(i)}px`,
+                        top: `${getCardTop(i)}px`,
+                        width: `${CARD_WIDTH}px`,
+                      }
+                }
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-
-      {/* =================================================
-          RESPONSIVE CSS
-      ================================================= */}
-
       <style>{`
-
-        * {
-          box-sizing: border-box;
-        }
-
-
-        /* =================================================
-           SECTION
-        ================================================= */
+        * { box-sizing: border-box; }
 
         .one-platform-section {
           width: 100%;
-
-          height: 100vh;
-
-          min-height: 650px;
-
+          min-height: 100vh;
           background: ${MAROON_BG};
-
-          font-family:
-            'Plus Jakarta Sans',
-            sans-serif;
-
+          font-family: 'Plus Jakarta Sans', sans-serif;
           overflow: hidden;
+          display: flex;
+          align-items: center;
         }
-
-
-        /* =================================================
-           CONTAINER
-        ================================================= */
 
         .one-platform-container {
           width: 100%;
-
-          max-width: 1200px;
-
-          height: 100%;
-
+          max-width: 1300px;
           margin: 0 auto;
-
           padding: 70px 40px;
-
-          box-sizing: border-box;
         }
-
-
-        /* =================================================
-           HEADER
-        ================================================= */
 
         .one-platform-header {
-          display: grid;
-
-          grid-template-columns: 1fr 1fr;
-
-          gap: 60px;
-
-          margin-bottom: 40px;
+          margin-bottom: 30px;
+          max-width: 700px;
         }
-
 
         .one-platform-heading {
           font-size: 32px;
-
           font-weight: 800;
-
           color: #ffffff;
-
           line-height: 1.2;
-
-          margin: 0;
-
-          max-width: 360px;
+          margin: 0 0 14px 0;
         }
-
 
         .one-platform-description {
           font-size: 15px;
-
-          font-weight: 600;
-
-          color: #ffffff;
-
-          line-height: 1.5;
-
-          margin: 5px 20px 0;
-
-          max-width: 500px;
-        }
-
-
-        /* =================================================
-           CARDS WINDOW
-        ================================================= */
-
-        .one-platform-cards-area {
-          position: relative;
-
-          width: 100%;
-
-          height: 380px;
-
-          /*
-            IMPORTANT
-
-            This is the "window".
-
-            Cards are allowed to start
-            outside this area.
-
-            Only the part inside this window
-            becomes visible.
-
-            This creates the effect that
-            cards are coming from just outside
-            the window.
-          */
-
-          overflow: hidden;
-        }
-
-
-        /* =================================================
-           CONNECTOR
-        ================================================= */
-
-        .platform-connector {
-          position: absolute;
-
-          inset: 0;
-
-          width: 100%;
-
-          height: 100%;
-
-          pointer-events: none;
-
-          z-index: 1;
-
-          overflow: visible;
-
-          /*
-            Connector moves with the cards.
-          */
-
-          will-change: transform;
-        }
-
-
-        /* =================================================
-           CARD
-        ================================================= */
-
-        .platform-card {
-          position: absolute;
-
-          width: 380px;
-
-          min-height: 250px;
-
-          background: #ffffff;
-
-          border-radius: 10px;
-
-          padding: 31px 27px;
-
-          box-sizing: border-box;
-
-          z-index: 2;
-
-          box-shadow:
-            0 15px 40px
-            rgba(0, 0, 0, 0.12);
-
-          /*
-            Only transform is animated.
-
-            No scale.
-            No transition.
-            No popup.
-          */
-
-          will-change: transform;
-        }
-
-
-        /* =================================================
-           LEFT CARD
-        ================================================= */
-
-        .platform-card-left {
-          left: 2%;
-
-          top: 130px;
-        }
-
-
-        /* =================================================
-           RIGHT CARD
-        ================================================= */
-
-        .platform-card-right {
-          right: 2%;
-
-          top: 60px;
-        }
-
-
-        /* =================================================
-           ICON
-        ================================================= */
-
-        .card-icon {
-          width: 48px;
-
-          height: 48px;
-
-          border-radius: 50%;
-
-          background: ${MAROON_BG};
-
-          display: flex;
-
-          align-items: center;
-
-          justify-content: center;
-
-          color: #ffffff;
-
-          font-size: 22px;
-
-          font-weight: 700;
-
-          margin-bottom: 18px;
-        }
-
-
-        /* =================================================
-           TITLE
-        ================================================= */
-
-        .card-title {
-          font-size: 16px;
-
-          font-weight: 700;
-
-          color: #141414;
-
-          margin: 0 0 12px;
-
-          line-height: 1.3;
-        }
-
-
-        /* =================================================
-           DESCRIPTION
-        ================================================= */
-
-        .card-desc {
-          font-size: 13.5px;
-
-          line-height: 1.45;
-
-          color: #2f2f2f;
-
+          font-weight: 500;
+          color: #f1d9e4;
+          line-height: 1.6;
           margin: 0;
         }
 
+        /* The viewport is what clips the horizontally-translating
+           track — only what's inside this box is visible. */
+        .one-platform-viewport {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+        }
 
-        /* =================================================
-           LARGE TABLET
-        ================================================= */
+        .one-platform-track {
+          position: relative;
+          will-change: transform;
+        }
 
-        @media (max-width: 1100px) {
+        .platform-connector {
+          position: absolute;
+          top: 0;
+          left: 0;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .platform-card {
+          position: absolute;
+          min-height: ${CARD_HEIGHT}px;
+          background: #ffffff;
+          border-radius: 10px;
+          padding: 30px 26px;
+          z-index: 2;
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+        }
+
+        .card-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: ${MAROON_BG};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #ffffff;
+          margin-bottom: 18px;
+        }
+
+        .card-title {
+          font-size: 16px;
+          font-weight: 700;
+          color: #141414;
+          margin: 0 0 12px;
+          line-height: 1.3;
+        }
+
+        .card-desc {
+          font-size: 13.5px;
+          line-height: 1.5;
+          color: #2f2f2f;
+          margin: 0;
+        }
+
+        /* =========================================================
+           TABLET + MOBILE (≤1024px) — GSAP pin is skipped in JS;
+           fall back to a native, swipeable horizontal scroller with
+           snap points and auto height, so nothing ever gets clipped.
+        ========================================================= */
+        @media (max-width: 1024px) {
+          .one-platform-section {
+            min-height: auto;
+            padding: 0;
+          }
 
           .one-platform-container {
-            padding: 60px 30px;
+            padding: 55px 30px;
           }
 
-
-          .one-platform-header {
-            gap: 40px;
+          .one-platform-viewport {
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            margin: 0 -30px;
+            padding: 0 30px;
           }
 
-
-          .one-platform-heading {
-            font-size: 30px;
+          .one-platform-track {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            width: max-content !important;
+            height: auto !important;
           }
-
-
-          .one-platform-description {
-            font-size: 14px;
-          }
-
 
           .platform-card {
-            width: 330px;
-
-            min-height: 245px;
-
-            padding: 28px 24px;
-          }
-
-
-          .platform-card-left {
-            left: 0;
-          }
-
-
-          .platform-card-right {
-            right: 0;
+            position: relative;
+            width: 360px;
+            min-height: 0;
+            height: auto;
+            scroll-snap-align: start;
+            flex: 0 0 auto;
           }
         }
 
-
-        /* =================================================
-           TABLET
-        ================================================= */
-
+        /* Tablet portrait / small tablets get a narrower card so it
+           doesn't feel oversized, and two can peek on screen at once. */
         @media (max-width: 900px) {
-
-          .one-platform-container {
-            padding: 55px 25px;
-          }
-
-
-          .one-platform-header {
-            gap: 30px;
-
-            margin-bottom: 25px;
-          }
-
-
           .one-platform-heading {
             font-size: 27px;
-
-            max-width: 320px;
           }
-
-
-          .one-platform-description {
-            font-size: 13.5px;
-
-            margin: 3px 0 0;
-          }
-
-
-          .one-platform-cards-area {
-            height: 360px;
-          }
-
 
           .platform-card {
-            width: 46%;
-
-            min-height: 235px;
-
-            padding: 26px 22px;
-          }
-
-
-          .platform-card-left {
-            left: 0;
-
-            top: 125px;
-          }
-
-
-          .platform-card-right {
-            right: 0;
-
-            top: 55px;
+            width: 68vw;
           }
         }
 
-
-        /* =================================================
-           MOBILE
-        ================================================= */
-
         @media (max-width: 700px) {
-
-          .one-platform-section {
-            height: 100vh;
-
-            min-height: 680px;
-
-            overflow: hidden;
-          }
-
-
           .one-platform-container {
-            height: 100%;
-
             padding: 40px 20px;
           }
 
-
-          /* HEADER */
-
-          .one-platform-header {
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 14px;
-
-            margin-bottom: 25px;
-          }
-
-
           .one-platform-heading {
-            font-size: 25px;
-
-            line-height: 1.2;
-
-            max-width: 100%;
+            font-size: 24px;
           }
-
 
           .one-platform-description {
             font-size: 13.5px;
-
-            line-height: 1.55;
-
-            margin: 0;
-
-            max-width: 100%;
           }
 
-
-          /* =================================================
-             MOBILE CARD WINDOW
-          ================================================= */
-
-          .one-platform-cards-area {
-            height: calc(100% - 190px);
-
-            min-height: 400px;
-
-            overflow: hidden;
+          .one-platform-viewport {
+            margin: 0 -20px;
+            padding: 0 20px;
           }
-
-
-          /* =================================================
-             HIDE CONNECTOR
-          ================================================= */
-
-          .platform-connector {
-            display: none;
-          }
-
-
-          /* =================================================
-             MOBILE CARD
-          ================================================= */
 
           .platform-card {
-            width: calc(100% - 10px);
-
-            min-height: 190px;
-
-            padding: 23px 20px;
-
-            border-radius: 10px;
-
-            left: 5px !important;
-
-            right: auto !important;
+            width: 80vw;
+            padding: 24px 20px;
           }
-
-
-          .platform-card-left {
-            top: 10px;
-          }
-
-
-          .platform-card-right {
-            top: 220px;
-          }
-
-
-          /* ICON */
 
           .card-icon {
             width: 44px;
-
             height: 44px;
-
-            font-size: 20px;
-
             margin-bottom: 14px;
           }
 
-
-          /* TITLE */
-
           .card-title {
             font-size: 15px;
-
-            margin-bottom: 9px;
           }
-
-
-          /* DESCRIPTION */
 
           .card-desc {
             font-size: 13px;
-
-            line-height: 1.45;
           }
         }
 
-
-        /* =================================================
-           SMALL MOBILE
-        ================================================= */
-
-        @media (max-width: 480px) {
-
-          .one-platform-section {
-            min-height: 650px;
-          }
-
-
-          .one-platform-container {
-            padding: 32px 16px;
-          }
-
-
-          .one-platform-header {
-            gap: 12px;
-
-            margin-bottom: 20px;
-          }
-
-
-          .one-platform-heading {
-            font-size: 22px;
-          }
-
-
-          .one-platform-description {
-            font-size: 12.5px;
-          }
-
-
-          .one-platform-cards-area {
-            height: calc(100% - 175px);
-          }
-
-
+        @media (max-width: 400px) {
           .platform-card {
-            width: 100%;
-
-            left: 0 !important;
-
+            width: 86vw;
             padding: 20px 18px;
-
-            min-height: 180px;
-          }
-
-
-          .platform-card-left {
-            top: 5px;
-          }
-
-
-          .platform-card-right {
-            top: 205px;
-          }
-
-
-          .card-icon {
-            width: 42px;
-
-            height: 42px;
-
-            font-size: 19px;
-
-            margin-bottom: 12px;
-          }
-
-
-          .card-title {
-            font-size: 15px;
-
-            margin-bottom: 8px;
-          }
-
-
-          .card-desc {
-            font-size: 12.5px;
-
-            line-height: 1.45;
           }
         }
-
-
-        /* =================================================
-           VERY SMALL MOBILE
-        ================================================= */
-
-        @media (max-width: 360px) {
-
-          .one-platform-container {
-            padding: 28px 14px;
-          }
-
-
-          .one-platform-heading {
-            font-size: 20px;
-          }
-
-
-          .one-platform-description {
-            font-size: 12px;
-          }
-
-
-          .platform-card {
-            padding: 18px 16px;
-
-            min-height: 175px;
-          }
-
-
-          .platform-card-right {
-            top: 195px;
-          }
-
-
-          .card-title {
-            font-size: 14px;
-          }
-
-
-          .card-desc {
-            font-size: 12px;
-          }
-        }
-
       `}</style>
     </section>
   );
 }
 
-
-/* =================================================
-   PLATFORM CARD COMPONENT
-================================================= */
-
-const PlatformCard = React.forwardRef(
-  ({ card, className }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={`platform-card ${className}`}
-      >
-
-        <div className="card-icon">
-          {card.icon}
-        </div>
-
-        <h3 className="card-title">
-          {card.title}
-        </h3>
-
-        <p className="card-desc">
-          {card.desc}
-        </p>a
-
+function PlatformCard({ card, style }) {
+  const Icon = card.icon;
+  return (
+    <div className="platform-card" style={style}>
+      <div className="card-icon">
+        <Icon size={22} strokeWidth={2} />
       </div>
-    );
-  }
-);
-
-PlatformCard.displayName = "PlatformCard";
+      <h3 className="card-title">{card.title}</h3>
+      <p className="card-desc">{card.desc}</p>
+    </div>
+  );
+}

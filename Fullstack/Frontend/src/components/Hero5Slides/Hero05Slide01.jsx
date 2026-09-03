@@ -10,7 +10,7 @@ export default function TorchXSuiteSection() {
     <section
       style={{
         position: 'relative',
-        minHeight: '480px',
+        minHeight: '650px',
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -39,19 +39,21 @@ export default function TorchXSuiteSection() {
         }}
       >
         <h1
-          style={{
+  style={{
     fontSize: "34px",
+    fontFamily: "plus jakarta sans",
     lineHeight: 1.3,
     fontWeight: 700,
     color: "#1a1a1a",
     margin: "0 0 22px 0",
     whiteSpace: "nowrap",
+    transform: "translateY(-70px)",
   }}
-        >
-          Everything Your Business Needs,
-          <br />
-          <span style={{ color: MAROON }}>Working Together</span>
-        </h1>
+>
+  Everything Your Business Needs,
+  <br />
+  <span style={{ color: MAROON }}>Working Together</span>
+</h1>
 
         <p
           style={{
@@ -59,6 +61,7 @@ export default function TorchXSuiteSection() {
             lineHeight: 1.7,
             color: '#3a3a3a',
             margin: '0 0 20px 0',
+            transform: "translateY(-35px)",
           }}
         >
           TorchX Suite brings your essential business functions together in
@@ -72,6 +75,7 @@ export default function TorchXSuiteSection() {
             lineHeight: 1.7,
             color: '#3a3a3a',
             margin: '0 0 32px 0',
+            transform: "translateY(-25px)",
           }}
         >
           From everyday operations to business-wide decision-making, TorchX
@@ -80,20 +84,21 @@ export default function TorchXSuiteSection() {
         </p>
 
         <a
-          href="#"
-          style={{
-            display: 'inline-block',
-            background: MAROON,
-            color: '#ffffff',
-            fontSize: '15px',
-            fontWeight: 600,
-            padding: '13px 26px',
-            borderRadius: '6px',
-            textDecoration: 'none',
-          }}
-        >
-          Explore TorchX Suite →
-        </a>
+  href="#"
+  style={{
+    display: "inline-block",
+    background: MAROON,
+    color: "#ffffff",
+    fontSize: "15px",
+    fontWeight: 600,
+    padding: "13px 26px",
+    borderRadius: "6px",
+    textDecoration: "none",
+    marginTop: "40px",
+  }}
+>
+  Explore TorchX Suite →
+</a>
       </div>
     </section>
   );
