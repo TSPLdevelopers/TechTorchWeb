@@ -9,31 +9,29 @@ export default function TechnologyBusinessValue() {
           w-full
           max-w-[1400px]
 
-          px-6
-          py-5
+          px-5
+          py-10
 
-          sm:px-8
-          sm:py-6
+          sm:px-7
+          sm:py-12
 
           md:px-10
-          md:py-7
+          md:py-14
 
           lg:px-12
-          lg:py-8
+          lg:py-16
 
           xl:px-14
-          xl:py-9
+          xl:py-16
         "
       >
-        {/* =====================================================
-            HEADING
-        ====================================================== */}
+        {/* ================= HEADING ================= */}
         <h2
           className="
             font-['Inter']
             text-[30px]
             font-semibold
-            leading-[1.08]
+            leading-[1.1]
             tracking-[-1.2px]
             text-[#111111]
 
@@ -42,11 +40,15 @@ export default function TechnologyBusinessValue() {
             sm:text-[36px]
             sm:tracking-[-1.5px]
 
+            md:relative
+            md:left-4
             md:text-[40px]
 
+            lg:left-6
             lg:text-[42px]
 
-            xl:text-[34px]
+            xl:left-8
+            xl:text-[38px]
           "
         >
           Technology That
@@ -57,50 +59,52 @@ export default function TechnologyBusinessValue() {
           </span>
         </h2>
 
-        {/* =====================================================
-            CONTENT
-        ====================================================== */}
+        {/* ================= CONTENT ================= */}
         <div
           className="
-            mt-6
-
+            mt-8
             grid
             grid-cols-1
-            gap-6
+            gap-10
 
-            sm:mt-7
-            sm:gap-7
+            sm:mt-10
+            sm:gap-12
 
-            md:mt-8
-            md:grid-cols-2
-            md:gap-x-14
-            md:gap-y-8
+            md:mt-12
+            md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]
+            md:gap-x-12
+            md:gap-y-10
 
-            lg:mt-9
             lg:gap-x-20
-            lg:gap-y-10
 
             xl:gap-x-24
-            xl:gap-y-12
           "
         >
-          {/* =====================================================
-              LEFT COLUMN
-          ====================================================== */}
-          <div className="min-w-0">
-            {/* Paragraph 1 */}
+          {/* ================= LEFT COLUMN ================= */}
+          <div
+            className="
+              min-w-0
+
+              md:relative
+              md:left-4
+
+              lg:left-6
+
+              xl:left-8
+            "
+          >
             <p
               className="
-                max-w-[620px]
+                max-w-[650px]
                 font-['Inter']
                 text-[15px]
                 font-normal
-                leading-[1.4]
+                leading-[1.65]
                 text-[#5c5c5c]
 
                 sm:text-[16px]
 
-                md:text-[17px]
+                md:text-[16px]
 
                 lg:text-[16px]
               "
@@ -109,25 +113,22 @@ export default function TechnologyBusinessValue() {
               should make the business work better.
             </p>
 
-            {/* Paragraph 2 */}
             <p
               className="
                 mt-5
-                max-w-[620px]
+                max-w-[650px]
                 font-['Inter']
                 text-[15px]
                 font-normal
-                leading-[1.4]
+                leading-[1.65]
                 text-[#5c5c5c]
 
                 sm:mt-6
                 sm:text-[16px]
 
                 md:mt-7
-                md:text-[17px]
 
                 lg:mt-8
-                lg:text-[16px]
               "
             >
               At TechTorch, we focus on building solutions that improve
@@ -138,25 +139,22 @@ export default function TechnologyBusinessValue() {
               outcome behind the technology.
             </p>
 
-            {/* Paragraph 3 */}
             <p
               className="
                 mt-5
-                max-w-[620px]
+                max-w-[650px]
                 font-['Inter']
                 text-[15px]
                 font-normal
-                leading-[1.4]
+                leading-[1.65]
                 text-[#5c5c5c]
 
                 sm:mt-6
                 sm:text-[16px]
 
                 md:mt-7
-                md:text-[17px]
 
                 lg:mt-8
-                lg:text-[16px]
               "
             >
               As businesses grow, their requirements change. Teams expand,
@@ -168,39 +166,39 @@ export default function TechnologyBusinessValue() {
             </p>
           </div>
 
-          {/* =====================================================
-              RIGHT COLUMN
-          ====================================================== */}
+          {/* ================= RIGHT COLUMN ================= */}
           <div
-  className="
-    min-w-0
+            className="
+              min-w-0
 
-    md:relative
-    md:-top-4
-    md:left-4
+              md:relative
+              md:-top-2
+              md:left-2
 
-    lg:-top-5
-    lg:left-6
+              lg:-top-4
+              lg:left-4
 
-    xl:-top-6
-    xl:left-8
-  "
->
-            {/* Paragraph 1 */}
+              xl:-top-5
+              xl:left-6
+            "
+          >
             <p
               className="
-                max-w-[620px]
+                max-w-full
                 font-['Inter']
                 text-[15px]
                 font-normal
-                leading-[1.4]
+                leading-[1.65]
                 text-[#5c5c5c]
 
+                sm:max-w-[580px]
                 sm:text-[16px]
 
-                md:text-[17px]
+                md:max-w-[480px]
 
-                lg:text-[16px]
+                lg:max-w-[500px]
+
+                xl:max-w-[500px]
               "
             >
               The right technology should also be practical. Not every
@@ -211,25 +209,27 @@ export default function TechnologyBusinessValue() {
               difference.
             </p>
 
-            {/* Paragraph 2 */}
             <p
               className="
                 mt-5
-                max-w-[620px]
+                max-w-full
                 font-['Inter']
                 text-[15px]
                 font-normal
-                leading-[1.4]
+                leading-[1.65]
                 text-[#5c5c5c]
 
                 sm:mt-6
+                sm:max-w-[580px]
                 sm:text-[16px]
 
                 md:mt-7
-                md:text-[17px]
+                md:max-w-[480px]
 
                 lg:mt-8
-                lg:text-[16px]
+                lg:max-w-[500px]
+
+                xl:max-w-[500px]
               "
             >
               Our approach is simple: understand the problem, choose the
@@ -237,54 +237,57 @@ export default function TechnologyBusinessValue() {
               value.
             </p>
 
-            {/* Paragraph 3 */}
             <p
               className="
                 mt-5
-                max-w-[620px]
+                max-w-full
                 font-['Inter']
                 text-[15px]
                 font-normal
-                leading-[1.4]
+                leading-[1.65]
                 text-[#5c5c5c]
 
                 sm:mt-6
+                sm:max-w-[580px]
                 sm:text-[16px]
 
                 md:mt-7
-                md:text-[17px]
+                md:max-w-[480px]
 
                 lg:mt-8
-                lg:text-[16px]
+                lg:max-w-[500px]
+
+                xl:max-w-[500px]
               "
             >
               Software should simplify work, connect people and information,
               support better decisions and give businesses room to grow.
             </p>
 
-            {/* =================================================
-                HIGHLIGHT
-            ================================================== */}
+            {/* ================= HIGHLIGHT ================= */}
             <p
               className="
-                mt-6
-                max-w-[620px]
+                mt-7
+                max-w-full
                 font-['Plus_Jakarta_Sans']
                 text-[17px]
                 font-medium
-                leading-[1.25]
+                leading-[1.35]
                 tracking-[-0.3px]
                 text-[#850052]
 
-                sm:mt-7
+                sm:mt-8
+                sm:max-w-[580px]
                 sm:text-[18px]
 
-                md:mt-8
+                md:mt-9
+                md:max-w-[480px]
                 md:text-[19px]
 
-                lg:mt-9
+                lg:max-w-[500px]
                 lg:text-[20px]
 
+                xl:max-w-[500px]
                 xl:text-[18px]
               "
             >
