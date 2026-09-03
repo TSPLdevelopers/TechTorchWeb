@@ -53,6 +53,11 @@ import Hero05Slide04 from "./components/Hero5Slides/Hero05Slide04.jsx";
 
 
 import PhiosophySection from "./pages/OurStory/PhilosophySection.jsx";
+import EnterpriseHero from "./pages/OurStory/EnterpriseReadiness.jsx";
+import ScaleAtSpeed from "./pages/OurStory/ScaleAtSpeed.jsx";
+import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
+import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
+
 
 // =================================================
 // HOME PAGE
@@ -139,7 +144,12 @@ function Slide5Page() {
 function PhilosophyPage() {
   return (
     <div>
+      <EnterpriseHero />
+      <CoreFoundation />
+      <ScaleAtSpeed />
+      <StrategicCapabilities />
       <PhiosophySection />
+      
     </div>
   );
 }
