@@ -94,37 +94,49 @@ export default function StructuredApproachSection() {
       };
 
       const understand = getPosition("understand");
-      const design = getPosition("design");
       const develop = getPosition("develop");
+      const validate = getPosition("validate");
       const launch = getPosition("launch");
-      
 
-      if (!understand || !design || !develop || !launch) return;
+      if (!understand || !develop || !validate || !launch) return;
 
-      
-
-      // Right edge par vertical turn
+      // Right edge
       const rightEdge = containerRect.width - 1;
 
-      // Bottom row icons ke upar horizontal line
-      const lowerLineY = develop.top - 28;
+      // Existing bottom line level
+      const bottomLineY = develop.top - 28;
+
+      /*
+        Pattern:
+
+        Understand  -----------------------------┐
+                                                 │
+                                                 │
+        Develop      ----------------------------┘
+           │
+           │
+           └──────────── Validate ──────────── Launch
+
+        Bottom row ke tino icons ko same pattern mein connect karega.
+      */
 
       const path = `
         M ${understand.x} ${understand.y}
         H ${rightEdge}
-        V ${lowerLineY}
+        V ${bottomLineY}
         H ${develop.x}
+        V ${develop.y}
+        H ${validate.x}
+        H ${launch.x}
       `;
 
       setLinePath(path);
     };
 
-    // Initial calculation
     computePath();
 
-    // Resize hone par line automatically update hogi
     const resizeObserver = new ResizeObserver(() => {
-      computePath();
+      requestAnimationFrame(computePath);
     });
 
     if (containerRef.current) {
@@ -142,11 +154,8 @@ export default function StructuredApproachSection() {
   return (
     <section className="structured-approach-section">
       <div className="structured-container">
-        {/* ================= HEADING ================= */}
-
         <h1>
-          A Structured Approach to{" "}
-          <span>Software Development</span>
+          A Structured Approach to <span>Software Development</span>
         </h1>
 
         <p className="intro-text">
@@ -158,10 +167,8 @@ export default function StructuredApproachSection() {
           technology together at every stage.
         </p>
 
-        {/* ================= GRID ================= */}
-
         <div ref={containerRef} className="structured-grid">
-          {/* ================= CONNECTING LINE ================= */}
+          {/* CONNECTING LINE */}
 
           {containerSize.width > 0 && linePath && (
             <svg
@@ -176,20 +183,18 @@ export default function StructuredApproachSection() {
                 fill="none"
                 stroke={MAROON}
                 strokeWidth="1"
-                opacity="0.45"
+                opacity="0.90"
               />
             </svg>
           )}
 
-          {/* ================= STEPS ================= */}
+          {/* STEPS */}
 
           {steps.map((step) => {
             const Icon = step.icon;
 
             return (
               <div key={step.id} className="step-card">
-                {/* ICON */}
-
                 <div
                   ref={(element) => {
                     iconRefs.current[step.id] = element;
@@ -203,11 +208,7 @@ export default function StructuredApproachSection() {
                   />
                 </div>
 
-                {/* TITLE */}
-
                 <h3>{step.title}</h3>
-
-                {/* DESCRIPTION */}
 
                 <p>{step.description}</p>
               </div>
@@ -223,8 +224,8 @@ export default function StructuredApproachSection() {
           background-image:
             repeating-linear-gradient(
               -45deg,
-              rgba(122, 19, 56, 0.14) 0px,
-              rgba(122, 19, 56, 0.14) 1px,
+              rgba(122, 19, 56, 0.06) 0px,
+              rgba(122, 19, 56, 0.06) 1px,
               transparent 1px,
               transparent 50px
             );
@@ -238,7 +239,7 @@ export default function StructuredApproachSection() {
           margin: 0 auto;
         }
 
-        /* ================= HEADING ================= */
+        /* HEADING */
 
         .structured-container > h1 {
           font-size: 28px;
@@ -266,7 +267,7 @@ export default function StructuredApproachSection() {
           margin-bottom: 60px;
         }
 
-        /* ================= GRID ================= */
+        /* GRID */
 
         .structured-grid {
           position: relative;
@@ -276,17 +277,19 @@ export default function StructuredApproachSection() {
           row-gap: 70px;
         }
 
-        /* ================= SVG LINE ================= */
+        /* CONNECTING SVG */
 
         .connector-svg {
           position: absolute;
           inset: 0;
+          width: 100%;
+          height: 100%;
           pointer-events: none;
           z-index: 0;
           overflow: visible;
         }
 
-        /* ================= STEP CARD ================= */
+        /* CARD */
 
         .step-card {
           position: relative;
@@ -294,7 +297,7 @@ export default function StructuredApproachSection() {
           max-width: 340px;
         }
 
-        /* ================= ICON ================= */
+        /* ICON */
 
         .step-icon {
           width: 48px;
@@ -313,7 +316,7 @@ export default function StructuredApproachSection() {
           z-index: 2;
         }
 
-        /* ================= TITLE ================= */
+        /* TITLE */
 
         .step-card h3 {
           font-size: 17px;
@@ -322,7 +325,7 @@ export default function StructuredApproachSection() {
           margin: 0 0 10px 0;
         }
 
-        /* ================= DESCRIPTION ================= */
+        /* DESCRIPTION */
 
         .step-card p {
           font-size: 14px;
@@ -331,7 +334,7 @@ export default function StructuredApproachSection() {
           margin: 0;
         }
 
-        /* ================= TABLET ================= */
+        /* TABLET */
 
         @media (max-width: 900px) {
           .structured-approach-section {
@@ -343,7 +346,7 @@ export default function StructuredApproachSection() {
           }
         }
 
-        /* ================= MOBILE ================= */
+        /* MOBILE */
 
         @media (max-width: 768px) {
           .structured-approach-section {
@@ -364,7 +367,7 @@ export default function StructuredApproachSection() {
           }
         }
 
-        /* ================= SMALL MOBILE ================= */
+        /* SMALL MOBILE */
 
         @media (max-width: 480px) {
           .structured-approach-section {

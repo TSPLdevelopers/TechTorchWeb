@@ -57,14 +57,8 @@ const cards = [
   },
 ];
 
-/* ================= CARD SETTINGS ================= */
-
 const VISIBLE_CARDS = 3;
-
-// Card width
 const CARD_WIDTH = 330;
-
-// Cards ke beech gap
 const CARD_GAP = 95;
 
 export default function WhatWeBuildSection() {
@@ -87,9 +81,12 @@ export default function WhatWeBuildSection() {
         position: "relative",
         padding: "60px 80px",
         background: MAROON,
+
+        // Light background vertical lines
         backgroundImage:
-          "repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 90px)",
-        fontFamily: "'Segoe UI', Arial, sans-serif",
+          "repeating-linear-gradient(90deg, rgba(255,255,255,0.045) 0px, rgba(255,255,255,0.045) 1px, transparent 1px, transparent 90px)",
+
+        fontFamily: "'Plus jakarta sans', sans-serif",
         overflow: "hidden",
       }}
     >
@@ -177,15 +174,9 @@ export default function WhatWeBuildSection() {
                     flex: `0 0 ${CARD_WIDTH}px`,
                     background: "#ffffff",
                     borderRadius: "14px",
-
-                    // Padding
                     padding: "36px 30px",
-
                     boxSizing: "border-box",
-
-                    // ================= HEIGHT INCREASE =================
                     minHeight: "380px",
-
                     display: "flex",
                     flexDirection: "column",
                   }}
