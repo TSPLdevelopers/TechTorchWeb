@@ -57,6 +57,7 @@ import EnterpriseHero from "./pages/OurStory/EnterpriseReadiness.jsx";
 import ScaleAtSpeed from "./pages/OurStory/ScaleAtSpeed.jsx";
 import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
 import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
+import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
 
 
 // =================================================
@@ -149,7 +150,7 @@ function PhilosophyPage() {
       <ScaleAtSpeed />
       <StrategicCapabilities />
       <PhiosophySection />
-      
+      <TransformationForm />
     </div>
   );
 }
