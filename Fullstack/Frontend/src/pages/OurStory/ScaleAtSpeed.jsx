@@ -1,5 +1,5 @@
-import React from 'react';
-import { BadgeCheck, ShieldCheck, TrendingUp } from 'lucide-react';
+import React from "react";
+import { BadgeCheck, ShieldCheck, TrendingUp } from "lucide-react";
 
 const bars = [
   { height: 90, color: "#e9c3d6" },
@@ -9,82 +9,161 @@ const bars = [
 
 export default function ScaleAtSpeed() {
   return (
-    <div
-      className="w-full py-20 px-6 sm:px-10"
+    <section
+      className="w-full px-5 py-14 sm:px-8 sm:py-16 md:px-10 md:py-20 lg:px-12 font-inter"
       style={{
-        background: "linear-gradient(135deg, #6e0f3e 0%, #8f1249 55%, #6e0f3e 100%)",
-        fontFamily: "'Inter', system-ui, sans-serif",
+        background:
+          "linear-gradient(135deg, #6e0f3e 0%, #8f1249 55%, #6e0f3e 100%)",
       }}
     >
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+        
         {/* Left column */}
-        <div>
-          <p className="text-[12px] tracking-[0.14em] font-semibold text-rose-200 mb-4">
+        <div className="w-full lg:-ml-16 xl:-ml-24">
+          
+          <p className="text-[11px] sm:text-[12px] tracking-[0.14em] font-semibold text-rose-200 mb-3 sm:mb-4 font-inter">
             METHODOLOGY
           </p>
 
-          <h2 className="text-white font-bold text-4xl leading-tight mb-6">
+          {/* Heading */}
+          <h2
+            className="
+              text-white
+              font-bold
+              text-3xl
+              sm:text-4xl
+              md:text-[42px]
+              leading-tight
+              mb-5
+              sm:mb-6
+              font-plus-jakarta
+            "
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}
+          >
             Scale at Speed
           </h2>
 
-          <p className="text-rose-100/80 leading-relaxed mb-10 max-w-md">
+          <p className="text-rose-100/80 text-sm sm:text-base leading-relaxed mb-8 sm:mb-10 max-w-md font-inter">
             The TechTorch Philosophy balances the necessity for rapid
             innovation with the absolute requirement for structural
             invulnerability.
           </p>
 
-          <div className="space-y-7">
-            <div className="flex gap-3">
-              <BadgeCheck size={20} className="text-white flex-shrink-0 mt-0.5" />
+          {/* Features */}
+          <div className="space-y-6 sm:space-y-7">
+            
+            {/* Feature 1 */}
+            <div className="flex gap-3 sm:gap-4">
+              <BadgeCheck
+                size={20}
+                className="text-white flex-shrink-0 mt-0.5"
+              />
+
               <div>
-                <h3 className="text-white font-semibold mb-1">
+                <h3 className="text-white text-base sm:text-[17px] font-semibold mb-1 font-inter">
                   Rapid Iteration
                 </h3>
-                <p className="text-rose-100/70 text-sm leading-relaxed">
+
+                <p className="text-rose-100/70 text-sm leading-relaxed max-w-md font-inter">
                   Deploying critical infrastructure enhancements in weeks,
                   not quarters.
                 </p>
               </div>
             </div>
 
-            <div className="flex gap-3">
-              <ShieldCheck size={20} className="text-white flex-shrink-0 mt-0.5" />
+            {/* Feature 2 */}
+            <div className="flex gap-3 sm:gap-4">
+              <ShieldCheck
+                size={20}
+                className="text-white flex-shrink-0 mt-0.5"
+              />
+
               <div>
-                <h3 className="text-white font-semibold mb-1">
+                <h3 className="text-white text-base sm:text-[17px] font-semibold mb-1 font-inter">
                   Structural Invulnerability
                 </h3>
-                <p className="text-rose-100/70 text-sm leading-relaxed">
+
+                <p className="text-rose-100/70 text-sm leading-relaxed max-w-md font-inter">
                   Architecting zero-trust, high-availability systems from
                   day one.
                 </p>
               </div>
             </div>
+
           </div>
         </div>
 
-        {/* Right column - chart card */}
+        {/* Right column - chart */}
         <div
-          className="rounded-xl p-8"
+          className="
+            w-full
+            rounded-xl
+            p-5
+            sm:p-7
+            md:p-8
+          "
           style={{
-            background: "linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
+            background:
+              "linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
             border: "1px solid rgba(255,255,255,0.15)",
           }}
         >
-          <div className="flex items-end justify-center gap-6 h-44 mb-6 border-l border-white/20 pl-6">
+          
+          {/* Chart */}
+          <div
+            className="
+              flex
+              items-end
+              justify-center
+              gap-3
+              sm:gap-5
+              md:gap-6
+              h-40
+              sm:h-44
+              mb-5
+              sm:mb-6
+              border-l
+              border-white/20
+              pl-4
+              sm:pl-6
+            "
+          >
             {bars.map((bar, i) => (
               <div
                 key={i}
-                className="w-14 rounded-t-sm"
-                style={{ height: `${bar.height}px`, backgroundColor: bar.color }}
+                className="
+                  rounded-t-sm
+                  w-10
+                  sm:w-12
+                  md:w-14
+                  transition-transform
+                  duration-300
+                  hover:scale-y-105
+                  origin-bottom
+                "
+                style={{
+                  height: `${bar.height}px`,
+                  backgroundColor: bar.color,
+                }}
               />
             ))}
           </div>
-          <div className="border-t border-white/15 pt-4 flex items-center justify-between">
-            <span className="text-rose-100/80 text-sm">Innovation Velocity</span>
-            <TrendingUp size={18} className="text-rose-200" />
+
+          {/* Chart Footer */}
+          <div className="border-t border-white/15 pt-4 flex items-center justify-between gap-4">
+            <span className="text-rose-100/80 text-xs sm:text-sm font-inter">
+              Innovation Velocity
+            </span>
+
+            <TrendingUp
+              size={18}
+              className="text-rose-200 flex-shrink-0"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
