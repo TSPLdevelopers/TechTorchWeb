@@ -98,7 +98,7 @@ function Card({ tag, title, desc, bg, bgColor, imageUrl }) {
       <div className="wn-content">
         <h2 className="wn-title">{title}</h2>
         <p className="wn-desc">{desc}</p>
-        <a className="wn-read-more" href="#">
+        <a className="wn-read-more" href="WhatNext">
           Read More <span>&rarr;</span>
         </a>
       </div>

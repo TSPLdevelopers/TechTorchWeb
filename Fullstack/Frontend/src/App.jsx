@@ -60,6 +60,17 @@ import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
 import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
 
 
+
+// SECTION 4
+
+import TechTorchView from "./pages/What'sNext/TechTorchView.jsx";
+import Philosophy from "./pages/What'sNext/Philosophy.jsx";
+import Capabilities from "./pages/What'sNext/Capabilities.jsx";
+import Methodology from "./pages/What'sNext/DeploymentMethodology.jsx";
+import ReadyScale from "./pages/What'sNext/ReadyScale.jsx";
+
+
+
 // =================================================
 // HOME PAGE
 // =================================================
@@ -154,6 +165,17 @@ function PhilosophyPage() {
     </div>
   );
 }
+function WhatNextPage() {
+  return (
+    <div>
+      <TechTorchView />
+      <Philosophy />
+      <Capabilities />
+      <Methodology />
+      <ReadyScale />
+    </div>
+  );
+}
 
 // =================================================
 // APP
@@ -197,6 +219,11 @@ function App() {
       <Route
         path="/Philosophy"
         element={<PhilosophyPage />}
+      />
+
+      <Route
+        path="/WhatNext"
+        element={<WhatNextPage />}
       />
     </Routes>
   );
