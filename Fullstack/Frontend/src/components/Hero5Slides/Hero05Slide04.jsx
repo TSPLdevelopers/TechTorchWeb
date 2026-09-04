@@ -115,7 +115,7 @@ export default function BringBusinessTogetherSection() {
           color: #ffffff;
           font-weight: 700;
 
-          margin-bottom: 30px;
+          margin-bottom: 3  0px;
         }
 
         /* Button */

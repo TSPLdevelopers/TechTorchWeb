@@ -48,6 +48,17 @@ import Hero05Slide02 from "./components/Hero5Slides/Hero05Slide02.jsx";
 import Hero05Slide03 from "./components/Hero5Slides/Hero05Slide03.jsx";
 import Hero05Slide04 from "./components/Hero5Slides/Hero05Slide04.jsx";
 
+
+// Hero2 sections
+
+
+import PhiosophySection from "./pages/OurStory/PhilosophySection.jsx";
+import EnterpriseHero from "./pages/OurStory/EnterpriseReadiness.jsx";
+import ScaleAtSpeed from "./pages/OurStory/ScaleAtSpeed.jsx";
+import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
+import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
+
+
 // =================================================
 // HOME PAGE
 // =================================================
@@ -118,13 +129,27 @@ function Slide4Page() {
     </div>
   );
 }
-  function Slide5Page() {
+function Slide5Page() {
   return (
     <div>
       <Hero05Slide01 />
       <Hero05Slide02 />
       <Hero05Slide03 />
       <Hero05Slide04 />
+    </div>
+  );
+}
+
+
+function PhilosophyPage() {
+  return (
+    <div>
+      <EnterpriseHero />
+      <CoreFoundation />
+      <ScaleAtSpeed />
+      <StrategicCapabilities />
+      <PhiosophySection />
+      
     </div>
   );
 }
@@ -163,9 +188,14 @@ function App() {
         element={<Slide4Page />}
       />
 
-       <Route
+      <Route
         path="/Slide5"
         element={<Slide5Page />}
+      />
+
+      <Route
+        path="/Philosophy"
+        element={<PhilosophyPage />}
       />
     </Routes>
   );
