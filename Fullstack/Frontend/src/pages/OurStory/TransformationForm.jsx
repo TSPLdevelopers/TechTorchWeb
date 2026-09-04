@@ -68,13 +68,13 @@ export default function TransformationForm() {
           </div>
 
           <a
-            href="mailto:partnerships@techtorch.com"
+            href="contact@techtorch.solutions"
             className="inline-flex items-center gap-3 rounded-xl bg-white/10 hover:bg-white/15 transition-colors px-4 py-3 text-white/90 text-[14px] w-fit"
           >
             <span className="flex items-center justify-center w-7 h-7 rounded-md bg-white/15">
               <Mail size={14} />
             </span>
-            partnerships@techtorch.com
+            contact@techtorch.solutions
           </a>
         </div>
 
