@@ -1,4 +1,3 @@
-
 import React from "react";
 
 const MAROON = "#7a1338";
@@ -6,7 +5,8 @@ const MAROON = "#7a1338";
 export default function ConnectedExperienceSection() {
   return (
     <section className="connected-experience-section">
-      {/* Left Image */}
+
+      {/* ================= LEFT IMAGE ================= */}
       <div className="connected-image-wrapper">
         <img
           src="/Hero5Slide3.png"
@@ -15,7 +15,7 @@ export default function ConnectedExperienceSection() {
         />
       </div>
 
-      {/* Right Content */}
+      {/* ================= RIGHT CONTENT ================= */}
       <div className="connected-content">
         <h1>
           Everything Your Teams Need.
@@ -37,214 +37,396 @@ export default function ConnectedExperienceSection() {
       </div>
 
       <style>{`
+        /* =====================================================
+           MAIN SECTION
+        ===================================================== */
+
         .connected-experience-section {
           display: flex;
           width: 100%;
           min-height: 550px;
-          height: 550px;
+          height: auto;
           background: #ffffff;
           font-family: 'Segoe UI', Arial, sans-serif;
           overflow: hidden;
+          box-sizing: border-box;
         }
 
-        /* ================= IMAGE ================= */
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
 
         .connected-image-wrapper {
           flex: 0 0 50%;
           width: 50%;
-          height: 550px;
           min-width: 0;
+          height: 550px;
+
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          overflow: hidden;
+
           padding: 0;
           margin: 0;
+
+          overflow: hidden;
+          box-sizing: border-box;
         }
 
         .connected-image {
           display: block;
+
           width: 100%;
           height: 100%;
+
           margin: 0;
           padding: 0;
+
           object-fit: contain;
           object-position: left center;
+
+          transform: scaleX(1.19);
+          transform-origin: left center;
         }
 
-        /* ================= CONTENT ================= */
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
 
         .connected-content {
           flex: 0 0 50%;
+          width: 50%;
           min-width: 0;
-          padding: 45px 60px;
+
+          padding: 45px 120px;
+
           display: flex;
           flex-direction: column;
           justify-content: center;
+
           box-sizing: border-box;
         }
 
-        /* ================= HEADING ================= */
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
 
         .connected-content h1 {
-          font-size: 32px;
-          font-['']
+          font-size: 30px;
+          font-family: 'Plus Jakarta Sans', sans-serif;
           line-height: 1.35;
-          font-weight: 500;
+          font-weight: 600;
+
           color: #1a1a1a;
+
           margin: 0 0 20px 0;
+
           transform: translateY(-55px);
+
+          overflow-wrap: break-word;
         }
 
         .connected-content h1 span {
           color: ${MAROON};
         }
 
-        /* ================= PARAGRAPH ================= */
+
+        /* =====================================================
+           PARAGRAPH
+        ===================================================== */
 
         .connected-content p {
-          font-size: 17px;
+          font-size: 15px;
+          font-family: 'Inter', sans-serif;
           line-height: 1.7;
+
           color: #3a3a3a;
+
           max-width: 520px;
+
           margin: -35px 0 28px 0;
+
+          overflow-wrap: break-word;
         }
 
-        /* ================= BUTTON ================= */
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
 
         .connected-content a {
           display: inline-flex;
           align-self: flex-start;
           align-items: center;
+
           background: ${MAROON};
           color: #ffffff;
-          font-size: 15px;
-          font-weight: 600;
-          padding: 13px 24px;
+
+          font-size: 16px;
+          font-weight: 500;
+
+          padding: 10px 20px;
+
           border-radius: 6px;
           text-decoration: none;
+
           transition: 0.3s ease;
+
+          margin-top: 60px;
         }
 
         .connected-content a:hover {
           background: #5e0d2a;
         }
 
-        /* ================= TABLET ================= */
 
-        @media (max-width: 1024px) {
+        /* =====================================================
+           MEDIUM / TABLET
+           769px - 1100px
+        ===================================================== */
+
+        @media (max-width: 1100px) and (min-width: 769px) {
+
           .connected-experience-section {
             min-height: 520px;
-            height: 520px;
+            height: auto;
+            align-items: stretch;
           }
+
+
+          /* IMAGE STAYS ON LEFT */
 
           .connected-image-wrapper {
             flex: 0 0 50%;
             width: 50%;
-            height: 520px;
-            padding: 0;
+            height: auto;
+            min-height: 520px;
+
+            align-self: stretch;
+
+            justify-content: flex-start;
+            align-items: center;
+
+            overflow: hidden;
           }
 
           .connected-image {
-            width: 96%;
+            width: 100%;
             height: 100%;
+
             object-fit: contain;
             object-position: left center;
+
+            transform: none;
           }
+
+
+          /* CONTENT */
 
           .connected-content {
             flex: 0 0 50%;
-            padding: 40px 40px;
-          }
+            width: 50%;
 
-          .connected-content h1 {
-            font-size: 28px;
-            line-height: 1.3;
-            transform: translateY(-30px);
-            margin-bottom: 15px;
-          }
+            padding: 40px 45px;
 
-          .connected-content p {
-            font-size: 16px;
-            line-height: 1.65;
-            margin: -10px 0 24px 0;
-            max-width: 500px;
-          }
-
-          .connected-content a {
-            font-size: 14px;
-            padding: 12px 21px;
-          }
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 768px) {
-          .connected-experience-section {
-            display: flex;
-            flex-direction: column;
-            min-height: auto;
-            height: auto;
-          }
-
-          .connected-image-wrapper {
-            width: 100%;
-            flex: none;
-            height: auto;
-            min-height: 0;
-            padding: 0;
-            margin: 0;
             justify-content: center;
-          }
-
-          .connected-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 0;
-            object-fit: contain;
-            object-position: center;
-          }
-
-          .connected-content {
-            width: 100%;
-            flex: none;
-            padding: 40px 25px 45px;
           }
 
           .connected-content h1 {
             font-size: 27px;
             line-height: 1.3;
+
             transform: none;
+
             margin: 0 0 18px 0;
           }
 
           .connected-content p {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.65;
+
             margin: 0 0 25px 0;
+
             max-width: 100%;
           }
 
           .connected-content a {
             font-size: 14px;
-            padding: 12px 20px;
+            padding: 11px 20px;
+
+            margin-top: 15px;
           }
         }
 
-        /* ================= SMALL MOBILE ================= */
 
-        @media (max-width: 480px) {
+        /* =====================================================
+           TABLET
+           769px - 1024px
+        ===================================================== */
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+
+          .connected-experience-section {
+            min-height: 500px;
+          }
+
           .connected-image-wrapper {
+            min-height: 500px;
+          }
+
+          .connected-content {
+            padding: 35px 35px;
+          }
+
+          .connected-content h1 {
+            font-size: 25px;
+          }
+
+          .connected-content p {
+            font-size: 14px;
+            line-height: 1.65;
+          }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+          .connected-experience-section {
+            display: flex;
+            flex-direction: column;
+
+            width: 100%;
+
+            min-height: 0;
+            height: auto;
+
+            overflow: hidden;
+          }
+
+
+          /* IMAGE */
+
+          .connected-image-wrapper {
+            width: 100%;
+            flex: none;
+
+            height: auto;
+            min-height: 0;
+
+            display: flex;
+
+            align-items: flex-start;
+            justify-content: flex-start;
+
             padding: 0;
+            margin: 0;
+
+            overflow: hidden;
           }
 
           .connected-image {
-            width: 92%;
+            display: block;
+
+            width: 100%;
             height: auto;
+
+            max-width: none;
+
+            margin: 0;
+            padding: 0;
+
+            object-fit: contain;
+            object-position: left top;
+
+            transform: none;
           }
+
+
+          /* CONTENT */
+
+          .connected-content {
+            width: 100%;
+            flex: none;
+
+            padding: 40px 25px 45px;
+
+            box-sizing: border-box;
+
+            justify-content: flex-start;
+          }
+
+
+          /* HEADING */
+
+          .connected-content h1 {
+            font-size: 27px;
+            line-height: 1.3;
+
+            transform: none;
+
+            margin: 0 0 18px 0;
+          }
+
+
+          /* PARAGRAPH */
+
+          .connected-content p {
+            font-size: 16px;
+            line-height: 1.65;
+
+            margin: 0 0 25px 0;
+
+            max-width: 100%;
+          }
+
+
+          /* BUTTON */
+
+          .connected-content a {
+            font-size: 14px;
+
+            padding: 12px 20px;
+
+            margin-top: 0;
+          }
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
+          .connected-image-wrapper {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+
+            justify-content: flex-start;
+            align-items: flex-start;
+          }
+
+          .connected-image {
+            width: 100%;
+            height: auto;
+
+            margin: 0;
+            padding: 0;
+
+            transform: none;
+
+            object-fit: contain;
+            object-position: left top;
+          }
+
 
           .connected-content {
             padding: 32px 20px 38px;
@@ -253,30 +435,49 @@ export default function ConnectedExperienceSection() {
           .connected-content h1 {
             font-size: 24px;
             line-height: 1.3;
+
             margin-bottom: 16px;
           }
 
           .connected-content p {
             font-size: 15px;
             line-height: 1.65;
+
             margin-bottom: 23px;
           }
 
           .connected-content a {
             font-size: 14px;
             padding: 11px 18px;
+
+            margin-top: 0;
           }
         }
 
-        /* ================= VERY SMALL DEVICES ================= */
+
+        /* =====================================================
+           VERY SMALL DEVICES
+        ===================================================== */
 
         @media (max-width: 360px) {
+
           .connected-image-wrapper {
+            width: 100%;
             padding: 0;
+            margin: 0;
+
+            justify-content: flex-start;
+            align-items: flex-start;
           }
 
           .connected-image {
-            width: 90%;
+            width: 100%;
+            height: auto;
+
+            margin: 0;
+            padding: 0;
+
+            transform: none;
           }
 
           .connected-content {
@@ -285,6 +486,7 @@ export default function ConnectedExperienceSection() {
 
           .connected-content h1 {
             font-size: 22px;
+            line-height: 1.3;
           }
 
           .connected-content p {
@@ -295,10 +497,11 @@ export default function ConnectedExperienceSection() {
           .connected-content a {
             font-size: 13px;
             padding: 10px 16px;
+
+            margin-top: 0;
           }
         }
       `}</style>
     </section>
   );
 }
-
