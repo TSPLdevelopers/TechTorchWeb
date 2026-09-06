@@ -1,27 +1,30 @@
 import React from "react";
 import "./App.css";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
-// ================= COMPONENTS =================
+// ================= COMMON COMPONENTS =================
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+// ================= HOME COMPONENTS =================
 import Hero from "./components/Hero";
 import Hero2 from "./components/Hero2";
 import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
 import Section5 from "./components/Section5";
-import Section6 from "./components/Section6"
+import Section6 from "./components/Section6";
 import Section7 from "./components/section7";
 import Section8 from "./components/section8";
 import Section9 from "./components/section9";
-import Footer from "./components/Footer";
 
+// ================= HERO SLIDE 1 =================
 import HeroSlide01 from "./components/HeroSlides/HeroSlide01.jsx";
 import HeroSlide02 from "./components/HeroSlides/HeroSlide02.jsx";
 import HeroSlide03 from "./components/HeroSlides/HeroSlide03.jsx";
 import HeroSlide04 from "./components/HeroSlides/HeroSlide04.jsx";
 
-
+// ================= HERO SLIDE 2 =================
 import Hero02Slide01 from "./components/Hero2Slides/Hero02Slide01.jsx";
 import Hero02Slide02 from "./components/Hero2Slides/Hero02Slide02.jsx";
 import Hero02Slide03 from "./components/Hero2Slides/Hero02Slide03.jsx";
@@ -29,6 +32,7 @@ import Hero02Slide04 from "./components/Hero2Slides/Hero02Slide04.jsx";
 import Hero02Slide05 from "./components/Hero2Slides/Hero02Slide05.jsx";
 import Hero02Slide06 from "./components/Hero2Slides/Hero02Slide06.jsx";
 
+// ================= HERO SLIDE 3 =================
 import Hero03Slide01 from "./components/Hero3Slides/Hero03Slide01.jsx";
 import Hero03Slide02 from "./components/Hero3Slides/Hero03Slide02.jsx";
 import Hero03Slide03 from "./components/Hero3Slides/Hero03Slide03.jsx";
@@ -37,21 +41,20 @@ import Hero03Slide05 from "./components/Hero3Slides/Hero03Slide05.jsx";
 import Hero03Slide06 from "./components/Hero3Slides/Hero03Slide06.jsx";
 import Hero03Slide07 from "./components/Hero3Slides/Hero03Slide07.jsx";
 
+// ================= HERO SLIDE 4 =================
 import Hero04Slide01 from "./components/Hero4Slides/Hero04Slide01.jsx";
 import Hero04Slide02 from "./components/Hero4Slides/Hero04Slide02.jsx";
 import Hero04Slide03 from "./components/Hero4Slides/Hero04Slide03.jsx";
 import Hero04Slide04 from "./components/Hero4Slides/Hero04Slide04.jsx";
 import Hero04Slide05 from "./components/Hero4Slides/Hero04Slide05.jsx";
 
+// ================= HERO SLIDE 5 =================
 import Hero05Slide01 from "./components/Hero5Slides/Hero05Slide01.jsx";
 import Hero05Slide02 from "./components/Hero5Slides/Hero05Slide02.jsx";
 import Hero05Slide03 from "./components/Hero5Slides/Hero05Slide03.jsx";
 import Hero05Slide04 from "./components/Hero5Slides/Hero05Slide04.jsx";
 
-
-// Hero2 sections
-
-
+// ================= OUR STORY =================
 import PhiosophySection from "./pages/OurStory/PhilosophySection.jsx";
 import EnterpriseHero from "./pages/OurStory/EnterpriseReadiness.jsx";
 import ScaleAtSpeed from "./pages/OurStory/ScaleAtSpeed.jsx";
@@ -59,10 +62,7 @@ import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
 import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
 import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
 
-
-
-// SECTION 4
-
+// ================= WHAT'S NEXT =================
 import TechTorchView from "./pages/What'sNext/TechTorchView.jsx";
 import Philosophy from "./pages/What'sNext/Philosophy.jsx";
 import Capabilities from "./pages/What'sNext/Capabilities.jsx";
@@ -70,14 +70,31 @@ import Methodology from "./pages/What'sNext/DeploymentMethodology.jsx";
 import ReadyScale from "./pages/What'sNext/ReadyScale.jsx";
 
 
+// =================================================
+// COMMON LAYOUT
+// Navbar + Current Page + Footer
+// =================================================
+function MainLayout() {
+  return (
+    <>
+      <Navbar />
+
+      <main>
+        <Outlet />
+      </main>
+
+      <Footer />
+    </>
+  );
+}
+
 
 // =================================================
 // HOME PAGE
 // =================================================
 function Home() {
   return (
-    <div>
-      <Navbar />
+    <>
       <Hero />
       <Hero2 />
       <Hero3 />
@@ -87,38 +104,49 @@ function Home() {
       <Section7 />
       <Section8 />
       <Section9 />
-      <Footer />
-    </div>
+    </>
   );
 }
 
+
+// =================================================
+// SLIDE 1 PAGE
+// =================================================
 function Slide1Page() {
   return (
-    <div>
+    <>
       <HeroSlide01 />
       <HeroSlide02 />
       <HeroSlide03 />
       <HeroSlide04 />
-    </div>
+    </>
   );
 }
 
+
+// =================================================
+// SLIDE 2 PAGE
+// =================================================
 function Slide2Page() {
   return (
-    <div>
+    <>
       <Hero02Slide01 />
       <Hero02Slide02 />
       <Hero02Slide03 />
       <Hero02Slide04 />
       <Hero02Slide05 />
       <Hero02Slide06 />
-    </div>
+    </>
   );
 }
 
+
+// =================================================
+// SLIDE 3 PAGE
+// =================================================
 function Slide3Page() {
   return (
-    <div>
+    <>
       <Hero03Slide01 />
       <Hero03Slide02 />
       <Hero03Slide03 />
@@ -126,105 +154,104 @@ function Slide3Page() {
       <Hero03Slide05 />
       <Hero03Slide06 />
       <Hero03Slide07 />
-    </div>
+    </>
   );
 }
 
+
+// =================================================
+// SLIDE 4 PAGE
+// =================================================
 function Slide4Page() {
   return (
-    <div>
+    <>
       <Hero04Slide01 />
       <Hero04Slide02 />
       <Hero04Slide03 />
       <Hero04Slide04 />
       <Hero04Slide05 />
-    </div>
+    </>
   );
 }
+
+
+// =================================================
+// SLIDE 5 PAGE
+// =================================================
 function Slide5Page() {
   return (
-    <div>
+    <>
       <Hero05Slide01 />
       <Hero05Slide02 />
       <Hero05Slide03 />
       <Hero05Slide04 />
-    </div>
+    </>
   );
 }
 
 
+// =================================================
+// OUR STORY / PHILOSOPHY PAGE
+// =================================================
 function PhilosophyPage() {
   return (
-    <div>
+    <>
       <EnterpriseHero />
       <CoreFoundation />
       <ScaleAtSpeed />
       <StrategicCapabilities />
       <PhiosophySection />
       <TransformationForm />
-    </div>
+    </>
   );
 }
+
+
+// =================================================
+// WHAT'S NEXT PAGE
+// =================================================
 function WhatNextPage() {
   return (
-    <div>
+    <>
       <TechTorchView />
       <Philosophy />
       <Capabilities />
       <Methodology />
       <ReadyScale />
-    </div>
+    </>
   );
 }
 
+
 // =================================================
-// APP
+// APP ROUTES
 // =================================================
 function App() {
   return (
     <Routes>
+      {/* =========================================
+          ALL PAGES BELOW WILL HAVE:
+          Navbar + Page Content + Footer
+      ========================================= */}
+      <Route element={<MainLayout />}>
+        
+        {/* HOME */}
+        <Route path="/" element={<Home />} />
 
-      {/* ================= HOME PAGE ================= */}
-      <Route
-        path="/"
-        element={<Home />}
-      />
+        {/* SLIDE PAGES */}
+        <Route path="/Slide1" element={<Slide1Page />} />
+        <Route path="/Slide2" element={<Slide2Page />} />
+        <Route path="/Slide3" element={<Slide3Page />} />
+        <Route path="/Slide4" element={<Slide4Page />} />
+        <Route path="/Slide5" element={<Slide5Page />} />
 
-      {/* ================= SLIDE 1 / SOLUTIONS PAGE ================= */}
-      <Route
-        path="/Slide1"
-        element={<Slide1Page />}
-      />
+        {/* OUR STORY */}
+        <Route path="/Philosophy" element={<PhilosophyPage />} />
 
-      <Route
-        path="/Slide2"
-        element={<Slide2Page />}
-      />
+        {/* WHAT'S NEXT */}
+        <Route path="/WhatNext" element={<WhatNextPage />} />
 
-      <Route
-        path="/Slide3"
-        element={<Slide3Page />}
-      />
-
-      <Route
-        path="/Slide4"
-        element={<Slide4Page />}
-      />
-
-      <Route
-        path="/Slide5"
-        element={<Slide5Page />}
-      />
-
-      <Route
-        path="/Philosophy"
-        element={<PhilosophyPage />}
-      />
-
-      <Route
-        path="/WhatNext"
-        element={<WhatNextPage />}
-      />
+      </Route>
     </Routes>
   );
 }

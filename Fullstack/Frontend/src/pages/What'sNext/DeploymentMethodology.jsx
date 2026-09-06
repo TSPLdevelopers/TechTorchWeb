@@ -1,3 +1,9 @@
+import React, { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const STEPS = [
   {
     number: "01",
@@ -20,14 +26,70 @@ const STEPS = [
 ];
 
 export default function DeploymentMethodology() {
+  const sectionRef = useRef(null);
+  const numberRefs = useRef([]);
+  const stepRefs = useRef([]);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Numbers initially upar hidden position me
+      gsap.set(numberRefs.current, {
+        yPercent: -120,
+      });
+
+      // Optional: content bhi initially slightly hidden
+      gsap.set(stepRefs.current, {
+        opacity: 0,
+        y: 25,
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Number + content ek-ek karke animate honge
+      STEPS.forEach((_, index) => {
+        tl.to(
+          numberRefs.current[index],
+          {
+            yPercent: 0,
+            duration: 0.7,
+            ease: "power3.out",
+          },
+          index === 0 ? 0 : ">-0.15"
+        ).to(
+          stepRefs.current[index],
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.55,
+            ease: "power2.out",
+          },
+          "<0.1"
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="w-full bg-slate-50 py-16">
+    <section
+      ref={sectionRef}
+      className="w-full bg-slate-50 py-16 overflow-hidden"
+    >
       <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-12">
+        
         {/* Left: intro + image */}
         <div>
           <h2 className="text-[24px] font-bold text-slate-900 leading-snug mb-4">
             The Deployment Methodology
           </h2>
+
           <p className="text-slate-600 text-[15px] leading-relaxed mb-6">
             Our three-phased approach guarantees that AI implementation is
             treated as a strategic business transformation rather than an
@@ -35,7 +97,6 @@ export default function DeploymentMethodology() {
           </p>
 
           <div className="rounded-lg overflow-hidden">
-            {/* Swap the src below for your own photo */}
             <img
               src="/DeploymentMethodology.png"
               alt="Team collaborating around a model architecture presentation"
@@ -50,16 +111,27 @@ export default function DeploymentMethodology() {
             <div
               key={step.number}
               className={`grid grid-cols-[56px_1fr] gap-4 py-6 ${
-                i !== STEPS.length - 1 ? "border-b border-slate-200" : ""
+                i !== STEPS.length - 1
+                  ? "border-b border-slate-200"
+                  : ""
               } ${i === 0 ? "pt-0" : ""}`}
             >
-              <span className="text-[32px] font-bold text-slate-300 leading-none">
-                {step.number}
-              </span>
-              <div>
+              {/* Number reveal wrapper */}
+              <div className="h-[38px] overflow-hidden">
+                <span
+                  ref={(el) => (numberRefs.current[i] = el)}
+                  className="block text-[32px] font-bold text-slate-300 leading-none"
+                >
+                  {step.number}
+                </span>
+              </div>
+
+              {/* Step content */}
+              <div ref={(el) => (stepRefs.current[i] = el)}>
                 <h3 className="font-semibold text-[16px] text-slate-900 mb-2">
                   {step.title}
                 </h3>
+
                 <p className="text-slate-600 text-[14px] leading-relaxed">
                   {step.description}
                 </p>
