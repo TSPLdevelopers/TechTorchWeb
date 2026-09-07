@@ -32,12 +32,10 @@ export default function DeploymentMethodology() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Numbers initially upar hidden position me
       gsap.set(numberRefs.current, {
         yPercent: -120,
       });
 
-      // Optional: content bhi initially slightly hidden
       gsap.set(stepRefs.current, {
         opacity: 0,
         y: 25,
@@ -51,7 +49,6 @@ export default function DeploymentMethodology() {
         },
       });
 
-      // Number + content ek-ek karke animate honge
       STEPS.forEach((_, index) => {
         tl.to(
           numberRefs.current[index],
@@ -80,27 +77,27 @@ export default function DeploymentMethodology() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-slate-50 py-16 overflow-hidden"
+      className="w-full overflow-hidden bg-slate-50 py-16"
     >
-      <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-12">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 md:grid-cols-[1fr_1.4fr]">
         
         {/* Left: intro + image */}
-        <div>
-          <h2 className="text-[24px] font-bold text-slate-900 leading-snug mb-4">
+        <div className="md:-ml-12">
+          <h2 className="mb-4 text-[24px] font-bold leading-snug text-slate-900">
             The Deployment Methodology
           </h2>
 
-          <p className="text-slate-600 text-[15px] leading-relaxed mb-6">
+          <p className="mb-6 text-[15px] leading-relaxed text-slate-600">
             Our three-phased approach guarantees that AI implementation is
             treated as a strategic business transformation rather than an
             isolated IT experiment.
           </p>
 
-          <div className="rounded-lg overflow-hidden">
+          <div className="overflow-hidden rounded-lg">
             <img
               src="/DeploymentMethodology.png"
               alt="Team collaborating around a model architecture presentation"
-              className="w-full h-[200px] object-cover"
+              className="h-[200px] w-full object-cover"
             />
           </div>
         </div>
@@ -120,7 +117,7 @@ export default function DeploymentMethodology() {
               <div className="h-[38px] overflow-hidden">
                 <span
                   ref={(el) => (numberRefs.current[i] = el)}
-                  className="block text-[32px] font-bold text-slate-300 leading-none"
+                  className="block text-[32px] font-bold leading-none text-slate-300"
                 >
                   {step.number}
                 </span>
@@ -128,11 +125,11 @@ export default function DeploymentMethodology() {
 
               {/* Step content */}
               <div ref={(el) => (stepRefs.current[i] = el)}>
-                <h3 className="font-semibold text-[16px] text-slate-900 mb-2">
+                <h3 className="mb-2 text-[16px] font-semibold text-slate-900">
                   {step.title}
                 </h3>
 
-                <p className="text-slate-600 text-[14px] leading-relaxed">
+                <p className="text-[14px] leading-relaxed text-slate-600">
                   {step.description}
                 </p>
               </div>
