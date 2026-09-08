@@ -44,7 +44,7 @@ const cards = [
       "New technologies are opening up different ways to solve problems, create value and rethink what's possible.",
     bg: "url('sec4.3.png')",
     bgColor: "#c9d3da",
-    link: "/what-comes-next",
+    link: "/think-ahead",
   },
   {
     tag: "IN FOCUS · CYBERSECURITY",

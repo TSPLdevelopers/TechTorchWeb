@@ -76,6 +76,10 @@ import ConnectSection from "./pages/What'sNext/FieldNote/ConnectSection.jsx";
 import OperationalAdvantage from "./pages/What'sNext/FieldNote/OperationalAdvantage.jsx";
 import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapabilities.jsx";
 
+// ================= THINK AHEAD =================
+import ReadSection from "./pages/What'sNext/ThinkAhead/ReadSection.jsx";
+import EcosystemHeroSection from "./pages/What'sNext/ThinkAhead/Ecosystem.jsx";
+import PerspectiveSection from "./pages/What'sNext/ThinkAhead/Perspectivesection.jsx";
 
 // =================================================
 // COMMON LAYOUT
@@ -234,6 +238,15 @@ function FieldNotePage() {
     </>
   );
 }
+function ThinkAheadPage() {
+  return (
+    <>
+      <ReadSection />
+      <PerspectiveSection />
+      <EcosystemHeroSection />
+    </>
+  );
+}
 
 // =================================================
 // APP ROUTES
@@ -268,6 +281,11 @@ function App() {
           element={<FieldNotePage />}
         />
 
+        {/* WHAT'S NEXT - THINK AHEAD */}
+        <Route
+          path="/think-ahead"
+          element={<ThinkAheadPage />}
+        />
       </Route>
     </Routes>
   );

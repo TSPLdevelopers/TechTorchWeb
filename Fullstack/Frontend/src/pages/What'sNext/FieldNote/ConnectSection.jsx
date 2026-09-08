@@ -42,7 +42,7 @@ function Row({ step, title, copy, image, imageSide }) {
     <div>
       {/* Heading - Plus Jakarta Sans */}
       <span
-        className="block text-[11px] tracking-[0.14em] font-semibold text-[#8C2F3B] mb-3"
+        className="block text-[13px] tracking-[0.14em] font-semibold text-[#8C2F3B] mb-3"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         {step} — {title}
@@ -59,7 +59,7 @@ function Row({ step, title, copy, image, imageSide }) {
   );
 
   const imageElement = (
-    <div className="relative overflow-hidden rounded-sm aspect-[8/6] w-full">
+    <div className="relative overflow-hidden rounded-sm w-full max-w-[90%] h-[350px]">
       <img
         src={image}
         alt={title}
