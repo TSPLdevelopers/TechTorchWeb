@@ -62,17 +62,23 @@ import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
 import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
 import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
 
-// ================= WHAT'S NEXT =================
-import TechTorchView from "./pages/What'sNext/TechTorchView.jsx";
-import Philosophy from "./pages/What'sNext/Philosophy.jsx";
-import Capabilities from "./pages/What'sNext/Capabilities.jsx";
-import Methodology from "./pages/What'sNext/DeploymentMethodology.jsx";
-import ReadyScale from "./pages/What'sNext/ReadyScale.jsx";
+// ================= TECHTORCH VIEW =================
+import TechTorchView from "./pages/What'sNext/TechTorchView/TechTorchView.jsx";
+import Philosophy from "./pages/What'sNext/TechTorchView/Philosophy.jsx";
+import Capabilities from "./pages/What'sNext/TechTorchView/Capabilities.jsx";
+import Methodology from "./pages/What'sNext/TechTorchView/DeploymentMethodology.jsx";
+import ReadyScale from "./pages/What'sNext/TechTorchView/ReadyScale.jsx";
+
+// ================= FIELD NOTE =================
+import Banner from "./pages/What'sNext/FieldNote/Banner.jsx";
+import TechnologySection from "./pages/What'sNext/FieldNote/TechnologySection.jsx";
+import ConnectSection from "./pages/What'sNext/FieldNote/ConnectSection.jsx";
+import OperationalAdvantage from "./pages/What'sNext/FieldNote/OperationalAdvantage.jsx";
+import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapabilities.jsx";
 
 
 // =================================================
 // COMMON LAYOUT
-// Navbar + Current Page + Footer
 // =================================================
 function MainLayout() {
   return (
@@ -87,7 +93,6 @@ function MainLayout() {
     </>
   );
 }
-
 
 // =================================================
 // HOME PAGE
@@ -108,7 +113,6 @@ function Home() {
   );
 }
 
-
 // =================================================
 // SLIDE 1 PAGE
 // =================================================
@@ -122,7 +126,6 @@ function Slide1Page() {
     </>
   );
 }
-
 
 // =================================================
 // SLIDE 2 PAGE
@@ -139,7 +142,6 @@ function Slide2Page() {
     </>
   );
 }
-
 
 // =================================================
 // SLIDE 3 PAGE
@@ -158,7 +160,6 @@ function Slide3Page() {
   );
 }
 
-
 // =================================================
 // SLIDE 4 PAGE
 // =================================================
@@ -174,7 +175,6 @@ function Slide4Page() {
   );
 }
 
-
 // =================================================
 // SLIDE 5 PAGE
 // =================================================
@@ -189,9 +189,8 @@ function Slide5Page() {
   );
 }
 
-
 // =================================================
-// OUR STORY / PHILOSOPHY PAGE
+// OUR STORY PAGE
 // =================================================
 function PhilosophyPage() {
   return (
@@ -206,9 +205,8 @@ function PhilosophyPage() {
   );
 }
 
-
 // =================================================
-// WHAT'S NEXT PAGE
+// TECHTORCH VIEW PAGE
 // =================================================
 function WhatNextPage() {
   return (
@@ -222,6 +220,20 @@ function WhatNextPage() {
   );
 }
 
+// =================================================
+// FIELD NOTE PAGE
+// =================================================
+function FieldNotePage() {
+  return (
+    <>
+      <Banner />
+      <TechnologySection />
+      <ConnectSection />
+      <OperationalAdvantage />
+      <IntegratedCapabilities />
+    </>
+  );
+}
 
 // =================================================
 // APP ROUTES
@@ -229,12 +241,8 @@ function WhatNextPage() {
 function App() {
   return (
     <Routes>
-      {/* =========================================
-          ALL PAGES BELOW WILL HAVE:
-          Navbar + Page Content + Footer
-      ========================================= */}
       <Route element={<MainLayout />}>
-        
+
         {/* HOME */}
         <Route path="/" element={<Home />} />
 
@@ -248,8 +256,17 @@ function App() {
         {/* OUR STORY */}
         <Route path="/Philosophy" element={<PhilosophyPage />} />
 
-        {/* WHAT'S NEXT */}
-        <Route path="/WhatNext" element={<WhatNextPage />} />
+        {/* WHAT'S NEXT - TECHTORCH */}
+        <Route
+          path="/TechTorchView"
+          element={<WhatNextPage />}
+        />
+
+        {/* WHAT'S NEXT - FIELD NOTE */}
+        <Route
+          path="/field-note"
+          element={<FieldNotePage />}
+        />
 
       </Route>
     </Routes>
