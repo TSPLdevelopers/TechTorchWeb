@@ -118,6 +118,7 @@ import TechnologyCapabilities from "./pages/What'sNext/BusinessGrowth/Technology
 import CoreEngineering from "./pages/What'sNext/BusinessGrowth/CoreEngineering.jsx";
 import MarketExpertiseSection from "./pages/What'sNext/BusinessGrowth/MarketExpertise.jsx";
 import InstitutionalCommitmentSection from "./pages/What'sNext/BusinessGrowth/InstitutionalCommitment.jsx";
+import ParadigmSection from "./pages/What'sNext/BusinessGrowth/ParadigmSection.jsx";
 
 
 // =================================================
@@ -338,6 +339,7 @@ function BusinessGrowthPage() {
       <CoreEngineering />
       <MarketExpertiseSection />
       <InstitutionalCommitmentSection />
+      <ParadigmSection />
     </>
   );
 }
