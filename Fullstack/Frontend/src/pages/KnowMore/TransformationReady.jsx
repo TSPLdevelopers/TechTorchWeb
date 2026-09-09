@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export default function TransformationReady() {
@@ -112,10 +113,7 @@ export default function TransformationReady() {
         .transformation-section {
           width: 100%;
           background: #ffffff;
-
-          /* HEIGHT THODI KAM */
           padding: 72px 0 60px;
-
           overflow: hidden;
         }
 
@@ -143,25 +141,17 @@ export default function TransformationReady() {
 
         .transformation-image-wrap {
           position: relative;
-
-          /* IMAGE SIZE SAME */
           width: 100%;
-
-          /* ONLY LEFT SHIFT */
           margin-left: -55px;
-
           padding-bottom: 18px;
         }
 
         .transformation-image-box {
           position: relative;
-
           width: 100%;
-
           overflow: hidden;
 
           border-radius: 20px;
-
           clip-path: inset(0 round 20px);
 
           box-shadow:
@@ -170,13 +160,10 @@ export default function TransformationReady() {
 
         .transformation-image {
           display: block;
-
-          /* IMAGE SIZE SAME */
           width: 100%;
           height: auto;
 
           aspect-ratio: 1.48 / 1;
-
           object-fit: cover;
 
           margin: 0;
@@ -229,7 +216,6 @@ export default function TransformationReady() {
 
           background: #91f0bb;
 
-          /* No text / emoji */
           font-size: 0;
         }
 
@@ -281,8 +267,8 @@ export default function TransformationReady() {
 
           max-width: 560px;
 
-          /* CONTENT RIGHT */
-          transform: translateX(45px);
+          /* CONTENT SLIGHTLY LEFT */
+          transform: translateX(15px);
 
           padding-bottom: 2px;
         }
@@ -444,11 +430,13 @@ export default function TransformationReady() {
           .transformation-image-wrap {
             width: 100%;
 
-            margin-left: -40px;
+            margin-left: -25px;
           }
 
           .transformation-content {
-            transform: translateX(35px);
+            max-width: 540px;
+
+            transform: translateX(0);
           }
 
           .transformation-image-box {
@@ -505,7 +493,7 @@ export default function TransformationReady() {
           .transformation-container {
             grid-template-columns: 1fr;
 
-            gap: 60px;
+            gap: 55px;
 
             padding: 0 40px;
           }
@@ -542,6 +530,10 @@ export default function TransformationReady() {
 
           .transformation-description {
             font-size: 17px;
+          }
+
+          .transformation-feature p {
+            font-size: 15px;
           }
         }
 
@@ -752,3 +744,4 @@ export default function TransformationReady() {
     </section>
   );
 }
+

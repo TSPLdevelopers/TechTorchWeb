@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const MAROON = "#a50050";
@@ -82,7 +83,7 @@ export default function EnterpriseAcceleration() {
           position: relative;
 
           width: 100%;
-          min-height: 660px;
+          min-height: 620px;
 
           margin: 0;
           padding: 0;
@@ -151,11 +152,11 @@ export default function EnterpriseAcceleration() {
           width: 100%;
           max-width: 1400px;
 
-          min-height: 660px;
+          min-height: 620px;
 
           margin: 0 auto;
 
-          padding: 65px 50px 130px;
+          padding: 65px 50px 110px;
 
           display: flex;
 
@@ -286,12 +287,10 @@ export default function EnterpriseAcceleration() {
 
           max-width: 100%;
 
-          /* BUTTON THODA NICHE */
           margin-top: 52px;
 
           padding: 10px 15px;
 
-          /* OLD HOVER COLOR AS NORMAL */
           background: #83003f;
 
           color: #ffffff;
@@ -302,7 +301,6 @@ export default function EnterpriseAcceleration() {
 
           font-size: 16px;
 
-          /* LIGHTER BUTTON TEXT */
           font-weight: 400;
 
           text-decoration: none;
@@ -316,7 +314,6 @@ export default function EnterpriseAcceleration() {
 
 
         .enterprise-button:hover {
-          /* OLD ORIGINAL COLOR AS HOVER */
           background: ${MAROON};
 
           transform: translateY(-2px);
@@ -341,7 +338,7 @@ export default function EnterpriseAcceleration() {
           right: 0;
           bottom: 0;
 
-          height: 115px;
+          height: 105px;
 
           z-index: 2;
 
@@ -377,13 +374,13 @@ export default function EnterpriseAcceleration() {
         @media (max-width: 1200px) {
 
           .enterprise-hero {
-            min-height: 620px;
+            min-height: 590px;
           }
 
           .enterprise-hero-content {
-            min-height: 620px;
+            min-height: 590px;
 
-            padding: 60px 40px 120px;
+            padding: 60px 40px 105px;
           }
 
           .enterprise-hero-content h1 {
@@ -415,13 +412,13 @@ export default function EnterpriseAcceleration() {
         @media (max-width: 1023px) {
 
           .enterprise-hero {
-            min-height: 600px;
+            min-height: 570px;
           }
 
           .enterprise-hero-content {
-            min-height: 600px;
+            min-height: 570px;
 
-            padding: 55px 30px 115px;
+            padding: 55px 30px 105px;
           }
 
           .enterprise-hero-content h1 {
@@ -455,7 +452,7 @@ export default function EnterpriseAcceleration() {
         @media (max-width: 900px) {
 
           .enterprise-hero {
-            min-height: 600px;
+            min-height: 570px;
           }
 
           .enterprise-hero-bg {
@@ -465,9 +462,9 @@ export default function EnterpriseAcceleration() {
           }
 
           .enterprise-hero-content {
-            min-height: 600px;
+            min-height: 570px;
 
-            padding: 50px 30px 110px;
+            padding: 50px 30px 100px;
           }
 
           .enterprise-badge {
@@ -507,7 +504,7 @@ export default function EnterpriseAcceleration() {
           }
 
           .enterprise-bottom-fade {
-            height: 100px;
+            height: 95px;
           }
         }
 
@@ -519,13 +516,13 @@ export default function EnterpriseAcceleration() {
         @media (max-width: 767px) {
 
           .enterprise-hero {
-            min-height: 630px;
+            min-height: 600px;
           }
 
           .enterprise-hero-content {
-            min-height: 630px;
+            min-height: 600px;
 
-            padding: 45px 24px 105px;
+            padding: 45px 24px 100px;
           }
 
           .enterprise-hero-content h1 {
@@ -557,10 +554,9 @@ export default function EnterpriseAcceleration() {
         @media (max-width: 600px) {
 
           .enterprise-hero {
-            min-height: 650px;
+            min-height: 610px;
           }
 
-          /* COMPACT MOBILE IMAGE */
           .enterprise-hero-bg {
             background-size: auto 100%;
 
@@ -579,9 +575,9 @@ export default function EnterpriseAcceleration() {
           }
 
           .enterprise-hero-content {
-            min-height: 650px;
+            min-height: 610px;
 
-            padding: 40px 18px 100px;
+            padding: 40px 18px 95px;
           }
 
           .enterprise-badge {
@@ -675,7 +671,7 @@ export default function EnterpriseAcceleration() {
         @media (max-width: 480px) {
 
           .enterprise-hero {
-            min-height: 640px;
+            min-height: 600px;
           }
 
           .enterprise-hero-bg {
@@ -685,9 +681,9 @@ export default function EnterpriseAcceleration() {
           }
 
           .enterprise-hero-content {
-            min-height: 640px;
+            min-height: 600px;
 
-            padding: 38px 18px 95px;
+            padding: 38px 18px 90px;
           }
 
           .enterprise-hero-content h1 {
@@ -717,7 +713,7 @@ export default function EnterpriseAcceleration() {
         @media (max-width: 380px) {
 
           .enterprise-hero {
-            min-height: 620px;
+            min-height: 580px;
           }
 
           .enterprise-hero-bg {
@@ -727,9 +723,9 @@ export default function EnterpriseAcceleration() {
           }
 
           .enterprise-hero-content {
-            min-height: 620px;
+            min-height: 580px;
 
-            padding: 34px 16px 90px;
+            padding: 34px 16px 85px;
           }
 
           .enterprise-badge {
@@ -783,7 +779,7 @@ export default function EnterpriseAcceleration() {
         @media (max-width: 320px) {
 
           .enterprise-hero {
-            min-height: 610px;
+            min-height: 570px;
           }
 
           .enterprise-hero-bg {
@@ -793,7 +789,7 @@ export default function EnterpriseAcceleration() {
           }
 
           .enterprise-hero-content {
-            min-height: 610px;
+            min-height: 570px;
 
             padding-left: 14px;
             padding-right: 14px;
@@ -834,14 +830,14 @@ export default function EnterpriseAcceleration() {
         @media (max-height: 700px) and (min-width: 768px) {
 
           .enterprise-hero {
-            min-height: 600px;
+            min-height: 570px;
           }
 
           .enterprise-hero-content {
-            min-height: 600px;
+            min-height: 570px;
 
             padding-top: 48px;
-            padding-bottom: 110px;
+            padding-bottom: 100px;
           }
 
           .enterprise-hero-content h1 {

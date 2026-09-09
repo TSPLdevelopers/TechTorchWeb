@@ -70,11 +70,11 @@ import ProvenImpact from "./pages/KnowMore/ProvenImpact.jsx";
 import TransformationReady from "./pages/KnowMore/TransformationReady.jsx";
 
 // ================= WHAT'S NEXT =================
-import TechTorchView from "./pages/What'sNext/TechTorchView.jsx";
-import Philosophy from "./pages/What'sNext/Philosophy.jsx";
-import Capabilities from "./pages/What'sNext/Capabilities.jsx";
-import Methodology from "./pages/What'sNext/DeploymentMethodology.jsx";
-import ReadyScale from "./pages/What'sNext/ReadyScale.jsx";
+// import TechTorchView from "./pages/What'sNext/TechTorchView.jsx";
+// import Philosophy from "./pages/What'sNext/Philosophy.jsx";
+// import Capabilities from "./pages/What'sNext/Capabilities.jsx";
+// import Methodology from "./pages/What'sNext/DeploymentMethodology.jsx";
+// import ReadyScale from "./pages/What'sNext/ReadyScale.jsx";
 
 // ================= TECHTORCH VIEW =================
 import TechTorchView from "./pages/What'sNext/TechTorchView/TechTorchView.jsx";
@@ -306,7 +306,7 @@ function App() {
         <Route path="/KnowMore" element={<KnowMorePage />} />
 
         {/* WHAT'S NEXT */}
-        <Route path="/WhatNext" element={<WhatNextPage />} />
+        {/* <Route path="/WhatNext" element={<WhatNextPage />} /> */}
 
         {/* WHAT'S NEXT - TECHTORCH */}
         <Route

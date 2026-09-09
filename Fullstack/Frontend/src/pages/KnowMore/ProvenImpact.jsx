@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export default function ProvenImpact() {
@@ -26,7 +27,6 @@ export default function ProvenImpact() {
           <button className="view-industries-btn">
             View All Industries
           </button>
-
         </div>
 
 
@@ -150,7 +150,7 @@ export default function ProvenImpact() {
         .proven-impact-section {
           width: 100%;
           background: #85003f;
-          padding: 20px 0 38px;
+          padding: 28px 0 48px;
           overflow: hidden;
         }
 
@@ -181,7 +181,8 @@ export default function ProvenImpact() {
 
 
         .proven-impact-title-wrap {
-          transform: translateX(-35px);
+          transform: translateX(-45px);
+          min-width: 0;
         }
 
 
@@ -205,7 +206,7 @@ export default function ProvenImpact() {
           margin: 0;
           color: #ffffff;
           font-size: 12px;
-          font-weight: 500;
+          font-weight: 420;
           letter-spacing: 1.4px;
         }
 
@@ -216,30 +217,22 @@ export default function ProvenImpact() {
 
         .proven-impact-title-wrap h2 {
           margin: 0;
-
           color: #ffffff;
-
-          font-family: "Plus Jakarta Sans", sans-serif;
-
-          font-size: 36px;
-
+          font-family: "Plus Jakarta Sans";
+          font-size: 34px;
+           opacity: 0.9;
           line-height: 1.05;
-
-          font-weight: 700;
-
+          font-weight: 500;
           letter-spacing: -1.4px;
         }
 
 
         .proven-impact-subtitle {
           margin: 8px 0 0;
-
           color: #ffffff;
-
           font-size: 16px;
-
+           opacity: 0.9;
           line-height: 1.4;
-
           font-weight: 400;
         }
 
@@ -250,32 +243,21 @@ export default function ProvenImpact() {
 
         .view-industries-btn {
           flex-shrink: 0;
-
           min-width: 180px;
-
           height: 44px;
-
           padding: 0 22px;
-
           background: transparent;
-
           border: 1px solid rgba(255, 255, 255, 0.28);
-
           color: #ffffff;
-
           font-size: 13px;
-
           font-weight: 500;
-
           cursor: pointer;
-
           transition: all 0.25s ease;
         }
 
 
         .view-industries-btn:hover {
           background: rgba(255, 255, 255, 0.08);
-
           border-color: rgba(255, 255, 255, 0.5);
         }
 
@@ -292,13 +274,12 @@ export default function ProvenImpact() {
             minmax(0, 0.92fr)
             minmax(0, 0.88fr);
 
-          /* MORE GAP */
           column-gap: 40px;
           row-gap: 40px;
 
-          transform: translateX(-35px);
+          transform: translateX(-45px);
 
-          width: calc(100% - 35px);
+          width: calc(100% - 45px);
         }
 
 
@@ -308,13 +289,9 @@ export default function ProvenImpact() {
 
         .impact-card {
           min-width: 0;
-
           overflow: hidden;
-
           border: 1px solid rgba(255, 255, 255, 0.18);
-
           border-radius: 8px;
-
           background: #951554;
         }
 
@@ -325,34 +302,27 @@ export default function ProvenImpact() {
 
         .impact-image-wrap {
           position: relative;
-
           width: 100%;
-
-          /* IMAGE SIZE SAME */
           height: 200px;
-
           overflow: hidden;
         }
 
 
         .impact-image {
           display: block;
-
           width: 100%;
-
           height: 100%;
-
           object-fit: cover;
-
           object-position: center;
+          margin: 0;
+          padding: 0;
+          border: 0;
         }
 
 
         .impact-image-wrap::after {
           content: "";
-
           position: absolute;
-
           inset: 0;
 
           background: linear-gradient(
@@ -371,32 +341,23 @@ export default function ProvenImpact() {
 
         .impact-image-label {
           position: absolute;
-
           left: 16px;
-
           bottom: 13px;
-
           z-index: 2;
 
           display: flex;
-
           align-items: center;
-
           gap: 8px;
 
           color: #ffffff;
-
           font-size: 13px;
-
           font-weight: 500;
         }
 
 
         .industry-icon {
           color: #ffffff;
-
           font-size: 17px;
-
           line-height: 1;
         }
 
@@ -407,36 +368,28 @@ export default function ProvenImpact() {
 
         .impact-card-content {
           min-height: 200px;
-
           padding: 15px 16px 13px;
         }
 
 
         .impact-card-content h3 {
           margin: 0;
-
           color: #ffffff;
-
-          font-size: 22px;
-
+          font-size: 20px;
           line-height: 1.23;
-
           font-weight: 500;
-
           letter-spacing: -0.3px;
+           opacity: 0.9;
         }
 
 
         .impact-card-content p {
           margin: 8px 0 0;
-
           color: #ffffff;
-
           font-size: 16px;
-
           line-height: 1.42;
-
           font-weight: 400;
+           opacity: 0.9;
         }
 
 
@@ -446,26 +399,18 @@ export default function ProvenImpact() {
 
         .impact-tags {
           display: flex;
-
           flex-wrap: wrap;
-
           gap: 6px;
-
           margin-top: 12px;
         }
 
 
         .impact-tags span {
           padding: 5px 8px;
-
           background: rgba(255, 255, 255, 0.12);
-
           color: #ffffff;
-
           font-size: 10px;
-
           line-height: 1;
-
           border-radius: 2px;
         }
 
@@ -478,28 +423,22 @@ export default function ProvenImpact() {
           min-height: 400px;
 
           display: flex;
-
           flex-direction: column;
-
           align-items: center;
-
           justify-content: center;
 
           text-align: center;
-
           padding: 24px 18px;
 
           border: 1px solid rgba(255, 255, 255, 0.18);
-
           border-radius: 8px;
 
-          background:
-            radial-gradient(
-              circle at 50% 20%,
-              rgba(255, 255, 255, 0.05),
-              transparent 55%
-            ),
-            #270f28;
+          background: linear-gradient(
+            to bottom right,
+            #70154f 0%,
+            #4a123d 50%,
+            #241126 100%
+          );
         }
 
 
@@ -507,21 +446,16 @@ export default function ProvenImpact() {
           position: relative;
 
           width: 56px;
-
           height: 56px;
 
           display: flex;
-
           align-items: center;
-
           justify-content: center;
 
           margin-bottom: 14px;
 
           border-radius: 10px;
-
           background: rgba(255, 255, 255, 0.08);
-
           border: 1px solid rgba(255, 255, 255, 0.12);
 
           color: #ffffff;
@@ -530,72 +464,51 @@ export default function ProvenImpact() {
 
         .more-industries-icon span:nth-child(1) {
           position: absolute;
-
           top: 10px;
-
           left: 21px;
-
           font-size: 14px;
         }
 
 
         .more-industries-icon span:nth-child(2) {
           position: absolute;
-
           bottom: 10px;
-
           left: 13px;
-
           font-size: 11px;
         }
 
 
         .more-industries-icon span:nth-child(3) {
           position: absolute;
-
           bottom: 10px;
-
           right: 12px;
-
           font-size: 11px;
         }
 
 
         .more-industries-card h3 {
           margin: 0;
-
           color: #ffffff;
-
           font-size: 24px;
-
           line-height: 1.2;
-
           font-weight: 500;
         }
 
 
         .more-industries-card p {
           margin: 9px 0 0;
-
           color: #ffffff;
-
           font-size: 17px;
-
           line-height: 1.5;
-
           font-weight: 400;
         }
 
 
         .more-industries-card a {
           margin-top: 17px;
-
           color: #ffffff;
-
           text-decoration: none;
-
           font-size: 13px;
-
           font-weight: 500;
         }
 
@@ -613,29 +526,25 @@ export default function ProvenImpact() {
 
           .proven-impact-container {
             max-width: 1100px;
-
             padding: 0 20px;
           }
 
 
           .proven-impact-title-wrap {
-            transform: translateX(-25px);
+            transform: translateX(-35px);
           }
 
 
           .proven-impact-grid {
-            transform: translateX(-25px);
-
-            width: calc(100% - 25px);
+            transform: translateX(-35px);
+            width: calc(100% - 35px);
 
             grid-template-columns:
               minmax(0, 0.92fr)
               minmax(0, 0.92fr)
               minmax(0, 0.88fr);
 
-            /* TABLET GAP */
             column-gap: 30px;
-
             row-gap: 30px;
           }
 
@@ -651,6 +560,7 @@ export default function ProvenImpact() {
 
 
           .impact-image-wrap {
+            width: 100%;
             height: 190px;
           }
 
@@ -677,16 +587,36 @@ export default function ProvenImpact() {
 
 
         /* =====================================================
-           950px
+           IPAD PRO / 951px - 1100px
+           KEEP CONTENT FULLY INSIDE SCREEN
         ===================================================== */
 
-        @media (max-width: 950px) {
+        @media (min-width: 951px) and (max-width: 1100px) {
+
+          .proven-impact-title-wrap {
+            transform: none;
+          }
+
+
+          .proven-impact-grid {
+            transform: none;
+            width: 100%;
+            column-gap: 24px;
+          }
+        }
+
+
+        /* =====================================================
+           MEDIUM DEVICES: 701px - 950px
+           3 CARDS + BUTTON ON RIGHT
+        ===================================================== */
+
+        @media (max-width: 950px) and (min-width: 701px) {
 
           .proven-impact-header {
-            align-items: flex-start;
-
-            flex-direction: column;
-
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
             gap: 18px;
           }
 
@@ -697,40 +627,127 @@ export default function ProvenImpact() {
 
 
           .view-industries-btn {
-            align-self: flex-start;
+            align-self: flex-end;
+            margin-left: auto;
           }
 
 
           .proven-impact-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+              minmax(0, 1fr)
+              minmax(0, 1fr)
+              minmax(0, 1fr);
 
             transform: none;
-
             width: 100%;
 
-            /* GAP */
-            column-gap: 30px;
+            column-gap: 18px;
+            row-gap: 0;
+          }
 
-            row-gap: 30px;
+
+          .impact-image-wrap {
+            width: 100%;
+            height: 175px;
+          }
+
+
+          .impact-card-content {
+            min-height: 190px;
+            padding: 14px;
+          }
+
+
+          .impact-card-content h3 {
+            font-size: 18px;
+            line-height: 1.2;
+          }
+
+
+          .impact-card-content p {
+            font-size: 14px;
+            line-height: 1.4;
+          }
+
+
+          .impact-tags {
+            gap: 5px;
+            margin-top: 10px;
+          }
+
+
+          .impact-tags span {
+            font-size: 9px;
+            padding: 5px 6px;
+          }
+
+
+          .impact-image-label {
+            left: 12px;
+            bottom: 11px;
+            font-size: 11px;
+          }
+
+
+          .industry-icon {
+            font-size: 15px;
           }
 
 
           .more-industries-card {
-            grid-column: 1 / -1;
+            grid-column: auto;
+            min-height: 365px;
+            padding: 20px 12px;
+          }
 
-            min-height: 240px;
+
+          .more-industries-card h3 {
+            font-size: 20px;
+          }
+
+
+          .more-industries-card p {
+            font-size: 14px;
+            line-height: 1.45;
+          }
+
+
+          .more-industries-card a {
+            font-size: 12px;
+            margin-top: 14px;
+          }
+
+
+          .more-industries-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 12px;
           }
         }
 
 
         /* =====================================================
-           700px
+           LAPTOP + XL
+           CARDS END EXACTLY WITH BUTTON RIGHT EDGE
+        ===================================================== */
+
+        @media (min-width: 951px) {
+
+          .proven-impact-grid {
+            width: 100%;
+            column-gap: clamp(28px, 3.35vw, 40px);
+          }
+        }
+
+
+        /* =====================================================
+           MOBILE
         ===================================================== */
 
         @media (max-width: 700px) {
 
           .proven-impact-section {
-            padding: 24px 0 38px;
+            padding: 30px 0 44px;
           }
 
 
@@ -739,15 +756,31 @@ export default function ProvenImpact() {
           }
 
 
+          /* FIX: prevent header content from getting cut */
+          .proven-impact-header {
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 18px;
+          }
+
+
+          .proven-impact-title-wrap {
+            transform: none;
+            width: 100%;
+          }
+
+
           .proven-impact-title-wrap h2 {
             font-size: 34px;
+            overflow-wrap: break-word;
           }
 
 
           .proven-impact-subtitle {
             font-size: 15px;
-
             line-height: 1.45;
+            max-width: 100%;
           }
 
 
@@ -758,31 +791,35 @@ export default function ProvenImpact() {
 
           .view-industries-btn {
             width: 100%;
+            min-width: 0;
           }
 
 
           .proven-impact-grid {
             grid-template-columns: 1fr;
-
             transform: none;
-
             width: 100%;
-
             column-gap: 0;
-
-            /* MOBILE GAP */
             row-gap: 20px;
           }
 
 
           .impact-image-wrap {
-            height: 220px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+          }
+
+
+          .impact-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
 
 
           .impact-card-content {
             min-height: auto;
-
             padding: 16px;
           }
 
@@ -799,7 +836,6 @@ export default function ProvenImpact() {
 
           .more-industries-card {
             grid-column: auto;
-
             min-height: 270px;
           }
         }
@@ -812,7 +848,7 @@ export default function ProvenImpact() {
         @media (max-width: 480px) {
 
           .proven-impact-section {
-            padding: 22px 0 34px;
+            padding: 28px 0 40px;
           }
 
 
@@ -823,7 +859,6 @@ export default function ProvenImpact() {
 
           .proven-impact-title-wrap h2 {
             font-size: 30px;
-
             letter-spacing: -0.8px;
           }
 
@@ -835,13 +870,38 @@ export default function ProvenImpact() {
 
           .proven-impact-label p {
             font-size: 10px;
-
             letter-spacing: 1.1px;
           }
 
 
           .impact-image-wrap {
-            height: 200px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+          }
+
+
+          .impact-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+
+          .impact-image-label {
+            left: 12px;
+            bottom: 10px;
+            font-size: 11px;
+          }
+
+
+          .industry-icon {
+            font-size: 15px;
+          }
+
+
+          .impact-card-content {
+            padding: 14px;
           }
 
 
@@ -862,7 +922,6 @@ export default function ProvenImpact() {
 
           .more-industries-card {
             min-height: 250px;
-
             padding: 20px 15px;
           }
 
@@ -879,9 +938,81 @@ export default function ProvenImpact() {
 
           .more-industries-icon {
             width: 52px;
-
             height: 52px;
           }
+        }
+
+
+        /* =====================================================
+           360px / IPHONE SE
+        ===================================================== */
+
+        @media (max-width: 360px) {
+
+          .proven-impact-container {
+            padding: 0 12px;
+          }
+
+
+          .proven-impact-header {
+            gap: 16px;
+          }
+
+
+          .proven-impact-title-wrap h2 {
+            font-size: 27px;
+            line-height: 1.08;
+          }
+
+
+          .proven-impact-subtitle {
+            font-size: 13px;
+            line-height: 1.45;
+          }
+
+
+          .impact-image-wrap {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+          }
+
+
+          .impact-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+
+          .impact-image-label {
+            left: 12px;
+            bottom: 10px;
+            font-size: 11px;
+          }
+
+
+          .industry-icon {
+            font-size: 15px;
+          }
+
+
+          .impact-card-content {
+            padding: 14px;
+          }
+
+
+          .impact-card-content h3 {
+            font-size: 18px;
+            line-height: 1.2;
+          }
+
+
+          .impact-card-content p {
+            font-size: 13px;
+            line-height: 1.4;
+          }
+
         }
 
       `}</style>

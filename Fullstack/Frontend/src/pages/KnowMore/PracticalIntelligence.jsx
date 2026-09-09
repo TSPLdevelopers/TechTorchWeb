@@ -284,7 +284,7 @@ export default function PracticalIntelligence() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 17px;
+          font-size: 15px;
 
           line-height: 1.55;
 
@@ -334,7 +334,7 @@ export default function PracticalIntelligence() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 38px;
+          font-size: 26px;
 
           line-height: 1;
 
