@@ -1,546 +1,321 @@
-import React from "react";
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaFacebookF,
-} from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { ArrowRight } from "lucide-react";
+
+const LOGO_IMAGE = "/Footerlogo.png";
+
+const EXPLORE_LINKS = [
+  "Industries",
+  "Services",
+  "Products",
+  "Digital Solutions",
+  "Case Studies",
+];
+
+const COMPANY_LINKS = [
+  "About Us",
+  "Careers",
+  "Company Profile – IT Services",
+  "IT Staff Augmentation",
+  "Contact Us",
+];
+
+const LEGAL_LINKS = [
+  "Terms of Use",
+  "Accessibility",
+  "Privacy",
+  "Refund Policy",
+  "Cancellation Policy",
+];
+
+const SocialIcon = ({ children, label }) => (
+  <a
+    href="#"
+    aria-label={label}
+    className="group flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#6b1345] transition-all duration-300 hover:-translate-y-1 hover:bg-white/90 hover:shadow-lg"
+  >
+    {children}
+  </a>
+);
+
+/* ================= INSTAGRAM ================= */
+
+function InstagramIcon() {
+  return (
+    <svg
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+
+      <circle
+        cx="12"
+        cy="12"
+        r="4.2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+
+      <circle
+        cx="17.5"
+        cy="6.5"
+        r="1.15"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+/* ================= LINKEDIN ================= */
+
+function LinkedInIcon() {
+  return (
+    <svg
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M6.5 8.5V18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M6.5 5.5V5.51"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M11 18V12.5C11 10.84 12.34 9.5 14 9.5C15.66 9.5 17 10.84 17 12.5V18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+
+      <path
+        d="M11 13V18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+/* ================= FACEBOOK ================= */
+
+function FacebookIcon() {
+  return (
+    <svg
+      width="19"
+      height="19"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M13.6 21V13.1H16.2L16.6 10H13.6V8C13.6 7.1 13.9 6.5 15.1 6.5H16.7V3.7C16.4 3.65 15.5 3.5 14.5 3.5C11.8 3.5 10 5.15 10 8.15V10H7.3V13.1H10V21H13.6Z" />
+    </svg>
+  );
+}
+
+/* ================= X / TWITTER ================= */
+
+function XIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M18.9 2.5H22L15.2 10.25L23.2 21.5H16.9L12 14.7L6.05 21.5H2.95L10.15 13.25L2.5 2.5H8.95L13.4 8.75L18.9 2.5ZM17.8 19.5H19.55L7.95 4.4H6.05L17.8 19.5Z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-container">
+    <footer className="w-full bg-gradient-to-br from-[#7a1750] to-[#5c0f3d] text-white">
+      <div className="mx-auto max-w-6xl px-6 pt-16 pb-8">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
 
-        {/* ================= TOP SECTION ================= */}
-        <div className="footer-top">
+          {/* ================= BRAND ================= */}
 
-          {/* LEFT - LOGO + SOCIAL */}
-          <div className="footer-brand">
-            <img
-              src="/Footerlogo.png"
-              alt="TechTorch Solutions"
-              className="footer-logo"
-            />
+          <div>
+            <div className="mb-6">
+              <img
+                src={LOGO_IMAGE}
+                alt="TechTorch Solutions"
+                className="h-auto w-[180px] object-contain"
+              />
+            </div>
 
-            <h3>Follow Us</h3>
+            <h3 className="mb-4 text-xl font-semibold leading-snug">
+              Technology. Expertise. Progress.
+            </h3>
 
-            <div className="social-icons">
-              <a href="#" aria-label="Instagram">
-                <FaInstagram />
-              </a>
+            <p className="mb-6 max-w-[260px] text-[15px] leading-relaxed text-white/70">
+              We bring technology, expertise and people together to solve
+              real business challenges and create practical digital
+              solutions.
+            </p>
 
-              <a href="#" aria-label="LinkedIn">
-                <FaLinkedinIn />
-              </a>
+            {/* SOCIAL ICONS */}
 
-              <a href="#" aria-label="Facebook">
-                <FaFacebookF />
-              </a>
+            <div className="flex items-center gap-3">
+              <SocialIcon label="Instagram">
+                <InstagramIcon />
+              </SocialIcon>
 
-              <a href="#" aria-label="X / Twitter">
-                <FaXTwitter />
-              </a>
+              <SocialIcon label="LinkedIn">
+                <LinkedInIcon />
+              </SocialIcon>
+
+              <SocialIcon label="Facebook">
+                <FacebookIcon />
+              </SocialIcon>
+
+              <SocialIcon label="X (Twitter)">
+                <XIcon />
+              </SocialIcon>
             </div>
           </div>
 
+          {/* ================= EXPLORE ================= */}
 
-          {/* ================= INDUSTRIES ================= */}
-          <div className="footer-column industries-column">
-            <a href="#">Industries</a>
-            <a href="#">Services</a>
-            <a href="#">Products</a>
-            <a href="#">Digital Solutions</a>
-            <a href="#">Contact Us</a>
+          <div>
+            <h4 className="mb-5 text-[16px] font-semibold">
+              Explore
+            </h4>
+
+            <ul className="flex flex-col gap-4">
+              {EXPLORE_LINKS.map((link) => (
+                <li key={link}>
+                  <a
+                    href="#"
+                    className="text-[15px] text-white/80 transition-colors hover:text-white"
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
+          {/* ================= COMPANY ================= */}
 
-          {/* ================= IMPORTANT LINKS ================= */}
-          <div className="footer-column important-links">
-            <h2>Important Links</h2>
+          <div>
+            <h4 className="mb-5 text-[16px] font-semibold">
+              Company
+            </h4>
 
-            <a href="#">Case Studies</a>
-            <a href="#">Career</a>
-            <a href="#">Company Profile-IT Services</a>
+            <ul className="flex flex-col gap-4">
+              {COMPANY_LINKS.map((link) => (
+                <li key={link}>
+                  <a
+                    href="#"
+                    className="text-[15px] text-white/80 transition-colors hover:text-white"
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <a href="#">
-              Company Profile-IT Staff
-              <br />
-              Augmentation
+          {/* ================= CTA ================= */}
+
+          <div>
+            <h4 className="mb-4 text-[18px] font-semibold">
+              Let's build what's next.
+            </h4>
+
+            <p className="mb-4 text-[15px] leading-relaxed text-white/70">
+              Have a project, technology requirement or business challenge?
+              Let's talk.
+            </p>
+
+            <a
+              href="#"
+              className="mb-5 inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-wide transition-all hover:gap-3"
+            >
+              Talk to our experts
+              <ArrowRight size={16} />
             </a>
-          </div>
 
+            <div className="flex flex-col gap-1 text-[15px] text-white/80">
+              <a
+                href="#"
+                className="transition-colors hover:text-white"
+              >
+                www.techtorch.solutions
+              </a>
+
+              <a
+                href="#"
+                className="transition-colors hover:text-white"
+              >
+                +91 581 350 0381
+              </a>
+            </div>
+          </div>
         </div>
 
+        {/* ================= DISCLAIMER ================= */}
 
-        {/* ================= COPYRIGHT ================= */}
-        <div className="footer-bottom">
-
-          <p className="copyright">
-            ©2024–2026 TechTorch Solutions Private Limited. All rights reserved.
+        <div className="mt-14 border-t border-white/20 pt-6">
+          <p className="max-w-4xl text-[13px] leading-relaxed text-white/70">
+            Disclaimer: The information provided on this website is for
+            general informational purposes only. TechTorch Solutions reserves
+            the right to modify services, offerings, and specifications
+            without prior notice. Case studies and performance metrics
+            represent past engagements and do not guarantee future results.
+            All trademarks, logos, and service marks displayed are the
+            property of TechTorch Solutions or their respective owners.
           </p>
-
-          <p className="disclaimer">
-            This website is provided for general information and contact
-            purposes only. References to technologies, industries, brands,
-            products, or services are descriptive and do not imply ownership,
-            endorsement, or affiliation unless stated. Nothing on this website
-            constitutes a binding offer, commitment, or contractual obligation.
-            Services are subject to applicable agreements.
-          </p>
-
-
-          {/* ================= BOTTOM LINKS ================= */}
-          <div className="legal-links">
-            <a href="#">Terms of use</a>
-            <a href="#">Accessibility</a>
-            <a href="#">Privacy</a>
-            <a href="#">Refund Policy</a>
-            <a href="#">Cancellation Policy</a>
-          </div>
-
         </div>
 
+        {/* ================= BOTTOM ================= */}
+
+        <div className="mt-6 flex flex-col items-start justify-between gap-4 border-t border-white/20 pt-6 sm:flex-row sm:items-center">
+          <p className="text-[13px] text-white/70">
+            © 2024 — 2026 TechTorch Solutions Private Limited. All rights
+            reserved.
+          </p>
+
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {LEGAL_LINKS.map((link) => (
+              <a
+                key={link}
+                href="#"
+                className="text-[13px] text-white/80 transition-colors hover:text-white"
+              >
+                {link}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-
-
-      {/* ================= FOOTER CSS ================= */}
-      <style>{`
-
-        .footer {
-          width: 100%;
-          background: #730042;
-          color: white;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          overflow: hidden;
-        }
-
-
-        .footer-container {
-          width: 100%;
-          padding: 58px 5.8% 34px 8%;
-          box-sizing: border-box;
-        }
-
-
-        /* ================= TOP ================= */
-
-        .footer-top {
-          display: grid;
-          grid-template-columns: 1.15fr 0.5fr 1fr;
-          column-gap: 18%;
-          min-height: 200px;
-        }
-
-
-        /* ================= LOGO ================= */
-
-        .footer-brand {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .footer-logo {
-          width: 230px;
-          height: auto;
-          display: block;
-          object-fit: contain;
-          margin-bottom: 44px;
-          margin-left: -8px;
-        }
-
-        .footer-brand h3 {
-          margin: 0 0 15px;
-          font-size: 18px;
-          font-family: "Plus Jakarta Sans";
-          line-height: 1;
-          font-weight: 600;
-        }
-
-
-        /* ================= SOCIAL ================= */
-
-        .social-icons {
-          display: flex;
-          align-items: center;
-          gap: 26px;
-          padding-left: 3px;
-        }
-
-        .social-icons a {
-          width: 26px;
-          height: 42px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          text-decoration: none;
-          transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-
-        .social-icons svg {
-          width: 32px;
-          height: 32px;
-          display: block;
-        }
-
-        .social-icons a:hover {
-          opacity: 0.75;
-          transform: translateY(-2px);
-        }
-
-
-        /* ================= COLUMNS ================= */
-
-        .footer-column {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-
-        /* INDUSTRIES */
-
-        .industries-column a {
-          color: white;
-          text-decoration: none;
-          font-size: 18px;
-          font-family: "Inter";
-          line-height: 0.8;
-          font-weight: 500;
-          margin-bottom: 29px;
-        }
-
-
-        /* IMPORTANT LINKS */
-
-        .footer-column h2 {
-          margin: 0 0 29px;
-          font-size: 20px;
-          font-family:"Inter";
-          line-height: 0.8;
-          font-weight: 500;
-          color: white;
-        }
-
-        .important-links h2 {
-          margin-bottom: 22px;
-        }
-
-        .important-links a {
-          color: white;
-          text-decoration: none;
-          font-size: 17px;
-          font-family: "Inter", sans-serif;
-          line-height: 1.25;
-          font-weight: 500;
-          margin-bottom: 20px;
-        }
-
-
-        /* ================= BOTTOM LINKS ================= */
-
-        .legal-links {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 30px;
-          margin-top: 96px;
-          padding-right: 50px;
-        }
-
-        .legal-links a {
-          color: white;
-          text-decoration: none;
-          font-size: 17px;
-          font-weight: 500;
-          white-space: nowrap;
-        }
-
-
-        /* ONLY BOTTOM LEGAL LINKS GET UNDERLINE */
-
-        .legal-links a:hover {
-          text-decoration: underline;
-          text-underline-offset: 5px;
-        }
-
-
-        /* ================= BOTTOM ================= */
-
-        .footer-bottom {
-          width: 100%;
-        }
-
-        .copyright {
-          margin: 0 0 32px;
-          font-size: 16px;
-          font-family: "Inter", sans-serif;
-          line-height: 1.3;
-          font-weight: 400;
-          position: relative;
-          transform: translateY(60px);
-        }
-
-        .disclaimer {
-          margin: 0;
-          max-width: 1240px;
-          font-size: 16px;
-          font-family: "Inter", sans-serif;
-          line-height: 1.28;
-          font-weight: 400;
-          position: relative;
-          transform: translateY(60px);
-        }
-
-
-        /* ================= TABLET / MEDIUM ================= */
-
-        @media (max-width: 1024px) {
-
-          .footer-container {
-            padding: 42px 5%;
-          }
-
-          /*
-            Brand occupies the first row.
-            Industries + Important Links stay together
-            in the second row.
-          */
-          .footer-top {
-            grid-template-columns: 1fr 1fr;
-            gap: 60px 50px;
-            min-height: auto;
-            margin-bottom: 80px;
-          }
-
-          .footer-brand {
-            grid-column: 1 / -1;
-          }
-
-          .footer-logo {
-            width: 210px;
-          }
-
-          /*
-            Keep Industries and Important Links
-            visually balanced on medium screens.
-          */
-          .industries-column a {
-            font-size: 20px;
-            margin-bottom: 29px;
-          }
-
-          .footer-column h2 {
-            font-size: 20px;
-            margin-bottom: 22px;
-          }
-
-          .important-links a {
-            font-size: 20px;
-            margin-bottom: 20px;
-          }
-
-          .copyright {
-            font-size: 20px;
-            transform: translateY(10px);
-          }
-
-          .disclaimer {
-            font-size: 19px;
-            transform: translateY(15px);
-          }
-
-          .legal-links {
-            justify-content: flex-start;
-            margin-top: 50px;
-          }
-
-          .legal-links a {
-            font-size: 18px;
-          }
-        }
-
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 640px) {
-
-          .footer-container {
-            padding: 36px 24px 28px;
-          }
-
-          .footer-top {
-            display: flex;
-            flex-direction: column;
-            gap: 42px;
-            margin-bottom: 45px;
-          }
-
-          .footer-brand {
-            width: 100%;
-          }
-
-          .footer-logo {
-            width: 190px;
-            margin-bottom: 32px;
-          }
-
-          .footer-brand h3 {
-            font-size: 23px;
-            margin-bottom: 20px;
-          }
-
-
-          /* Slightly smaller social icons */
-
-          .social-icons {
-            gap: 22px;
-            padding-left: 0;
-          }
-
-          .social-icons a {
-            width: 30px;
-            height: 30px;
-          }
-
-          .social-icons svg {
-            width: 30px;
-            height: 30px;
-          }
-
-
-          /*
-            Industries and Important Links remain
-            visually similar in size.
-          */
-
-          .industries-column a {
-            font-size: 20px;
-            margin-bottom: 22px;
-          }
-
-          .footer-column h2 {
-            font-size: 20px;
-            margin-bottom: 22px;
-          }
-
-          .important-links a {
-            font-size: 20px;
-            margin-bottom: 18px;
-          }
-
-
-          /* Bottom content */
-
-          .copyright {
-            font-size: 18px;
-            line-height: 1.4;
-            margin-bottom: 24px;
-            transform: translateY(10px);
-          }
-
-          .disclaimer {
-            font-size: 17px;
-            line-height: 1.45;
-            transform: translateY(15px);
-          }
-
-
-          /* Move final links upward */
-
-          .legal-links {
-            justify-content: flex-start;
-            gap: 14px 20px;
-            margin-top: 25px;
-            padding-right: 0;
-          }
-
-          .legal-links a {
-            font-size: 16px;
-          }
-        }
-
-
-        /* ================= SMALL MOBILE ================= */
-
-        @media (max-width: 400px) {
-
-          .footer-container {
-            padding-left: 18px;
-            padding-right: 18px;
-          }
-
-          .footer-logo {
-            width: 175px;
-          }
-
-          .footer-brand h3 {
-            font-size: 22px;
-          }
-
-
-          /* Smaller social icons */
-
-          .social-icons {
-            gap: 18px;
-          }
-
-          .social-icons a {
-            width: 30px;
-            height: 30px;
-          }
-
-          .social-icons svg {
-            width: 27px;
-            height: 27px;
-          }
-
-
-          /*
-            Keep all footer sections balanced.
-            No section becomes disproportionately large.
-          */
-
-          .industries-column a {
-            font-size: 18px;
-            margin-bottom: 20px;
-          }
-
-          .footer-column h2 {
-            font-size: 18px;
-            margin-bottom: 20px;
-          }
-
-          .important-links a {
-            font-size: 18px;
-            margin-bottom: 17px;
-          }
-
-
-          .copyright {
-            font-size: 16px;
-            transform: translateY(20px);
-          }
-
-          .disclaimer {
-            font-size: 15px;
-            transform: translateY(20px);
-          }
-
-
-          .legal-links {
-            margin-top: 20px;
-            gap: 12px 18px;
-          }
-
-          .legal-links a {
-            font-size: 14px;
-          }
-        }
-
-      `}</style>
     </footer>
   );
 }

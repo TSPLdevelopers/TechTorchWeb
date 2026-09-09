@@ -119,7 +119,8 @@ export default function TechnologyMovesForward() {
                 max-w-[560px]
                 font-['Inter']
                 text-[14px]
-                font-normal
+                font-light
+                
                 leading-[1.5]
                 text-white
 

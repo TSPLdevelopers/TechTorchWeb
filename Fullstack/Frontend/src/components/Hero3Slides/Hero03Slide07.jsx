@@ -1,284 +1,411 @@
 import React from "react";
 
-// Images
 import bgImage from "/bgslide07.png";
 import photoImage from "/hero03slide07.png";
 
 export default function BusinessChallengeSection() {
   return (
-    <section
-      className="business-challenge-section"
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        padding: "55px 80px",
-        background: "#ffffff",
-        backgroundImage: `url(${bgImage})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "right bottom",
-        backgroundSize: "55% auto",
-        fontFamily: "'Plus Jakarta Sans', sans-serif",
-      }}
-    >
-      <div
-        className="business-challenge-container"
-        style={{
-          position: "relative",
-          zIndex: 2,
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "space-between",
-          maxWidth: "1300px",
-          margin: "0 auto",
-          gap: "60px",
-        }}
-      >
-        {/* ================= TEXT ================= */}
-        <div
-          className="business-challenge-content"
-          style={{
-            maxWidth: "480px",
-            flex: "1 1 380px",
-          }}
-        >
-          {/* ================= HEADING ================= */}
-          <h1
-            className="business-challenge-heading"
-            style={{
-              fontSize: "40px",
-              lineHeight: 1.2,
-              fontWeight: 700,
-              color: "#1a1a1a",
-              transform: "translateY(-15px)",
-              margin: "0 0 30px 0",
-            }}
-          >
+    <section className="business-challenge-section">
+      <div className="business-challenge-container">
+
+        {/* ================= TEXT CONTENT ================= */}
+        <div className="business-challenge-content">
+          <h1 className="business-challenge-heading">
             Have a Business
             <br />
             Challenge to Solve
           </h1>
 
-          {/* ================= PARAGRAPH 1 ================= */}
-          <p
-            className="business-challenge-paragraph"
-            style={{
-              fontSize: "16px",
-              lineHeight: 1.7,
-              color: "#4a4a4a",
-              maxWidth: "400px",
-              margin: "15px 0 20px 0",
-            }}
-          >
-            Whether you're planning a new application, modernizing an
-            existing system or looking for a better way to manage a business
-            process, the right place to start is with the problem.
+          <p className="business-challenge-paragraph">
+            Whether you're planning a new application, modernizing an existing
+            system or looking for a better way to manage a business process,
+            the right place to start is with the problem.
           </p>
 
-          {/* ================= PARAGRAPH 2 ================= */}
-          <p
-            className="business-challenge-paragraph"
-            style={{
-              fontSize: "16px",
-              lineHeight: 1.7,
-              color: "#4a4a4a",
-              maxWidth: "400px",
-              margin: "0 0 20px 0",
-            }}
-          >
+          <p className="business-challenge-paragraph">
             We'll work with you to understand the opportunity, define a
             practical solution and build software that fits the way your
             business works.
           </p>
 
-          {/* ================= BUTTON ================= */}
-          <a
-            href="#"
-            className="business-challenge-button"
-            style={{
-              display: "inline-block",
-              marginTop: "42px",
-              background: "#7a1338",
-              color: "#ffffff",
-              fontSize: "16px",
-              fontWeight: 600,
-              padding: "14px 30px",
-              borderRadius: "6px",
-              textDecoration: "none",
-              border: "none",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = "#5c0e2a";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = "#7a1338";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
-          >
+          <a href="#" className="business-challenge-button">
             Talk to Experts
           </a>
         </div>
 
         {/* ================= IMAGE ================= */}
-        <div
-          className="business-challenge-image-wrapper"
-          style={{
-            flex: "1 1 340px",
-            maxWidth: "620px",
-            transform: "translateX(40px)",
-          }}
-        >
+        <div className="business-challenge-image-wrapper">
           <img
             className="business-challenge-image"
             src={photoImage}
             alt="Team discussing business challenge"
-            style={{
-              width: "100%",
-              height: "520px",
-              display: "block",
-              objectFit: "cover",
-              borderRadius: "18px",
-              boxShadow: "0 25px 50px rgba(122, 19, 56, 0.15)",
-            }}
           />
         </div>
+
       </div>
 
-      {/* ================= RESPONSIVE CSS ================= */}
       <style>{`
-        /* ================= LARGE LAPTOP ================= */
+        /* ================= MAIN SECTION ================= */
+
+        .business-challenge-section {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+
+          padding: 55px 80px;
+
+          background-color: #ffffff;
+          background-image: url(${bgImage});
+          background-repeat: no-repeat;
+          background-position: right bottom;
+          background-size: 55% auto;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          box-sizing: border-box;
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .business-challenge-container {
+          position: relative;
+          z-index: 2;
+
+          width: 100%;
+          max-width: 1300px;
+
+          margin: 0 auto;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 60px;
+        }
+
+
+        /* ================= LEFT CONTENT ================= */
+
+        .business-challenge-content {
+          flex: 1 1 420px;
+
+          width: 100%;
+          max-width: 500px;
+
+          /* Halka sa right shift */
+          transform: translateX(15px);
+        }
+
+
+        /* ================= HEADING ================= */
+
+        .business-challenge-heading {
+          margin: 0 0 30px;
+
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 1.2;
+
+          color: #1a1a1a;
+        }
+
+
+        /* ================= PARAGRAPH ================= */
+
+        .business-challenge-paragraph {
+          max-width: 420px;
+
+          margin: 0 0 20px;
+
+          font-size: 16px;
+          line-height: 1.7;
+
+          color: #4a4a4a;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .business-challenge-button {
+          display: inline-flex;
+
+          align-items: center;
+          justify-content: center;
+
+          margin-top: 25px;
+
+          padding: 14px 30px;
+
+          background: #7a1338;
+          color: #ffffff;
+
+          font-size: 16px;
+          font-weight: 600;
+
+          text-decoration: none;
+
+          border-radius: 6px;
+
+          transition:
+            background 0.25s ease,
+            transform 0.25s ease;
+        }
+
+        .business-challenge-button:hover {
+          background: #5c0e2a;
+          transform: translateY(-2px);
+        }
+
+
+        /* ================= IMAGE WRAPPER ================= */
+
+        .business-challenge-image-wrapper {
+          flex: 1 1 420px;
+
+          width: 100%;
+          max-width: 620px;
+
+          transform: translateX(40px);
+        }
+
+
+        /* ================= IMAGE ================= */
+
+        .business-challenge-image {
+          display: block;
+
+          width: 100%;
+          height: auto;
+
+          min-height: 420px;
+          max-height: 520px;
+
+          object-fit: cover;
+
+          border-radius: 18px;
+
+          box-shadow:
+            0 25px 50px rgba(122, 19, 56, 0.15);
+        }
+
+
+        /* =====================================================
+           LARGE LAPTOP
+        ====================================================== */
+
         @media (max-width: 1200px) {
+
           .business-challenge-section {
-            padding: 55px 50px !important;
-            background-size: 60% auto !important;
+            padding: 55px 50px;
+            background-size: 60% auto;
           }
 
           .business-challenge-container {
-            gap: 40px !important;
-          }
-
-          .business-challenge-image-wrapper {
-            max-width: 560px !important;
-            transform: translateX(20px) !important;
-          }
-
-          .business-challenge-image {
-            height: 480px !important;
-          }
-        }
-
-        /* ================= TABLET ================= */
-        @media (max-width: 900px) {
-          .business-challenge-section {
-            padding: 50px 35px !important;
-            background-size: 70% auto !important;
-          }
-
-          .business-challenge-container {
-            gap: 35px !important;
+            gap: 45px;
           }
 
           .business-challenge-content {
-            flex: 1 1 320px !important;
-          }
-
-          .business-challenge-heading {
-            font-size: 34px !important;
+            max-width: 460px;
+            transform: translateX(10px);
           }
 
           .business-challenge-image-wrapper {
-            flex: 1 1 320px !important;
-            max-width: 480px !important;
-            transform: translateX(0) !important;
+            max-width: 540px;
+            transform: translateX(20px);
+          }
+
+          .business-challenge-heading {
+            font-size: 38px;
           }
 
           .business-challenge-image {
-            height: 430px !important;
+            min-height: 400px;
+            max-height: 480px;
           }
         }
 
-        /* ================= MOBILE ================= */
+
+        /* =====================================================
+           TABLET / SMALL LAPTOP
+        ====================================================== */
+
+        @media (max-width: 950px) {
+
+          .business-challenge-section {
+            padding: 50px 35px;
+            background-size: 65% auto;
+          }
+
+          .business-challenge-container {
+            gap: 35px;
+          }
+
+          .business-challenge-content {
+            flex: 1 1 330px;
+            max-width: 430px;
+
+            transform: translateX(5px);
+          }
+
+          .business-challenge-image-wrapper {
+            flex: 1 1 330px;
+            max-width: 470px;
+
+            transform: translateX(0);
+          }
+
+          .business-challenge-heading {
+            font-size: 34px;
+          }
+
+          .business-challenge-paragraph {
+            font-size: 15px;
+          }
+
+          .business-challenge-image {
+            min-height: 380px;
+            max-height: 430px;
+          }
+        }
+
+
+        /* =====================================================
+           MOBILE / TABLET PORTRAIT
+        ====================================================== */
+
         @media (max-width: 700px) {
+
           .business-challenge-section {
-            padding: 45px 25px !important;
-            background-size: 100% auto !important;
-            background-position: right bottom !important;
+            padding: 50px 25px;
+
+            background-size: 100% auto;
+            background-position: right bottom;
           }
 
           .business-challenge-container {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 45px !important;
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            gap: 40px;
           }
 
           .business-challenge-content {
-            width: 100% !important;
-            max-width: 100% !important;
-            flex: none !important;
+            flex: none;
+
+            width: 100%;
+            max-width: 100%;
+
+            transform: translateX(0);
           }
 
           .business-challenge-heading {
-            font-size: 32px !important;
-            transform: translateY(0) !important;
-            margin-bottom: 25px !important;
+            font-size: 32px;
+            line-height: 1.22;
+
+            margin-bottom: 25px;
           }
 
           .business-challenge-paragraph {
-            max-width: 100% !important;
-            font-size: 15px !important;
-            line-height: 1.7 !important;
+            width: 100%;
+            max-width: 100%;
+
+            font-size: 15px;
+            line-height: 1.7;
+
+            margin-bottom: 18px;
           }
 
           .business-challenge-button {
-            margin-top: 30px !important;
-            font-size: 15px !important;
-            padding: 13px 26px !important;
+            margin-top: 20px;
+
+            padding: 13px 26px;
+
+            font-size: 15px;
           }
 
           .business-challenge-image-wrapper {
-            width: 100% !important;
-            max-width: 100% !important;
-            flex: none !important;
-            transform: translateX(0) !important;
+            flex: none;
+
+            width: 100%;
+            max-width: 100%;
+
+            transform: translateX(0);
           }
 
           .business-challenge-image {
-            width: 100% !important;
-            height: auto !important;
-            aspect-ratio: 4 / 3 !important;
+            width: 100%;
+
+            min-height: unset;
+            max-height: unset;
+
+            aspect-ratio: 4 / 3;
+
+            object-fit: cover;
           }
         }
 
-        /* ================= SMALL MOBILE ================= */
+
+        /* =====================================================
+           SMALL MOBILE
+        ====================================================== */
+
         @media (max-width: 480px) {
+
           .business-challenge-section {
-            padding: 35px 18px !important;
-          }
-
-          .business-challenge-heading {
-            font-size: 28px !important;
-            line-height: 1.25 !important;
-          }
-
-          .business-challenge-paragraph {
-            font-size: 14px !important;
-            line-height: 1.65 !important;
-          }
-
-          .business-challenge-button {
-            margin-top: 25px !important;
-            padding: 12px 24px !important;
+            padding: 40px 20px;
           }
 
           .business-challenge-container {
-            gap: 35px !important;
+            gap: 32px;
+          }
+
+          .business-challenge-heading {
+            font-size: 28px;
+            line-height: 1.25;
+
+            margin-bottom: 22px;
+          }
+
+          .business-challenge-paragraph {
+            font-size: 14px;
+            line-height: 1.65;
+
+            margin-bottom: 16px;
+          }
+
+          .business-challenge-button {
+            width: auto;
+
+            padding: 12px 23px;
+
+            font-size: 14px;
           }
 
           .business-challenge-image {
-            border-radius: 12px !important;
+            aspect-ratio: 1 / 1;
+
+            border-radius: 14px;
+          }
+        }
+
+
+        /* =====================================================
+           VERY SMALL MOBILE
+        ====================================================== */
+
+        @media (max-width: 360px) {
+
+          .business-challenge-section {
+            padding: 35px 16px;
+          }
+
+          .business-challenge-heading {
+            font-size: 25px;
+          }
+
+          .business-challenge-paragraph {
+            font-size: 13.5px;
           }
         }
       `}</style>

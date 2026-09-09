@@ -4,84 +4,96 @@ const cards = [
   {
     tag: "TECHTORCH VIEW · ARTIFICIAL INTELLIGENCE",
     title: (
-    <>
+      <>
         AI Is Moving Into
-      <br />
-       Everyday Business
-    </>
-  ),
-    desc: "AI is becoming part of everyday business, changing how teams work, make decisions and create better experiences.",
+        <br />
+        Everyday Business
+      </>
+    ),
+    desc:
+      "AI is becoming part of everyday business, changing how teams work, make decisions and create better experiences.",
     bg: "url('sec4.1.png')",
-    bgColor: "#2b2620"
+    bgColor: "#2b2620",
+    link: "/TechTorchView",
   },
   {
     tag: "FIELD NOTE · BUSINESS OPERATIONS",
     title: (
-    <>
-      Better Connections Make
-      <br />
-       Better Work
-    </>
-  ),
-    desc: "When teams, information and processes work together, everyday business becomes easier to manage.",
+      <>
+        Better Connections Make
+        <br />
+        Better Work
+      </>
+    ),
+    desc:
+      "When teams, information and processes work together, everyday business becomes easier to manage.",
     bg: "url('sec4.2.png')",
     bgColor: "#050810",
+    link: "/field-note",
   },
   {
     tag: "THINK AHEAD · EMERGING TECHNOLOGY",
     title: (
-    <>
-      What Comes Next Can Change
-      <br />
-      How We Work
-    </>
-  ),
-    desc: "New technologies are opening up different ways to solve problems, create value and rethink what's possible.",
+      <>
+        What Comes Next Can Change
+        <br />
+        How We Work
+      </>
+    ),
+    desc:
+      "New technologies are opening up different ways to solve problems, create value and rethink what's possible.",
     bg: "url('sec4.3.png')",
     bgColor: "#c9d3da",
+    link: "/think-ahead",
   },
   {
     tag: "IN FOCUS · CYBERSECURITY",
     title: (
-    <>
-      Security Shouldn't Be An
-      <br />
+      <>
+        Security Shouldn't Be An
+        <br />
         Afterthought
-    </>
-  ),
-    desc: "As more work moves online, building security into everyday technology is becoming more important than ever.",
+      </>
+    ),
+    desc:
+      "As more work moves online, building security into everyday technology is becoming more important than ever.",
     bg: "url('sec4.4.png')",
     bgColor: "#04070d",
+    link: "/cyber-security",
   },
   {
     tag: "TECH PULSE · DATA & DECISIONS",
-     title: (
-    <>
-      More Data Doesn't Always Mean 
-      <br />
-      Better Decisions
-    </>
-  ),
-    desc: "Businesses have more data than ever. The real challenge is finding what matters and turning it into useful decisions.",
+    title: (
+      <>
+        More Data Doesn't Always Mean
+        <br />
+        Better Decisions
+      </>
+    ),
+    desc:
+      "Businesses have more data than ever. The real challenge is finding what matters and turning it into useful decisions.",
     bg: "url('sec4.5.png')",
     bgColor: "#020306",
+    link: "/data-decisions",
   },
   {
     tag: "BUSINESS GROWTH",
     title: (
-    <>
-      Technology Should Grow With
-      <br />
-       Your Business
-    </>
-  ),
-    desc: "As business needs change, technology should be flexible enough to adapt, scale and keep supporting what comes next.",
+      <>
+        Technology Should Grow With
+        <br />
+        Your Business
+      </>
+    ),
+    desc:
+      "As business needs change, technology should be flexible enough to adapt, scale and keep supporting what comes next.",
     bg: "url('sec4.6.png')",
     bgColor: "#0a0a0a",
+    link: "/Business-growth",
   },
 ];
 
-function Card({ tag, title, desc, bg, bgColor, imageUrl }) {
+function Card({ tag, title, desc, bg, bgColor, imageUrl, link }) {
   return (
     <div
       className="wn-card"
@@ -94,11 +106,15 @@ function Card({ tag, title, desc, bg, bgColor, imageUrl }) {
     >
       <div className="wn-overlay" />
       <div className="wn-glass" />
+
       <div className="wn-tag">{tag}</div>
+
       <div className="wn-content">
         <h2 className="wn-title">{title}</h2>
+
         <p className="wn-desc">{desc}</p>
-        <a className="wn-read-more" href="#">
+
+        <a className="wn-read-more" href={link}>
           Read More <span>&rarr;</span>
         </a>
       </div>
@@ -114,7 +130,7 @@ export default function WhatsNext() {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    font-family: "Plus Jakarta Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;
     color: #111;
     padding: 60px 40px;
     background: #fff;
