@@ -78,6 +78,7 @@ import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapab
 
 // ================= THINK AHEAD =================
 import ReadSection from "./pages/What'sNext/ThinkAhead/ReadSection.jsx";
+import Technologyarticlesection from "./pages/What'sNext/ThinkAhead/Technologyarticlesection.jsx";
 import EcosystemHeroSection from "./pages/What'sNext/ThinkAhead/Ecosystem.jsx";
 import PerspectiveSection from "./pages/What'sNext/ThinkAhead/Perspectivesection.jsx";
 
@@ -97,7 +98,6 @@ function MainLayout() {
     </>
   );
 }
-
 // =================================================
 // HOME PAGE
 // =================================================
@@ -116,7 +116,6 @@ function Home() {
     </>
   );
 }
-
 // =================================================
 // SLIDE 1 PAGE
 // =================================================
@@ -130,7 +129,6 @@ function Slide1Page() {
     </>
   );
 }
-
 // =================================================
 // SLIDE 2 PAGE
 // =================================================
@@ -146,7 +144,6 @@ function Slide2Page() {
     </>
   );
 }
-
 // =================================================
 // SLIDE 3 PAGE
 // =================================================
@@ -163,7 +160,6 @@ function Slide3Page() {
     </>
   );
 }
-
 // =================================================
 // SLIDE 4 PAGE
 // =================================================
@@ -178,7 +174,6 @@ function Slide4Page() {
     </>
   );
 }
-
 // =================================================
 // SLIDE 5 PAGE
 // =================================================
@@ -192,7 +187,6 @@ function Slide5Page() {
     </>
   );
 }
-
 // =================================================
 // OUR STORY PAGE
 // =================================================
@@ -208,7 +202,6 @@ function PhilosophyPage() {
     </>
   );
 }
-
 // =================================================
 // TECHTORCH VIEW PAGE
 // =================================================
@@ -223,7 +216,6 @@ function WhatNextPage() {
     </>
   );
 }
-
 // =================================================
 // FIELD NOTE PAGE
 // =================================================
@@ -242,12 +234,13 @@ function ThinkAheadPage() {
   return (
     <>
       <ReadSection />
+      <Technologyarticlesection />
+      
       <PerspectiveSection />
       <EcosystemHeroSection />
     </>
   );
 }
-
 // =================================================
 // APP ROUTES
 // =================================================
