@@ -32,7 +32,7 @@ export default function BuildConnectGrow() {
 
           <div className="flex items-center gap-4 mt-14">
             <Link
-              to="/about"
+              to="/KnowMore"
               className="px-6 py-2.5 rounded-md bg-[#8a1538] text-white text-[13px] font-semibold tracking-wide no-underline hover:bg-[#CD166E] transition-colors duration-200"
             >
               KNOW MORE

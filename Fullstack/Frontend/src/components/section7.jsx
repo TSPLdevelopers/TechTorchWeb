@@ -23,6 +23,14 @@ function Eyebrow({ children }) {
         color: colors.ink,
       }}
     >
+      <span
+        style={{
+          display: "block",
+          width: "24px",
+          height: "2px",
+          backgroundColor: colors.brand,
+        }}
+      />
       {children}
     </div>
   );
@@ -101,7 +109,6 @@ function CopyPanel() {
         className="tx-suite"
         style={{
           marginBottom: "20px",
-          
           fontSize: "30px",
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 600,
@@ -131,7 +138,7 @@ function CopyPanel() {
         className="tx-description"
         style={{
           marginBottom: "16px",
-           marginTop: "-10px",
+          marginTop: "-10px",
           fontSize: "17px",
           fontFamily: "Inter",
           maxWidth: "28rem",
@@ -349,7 +356,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-copy {
-            padding-left: 35px !important;
+            padding-left: 45px !important;
             padding-right: 30px !important;
             padding-top: 45px !important;
             padding-bottom: 45px !important;
@@ -405,7 +412,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-copy {
-            padding-left: 50px !important;
+            padding-left: 60px !important;
             padding-right: 35px !important;
             padding-top: 50px !important;
             padding-bottom: 50px !important;
@@ -461,7 +468,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-copy {
-            padding-left: 65px !important;
+            padding-left: 75px !important;
             padding-right: 45px !important;
             padding-top: 60px !important;
             padding-bottom: 60px !important;
@@ -487,7 +494,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-copy {
-            padding-left: 75px !important;
+            padding-left: 85px !important;
             padding-right: 55px !important;
           }
 

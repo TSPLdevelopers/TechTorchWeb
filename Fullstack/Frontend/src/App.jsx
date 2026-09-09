@@ -62,12 +62,27 @@ import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
 import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
 import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
 
+
+// ================= KNOW MORE =================
+import EnterpriseAcceleration from "./pages/KnowMore/EnterpriseAcceleration.jsx";
+import PracticalIntelligence from "./pages/KnowMore/PracticalIntelligence.jsx"
+import ProvenImpact from "./pages/KnowMore/ProvenImpact.jsx";
+import TransformationReady from "./pages/KnowMore/TransformationReady.jsx";
+
+// ================= WHAT'S NEXT =================
+// import TechTorchView from "./pages/What'sNext/TechTorchView.jsx";
+// import Philosophy from "./pages/What'sNext/Philosophy.jsx";
+// import Capabilities from "./pages/What'sNext/Capabilities.jsx";
+// import Methodology from "./pages/What'sNext/DeploymentMethodology.jsx";
+// import ReadyScale from "./pages/What'sNext/ReadyScale.jsx";
+
 // ================= TECHTORCH VIEW =================
 import TechTorchView from "./pages/What'sNext/TechTorchView/TechTorchView.jsx";
 import Philosophy from "./pages/What'sNext/TechTorchView/Philosophy.jsx";
 import Capabilities from "./pages/What'sNext/TechTorchView/Capabilities.jsx";
 import Methodology from "./pages/What'sNext/TechTorchView/DeploymentMethodology.jsx";
 import ReadyScale from "./pages/What'sNext/TechTorchView/ReadyScale.jsx";
+
 
 // ================= FIELD NOTE =================
 import Banner from "./pages/What'sNext/FieldNote/Banner.jsx";
@@ -203,6 +218,23 @@ function PhilosophyPage() {
   );
 }
 // =================================================
+// KNOW MORE PAGE
+// =================================================
+ function KnowMorePage() {
+  return (
+    <>
+     <EnterpriseAcceleration />
+     <TransformationReady />
+    <ProvenImpact />
+     <PracticalIntelligence />
+    </>
+  );
+ }
+
+
+
+
+// =================================================
 // TECHTORCH VIEW PAGE
 // =================================================
 function WhatNextPage() {
@@ -262,11 +294,19 @@ function App() {
         {/* OUR STORY */}
         <Route path="/Philosophy" element={<PhilosophyPage />} />
 
+
+        {/* KNOW MORE*/}
+        <Route path="/KnowMore" element={<KnowMorePage />} />
+
+        {/* WHAT'S NEXT */}
+        {/* <Route path="/WhatNext" element={<WhatNextPage />} /> */}
+
         {/* WHAT'S NEXT - TECHTORCH */}
         <Route
           path="/TechTorchView"
           element={<WhatNextPage />}
         />
+
 
         {/* WHAT'S NEXT - FIELD NOTE */}
         <Route

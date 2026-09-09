@@ -1,14 +1,24 @@
+
 import React from "react";
 
-import backgroundImage from "/Hero5Slide4.png";
+import backgroundImage from "/hero5slide4.png";
 
 export default function BringBusinessTogetherSection() {
   return (
     <section className="business-together-section">
+
+      {/* BACKGROUND IMAGE */}
+      <img
+        src={backgroundImage}
+        alt=""
+        className="business-bg-image"
+      />
+
       {/* Dark Gradient Overlay */}
       <div className="business-overlay" />
 
       <div className="business-content">
+
         {/* TEXT CONTENT */}
         <div className="business-text">
           <h1>Bring Your Business Together</h1>
@@ -35,18 +45,15 @@ export default function BringBusinessTogetherSection() {
         </a>
       </div>
 
+
       <style>{`
+
         .business-together-section {
           position: relative;
-          min-height: 520px;
           width: 100%;
+          min-height: 520px;
 
-          background-image: url(${backgroundImage});
-          background-size: contain;
-          background-position: center;
-          background-repeat: no-repeat;
-
-          background-color: #0a0a0f;
+          background: #0a0a0f;
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
@@ -57,7 +64,32 @@ export default function BringBusinessTogetherSection() {
           box-sizing: border-box;
         }
 
-        /* Overlay */
+
+        /* ================= BACKGROUND IMAGE ================= */
+
+        .business-bg-image {
+          position: absolute;
+
+          /* MAKE IMAGE WIDER */
+          width: 100%;
+          height: auto;
+
+          /* Keep complete image */
+          max-width: none;
+
+          left: 0;
+          top: 50%;
+
+          transform: translateY(-50%);
+
+          object-fit: contain;
+
+          z-index: 0;
+        }
+
+
+        /* ================= OVERLAY ================= */
+
         .business-overlay {
           position: absolute;
           inset: 0;
@@ -71,13 +103,15 @@ export default function BringBusinessTogetherSection() {
               rgba(5,5,10,0) 75%
             );
 
-          z-index: 0;
+          z-index: 1;
         }
 
-        /* Content */
+
+        /* ================= CONTENT ================= */
+
         .business-content {
           position: relative;
-          z-index: 1;
+          z-index: 2;
 
           max-width: 560px;
 
@@ -86,10 +120,11 @@ export default function BringBusinessTogetherSection() {
           box-sizing: border-box;
         }
 
-        /* Text slightly upward */
+
         .business-text {
           transform: translateY(-25px);
         }
+
 
         .business-content h1 {
           font-size: 28px;
@@ -101,6 +136,7 @@ export default function BringBusinessTogetherSection() {
           margin: 0 0 18px 0;
         }
 
+
         .business-content p {
           font-size: 14px;
           line-height: 1.7;
@@ -110,14 +146,17 @@ export default function BringBusinessTogetherSection() {
           margin: 0 0 14px 0;
         }
 
+
         .business-content .business-highlight {
           color: #ffffff;
           font-weight: 700;
 
-          margin-bottom: 3  0px;
+          margin-bottom: 30px;
         }
 
-        /* Button */
+
+        /* ================= BUTTON ================= */
+
         .business-button {
           display: inline-block;
 
@@ -130,14 +169,14 @@ export default function BringBusinessTogetherSection() {
           padding: 12px 22px;
 
           border-radius: 6px;
+
           border: 1px solid rgba(255,255,255,0.6);
 
           text-decoration: none;
 
-          margin-top: 30px;
-
           transition: all 0.3s ease;
         }
+
 
         .business-button:hover {
           background: #ffffff;
@@ -148,6 +187,7 @@ export default function BringBusinessTogetherSection() {
         /* ================= LAPTOP ================= */
 
         @media (max-width: 1200px) {
+
           .business-together-section {
             min-height: 480px;
           }
@@ -155,17 +195,20 @@ export default function BringBusinessTogetherSection() {
           .business-content {
             padding: 40px 55px;
           }
+
         }
 
 
         /* ================= TABLET ================= */
 
         @media (max-width: 900px) {
+
           .business-together-section {
             min-height: 440px;
+          }
 
-            background-size: cover;
-            background-position: center;
+          .business-bg-image {
+            width: 100%;
           }
 
           .business-content {
@@ -176,17 +219,23 @@ export default function BringBusinessTogetherSection() {
           .business-text {
             transform: translateY(-15px);
           }
+
         }
 
 
         /* ================= MOBILE ================= */
 
         @media (max-width: 768px) {
+
           .business-together-section {
             min-height: 480px;
+          }
 
-            background-size: cover;
-            background-position: center;
+          .business-bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
           }
 
           .business-overlay {
@@ -215,16 +264,23 @@ export default function BringBusinessTogetherSection() {
           .business-content p {
             font-size: 14px;
           }
+
         }
 
 
         /* ================= SMALL MOBILE ================= */
 
         @media (max-width: 480px) {
+
           .business-together-section {
             min-height: 500px;
+          }
 
-            background-position: center;
+          .business-bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
           }
 
           .business-content {
@@ -242,12 +298,14 @@ export default function BringBusinessTogetherSection() {
           }
 
           .business-button {
-            margin-top: 25px;
             padding: 11px 18px;
             font-size: 13px;
           }
+
         }
+
       `}</style>
     </section>
   );
 }
+
