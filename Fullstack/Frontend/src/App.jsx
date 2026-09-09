@@ -113,6 +113,7 @@ import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTech
 import PurspectiveSection from "./pages/What'sNext/BusinessGrowth/PursoectiveSection.jsx";
 import ArchitectureSection from "./pages/What'sNext/BusinessGrowth/ArchitectureSection.jsx";
 import MethodologySection from "./pages/What'sNext/BusinessGrowth/MethodologySection.jsx";
+import EcosystemCapabilitiesSection from "./pages/What'sNext/BusinessGrowth/EcosystemCapabilities.jsx";
 
 
 // =================================================
@@ -328,6 +329,7 @@ function BusinessGrowthPage() {
       <PurspectiveSection />  
       <ArchitectureSection />
       <MethodologySection />
+      <EcosystemCapabilitiesSection />
     </>
   );
 }
