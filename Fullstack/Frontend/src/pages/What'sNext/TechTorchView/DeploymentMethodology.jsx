@@ -82,7 +82,7 @@ export default function DeploymentMethodology() {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 md:grid-cols-[1fr_1.4fr]">
         
         {/* Left: intro + image */}
-        <div className="md:-ml-12">
+        <div className="md:-ml-24">
           <h2 className="mb-4 text-[24px] font-bold leading-snug text-slate-900">
             The Deployment Methodology
           </h2>
