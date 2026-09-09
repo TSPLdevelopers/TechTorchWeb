@@ -111,6 +111,8 @@ import WhyTechtorch from "./pages/What'sNext/CyberSecurity/WhyTechtorch.jsx";
 // ================= BUSINESS GROWTH =================
 import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTechnology.jsx";
 import PurspectiveSection from "./pages/What'sNext/BusinessGrowth/PursoectiveSection.jsx";
+import ArchitectureSection from "./pages/What'sNext/BusinessGrowth/ArchitectureSection.jsx";
+import MethodologySection from "./pages/What'sNext/BusinessGrowth/MethodologySection.jsx";
 
 
 // =================================================
@@ -324,6 +326,8 @@ function BusinessGrowthPage() {
     <>
       <GrowWithBusinessSection />
       <PurspectiveSection />  
+      <ArchitectureSection />
+      <MethodologySection />
     </>
   );
 }
