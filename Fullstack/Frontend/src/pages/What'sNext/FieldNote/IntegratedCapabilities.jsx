@@ -33,7 +33,7 @@ return ( <svg width="16" height="16" viewBox="0 0 16 16" fill="none"> <path
 export default function IntegratedCapabilities() {
 return ( <div className="min-h-screen w-full bg-[#F7F6F3] flex items-center justify-center px-6 py-16"> <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 max-w-5xl w-full items-center">
 
-    {/* Content - Left Side */}
+    {/* Content - Left Side */} 
     <div>
       {/* Label - Inter */}
       <span
