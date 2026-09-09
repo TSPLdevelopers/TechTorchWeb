@@ -89,7 +89,7 @@ const cards = [
       "As business needs change, technology should be flexible enough to adapt, scale and keep supporting what comes next.",
     bg: "url('sec4.6.png')",
     bgColor: "#0a0a0a",
-    link: "/business-growth",
+    link: "/Business-growth",
   },
 ];
 
