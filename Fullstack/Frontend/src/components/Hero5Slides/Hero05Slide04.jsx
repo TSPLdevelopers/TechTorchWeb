@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Apni background image yahan daalein (ya seedha URL string bhi de sakte ho)
-import backgroundImage from '/Hero5Slide4.png';
+import backgroundImage from '/hero5slide4.png';
 
 export default function BringBusinessTogetherSection() {
   return (

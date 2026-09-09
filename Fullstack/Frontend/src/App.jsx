@@ -3,14 +3,20 @@ import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 
-// ================= COMPONENTS =================
+// Admin Pages
+import AdminLogin from "./pages/AdminLogin.jsx";
+import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
+import AdminVerifyOTP from "./pages/AdminVerifyOTP.jsx";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
+
+// Components
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Hero2 from "./components/Hero2";
 import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
 import Section5 from "./components/Section5";
-import Section6 from "./components/Section6"
+import Section6 from "./components/Section6";
 import Section7 from "./components/section7";
 import Section8 from "./components/section8";
 import Section9 from "./components/section9";
@@ -20,11 +26,11 @@ import HeroSlide01 from "./components/HeroSlides/HeroSlide01.jsx";
 import HeroSlide02 from "./components/HeroSlides/HeroSlide02.jsx";
 import HeroSlide03 from "./components/HeroSlides/HeroSlide03.jsx";
 import HeroSlide04 from "./components/HeroSlides/HeroSlide04.jsx";
-import Hero02Slide04 from "./components/Hero2Slides/Hero02Slide04.jsx";
 
 import Hero02Slide01 from "./components/Hero2Slides/Hero02Slide01.jsx";
 import Hero02Slide02 from "./components/Hero2Slides/Hero02Slide02.jsx";
 import Hero02Slide03 from "./components/Hero2Slides/Hero02Slide03.jsx";
+import Hero02Slide04 from "./components/Hero2Slides/Hero02Slide04.jsx";
 import Hero02Slide05 from "./components/Hero2Slides/Hero02Slide05.jsx";
 import Hero02Slide06 from "./components/Hero2Slides/Hero02Slide06.jsx";
 
@@ -47,36 +53,29 @@ import Hero05Slide02 from "./components/Hero5Slides/Hero05Slide02.jsx";
 import Hero05Slide03 from "./components/Hero5Slides/Hero05Slide03.jsx";
 import Hero05Slide04 from "./components/Hero5Slides/Hero05Slide04.jsx";
 
-// =================================================
-// HOME PAGE
-// =================================================
+
+// ================= HOME =================
+
 function Home() {
   return (
     <div>
       <Navbar />
-
       <Hero />
-
       <Hero2 />
-
       <Hero3 />
-
       <Section4 />
-
       <Section5 />
-
       <Section6 />
-
       <Section7 />
-
       <Section8 />
-
       <Section9 />
-
       <Footer />
     </div>
   );
 }
+
+
+// ================= SLIDE 1 =================
 
 function Slide1Page() {
   return (
@@ -88,6 +87,9 @@ function Slide1Page() {
     </div>
   );
 }
+
+
+// ================= SLIDE 2 =================
 
 function Slide2Page() {
   return (
@@ -101,6 +103,9 @@ function Slide2Page() {
     </div>
   );
 }
+
+
+// ================= SLIDE 3 =================
 
 function Slide3Page() {
   return (
@@ -116,6 +121,9 @@ function Slide3Page() {
   );
 }
 
+
+// ================= SLIDE 4 =================
+
 function Slide4Page() {
   return (
     <div>
@@ -127,7 +135,11 @@ function Slide4Page() {
     </div>
   );
 }
-  function Slide5Page() {
+
+
+// ================= SLIDE 5 =================
+
+function Slide5Page() {
   return (
     <div>
       <Hero05Slide01 />
@@ -138,20 +150,46 @@ function Slide4Page() {
   );
 }
 
-// =================================================
-// APP
-// =================================================
+
+// ================= APP =================
+
 function App() {
   return (
     <Routes>
 
-      {/* ================= HOME PAGE ================= */}
+      {/* ADMIN PAGES */}
+
+      <Route
+        path="/admin-login"
+        element={<AdminLogin />}
+      />
+
+      <Route
+        path="/admin-forgot-password"
+        element={<AdminForgotPassword />}
+      />
+
+      <Route
+        path="/admin-verify-otp"
+        element={<AdminVerifyOTP />}
+      />
+
+      <Route
+        path="/admin-dashboard"
+        element={<AdminDashboard />}
+      />
+
+
+      {/* HOME */}
+
       <Route
         path="/"
         element={<Home />}
       />
 
-      {/* ================= SLIDE 1 / SOLUTIONS PAGE ================= */}
+
+      {/* SLIDES */}
+
       <Route
         path="/Slide1"
         element={<Slide1Page />}
@@ -172,10 +210,11 @@ function App() {
         element={<Slide4Page />}
       />
 
-       <Route
+      <Route
         path="/Slide5"
         element={<Slide5Page />}
       />
+
     </Routes>
   );
 }
