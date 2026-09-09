@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
-const Admin = require("../models/admin.model");
+const Admin = require("../models/Admin.model");
 const {generateToken} = require("../utils/generateToken");
 const asyncHandler = require("../utils/asyncHandler");
 

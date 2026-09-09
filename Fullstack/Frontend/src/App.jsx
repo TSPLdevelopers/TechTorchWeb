@@ -3,7 +3,14 @@ import "./App.css";
 
 import { Routes, Route, Outlet } from "react-router-dom";
 
-// ================= COMMON COMPONENTS =================
+// Admin Pages
+import AdminLogin from "./pages/AdminLogin.jsx";
+import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
+import AdminVerifyOTP from "./pages/AdminVerifyOTP.jsx";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
+import NewsInsights from "./pages/NewsInsights.jsx";
+
+// Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -54,93 +61,13 @@ import Hero05Slide02 from "./components/Hero5Slides/Hero05Slide02.jsx";
 import Hero05Slide03 from "./components/Hero5Slides/Hero05Slide03.jsx";
 import Hero05Slide04 from "./components/Hero5Slides/Hero05Slide04.jsx";
 
-// ================= OUR STORY =================
-import PhiosophySection from "./pages/OurStory/PhilosophySection.jsx";
-import EnterpriseHero from "./pages/OurStory/EnterpriseReadiness.jsx";
-import ScaleAtSpeed from "./pages/OurStory/ScaleAtSpeed.jsx";
-import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
-import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
-import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
 
-// ================= KNOW MORE =================
-import EnterpriseAcceleration from "./pages/KnowMore/EnterpriseAcceleration.jsx";
-import PracticalIntelligence from "./pages/KnowMore/PracticalIntelligence.jsx";
-import ProvenImpact from "./pages/KnowMore/ProvenImpact.jsx";
-import TransformationReady from "./pages/KnowMore/TransformationReady.jsx";
+// ================= HOME =================
 
-// ================= WHAT'S NEXT =================
-// import TechTorchView from "./pages/What'sNext/TechTorchView.jsx";
-// import Philosophy from "./pages/What'sNext/Philosophy.jsx";
-// import Capabilities from "./pages/What'sNext/Capabilities.jsx";
-// import Methodology from "./pages/What'sNext/DeploymentMethodology.jsx";
-// import ReadyScale from "./pages/What'sNext/ReadyScale.jsx";
-
-// ================= TECHTORCH VIEW =================
-import TechTorchView from "./pages/What'sNext/TechTorchView/TechTorchView.jsx";
-import Philosophy from "./pages/What'sNext/TechTorchView/Philosophy.jsx";
-import Capabilities from "./pages/What'sNext/TechTorchView/Capabilities.jsx";
-import Methodology from "./pages/What'sNext/TechTorchView/DeploymentMethodology.jsx";
-import ReadyScale from "./pages/What'sNext/TechTorchView/ReadyScale.jsx";
-
-// ================= FIELD NOTE =================
-import Banner from "./pages/What'sNext/FieldNote/Banner.jsx";
-import TechnologySection from "./pages/What'sNext/FieldNote/TechnologySection.jsx";
-import ConnectSection from "./pages/What'sNext/FieldNote/ConnectSection.jsx";
-import OperationalAdvantage from "./pages/What'sNext/FieldNote/OperationalAdvantage.jsx";
-import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapabilities.jsx";
-
-import IntegratedCapLayout from "./pages/What'sNext/FieldNote/IntegratedCapabilities/IntegratedCapLayout.jsx";
-import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/ERPIntegration.jsx";
-
-// ================= THINK AHEAD =================
-import ReadSection from "./pages/What'sNext/ThinkAhead/ReadSection.jsx";
-import Technologyarticlesection from "./pages/What'sNext/ThinkAhead/Technologyarticlesection.jsx";
-import EcosystemHeroSection from "./pages/What'sNext/ThinkAhead/Ecosystem.jsx";
-import PerspectiveSection from "./pages/What'sNext/ThinkAhead/Perspectivesection.jsx";
-
-// ================= CYBER SECURITY =================
-import WhatsNextSection from "./pages/What'sNext/CyberSecurity/WhatNextSection.jsx";
-import CyberSecurityHeroSection from "./pages/What'sNext/CyberSecurity/CyberSecurityHeroSection.jsx";
-import SecurityCapabilitiesSection from "./pages/What'sNext/CyberSecurity/SecurityCapabilities.jsx";
-import ResiliencePillarsSection from "./pages/What'sNext/CyberSecurity/Resiliencepillarssection.jsx";
-import SecurityOutcomes from "./pages/What'sNext/CyberSecurity/SecurityOutcomes.jsx";
-import SecurityPerspectiveSection from "./pages/What'sNext/CyberSecurity/Securityperspectivesection.jsx";
-import AboutSecurity from "./pages/What'sNext/CyberSecurity/AboutSecurity.jsx";
-import SecurityChallenge from "./pages/What'sNext/CyberSecurity/SecurityChallenge.jsx";
-import EditorialReflection from "./pages/What'sNext/CyberSecurity/EditorialReflection.jsx";
-import OurApproach from "./pages/What'sNext/CyberSecurity/OurApproach.jsx";
-import WhyTechtorch from "./pages/What'sNext/CyberSecurity/WhyTechtorch.jsx";
-
-// ================= BUSINESS GROWTH =================
-import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTechnology.jsx";
-import PurspectiveSection from "./pages/What'sNext/BusinessGrowth/PursoectiveSection.jsx";
-import ArchitectureSection from "./pages/What'sNext/BusinessGrowth/ArchitectureSection.jsx";
-import MethodologySection from "./pages/What'sNext/BusinessGrowth/MethodologySection.jsx";
-
-
-// =================================================
-// COMMON LAYOUT
-// =================================================
-function MainLayout() {
-  return (
-    <>
-      <Navbar />
-
-      <main>
-        <Outlet />
-      </main>
-
-      <Footer />
-    </>
-  );
-}
-
-// =================================================
-// HOME PAGE
-// =================================================
 function Home() {
   return (
     <>
+      <Navbar />
       <Hero />
       <Hero2 />
       <Hero3 />
@@ -150,13 +77,14 @@ function Home() {
       <Section7 />
       <Section8 />
       <Section9 />
-    </>
+      <Footer />
+    </div>
   );
 }
 
-// =================================================
-// SLIDE 1 PAGE
-// =================================================
+
+// ================= SLIDE 1 =================
+
 function Slide1Page() {
   return (
     <>
@@ -168,9 +96,9 @@ function Slide1Page() {
   );
 }
 
-// =================================================
-// SLIDE 2 PAGE
-// =================================================
+
+// ================= SLIDE 2 =================
+
 function Slide2Page() {
   return (
     <>
@@ -184,9 +112,9 @@ function Slide2Page() {
   );
 }
 
-// =================================================
-// SLIDE 3 PAGE
-// =================================================
+
+// ================= SLIDE 3 =================
+
 function Slide3Page() {
   return (
     <>
@@ -201,9 +129,9 @@ function Slide3Page() {
   );
 }
 
-// =================================================
-// SLIDE 4 PAGE
-// =================================================
+
+// ================= SLIDE 4 =================
+
 function Slide4Page() {
   return (
     <>
@@ -216,9 +144,9 @@ function Slide4Page() {
   );
 }
 
-// =================================================
-// SLIDE 5 PAGE
-// =================================================
+
+// ================= SLIDE 5 =================
+
 function Slide5Page() {
   return (
     <>
@@ -230,116 +158,9 @@ function Slide5Page() {
   );
 }
 
-// =================================================
-// OUR STORY PAGE
-// =================================================
-function PhilosophyPage() {
-  return (
-    <>
-      <EnterpriseHero />
-      <CoreFoundation />
-      <ScaleAtSpeed />
-      <StrategicCapabilities />
-      <PhiosophySection />
-      <TransformationForm />
-    </>
-  );
-}
 
-// =================================================
-// KNOW MORE PAGE
-// =================================================
-function KnowMorePage() {
-  return (
-    <>
-      <EnterpriseAcceleration />
-      <TransformationReady />
-      <ProvenImpact />
-      <PracticalIntelligence />
-    </>
-  );
-}
+// ================= APP =================
 
-// =================================================
-// TECHTORCH VIEW PAGE
-// =================================================
-function WhatNextPage() {
-  return (
-    <>
-      <TechTorchView />
-      <Philosophy />
-      <Capabilities />
-      <Methodology />
-      <ReadyScale />
-    </>
-  );
-}
-
-// =================================================
-// FIELD NOTE PAGE
-// =================================================
-function FieldNotePage() {
-  return (
-    <>
-      <Banner />
-      <TechnologySection />
-      <ConnectSection />
-      <OperationalAdvantage />
-      <IntegratedCapabilities />
-    </>
-  );
-}
-
-
-// =================================================
-// THINK AHEAD PAGE
-// =================================================
-
-function ThinkAheadPage() {
-  return (
-    <>
-      <ReadSection />
-      <Technologyarticlesection />
-      <PerspectiveSection />
-      <EcosystemHeroSection />
-    </>
-  );
-}
-
-// =================================================
-// CYBER SECURITY PAGE
-// =================================================
-function CyberSecurityPage() {
-  return (
-    <>
-      <CyberSecurityHeroSection />
-      <SecurityPerspectiveSection />
-      <SecurityChallenge />
-      <OurApproach />
-      <SecurityCapabilitiesSection />
-      <ResiliencePillarsSection />
-      <WhyTechtorch />
-      <SecurityOutcomes />
-      <EditorialReflection />
-      <AboutSecurity />
-      <WhatsNextSection />
-    </>
-  );
-}
-function BusinessGrowthPage() {
-  return (
-    <>
-      <GrowWithBusinessSection />
-      <PurspectiveSection />  
-      <ArchitectureSection />
-      <MethodologySection />
-    </>
-  );
-}
-
-// =================================================
-// APP ROUTES
-// =================================================
 function App() {
   return (
     <Routes>
@@ -403,7 +224,68 @@ function App() {
           element={<BusinessGrowthPage />}
         />
 
-      </Route>
+      {/* ADMIN PAGES */}
+
+      <Route
+        path="/admin-login"
+        element={<AdminLogin />}
+      />
+
+      <Route
+        path="/admin-forgot-password"
+        element={<AdminForgotPassword />}
+      />
+
+      <Route
+        path="/admin-verify-otp"
+        element={<AdminVerifyOTP />}
+      />
+
+      <Route
+        path="/admin-dashboard"
+        element={<AdminDashboard />}
+      />
+  <Route
+  path="/News-Insights"
+  element={<NewsInsights />}
+/>
+
+
+      {/* HOME */}
+
+      <Route
+        path="/"
+        element={<Home />}
+      />
+
+
+      {/* SLIDES */}
+
+      <Route
+        path="/Slide1"
+        element={<Slide1Page />}
+      />
+
+      <Route
+        path="/Slide2"
+        element={<Slide2Page />}
+      />
+
+      <Route
+        path="/Slide3"
+        element={<Slide3Page />}
+      />
+
+      <Route
+        path="/Slide4"
+        element={<Slide4Page />}
+      />
+
+      <Route
+        path="/Slide5"
+        element={<Slide5Page />}
+      />
+
     </Routes>
   );
 }

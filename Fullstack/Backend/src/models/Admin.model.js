@@ -1,38 +1,32 @@
 const mongoose = require("mongoose");
 
-const adminSchema = new mongoose.Schema(
+const adminLoginSchema = new mongoose.Schema(
   {
-
-    name: {
-      type: String,
-      required: [true, "Name is required"],
-      trim: true,
-    },
-    contact: {
-      type: String,
-      required: [true, "Contact is required"],
-      trim: true,
-    },
-    emergency: {
-      type: String,
-      required: [true, "Emergency contact is required"],
-      trim: true,
-    },
     email: {
       type: String,
-      required: [true, "Email is required"],
+      required: true,
       unique: true,
       lowercase: true,
       trim: true,
     },
+
     password: {
       type: String,
-      required: [true, "Password is required"],
+      required: true,
     },
     activeStatus: {
-      type: Boolean,
-      required: true,
-      default: true,
+  type: Boolean,
+  default: true,
+},
+
+    otp: {
+      type: String,
+      default: null,
+    },
+
+    otpExpiry: {
+      type: Date,
+      default: null,
     },
   },
   {
@@ -40,4 +34,4 @@ const adminSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Admin", adminSchema);
+module.exports = mongoose.model("AdminLogin", adminLoginSchema);

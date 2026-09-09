@@ -61,12 +61,14 @@ function CTAButton({ children }) {
     <button
       className="tx-cta inline-flex items-center justify-center gap-2.5 self-start rounded-lg whitespace-nowrap w-full sm:w-auto"
       style={{
-        marginTop: "10px",
+        marginTop: "clamp(16px, 2vw, 24px)",
         border: `1.5px solid ${colors.brand}`,
         color: colors.brand,
-        padding: "6px 14px",
-        fontSize: "18px",
+        padding: "12px 22px",
+        fontSize: "clamp(14px, 1vw, 16px)",
         fontWeight: 700,
+        backgroundColor: "transparent",
+        cursor: "pointer",
       }}
     >
       {children}
@@ -78,12 +80,10 @@ function CTAButton({ children }) {
 function CopyPanel() {
   return (
     <div
-      className="flex w-full max-w-2xl flex-col justify-center tx-copy"
+      className="flex w-full flex-col justify-center"
       style={{
-        paddingTop: "65px",
-        paddingBottom: "65px",
-        paddingLeft: "70px",
-        paddingRight: "70px",
+        padding:
+          "clamp(40px, 6vw, 80px) clamp(24px, 5vw, 80px)",
       }}
     >
       <Eyebrow>The Next Chapter</Eyebrow>
@@ -161,11 +161,11 @@ function CopyPanel() {
 
 function ImagePanel() {
   return (
-    <div className="tx-image-panel relative w-full h-full flex items-center justify-end overflow-hidden">
+    <div className="tx-image-panel relative w-full overflow-hidden">
       <img
         src="/sec7.png"
         alt="TorchX"
-        className="tx-image block"
+        className="tx-image block w-full h-full"
       />
     </div>
   );
@@ -176,19 +176,26 @@ function ImagePanel() {
 export default function TorchXVideoSection() {
   return (
     <div
-      className="w-full font-sans"
+      className="w-full font-sans overflow-hidden"
       style={{
         backgroundColor: "#fff",
         isolation: "isolate",
       }}
     >
       <style>{`
+        /* ---------------------------------------------------------------
+           CTA
+        ---------------------------------------------------------------- */
+
         .tx-cta {
-          transition: all 0.25s ease;
+          transition:
+            background-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease;
         }
 
         .tx-cta:hover {
-          background-color: ${colors.brand};
+          background-color: ${colors.brand} !important;
           color: ${colors.cream} !important;
           transform: translateY(-1px);
         }
@@ -201,324 +208,155 @@ export default function TorchXVideoSection() {
           transform: translateX(3px);
         }
 
-        /* =====================================================
+
+        /* ---------------------------------------------------------------
            MAIN SECTION
-        ===================================================== */
+        ---------------------------------------------------------------- */
 
         .tx-section {
           width: 100%;
-          display: grid;
-          grid-template-columns: 45% 55%;
-          align-items: stretch;
           background: ${colors.cream};
-          overflow: hidden;
         }
 
-        .tx-copy-wrapper {
-          width: 100%;
-          min-width: 0;
-          display: flex;
-          align-items: center;
-        }
 
-        .tx-image-wrapper {
-          width: 100%;
-          min-width: 0;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          overflow: hidden;
-        }
+        /* ---------------------------------------------------------------
+           IMAGE
+        ---------------------------------------------------------------- */
 
         .tx-image-panel {
           width: 100%;
-          height: 100%;
+          height: auto;
           display: flex;
           align-items: center;
-          justify-content: flex-end;
-          overflow: hidden;
+          justify-content: center;
+          background: ${colors.cream};
         }
-
-        /*
-          Image remains fully visible.
-          object-fit: contain prevents vertical cropping.
-        */
 
         .tx-image {
+          width: 100%;
+          height: auto;
           display: block;
-          width: 120%;
-          height: 100%;
           object-fit: contain;
-          object-position: center right;
-          max-width: none;
+          object-position: center;
         }
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
 
-        @media (max-width: 767px) {
+        /* ---------------------------------------------------------------
+           TABLET / MEDIUM
+        ---------------------------------------------------------------- */
+
+        @media (min-width: 640px) and (max-width: 1023px) {
           .tx-section {
+            display: grid;
+            grid-template-columns: 1fr;
+          }
+
+          .tx-image-panel {
+            max-height: 500px;
+          }
+
+          .tx-image {
+            max-height: 500px;
+            object-fit: contain;
+          }
+        }
+
+
+        /* ---------------------------------------------------------------
+           LAPTOP
+        ---------------------------------------------------------------- */
+
+        @media (min-width: 1024px) {
+          .tx-section {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            min-height: 560px;
+          }
+
+          .tx-image-panel {
+            height: 560px;
             display: flex;
-            flex-direction: column;
-            height: auto;
-          }
-
-          .tx-copy-wrapper {
-            order: 1;
-            width: 100%;
-            height: auto;
-          }
-
-          .tx-image-wrapper {
-            order: 2;
-            width: 100%;
-            height: auto;
-            min-height: 0;
-          }
-
-          .tx-copy {
-            width: 100%;
-            max-width: none;
-            padding: 40px 20px 35px !important;
-          }
-
-          .tx-heading {
-            font-size: 26px !important;
-            line-height: 1.25 !important;
-            margin-bottom: 18px !important;
-          }
-
-          .tx-suite {
-            font-size: 25px !important;
-            margin-bottom: 14px !important;
-          }
-
-          .tx-intro {
-            font-size: 18px !important;
-            line-height: 1.5 !important;
-            margin-bottom: 22px !important;
-            max-width: 100% !important;
-          }
-
-          .tx-description {
-            font-size: 16px !important;
-            line-height: 1.6 !important;
-            margin-bottom: 18px !important;
-            max-width: 100% !important;
-          }
-
-          .tx-cta {
-            width: 100%;
-            font-size: 15px !important;
-            padding: 11px 18px !important;
-          }
-
-          .tx-image-panel {
-            width: 100%;
-            height: auto;
-            min-height: 0;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden;
           }
 
           .tx-image {
-            display: block;
             width: 100%;
-            height: auto;
-            max-width: 100%;
-            object-fit: contain;
-            object-position: center center;
-          }
-        }
-
-        /* =====================================================
-           TABLET
-        ===================================================== */
-
-        @media (min-width: 768px) and (max-width: 1023px) {
-          .tx-section {
-            height: 450px;
-            grid-template-columns: 46% 54%;
-            align-items: stretch;
-          }
-
-          .tx-copy-wrapper {
-            height: 450px;
-          }
-
-          .tx-image-wrapper {
-            height: 450px;
-          }
-
-          .tx-image-panel {
-            width: 100%;
-            height: 450px;
-          }
-
-          .tx-copy {
-            padding-left: 45px !important;
-            padding-right: 30px !important;
-            padding-top: 45px !important;
-            padding-bottom: 45px !important;
-          }
-
-          .tx-heading {
-            font-size: 28px !important;
-          }
-
-          .tx-suite {
-            font-size: 27px !important;
-          }
-
-          .tx-intro {
-            font-size: 20px !important;
-          }
-
-          .tx-description {
-            font-size: 17px !important;
-          }
-
-          .tx-image {
-            width: 120%;
             height: 100%;
-            max-width: none;
             object-fit: contain;
-            object-position: center right;
+            object-position: right center;
           }
         }
 
-        /* =====================================================
-           DESKTOP
-        ===================================================== */
 
-        @media (min-width: 1024px) and (max-width: 1279px) {
-          .tx-section {
-            height: 460px;
-            grid-template-columns: 44% 56%;
-            align-items: stretch;
-          }
-
-          .tx-copy-wrapper {
-            height: 460px;
-          }
-
-          .tx-image-wrapper {
-            height: 460px;
-          }
-
-          .tx-image-panel {
-            width: 100%;
-            height: 460px;
-          }
-
-          .tx-copy {
-            padding-left: 60px !important;
-            padding-right: 35px !important;
-            padding-top: 50px !important;
-            padding-bottom: 50px !important;
-          }
-
-          .tx-heading {
-            font-size: 30px !important;
-          }
-
-          .tx-suite {
-            font-size: 28px !important;
-          }
-
-          .tx-intro {
-            font-size: 21px !important;
-          }
-
-          .tx-description {
-            font-size: 17px !important;
-          }
-
-          .tx-image {
-            width: 125%;
-            height: 100%;
-            max-width: none;
-            object-fit: contain;
-            object-position: center right;
-          }
-        }
-
-        /* =====================================================
+        /* ---------------------------------------------------------------
            LARGE DESKTOP
-        ===================================================== */
+        ---------------------------------------------------------------- */
 
         @media (min-width: 1280px) {
           .tx-section {
-            height: 510px;
-            grid-template-columns: 43% 57%;
-            align-items: stretch;
-          }
-
-          .tx-copy-wrapper {
-            height: 510px;
-          }
-
-          .tx-image-wrapper {
-            height: 510px;
+            grid-template-columns: 50% 50%;
+            min-height: 600px;
           }
 
           .tx-image-panel {
-            width: 100%;
-            height: 510px;
-          }
-
-          .tx-copy {
-            padding-left: 75px !important;
-            padding-right: 45px !important;
-            padding-top: 60px !important;
-            padding-bottom: 60px !important;
+            height: 600px;
           }
 
           .tx-image {
-            width: 125%;
-            height: 100%;
-            max-width: none;
-            object-fit: contain;
-            object-position: center right;
+            object-position: right center;
           }
         }
 
-        /* =====================================================
-           EXTRA LARGE DESKTOP
-        ===================================================== */
 
-        @media (min-width: 1600px) {
+        /* ---------------------------------------------------------------
+           EXTRA LARGE DESKTOP
+        ---------------------------------------------------------------- */
+
+        @media (min-width: 1536px) {
           .tx-section {
-            height: 490px;
-            grid-template-columns: 42% 58%;
+            grid-template-columns: 48% 52%;
+            min-height: 620px;
           }
 
-          .tx-copy {
-            padding-left: 85px !important;
-            padding-right: 55px !important;
+          .tx-image-panel {
+            height: 620px;
+          }
+        }
+
+
+        /* ---------------------------------------------------------------
+           MOBILE
+        ---------------------------------------------------------------- */
+
+        @media (max-width: 639px) {
+          .tx-section {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .tx-image-panel {
+            order: 1;
           }
 
           .tx-image {
-            width: 130%;
-            height: 100%;
-            max-width: none;
+            width: 100%;
+            height: auto;
             object-fit: contain;
-            object-position: center right;
           }
         }
       `}</style>
 
       <section className="tx-section">
-        {/* ================= COPY ================= */}
-
-        <div className="tx-copy-wrapper">
-          <CopyPanel />
+        {/* IMAGE */}
+        <div className="order-1 lg:order-2 w-full">
+          <ImagePanel />
         </div>
 
-        {/* ================= IMAGE ================= */}
-
-        <div className="tx-image-wrapper">
-          <ImagePanel />
+        {/* COPY */}
+        <div className="order-2 lg:order-1 flex items-center w-full">
+          <CopyPanel />
         </div>
       </section>
     </div>
