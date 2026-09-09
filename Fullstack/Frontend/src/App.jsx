@@ -91,6 +91,9 @@ import ConnectSection from "./pages/What'sNext/FieldNote/ConnectSection.jsx";
 import OperationalAdvantage from "./pages/What'sNext/FieldNote/OperationalAdvantage.jsx";
 import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapabilities.jsx";
 
+import IntegratedCapLayout from "./pages/What'sNext/FieldNote/IntegratedCapabilities/IntegratedCapLayout.jsx";
+import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/ERPIntegration.jsx";
+
 // ================= THINK AHEAD =================
 import ReadSection from "./pages/What'sNext/ThinkAhead/ReadSection.jsx";
 import EcosystemHeroSection from "./pages/What'sNext/ThinkAhead/Ecosystem.jsx";
@@ -270,6 +273,8 @@ function FieldNotePage() {
     </>
   );
 }
+
+
 function ThinkAheadPage() {
   return (
     <>
@@ -320,6 +325,19 @@ function App() {
           path="/field-note"
           element={<FieldNotePage />}
         />
+
+
+{/* INTEGRATED CAPABILITIES */}
+<Route
+  path="/integrated-capabilities"
+  element={<IntegratedCapLayout />}
+>
+  <Route
+    path="erp-integration"
+    element={<ERPIntegration />}
+  />
+</Route>
+
 
         {/* WHAT'S NEXT - THINK AHEAD */}
         <Route
