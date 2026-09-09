@@ -62,10 +62,9 @@ import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
 import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
 import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
 
-
 // ================= KNOW MORE =================
 import EnterpriseAcceleration from "./pages/KnowMore/EnterpriseAcceleration.jsx";
-import PracticalIntelligence from "./pages/KnowMore/PracticalIntelligence.jsx"
+import PracticalIntelligence from "./pages/KnowMore/PracticalIntelligence.jsx";
 import ProvenImpact from "./pages/KnowMore/ProvenImpact.jsx";
 import TransformationReady from "./pages/KnowMore/TransformationReady.jsx";
 
@@ -83,7 +82,6 @@ import Capabilities from "./pages/What'sNext/TechTorchView/Capabilities.jsx";
 import Methodology from "./pages/What'sNext/TechTorchView/DeploymentMethodology.jsx";
 import ReadyScale from "./pages/What'sNext/TechTorchView/ReadyScale.jsx";
 
-
 // ================= FIELD NOTE =================
 import Banner from "./pages/What'sNext/FieldNote/Banner.jsx";
 import TechnologySection from "./pages/What'sNext/FieldNote/TechnologySection.jsx";
@@ -96,8 +94,22 @@ import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/
 
 // ================= THINK AHEAD =================
 import ReadSection from "./pages/What'sNext/ThinkAhead/ReadSection.jsx";
+import Technologyarticlesection from "./pages/What'sNext/ThinkAhead/Technologyarticlesection.jsx";
 import EcosystemHeroSection from "./pages/What'sNext/ThinkAhead/Ecosystem.jsx";
 import PerspectiveSection from "./pages/What'sNext/ThinkAhead/Perspectivesection.jsx";
+
+// ================= CYBER SECURITY =================
+import WhatsNextSection from "./pages/What'sNext/CyberSecurity/WhatNextSection.jsx";
+import CyberSecurityHeroSection from "./pages/What'sNext/CyberSecurity/CyberSecurityHeroSection.jsx";
+import SecurityCapabilitiesSection from "./pages/What'sNext/CyberSecurity/SecurityCapabilities.jsx";
+import ResiliencePillarsSection from "./pages/What'sNext/CyberSecurity/Resiliencepillarssection.jsx";
+import SecurityOutcomes from "./pages/What'sNext/CyberSecurity/SecurityOutcomes.jsx";
+import SecurityPerspectiveSection from "./pages/What'sNext/CyberSecurity/Securityperspectivesection.jsx";
+import AboutSecurity from "./pages/What'sNext/CyberSecurity/AboutSecurity.jsx";
+import SecurityChallenge from "./pages/What'sNext/CyberSecurity/SecurityChallenge.jsx";
+import EditorialReflection from "./pages/What'sNext/CyberSecurity/EditorialReflection.jsx";
+import OurApproach from "./pages/What'sNext/CyberSecurity/OurApproach.jsx";
+import WhyTechtorch from "./pages/What'sNext/CyberSecurity/WhyTechtorch.jsx";
 
 // =================================================
 // COMMON LAYOUT
@@ -230,19 +242,16 @@ function PhilosophyPage() {
 // =================================================
 // KNOW MORE PAGE
 // =================================================
- function KnowMorePage() {
+function KnowMorePage() {
   return (
     <>
-     <EnterpriseAcceleration />
-     <TransformationReady />
-    <ProvenImpact />
-     <PracticalIntelligence />
+      <EnterpriseAcceleration />
+      <TransformationReady />
+      <ProvenImpact />
+      <PracticalIntelligence />
     </>
   );
- }
-
-
-
+}
 
 // =================================================
 // TECHTORCH VIEW PAGE
@@ -275,12 +284,38 @@ function FieldNotePage() {
 }
 
 
+// =================================================
+// THINK AHEAD PAGE
+// =================================================
+
 function ThinkAheadPage() {
   return (
     <>
       <ReadSection />
+      <Technologyarticlesection />
       <PerspectiveSection />
       <EcosystemHeroSection />
+    </>
+  );
+}
+
+// =================================================
+// CYBER SECURITY PAGE
+// =================================================
+function CyberSecurityPage() {
+  return (
+    <>
+      <CyberSecurityHeroSection />
+      <SecurityPerspectiveSection />
+      <SecurityChallenge />
+      <OurApproach />
+      <SecurityCapabilitiesSection />
+      <ResiliencePillarsSection />
+      <WhyTechtorch />
+      <SecurityOutcomes />
+      <EditorialReflection />
+      <AboutSecurity />
+      <WhatsNextSection />
     </>
   );
 }
@@ -306,19 +341,14 @@ function App() {
         {/* OUR STORY */}
         <Route path="/Philosophy" element={<PhilosophyPage />} />
 
-
-        {/* KNOW MORE*/}
+        {/* KNOW MORE */}
         <Route path="/KnowMore" element={<KnowMorePage />} />
-
-        {/* WHAT'S NEXT */}
-        {/* <Route path="/WhatNext" element={<WhatNextPage />} /> */}
 
         {/* WHAT'S NEXT - TECHTORCH */}
         <Route
           path="/TechTorchView"
           element={<WhatNextPage />}
         />
-
 
         {/* WHAT'S NEXT - FIELD NOTE */}
         <Route
@@ -344,6 +374,13 @@ function App() {
           path="/think-ahead"
           element={<ThinkAheadPage />}
         />
+
+        {/* WHAT'S NEXT - CYBER SECURITY */}
+        <Route
+          path="/cyber-security"
+          element={<CyberSecurityPage />}
+        />
+
       </Route>
     </Routes>
   );

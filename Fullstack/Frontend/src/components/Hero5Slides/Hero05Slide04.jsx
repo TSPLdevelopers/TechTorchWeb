@@ -1,7 +1,7 @@
 
 import React from "react";
 
-import backgroundImage from "/hero5slide4.png";
+const backgroundImage = "/Hero5slide4.png";
 
 export default function BringBusinessTogetherSection() {
   return (

@@ -59,7 +59,7 @@ const cards = [
       "As more work moves online, building security into everyday technology is becoming more important than ever.",
     bg: "url('sec4.4.png')",
     bgColor: "#04070d",
-    link: "/cybersecurity",
+    link: "/cyber-security",
   },
   {
     tag: "TECH PULSE · DATA & DECISIONS",
