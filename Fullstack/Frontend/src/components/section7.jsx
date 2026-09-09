@@ -23,6 +23,14 @@ function Eyebrow({ children }) {
         color: colors.ink,
       }}
     >
+      <span
+        style={{
+          display: "block",
+          width: "24px",
+          height: "2px",
+          backgroundColor: colors.brand,
+        }}
+      />
       {children}
     </div>
   );
@@ -101,7 +109,6 @@ function CopyPanel() {
         className="tx-suite"
         style={{
           marginBottom: "20px",
-          
           fontSize: "30px",
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 600,
@@ -131,7 +138,7 @@ function CopyPanel() {
         className="tx-description"
         style={{
           marginBottom: "16px",
-           marginTop: "-10px",
+          marginTop: "-10px",
           fontSize: "17px",
           fontFamily: "Inter",
           maxWidth: "28rem",
