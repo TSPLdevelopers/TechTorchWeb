@@ -115,6 +115,7 @@ import ArchitectureSection from "./pages/What'sNext/BusinessGrowth/ArchitectureS
 import MethodologySection from "./pages/What'sNext/BusinessGrowth/MethodologySection.jsx";
 import EcosystemCapabilitiesSection from "./pages/What'sNext/BusinessGrowth/EcosystemCapabilities.jsx";
 import TechnologyCapabilities from "./pages/What'sNext/BusinessGrowth/TechnologyCapabilties.jsx";
+import CoreEngineering from "./pages/What'sNext/BusinessGrowth/CoreEngineering.jsx";
 
 
 // =================================================
@@ -332,6 +333,7 @@ function BusinessGrowthPage() {
       <MethodologySection />
       <EcosystemCapabilitiesSection />
       <TechnologyCapabilities />
+      <CoreEngineering />
     </>
   );
 }
