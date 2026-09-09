@@ -631,7 +631,7 @@ export default function PracticalIntelligence() {
 
 
           .practical-stat span {
-            font-size: 9px;c
+            font-size: 9px;
           }
         }
 

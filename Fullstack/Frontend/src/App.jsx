@@ -54,14 +54,19 @@ import Hero05Slide02 from "./components/Hero5Slides/Hero05Slide02.jsx";
 import Hero05Slide03 from "./components/Hero5Slides/Hero05Slide03.jsx";
 import Hero05Slide04 from "./components/Hero5Slides/Hero05Slide04.jsx";
 
-
-// Hero2 sections
+// ================= OUR STORY =================
 import PhiosophySection from "./pages/OurStory/PhilosophySection.jsx";
 import EnterpriseHero from "./pages/OurStory/EnterpriseReadiness.jsx";
 import ScaleAtSpeed from "./pages/OurStory/ScaleAtSpeed.jsx";
 import CoreFoundation from "./pages/OurStory/CoreFoundation.jsx";
 import StrategicCapabilities from "./pages/OurStory/StrategicCapabilities.jsx";
-//import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
+import TransformationForm from "./pages/OurStory/TransformationForm.jsx";
+
+// ================= KNOW MORE =================
+import EnterpriseAcceleration from "./pages/KnowMore/EnterpriseAcceleration.jsx";
+import PracticalIntelligence from "./pages/KnowMore/PracticalIntelligence.jsx"
+import ProvenImpact from "./pages/KnowMore/ProvenImpact.jsx";
+import TransformationReady from "./pages/KnowMore/TransformationReady.jsx";
 
 // ================= WHAT'S NEXT =================
 import TechTorchView from "./pages/What'sNext/TechTorchView.jsx";
@@ -89,10 +94,6 @@ function MainLayout() {
   );
 }
 
-import EnterpriseAcceleration from "./pages/KnowMore/EnterpriseAcceleration.jsx";
-import TransformationReady from "./pages/KnowMore/TransformationReady.jsx";
-import ProvenImpact from "./pages/KnowMore/ProvenImpact.jsx";
-import PracticalIntelligence from "./pages/KnowMore/PracticalIntelligence.jsx";
 
 // =================================================
 // HOME PAGE
@@ -194,16 +195,6 @@ function Slide5Page() {
   );
 }
 
-function KnowMorePage() {
-  return (
-    <div>
-      <EnterpriseAcceleration />
-      <TransformationReady />
-      <ProvenImpact />
-      <PracticalIntelligence />
-    </div>
-  )
-}
 
 // =================================================
 // OUR STORY / PHILOSOPHY PAGE
@@ -216,9 +207,25 @@ function PhilosophyPage() {
       <ScaleAtSpeed />
       <StrategicCapabilities />
       <PhiosophySection />
+      <TransformationForm />
     </>
   );
 }
+
+// =================================================
+// KNOW MORE PAGE
+// =================================================
+ function KnowMorePage() {
+  return (
+    <>
+     <EnterpriseAcceleration />
+     <TransformationReady />
+    <ProvenImpact />
+     <PracticalIntelligence />
+    </>
+  );
+ }
+
 
 
 // =================================================
@@ -247,6 +254,7 @@ function App() {
           ALL PAGES BELOW WILL HAVE:
           Navbar + Page Content + Footer
       ========================================= */}
+      <Route element={<MainLayout />}>
 
         {/* HOME */}
         <Route path="/" element={<Home />} />
@@ -261,34 +269,14 @@ function App() {
         {/* OUR STORY */}
         <Route path="/Philosophy" element={<PhilosophyPage />} />
 
+        {/* KNOW MORE*/}
+        <Route path="/KnowMore" element={<KnowMorePage />} />
+
         {/* WHAT'S NEXT */}
         <Route path="/WhatNext" element={<WhatNextPage />} />
 
-      <Route
-        path="/Slide3"
-        element={<Slide3Page />}
-      />
-
-      <Route
-        path="/Slide4"
-        element={<Slide4Page />}
-      />
-
-      <Route
-        path="/Slide5"
-        element={<Slide5Page />}
-      />
-
-      <Route
-        path="/Philosophy"
-        element={<PhilosophyPage />}
-      />
-
-       <Route
-        path="/KnowMore"
-        element={<KnowMorePage />}
-      />
-      </Routes>
+      </Route>
+    </Routes>
   );
 }
 
