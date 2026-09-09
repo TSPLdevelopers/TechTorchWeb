@@ -8,6 +8,7 @@ import AdminLogin from "./pages/AdminLogin.jsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
 import AdminVerifyOTP from "./pages/AdminVerifyOTP.jsx";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
+import NewsInsights from "./pages/NewsInsights.jsx";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -178,6 +179,10 @@ function App() {
         path="/admin-dashboard"
         element={<AdminDashboard />}
       />
+  <Route
+  path="/News-Insights"
+  element={<NewsInsights />}
+/>
 
 
       {/* HOME */}

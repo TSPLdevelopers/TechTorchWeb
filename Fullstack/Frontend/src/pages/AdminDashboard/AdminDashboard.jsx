@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   LayoutGrid,
   Newspaper,
@@ -25,6 +26,12 @@ import {
   Shield,
   Network,
   Timer,
+   LayoutDashboard,
+  
+  BriefcaseBusiness,
+  
+
+  
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -162,6 +169,9 @@ const TREND_WEEKS = [
 /* -------------------------------------------------------------------------- */
 
 export default function AdminDashboard() {
+
+  const navigate = useNavigate();
+
   const [activeNav, setActiveNav] = useState("overview");
   const [activeTab, setActiveTab] = useState(0);
   const [page, setPage] = useState(1);
@@ -193,8 +203,8 @@ export default function AdminDashboard() {
           <div className="ttad-body-grid">
             <div className="ttad-left-col">
               <PublishingDirectory
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
+               activeNav={activeNav}
+  setActiveNav={setActiveNav}
                 page={page}
                 setPage={setPage}
                 filter={filter}
@@ -225,26 +235,29 @@ export default function AdminDashboard() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Sidebar                                                                     */
+/* Sidebar                                                                    */
 /* -------------------------------------------------------------------------- */
 
 function Sidebar({ activeNav, setActiveNav }) {
+
+  const navigate = useNavigate();
   return (
     <aside className="ttad-sidebar">
-      <div className="ttad-brand">
-  <div className="ttad-brand-mark">
-    <img
-      src="/Tech-Torch2.png"
-      alt="TechTorch"
-      className="ttad-brand-logo"
-    />
-  </div>
 
-  <div className="ttad-brand-text">
-    <div className="ttad-brand-name">TechTorch</div>
-    <div className="ttad-brand-sub">ENTERPRISE CORE</div>
-  </div>
-</div>
+      <div className="ttad-brand">
+        <div className="ttad-brand-mark">
+          <img
+            src="/Tech-Torch2.png"
+            alt="TechTorch"
+            className="ttad-brand-logo"
+          />
+        </div>
+
+        <div className="ttad-brand-text">
+          <div className="ttad-brand-name">TechTorch</div>
+          <div className="ttad-brand-sub">ENTERPRISE CORE</div>
+        </div>
+      </div>
 
       <div className="ttad-nav-label">NAVIGATION</div>
 
@@ -252,21 +265,43 @@ function Sidebar({ activeNav, setActiveNav }) {
         {NAV_ITEMS.map((item) => {
           const Icon = item.icon;
           const active = activeNav === item.key;
+
           return (
             <button
-              key={item.key}
-              className={"ttad-nav-item" + (active ? " active" : "")}
-              onClick={() => setActiveNav(item.key)}
-            >
+  key={item.key}
+  type="button"
+  className={
+    "ttad-nav-item" + (active ? " active" : "")
+  }
+  onClick={() => {
+    setActiveNav(item.key);
+
+    if (item.key === "news") {
+      navigate("/News-Insights");
+    }
+  }}
+>
               <Icon size={17} strokeWidth={2} />
-              <span className="ttad-nav-item-label">{item.label}</span>
+
+              <span className="ttad-nav-item-label">
+                {item.label}
+              </span>
+
               {typeof item.count === "number" && (
-                <span className={"ttad-nav-count" + (active ? " active" : "")}>{item.count}</span>
+                <span
+                  className={
+                    "ttad-nav-count" +
+                    (active ? " active" : "")
+                  }
+                >
+                  {item.count}
+                </span>
               )}
             </button>
           );
         })}
       </nav>
+
     </aside>
   );
 }
@@ -832,81 +867,166 @@ function StyleBlock() {
         font-size: 14px;
       }
 
-      /* ---------- Sidebar ---------- */
-      .ttad-sidebar {
-        width: var(--ttad-sidebar-w);
-        flex-shrink: 0;
-        background: var(--ttad-card);
-        border-right: 1px solid var(--ttad-border);
-        padding: 20px 14px;
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        overflow-y: auto;
-      }
+      /* ========================================================= */
+/* SIDEBAR                                                   */
+/* ========================================================= */
 
-      .ttad-brand { display: flex; align-items: center; gap: 10px; padding: 4px 8px 20px; }
+.ttad-sidebar {
+  width: 250px;
+  min-width: 250px;
+  min-height: 100vh;
+  background: var(--ttad-card);
+  border-right: 1px solid var(--ttad-border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 14px;
+}
+
+/* Brand */
+
+.ttad-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 24px;
+}
+
 .ttad-brand-mark {
   width: 42px;
   height: 42px;
-  border-radius: 10px;
-  background: #fff;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  overflow: hidden;
   flex-shrink: 0;
 }
 
 .ttad-brand-logo {
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   object-fit: contain;
   display: block;
 }
-      .ttad-brand-name { font-weight: 700; font-size: 15.5px; line-height: 1.2; }
-      .ttad-brand-sub { font-size: 10px; letter-spacing: 0.06em; color: var(--ttad-text-faint); font-weight: 600; }
 
-      .ttad-nav-label {
-        font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em;
-        color: var(--ttad-text-faint); padding: 6px 10px 10px;
-      }
-
-      .ttad-nav { display: flex; flex-direction: column; gap: 2px; }
-      .ttad-nav-item {
-        display: flex; align-items: center; gap: 10px;
-        width: 100%; text-align: left;
-        padding: 10px 12px; border-radius: var(--ttad-radius-sm);
-        border: none; background: transparent; cursor: pointer;
-        color: var(--ttad-text); font-size: 13.5px; font-weight: 500;
-        transition: background 0.15s ease;
-      }
-      .ttad-nav-item:hover:not(.active) { background: #f4eef2; }
-      .ttad-nav-item.active {
-        background: var(--ttad-primary);
-        color: #fff; font-weight: 600;
-      }
-      .ttad-nav-item-label { flex: 1; }
-      .ttad-nav-count {
-        font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px;
-        background: #efeaf0; color: var(--ttad-text-muted);
-      }
-      .ttad-nav-count.active { background: rgba(255,255,255,0.22); color: #fff; }
-
-      .ttad-main {
-  flex: 1;
+.ttad-brand-text {
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-.ttad-main {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
 }
 
+.ttad-brand-name {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--ttad-text);
+}
+
+.ttad-brand-sub {
+  margin-top: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ttad-text-faint);
+}
+
+/* Navigation heading */
+
+.ttad-nav-label {
+  padding: 8px 12px 9px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ttad-text-faint);
+}
+
+/* Navigation */
+
+.ttad-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Navigation button */
+
+.ttad-nav-item {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 10px 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  color: var(--ttad-text);
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.ttad-nav-item:hover {
+  background: #f7f1f5;
+}
+
+.ttad-nav-item.active {
+  background: var(--ttad-primary);
+  color: #ffffff;
+}
+
+.ttad-nav-item-label {
+  flex: 1;
+  white-space: nowrap;
+}
+
+/* Count */
+
+.ttad-nav-count {
+  min-width: 25px;
+  height: 22px;
+
+  padding: 0 7px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  background: #f0edf1;
+  color: var(--ttad-text-muted);
+
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.ttad-nav-count.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Mobile */
+
+@media (max-width: 780px) {
+  .ttad-sidebar {
+    width: 250px;
+    min-width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+  }
+}
+      
 /* ================= TOP NAVBAR ================= */
 
 .ttad-topbar {
