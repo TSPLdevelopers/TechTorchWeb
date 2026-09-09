@@ -375,8 +375,8 @@ function App() {
         />
 
         <Route
-          path="/cyber-security"
-          element={<CyberSecurityPage />}
+          path="/Business-growth"
+          element={<BusinessGrowthPage />}
         />
 
       </Route>
