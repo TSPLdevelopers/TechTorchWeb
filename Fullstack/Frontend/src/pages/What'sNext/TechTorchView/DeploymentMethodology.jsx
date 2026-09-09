@@ -77,17 +77,16 @@ export default function DeploymentMethodology() {
   return (
     <section
       ref={sectionRef}
-      className="w-full overflow-hidden bg-slate-50 py-16"
+      className="w-full overflow-hidden bg-slate-50 py-12 sm:py-14 md:py-16"
     >
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 md:grid-cols-[1fr_1.4fr]">
-        
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 sm:gap-12 px-5 sm:px-6 lg:grid-cols-[1fr_1.4fr]">
         {/* Left: intro + image */}
-        <div className="md:-ml-24">
-          <h2 className="mb-4 text-[24px] font-bold leading-snug text-slate-900">
+        <div className="lg:sticky lg:top-20 lg:self-start">
+          <h2 className="mb-4 text-[22px] sm:text-[24px] font-bold leading-snug text-slate-900">
             The Deployment Methodology
           </h2>
 
-          <p className="mb-6 text-[15px] leading-relaxed text-slate-600">
+          <p className="mb-6 text-[15px] leading-relaxed text-slate-600 max-w-md">
             Our three-phased approach guarantees that AI implementation is
             treated as a strategic business transformation rather than an
             isolated IT experiment.
@@ -97,7 +96,7 @@ export default function DeploymentMethodology() {
             <img
               src="/DeploymentMethodology.png"
               alt="Team collaborating around a model architecture presentation"
-              className="h-[200px] w-full object-cover"
+              className="w-full aspect-[16/9] sm:aspect-[4/3] lg:aspect-[16/10] object-cover"
             />
           </div>
         </div>
@@ -107,17 +106,15 @@ export default function DeploymentMethodology() {
           {STEPS.map((step, i) => (
             <div
               key={step.number}
-              className={`grid grid-cols-[56px_1fr] gap-4 py-6 ${
-                i !== STEPS.length - 1
-                  ? "border-b border-slate-200"
-                  : ""
+              className={`grid grid-cols-[44px_1fr] sm:grid-cols-[56px_1fr] gap-3 sm:gap-4 py-5 sm:py-6 ${
+                i !== STEPS.length - 1 ? "border-b border-slate-200" : ""
               } ${i === 0 ? "pt-0" : ""}`}
             >
               {/* Number reveal wrapper */}
-              <div className="h-[38px] overflow-hidden">
+              <div className="h-[32px] sm:h-[38px] overflow-hidden">
                 <span
                   ref={(el) => (numberRefs.current[i] = el)}
-                  className="block text-[32px] font-bold leading-none text-slate-300"
+                  className="block text-[26px] sm:text-[32px] font-bold leading-none text-slate-300"
                 >
                   {step.number}
                 </span>
@@ -125,7 +122,7 @@ export default function DeploymentMethodology() {
 
               {/* Step content */}
               <div ref={(el) => (stepRefs.current[i] = el)}>
-                <h3 className="mb-2 text-[16px] font-semibold text-slate-900">
+                <h3 className="mb-2 text-[15px] sm:text-[16px] font-semibold text-slate-900">
                   {step.title}
                 </h3>
 

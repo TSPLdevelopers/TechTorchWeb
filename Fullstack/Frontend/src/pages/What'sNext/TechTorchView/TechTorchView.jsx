@@ -1,6 +1,6 @@
 export default function TechTorchView() {
   return (
-    <section className="relative w-full h-[420px] overflow-hidden">
+    <section className="relative w-full h-[360px] sm:h-[400px] md:h-[440px] lg:h-[480px] overflow-hidden">
       {/* Background image layer — swap the url() below for your own photo */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -14,11 +14,11 @@ export default function TechTorchView() {
       <div className="absolute inset-0 bg-black/25" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-        <h1 className="text-white font-bold text-[28px] sm:text-[34px] leading-tight max-w-2xl [text-shadow:0_2px_12px_rgba(0,0,0,0.5)]">
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5 sm:px-6">
+        <h1 className="text-white font-bold text-[24px] sm:text-[28px] md:text-[32px] lg:text-[34px] leading-tight max-w-2xl [text-shadow:0_2px_12px_rgba(0,0,0,0.5)]">
           AI-Delivered Right: Scale at Speed
         </h1>
-        <p className="mt-4 text-white/90 text-[15px] sm:text-[16px] leading-relaxed max-w-lg [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]">
+        <p className="mt-3 sm:mt-4 text-white/90 text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed max-w-[280px] sm:max-w-md md:max-w-lg [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]">
           Empowering the modern enterprise with precision-engineered AI
           solutions that drive measurable business outcomes, safely and at
           scale.

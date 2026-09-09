@@ -32,31 +32,31 @@ const OFFERINGS = [
 export default function CapabilitiesOfferings() {
   return (
     <section
-      className="w-full py-16"
+      className="w-full py-12 sm:py-14 md:py-16"
       style={{
         background: "linear-gradient(160deg, #7a1750 0%, #5c0f3d 100%)",
       }}
     >
-      <div className="max-w-5xl mx-auto px-6">
-        <p className="text-white/70 text-[11px] font-semibold tracking-[0.15em] mb-2">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6">
+        <p className="text-white/70 text-[10px] sm:text-[11px] font-semibold tracking-[0.15em] mb-2">
           CAPABILITIES
         </p>
-        <h2 className="text-white text-[26px] sm:text-[28px] font-bold mb-10">
+        <h2 className="text-white text-[22px] sm:text-[26px] md:text-[28px] font-bold mb-8 sm:mb-10 max-w-xl">
           Precision Intelligence Offerings
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 md:gap-x-10 gap-y-10 sm:gap-y-12">
           {OFFERINGS.map((item) => (
             <div key={item.title} className="pb-8 border-b border-white/10">
-              <div className="rounded-lg overflow-hidden mb-5">
+              <div className="rounded-lg overflow-hidden mb-4 sm:mb-5">
                 {/* Swap the src below for your own photo */}
                 <img
                   src={item.image}
                   alt={item.alt}
-                  className="w-full h-[180px] object-cover"
+                  className="w-full aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/10] object-cover"
                 />
               </div>
-              <h3 className="text-white font-semibold text-[17px] mb-3">
+              <h3 className="text-white font-semibold text-[16px] sm:text-[17px] mb-2 sm:mb-3">
                 {item.title}
               </h3>
               <p className="text-white/70 text-[14px] leading-relaxed">
