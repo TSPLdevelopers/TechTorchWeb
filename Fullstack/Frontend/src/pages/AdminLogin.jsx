@@ -38,6 +38,7 @@ export default function LoginPage() {
       );
 
       const data = await response.json();
+      console.log("LOGIN RESPONSE:", data);
 
       if (!response.ok) {
         setMessage(data.message || "Invalid email or password");
@@ -45,7 +46,7 @@ export default function LoginPage() {
       }
 
       // Login successful
-      navigate("/");
+      navigate("/admin-dashboard");
     } catch (error) {
       console.error("Login error:", error);
       setMessage("Unable to connect to server");

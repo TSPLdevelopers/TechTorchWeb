@@ -230,6 +230,47 @@ const verifyOTP = asyncHandler(async (req, res) => {
     message: "OTP verified successfully",
   });
 });
+// ================= RESET PASSWORD =================
+
+const resetPassword = asyncHandler(async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  if (!email || !newPassword) {
+    return res.status(400).json({
+      success: false,
+      message: "Email and new password are required",
+    });
+  }
+
+  if (newPassword.length < 6) {
+    return res.status(400).json({
+      success: false,
+      message: "Password must be at least 6 characters",
+    });
+  }
+
+  const admin = await Admin.findOne({
+    email: email.toLowerCase(),
+  });
+
+  if (!admin) {
+    return res.status(404).json({
+      success: false,
+      message: "Admin not found",
+    });
+  }
+
+  const salt = await bcrypt.genSalt(10);
+
+  admin.password = await bcrypt.hash(newPassword, salt);
+
+  await admin.save();
+
+  return res.status(200).json({
+    success: true,
+    message: "Password reset successfully",
+  });
+});
 
 // ================= ADMIN PROFILE =================
 
@@ -425,6 +466,7 @@ module.exports = {
   loginAdmin,
   forgotPassword,
   verifyOTP,
+  resetPassword,
   logoutAdmin,
 };
 

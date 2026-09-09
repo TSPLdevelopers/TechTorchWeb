@@ -872,14 +872,29 @@ function StyleBlock() {
 /* ========================================================= */
 
 .ttad-sidebar {
-  width: 250px;
+   width: 250px;
   min-width: 250px;
-  min-height: 100vh;
+  height: 100vh;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
   background: var(--ttad-card);
   border-right: 1px solid var(--ttad-border);
+
   display: flex;
   flex-direction: column;
+
   padding: 20px 14px;
+
+  overflow-y: auto;
+  z-index: 1000;
+}
+  .ttad-main {
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  min-width: 0;
 }
 
 /* Brand */

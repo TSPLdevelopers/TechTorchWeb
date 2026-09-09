@@ -6,6 +6,7 @@ const {
   loginAdmin,
   forgotPassword,
   verifyOTP,
+  resetPassword,
   logoutAdmin, 
  } = require("../controllers/authController");
 
@@ -16,6 +17,7 @@ router.post("/register", registerAdmin);
 router.post("/login", loginAdmin);
 router.post("/forgot-password", forgotPassword);
 router.post("/verify-otp", verifyOTP);
+router.post("/reset-password", resetPassword);
 router.post("/logout", authMiddleware, logoutAdmin);
 
 module.exports = router;

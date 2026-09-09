@@ -7,8 +7,9 @@ import { Routes, Route } from "react-router-dom";
 import AdminLogin from "./pages/AdminLogin.jsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
 import AdminVerifyOTP from "./pages/AdminVerifyOTP.jsx";
+import AdminResetPassword from "./pages/AdminResetPassword.jsx";
 import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
-import NewsInsights from "./pages/NewsInsights.jsx";
+// import NewsInsights from "./pages/NewsInsights.jsx";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -174,15 +175,19 @@ function App() {
         path="/admin-verify-otp"
         element={<AdminVerifyOTP />}
       />
+      <Route
+  path="/admin-reset-password"
+  element={<AdminResetPassword />}
+/>
 
       <Route
         path="/admin-dashboard"
         element={<AdminDashboard />}
       />
-  <Route
+  {/* <Route
   path="/News-Insights"
   element={<NewsInsights />}
-/>
+/> */}
 
 
       {/* HOME */}

@@ -53,7 +53,11 @@ export default function OtpVerification() {
       // Abhi next reset-password page nahi banaya hai,
       // isliye filhaal login page par bhej rahe hain.
       setTimeout(() => {
-        navigate("/admin-login");
+        navigate("/admin-reset-password",{
+          state:  {
+            email: email.trim(),
+          }
+        });
       }, 1000);
     } catch (error) {
       console.error("Verify OTP error:", error);
