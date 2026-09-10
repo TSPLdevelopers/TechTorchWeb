@@ -2,47 +2,192 @@ import React from "react";
 
 export default function CyberSecurityHeroSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-slate-900">
-      {/* Background image */}
+    <section
+      className="
+        relative
+        w-full
+        min-h-[500px]
+        overflow-hidden
+        bg-slate-900
+        sm:min-h-[560px]
+        md:min-h-[600px]
+        lg:min-h-[640px]
+        xl:min-h-[680px]
+      "
+    >
+      {/* ================= BACKGROUND IMAGE ================= */}
       <div
-        className="absolute inset-0 bg-cover bg-center "
+        className="
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          bg-no-repeat
+        "
         style={{
-          backgroundImage:
-            "url('/Card4hero.png')",
+          backgroundImage: "url('/Card4hero.png')",
         }}
       />
-      {/* Dark overlay for overall contrast */}
-      <div className="absolute inset-0 bg-black/55" />
-      {/* Maroon gradient from left for text legibility, echoing the reference image */}
-      <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-950/95 via-fuchsia-950/60 to-transparent" />
 
-      <div className="relative mx-auto flex max-w-6xl flex-col px-6 py-20 sm:px-10 sm:py-24">
-        <span className="inline-flex w-fit items-center rounded-full bg-fuchsia-800 px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-white">
+      {/* ================= LIGHT BLACK OVERLAY ================= */}
+      <div className="absolute inset-0 bg-black/45" />
+
+      {/* ================= CONTENT ================= */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          flex
+          min-h-[500px]
+          w-full
+          max-w-7xl
+          flex-col
+          justify-center
+          px-4
+          py-12
+          sm:min-h-[560px]
+          sm:px-6
+          sm:py-16
+          md:min-h-[600px]
+          md:px-8
+          md:py-20
+          lg:min-h-[640px]
+          lg:px-10
+          lg:py-24
+          xl:min-h-[680px]
+          xl:px-12
+        "
+      >
+        {/* ================= CYBER SECURITY LABEL ================= */}
+        <span
+          className="
+            inline-flex
+            w-fit
+            items-center
+            rounded-full
+            bg-[#7A1338]
+            px-3
+            py-1
+            text-[10px]
+            font-semibold
+            tracking-[0.15em]
+            text-white
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           CYBER SECURITY
         </span>
 
-        <h1 className="mt-5 max-w-xl text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[2.75rem]">
+        {/* ================= MAIN HEADING ================= */}
+        <h1
+          className="
+            mt-5
+            w-full
+            max-w-[330px]
+            text-[25px]
+            font-bold
+            leading-[1.25]
+            text-white
+            sm:max-w-xl
+            sm:text-[30px]
+            md:max-w-2xl
+            md:text-[38px]
+            lg:max-w-3xl
+            lg:text-[44px]
+            xl:text-[48px]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           Security Built Into Your Business
         </h1>
 
-        <p className="mt-6 max-w-md text-sm leading-relaxed text-slate-200 sm:text-base">
+        {/* ================= FIRST DESCRIPTION ================= */}
+        <p
+          className="
+            mt-6
+            w-full
+            max-w-[330px]
+            text-[13px]
+            leading-[1.7]
+            text-white/90
+            sm:max-w-xl
+            sm:text-[14px]
+            md:max-w-2xl
+            md:text-[15px]
+            lg:max-w-2xl
+            lg:text-[16px]
+            lg:leading-[1.75]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           Cyber threats can affect more than your technology. They can
           disrupt operations, expose sensitive information and impact the
           trust your customers place in your business.
         </p>
 
-        <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-200 sm:text-base">
+        {/* ================= SECOND DESCRIPTION ================= */}
+        <p
+          className="
+            mt-4
+            w-full
+            max-w-[330px]
+            text-[13px]
+            leading-[1.7]
+            text-white/90
+            sm:max-w-xl
+            sm:text-[14px]
+            md:max-w-2xl
+            md:text-[15px]
+            lg:max-w-2xl
+            lg:text-[16px]
+            lg:leading-[1.75]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           TechTorch helps organizations strengthen their security posture
           with practical cybersecurity solutions designed around their
           systems, data, people and business requirements.
         </p>
 
+        {/* ================= BUTTON ================= */}
         <button
           type="button"
-          className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-fuchsia-800 px-6 py-3 text-xs font-semibold tracking-wide text-white transition-colors hover:bg-fuchsia-700 sm:text-sm"
+          className="
+            mt-8
+            inline-flex
+            w-fit
+            items-center
+            gap-2
+            rounded-full
+            bg-[#7A1338]
+            px-6
+            py-3
+            text-xs
+            font-semibold
+            tracking-wide
+            text-white
+            transition-colors
+            hover:bg-[#8F1945]
+            sm:text-sm
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
         >
           Secure Your Business
-          <span aria-hidden="true">&rarr;</span>
+
+          <span aria-hidden="true">
+            →
+          </span>
         </button>
       </div>
     </section>

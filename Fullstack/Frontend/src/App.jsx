@@ -115,6 +115,19 @@ import EditorialReflection from "./pages/What'sNext/CyberSecurity/EditorialRefle
 import OurApproach from "./pages/What'sNext/CyberSecurity/OurApproach.jsx";
 import WhyTechtorch from "./pages/What'sNext/CyberSecurity/WhyTechtorch.jsx";
 
+// ================= BUSINESS GROWTH =================
+import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTechnology.jsx";
+import PurspectiveSection from "./pages/What'sNext/BusinessGrowth/PurspectiveSection.jsx";
+import ArchitectureSection from "./pages/What'sNext/BusinessGrowth/ArchitectureSection.jsx";
+import MethodologySection from "./pages/What'sNext/BusinessGrowth/MethodologySection.jsx";
+import EcosystemCapabilitiesSection from "./pages/What'sNext/BusinessGrowth/EcosystemCapabilities.jsx";
+import TechnologyCapabilities from "./pages/What'sNext/BusinessGrowth/TechnologyCapabilties.jsx";
+import CoreEngineering from "./pages/What'sNext/BusinessGrowth/CoreEngineering.jsx";
+import MarketExpertiseSection from "./pages/What'sNext/BusinessGrowth/MarketExpertise.jsx";
+import InstitutionalCommitmentSection from "./pages/What'sNext/BusinessGrowth/InstitutionalCommitment.jsx";
+import ParadigmSection from "./pages/What'sNext/BusinessGrowth/ParadigmSection.jsx";
+
+
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -323,6 +336,22 @@ function CyberSecurityPage() {
     </>
   );
 }
+function BusinessGrowthPage() {
+  return (
+    <>
+      <GrowWithBusinessSection />
+      <PurspectiveSection />  
+      <ArchitectureSection />
+      <MethodologySection />
+      <EcosystemCapabilitiesSection />
+      <TechnologyCapabilities />
+      <CoreEngineering />
+      <MarketExpertiseSection />
+      <InstitutionalCommitmentSection />
+      <ParadigmSection />
+    </>
+  );
+}
 
 // =================================================
 // APP ROUTES
@@ -396,6 +425,11 @@ function App() {
         <Route
           path="/cyber-security"
           element={<CyberSecurityPage />}
+        />
+
+        <Route
+          path="/Business-growth"
+          element={<BusinessGrowthPage />}
         />
 
       </Route>
