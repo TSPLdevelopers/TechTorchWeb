@@ -115,17 +115,84 @@ const capabilities = [
 
 export default function EcosystemCapabilitiesSection() {
   return (
-    <section className="w-full bg-white px-6 py-16 sm:px-10 lg:px-16">
-      <div className="mx-auto max-w-6xl">
-        <span className="text-[10px] font-semibold tracking-[0.15em] text-[#6B1E3F]">
+    <section
+      className="
+        w-full
+        overflow-hidden
+        bg-white
+        px-4
+        py-10
+        sm:px-6
+        sm:py-12
+        md:px-8
+        md:py-14
+        lg:px-10
+        lg:py-16
+        xl:px-12
+        xl:py-20
+      "
+    >
+      <div className="mx-auto w-full max-w-7xl">
+
+        {/* ================= LABEL ================= */}
+        <span
+          className="
+            text-[9px]
+            font-semibold
+            tracking-[0.15em]
+            text-[#6B1E3F]
+            sm:text-[10px]
+            md:text-[11px]
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           ECOSYSTEM CAPABILITIES
         </span>
 
-        <h1 className="mt-3 text-2xl font-semibold leading-snug text-[#6B1E3F] sm:text-3xl">
+        {/* ================= MAIN HEADING ================= */}
+        <h1
+          className="
+            mt-3
+            w-full
+            max-w-[360px]
+            text-[22px]
+            font-bold
+            leading-[1.3]
+            text-[#6B1E3F]
+            sm:max-w-2xl
+            sm:text-[26px]
+            md:text-[29px]
+            lg:max-w-3xl
+            lg:text-[32px]
+            xl:text-[34px]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           One Business. Many Moving Parts.
         </h1>
 
-        <p className="mt-5 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+        {/* ================= DESCRIPTION 01 ================= */}
+        <p
+          className="
+            mt-5
+            w-full
+            max-w-4xl
+            text-[13px]
+            leading-[1.75]
+            text-slate-600
+            sm:mt-6
+            sm:text-[14px]
+            md:text-[15px]
+            md:leading-[1.8]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           A modern business depends on many functions working together.
           Finance. Operations. Customers. People. Supply chains. Payments.
           Projects. When these functions operate separately, information
@@ -133,38 +200,200 @@ export default function EcosystemCapabilitiesSection() {
           manage.
         </p>
 
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+        {/* ================= DESCRIPTION 02 ================= */}
+        <p
+          className="
+            mt-4
+            w-full
+            max-w-4xl
+            text-[13px]
+            leading-[1.75]
+            text-slate-600
+            sm:text-[14px]
+            md:text-[15px]
+            md:leading-[1.8]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           TechTorch provides digital solutions across these areas to help
           businesses create more connected and efficient operations.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* ================= CAPABILITY CARDS ================= */}
+        <div
+          className="
+            mt-8
+            grid
+            grid-cols-1
+            gap-4
+            sm:mt-10
+            sm:grid-cols-2
+            sm:gap-5
+            md:mt-12
+            md:gap-6
+            lg:grid-cols-3
+            lg:gap-5
+            xl:gap-6
+          "
+        >
           {capabilities.map((c) => {
             const Icon = c.icon;
+
             return (
               <div
                 key={c.number}
-                className="rounded-md bg-slate-50 p-6"
+                className="
+                  group
+                  relative
+                  w-full
+                  min-w-0
+                  overflow-hidden
+                  rounded-md
+                  bg-slate-50
+                  p-5
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:bg-rose-50
+                  hover:shadow-md
+                  sm:p-6
+                  md:p-6
+                  lg:p-5
+                  xl:p-6
+                "
               >
-                <div className="flex items-center justify-between">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-md bg-white text-[#6B1E3F]">
-                    <Icon size={17} />
-                  </span>
-                  <span className="rounded-sm bg-white px-2 py-0.5 text-[10px] font-semibold text-slate-400">
-                    {c.number}
+                {/* ================= TOP RIGHT PINK GLOW ================= */}
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -right-8
+                    -top-8
+                    h-24
+                    w-24
+                    rounded-full
+                    bg-pink-200/40
+                    blur-2xl
+                    transition-all
+                    duration-500
+                    group-hover:scale-150
+                    group-hover:bg-pink-300/50
+                  "
+                />
+
+                {/* ================= CARD CONTENT ================= */}
+                <div className="relative z-10">
+
+                  {/* ICON + NUMBER */}
+                  <div className="flex items-center justify-between gap-3">
+
+                    {/* ICON */}
+                    <span
+                      className="
+                        flex
+                        h-10
+                        w-10
+                        flex-shrink-0
+                        items-center
+                        justify-center
+                        rounded-md
+                        bg-white
+                        text-[#6B1E3F]
+                        transition-all
+                        duration-500
+                        group-hover:rotate-6
+                        group-hover:scale-110
+                        group-hover:bg-white
+                        group-hover:shadow-sm
+                      "
+                    >
+                      <Icon
+                        size={17}
+                        strokeWidth={1.8}
+                        className="
+                          transition-transform
+                          duration-500
+                          group-hover:-rotate-6
+                        "
+                      />
+                    </span>
+
+                    {/* NUMBER */}
+                    <span
+                      className="
+                        rounded-sm
+                        bg-white
+                        px-2
+                        py-0.5
+                        text-[9px]
+                        font-semibold
+                        text-slate-400
+                        sm:text-[10px]
+                      "
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                      }}
+                    >
+                      {c.number}
+                    </span>
+                  </div>
+
+                  {/* ================= CARD TITLE ================= */}
+                  <h3
+                    className="
+                      mt-4
+                      text-[15px]
+                      font-semibold
+                      leading-[1.4]
+                      text-slate-900
+                      sm:text-[16px]
+                      md:text-[17px]
+                    "
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {c.title}
+                  </h3>
+
+                  {/* ================= CARD DESCRIPTION ================= */}
+                  <p
+                    className="
+                      mt-2
+                      text-[13px]
+                      leading-[1.7]
+                      text-slate-500
+                      sm:text-[13px]
+                      md:text-[14px]
+                      md:leading-[1.75]
+                    "
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {c.description}
+                  </p>
+
+                  {/* ================= TAG ================= */}
+                  <span
+                    className="
+                      mt-4
+                      block
+                      text-[9px]
+                      font-semibold
+                      tracking-[0.08em]
+                      text-[#6B1E3F]
+                      sm:text-[10px]
+                    "
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {c.tag}
                   </span>
                 </div>
-
-                <h3 className="mt-4 text-sm font-semibold leading-snug text-slate-900 sm:text-base">
-                  {c.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-slate-500 sm:text-[13px]">
-                  {c.description}
-                </p>
-
-                <span className="mt-4 block text-[10px] font-semibold tracking-wide text-[#6B1E3F]">
-                  {c.tag}
-                </span>
               </div>
             );
           })}
