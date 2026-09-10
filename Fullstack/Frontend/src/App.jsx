@@ -127,6 +127,16 @@ import MarketExpertiseSection from "./pages/What'sNext/BusinessGrowth/MarketExpe
 import InstitutionalCommitmentSection from "./pages/What'sNext/BusinessGrowth/InstitutionalCommitment.jsx";
 import ParadigmSection from "./pages/What'sNext/BusinessGrowth/ParadigmSection.jsx";
 
+// ================= TECH PULSE =================
+import DataDecisions from "./pages/What'sNext/TechPulse/DataDecisions.jsx";
+import PerspectiveAnalysis from "./pages/What'sNext/TechPulse/PerspectiveAnalysis.jsx";
+import StrategicInquiry from "./pages/What'sNext/TechPulse/StrategicInquiry.jsx";
+import StructuredMethodology from "./pages/What'sNext/TechPulse/StructuredMethodology.jsx";
+import OperationalImpact from "./pages/What'sNext/TechPulse/OperationalImpact.jsx";
+import Automation from "./pages/What'sNext/TechPulse/Automation.jsx";
+import CrossFunctional from "./pages/What'sNext/TechPulse/CrossFunctional.jsx";
+import Discipline from "./pages/What'sNext/TechPulse/Discipline.jsx";
+
 
 // =================================================
 // COMMON LAYOUT
@@ -353,6 +363,21 @@ function BusinessGrowthPage() {
   );
 }
 
+function TechPulsePage() {
+  return (
+    <>
+    <DataDecisions />
+    <PerspectiveAnalysis />
+    <StrategicInquiry />
+    <StructuredMethodology />
+    <OperationalImpact />
+    <Automation />
+    <CrossFunctional />
+    <Discipline />
+    </>
+  );
+}
+
 // =================================================
 // APP ROUTES
 // =================================================
@@ -430,6 +455,11 @@ function App() {
         <Route
           path="/Business-growth"
           element={<BusinessGrowthPage />}
+        />
+
+        <Route
+          path="/data-decisions"
+          element={<TechPulsePage />}
         />
 
       </Route>
