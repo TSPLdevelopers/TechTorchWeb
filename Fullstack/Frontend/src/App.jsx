@@ -91,6 +91,9 @@ import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapab
 
 import IntegratedCapLayout from "./pages/What'sNext/FieldNote/IntegratedCapabilities/IntegratedCapLayout.jsx";
 import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/ERPIntegration.jsx";
+import OpManagement from  "./pages/What'sNext/FieldNote/IntegratedCapabilities/OpManagement.jsx";
+import DataOrchestration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/DataOrchestration.jsx";
+import Legacy from "./pages/What'sNext/FieldNote/IntegratedCapabilities/Legacy.jsx";
 
 // ================= THINK AHEAD =================
 import ReadSection from "./pages/What'sNext/ThinkAhead/ReadSection.jsx";
@@ -366,6 +369,19 @@ function App() {
     path="erp-integration"
     element={<ERPIntegration />}
   />
+
+  <Route
+          path="operations-management"
+          element={<OpManagement />}
+        />
+  <Route
+          path="data-orchestration"
+          element={<DataOrchestration />}
+        />
+ <Route
+          path="legacy-modernization"
+          element={<Legacy />}
+        />
 </Route>
 
 
