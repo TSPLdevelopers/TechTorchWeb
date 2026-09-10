@@ -3,19 +3,18 @@ import React from "react";
 export default function OperationsManagement() {
   return (
     <div className="operations-page">
-
       {/* ================= HERO ================= */}
+
       <section className="operations-hero">
         <img
           className="operations-hero-image"
-          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=90"
+          src="/OpManagement.png"
           alt="Operations control room"
         />
 
         <div className="operations-hero-overlay"></div>
 
         <div className="operations-hero-content">
-
           <div className="operations-badge">
             <span className="operations-badge-icon">
               <svg
@@ -35,7 +34,6 @@ export default function OperationsManagement() {
                 <path d="M14.5 14 17.8 16" />
               </svg>
             </span>
-
             OPERATIONS MANAGEMENT
           </div>
 
@@ -56,17 +54,13 @@ export default function OperationsManagement() {
               View Analytics
             </button>
           </div>
-
         </div>
       </section>
 
-
       {/* ================= INTRO ================= */}
-      <section className="operations-intro">
 
-        <h2>
-          Transforming Complexity into Clarity
-        </h2>
+      <section className="operations-intro">
+        <h2>Transforming Complexity into Clarity</h2>
 
         <p>
           TechTorch empowers enterprise teams by dismantling departmental silos
@@ -75,18 +69,15 @@ export default function OperationsManagement() {
           excellence across every layer of your infrastructure, reducing
           friction and amplifying strategic outcomes.
         </p>
-
       </section>
 
-
       {/* ================= FEATURE CARDS ================= */}
+
       <section className="operations-features">
-
         {/* WORKFLOW AUTOMATION */}
+
         <div className="workflow-card">
-
           <div className="workflow-content">
-
             <div className="feature-icon workflow-icon">
               <svg
                 viewBox="0 0 24 24"
@@ -101,9 +92,7 @@ export default function OperationsManagement() {
               </svg>
             </div>
 
-            <h3>
-              Workflow Automation
-            </h3>
+            <h3>Workflow Automation</h3>
 
             <p>
               Streamline complex processes with intelligent automation that
@@ -112,7 +101,6 @@ export default function OperationsManagement() {
             </p>
 
             <div className="workflow-stats">
-
               <div className="stat-box">
                 <strong>40%</strong>
                 <span>REDUCTION IN MANUAL TASKS</span>
@@ -122,17 +110,13 @@ export default function OperationsManagement() {
                 <strong>3x</strong>
                 <span>FASTER RESOLUTION TIMES</span>
               </div>
-
             </div>
-
           </div>
-
         </div>
 
-
         {/* PREDICTIVE MAINTENANCE */}
-        <div className="maintenance-card">
 
+        <div className="maintenance-card">
           <div className="feature-icon maintenance-icon">
             <svg
               viewBox="0 0 24 24"
@@ -163,7 +147,6 @@ export default function OperationsManagement() {
           </p>
 
           <div className="maintenance-chart">
-
             <div className="chart-bars">
               <span className="bar bar-1"></span>
               <span className="bar bar-2"></span>
@@ -172,19 +155,14 @@ export default function OperationsManagement() {
               <span className="bar bar-5"></span>
               <span className="bar bar-6"></span>
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-
       {/* ================= RESILIENCE ================= */}
+
       <section className="resilience-card">
-
         <div className="resilience-content">
-
           <div className="feature-icon resilience-icon">
             <svg
               viewBox="0 0 24 24"
@@ -211,7 +189,6 @@ export default function OperationsManagement() {
           </p>
 
           <div className="resilience-list">
-
             <div className="resilience-item">
               <span>
                 <svg
@@ -256,25 +233,21 @@ export default function OperationsManagement() {
               </span>
               Compliance Auditing & Reporting
             </div>
-
           </div>
-
         </div>
 
         <div className="resilience-image-wrapper">
           <img
-            src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=90"
+            src="/OpManagement1.png"
             alt="Digital network operations"
             className="resilience-image"
           />
         </div>
-
       </section>
 
-
       {/* ================= CSS ================= */}
-      <style>{`
 
+      <style>{`
         * {
           box-sizing: border-box;
         }
@@ -287,7 +260,6 @@ export default function OperationsManagement() {
           font-family: "Inter", sans-serif;
           padding: 28px 28px 60px;
         }
-
 
         /* ================= HERO ================= */
 
@@ -365,10 +337,10 @@ export default function OperationsManagement() {
           margin: 27px 0 28px;
           color: #ffffff;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: clamp(42px, 5vw, 70px);
+          font-size: 50px;
           line-height: 1.04;
           font-weight: 800;
-          letter-spacing: -2.5px;
+          letter-spacing: -2px;
         }
 
         .operations-hero-buttons {
@@ -379,7 +351,7 @@ export default function OperationsManagement() {
 
         .operations-primary-btn,
         .operations-secondary-btn {
-          min-height: 48px;
+          min-height: 40px;
           padding: 0 28px;
           border-radius: 4px;
           font-family: "Inter", sans-serif;
@@ -409,7 +381,6 @@ export default function OperationsManagement() {
           background: rgba(255,255,255,0.1);
         }
 
-
         /* ================= INTRO ================= */
 
         .operations-intro {
@@ -422,21 +393,21 @@ export default function OperationsManagement() {
         .operations-intro h2 {
           margin: 0 0 26px;
           color: #68103a;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: clamp(27px, 3vw, 37px);
+          font-family: "Inter", sans-serif;
+          font-size: 30px;
           line-height: 1.2;
-          font-weight: 750;
+          font-weight: 600;
           letter-spacing: -1.2px;
         }
 
         .operations-intro p {
           margin: 0;
           color: #75676d;
-          font-size: 20px;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
           line-height: 1.55;
           font-weight: 400;
         }
-
 
         /* ================= FEATURES ================= */
 
@@ -447,18 +418,20 @@ export default function OperationsManagement() {
           display: grid;
           grid-template-columns: minmax(0, 1fr) 270px;
           gap: 20px;
-          align-items: stretch;
+          align-items: start;
         }
-
 
         /* WORKFLOW */
 
         .workflow-card {
-          min-height: 420px;
+          height: 390px;
+          min-height: 390px;
+          align-self: start;
           background: #ffffff;
           border: 1px solid #eeeeee;
           border-radius: 15px;
-          box-shadow: 0 8px 30px rgba(45, 25, 35, 0.025);
+          box-shadow:
+            0 8px 30px rgba(45, 25, 35, 0.025);
         }
 
         .workflow-content {
@@ -488,8 +461,8 @@ export default function OperationsManagement() {
         .workflow-content h3 {
           margin: 24px 0 14px;
           color: #202020;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 25px;
+          font-family: "Inter", sans-serif;
+          font-size: 22px;
           line-height: 1.2;
           font-weight: 750;
         }
@@ -511,7 +484,7 @@ export default function OperationsManagement() {
         }
 
         .stat-box {
-          min-height: 105px;
+          min-height: 100px;
           padding: 18px 20px;
           border: 1px solid #e5e8ed;
           border-radius: 7px;
@@ -524,7 +497,7 @@ export default function OperationsManagement() {
         .stat-box strong {
           color: #6d1640;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 27px;
+          font-size: 23px;
           line-height: 1;
           font-weight: 500;
         }
@@ -533,16 +506,17 @@ export default function OperationsManagement() {
           margin-top: 9px;
           max-width: 130px;
           color: #75676d;
-          font-size: 8px;
+          font-size: 10px;
           line-height: 1.3;
           font-weight: 700;
         }
 
-
         /* MAINTENANCE */
 
         .maintenance-card {
+          height: 420px;
           min-height: 420px;
+          align-self: start;
           padding: 38px 30px 28px;
           background: #fcf9fb;
           border: 1px solid #f1edf0;
@@ -629,7 +603,6 @@ export default function OperationsManagement() {
           background: #719277;
         }
 
-
         /* ================= RESILIENCE ================= */
 
         .resilience-card {
@@ -657,8 +630,8 @@ export default function OperationsManagement() {
         .resilience-content h2 {
           margin: 25px 0 20px;
           color: #1d1d1d;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 30px;
+          font-family: "Inter", sans-serif;
+          font-size: 28px;
           line-height: 1.12;
           font-weight: 750;
           letter-spacing: -0.8px;
@@ -668,6 +641,7 @@ export default function OperationsManagement() {
           max-width: 380px;
           margin: 0;
           color: #75676d;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.55;
         }
@@ -685,6 +659,7 @@ export default function OperationsManagement() {
           gap: 10px;
           color: #343034;
           font-size: 12px;
+          font-family: "Inter", sans-serif;
           font-weight: 500;
         }
 
@@ -714,7 +689,6 @@ export default function OperationsManagement() {
           object-fit: cover;
           object-position: center;
         }
-
 
         /* ================= TABLET ================= */
 
@@ -766,7 +740,6 @@ export default function OperationsManagement() {
           }
         }
 
-
         /* ================= MOBILE ================= */
 
         @media (max-width: 650px) {
@@ -815,7 +788,6 @@ export default function OperationsManagement() {
             font-size: 10px;
           }
 
-
           .operations-intro {
             margin: 40px auto 55px;
             padding: 0 10px;
@@ -831,7 +803,6 @@ export default function OperationsManagement() {
             line-height: 1.55;
           }
 
-
           .operations-features {
             display: flex;
             flex-direction: column;
@@ -840,6 +811,7 @@ export default function OperationsManagement() {
           }
 
           .workflow-card {
+            height: auto;
             min-height: auto;
           }
 
@@ -871,10 +843,9 @@ export default function OperationsManagement() {
             font-size: 24px;
           }
 
-
           .maintenance-card {
+            height: auto;
             min-height: 370px;
-            padding: 30px 25px;
           }
 
           .maintenance-card h3 {
@@ -884,7 +855,6 @@ export default function OperationsManagement() {
           .maintenance-card p {
             font-size: 13px;
           }
-
 
           .resilience-card {
             display: flex;
@@ -918,9 +888,7 @@ export default function OperationsManagement() {
             height: 280px;
             min-height: 280px;
           }
-
         }
-
 
         /* ================= SMALL MOBILE ================= */
 
@@ -977,9 +945,7 @@ export default function OperationsManagement() {
             height: 240px;
             min-height: 240px;
           }
-
         }
-
       `}</style>
     </div>
   );

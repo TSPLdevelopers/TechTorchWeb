@@ -89,6 +89,7 @@ import ConnectSection from "./pages/What'sNext/FieldNote/ConnectSection.jsx";
 import OperationalAdvantage from "./pages/What'sNext/FieldNote/OperationalAdvantage.jsx";
 import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapabilities.jsx";
 
+// ================= INTEGRATED CAPABILITIES =================
 import IntegratedCapLayout from "./pages/What'sNext/FieldNote/IntegratedCapabilities/IntegratedCapLayout.jsx";
 import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/ERPIntegration.jsx";
 import OpManagement from  "./pages/What'sNext/FieldNote/IntegratedCapabilities/OpManagement.jsx";
