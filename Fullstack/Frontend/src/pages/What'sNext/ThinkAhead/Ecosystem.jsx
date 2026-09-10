@@ -146,7 +146,7 @@ export default function EcosystemHeroSection() {
             items-center
             justify-center
             gap-2
-            bg-fuchsia-900
+            bg-[#730042]
             px-5
             py-3
             text-[11px]
@@ -156,7 +156,7 @@ export default function EcosystemHeroSection() {
             transition-all
             duration-300
             hover:-translate-y-0.5
-            hover:bg-fuchsia-800
+            hover:bg-[#730042]
             active:translate-y-0
             sm:mt-7
             sm:w-auto

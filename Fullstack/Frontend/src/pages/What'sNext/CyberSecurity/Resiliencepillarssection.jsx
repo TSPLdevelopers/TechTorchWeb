@@ -13,7 +13,7 @@ export default function ResiliencePillarsSection() {
     <section className="w-full bg-[#0B0A12] px-6 py-16 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-5xl">
         <div className="text-center">
-          <span className="inline-flex items-center rounded-full bg-fuchsia-900/60 px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-rose-100">
+          <span className="inline-flex items-center rounded-full bg-[#730042] px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-rose-100">
             CORE RESILIENCE PILLARS
           </span>
 
@@ -52,6 +52,7 @@ export default function ResiliencePillarsSection() {
               <p className="text-xs font-semibold tracking-wide text-slate-200">
                 A WELL-DESIGNED SECURITY APPROACH CONSIDERS:
               </p>
+
               <ul className="mt-3 flex flex-col gap-2">
                 {considerations.map((c) => (
                   <li
