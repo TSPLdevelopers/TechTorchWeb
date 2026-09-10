@@ -1,11 +1,17 @@
-import { NavLink, Outlet,  } from "react-router-dom";
+import React from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const menuItems = [
   {
     name: "ERP Integration",
     path: "erp-integration",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
         <circle cx="12" cy="12" r="3" />
         <circle cx="5" cy="7" r="1.5" />
         <circle cx="19" cy="7" r="1.5" />
@@ -22,7 +28,12 @@ const menuItems = [
     name: "Operations",
     path: "operations-management",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
         <path d="M4 20h16" />
         <path d="M6 17h12" />
         <path d="M7 17V9h10v8" />
@@ -35,7 +46,12 @@ const menuItems = [
     name: "Data Orchestration",
     path: "data-orchestration",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
         <rect x="5" y="4" width="14" height="16" rx="1.5" />
         <path d="M8 8h8" />
         <path d="M8 12h8" />
@@ -47,7 +63,12 @@ const menuItems = [
     name: "Legacy Modernization",
     path: "legacy-modernization",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
         <path d="M4 7h7l3 3h6v8H4z" />
         <path d="M8 14h7" />
         <path d="M12 11v6" />
@@ -57,11 +78,19 @@ const menuItems = [
 ];
 
 export default function IntegratedCapLayout() {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [location.pathname]);
+
   return (
     <div className="integrated-cap-layout">
-
       <aside className="integrated-cap-sidebar">
-
         <div className="integrated-cap-brand">
           TechTorch
         </div>
@@ -88,7 +117,6 @@ export default function IntegratedCapLayout() {
             </NavLink>
           ))}
         </nav>
-
       </aside>
 
       <main className="integrated-cap-main">

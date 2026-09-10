@@ -8,7 +8,7 @@ export default function DataOrchestration() {
       <section className="data-orchestration-hero">
 
         <img
-          src="https://talweg.ai/_astro/agentic-bridge-diagram.BMToK1Dl.png"
+          src="/DataOrchestration.png"
           alt="Advanced Data Orchestration"
           className="data-orchestration-hero-image"
         />
@@ -255,7 +255,7 @@ export default function DataOrchestration() {
         <div className="data-flow-image-box">
 
           <img
-            src="https://dfttelecom.com/cdn/shop/files/www.dfttelecom.com.jpg?v=1764510103&width=1500"
+            src="/DataOrchestration1.png"
             alt="Enterprise Data Flow"
             className="data-flow-image"
           />
@@ -271,6 +271,7 @@ export default function DataOrchestration() {
         * {
           box-sizing: border-box;
         }
+
 
         .data-orchestration-page {
           width: 100%;
@@ -294,6 +295,7 @@ export default function DataOrchestration() {
           border-radius: 0 0 7px 7px;
         }
 
+
         .data-orchestration-hero-image {
           position: absolute;
           inset: 0;
@@ -302,6 +304,7 @@ export default function DataOrchestration() {
           object-fit: cover;
           object-position: center;
         }
+
 
         .data-orchestration-hero-overlay {
           position: absolute;
@@ -315,6 +318,7 @@ export default function DataOrchestration() {
             );
         }
 
+
         .data-orchestration-hero-content {
           position: relative;
           z-index: 2;
@@ -324,6 +328,7 @@ export default function DataOrchestration() {
           flex-direction: column;
           justify-content: center;
         }
+
 
         .data-orchestration-eyebrow {
           display: flex;
@@ -335,12 +340,14 @@ export default function DataOrchestration() {
           letter-spacing: 1.3px;
         }
 
+
         .data-orchestration-eyebrow span {
           display: block;
           width: 25px;
           height: 2px;
           background: #f0dce7;
         }
+
 
         .data-orchestration-hero h1 {
           margin: 28px 0 0;
@@ -351,6 +358,7 @@ export default function DataOrchestration() {
           letter-spacing: -2.5px;
           font-weight: 800;
         }
+
 
         .data-orchestration-hero h1 strong {
           color: #f39abd;
@@ -369,11 +377,13 @@ export default function DataOrchestration() {
           gap: 25px;
         }
 
+
         .data-single-title {
           display: flex;
           align-items: flex-start;
           gap: 10px;
         }
+
 
         .data-title-line {
           width: 4px;
@@ -381,6 +391,7 @@ export default function DataOrchestration() {
           background: #8a0050;
           border-radius: 2px;
         }
+
 
         .data-single-title h2 {
           margin: 0;
@@ -391,6 +402,7 @@ export default function DataOrchestration() {
           font-weight: 750;
           letter-spacing: -0.7px;
         }
+
 
         .data-single-text p {
           margin: 0;
@@ -411,6 +423,7 @@ export default function DataOrchestration() {
           gap: 20px;
         }
 
+
         .data-capability-card {
           min-height: 340px;
           padding: 28px 25px;
@@ -419,6 +432,7 @@ export default function DataOrchestration() {
           border-radius: 7px;
           box-shadow: 0 4px 18px rgba(20, 15, 20, 0.025);
         }
+
 
         .data-card-icon {
           width: 40px;
@@ -432,10 +446,12 @@ export default function DataOrchestration() {
           color: #87004c;
         }
 
+
         .data-card-icon svg {
           width: 21px;
           height: 21px;
         }
+
 
         .data-capability-card h3 {
           margin: 0 0 17px;
@@ -446,6 +462,7 @@ export default function DataOrchestration() {
           font-weight: 750;
           letter-spacing: -0.4px;
         }
+
 
         .data-capability-card p {
           margin: 0;
@@ -472,9 +489,11 @@ export default function DataOrchestration() {
           border: 1px solid #e5e7e9;
         }
 
+
         .data-flow-content {
           min-width: 0;
         }
+
 
         .data-flow-content h2 {
           margin: 0 0 16px;
@@ -486,6 +505,7 @@ export default function DataOrchestration() {
           letter-spacing: -0.8px;
         }
 
+
         .data-flow-content p {
           max-width: 390px;
           margin: 0 0 27px;
@@ -493,6 +513,7 @@ export default function DataOrchestration() {
           font-size: 15px;
           line-height: 1.5;
         }
+
 
         .data-metric {
           min-height: 55px;
@@ -503,6 +524,7 @@ export default function DataOrchestration() {
           gap: 15px;
         }
 
+
         .data-metric-left {
           display: flex;
           align-items: center;
@@ -511,6 +533,7 @@ export default function DataOrchestration() {
           font-size: 11px;
           font-weight: 700;
         }
+
 
         .data-metric-icon {
           width: 18px;
@@ -521,16 +544,19 @@ export default function DataOrchestration() {
           color: #8b0050;
         }
 
+
         .data-metric-icon svg {
           width: 17px;
           height: 17px;
         }
+
 
         .data-metric strong {
           color: #252225;
           font-size: 14px;
           white-space: nowrap;
         }
+
 
         .data-flow-image-box {
           width: 100%;
@@ -540,6 +566,7 @@ export default function DataOrchestration() {
           background: #ffffff;
           border: 1px solid #e4e7e9;
         }
+
 
         .data-flow-image {
           width: 100%;
@@ -559,34 +586,42 @@ export default function DataOrchestration() {
             padding-right: 20px;
           }
 
+
           .data-orchestration-hero {
             height: 450px;
           }
+
 
           .data-orchestration-hero-content {
             padding: 70px 40px;
           }
 
+
           .data-orchestration-hero h1 {
             font-size: clamp(39px, 6vw, 58px);
           }
+
 
           .data-single-source {
             max-width: 800px;
           }
 
+
           .data-capability-cards {
             max-width: 800px;
           }
+
 
           .data-flow-section {
             max-width: 800px;
             grid-template-columns: 1fr 270px;
           }
 
+
           .data-flow-image-box {
             height: 270px;
           }
+
         }
 
 
@@ -598,21 +633,26 @@ export default function DataOrchestration() {
             padding: 0 14px 40px;
           }
 
+
           .data-orchestration-hero {
             height: 500px;
           }
+
 
           .data-orchestration-hero-content {
             padding: 55px 25px;
           }
 
+
           .data-orchestration-eyebrow {
             font-size: 9px;
           }
 
+
           .data-orchestration-eyebrow span {
             width: 20px;
           }
+
 
           .data-orchestration-hero h1 {
             margin-top: 23px;
@@ -629,13 +669,16 @@ export default function DataOrchestration() {
             margin: 35px auto 55px;
           }
 
+
           .data-single-title h2 {
             font-size: 24px;
           }
 
+
           .data-title-line {
             min-height: 82px;
           }
+
 
           .data-single-text p {
             font-size: 15px;
@@ -650,18 +693,22 @@ export default function DataOrchestration() {
             margin-bottom: 35px;
           }
 
+
           .data-capability-card {
             min-height: auto;
             padding: 25px 22px;
           }
 
+
           .data-card-icon {
             margin-bottom: 18px;
           }
 
+
           .data-capability-card h3 {
             font-size: 19px;
           }
+
 
           .data-capability-card p {
             font-size: 13px;
@@ -677,13 +724,16 @@ export default function DataOrchestration() {
             min-height: auto;
           }
 
+
           .data-flow-content h2 {
             font-size: 25px;
           }
 
+
           .data-flow-content p {
             font-size: 14px;
           }
+
 
           .data-flow-image-box {
             width: 100%;
@@ -702,35 +752,43 @@ export default function DataOrchestration() {
             padding-right: 10px;
           }
 
+
           .data-orchestration-hero {
             height: 450px;
           }
+
 
           .data-orchestration-hero-content {
             padding-left: 20px;
             padding-right: 20px;
           }
 
+
           .data-orchestration-hero h1 {
             font-size: 31px;
             letter-spacing: -1px;
           }
 
+
           .data-single-title h2 {
             font-size: 22px;
           }
+
 
           .data-single-text p {
             font-size: 14px;
           }
 
+
           .data-capability-card {
             padding: 22px 19px;
           }
 
+
           .data-flow-section {
             padding: 25px 18px;
           }
+
 
           .data-flow-image-box {
             height: 250px;

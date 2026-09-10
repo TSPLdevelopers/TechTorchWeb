@@ -8,7 +8,7 @@ export default function LegacyModernization() {
       <section className="legacy-hero">
 
         <img
-          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=85"
+          src="/Legacy.png"
           alt="Legacy Technology"
           className="legacy-hero-image"
         />
@@ -217,6 +217,7 @@ export default function LegacyModernization() {
           box-sizing: border-box;
         }
 
+
         .legacy-modernization-page {
           width: 100%;
           min-height: 100vh;
@@ -238,6 +239,7 @@ export default function LegacyModernization() {
           overflow: hidden;
         }
 
+
         .legacy-hero-image {
           position: absolute;
           inset: 0;
@@ -246,6 +248,7 @@ export default function LegacyModernization() {
           object-fit: cover;
           object-position: center;
         }
+
 
         .legacy-hero-overlay {
           position: absolute;
@@ -259,6 +262,7 @@ export default function LegacyModernization() {
             );
         }
 
+
         .legacy-hero-content {
           position: relative;
           z-index: 2;
@@ -269,6 +273,7 @@ export default function LegacyModernization() {
           justify-content: center;
         }
 
+
         .legacy-eyebrow {
           margin-bottom: 20px;
           color: #78003f;
@@ -277,6 +282,7 @@ export default function LegacyModernization() {
           font-weight: 800;
           letter-spacing: 2px;
         }
+
 
         .legacy-hero h1 {
           max-width: 850px;
@@ -288,6 +294,7 @@ export default function LegacyModernization() {
           font-weight: 800;
           letter-spacing: -2.5px;
         }
+
 
         .legacy-hero p {
           margin: 0;
@@ -321,9 +328,11 @@ export default function LegacyModernization() {
           align-items: start;
         }
 
+
         .legacy-copy {
           min-width: 0;
         }
+
 
         .legacy-copy h2 {
           margin: 0 0 35px;
@@ -334,6 +343,7 @@ export default function LegacyModernization() {
           font-weight: 750;
           letter-spacing: -1px;
         }
+
 
         .legacy-copy p {
           max-width: 560px;
@@ -364,6 +374,7 @@ export default function LegacyModernization() {
           box-shadow: 0 7px 18px rgba(30, 20, 30, 0.08);
         }
 
+
         .architecture-heading {
           display: flex;
           align-items: flex-start;
@@ -371,6 +382,7 @@ export default function LegacyModernization() {
           gap: 15px;
           margin-bottom: 25px;
         }
+
 
         .architecture-heading h3 {
           margin: 0;
@@ -380,6 +392,7 @@ export default function LegacyModernization() {
           line-height: 1.15;
           font-weight: 750;
         }
+
 
         .architecture-heading span {
           padding: 7px 10px;
@@ -391,6 +404,7 @@ export default function LegacyModernization() {
           font-weight: 700;
         }
 
+
         .architecture-image-wrapper {
           width: 100%;
           height: 175px;
@@ -399,6 +413,7 @@ export default function LegacyModernization() {
           background: #ffffff;
           border: 1px solid #e3e7eb;
         }
+
 
         .architecture-image {
           width: 100%;
@@ -420,6 +435,7 @@ export default function LegacyModernization() {
           box-shadow: 0 9px 22px rgba(95, 0, 50, 0.18);
         }
 
+
         .impact-label {
           margin-bottom: 23px;
           color: #e8b9d0;
@@ -427,6 +443,7 @@ export default function LegacyModernization() {
           font-weight: 800;
           letter-spacing: 1px;
         }
+
 
         .impact-number {
           display: flex;
@@ -439,12 +456,14 @@ export default function LegacyModernization() {
           font-weight: 800;
         }
 
+
         .impact-number span {
           color: #e9cada;
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 500;
         }
+
 
         .impact-card p {
           max-width: 250px;
@@ -476,12 +495,14 @@ export default function LegacyModernization() {
           font-weight: 750;
         }
 
+
         .priority-grid {
           width: 100%;
           display: grid;
           grid-template-columns: 150px 150px;
           gap: 25px;
         }
+
 
         .priority-card {
           min-height: 290px;
@@ -490,6 +511,7 @@ export default function LegacyModernization() {
           border: 1px solid #e2e6ea;
           border-radius: 13px;
         }
+
 
         .priority-icon {
           width: 39px;
@@ -503,10 +525,12 @@ export default function LegacyModernization() {
           color: #71003e;
         }
 
+
         .priority-icon svg {
           width: 19px;
           height: 19px;
         }
+
 
         .priority-card h3 {
           margin: 0 0 18px;
@@ -516,6 +540,7 @@ export default function LegacyModernization() {
           line-height: 1.15;
           font-weight: 750;
         }
+
 
         .priority-card p {
           margin: 0;
@@ -533,42 +558,52 @@ export default function LegacyModernization() {
             padding: 22px 20px 55px;
           }
 
+
           .legacy-hero {
             height: 400px;
           }
+
 
           .legacy-hero-content {
             padding: 60px 40px;
           }
 
+
           .legacy-hero h1 {
             font-size: clamp(38px, 6vw, 56px);
           }
+
 
           .legacy-hero p {
             font-size: 17px;
           }
 
+
           .legacy-main-card {
             padding: 55px 38px 65px;
           }
+
 
           .legacy-top-content {
             grid-template-columns: minmax(0, 1fr) 275px;
             gap: 35px;
           }
 
+
           .legacy-copy h2 {
             font-size: 27px;
           }
+
 
           .legacy-copy p {
             font-size: 16px;
           }
 
+
           .architecture-card {
             padding: 23px;
           }
+
 
           .impact-card {
             padding: 25px;
@@ -585,18 +620,22 @@ export default function LegacyModernization() {
             padding: 0 14px 40px;
           }
 
+
           .legacy-hero {
             height: 470px;
           }
+
 
           .legacy-hero-content {
             padding: 50px 25px;
           }
 
+
           .legacy-eyebrow {
             font-size: 9px;
             letter-spacing: 1.5px;
           }
+
 
           .legacy-hero h1 {
             font-size: clamp(33px, 8.5vw, 46px);
@@ -604,10 +643,12 @@ export default function LegacyModernization() {
             letter-spacing: -1.5px;
           }
 
+
           .legacy-hero p {
             font-size: 15px;
             line-height: 1.5;
           }
+
 
           .desktop-break {
             display: none;
@@ -627,10 +668,12 @@ export default function LegacyModernization() {
             gap: 35px;
           }
 
+
           .legacy-copy h2 {
             font-size: 25px;
             margin-bottom: 25px;
           }
+
 
           .legacy-copy p {
             font-size: 15px;
@@ -642,13 +685,16 @@ export default function LegacyModernization() {
             width: 100%;
           }
 
+
           .architecture-card {
             padding: 22px;
           }
 
+
           .architecture-image-wrapper {
             height: 190px;
           }
+
 
           .impact-card {
             min-height: 200px;
@@ -659,23 +705,28 @@ export default function LegacyModernization() {
             margin: 42px 0 35px;
           }
 
+
           .strategic-section h2 {
             font-size: 20px;
           }
+
 
           .priority-grid {
             grid-template-columns: 1fr 1fr;
             gap: 12px;
           }
 
+
           .priority-card {
             min-height: 275px;
             padding: 20px 17px;
           }
 
+
           .priority-card h3 {
             font-size: 16px;
           }
+
 
           .priority-card p {
             font-size: 12px;
@@ -693,52 +744,64 @@ export default function LegacyModernization() {
             padding-right: 10px;
           }
 
+
           .legacy-hero {
             height: 440px;
           }
+
 
           .legacy-hero-content {
             padding-left: 20px;
             padding-right: 20px;
           }
 
+
           .legacy-hero h1 {
             font-size: 30px;
             letter-spacing: -1px;
           }
 
+
           .legacy-hero p {
             font-size: 14px;
           }
+
 
           .legacy-main-card {
             padding-left: 18px;
             padding-right: 18px;
           }
 
+
           .legacy-copy h2 {
             font-size: 23px;
           }
+
 
           .legacy-copy p {
             font-size: 14px;
           }
 
+
           .architecture-heading h3 {
             font-size: 16px;
           }
+
 
           .architecture-image-wrapper {
             height: 175px;
           }
 
+
           .impact-number {
             font-size: 34px;
           }
 
+
           .priority-grid {
             grid-template-columns: 1fr;
           }
+
 
           .priority-card {
             min-height: auto;
