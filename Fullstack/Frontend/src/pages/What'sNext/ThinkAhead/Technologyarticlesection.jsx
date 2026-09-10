@@ -82,24 +82,75 @@ export default function TechnologyArticleSection() {
 
   return (
     <section
-      className="w-full bg-[#FAF6F1] px-6 py-16 sm:px-10 lg:px-16"
-      style={{ fontFamily: "'Inter', sans-serif" }}
+      className="
+        w-full
+        overflow-hidden
+        bg-[#FAF6F1]
+        px-4
+        py-10
+        sm:px-6
+        sm:py-12
+        md:px-8
+        md:py-14
+        lg:px-10
+        lg:py-16
+        xl:px-12
+        xl:py-20
+      "
     >
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-[260px_1fr]">
-
-        {/* Sticky Sidebar Navigation */}
+      <div
+        className="
+          mx-auto
+          grid
+          w-full
+          max-w-7xl
+          grid-cols-1
+          gap-10
+          sm:gap-12
+          md:gap-14
+          lg:grid-cols-[240px_minmax(0,1fr)]
+          lg:gap-12
+          xl:grid-cols-[260px_minmax(0,1fr)]
+          xl:gap-16
+        "
+      >
+        {/* ==================================================
+            STICKY SIDEBAR NAVIGATION
+        ================================================== */}
         <aside className="hidden lg:block">
-          <nav className="sticky top-16 flex flex-col gap-4 border-l border-slate-300 pl-5">
+          <nav
+            className="
+              sticky
+              top-16
+              flex
+              flex-col
+              gap-4
+              border-l
+              border-slate-300
+              pl-4
+              xl:pl-5
+            "
+          >
             {sections.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className={`text-xs leading-snug transition-colors hover:text-fuchsia-900 ${
-                  activeId === s.id
-                    ? "font-semibold text-fuchsia-900"
-                    : "text-slate-500"
-                }`}
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className={`
+                  text-[11px]
+                  leading-[1.45]
+                  transition-colors
+                  duration-200
+                  hover:text-fuchsia-900
+                  xl:text-xs
+                  ${
+                    activeId === s.id
+                      ? "font-semibold text-fuchsia-900"
+                      : "text-slate-500"
+                  }
+                `}
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                }}
               >
                 {s.navLabel}
               </a>
@@ -107,21 +158,66 @@ export default function TechnologyArticleSection() {
           </nav>
         </aside>
 
-        {/* Main Article Content */}
-        <article className="max-w-2xl">
-          <div className="flex flex-col gap-10">
+        {/* ==================================================
+            MAIN ARTICLE CONTENT
+        ================================================== */}
+        <article
+          className="
+            w-full
+            min-w-0
+            max-w-3xl
+          "
+        >
+          <div
+            className="
+              flex
+              flex-col
+              gap-8
+              sm:gap-10
+              md:gap-12
+              lg:gap-14
+            "
+          >
             {sections.map((s) => (
               <div
                 key={s.id}
                 id={s.id}
                 ref={(el) => (sectionRefs.current[s.id] = el)}
-                className="scroll-mt-24"
+                className="
+                  scroll-mt-20
+                  sm:scroll-mt-24
+                  lg:scroll-mt-28
+                "
               >
-
-                {/* Heading */}
-                <div className="border-l-4 border-fuchsia-900 bg-rose-50/70 py-2 pl-4">
+                {/* ==================================================
+                    HEADING
+                ================================================== */}
+                <div
+                  className="
+                    w-full
+                    border-l-[3px]
+                    border-fuchsia-900
+                    bg-rose-50/70
+                    py-2.5
+                    pl-3
+                    pr-2
+                    sm:border-l-4
+                    sm:py-3
+                    sm:pl-4
+                    md:py-3.5
+                  "
+                >
                   <h2
-                    className="text-lg font-semibold text-slate-900 sm:text-xl"
+                    className="
+                      text-[18px]
+                      font-bold
+                      leading-[1.35]
+                      text-slate-900
+                      sm:text-[20px]
+                      md:text-[22px]
+                      lg:text-[23px]
+                      xl:text-[24px]
+                    "
                     style={{
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                     }}
@@ -130,9 +226,22 @@ export default function TechnologyArticleSection() {
                   </h2>
                 </div>
 
-                {/* Body */}
+                {/* ==================================================
+                    BODY
+                ================================================== */}
                 <p
-                  className="mt-4 pl-4 text-sm leading-relaxed text-slate-600 sm:text-[15px]"
+                  className="
+                    mt-3
+                    pl-3
+                    text-[13px]
+                    leading-[1.75]
+                    text-slate-600
+                    sm:mt-4
+                    sm:pl-4
+                    sm:text-[14px]
+                    md:text-[15px]
+                    md:leading-[1.8]
+                  "
                   style={{
                     fontFamily: "'Inter', sans-serif",
                   }}
@@ -140,15 +249,28 @@ export default function TechnologyArticleSection() {
                   {s.body}
                 </p>
 
-                {/* Image */}
+                {/* ==================================================
+                    IMAGE
+                ================================================== */}
                 {s.image && (
-                  <img
-                    src={s.image}
-                    alt={s.heading}
-                    className="mt-6 h-56 w-full rounded-md object-cover sm:h-72"
-                  />
+                  <div className="mt-5 w-full overflow-hidden rounded-lg sm:mt-6 sm:rounded-xl">
+                    <img
+                      src={s.image}
+                      alt={s.heading}
+                      loading="lazy"
+                      className="
+                        block
+                        h-auto
+                        w-full
+                        max-w-full
+                        object-cover
+                        transition-transform
+                        duration-500
+                        hover:scale-[1.01]
+                      "
+                    />
+                  </div>
                 )}
-
               </div>
             ))}
           </div>
