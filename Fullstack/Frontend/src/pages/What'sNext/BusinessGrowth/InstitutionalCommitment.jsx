@@ -1,5 +1,11 @@
 import React from "react";
-import { TrendingUp, PenSquare, Link2, Users, LifeBuoy } from "lucide-react";
+import {
+  TrendingUp,
+  PenSquare,
+  Link2,
+  Users,
+  LifeBuoy,
+} from "lucide-react";
 
 const cards = [
   {
@@ -39,17 +45,78 @@ const cards = [
 
 export default function InstitutionalCommitmentSection() {
   return (
-    <section className="w-full bg-[#FAF6F1] px-6 py-16 sm:px-10 lg:px-16">
-      <div className="mx-auto max-w-6xl">
-        <span className="text-[10px] font-semibold tracking-[0.15em] text-[#6B1E3F]">
+    <section
+      className="
+        w-full
+        overflow-hidden
+        bg-[#FAF6F1]
+        px-4
+        py-10
+        sm:px-6
+        sm:py-12
+        md:px-8
+        md:py-16
+        lg:px-10
+        lg:py-20
+        xl:px-12
+      "
+    >
+      <div className="mx-auto w-full max-w-6xl">
+        {/* ================= LABEL ================= */}
+
+        <span
+          className="
+            text-[9px]
+            font-semibold
+            tracking-[0.15em]
+            text-[#6B1E3F]
+            sm:text-[10px]
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           INSTITUTIONAL COMMITMENT
         </span>
 
-        <h1 className="mt-3 max-w-xl text-2xl font-semibold leading-snug text-[#6B1E3F] sm:text-3xl">
+        {/* ================= MAIN HEADING ================= */}
+
+        <h1
+          className="
+            mt-3
+            max-w-xl
+            text-[23px]
+            font-semibold
+            leading-[1.3]
+            text-[#6B1E3F]
+            sm:text-[26px]
+            md:text-[30px]
+            lg:text-3xl
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           Technology Should Be a Long-Term Advantage
         </h1>
 
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+        {/* ================= SUBHEADING ================= */}
+
+        <p
+          className="
+            mt-4
+            max-w-3xl
+            text-[13px]
+            leading-[1.75]
+            text-slate-600
+            sm:text-[14px]
+            sm:leading-relaxed
+            md:text-[15px]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           Choosing technology isn't just about solving today's problem.
           It's about creating a foundation that can continue to support the
           business tomorrow. TechTorch focuses on creating solutions that
@@ -59,27 +126,103 @@ export default function InstitutionalCommitmentSection() {
           support.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        {/* ================= CARDS ================= */}
+
+        <div
+          className="
+            mt-8
+            grid
+            grid-cols-1
+            gap-4
+            sm:mt-10
+            sm:grid-cols-2
+            md:grid-cols-3
+            lg:grid-cols-5
+          "
+        >
           {cards.map((c) => {
             const Icon = c.icon;
+
             return (
               <div
                 key={c.number}
-                className="rounded-md border border-slate-200 bg-white p-6"
+                className="
+                  w-full
+                  rounded-md
+                  border
+                  border-slate-200
+                  bg-white
+                  p-5
+                  sm:p-6
+                "
               >
+                {/* NUMBER + ICON */}
+
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-slate-300">
+                  <span
+                    className="
+                      text-2xl
+                      font-bold
+                      text-slate-300
+                    "
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
                     {c.number}
                   </span>
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-100 text-[#6B1E3F]">
-                    <Icon size={15} />
+
+                  <span
+                    className="
+                      flex
+                      h-8
+                      w-8
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-rose-100
+                      text-[#6B1E3F]
+                    "
+                  >
+                    <Icon size={15} strokeWidth={2} />
                   </span>
                 </div>
 
-                <h3 className="mt-4 text-base font-semibold text-slate-900">
+                {/* CARD TITLE */}
+
+                <h3
+                  className="
+                    mt-4
+                    text-[14px]
+                    font-semibold
+                    leading-snug
+                    text-slate-900
+                    sm:text-[15px]
+                    md:text-base
+                  "
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                  }}
+                >
                   {c.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-500">
+
+                {/* CARD DESCRIPTION */}
+
+                <p
+                  className="
+                    mt-2
+                    text-[12.5px]
+                    leading-[1.7]
+                    text-slate-500
+                    sm:text-[13px]
+                    md:text-sm
+                  "
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                  }}
+                >
                   {c.description}
                 </p>
               </div>
