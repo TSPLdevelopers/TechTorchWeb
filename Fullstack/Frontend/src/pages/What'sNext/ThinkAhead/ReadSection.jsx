@@ -6,13 +6,13 @@ export default function TechHeroSection() {
       className="
         relative
         w-full
-        min-h-[420px]
+        min-h-[400px]
         overflow-hidden
         bg-slate-950
-        sm:min-h-[460px]
-        md:min-h-[500px]
-        lg:min-h-[540px]
-        xl:min-h-[580px]
+        sm:min-h-[440px]
+        md:min-h-[480px]
+        lg:min-h-[520px]
+        xl:min-h-[560px]
       "
     >
       {/* ================= BACKGROUND IMAGE ================= */}
@@ -39,32 +39,32 @@ export default function TechHeroSection() {
           z-10
           mx-auto
           flex
-          min-h-[420px]
+          min-h-[400px]
           w-full
-          max-w-5xl
+          max-w-6xl
           flex-col
           items-center
           justify-center
           px-4
           py-12
           text-center
-          sm:min-h-[460px]
+          sm:min-h-[440px]
           sm:px-6
           sm:py-16
-          md:min-h-[500px]
+          md:min-h-[480px]
           md:px-8
           md:py-20
-          lg:min-h-[540px]
+          lg:min-h-[520px]
           lg:px-10
           lg:py-24
-          xl:min-h-[580px]
+          xl:min-h-[560px]
         "
       >
-        {/* ================= HEADING ================= */}
+        {/* ================= MAIN HEADING ================= */}
         <h1
           className="
             w-full
-            max-w-[320px]
+            max-w-[330px]
             text-[24px]
             font-bold
             leading-[1.25]
@@ -74,8 +74,8 @@ export default function TechHeroSection() {
             md:max-w-2xl
             md:text-[38px]
             lg:max-w-3xl
-            lg:text-[46px]
-            xl:text-[50px]
+            lg:text-[44px]
+            xl:text-[48px]
           "
           style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -84,13 +84,14 @@ export default function TechHeroSection() {
           Technology Is Changing How Business Gets Done
         </h1>
 
-        {/* ================= SUB HEADING / DESCRIPTION ================= */}
+        {/* ================= SUB HEADING ================= */}
         <p
           className="
             mt-4
             w-full
             max-w-[320px]
             text-[13px]
+            font-medium
             leading-[1.7]
             text-slate-300
             sm:mt-5
@@ -121,7 +122,7 @@ export default function TechHeroSection() {
             mt-6
             inline-flex
             w-full
-            max-w-[290px]
+            max-w-[300px]
             items-center
             justify-center
             gap-2
@@ -152,7 +153,11 @@ export default function TechHeroSection() {
           }}
         >
           <span>EXPLORE OUR TECHNOLOGY CAPABILITIES</span>
-          <span aria-hidden="true" className="text-base">
+
+          <span
+            aria-hidden="true"
+            className="text-base leading-none"
+          >
             →
           </span>
         </button>
