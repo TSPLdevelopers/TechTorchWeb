@@ -32,46 +32,75 @@ export default function DeploymentMethodology() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      /* =====================================================
+         INITIAL STATE
+         Numbers hidden above
+      ===================================================== */
+
       gsap.set(numberRefs.current, {
         yPercent: -120,
+        opacity: 0,
       });
 
+      /* Step content hidden initially */
       gsap.set(stepRefs.current, {
         opacity: 0,
         y: 25,
       });
 
+      /* =====================================================
+         SCROLL ANIMATION
+      ===================================================== */
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
+
+          // Section viewport mein enter hote hi animation
           start: "top 75%",
+
+          // Section se completely bahar jaane par reverse
+          end: "bottom 20%",
+
           toggleActions: "play none none reverse",
+
+          // Animation ko refresh/re-enter par properly handle karega
+          invalidateOnRefresh: true,
         },
       });
 
       STEPS.forEach((_, index) => {
+        /* ================= NUMBER ANIMATION ================= */
+
         tl.to(
           numberRefs.current[index],
           {
             yPercent: 0,
+            opacity: 1,
             duration: 0.7,
             ease: "power3.out",
           },
           index === 0 ? 0 : ">-0.15"
-        ).to(
-          stepRefs.current[index],
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.55,
-            ease: "power2.out",
-          },
-          "<0.1"
-        );
+        )
+
+          /* ================= CONTENT ANIMATION ================= */
+
+          .to(
+            stepRefs.current[index],
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.55,
+              ease: "power2.out",
+            },
+            "<0.1"
+          );
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -108,14 +137,15 @@ export default function DeploymentMethodology() {
         {/* =====================================================
             LEFT: INTRO + IMAGE
         ===================================================== */}
+
         <div
           className="
             w-full
             lg:sticky
             lg:top-[4px]
             lg:self-start
-            lg:-ml-[72px]
-            xl:-ml-[96px]
+            lg:ml-2
+            xl:ml-4
           "
         >
           {/* Main Heading - Plus Jakarta Sans */}
@@ -180,6 +210,7 @@ export default function DeploymentMethodology() {
         {/* =====================================================
             RIGHT: NUMBERED STEPS
         ===================================================== */}
+
         <div className="flex w-full min-w-0 flex-col">
           {STEPS.map((step, i) => (
             <div
@@ -211,7 +242,10 @@ export default function DeploymentMethodology() {
                 ${i === 0 ? "pt-0" : ""}
               `}
             >
-              {/* ================= NUMBER ================= */}
+              {/* =================================================
+                  NUMBER
+              ================================================= */}
+
               <div
                 className="
                   h-[30px]
@@ -239,7 +273,10 @@ export default function DeploymentMethodology() {
                 </span>
               </div>
 
-              {/* ================= STEP CONTENT ================= */}
+              {/* =================================================
+                  STEP CONTENT
+              ================================================= */}
+
               <div
                 ref={(el) => (stepRefs.current[i] = el)}
                 className="min-w-0"
