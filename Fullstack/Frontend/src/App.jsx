@@ -12,7 +12,7 @@ import Hero from "./components/Hero";
 import Hero2 from "./components/Hero2";
 import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
-import Section5 from "./components/Section5";
+// import Section5 from "./components/Section5";
 import Section6 from "./components/Section6";
 import Section7 from "./components/section7";
 import Section8 from "./components/section8";
@@ -172,7 +172,7 @@ function Home() {
       <Hero2 />
       <Hero3 />
       <Section4 />
-      <Section5 />
+      {/* <Section5 /> */}
       <Section6 />
       <Section7 />
       <Section8 />
@@ -413,7 +413,7 @@ function App() {
         <Route path="/Slide2" element={<Slide2Page />} />
         <Route path="/Slide3" element={<Slide3Page />} />
         <Route path="/Slide4" element={<Slide4Page />} />
-        <Route path="/Slide5" element={<Slide5Page />} />
+        {/* <Route path="/Slide5" element={<Slide5Page />} /> */}
 
         {/* OUR STORY */}
         <Route path="/Philosophy" element={<PhilosophyPage />} />

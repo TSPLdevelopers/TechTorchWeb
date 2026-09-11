@@ -1,7 +1,7 @@
 import React from "react";
 
 // Replace this with your own image URL
-const IMAGE_URL = "Container.png";
+const IMAGE_URL = "Container2.png";
 
 export default function HeroSection() {
   return (
