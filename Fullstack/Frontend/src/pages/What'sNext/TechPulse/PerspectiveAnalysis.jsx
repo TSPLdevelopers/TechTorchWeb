@@ -215,10 +215,10 @@ export default function PerspectiveAnalysis() {
           margin: 0 0 24px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 28px;
+          font-size: 26px;
           line-height: 1.18;
           letter-spacing: -1px;
-          font-weight: 700;
+          font-weight: 600;
 
           color: #151a2a;
         }
@@ -241,7 +241,7 @@ export default function PerspectiveAnalysis() {
 
           color: #970052;
 
-          font-size: 8px;
+          font-size: 9px;
           font-weight: 800;
           letter-spacing: 0.5px;
         }
@@ -250,7 +250,7 @@ export default function PerspectiveAnalysis() {
           margin: 0 0 11px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 16px;
+          font-size: 15px;
           line-height: 1.35;
           font-weight: 700;
 
@@ -262,7 +262,9 @@ export default function PerspectiveAnalysis() {
 
           color: #596579;
 
-          font-size: 11px;
+          font-size: 13px;
+          font-family: "Inter", sans-serif;
+          font-weight: 500;
           line-height: 1.7;
         }
 
@@ -283,7 +285,9 @@ export default function PerspectiveAnalysis() {
 
           color: #5d6574;
 
-          font-size: 10px;
+          font-size: 12px;
+           font-family: "Inter", sans-serif;
+          font-weight: 500;
           line-height: 1.65;
         }
 
@@ -300,7 +304,7 @@ export default function PerspectiveAnalysis() {
 
           font-size: 17px;
           line-height: 1.4;
-          font-weight: 700;
+          font-weight: 600;
 
           color: #171d2c;
         }
@@ -309,8 +313,8 @@ export default function PerspectiveAnalysis() {
           margin: 0 0 21px;
 
           color: #596579;
-
-          font-size: 11px;
+           font-family: "Inter", sans-serif;
+          font-size: 13px;
           line-height: 1.7;
         }
 
@@ -325,7 +329,7 @@ export default function PerspectiveAnalysis() {
 
           color: #68748a;
 
-          font-size: 8px;
+          font-size: 9px;
           font-weight: 800;
           letter-spacing: 0.55px;
         }
@@ -366,8 +370,8 @@ export default function PerspectiveAnalysis() {
           margin: 0;
 
           color: #354054;
-
-          font-size: 9px;
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
           line-height: 1.5;
 
           font-weight: 600;
@@ -394,8 +398,8 @@ export default function PerspectiveAnalysis() {
 
           color: #ef9bb9;
 
-          font-size: 7.5px;
-          font-weight: 800;
+          font-size: 8px;
+          font-weight: 700;
           letter-spacing: 0.5px;
         }
 
@@ -417,8 +421,8 @@ export default function PerspectiveAnalysis() {
           margin: 0;
 
           color: rgba(239, 243, 250, 0.75);
-
-          font-size: 9.5px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
           line-height: 1.6;
         }
 
@@ -428,8 +432,8 @@ export default function PerspectiveAnalysis() {
           margin: 0 0 14px;
 
           color: #596579;
-
-          font-size: 11px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
           line-height: 1.7;
         }
 
@@ -437,8 +441,8 @@ export default function PerspectiveAnalysis() {
           margin: 0 0 22px;
 
           color: #2e3749;
-
-          font-size: 10px;
+font-family: "Inter", sans-serif;
+          font-size: 13px;
           line-height: 1.6;
 
           font-weight: 600;
@@ -461,8 +465,8 @@ export default function PerspectiveAnalysis() {
           margin: 0 0 7px;
 
           color: #41495a;
-
-          font-size: 10px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
           line-height: 1.5;
         }
 
@@ -475,7 +479,19 @@ export default function PerspectiveAnalysis() {
 
           font-size: 15px;
           line-height: 1.4;
-          font-weight: 700;
+          font-weight: 800;
+        }
+
+        /* XL & DESKTOP */
+        /* Left content slightly left, right content slightly right */
+
+        @media (min-width: 1201px) {
+          .perspective-container {
+            max-width: 1280px;
+            padding-left: 10px;
+            padding-right: 10px;
+            gap: 65px;
+          }
         }
 
         /* TABLET */

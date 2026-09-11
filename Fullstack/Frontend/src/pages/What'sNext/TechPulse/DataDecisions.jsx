@@ -170,9 +170,9 @@ export default function DataDecisions() {
           margin: 0 0 12px;
           color: #ffffff;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 31px;
+          font-size: 30px;
           line-height: 1.05;
-          font-weight: 800;
+          font-weight: 600;
           letter-spacing: -1.2px;
         }
 
@@ -184,7 +184,7 @@ export default function DataDecisions() {
           font-family: "Inter", sans-serif;
           font-size: 15px;
           line-height: 1.4;
-          font-weight: 500;
+          font-weight: 400;
         }
 
 
@@ -192,7 +192,7 @@ export default function DataDecisions() {
           max-width: 850px;
           margin: 0 0 12px;
           color: rgba(235, 240, 248, 0.82);
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.5;
           font-weight: 400;
         }
