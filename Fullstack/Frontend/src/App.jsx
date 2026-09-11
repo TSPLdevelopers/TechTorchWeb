@@ -89,6 +89,13 @@ import ConnectSection from "./pages/What'sNext/FieldNote/ConnectSection.jsx";
 import OperationalAdvantage from "./pages/What'sNext/FieldNote/OperationalAdvantage.jsx";
 import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapabilities.jsx";
 
+// ================= INTEGRATED CAPABILITIES =================
+import IntegratedCapLayout from "./pages/What'sNext/FieldNote/IntegratedCapabilities/IntegratedCapLayout.jsx";
+import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/ERPIntegration.jsx";
+import OpManagement from  "./pages/What'sNext/FieldNote/IntegratedCapabilities/OpManagement.jsx";
+import DataOrchestration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/DataOrchestration.jsx";
+import Legacy from "./pages/What'sNext/FieldNote/IntegratedCapabilities/Legacy.jsx";
+
 // ================= THINK AHEAD =================
 import ReadSection from "./pages/What'sNext/ThinkAhead/ReadSection.jsx";
 import Technologyarticlesection from "./pages/What'sNext/ThinkAhead/Technologyarticlesection.jsx";
@@ -119,6 +126,16 @@ import CoreEngineering from "./pages/What'sNext/BusinessGrowth/CoreEngineering.j
 import MarketExpertiseSection from "./pages/What'sNext/BusinessGrowth/MarketExpertise.jsx";
 import InstitutionalCommitmentSection from "./pages/What'sNext/BusinessGrowth/InstitutionalCommitment.jsx";
 import ParadigmSection from "./pages/What'sNext/BusinessGrowth/ParadigmSection.jsx";
+
+// ================= TECH PULSE =================
+import DataDecisions from "./pages/What'sNext/TechPulse/DataDecisions.jsx";
+import PerspectiveAnalysis from "./pages/What'sNext/TechPulse/PerspectiveAnalysis.jsx";
+import StrategicInquiry from "./pages/What'sNext/TechPulse/StrategicInquiry.jsx";
+import StructuredMethodology from "./pages/What'sNext/TechPulse/StructuredMethodology.jsx";
+import OperationalImpact from "./pages/What'sNext/TechPulse/OperationalImpact.jsx";
+import Automation from "./pages/What'sNext/TechPulse/Automation.jsx";
+import CrossFunctional from "./pages/What'sNext/TechPulse/CrossFunctional.jsx";
+import Discipline from "./pages/What'sNext/TechPulse/Discipline.jsx";
 
 
 // =================================================
@@ -293,9 +310,11 @@ function FieldNotePage() {
   );
 }
 
+
 // =================================================
 // THINK AHEAD PAGE
 // =================================================
+
 function ThinkAheadPage() {
   return (
     <>
@@ -344,6 +363,21 @@ function BusinessGrowthPage() {
   );
 }
 
+function TechPulsePage() {
+  return (
+    <>
+    <DataDecisions />
+    <PerspectiveAnalysis />
+    <StrategicInquiry />
+    <StructuredMethodology />
+    <OperationalImpact />
+    <Automation />
+    <CrossFunctional />
+    <Discipline />
+    </>
+  );
+}
+
 // =================================================
 // APP ROUTES
 // =================================================
@@ -380,6 +414,32 @@ function App() {
           element={<FieldNotePage />}
         />
 
+
+{/* INTEGRATED CAPABILITIES */}
+<Route
+  path="/integrated-capabilities"
+  element={<IntegratedCapLayout />}
+>
+  <Route
+    path="erp-integration"
+    element={<ERPIntegration />}
+  />
+
+  <Route
+          path="operations-management"
+          element={<OpManagement />}
+        />
+  <Route
+          path="data-orchestration"
+          element={<DataOrchestration />}
+        />
+ <Route
+          path="legacy-modernization"
+          element={<Legacy />}
+        />
+</Route>
+
+
         {/* WHAT'S NEXT - THINK AHEAD */}
         <Route
           path="/think-ahead"
@@ -395,6 +455,11 @@ function App() {
         <Route
           path="/Business-growth"
           element={<BusinessGrowthPage />}
+        />
+
+        <Route
+          path="/data-decisions"
+          element={<TechPulsePage />}
         />
 
       </Route>
