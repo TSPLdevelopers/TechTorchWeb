@@ -277,18 +277,17 @@ export default function EnterpriseHero() {
           "
         >
           <img
-            src="/enterprise-command-center.jpg"
-            alt="Enterprise operations team reviewing a live data command center"
-            className="
-              block
-              h-auto
-              min-h-[260px]
-              w-full
-              object-cover
-              sm:aspect-[16/9]
-              sm:min-h-0
-            "
-          />
+  src="/digital solution.png"
+  alt="Enterprise operations team reviewing a live data command center"
+  className="
+    block
+    w-full
+    h-auto
+    object-cover
+    sm:aspect-[2.5/1]
+    sm:object-cover
+  "
+/>
 
           {/* ================= TELEMETRY BAR ================= */}
 
