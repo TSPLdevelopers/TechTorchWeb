@@ -115,6 +115,9 @@ import EditorialReflection from "./pages/What'sNext/CyberSecurity/EditorialRefle
 import OurApproach from "./pages/What'sNext/CyberSecurity/OurApproach.jsx";
 import WhyTechtorch from "./pages/What'sNext/CyberSecurity/WhyTechtorch.jsx";
 
+import Initiative  from "./pages/What'sNext/CyberSecurity/SecureBusiness/Initiative.jsx";
+
+
 // ================= BUSINESS GROWTH =================
 import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTechnology.jsx";
 import PurspectiveSection from "./pages/What'sNext/BusinessGrowth/PurspectiveSection.jsx";
@@ -348,6 +351,15 @@ function CyberSecurityPage() {
     </>
   );
 }
+
+function SecureBusinessPage() {
+  return (
+    <>
+    <Initiative />
+    </>
+  )
+}
+
 function BusinessGrowthPage() {
   return (
     <>
@@ -455,6 +467,10 @@ function App() {
           element={<CyberSecurityPage />}
         />
 
+<Route
+  path="/secure-business"
+  element={<SecureBusinessPage />}
+/>
         <Route
           path="/Business-growth"
           element={<BusinessGrowthPage />}

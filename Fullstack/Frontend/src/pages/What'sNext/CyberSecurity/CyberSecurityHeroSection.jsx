@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CyberSecurityHeroSection() {
+  const navigate = useNavigate();
+
   return (
     <section
       className="
@@ -161,6 +164,7 @@ export default function CyberSecurityHeroSection() {
         {/* ================= BUTTON ================= */}
         <button
           type="button"
+          onClick={() => navigate("/secure-business")}
           className="
             mt-8
             inline-flex
