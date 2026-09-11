@@ -136,6 +136,8 @@ import OperationalImpact from "./pages/What'sNext/TechPulse/OperationalImpact.js
 import Automation from "./pages/What'sNext/TechPulse/Automation.jsx";
 import CrossFunctional from "./pages/What'sNext/TechPulse/CrossFunctional.jsx";
 import Discipline from "./pages/What'sNext/TechPulse/Discipline.jsx";
+import ExecutiveStrategy from "./pages/What'sNext/TechPulse/ExecutiveStrategy.jsx";
+
 
 
 // =================================================
@@ -374,6 +376,7 @@ function TechPulsePage() {
     <Automation />
     <CrossFunctional />
     <Discipline />
+    <ExecutiveStrategy />
     </>
   );
 }

@@ -172,7 +172,7 @@ export default function CrossFunctionalContext() {
 
           color: #8c0750;
 
-          font-size: 9px;
+          font-size: 10px;
 
           font-weight: 800;
 
@@ -208,13 +208,13 @@ export default function CrossFunctionalContext() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 31px;
+          font-size: 32px;
 
           line-height: 1.08;
 
           letter-spacing: -1px;
 
-          font-weight: 700;
+          font-weight: 600;
         }
 
         /* =====================================
@@ -229,7 +229,7 @@ export default function CrossFunctionalContext() {
           text-align: center;
 
           color: #65738a;
-
+          font-family: "Inter", sans-serif;
           font-size: 13px;
 
           line-height: 1.6;
@@ -311,8 +311,8 @@ export default function CrossFunctionalContext() {
 
         .connection-item-text {
           color: #293448;
-
-          font-size: 11px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
 
           line-height: 1.45;
 
@@ -366,9 +366,9 @@ export default function CrossFunctionalContext() {
 
           color: #8d0750;
 
-          font-size: 9.5px;
+          font-size: 10px;
 
-          font-weight: 800;
+          font-weight: 900;
 
           letter-spacing: 0.4px;
         }
@@ -399,7 +399,7 @@ export default function CrossFunctionalContext() {
 
           color: #52627a;
 
-          font-size: 11.5px;
+          font-size: 13px;
 
           line-height: 1.7;
 
@@ -425,7 +425,7 @@ export default function CrossFunctionalContext() {
 
           color: #9aa8ba;
 
-          font-size: 8px;
+          font-size: 10px;
 
           line-height: 1.4;
 
@@ -475,7 +475,7 @@ export default function CrossFunctionalContext() {
 
           color: #536178;
 
-          font-size: 9.5px;
+          font-size: 11px;
 
           line-height: 1.3;
 
