@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Landmark,
   GraduationCap,
@@ -10,7 +10,11 @@ import {
   Zap,
   Truck,
   Package,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
+
+/* ================= INDUSTRIES ================= */
 
 const industries = [
   {
@@ -75,7 +79,99 @@ const industries = [
   },
 ];
 
+/* ================= DUPLICATE FOR INFINITE LOOP ================= */
+
+const carouselItems = [...industries, ...industries];
+
 export default function MarketExpertiseSection() {
+  const viewportRef = useRef(null);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const GAP = 16;
+  const VISIBLE_CARDS = 4;
+
+  /* ================= CARD WIDTH ================= */
+
+  useEffect(() => {
+    const updateCardWidth = () => {
+      if (!viewportRef.current) return;
+
+      const viewportWidth = viewportRef.current.offsetWidth;
+
+      const width =
+        (viewportWidth - GAP * (VISIBLE_CARDS - 1)) / VISIBLE_CARDS;
+
+      setCardWidth(width);
+    };
+
+    updateCardWidth();
+
+    window.addEventListener("resize", updateCardWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateCardWidth);
+    };
+  }, []);
+
+  /* ================= AUTO SLIDE ================= */
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => prev + 1);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  /* ================= INFINITE LOOP RESET ================= */
+
+  useEffect(() => {
+    if (currentIndex < industries.length) return;
+
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+
+      setCurrentIndex((prev) => prev - industries.length);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransitioning(true);
+        });
+      });
+    }, 650);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
+
+  /* ================= NEXT BUTTON ================= */
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  /* ================= PREVIOUS BUTTON ================= */
+
+  const handlePrevious = () => {
+    if (currentIndex === 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(industries.length);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransitioning(true);
+          setCurrentIndex(industries.length - 1);
+        });
+      });
+    } else {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
+  const translateX = currentIndex * (cardWidth + GAP);
+
   return (
     <section
       className="
@@ -83,186 +179,276 @@ export default function MarketExpertiseSection() {
         overflow-hidden
         bg-white
         px-4
-        py-10
+        py-16
         sm:px-6
-        sm:py-12
+        sm:py-20
         md:px-8
-        md:py-16
         lg:px-10
-        lg:py-20
         xl:px-12
       "
+      style={{
+        fontFamily: "'Inter', sans-serif",
+      }}
     >
       <div className="mx-auto w-full max-w-6xl">
-        {/* ================= LABEL ================= */}
 
-        <span
-          className="
-            text-[9px]
-            font-semibold
-            tracking-[0.15em]
-            text-[#6B1E3F]
-            sm:text-[10px]
-          "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          MARKET EXPERTISE
-        </span>
-
-        {/* ================= MAIN HEADING ================= */}
-
-        <h1
-          className="
-            mt-3
-            max-w-xl
-            text-[23px]
-            font-semibold
-            leading-[1.3]
-            text-[#6B1E3F]
-            sm:text-[26px]
-            md:text-[30px]
-            lg:text-3xl
-          "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
-        >
-          Technology That Understands Different Industries
-        </h1>
-
-        {/* ================= SUBHEADING ================= */}
-
-        <p
-          className="
-            mt-4
-            max-w-2xl
-            text-[13px]
-            leading-[1.75]
-            text-slate-600
-            sm:text-[14px]
-            sm:leading-relaxed
-            md:text-[15px]
-          "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
-        >
-          Technology works best when it understands the environment it's
-          being used in. TechTorch works across a variety of industries,
-          including:
-        </p>
-
-        {/* ================= INDUSTRY CARDS ================= */}
+        {/* ================= HEADER ================= */}
 
         <div
           className="
-            mt-8
-            grid
-            grid-cols-1
-            gap-4
-            sm:mt-10
-            sm:grid-cols-2
-            sm:gap-4
-            md:grid-cols-3
-            lg:grid-cols-4
-            xl:grid-cols-5
+            mb-8
+            flex
+            items-end
+            justify-between
+            gap-6
+            sm:mb-10
           "
         >
-          {industries.map((ind) => {
-            const Icon = ind.icon;
+          {/* LEFT CONTENT */}
 
-            return (
-              <div
-                key={ind.title}
-                className="
-                  group
-                  w-full
-                  rounded-md
-                  bg-slate-50
-                  p-5
-                  transition-all
-                  duration-300
-                  ease-out
-                  hover:-translate-y-1
-                  hover:bg-[#fdf2f8]
-                  hover:shadow-md
-                  sm:p-6
-                "
-              >
-                {/* ================= ICON ================= */}
+          <div className="max-w-3xl">
+            <p
+              className="
+                mb-3
+                text-xs
+                font-semibold
+                tracking-[0.18em]
+                text-[#6B1E3F]
+                sm:text-sm
+              "
+              style={{
+                fontFamily: "'Inter', sans-serif",
+              }}
+            >
+              MARKET EXPERTISE
+            </p>
 
-                <span
+            <h1
+              className="
+                text-3xl
+                font-semibold
+                leading-tight
+                tracking-tight
+                text-[#1B1B1B]
+                sm:text-4xl
+                md:text-5xl
+              "
+              style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}
+            >
+              Technology That Understands Different Industries
+            </h1>
+
+            <p
+              className="
+                mt-5
+                max-w-2xl
+                text-sm
+                leading-7
+                text-gray-600
+                sm:text-base
+                sm:leading-8
+              "
+              style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}
+            >
+              Every industry operates differently. We build technology
+              solutions that understand specific business processes,
+              operational requirements, and customer needs.
+            </p>
+          </div>
+
+          {/* ================= NAVIGATION BUTTONS ================= */}
+
+          <div className="flex shrink-0 gap-2 pb-1">
+            {/* PREVIOUS */}
+
+            <button
+              type="button"
+              onClick={handlePrevious}
+              aria-label="Previous industry"
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-gray-200
+                bg-white
+                text-[#6B1E3F]
+                shadow-sm
+                transition-all
+                duration-300
+                hover:bg-[#6B1E3F]
+                hover:text-white
+                hover:shadow-md
+                sm:h-11
+                sm:w-11
+              "
+            >
+              <ChevronLeft
+                size={19}
+                strokeWidth={2}
+              />
+            </button>
+
+            {/* NEXT */}
+
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next industry"
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-gray-200
+                bg-white
+                text-[#6B1E3F]
+                shadow-sm
+                transition-all
+                duration-300
+                hover:bg-[#6B1E3F]
+                hover:text-white
+                hover:shadow-md
+                sm:h-11
+                sm:w-11
+              "
+            >
+              <ChevronRight
+                size={19}
+                strokeWidth={2}
+              />
+            </button>
+          </div>
+        </div>
+
+        {/* ================= CAROUSEL VIEWPORT ================= */}
+
+        <div
+          ref={viewportRef}
+          className="w-full overflow-hidden"
+        >
+          {/* ================= CAROUSEL TRACK ================= */}
+
+          <div
+            className={`flex ${
+              isTransitioning
+                ? "transition-transform duration-[650ms] ease-in-out"
+                : ""
+            }`}
+            style={{
+              gap: `${GAP}px`,
+              transform: `translateX(-${translateX}px)`,
+              willChange: "transform",
+            }}
+          >
+            {carouselItems.map((industry, index) => {
+              const Icon = industry.icon;
+
+              return (
+                <div
+                  key={`${industry.title}-${index}`}
                   className="
+                    group
                     flex
-                    h-10
-                    w-10
-                    items-center
-                    justify-center
+                    min-w-0
+                    shrink-0
+                    flex-col
                     rounded-md
-                    bg-rose-100
-                    text-[#6B1E3F]
+                    bg-slate-50
+                    p-5
                     transition-all
-                    duration-500
+                    duration-300
                     ease-out
-                    group-hover:scale-110
-                    group-hover:rotate-6
-                    group-hover:bg-[#6B1E3F]
-                    group-hover:text-white
+                    hover:-translate-y-1
+                    hover:bg-white
+                    hover:shadow-lg
+                    sm:p-6
                   "
+                  style={{
+                    width: `${cardWidth}px`,
+                  }}
                 >
-                  <Icon
-                    size={17}
-                    strokeWidth={2}
+                  {/* ================= ICON ================= */}
+
+                  <span
                     className="
-                      transition-transform
+                      flex
+                      h-10
+                      w-10
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-md
+                      bg-rose-100
+                      text-[#6B1E3F]
+                      transition-all
                       duration-500
                       ease-out
-                      group-hover:-rotate-6
                       group-hover:scale-110
+                      group-hover:bg-[#6B1E3F]
+                      group-hover:text-white
+                      sm:h-11
+                      sm:w-11
                     "
-                  />
-                </span>
+                  >
+                    <Icon
+                      size={17}
+                      strokeWidth={2}
+                      className="
+                        transition-transform
+                        duration-500
+                        ease-out
+                        group-hover:scale-110
+                      "
+                    />
+                  </span>
 
-                {/* ================= CARD TITLE ================= */}
+                  {/* ================= TITLE ================= */}
 
-                <h3
-                  className="
-                    mt-4
-                    text-[14px]
-                    font-semibold
-                    leading-snug
-                    text-slate-900
-                    sm:text-[15px]
-                    md:text-base
-                  "
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                  }}
-                >
-                  {ind.title}
-                </h3>
+                  <h3
+                    className="
+                      mt-5
+                      text-base
+                      font-semibold
+                      leading-snug
+                      text-[#1B1B1B]
+                    "
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {industry.title}
+                  </h3>
 
-                {/* ================= CARD DESCRIPTION ================= */}
+                  {/* ================= DESCRIPTION ================= */}
 
-                <p
-                  className="
-                    mt-2
-                    text-[12px]
-                    leading-[1.7]
-                    text-slate-500
-                    sm:text-[13px]
-                  "
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                  }}
-                >
-                  {ind.description}
-                </p>
-              </div>
-            );
-          })}
+                  <p
+                    className="
+                      mt-3
+                      text-sm
+                      leading-6
+                      text-gray-500
+                    "
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {industry.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

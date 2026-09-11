@@ -84,7 +84,6 @@ export default function TechnologyArticleSection() {
     <section
       className="
         w-full
-        overflow-hidden
         bg-[#FAF6F1]
         px-4
         py-10
@@ -115,13 +114,21 @@ export default function TechnologyArticleSection() {
         "
       >
         {/* ==================================================
-            STICKY SIDEBAR NAVIGATION
+            LEFT STICKY SIDEBAR
         ================================================== */}
-        <aside className="hidden lg:block">
+
+        <aside
+          className="
+            hidden
+            lg:block
+            lg:sticky
+            lg:top-16
+            lg:self-start
+            lg:h-fit
+          "
+        >
           <nav
             className="
-              sticky
-              top-16
               flex
               flex-col
               gap-4
@@ -159,8 +166,9 @@ export default function TechnologyArticleSection() {
         </aside>
 
         {/* ==================================================
-            MAIN ARTICLE CONTENT
+            RIGHT MAIN ARTICLE CONTENT
         ================================================== */}
+
         <article
           className="
             w-full
@@ -192,6 +200,7 @@ export default function TechnologyArticleSection() {
                 {/* ==================================================
                     HEADING
                 ================================================== */}
+
                 <div
                   className="
                     w-full
@@ -229,6 +238,7 @@ export default function TechnologyArticleSection() {
                 {/* ==================================================
                     BODY
                 ================================================== */}
+
                 <p
                   className="
                     mt-3
@@ -252,8 +262,18 @@ export default function TechnologyArticleSection() {
                 {/* ==================================================
                     IMAGE
                 ================================================== */}
+
                 {s.image && (
-                  <div className="mt-5 w-full overflow-hidden rounded-lg sm:mt-6 sm:rounded-xl">
+                  <div
+                    className="
+                      mt-5
+                      w-full
+                      overflow-hidden
+                      rounded-lg
+                      sm:mt-6
+                      sm:rounded-xl
+                    "
+                  >
                     <img
                       src={s.image}
                       alt={s.heading}

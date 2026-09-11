@@ -24,51 +24,14 @@ export default function GrowWithBusinessSection() {
 
       <div className="mx-auto w-full max-w-7xl">
 
-        {/* ================= TOP TAGS ================= */}
-
-        <span
-          className="
-            inline-flex
-            flex-wrap
-            items-center
-            gap-1.5
-            rounded-full
-            bg-[#FBDCEA]
-            px-3
-            py-1
-            text-[9px]
-            font-semibold
-            tracking-[0.1em]
-            text-[#7A1443]
-            sm:text-[10px]
-          "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
-
-          TECHNOLOGY
-
-          <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
-
-          GROWTH
-
-          <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
-
-          POSSIBILITY
-        </span>
-
         {/* ================= MAIN CONTENT ================= */}
 
         <div
           className="
-            mt-7
             grid
             w-full
             grid-cols-1
             gap-8
-            sm:mt-9
             sm:gap-10
             md:gap-12
             lg:grid-cols-[0.9fr_1.1fr]
@@ -87,10 +50,46 @@ export default function GrowWithBusinessSection() {
               xl:pl-12
             "
           >
-            {/* MAIN HEADING */}
+            {/* ================= TOP TAGS ================= */}
+
+            <span
+              className="
+                inline-flex
+                flex-wrap
+                items-center
+                gap-1.5
+                rounded-full
+                bg-[#FBDCEA]
+                px-3
+                py-1
+                text-[9px]
+                font-semibold
+                tracking-[0.1em]
+                text-[#7A1443]
+                sm:text-[10px]
+              "
+              style={{
+                fontFamily: "'Inter', sans-serif",
+              }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
+
+              TECHNOLOGY
+
+              <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
+
+              GROWTH
+
+              <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
+
+              POSSIBILITY
+            </span>
+
+            {/* ================= MAIN HEADING ================= */}
 
             <h1
               className="
+                mt-7
                 w-full
                 max-w-[500px]
                 text-[23px]
@@ -109,7 +108,7 @@ export default function GrowWithBusinessSection() {
               Technology Should Grow With Your Business
             </h1>
 
-            {/* SUBHEADING */}
+            {/* ================= SUBHEADING ================= */}
 
             <p
               className="
@@ -131,7 +130,7 @@ export default function GrowWithBusinessSection() {
               Your business is growing. Your technology should grow with it.
             </p>
 
-            {/* DESCRIPTION */}
+            {/* ================= DESCRIPTION ================= */}
 
             <p
               className="
@@ -155,7 +154,7 @@ export default function GrowWithBusinessSection() {
               decisions—without slowing down your next step.
             </p>
 
-            {/* INFO BOX */}
+            {/* ================= INFO BOX ================= */}
 
             <div
               className="
@@ -189,7 +188,7 @@ export default function GrowWithBusinessSection() {
               </p>
             </div>
 
-            {/* BUTTON */}
+            {/* ================= BUTTON ================= */}
 
             <button
               type="button"
@@ -240,7 +239,7 @@ export default function GrowWithBusinessSection() {
               xl:max-w-[760px]
             "
           >
-            {/* IMAGE WRAPPER */}
+            {/* ================= IMAGE WRAPPER ================= */}
 
             <div
               className="
@@ -253,7 +252,7 @@ export default function GrowWithBusinessSection() {
                 sm:rounded-2xl
               "
             >
-              {/* MAIN IMAGE */}
+              {/* ================= MAIN IMAGE ================= */}
 
               <img
                 src="/DeploymentMethodology.png"
@@ -272,7 +271,7 @@ export default function GrowWithBusinessSection() {
                 "
               />
 
-              {/* DARK BOTTOM OVERLAY */}
+              {/* ================= DARK BOTTOM OVERLAY ================= */}
 
               <div
                 className="
@@ -328,7 +327,7 @@ export default function GrowWithBusinessSection() {
                     sm:gap-4
                   "
                 >
-                  {/* CARD TEXT */}
+                  {/* ================= CARD TEXT ================= */}
 
                   <div className="min-w-0">
                     <span
@@ -365,7 +364,7 @@ export default function GrowWithBusinessSection() {
                     </p>
                   </div>
 
-                  {/* ACTIVE METRIC */}
+                  {/* ================= ACTIVE METRIC ================= */}
 
                   <span
                     className="

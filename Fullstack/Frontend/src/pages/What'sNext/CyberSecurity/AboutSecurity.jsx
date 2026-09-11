@@ -44,7 +44,7 @@ export default function ReadyForNextThreatSection() {
               w-fit
               items-center
               rounded-full
-              bg-fuchsia-800
+              bg-[#730042]
               px-3
               py-1
               text-[9px]
@@ -138,8 +138,8 @@ export default function ReadyForNextThreatSection() {
               w-fit
               items-center
               gap-2
-              rounded-full
-              bg-fuchsia-800
+              rounded-md
+              bg-[#730042]
               px-5
               py-3
               text-[12px]
@@ -149,7 +149,7 @@ export default function ReadyForNextThreatSection() {
               transition-all
               duration-300
               hover:-translate-y-0.5
-              hover:bg-fuchsia-700
+              hover:bg-[#730042]
               active:translate-y-0
               sm:mt-8
               sm:px-6

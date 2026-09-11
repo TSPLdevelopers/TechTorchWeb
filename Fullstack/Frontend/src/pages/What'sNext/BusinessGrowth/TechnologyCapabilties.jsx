@@ -260,7 +260,6 @@ export default function TechnologyCapabilities() {
                     duration-500
                     ease-out
                     group-hover:scale-125
-                    group-hover:rotate-12
                     group-hover:bg-[#6d0e42]
                     group-hover:text-white
                     group-hover:shadow-lg
@@ -275,7 +274,6 @@ export default function TechnologyCapabilities() {
                       transition-all
                       duration-500
                       ease-out
-                      group-hover:-rotate-12
                       group-hover:scale-110
                     "
                   />

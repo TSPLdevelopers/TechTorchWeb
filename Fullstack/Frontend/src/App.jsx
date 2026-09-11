@@ -12,7 +12,7 @@ import Hero from "./components/Hero";
 import Hero2 from "./components/Hero2";
 import Hero3 from "./components/Hero3";
 import Section4 from "./components/Section4";
-import Section5 from "./components/Section5";
+// import Section5 from "./components/Section5";
 import Section6 from "./components/Section6";
 import Section7 from "./components/section7";
 import Section8 from "./components/section8";
@@ -92,7 +92,7 @@ import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapab
 // ================= INTEGRATED CAPABILITIES =================
 import IntegratedCapLayout from "./pages/What'sNext/FieldNote/IntegratedCapabilities/IntegratedCapLayout.jsx";
 import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/ERPIntegration.jsx";
-import OpManagement from  "./pages/What'sNext/FieldNote/IntegratedCapabilities/OpManagement.jsx";
+import OpManagement from "./pages/What'sNext/FieldNote/IntegratedCapabilities/OpManagement.jsx";
 import DataOrchestration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/DataOrchestration.jsx";
 import Legacy from "./pages/What'sNext/FieldNote/IntegratedCapabilities/Legacy.jsx";
 
@@ -142,6 +142,13 @@ import Discipline from "./pages/What'sNext/TechPulse/Discipline.jsx";
 import ExecutiveStrategy from "./pages/What'sNext/TechPulse/ExecutiveStrategy.jsx";
 
 
+// ================= DIGITAL SOLUTIONS =================
+
+import EnterpriseSolution from "./pages/What'sNext/TechPulse/DigitalSolution/Enterprisesolution.jsx";
+import SystemicAgility from "./pages/What'sNext/TechPulse/DigitalSolution/SystemicAgility.jsx";
+import ArchitectureLifecycle from "./pages/What'sNext/TechPulse/DigitalSolution/ArchitectureLifecycle.jsx";
+import ValidatedSystems from "./pages/What'sNext/TechPulse/DigitalSolution/ValidatedSystem.jsx";
+
 
 // =================================================
 // COMMON LAYOUT
@@ -170,7 +177,7 @@ function Home() {
       <Hero2 />
       <Hero3 />
       <Section4 />
-      <Section5 />
+      {/* <Section5 /> */}
       <Section6 />
       <Section7 />
       <Section8 />
@@ -364,7 +371,7 @@ function BusinessGrowthPage() {
   return (
     <>
       <GrowWithBusinessSection />
-      <PurspectiveSection />  
+      <PurspectiveSection />
       <ArchitectureSection />
       <MethodologySection />
       <EcosystemCapabilitiesSection />
@@ -380,6 +387,7 @@ function BusinessGrowthPage() {
 function TechPulsePage() {
   return (
     <>
+
     <DataDecisions />
     <PerspectiveAnalysis />
     <StrategicInquiry />
@@ -389,6 +397,18 @@ function TechPulsePage() {
     <CrossFunctional />
     <Discipline />
     <ExecutiveStrategy />
+
+      
+    </>
+  );
+}
+function DigitalSolution() {
+  return (
+    <>
+      <EnterpriseSolution />
+      <SystemicAgility />
+      <ArchitectureLifecycle />
+      <ValidatedSystems />
     </>
   );
 }
@@ -409,7 +429,7 @@ function App() {
         <Route path="/Slide2" element={<Slide2Page />} />
         <Route path="/Slide3" element={<Slide3Page />} />
         <Route path="/Slide4" element={<Slide4Page />} />
-        <Route path="/Slide5" element={<Slide5Page />} />
+        {/* <Route path="/Slide5" element={<Slide5Page />} /> */}
 
         {/* OUR STORY */}
         <Route path="/Philosophy" element={<PhilosophyPage />} />
@@ -430,29 +450,29 @@ function App() {
         />
 
 
-{/* INTEGRATED CAPABILITIES */}
-<Route
-  path="/integrated-capabilities"
-  element={<IntegratedCapLayout />}
->
-  <Route
-    path="erp-integration"
-    element={<ERPIntegration />}
-  />
+        {/* INTEGRATED CAPABILITIES */}
+        <Route
+          path="/integrated-capabilities"
+          element={<IntegratedCapLayout />}
+        >
+          <Route
+            path="erp-integration"
+            element={<ERPIntegration />}
+          />
 
-  <Route
-          path="operations-management"
-          element={<OpManagement />}
-        />
-  <Route
-          path="data-orchestration"
-          element={<DataOrchestration />}
-        />
- <Route
-          path="legacy-modernization"
-          element={<Legacy />}
-        />
-</Route>
+          <Route
+            path="operations-management"
+            element={<OpManagement />}
+          />
+          <Route
+            path="data-orchestration"
+            element={<DataOrchestration />}
+          />
+          <Route
+            path="legacy-modernization"
+            element={<Legacy />}
+          />
+        </Route>
 
 
         {/* WHAT'S NEXT - THINK AHEAD */}
@@ -467,10 +487,10 @@ function App() {
           element={<CyberSecurityPage />}
         />
 
-<Route
-  path="/secure-business"
-  element={<SecureBusinessPage />}
-/>
+        <Route
+          path="/secure-business"
+          element={<SecureBusinessPage />}
+        />
         <Route
           path="/Business-growth"
           element={<BusinessGrowthPage />}
@@ -479,6 +499,12 @@ function App() {
         <Route
           path="/data-decisions"
           element={<TechPulsePage />}
+        />
+
+        {/* DIGITAL SOLUTIONS */}
+        <Route
+          path="/digital-solutions"
+          element={<DigitalSolution />}
         />
 
       </Route>
