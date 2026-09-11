@@ -141,6 +141,8 @@ import Discipline from "./pages/What'sNext/TechPulse/Discipline.jsx";
 
 import EnterpriseSolution from "./pages/What'sNext/TechPulse/DigitalSolution/Enterprisesolution.jsx";
 import SystemicAgility from "./pages/What'sNext/TechPulse/DigitalSolution/SystemicAgility.jsx";
+import ArchitectureLifecycle from "./pages/What'sNext/TechPulse/DigitalSolution/ArchitectureLifecycle.jsx";
+import ValidatedSystems from "./pages/What'sNext/TechPulse/DigitalSolution/ValidatedSystem.jsx";
 
 
 // =================================================
@@ -387,6 +389,10 @@ function DigitalSolution() {
     <>
       <EnterpriseSolution />
       <SystemicAgility />
+      <ArchitectureLifecycle />
+      <ValidatedSystems />
+      
+      
     </>
   );
 }
