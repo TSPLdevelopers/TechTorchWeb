@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function DataDecisions() {
   return (
     <div className="data-decisions-page">
-
       {/* ================= HERO ================= */}
+
       <section className="data-decisions-hero">
+        {/* HERO IMAGE */}
 
         <img
           src="/DataDecisions.png"
@@ -13,14 +15,21 @@ export default function DataDecisions() {
           className="data-decisions-hero-image"
         />
 
+        {/* OVERLAY */}
+
         <div className="data-decisions-hero-overlay"></div>
 
+        {/* HERO CONTENT */}
+
         <div className="data-decisions-hero-content">
+          {/* EYEBROW */}
 
           <div className="data-decisions-eyebrow">
             <span></span>
             TECH PULSE · DATA & DECISIONS
           </div>
+
+          {/* HEADING */}
 
           <h1>
             MORE DATA DOESN'T MEAN BETTER
@@ -28,10 +37,14 @@ export default function DataDecisions() {
             DECISIONS
           </h1>
 
+          {/* SUB HEADING */}
+
           <h2>
             The value of data is not in how much you have. It's in how clearly
             you can use it.
           </h2>
+
+          {/* DESCRIPTION */}
 
           <p>
             Modern businesses generate information across finance, operations,
@@ -50,31 +63,33 @@ export default function DataDecisions() {
             efficiency and support more informed business decisions.
           </p>
 
+          {/* ================= BUTTONS ================= */}
+
           <div className="data-decisions-buttons">
+            {/* EXPLORE DIGITAL SOLUTIONS */}
 
-            <button className="data-decisions-primary-btn">
+            <Link
+              to="/digital-solutions"
+              className="data-decisions-primary-btn"
+            >
               Explore Digital Solutions
-            </button>
+            </Link>
 
-            <button className="data-decisions-secondary-btn">
+            {/* TALK TO EXPERTS */}
+
+            <Link
+              to="/contact"
+              className="data-decisions-secondary-btn"
+            >
               Talk to Our Experts
-            </button>
-
+            </Link>
           </div>
-
         </div>
-
       </section>
 
-
       {/* ================= CSS ================= */}
+
       <style>{`
-
-        * {
-          box-sizing: border-box;
-        }
-
-
         .data-decisions-page {
           width: 100%;
           background: #f7f8fa;
@@ -82,7 +97,6 @@ export default function DataDecisions() {
           font-family: "Inter", sans-serif;
           overflow: hidden;
         }
-
 
         /* ================= HERO ================= */
 
@@ -95,7 +109,6 @@ export default function DataDecisions() {
           background: #101d32;
         }
 
-
         .data-decisions-hero-image {
           position: absolute;
           inset: 0;
@@ -106,6 +119,7 @@ export default function DataDecisions() {
           object-position: center;
         }
 
+        /* ================= OVERLAY ================= */
 
         .data-decisions-hero-overlay {
           position: absolute;
@@ -126,6 +140,7 @@ export default function DataDecisions() {
             );
         }
 
+        /* ================= HERO CONTENT ================= */
 
         .data-decisions-hero-content {
           position: relative;
@@ -138,6 +153,7 @@ export default function DataDecisions() {
           justify-content: center;
         }
 
+        /* ================= EYEBROW ================= */
 
         .data-decisions-eyebrow {
           width: fit-content;
@@ -155,7 +171,6 @@ export default function DataDecisions() {
           letter-spacing: 0.7px;
         }
 
-
         .data-decisions-eyebrow span {
           width: 6px;
           height: 6px;
@@ -164,6 +179,7 @@ export default function DataDecisions() {
           background: #f49ab9;
         }
 
+        /* ================= HEADING ================= */
 
         .data-decisions-hero h1 {
           max-width: 850px;
@@ -176,6 +192,7 @@ export default function DataDecisions() {
           letter-spacing: -1.2px;
         }
 
+        /* ================= SUB HEADING ================= */
 
         .data-decisions-hero h2 {
           max-width: 900px;
@@ -187,6 +204,7 @@ export default function DataDecisions() {
           font-weight: 400;
         }
 
+        /* ================= DESCRIPTION ================= */
 
         .data-decisions-hero p {
           max-width: 850px;
@@ -197,6 +215,7 @@ export default function DataDecisions() {
           font-weight: 400;
         }
 
+        /* ================= BUTTONS ================= */
 
         .data-decisions-buttons {
           display: flex;
@@ -205,19 +224,23 @@ export default function DataDecisions() {
           margin-top: 17px;
         }
 
-
         .data-decisions-primary-btn,
         .data-decisions-secondary-btn {
           min-height: 40px;
-          padding: 0 21px;
+          padding: 10px 21px;
           border-radius: 6px;
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 700;
+          text-decoration: none;
           cursor: pointer;
           transition: all 0.2s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
+        /* ================= PRIMARY BUTTON ================= */
 
         .data-decisions-primary-btn {
           border: 1px solid #970052;
@@ -226,12 +249,12 @@ export default function DataDecisions() {
           box-shadow: 0 7px 18px rgba(128, 0, 68, 0.25);
         }
 
-
         .data-decisions-primary-btn:hover {
           background: #ad075f;
           border-color: #ad075f;
         }
 
+        /* ================= SECONDARY BUTTON ================= */
 
         .data-decisions-secondary-btn {
           border: 1px solid rgba(220, 228, 241, 0.3);
@@ -240,51 +263,40 @@ export default function DataDecisions() {
           backdrop-filter: blur(5px);
         }
 
-
         .data-decisions-secondary-btn:hover {
           background: rgba(255, 255, 255, 0.15);
         }
 
-
         /* ================= TABLET ================= */
 
         @media (max-width: 900px) {
-
           .data-decisions-hero {
             height: 470px;
           }
-
 
           .data-decisions-hero-content {
             padding: 35px 5%;
           }
 
-
           .data-decisions-hero h1 {
             font-size: 28px;
           }
-
         }
-
 
         /* ================= MOBILE ================= */
 
         @media (max-width: 650px) {
-
           .data-decisions-hero {
             height: 570px;
           }
-
 
           .data-decisions-hero-content {
             padding: 35px 22px;
           }
 
-
           .data-decisions-eyebrow {
             font-size: 8px;
           }
-
 
           .data-decisions-hero h1 {
             font-size: 27px;
@@ -292,16 +304,13 @@ export default function DataDecisions() {
             letter-spacing: -1px;
           }
 
-
           .data-decisions-hero h2 {
             font-size: 14px;
           }
 
-
           .data-decisions-hero p {
             font-size: 11px;
           }
-
 
           .data-decisions-buttons {
             flex-direction: column;
@@ -309,48 +318,37 @@ export default function DataDecisions() {
             width: fit-content;
           }
 
-
           .data-decisions-primary-btn,
           .data-decisions-secondary-btn {
             width: 210px;
           }
-
         }
-
 
         /* ================= SMALL MOBILE ================= */
 
         @media (max-width: 420px) {
-
           .data-decisions-hero {
             height: 560px;
           }
-
 
           .data-decisions-hero-content {
             padding-left: 18px;
             padding-right: 18px;
           }
 
-
           .data-decisions-hero h1 {
             font-size: 24px;
           }
-
 
           .data-decisions-hero h2 {
             font-size: 13px;
           }
 
-
           .data-decisions-hero p {
             font-size: 10px;
           }
-
         }
-
       `}</style>
-
     </div>
   );
 }

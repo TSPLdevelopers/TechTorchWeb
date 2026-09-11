@@ -92,7 +92,7 @@ import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapab
 // ================= INTEGRATED CAPABILITIES =================
 import IntegratedCapLayout from "./pages/What'sNext/FieldNote/IntegratedCapabilities/IntegratedCapLayout.jsx";
 import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/ERPIntegration.jsx";
-import OpManagement from  "./pages/What'sNext/FieldNote/IntegratedCapabilities/OpManagement.jsx";
+import OpManagement from "./pages/What'sNext/FieldNote/IntegratedCapabilities/OpManagement.jsx";
 import DataOrchestration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/DataOrchestration.jsx";
 import Legacy from "./pages/What'sNext/FieldNote/IntegratedCapabilities/Legacy.jsx";
 
@@ -136,6 +136,11 @@ import OperationalImpact from "./pages/What'sNext/TechPulse/OperationalImpact.js
 import Automation from "./pages/What'sNext/TechPulse/Automation.jsx";
 import CrossFunctional from "./pages/What'sNext/TechPulse/CrossFunctional.jsx";
 import Discipline from "./pages/What'sNext/TechPulse/Discipline.jsx";
+
+// ================= DIGITAL SOLUTIONS =================
+
+import EnterpriseSolution from "./pages/What'sNext/TechPulse/DigitalSolution/Enterprisesolution.jsx";
+import SystemicAgility from "./pages/What'sNext/TechPulse/DigitalSolution/SystemicAgility.jsx";
 
 
 // =================================================
@@ -350,7 +355,7 @@ function BusinessGrowthPage() {
   return (
     <>
       <GrowWithBusinessSection />
-      <PurspectiveSection />  
+      <PurspectiveSection />
       <ArchitectureSection />
       <MethodologySection />
       <EcosystemCapabilitiesSection />
@@ -366,14 +371,22 @@ function BusinessGrowthPage() {
 function TechPulsePage() {
   return (
     <>
-    <DataDecisions />
-    <PerspectiveAnalysis />
-    <StrategicInquiry />
-    <StructuredMethodology />
-    <OperationalImpact />
-    <Automation />
-    <CrossFunctional />
-    <Discipline />
+      <DataDecisions />
+      <PerspectiveAnalysis />
+      <StrategicInquiry />
+      <StructuredMethodology />
+      <OperationalImpact />
+      <Automation />
+      <CrossFunctional />
+      <Discipline />
+    </>
+  );
+}
+function DigitalSolution() {
+  return (
+    <>
+      <EnterpriseSolution />
+      <SystemicAgility />
     </>
   );
 }
@@ -415,29 +428,29 @@ function App() {
         />
 
 
-{/* INTEGRATED CAPABILITIES */}
-<Route
-  path="/integrated-capabilities"
-  element={<IntegratedCapLayout />}
->
-  <Route
-    path="erp-integration"
-    element={<ERPIntegration />}
-  />
+        {/* INTEGRATED CAPABILITIES */}
+        <Route
+          path="/integrated-capabilities"
+          element={<IntegratedCapLayout />}
+        >
+          <Route
+            path="erp-integration"
+            element={<ERPIntegration />}
+          />
 
-  <Route
-          path="operations-management"
-          element={<OpManagement />}
-        />
-  <Route
-          path="data-orchestration"
-          element={<DataOrchestration />}
-        />
- <Route
-          path="legacy-modernization"
-          element={<Legacy />}
-        />
-</Route>
+          <Route
+            path="operations-management"
+            element={<OpManagement />}
+          />
+          <Route
+            path="data-orchestration"
+            element={<DataOrchestration />}
+          />
+          <Route
+            path="legacy-modernization"
+            element={<Legacy />}
+          />
+        </Route>
 
 
         {/* WHAT'S NEXT - THINK AHEAD */}
@@ -460,6 +473,12 @@ function App() {
         <Route
           path="/data-decisions"
           element={<TechPulsePage />}
+        />
+
+        {/* DIGITAL SOLUTIONS */}
+        <Route
+          path="/digital-solutions"
+          element={<DigitalSolution />}
         />
 
       </Route>
