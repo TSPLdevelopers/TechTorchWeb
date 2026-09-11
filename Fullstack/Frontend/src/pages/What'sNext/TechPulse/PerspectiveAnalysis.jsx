@@ -23,9 +23,7 @@ export default function PerspectiveAnalysis() {
             <div className="card-label">EXECUTIVE REALIZATION</div>
 
             <h3>
-              The challenge is no longer about
-              <br />
-              finding data.
+              The challenge is no longer about finding data.
             </h3>
 
             <p>
@@ -108,9 +106,7 @@ export default function PerspectiveAnalysis() {
             </div>
 
             <h3>
-              More data does not always mean more
-              <br />
-              clarity.
+              More data does not always mean more clarity.
             </h3>
 
             <p>
@@ -140,9 +136,7 @@ export default function PerspectiveAnalysis() {
             </p>
 
             <h3>
-              The goal is to make better use of the information
-              <br />
-              already available.
+              The goal is to make better use of the information already available.
             </h3>
           </div>
 
@@ -261,7 +255,6 @@ export default function PerspectiveAnalysis() {
           margin: 0;
 
           color: #596579;
-
           font-size: 13px;
           font-family: "Inter", sans-serif;
           font-weight: 500;
@@ -284,9 +277,8 @@ export default function PerspectiveAnalysis() {
           margin: 0;
 
           color: #5d6574;
-
           font-size: 12px;
-           font-family: "Inter", sans-serif;
+          font-family: "Inter", sans-serif;
           font-weight: 500;
           line-height: 1.65;
         }
@@ -313,7 +305,7 @@ export default function PerspectiveAnalysis() {
           margin: 0 0 21px;
 
           color: #596579;
-           font-family: "Inter", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.7;
         }
@@ -441,7 +433,7 @@ export default function PerspectiveAnalysis() {
           margin: 0 0 22px;
 
           color: #2e3749;
-font-family: "Inter", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.6;
 
@@ -483,7 +475,6 @@ font-family: "Inter", sans-serif;
         }
 
         /* XL & DESKTOP */
-        /* Left content slightly left, right content slightly right */
 
         @media (min-width: 1201px) {
           .perspective-container {

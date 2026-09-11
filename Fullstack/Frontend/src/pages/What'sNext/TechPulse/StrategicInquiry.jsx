@@ -49,7 +49,7 @@ export default function StrategicInquiryFramework() {
       description:
         "Convert analytical intelligence into immediate, practical, and accountable business decisions.",
       stage: "STAGE 5",
-      action: "EXECUTE →",
+      action: "",
       active: true,
     },
   ];
@@ -107,7 +107,7 @@ export default function StrategicInquiryFramework() {
               {/* CARD BOTTOM */}
               <div className="framework-card-bottom">
                 <span>{item.stage}</span>
-                <span>{item.action}</span>
+                {item.action && <span>{item.action}</span>}
               </div>
             </div>
           ))}
@@ -117,7 +117,8 @@ export default function StrategicInquiryFramework() {
         <div className="framework-bottom-message">
           <span className="bottom-dot"></span>
           <span>
-            That is when data starts creating real business value.
+            <span className="value-highlight">That is when data</span> starts
+            creating real business value.
           </span>
         </div>
 
@@ -132,21 +133,16 @@ export default function StrategicInquiryFramework() {
           width: 100%;
           margin: 0;
           padding: 58px 0 60px;
-
           background: #faf9f4;
-
           font-family: "Inter", sans-serif;
           color: #10172b;
-
           overflow: hidden;
         }
 
         .framework-container {
           width: 100%;
           max-width: 1500px;
-
           margin: 0 auto;
-
           padding: 0 38px;
 
           display: flex;
@@ -163,19 +159,16 @@ export default function StrategicInquiryFramework() {
           gap: 8px;
 
           height: 26px;
-
           padding: 0 13px;
 
           border: 1px solid #e9c8d8;
           border-radius: 20px;
 
           background: #fffafd;
-
           color: #8c0750;
 
           font-size: 10px;
           font-weight: 800;
-
           letter-spacing: 0.55px;
 
           margin-bottom: 18px;
@@ -184,9 +177,7 @@ export default function StrategicInquiryFramework() {
         .badge-dot {
           width: 6px;
           height: 6px;
-
           border-radius: 50%;
-
           background: #970052;
         }
 
@@ -194,19 +185,15 @@ export default function StrategicInquiryFramework() {
 
         .framework-heading {
           width: 100%;
-
           margin: 0;
 
           text-align: center;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
-          font-size: 34px;
+          font-size: 32px;
           line-height: 1.16;
-
           letter-spacing: -1.25px;
-
-          font-weight: 700;
+          font-weight: 600;
 
           color: #10172b;
         }
@@ -223,30 +210,29 @@ export default function StrategicInquiryFramework() {
           text-align: center;
 
           color: #69768b;
-
-          font-size: 13px;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
           line-height: 1.65;
-
           font-weight: 500;
         }
 
         /* CARDS */
 
         .framework-cards {
-          width: 100%;
-
+          width: 94%;
           margin-top: 54px;
 
           display: grid;
-
           grid-template-columns: repeat(5, minmax(0, 1fr));
-
           gap: 16px;
 
           align-items: stretch;
         }
 
         .framework-card {
+          width: 94%;
+          justify-self: center;
+
           min-width: 0;
           min-height: 278px;
 
@@ -258,30 +244,47 @@ export default function StrategicInquiryFramework() {
           background: #ffffff;
 
           border: 1px solid #e3e8ee;
-
           border-radius: 13px;
 
           box-shadow: 0 4px 12px rgba(20, 30, 50, 0.04);
 
           transition:
             transform 0.2s ease,
-            box-shadow 0.2s ease;
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
         }
+
+        /* HOVER - BEETROOT BORDER */
 
         .framework-card:hover {
           transform: translateY(-3px);
 
+          border-color: #970052;
+
           box-shadow: 0 10px 25px rgba(20, 30, 50, 0.08);
         }
 
-        /* ACTIVE CARD */
+        /* HOVER - BEETROOT NUMBER, LABEL & STAGE */
+
+        .framework-card:hover .framework-number {
+          color: #970052;
+        }
+
+        .framework-card:hover .framework-label {
+          color: #970052;
+        }
+
+        .framework-card:hover .framework-card-bottom {
+          color: #970052;
+        }
+
+        /* ACTIVE CARD - NORMAL STATE */
 
         .framework-card-active {
-          border: 2px solid #d9a6c0;
+          border: 1px solid #e3e8ee;
+          background: #ffffff;
 
-          background: #fffdfd;
-
-          box-shadow: 0 5px 14px rgba(135, 0, 75, 0.08);
+          box-shadow: 0 4px 12px rgba(20, 30, 50, 0.04);
         }
 
         /* CARD TOP */
@@ -307,29 +310,35 @@ export default function StrategicInquiryFramework() {
           border-radius: 6px;
 
           background: #f0f4f7;
-
           color: #52627a;
 
-          font-size: 8px;
+          font-size: 11px;
           font-weight: 800;
+
+          transition: color 0.2s ease;
         }
 
+        /* 5TH CARD NUMBER NORMAL */
+
         .framework-card-active .framework-number {
-          background: #970052;
-          color: #ffffff;
+          background: #f0f4f7;
+          color: #52627a;
         }
 
         .framework-label {
           color: #a0adbe;
 
-          font-size: 9px;
+          font-size: 11px;
           font-weight: 800;
 
           letter-spacing: 0.35px;
+
+          transition: color 0.2s ease;
         }
 
+
         .framework-card-active .framework-label {
-          color: #970052;
+          color: #a0adbe;
         }
 
         /* QUESTION */
@@ -345,21 +354,21 @@ export default function StrategicInquiryFramework() {
           line-height: 1.35;
 
           font-weight: 700;
-
           letter-spacing: -0.2px;
         }
 
-        /* DESCRIPTION */
+        /* DESCRIPTION - DARKER */
 
         .framework-card p {
           margin: 0;
 
-          color: #69768a;
+          color: #4f5b6d;
+          font-family: "Plus Inter", sans-serif;
 
-          font-size: 10.5px;
+          font-size: 13px;
           line-height: 1.65;
 
-          font-weight: 500;
+          font-weight: 530;
         }
 
         /* CARD BOTTOM */
@@ -382,12 +391,15 @@ export default function StrategicInquiryFramework() {
           font-weight: 700;
 
           letter-spacing: 0.25px;
+
+          transition: color 0.2s ease;
         }
 
-        .framework-card-active .framework-card-bottom {
-          color: #970052;
+        /* 5TH CARD BOTTOM NORMAL */
 
-          border-top-color: #e7d0dc;
+        .framework-card-active .framework-card-bottom {
+          color: #a1adbd;
+          border-top-color: #e7ebef;
         }
 
         /* BOTTOM MESSAGE */
@@ -396,7 +408,6 @@ export default function StrategicInquiryFramework() {
           min-height: 48px;
 
           margin-top: 49px;
-
           padding: 0 27px;
 
           display: flex;
@@ -408,15 +419,18 @@ export default function StrategicInquiryFramework() {
           background: #ffffff;
 
           border: 1px solid #e1e7ed;
-
           border-radius: 30px;
 
           box-shadow: 0 4px 12px rgba(20, 30, 50, 0.035);
 
-          color: #8b0750;
+          color: #000000;
 
           font-size: 12px;
           font-weight: 700;
+        }
+
+        .value-highlight {
+          color: #970052;
         }
 
         .bottom-dot {
@@ -433,16 +447,19 @@ export default function StrategicInquiryFramework() {
         /* LARGE DESKTOP */
 
         @media (min-width: 1600px) {
+
           .framework-container {
             max-width: 1600px;
             padding: 0 45px;
           }
 
           .framework-cards {
+            width: 94%;
             gap: 18px;
           }
 
           .framework-card {
+            width: 94%;
             min-height: 290px;
             padding: 25px 25px 19px;
           }
@@ -473,10 +490,12 @@ export default function StrategicInquiryFramework() {
           }
 
           .framework-cards {
+            width: 100%;
             gap: 11px;
           }
 
           .framework-card {
+            width: 94%;
             min-height: 270px;
             padding: 20px 17px 17px;
           }
@@ -503,11 +522,13 @@ export default function StrategicInquiryFramework() {
           }
 
           .framework-cards {
+            width: 100%;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 14px;
           }
 
           .framework-card {
+            width: 100%;
             min-height: 245px;
           }
 
@@ -554,10 +575,10 @@ export default function StrategicInquiryFramework() {
           }
 
           .framework-cards {
+            width: 100%;
             margin-top: 35px;
 
             display: flex;
-
             flex-direction: column;
 
             gap: 12px;
@@ -573,7 +594,6 @@ export default function StrategicInquiryFramework() {
           .framework-card:last-child {
             width: 100%;
             max-width: none;
-
             grid-column: auto;
           }
 
@@ -599,13 +619,11 @@ export default function StrategicInquiryFramework() {
             width: 100%;
 
             margin-top: 35px;
-
             padding: 10px 17px;
 
             text-align: center;
 
             font-size: 10px;
-
             line-height: 1.4;
           }
         }
@@ -627,6 +645,7 @@ export default function StrategicInquiryFramework() {
           }
 
           .framework-card {
+            width: 100%;
             padding: 18px 16px 16px;
           }
 
