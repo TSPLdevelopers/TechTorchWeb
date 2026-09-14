@@ -304,7 +304,7 @@ export default function IntegratedAutomation() {
           max-width: 560px;
           color: #627188;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 13.5px;
           line-height: 1.65;
           font-weight: 500;
         }
@@ -322,7 +322,7 @@ export default function IntegratedAutomation() {
           background: #ffffff;
           color: #617087;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 12.5px;
           line-height: 1.65;
           font-weight: 600;
 

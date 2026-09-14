@@ -11,12 +11,11 @@ image:
 "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85",
 },
 {
-number: "02",
-title: "ARTIFICIAL INTELLIGENCE",
-description:
-"AI capabilities that allow organizations to explore intelligent solutions without internal maintenance overhead.",
-image:
-"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85",
+  number: "02",
+  title: "ARTIFICIAL INTELLIGENCE",
+  description:
+    "AI capabilities that allow organizations to explore intelligent solutions without internal maintenance overhead.",
+  image: "/Ai integration.png",
 },
 {
 number: "03",
@@ -24,7 +23,7 @@ title: "CLOUD INFRASTRUCTURE",
 description:
 "Scalable infrastructure designed to support evolving enterprise IT requirements and high availability.",
 image:
-"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85",
+"/Professionalenterprise.png",
 },
 {
 number: "04",
@@ -40,7 +39,7 @@ title: "SOFTWARE ENGINEERING",
 description:
 "Engineering expertise focused on mission-critical technical and operational requirements.",
 image:
-"https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=85",
+"/Engineering visualization.png",
 },
 {
 number: "06",
@@ -56,7 +55,7 @@ title: "BPO SERVICES",
 description:
 "Technology-enabled operational support designed to improve efficiency and focus on core priorities.",
 image:
-"https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=85",
+"/Executiveboardmeeting.png",
 },
 {
 number: "08",

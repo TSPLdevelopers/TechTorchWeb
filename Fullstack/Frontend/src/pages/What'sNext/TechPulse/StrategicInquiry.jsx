@@ -1,664 +1,674 @@
 import React from "react";
 
 export default function StrategicInquiryFramework() {
-  const stages = [
-    {
-      number: "01",
-      label: "STATUS",
-      question: "What is happening?",
-      description:
-        "Clear, real-time view of current operational metrics and baseline activity across departments.",
-      stage: "STAGE 1",
-      action: "—",
-      active: false,
-    },
-    {
-      number: "02",
-      label: "DIAGNOSIS",
-      question: "Why is it happening?",
-      description:
-        "Uncover systemic patterns, hidden variances, and root causes behind the operational numbers.",
-      stage: "STAGE 2",
-      action: "—",
-      active: false,
-    },
-    {
-      number: "03",
-      label: "PRIORITY",
-      question: "What needs attention?",
-      description:
-        "Isolate high-impact inefficiencies, emerging risks, and urgent operational interventions.",
-      stage: "STAGE 3",
-      action: "—",
-      active: false,
-    },
-    {
-      number: "04",
-      label: "FORECAST",
-      question: "What could happen next?",
-      description:
-        "Leverage trend analysis and predictive modeling to anticipate shifting market conditions.",
-      stage: "STAGE 4",
-      action: "—",
-      active: false,
-    },
-    {
-      number: "05",
-      label: "ACTION",
-      question: "What should we do?",
-      description:
-        "Convert analytical intelligence into immediate, practical, and accountable business decisions.",
-      stage: "STAGE 5",
-      action: "",
-      active: true,
-    },
-  ];
+const stages = [
+{
+number: "01",
+label: "STATUS",
+question: "What is happening?",
+description:
+"Clear, real-time view of current operational metrics and baseline activity across departments.",
+stage: "STAGE 1",
+action: "—",
+active: false,
+},
+{
+number: "02",
+label: "DIAGNOSIS",
+question: "Why is it happening?",
+description:
+"Uncover systemic patterns, hidden variances, and root causes behind the operational numbers.",
+stage: "STAGE 2",
+action: "—",
+active: false,
+},
+{
+number: "03",
+label: "PRIORITY",
+question: "What needs attention?",
+description:
+"Isolate high-impact inefficiencies, emerging risks, and urgent operational interventions.",
+stage: "STAGE 3",
+action: "—",
+active: false,
+},
+{
+number: "04",
+label: "FORECAST",
+question: "What could happen next?",
+description:
+"Leverage trend analysis and predictive modeling to anticipate shifting market conditions.",
+stage: "STAGE 4",
+action: "—",
+active: false,
+},
+{
+number: "05",
+label: "ACTION",
+question: "What should we do?",
+description:
+"Convert analytical intelligence into immediate, practical, and accountable business decisions.",
+stage: "STAGE 5",
+action: "",
+active: true,
+},
+];
 
-  return (
-    <section className="strategic-framework">
-      <div className="framework-container">
+return ( <section className="strategic-framework"> <div className="framework-container">
 
-        {/* TOP BADGE */}
-        <div className="framework-badge">
-          <span className="badge-dot"></span>
-          STRATEGIC INQUIRY FRAMEWORK
+
+    {/* TOP BADGE */}
+    <div className="framework-badge">
+      <span className="badge-dot"></span>
+      STRATEGIC INQUIRY FRAMEWORK
+    </div>
+
+    {/* HEADING */}
+    <h2 className="framework-heading">
+      The real question is not how much
+      <br />
+      data you have.
+      <br />
+      <span>It is what can your data help you</span>
+      <br />
+      <span>understand?</span>
+    </h2>
+
+    {/* SUBTEXT */}
+    <p className="framework-description">
+      A high-performing digital architecture guides leadership through five
+      <br className="desktop-break" />
+      progressive levels of cognitive clarity:
+    </p>
+
+    {/* CARDS */}
+    <div className="framework-cards">
+      {stages.map((item) => (
+        <div
+          className={`framework-card ${
+            item.active ? "framework-card-active" : ""
+          }`}
+          key={item.number}
+        >
+          {/* CARD TOP */}
+          <div className="framework-card-top">
+            <span className="framework-number">{item.number}</span>
+
+            <span className="framework-label">{item.label}</span>
+          </div>
+
+          {/* QUESTION */}
+          <h3>{item.question}</h3>
+
+          {/* DESCRIPTION */}
+          <p>{item.description}</p>
+
+          {/* CARD BOTTOM */}
+          <div className="framework-card-bottom">
+            <span>{item.stage}</span>
+            {item.action && <span>{item.action}</span>}
+          </div>
         </div>
+      ))}
+    </div>
+
+    {/* BOTTOM MESSAGE */}
+    <div className="framework-bottom-message">
+      <span className="bottom-dot"></span>
+      <span>
+        <span className="value-highlight">That is when data</span> starts
+        creating real business value.
+      </span>
+    </div>
+
+  </div>
+
+  <style>{`
+    * {
+      box-sizing: border-box;
+    }
+
+    .strategic-framework {
+      width: 100%;
+      margin: 0;
+      padding: 58px 0 60px;
+      background: #faf9f4;
+      font-family: "Inter", sans-serif;
+      color: #10172b;
+      overflow: hidden;
+    }
 
-        {/* HEADING */}
-        <h2 className="framework-heading">
-          The real question is not how much
-          <br />
-          data you have.
-          <br />
-          <span>It is what can your data help you</span>
-          <br />
-          <span>understand?</span>
-        </h2>
-
-        {/* SUBTEXT */}
-        <p className="framework-description">
-          A high-performing digital architecture guides leadership through five
-          <br className="desktop-break" />
-          progressive levels of cognitive clarity:
-        </p>
-
-        {/* CARDS */}
-        <div className="framework-cards">
-          {stages.map((item) => (
-            <div
-              className={`framework-card ${
-                item.active ? "framework-card-active" : ""
-              }`}
-              key={item.number}
-            >
-              {/* CARD TOP */}
-              <div className="framework-card-top">
-                <span className="framework-number">{item.number}</span>
-
-                <span className="framework-label">{item.label}</span>
-              </div>
-
-              {/* QUESTION */}
-              <h3>{item.question}</h3>
-
-              {/* DESCRIPTION */}
-              <p>{item.description}</p>
-
-              {/* CARD BOTTOM */}
-              <div className="framework-card-bottom">
-                <span>{item.stage}</span>
-                {item.action && <span>{item.action}</span>}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* BOTTOM MESSAGE */}
-        <div className="framework-bottom-message">
-          <span className="bottom-dot"></span>
-          <span>
-            <span className="value-highlight">That is when data</span> starts
-            creating real business value.
-          </span>
-        </div>
-
-      </div>
-
-      <style>{`
-        * {
-          box-sizing: border-box;
-        }
-
-        .strategic-framework {
-          width: 100%;
-          margin: 0;
-          padding: 58px 0 60px;
-          background: #faf9f4;
-          font-family: "Inter", sans-serif;
-          color: #10172b;
-          overflow: hidden;
-        }
-
-        .framework-container {
-          width: 100%;
-          max-width: 1500px;
-          margin: 0 auto;
-          padding: 0 38px;
-
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        /* BADGE */
-
-        .framework-badge {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-
-          height: 26px;
-          padding: 0 13px;
-
-          border: 1px solid #e9c8d8;
-          border-radius: 20px;
-
-          background: #fffafd;
-          color: #8c0750;
+    .framework-container {
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 0 38px;
 
-          font-size: 10px;
-          font-weight: 800;
-          letter-spacing: 0.55px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-          margin-bottom: 18px;
-        }
+    /* BADGE */
 
-        .badge-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: #970052;
-        }
+    .framework-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
 
-        /* HEADING */
+      height: 26px;
+      padding: 0 13px;
 
-        .framework-heading {
-          width: 100%;
-          margin: 0;
+      border: 1px solid #e9c8d8;
+      border-radius: 20px;
 
-          text-align: center;
+      background: #fffafd;
+      color: #8c0750;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 32px;
-          line-height: 1.16;
-          letter-spacing: -1.25px;
-          font-weight: 600;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.55px;
 
-          color: #10172b;
-        }
+      margin-bottom: 18px;
+    }
 
-        .framework-heading span {
-          color: #8d0750;
-        }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #970052;
+    }
 
-        /* DESCRIPTION */
+    /* HEADING */
 
-        .framework-description {
-          margin: 17px 0 0;
+    .framework-heading {
+      width: 100%;
+      margin: 0;
 
-          text-align: center;
+      text-align: center;
 
-          color: #69768b;
-          font-family: "Inter", sans-serif;
-          font-size: 14px;
-          line-height: 1.65;
-          font-weight: 500;
-        }
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 32px;
+      line-height: 1.16;
+      letter-spacing: -1.25px;
+      font-weight: 600;
 
-        /* CARDS */
+      color: #10172b;
+    }
 
-        .framework-cards {
-          width: 94%;
-          margin-top: 54px;
+    .framework-heading span {
+      color: #8d0750;
+    }
 
-          display: grid;
-          grid-template-columns: repeat(5, minmax(0, 1fr));
-          gap: 16px;
+    /* DESCRIPTION */
 
-          align-items: stretch;
-        }
+    .framework-description {
+      margin: 17px 0 0;
 
-        .framework-card {
-          width: 94%;
-          justify-self: center;
+      text-align: center;
 
-          min-width: 0;
-          min-height: 278px;
+      color: #69768b;
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      font-weight: 500;
+    }
 
-          padding: 23px 23px 18px;
+    /* CARDS */
 
-          display: flex;
-          flex-direction: column;
+    .framework-cards {
+      width: 94%;
+      margin-top: 54px;
 
-          background: #ffffff;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
 
-          border: 1px solid #e3e8ee;
-          border-radius: 13px;
+      align-items: stretch;
+    }
 
-          box-shadow: 0 4px 12px rgba(20, 30, 50, 0.04);
+    .framework-card {
+      width: 94%;
+      justify-self: center;
 
-          transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease,
-            border-color 0.2s ease;
-        }
+      min-width: 0;
+      min-height: 278px;
 
-        /* HOVER - BEETROOT BORDER */
+      padding: 23px 23px 18px;
 
-        .framework-card:hover {
-          transform: translateY(-3px);
+      display: flex;
+      flex-direction: column;
 
-          border-color: #970052;
+      background: #ffffff;
 
-          box-shadow: 0 10px 25px rgba(20, 30, 50, 0.08);
-        }
+      border: 1px solid #e3e8ee;
+      border-radius: 13px;
 
-        /* HOVER - BEETROOT NUMBER, LABEL & STAGE */
+      box-shadow: 0 4px 12px rgba(20, 30, 50, 0.04);
 
-        .framework-card:hover .framework-number {
-          color: #970052;
-        }
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
 
-        .framework-card:hover .framework-label {
-          color: #970052;
-        }
+    /* HOVER - BEETROOT BORDER WITH SOFT GLOW */
 
-        .framework-card:hover .framework-card-bottom {
-          color: #970052;
-        }
+    .framework-card:hover {
+      transform: translateY(-3px);
 
-        /* ACTIVE CARD - NORMAL STATE */
+      border-color: #970052;
 
-        .framework-card-active {
-          border: 1px solid #e3e8ee;
-          background: #ffffff;
+      box-shadow:
+        0 0 8px rgba(151, 0, 82, 0.16),
+        0 0 16px rgba(151, 0, 82, 0.10),
+        0 10px 25px rgba(20, 30, 50, 0.08);
+    }
 
-          box-shadow: 0 4px 12px rgba(20, 30, 50, 0.04);
-        }
+    /* HOVER - NUMBER */
 
-        /* CARD TOP */
+    .framework-card:hover .framework-number {
+      background: #970052;
+      color: #ffffff;
+    }
 
-        .framework-card-top {
-          width: 100%;
+    /* HOVER - LABEL */
 
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+    .framework-card:hover .framework-label {
+      color: #970052;
+    }
 
-          margin-bottom: 19px;
-        }
+    /* HOVER - UNDERLINE */
 
-        .framework-number {
-          width: 31px;
-          height: 23px;
+    .framework-card:hover .framework-card-bottom {
+      border-top-color: #970052;
+    }
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
+    /* ACTIVE CARD - NORMAL STATE */
 
-          border-radius: 6px;
+    .framework-card-active {
+      border: 1px solid #e3e8ee;
+      background: #ffffff;
 
-          background: #f0f4f7;
-          color: #52627a;
+      box-shadow: 0 4px 12px rgba(20, 30, 50, 0.04);
+    }
 
-          font-size: 11px;
-          font-weight: 800;
+    /* CARD TOP */
 
-          transition: color 0.2s ease;
-        }
+    .framework-card-top {
+      width: 100%;
 
-        /* 5TH CARD NUMBER NORMAL */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-        .framework-card-active .framework-number {
-          background: #f0f4f7;
-          color: #52627a;
-        }
+      margin-bottom: 19px;
+    }
 
-        .framework-label {
-          color: #a0adbe;
+    .framework-number {
+      width: 31px;
+      height: 23px;
 
-          font-size: 11px;
-          font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-          letter-spacing: 0.35px;
+      border-radius: 6px;
 
-          transition: color 0.2s ease;
-        }
+      background: #f0f4f7;
+      color: #52627a;
 
+      font-size: 11px;
+      font-weight: 800;
 
-        .framework-card-active .framework-label {
-          color: #a0adbe;
-        }
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
 
-        /* QUESTION */
+    .framework-card-active .framework-number {
+      background: #f0f4f7;
+      color: #52627a;
+    }
 
-        .framework-card h3 {
-          margin: 0 0 15px;
+    .framework-label {
+      color: #a0adbe;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
 
-          color: #11192c;
+      letter-spacing: 0.35px;
 
-          font-size: 15px;
-          line-height: 1.35;
+      transition: color 0.2s ease;
+    }
 
-          font-weight: 700;
-          letter-spacing: -0.2px;
-        }
+    .framework-card-active .framework-label {
+      color: #a0adbe;
+    }
 
-        /* DESCRIPTION - DARKER */
+    /* QUESTION */
 
-        .framework-card p {
-          margin: 0;
+    .framework-card h3 {
+      margin: 0 0 15px;
 
-          color: #4f5b6d;
-          font-family: "Plus Inter", sans-serif;
+      font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 13px;
-          line-height: 1.65;
+      color: #11192c;
 
-          font-weight: 530;
-        }
+      font-size: 15px;
+      line-height: 1.35;
 
-        /* CARD BOTTOM */
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
 
-        .framework-card-bottom {
-          width: 100%;
+    /* DESCRIPTION - DARKER */
 
-          margin-top: auto;
-          padding-top: 15px;
+    .framework-card p {
+      margin: 0;
 
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+      color: #4f5b6d;
+      font-family: "Plus Inter", sans-serif;
 
-          border-top: 1px solid #e7ebef;
+      font-size: 13.8px;
+      line-height: 1.65;
 
-          color: #a1adbd;
+      font-weight: 530;
+    }
 
-          font-size: 8.5px;
-          font-weight: 700;
+    /* CARD BOTTOM */
 
-          letter-spacing: 0.25px;
+    .framework-card-bottom {
+      width: 100%;
 
-          transition: color 0.2s ease;
-        }
+      margin-top: auto;
+      padding-top: 15px;
 
-        /* 5TH CARD BOTTOM NORMAL */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-        .framework-card-active .framework-card-bottom {
-          color: #a1adbd;
-          border-top-color: #e7ebef;
-        }
+      border-top: 1px solid #e7ebef;
 
-        /* BOTTOM MESSAGE */
+      color: #a1adbd;
 
-        .framework-bottom-message {
-          min-height: 48px;
+      font-size: 9px;
+      font-weight: 700;
 
-          margin-top: 49px;
-          padding: 0 27px;
+      letter-spacing: 0.25px;
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
+      transition:
+        color 0.2s ease,
+        border-top-color 0.25s ease;
+    }
 
-          gap: 10px;
+    /* 5TH CARD BOTTOM NORMAL */
 
-          background: #ffffff;
+    .framework-card-active .framework-card-bottom {
+      color: #a1adbd;
+      border-top-color: #e7ebef;
+    }
 
-          border: 1px solid #e1e7ed;
-          border-radius: 30px;
+    /* BOTTOM MESSAGE */
 
-          box-shadow: 0 4px 12px rgba(20, 30, 50, 0.035);
+    .framework-bottom-message {
+      min-height: 48px;
 
-          color: #000000;
+      margin-top: 49px;
+      padding: 0 27px;
 
-          font-size: 12px;
-          font-weight: 700;
-        }
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-        .value-highlight {
-          color: #970052;
-        }
+      gap: 10px;
 
-        .bottom-dot {
-          width: 7px;
-          height: 7px;
+      background: #ffffff;
 
-          flex: 0 0 auto;
+      border: 1px solid #e1e7ed;
+      border-radius: 30px;
 
-          border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(20, 30, 50, 0.035);
 
-          background: #970052;
-        }
+      color: #000000;
 
-        /* LARGE DESKTOP */
+      font-size: 13.5px;
+      font-weight: 700;
+    }
 
-        @media (min-width: 1600px) {
+    .value-highlight {
+      color: #970052;
+    }
 
-          .framework-container {
-            max-width: 1600px;
-            padding: 0 45px;
-          }
+    .bottom-dot {
+      width: 7px;
+      height: 7px;
 
-          .framework-cards {
-            width: 94%;
-            gap: 18px;
-          }
+      flex: 0 0 auto;
 
-          .framework-card {
-            width: 94%;
-            min-height: 290px;
-            padding: 25px 25px 19px;
-          }
+      border-radius: 50%;
 
-          .framework-card h3 {
-            font-size: 16px;
-          }
+      background: #970052;
+    }
 
-          .framework-card p {
-            font-size: 11px;
-          }
-        }
+    /* LARGE DESKTOP */
 
-        /* TABLET / SMALL DESKTOP */
+    @media (min-width: 1600px) {
 
-        @media (max-width: 1100px) {
+      .framework-container {
+        max-width: 1600px;
+        padding: 0 45px;
+      }
 
-          .strategic-framework {
-            padding: 50px 0 55px;
-          }
+      .framework-cards {
+        width: 94%;
+        gap: 18px;
+      }
 
-          .framework-container {
-            padding: 0 25px;
-          }
+      .framework-card {
+        width: 94%;
+        min-height: 290px;
+        padding: 25px 25px 19px;
+      }
 
-          .framework-heading {
-            font-size: 30px;
-          }
+      .framework-card h3 {
+        font-size: 16px;
+      }
 
-          .framework-cards {
-            width: 100%;
-            gap: 11px;
-          }
+      .framework-card p {
+        font-size: 11px;
+      }
+    }
 
-          .framework-card {
-            width: 94%;
-            min-height: 270px;
-            padding: 20px 17px 17px;
-          }
+    /* TABLET / SMALL DESKTOP */
 
-          .framework-card h3 {
-            font-size: 14px;
-          }
+    @media (max-width: 1100px) {
 
-          .framework-card p {
-            font-size: 9.5px;
-          }
-        }
+      .strategic-framework {
+        padding: 50px 0 55px;
+      }
 
-        /* TABLET */
+      .framework-container {
+        padding: 0 25px;
+      }
 
-        @media (max-width: 850px) {
+      .framework-heading {
+        font-size: 30px;
+      }
 
-          .framework-heading {
-            font-size: 28px;
-          }
+      .framework-cards {
+        width: 100%;
+        gap: 11px;
+      }
 
-          .framework-description {
-            font-size: 12px;
-          }
+      .framework-card {
+        width: 94%;
+        min-height: 270px;
+        padding: 20px 17px 17px;
+      }
 
-          .framework-cards {
-            width: 100%;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-          }
+      .framework-card h3 {
+        font-size: 14px;
+      }
 
-          .framework-card {
-            width: 100%;
-            min-height: 245px;
-          }
+      .framework-card p {
+        font-size: 9.5px;
+      }
+    }
 
-          .framework-card:last-child {
-            grid-column: span 2;
-            max-width: calc(50% - 7px);
-            width: 100%;
-            justify-self: center;
-          }
-        }
+    /* TABLET */
 
-        /* MOBILE */
+    @media (max-width: 850px) {
 
-        @media (max-width: 600px) {
+      .framework-heading {
+        font-size: 28px;
+      }
 
-          .strategic-framework {
-            padding: 42px 0 45px;
-          }
+      .framework-description {
+        font-size: 12px;
+      }
 
-          .framework-container {
-            padding: 0 16px;
-          }
+      .framework-cards {
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
 
-          .framework-badge {
-            height: 25px;
-            font-size: 9px;
-            padding: 0 11px;
-          }
+      .framework-card {
+        width: 100%;
+        min-height: 245px;
+      }
 
-          .framework-heading {
-            font-size: 25px;
-            line-height: 1.18;
-            letter-spacing: -0.8px;
-          }
+      .framework-card:last-child {
+        grid-column: span 2;
+        max-width: calc(50% - 7px);
+        width: 100%;
+        justify-self: center;
+      }
+    }
 
-          .desktop-break {
-            display: none;
-          }
+    /* MOBILE */
 
-          .framework-description {
-            max-width: 450px;
-            margin-top: 15px;
-            font-size: 11px;
-          }
+    @media (max-width: 600px) {
 
-          .framework-cards {
-            width: 100%;
-            margin-top: 35px;
+      .strategic-framework {
+        padding: 42px 0 45px;
+      }
 
-            display: flex;
-            flex-direction: column;
+      .framework-container {
+        padding: 0 16px;
+      }
 
-            gap: 12px;
-          }
+      .framework-badge {
+        height: 25px;
+        font-size: 9px;
+        padding: 0 11px;
+      }
 
-          .framework-card {
-            width: 100%;
-            min-height: 0;
+      .framework-heading {
+        font-size: 25px;
+        line-height: 1.18;
+        letter-spacing: -0.8px;
+      }
 
-            padding: 20px 19px 17px;
-          }
+      .desktop-break {
+        display: none;
+      }
 
-          .framework-card:last-child {
-            width: 100%;
-            max-width: none;
-            grid-column: auto;
-          }
+      .framework-description {
+        max-width: 450px;
+        margin-top: 15px;
+        font-size: 11px;
+      }
 
-          .framework-card-top {
-            margin-bottom: 15px;
-          }
+      .framework-cards {
+        width: 100%;
+        margin-top: 35px;
 
-          .framework-card h3 {
-            font-size: 15px;
-            margin-bottom: 11px;
-          }
+        display: flex;
+        flex-direction: column;
 
-          .framework-card p {
-            font-size: 10px;
-            line-height: 1.6;
-          }
+        gap: 12px;
+      }
 
-          .framework-card-bottom {
-            margin-top: 22px;
-          }
+      .framework-card {
+        width: 100%;
+        min-height: 0;
 
-          .framework-bottom-message {
-            width: 100%;
+        padding: 20px 19px 17px;
+      }
 
-            margin-top: 35px;
-            padding: 10px 17px;
+      .framework-card:last-child {
+        width: 100%;
+        max-width: none;
+        grid-column: auto;
+      }
 
-            text-align: center;
+      .framework-card-top {
+        margin-bottom: 15px;
+      }
 
-            font-size: 10px;
-            line-height: 1.4;
-          }
-        }
+      .framework-card h3 {
+        font-size: 15px;
+        margin-bottom: 11px;
+      }
 
-        /* SMALL MOBILE */
+      .framework-card p {
+        font-size: 10px;
+        line-height: 1.6;
+      }
 
-        @media (max-width: 380px) {
+      .framework-card-bottom {
+        margin-top: 22px;
+      }
 
-          .framework-container {
-            padding: 0 13px;
-          }
+      .framework-bottom-message {
+        width: 100%;
 
-          .framework-heading {
-            font-size: 22px;
-          }
+        margin-top: 35px;
+        padding: 10px 17px;
 
-          .framework-description {
-            font-size: 10px;
-          }
+        text-align: center;
 
-          .framework-card {
-            width: 100%;
-            padding: 18px 16px 16px;
-          }
+        font-size: 10px;
+        line-height: 1.4;
+      }
+    }
 
-          .framework-card h3 {
-            font-size: 14px;
-          }
+    /* SMALL MOBILE */
 
-          .framework-card p {
-            font-size: 9.5px;
-          }
-        }
+    @media (max-width: 380px) {
 
-      `}</style>
-    </section>
-  );
+      .framework-container {
+        padding: 0 13px;
+      }
+
+      .framework-heading {
+        font-size: 22px;
+      }
+
+      .framework-description {
+        font-size: 10px;
+      }
+
+      .framework-card {
+        width: 100%;
+        padding: 18px 16px 16px;
+      }
+
+      .framework-card h3 {
+        font-size: 14px;
+      }
+
+      .framework-card p {
+        font-size: 9.5px;
+      }
+    }
+
+  `}</style>
+</section>
+
+
+);
 }

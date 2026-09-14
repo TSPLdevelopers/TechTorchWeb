@@ -1,5 +1,4 @@
 import React from "react";
-
 import executiveStrategyImage from "/ExecutiveStrategy.png";
 
 export default function ExecutiveStrategy() {
@@ -76,38 +75,51 @@ export default function ExecutiveStrategy() {
           max-width: 1320px;
           min-height: 520px;
           margin: 0 auto;
+
           display: grid;
           grid-template-columns: 1fr 0.9fr;
+
           background: #f7fafc;
           border: 1px solid #e0e7ed;
           border-radius: 22px;
           overflow: hidden;
         }
 
+        /* CONTENT */
+
         .executive-strategy-content {
           padding: 42px 45px 40px 55px;
+
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
+
           min-width: 0;
         }
+
+        /* BADGE */
 
         .executive-strategy-badge {
           display: inline-flex;
           align-items: center;
           gap: 8px;
+
           max-width: 100%;
           height: 32px;
           padding: 0 12px;
+
           border: 1px solid #e5bfd1;
           border-radius: 20px;
+
           background: #fff9fc;
           color: #8b0750;
+
           font-size: 10px;
           line-height: 1;
           font-weight: 800;
           letter-spacing: 0.7px;
+
           white-space: nowrap;
         }
 
@@ -115,86 +127,136 @@ export default function ExecutiveStrategy() {
           width: 7px;
           height: 7px;
           flex: 0 0 auto;
+
           border-radius: 50%;
           background: #970052;
         }
 
+        /* HEADING */
+
         .executive-strategy-content h2 {
           margin: 23px 0 18px;
+
           color: #101629;
           font-family: "Plus Jakarta Sans", sans-serif;
+
           font-size: 35px;
           line-height: 1.12;
           letter-spacing: -1.4px;
           font-weight: 500;
         }
 
+        /* DESCRIPTION */
+
         .strategy-description {
           margin: 0;
+
           color: #64738a;
           font-family: "Inter", sans-serif;
+
           font-size: 14px;
           line-height: 1.5;
           font-weight: 400;
         }
 
+        /* HIGHLIGHT */
+
         .strategy-highlight {
           margin: 16px 0 0;
+
           color: #202a3e;
+
           font-size: 13px;
           line-height: 1.48;
           font-weight: 600;
         }
 
+        /* ACTION */
+
         .strategy-action {
           margin: 16px 0 0;
+
           color: #8d0750;
+
           font-size: 14px;
           line-height: 1.4;
           font-weight: 750;
         }
 
+        /* BUTTON CONTAINER */
+
         .strategy-buttons {
           margin-top: 22px;
+
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           gap: 11px;
         }
 
+        /* BUTTONS */
+
         .strategy-primary,
         .strategy-secondary {
           min-width: 255px;
           height: 45px;
           padding: 0 14px;
+
           border-radius: 10px;
+
           font-family: "Inter", sans-serif;
           font-size: 13px;
           font-weight: 600;
+
           cursor: pointer;
           white-space: nowrap;
+
+          /*
+            Important:
+            No transform on text.
+            Button itself moves slightly,
+            but text remains fixed inside it.
+          */
+
           transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease,
-            background 0.25s ease;
+            background 0.45s ease,
+            color 0.45s ease,
+            border-color 0.45s ease,
+            box-shadow 0.45s ease;
         }
+
+        /* TALK TO OUR EXPERTS */
 
         .strategy-primary {
           border: 1px solid #970052;
           background: #970052;
           color: #ffffff;
-          box-shadow: 0 7px 15px rgba(151, 0, 82, 0.18);
+
+          box-shadow:
+            0 7px 15px rgba(151, 0, 82, 0.18);
         }
 
+        .strategy-primary:hover {
+          background: #a91a68;
+          border-color: #a91a68;
+
+          box-shadow:
+            0 10px 20px rgba(151, 0, 82, 0.22);
+        }
+
+        /* ARROW STAYS FIXED */
+
         .strategy-primary span {
+          display: inline;
           margin-left: 5px;
           font-size: 17px;
         }
 
-        .strategy-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 20px rgba(151, 0, 82, 0.24);
+        .strategy-primary:hover span {
+          transform: none;
         }
+
+        /* EXPLORE DIGITAL SOLUTIONS */
 
         .strategy-secondary {
           border: 1px solid #dfe6ed;
@@ -203,29 +265,40 @@ export default function ExecutiveStrategy() {
         }
 
         .strategy-secondary:hover {
-          transform: translateY(-2px);
-          background: #fafbfc;
+          background: #970052;
+          border-color: #970052;
+          color: #ffffff;
+
+          box-shadow:
+            0 8px 18px rgba(151, 0, 82, 0.18);
         }
+
+        /* IMAGE */
 
         .executive-strategy-image {
           width: 100%;
           height: 100%;
           min-height: 520px;
+
           overflow: hidden;
           background: #202633;
         }
 
         .executive-strategy-image img {
           display: block;
+
           width: 100%;
           height: 100%;
+
           object-fit: cover;
           object-position: center;
         }
 
-        /* Large Desktop */
+        /* LARGE DESKTOP */
+
         @media (min-width: 1600px) {
           .executive-strategy-card {
+            width: calc(100% - 160px);
             max-width: 1380px;
             min-height: 550px;
           }
@@ -240,25 +313,19 @@ export default function ExecutiveStrategy() {
           }
         }
 
-        /* Laptop / Tablet Landscape */
-        @media (max-width: 1100px) {
-          .executive-strategy {
-            padding: 30px 0;
-          }
+        /* LAPTOP */
 
+        @media (max-width: 1200px) {
           .executive-strategy-card {
-            width: calc(100% - 70px);
-            min-height: 470px;
-            grid-template-columns: 1fr 0.9fr;
+            width: calc(100% - 80px);
           }
 
           .executive-strategy-content {
-            padding: 35px 28px 35px 38px;
+            padding: 38px 35px 38px 42px;
           }
 
           .executive-strategy-content h2 {
-            margin-top: 20px;
-            font-size: 31px;
+            font-size: 32px;
           }
 
           .strategy-description {
@@ -272,25 +339,74 @@ export default function ExecutiveStrategy() {
           .strategy-action {
             font-size: 13px;
           }
+        }
 
-          .strategy-primary,
-          .strategy-secondary {
-            min-width: 215px;
-            height: 43px;
-            padding: 0 12px;
+        /* TABLET LANDSCAPE */
+
+        @media (max-width: 1000px) {
+          .executive-strategy {
+            padding: 30px 0;
+          }
+
+          .executive-strategy-card {
+            width: calc(100% - 50px);
+            min-height: 460px;
+
+            grid-template-columns: 1fr 0.9fr;
+          }
+
+          .executive-strategy-content {
+            padding: 32px 25px 32px 32px;
+          }
+
+          .executive-strategy-badge {
+            height: 30px;
+            padding: 0 10px;
+            font-size: 9px;
+          }
+
+          .executive-strategy-content h2 {
+            margin: 20px 0 16px;
+            font-size: 29px;
+            letter-spacing: -1px;
+          }
+
+          .strategy-description {
             font-size: 12px;
           }
 
+          .strategy-highlight {
+            font-size: 11px;
+          }
+
+          .strategy-action {
+            font-size: 12px;
+          }
+
+          .strategy-buttons {
+            margin-top: 20px;
+            gap: 9px;
+          }
+
+          .strategy-primary,
+          .strategy-secondary {
+            min-width: 205px;
+            height: 42px;
+            font-size: 11px;
+          }
+
           .executive-strategy-image {
-            min-height: 470px;
+            min-height: 460px;
           }
         }
 
-        /* Tablet */
+        /* TABLET */
+
         @media (max-width: 800px) {
           .executive-strategy-card {
             width: calc(100% - 40px);
             min-height: auto;
+
             grid-template-columns: 1fr;
           }
 
@@ -315,34 +431,44 @@ export default function ExecutiveStrategy() {
           .strategy-secondary {
             min-width: 225px;
             height: 43px;
-            padding: 0 12px;
           }
 
           .executive-strategy-image {
+            width: 100%;
             height: 320px;
             min-height: 320px;
           }
         }
 
-        /* Mobile */
+        /* MOBILE */
+
         @media (max-width: 600px) {
           .executive-strategy {
+            width: 100%;
             padding: 20px 0 28px;
           }
 
           .executive-strategy-card {
             width: calc(100% - 24px);
+            min-height: auto;
+
             border-radius: 16px;
           }
 
           .executive-strategy-content {
+            width: 100%;
             padding: 28px 22px 30px;
           }
 
           .executive-strategy-badge {
+            width: fit-content;
+            max-width: 100%;
+
             height: 28px;
             padding: 0 10px;
+
             font-size: 8px;
+            letter-spacing: 0.5px;
             gap: 6px;
           }
 
@@ -352,31 +478,50 @@ export default function ExecutiveStrategy() {
           }
 
           .executive-strategy-content h2 {
+            width: 100%;
+
             margin: 20px 0 16px;
+
             font-size: 27px;
             line-height: 1.12;
             letter-spacing: -1px;
           }
 
           .strategy-description {
+            width: 100%;
+
             font-size: 12px;
             line-height: 1.55;
           }
 
+          .strategy-description br,
+          .strategy-highlight br {
+            display: none;
+          }
+
           .strategy-highlight {
+            width: 100%;
+
             margin-top: 16px;
+
             font-size: 12px;
             line-height: 1.5;
           }
 
           .strategy-action {
+            width: 100%;
+
             margin-top: 16px;
+
             font-size: 13px;
+            line-height: 1.45;
           }
 
           .strategy-buttons {
             width: 100%;
+
             margin-top: 20px;
+
             gap: 10px;
           }
 
@@ -384,29 +529,37 @@ export default function ExecutiveStrategy() {
           .strategy-secondary {
             width: 100%;
             min-width: 0;
+
             height: 44px;
             padding: 0 11px;
+
             font-size: 12px;
           }
 
+          .strategy-primary span {
+            font-size: 16px;
+          }
+
           .executive-strategy-image {
+            width: 100%;
             height: 245px;
             min-height: 245px;
           }
         }
 
-        /* Small Mobile */
-        @media (max-width: 420px) {
+        /* SMALL MOBILE */
+
+        @media (max-width: 480px) {
           .executive-strategy-card {
             width: calc(100% - 18px);
           }
 
           .executive-strategy-content {
-            padding: 25px 18px 27px;
+            padding: 26px 18px 28px;
           }
 
           .executive-strategy-content h2 {
-            font-size: 24px;
+            font-size: 25px;
           }
 
           .strategy-description,
@@ -420,8 +573,9 @@ export default function ExecutiveStrategy() {
 
           .strategy-primary,
           .strategy-secondary {
+            width: 100%;
             height: 42px;
-            padding: 0 10px;
+
             font-size: 11px;
           }
 
@@ -431,8 +585,19 @@ export default function ExecutiveStrategy() {
           }
         }
 
-        /* Very Small Screens */
+        /* VERY SMALL MOBILE */
+
         @media (max-width: 350px) {
+          .executive-strategy-content {
+            padding: 23px 16px 25px;
+          }
+
+          .executive-strategy-badge {
+            height: 26px;
+            padding: 0 8px;
+            font-size: 7px;
+          }
+
           .executive-strategy-content h2 {
             font-size: 22px;
           }
@@ -442,10 +607,15 @@ export default function ExecutiveStrategy() {
             font-size: 10.5px;
           }
 
+          .strategy-action {
+            font-size: 11px;
+          }
+
           .strategy-primary,
           .strategy-secondary {
+            height: 41px;
             font-size: 10.5px;
-            padding: 0 9px;
+            padding: 0 8px;
           }
 
           .executive-strategy-image {

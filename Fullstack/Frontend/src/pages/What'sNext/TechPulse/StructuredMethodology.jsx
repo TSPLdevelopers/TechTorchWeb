@@ -68,6 +68,8 @@ export default function StructuredMethodology() {
               <h3>{phase.title}</h3>
 
               <p>{phase.description}</p>
+
+              <div className="methodology-card-line"></div>
             </div>
           ))}
         </div>
@@ -177,6 +179,9 @@ export default function StructuredMethodology() {
         }
 
         .methodology-card {
+          position: relative;
+          overflow: hidden;
+
           width: 92%;
           justify-self: center;
           min-width: 0;
@@ -184,60 +189,69 @@ export default function StructuredMethodology() {
           padding: 21px 20px 16px;
           display: flex;
           flex-direction: column;
+
           background:
             linear-gradient(
-              145deg,
-              rgba(255, 255, 255, 0.12),
-              rgba(255, 255, 255, 0.07)
+              135deg,
+              rgba(255, 255, 255, 0.13) 0%,
+              rgba(255, 255, 255, 0.08) 45%,
+              rgba(255, 255, 255, 0.05) 100%
             );
+
           border: 1px solid rgba(255, 255, 255, 0.18);
           border-radius: 12px;
+
           box-shadow:
             0 7px 18px rgba(30, 0, 20, 0.10);
+
           transition:
-            background 0.2s ease,
-            border-color 0.2s ease,
-            box-shadow 0.2s ease,
-            transform 0.2s ease;
+            background 0.35s ease,
+            border-color 0.35s ease,
+            box-shadow 0.35s ease,
+            transform 0.35s ease;
         }
 
-        /* HOVER */
+        /* SUBTLE GLASS GLOW - UPPER RIGHT */
+
+        .methodology-card::before {
+          content: "";
+          position: absolute;
+          top: -45px;
+          right: -45px;
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+
+          background: rgba(255, 255, 255, 0.10);
+          filter: blur(28px);
+
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        /* KEEP CONTENT ABOVE GLASS EFFECT */
+
+        .methodology-card .phase-number,
+        .methodology-card h3,
+        .methodology-card p,
+        .methodology-card-line {
+          position: relative;
+          z-index: 1;
+        }
+
+        /* HOVER CARD */
 
         .methodology-card:hover {
-          background:
-            linear-gradient(
-              145deg,
-              rgba(255, 255, 255, 0.20),
-              rgba(255, 255, 255, 0.15)
-            );
+          background: #eee9ec;
           border-color: #970052;
+
           box-shadow:
-            0 10px 25px rgba(30, 0, 20, 0.16);
-          transform: translateY(-3px);
+            0 16px 32px rgba(30, 0, 20, 0.24);
+
+          transform: translateY(-8px);
         }
 
-        /* HOVER CONTENT */
-
-        .methodology-card:hover .phase-number {
-          color: #ffffff;
-        }
-
-        .methodology-card:hover h3 {
-          color: #ffffff;
-        }
-
-        .methodology-card:hover p {
-          color: rgba(255, 255, 255, 0.92);
-        }
-
-        /* 2ND & 4TH CARD HEIGHT */
-
-        .methodology-card.phase-02,
-        .methodology-card.phase-04 {
-          min-height: 255px;
-        }
-
-        /* PHASE */
+        /* PHASE NUMBER */
 
         .phase-number {
           color: #f0a2bd;
@@ -245,7 +259,7 @@ export default function StructuredMethodology() {
           font-weight: 800;
           letter-spacing: 1px;
           margin-bottom: 17px;
-          transition: color 0.2s ease;
+          transition: color 0.35s ease;
         }
 
         /* TITLE */
@@ -258,7 +272,7 @@ export default function StructuredMethodology() {
           line-height: 1.25;
           font-weight: 700;
           letter-spacing: -0.2px;
-          transition: color 0.2s ease;
+          transition: color 0.35s ease;
         }
 
         /* TEXT */
@@ -270,7 +284,52 @@ export default function StructuredMethodology() {
           font-family: "Inter", sans-serif;
           line-height: 1.65;
           font-weight: 500;
-          transition: color 0.2s ease;
+          transition: color 0.35s ease;
+        }
+
+        /* BEETROOT LINE */
+
+        .methodology-card-line {
+          width: 18px;
+          height: 2px;
+          margin-top: 18px;
+          border-radius: 999px;
+          background: #970052;
+          opacity: 0.35;
+
+          transition:
+            width 0.5s ease,
+            opacity 0.5s ease,
+            transform 0.5s ease;
+        }
+
+        /* HOVER CONTENT */
+
+        .methodology-card:hover .phase-number {
+          color: #970052;
+        }
+
+        .methodology-card:hover h3 {
+          color: #970052;
+        }
+
+        .methodology-card:hover p {
+          color: #475569;
+        }
+
+        /* HOVER LINE */
+
+        .methodology-card:hover .methodology-card-line {
+          width: 48px;
+          opacity: 1;
+          transform: translateX(2px);
+        }
+
+        /* 2ND & 4TH CARD HEIGHT */
+
+        .methodology-card.phase-02,
+        .methodology-card.phase-04 {
+          min-height: 255px;
         }
 
         /* BOTTOM MESSAGE */
@@ -284,10 +343,13 @@ export default function StructuredMethodology() {
           align-items: center;
           justify-content: center;
           text-align: center;
+
           border: 1px solid rgba(255, 255, 255, 0.18);
           border-radius: 12px;
+
           background: rgba(30, 0, 18, 0.22);
           color: rgba(255, 255, 255, 0.78);
+
           font-size: 12.5px;
           line-height: 1.6;
           font-weight: 500;
@@ -502,6 +564,10 @@ export default function StructuredMethodology() {
           .methodology-card p {
             font-size: 10px;
             line-height: 1.6;
+          }
+
+          .methodology-card-line {
+            margin-top: 15px;
           }
 
           .methodology-bottom {

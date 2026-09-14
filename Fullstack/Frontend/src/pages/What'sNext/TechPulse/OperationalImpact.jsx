@@ -117,15 +117,11 @@ export default function OperationalImpact() {
           padding: 0 38px;
         }
 
-        /* TOP CONTENT */
-
         .impact-top-content {
           width: 96%;
           margin: 0 auto;
           transform: translateX(2.08%);
         }
-
-        /* BADGE */
 
         .impact-badge {
           width: fit-content;
@@ -152,8 +148,6 @@ export default function OperationalImpact() {
           background: #970052;
         }
 
-        /* HEADING */
-
         .impact-heading {
           margin: 0;
           font-family: "Plus Jakarta Sans", sans-serif;
@@ -164,8 +158,6 @@ export default function OperationalImpact() {
           font-weight: 700;
         }
 
-        /* SUBTITLE */
-
         .impact-subtitle {
           margin: 7px 0 0;
           color: #65738a;
@@ -174,8 +166,6 @@ export default function OperationalImpact() {
           line-height: 1.5;
           font-weight: 500;
         }
-
-        /* GRID */
 
         .impact-grid {
           width: 96%;
@@ -187,8 +177,6 @@ export default function OperationalImpact() {
           align-items: start;
         }
 
-        /* CARD */
-
         .impact-card {
           width: 90%;
           justify-self: center;
@@ -197,14 +185,35 @@ export default function OperationalImpact() {
           padding: 19px 19px 16px;
           display: flex;
           flex-direction: column;
+
           background: #f8fafc;
           border: 1px solid #e5eaf0;
           border-radius: 10px;
+
           box-shadow:
             0 3px 10px rgba(20, 30, 50, 0.025);
+
+          transition:
+            transform 0.25s ease,
+            border-color 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
-        /* CARD TOP */
+        .impact-card:hover {
+          transform: translateY(-5px);
+          border-color: #970052;
+
+          box-shadow:
+            0 0 8px rgba(151, 0, 82, 0.15),
+            0 0 16px rgba(151, 0, 82, 0.08),
+            0 10px 22px rgba(20, 30, 50, 0.08);
+        }
+
+        .impact-card:hover .impact-number {
+          background: #970052;
+          border-color: #970052;
+          color: #ffffff;
+        }
 
         .impact-card-top {
           width: 100%;
@@ -220,13 +229,22 @@ export default function OperationalImpact() {
           display: flex;
           align-items: center;
           justify-content: center;
+
           border: 1px solid #eccddd;
           border-radius: 6px;
           background: #fff8fb;
           color: #970052;
+
           font-size: 10px;
           font-weight: 800;
+
+          transition:
+            background 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease;
         }
+
+        /* LABEL */
 
         .impact-label {
           color: #9aa9bd;
@@ -234,9 +252,15 @@ export default function OperationalImpact() {
           font-weight: 800;
           letter-spacing: 0.35px;
           text-align: right;
+
+          transition: color 0.4s ease;
         }
 
-        /* CARD TITLE */
+        /* ONLY CHANGE ON HOVER */
+
+        .impact-card:hover .impact-label {
+          color: #970052;
+        }
 
         .impact-card h3 {
           margin: 0 0 9px;
@@ -244,11 +268,9 @@ export default function OperationalImpact() {
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 13px;
           line-height: 1.3;
-          font-weight: 800;
+          font-weight: 750;
           letter-spacing: -0.25px;
         }
-
-        /* CARD TEXT */
 
         .impact-card-text {
           margin: 0;
@@ -258,14 +280,12 @@ export default function OperationalImpact() {
           font-weight: 500;
         }
 
-        /* CARD BOTTOM */
-
         .impact-card-bottom {
           margin-top: auto;
           padding-top: 11px;
           border-top: 1px solid #e2e7ed;
           color: #970052;
-          font-size: 9px;
+          font-size: 9.5px;
           line-height: 1.3;
           font-weight: 800;
         }

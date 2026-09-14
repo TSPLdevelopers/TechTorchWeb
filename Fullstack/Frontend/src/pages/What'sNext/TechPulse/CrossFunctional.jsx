@@ -230,7 +230,7 @@ export default function CrossFunctionalContext() {
 
           color: #65738a;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 13.5px;
 
           line-height: 1.6;
 
@@ -399,7 +399,7 @@ export default function CrossFunctionalContext() {
 
           color: #52627a;
 
-          font-size: 13px;
+          font-size: 13.5px;
 
           line-height: 1.7;
 
@@ -475,11 +475,11 @@ export default function CrossFunctionalContext() {
 
           color: #536178;
 
-          font-size: 11px;
+          font-size: 11.5px;
 
           line-height: 1.3;
 
-          font-weight: 600;
+          font-weight: 700;
 
           white-space: nowrap;
         }
