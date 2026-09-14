@@ -29,7 +29,7 @@ const STEPS = [
     number: "02",
     title: "Intelligent Architecture",
     tag: "Engine",
-    tagColor: "#9d174d",
+    tagColor: "#730024",
     description:
       "Modular cloud pipelines, event-driven data fabrics, governed automation & resilient APIs.",
     highlight: true,
@@ -46,32 +46,140 @@ const STEPS = [
 
 export default function StrategicTransformationSection() {
   return (
-    <section className="w-full bg-[#f3f1f5] py-14 sm:py-16 md:py-20 px-4 sm:px-6">
-      <div className="relative max-w-5xl mx-auto rounded-[28px] bg-white border border-slate-100 shadow-xl overflow-hidden p-6 sm:p-10">
-        {/* Decorative glow */}
+    <section
+      className="
+        w-full
+        bg-[#f3f1f5]
+        px-4
+        py-10
+        sm:px-6
+        sm:py-12
+        md:px-8
+        md:py-14
+        lg:px-10
+        lg:py-16
+      "
+    >
+      {/* ================= MAIN CONTAINER ================= */}
+
+      <div
+        className="
+          relative
+          mx-auto
+          w-full
+          max-w-7xl
+          overflow-hidden
+          rounded-[24px]
+          border
+          border-slate-100
+          bg-white
+          p-5
+          shadow-xl
+          sm:rounded-[28px]
+          sm:p-7
+          md:p-9
+          lg:p-10
+          xl:p-12
+        "
+      >
+        {/* ================= DECORATIVE GLOW ================= */}
+
         <div
-          className="absolute -top-24 -right-24 w-72 h-72 rounded-full opacity-40 blur-3xl pointer-events-none"
+          className="
+            pointer-events-none
+            absolute
+            -right-24
+            -top-24
+            h-72
+            w-72
+            rounded-full
+            opacity-40
+            blur-3xl
+          "
           style={{ backgroundColor: "#f4c9dd" }}
         />
 
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
-          {/* Left: copy */}
-          <div>
-            <span className="inline-flex items-center gap-2 mb-5">
-              <Zap size={13} style={{ color: "#9d174d" }} />
+        {/* ================= CONTENT GRID ================= */}
+
+        <div
+          className="
+            relative
+            grid
+            grid-cols-1
+            items-start
+            gap-8
+            sm:gap-10
+            lg:grid-cols-[1.05fr_0.95fr]
+            lg:gap-12
+            xl:gap-16
+          "
+        >
+          {/* =====================================================
+              LEFT CONTENT
+          ====================================================== */}
+
+          <div className="w-full">
+            {/* Label */}
+
+            <span className="mb-4 inline-flex items-center gap-2 sm:mb-5">
+              <Zap
+                size={13}
+                className="flex-shrink-0"
+                style={{ color: "#730024" }}
+              />
+
               <span
-                className="text-[11px] font-bold tracking-[0.1em] uppercase"
-                style={{ color: "#9d174d" }}
+                className="
+                  font-['Inter']
+                  text-[10px]
+                  font-bold
+                  uppercase
+                  tracking-[0.1em]
+                  sm:text-[11px]
+                "
+                style={{ color: "#730024" }}
               >
                 Strategic Digital Transformation
               </span>
             </span>
 
-            <h2 className="text-[24px] sm:text-[28px] font-bold leading-tight text-slate-900 mb-5">
+            {/* Heading - Plus Jakarta Sans */}
+
+            <h2
+              className="
+                mb-4
+                max-w-2xl
+                font-['Plus_Jakarta_Sans']
+                text-[24px]
+                font-bold
+                leading-[1.18]
+                tracking-[-0.02em]
+                text-slate-900
+                sm:mb-5
+                sm:text-[28px]
+                md:text-[32px]
+                lg:text-[34px]
+                xl:text-[36px]
+              "
+            >
               Turning Business Needs into Digital Solutions
             </h2>
 
-            <p className="text-[14px] leading-relaxed text-slate-500 mb-8">
+            {/* Description - Inter */}
+
+            <p
+              className="
+                mb-7
+                max-w-2xl
+                font-['Inter']
+                text-[12.5px]
+                leading-[1.65]
+                text-slate-500
+                sm:mb-8
+                sm:text-[13.5px]
+                md:text-[14px]
+              "
+            >
               <span className="font-semibold text-slate-700">
                 Technology is most valuable when it solves a real business
                 problem.
@@ -83,16 +191,44 @@ export default function StrategicTransformationSection() {
               assets that drive bottom-line resilience.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
+            {/* ================= PILLARS ================= */}
+
+            <div
+              className="
+                grid
+                grid-cols-1
+                gap-5
+                sm:grid-cols-3
+                sm:gap-5
+                lg:gap-7
+              "
+            >
               {PILLARS.map(({ label, description }) => (
-                <div key={label}>
+                <div key={label} className="min-w-0">
                   <p
-                    className="text-[11px] font-bold tracking-wide uppercase mb-1.5"
-                    style={{ color: "#9d174d" }}
+                    className="
+                      mb-1.5
+                      font-['Inter']
+                      text-[10px]
+                      font-bold
+                      uppercase
+                      tracking-wide
+                      sm:text-[11px]
+                    "
+                    style={{ color: "#730024" }}
                   >
                     {label}
                   </p>
-                  <p className="text-[13px] leading-relaxed text-slate-500">
+
+                  <p
+                    className="
+                      font-['Inter']
+                      text-[12px]
+                      leading-[1.6]
+                      text-slate-500
+                      sm:text-[13px]
+                    "
+                  >
                     {description}
                   </p>
                 </div>
@@ -100,83 +236,250 @@ export default function StrategicTransformationSection() {
             </div>
           </div>
 
-          {/* Right: flow card */}
-          <div className="rounded-2xl border border-[#f4c9dd] bg-[#fdf6f9] p-5 sm:p-6">
-            <div className="flex items-center justify-between flex-wrap gap-2 mb-6">
+          {/* =====================================================
+              RIGHT FLOW CARD
+          ====================================================== */}
+
+          <div
+            className="
+              w-full
+              rounded-2xl
+              border
+              border-[#f4c9dd]
+              bg-[#fdf6f9]
+              p-4
+              sm:p-5
+              md:p-6
+            "
+          >
+            {/* Flow Header */}
+
+            <div
+              className="
+                mb-5
+                flex
+                flex-wrap
+                items-center
+                justify-between
+                gap-2
+                sm:mb-6
+              "
+            >
               <span className="inline-flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#9d174d" }} />
                 <span
-                  className="text-[11px] font-bold tracking-wide uppercase"
-                  style={{ color: "#9d174d" }}
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ backgroundColor: "#730024" }}
+                />
+
+                <span
+                  className="
+                    font-['Inter']
+                    text-[10px]
+                    font-bold
+                    uppercase
+                    tracking-wide
+                    sm:text-[11px]
+                  "
+                  style={{ color: "#730024" }}
                 >
                   Solution Synthesis Flow
                 </span>
               </span>
 
               <span
-                className="text-[10px] font-semibold rounded-full px-2.5 py-1"
-                style={{ backgroundColor: "#fbe4ed", color: "#9d174d" }}
+                className="
+                  rounded-full
+                  px-2.5
+                  py-1
+                  font-['Inter']
+                  text-[9px]
+                  font-semibold
+                  sm:text-[10px]
+                "
+                style={{
+                  backgroundColor: "#fbe4ed",
+                  color: "#730024",
+                }}
               >
                 End-to-End Delivery
               </span>
             </div>
 
+            {/* ================= STEPS ================= */}
+
             <div className="flex flex-col">
               {STEPS.map((step, i) => (
                 <React.Fragment key={step.number}>
                   <div
-                    className={`rounded-xl bg-white p-4 ${
-                      step.highlight ? "border" : "border border-slate-100"
-                    }`}
-                    style={step.highlight ? { borderColor: "#9d174d" } : undefined}
+                    className={`
+                      rounded-xl
+                      bg-white
+                      p-3.5
+                      sm:p-4
+                      ${
+                        step.highlight
+                          ? "border"
+                          : "border border-slate-100"
+                      }
+                    `}
+                    style={
+                      step.highlight
+                        ? { borderColor: "#730024" }
+                        : undefined
+                    }
                   >
-                    <div className="flex items-start justify-between gap-2 mb-1.5">
-                      <div className="flex items-center gap-2.5">
+                    {/* Step Header */}
+
+                    <div
+                      className="
+                        mb-1.5
+                        flex
+                        items-start
+                        justify-between
+                        gap-2
+                      "
+                    >
+                      <div className="flex min-w-0 items-center gap-2.5">
+                        {/* Number */}
+
                         <span
-                          className="text-[10px] font-bold rounded-md w-6 h-6 flex items-center justify-center flex-shrink-0"
+                          className="
+                            flex
+                            h-6
+                            w-6
+                            flex-shrink-0
+                            items-center
+                            justify-center
+                            rounded-md
+                            font-['Inter']
+                            text-[9px]
+                            font-bold
+                          "
                           style={{
-                            backgroundColor: step.highlight ? "#9d174d" : "#f1f5f9",
-                            color: step.highlight ? "#ffffff" : "#64748b",
+                            backgroundColor: step.highlight
+                              ? "#730024"
+                              : "#f1f5f9",
+                            color: step.highlight
+                              ? "#ffffff"
+                              : "#64748b",
                           }}
                         >
                           {step.number}
                         </span>
+
+                        {/* Title */}
+
                         <p
-                          className="text-[13px] font-bold leading-snug"
-                          style={{ color: step.highlight ? "#9d174d" : "#0f172a" }}
+                          className="
+                            min-w-0
+                            font-['Inter']
+                            text-[12px]
+                            font-bold
+                            leading-snug
+                            sm:text-[13px]
+                          "
+                          style={{
+                            color: step.highlight
+                              ? "#730024"
+                              : "#0f172a",
+                          }}
                         >
                           {step.title}
                         </p>
                       </div>
 
+                      {/* Tag */}
+
                       <span
-                        className="text-[9px] font-semibold uppercase tracking-wide flex-shrink-0 mt-0.5"
+                        className="
+                          mt-0.5
+                          flex-shrink-0
+                          font-['Inter']
+                          text-[8px]
+                          font-semibold
+                          uppercase
+                          tracking-wide
+                          sm:text-[9px]
+                        "
                         style={{ color: step.tagColor }}
                       >
                         {step.tag}
                       </span>
                     </div>
 
-                    <p className="text-[12px] leading-relaxed text-slate-500 pl-8.5 sm:pl-[34px]">
+                    {/* Description */}
+
+                    <p
+                      className="
+                        pl-[34px]
+                        font-['Inter']
+                        text-[11px]
+                        leading-[1.6]
+                        text-slate-500
+                        sm:text-[12px]
+                      "
+                    >
                       {step.description}
                     </p>
                   </div>
 
+                  {/* Arrow */}
+
                   {i < STEPS.length - 1 && (
                     <div className="flex justify-center py-1.5">
-                      <ArrowDown size={14} style={{ color: "#9d174d" }} />
+                      <ArrowDown
+                        size={14}
+                        style={{ color: "#730024" }}
+                      />
                     </div>
                   )}
                 </React.Fragment>
               ))}
             </div>
 
-            <div className="flex items-center justify-between mt-5 pt-4 border-t" style={{ borderColor: "#f4c9dd" }}>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-500">
+            {/* ================= BOTTOM BAR ================= */}
+
+            <div
+              className="
+                mt-4
+                flex
+                flex-col
+                items-start
+                justify-between
+                gap-2
+                border-t
+                pt-4
+                sm:mt-5
+                sm:flex-row
+                sm:items-center
+              "
+              style={{ borderColor: "#f4c9dd" }}
+            >
+              <span
+                className="
+                  inline-flex
+                  items-center
+                  gap-1.5
+                  font-['Inter']
+                  text-[10px]
+                  font-medium
+                  text-slate-500
+                  sm:text-[11px]
+                "
+              >
                 <RefreshCw size={11} />
                 Zero Silo Architecture
               </span>
-              <span className="text-[11px] font-bold" style={{ color: "#9d174d" }}>
+
+              <span
+                className="
+                  font-['Inter']
+                  text-[10px]
+                  font-bold
+                  sm:text-[11px]
+                "
+                style={{ color: "#730024" }}
+              >
                 ENTERPRISE VERIFIED
               </span>
             </div>

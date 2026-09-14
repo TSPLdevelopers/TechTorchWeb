@@ -161,6 +161,11 @@ import DirectEnterprise from "./pages/Capabilities/Platform/DirectEnterprise.jsx
 
 import DigitalSolutionHero from "./pages/Capabilities/DigitalSolution/DigitalSolutionHero.jsx";
 import DigitalTransformation from "./pages/Capabilities/DigitalSolution/DigitalTransformation.jsx";
+import OurDigitalSolution from "./pages/Capabilities/DigitalSolution/OurDigitalSolution.jsx";
+import DiffrentIndustries from "./pages/Capabilities/DigitalSolution/DiffrentIndustries.jsx";
+import ConnectedBusiness from "./pages/Capabilities/DigitalSolution/ConnectedBusiness.jsx";
+import TechTorchTechnology from "./pages/Capabilities/DigitalSolution/TechTorchTechnology.jsx";
+import RequirementReality from "./pages/Capabilities/DigitalSolution/RequirementReality.jsx";
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -426,6 +431,12 @@ function CapabilitiesDigitalSolution() {
     <>
       <DigitalSolutionHero />
       <DigitalTransformation />
+      <OurDigitalSolution />
+      <DiffrentIndustries />
+      <ConnectedBusiness />
+      <TechTorchTechnology />
+      <RequirementReality />
+      
       </>
   );
 }
