@@ -3,67 +3,244 @@ import { ArrowRight } from "lucide-react";
 
 export default function BusinessPlatformsHero() {
   return (
-    <section className="relative w-full overflow-hidden bg-white">
-      {/* Background photo — fades into the white background on the left */}
-      <div className="absolute inset-0 hidden sm:block">
-        <img
-          src="/team-reviewing-laptop.jpg"
-          alt="Colleagues reviewing work together on a laptop"
-          className="absolute right-0 top-0 h-full w-full sm:w-[70%] lg:w-[58%] object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 sm:via-white/60 to-transparent" />
-      </div>
+    <section
+      className="
+        relative
+        w-full
+        overflow-hidden
+        bg-white
+        min-h-[540px]
+        sm:min-h-[570px]
+        md:min-h-[600px]
+        lg:min-h-[620px]
+      "
+    >
+      {/* ================= BACKGROUND IMAGE ================= */}
 
-      {/* Content */}
-      <div className="relative z-10 max-w-xl px-5 sm:px-10 lg:px-14 py-14 sm:py-20 md:py-24">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 mb-5">
-          <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#9d174d" }} />
-          <span
-            className="text-[10px] sm:text-[11px] font-semibold tracking-[0.12em] uppercase"
-            style={{ color: "#9d174d" }}
-          >
-            Unified Business Platforms
-          </span>
-        </div>
+      <div
+        className="
+          absolute
+          inset-0
+          bg-cover
+          bg-[position:80%_center]
+          bg-no-repeat
+          sm:bg-[position:78%_center]
+          lg:bg-[position:80%_center]
+        "
+        style={{
+          backgroundImage: "url('/platformhero.png')",
+        }}
+      />
 
-        {/* Heading */}
-        <h1 className="text-[26px] sm:text-[32px] md:text-[36px] font-bold leading-tight text-slate-900 mb-4">
-          Technology That Works Around Your Business
-        </h1>
+      {/* ================= WHITE LEFT FADE ================= */}
 
-        {/* Paragraph */}
-        <p className="text-[14px] sm:text-[15px] leading-relaxed text-slate-500 max-w-md mb-7">
-          Connected platforms that simplify everyday work, bring your teams
-          together, and help your business move forward with confidence.
-        </p>
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-r
+          from-white
+          via-white/90
+          to-transparent
+        "
+      />
 
-        {/* CTA */}
-        <button
-          className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-[13px] sm:text-[14px] font-semibold text-white transition-opacity hover:opacity-90 mb-10"
-          style={{ backgroundColor: "#7a1750" }}
-        >
-          Talk Our Experts
-          <ArrowRight size={15} />
-        </button>
+      {/* ================= MOBILE OVERLAY ================= */}
 
-        {/* Divider */}
-        <div className="h-px bg-slate-200 max-w-sm mb-6" />
+      <div className="absolute inset-0 bg-white/40 sm:hidden" />
 
-        {/* Stats */}
-        <div className="flex items-start gap-10 sm:gap-14">
-          <div>
-            <p className="text-[20px] sm:text-[22px] font-bold text-slate-900">100%</p>
-            <p className="text-[11px] sm:text-[12px] text-slate-500 mt-1">
-              Cloud Connected
-            </p>
+      {/* ================= CONTENT ================= */}
+
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          flex
+          min-h-[540px]
+          w-full
+          max-w-6xl
+          items-center
+          px-4
+          py-12
+          sm:min-h-[570px]
+          sm:px-6
+          sm:py-14
+          md:min-h-[600px]
+          md:py-16
+          lg:min-h-[620px]
+          lg:px-6
+          lg:py-16
+        "
+      >
+        <div className="w-full max-w-xl">
+
+          {/* ================= BADGE ================= */}
+
+          <div className="mb-4 inline-flex items-center gap-2 sm:mb-5">
+            <span
+              className="h-1.5 w-1.5 rounded-full"
+              style={{ backgroundColor: "#9d174d" }}
+            />
+
+            <span
+              className="
+                font-['Inter']
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.12em]
+                sm:text-[10px]
+                md:text-[11px]
+              "
+              style={{ color: "#730024" }}
+            >
+              Unified Business Platforms
+            </span>
           </div>
 
-          <div>
-            <p className="text-[20px] sm:text-[22px] font-bold text-slate-900">24/7</p>
-            <p className="text-[11px] sm:text-[12px] text-slate-500 mt-1">
-              Enterprise Reliability
-            </p>
+          {/* ================= HEADING ================= */}
+
+          <h1
+            className="
+              mb-3
+              max-w-lg
+              font-['Plus_Jakarta_Sans']
+              text-[25px]
+              font-bold
+              leading-[1.2]
+              tracking-[-0.02em]
+              text-slate-900
+              sm:mb-4
+              sm:text-[30px]
+              md:text-[35px]
+              lg:text-[36px]
+            "
+          >
+            Technology That Works Around Your Business
+          </h1>
+
+          {/* ================= SUB HEADING ================= */}
+
+          <p
+            className="
+              mb-6
+              max-w-md
+              font-['Plus_Jakarta_Sans']
+              text-[12.5px]
+              leading-[1.65]
+              text-slate-500
+              sm:mb-7
+              sm:text-[14px]
+              md:text-[15px]
+            "
+          >
+            Connected platforms that simplify everyday work, bring your teams
+            together, and help your business move forward with confidence.
+          </p>
+
+          {/* ================= CTA ================= */}
+
+          <button
+            className="
+              mb-7
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              px-4
+              py-2.5
+              font-['Inter']
+              text-[12px]
+              font-semibold
+              text-white
+              transition-all
+              duration-300
+              hover:opacity-90
+              sm:mb-8
+              sm:px-5
+              sm:py-3
+              sm:text-[13px]
+              md:text-[14px]
+            "
+            style={{ backgroundColor: "#7a1750" }}
+          >
+            Talk Our Experts
+            <ArrowRight size={14} />
+          </button>
+
+          {/* ================= DIVIDER ================= */}
+
+          <div className="mb-5 h-px w-full max-w-sm bg-slate-200 sm:mb-6" />
+
+          {/* ================= STATS ================= */}
+
+          <div
+            className="
+              flex
+              items-start
+              gap-8
+              sm:gap-12
+              md:gap-14
+            "
+          >
+            <div>
+              <p
+                className="
+                  font-['Inter']
+                  text-[18px]
+                  font-bold
+                  text-slate-900
+                  sm:text-[20px]
+                  md:text-[22px]
+                "
+              >
+                100%
+              </p>
+
+              <p
+                className="
+                  mt-0.5
+                  font-['Inter']
+                  text-[10px]
+                  text-slate-500
+                  sm:mt-1
+                  sm:text-[11px]
+                  md:text-[12px]
+                "
+              >
+                Cloud Connected
+              </p>
+            </div>
+
+            <div>
+              <p
+                className="
+                  font-['Inter']
+                  text-[18px]
+                  font-bold
+                  text-slate-900
+                  sm:text-[20px]
+                  md:text-[22px]
+                "
+              >
+                24/7
+              </p>
+
+              <p
+                className="
+                  mt-0.5
+                  font-['Inter']
+                  text-[10px]
+                  text-slate-500
+                  sm:mt-1
+                  sm:text-[11px]
+                  md:text-[12px]
+                "
+              >
+                Enterprise Reliability
+              </p>
+            </div>
           </div>
         </div>
       </div>

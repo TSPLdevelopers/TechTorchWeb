@@ -5,7 +5,7 @@ const CARDS = [
   {
     title: "Platforms",
     img: "/card1.png",
-    href: "/platforms",
+    href: "/platform",
   },
   {
     title: "Digital Solutions",

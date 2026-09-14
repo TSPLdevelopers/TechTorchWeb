@@ -145,6 +145,19 @@ import ArchitectureLifecycle from "./pages/What'sNext/TechPulse/DigitalSolution/
 import ValidatedSystems from "./pages/What'sNext/TechPulse/DigitalSolution/ValidatedSystem.jsx";
 
 
+// =================== CAPABILITIES ================
+
+
+// =================== PLATFORM ================
+
+import Businessplatformshero from "./pages/Capabilities/Platform/Businessplatformshero.jsx";
+import OurAproach from "./pages/Capabilities/Platform/OurAproach.jsx";
+import OurPlatforms from "./pages/Capabilities/Platform/OurPlatforms.jsx";
+import TechTorchPlatform from "./pages/Capabilities/Platform/TechTorchPlatform.jsx";
+import DirectEnterprise from "./pages/Capabilities/Platform/DirectEnterprise.jsx";
+
+
+
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -391,9 +404,18 @@ function DigitalSolution() {
       <SystemicAgility />
       <ArchitectureLifecycle />
       <ValidatedSystems />
-      
-      
     </>
+  );
+}
+function Platform() {
+  return (
+    <>
+      <Businessplatformshero />
+      <OurAproach />
+      <OurPlatforms />
+      <TechTorchPlatform />
+      <DirectEnterprise />
+      </>
   );
 }
 
@@ -488,6 +510,7 @@ function App() {
         />
 
       </Route>
+      <Route path="/platform" element={<Platform />} />
     </Routes>
   );
 }
