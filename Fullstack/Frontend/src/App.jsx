@@ -157,7 +157,10 @@ import TechTorchPlatform from "./pages/Capabilities/Platform/TechTorchPlatform.j
 import DirectEnterprise from "./pages/Capabilities/Platform/DirectEnterprise.jsx";
 
 
+// =================== DIGITAL SOLUTIONS ================
 
+import DigitalSolutionHero from "./pages/Capabilities/DigitalSolution/DigitalSolutionHero.jsx";
+import DigitalTransformation from "./pages/Capabilities/DigitalSolution/DigitalTransformation.jsx";
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -418,6 +421,14 @@ function Platform() {
       </>
   );
 }
+function CapabilitiesDigitalSolution() {
+  return (
+    <>
+      <DigitalSolutionHero />
+      <DigitalTransformation />
+      </>
+  );
+}
 
 // =================================================
 // APP ROUTES
@@ -511,6 +522,7 @@ function App() {
 
       </Route>
       <Route path="/platform" element={<Platform />} />
+      <Route path="/digitalsolution" element={<CapabilitiesDigitalSolution />} />
     </Routes>
   );
 }

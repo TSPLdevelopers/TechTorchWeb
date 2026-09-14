@@ -10,7 +10,7 @@ const CARDS = [
   {
     title: "Digital Solutions",
     img: "/card2.png",
-    href: "/digital-solutions",
+    href: "/digitalsolution",
   },
   {
     title: "Our Services",
