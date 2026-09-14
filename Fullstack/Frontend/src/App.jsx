@@ -123,6 +123,8 @@ import AdvisoryFramework from "./pages/What'sNext/CyberSecurity/SecureBusiness/A
 import SecureBusinessFooter from "./pages/What'sNext/CyberSecurity/SecureBusiness/SecureBusinessFooter.jsx";
 
 import AdvisoryDesk from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/AdvisoryDesk";
+import DispatchConsole from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/DispatchConsole.jsx";
+import TimeboxProtocol from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/TimeboxProtocol.jsx";
 
 // ================= BUSINESS GROWTH =================
 import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTechnology.jsx";
@@ -381,6 +383,8 @@ function AdvisoryDeskPage() {
   return (
     <>
     <AdvisoryDesk />
+    <DispatchConsole />
+    <TimeboxProtocol />
     </>
   )
 }
