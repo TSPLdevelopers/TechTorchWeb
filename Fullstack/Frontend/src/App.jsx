@@ -171,6 +171,10 @@ import RequirementReality from "./pages/Capabilities/DigitalSolution/Requirement
 
 import OurServiceHero from "./pages/Capabilities/OurService/OurServiceHero.jsx";
 import StrategicPerspective from "./pages/Capabilities/OurService/StrategicPerspective.jsx"
+import PortfolioArchitecture from "./pages/Capabilities/OurService/PortfolioArchitecture.jsx"
+import DeliveryBlueprint from "./pages/Capabilities/OurService/DeliveryBlueprint.jsx"
+import TechnologyRoadmap from "./pages/Capabilities/OurService/TechnologyRoadmap.jsx"
+
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -451,6 +455,9 @@ function OurServiceSection(){
     <>
     <OurServiceHero />
     <StrategicPerspective />
+    <PortfolioArchitecture />
+    <DeliveryBlueprint />
+    <TechnologyRoadmap />
     </>
   )
 }
