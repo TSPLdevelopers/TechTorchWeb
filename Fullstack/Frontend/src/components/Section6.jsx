@@ -15,7 +15,7 @@ const CARDS = [
   {
     title: "Our Services",
     img: "/card3.png",
-    href: "/services",
+    href: "/OurService",
   },
   {
     title: "Business Process Outsourcing",

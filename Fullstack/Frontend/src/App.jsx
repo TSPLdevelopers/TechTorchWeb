@@ -166,6 +166,11 @@ import DiffrentIndustries from "./pages/Capabilities/DigitalSolution/DiffrentInd
 import ConnectedBusiness from "./pages/Capabilities/DigitalSolution/ConnectedBusiness.jsx";
 import TechTorchTechnology from "./pages/Capabilities/DigitalSolution/TechTorchTechnology.jsx";
 import RequirementReality from "./pages/Capabilities/DigitalSolution/RequirementReality.jsx";
+
+// =================== OUR SERVICE ================
+
+import OurServiceHero from "./pages/Capabilities/OurService/OurServiceHero.jsx";
+import StrategicPerspective from "./pages/Capabilities/OurService/StrategicPerspective.jsx"
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -441,6 +446,15 @@ function CapabilitiesDigitalSolution() {
   );
 }
 
+function OurServiceSection(){
+  return(
+    <>
+    <OurServiceHero />
+    <StrategicPerspective />
+    </>
+  )
+}
+
 // =================================================
 // APP ROUTES
 // =================================================
@@ -534,6 +548,7 @@ function App() {
       </Route>
       <Route path="/platform" element={<Platform />} />
       <Route path="/digitalsolution" element={<CapabilitiesDigitalSolution />} />
+      <Route path="/OurService" element={<OurServiceSection />} />
     </Routes>
   );
 }
