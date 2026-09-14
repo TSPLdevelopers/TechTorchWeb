@@ -57,6 +57,8 @@ const PILLS = [
 
 export default function ApproachAndCtaSection() {
   const timelineRef = useRef(null);
+  const timersRef = useRef([]);
+
   const [activeSteps, setActiveSteps] = useState([]);
 
   useEffect(() => {
@@ -64,39 +66,66 @@ export default function ApproachAndCtaSection() {
 
     if (!section) return;
 
+    const clearAnimation = () => {
+      timersRef.current.forEach((timer) => {
+        clearTimeout(timer);
+      });
+
+      timersRef.current = [];
+      setActiveSteps([]);
+    };
+
+    const startAnimation = () => {
+      // Clear any previous animation
+      clearAnimation();
+
+      // Start steps one by one
+      STEPS.forEach((_, index) => {
+        const timer = setTimeout(() => {
+          setActiveSteps((prev) => {
+            if (prev.includes(index)) {
+              return prev;
+            }
+
+            return [...prev, index];
+          });
+        }, index * 550);
+
+        timersRef.current.push(timer);
+      });
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
 
         if (entry.isIntersecting) {
-          // Reset first
-          setActiveSteps([]);
-
-          // Activate icons one by one
-          STEPS.forEach((_, index) => {
-            setTimeout(() => {
-              setActiveSteps((prev) => [...prev, index]);
-            }, index * 550);
-          });
-
-          observer.unobserve(section);
+          // Section viewport mein aaya
+          startAnimation();
+        } else {
+          // Section viewport se bahar gaya
+          // Animation reset ho jayegi
+          clearAnimation();
         }
       },
       {
-        threshold: 0.25,
+        threshold: 0.15,
       }
     );
 
     observer.observe(section);
 
-    return () => observer.disconnect();
+    return () => {
+      clearAnimation();
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <section className="w-full bg-[#faf9fb]">
 
       {/* =====================================================
-          TIMELINE
+          TIMELINE SECTION
       ====================================================== */}
 
       <div
@@ -119,7 +148,7 @@ export default function ApproachAndCtaSection() {
           lg:pb-16
         "
       >
-        {/* Header */}
+        {/* ================= HEADER ================= */}
 
         <div
           className="
@@ -190,9 +219,7 @@ export default function ApproachAndCtaSection() {
           </h2>
         </div>
 
-        {/* =====================================================
-            STEPS
-        ====================================================== */}
+        {/* ================= STEPS ================= */}
 
         <div
           className="
@@ -238,7 +265,7 @@ export default function ApproachAndCtaSection() {
                     text-center
                   "
                 >
-                  {/* Icon */}
+                  {/* ================= ICON ================= */}
 
                   <div
                     className={`
@@ -281,11 +308,12 @@ export default function ApproachAndCtaSection() {
                       }}
                     />
 
-                    {/* Small active pulse */}
+                    {/* Pulse only while active */}
 
                     {isActive && (
                       <span
                         className="
+                          pointer-events-none
                           absolute
                           inset-0
                           rounded-full
@@ -298,7 +326,7 @@ export default function ApproachAndCtaSection() {
                     )}
                   </div>
 
-                  {/* Number + Label */}
+                  {/* ================= STEP TITLE ================= */}
 
                   <p
                     className="
@@ -319,7 +347,7 @@ export default function ApproachAndCtaSection() {
                     {number} — {label}
                   </p>
 
-                  {/* Description */}
+                  {/* ================= DESCRIPTION ================= */}
 
                   <p
                     className="
@@ -342,7 +370,7 @@ export default function ApproachAndCtaSection() {
       </div>
 
       {/* =====================================================
-          CTA
+          CTA SECTION
       ====================================================== */}
 
       <div
