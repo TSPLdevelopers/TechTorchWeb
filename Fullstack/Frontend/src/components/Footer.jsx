@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
-const LOGO_IMAGE = "/Footerlogo.png";
+const LOGO_IMAGE = "/logo.png";
 
 const EXPLORE_LINKS = [
   "Industries",
@@ -35,48 +35,32 @@ const SocialIcon = ({ children, label }) => (
     className="
       group
       flex
-      h-10
-      w-10
+      h-12
+      w-12
       items-center
       justify-center
-      rounded-full
+      rounded-[10px]
+      border
+      border-[#e5c8d7]
       bg-white
-      text-[#6b1345]
+      text-[#7a0046]
       transition-all
       duration-300
       hover:-translate-y-1
-      hover:bg-white/90
-      hover:shadow-lg
+      hover:shadow-md
     "
   >
     {children}
   </a>
 );
 
-/* ================= FACEBOOK ================= */
-
-function FacebookIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path d="M14.2 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.5-1.5h1.7V3.7c-.3 0-1.2-.2-2.3-.2-2.7 0-4.5 1.6-4.5 4.6v1.8H8v3.1h2.6v8h3.6Z" />
-    </svg>
-  );
-}
-
 /* ================= X / TWITTER ================= */
 
 function XIcon() {
   return (
     <svg
-      width="21"
-      height="21"
+      width="22"
+      height="22"
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
@@ -87,24 +71,33 @@ function XIcon() {
   );
 }
 
-/* ================= YOUTUBE ================= */
+/* ================= LINKEDIN ================= */
 
-function YouTubeIcon() {
+function LinkedInIcon() {
   return (
-    <svg
-      width="23"
-      height="23"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
+    <div
+      className="
+        flex
+        h-[22px]
+        w-[22px]
+        items-center
+        justify-center
+        rounded-[3px]
+        bg-[#7a0046]
+        text-white
+      "
     >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M21.6 7.2a2.8 2.8 0 0 0-1.97-1.98C17.9 4.75 12 4.75 12 4.75s-5.9 0-7.63.47A2.8 2.8 0 0 0 2.4 7.2C1.93 8.93 1.93 12 1.93 12s0 3.07.47 4.8a2.8 2.8 0 0 0 1.97 1.98c1.73.47 7.63.47 7.63.47s5.9 0 7.63-.47a2.8 2.8 0 0 0 1.97-1.98c.47-1.73.47-4.8.47-4.8s0-3.07-.47-4.8ZM10 15.25v-6.5L15.5 12 10 15.25Z"
-      />
-    </svg>
+      <span
+        className="
+          text-[14px]
+          font-bold
+          leading-none
+          tracking-[-0.7px]
+        "
+      >
+        in
+      </span>
+    </div>
   );
 }
 
@@ -148,19 +141,23 @@ function InstagramIcon() {
   );
 }
 
-/* ================= LINKEDIN ================= */
+/* ================= YOUTUBE ================= */
 
-function LinkedInIcon() {
+function YouTubeIcon() {
   return (
     <svg
-      width="23"
-      height="23"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <path d="M6.4 8.5H3.7V20h2.7V8.5ZM5.05 4C4.1 4 3.35 4.75 3.35 5.7c0 .95.75 1.7 1.7 1.7s1.7-.75 1.7-1.7C6.75 4.75 6 4 5.05 4ZM20.65 13.4c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.38 1.87V8.5h-2.7V20h2.7v-5.7c0-1.5.28-2.95 2.14-2.95 1.83 0 1.85 1.72 1.85 3.05V20h2.71v-6.6Z" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M21.58 7.2a2.76 2.76 0 0 0-1.94-1.95C17.92 4.8 12 4.8 12 4.8s-5.92 0-7.64.45A2.76 2.76 0 0 0 2.42 7.2C2 8.92 2 12 2 12s0 3.08.42 4.8a2.76 2.76 0 0 0 1.94 1.95c1.72.45 7.64.45 7.64.45s5.92 0 7.64-.45a2.76 2.76 0 0 0 1.94-1.95C22 15.08 22 12 22 12s0-3.08-.42-4.8ZM10 15.3V8.7l5.5 3.3-5.5 3.3Z"
+      />
     </svg>
   );
 }
@@ -195,21 +192,16 @@ export default function Footer() {
 
             {/* ================= SOCIAL ICONS ================= */}
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
 
-              {/* Facebook */}
-              <SocialIcon label="Facebook">
-                <FacebookIcon />
-              </SocialIcon>
-
-              {/* X / Twitter */}
+              {/* X */}
               <SocialIcon label="X (Twitter)">
                 <XIcon />
               </SocialIcon>
 
-              {/* YouTube */}
-              <SocialIcon label="YouTube">
-                <YouTubeIcon />
+              {/* LinkedIn */}
+              <SocialIcon label="LinkedIn">
+                <LinkedInIcon />
               </SocialIcon>
 
               {/* Instagram */}
@@ -217,9 +209,9 @@ export default function Footer() {
                 <InstagramIcon />
               </SocialIcon>
 
-              {/* LinkedIn */}
-              <SocialIcon label="LinkedIn">
-                <LinkedInIcon />
+              {/* YouTube */}
+              <SocialIcon label="YouTube">
+                <YouTubeIcon />
               </SocialIcon>
 
             </div>

@@ -5,17 +5,17 @@ const CARDS = [
   {
     title: "Platforms",
     img: "/card1.png",
-    href: "/platforms",
+    href: "/platform",
   },
   {
     title: "Digital Solutions",
     img: "/card2.png",
-    href: "/digital-solutions",
+    href: "/digitalsolution",
   },
   {
     title: "Our Services",
     img: "/card3.png",
-    href: "/services",
+    href: "/OurService",
   },
   {
     title: "Business Process Outsourcing",

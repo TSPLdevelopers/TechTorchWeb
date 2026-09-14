@@ -158,6 +158,36 @@ import ArchitectureLifecycle from "./pages/What'sNext/TechPulse/DigitalSolution/
 import ValidatedSystems from "./pages/What'sNext/TechPulse/DigitalSolution/ValidatedSystem.jsx";
 
 
+// =================== CAPABILITIES ================
+
+
+// =================== PLATFORM ================
+
+import Businessplatformshero from "./pages/Capabilities/Platform/Businessplatformshero.jsx";
+import OurAproach from "./pages/Capabilities/Platform/OurAproach.jsx";
+import OurPlatforms from "./pages/Capabilities/Platform/OurPlatforms.jsx";
+import TechTorchPlatform from "./pages/Capabilities/Platform/TechTorchPlatform.jsx";
+import DirectEnterprise from "./pages/Capabilities/Platform/DirectEnterprise.jsx";
+
+
+// =================== DIGITAL SOLUTIONS ================
+
+import DigitalSolutionHero from "./pages/Capabilities/DigitalSolution/DigitalSolutionHero.jsx";
+import DigitalTransformation from "./pages/Capabilities/DigitalSolution/DigitalTransformation.jsx";
+import OurDigitalSolution from "./pages/Capabilities/DigitalSolution/OurDigitalSolution.jsx";
+import DiffrentIndustries from "./pages/Capabilities/DigitalSolution/DiffrentIndustries.jsx";
+import ConnectedBusiness from "./pages/Capabilities/DigitalSolution/ConnectedBusiness.jsx";
+import TechTorchTechnology from "./pages/Capabilities/DigitalSolution/TechTorchTechnology.jsx";
+import RequirementReality from "./pages/Capabilities/DigitalSolution/RequirementReality.jsx";
+
+// =================== OUR SERVICE ================
+
+import OurServiceHero from "./pages/Capabilities/OurService/OurServiceHero.jsx";
+import StrategicPerspective from "./pages/Capabilities/OurService/StrategicPerspective.jsx"
+import PortfolioArchitecture from "./pages/Capabilities/OurService/PortfolioArchitecture.jsx"
+import DeliveryBlueprint from "./pages/Capabilities/OurService/DeliveryBlueprint.jsx"
+import TechnologyRoadmap from "./pages/Capabilities/OurService/TechnologyRoadmap.jsx"
+
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -433,6 +463,43 @@ function DigitalSolution() {
     </>
   );
 }
+function Platform() {
+  return (
+    <>
+      <Businessplatformshero />
+      <OurAproach />
+      <OurPlatforms />
+      <TechTorchPlatform />
+      <DirectEnterprise />
+      </>
+  );
+}
+function CapabilitiesDigitalSolution() {
+  return (
+    <>
+      <DigitalSolutionHero />
+      <DigitalTransformation />
+      <OurDigitalSolution />
+      <DiffrentIndustries />
+      <ConnectedBusiness />
+      <TechTorchTechnology />
+      <RequirementReality />
+      
+      </>
+  );
+}
+
+function OurServiceSection(){
+  return(
+    <>
+    <OurServiceHero />
+    <StrategicPerspective />
+    <PortfolioArchitecture />
+    <DeliveryBlueprint />
+    <TechnologyRoadmap />
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -533,6 +600,9 @@ function App() {
         />
 
       </Route>
+      <Route path="/platform" element={<Platform />} />
+      <Route path="/digitalsolution" element={<CapabilitiesDigitalSolution />} />
+      <Route path="/OurService" element={<OurServiceSection />} />
     </Routes>
   );
 }
