@@ -115,8 +115,14 @@ import EditorialReflection from "./pages/What'sNext/CyberSecurity/EditorialRefle
 import OurApproach from "./pages/What'sNext/CyberSecurity/OurApproach.jsx";
 import WhyTechtorch from "./pages/What'sNext/CyberSecurity/WhyTechtorch.jsx";
 
-import Initiative  from "./pages/What'sNext/CyberSecurity/SecureBusiness/Initiative.jsx";
+// ================= SECURE BUSINESS =================
+import SecurityInitiative  from "./pages/What'sNext/CyberSecurity/SecureBusiness/SecurityInitiative.jsx";
+import ProtocolDelivery from "./pages/What'sNext/CyberSecurity/SecureBusiness/ProtocolDelivery.jsx";
+import SelectionEngine from "./pages/What'sNext/CyberSecurity/SecureBusiness/SelectionEngine.jsx";
+import AdvisoryFramework from "./pages/What'sNext/CyberSecurity/SecureBusiness/AdvisoryFramework.jsx";
+import SecureBusinessFooter from "./pages/What'sNext/CyberSecurity/SecureBusiness/SecureBusinessFooter.jsx";
 
+import AdvisoryDesk from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/AdvisoryDesk";
 
 // ================= BUSINESS GROWTH =================
 import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTechnology.jsx";
@@ -362,11 +368,22 @@ function CyberSecurityPage() {
 function SecureBusinessPage() {
   return (
     <>
-    <Initiative />
+    <SecurityInitiative />
+    <ProtocolDelivery />
+    <SelectionEngine />
+    <AdvisoryFramework/>
+    <SecureBusinessFooter />
+    </>
+  );
+}
+
+function AdvisoryDeskPage() {
+  return (
+    <>
+    <AdvisoryDesk />
     </>
   )
 }
-
 function BusinessGrowthPage() {
   return (
     <>
@@ -491,6 +508,10 @@ function App() {
           path="/secure-business"
           element={<SecureBusinessPage />}
         />
+        <Route
+  path="/schedule-advisory"
+  element={<AdvisoryDeskPage/>}
+/>
         <Route
           path="/Business-growth"
           element={<BusinessGrowthPage />}
