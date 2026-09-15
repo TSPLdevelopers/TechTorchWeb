@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
-const LOGO_IMAGE = "/Footerlogo.png";
+const LOGO_IMAGE = "/logo.png";
 
 const EXPLORE_LINKS = [
   "Industries",
@@ -26,23 +26,88 @@ const LEGAL_LINKS = [
   "Cancellation Policy",
 ];
 
+/* ================= SOCIAL ICON WRAPPER ================= */
+
 const SocialIcon = ({ children, label }) => (
   <a
     href="#"
     aria-label={label}
-    className="group flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#6b1345] transition-all duration-300 hover:-translate-y-1 hover:bg-white/90 hover:shadow-lg"
+    className="
+      group
+      flex
+      h-12
+      w-12
+      items-center
+      justify-center
+      rounded-[10px]
+      border
+      border-[#e5c8d7]
+      bg-white
+      text-[#7a0046]
+      transition-all
+      duration-300
+      hover:-translate-y-1
+      hover:shadow-md
+    "
   >
     {children}
   </a>
 );
+
+/* ================= X / TWITTER ================= */
+
+function XIcon() {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M18.9 2.5H22l-6.8 7.75 8 11.25h-6.3L12 14.7l-5.95 6.8H2.95l7.2-8.25L2.5 2.5h6.45l4.45 6.25L18.9 2.5ZM17.8 19.5h1.75L7.95 4.4H6.05L17.8 19.5Z" />
+    </svg>
+  );
+}
+
+/* ================= LINKEDIN ================= */
+
+function LinkedInIcon() {
+  return (
+    <div
+      className="
+        flex
+        h-[22px]
+        w-[22px]
+        items-center
+        justify-center
+        rounded-[3px]
+        bg-[#7a0046]
+        text-white
+      "
+    >
+      <span
+        className="
+          text-[14px]
+          font-bold
+          leading-none
+          tracking-[-0.7px]
+        "
+      >
+        in
+      </span>
+    </div>
+  );
+}
 
 /* ================= INSTAGRAM ================= */
 
 function InstagramIcon() {
   return (
     <svg
-      width="19"
-      height="19"
+      width="23"
+      height="23"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +120,7 @@ function InstagramIcon() {
         height="18"
         rx="5"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="2"
       />
 
       <circle
@@ -63,92 +128,36 @@ function InstagramIcon() {
         cy="12"
         r="4.2"
         stroke="currentColor"
-        strokeWidth="1.8"
+        strokeWidth="2"
       />
 
       <circle
         cx="17.5"
         cy="6.5"
-        r="1.15"
+        r="1.2"
         fill="currentColor"
       />
     </svg>
   );
 }
 
-/* ================= LINKEDIN ================= */
+/* ================= YOUTUBE ================= */
 
-function LinkedInIcon() {
+function YouTubeIcon() {
   return (
     <svg
-      width="19"
-      height="19"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M6.5 8.5V18"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M6.5 5.5V5.51"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M11 18V12.5C11 10.84 12.34 9.5 14 9.5C15.66 9.5 17 10.84 17 12.5V18"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M11 13V18"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-/* ================= FACEBOOK ================= */
-
-function FacebookIcon() {
-  return (
-    <svg
-      width="19"
-      height="19"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <path d="M13.6 21V13.1H16.2L16.6 10H13.6V8C13.6 7.1 13.9 6.5 15.1 6.5H16.7V3.7C16.4 3.65 15.5 3.5 14.5 3.5C11.8 3.5 10 5.15 10 8.15V10H7.3V13.1H10V21H13.6Z" />
-    </svg>
-  );
-}
-
-/* ================= X / TWITTER ================= */
-
-function XIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path d="M18.9 2.5H22L15.2 10.25L23.2 21.5H16.9L12 14.7L6.05 21.5H2.95L10.15 13.25L2.5 2.5H8.95L13.4 8.75L18.9 2.5ZM17.8 19.5H19.55L7.95 4.4H6.05L17.8 19.5Z" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M21.58 7.2a2.76 2.76 0 0 0-1.94-1.95C17.92 4.8 12 4.8 12 4.8s-5.92 0-7.64.45A2.76 2.76 0 0 0 2.42 7.2C2 8.92 2 12 2 12s0 3.08.42 4.8a2.76 2.76 0 0 0 1.94 1.95c1.72.45 7.64.45 7.64.45s5.92 0 7.64-.45a2.76 2.76 0 0 0 1.94-1.95C22 15.08 22 12 22 12s0-3.08-.42-4.8ZM10 15.3V8.7l5.5 3.3-5.5 3.3Z"
+      />
     </svg>
   );
 }
@@ -157,6 +166,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-gradient-to-br from-[#7a1750] to-[#5c0f3d] text-white">
       <div className="mx-auto max-w-6xl px-6 pt-16 pb-8">
+
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
 
           {/* ================= BRAND ================= */}
@@ -180,24 +190,30 @@ export default function Footer() {
               solutions.
             </p>
 
-            {/* SOCIAL ICONS */}
+            {/* ================= SOCIAL ICONS ================= */}
 
-            <div className="flex items-center gap-3">
-              <SocialIcon label="Instagram">
-                <InstagramIcon />
+            <div className="flex items-center gap-4">
+
+              {/* X */}
+              <SocialIcon label="X (Twitter)">
+                <XIcon />
               </SocialIcon>
 
+              {/* LinkedIn */}
               <SocialIcon label="LinkedIn">
                 <LinkedInIcon />
               </SocialIcon>
 
-              <SocialIcon label="Facebook">
-                <FacebookIcon />
+              {/* Instagram */}
+              <SocialIcon label="Instagram">
+                <InstagramIcon />
               </SocialIcon>
 
-              <SocialIcon label="X (Twitter)">
-                <XIcon />
+              {/* YouTube */}
+              <SocialIcon label="YouTube">
+                <YouTubeIcon />
               </SocialIcon>
+
             </div>
           </div>
 
@@ -264,6 +280,7 @@ export default function Footer() {
             </a>
 
             <div className="flex flex-col gap-1 text-[15px] text-white/80">
+
               <a
                 href="#"
                 className="transition-colors hover:text-white"
@@ -277,6 +294,7 @@ export default function Footer() {
               >
                 +91 581 350 0381
               </a>
+
             </div>
           </div>
         </div>
@@ -298,6 +316,7 @@ export default function Footer() {
         {/* ================= BOTTOM ================= */}
 
         <div className="mt-6 flex flex-col items-start justify-between gap-4 border-t border-white/20 pt-6 sm:flex-row sm:items-center">
+
           <p className="text-[13px] text-white/70">
             © 2024 — 2026 TechTorch Solutions Private Limited. All rights
             reserved.
@@ -314,6 +333,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
+
         </div>
       </div>
     </footer>

@@ -2,17 +2,98 @@ import React from "react";
 
 export default function SecurityPerspectiveSection() {
   return (
-    <section className="w-full bg-[#FAF6F1] px-6 py-16 sm:px-10">
-      <div className="mx-auto max-w-2xl">
-        <span className="inline-flex w-fit items-center rounded-full bg-fuchsia-900 px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-white">
+    <section
+      className="
+        w-full
+        overflow-hidden
+        bg-[#FAF6F1]
+        px-4
+        py-10
+        sm:px-6
+        sm:py-12
+        md:px-8
+        md:py-14
+        lg:px-10
+        lg:py-16
+        xl:px-12
+        xl:py-20
+      "
+    >
+      <div
+        className="
+          mx-auto
+          w-full
+          max-w-7xl
+          lg:ml-16
+          lg:max-w-4xl
+          xl:ml-24
+          xl:max-w-5xl
+        "
+      >
+        {/* ================= LABEL ================= */}
+        <span
+          className="
+            inline-flex
+            w-fit
+            items-center
+            rounded-full
+            bg-[#7A1338]
+            px-3
+            py-1
+            text-[9px]
+            font-semibold
+            tracking-[0.15em]
+            text-white
+            sm:text-[10px]
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           STRATEGIC PERSPECTIVE
         </span>
 
-        <h1 className="mt-4 text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
+        {/* ================= MAIN HEADING ================= */}
+        <h1
+          className="
+            mt-4
+            max-w-[350px]
+            text-[22px]
+            font-bold
+            leading-[1.3]
+            text-slate-900
+            sm:max-w-xl
+            sm:text-[25px]
+            md:max-w-2xl
+            md:text-[28px]
+            lg:max-w-3xl
+            lg:text-[30px]
+            xl:text-[32px]
+          "
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}
+        >
           Security Shouldn't Be an Afterthought
         </h1>
 
-        <p className="mt-6 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+        {/* ================= FIRST DESCRIPTION ================= */}
+        <p
+          className="
+            mt-5
+            max-w-4xl
+            text-[13px]
+            leading-[1.75]
+            text-slate-600
+            sm:mt-6
+            sm:text-[14px]
+            md:text-[15px]
+            md:leading-[1.8]
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           As businesses become more connected, the systems they depend on
           also become more exposed. Applications, cloud environments,
           employee devices, networks and business data all form part of the
@@ -20,22 +101,105 @@ export default function SecurityPerspectiveSection() {
           considerations.
         </p>
 
-        <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+        {/* ================= SECOND DESCRIPTION ================= */}
+        <p
+          className="
+            mt-4
+            max-w-4xl
+            text-[13px]
+            leading-[1.75]
+            text-slate-600
+            sm:text-[14px]
+            md:text-[15px]
+            md:leading-[1.8]
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           Cybersecurity, therefore, cannot be treated as something that is
           added after a system has already been built.
         </p>
 
-        <div className="mt-6 border-l-4 border-fuchsia-900 bg-white px-4 py-3">
-          <p className="text-sm font-medium text-slate-900 sm:text-[15px]">
+        {/* ================= HIGHLIGHT ================= */}
+        <div
+          className="
+            mt-5
+            w-full
+            border-l-4
+            border-[#7A1338]
+            bg-white
+            px-4
+            py-3
+            sm:mt-6
+            sm:px-5
+            sm:py-3.5
+          "
+        >
+          <p
+            className="
+              text-[13px]
+              font-medium
+              leading-[1.6]
+              text-slate-900
+              sm:text-[14px]
+              md:text-[15px]
+            "
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}
+          >
             It needs to be considered as part of how the business operates.
           </p>
         </div>
 
-        <div className="mt-8 rounded-md border-l-4 border-fuchsia-900 bg-white px-6 py-6">
-          <span className="text-[10px] font-semibold tracking-[0.15em] text-fuchsia-900">
+        {/* ================= EXECUTIVE PERSPECTIVE ================= */}
+        <div
+          className="
+            mt-7
+            w-full
+            rounded-md
+            border-l-4
+            border-[#7A1338]
+            bg-white
+            px-4
+            py-5
+            sm:mt-8
+            sm:px-6
+            sm:py-6
+            md:px-7
+          "
+        >
+          <span
+            className="
+              text-[9px]
+              font-semibold
+              tracking-[0.15em]
+              text-[#7A1338]
+              sm:text-[10px]
+            "
+            style={{
+              fontFamily: "'Inter', sans-serif",
+            }}
+          >
             EXECUTIVE PERSPECTIVE
           </span>
-          <p className="mt-3 text-sm italic leading-relaxed text-slate-700 sm:text-[15px]">
+
+          <p
+            className="
+              mt-3
+              text-[13px]
+              italic
+              leading-[1.75]
+              text-slate-700
+              sm:text-[14px]
+              md:text-[15px]
+              md:leading-[1.8]
+            "
+            style={{
+              fontFamily: "'Inter', sans-serif",
+            }}
+          >
             "At TechTorch, we take a business-focused approach to
             cybersecurity. We look beyond individual security tools to
             understand the environment those tools are protecting. This
@@ -44,27 +208,99 @@ export default function SecurityPerspectiveSection() {
           </p>
         </div>
 
-        <p className="mt-8 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+        {/* ================= THIRD DESCRIPTION ================= */}
+        <p
+          className="
+            mt-7
+            max-w-4xl
+            text-[13px]
+            leading-[1.75]
+            text-slate-600
+            sm:mt-8
+            sm:text-[14px]
+            md:text-[15px]
+            md:leading-[1.8]
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           The objective is not simply to create more layers of technology.
           It is to identify where your business is exposed, strengthen the
           areas that matter most and establish security practices that can
           continue to support the organization as it changes.
         </p>
 
-        <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+        {/* ================= FOURTH DESCRIPTION ================= */}
+        <p
+          className="
+            mt-4
+            max-w-4xl
+            text-[13px]
+            leading-[1.75]
+            text-slate-600
+            sm:text-[14px]
+            md:text-[15px]
+            md:leading-[1.8]
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           A strong security approach also needs to account for what happens
           when something goes wrong. Prevention is important, but businesses
           also need the ability to identify unusual activity, respond
           appropriately and recover without unnecessary disruption.
         </p>
 
-        <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+        {/* ================= FIFTH DESCRIPTION ================= */}
+        <p
+          className="
+            mt-4
+            max-w-4xl
+            text-[13px]
+            leading-[1.75]
+            text-slate-600
+            sm:text-[14px]
+            md:text-[15px]
+            md:leading-[1.8]
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
           That is why effective cybersecurity is ultimately about more than
           protection.
         </p>
 
-        <div className="mt-6 border-l-4 border-fuchsia-900 bg-white px-4 py-3">
-          <p className="text-sm font-medium text-slate-900 sm:text-[15px]">
+        {/* ================= FINAL HIGHLIGHT ================= */}
+        <div
+          className="
+            mt-5
+            w-full
+            border-l-4
+            border-[#7A1338]
+            bg-white
+            px-4
+            py-3
+            sm:mt-6
+            sm:px-5
+            sm:py-3.5
+          "
+        >
+          <p
+            className="
+              text-[13px]
+              font-medium
+              leading-[1.6]
+              text-slate-900
+              sm:text-[14px]
+              md:text-[15px]
+            "
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}
+          >
             It is about building confidence in the technology your business
             depends on.
           </p>
