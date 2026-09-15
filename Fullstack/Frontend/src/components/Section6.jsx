@@ -30,7 +30,7 @@ const CARDS = [
   {
     title: "Artificial Intelligent",
     img: "/card6.png",
-    href: "/artificial-intelligence",
+    href: "/ArtificialIntelligent",
   },
 ];
 

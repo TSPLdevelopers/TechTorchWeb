@@ -175,6 +175,16 @@ import PortfolioArchitecture from "./pages/Capabilities/OurService/PortfolioArch
 import DeliveryBlueprint from "./pages/Capabilities/OurService/DeliveryBlueprint.jsx"
 import TechnologyRoadmap from "./pages/Capabilities/OurService/TechnologyRoadmap.jsx"
 
+// =================== ARTIFICIAL INTELLIGENT ================
+
+import AiService from "./pages/Capabilities/Ai/AiService.jsx"
+import AiStrategic from "./pages/Capabilities/Ai/AiStrategic.jsx"
+import AiAdvantage from "./pages/Capabilities/Ai/AiAdvantage.jsx"
+import AiEcosystem from "./pages/Capabilities/Ai/AiEcosystem.jsx"
+import AiEcosystemIntegration from "./pages/Capabilities/Ai/AiEcosystemIntegration.jsx"
+import AiOperational from "./pages/Capabilities/Ai/AiOperational.jsx"
+
+
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -461,6 +471,18 @@ function OurServiceSection(){
     </>
   )
 }
+function ArtificialIntelligent(){
+  return(
+    <>
+    <AiService />
+    <AiStrategic />
+    <AiAdvantage />
+    <AiEcosystem />
+    <AiEcosystemIntegration />
+    <AiOperational />
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -556,6 +578,7 @@ function App() {
       <Route path="/platform" element={<Platform />} />
       <Route path="/digitalsolution" element={<CapabilitiesDigitalSolution />} />
       <Route path="/OurService" element={<OurServiceSection />} />
+      <Route path="/ArtificialIntelligent" element={<ArtificialIntelligent />} />
     </Routes>
   );
 }
