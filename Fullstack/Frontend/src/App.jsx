@@ -185,12 +185,20 @@ import AiEcosystemIntegration from "./pages/Capabilities/Ai/AiEcosystemIntegrati
 import AiOperational from "./pages/Capabilities/Ai/AiOperational.jsx"
 
 
+
+
+
+
+
 // =================================================
 // COMMON LAYOUT
 // =================================================
 function MainLayout() {
   return (
     <>
+
+     
+
       <Navbar />
 
       <main>
