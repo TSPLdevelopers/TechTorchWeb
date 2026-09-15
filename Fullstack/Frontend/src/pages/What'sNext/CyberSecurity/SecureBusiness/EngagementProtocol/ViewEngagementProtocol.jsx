@@ -107,9 +107,7 @@ export default function EngagementProtocol() {
         <div className="hero-content">
 
           <h1>
-            Enterprise Security Engagement
-            <br />
-            Protocol
+            Enterprise Security Engagement Protocol
           </h1>
 
           <p>
@@ -422,7 +420,7 @@ export default function EngagementProtocol() {
           border-radius: 20px;
           background: #f4edf1;
           color: #71123f;
-          font-size: 12px;
+          font-size: 9px;
           font-weight: 800;
           letter-spacing: .7px;
         }
@@ -474,10 +472,10 @@ export default function EngagementProtocol() {
         .hero-content h1 {
           margin: 0 0 12px;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 31px;
+          font-size: 30px;
           line-height: 1.16;
           letter-spacing: -1.5px;
-          font-weight: 650;
+          font-weight: 600;
           color: #111a2c;
         }
 
@@ -485,7 +483,7 @@ export default function EngagementProtocol() {
           margin: 0;
           max-width: 720px;
           color: #657389;
-          font-size: 15.5px;
+          font-size: 14px;
           line-height: 1.55;
         }
 
@@ -601,14 +599,15 @@ export default function EngagementProtocol() {
         .side-eyebrow {
           color: #741040;
           font-size: 10.5px;
-          font-weight: 850;
-          letter-spacing: 1px;
+          font-weight: 900;
+          letter-spacing: 0px;
         }
 
         .section-heading-row h2 {
           margin: 3px 0 0;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
           font-size: 22px;
+          font-weight: 700;
           line-height: 1.1;
           letter-spacing: -.8px;
           color: #151e31;
@@ -675,7 +674,7 @@ export default function EngagementProtocol() {
 
         .timeline {
           color: #748096;
-          font-size: 10.5px;
+          font-size: 11px;
           font-weight: 600;
         }
 
@@ -778,7 +777,8 @@ export default function EngagementProtocol() {
           margin: 2px 0 0;
           color: #182237;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 15px;
+          font-size: 16px;
+          font-weight: 700;
           line-height: 1.1;
           letter-spacing: -.35px;
         }
@@ -815,14 +815,14 @@ export default function EngagementProtocol() {
         .guardrail strong {
           display: block;
           color: #344056;
-          font-size: 11.5px;
+          font-size: 13px;
           margin-bottom: 4px;
         }
 
         .guardrail p {
           margin: 0;
           color: #6d7889;
-          font-size: 10.5px;
+          font-size: 11px;
           line-height: 1.45;
         }
 
@@ -860,7 +860,7 @@ export default function EngagementProtocol() {
           align-items: center;
           gap: 5px;
           color: #273247;
-          font-size: 11.5px;
+          font-size: 13px;
           font-weight: 800;
         }
 
@@ -868,21 +868,22 @@ export default function EngagementProtocol() {
           padding: 2px 4px;
           background: #e4e6e9;
           color: #7b8493;
-          font-size: 8.5px;
-          font-weight: 800;
+          font-size: 9px;
+          font-weight: 900;
         }
 
         .person-credential {
           margin-top: 3px;
           color: #741040;
-          font-size: 9.5px;
+          font-size: 10px;
           font-weight: 700;
         }
 
         .person-specialty {
           margin-top: 2px;
           color: #6e7889;
-          font-size: 9.5px;
+          font-size: 10px;
+          font-weight: 700;
         }
 
         .legal-section {
@@ -892,16 +893,16 @@ export default function EngagementProtocol() {
 
         .legal-section h4 {
           margin: 0 0 6px;
-          color: #556176;
-          font-size: 8px;
-          font-weight: 800;
+          color: #182237;
+          font-size: 12px;
+          font-weight: 900;
           letter-spacing: .4px;
         }
 
         .legal-section p {
           margin: 0;
           color: #727d8f;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.5;
         }
 
@@ -930,13 +931,14 @@ export default function EngagementProtocol() {
           color: #1b2538;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
           font-size: 17px;
+          font-weight: 700;
           letter-spacing: -.4px;
         }
 
         .package-info p {
           margin: 0 0 14px;
           color: #69758a;
-          font-size: 12.5px;
+          font-size: 13px;
           line-height: 1.45;
         }
 
@@ -946,7 +948,7 @@ export default function EngagementProtocol() {
           background: #e9ebee;
           color: #6d7788;
           font-family: monospace;
-          font-size: 9px;
+          font-size: 11px;
           line-height: 1.4;
           word-break: break-all;
         }
@@ -993,7 +995,7 @@ export default function EngagementProtocol() {
           border-radius: 8px;
           background: #58002f;
           color: #f6dfea;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.45;
           letter-spacing: .7px;
         }
