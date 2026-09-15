@@ -6,18 +6,22 @@ export default function ExecutiveStrategy() {
     <section className="executive-strategy">
       <div className="executive-strategy-card">
 
+        {/* CONTENT */}
         <div className="executive-strategy-content">
 
+          {/* BADGE */}
           <div className="executive-strategy-badge">
             <span className="strategy-dot"></span>
             NEXT STEPS · EXECUTIVE STRATEGY
           </div>
 
+          {/* HEADING */}
           <h2>
             Turn Information Into Better
             <br /> Decisions
           </h2>
 
+          {/* DESCRIPTION */}
           <p className="strategy-description">
             Your business already generates valuable information.
             <br />
@@ -26,28 +30,28 @@ export default function ExecutiveStrategy() {
             it more effectively.
           </p>
 
+          {/* HIGHLIGHT */}
           <p className="strategy-highlight">
             Improve visibility. Strengthen operations. Connect critical
             <br />
             business information. Make decisions with greater confidence.
           </p>
 
+          {/* ACTION */}
           <p className="strategy-action">
             Let's build a clearer path from data to action.
           </p>
 
+          {/* BUTTON */}
           <div className="strategy-buttons">
             <button className="strategy-primary">
               Talk to Our Experts <span>→</span>
-            </button>
-
-            <button className="strategy-secondary">
-              Explore Digital Solutions
             </button>
           </div>
 
         </div>
 
+        {/* IMAGE */}
         <div className="executive-strategy-image">
           <img
             src={executiveStrategyImage}
@@ -191,18 +195,20 @@ export default function ExecutiveStrategy() {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 11px;
         }
 
-        /* BUTTONS */
+        /* PRIMARY BUTTON */
 
-        .strategy-primary,
-        .strategy-secondary {
+        .strategy-primary {
           min-width: 255px;
           height: 45px;
           padding: 0 14px;
 
+          border: 1px solid #970052;
           border-radius: 10px;
+
+          background: #970052;
+          color: #ffffff;
 
           font-family: "Inter", sans-serif;
           font-size: 13px;
@@ -211,29 +217,14 @@ export default function ExecutiveStrategy() {
           cursor: pointer;
           white-space: nowrap;
 
-          /*
-            Important:
-            No transform on text.
-            Button itself moves slightly,
-            but text remains fixed inside it.
-          */
+          box-shadow:
+            0 7px 15px rgba(151, 0, 82, 0.18);
 
           transition:
             background 0.45s ease,
             color 0.45s ease,
             border-color 0.45s ease,
             box-shadow 0.45s ease;
-        }
-
-        /* TALK TO OUR EXPERTS */
-
-        .strategy-primary {
-          border: 1px solid #970052;
-          background: #970052;
-          color: #ffffff;
-
-          box-shadow:
-            0 7px 15px rgba(151, 0, 82, 0.18);
         }
 
         .strategy-primary:hover {
@@ -244,33 +235,12 @@ export default function ExecutiveStrategy() {
             0 10px 20px rgba(151, 0, 82, 0.22);
         }
 
-        /* ARROW STAYS FIXED */
+        /* ARROW */
 
         .strategy-primary span {
           display: inline;
           margin-left: 5px;
           font-size: 17px;
-        }
-
-        .strategy-primary:hover span {
-          transform: none;
-        }
-
-        /* EXPLORE DIGITAL SOLUTIONS */
-
-        .strategy-secondary {
-          border: 1px solid #dfe6ed;
-          background: #ffffff;
-          color: #263044;
-        }
-
-        .strategy-secondary:hover {
-          background: #970052;
-          border-color: #970052;
-          color: #ffffff;
-
-          box-shadow:
-            0 8px 18px rgba(151, 0, 82, 0.18);
         }
 
         /* IMAGE */
@@ -385,11 +355,9 @@ export default function ExecutiveStrategy() {
 
           .strategy-buttons {
             margin-top: 20px;
-            gap: 9px;
           }
 
-          .strategy-primary,
-          .strategy-secondary {
+          .strategy-primary {
             min-width: 205px;
             height: 42px;
             font-size: 11px;
@@ -427,8 +395,7 @@ export default function ExecutiveStrategy() {
             font-size: 14px;
           }
 
-          .strategy-primary,
-          .strategy-secondary {
+          .strategy-primary {
             min-width: 225px;
             height: 43px;
           }
@@ -519,14 +486,10 @@ export default function ExecutiveStrategy() {
 
           .strategy-buttons {
             width: 100%;
-
             margin-top: 20px;
-
-            gap: 10px;
           }
 
-          .strategy-primary,
-          .strategy-secondary {
+          .strategy-primary {
             width: 100%;
             min-width: 0;
 
@@ -571,11 +534,9 @@ export default function ExecutiveStrategy() {
             font-size: 12px;
           }
 
-          .strategy-primary,
-          .strategy-secondary {
+          .strategy-primary {
             width: 100%;
             height: 42px;
-
             font-size: 11px;
           }
 
@@ -611,8 +572,7 @@ export default function ExecutiveStrategy() {
             font-size: 11px;
           }
 
-          .strategy-primary,
-          .strategy-secondary {
+          .strategy-primary {
             height: 41px;
             font-size: 10.5px;
             padding: 0 8px;

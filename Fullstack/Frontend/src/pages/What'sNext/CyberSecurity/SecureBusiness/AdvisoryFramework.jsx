@@ -78,8 +78,6 @@ export default function AdvisoryFramework() {
 
     if (Object.keys(newErrors).length === 0) {
       alert("Inquiry submitted successfully!");
-
-      // Backend/API submit logic yahan add kar sakte ho.
     }
   };
 
@@ -105,488 +103,509 @@ export default function AdvisoryFramework() {
   ];
 
   return (
-    <section className="advisory-section">
-      <div className="advisory-container">
+    <>
+      {/* =========================================================
+          ADVISORY FRAMEWORK
+      ========================================================= */}
 
-        {/* ================= LEFT ================= */}
+      <section className="advisory-section">
+        <div className="advisory-container">
 
-        <div className="advisory-left">
+          {/* ================= LEFT ================= */}
 
-          <div className="advisory-eyebrow">
-            ADVISORY FRAMEWORK
-          </div>
+          <div className="advisory-left">
 
-          <h1>
-            What to Anticipate During Your
-            <br />
-            Consultation
-          </h1>
-
-          <p className="advisory-intro">
-            TechTorch eliminates bureaucratic overhead. Your session is
-            led exclusively by Senior Advisory Partners and Principal
-            Systems Architects.
-          </p>
-
-
-          {/* FEATURES */}
-
-          {scopeCards.map((item, index) => (
-            <div className="advisory-feature" key={index}>
-
-              <div className="advisory-feature-icon">
-                {item.icon}
-              </div>
-
-              <div>
-                <h3>{item.title}</h3>
-
-                <p>{item.description}</p>
-              </div>
-
-            </div>
-          ))}
-
-
-          {/* IMAGE */}
-
-          <div className="advisory-image-wrapper">
-
-            <img
-              src="/AdvisoryFramework.png"
-              alt="TechTorch Security Operations Center"
-              className="advisory-image"
-            />
-
-            <div className="advisory-image-caption">
-
-              <span>
-                TechTorch Continuous SOC Integration
-              </span>
-
-              <span className="caption-shield">
-                ♢
-              </span>
-
+            <div className="advisory-eyebrow">
+              ADVISORY FRAMEWORK
             </div>
 
-          </div>
+            <h1>
+              What to Anticipate During Your
+              <br />
+              Consultation
+            </h1>
 
-
-          {/* QUOTE */}
-
-          <div className="advisory-quote">
-
-            <p>
-              “Modern adversaries do not attack perimeter firewalls;
-              they manipulate the trust boundaries between internal
-              systems, unmonitored APIs, and human identity. Our
-              advisory process targets resilience at the operational
-              core.”
+            <p className="advisory-intro">
+              TechTorch eliminates bureaucratic overhead. Your session is
+              led exclusively by Senior Advisory Partners and Principal
+              Systems Architects.
             </p>
 
-            <div className="advisor-profile">
+            {/* FEATURES */}
 
-              <div className="advisor-avatar">
-                👩🏻
+            {scopeCards.map((item, index) => (
+              <div className="advisory-feature" key={index}>
+                <div className="advisory-feature-icon">
+                  {item.icon}
+                </div>
+
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
               </div>
+            ))}
 
-              <div>
+            {/* IMAGE */}
 
-                <strong>
-                  Dr. Evelyn Vance
-                </strong>
+            <div className="advisory-image-wrapper">
+              <img
+                src="/AdvisoryFramework.png"
+                alt="TechTorch Security Operations Center"
+                className="advisory-image"
+              />
 
+              <div className="advisory-image-caption">
                 <span>
-                  Principal Director & Chief Cyber Architect
+                  TechTorch Continuous SOC Integration
                 </span>
 
+                <span className="caption-shield">
+                  ♢
+                </span>
               </div>
+            </div>
 
+            {/* QUOTE */}
+
+            <div className="advisory-quote">
+              <p>
+                “Modern adversaries do not attack perimeter firewalls;
+                they manipulate the trust boundaries between internal
+                systems, unmonitored APIs, and human identity. Our
+                advisory process targets resilience at the operational
+                core.”
+              </p>
+
+              <div className="advisor-profile">
+                <div className="advisor-avatar">
+                  👩🏻
+                </div>
+
+                <div>
+                  <strong>
+                    Dr. Evelyn Vance
+                  </strong>
+
+                  <span>
+                    Principal Director & Chief Cyber Architect
+                  </span>
+                </div>
+              </div>
             </div>
 
           </div>
 
-        </div>
+          {/* ================= FORM ================= */}
 
+          <form
+            className="advisory-form-card"
+            onSubmit={handleSubmit}
+            noValidate
+          >
 
-        {/* ================= FORM ================= */}
+            {/* FORM HEADER */}
 
-        <form
-          className="advisory-form-card"
-          onSubmit={handleSubmit}
-          noValidate
-        >
+            <div className="form-header">
+              <div>
+                <span className="form-eyebrow">
+                  CONFIDENTIAL DISPATCH
+                </span>
 
-          {/* FORM HEADER */}
+                <h2>
+                  Executive Assessment Intake
+                </h2>
+              </div>
 
-          <div className="form-header">
+              <div className="form-lock">
+                ♙
+              </div>
+            </div>
 
-            <div>
+            {/* NAME + EMAIL */}
 
-              <span className="form-eyebrow">
-                CONFIDENTIAL DISPATCH
-              </span>
+            <div className="form-row">
 
-              <h2>
-                Executive Assessment Intake
-              </h2>
+              <div className="form-group">
+                <label>
+                  Executive Full Name *
+                </label>
+
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="e.g., Katherine Montgomery"
+                  className={errors.name ? "input-error" : ""}
+                />
+
+                {errors.name && (
+                  <span className="form-error">
+                    {errors.name}
+                  </span>
+                )}
+              </div>
+
+              <div className="form-group">
+                <label>
+                  Corporate Work Email *
+                </label>
+
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="executive@enterprise.com"
+                  className={errors.email ? "input-error" : ""}
+                />
+
+                {errors.email && (
+                  <span className="form-error">
+                    {errors.email}
+                  </span>
+                )}
+              </div>
 
             </div>
 
-            <div className="form-lock">
+            {/* ORGANIZATION + INDUSTRY */}
+
+            <div className="form-row">
+
+              <div className="form-group">
+                <label>
+                  Organization Name *
+                </label>
+
+                <input
+                  type="text"
+                  name="organization"
+                  value={formData.organization}
+                  onChange={handleChange}
+                  placeholder="Enterprise Corp / Holdings"
+                  className={
+                    errors.organization
+                      ? "input-error"
+                      : ""
+                  }
+                />
+
+                {errors.organization && (
+                  <span className="form-error">
+                    {errors.organization}
+                  </span>
+                )}
+              </div>
+
+              <div className="form-group">
+                <label>
+                  Industry Vertical *
+                </label>
+
+                <select
+                  name="industry"
+                  value={formData.industry}
+                  onChange={handleChange}
+                  className={
+                    errors.industry
+                      ? "input-error"
+                      : ""
+                  }
+                >
+                  <option value="">
+                    Select an industry...
+                  </option>
+
+                  <option value="Financial Services & Banking">
+                    Financial Services & Banking
+                  </option>
+
+                  <option value="Healthcare">
+                    Healthcare
+                  </option>
+
+                  <option value="Technology">
+                    Technology
+                  </option>
+
+                  <option value="Manufacturing">
+                    Manufacturing
+                  </option>
+
+                  <option value="Government">
+                    Government
+                  </option>
+
+                  <option value="Retail & E-Commerce">
+                    Retail & E-Commerce
+                  </option>
+                </select>
+
+                {errors.industry && (
+                  <span className="form-error">
+                    {errors.industry}
+                  </span>
+                )}
+              </div>
+
+            </div>
+
+            {/* CHALLENGE */}
+
+            <div className="form-group full-width">
+              <label>
+                Current Critical Challenge *
+              </label>
+
+              <input
+                type="text"
+                name="challenge"
+                value={formData.challenge}
+                onChange={handleChange}
+                placeholder="e.g. Multi-Cloud Migration & Perimeter Hardening"
+                className={
+                  errors.challenge
+                    ? "input-error"
+                    : ""
+                }
+              />
+
+              {errors.challenge && (
+                <span className="form-error">
+                  {errors.challenge}
+                </span>
+              )}
+            </div>
+
+            {/* TIMELINE */}
+
+            <div className="form-group full-width">
+              <label>
+                Target Timeline for Deployment *
+              </label>
+
+              <div
+                className={
+                  errors.timeline
+                    ? "timeline-options timeline-options-error"
+                    : "timeline-options"
+                }
+              >
+                {[
+                  "Immediate (48h)",
+                  "Next 30 Days",
+                  "Strategic Q2/Q3",
+                ].map((item) => (
+                  <button
+                    type="button"
+                    key={item}
+                    className={
+                      timeline === item
+                        ? "timeline-option active"
+                        : "timeline-option"
+                    }
+                    onClick={() => handleTimeline(item)}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+
+              {errors.timeline && (
+                <span className="form-error">
+                  {errors.timeline}
+                </span>
+              )}
+            </div>
+
+            {/* CONTEXT */}
+
+            <div className="form-group full-width">
+              <label>
+                Brief Context or Infrastructure Notes *
+              </label>
+
+              <textarea
+                name="context"
+                value={formData.context}
+                onChange={handleChange}
+                placeholder="Share specific regulatory constraints, cloud environments, or architecture priorities..."
+                className={
+                  errors.context
+                    ? "input-error"
+                    : ""
+                }
+              />
+
+              {errors.context && (
+                <span className="form-error">
+                  {errors.context}
+                </span>
+              )}
+            </div>
+
+            {/* SECURITY */}
+
+            <div className="security-note">
+              <div className="security-note-left">
+                <span className="security-symbol">
+                  ⚙
+                </span>
+
+                <span>
+                  Protected Under TechTorch Master Mutual
+                  Non-Disclosure Agreement
+                </span>
+              </div>
+
+              <strong>
+                256-Bit
+                <br />
+                TLS
+              </strong>
+            </div>
+
+            {/* SUBMIT */}
+
+            <button
+              type="submit"
+              className="advisory-submit"
+            >
+              DEPLOY SECURITY ADVISORY BRIEFING
+              <span>→</span>
+            </button>
+
+            {/* CONTACT */}
+
+            <div className="form-contact">
+              <div className="contact-item">
+                <span className="contact-icon">
+                  ♧
+                </span>
+
+                <div>
+                  <small>
+                    Priority C-Suite Dispatch:
+                  </small>
+
+                  <strong>
+                    <a href="tel:+917251090147">
+                      +91 72510 90147
+                    </a>
+                  </strong>
+                </div>
+              </div>
+
+              <div className="contact-item">
+                <span className="contact-icon">
+                  ✉
+                </span>
+
+                <div>
+                  <small>
+                    Direct Advisory Desk:
+                  </small>
+
+                  <strong>
+                    <a
+                      href="https://www.techtorch.solutions"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      www.techtorch.solutions
+                    </a>
+                  </strong>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </section>
+
+
+      {/* =========================================================
+          BOTTOM FEATURES / FOOTER
+      ========================================================= */}
+
+      <section className="advisory-bottom-features">
+        <div className="bottom-features-container">
+
+          {/* 01 */}
+          <div className="bottom-feature">
+            <div className="bottom-feature-icon">
+              ♧
+            </div>
+
+            <h3>
+              Zero Data Ingestion
+            </h3>
+
+            <p>
+              Read-only non-intrusive
+              <br />
+              diagnostic probes
+            </p>
+          </div>
+
+
+          {/* 02 */}
+          <div className="bottom-feature">
+            <div className="bottom-feature-icon">
               ♙
             </div>
 
-          </div>
-
-
-          {/* ================= NAME + EMAIL ================= */}
-
-          <div className="form-row">
-
-            {/* NAME */}
-
-            <div className="form-group">
-
-              <label>
-                Executive Full Name *
-              </label>
-
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="e.g., Katherine Montgomery"
-                className={errors.name ? "input-error" : ""}
-              />
-
-              {errors.name && (
-                <span className="form-error">
-                  {errors.name}
-                </span>
-              )}
-
-            </div>
-
-
-            {/* EMAIL */}
-
-            <div className="form-group">
-
-              <label>
-                Corporate Work Email *
-              </label>
-
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="executive@enterprise.com"
-                className={errors.email ? "input-error" : ""}
-              />
-
-              {errors.email && (
-                <span className="form-error">
-                  {errors.email}
-                </span>
-              )}
-
-            </div>
-
-          </div>
-
-
-          {/* ================= ORGANIZATION + INDUSTRY ================= */}
-
-          <div className="form-row">
-
-            {/* ORGANIZATION */}
-
-            <div className="form-group">
-
-              <label>
-                Organization Name *
-              </label>
-
-              <input
-                type="text"
-                name="organization"
-                value={formData.organization}
-                onChange={handleChange}
-                placeholder="Enterprise Corp / Holdings"
-                className={
-                  errors.organization
-                    ? "input-error"
-                    : ""
-                }
-              />
-
-              {errors.organization && (
-                <span className="form-error">
-                  {errors.organization}
-                </span>
-              )}
-
-            </div>
-
-
-            {/* INDUSTRY */}
-
-            <div className="form-group">
-
-              <label>
-                Industry Vertical *
-              </label>
-
-              <select
-                name="industry"
-                value={formData.industry}
-                onChange={handleChange}
-                className={
-                  errors.industry
-                    ? "input-error"
-                    : ""
-                }
-              >
-
-                <option value="">
-                  Select an industry...
-                </option>
-
-                <option value="Financial Services & Banking">
-                  Financial Services & Banking
-                </option>
-
-                <option value="Healthcare">
-                  Healthcare
-                </option>
-
-                <option value="Technology">
-                  Technology
-                </option>
-
-                <option value="Manufacturing">
-                  Manufacturing
-                </option>
-
-                <option value="Government">
-                  Government
-                </option>
-
-                <option value="Retail & E-Commerce">
-                  Retail & E-Commerce
-                </option>
-
-              </select>
-
-              {errors.industry && (
-                <span className="form-error">
-                  {errors.industry}
-                </span>
-              )}
-
-            </div>
-
-          </div>
-
-
-          {/* ================= CHALLENGE ================= */}
-
-          <div className="form-group full-width">
-
-            <label>
-              Current Critical Challenge *
-            </label>
-
-            <input
-              type="text"
-              name="challenge"
-              value={formData.challenge}
-              onChange={handleChange}
-              placeholder="e.g. Multi-Cloud Migration & Perimeter Hardening"
-              className={
-                errors.challenge
-                  ? "input-error"
-                  : ""
-              }
-            />
-
-            {errors.challenge && (
-              <span className="form-error">
-                {errors.challenge}
-              </span>
-            )}
-
-          </div>
-
-
-          {/* ================= TIMELINE ================= */}
-
-          <div className="form-group full-width">
-
-            <label>
-              Target Timeline for Deployment *
-            </label>
-
-            <div
-              className={
-                errors.timeline
-                  ? "timeline-options timeline-options-error"
-                  : "timeline-options"
-              }
-            >
-
-              {[
-                "Immediate (48h)",
-                "Next 30 Days",
-                "Strategic Q2/Q3",
-              ].map((item) => (
-
-                <button
-                  type="button"
-                  key={item}
-                  className={
-                    timeline === item
-                      ? "timeline-option active"
-                      : "timeline-option"
-                  }
-                  onClick={() => handleTimeline(item)}
-                >
-                  {item}
-                </button>
-
-              ))}
-
-            </div>
-
-            {errors.timeline && (
-              <span className="form-error">
-                {errors.timeline}
-              </span>
-            )}
-
-          </div>
-
-
-          {/* ================= CONTEXT ================= */}
-
-          <div className="form-group full-width">
-
-            <label>
-              Brief Context or Infrastructure Notes *
-            </label>
-
-            <textarea
-              name="context"
-              value={formData.context}
-              onChange={handleChange}
-              placeholder="Share specific regulatory constraints, cloud environments, or architecture priorities..."
-              className={
-                errors.context
-                  ? "input-error"
-                  : ""
-              }
-            />
-
-            {errors.context && (
-              <span className="form-error">
-                {errors.context}
-              </span>
-            )}
-
-          </div>
-
-
-          {/* ================= SECURITY ================= */}
-
-          <div className="security-note">
-
-            <div className="security-note-left">
-
-              <span className="security-symbol">
-                ⚙
-              </span>
-
-              <span>
-                Protected Under TechTorch Master Mutual
-                Non-Disclosure Agreement
-              </span>
-
-            </div>
-
-            <strong>
-              256-Bit
+            <h3>
+              CISSP &amp; CISM Leadership
+            </h3>
+
+            <p>
+              Direct oversight by senior
               <br />
-              TLS
-            </strong>
-
+              practitioners
+            </p>
           </div>
 
 
-          {/* ================= SUBMIT ================= */}
-
-          <button
-            type="submit"
-            className="advisory-submit"
-          >
-            DEPLOY SECURITY ADVISORY BRIEFING
-            <span>→</span>
-          </button>
-
-
-          {/* ================= CONTACT ================= */}
-
-          <div className="form-contact">
-
-            <div className="contact-item">
-
-              <span className="contact-icon">
-                ♧
-              </span>
-
-              <div>
-
-                <small>
-                  Priority C-Suite Dispatch:
-                </small>
-
-                <strong>
-                  +91 72510 90147
-                </strong>
-
-              </div>
-
+          {/* 03 */}
+          <div className="bottom-feature">
+            <div className="bottom-feature-icon">
+              ⚡
             </div>
 
+            <h3>
+              Scale at Speed™
+            </h3>
 
-            <div className="contact-item">
-
-              <span className="contact-icon">
-                ✉
-              </span>
-
-              <div>
-
-                <small>
-                  Direct Advisory Desk:
-                </small>
-
-                <strong>
-                  www.techtorch.solutions
-                </strong>
-
-              </div>
-
-            </div>
-
+            <p>
+              Proven engineering
+              <br />
+              mobilization methodology
+            </p>
           </div>
 
-        </form>
 
-      </div>
+          {/* 04 */}
+          <div className="bottom-feature">
+            <div className="bottom-feature-icon">
+              ⚖
+            </div>
+
+            <h3>
+              Institutional Compliance
+            </h3>
+
+            <p>
+              ISO 27001, SOC 2 Type II,
+              <br />
+              FedRAMP alignment
+            </p>
+          </div>
+
+        </div>
+      </section>
 
 
       <style>{`
@@ -596,18 +615,15 @@ export default function AdvisoryFramework() {
         }
 
 
-        /* =========================================
-           SECTION
-        ========================================= */
+        /* =========================================================
+           ADVISORY FRAMEWORK
+        ========================================================= */
 
         .advisory-section {
           width: 100%;
           background: #f3f4f6;
-
           font-family: "Inter", sans-serif;
-
           color: #262a32;
-
           overflow: hidden;
         }
 
@@ -615,9 +631,7 @@ export default function AdvisoryFramework() {
         .advisory-container {
           width: 100%;
           max-width: 1180px;
-
           margin: 0 auto;
-
           padding: 44px 28px 55px;
 
           display: grid;
@@ -627,14 +641,11 @@ export default function AdvisoryFramework() {
             minmax(470px, 1.05fr);
 
           gap: 36px;
-
           align-items: start;
         }
 
 
-        /* =========================================
-           LEFT
-        ========================================= */
+        /* ================= LEFT ================= */
 
         .advisory-left {
           min-width: 0;
@@ -643,114 +654,80 @@ export default function AdvisoryFramework() {
 
         .advisory-eyebrow {
           margin-bottom: 10px;
-
           color: #74123f;
-
-          font-size: 10px;
-
+          font-size: 11px;
           font-weight: 800;
-
           letter-spacing: 0.9px;
         }
 
 
         .advisory-left h1 {
           margin: 0;
-
           color: #20242b;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
-          font-size: 27px;
-
+          font-size: 25px;
           line-height: 1.18;
-
-          font-weight: 500;
-
+          font-weight: 600;
           letter-spacing: -1px;
         }
 
 
         .advisory-intro {
           margin: 12px 0 24px;
-
           color: #6b6870;
-
-          font-size: 12px;
-
+          font-size: 13px;
           line-height: 1.55;
         }
 
 
-        /* =========================================
-           FEATURES
-        ========================================= */
+        /* ================= FEATURES ================= */
 
         .advisory-feature {
           display: grid;
-
           grid-template-columns: 25px 1fr;
-
           gap: 10px;
-
           margin-bottom: 15px;
         }
 
 
         .advisory-feature-icon {
           color: #74123f;
-
           font-size: 18px;
-
           line-height: 1.2;
-
           text-align: center;
         }
 
 
         .advisory-feature h3 {
-          margin: 0 0 3px;
-
+          margin: 0 0 4px;
           color: #292d35;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
-          font-size: 14px;
-
-          line-height: 1.25;
-
+          font-size: 15px;
+          line-height: 1.3;
           font-weight: 750;
         }
 
 
         .advisory-feature p {
           margin: 0;
-
           color: #706c73;
-
-          font-size: 10.5px;
-
-          line-height: 1.45;
+          font-size: 11.5px;
+          line-height: 1.5;
         }
 
 
-        /* =========================================
-           IMAGE
-        ========================================= */
+        /* ================= IMAGE ================= */
 
         .advisory-image-wrapper {
           position: relative;
-
           width: 100%;
-
           height: 144px;
-
           margin-top: 24px;
 
           border-radius: 8px;
-
           overflow: hidden;
-
           background: #1c2230;
         }
 
@@ -758,11 +735,8 @@ export default function AdvisoryFramework() {
         .advisory-image {
           width: 100%;
           height: 100%;
-
           display: block;
-
           object-fit: cover;
-
           object-position: center;
         }
 
@@ -777,23 +751,17 @@ export default function AdvisoryFramework() {
           height: 29px;
 
           display: flex;
-
           align-items: center;
-
           justify-content: space-between;
 
           padding: 0 11px;
 
           border-radius: 5px;
-
           background: rgba(255, 255, 255, 0.94);
 
           color: #70133f;
-
-          font-size: 8px;
-
+          font-size: 9px;
           font-weight: 800;
-
           letter-spacing: 1.2px;
         }
 
@@ -803,17 +771,13 @@ export default function AdvisoryFramework() {
         }
 
 
-        /* =========================================
-           QUOTE
-        ========================================= */
+        /* ================= QUOTE ================= */
 
         .advisory-quote {
           margin-top: 18px;
-
           padding: 17px 18px;
 
-          border-radius: 9px;
-
+          border-radius: 10px;
           background: #ffffff;
 
           box-shadow:
@@ -823,24 +787,17 @@ export default function AdvisoryFramework() {
 
         .advisory-quote > p {
           margin: 0;
-
           color: #646773;
-
-          font-size: 11px;
-
+          font-size: 13px;
           line-height: 1.55;
-
           font-style: italic;
         }
 
 
         .advisor-profile {
           display: flex;
-
           align-items: center;
-
           gap: 9px;
-
           margin-top: 12px;
         }
 
@@ -850,51 +807,40 @@ export default function AdvisoryFramework() {
           height: 27px;
 
           display: flex;
-
           align-items: center;
           justify-content: center;
 
           border-radius: 50%;
-
           background: #eee;
-
           font-size: 15px;
         }
 
 
         .advisor-profile strong {
           display: block;
-
           color: #343842;
-
-          font-size: 9px;
-
+          font-size: 13px;
           line-height: 1.3;
         }
 
 
         .advisor-profile span {
           display: block;
-
           color: #756c73;
-
-          font-size: 7px;
-
+          font-size: 11px;
           letter-spacing: 0.8px;
         }
 
 
-        /* =========================================
+        /* =========================================================
            FORM CARD
-        ========================================= */
+        ========================================================= */
 
         .advisory-form-card {
           width: 100%;
-
           padding: 30px 29px 25px;
 
           background: #ffffff;
-
           border-radius: 11px;
 
           box-shadow:
@@ -902,87 +848,65 @@ export default function AdvisoryFramework() {
         }
 
 
-        /* =========================================
-           FORM HEADER
-        ========================================= */
+        /* ================= FORM HEADER ================= */
 
         .form-header {
           display: flex;
-
           align-items: flex-start;
-
           justify-content: space-between;
-
           margin-bottom: 25px;
         }
 
 
         .form-eyebrow {
           display: block;
-
           margin-bottom: 4px;
 
           color: #74123f;
-
-          font-size: 9px;
-
+          font-size: 11px;
           font-weight: 800;
-
           letter-spacing: 0.8px;
         }
 
 
         .form-header h2 {
           margin: 0;
-
           color: #252932;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 17px;
-
           font-weight: 700;
         }
 
 
         .form-lock {
           color: #74123f;
-
           font-size: 21px;
         }
 
 
-        /* =========================================
-           FORM ROW
-        ========================================= */
+        /* ================= FORM ROW ================= */
 
         .form-row {
           display: grid;
-
           grid-template-columns: 1fr 1fr;
-
           gap: 14px;
-
           margin-bottom: 13px;
         }
 
 
         .form-group {
           min-width: 0;
-
           margin-bottom: 13px;
         }
 
 
         .form-group label {
           display: block;
-
           margin-bottom: 6px;
 
           color: #3b3e44;
-
-          font-size: 10px;
-
+          font-size: 12px;
           font-weight: 700;
         }
 
@@ -993,18 +917,14 @@ export default function AdvisoryFramework() {
           width: 100%;
 
           border: 1px solid #edf0f3;
-
           border-radius: 5px;
-
           outline: none;
 
           background: #f8f9fa;
-
           color: #363b44;
 
           font-family: "Inter", sans-serif;
-
-          font-size: 10px;
+          font-size: 11px;
 
           transition:
             border-color 0.2s ease,
@@ -1015,16 +935,13 @@ export default function AdvisoryFramework() {
         .form-group input,
         .form-group select {
           height: 34px;
-
           padding: 0 11px;
         }
 
 
         .form-group textarea {
           height: 70px;
-
           padding: 10px 11px;
-
           resize: none;
         }
 
@@ -1045,35 +962,27 @@ export default function AdvisoryFramework() {
         }
 
 
-        /* =========================================
-           VALIDATION
-        ========================================= */
+        /* ================= VALIDATION ================= */
 
         .form-error {
           display: block;
-
           margin-top: 5px;
 
           color: #ff3b3b;
-
           font-size: 9px;
-
           line-height: 1.3;
-
           font-weight: 500;
         }
 
 
         .input-error {
           border-color: #ff4b4b !important;
-
           background: #fffafa !important;
         }
 
 
         .input-error:focus {
           border-color: #ff4b4b !important;
-
           box-shadow: none !important;
         }
 
@@ -1083,15 +992,11 @@ export default function AdvisoryFramework() {
         }
 
 
-        /* =========================================
-           TIMELINE
-        ========================================= */
+        /* ================= TIMELINE ================= */
 
         .timeline-options {
           display: grid;
-
           grid-template-columns: repeat(3, 1fr);
-
           gap: 7px;
         }
 
@@ -1100,17 +1005,13 @@ export default function AdvisoryFramework() {
           height: 31px;
 
           border: 1px solid #eef0f2;
-
           border-radius: 5px;
 
           background: #f7f8f9;
-
           color: #4f535a;
 
           font-family: "Inter", sans-serif;
-
-          font-size: 9px;
-
+          font-size: 11px;
           font-weight: 700;
 
           cursor: pointer;
@@ -1124,60 +1025,44 @@ export default function AdvisoryFramework() {
 
         .timeline-option.active {
           border-color: #f0e3e9;
-
           background: #fff7fa;
-
           color: #74123f;
         }
 
 
-        /* =========================================
-           SECURITY
-        ========================================= */
+        /* ================= SECURITY ================= */
 
         .security-note {
           min-height: 46px;
 
           display: flex;
-
           align-items: center;
-
           justify-content: space-between;
 
           gap: 15px;
-
           padding: 0 12px;
-
           margin-top: 3px;
 
           border-radius: 6px;
-
           background: #f6f7f8;
         }
 
 
         .security-note-left {
           display: flex;
-
           align-items: center;
-
           gap: 8px;
 
           color: #77747a;
-
-          font-size: 8px;
-
+          font-size: 11px;
           line-height: 1.35;
-
           font-weight: 600;
-
           letter-spacing: 0.4px;
         }
 
 
         .security-symbol {
           color: #74123f;
-
           font-size: 13px;
         }
 
@@ -1186,42 +1071,30 @@ export default function AdvisoryFramework() {
           color: #416044;
 
           font-family: monospace;
-
-          font-size: 8px;
-
+          font-size: 11px;
           line-height: 1.25;
-
           letter-spacing: 1px;
-
           text-align: right;
         }
 
 
-        /* =========================================
-           SUBMIT
-        ========================================= */
+        /* ================= SUBMIT ================= */
 
         .advisory-submit {
           width: 100%;
-
           height: 37px;
 
           margin-top: 13px;
 
           border: none;
-
           border-radius: 5px;
 
           background: #74123f;
-
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
-
-          font-size: 9px;
-
+          font-size: 12px;
           font-weight: 800;
-
           letter-spacing: 0.8px;
 
           cursor: pointer;
@@ -1235,14 +1108,12 @@ export default function AdvisoryFramework() {
 
         .advisory-submit span {
           margin-left: 6px;
-
           font-size: 14px;
         }
 
 
         .advisory-submit:hover {
           background: #8b1b50;
-
           transform: translateY(-1px);
 
           box-shadow:
@@ -1250,36 +1121,30 @@ export default function AdvisoryFramework() {
         }
 
 
-        /* =========================================
-           CONTACT
-        ========================================= */
+        /* ================= CONTACT ================= */
 
         .form-contact {
           display: flex;
-
           align-items: center;
-
           justify-content: space-between;
 
           gap: 20px;
-
           margin-top: 24px;
         }
 
 
         .contact-item {
           display: flex;
-
           align-items: center;
-
           gap: 7px;
+          min-width: 0;
         }
 
 
         .contact-icon {
           color: #74123f;
-
           font-size: 15px;
+          flex-shrink: 0;
         }
 
 
@@ -1289,11 +1154,8 @@ export default function AdvisoryFramework() {
           color: #777078;
 
           font-family: monospace;
-
-          font-size: 7px;
-
+          font-size: 12px;
           font-weight: 700;
-
           letter-spacing: 1px;
         }
 
@@ -1302,24 +1164,129 @@ export default function AdvisoryFramework() {
           display: block;
 
           color: #74123f;
+          font-size: 11px;
+          font-weight: 700;
 
-          font-size: 8px;
+          overflow-wrap: anywhere;
+        }
 
+        /* CLICKABLE CONTACT LINKS ONLY */
+
+        .contact-item strong a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .contact-item strong a:hover {
+          text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           BOTTOM FEATURES
+        ========================================================= */
+
+        .advisory-bottom-features {
+          width: 100%;
+          background: #ffffff;
+          border-top: 1px solid #eeeeee;
+          font-family: "Inter", sans-serif;
+        }
+
+
+        /*
+          IMPORTANT:
+          Same content width and alignment as advisory container.
+        */
+
+        .bottom-features-container {
+          width: 100%;
+          max-width: 1180px;
+
+          margin: 0 auto;
+
+          padding: 40px 28px 38px;
+
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+
+          gap: 36px;
+
+          align-items: start;
+        }
+
+
+        .bottom-feature {
+          min-width: 0;
+
+          text-align: center;
+
+          transition:
+            transform 0.3s ease;
+        }
+
+
+        .bottom-feature:hover {
+          transform: translateY(-3px);
+        }
+
+
+        .bottom-feature-icon {
+          width: 28px;
+          height: 28px;
+
+          margin: 0 auto 9px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          color: #74123f;
+          font-size: 21px;
+          line-height: 1;
+
+          transition: color 0.3s ease;
+        }
+
+
+        .bottom-feature:hover .bottom-feature-icon {
+          color: #970052;
+        }
+
+
+        .bottom-feature h3 {
+          margin: 0 0 7px;
+
+          color: #282b32;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
+          line-height: 1.25;
           font-weight: 700;
         }
 
 
-        /* =========================================
+        .bottom-feature p {
+          margin: 0;
+
+          color: #756c72;
+
+          font-size: 10px;
+          line-height: 1.5;
+          font-weight: 600;
+          letter-spacing: 1.35px;
+        }
+
+
+        /* =========================================================
            LARGE DESKTOP
-        ========================================= */
+        ========================================================= */
 
         @media (min-width: 1400px) {
 
           .advisory-container {
             max-width: 1240px;
-
             gap: 42px;
-
             padding-top: 55px;
           }
 
@@ -1337,12 +1304,19 @@ export default function AdvisoryFramework() {
           .advisory-form-card {
             padding: 32px;
           }
+
+
+          .bottom-features-container {
+            max-width: 1240px;
+            padding: 42px 28px 40px;
+            gap: 42px;
+          }
         }
 
 
-        /* =========================================
+        /* =========================================================
            LAPTOP
-        ========================================= */
+        ========================================================= */
 
         @media (max-width: 1100px) {
 
@@ -1363,12 +1337,30 @@ export default function AdvisoryFramework() {
           .advisory-form-card {
             padding: 26px 24px 23px;
           }
+
+
+          .bottom-features-container {
+            max-width: 1000px;
+            padding: 38px 22px;
+            gap: 28px;
+          }
+
+
+          .bottom-feature h3 {
+            font-size: 13px;
+          }
+
+
+          .bottom-feature p {
+            font-size: 9px;
+            letter-spacing: 1.1px;
+          }
         }
 
 
-        /* =========================================
+        /* =========================================================
            TABLET
-        ========================================= */
+        ========================================================= */
 
         @media (max-width: 850px) {
 
@@ -1391,16 +1383,42 @@ export default function AdvisoryFramework() {
           .advisory-form-card {
             padding: 27px 24px;
           }
+
+
+          .bottom-features-container {
+            max-width: 650px;
+
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 30px 28px;
+
+            padding: 34px 20px;
+          }
+
+
+          .bottom-feature h3 {
+            font-size: 13px;
+          }
+
+
+          .bottom-feature p {
+            font-size: 8px;
+            letter-spacing: 1px;
+          }
         }
 
 
-        /* =========================================
+        /* =========================================================
            MOBILE
-        ========================================= */
+        ========================================================= */
 
         @media (max-width: 600px) {
 
           .advisory-container {
+            width: 100%;
+            max-width: 100%;
+
             padding: 30px 14px 35px;
 
             gap: 25px;
@@ -1409,40 +1427,36 @@ export default function AdvisoryFramework() {
 
           .advisory-left h1 {
             font-size: 24px;
-
             line-height: 1.2;
           }
 
 
           .advisory-intro {
-            font-size: 11px;
-
+            font-size: 12px;
             margin-bottom: 20px;
           }
 
 
           .advisory-feature {
             grid-template-columns: 22px 1fr;
-
             gap: 7px;
-
             margin-bottom: 13px;
           }
 
 
           .advisory-feature h3 {
-            font-size: 13px;
+            font-size: 14px;
           }
 
 
           .advisory-feature p {
-            font-size: 9.5px;
+            font-size: 10.5px;
+            line-height: 1.5;
           }
 
 
           .advisory-image-wrapper {
             height: 185px;
-
             margin-top: 20px;
           }
 
@@ -1462,7 +1476,6 @@ export default function AdvisoryFramework() {
 
           .advisory-quote {
             padding: 14px;
-
             margin-top: 14px;
           }
 
@@ -1474,7 +1487,6 @@ export default function AdvisoryFramework() {
 
           .advisory-form-card {
             padding: 23px 17px 20px;
-
             border-radius: 9px;
           }
 
@@ -1491,9 +1503,7 @@ export default function AdvisoryFramework() {
 
           .form-row {
             grid-template-columns: 1fr;
-
             gap: 0;
-
             margin-bottom: 0;
           }
 
@@ -1506,7 +1516,6 @@ export default function AdvisoryFramework() {
 
           .timeline-options {
             grid-template-columns: 1fr;
-
             gap: 6px;
           }
 
@@ -1528,23 +1537,58 @@ export default function AdvisoryFramework() {
 
           .form-contact {
             flex-direction: column;
-
             align-items: flex-start;
-
             gap: 12px;
+          }
+
+
+          /* ================= BOTTOM FEATURES ================= */
+
+          .bottom-features-container {
+            width: 100%;
+            max-width: 100%;
+
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 26px 14px;
+
+            padding: 30px 14px;
+          }
+
+
+          .bottom-feature-icon {
+            width: 25px;
+            height: 25px;
+
+            margin-bottom: 8px;
+
+            font-size: 18px;
+          }
+
+
+          .bottom-feature h3 {
+            font-size: 11px;
+            line-height: 1.3;
+          }
+
+
+          .bottom-feature p {
+            font-size: 7px;
+            line-height: 1.45;
+            letter-spacing: 0.8px;
           }
         }
 
 
-        /* =========================================
+        /* =========================================================
            SMALL MOBILE
-        ========================================= */
+        ========================================================= */
 
         @media (max-width: 380px) {
 
           .advisory-container {
             padding-left: 11px;
-
             padding-right: 11px;
           }
 
@@ -1561,7 +1605,6 @@ export default function AdvisoryFramework() {
 
           .advisory-form-card {
             padding-left: 14px;
-
             padding-right: 14px;
           }
 
@@ -1574,9 +1617,30 @@ export default function AdvisoryFramework() {
           .advisory-submit {
             font-size: 8px;
           }
+
+
+          /* ================= BOTTOM FEATURES ================= */
+
+          .bottom-features-container {
+            grid-template-columns: 1fr;
+
+            gap: 23px;
+
+            padding: 28px 15px;
+          }
+
+
+          .bottom-feature h3 {
+            font-size: 12px;
+          }
+
+
+          .bottom-feature p {
+            font-size: 8px;
+          }
         }
 
       `}</style>
-    </section>
+    </>
   );
 }

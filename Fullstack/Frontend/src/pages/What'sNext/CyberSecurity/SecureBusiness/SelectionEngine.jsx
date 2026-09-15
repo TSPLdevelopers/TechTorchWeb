@@ -43,7 +43,6 @@ export default function ScopeSelectionEngine() {
       description:
         "Complete full-stack diagnostic encompassing all 5 dimensions above, curated specifically for Board presentation and underwriting.",
       tags: ["Full Advisory", "Board-Ready Deck"],
-      selected: true,
     },
   ];
 
@@ -53,7 +52,6 @@ export default function ScopeSelectionEngine() {
 
         {/* HEADER */}
         <div className="scope-header">
-
           <div className="scope-eyebrow">
             SCOPE SELECTION ENGINE
           </div>
@@ -68,22 +66,15 @@ export default function ScopeSelectionEngine() {
             <br className="scope-desktop-break" />
             modernization initiatives.
           </p>
-
         </div>
-
 
         {/* CARDS */}
         <div className="scope-grid">
-
           {scopeCards.map((card, index) => (
             <div
               key={index}
-              className={`scope-card ${
-                card.selected ? "scope-card-selected" : ""
-              }`}
+              className="scope-card"
             >
-
-              {/* CARD TOP */}
               <div className="scope-card-top">
 
                 <div className="scope-icon">
@@ -96,8 +87,6 @@ export default function ScopeSelectionEngine() {
 
               </div>
 
-
-              {/* CONTENT */}
               <h3>
                 {card.title}
               </h3>
@@ -106,10 +95,7 @@ export default function ScopeSelectionEngine() {
                 {card.description}
               </p>
 
-
-              {/* TAGS */}
               <div className="scope-tags">
-
                 {card.tags.map((tag, tagIndex) => (
                   <span
                     key={tagIndex}
@@ -118,16 +104,12 @@ export default function ScopeSelectionEngine() {
                     {tag}
                   </span>
                 ))}
-
               </div>
-
             </div>
           ))}
-
         </div>
 
       </div>
-
 
       <style>{`
 
@@ -135,495 +117,402 @@ export default function ScopeSelectionEngine() {
           box-sizing: border-box;
         }
 
-
-        /* =========================================
-           SECTION
-        ========================================= */
-
         .scope-section {
           width: 100%;
           background: #ffffff;
-
           font-family: "Inter", sans-serif;
-
           color: #20242d;
-
           overflow: hidden;
         }
-
 
         .scope-container {
           width: 100%;
           max-width: 1000px;
-
           margin: 0 auto;
-
           padding: 50px 30px 48px;
         }
 
-
-        /* =========================================
-           HEADER
-        ========================================= */
+        /* ================= HEADER ================= */
 
         .scope-header {
           text-align: center;
-
           margin-bottom: 35px;
         }
 
-
         .scope-eyebrow {
           margin-bottom: 10px;
-
           color: #6d1645;
-
-          font-size: 10px;
-
+          font-size: 11px;
           line-height: 1;
-
-          font-weight: 800;
-
+          font-weight: 900;
           letter-spacing: 0.8px;
         }
 
-
         .scope-header h2 {
           margin: 0;
-
           color: #1e222a;
-
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 25px;
-
           line-height: 1.25;
-
-          font-weight: 500;
-
+          font-weight: 600;
           letter-spacing: -0.7px;
         }
 
-
         .scope-header p {
           margin: 9px auto 0;
-
           color: #766e75;
-
-          font-size: 12px;
-
+          font-size: 13px;
           line-height: 1.55;
-
-          font-weight: 400;
+          font-weight: 500;
         }
 
-
-        /* =========================================
-           GRID
-        ========================================= */
+        /* ================= GRID ================= */
 
         .scope-grid {
           width: 100%;
-
           display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
 
-          grid-template-columns: repeat(3, 1fr);
-
-          gap: 18px;
+          /* Increased horizontal gap */
+          column-gap: 36px;
+          row-gap: 18px;
         }
 
-
-        /* =========================================
-           CARD
-        ========================================= */
+        /* ================= CARD ================= */
 
         .scope-card {
           min-height: 212px;
-
           padding: 18px 18px 16px;
 
           display: flex;
-
           flex-direction: column;
 
           border: 1px solid #e1e7ec;
-
           border-radius: 9px;
+          background: #ffffff;
 
-          background: #f7f8fa;
+          box-shadow: 0 3px 10px rgba(35, 38, 45, 0.04);
 
-          box-shadow:
-            0 3px 10px rgba(35, 38, 45, 0.04);
+          color: #20242d;
 
           transition:
             transform 0.3s ease,
             box-shadow 0.3s ease,
             background 0.3s ease,
-            border-color 0.3s ease;
+            border-color 0.3s ease,
+            color 0.3s ease;
         }
-
 
         .scope-card:hover {
-          transform: translateY(-3px);
-
-          box-shadow:
-            0 8px 20px rgba(35, 38, 45, 0.09);
-
-          border-color: #d5dbe1;
-        }
-
-
-        /* =========================================
-           SELECTED CARD
-        ========================================= */
-
-        .scope-card-selected {
+          transform: translateY(-6px);
           background: #771440;
-
           border-color: #771440;
-
           color: #ffffff;
 
-          box-shadow:
-            0 8px 20px rgba(119, 20, 64, 0.22);
+          box-shadow: 0 10px 25px rgba(119, 20, 64, 0.22);
         }
 
-
-        .scope-card-selected:hover {
-          background: #771440;
-
-          border-color: #771440;
-        }
-
-
-        /* =========================================
-           CARD TOP
-        ========================================= */
+        /* ================= CARD TOP ================= */
 
         .scope-card-top {
           display: flex;
-
           align-items: center;
-
           justify-content: space-between;
-
           margin-bottom: 13px;
         }
 
-
         .scope-icon {
           width: 30px;
-
           height: 30px;
 
           display: flex;
-
           align-items: center;
-
           justify-content: center;
 
           border-radius: 5px;
-
           background: #62002f;
-
           color: #ffffff;
 
-          font-size: 16px;
-
+          font-size: 17px;
           font-weight: 700;
+
+          transition:
+            background 0.3s ease,
+            color 0.3s ease;
         }
 
-
-        .scope-card-selected .scope-icon {
+        .scope-card:hover .scope-icon {
           background: #ffffff;
-
           color: #771440;
         }
 
-
         .scope-check {
           width: 18px;
-
           height: 18px;
 
           display: flex;
-
           align-items: center;
-
           justify-content: center;
 
           border-radius: 50%;
-
           background: #e2e5e7;
-
           color: #596169;
 
           font-size: 10px;
-
           font-weight: 800;
+
+          transition:
+            background 0.3s ease,
+            color 0.3s ease;
         }
 
-
-        .scope-card-selected .scope-check {
+        .scope-card:hover .scope-check {
           background: #e56a9e;
-
           color: #ffffff;
         }
 
-
-        /* =========================================
-           TITLE
-        ========================================= */
+        /* ================= CARD TEXT ================= */
 
         .scope-card h3 {
           margin: 0;
 
           color: #252931;
-
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 15px;
-
           line-height: 1.3;
-
-          font-weight: 750;
-
+          font-weight: 700;
           letter-spacing: -0.2px;
+
+          transition: color 0.3s ease;
         }
 
-
-        .scope-card-selected h3 {
+        .scope-card:hover h3 {
           color: #ffffff;
         }
-
-
-        /* =========================================
-           DESCRIPTION
-        ========================================= */
 
         .scope-description {
           margin: 8px 0 0;
 
           color: #746c73;
 
-          font-size: 11px;
-
+          font-size: 12.5px;
           line-height: 1.5;
+          font-weight: 500;
 
-          font-weight: 400;
+          transition: color 0.3s ease;
         }
 
-
-        .scope-card-selected .scope-description {
+        .scope-card:hover .scope-description {
           color: #f1dbe5;
         }
 
-
-        /* =========================================
-           TAGS
-        ========================================= */
+        /* ================= TAGS ================= */
 
         .scope-tags {
           display: flex;
-
           flex-wrap: wrap;
-
           gap: 5px;
 
           margin-top: auto;
-
           padding-top: 13px;
         }
 
-
         .scope-tag {
           display: inline-flex;
-
           align-items: center;
 
           min-height: 18px;
-
           padding: 2px 8px;
 
           border-radius: 3px;
 
           background: #e8e8e9;
-
           color: #756d73;
 
           font-family: monospace;
-
-          font-size: 8px;
-
+          font-size: 10px;
           line-height: 1;
-
           font-weight: 700;
-
           letter-spacing: 0.7px;
 
           white-space: nowrap;
+
+          transition:
+            background 0.3s ease,
+            color 0.3s ease;
         }
 
-
-        .scope-card-selected .scope-tag {
+        .scope-card:hover .scope-tag {
           background: #56052d;
-
           color: #ffffff;
         }
 
-
-        /* =========================================
+        /* =====================================================
            LARGE DESKTOP
-        ========================================= */
+        ===================================================== */
 
         @media (min-width: 1400px) {
 
           .scope-container {
             max-width: 1060px;
-
             padding-top: 55px;
           }
 
-
           .scope-grid {
-            gap: 19px;
+            column-gap: 38px;
+            row-gap: 19px;
           }
-
 
           .scope-card {
             min-height: 215px;
-
             padding: 19px 19px 17px;
           }
         }
 
-
-        /* =========================================
-           LAPTOP
-        ========================================= */
+        /* =====================================================
+           LAPTOP / SMALL DESKTOP
+        ===================================================== */
 
         @media (max-width: 1100px) {
 
           .scope-container {
             max-width: 940px;
-
             padding-left: 25px;
             padding-right: 25px;
           }
 
-
           .scope-grid {
-            gap: 16px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            column-gap: 30px;
+            row-gap: 16px;
           }
-
 
           .scope-card {
             min-height: 210px;
-
             padding: 17px 17px 15px;
           }
-
 
           .scope-card h3 {
             font-size: 14px;
           }
+
+          .scope-description {
+            font-size: 12px;
+          }
         }
 
-
-        /* =========================================
+        /* =====================================================
            TABLET
-        ========================================= */
+        ===================================================== */
 
         @media (max-width: 800px) {
 
           .scope-container {
+            max-width: 700px;
             padding: 42px 22px;
           }
 
-
-          .scope-grid {
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 15px;
+          .scope-header {
+            margin-bottom: 30px;
           }
 
+          .scope-header h2 {
+            font-size: 24px;
+          }
+
+          .scope-header p {
+            font-size: 12px;
+          }
+
+          .scope-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 24px;
+            row-gap: 15px;
+          }
 
           .scope-card {
             min-height: 205px;
           }
         }
 
-
-        /* =========================================
+        /* =====================================================
            MOBILE
-        ========================================= */
+        ===================================================== */
 
         @media (max-width: 560px) {
 
           .scope-container {
+            width: 100%;
+            max-width: 100%;
             padding: 35px 16px 38px;
           }
-
 
           .scope-header {
             margin-bottom: 27px;
           }
 
-
           .scope-eyebrow {
+            margin-bottom: 9px;
             font-size: 9px;
+            letter-spacing: 0.7px;
           }
-
 
           .scope-header h2 {
             font-size: 22px;
-
             line-height: 1.25;
+            letter-spacing: -0.5px;
           }
-
 
           .scope-header p {
+            margin-top: 9px;
             font-size: 11px;
-
             line-height: 1.5;
           }
-
 
           .scope-desktop-break {
             display: none;
           }
 
-
           .scope-grid {
             grid-template-columns: 1fr;
-
-            gap: 13px;
+            column-gap: 0;
+            row-gap: 13px;
           }
 
-
           .scope-card {
+            width: 100%;
             min-height: 190px;
-
             padding: 16px;
           }
 
+          .scope-card-top {
+            margin-bottom: 12px;
+          }
 
           .scope-card h3 {
             font-size: 15px;
+            line-height: 1.3;
           }
-
 
           .scope-description {
             font-size: 11px;
-
             line-height: 1.5;
+          }
+
+          .scope-tags {
+            gap: 5px;
+            padding-top: 12px;
+          }
+
+          .scope-tag {
+            font-size: 9px;
           }
         }
 
-
-        /* =========================================
+        /* =====================================================
            SMALL MOBILE
-        ========================================= */
+        ===================================================== */
 
         @media (max-width: 380px) {
 
@@ -632,34 +521,102 @@ export default function ScopeSelectionEngine() {
             padding-right: 12px;
           }
 
+          .scope-header {
+            margin-bottom: 24px;
+          }
+
+          .scope-eyebrow {
+            font-size: 8px;
+          }
 
           .scope-header h2 {
             font-size: 20px;
           }
 
+          .scope-header p {
+            font-size: 10px;
+          }
+
+          .scope-grid {
+            row-gap: 12px;
+          }
 
           .scope-card {
             min-height: 185px;
-
             padding: 15px;
           }
-
 
           .scope-card h3 {
             font-size: 14px;
           }
 
-
           .scope-description {
             font-size: 10px;
           }
 
-
           .scope-tag {
             font-size: 7px;
-
             padding-left: 7px;
             padding-right: 7px;
+          }
+        }
+
+        /* =====================================================
+           VERY SMALL DEVICES
+        ===================================================== */
+
+        @media (max-width: 320px) {
+
+          .scope-container {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+
+          .scope-header h2 {
+            font-size: 18px;
+          }
+
+          .scope-header p {
+            font-size: 9px;
+          }
+
+          .scope-card {
+            padding: 14px;
+          }
+
+          .scope-card h3 {
+            font-size: 13px;
+          }
+
+          .scope-description {
+            font-size: 9.5px;
+          }
+
+          .scope-icon {
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+          }
+
+          .scope-check {
+            width: 17px;
+            height: 17px;
+            font-size: 9px;
+          }
+
+          .scope-tag {
+            font-size: 6.5px;
+          }
+        }
+
+        /* =====================================================
+           TOUCH DEVICES
+        ===================================================== */
+
+        @media (hover: none) and (pointer: coarse) {
+
+          .scope-card:hover {
+            transform: none;
           }
         }
 

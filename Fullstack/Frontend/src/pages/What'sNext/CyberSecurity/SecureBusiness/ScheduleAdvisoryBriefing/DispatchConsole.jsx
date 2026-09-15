@@ -200,9 +200,7 @@ export default function AdvisoryBooking() {
                   </div>
 
                   <div className="receive-item-text">
-                    Real-time analysis of attack surface telemetry and exposed
-                    <br />
-                    endpoints.
+                    Real-time analysis of attack surface telemetry and exposed endpoints.
                   </div>
                 </div>
               </div>
@@ -218,9 +216,7 @@ export default function AdvisoryBooking() {
 
                   <div className="receive-item-text">
                     Targeted technical allocation plan tailored to your
-                    infrastructure
-                    <br />
-                    stack.
+                    infrastructure stack.
                   </div>
                 </div>
               </div>
@@ -778,7 +774,7 @@ export default function AdvisoryBooking() {
 
           color: #657187;
 
-          font-size: 10.5px;
+          font-size: 12px;
 
           line-height: 1.3;
 
@@ -791,7 +787,7 @@ export default function AdvisoryBooking() {
 
           color: #8090a4;
 
-          font-size: 10px;
+          font-size: 11px;
 
           line-height: 1.35;
         }
@@ -879,7 +875,7 @@ export default function AdvisoryBooking() {
         .receive-item-title {
           color: #2f374b;
 
-          font-size: 12px;
+          font-size: 13px;
 
           font-weight: 750;
 
@@ -892,7 +888,7 @@ export default function AdvisoryBooking() {
 
           color: #738197;
 
-          font-size: 10px;
+          font-size: 11px;
 
           line-height: 1.3;
         }
@@ -921,7 +917,7 @@ export default function AdvisoryBooking() {
 
           color: #263047;
 
-          font-size: 20px;
+          font-size: 18px;
 
           line-height: 1.2;
 
@@ -959,7 +955,7 @@ export default function AdvisoryBooking() {
 
           color: #30394d;
 
-          font-size: 12px;
+          font-size: 13px;
 
           font-weight: 750;
         }
@@ -1197,7 +1193,7 @@ export default function AdvisoryBooking() {
 
           color: #30394c;
 
-          font-size: 10px;
+          font-size: 12px;
 
           font-weight: 750;
         }
@@ -1222,7 +1218,7 @@ export default function AdvisoryBooking() {
 
           font-family: inherit;
 
-          font-size: 11px;
+          font-size: 12px;
 
           transition:
             border-color 0.2s ease,
@@ -1361,8 +1357,8 @@ export default function AdvisoryBooking() {
 
           color: #98a5b7;
 
-          font-size: 9.5px;
-
+          font-size: 11.5px;
+          font-weight: 500;
           line-height: 1.3;
 
           text-align: center;

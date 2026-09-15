@@ -120,7 +120,12 @@ import SecurityInitiative  from "./pages/What'sNext/CyberSecurity/SecureBusiness
 import ProtocolDelivery from "./pages/What'sNext/CyberSecurity/SecureBusiness/ProtocolDelivery.jsx";
 import SelectionEngine from "./pages/What'sNext/CyberSecurity/SecureBusiness/SelectionEngine.jsx";
 import AdvisoryFramework from "./pages/What'sNext/CyberSecurity/SecureBusiness/AdvisoryFramework.jsx";
-import SecureBusinessFooter from "./pages/What'sNext/CyberSecurity/SecureBusiness/SecureBusinessFooter.jsx";
+
+
+import ViewEngagementProtocol  from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/ViewEngagementProtocol.jsx";
+import AcceptProceed  from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/AcceptProceed.jsx";
+import ExportProtocolPackage from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/ExportProtocolPackage.jsx";
+
 
 import AdvisoryDesk from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/AdvisoryDesk";
 import DispatchConsole from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/DispatchConsole.jsx";
@@ -404,12 +409,11 @@ function SecureBusinessPage() {
     <ProtocolDelivery />
     <SelectionEngine />
     <AdvisoryFramework/>
-    <SecureBusinessFooter />
     </>
   );
 }
 
-function AdvisoryDeskPage() {
+function ScheduleAdvisoryPage() {
   return (
     <>
     <AdvisoryDesk />
@@ -449,7 +453,6 @@ function TechPulsePage() {
     <Discipline />
     <ExecutiveStrategy />
 
-      
     </>
   );
 }
@@ -484,7 +487,6 @@ function CapabilitiesDigitalSolution() {
       <ConnectedBusiness />
       <TechTorchTechnology />
       <RequirementReality />
-      
       </>
   );
 }
@@ -580,9 +582,24 @@ function App() {
           element={<SecureBusinessPage />}
         />
         <Route
-  path="/schedule-advisory"
-  element={<AdvisoryDeskPage/>}
-/>
+          path="/schedule-advisory"
+          element={<ScheduleAdvisoryPage/>}
+        />
+        <Route
+          path="/engagement-protocol"
+          element={<ViewEngagementProtocol />}
+        />
+
+         <Route
+          path="/accept-proceed"
+          element={<AcceptProceed />}
+        />
+
+        <Route
+          path="/export-protocol"
+          element={<ExportProtocolPackage />}
+        />
+
         <Route
           path="/Business-growth"
           element={<BusinessGrowthPage />}

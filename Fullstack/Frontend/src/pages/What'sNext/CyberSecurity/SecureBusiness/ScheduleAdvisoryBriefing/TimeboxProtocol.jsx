@@ -194,11 +194,9 @@ export default function StructuredAgenda() {
 
         .agenda-white-section {
           width: 100%;
-
-          /* REDUCED HEIGHT */
           min-height: auto;
 
-          padding: 52px 42px 58px;
+          padding: 52px 42px 50px;
 
           background: #f1f2f4;
         }
@@ -210,29 +208,22 @@ export default function StructuredAgenda() {
 
         .agenda-heading {
           width: 100%;
-
           text-align: center;
-
-          margin: 0 auto 48px;
+          margin: 0 auto 42px;
         }
 
 
         .agenda-eyebrow {
           margin-bottom: 11px;
-
           color: #7b164c;
-
-          font-size: 13px;
-
-          font-weight: 800;
-
+          font-size: 12px;
+          font-weight: 900;
           letter-spacing: 1.5px;
         }
 
 
         .agenda-heading h2 {
           margin: 0;
-
           color: #172036;
 
           font-family:
@@ -241,25 +232,18 @@ export default function StructuredAgenda() {
             Arial,
             sans-serif;
 
-          font-size: 40px;
-
+          font-size: 32px;
           line-height: 1.15;
-
-          font-weight: 700;
-
+          font-weight: 600;
           letter-spacing: -1px;
         }
 
 
         .agenda-heading p {
           margin: 13px 0 0;
-
           color: #647188;
-
-          font-size: 18px;
-
+          font-size: 15px;
           line-height: 1.4;
-
           font-weight: 400;
         }
 
@@ -269,26 +253,19 @@ export default function StructuredAgenda() {
         ========================================= */
 
         .agenda-cards {
-          width: 100%;
-
+          width: 90%;
           display: grid;
-
-          grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-
-          gap: 30px;
-
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 24px;
           margin: 0 auto;
-
-          max-width: 1600px;
+          max-width: 1380px;
         }
 
 
         .agenda-card {
-          /* REDUCED CARD HEIGHT */
-          min-height: 245px;
+          min-height: 220px;
 
-          padding: 30px 31px 28px;
+          padding: 26px 27px 24px;
 
           background: #ffffff;
 
@@ -322,14 +299,14 @@ export default function StructuredAgenda() {
 
           justify-content: space-between;
 
-          margin-bottom: 24px;
+          margin-bottom: 21px;
         }
 
 
         .agenda-number {
           color: #85004b;
 
-          font-size: 36px;
+          font-size: 30px;
 
           line-height: 1;
 
@@ -346,9 +323,9 @@ export default function StructuredAgenda() {
 
           justify-content: center;
 
-          min-height: 32px;
+          min-height: 30px;
 
-          padding: 0 13px;
+          padding: 0 12px;
 
           border-radius: 5px;
 
@@ -356,7 +333,7 @@ export default function StructuredAgenda() {
 
           color: #526075;
 
-          font-size: 12px;
+          font-size: 11px;
 
           font-weight: 650;
 
@@ -365,7 +342,7 @@ export default function StructuredAgenda() {
 
 
         .agenda-card h3 {
-          margin: 0 0 13px;
+          margin: 0 0 11px;
 
           color: #1c263b;
 
@@ -375,7 +352,7 @@ export default function StructuredAgenda() {
             Arial,
             sans-serif;
 
-          font-size: 21px;
+          font-size: 18px;
 
           line-height: 1.25;
 
@@ -392,7 +369,7 @@ export default function StructuredAgenda() {
 
           color: #647188;
 
-          font-size: 15px;
+          font-size: 13px;
 
           line-height: 1.5;
 
@@ -407,8 +384,7 @@ export default function StructuredAgenda() {
         .incident-section {
           width: 100%;
 
-          /* REDUCED PURPLE SECTION HEIGHT */
-          padding: 30px 42px 30px;
+          padding: 24px 42px 24px;
 
           background:
             linear-gradient(
@@ -421,22 +397,21 @@ export default function StructuredAgenda() {
 
 
         .incident-inner {
-          width: 100%;
+          width: 92%;
 
-          max-width: 1600px;
+          max-width: 1380px;
 
-          /* REDUCED CARD HEIGHT */
-          min-height: 108px;
+          min-height: 94px;
 
           margin: 0 auto;
 
-          padding: 18px 24px;
+          padding: 15px 20px;
 
           display: flex;
 
           align-items: center;
 
-          gap: 20px;
+          gap: 18px;
 
           border: 1px solid rgba(255, 255, 255, 0.13);
 
@@ -455,9 +430,9 @@ export default function StructuredAgenda() {
         ========================================= */
 
         .incident-icon {
-          width: 62px;
+          width: 48px;
 
-          height: 62px;
+          height: 48px;
 
           flex-shrink: 0;
 
@@ -476,7 +451,7 @@ export default function StructuredAgenda() {
         .incident-icon span {
           color: #c73535;
 
-          font-size: 32px;
+          font-size: 29px;
 
           line-height: 1;
 
@@ -502,11 +477,11 @@ export default function StructuredAgenda() {
 
           gap: 9px;
 
-          margin-bottom: 6px;
+          margin-bottom: 5px;
 
           color: #f3c6dc;
 
-          font-size: 12px;
+          font-size: 10px;
 
           font-weight: 800;
 
@@ -515,9 +490,9 @@ export default function StructuredAgenda() {
 
 
         .incident-dot {
-          width: 10px;
+          width: 9px;
 
-          height: 10px;
+          height: 9px;
 
           display: inline-block;
 
@@ -541,7 +516,7 @@ export default function StructuredAgenda() {
             Arial,
             sans-serif;
 
-          font-size: 20px;
+          font-size: 16px;
 
           line-height: 1.25;
 
@@ -550,11 +525,11 @@ export default function StructuredAgenda() {
 
 
         .incident-content p {
-          margin: 5px 0 0;
+          margin: 4px 0 0;
 
           color: #dca9c5;
 
-          font-size: 13px;
+          font-size: 11px;
 
           line-height: 1.4;
         }
@@ -569,11 +544,11 @@ export default function StructuredAgenda() {
 
           align-items: center;
 
-          gap: 35px;
+          gap: 25px;
 
           flex-shrink: 0;
 
-          padding-right: 5px;
+          padding-right: 2px;
         }
 
 
@@ -582,14 +557,14 @@ export default function StructuredAgenda() {
 
           align-items: center;
 
-          gap: 10px;
+          gap: 8px;
         }
 
 
         .contact-icon {
           color: #f4cade;
 
-          font-size: 24px;
+          font-size: 21px;
 
           line-height: 1;
         }
@@ -600,14 +575,14 @@ export default function StructuredAgenda() {
 
           flex-direction: column;
 
-          gap: 3px;
+          gap: 2px;
         }
 
 
         .contact-label {
           color: #f0bfd6;
 
-          font-size: 11px;
+          font-size: 10px;
 
           line-height: 1.2;
 
@@ -618,7 +593,7 @@ export default function StructuredAgenda() {
         .incident-contact strong {
           color: #ffffff;
 
-          font-size: 15px;
+          font-size: 14px;
 
           line-height: 1.2;
 
@@ -641,23 +616,24 @@ export default function StructuredAgenda() {
 
 
           .agenda-cards {
-            gap: 20px;
+            width: 92%;
+            gap: 18px;
           }
 
 
           .agenda-card {
-            min-height: 230px;
-            padding: 27px 25px;
+            min-height: 215px;
+            padding: 24px 23px;
           }
 
 
           .agenda-card h3 {
-            font-size: 19px;
+            font-size: 18px;
           }
 
 
           .agenda-card p {
-            font-size: 14px;
+            font-size: 13px;
           }
 
 
@@ -668,245 +644,13 @@ export default function StructuredAgenda() {
 
 
           .incident-inner {
-            padding: 18px;
+            width: 92%;
+            padding: 15px;
           }
 
 
           .incident-contacts {
-            gap: 20px;
-          }
-
-
-          .contact-label {
-            font-size: 10px;
-          }
-
-
-          .incident-contact strong {
-            font-size: 13px;
-          }
-        }
-
-
-        /* =========================================
-           TABLET
-        ========================================= */
-
-        @media (max-width: 950px) {
-
-          .agenda-white-section {
-            padding-top: 45px;
-            padding-bottom: 50px;
-          }
-
-
-          .agenda-heading {
-            margin-bottom: 38px;
-          }
-
-
-          .agenda-heading h2 {
-            font-size: 34px;
-          }
-
-
-          .agenda-heading p {
-            font-size: 16px;
-          }
-
-
-          .agenda-cards {
-            grid-template-columns: 1fr;
-
-            max-width: 650px;
-
             gap: 16px;
-          }
-
-
-          .agenda-card {
-            min-height: auto;
-          }
-
-
-          .incident-inner {
-            flex-wrap: wrap;
-          }
-
-
-          .incident-content {
-            flex-basis: calc(100% - 95px);
-          }
-
-
-          .incident-contacts {
-            width: 100%;
-
-            justify-content: space-between;
-
-            padding-left: 85px;
-          }
-        }
-
-
-        /* =========================================
-           MOBILE
-        ========================================= */
-
-        @media (max-width: 600px) {
-
-          .agenda-white-section {
-            padding: 40px 18px 45px;
-          }
-
-
-          .agenda-eyebrow {
-            font-size: 10px;
-
-            letter-spacing: 1.1px;
-          }
-
-
-          .agenda-heading {
-            margin-bottom: 32px;
-          }
-
-
-          .agenda-heading h2 {
-            font-size: 28px;
-
-            letter-spacing: -0.5px;
-          }
-
-
-          .agenda-heading p {
-            margin-top: 11px;
-
-            font-size: 14px;
-          }
-
-
-          .agenda-cards {
-            gap: 14px;
-          }
-
-
-          .agenda-card {
-            padding: 25px 21px;
-
-            border-radius: 13px;
-          }
-
-
-          .agenda-card-top {
-            margin-bottom: 21px;
-          }
-
-
-          .agenda-number {
-            font-size: 32px;
-          }
-
-
-          .agenda-time {
-            min-height: 30px;
-
-            padding: 0 10px;
-
-            font-size: 10px;
-          }
-
-
-          .agenda-card h3 {
-            font-size: 18px;
-
-            margin-bottom: 11px;
-          }
-
-
-          .agenda-card p {
-            font-size: 13px;
-
-            line-height: 1.5;
-          }
-
-
-          /* =====================================
-             PURPLE MOBILE
-          ===================================== */
-
-          .incident-section {
-            padding: 22px 18px 24px;
-          }
-
-
-          .incident-inner {
-            padding: 18px 16px;
-
-            gap: 14px;
-
-            align-items: flex-start;
-          }
-
-
-          .incident-icon {
-            width: 50px;
-
-            height: 50px;
-          }
-
-
-          .incident-icon span {
-            font-size: 27px;
-          }
-
-
-          .incident-content {
-            flex-basis: calc(100% - 64px);
-          }
-
-
-          .incident-label {
-            font-size: 8px;
-
-            letter-spacing: 0.9px;
-          }
-
-
-          .incident-dot {
-            width: 7px;
-
-            height: 7px;
-          }
-
-
-          .incident-content h3 {
-            font-size: 16px;
-          }
-
-
-          .incident-content p {
-            font-size: 11px;
-
-            line-height: 1.45;
-          }
-
-
-          .incident-contacts {
-            width: 100%;
-
-            padding: 8px 0 0;
-
-            flex-direction: column;
-
-            align-items: flex-start;
-
-            gap: 15px;
-          }
-
-
-          .contact-icon {
-            font-size: 20px;
           }
 
 
@@ -922,13 +666,238 @@ export default function StructuredAgenda() {
 
 
         /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+          .agenda-white-section {
+            padding-top: 45px;
+            padding-bottom: 45px;
+          }
+
+
+          .agenda-heading {
+            margin-bottom: 35px;
+          }
+
+
+          .agenda-heading h2 {
+            font-size: 34px;
+          }
+
+
+          .agenda-heading p {
+            font-size: 16px;
+          }
+
+
+          .agenda-cards {
+            width: 90%;
+            grid-template-columns: 1fr;
+            max-width: 600px;
+            gap: 14px;
+          }
+
+
+          .agenda-card {
+            min-height: auto;
+            padding: 23px 24px;
+          }
+
+
+          .incident-inner {
+            width: 90%;
+            flex-wrap: wrap;
+          }
+
+
+          .incident-content {
+            flex-basis: calc(100% - 90px);
+          }
+
+
+          .incident-contacts {
+            width: 100%;
+
+            justify-content: space-between;
+
+            padding-left: 78px;
+          }
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+          .agenda-white-section {
+            padding: 40px 18px 42px;
+          }
+
+
+          .agenda-eyebrow {
+            font-size: 10px;
+            letter-spacing: 1.1px;
+          }
+
+
+          .agenda-heading {
+            margin-bottom: 30px;
+          }
+
+
+          .agenda-heading h2 {
+            font-size: 28px;
+            letter-spacing: -0.5px;
+          }
+
+
+          .agenda-heading p {
+            margin-top: 11px;
+            font-size: 14px;
+          }
+
+
+          .agenda-cards {
+            width: 94%;
+            gap: 12px;
+          }
+
+
+          .agenda-card {
+            padding: 22px 19px;
+            border-radius: 13px;
+          }
+
+
+          .agenda-card-top {
+            margin-bottom: 19px;
+          }
+
+
+          .agenda-number {
+            font-size: 31px;
+          }
+
+
+          .agenda-time {
+            min-height: 29px;
+            padding: 0 9px;
+            font-size: 9px;
+          }
+
+
+          .agenda-card h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+          }
+
+
+          .agenda-card p {
+            font-size: 12px;
+            line-height: 1.5;
+          }
+
+
+          /* =====================================
+             PURPLE MOBILE
+          ===================================== */
+
+          .incident-section {
+            padding: 20px 18px 21px;
+          }
+
+
+          .incident-inner {
+            width: 94%;
+            padding: 16px 14px;
+
+            gap: 12px;
+
+            align-items: flex-start;
+          }
+
+
+          .incident-icon {
+            width: 47px;
+
+            height: 47px;
+          }
+
+
+          .incident-icon span {
+            font-size: 25px;
+          }
+
+
+          .incident-content {
+            flex-basis: calc(100% - 59px);
+          }
+
+
+          .incident-label {
+            font-size: 8px;
+            letter-spacing: 0.9px;
+          }
+
+
+          .incident-dot {
+            width: 7px;
+            height: 7px;
+          }
+
+
+          .incident-content h3 {
+            font-size: 15px;
+          }
+
+
+          .incident-content p {
+            font-size: 10px;
+            line-height: 1.45;
+          }
+
+
+          .incident-contacts {
+            width: 100%;
+
+            padding: 7px 0 0;
+
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            gap: 13px;
+          }
+
+
+          .contact-icon {
+            font-size: 19px;
+          }
+
+
+          .contact-label {
+            font-size: 8px;
+          }
+
+
+          .incident-contact strong {
+            font-size: 11px;
+          }
+        }
+
+
+        /* =========================================
            SMALL MOBILE
         ========================================= */
 
         @media (max-width: 420px) {
 
           .agenda-white-section {
-            padding: 35px 15px 40px;
+            padding: 35px 15px 38px;
           }
 
 
@@ -942,8 +911,13 @@ export default function StructuredAgenda() {
           }
 
 
+          .agenda-cards {
+            width: 94%;
+          }
+
+
           .agenda-card {
-            padding: 22px 18px;
+            padding: 20px 17px;
           }
 
 
@@ -953,7 +927,7 @@ export default function StructuredAgenda() {
 
 
           .agenda-number {
-            font-size: 29px;
+            font-size: 28px;
           }
 
 
@@ -968,7 +942,12 @@ export default function StructuredAgenda() {
 
 
           .agenda-card p {
-            font-size: 12px;
+            font-size: 11px;
+          }
+
+
+          .incident-inner {
+            width: 94%;
           }
 
 
@@ -978,7 +957,7 @@ export default function StructuredAgenda() {
 
 
           .incident-content p {
-            font-size: 10px;
+            font-size: 9px;
           }
         }
 
