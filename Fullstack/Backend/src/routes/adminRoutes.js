@@ -12,7 +12,8 @@ const {
 } = require("../controllers/adminController");
 const authMiddleware = require("../middlewares/auth.middleware");
 
-
+router.post("/register", registerAdmin);
+router.post("/login", loginAdmin);
 router.get("/profile", authMiddleware, getAdminProfile);
 router.get("/:id", authMiddleware, getAdminById);
 router.put("/:id", authMiddleware, updateAdmin);

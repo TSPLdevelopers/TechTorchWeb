@@ -1,17 +1,9 @@
-const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const Admin = require("../models/Admin.model");
+const mongoose = require("mongoose");
+const Admin = require("../models/admin.model");
 const asyncHandler = require("../utils/asyncHandler");
 const { generateToken } = require("../utils/generateToken");
-const { sendEmail } = require("../services/emailService.js");
 
-// ================= GENERATE OTP =================
-
-const generateOtp = () => {
-  return Math.floor(100000 + Math.random() * 900000).toString();
-};
-
-// ================= REGISTER ADMIN =================
 
 const registerAdmin = asyncHandler(async (req, res) => {
   const { name, contact, emergency, email, password } = req.body;
@@ -41,7 +33,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
     name,
     contact,
     emergency,
-    email: email.toLowerCase(),
+    email,
     password: hashedPassword,
   });
 
@@ -55,11 +47,10 @@ const registerAdmin = asyncHandler(async (req, res) => {
       emergency: savedAdmin.emergency,
       email: savedAdmin.email,
       activeStatus: savedAdmin.activeStatus,
-    },
+  
+    }, 
   });
 });
-
-// ================= LOGIN ADMIN =================
 
 const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -118,161 +109,9 @@ const loginAdmin = asyncHandler(async (req, res) => {
     },
   });
 });
+  
 
-// ================= FORGOT PASSWORD =================
 
-const forgotPassword = asyncHandler(async (req, res) => {
-  const { email } = req.body;
-
-  if (!email) {
-    return res.status(400).json({
-      success: false,
-      message: "Email is required",
-    });
-  }
-
-  const admin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found with this email",
-    });
-  }
-
-  // Generate a 6-digit OTP
-  const otp = generateOtp();
-
-  // Save OTP and expiry
-  admin.otp = otp;
-
-  admin.otpExpiry = new Date(
-    Date.now() + 10 * 60 * 1000
-  );
-
-  await admin.save();
-
-  // Send OTP to registered email
-  await sendEmail({
-    to: admin.email,
-    subject: "TechTorch Admin Password Reset",
-    text: `Your TechTorch password reset code is ${otp}. This code will expire in 10 minutes.`,
-  });
-
-  return res.status(200).json({
-    success: true,
-    message: "Reset code sent to your registered email",
-  });
-});
-
-// ================= VERIFY OTP =================
-
-const verifyOTP = asyncHandler(async (req, res) => {
-  const { email, otp } = req.body;
-
-  if (!email || !otp) {
-    return res.status(400).json({
-      success: false,
-      message: "Email and OTP are required",
-    });
-  }
-
-  const admin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found with this email",
-    });
-  }
-
-  // Check whether OTP exists
-  if (!admin.otp || !admin.otpExpiry) {
-    return res.status(400).json({
-      success: false,
-      message: "OTP not found. Please request a new OTP",
-    });
-  }
-
-  // Check OTP expiry
-  if (new Date() > admin.otpExpiry) {
-    admin.otp = null;
-    admin.otpExpiry = null;
-
-    await admin.save();
-
-    return res.status(400).json({
-      success: false,
-      message: "OTP has expired. Please request a new OTP",
-    });
-  }
-
-  // Check OTP
-  if (admin.otp !== otp.toString()) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid OTP",
-    });
-  }
-
-  // OTP verified successfully
-  admin.otp = null;
-  admin.otpExpiry = null;
-
-  await admin.save();
-
-  return res.status(200).json({
-    success: true,
-    message: "OTP verified successfully",
-  });
-});
-// ================= RESET PASSWORD =================
-
-const resetPassword = asyncHandler(async (req, res) => {
-  const { email, newPassword } = req.body;
-
-  if (!email || !newPassword) {
-    return res.status(400).json({
-      success: false,
-      message: "Email and new password are required",
-    });
-  }
-
-  if (newPassword.length < 6) {
-    return res.status(400).json({
-      success: false,
-      message: "Password must be at least 6 characters",
-    });
-  }
-
-  const admin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
-  }
-
-  const salt = await bcrypt.genSalt(10);
-
-  admin.password = await bcrypt.hash(newPassword, salt);
-
-  await admin.save();
-
-  return res.status(200).json({
-    success: true,
-    message: "Password reset successfully",
-  });
-});
-
-// ================= ADMIN PROFILE =================
 
 const getAdminProfile = asyncHandler(async (req, res) => {
   return res.status(200).json({
@@ -281,7 +120,6 @@ const getAdminProfile = asyncHandler(async (req, res) => {
   });
 });
 
-// ================= GET ADMIN BY ID =================
 
 const getAdminById = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -307,9 +145,6 @@ const getAdminById = asyncHandler(async (req, res) => {
     data: admin,
   });
 });
-
-// ================= UPDATE ADMIN =================
-
 const updateAdmin = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
@@ -348,7 +183,7 @@ const updateAdmin = asyncHandler(async (req, res) => {
   });
 });
 
-// ================= UPDATE ADMIN PASSWORD =================
+
 
 const updateAdminPassword = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -390,7 +225,7 @@ const updateAdminPassword = asyncHandler(async (req, res) => {
   });
 });
 
-// ================= TOGGLE ADMIN STATUS =================
+
 
 const toggleAdminStatus = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -421,7 +256,7 @@ const toggleAdminStatus = asyncHandler(async (req, res) => {
   });
 });
 
-// ================= DELETE ADMIN =================
+
 
 const deleteAdmin = asyncHandler(async (req, res) => {
   const { id } = req.params;
@@ -447,9 +282,6 @@ const deleteAdmin = asyncHandler(async (req, res) => {
     message: "Admin deleted successfully",
   });
 });
-
-// ================= LOGOUT ADMIN =================
-
 const logoutAdmin = asyncHandler(async (req, res) => {
   res.clearCookie("token");
 
@@ -459,14 +291,15 @@ const logoutAdmin = asyncHandler(async (req, res) => {
   });
 });
 
-// ================= EXPORTS =================
 
 module.exports = {
   registerAdmin,
   loginAdmin,
-  forgotPassword,
-  verifyOTP,
-  resetPassword,
-  logoutAdmin,
+  logoutAdmin,  
+  getAdminProfile,
+  getAdminById,
+  updateAdmin,
+  updateAdminPassword,
+  toggleAdminStatus,
+  deleteAdmin,
 };
-
