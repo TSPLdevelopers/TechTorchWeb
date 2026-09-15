@@ -188,10 +188,31 @@ import RequirementReality from "./pages/Capabilities/DigitalSolution/Requirement
 // =================== OUR SERVICE ================
 
 import OurServiceHero from "./pages/Capabilities/OurService/OurServiceHero.jsx";
-import StrategicPerspective from "./pages/Capabilities/OurService/StrategicPerspective.jsx"
-import PortfolioArchitecture from "./pages/Capabilities/OurService/PortfolioArchitecture.jsx"
-import DeliveryBlueprint from "./pages/Capabilities/OurService/DeliveryBlueprint.jsx"
-import TechnologyRoadmap from "./pages/Capabilities/OurService/TechnologyRoadmap.jsx"
+import StrategicPerspective from "./pages/Capabilities/OurService/StrategicPerspective.jsx";
+import PortfolioArchitecture from "./pages/Capabilities/OurService/PortfolioArchitecture.jsx";
+import DeliveryBlueprint from "./pages/Capabilities/OurService/DeliveryBlueprint.jsx";
+import TechnologyRoadmap from "./pages/Capabilities/OurService/TechnologyRoadmap.jsx";
+
+// =================== ARTIFICIAL INTELLIGENT ================
+
+import AiService from "./pages/Capabilities/Ai/AiService.jsx";
+import AiStrategic from "./pages/Capabilities/Ai/AiStrategic.jsx";
+import AiAdvantage from "./pages/Capabilities/Ai/AiAdvantage.jsx";
+import AiEcosystem from "./pages/Capabilities/Ai/AiEcosystem.jsx";
+import AiEcosystemIntegration from "./pages/Capabilities/Ai/AiEcosystemIntegration.jsx";
+import AiOperational from "./pages/Capabilities/ItAugmentation/ItWorkforceVelocity.jsx";
+
+
+// =================== IT AUGMENTATIONAL ================
+
+import ItWorkforceVelocity from "./pages/Capabilities/ItAugmentation/ItWorkforceVelocity.jsx";
+import ItStrategicperspective from "./pages/Capabilities/ItAugmentation/ItStrategicperspective.jsx";
+import ItFlexibleEngagement from "./pages/Capabilities/ItAugmentation/ItFlexibleEngagement.jsx";
+import ItOperational from "./pages/Capabilities/ItAugmentation/ItOperational.jsx";
+
+
+
+
 
 // =================================================
 // COMMON LAYOUT
@@ -199,6 +220,9 @@ import TechnologyRoadmap from "./pages/Capabilities/OurService/TechnologyRoadmap
 function MainLayout() {
   return (
     <>
+
+     
+
       <Navbar />
 
       <main>
@@ -502,6 +526,28 @@ function OurServiceSection(){
     </>
   )
 }
+function ArtificialIntelligent(){
+  return(
+    <>
+    <AiService />
+    <AiStrategic />
+    <AiAdvantage />
+    <AiEcosystem />
+    <AiEcosystemIntegration />
+    <AiOperational />
+    </>
+  )
+}
+function ItAugmentational(){
+  return(
+    <>
+    <ItWorkforceVelocity />
+    <ItStrategicperspective />
+    <ItFlexibleEngagement />
+    <ItOperational />
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -620,6 +666,8 @@ function App() {
       <Route path="/platform" element={<Platform />} />
       <Route path="/digitalsolution" element={<CapabilitiesDigitalSolution />} />
       <Route path="/OurService" element={<OurServiceSection />} />
+      <Route path="/ArtificialIntelligent" element={<ArtificialIntelligent />} />
+      <Route path="/ItAugmentation" element={<ItAugmentational />} />
     </Routes>
   );
 }

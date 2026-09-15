@@ -25,12 +25,12 @@ const CARDS = [
   {
     title: "IT Augmentation Service",
     img: "/card5.png",
-    href: "/it-augmentation",
+    href: "/ItAugmentation",
   },
   {
     title: "Artificial Intelligent",
     img: "/card6.png",
-    href: "/artificial-intelligence",
+    href: "/ArtificialIntelligent",
   },
 ];
 

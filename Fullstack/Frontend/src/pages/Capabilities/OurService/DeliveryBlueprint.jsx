@@ -1,6 +1,6 @@
 import React from "react";
 
-const PINK = "#a3134f";
+const BRAND_COLOR = "#730024";
 
 const steps = [
   {
@@ -27,111 +27,247 @@ const steps = [
 
 export default function TechTorchDeliveryBlueprint() {
   return (
-    <div
-      style={{
-        width: "100%",
-        background: "#fff",
-        display: "flex",
-        justifyContent: "center",
-        padding: "72px 24px",
-      }}
-    >
-      <div style={{ maxWidth: 1024, width: "100%", textAlign: "center" }}>
-        <span
-          style={{
-            display: "block",
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: 1,
-            color: PINK,
-            marginBottom: 14,
-          }}
-        >
-          Our Delivery Blueprint
-        </span>
+    <section className="w-full bg-white">
+      <div
+        className="
+          mx-auto
+          w-full
+          max-w-6xl
+          px-4
+          py-10
+          sm:px-6
+          sm:py-12
+          md:px-8
+          md:py-16
+          lg:px-10
+          lg:py-20
+        "
+      >
+        {/* =================================================
+            HEADER
+        ================================================= */}
 
-        <h2
-          style={{
-            fontSize: 34,
-            fontWeight: 700,
-            color: "#171717",
-            marginBottom: 16,
-          }}
-        >
-          How We Work Together
-        </h2>
+        <div className="mx-auto mb-8 max-w-2xl text-center sm:mb-10 md:mb-12">
+          {/* Label */}
+          <div className="mb-3 flex items-center justify-center gap-2 sm:mb-4">
+            <span
+              className="h-px w-6 sm:w-8"
+              style={{ backgroundColor: BRAND_COLOR }}
+            />
 
-        <p
-          style={{
-            fontSize: 15,
-            lineHeight: 1.7,
-            color: "#737373",
-            maxWidth: 560,
-            margin: "0 auto 48px",
-          }}
-        >
-          A disciplined, human-driven framework ensuring every technical
-          deployment solves genuine business needs.
-        </p>
+            <span
+              className="
+                font-['Inter']
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.12em]
+                sm:text-[10px]
+                md:text-[11px]
+              "
+              style={{ color: BRAND_COLOR }}
+            >
+              Our Delivery Blueprint
+            </span>
+
+            <span
+              className="h-px w-6 sm:w-8"
+              style={{ backgroundColor: BRAND_COLOR }}
+            />
+          </div>
+
+          {/* Heading */}
+          <h2
+            className="
+              mb-3
+              font-['Plus_Jakarta_Sans']
+              text-[24px]
+              font-bold
+              leading-[1.2]
+              tracking-[-0.025em]
+              text-neutral-900
+              sm:text-[28px]
+              md:text-[32px]
+              lg:text-[35px]
+            "
+          >
+            How We Work Together
+          </h2>
+
+          {/* Subheading */}
+          <p
+            className="
+              mx-auto
+              max-w-xl
+              font-['Plus_Jakarta_Sans']
+              text-[11px]
+              font-medium
+              leading-[1.65]
+              text-neutral-500
+              sm:text-[12px]
+              md:text-[13px]
+              lg:text-[14px]
+            "
+          >
+            A disciplined, human-driven framework ensuring every technical
+            deployment solves genuine business needs.
+          </p>
+        </div>
+
+        {/* =================================================
+            STEPS
+        ================================================= */}
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 20,
-          }}
+          className="
+            grid
+            grid-cols-1
+            gap-4
+            sm:grid-cols-2
+            sm:gap-5
+            lg:grid-cols-4
+            lg:gap-5
+          "
         >
-          {steps.map((s) => (
+          {steps.map((step, index) => (
             <div
-              key={s.num}
-              style={{
-                background: "#f7f7f8",
-                borderRadius: 12,
-                padding: 24,
-                textAlign: "left",
-              }}
+              key={step.num}
+              className="
+                group
+                relative
+                flex
+                min-h-[225px]
+                flex-col
+                overflow-hidden
+                rounded-xl
+                border
+                border-neutral-200
+                bg-white
+                p-5
+                shadow-[0_4px_20px_rgba(0,0,0,0.04)]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-[0_10px_30px_rgba(115,0,36,0.10)]
+                sm:min-h-[240px]
+                sm:p-6
+              "
             >
-              <span
+              {/* Top Accent */}
+              <div
+                className="
+                  absolute
+                  left-0
+                  top-0
+                  h-1
+                  w-full
+                  opacity-0
+                  transition-opacity
+                  duration-300
+                  group-hover:opacity-100
+                "
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 34,
-                  height: 34,
-                  borderRadius: 8,
-                  background: PINK,
-                  color: "#fff",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  marginBottom: 18,
+                  backgroundColor: BRAND_COLOR,
                 }}
-              >
-                {s.num}
-              </span>
+              />
+
+              {/* Number */}
+              <div className="mb-5 flex items-center justify-between">
+                <span
+                  className="
+                    flex
+                    h-9
+                    w-9
+                    items-center
+                    justify-center
+                    rounded-lg
+                    font-['Inter']
+                    text-[11px]
+                    font-bold
+                    text-white
+                    sm:h-10
+                    sm:w-10
+                    sm:text-xs
+                  "
+                  style={{
+                    backgroundColor: BRAND_COLOR,
+                  }}
+                >
+                  {step.num}
+                </span>
+
+                {/* Step indicator */}
+                <span
+                  className="
+                    font-['Inter']
+                    text-[9px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.12em]
+                    text-neutral-300
+                    sm:text-[10px]
+                  "
+                >
+                  Step {index + 1}
+                </span>
+              </div>
+
+              {/* Title */}
               <h3
-                style={{
-                  fontSize: 15,
-                  fontWeight: 700,
-                  color: "#171717",
-                  marginBottom: 10,
-                  lineHeight: 1.35,
-                }}
+                className="
+                  mb-3
+                  font-['Plus_Jakarta_Sans']
+                  text-[15px]
+                  font-bold
+                  leading-[1.4]
+                  text-neutral-900
+                  sm:text-[16px]
+                "
               >
-                {s.title}
+                {step.title}
               </h3>
+
+              {/* Description */}
               <p
-                style={{
-                  fontSize: 12.5,
-                  lineHeight: 1.6,
-                  color: "#8a8a8a",
-                }}
+                className="
+                  flex-1
+                  font-['Inter']
+                  text-[11px]
+                  leading-[1.7]
+                  text-neutral-500
+                  sm:text-[12px]
+                  md:text-[12.5px]
+                "
               >
-                {s.desc}
+                {step.desc}
               </p>
+
+              {/* Bottom Line */}
+              <div className="mt-5 flex items-center gap-2">
+                <span
+                  className="h-px w-8 transition-all duration-300 group-hover:w-12"
+                  style={{
+                    backgroundColor: BRAND_COLOR,
+                  }}
+                />
+
+                <span
+                  className="
+                    font-['Inter']
+                    text-[8px]
+                    font-medium
+                    uppercase
+                    tracking-[0.1em]
+                    text-neutral-400
+                  "
+                >
+                  TechTorch Framework
+                </span>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

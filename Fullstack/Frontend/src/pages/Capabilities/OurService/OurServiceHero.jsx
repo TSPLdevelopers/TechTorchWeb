@@ -9,27 +9,89 @@ const stats = [
 
 export default function TechTorchHero() {
   return (
-    <div
-      className="min-h-screen w-full flex items-center justify-center px-6 py-16 relative overflow-hidden"
+    <section
+      className="
+        relative flex w-full items-center justify-center
+        overflow-hidden
+        px-4 py-10
+        sm:px-6 sm:py-12
+        md:px-8 md:py-14
+        lg:px-10 lg:py-16
+      "
       style={{
         background:
           "radial-gradient(circle at 15% 20%, rgba(230,57,128,0.18), transparent 45%), radial-gradient(circle at 85% 15%, rgba(196,28,110,0.15), transparent 40%), linear-gradient(160deg, #3a0d2c 0%, #5c1240 45%, #2a0a20 100%)",
       }}
     >
-      <div className="max-w-3xl w-full text-center relative z-10">
-        <span className="inline-flex items-center gap-2 text-xs tracking-wide text-white/70 bg-white/[0.07] border border-white/10 px-4 py-1.5 rounded-full mb-7">
+      {/* Main Content */}
+      <div
+        className="
+          relative z-10 w-full max-w-4xl
+          text-center
+        "
+      >
+        {/* Badge */}
+        <div className="mb-5 flex justify-center sm:mb-6">
           <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ backgroundColor: "#e63980" }}
-          />
-          Our Services
-        </span>
+            className="
+              inline-flex items-center gap-2
+              rounded-full
+              border border-white/10
+              bg-white/[0.07]
+              px-3 py-1.5
+              font-['Inter']
+              text-[9px] font-semibold
+              tracking-[0.08em]
+              text-white/70
+              sm:px-4 sm:py-1.5
+              sm:text-[10px]
+              md:text-[11px]
+            "
+          >
+            <span
+              className="h-1.5 w-1.5 rounded-full"
+              style={{ backgroundColor: "#e63980" }}
+            />
 
-        <h1 className="text-4xl sm:text-5xl font-bold leading-tight tracking-tight text-white mb-6">
+            Our Services
+          </span>
+        </div>
+
+        {/* Heading */}
+        <h1
+          className="
+            mx-auto mb-4
+            max-w-3xl
+            font-['Plus_Jakarta_Sans']
+            text-[26px]
+            font-bold
+            leading-[1.15]
+            tracking-[-0.025em]
+            text-white
+            sm:mb-5
+            sm:text-[32px]
+            md:text-[38px]
+            lg:text-[42px]
+          "
+        >
           Technology Solutions Built Around Your Business
         </h1>
 
-        <p className="text-base leading-relaxed text-white/70 max-w-xl mx-auto mb-9">
+        {/* Sub Heading / Description */}
+        <p
+          className="
+            mx-auto mb-6
+            max-w-2xl
+            font-['Inter']
+            text-[11.5px]
+            leading-[1.65]
+            text-white/70
+            sm:mb-7
+            sm:text-[13px]
+            md:text-[14px]
+            lg:text-[15px]
+          "
+        >
           At TechTorch, we help businesses solve real technology challenges
           with practical, scalable and secure solutions. From IT consulting
           and software development to cloud infrastructure, cybersecurity, AI
@@ -37,14 +99,33 @@ export default function TechTorchHero() {
           business work better and grow with confidence.
         </p>
 
+        {/* CTA Button */}
         <button
-          className="inline-flex items-center gap-2.5 text-white font-semibold text-sm px-7 py-3.5 rounded-lg mb-14 transition-transform hover:-translate-y-0.5"
+          className="
+            mb-8
+            inline-flex items-center justify-center
+            gap-2
+            rounded-lg
+            px-5 py-2.5
+            font-['Inter']
+            text-[11px]
+            font-semibold
+            text-white
+            transition-all duration-300
+            hover:-translate-y-0.5
+            sm:mb-9
+            sm:px-6 sm:py-3
+            sm:text-[12px]
+            md:px-7 md:py-3.5
+            md:text-[13px]
+          "
           style={{
             background: "linear-gradient(135deg, #e63980, #c41c6e)",
             boxShadow: "0 8px 24px rgba(196,28,110,0.35)",
           }}
         >
           Talk to Our Experts
+
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -52,29 +133,93 @@ export default function TechTorchHero() {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-3.5 h-3.5"
+            className="h-3 w-3 sm:h-3.5 sm:w-3.5"
           >
-            <polyline points="6 9 12 15 18 9"></polyline>
+            <polyline points="6 9 12 15 18 9" />
           </svg>
         </button>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8" />
+        {/* Divider */}
+        <div
+          className="
+            mb-5
+            h-px
+            bg-gradient-to-r
+            from-transparent
+            via-white/10
+            to-transparent
+            sm:mb-6
+          "
+        />
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {/* Stats */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-2.5
+            sm:grid-cols-2
+            sm:gap-3
+            lg:grid-cols-4
+          "
+        >
           {stats.map((s) => (
             <div
               key={s.num}
-              className="flex items-center gap-3 text-left bg-white/[0.06] border border-white/10 rounded-lg px-4 py-4"
+              className="
+                flex items-center
+                gap-3
+                rounded-lg
+                border border-white/10
+                bg-white/[0.06]
+                px-3.5 py-3
+                text-left
+                backdrop-blur-sm
+                transition-all duration-300
+                hover:bg-white/[0.09]
+                sm:px-4 sm:py-3.5
+              "
             >
+              {/* Number */}
               <span
-                className="text-xl font-bold shrink-0"
+                className="
+                  shrink-0
+                  font-['Inter']
+                  text-lg
+                  font-bold
+                  sm:text-xl
+                "
                 style={{ color: "#e63980" }}
               >
                 {s.num}
               </span>
-              <span className="text-[10px] leading-relaxed tracking-wide text-white/70">
+
+              {/* Text */}
+              <span
+                className="
+                  font-['Inter']
+                  text-[9px]
+                  leading-relaxed
+                  tracking-wide
+                  text-white/65
+                  sm:text-[10px]
+                "
+              >
                 {s.label}
-                <strong className="block text-[13px] text-white font-semibold">
+
+                <strong
+                  className="
+                    mt-0.5
+                    block
+                    font-['Inter']
+                    text-[11px]
+                    font-semibold
+                    leading-snug
+                    text-white
+                    sm:text-[12px]
+                    md:text-[13px]
+                  "
+                >
                   {s.title}
                 </strong>
               </span>
@@ -82,6 +227,6 @@ export default function TechTorchHero() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
