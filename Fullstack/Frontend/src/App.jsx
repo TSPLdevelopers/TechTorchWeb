@@ -10,7 +10,7 @@ import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
 import AdminVerifyOTP from "./pages/AdminVerifyOTP.jsx";
 import AdminResetPassword from "./pages/AdminResetPassword.jsx";
 
-import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard.jsx";
 import NewsInsights from "./pages/News&Inshights.jsx";
 import JobOpenings from "./pages/JobOpenings.jsx";
 import Events from "./pages/Events.jsx";
