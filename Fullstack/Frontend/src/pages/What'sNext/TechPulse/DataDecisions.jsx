@@ -210,7 +210,7 @@ export default function DataDecisions() {
           max-width: 850px;
           margin: 0 0 12px;
           color: rgba(235, 240, 248, 0.82);
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.5;
           font-weight: 400;
         }
@@ -230,7 +230,7 @@ export default function DataDecisions() {
           padding: 10px 21px;
           border-radius: 6px;
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 700;
           text-decoration: none;
           cursor: pointer;

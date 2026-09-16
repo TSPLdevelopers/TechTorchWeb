@@ -115,6 +115,22 @@ import EditorialReflection from "./pages/What'sNext/CyberSecurity/EditorialRefle
 import OurApproach from "./pages/What'sNext/CyberSecurity/OurApproach.jsx";
 import WhyTechtorch from "./pages/What'sNext/CyberSecurity/WhyTechtorch.jsx";
 
+// ================= SECURE BUSINESS =================
+import SecurityInitiative  from "./pages/What'sNext/CyberSecurity/SecureBusiness/SecurityInitiative.jsx";
+import ProtocolDelivery from "./pages/What'sNext/CyberSecurity/SecureBusiness/ProtocolDelivery.jsx";
+import SelectionEngine from "./pages/What'sNext/CyberSecurity/SecureBusiness/SelectionEngine.jsx";
+import AdvisoryFramework from "./pages/What'sNext/CyberSecurity/SecureBusiness/AdvisoryFramework.jsx";
+
+
+import ViewEngagementProtocol  from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/ViewEngagementProtocol.jsx";
+import AcceptProceed  from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/AcceptProceed.jsx";
+import ExportProtocolPackage from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/ExportProtocolPackage.jsx";
+
+
+import AdvisoryDesk from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/AdvisoryDesk";
+import DispatchConsole from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/DispatchConsole.jsx";
+import TimeboxProtocol from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/TimeboxProtocol.jsx";
+
 // ================= BUSINESS GROWTH =================
 import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTechnology.jsx";
 import PurspectiveSection from "./pages/What'sNext/BusinessGrowth/PurspectiveSection.jsx";
@@ -136,6 +152,8 @@ import OperationalImpact from "./pages/What'sNext/TechPulse/OperationalImpact.js
 import Automation from "./pages/What'sNext/TechPulse/Automation.jsx";
 import CrossFunctional from "./pages/What'sNext/TechPulse/CrossFunctional.jsx";
 import Discipline from "./pages/What'sNext/TechPulse/Discipline.jsx";
+import ExecutiveStrategy from "./pages/What'sNext/TechPulse/ExecutiveStrategy.jsx";
+
 
 // ================= DIGITAL SOLUTIONS =================
 
@@ -433,6 +451,27 @@ function CyberSecurityPage() {
     </>
   );
 }
+
+function SecureBusinessPage() {
+  return (
+    <>
+    <SecurityInitiative />
+    <ProtocolDelivery />
+    <SelectionEngine />
+    <AdvisoryFramework/>
+    </>
+  );
+}
+
+function ScheduleAdvisoryPage() {
+  return (
+    <>
+    <AdvisoryDesk />
+    <DispatchConsole />
+    <TimeboxProtocol />
+    </>
+  )
+}
 function BusinessGrowthPage() {
   return (
     <>
@@ -453,14 +492,17 @@ function BusinessGrowthPage() {
 function TechPulsePage() {
   return (
     <>
-      <DataDecisions />
-      <PerspectiveAnalysis />
-      <StrategicInquiry />
-      <StructuredMethodology />
-      <OperationalImpact />
-      <Automation />
-      <CrossFunctional />
-      <Discipline />
+
+    <DataDecisions />
+    <PerspectiveAnalysis />
+    <StrategicInquiry />
+    <StructuredMethodology />
+    <OperationalImpact />
+    <Automation />
+    <CrossFunctional />
+    <Discipline />
+    <ExecutiveStrategy />
+
     </>
   );
 }
@@ -495,7 +537,6 @@ function CapabilitiesDigitalSolution() {
       <ConnectedBusiness />
       <TechTorchTechnology />
       <RequirementReality />
-      
       </>
   );
 }
@@ -659,6 +700,29 @@ function App() {
         <Route
           path="/cyber-security"
           element={<CyberSecurityPage />}
+        />
+
+        <Route
+          path="/secure-business"
+          element={<SecureBusinessPage />}
+        />
+        <Route
+          path="/schedule-advisory"
+          element={<ScheduleAdvisoryPage/>}
+        />
+        <Route
+          path="/engagement-protocol"
+          element={<ViewEngagementProtocol />}
+        />
+
+         <Route
+          path="/accept-proceed"
+          element={<AcceptProceed />}
+        />
+
+        <Route
+          path="/export-protocol"
+          element={<ExportProtocolPackage />}
         />
 
         <Route
