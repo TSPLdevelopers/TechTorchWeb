@@ -193,6 +193,12 @@ import ItFlexibleEngagement from "./pages/Capabilities/ItAugmentation/ItFlexible
 import ItOperational from "./pages/Capabilities/ItAugmentation/ItOperational.jsx";
 
 
+import ContractToHireHero from "./pages/Capabilities/ItAugmentation/ContractToHire/ContractToHireHero.jsx";
+
+import DdHero from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdHero.jsx";
+import DdOverview from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdOverview.jsx";
+import DdStrenghten from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdStrenghten.jsx";
+
 
 
 
@@ -507,6 +513,20 @@ function ItAugmentational(){
     </>
   )
 }
+function ContractToHire(){
+  <>
+  <ContractToHireHero />
+  </>
+}
+function DedicatedDevelopment(){
+  return(
+    <>
+    <DdHero />
+    <DdOverview />
+    <DdStrenghten />
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -604,6 +624,8 @@ function App() {
       <Route path="/OurService" element={<OurServiceSection />} />
       <Route path="/ArtificialIntelligent" element={<ArtificialIntelligent />} />
       <Route path="/ItAugmentation" element={<ItAugmentational />} />
+      <Route path="/contract-to-hire" element={<ContractToHire />} />
+      <Route path="/Dedicated-Development-Teams" element={<DedicatedDevelopment />} />
     </Routes>
   );
 }
