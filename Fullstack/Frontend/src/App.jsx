@@ -207,7 +207,9 @@ import DdOverview from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment
 import DdStrenghten from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdStrenghten.jsx";
 
 // ================ REMOTE ENGINEER =====================
-
+import ReHero from "./pages/Capabilities/ItAugmentation/RemoteEngineer/ReHero.jsx";
+import CapabilityOverview from "./pages/Capabilities/ItAugmentation/RemoteEngineer/CapabilityOverview.jsx";
+import ReStrengthen from "./pages/Capabilities/ItAugmentation/RemoteEngineer/ReStrengthen.jsx";
 
 // =================================================
 // COMMON LAYOUT
@@ -547,6 +549,15 @@ function DedicatedDevelopment(){
     </>
   )
 }
+function RemoteEngineers(){
+  return(
+    <>
+    <ReHero />
+    <CapabilityOverview />
+    <ReStrengthen />
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -647,6 +658,7 @@ function App() {
       <Route path="/Contract-Staffing" element={<ContractStaffing />} />
       <Route path="/contract-to-hire" element={<ContractToHire />} />
       <Route path="/Dedicated-Development-Teams" element={<DedicatedDevelopment />} />
+      <Route path="/remote-engineers" element={<RemoteEngineers />} />
     </Routes>
   );
 }

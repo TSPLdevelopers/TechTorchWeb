@@ -39,7 +39,7 @@ const cards = [
     description:
       "Remote engineering resources that can work alongside your existing technology team.",
     linkLabel: "Timezone aligned",
-    path: "/staffing/remote-engineers",
+    path: "remote-engineers",
   },
   {
     number: "05",
