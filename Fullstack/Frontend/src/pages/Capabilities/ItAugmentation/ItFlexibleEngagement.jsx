@@ -75,7 +75,7 @@ const cards = [
     description:
       "Technology resource support through a flexible vendor partnership model.",
     linkLabel: "Strategic SLA framework",
-    path: "/staffing/vendor-partnership",
+    path: "/vendor-partnership",
   },
   {
     number: "09",
@@ -84,7 +84,7 @@ const cards = [
     description:
       "Managed support for technology workforce and resource requirements.",
     linkLabel: "Workforce governance",
-    path: "/staffing/msp-support",
+    path: "/msp-support",
   },
 ];
 
