@@ -66,7 +66,7 @@ const cards = [
     description:
       "Access to available IT professionals for immediate or upcoming technology requirements.",
     linkLabel: "Deploy within 48 hours",
-    path: "/staffing/bench-hiring",
+    path: "/bench-hiring",
   },
   {
     number: "08",

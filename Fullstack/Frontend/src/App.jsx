@@ -238,6 +238,7 @@ import PbhProjectForward from "./pages/Capabilities/ItAugmentation/ProjectBasedH
 
 
 import RrMain from "./pages/Capabilities/ItAugmentation/ResourceReplacement/RrMain.jsx";
+import BhMain from "./pages/Capabilities/ItAugmentation/BenchHiring/BhMain.jsx";
 
 
 // =================================================
@@ -627,6 +628,13 @@ function ResourceReplacement(){
     </>
   )
 }
+function BenchHiring(){
+  return(
+    <>
+    <BhMain />
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -753,6 +761,7 @@ function App() {
       <Route path="/remote-engineers" element={<RemoteEngineers />} />
       <Route path="/project-based-hiring" element={<ProjectBasedHiring />} />
       <Route path="/resource-replacement" element={<ResourceReplacement />} />
+      <Route path="/bench-hiring" element={<BenchHiring />} />
     </Routes>
   );
 }
