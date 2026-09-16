@@ -211,6 +211,17 @@ import ReHero from "./pages/Capabilities/ItAugmentation/RemoteEngineer/ReHero.js
 import CapabilityOverview from "./pages/Capabilities/ItAugmentation/RemoteEngineer/CapabilityOverview.jsx";
 import ReStrengthen from "./pages/Capabilities/ItAugmentation/RemoteEngineer/ReStrengthen.jsx";
 
+// ================ PROJECT BASED HIRING ============
+
+import PbhHero from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhHero.jsx";
+import PbhExecutive from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhExecutive.jsx";
+import PbhSpecialized from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhSpecialized.jsx";
+import PbhProjectForward from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhProjectForward.jsx";
+
+
+import RrMain from "./pages/Capabilities/ItAugmentation/ResourceReplacement/RrMain.jsx";
+
+
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -558,6 +569,23 @@ function RemoteEngineers(){
     </>
   )
 }
+function ProjectBasedHiring(){
+  return(
+    <>
+    <PbhHero />
+    <PbhExecutive />
+    <PbhSpecialized />
+    <PbhProjectForward />
+    </>
+  )
+}
+function ResourceReplacement(){
+  return(
+    <>
+    <RrMain />
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -659,6 +687,8 @@ function App() {
       <Route path="/contract-to-hire" element={<ContractToHire />} />
       <Route path="/Dedicated-Development-Teams" element={<DedicatedDevelopment />} />
       <Route path="/remote-engineers" element={<RemoteEngineers />} />
+      <Route path="/project-based-hiring" element={<ProjectBasedHiring />} />
+      <Route path="/resource-replacement" element={<ResourceReplacement />} />
     </Routes>
   );
 }

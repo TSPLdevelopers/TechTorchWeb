@@ -39,7 +39,7 @@ const cards = [
     description:
       "Remote engineering resources that can work alongside your existing technology team.",
     linkLabel: "Timezone aligned",
-    path: "remote-engineers",
+    path: "/remote-engineers",
   },
   {
     number: "05",
@@ -48,7 +48,7 @@ const cards = [
     description:
       "Technology professionals selected to support specific projects and delivery requirements.",
     linkLabel: "Targeted objectives",
-    path: "/staffing/project-based-hiring",
+    path: "/project-based-hiring",
   },
   {
     number: "06",
@@ -57,7 +57,7 @@ const cards = [
     description:
       "Flexible support when an existing technology resource needs to be replaced.",
     linkLabel: "Zero productivity loss",
-    path: "/staffing/resource-replacement",
+    path: "/resource-replacement",
   },
   {
     number: "07",
