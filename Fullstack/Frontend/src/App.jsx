@@ -191,15 +191,22 @@ import ItWorkforceVelocity from "./pages/Capabilities/ItAugmentation/ItWorkforce
 import ItStrategicperspective from "./pages/Capabilities/ItAugmentation/ItStrategicperspective.jsx";
 import ItFlexibleEngagement from "./pages/Capabilities/ItAugmentation/ItFlexibleEngagement.jsx";
 import ItOperational from "./pages/Capabilities/ItAugmentation/ItOperational.jsx";
+// ================== CONTRACT STAFFING ==================
+import Contracthero from "./pages/Capabilities/ItAugmentation/ContractStaffing/Contracthero.jsx";
+import CapabilityAnalysis from "./pages/Capabilities/ItAugmentation/ContractStaffing/CapabilityAnalysis.jsx";
+import Pipeline from "./pages/Capabilities/ItAugmentation/ContractStaffing/Pipeline.jsx";
 
-
+// ================== CONTRACT TO HIRE ====================
 import ContractToHireHero from "./pages/Capabilities/ItAugmentation/ContractToHire/ContractToHireHero.jsx";
+import CthFramework from "./pages/Capabilities/ItAugmentation/ContractToHire/CthFramework.jsx";
+import BuildConfidence from "./pages/Capabilities/ItAugmentation/ContractToHire/BuildConfidence.jsx";
 
+// ================== DEDICATED DEVELOPMENT ==================
 import DdHero from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdHero.jsx";
 import DdOverview from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdOverview.jsx";
 import DdStrenghten from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdStrenghten.jsx";
 
-
+// ================ REMOTE ENGINEER =====================
 
 
 // =================================================
@@ -513,10 +520,23 @@ function ItAugmentational(){
     </>
   )
 }
+function ContractStaffing(){
+  return(
+    <>
+    <Contracthero />
+    <CapabilityAnalysis />
+    <Pipeline />
+    </>
+  )
+}
 function ContractToHire(){
+  return(
   <>
   <ContractToHireHero />
+  <CthFramework />
+  <BuildConfidence />
   </>
+  )
 }
 function DedicatedDevelopment(){
   return(
@@ -624,6 +644,7 @@ function App() {
       <Route path="/OurService" element={<OurServiceSection />} />
       <Route path="/ArtificialIntelligent" element={<ArtificialIntelligent />} />
       <Route path="/ItAugmentation" element={<ItAugmentational />} />
+      <Route path="/Contract-Staffing" element={<ContractStaffing />} />
       <Route path="/contract-to-hire" element={<ContractToHire />} />
       <Route path="/Dedicated-Development-Teams" element={<DedicatedDevelopment />} />
     </Routes>

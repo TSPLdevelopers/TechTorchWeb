@@ -12,7 +12,7 @@ const cards = [
     description:
       "Flexible technology resources for short-term or ongoing project requirements.",
     linkLabel: "Agile team injection",
-    path: "/Agile-team-injection",
+    path: "/Contract-Staffing",
   },
   {
     number: "02",
