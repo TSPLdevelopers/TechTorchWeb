@@ -209,9 +209,35 @@ import ItWorkforceVelocity from "./pages/Capabilities/ItAugmentation/ItWorkforce
 import ItStrategicperspective from "./pages/Capabilities/ItAugmentation/ItStrategicperspective.jsx";
 import ItFlexibleEngagement from "./pages/Capabilities/ItAugmentation/ItFlexibleEngagement.jsx";
 import ItOperational from "./pages/Capabilities/ItAugmentation/ItOperational.jsx";
+// ================== CONTRACT STAFFING ==================
+import Contracthero from "./pages/Capabilities/ItAugmentation/ContractStaffing/Contracthero.jsx";
+import CapabilityAnalysis from "./pages/Capabilities/ItAugmentation/ContractStaffing/CapabilityAnalysis.jsx";
+import Pipeline from "./pages/Capabilities/ItAugmentation/ContractStaffing/Pipeline.jsx";
+
+// ================== CONTRACT TO HIRE ====================
+import ContractToHireHero from "./pages/Capabilities/ItAugmentation/ContractToHire/ContractToHireHero.jsx";
+import CthFramework from "./pages/Capabilities/ItAugmentation/ContractToHire/CthFramework.jsx";
+import BuildConfidence from "./pages/Capabilities/ItAugmentation/ContractToHire/BuildConfidence.jsx";
+
+// ================== DEDICATED DEVELOPMENT ==================
+import DdHero from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdHero.jsx";
+import DdOverview from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdOverview.jsx";
+import DdStrenghten from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdStrenghten.jsx";
+
+// ================ REMOTE ENGINEER =====================
+import ReHero from "./pages/Capabilities/ItAugmentation/RemoteEngineer/ReHero.jsx";
+import CapabilityOverview from "./pages/Capabilities/ItAugmentation/RemoteEngineer/CapabilityOverview.jsx";
+import ReStrengthen from "./pages/Capabilities/ItAugmentation/RemoteEngineer/ReStrengthen.jsx";
+
+// ================ PROJECT BASED HIRING ============
+
+import PbhHero from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhHero.jsx";
+import PbhExecutive from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhExecutive.jsx";
+import PbhSpecialized from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhSpecialized.jsx";
+import PbhProjectForward from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhProjectForward.jsx";
 
 
-
+import RrMain from "./pages/Capabilities/ItAugmentation/ResourceReplacement/RrMain.jsx";
 
 
 // =================================================
@@ -548,6 +574,59 @@ function ItAugmentational(){
     </>
   )
 }
+function ContractStaffing(){
+  return(
+    <>
+    <Contracthero />
+    <CapabilityAnalysis />
+    <Pipeline />
+    </>
+  )
+}
+function ContractToHire(){
+  return(
+  <>
+  <ContractToHireHero />
+  <CthFramework />
+  <BuildConfidence />
+  </>
+  )
+}
+function DedicatedDevelopment(){
+  return(
+    <>
+    <DdHero />
+    <DdOverview />
+    <DdStrenghten />
+    </>
+  )
+}
+function RemoteEngineers(){
+  return(
+    <>
+    <ReHero />
+    <CapabilityOverview />
+    <ReStrengthen />
+    </>
+  )
+}
+function ProjectBasedHiring(){
+  return(
+    <>
+    <PbhHero />
+    <PbhExecutive />
+    <PbhSpecialized />
+    <PbhProjectForward />
+    </>
+  )
+}
+function ResourceReplacement(){
+  return(
+    <>
+    <RrMain />
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -668,6 +747,12 @@ function App() {
       <Route path="/OurService" element={<OurServiceSection />} />
       <Route path="/ArtificialIntelligent" element={<ArtificialIntelligent />} />
       <Route path="/ItAugmentation" element={<ItAugmentational />} />
+      <Route path="/Contract-Staffing" element={<ContractStaffing />} />
+      <Route path="/contract-to-hire" element={<ContractToHire />} />
+      <Route path="/Dedicated-Development-Teams" element={<DedicatedDevelopment />} />
+      <Route path="/remote-engineers" element={<RemoteEngineers />} />
+      <Route path="/project-based-hiring" element={<ProjectBasedHiring />} />
+      <Route path="/resource-replacement" element={<ResourceReplacement />} />
     </Routes>
   );
 }

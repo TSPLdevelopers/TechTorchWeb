@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const BRAND_COLOR = "#730024";
 
@@ -11,6 +12,7 @@ const cards = [
     description:
       "Flexible technology resources for short-term or ongoing project requirements.",
     linkLabel: "Agile team injection",
+    path: "/Contract-Staffing",
   },
   {
     number: "02",
@@ -19,6 +21,7 @@ const cards = [
     description:
       "A flexible hiring model that allows businesses to work with professionals before making a long-term commitment.",
     linkLabel: "Evaluate technical fit",
+    path: "/contract-to-hire",
   },
   {
     number: "03",
@@ -27,6 +30,7 @@ const cards = [
     description:
       "Dedicated technology professionals focused on specific development and project requirements.",
     linkLabel: "Full lifecycle pods",
+    path: "/Dedicated-Development-Teams",
   },
   {
     number: "04",
@@ -35,6 +39,7 @@ const cards = [
     description:
       "Remote engineering resources that can work alongside your existing technology team.",
     linkLabel: "Timezone aligned",
+    path: "/remote-engineers",
   },
   {
     number: "05",
@@ -43,6 +48,7 @@ const cards = [
     description:
       "Technology professionals selected to support specific projects and delivery requirements.",
     linkLabel: "Targeted objectives",
+    path: "/project-based-hiring",
   },
   {
     number: "06",
@@ -51,6 +57,7 @@ const cards = [
     description:
       "Flexible support when an existing technology resource needs to be replaced.",
     linkLabel: "Zero productivity loss",
+    path: "/resource-replacement",
   },
   {
     number: "07",
@@ -59,6 +66,7 @@ const cards = [
     description:
       "Access to available IT professionals for immediate or upcoming technology requirements.",
     linkLabel: "Deploy within 48 hours",
+    path: "/staffing/bench-hiring",
   },
   {
     number: "08",
@@ -67,6 +75,7 @@ const cards = [
     description:
       "Technology resource support through a flexible vendor partnership model.",
     linkLabel: "Strategic SLA framework",
+    path: "/staffing/vendor-partnership",
   },
   {
     number: "09",
@@ -75,6 +84,7 @@ const cards = [
     description:
       "Managed support for technology workforce and resource requirements.",
     linkLabel: "Workforce governance",
+    path: "/staffing/msp-support",
   },
 ];
 
@@ -181,8 +191,9 @@ export default function ITAugmentationServices() {
           "
         >
           {cards.map((card) => (
-            <div
+            <Link
               key={card.number}
+              to={card.path}
               className="
                 group
                 relative
@@ -203,6 +214,10 @@ export default function ITAugmentationServices() {
                 sm:min-h-[235px]
                 sm:p-6
               "
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
             >
               {/* Top accent */}
               <div
@@ -305,8 +320,7 @@ export default function ITAugmentationServices() {
 
               {/* Bottom Link */}
               <div className="border-t border-neutral-100 pt-3">
-                <a
-                  href="#"
+                <span
                   className="
                     inline-flex
                     items-center
@@ -316,7 +330,7 @@ export default function ITAugmentationServices() {
                     font-semibold
                     transition-all
                     duration-300
-                    hover:gap-2
+                    group-hover:gap-2
                     sm:text-[11px]
                   "
                   style={{
@@ -326,9 +340,9 @@ export default function ITAugmentationServices() {
                   {card.linkLabel}
 
                   <ArrowRight className="h-3 w-3" />
-                </a>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
