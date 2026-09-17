@@ -240,6 +240,7 @@ import PbhProjectForward from "./pages/Capabilities/ItAugmentation/ProjectBasedH
 import RrMain from "./pages/Capabilities/ItAugmentation/ResourceReplacement/RrMain.jsx";
 import BhMain from "./pages/Capabilities/ItAugmentation/BenchHiring/BhMain.jsx";
 import VpMain from "./pages/Capabilities/ItAugmentation/VendorPartnership/VpMain.jsx";
+import BecomePartner from "./pages/Capabilities/ItAugmentation/VendorPartnership/BecomePartner.jsx";
 
 
 // =================================================
@@ -769,6 +770,7 @@ function App() {
       <Route path="/resource-replacement" element={<ResourceReplacement />} />
       <Route path="/bench-hiring" element={<BenchHiring />} />
       <Route path="/vendor-partnership" element={<VendorPartnership />} />
+      <Route path="/become-partner" element={<BecomePartner />} />
     </Routes>
   );
 }

@@ -14,8 +14,8 @@ export default function EngagementProtocol() {
       description:
         "Instant mutual MNDA execution establishing attorney-client-adjacent architectural privilege. Cryptographic privilege keys are provisioned for all telemetry handshakes, locking stakeholder authorization rosters into immutable auditable logs.",
       tags: [
-        "Bilateral Non-Disclosure Execution",
-        "ECDSA P-384 Privilege Keys Generated",
+        ["Bilateral Non-Disclosure Execution", "shield"],
+        ["ECDSA P-384 Privilege Keys Generated", "key"],
       ],
     },
     {
@@ -27,8 +27,8 @@ export default function EngagementProtocol() {
       description:
         "Non-intrusive surface telemetry and perimeter configuration parsing via read-only APIs and external DNS/egress surface mapping. Absolutely no credential injection, zero active credential harvesting, and an ironclad SLA guaranteeing 0.00% production latency degradation.",
       tags: [
-        "Non-Agentic Read-Only API Ingestion",
-        "Zero Downtime SLA Binding",
+        ["Non-Agentic Read-Only API Ingestion", "api"],
+        ["Zero Downtime SLA Binding", "clock"],
       ],
     },
     {
@@ -40,8 +40,8 @@ export default function EngagementProtocol() {
       description:
         "Cross-referencing multi-cloud IAM privilege graphs, autonomous AI agent execution boundaries, and microservice mesh configurations against known CVE databases and sovereign zero-day registries without touching customer payloads.",
       tags: [
-        "Multi-Cloud Graph Privilege Traversal",
-        "AI Agent Prompt-Injection Boundary Test",
+        ["Multi-Cloud Graph Privilege Traversal", "graph"],
+        ["AI Agent Prompt-Injection Boundary Test", "ai"],
       ],
     },
     {
@@ -53,8 +53,8 @@ export default function EngagementProtocol() {
       description:
         "Delivery of the classified 30-60-90 day remediation matrix and board-ready executive security portfolio. All temporary telemetry scratchspaces are cryptographically shredded in accordance with DoD 5220.22-M zero-footprint directives.",
       tags: [
-        "End-to-End PGP Armor Distribution",
-        "Zero Retained Telemetry Certificate",
+        ["End-to-End PGP Armor Distribution", "lock"],
+        ["Zero Retained Telemetry Certificate", "certificate"],
       ],
     },
   ];
@@ -81,34 +81,29 @@ export default function EngagementProtocol() {
   return (
     <div className="protocol-page">
 
-      {/* TOP HEADER */}
+      {/* HEADER */}
       <header className="protocol-header">
-
         <div className="protocol-badge">
-          <span className="badge-dot"></span>
+          <span className="badge-dot" />
           TECHTORCH SECURITY GOVERNANCE & LEGAL COMPLIANCE · INSTITUTIONAL PROTOCOL
         </div>
 
         <div className="protocol-meta">
           <span className="protocol-id">
-            ◉ &nbsp; PROTOCOL ID: TT-ENG-2024-SEC-09
+            <Icon name="dot" size={13} />
+            PROTOCOL ID: TT-ENG-2024-SEC-09
           </span>
 
           <span className="version-badge">
             V4.2 CERTIFIED
           </span>
         </div>
-
       </header>
 
       {/* HERO */}
       <section className="protocol-hero">
-
         <div className="hero-content">
-
-          <h1>
-            Enterprise Security Engagement Protocol
-          </h1>
+          <h1>Enterprise Security Engagement Protocol</h1>
 
           <p>
             A formal, zero-disruption operating agreement establishing
@@ -116,75 +111,68 @@ export default function EngagementProtocol() {
             privilege, and institutional security governance before
             engagement.
           </p>
-
         </div>
 
         <div className="hero-actions">
-
           <button
             className="export-btn"
             onClick={() => navigate("/export-protocol")}
           >
-            ⇩ &nbsp; Export Protocol Package
+            <Icon name="download" size={14} />
+            Export Protocol Package
           </button>
 
           <button
             className="accept-btn"
             onClick={() => navigate("/accept-proceed")}
           >
-            Accept & Proceed &nbsp; →
+            Accept & Proceed
+            <Icon name="arrow-right" size={15} />
           </button>
-
         </div>
-
       </section>
 
-      {/* CERTIFICATION STRIP */}
+      {/* CERTIFICATIONS */}
       <section className="certification-strip">
-
         <Certification
-          icon="◉"
+          icon="award"
           title="ISO/IEC 27001"
           subtitle="Global Certified"
         />
 
         <Certification
-          icon="◈"
+          icon="shield"
           title="SOC 2 Type II"
           subtitle="Continuous Audit"
         />
 
         <Certification
-          icon="◎"
+          icon="at"
           title="FedRAMP High"
           subtitle="Control Alignment"
         />
 
         <Certification
-          icon="⚿"
+          icon="key"
           title="Tier-IV NDA"
           subtitle="Privileged Sealing"
         />
 
         <Certification
-          icon="◴"
+          icon="retention"
           title="Zero Retention"
           subtitle="Ephemeral Storage"
           green
         />
-
       </section>
 
       {/* MAIN CONTENT */}
       <main className="protocol-main">
 
-        {/* LEFT COLUMN */}
+        {/* LEFT */}
         <div className="roadmap-column">
-
           <div className="section-heading-row">
-
             <div>
-
               <div className="eyebrow">
                 SEQUENTIAL ROADMAP
               </div>
@@ -192,42 +180,35 @@ export default function EngagementProtocol() {
               <h2>
                 Protocol Execution Stages
               </h2>
-
             </div>
 
             <div className="lifecycle">
-              ◷ &nbsp;48h Full Lifecycle
+              <Icon name="clock" size={14} />
+              48h Full Lifecycle
             </div>
-
           </div>
 
           <div className="stage-list">
-
             {stages.map((stage) => (
               <StageCard
                 key={stage.number}
                 {...stage}
               />
             ))}
-
           </div>
-
         </div>
 
-        {/* RIGHT COLUMN */}
+        {/* RIGHT */}
         <aside className="sidebar">
 
           {/* GUARDRAILS */}
           <section className="side-card">
-
             <div className="side-title">
-
               <div className="side-icon green-icon">
-                ♢
+                <Icon name="shield-check" size={23} />
               </div>
 
               <div>
-
                 <div className="side-eyebrow">
                   STRICT WARRANTIES
                 </div>
@@ -235,43 +216,41 @@ export default function EngagementProtocol() {
                 <h3>
                   Operational Guardrails
                 </h3>
-
               </div>
-
             </div>
 
             <div className="guardrail-list">
-
               {guardrails.map((item, index) => (
-                <div className="guardrail" key={index}>
-
+                <div
+                  className="guardrail"
+                  key={index}
+                >
                   <div className="check">
-                    ✓
+                    <Icon name="check" size={11} />
                   </div>
 
                   <div>
-                    <strong>{item.title}</strong>
-                    <p>{item.text}</p>
-                  </div>
+                    <strong>
+                      {item.title}
+                    </strong>
 
+                    <p>
+                      {item.text}
+                    </p>
+                  </div>
                 </div>
               ))}
-
             </div>
-
           </section>
 
           {/* PERSONNEL */}
           <section className="side-card personnel-card">
-
             <div className="side-title">
-
               <div className="side-icon purple-icon">
-                ♙
+                <Icon name="badge" size={23} />
               </div>
 
               <div>
-
                 <div className="side-eyebrow">
                   GOVERNANCE & PERSONNEL
                 </div>
@@ -279,9 +258,7 @@ export default function EngagementProtocol() {
                 <h3>
                   Assigned Lead Architects
                 </h3>
-
               </div>
-
             </div>
 
             <Person
@@ -301,7 +278,6 @@ export default function EngagementProtocol() {
             />
 
             <div className="legal-section">
-
               <h4>
                 LEGAL JURISDICTION & VENUE
               </h4>
@@ -311,22 +287,17 @@ export default function EngagementProtocol() {
                 of law with expedited arbitration under the American
                 Arbitration Association (AAA) Commercial Rules.
               </p>
-
             </div>
-
           </section>
-
         </aside>
-
       </main>
 
-      {/* PACKAGE SECTION */}
+      {/* PACKAGE */}
       <section className="package-card">
-
         <div className="package-info">
-
           <h2>
-            ▣ Institutional Protocol Package (v4.2)
+            <Icon name="file" size={19} />
+            Institutional Protocol Package (v4.2)
           </h2>
 
           <p>
@@ -340,43 +311,75 @@ export default function EngagementProtocol() {
             <br />
             8f3d198a24c55e9ed91f9bc9a7702f54a8b79d612e4b85c13e4e9f7832ad5106
           </div>
-
         </div>
 
         <div className="package-actions">
-
           <button className="clarification-btn">
-            ☎ &nbsp; Schedule Clarification Call
+            <Icon name="phone" size={15} />
+            Schedule Clarification Call
           </button>
 
           <button className="package-accept">
-            Accept Protocol & Proceed to Intake &nbsp; →
+            Accept Protocol & Proceed to Intake
+            <Icon name="arrow-right" size={15} />
           </button>
-
         </div>
-
       </section>
 
-      {/* FOOTER */}
+      {/* PURPLE FOOTER */}
       <footer className="protocol-footer">
 
-        <div>
-          <span>◉</span>
-          <strong>Security Governance Desk:</strong>
-          <br />
-          legal@techtorch.solutions
+        <div className="footer-item">
+          <span className="footer-icon">
+            <Icon name="support" size={19} />
+          </span>
+
+          <div className="footer-text">
+            <strong>
+              Security Governance Desk:
+            </strong>
+
+            <br />
+
+            <a
+              href="mailto:legal@techtorch.solutions"
+              className="footer-link"
+            >
+              legal@techtorch.solutions
+            </a>
+          </div>
         </div>
 
-        <div>
-          <span>♧</span>
-          <strong>Priority Line:</strong>
-          <br />
-          +91 581 350 0381
+        <div className="footer-item">
+          <span className="footer-icon">
+            <Icon name="phone" size={18} />
+          </span>
+
+          <div className="footer-text">
+            <strong>
+              Priority Line:
+            </strong>
+
+            <br />
+
+            <a
+              href="tel:+915813500381"
+              className="footer-link"
+            >
+              +91 581 350 0381
+            </a>
+          </div>
         </div>
 
-        <div>
-          © 2024–2026 TechTorch Solutions. All engagements protected
-          under bilateral legal privilege.
+        <div className="footer-item footer-copyright">
+          <span className="footer-icon">
+            <Icon name="certificate" size={17} />
+          </span>
+
+          <div className="footer-text">
+            © 2024–2026 TechTorch Solutions. All engagements protected
+            under bilateral legal privilege.
+          </div>
         </div>
 
       </footer>
@@ -394,7 +397,10 @@ export default function EngagementProtocol() {
         .protocol-page {
           width: 100%;
           min-height: 100vh;
-          padding: 36px 30px 34px;
+
+          /* INCREASED DESKTOP PADDING */
+          padding: 50px 130px 35px;
+
           background: #f7f8fa;
           color: #172033;
           font-family: "Inter", Arial, sans-serif;
@@ -414,7 +420,7 @@ export default function EngagementProtocol() {
           display: inline-flex;
           align-items: center;
           gap: 9px;
-          height: 27px;
+          min-height: 27px;
           padding: 0 12px;
           border: 1px solid #dfc8d5;
           border-radius: 20px;
@@ -430,6 +436,7 @@ export default function EngagementProtocol() {
           height: 6px;
           border-radius: 50%;
           background: #76003d;
+          flex-shrink: 0;
         }
 
         .protocol-meta {
@@ -443,6 +450,9 @@ export default function EngagementProtocol() {
         }
 
         .protocol-id {
+          display: flex;
+          align-items: center;
+          gap: 5px;
           white-space: nowrap;
         }
 
@@ -467,6 +477,7 @@ export default function EngagementProtocol() {
 
         .hero-content {
           max-width: 690px;
+          min-width: 0;
         }
 
         .hero-content h1 {
@@ -502,12 +513,16 @@ export default function EngagementProtocol() {
 
         .export-btn,
         .accept-btn {
-          height: 35px;
+          min-height: 35px;
           padding: 0 15px;
           border-radius: 6px;
           font-size: 12.5px;
           font-weight: 700;
           white-space: nowrap;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
         }
 
         .export-btn {
@@ -543,6 +558,7 @@ export default function EngagementProtocol() {
           display: flex;
           align-items: center;
           gap: 10px;
+          min-width: 0;
         }
 
         .cert-icon {
@@ -554,7 +570,6 @@ export default function EngagementProtocol() {
           border-radius: 6px;
           background: #f1f2f4;
           color: #72003e;
-          font-size: 17px;
           flex-shrink: 0;
         }
 
@@ -585,8 +600,6 @@ export default function EngagementProtocol() {
           margin-top: 29px;
         }
 
-        /* SECTION HEADING */
-
         .section-heading-row {
           display: flex;
           align-items: flex-end;
@@ -600,7 +613,6 @@ export default function EngagementProtocol() {
           color: #741040;
           font-size: 10.5px;
           font-weight: 900;
-          letter-spacing: 0px;
         }
 
         .section-heading-row h2 {
@@ -621,9 +633,12 @@ export default function EngagementProtocol() {
           font-size: 10.5px;
           font-weight: 700;
           white-space: nowrap;
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
         }
 
-        /* STAGE CARDS */
+        /* STAGES */
 
         .stage-list {
           display: flex;
@@ -632,7 +647,7 @@ export default function EngagementProtocol() {
         }
 
         .stage-card {
-          padding: 20px 20px 19px;
+          padding: 20px;
           background: white;
           border: 1px solid #e4e7eb;
           border-radius: 9px;
@@ -721,12 +736,14 @@ export default function EngagementProtocol() {
           color: #4e5b6e;
           font-size: 10.5px;
           font-weight: 750;
+          min-width: 0;
         }
 
-        .stage-tag::before {
-          content: "◉";
-          color: #7b174d;
-          font-size: 10px;
+        .stage-tag-icon {
+          color: #741040;
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
         }
 
         /* SIDEBAR */
@@ -735,6 +752,7 @@ export default function EngagementProtocol() {
           display: flex;
           flex-direction: column;
           gap: 19px;
+          min-width: 0;
         }
 
         .side-card {
@@ -753,13 +771,12 @@ export default function EngagementProtocol() {
         }
 
         .side-icon {
-          width: 33px;
-          height: 33px;
+          width: 39px;
+          height: 39px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 6px;
-          font-size: 19px;
+          border-radius: 7px;
           flex-shrink: 0;
         }
 
@@ -798,16 +815,14 @@ export default function EngagementProtocol() {
         }
 
         .check {
-          width: 15px;
-          height: 15px;
+          width: 20px;
+          height: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1.5px solid #1aa176;
+          border: 2px solid #1aa176;
           border-radius: 50%;
           color: #15956e;
-          font-size: 10px;
-          font-weight: 900;
           flex-shrink: 0;
           margin-top: 1px;
         }
@@ -862,6 +877,7 @@ export default function EngagementProtocol() {
           color: #273247;
           font-size: 13px;
           font-weight: 800;
+          flex-wrap: wrap;
         }
 
         .person-role {
@@ -928,11 +944,19 @@ export default function EngagementProtocol() {
 
         .package-info h2 {
           margin: 0 0 9px;
+          display: flex;
+          align-items: center;
+          gap: 9px;
           color: #1b2538;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
           font-size: 17px;
           font-weight: 700;
           letter-spacing: -.4px;
+        }
+
+        .package-info h2 svg {
+          color: #72003e;
+          flex-shrink: 0;
         }
 
         .package-info p {
@@ -962,12 +986,16 @@ export default function EngagementProtocol() {
 
         .clarification-btn,
         .package-accept {
-          height: 37px;
+          min-height: 37px;
           padding: 0 14px;
           border-radius: 6px;
           font-size: 11.5px;
           font-weight: 750;
           white-space: nowrap;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
         }
 
         .clarification-btn {
@@ -982,90 +1010,130 @@ export default function EngagementProtocol() {
           color: white;
         }
 
-        /* FOOTER */
+        /* PURPLE FOOTER */
 
         .protocol-footer {
-          min-height: 59px;
+          min-height: 68px;
           margin-top: 29px;
-          padding: 12px 22px;
+          padding: 15px 32px;
+
           display: grid;
           grid-template-columns: 1fr 1fr 1.5fr;
           align-items: center;
-          gap: 20px;
+          gap: 35px;
+
           border-radius: 8px;
           background: #58002f;
           color: #f6dfea;
+
           font-size: 12px;
           line-height: 1.45;
           letter-spacing: .7px;
         }
 
+        .footer-item {
+          display: flex;
+          align-items: center;
+          gap: 11px;
+          min-width: 0;
+        }
+
+        .footer-icon {
+          width: 25px;
+          height: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          color: #f8e8f0;
+        }
+
+        .footer-text {
+          min-width: 0;
+        }
+
         .protocol-footer strong {
           font-size: 10px;
           letter-spacing: 1px;
+          color: #f8e8f0;
         }
 
-        .protocol-footer span {
-          margin-right: 5px;
+        .footer-link {
+          color: #f6dfea;
+          text-decoration: none;
+          transition: color .2s ease;
+          overflow-wrap: anywhere;
         }
 
-        /* LAPTOP */
+        .footer-link:hover {
+          color: #ffffff;
+          text-decoration: underline;
+        }
 
-        @media (max-width: 1100px) {
+        .footer-copyright {
+          align-items: center;
+        }
+
+        .footer-copyright .footer-text {
+          line-height: 1.45;
+        }
+
+        /* =========================================
+           LARGE LAPTOP
+        ========================================= */
+
+        @media (max-width: 1400px) {
 
           .protocol-page {
-            padding-left: 22px;
-            padding-right: 22px;
+            padding-left: 110px;
+            padding-right: 110px;
+          }
+
+        }
+
+        /* =========================================
+           LAPTOP / SMALL DESKTOP
+        ========================================= */
+
+        @media (max-width: 1200px) {
+
+          .protocol-page {
+            padding-left: 80px;
+            padding-right: 80px;
           }
 
           .protocol-main {
-            grid-template-columns: 1.45fr 1fr;
-            gap: 18px;
+            grid-template-columns: minmax(0, 1.35fr) minmax(300px, 1fr);
+            gap: 20px;
+          }
+
+          .certification-strip {
+            gap: 14px;
+          }
+
+          .protocol-hero {
+            gap: 20px;
           }
 
           .hero-content h1 {
             font-size: 28px;
           }
 
-          .stage-title-box h3 {
-            font-size: 13px;
-          }
-
           .package-card {
-            margin-top: 40px;
+            gap: 18px;
           }
 
         }
 
-        /* TABLET */
+        /* =========================================
+           TABLET
+        ========================================= */
 
-        @media (max-width: 850px) {
+        @media (max-width: 1000px) {
 
-          .protocol-header {
-            align-items: flex-start;
-            flex-direction: column;
-          }
-
-          .protocol-meta {
-            width: 100%;
-            justify-content: space-between;
-          }
-
-          .protocol-hero {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-
-          .hero-actions {
-            width: 100%;
-          }
-
-          .hero-actions button {
-            flex: 1;
-          }
-
-          .certification-strip {
-            grid-template-columns: repeat(2, 1fr);
+          .protocol-page {
+            padding-left: 60px;
+            padding-right: 60px;
           }
 
           .protocol-main {
@@ -1095,29 +1163,87 @@ export default function EngagementProtocol() {
             flex: 1;
           }
 
-          .protocol-footer {
-            grid-template-columns: 1fr 1fr;
+        }
+
+        /* =========================================
+           SMALL TABLET
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+          .protocol-page {
+            padding-left: 45px;
+            padding-right: 45px;
           }
 
-          .protocol-footer div:last-child {
+          .protocol-header {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .protocol-meta {
+            width: 100%;
+            justify-content: space-between;
+          }
+
+          .protocol-hero {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+          }
+
+          .hero-content {
+            max-width: 100%;
+          }
+
+          .hero-content h1 {
+            font-size: 27px;
+          }
+
+          .hero-actions {
+            width: 100%;
+          }
+
+          .hero-actions button {
+            flex: 1;
+          }
+
+          .certification-strip {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .sidebar {
+            grid-template-columns: 1fr;
+          }
+
+          .protocol-footer {
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 14px 20px;
+          }
+
+          .footer-copyright {
             grid-column: 1 / -1;
           }
 
         }
 
-        /* MOBILE */
+        /* =========================================
+           MOBILE
+        ========================================= */
 
         @media (max-width: 600px) {
 
           .protocol-page {
-            padding: 20px 12px 22px;
+            padding: 20px 20px 22px;
           }
 
           .protocol-badge {
+            width: 100%;
             height: auto;
             min-height: 28px;
             padding: 6px 10px;
-            font-size: 9px;
+            font-size: 8.5px;
             line-height: 1.3;
           }
 
@@ -1149,6 +1275,7 @@ export default function EngagementProtocol() {
 
           .hero-actions button {
             width: 100%;
+            flex: none;
           }
 
           .certification-strip {
@@ -1226,12 +1353,83 @@ export default function EngagementProtocol() {
 
           .protocol-footer {
             grid-template-columns: 1fr;
-            gap: 10px;
+            gap: 13px;
+            min-height: 68px;
             padding: 16px;
           }
 
-          .protocol-footer div:last-child {
+          .footer-copyright {
             grid-column: auto;
+          }
+
+          .footer-item {
+            align-items: center;
+          }
+
+        }
+
+        /* =========================================
+           EXTRA SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 400px) {
+
+          .protocol-page {
+            padding: 15px 15px 18px;
+          }
+
+          .protocol-badge {
+            font-size: 8px;
+          }
+
+          .protocol-id {
+            white-space: normal;
+          }
+
+          .hero-content h1 {
+            font-size: 22px;
+          }
+
+          .hero-content p {
+            font-size: 12px;
+          }
+
+          .certification-strip {
+            padding: 13px;
+          }
+
+          .stage-card {
+            padding: 14px;
+          }
+
+          .stage-number {
+            width: 29px;
+            height: 29px;
+          }
+
+          .stage-title-box h3 {
+            font-size: 12.5px;
+          }
+
+          .stage-description {
+            font-size: 12px;
+          }
+
+          .side-card {
+            padding: 16px;
+          }
+
+          .package-card {
+            padding: 17px 14px;
+          }
+
+          .package-info h2 {
+            font-size: 14px;
+          }
+
+          .protocol-footer {
+            padding: 14px;
+            font-size: 11px;
           }
 
         }
@@ -1242,7 +1440,236 @@ export default function EngagementProtocol() {
 }
 
 
-/* CERTIFICATION COMPONENT */
+/* =========================================================
+   ICON SYSTEM
+========================================================= */
+
+function Icon({ name, size = 18 }) {
+  const common = {
+    width: size,
+    height: size,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.9,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": true,
+  };
+
+  switch (name) {
+
+    case "award":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="8" r="5.2" />
+          <path d="M8.8 12.1 7.5 21l4.5-2.4 4.5 2.4-1.3-8.9" />
+          <path d="m12 5.5.8 1.6 1.8.3-1.3 1.3.3 1.8-1.6-.8-1.6.8.3-1.8-1.3-1.3 1.8-.3L12 5.5Z" />
+        </svg>
+      );
+
+    case "shield":
+      return (
+        <svg {...common}>
+          <path d="M12 3 20 6v5.5c0 5.1-3.2 8.3-8 9.5-4.8-1.2-8-4.4-8-9.5V6l8-3Z" />
+          <path d="m8.5 12 2.2 2.2 4.8-4.8" />
+        </svg>
+      );
+
+    case "shield-check":
+      return (
+        <svg {...common}>
+          <path d="M12 3 20 6v5.5c0 5.1-3.2 8.3-8 9.5-4.8-1.2-8-4.4-8-9.5V6l8-3Z" />
+          <path d="m8.3 12 2.3 2.3 5.1-5.1" />
+        </svg>
+      );
+
+    case "at":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="4" />
+          <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-3 6.7" />
+        </svg>
+      );
+
+    case "key":
+      return (
+        <svg {...common}>
+          <circle cx="8" cy="15" r="4" />
+          <path d="m11 12 9-9" />
+          <path d="m17 6 2 2" />
+          <path d="m14.5 8.5 2 2" />
+        </svg>
+      );
+
+    case "retention":
+      return (
+        <svg {...common}>
+          <path d="M12 5a7 7 0 1 1-6.2 3.7" />
+          <path d="M5 5v4h4" />
+          <path d="M12 8v4l2.5 1.5" />
+        </svg>
+      );
+
+    case "clock":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="M12 7.5v4.8l3 1.8" />
+        </svg>
+      );
+
+    case "dot":
+      return (
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+        </svg>
+      );
+
+    case "download":
+      return (
+        <svg {...common}>
+          <path d="M12 3v11" />
+          <path d="m7.5 9.5 4.5 4.5 4.5-4.5" />
+          <path d="M5 20h14" />
+        </svg>
+      );
+
+    case "arrow-right":
+      return (
+        <svg {...common}>
+          <path d="M5 12h14" />
+          <path d="m13 6 6 6-6 6" />
+        </svg>
+      );
+
+    case "check":
+      return (
+        <svg {...common}>
+          <path d="m5 12.5 4.2 4.2L19 7" />
+        </svg>
+      );
+
+    case "badge":
+      return (
+        <svg {...common}>
+          <rect
+            x="5"
+            y="4"
+            width="14"
+            height="16"
+            rx="2"
+          />
+          <path d="M9 4V2h6v2" />
+          <circle cx="12" cy="10" r="2" />
+          <path d="M8.5 16c1.2-1.8 5.8-1.8 7 0" />
+        </svg>
+      );
+
+    case "api":
+      return (
+        <svg {...common}>
+          <circle cx="6" cy="12" r="2" />
+          <circle cx="18" cy="6" r="2" />
+          <circle cx="18" cy="18" r="2" />
+          <path d="m8 11 8-4" />
+          <path d="m8 13 8 4" />
+        </svg>
+      );
+
+    case "graph":
+      return (
+        <svg {...common}>
+          <circle cx="6" cy="7" r="2" />
+          <circle cx="18" cy="6" r="2" />
+          <circle cx="12" cy="18" r="2" />
+          <path d="m7.8 7.5 8.4-1" />
+          <path d="m7.2 8.7 3.6 7.2" />
+          <path d="m16.8 7.7-3.6 8.4" />
+        </svg>
+      );
+
+    case "ai":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="7" />
+          <path d="M12 5V3" />
+          <path d="M12 21v-2" />
+          <path d="M5 12H3" />
+          <path d="M21 12h-2" />
+          <path d="m7 7-1.5-1.5" />
+          <path d="m18.5 18.5-1.5-1.5" />
+          <path d="m17 7 1.5-1.5" />
+          <path d="m6.5 18.5 1.5-1.5" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      );
+
+    case "lock":
+      return (
+        <svg {...common}>
+          <rect
+            x="5"
+            y="10"
+            width="14"
+            height="10"
+            rx="2"
+          />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+        </svg>
+      );
+
+    case "certificate":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="10" r="5" />
+          <path d="m9.5 14 1 7 1.5-2 1.5 2 1-7" />
+          <path d="m12 7 .8 1.5 1.7.3-1.2 1.2.3 1.7-1.6-.8-1.6.8.3-1.7-1.2-1.2 1.7-.3L12 7Z" />
+        </svg>
+      );
+
+    case "file":
+      return (
+        <svg {...common}>
+          <path d="M6 3h8l4 4v14H6z" />
+          <path d="M14 3v5h4" />
+          <path d="M9 13h6" />
+          <path d="M9 17h6" />
+        </svg>
+      );
+
+    case "phone":
+      return (
+        <svg {...common}>
+          <path d="M7 4h3l1.5 4-2 1.5a14 14 0 0 0 5 5l1.5-2 4 1.5v3c0 1-1 2-2 2C11 19.5 4.5 13 4.5 6c0-1 1-2 2.5-2Z" />
+        </svg>
+      );
+
+    case "support":
+      return (
+        <svg {...common}>
+          <path d="M4 13a8 8 0 0 1 16 0" />
+          <path d="M4 13v3a2 2 0 0 0 2 2h2v-5H6" />
+          <path d="M20 13v3a2 2 0 0 1-2 2h-2v-5h2" />
+          <path d="M9 19h6" />
+        </svg>
+      );
+
+    default:
+      return null;
+  }
+}
+
+
+/* =========================================================
+   CERTIFICATION COMPONENT
+========================================================= */
 
 function Certification({
   icon,
@@ -1253,13 +1680,25 @@ function Certification({
   return (
     <div className="certification">
 
-      <div className={`cert-icon ${green ? "green" : ""}`}>
-        {icon}
+      <div
+        className={`cert-icon ${
+          green ? "green" : ""
+        }`}
+      >
+        <Icon
+          name={icon}
+          size={18}
+        />
       </div>
 
       <div>
-        <strong>{title}</strong>
-        <span>{subtitle}</span>
+        <strong>
+          {title}
+        </strong>
+
+        <span>
+          {subtitle}
+        </span>
       </div>
 
     </div>
@@ -1267,7 +1706,9 @@ function Certification({
 }
 
 
-/* STAGE COMPONENT */
+/* =========================================================
+   STAGE CARD
+========================================================= */
 
 function StageCard({
   number,
@@ -1289,7 +1730,9 @@ function StageCard({
 
         <div className="stage-title-box">
 
-          <h3>{title}</h3>
+          <h3>
+            {title}
+          </h3>
 
           <div className="timeline">
             Timeline: {timeline}
@@ -1304,7 +1747,8 @@ function StageCard({
               : "status-gray"
           }`}
         >
-          ● {status}
+          <span>●</span>
+          {status}
         </div>
 
       </div>
@@ -1315,9 +1759,19 @@ function StageCard({
 
       <div className="stage-tags">
 
-        {tags.map((tag, index) => (
-          <div className="stage-tag" key={index}>
-            {tag}
+        {tags.map(([text, icon], index) => (
+          <div
+            className="stage-tag"
+            key={index}
+          >
+            <span className="stage-tag-icon">
+              <Icon
+                name={icon}
+                size={14}
+              />
+            </span>
+
+            {text}
           </div>
         ))}
 
@@ -1328,7 +1782,9 @@ function StageCard({
 }
 
 
-/* PERSON COMPONENT */
+/* =========================================================
+   PERSON
+========================================================= */
 
 function Person({
   image,

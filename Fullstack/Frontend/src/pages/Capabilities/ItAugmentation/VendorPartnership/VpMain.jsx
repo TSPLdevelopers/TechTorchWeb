@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   Code2,
@@ -216,6 +217,7 @@ const finalTags = [
 /* ---------- Component ---------- */
 
 export default function VendorPartnershipPage() {
+  const navigate = useNavigate();
   return (
     <div className="w-full bg-[#f8f7f5] font-inter text-[#1c1c1c] overflow-hidden">
 
@@ -285,6 +287,7 @@ export default function VendorPartnershipPage() {
                 create practical solutions for customers and organizations.
               </p>
 
+<<<<<<< HEAD
               <button
                 className="
                   inline-flex
@@ -312,6 +315,15 @@ export default function VendorPartnershipPage() {
                 Become a Partner
                 <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
+=======
+             <button
+  onClick={() => navigate("/become-partner")}
+  className="inline-flex items-center gap-2 rounded-full bg-rose-900 text-white font-semibold text-sm px-6 py-3.5 w-fit hover:bg-rose-950 transition-colors mb-6"
+>
+  Become a Partner
+  <ArrowRight className="w-4 h-4" />
+</button>
+>>>>>>> 5fd9c87664a4e4c66184b51e8db97f87e385bf69
 
               <div className="flex flex-wrap gap-x-4 sm:gap-x-5 gap-y-2">
 
