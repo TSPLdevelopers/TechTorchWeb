@@ -23,7 +23,7 @@ import Section8 from "./components/section8";
 import Section9 from "./components/section9";
 
 
-import AdminDashboard from "./pages/AdminDashboard/AdminDashboard.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
 import NewsInsights from "./pages/News&Inshights.jsx";
 import JobOpenings from "./pages/JobOpenings.jsx";
 import Events from "./pages/Events.jsx";
@@ -616,7 +616,9 @@ function App() {
         <Route
           path="/system-settings"
           element={<SystemSettings />}
+        />
 
+        <Route
           path="/TechTorchView"
           element={<WhatNextPage />}
         />
