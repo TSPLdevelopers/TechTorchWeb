@@ -291,7 +291,7 @@ export default function LoginPage() {
               textDecoration: "none",
             }}
           >
-            Create one
+          
           </a>
         </p>
       </div>

@@ -280,10 +280,8 @@ export default function TechTorchCMS() {
     reader.readAsDataURL(file);
   };
 
-  const onDropCover = (e) => {
-    e.preventDefault();
-    if (e.dataTransfer.files?.[0]) readFileAsCover(e.dataTransfer.files[0]);
-  };
+  /* Cover image is chosen from the file picker — no drag & drop. */
+  const chooseCoverFile = () => coverFileInputRef.current?.click();
 
   /* ----- rich text toolbar ----- */
   const applyCommand = (cmd, val = null) => {
@@ -700,9 +698,12 @@ export default function TechTorchCMS() {
 
               {/* Image drop zone */}
               <div
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={onDropCover}
-                className="relative border-2 border-dashed border-stone-200 rounded-lg py-10 flex flex-col items-center justify-center text-center bg-stone-50/50 overflow-hidden min-h-[200px]"
+                onClick={() => {
+                  if (!coverImage) chooseCoverFile();
+                }}
+                className={`relative border-2 border-dashed border-stone-200 rounded-lg py-10 flex flex-col items-center justify-center text-center bg-stone-50/50 overflow-hidden min-h-[200px] ${
+                  coverImage ? "" : "cursor-pointer"
+                }`}
               >
                 {!coverImage ? (
                   <div className="flex flex-col items-center">
@@ -710,18 +711,20 @@ export default function TechTorchCMS() {
                       <ImagePlus size={20} />
                     </div>
                     <div className="text-sm font-medium text-stone-700">
-                      Drag and drop high-resolution cover image
+                      Choose a high-resolution cover image
                     </div>
                     <div className="text-xs text-stone-400 mt-1">
                       Recommended 1920×1080px (PNG, JPG, or WebP up to 10MB)
                     </div>
                     <button
-                      onClick={() => setLibraryOpen(true)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        chooseCoverFile();
+                      }}
                       className="mt-4 flex items-center gap-1.5 border border-stone-200 rounded-md px-3 py-1.5 text-sm bg-white hover:bg-stone-50"
                     >
                       Browse Library
                     </button>
-                    <span className="text-xs text-stone-400 mt-1">or drop file anywhere</span>
                   </div>
                 ) : (
                   <div className="w-full h-full absolute inset-0">
@@ -735,7 +738,10 @@ export default function TechTorchCMS() {
                     />
                     <div className="absolute top-2 right-2 flex gap-2">
                       <button
-                        onClick={() => setLibraryOpen(true)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          chooseCoverFile();
+                        }}
                         className="text-xs bg-white/90 border border-stone-200 rounded-md px-2 py-1 hover:bg-white"
                       >
                         Change
@@ -1368,14 +1374,24 @@ export default function TechTorchCMS() {
             {libraryTab === "upload" ? (
               <div className="p-4">
                 <div
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={onDropCover}
-                  className="border-2 border-dashed border-stone-200 rounded-lg py-10 flex flex-col items-center justify-center text-center"
+                  role="button"
+                  tabIndex={0}
+                  onClick={chooseCoverFile}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      chooseCoverFile();
+                    }
+                  }}
+                  className="border-2 border-dashed border-stone-200 rounded-lg py-10 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-stone-50"
                 >
                   <ImagePlus size={22} className="text-stone-400 mb-2" />
-                  <div className="text-sm text-stone-700">Drop an image here</div>
+                  <div className="text-sm text-stone-700">Choose an image from your computer</div>
                   <button
-                    onClick={() => coverFileInputRef.current?.click()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      chooseCoverFile();
+                    }}
                     className="mt-3 border border-stone-200 rounded-md px-3 py-1.5 text-sm bg-white hover:bg-stone-50"
                   >
                     Choose file
