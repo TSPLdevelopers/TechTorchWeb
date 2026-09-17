@@ -13,15 +13,12 @@ import {
   ShieldCheck,
   Check,
   Sparkles,
-  MessageCircle,
   Handshake,
-  Layers,
 } from "lucide-react";
 
 export default function BecomePartner() {
   const navigate = useNavigate();
 
-  // Nothing is selected initially
   const [selectedScopes, setSelectedScopes] = useState([]);
   const [collaboration, setCollaboration] = useState("");
 
@@ -131,9 +128,9 @@ export default function BecomePartner() {
   return (
     <div className="bp-page">
 
-      {/* =====================================================
+      {/* =========================
           HERO
-      ===================================================== */}
+      ========================= */}
 
       <section className="bp-hero">
 
@@ -190,9 +187,6 @@ export default function BecomePartner() {
 
         </div>
 
-
-        {/* HERO IMAGE */}
-
         <div className="bp-hero-image-container">
 
           <div className="bp-hero-image-wrapper">
@@ -202,8 +196,6 @@ export default function BecomePartner() {
               alt="Technology Partnership"
               className="bp-hero-image"
             />
-
-            {/* IMAGE OVERLAY */}
 
             <div className="bp-image-overlay-card">
 
@@ -232,9 +224,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =====================================================
+      {/* =========================
           OPPORTUNITIES
-      ===================================================== */}
+      ========================= */}
 
       <section className="bp-opportunities">
 
@@ -290,8 +282,6 @@ export default function BecomePartner() {
                 AREAS
               </div>
 
-              {/* BULLET POINTS */}
-
               <ul className="bp-track-areas">
                 {item.areas.map((area) => (
                   <li key={area}>
@@ -309,9 +299,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =====================================================
+      {/* =========================
           PARTNER APPLICATION
-      ===================================================== */}
+      ========================= */}
 
       <section
         className="bp-application"
@@ -334,8 +324,6 @@ export default function BecomePartner() {
         </p>
 
 
-        {/* ORGANIZATION + CONTACT */}
-
         <div className="bp-form-columns">
 
           <div>
@@ -346,70 +334,47 @@ export default function BecomePartner() {
             </div>
 
             <div className="bp-field">
-
               <label>LEGAL / COMPANY NAME *</label>
 
               <input
                 type="text"
                 placeholder="e.g. Apex Strategic Engineering Corp"
               />
-
             </div>
 
             <div className="bp-field">
-
               <label>CORPORATE WEBSITE</label>
 
               <input
                 type="url"
                 placeholder="https://example.com"
               />
-
             </div>
 
             <div className="bp-small-row">
 
               <div className="bp-field">
-
                 <label>PRIMARY LOCATION *</label>
 
                 <input
                   type="text"
                   placeholder="e.g. London, UK"
                 />
-
               </div>
 
               <div className="bp-field">
-
                 <label>COMPANY SIZE</label>
 
                 <select defaultValue="">
-
                   <option value="" disabled>
                     Select
                   </option>
 
-                  <option>
-                    1-50 employees
-                  </option>
-
-                  <option>
-                    51-200 employees
-                  </option>
-
-                  <option>
-                    201-500 employees
-                  </option>
-
-                  <option>
-                    501-1000 employees
-                  </option>
-
-                  <option>
-                    1000+ employees
-                  </option>
-
+                  <option>1-50 employees</option>
+                  <option>51-200 employees</option>
+                  <option>201-500 employees</option>
+                  <option>501-1000 employees</option>
+                  <option>1000+ employees</option>
                 </select>
 
               </div>
@@ -419,8 +384,6 @@ export default function BecomePartner() {
           </div>
 
 
-          {/* PRIMARY CONTACT */}
-
           <div>
 
             <div className="bp-form-title">
@@ -429,49 +392,41 @@ export default function BecomePartner() {
             </div>
 
             <div className="bp-field">
-
               <label>FULL NAME *</label>
 
               <input
                 type="text"
                 placeholder="e.g. Eleanor Vance"
               />
-
             </div>
 
             <div className="bp-field">
-
               <label>BUSINESS EMAIL *</label>
 
               <input
                 type="email"
                 placeholder="e.vance@company.com"
               />
-
             </div>
 
             <div className="bp-small-row">
 
               <div className="bp-field">
-
                 <label>DESIGNATION / ROLE *</label>
 
                 <input
                   type="text"
                   placeholder="e.g. Head of Strategic Partnerships"
                 />
-
               </div>
 
               <div className="bp-field">
-
                 <label>PHONE NUMBER</label>
 
                 <input
                   type="tel"
                   placeholder="+44 20 7946 0912"
                 />
-
               </div>
 
             </div>
@@ -494,7 +449,6 @@ export default function BecomePartner() {
             These options are aligned with TechTorch's publicly listed
             service areas.
           </p>
-
 
           <div className="bp-scope-grid">
 
@@ -530,7 +484,6 @@ export default function BecomePartner() {
 
           </div>
 
-
           <div className="bp-field">
 
             <label>
@@ -547,7 +500,7 @@ export default function BecomePartner() {
         </div>
 
 
-        {/* COLLABORATION PREFERENCE */}
+        {/* COLLABORATION */}
 
         <div className="bp-form-section">
 
@@ -555,7 +508,6 @@ export default function BecomePartner() {
             <span>4</span>
             COLLABORATION PREFERENCE
           </div>
-
 
           <div className="bp-collaboration-grid">
 
@@ -617,7 +569,6 @@ export default function BecomePartner() {
             PARTNERSHIP REQUIREMENTS
           </div>
 
-
           <div className="bp-field">
 
             <label>
@@ -629,7 +580,6 @@ export default function BecomePartner() {
             />
 
           </div>
-
 
           <div className="bp-field">
 
@@ -664,7 +614,6 @@ export default function BecomePartner() {
 
           </div>
 
-
           <button
             type="button"
             className="bp-submit-btn"
@@ -681,9 +630,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =====================================================
+      {/* =========================
           PROCESS
-      ===================================================== */}
+      ========================= */}
 
       <section className="bp-process">
 
@@ -699,7 +648,6 @@ export default function BecomePartner() {
           Once you submit your information, the next steps can be kept
           simple and transparent.
         </p>
-
 
         <div className="bp-process-grid">
 
@@ -764,9 +712,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =====================================================
+      {/* =========================
           CAPABILITIES
-      ===================================================== */}
+      ========================= */}
 
       <section className="bp-capabilities">
 
@@ -779,7 +727,6 @@ export default function BecomePartner() {
           <br />
           Complement Your Business
         </h2>
-
 
         <div className="bp-cap-grid">
 
@@ -812,9 +759,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =====================================================
+      {/* =========================
           FINAL CTA
-      ===================================================== */}
+      ========================= */}
 
       <section className="bp-final-cta">
 
@@ -873,9 +820,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =====================================================
-          ALL CSS INSIDE SAME FILE
-      ===================================================== */}
+      {/* =========================
+          ALL CSS
+      ========================= */}
 
       <style>{`
 
@@ -907,9 +854,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            COMMON
-        ======================================== */
+        ========================= */
 
         .bp-section-label {
           color: #701040;
@@ -941,9 +888,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            BUTTON
-        ======================================== */
+        ========================= */
 
         .bp-primary-btn {
           display: inline-flex;
@@ -968,9 +915,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            HERO
-        ======================================== */
+        ========================= */
 
         .bp-hero {
           width: min(1200px, calc(100% - 40px));
@@ -1018,7 +965,7 @@ export default function BecomePartner() {
           border-radius: 6px;
           background: white;
           color: #64696e;
-          font-size: 11px;
+          font-size: 13px;
         }
 
         .bp-hero-tags svg {
@@ -1044,9 +991,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
-           HERO IMAGE OVERLAY
-        ======================================== */
+        /* =========================
+           HERO OVERLAY
+        ========================= */
 
         .bp-image-overlay-card {
           position: absolute;
@@ -1103,9 +1050,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            OPPORTUNITIES
-        ======================================== */
+        ========================= */
 
         .bp-opportunities {
           width: min(1200px, calc(100% - 40px));
@@ -1146,9 +1093,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            TRACK CARDS
-        ======================================== */
+        ========================= */
 
         .bp-track-card {
           min-height: 300px;
@@ -1180,9 +1127,6 @@ export default function BecomePartner() {
           font-weight: 800;
           letter-spacing: .5px;
         }
-
-
-        /* TRACK ICON */
 
         .bp-track-icon {
           width: 32px;
@@ -1246,11 +1190,6 @@ export default function BecomePartner() {
           line-height: 1.4;
         }
 
-
-        /* ========================================
-           TRACK BULLET POINTS
-        ======================================== */
-
         .bp-track-card ul,
         .bp-track-areas {
           margin: 8px 0 0;
@@ -1260,22 +1199,22 @@ export default function BecomePartner() {
 
         .bp-track-card li,
         .bp-track-areas li {
-          color: #686d72;
-          font-size: 10px;
-          line-height: 1.7;
+          color: #60666F;
+          font-size: 12px;
+          line-height: 1.5;
           padding-left: 2px;
         }
 
         .bp-track-card li::marker,
         .bp-track-areas li::marker {
           color: #8d0050;
-          font-size: 9px;
+          font-size: 14px;
         }
 
 
-        /* ========================================
+        /* =========================
            APPLICATION
-        ======================================== */
+        ========================= */
 
         .bp-application {
           width: min(1200px, calc(100% - 40px));
@@ -1302,11 +1241,6 @@ export default function BecomePartner() {
           font-size: 12px;
           line-height: 1.55;
         }
-
-
-        /* ========================================
-           FORM
-        ======================================== */
 
         .bp-form-columns {
           display: grid;
@@ -1394,9 +1328,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            SCOPE
-        ======================================== */
+        ========================= */
 
         .bp-scope-grid {
           display: grid;
@@ -1413,15 +1347,7 @@ export default function BecomePartner() {
           padding: 8px 10px;
           border: none;
           border-radius: 5px;
-
-          /*
-            IMPORTANT:
-            Background remains exactly same
-            after checkbox click.
-          */
-
           background: #eef0f2;
-
           color: #555a5f;
           text-align: left;
           font-size: 10.5px;
@@ -1472,9 +1398,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            COLLABORATION
-        ======================================== */
+        ========================= */
 
         .bp-collaboration-grid {
           display: grid;
@@ -1510,13 +1436,13 @@ export default function BecomePartner() {
 
         .bp-collab-top strong {
           color: #3e4247;
-          font-size: 11px;
+          font-size: 12px;
         }
 
         .bp-collaboration-card p {
           margin: 5px 0 0;
           color: #777b80;
-          font-size: 10px;
+          font-size: 11px;
           line-height: 1.5;
         }
 
@@ -1539,9 +1465,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            TEXTAREA
-        ======================================== */
+        ========================= */
 
         .bp-field textarea {
           min-height: 75px;
@@ -1550,9 +1476,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            FORM BOTTOM
-        ======================================== */
+        ========================= */
 
         .bp-form-bottom {
           display: flex;
@@ -1578,7 +1504,7 @@ export default function BecomePartner() {
         .bp-privacy p {
           margin: 0;
           color: #777d84;
-          font-size: 9px;
+          font-size: 11px;
           line-height: 1.5;
         }
 
@@ -1604,9 +1530,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            PROCESS
-        ======================================== */
+        ========================= */
 
         .bp-process {
           width: min(1200px, calc(100% - 40px));
@@ -1652,28 +1578,28 @@ export default function BecomePartner() {
         .bp-process-card h3 {
           margin-bottom: 8px;
           color: #282c31;
-          font-size: 12px;
+          font-size: 15px;
           line-height: 1.35;
           font-weight: 700;
         }
 
         .bp-process-card p {
           color: #777b80;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.55;
         }
 
         .bp-process-label {
           margin-top: 18px;
           color: #8d0050;
-          font-size: 9px;
+          font-size: 11px;
           font-weight: 800;
         }
 
 
-        /* ========================================
+        /* =========================
            CAPABILITIES
-        ======================================== */
+        ========================= */
 
         .bp-capabilities {
           width: min(1200px, calc(100% - 40px));
@@ -1707,7 +1633,7 @@ export default function BecomePartner() {
         }
 
         .bp-cap-card {
-          min-height: 135px;
+          min-height: 155px;
           padding: 17px;
           border-radius: 9px;
           background: rgba(255,255,255,.11);
@@ -1726,7 +1652,7 @@ export default function BecomePartner() {
 
         .bp-cap-card h3 {
           margin-bottom: 7px;
-          font-size: 12px;
+          font-size: 15px;
           line-height: 1.35;
           font-weight: 700;
         }
@@ -1734,14 +1660,14 @@ export default function BecomePartner() {
         .bp-cap-card p {
           margin: 0;
           color: #f3dce8;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.55;
         }
 
 
-        /* ========================================
+        /* =========================
            FINAL CTA
-        ======================================== */
+        ========================= */
 
         .bp-final-cta {
           width: min(1200px, calc(100% - 40px));
@@ -1795,7 +1721,7 @@ export default function BecomePartner() {
           align-items: center;
           gap: 6px;
           color: #686d72;
-          font-size: 11px;
+          font-size: 13px;
         }
 
         .bp-cta-points svg {
@@ -1803,9 +1729,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            TABLET
-        ======================================== */
+        ========================= */
 
         @media (max-width: 950px) {
 
@@ -1830,12 +1756,49 @@ export default function BecomePartner() {
             grid-template-columns: 1fr 1fr;
           }
 
+          .bp-hero-tags div {
+            font-size: 12.5px;
+          }
+
+          .bp-track-card li,
+          .bp-track-areas li {
+            font-size: 12px;
+          }
+
+          .bp-process-card h3 {
+            font-size: 15px;
+          }
+
+          .bp-process-card p {
+            font-size: 12px;
+          }
+
+          .bp-process-label {
+            font-size: 11px;
+          }
+
+          .bp-cap-card h3 {
+            font-size: 15px;
+          }
+
+          .bp-cap-card p {
+            font-size: 12px;
+          }
+
+          .bp-cta-points span {
+            font-size: 13px;
+          }
+
+          .bp-privacy p {
+            font-size: 11px;
+          }
+
         }
 
 
-        /* ========================================
+        /* =========================
            MOBILE
-        ======================================== */
+        ========================= */
 
         @media (max-width: 700px) {
 
@@ -1887,6 +1850,12 @@ export default function BecomePartner() {
 
           .bp-track-card > p {
             font-size: 11px;
+          }
+
+          .bp-track-card li,
+          .bp-track-areas li {
+            font-size: 12px;
+            line-height: 1.65;
           }
 
           .bp-application {
@@ -1942,7 +1911,16 @@ export default function BecomePartner() {
             grid-template-columns: 1fr;
           }
 
+          .bp-process-card h3 {
+            font-size: 15px;
+          }
+
           .bp-process-card p {
+            font-size: 12px;
+            line-height: 1.6;
+          }
+
+          .bp-process-label {
             font-size: 11px;
           }
 
@@ -1958,12 +1936,17 @@ export default function BecomePartner() {
             grid-template-columns: 1fr;
           }
 
+          .bp-cap-card {
+            min-height: auto;
+          }
+
           .bp-cap-card h3 {
-            font-size: 12px;
+            font-size: 15px;
           }
 
           .bp-cap-card p {
-            font-size: 10px;
+            font-size: 12px;
+            line-height: 1.6;
           }
 
           .bp-final-cta {
@@ -1984,8 +1967,16 @@ export default function BecomePartner() {
             gap: 13px;
           }
 
+          .bp-cta-points span {
+            font-size: 13px;
+          }
 
-          /* HERO OVERLAY - MOBILE */
+          .bp-privacy p {
+            font-size: 11px;
+          }
+
+
+          /* HERO OVERLAY */
 
           .bp-image-overlay-card {
             left: 4%;
@@ -2024,9 +2015,9 @@ export default function BecomePartner() {
         }
 
 
-        /* ========================================
+        /* =========================
            SMALL MOBILE
-        ======================================== */
+        ========================= */
 
         @media (max-width: 420px) {
 
@@ -2091,9 +2082,9 @@ export default function BecomePartner() {
 }
 
 
-/* =====================================================
+/* =========================
    CAPABILITY CARD
-===================================================== */
+========================= */
 
 function CapabilityCard({ icon, title, text }) {
 
