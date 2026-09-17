@@ -225,12 +225,12 @@ export default function VendorPartnershipPage() {
               </p>
 
              <button
-  onClick={() => navigate("/become-partner")}
-  className="inline-flex items-center gap-2 rounded-full bg-rose-900 text-white font-semibold text-sm px-6 py-3.5 w-fit hover:bg-rose-950 transition-colors mb-6"
->
-  Become a Partner
-  <ArrowRight className="w-4 h-4" />
-</button>
+              onClick={() => navigate("/become-partner")}
+              className="inline-flex items-center gap-2 rounded-full bg-rose-900 text-white font-semibold text-sm px-6 py-3.5 w-fit hover:bg-rose-950 transition-colors mb-6"
+            >
+            Become a Partner
+            <ArrowRight className="w-4 h-4" />
+            </button>
 
               <div className="flex flex-wrap gap-x-5 gap-y-2">
                 {heroTags.map((tag) => (
