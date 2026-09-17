@@ -20,7 +20,11 @@ import {
 
 /* ---------- Data ---------- */
 
-const heroTags = ["Technology Expertise", "Business Collaboration", "Shared Opportunities"];
+const heroTags = [
+  "Technology Expertise",
+  "Business Collaboration",
+  "Shared Opportunities",
+];
 
 const opportunities = [
   {
@@ -75,7 +79,10 @@ const phases = [
     subtitle: "DISCOVERY & STRATEGY",
     description:
       "We first understand your business, technology capabilities, customer requirements, and strategic partnership objectives.",
-    deliverables: ["Stakeholder discovery & tech audit", "Ecosystem requirements baseline"],
+    deliverables: [
+      "Stakeholder discovery & tech audit",
+      "Ecosystem requirements baseline",
+    ],
     milestoneLabel: "Milestone Output:",
     milestoneValue: "Charter & Scope",
   },
@@ -86,7 +93,10 @@ const phases = [
     subtitle: "CAPABILITY & MODEL ALIGNMENT",
     description:
       "We identify areas where TechTorch's services and solutions can complement your existing capabilities and delivery infrastructure.",
-    deliverables: ["Shared SLA & commercial mapping", "Capability & stack architecture plan"],
+    deliverables: [
+      "Shared SLA & commercial mapping",
+      "Capability & stack architecture plan",
+    ],
     milestoneLabel: "Milestone Output:",
     milestoneValue: "Framework SLA",
   },
@@ -97,7 +107,10 @@ const phases = [
     subtitle: "ACTIVE CO-DELIVERY & ENGINEERING",
     description:
       "We work together around relevant technology, development, implementation, resource, or ongoing operational requirements.",
-    deliverables: ["Agile pod integration & co-delivery", "Sprint reviews & QA checkpoint gates"],
+    deliverables: [
+      "Agile pod integration & co-delivery",
+      "Sprint reviews & QA checkpoint gates",
+    ],
     milestoneLabel: "Milestone Output:",
     milestoneValue: "Live Deployment",
   },
@@ -108,7 +121,10 @@ const phases = [
     subtitle: "ONGOING SUPPORT & SCALE",
     description:
       "We continue to support the agreed area of collaboration based on evolving project needs and sustained business performance.",
-    deliverables: ["Continuous optimization & monitoring", "Quarterly governance & scale reviews"],
+    deliverables: [
+      "Continuous optimization & monitoring",
+      "Quarterly governance & scale reviews",
+    ],
     milestoneLabel: "Milestone Output:",
     milestoneValue: "Sustained ROI",
     active: true,
@@ -191,58 +207,144 @@ const whyCards = [
   },
 ];
 
-const finalTags = ["NDA Protected Discussion", "Flexible Commercial Models", "Dedicated Partner Manager"];
+const finalTags = [
+  "NDA Protected Discussion",
+  "Flexible Commercial Models",
+  "Dedicated Partner Manager",
+];
 
 /* ---------- Component ---------- */
 
 export default function VendorPartnershipPage() {
   return (
-    <div className="w-full bg-[#f8f7f5]">
+    <div className="w-full bg-[#f8f7f5] font-inter text-[#1c1c1c] overflow-hidden">
+
       {/* ============ HERO ============ */}
-      <div className="flex justify-center px-6 pt-16 pb-10">
+
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-8 sm:pb-10">
         <div className="w-full max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-8">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-8">
+
             {/* Left */}
+
             <div className="flex flex-col justify-center h-full">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-3 py-1.5 mb-6 w-fit">
+
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-3 py-1.5 mb-5 sm:mb-6 w-fit">
+
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-800" />
-                <span className="text-[10px] tracking-wide text-rose-800 font-bold">
+
+                <span className="font-inter text-[8px] sm:text-[9px] tracking-wide text-rose-800 font-bold">
                   STRATEGIC RESOURCING • VENDOR PARTNERSHIP
                 </span>
+
               </div>
 
-              <h1 className="font-semibold text-4xl sm:text-[2.5rem] leading-[1.15] mb-5 text-[#1c1c1c]">
+              {/* Heading */}
+
+              <h1
+                className="
+                  font-jakarta
+                  font-semibold
+                  text-[30px]
+                  sm:text-[36px]
+                  md:text-[40px]
+                  lg:text-[42px]
+                  leading-[1.12]
+                  mb-4
+                  sm:mb-5
+                  text-[#1c1c1c]
+                  max-w-xl
+                "
+              >
                 Building Stronger Opportunities Through{" "}
-                <span className="text-rose-900">Technology Partnership</span>
+                <span className="text-rose-900">
+                  Technology Partnership
+                </span>
               </h1>
 
-              <p className="text-neutral-500 text-[14.5px] leading-relaxed max-w-md mb-7">
+              {/* Subheading */}
+
+              <p
+                className="
+                  font-jakarta
+                  font-medium
+                  text-neutral-500
+                  text-[12px]
+                  sm:text-[13px]
+                  md:text-[13.5px]
+                  lg:text-[14px]
+                  leading-[1.55]
+                  max-w-md
+                  mb-6
+                  sm:mb-7
+                "
+              >
                 Partner with TechTorch to bring together technology
                 expertise, digital capabilities, and business requirements to
                 create practical solutions for customers and organizations.
               </p>
 
-              <button className="inline-flex items-center gap-2 rounded-full bg-rose-900 text-white font-semibold text-sm px-6 py-3.5 w-fit hover:bg-rose-950 transition-colors mb-6">
+              <button
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  bg-rose-900
+                  text-white
+                  font-inter
+                  font-semibold
+                  text-[10px]
+                  sm:text-[11px]
+                  md:text-[12px]
+                  px-5
+                  sm:px-6
+                  py-2.5
+                  sm:py-3
+                  w-fit
+                  hover:bg-rose-950
+                  transition-colors
+                  mb-5
+                  sm:mb-6
+                "
+              >
                 Become a Partner
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
 
-              <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <div className="flex flex-wrap gap-x-4 sm:gap-x-5 gap-y-2">
+
                 {heroTags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1.5 text-[12px] font-medium text-neutral-500"
+                    className="
+                      inline-flex
+                      items-center
+                      gap-1
+                      font-inter
+                      text-[8px]
+                      sm:text-[9px]
+                      font-medium
+                      text-neutral-500
+                    "
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-800" />
+                    <span className="w-1 h-1 rounded-full bg-rose-800" />
                     {tag}
                   </span>
                 ))}
+
               </div>
+
             </div>
 
+
             {/* Right - image card */}
+
             <div className="rounded-xl bg-white border border-neutral-200 shadow-sm overflow-hidden">
-              <div className="relative h-40">
+
+              <div className="relative h-[210px] sm:h-[250px] lg:h-[270px]">
+
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{
@@ -250,39 +352,129 @@ export default function VendorPartnershipPage() {
                       "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80')",
                   }}
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
               </div>
+
               <div className="px-4 py-3.5">
-                <div className="text-[9px] tracking-wide text-rose-800 font-bold mb-1">
+
+                <div
+                  className="
+                    font-inter
+                    text-[8px]
+                    sm:text-[9px]
+                    tracking-wide
+                    text-rose-800
+                    font-bold
+                    mb-1
+                  "
+                >
                   ALLIANCE NETWORK
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[12.5px] font-semibold text-[#1c1c1c]">
+
+                <div className="flex items-center justify-between gap-2">
+
+                  <span
+                    className="
+                      font-jakarta
+                      text-[11px]
+                      sm:text-[12px]
+                      lg:text-[13px]
+                      font-semibold
+                      text-[#1c1c1c]
+                    "
+                  >
                     Enterprise Ready Partnerships
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-600">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+
+                  <span
+                    className="
+                      inline-flex
+                      items-center
+                      gap-1
+                      font-inter
+                      text-[8px]
+                      sm:text-[9px]
+                      font-semibold
+                      text-emerald-600
+                      whitespace-nowrap
+                    "
+                  >
+                    <span className="w-1 h-1 rounded-full bg-emerald-500" />
                     Verified Capabilities
                   </span>
+
                 </div>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
       </div>
 
+
       {/* ============ STRATEGIC PERSPECTIVE ============ */}
-      <div className="flex justify-center px-6 py-10">
+
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
+
         <div className="w-full max-w-6xl">
-          <div className="inline-flex items-center gap-1.5 text-[10px] tracking-wide text-rose-800 font-bold bg-rose-50 px-3 py-1.5 rounded-full mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-800" />
+
+          <div
+            className="
+              inline-flex
+              items-center
+              gap-1.5
+              font-inter
+              text-[8px]
+              sm:text-[9px]
+              tracking-wide
+              text-rose-800
+              font-bold
+              bg-rose-50
+              px-2.5
+              py-1.5
+              rounded-full
+              mb-4
+            "
+          >
+            <span className="w-1 h-1 rounded-full bg-rose-800" />
             STRATEGIC PERSPECTIVE
           </div>
-          <h2 className="text-[#1c1c1c] font-semibold text-2xl leading-snug mb-6 max-w-xl">
+
+          <h2
+            className="
+              font-jakarta
+              text-[#1c1c1c]
+              font-semibold
+              text-[24px]
+              sm:text-[27px]
+              md:text-[29px]
+              lg:text-[31px]
+              leading-[1.2]
+              mb-5
+              max-w-xl
+            "
+          >
             Technology Partnerships That Create Business Value
           </h2>
 
-          <div className="space-y-4 text-[14px] leading-relaxed text-neutral-600 max-w-3xl mb-6">
+          <div
+            className="
+              font-inter
+              space-y-4
+              text-[9.5px]
+              sm:text-[10.5px]
+              lg:text-[11.5px]
+              leading-[1.65]
+              text-neutral-600
+              max-w-3xl
+              mb-6
+            "
+          >
             <p>
               Technology is most effective when different capabilities come
               together with a clear understanding of business needs. A
@@ -290,6 +482,7 @@ export default function VendorPartnershipPage() {
               solutions, and industry knowledge to address customer
               requirements more effectively.
             </p>
+
             <p>
               TechTorch works across IT consultancy, artificial intelligence,
               cloud infrastructure, cybersecurity, software engineering,
@@ -302,42 +495,133 @@ export default function VendorPartnershipPage() {
             </p>
           </div>
 
+
           {/* Pull quote */}
-          <blockquote className="border-l-[3px] border-rose-800 bg-rose-50/60 pl-6 pr-6 py-5 mb-6 max-w-3xl">
-            <p className="text-[14.5px] italic text-neutral-700 leading-relaxed mb-2">
+
+          <blockquote
+            className="
+              border-l-2
+              sm:border-l-[3px]
+              border-rose-800
+              bg-rose-50/60
+              pl-4
+              sm:pl-5
+              pr-4
+              sm:pr-5
+              py-4
+              sm:py-5
+              mb-6
+              max-w-3xl
+            "
+          >
+            <p
+              className="
+                font-inter
+                text-[9.5px]
+                sm:text-[10.5px]
+                lg:text-[11.5px]
+                italic
+                text-neutral-700
+                leading-[1.55]
+                mb-1.5
+                sm:mb-2
+              "
+            >
               "Our partnership approach is focused on understanding the needs
-              of each organization and identifying areas where our
-              technology capabilities can complement existing products,
-              services, or project requirements."
+              of each organization and identifying areas where our technology
+              capabilities can complement existing products, services, or
+              project requirements."
             </p>
-            <span className="text-[11px] font-semibold tracking-wide text-rose-800">
+
+            <span
+              className="
+                font-inter
+                text-[7px]
+                sm:text-[8px]
+                font-semibold
+                tracking-wide
+                text-rose-800
+              "
+            >
               — TECHTORCH PARTNERSHIP FRAMEWORK
             </span>
           </blockquote>
 
-          <p className="text-neutral-600 text-[14px] leading-relaxed max-w-3xl mb-10">
+
+          <p
+            className="
+              font-inter
+              text-neutral-600
+              text-[9.5px]
+              sm:text-[10.5px]
+              lg:text-[11.5px]
+              leading-[1.65]
+              max-w-3xl
+              mb-8
+              sm:mb-10
+            "
+          >
             From software development and system integration to digital
             business solutions and technical resources, TechTorch can
             support different technology requirements through a flexible and
             collaborative approach.
           </p>
 
+
           {/* Collaborative impact card */}
+
           <div className="rounded-2xl bg-white border border-neutral-200 overflow-hidden grid grid-cols-1 sm:grid-cols-[1.3fr_1fr]">
-            <div className="p-8">
-              <div className="text-[9.5px] tracking-wide text-rose-800 font-bold mb-3">
+
+            <div className="p-5 sm:p-8">
+
+              <div
+                className="
+                  font-inter
+                  text-[8px]
+                  sm:text-[9px]
+                  tracking-wide
+                  text-rose-800
+                  font-bold
+                  mb-3
+                "
+              >
                 COLLABORATIVE IMPACT
               </div>
-              <h3 className="text-[#1c1c1c] font-semibold text-[18px] mb-3">
+
+              <h3
+                className="
+                  font-jakarta
+                  text-[#1c1c1c]
+                  font-semibold
+                  text-[17px]
+                  sm:text-[19px]
+                  md:text-[20px]
+                  lg:text-[21px]
+                  leading-[1.35]
+                  mb-3
+                "
+              >
                 Seamless Integration with Your Enterprise Ecosystem
               </h3>
-              <p className="text-neutral-500 text-[13px] leading-relaxed">
+
+              <p
+                className="
+                  font-inter
+                  text-neutral-500
+                  text-[9.5px]
+                  sm:text-[10.5px]
+                  lg:text-[11.5px]
+                  leading-[1.65]
+                "
+              >
                 Whether you are an independent software vendor, systems
                 integrator, or digital agency, our shared delivery models
                 align with your business milestones and governance
                 frameworks.
               </p>
+
             </div>
+
             <div
               className="h-48 sm:h-full w-full bg-cover bg-center"
               style={{
@@ -345,286 +629,954 @@ export default function VendorPartnershipPage() {
                   "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80')",
               }}
             />
+
           </div>
+
         </div>
       </div>
 
+
       {/* ============ COLLABORATION MATRIX ============ */}
-      <div className="w-full bg-white flex justify-center px-6 py-14">
+
+      <div className="w-full bg-white flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
+
         <div className="w-full max-w-6xl text-center">
-          <div className="inline-flex items-center gap-1.5 text-[10px] tracking-wide text-rose-800 font-bold bg-rose-50 px-3 py-1.5 rounded-full mb-4">
+
+          <div
+            className="
+              inline-flex
+              items-center
+              gap-1.5
+              font-inter
+              text-[8px]
+              sm:text-[9px]
+              tracking-wide
+              text-rose-800
+              font-bold
+              bg-rose-50
+              px-2.5
+              py-1.5
+              rounded-full
+              mb-4
+            "
+          >
             COLLABORATION MATRIX
           </div>
-          <h2 className="text-[#1c1c1c] font-semibold text-2xl mb-2">
+
+          <h2
+            className="
+              font-jakarta
+              text-[#1c1c1c]
+              font-semibold
+              text-[23px]
+              sm:text-[26px]
+              md:text-[28px]
+              lg:text-[30px]
+              leading-[1.2]
+              mb-2
+            "
+          >
             Partnership Opportunities
           </h2>
-          <p className="text-neutral-500 text-[13.5px] mb-10">
+
+          <p
+            className="
+              font-jakarta
+              font-medium
+              text-neutral-500
+              text-[10px]
+              sm:text-[11px]
+              lg:text-[12px]
+              mb-8
+              sm:mb-10
+            "
+          >
             Explore Areas Where We Can Work Together
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 text-left">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-left">
+
             {opportunities.map((op) => {
+
               const Icon = op.icon;
+
               return (
                 <div
                   key={op.title}
-                  className="rounded-xl border border-neutral-200 p-6"
+                  className="
+                    rounded-xl
+                    border
+                    border-neutral-200
+                    p-4
+                    sm:p-5
+                    lg:p-6
+                  "
                 >
-                  <div className="w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center mb-4">
-                    <Icon className="w-4 h-4 text-rose-800" />
+
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-rose-50 flex items-center justify-center mb-4">
+
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-800" />
+
                   </div>
-                  <h3 className="text-[#1c1c1c] font-semibold text-[14.5px] mb-2">
+
+                  <h3
+                    className="
+                      font-jakarta
+                      text-[#1c1c1c]
+                      font-semibold
+                      text-[12px]
+                      sm:text-[13px]
+                      lg:text-[14px]
+                      mb-2
+                      leading-[1.35]
+                    "
+                  >
                     {op.title}
                   </h3>
-                  <p className="text-neutral-500 text-[12.5px] leading-relaxed mb-5">
+
+                  <p
+                    className="
+                      font-inter
+                      text-neutral-500
+                      text-[9px]
+                      sm:text-[10px]
+                      lg:text-[10.5px]
+                      leading-[1.6]
+                      mb-4
+                      sm:mb-5
+                    "
+                  >
                     {op.description}
                   </p>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+
+                  <div className="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1">
+
                     {op.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10.5px] font-semibold text-rose-800"
+                        className="
+                          font-inter
+                          text-[7.5px]
+                          sm:text-[8px]
+                          font-semibold
+                          text-rose-800
+                        "
                       >
                         {tag}
                       </span>
                     ))}
+
                   </div>
+
                 </div>
               );
             })}
+
           </div>
+
         </div>
       </div>
 
+
       {/* ============ ENGAGEMENT METHODOLOGY ============ */}
-      <div className="flex justify-center px-6 py-14">
+
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
+
         <div className="w-full max-w-6xl">
-          <div className="text-[10px] tracking-wide text-rose-800 font-bold mb-3">
+
+          <div
+            className="
+              font-inter
+              text-[8px]
+              sm:text-[9px]
+              tracking-wide
+              text-rose-800
+              font-bold
+              mb-2.5
+              sm:mb-3
+            "
+          >
             ENGAGEMENT METHODOLOGY
           </div>
+
           <div className="flex items-start justify-between flex-wrap gap-3 mb-2">
-            <h2 className="text-[#1c1c1c] font-semibold text-2xl">
+
+            <h2
+              className="
+                font-jakarta
+                text-[#1c1c1c]
+                font-semibold
+                text-[23px]
+                sm:text-[26px]
+                md:text-[28px]
+                lg:text-[30px]
+                leading-[1.2]
+              "
+            >
               Our Partnership Approach
             </h2>
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-neutral-500 bg-white border border-neutral-200 px-3 py-1.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+
+            <span
+              className="
+                inline-flex
+                items-center
+                gap-1.5
+                font-inter
+                text-[7px]
+                sm:text-[8px]
+                font-semibold
+                text-neutral-500
+                bg-white
+                border
+                border-neutral-200
+                px-2.5
+                sm:px-3
+                py-1.5
+                rounded-full
+              "
+            >
+              <span className="w-1 h-1 rounded-full bg-emerald-500" />
               End-to-End Governance & SLA Milestones
             </span>
+
           </div>
-          <p className="text-neutral-500 text-[13.5px] leading-relaxed mb-8 max-w-xl">
+
+          <p
+            className="
+              font-jakarta
+              font-medium
+              text-neutral-500
+              text-[10px]
+              sm:text-[11px]
+              lg:text-[12px]
+              leading-[1.55]
+              mb-6
+              sm:mb-8
+              max-w-xl
+            "
+          >
             A structured, four-phase engagement roadmap designed to align
             capabilities, de-risk joint delivery, and generate mutual
             enterprise value.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+
             {phases.map((p) => (
+
               <div
                 key={p.number}
                 className={
                   p.active
-                    ? "rounded-xl bg-white border-2 border-rose-800 p-5"
-                    : "rounded-xl bg-white border border-neutral-200 p-5"
+                    ? "rounded-xl bg-white border-2 border-rose-800 p-4 sm:p-5"
+                    : "rounded-xl bg-white border border-neutral-200 p-4 sm:p-5"
                 }
               >
+
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[22px] font-bold text-neutral-200">
+
+                  <span
+                    className="
+                      font-inter
+                      text-[20px]
+                      sm:text-[22px]
+                      font-bold
+                      text-neutral-200
+                    "
+                  >
                     {p.number}
                   </span>
+
                   <span
                     className={
                       p.active
-                        ? "text-[9.5px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full"
-                        : "text-[9.5px] font-semibold text-neutral-400"
+                        ? "font-inter text-[8px] sm:text-[9px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full"
+                        : "font-inter text-[8px] sm:text-[9px] font-semibold text-neutral-400"
                     }
                   >
                     {p.phaseTag}
                   </span>
+
                 </div>
-                <h3 className="text-[#1c1c1c] font-semibold text-[15px] mb-0.5">
+
+                <h3
+                  className="
+                    font-jakarta
+                    text-[#1c1c1c]
+                    font-semibold
+                    text-[12px]
+                    sm:text-[13px]
+                    lg:text-[14px]
+                    mb-1
+                    leading-[1.35]
+                  "
+                >
                   {p.title}
                 </h3>
-                <div className="text-[9px] tracking-wide text-neutral-400 font-semibold mb-3">
+
+                <div
+                  className="
+                    font-inter
+                    text-[7px]
+                    sm:text-[8px]
+                    tracking-wide
+                    text-neutral-400
+                    font-semibold
+                    mb-3
+                  "
+                >
                   {p.subtitle}
                 </div>
-                <p className="text-neutral-500 text-[12px] leading-relaxed mb-4">
+
+                <p
+                  className="
+                    font-inter
+                    text-neutral-500
+                    text-[9px]
+                    sm:text-[10px]
+                    lg:text-[10.5px]
+                    leading-[1.6]
+                    mb-4
+                  "
+                >
                   {p.description}
                 </p>
-                <div className="text-[9px] tracking-wide text-neutral-400 font-semibold mb-1.5">
+
+                <div
+                  className="
+                    font-inter
+                    text-[7px]
+                    sm:text-[8px]
+                    tracking-wide
+                    text-neutral-400
+                    font-semibold
+                    mb-1.5
+                  "
+                >
                   KEY DELIVERABLES
                 </div>
+
                 <ul className="space-y-1 mb-4">
+
                   {p.deliverables.map((d) => (
                     <li
                       key={d}
-                      className="text-[11px] text-neutral-500 flex items-start gap-1.5"
+                      className="
+                        font-inter
+                        text-[8px]
+                        sm:text-[8.5px]
+                        text-neutral-500
+                        flex
+                        items-start
+                        gap-1.5
+                      "
                     >
                       <span className="w-1 h-1 rounded-full bg-rose-800 shrink-0 mt-1.5" />
                       {d}
                     </li>
                   ))}
+
                 </ul>
+
                 <div className="border-t border-neutral-100 pt-3">
-                  <div className="text-[10px] text-neutral-400 mb-0.5">
+
+                  <div
+                    className="
+                      font-inter
+                      text-[7.5px]
+                      sm:text-[8px]
+                      text-neutral-400
+                      mb-0.5
+                    "
+                  >
                     {p.milestoneLabel}
                   </div>
-                  <span className="inline-flex items-center gap-1 text-[11.5px] font-semibold text-rose-800">
+
+                  <span
+                    className="
+                      inline-flex
+                      items-center
+                      gap-1
+                      font-inter
+                      text-[9px]
+                      sm:text-[10px]
+                      font-semibold
+                      text-rose-800
+                    "
+                  >
                     {p.active && <Check className="w-3 h-3" />}
                     {p.milestoneValue}
                   </span>
+
                 </div>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
       </div>
 
+
       {/* ============ ENTERPRISE PORTFOLIO ============ */}
-      <div className="flex justify-center px-6 py-14">
+
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
+
         <div className="w-full max-w-6xl">
-          <div className="text-[10px] tracking-wide text-rose-800 font-bold mb-3">
+
+          <div
+            className="
+              font-inter
+              text-[8px]
+              sm:text-[9px]
+              tracking-wide
+              text-rose-800
+              font-bold
+              mb-2.5
+              sm:mb-3
+            "
+          >
             ENTERPRISE PORTFOLIO
           </div>
-          <h2 className="text-[#1c1c1c] font-semibold text-2xl mb-2">
+
+          <h2
+            className="
+              font-jakarta
+              text-[#1c1c1c]
+              font-semibold
+              text-[23px]
+              sm:text-[26px]
+              md:text-[28px]
+              lg:text-[30px]
+              leading-[1.2]
+              mb-2
+            "
+          >
             Technology Capabilities
           </h2>
-          <p className="text-neutral-500 text-[13.5px] leading-relaxed mb-8">
+
+          <p
+            className="
+              font-jakarta
+              font-medium
+              text-neutral-500
+              text-[10px]
+              sm:text-[11px]
+              lg:text-[12px]
+              leading-[1.55]
+              mb-6
+              sm:mb-8
+            "
+          >
             Supporting Different Business & Technology Needs
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+
             {techCapabilities.map((cap) => (
+
               <div
                 key={cap.title}
-                className="rounded-xl bg-white border border-neutral-200 p-6"
+                className="
+                  rounded-xl
+                  bg-white
+                  border
+                  border-neutral-200
+                  p-4
+                  sm:p-5
+                  lg:p-6
+                "
               >
-                <div className="flex items-center gap-1.5 text-[9.5px] tracking-wide text-neutral-400 font-semibold mb-4">
+
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-1.5
+                    font-inter
+                    text-[7.5px]
+                    sm:text-[8px]
+                    lg:text-[9px]
+                    tracking-wide
+                    text-neutral-400
+                    font-semibold
+                    mb-4
+                  "
+                >
                   {cap.category}
                   <span className="w-1 h-1 rounded-full bg-rose-800" />
                 </div>
-                <h3 className="text-[#1c1c1c] font-semibold text-[15px] mb-2">
+
+                <h3
+                  className="
+                    font-jakarta
+                    text-[#1c1c1c]
+                    font-semibold
+                    text-[12px]
+                    sm:text-[13px]
+                    lg:text-[14px]
+                    mb-2
+                    leading-[1.35]
+                  "
+                >
                   {cap.title}
                 </h3>
-                <p className="text-neutral-500 text-[12.5px] leading-relaxed mb-5">
+
+                <p
+                  className="
+                    font-inter
+                    text-neutral-500
+                    text-[9px]
+                    sm:text-[10px]
+                    lg:text-[10.5px]
+                    leading-[1.6]
+                    mb-4
+                    sm:mb-5
+                  "
+                >
                   {cap.description}
                 </p>
+
                 <div className="flex flex-wrap gap-1.5">
+
                   {cap.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10.5px] font-medium text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full"
+                      className="
+                        font-inter
+                        text-[7.5px]
+                        sm:text-[8px]
+                        font-medium
+                        text-neutral-600
+                        bg-neutral-100
+                        px-2
+                        sm:px-2.5
+                        py-1
+                        rounded-full
+                      "
                     >
                       {tag}
                     </span>
                   ))}
+
                 </div>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
       </div>
 
+
       {/* ============ WHY PARTNER (dark) ============ */}
+
       <div
-        className="w-full px-6 py-16 flex justify-center"
+        className="
+          w-full
+          px-4
+          sm:px-6
+          lg:px-8
+          py-10
+          sm:py-12
+          lg:py-16
+          flex
+          justify-center
+        "
         style={{
           background:
             "radial-gradient(120% 140% at 90% 0%, #7a0f47 0%, #3a0a26 60%)",
         }}
       >
+
         <div className="w-full max-w-6xl">
-          <span className="inline-flex items-center gap-1.5 text-[9px] tracking-wide font-bold text-rose-100 bg-white/10 px-3 py-1 rounded-full mb-5">
+
+          <span
+            className="
+              inline-flex
+              items-center
+              gap-1.5
+              font-inter
+              text-[7px]
+              sm:text-[8px]
+              tracking-wide
+              font-bold
+              text-rose-100
+              bg-white/10
+              px-2.5
+              sm:px-3
+              py-1
+              rounded-full
+              mb-4
+              sm:mb-5
+            "
+          >
             <span className="w-1 h-1 rounded-full bg-rose-300" />
             STRATEGIC PARTNERSHIP VALUE
           </span>
-          <h2 className="text-white font-semibold text-3xl leading-snug mb-3 max-w-lg">
+
+          <h2
+            className="
+              font-jakarta
+              text-white
+              font-semibold
+              text-[24px]
+              sm:text-[28px]
+              md:text-[31px]
+              lg:text-[34px]
+              leading-[1.15]
+              mb-2.5
+              sm:mb-3
+              max-w-lg
+            "
+          >
             Why Partner With TechTorch?
           </h2>
-          <p className="text-rose-100/70 text-[13.5px] max-w-xl mb-8">
+
+          <p
+            className="
+              font-jakarta
+              font-medium
+              text-rose-100/70
+              text-[9px]
+              sm:text-[10px]
+              md:text-[10.5px]
+              lg:text-[11px]
+              leading-relaxed
+              max-w-xl
+              mb-6
+              sm:mb-8
+            "
+          >
             Technology Capabilities That Support Collaboration
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+
             {whyCards.map((card) => {
+
               const Icon = card.icon;
+
               return (
                 <div
                   key={card.title}
-                  className="rounded-xl bg-white/[0.08] border border-white/10 p-5"
+                  className="
+                    rounded-xl
+                    bg-white/[0.08]
+                    border
+                    border-white/10
+                    p-4
+                    sm:p-5
+                  "
                 >
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mb-4">
-                    <Icon className="w-4 h-4 text-rose-100" />
+
+                  <div
+                    className="
+                      w-7
+                      h-7
+                      sm:w-8
+                      sm:h-8
+                      rounded-lg
+                      bg-white/10
+                      flex
+                      items-center
+                      justify-center
+                      mb-4
+                    "
+                  >
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-100" />
                   </div>
-                  <h3 className="text-white font-semibold text-[13.5px] mb-2 leading-snug">
+
+                  <h3
+                    className="
+                      font-jakarta
+                      text-white
+                      font-semibold
+                      text-[10px]
+                      sm:text-[11px]
+                      lg:text-[11.5px]
+                      mb-2
+                      leading-[1.35]
+                    "
+                  >
                     {card.title}
                   </h3>
-                  <p className="text-rose-100/60 text-[12px] leading-relaxed mb-4">
+
+                  <p
+                    className="
+                      font-inter
+                      text-rose-100/60
+                      text-[8px]
+                      sm:text-[8.5px]
+                      lg:text-[9px]
+                      leading-[1.55]
+                      mb-4
+                    "
+                  >
                     {card.description}
                   </p>
-                  <span className="text-[9.5px] tracking-wide font-bold text-rose-200">
+
+                  <span
+                    className="
+                      font-inter
+                      text-[7.5px]
+                      sm:text-[8px]
+                      tracking-wide
+                      font-bold
+                      text-rose-200
+                    "
+                  >
                     {card.tag}
                   </span>
+
                 </div>
               );
+
             })}
+
           </div>
+
         </div>
       </div>
 
+
       {/* ============ FINAL CTA ============ */}
-      <div className="flex justify-center px-6 py-16">
-        <div className="w-full max-w-3xl rounded-2xl bg-rose-50/60 border border-rose-100 px-8 py-14 text-center">
-          <div className="inline-flex items-center gap-1.5 text-[10px] tracking-wide text-rose-800 font-bold bg-white px-3 py-1.5 rounded-full mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-800" />
+
+      <div
+        className="
+          flex
+          justify-center
+          px-4
+          sm:px-6
+          lg:px-8
+          py-10
+          sm:py-14
+          lg:py-16
+        "
+      >
+
+        <div
+          className="
+            w-full
+            max-w-3xl
+            rounded-xl
+            sm:rounded-2xl
+            bg-rose-50/60
+            border
+            border-rose-100
+            px-5
+            sm:px-8
+            lg:px-10
+            py-9
+            sm:py-12
+            lg:py-14
+            text-center
+          "
+        >
+
+          <div
+            className="
+              inline-flex
+              items-center
+              gap-1.5
+              font-inter
+              text-[7px]
+              sm:text-[8px]
+              tracking-wide
+              text-rose-800
+              font-bold
+              bg-white
+              px-2.5
+              sm:px-3
+              py-1.5
+              rounded-full
+              mb-4
+              sm:mb-5
+            "
+          >
+            <span className="w-1 h-1 rounded-full bg-rose-800" />
             START A CONVERSATION
           </div>
 
-          <h2 className="text-[#1c1c1c] font-semibold text-3xl leading-snug mb-4">
+
+          <h2
+            className="
+              font-jakarta
+              text-[#1c1c1c]
+              font-semibold
+              text-[23px]
+              sm:text-[27px]
+              md:text-[29px]
+              lg:text-[31px]
+              leading-[1.2]
+              mb-3
+              sm:mb-4
+            "
+          >
             Let's Build the Right Partnership Together
           </h2>
-          <p className="text-neutral-500 text-[14px] leading-relaxed max-w-xl mx-auto mb-2">
+
+
+          <p
+            className="
+              font-inter
+              text-neutral-500
+              text-[9.5px]
+              sm:text-[10.5px]
+              lg:text-[11.5px]
+              leading-[1.65]
+              max-w-xl
+              mx-auto
+              mb-2
+            "
+          >
             If your organization is looking to complement its technology
             capabilities, expand its solution offerings, or explore new
             areas of collaboration, let's start a conversation.
           </p>
-          <p className="text-neutral-500 text-[14px] leading-relaxed max-w-xl mx-auto mb-8">
+
+          <p
+            className="
+              font-inter
+              text-neutral-500
+              text-[9.5px]
+              sm:text-[10.5px]
+              lg:text-[11.5px]
+              leading-[1.65]
+              max-w-xl
+              mx-auto
+              mb-6
+              sm:mb-8
+            "
+          >
             Share your business requirements and partnership objectives with
             TechTorch, and explore where our capabilities can work together.
           </p>
 
-          <button className="inline-flex items-center gap-2 rounded-full bg-rose-900 text-white font-semibold text-sm px-6 py-3.5 hover:bg-rose-950 transition-colors mb-8">
+
+          <button
+            className="
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              bg-rose-900
+              text-white
+              font-inter
+              font-semibold
+              text-[10px]
+              sm:text-[11px]
+              md:text-[12px]
+              px-5
+              sm:px-6
+              py-2.5
+              sm:py-3
+              hover:bg-rose-950
+              transition-colors
+              mb-6
+              sm:mb-8
+            "
+          >
             Talk to Expert
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           </button>
 
+
           {/* Response card */}
-          <div className="inline-flex items-center gap-3 bg-white border border-neutral-200 rounded-xl px-5 py-3 mb-6">
+
+          <div
+            className="
+              inline-flex
+              items-center
+              gap-3
+              bg-white
+              border
+              border-neutral-200
+              rounded-xl
+              px-4
+              sm:px-5
+              py-3
+              mb-5
+              sm:mb-6
+            "
+          >
+
             <div className="w-7 h-7 rounded-full bg-emerald-50 flex items-center justify-center">
+
               <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+
             </div>
+
             <div className="text-left">
-              <div className="text-[9.5px] tracking-wide text-neutral-400 font-semibold">
+
+              <div
+                className="
+                  font-inter
+                  text-[7.5px]
+                  sm:text-[8px]
+                  tracking-wide
+                  text-neutral-400
+                  font-semibold
+                "
+              >
                 RESPONSE
               </div>
-              <div className="text-[12.5px] font-semibold text-[#1c1c1c]">
+
+              <div
+                className="
+                  font-jakarta
+                  text-[10px]
+                  sm:text-[11px]
+                  lg:text-[12px]
+                  font-semibold
+                  text-[#1c1c1c]
+                "
+              >
                 Business-Focused Support
               </div>
+
             </div>
+
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
+
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 lg:gap-6">
+
             {finalTags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1.5 text-[11.5px] font-medium text-neutral-500"
+                className="
+                  inline-flex
+                  items-center
+                  gap-1
+                  sm:gap-1.5
+                  font-inter
+                  text-[7.5px]
+                  sm:text-[8.5px]
+                  lg:text-[9px]
+                  font-medium
+                  text-neutral-500
+                "
               >
-                <Check className="w-3.5 h-3.5 text-rose-800" />
+                <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-rose-800" />
                 {tag}
               </span>
             ))}
+
           </div>
+
         </div>
+
       </div>
+
     </div>
   );
 }

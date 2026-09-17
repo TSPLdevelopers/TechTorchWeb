@@ -22,26 +22,8 @@ import {
 } from "lucide-react";
 
 /* =========================================================
-   FONTS
-   =========================================================
-   Add this to index.css / App.css:
-
-   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
-
-   body {
-     font-family: "Inter", sans-serif;
-   }
-
-   .font-jakarta {
-     font-family: "Plus Jakarta Sans", sans-serif;
-   }
-
-   .font-inter {
-     font-family: "Inter", sans-serif;
-   }
+   DATA
 ========================================================= */
-
-/* ---------- Data ---------- */
 
 const heroTags = [
   "Skilled Resources",
@@ -56,7 +38,11 @@ const approachCards = [
     title: "Skill-Aligned Resources",
     description:
       "Identify technical professionals based on the skills, experience, technology environment, and responsibilities required for your project.",
-    tags: ["Technical Skills", "Relevant Expertise", "Project Requirements"],
+    tags: [
+      "Technical Skills",
+      "Relevant Expertise",
+      "Project Requirements",
+    ],
   },
   {
     icon: ArrowLeftRight,
@@ -64,7 +50,11 @@ const approachCards = [
     title: "Flexible Team Support",
     description:
       "Add technical capacity when your workload or project requirements change, while complementing the capabilities of your existing team.",
-    tags: ["Flexible Staffing", "Team Support", "Technical Capacity"],
+    tags: [
+      "Flexible Staffing",
+      "Team Support",
+      "Technical Capacity",
+    ],
   },
   {
     icon: Users,
@@ -72,7 +62,11 @@ const approachCards = [
     title: "Project-Focused Collaboration",
     description:
       "Enable resources to work within your existing project structure, processes, technologies, and team environment.",
-    tags: ["Project Collaboration", "Team Integration", "Technical Support"],
+    tags: [
+      "Project Collaboration",
+      "Team Integration",
+      "Technical Support",
+    ],
   },
 ];
 
@@ -233,35 +227,60 @@ const finalTags = [
 
 export default function BenchHiringPage() {
   return (
-    <div className="w-full bg-[#f8f7f5] font-inter overflow-hidden">
+    <div className="w-full bg-[#f8f9fa] font-inter text-[#1c1c1c] overflow-hidden">
 
       {/* =====================================================
           HERO
       ===================================================== */}
-      <section className="flex justify-center px-4 sm:px-6 pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10">
+
+      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-8 sm:pb-10">
         <div className="w-full max-w-6xl">
 
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_410px] gap-8 lg:gap-12 items-center">
 
             {/* LEFT */}
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
 
               {/* Badge */}
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#730024]/5 border border-[#730024]/10 px-3 py-1.5 mb-5 sm:mb-6">
-                <Zap className="w-3 h-3 text-[#730024]" />
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#730042]/5 border border-[#730042]/10 px-3 py-1.5 mb-5 sm:mb-6">
+                <Zap className="w-3 h-3 text-[#730042]" />
 
-                <span className="text-[9.5px] sm:text-[10px] tracking-wide text-[#730024] font-bold font-inter">
+                <span className="font-inter text-[8px] sm:text-[9px] tracking-wide text-[#730042] font-bold">
                   IT AUGMENTATION • BENCH HIRING
                 </span>
               </div>
 
               {/* Heading */}
-              <h1 className="font-jakarta font-semibold text-3xl sm:text-4xl lg:text-[2.5rem] leading-[1.15] mb-4 sm:mb-5 text-[#1c1c1c] max-w-2xl">
+              <h1 className="
+                font-jakarta
+                font-semibold
+                text-[30px]
+                sm:text-[36px]
+                md:text-[40px]
+                lg:text-[42px]
+                leading-[1.12]
+                mb-4
+                sm:mb-5
+                text-[#161620]
+                max-w-xl
+              ">
                 Build Your Technology Team with the Right Resources
               </h1>
 
               {/* Subheading */}
-              <p className="font-jakarta text-neutral-500 text-[13.5px] sm:text-[14.5px] leading-relaxed max-w-xl mb-6 sm:mb-7">
+              <p className="
+                font-jakarta
+                font-medium
+                text-neutral-500
+                text-[12px]
+                sm:text-[13px]
+                md:text-[13.5px]
+                lg:text-[14px]
+                leading-[1.55]
+                max-w-xl
+                mb-5
+                sm:mb-6
+              ">
                 Access skilled technology professionals to support your
                 projects, strengthen your existing teams, and respond to
                 changing business and technology requirements.
@@ -269,52 +288,57 @@ export default function BenchHiringPage() {
 
               {/* Button */}
               <button
+                type="button"
                 className="
                   inline-flex
                   items-center
                   justify-center
                   gap-2
-                  rounded-full
-                  bg-[#730024]
+                  rounded-md
+                  bg-[#730042]
                   text-white
                   font-inter
                   font-semibold
-                  text-sm
-                  px-6
-                  py-3.5
+                  text-[10px]
+                  sm:text-[11px]
+                  px-5
+                  sm:px-6
+                  py-2.5
+                  sm:py-3
                   w-fit
-                  hover:bg-[#5c001d]
+                  hover:bg-[#5c0035]
                   transition-colors
-                  mb-6
+                  mb-5
                 "
               >
                 Talk to Our Experts
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
 
               {/* Tags */}
-              <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-xl">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 max-w-xl">
                 {heroTags.map((tag) => (
                   <span
                     key={tag}
                     className="
                       inline-flex
                       items-center
-                      gap-1.5
-                      text-[10.5px]
-                      sm:text-[11.5px]
+                      gap-1
                       font-inter
+                      text-[7.5px]
+                      sm:text-[8px]
                       font-medium
                       text-neutral-600
                       bg-white
                       border
                       border-neutral-200
-                      px-3
-                      py-1.5
-                      rounded-full
+                      px-2
+                      sm:px-2.5
+                      py-1
+                      rounded-[3px]
                     "
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#730024]" />
+                    <span className="w-1 h-1 rounded-full bg-[#730042]" />
                     {tag}
                   </span>
                 ))}
@@ -327,8 +351,6 @@ export default function BenchHiringPage() {
                 w-full
                 max-w-[410px]
                 mx-auto
-                lg:mx-0
-                lg:justify-self-end
                 rounded-xl
                 bg-white
                 border
@@ -337,26 +359,29 @@ export default function BenchHiringPage() {
                 overflow-hidden
               "
             >
-              <div className="relative h-64 sm:h-72 lg:h-[340px]">
+              <div className="relative h-[210px] sm:h-[250px] lg:h-[270px]">
 
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{
-                    backgroundImage: "url('benchhiring.png')",
+                    backgroundImage: "url('/benchhiring.png')",
                   }}
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                <div className="absolute bottom-3 left-4 right-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-white text-[10px] sm:text-[11px] font-inter font-medium">
-                  <span className="flex items-center gap-1.5">
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2 text-white font-inter text-[7px] sm:text-[8px] font-medium">
+
+                  <span className="flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                     Enterprise Ready Bench
                   </span>
 
-                  <span>Verified Technical Talent</span>
-                </div>
+                  <span>
+                    Verified Technical Talent
+                  </span>
 
+                </div>
               </div>
             </div>
 
@@ -364,28 +389,67 @@ export default function BenchHiringPage() {
         </div>
       </section>
 
+
       {/* =====================================================
           STRATEGIC RESOURCING
       ===================================================== */}
-      <section className="flex justify-center px-4 sm:px-6 py-10 sm:py-12">
+
+      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
         <div className="w-full max-w-6xl">
 
-          {/* CENTER CONTENT */}
           <div className="flex flex-col items-center text-center">
 
             {/* Label */}
-            <div className="inline-flex items-center gap-1.5 text-[9.5px] sm:text-[10px] tracking-wide text-[#730024] font-bold font-inter bg-[#730024]/5 border border-[#730024]/10 px-3 py-1.5 rounded-full mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#730024]" />
+            <div className="
+              inline-flex
+              items-center
+              gap-1.5
+              font-inter
+              text-[8px]
+              sm:text-[9px]
+              tracking-wide
+              text-[#730042]
+              font-bold
+              bg-[#730042]/5
+              border
+              border-[#730042]/10
+              px-2.5
+              py-1.5
+              rounded-full
+              mb-4
+            ">
+              <span className="w-1 h-1 rounded-full bg-[#730042]" />
               STRATEGIC RESOURCING
             </div>
 
             {/* Heading */}
-            <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-2xl sm:text-3xl leading-snug mb-6 max-w-2xl">
+            <h2 className="
+              font-jakarta
+              text-[#161620]
+              font-semibold
+              text-[24px]
+              sm:text-[27px]
+              md:text-[29px]
+              lg:text-[31px]
+              leading-[1.2]
+              mb-5
+              max-w-2xl
+            ">
               Flexible Technology Resources for Growing Business Needs
             </h2>
 
             {/* Paragraphs */}
-            <div className="space-y-4 text-[13.5px] sm:text-[14px] leading-relaxed text-neutral-600 max-w-3xl font-inter">
+            <div className="
+              w-full
+              max-w-3xl
+              space-y-4
+              font-inter
+              text-[9.5px]
+              sm:text-[10.5px]
+              lg:text-[11.5px]
+              leading-[1.65]
+              text-neutral-600
+            ">
 
               <p>
                 Technology projects do not always require the same level of
@@ -414,26 +478,77 @@ export default function BenchHiringPage() {
             </div>
           </div>
 
+
           {/* PULL QUOTE */}
-          <blockquote className="border-l-[3px] border-[#730024] bg-[#730024]/5 pl-5 sm:pl-6 pr-5 sm:pr-6 py-5 my-8 max-w-3xl mx-auto text-left">
-            <p className="font-inter text-[14px] sm:text-[15px] italic text-neutral-700 leading-relaxed mb-2">
+          <blockquote className="
+            w-full
+            max-w-3xl
+            mx-auto
+            border-l-2
+            border-[#730042]
+            bg-[#730042]/5
+            pl-4
+            sm:pl-5
+            pr-4
+            sm:pr-5
+            py-4
+            my-7
+            text-left
+          ">
+            <p className="
+              font-inter
+              text-[9.5px]
+              sm:text-[10.5px]
+              lg:text-[11.5px]
+              italic
+              text-neutral-700
+              leading-[1.55]
+              mb-1.5
+            ">
               "The right people, the right technical capabilities, and the
               right support for your business requirements."
             </p>
 
-            <span className="font-inter text-[10px] sm:text-[11px] font-semibold tracking-wide text-[#730024]">
+            <span className="
+              font-inter
+              text-[7px]
+              sm:text-[8px]
+              font-semibold
+              tracking-wide
+              text-[#730042]
+            ">
               — TECHTORCH RESOURCING FRAMEWORK
             </span>
           </blockquote>
 
+
           {/* SECONDARY HEADING */}
           <div className="flex flex-col items-center text-center">
 
-            <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-lg sm:text-xl mb-3">
+            <h3 className="
+              font-jakarta
+              text-[#161620]
+              font-semibold
+              text-[17px]
+              sm:text-[19px]
+              md:text-[20px]
+              lg:text-[21px]
+              mb-3
+            ">
               Technology Expertise That Supports Your Projects
             </h3>
 
-            <div className="space-y-4 text-[13.5px] sm:text-[14px] leading-relaxed text-neutral-600 max-w-3xl font-inter">
+            <div className="
+              w-full
+              max-w-3xl
+              space-y-4
+              font-inter
+              text-[9.5px]
+              sm:text-[10.5px]
+              lg:text-[11.5px]
+              leading-[1.65]
+              text-neutral-600
+            ">
 
               <p>
                 TechTorch's software engineering capabilities cover a broad
@@ -456,21 +571,50 @@ export default function BenchHiringPage() {
         </div>
       </section>
 
+
       {/* =====================================================
           STRUCTURED APPROACH
       ===================================================== */}
-      <section className="flex justify-center px-4 sm:px-6 py-10">
+
+      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="w-full max-w-6xl">
 
-          <div className="text-[9.5px] sm:text-[10px] tracking-wide text-[#730024] font-bold mb-3 font-inter">
+          <div className="
+            font-inter
+            text-[8px]
+            sm:text-[9px]
+            tracking-wide
+            text-[#730042]
+            font-bold
+            mb-2.5
+          ">
             BENCH HIRING SUPPORT
           </div>
 
-          <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-2xl sm:text-3xl mb-8 max-w-xl">
+          <h2 className="
+            font-jakarta
+            text-[#161620]
+            font-semibold
+            text-[23px]
+            sm:text-[26px]
+            md:text-[28px]
+            lg:text-[30px]
+            leading-[1.2]
+            mb-6
+            max-w-xl
+          ">
             Structured Approach to Engineering Continuity
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+          <div className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            gap-3
+            sm:gap-4
+          ">
 
             {approachCards.map((card) => {
               const Icon = card.icon;
@@ -478,38 +622,99 @@ export default function BenchHiringPage() {
               return (
                 <div
                   key={card.number}
-                  className="rounded-xl bg-white border border-neutral-200 p-5 sm:p-6"
+                  className="
+                    w-full
+                    min-w-0
+                    rounded-lg
+                    bg-white
+                    border
+                    border-neutral-200
+                    p-4
+                    sm:p-5
+                    transition-all
+                    duration-300
+                    hover:border-[#730042]/20
+                    hover:shadow-[0_5px_18px_rgba(115,0,66,0.05)]
+                  "
                 >
-                  <div className="flex items-center justify-between mb-5">
 
-                    <div className="w-9 h-9 rounded-lg bg-[#730024]/5 flex items-center justify-center">
-                      <Icon className="w-4 h-4 text-[#730024]" />
+                  <div className="flex items-center justify-between mb-4">
+
+                    <div className="
+                      w-7
+                      h-7
+                      sm:w-8
+                      sm:h-8
+                      rounded-md
+                      bg-[#730042]/5
+                      flex
+                      items-center
+                      justify-center
+                      shrink-0
+                    ">
+                      <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#730042]" />
                     </div>
 
-                    <span className="text-[11px] font-bold text-neutral-300 font-inter">
+                    <span className="
+                      font-inter
+                      text-[8px]
+                      sm:text-[9px]
+                      font-bold
+                      text-neutral-300
+                    ">
                       {card.number}
                     </span>
 
                   </div>
 
-                  <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[15px] mb-2">
+                  <h3 className="
+                    font-jakarta
+                    text-[#161620]
+                    font-semibold
+                    text-[12px]
+                    sm:text-[13px]
+                    lg:text-[14px]
+                    mb-2
+                    leading-[1.35]
+                  ">
                     {card.title}
                   </h3>
 
-                  <p className="font-inter text-neutral-500 text-[12.5px] leading-relaxed mb-5">
+                  <p className="
+                    font-inter
+                    text-neutral-500
+                    text-[9.5px]
+                    sm:text-[10px]
+                    lg:text-[10.5px]
+                    leading-[1.6]
+                    mb-4
+                  ">
                     {card.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1">
+
                     {card.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-inter text-[10.5px] font-medium text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full"
+                        className="
+                          font-inter
+                          text-[7.5px]
+                          sm:text-[8px]
+                          font-medium
+                          text-neutral-600
+                          bg-neutral-100
+                          px-1.5
+                          py-1
+                          rounded-[3px]
+                        "
                       >
                         {tag}
                       </span>
                     ))}
+
                   </div>
+
                 </div>
               );
             })}
@@ -518,26 +723,66 @@ export default function BenchHiringPage() {
         </div>
       </section>
 
+
       {/* =====================================================
           TECHNOLOGY CAPABILITIES
       ===================================================== */}
-      <section className="flex justify-center px-4 sm:px-6 py-10">
+
+      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="w-full max-w-6xl">
 
-          <div className="text-[9.5px] sm:text-[10px] tracking-wide text-[#730024] font-bold mb-3 font-inter">
+          <div className="
+            font-inter
+            text-[8px]
+            sm:text-[9px]
+            tracking-wide
+            text-[#730042]
+            font-bold
+            mb-2.5
+          ">
             TECHNOLOGY CAPABILITIES
           </div>
 
-          <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-2xl sm:text-3xl mb-2 max-w-xl">
+          <h2 className="
+            font-jakarta
+            text-[#161620]
+            font-semibold
+            text-[23px]
+            sm:text-[26px]
+            md:text-[28px]
+            lg:text-[30px]
+            leading-[1.2]
+            mb-2
+            max-w-xl
+          ">
             Support Across Your Technology Requirements
           </h2>
 
-          <p className="font-inter text-neutral-500 text-[13.5px] leading-relaxed mb-8 max-w-xl">
+          <p className="
+            font-inter
+            text-neutral-500
+            text-[9.5px]
+            sm:text-[10.5px]
+            lg:text-[11.5px]
+            leading-relaxed
+            mb-6
+            max-w-xl
+          ">
             Bench hiring can support a range of technology activities
             depending on the requirements of your project.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+
+          {/* Capability Cards */}
+          <div className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            gap-3
+            sm:gap-4
+            mb-4
+          ">
 
             {capabilities.map((cap) => {
               const Icon = cap.icon;
@@ -545,57 +790,164 @@ export default function BenchHiringPage() {
               return (
                 <div
                   key={cap.number}
-                  className="rounded-xl bg-white border border-neutral-200 p-5"
+                  className="
+                    w-full
+                    min-w-0
+                    rounded-lg
+                    bg-white
+                    border
+                    border-neutral-200
+                    p-4
+                    sm:p-5
+                  "
                 >
-                  <div className="flex items-center justify-between mb-4">
 
-                    <div className="w-9 h-9 rounded-lg bg-[#730024]/5 flex items-center justify-center">
-                      <Icon className="w-4 h-4 text-[#730024]" />
+                  <div className="flex items-center justify-between mb-3">
+
+                    <div className="
+                      w-7
+                      h-7
+                      sm:w-8
+                      sm:h-8
+                      rounded-md
+                      bg-[#730042]/5
+                      flex
+                      items-center
+                      justify-center
+                    ">
+                      <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#730042]" />
                     </div>
 
-                    <span className="text-[9.5px] tracking-wide font-semibold text-neutral-300 font-inter">
+                    <span className="
+                      font-inter
+                      text-[7px]
+                      sm:text-[7.5px]
+                      tracking-wide
+                      font-semibold
+                      text-neutral-300
+                    ">
                       CAPABILITY {cap.number}
                     </span>
 
                   </div>
 
-                  <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[14px] mb-2 leading-snug">
+
+                  <h3 className="
+                    font-jakarta
+                    text-[#161620]
+                    font-semibold
+                    text-[11px]
+                    sm:text-[12px]
+                    lg:text-[13px]
+                    mb-2
+                    leading-[1.35]
+                  ">
                     {cap.title}
                   </h3>
 
-                  <p className="font-inter text-neutral-500 text-[12px] leading-relaxed mb-4">
+                  <p className="
+                    font-inter
+                    text-neutral-500
+                    text-[9px]
+                    sm:text-[9.5px]
+                    lg:text-[10px]
+                    leading-[1.6]
+                    mb-3
+                  ">
                     {cap.description}
                   </p>
 
-                  <span className="font-inter text-[10.5px] font-medium text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full">
+                  <span className="
+                    inline-flex
+                    font-inter
+                    text-[7.5px]
+                    sm:text-[8px]
+                    font-medium
+                    text-neutral-600
+                    bg-neutral-100
+                    px-1.5
+                    py-1
+                    rounded-[3px]
+                  ">
                     {cap.tag}
                   </span>
+
                 </div>
               );
             })}
 
           </div>
 
+
           {/* Capability 07 */}
-          <div className="rounded-xl bg-white border border-neutral-200 p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+          <div className="
+            w-full
+            rounded-lg
+            bg-white
+            border
+            border-neutral-200
+            p-4
+            sm:p-5
+            flex
+            flex-col
+            sm:flex-row
+            sm:items-center
+            sm:justify-between
+            gap-4
+          ">
 
-            <div className="flex items-start sm:items-center gap-4">
+            <div className="flex items-start sm:items-center gap-3">
 
-              <div className="w-9 h-9 rounded-lg bg-[#730024]/5 flex items-center justify-center shrink-0">
-                <RefreshCw className="w-4 h-4 text-[#730024]" />
+              <div className="
+                w-7
+                h-7
+                sm:w-8
+                sm:h-8
+                rounded-md
+                bg-[#730042]/5
+                flex
+                items-center
+                justify-center
+                shrink-0
+              ">
+                <RefreshCw className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#730042]" />
               </div>
 
               <div>
 
-                <div className="text-[9.5px] tracking-wide text-[#730024] font-bold mb-1 font-inter">
+                <div className="
+                  font-inter
+                  text-[7px]
+                  sm:text-[7.5px]
+                  tracking-wide
+                  text-[#730042]
+                  font-bold
+                  mb-1
+                ">
                   CAPABILITY 07
                 </div>
 
-                <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[14px] mb-1">
+                <h3 className="
+                  font-jakarta
+                  text-[#161620]
+                  font-semibold
+                  text-[11px]
+                  sm:text-[12px]
+                  lg:text-[13px]
+                  mb-1
+                ">
                   Ongoing Maintenance & Support
                 </h3>
 
-                <p className="font-inter text-neutral-500 text-[12px] leading-relaxed max-w-xl">
+                <p className="
+                  font-inter
+                  text-neutral-500
+                  text-[9px]
+                  sm:text-[9.5px]
+                  lg:text-[10px]
+                  leading-relaxed
+                  max-w-xl
+                ">
                   Provide continued technical assistance, updates,
                   improvements, and support throughout the software lifecycle.
                 </p>
@@ -603,76 +955,208 @@ export default function BenchHiringPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 shrink-0 flex-wrap">
 
-              <span className="font-inter text-[10.5px] font-medium text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full whitespace-nowrap">
+            <div className="
+              flex
+              items-center
+              gap-2
+              shrink-0
+              flex-wrap
+            ">
+
+              <span className="
+                font-inter
+                text-[7.5px]
+                sm:text-[8px]
+                font-medium
+                text-neutral-600
+                bg-neutral-100
+                px-1.5
+                py-1
+                rounded-[3px]
+                whitespace-nowrap
+              ">
                 SLA & Continuous Health
               </span>
 
-              <span className="font-inter text-[10.5px] font-semibold text-[#730024] whitespace-nowrap">
+              <span className="
+                font-inter
+                text-[7.5px]
+                sm:text-[8px]
+                font-semibold
+                text-[#730042]
+                whitespace-nowrap
+              ">
                 Specialized Support →
               </span>
 
             </div>
+
           </div>
 
         </div>
       </section>
 
+
       {/* =====================================================
           DELIVERY WORKFLOW
       ===================================================== */}
-      <section className="flex justify-center px-4 sm:px-6 py-10">
+
+      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="w-full max-w-6xl">
 
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+          <div className="
+            flex
+            flex-col
+            sm:flex-row
+            sm:items-center
+            sm:justify-between
+            gap-3
+            mb-3
+          ">
 
-            <div className="text-[9.5px] sm:text-[10px] tracking-wide text-[#730024] font-bold bg-[#730024]/5 border border-[#730024]/10 px-3 py-1.5 rounded-full inline-flex items-center gap-1.5 w-fit font-inter">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#730024]" />
+            <div className="
+              inline-flex
+              items-center
+              gap-1.5
+              font-inter
+              text-[7px]
+              sm:text-[8px]
+              tracking-wide
+              text-[#730042]
+              font-bold
+              bg-[#730042]/5
+              border
+              border-[#730042]/10
+              px-2.5
+              py-1.5
+              rounded-full
+              w-fit
+            ">
+              <span className="w-1 h-1 rounded-full bg-[#730042]" />
               DELIVERY WORKFLOW • 4-PHASE DEPLOYMENT
             </div>
 
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-neutral-500 bg-neutral-100 px-3 py-1.5 rounded-full w-fit font-inter">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#730024]" />
+            <span className="
+              inline-flex
+              items-center
+              gap-1.5
+              font-inter
+              text-[7px]
+              sm:text-[8px]
+              font-semibold
+              text-neutral-500
+              bg-neutral-100
+              px-2.5
+              py-1.5
+              rounded-full
+              w-fit
+            ">
+              <span className="w-1 h-1 rounded-full bg-[#730042]" />
               SLA-GOVERNED EXECUTION
             </span>
 
           </div>
 
-          <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-2xl sm:text-3xl mb-2 max-w-xl">
+
+          <h2 className="
+            font-jakarta
+            text-[#161620]
+            font-semibold
+            text-[23px]
+            sm:text-[26px]
+            md:text-[28px]
+            lg:text-[30px]
+            leading-[1.2]
+            mb-2
+            max-w-xl
+          ">
             From Requirement to Resource Alignment
           </h2>
 
-          <p className="font-inter text-neutral-500 text-[13.5px] leading-relaxed mb-8 max-w-xl">
+          <p className="
+            font-inter
+            text-neutral-500
+            text-[9.5px]
+            sm:text-[10.5px]
+            lg:text-[11.5px]
+            leading-relaxed
+            mb-6
+            max-w-xl
+          ">
             A systematic four-stage methodology engineered to maintain
             project velocity, smooth onboarding, and uninterrupted
             operational continuity.
           </p>
 
-          {/* Step Tracker */}
-          <div className="grid grid-cols-4 items-center mb-10 relative">
 
-            <div className="absolute top-3 left-0 right-0 h-px bg-neutral-200 mx-6 sm:mx-12" />
+          {/* Step Tracker */}
+          <div className="relative grid grid-cols-4 items-start mb-7">
+
+            <div className="
+              absolute
+              top-3
+              left-[8%]
+              right-[8%]
+              h-px
+              bg-[#730042]/20
+            " />
 
             {phases.map((p) => (
               <div
                 key={p.dot}
-                className="flex flex-col items-center relative z-10"
+                className="
+                  flex
+                  flex-col
+                  items-center
+                  relative
+                  z-10
+                "
               >
-                <div className="w-6 h-6 rounded-full bg-[#730024] text-white text-[11px] font-bold flex items-center justify-center mb-2">
+
+                <div className="
+                  w-6
+                  h-6
+                  rounded-full
+                  bg-[#730042]
+                  text-white
+                  font-inter
+                  text-[8px]
+                  font-bold
+                  flex
+                  items-center
+                  justify-center
+                  mb-1.5
+                ">
                   {p.dot}
                 </div>
 
-                <span className="text-[10px] sm:text-[11.5px] font-medium text-neutral-600 font-inter text-center">
+                <span className="
+                  font-inter
+                  text-[7.5px]
+                  sm:text-[8.5px]
+                  font-medium
+                  text-neutral-600
+                  text-center
+                ">
                   {p.label}
                 </span>
+
               </div>
             ))}
 
           </div>
 
+
           {/* Phase Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+          <div className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-4
+            gap-3
+            mb-4
+          ">
 
             {phases.map((p) => {
               const Icon = p.icon;
@@ -680,54 +1164,140 @@ export default function BenchHiringPage() {
               return (
                 <div
                   key={p.tag}
-                  className="rounded-xl bg-white border border-neutral-200 p-5"
+                  className="
+                    w-full
+                    min-w-0
+                    rounded-lg
+                    bg-white
+                    border
+                    border-neutral-200
+                    p-4
+                    sm:p-4
+                  "
                 >
 
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-3">
 
-                    <div className="w-8 h-8 rounded-lg bg-[#730024]/5 flex items-center justify-center">
-                      <Icon className="w-4 h-4 text-[#730024]" />
+                    <div className="
+                      w-7
+                      h-7
+                      rounded-md
+                      bg-[#730042]/5
+                      flex
+                      items-center
+                      justify-center
+                    ">
+                      <Icon className="w-3 h-3 text-[#730042]" />
                     </div>
 
-                    <span className="text-[9.5px] font-semibold text-neutral-400 font-inter">
+                    <span className="
+                      font-inter
+                      text-[7px]
+                      sm:text-[7.5px]
+                      font-semibold
+                      text-neutral-400
+                    ">
                       {p.tag}
                     </span>
 
                   </div>
 
-                  <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[14.5px] mb-2">
+
+                  <h3 className="
+                    font-jakarta
+                    text-[#161620]
+                    font-semibold
+                    text-[11px]
+                    sm:text-[12px]
+                    mb-2
+                    leading-[1.35]
+                  ">
                     {p.title}
                   </h3>
 
-                  <p className="font-inter text-neutral-500 text-[12px] leading-relaxed mb-3">
+                  <p className="
+                    font-inter
+                    text-neutral-500
+                    text-[9px]
+                    sm:text-[9.5px]
+                    lg:text-[10px]
+                    leading-[1.6]
+                    mb-3
+                  ">
                     {p.description}
                   </p>
 
-                  <div className="text-[9.5px] tracking-wide text-neutral-400 font-semibold mb-1.5 font-inter">
+
+                  <div className="
+                    font-inter
+                    text-[7px]
+                    tracking-wide
+                    text-neutral-400
+                    font-semibold
+                    mb-1.5
+                  ">
                     KEY ACTIVITIES
                   </div>
 
-                  <ul className="space-y-1 mb-4">
 
-                    {p.keyActivities.map((a) => (
+                  <ul className="space-y-1 mb-3">
+
+                    {p.keyActivities.map((activity) => (
                       <li
-                        key={a}
-                        className="text-[11px] text-neutral-500 flex items-center gap-1.5 font-inter"
+                        key={activity}
+                        className="
+                          font-inter
+                          text-[8px]
+                          sm:text-[8.5px]
+                          text-neutral-500
+                          flex
+                          items-start
+                          gap-1.5
+                        "
                       >
-                        <span className="w-1 h-1 rounded-full bg-[#730024] shrink-0" />
-                        {a}
+                        <span className="
+                          w-1
+                          h-1
+                          rounded-full
+                          bg-[#730042]
+                          shrink-0
+                          mt-1
+                        " />
+
+                        {activity}
                       </li>
                     ))}
 
                   </ul>
 
-                  <div className="border-t border-neutral-100 pt-3 flex items-center justify-between gap-2">
 
-                    <span className="text-[10.5px] font-semibold text-[#730024] font-inter">
+                  <div className="
+                    border-t
+                    border-neutral-100
+                    pt-2.5
+                    flex
+                    items-center
+                    justify-between
+                    gap-2
+                  ">
+
+                    <span className="
+                      font-inter
+                      text-[7.5px]
+                      sm:text-[8px]
+                      font-semibold
+                      text-[#730042]
+                    ">
                       {p.footLabel}
                     </span>
 
-                    <span className="text-[10px] text-neutral-400 font-medium font-inter">
+                    <span className="
+                      font-inter
+                      text-[7.5px]
+                      sm:text-[8px]
+                      text-neutral-400
+                      font-medium
+                    ">
                       {p.footRight}
                     </span>
 
@@ -739,16 +1309,44 @@ export default function BenchHiringPage() {
 
           </div>
 
+
           {/* Enterprise Guarantee */}
-          <div className="rounded-lg bg-white border border-neutral-200 px-5 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="
+            rounded-lg
+            bg-white
+            border
+            border-neutral-200
+            px-4
+            sm:px-5
+            py-3
+            flex
+            flex-col
+            sm:flex-row
+            sm:items-center
+            sm:justify-between
+            gap-3
+          ">
 
-            <div className="flex items-start sm:items-center gap-3">
+            <div className="flex items-start sm:items-center gap-2.5">
 
-              <CheckCheck className="w-4 h-4 text-[#730024] shrink-0 mt-0.5 sm:mt-0" />
+              <CheckCheck className="
+                w-3.5
+                h-3.5
+                text-[#730042]
+                shrink-0
+                mt-0.5
+                sm:mt-0
+              " />
 
-              <p className="text-[12px] text-neutral-600 font-inter">
+              <p className="
+                font-inter
+                text-[8px]
+                sm:text-[8.5px]
+                text-neutral-600
+                leading-[1.5]
+              ">
 
-                <span className="font-semibold text-[#1c1c1c]">
+                <span className="font-semibold text-[#161620]">
                   Enterprise Deployment Guarantee:
                 </span>{" "}
                 Dedicated account management, structured weekly velocity
@@ -759,7 +1357,14 @@ export default function BenchHiringPage() {
 
             </div>
 
-            <span className="text-[10.5px] font-bold text-[#730024] whitespace-nowrap font-inter">
+            <span className="
+              font-inter
+              text-[7px]
+              sm:text-[7.5px]
+              font-bold
+              text-[#730042]
+              whitespace-nowrap
+            ">
               ZERO DISRUPTION
             </span>
 
@@ -768,10 +1373,13 @@ export default function BenchHiringPage() {
         </div>
       </section>
 
+
       {/* =====================================================
           WHY TECHTORCH
       ===================================================== */}
-      <section className="flex justify-center px-4 sm:px-6 py-8 sm:py-10 lg:py-12">
+
+      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
+
         <div
           className="
             w-full
@@ -779,36 +1387,84 @@ export default function BenchHiringPage() {
             rounded-xl
             sm:rounded-2xl
             px-5
-            sm:px-8
+            sm:px-7
             lg:px-10
-            py-8
-            sm:py-10
-            lg:py-12
+            py-7
+            sm:py-9
+            lg:py-10
           "
           style={{
-            background: "#730024",
+            backgroundColor: "#730042",
           }}
         >
 
-          {/* SECTION LABEL */}
-          <span className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] tracking-wide font-bold text-white/90 bg-white/10 border border-white/10 px-3 py-1.5 rounded-full mb-4 sm:mb-5 font-inter">
+          {/* Label */}
+          <span className="
+            inline-flex
+            items-center
+            gap-1.5
+            font-inter
+            text-[7px]
+            sm:text-[8px]
+            tracking-wide
+            font-bold
+            text-white/90
+            bg-white/10
+            border
+            border-white/10
+            px-2.5
+            py-1.5
+            rounded-full
+            mb-4
+          ">
             <span className="w-1 h-1 rounded-full bg-white/80" />
             WHY TECHTORCH
           </span>
 
-          {/* HEADING */}
-          <h2 className="font-jakarta text-white font-semibold text-2xl sm:text-3xl lg:text-[2rem] leading-[1.2] mb-3 max-w-2xl">
+
+          {/* Heading */}
+          <h2 className="
+            font-jakarta
+            text-white
+            font-semibold
+            text-[23px]
+            sm:text-[27px]
+            md:text-[29px]
+            lg:text-[31px]
+            leading-[1.15]
+            mb-2.5
+            max-w-xl
+          ">
             Technology Support Built Around Your Requirements
           </h2>
 
-          {/* SUB HEADING */}
-          <p className="font-jakarta text-white/75 text-[13px] sm:text-[14px] leading-relaxed max-w-2xl mb-7 sm:mb-8">
+
+          {/* Subheading */}
+          <p className="
+            font-jakarta
+            font-medium
+            text-white/75
+            text-[9px]
+            sm:text-[10px]
+            md:text-[10.5px]
+            lg:text-[11px]
+            leading-relaxed
+            max-w-2xl
+            mb-6
+          ">
             Flexible resourcing engineered to integrate seamlessly with your
             teams, methodologies, and enterprise goals.
           </p>
 
-          {/* CARDS */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+
+          {/* Cards */}
+          <div className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-4
+            gap-3
+          ">
 
             {whyCards.map((card) => {
               const Icon = card.icon;
@@ -818,35 +1474,62 @@ export default function BenchHiringPage() {
                   key={card.title}
                   className="
                     rounded-lg
-                    sm:rounded-xl
                     bg-[#811A55]
                     border
                     border-white/20
-                    p-5
-                    sm:p-5
-                    min-h-[190px]
-                    sm:min-h-[205px]
+                    p-4
+                    min-h-[150px]
+                    sm:min-h-[160px]
+                    lg:min-h-[175px]
                     flex
                     flex-col
                     transition-all
                     duration-300
                     hover:bg-[#8B215D]
-                    hover:border-white/30
                   "
                 >
 
-                  {/* ICON */}
-                  <div className="w-8 h-8 rounded-lg bg-white/15 border border-white/10 flex items-center justify-center mb-5">
-                    <Icon className="w-4 h-4 text-white" />
+                  {/* Icon */}
+                  <div className="
+                    w-7
+                    h-7
+                    rounded-md
+                    bg-white/15
+                    border
+                    border-white/10
+                    flex
+                    items-center
+                    justify-center
+                    mb-4
+                  ">
+                    <Icon className="w-3.5 h-3.5 text-white" />
                   </div>
 
-                  {/* CARD HEADING */}
-                  <h3 className="font-jakarta text-white font-semibold text-[13.5px] sm:text-[14px] mb-2 leading-snug">
+
+                  {/* Heading */}
+                  <h3 className="
+                    font-jakarta
+                    text-white
+                    font-semibold
+                    text-[10px]
+                    sm:text-[11px]
+                    lg:text-[11.5px]
+                    mb-1.5
+                    leading-[1.35]
+                  ">
                     {card.title}
                   </h3>
 
-                  {/* CARD TEXT */}
-                  <p className="font-inter text-white/70 text-[11.5px] sm:text-[12px] leading-relaxed">
+
+                  {/* Text */}
+                  <p className="
+                    font-inter
+                    text-white/70
+                    text-[8px]
+                    sm:text-[8.5px]
+                    lg:text-[9px]
+                    leading-[1.55]
+                  ">
                     {card.description}
                   </p>
 
@@ -855,70 +1538,174 @@ export default function BenchHiringPage() {
             })}
 
           </div>
+
         </div>
+
       </section>
+
 
       {/* =====================================================
           FINAL CTA
       ===================================================== */}
-      <section className="flex justify-center px-4 sm:px-6 py-12 sm:py-16">
 
-        <div className="w-full max-w-3xl rounded-2xl bg-[#730024]/5 border border-[#730024]/10 px-5 sm:px-8 py-10 sm:py-14 text-center">
+      <section className="
+        w-full
+        flex
+        justify-center
+        px-4
+        sm:px-6
+        lg:px-8
+        py-10
+        sm:py-14
+        lg:py-16
+      ">
 
-          <div className="inline-flex items-center gap-1.5 text-[10px] tracking-wide text-[#730024] font-bold bg-white px-3 py-1.5 rounded-full mb-5 font-inter">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#730024]" />
+        <div className="
+          w-full
+          max-w-3xl
+          rounded-xl
+          sm:rounded-2xl
+          bg-[#730042]/[0.035]
+          border
+          border-[#730042]/10
+          px-5
+          sm:px-8
+          lg:px-10
+          py-9
+          sm:py-12
+          lg:py-14
+          text-center
+        ">
+
+          {/* Label */}
+          <div className="
+            inline-flex
+            items-center
+            gap-1.5
+            font-inter
+            text-[7px]
+            sm:text-[8px]
+            tracking-wide
+            text-[#730042]
+            font-bold
+            bg-white
+            border
+            border-[#730042]/10
+            px-2.5
+            py-1.5
+            rounded-full
+            mb-4
+          ">
+            <span className="w-1 h-1 rounded-full bg-[#730042]" />
             STRENGTHEN YOUR TEAM
           </div>
 
-          <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-2xl sm:text-3xl leading-snug mb-4">
+
+          {/* Heading */}
+          <h2 className="
+            font-jakarta
+            text-[#161620]
+            font-semibold
+            text-[23px]
+            sm:text-[27px]
+            md:text-[29px]
+            lg:text-[31px]
+            leading-[1.2]
+            mb-3
+          ">
             Strengthen Your Technology Team with the Right Resources
           </h2>
 
-          <p className="font-inter text-neutral-500 text-[13.5px] sm:text-[14px] leading-relaxed max-w-xl mx-auto mb-8">
+
+          {/* Paragraph */}
+          <p className="
+            font-inter
+            text-neutral-500
+            text-[10px]
+            sm:text-[10.5px]
+            lg:text-[11.5px]
+            leading-[1.65]
+            max-w-xl
+            mx-auto
+            mb-6
+          ">
             Whether you need additional technical capacity for an ongoing
             project or support for a new technology initiative, TechTorch can
             help you explore resource and staffing solutions aligned with
             your requirements.
           </p>
 
+
+          {/* Button */}
           <button
+            type="button"
             className="
               inline-flex
               items-center
               justify-center
               gap-2
               rounded-md
-              bg-[#730024]
+              bg-[#730042]
               text-white
               font-inter
               font-semibold
-              text-sm
-              px-6
-              py-3.5
-              hover:bg-[#5c001d]
+              text-[8px]
+              sm:text-[9px]
+              px-5
+              sm:px-6
+              py-2.5
+              sm:py-3
+              hover:bg-[#5c0035]
               transition-colors
-              mb-7
+              mb-6
             "
           >
             Talk to Our Experts
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-3 h-3" />
           </button>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-4">
+
+          {/* Tags */}
+          <div className="
+            flex
+            flex-wrap
+            items-center
+            justify-center
+            gap-3
+            sm:gap-5
+            mb-4
+          ">
 
             {finalTags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-inter font-medium text-neutral-600"
+                className="
+                  inline-flex
+                  items-center
+                  gap-1
+                  font-inter
+                  text-[7.5px]
+                  sm:text-[8.5px]
+                  font-medium
+                  text-neutral-600
+                "
               >
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#730024]" />
+                <CheckCircle2 className="w-2.5 h-2.5 text-[#730042]" />
                 {tag}
               </span>
             ))}
 
           </div>
 
-          <div className="text-[10.5px] sm:text-[11px] text-neutral-400 font-inter font-medium">
+
+          {/* Bottom text */}
+          <div className="
+            font-inter
+            text-[7px]
+            sm:text-[7.5px]
+            text-neutral-400
+            font-medium
+          ">
             Enterprise Grade Governance & Rapid SLA Deployment
           </div>
 
