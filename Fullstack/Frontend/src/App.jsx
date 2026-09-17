@@ -243,6 +243,14 @@ import VpMain from "./pages/Capabilities/ItAugmentation/VendorPartnership/VpMain
 import BecomePartner from "./pages/Capabilities/ItAugmentation/VendorPartnership/BecomePartner.jsx";
 
 
+// ================ MSP SUPPORT ============
+import MSP1 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP1.jsx";
+import MSP2 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP2.jsx";
+import MSP3 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP3.jsx";
+import DiscussPriorities from "./pages/Capabilities/ItAugmentation/MSPSupport/DiscussPriorities.jsx";
+import ConnectMSP from "./pages/Capabilities/ItAugmentation/MSPSupport/ConnectMSP.jsx";
+
+
 // =================================================
 // COMMON LAYOUT
 // =================================================
@@ -642,6 +650,15 @@ function VendorPartnership(){
     </>
   )
 }
+function MSPSupport(){
+  return(
+    <>
+    <MSP1/>
+    <MSP2/>
+    <MSP3/>
+    </>
+  )
+}
 
 // =================================================
 // APP ROUTES
@@ -771,6 +788,9 @@ function App() {
       <Route path="/bench-hiring" element={<BenchHiring />} />
       <Route path="/vendor-partnership" element={<VendorPartnership />} />
       <Route path="/become-partner" element={<BecomePartner />} />
+      <Route path="/msp-support" element={<MSPSupport/>} />
+      <Route path="/discuss-priorities" element={<DiscussPriorities />} />
+      <Route path="/connect-msp" element={<ConnectMSP />} />
     </Routes>
   );
 }
