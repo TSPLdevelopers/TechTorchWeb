@@ -28,7 +28,7 @@ export default function CyberSecurityHeroSection() {
           bg-no-repeat
         "
         style={{
-          backgroundImage: "url('/Card4hero.png')",
+          backgroundImage: "url('/Futuristic Cybersecurity Operations Center with global threat visualization.png')",
         }}
       />
 

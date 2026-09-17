@@ -1,6 +1,6 @@
 import React from "react";
 
-const IMAGE_URL = "/Modern.png";
+const IMAGE_URL = "/fieldnote.png";
 
 export default function TechnologySection() {
   return (
