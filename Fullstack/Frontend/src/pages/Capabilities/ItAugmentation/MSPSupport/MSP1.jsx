@@ -1,20 +1,15 @@
 import React from "react";
 import {
   ArrowRight,
-  BarChart3,
-  CheckCircle2,
   Cloud,
   Code2,
   Headphones,
-  LifeBuoy,
   Network,
   ShieldCheck,
   Wrench,
   Activity,
   Server,
   Settings,
-  Zap,
-  LockKeyhole,
 } from "lucide-react";
 
 const MSPSupport = () => {
@@ -104,7 +99,6 @@ const MSPSupport = () => {
   return (
     <>
       <style>{`
-
         * {
           box-sizing: border-box;
         }
@@ -126,10 +120,6 @@ const MSPSupport = () => {
           overflow: hidden;
           background: #f7f6f4;
         }
-
-        /* =====================================================
-           COMMON
-        ===================================================== */
 
         .msp-container {
           width: min(1180px, calc(100% - 70px));
@@ -159,9 +149,7 @@ const MSPSupport = () => {
           background: #72003e;
         }
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+        /* ================= HERO ================= */
 
         .msp-hero {
           width: 100%;
@@ -233,6 +221,9 @@ const MSPSupport = () => {
           letter-spacing: 0.7px;
           text-transform: uppercase;
           cursor: pointer;
+
+          transform: translateY(15px);
+
           transition:
             background 0.25s ease,
             transform 0.25s ease,
@@ -241,7 +232,7 @@ const MSPSupport = () => {
 
         .msp-primary-btn:hover {
           background: #8a0752;
-          transform: translateY(-2px);
+          transform: translateY(13px);
           box-shadow: 0 8px 20px rgba(109, 0, 61, 0.2);
         }
 
@@ -302,21 +293,41 @@ const MSPSupport = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
+
+          /* screenshot jaisa slightly burgundy tone */
+          filter: saturate(0.9) contrast(1.03);
+        }
+
+        /* Image ke upar subtle burgundy/purple tint */
+        .msp-hero-image-wrapper::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          pointer-events: none;
+          background: rgba(76, 0, 48, 0.16);
+          mix-blend-mode: multiply;
         }
 
         .msp-health-badge {
           position: absolute;
+          z-index: 3;
           top: 15px;
           right: 15px;
+
           display: flex;
           align-items: center;
           gap: 7px;
+
           padding: 8px 13px;
           border-radius: 20px;
+
           background: rgba(255, 255, 255, 0.95);
           color: #36363a;
+
           font-size: 11px;
           font-weight: 700;
+
           box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
         }
 
@@ -329,14 +340,19 @@ const MSPSupport = () => {
 
         .msp-hero-image-card {
           position: absolute;
+          z-index: 3;
+
           left: 20px;
           right: 20px;
           bottom: 20px;
+
           display: flex;
           align-items: center;
           gap: 14px;
+
           padding: 14px 17px;
           border-radius: 14px;
+
           background: rgba(255, 255, 255, 0.96);
           box-shadow: 0 8px 22px rgba(0, 0, 0, 0.13);
         }
@@ -345,9 +361,11 @@ const MSPSupport = () => {
           width: 39px;
           height: 39px;
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 9px;
           background: #70003f;
           color: #ffffff;
@@ -377,17 +395,17 @@ const MSPSupport = () => {
           width: 31px;
           height: 31px;
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 50%;
           background: #eee9ed;
           color: #70003f;
         }
 
-        /* =====================================================
-           SECOND SECTION
-        ===================================================== */
+        /* ================= RESILIENCE ================= */
 
         .msp-resilience {
           width: 100%;
@@ -398,6 +416,7 @@ const MSPSupport = () => {
         .msp-resilience-inner {
           width: min(1180px, calc(100% - 70px));
           margin: 0 auto;
+
           display: grid;
           grid-template-columns: minmax(350px, 0.8fr) minmax(0, 1.12fr);
           gap: 65px;
@@ -430,13 +449,17 @@ const MSPSupport = () => {
           position: absolute;
           top: 22px;
           left: 22px;
+
           display: flex;
           align-items: center;
           gap: 7px;
+
           padding: 9px 13px;
           border-radius: 9px;
+
           background: rgba(255, 255, 255, 0.96);
           color: #37373b;
+
           font-size: 10px;
           font-weight: 800;
           letter-spacing: 0.35px;
@@ -453,6 +476,7 @@ const MSPSupport = () => {
         .msp-resilience-content h2 {
           margin: 19px 0 20px;
           max-width: 650px;
+
           color: #252529;
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 30px;
@@ -503,6 +527,7 @@ const MSPSupport = () => {
           position: relative;
           z-index: 3;
           margin: 0;
+
           color: #29292d;
           font-size: 14px;
           line-height: 1.55;
@@ -528,9 +553,7 @@ const MSPSupport = () => {
           font-weight: 500;
         }
 
-        /* =====================================================
-           SERVICES
-        ===================================================== */
+        /* ================= SERVICES ================= */
 
         .msp-services {
           width: 100%;
@@ -566,56 +589,92 @@ const MSPSupport = () => {
           gap: 17px;
         }
 
+        /* ================= SERVICE CARD ================= */
+
         .msp-service-card {
           position: relative;
           min-width: 0;
           min-height: 320px;
+
           padding: 24px 23px 18px;
+
           overflow: hidden;
+
           border: 1px solid #ebe5e8;
           border-radius: 13px;
+
           background: #ffffff;
+
           box-shadow: 0 2px 4px rgba(31, 18, 24, 0.02);
+
+          isolation: isolate;
+
           transition:
             transform 0.25s ease,
             border-color 0.25s ease,
             box-shadow 0.25s ease;
         }
 
+        /* Upper-right corner color */
         .msp-service-card::after {
           content: "";
+
           position: absolute;
-          top: -50px;
-          right: -50px;
-          width: 120px;
-          height: 120px;
+
+          top: -52px;
+          right: -52px;
+
+          width: 125px;
+          height: 125px;
+
           border-radius: 50%;
-          background: #f5f1f3;
+
+          background: #f1e9ed;
+
           z-index: 0;
+
+          transform: scale(1);
+          transform-origin: top right;
+
+          transition:
+            transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Hover par color complete card me spread */
+        .msp-service-card:hover::after {
+          transform: scale(8);
         }
 
         .msp-service-card:hover {
           transform: translateY(-5px);
+
           border-color: #d9bdcb;
-          box-shadow: 0 12px 28px rgba(75, 15, 45, 0.08);
+
+          box-shadow:
+            0 12px 28px rgba(75, 15, 45, 0.08);
         }
 
         .msp-service-top {
           position: relative;
           z-index: 2;
+
           display: flex;
           align-items: center;
           justify-content: space-between;
+
           margin-bottom: 24px;
         }
 
         .msp-service-icon {
           width: 37px;
           height: 37px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 9px;
+
           background: #f1e8ed;
           color: #72003e;
         }
@@ -628,12 +687,16 @@ const MSPSupport = () => {
         .msp-service-number {
           width: 27px;
           height: 27px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 50%;
+
           background: #efeaed;
           color: #72003e;
+
           font-size: 10px;
           font-weight: 700;
         }
@@ -641,8 +704,11 @@ const MSPSupport = () => {
         .msp-service-category {
           position: relative;
           z-index: 2;
+
           margin-bottom: 7px;
+
           color: #72003e;
+
           font-size: 9px;
           line-height: 1.2;
           font-weight: 700;
@@ -652,9 +718,12 @@ const MSPSupport = () => {
         .msp-service-card h3 {
           position: relative;
           z-index: 2;
+
           margin: 0;
           min-height: 42px;
+
           color: #27272b;
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 17px;
           line-height: 1.13;
@@ -665,23 +734,32 @@ const MSPSupport = () => {
         .msp-service-description {
           position: relative;
           z-index: 2;
+
           margin: 14px 0 0;
+
           color: #746b70;
+
           font-size: 13px;
           line-height: 1.62;
         }
 
         .msp-service-footer {
           position: absolute;
+
           left: 23px;
           right: 23px;
           bottom: 18px;
+
           z-index: 2;
+
           display: flex;
           align-items: center;
           justify-content: space-between;
+
           gap: 10px;
+
           padding-top: 15px;
+
           border-top: 1px solid #eee9eb;
         }
 
@@ -689,7 +767,9 @@ const MSPSupport = () => {
           display: flex;
           align-items: center;
           gap: 5px;
+
           color: #72003e;
+
           font-size: 10px;
           font-weight: 700;
           white-space: nowrap;
@@ -697,25 +777,29 @@ const MSPSupport = () => {
 
         .msp-service-tag-primary::before {
           content: "";
+
           width: 5px;
           height: 5px;
+
           border-radius: 50%;
+
           background: #72003e;
         }
 
         .msp-service-tag-secondary {
           padding: 4px 7px;
+
           border-radius: 4px;
+
           background: #ededee;
           color: #777177;
+
           font-size: 9px;
           font-weight: 700;
           white-space: nowrap;
         }
 
-        /* =====================================================
-           BOTTOM AREA
-        ===================================================== */
+        /* ================= SUPPORT ================= */
 
         .msp-support-strip {
           width: 100%;
@@ -726,15 +810,19 @@ const MSPSupport = () => {
         .msp-support-inner {
           width: min(1180px, calc(100% - 70px));
           margin: 0 auto;
+
           display: flex;
           align-items: center;
           justify-content: space-between;
+
           gap: 40px;
         }
 
         .msp-support-content h2 {
           margin: 12px 0 8px;
+
           color: #29292d;
+
           font-size: 32px;
           line-height: 1.15;
           font-weight: 500;
@@ -743,38 +831,52 @@ const MSPSupport = () => {
 
         .msp-support-content p {
           max-width: 680px;
+
           margin: 0;
+
           color: #746c70;
+
           font-size: 13px;
           line-height: 1.6;
         }
 
         .msp-support-button {
           flex-shrink: 0;
+
           display: inline-flex;
           align-items: center;
+
           gap: 8px;
+
           padding: 12px 20px;
+
           border: none;
           border-radius: 7px;
+
           background: #70003f;
           color: white;
+
           font-size: 10px;
           font-weight: 800;
           letter-spacing: 0.5px;
+
           cursor: pointer;
+
+          transition:
+            background 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
         .msp-support-button:hover {
           background: #890551;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 18px rgba(91, 0, 51, 0.18);
         }
 
-        /* =====================================================
-           LARGE TABLET
-        ===================================================== */
+        /* ================= TABLET ================= */
 
         @media (max-width: 1100px) {
-
           .msp-hero-inner,
           .msp-resilience-inner,
           .msp-support-inner {
@@ -798,12 +900,7 @@ const MSPSupport = () => {
           }
         }
 
-        /* =====================================================
-           TABLET
-        ===================================================== */
-
         @media (max-width: 850px) {
-
           .msp-hero {
             padding: 55px 0 65px;
           }
@@ -850,12 +947,9 @@ const MSPSupport = () => {
           }
         }
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+        /* ================= MOBILE ================= */
 
         @media (max-width: 600px) {
-
           .msp-container,
           .msp-hero-inner,
           .msp-resilience-inner,
@@ -896,6 +990,11 @@ const MSPSupport = () => {
           .msp-primary-btn {
             width: 100%;
             margin-top: 21px;
+            transform: translateY(15px);
+          }
+
+          .msp-primary-btn:hover {
+            transform: translateY(13px);
           }
 
           .msp-hero-points {
@@ -1056,12 +1155,9 @@ const MSPSupport = () => {
           }
         }
 
-        /* =====================================================
-           SMALL MOBILE
-        ===================================================== */
+        /* ================= SMALL MOBILE ================= */
 
         @media (max-width: 400px) {
-
           .msp-hero h1 {
             font-size: 37px;
           }
@@ -1095,17 +1191,13 @@ const MSPSupport = () => {
             font-size: 11.5px;
           }
         }
-
       `}</style>
 
       <main className="msp-page">
 
-        {/* =====================================================
-            HERO
-        ===================================================== */}
+        {/* ================= HERO ================= */}
 
         <section className="msp-hero">
-
           <div className="msp-hero-inner">
 
             <div className="msp-hero-content">
@@ -1142,7 +1234,6 @@ const MSPSupport = () => {
               <div className="msp-hero-line"></div>
 
               <div className="msp-hero-points">
-
                 <div className="msp-hero-point">
                   Proactive Maintenance
                 </div>
@@ -1154,7 +1245,6 @@ const MSPSupport = () => {
                 <div className="msp-hero-point">
                   Enterprise SLA Support
                 </div>
-
               </div>
 
             </div>
@@ -1202,13 +1292,9 @@ const MSPSupport = () => {
             </div>
 
           </div>
-
         </section>
 
-
-        {/* =====================================================
-            OPERATIONAL RESILIENCE
-        ===================================================== */}
+        {/* ================= RESILIENCE ================= */}
 
         <section className="msp-resilience">
 
@@ -1231,7 +1317,6 @@ const MSPSupport = () => {
               </div>
 
             </div>
-
 
             <div className="msp-resilience-content">
 
@@ -1297,10 +1382,7 @@ const MSPSupport = () => {
 
         </section>
 
-
-        {/* =====================================================
-            SERVICES
-        ===================================================== */}
+        {/* ================= SERVICES ================= */}
 
         <section className="msp-services">
 
@@ -1323,7 +1405,6 @@ const MSPSupport = () => {
               </p>
 
             </div>
-
 
             <div className="msp-services-grid">
 
@@ -1379,9 +1460,6 @@ const MSPSupport = () => {
           </div>
 
         </section>
-
-
-        
 
       </main>
     </>
