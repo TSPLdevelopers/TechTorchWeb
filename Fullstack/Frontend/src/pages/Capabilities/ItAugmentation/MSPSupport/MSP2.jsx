@@ -187,10 +187,10 @@ const MSPSections = () => {
           margin: 20px 0 19px;
 
           color: #fff;
-          font-size: clamp(35px, 3.6vw, 49px);
+          font-size: 42px;
           line-height: 1.08;
           letter-spacing: -1.8px;
-          font-weight: 600;
+          font-weight: 500;
         }
 
         .msp-engagement-text {
@@ -260,7 +260,7 @@ const MSPSections = () => {
         .msp-audit-heading {
           color: rgba(255,255,255,0.86);
           font-size: 10px;
-          font-weight: 800;
+          font-weight: 600;
           letter-spacing: 1px;
         }
 
@@ -274,8 +274,8 @@ const MSPSections = () => {
           background: rgba(255,255,255,0.16);
 
           color: #fff;
-          font-size: 9px;
-          font-weight: 700;
+          font-size: 10px;
+          font-weight: 500;
         }
 
         .msp-audit-grid {
@@ -349,7 +349,7 @@ const MSPSections = () => {
           margin: 0;
 
           color: rgba(255,255,255,0.68);
-          font-size: 10px;
+          font-size: 13px;
           line-height: 1.5;
         }
 
@@ -363,7 +363,7 @@ const MSPSections = () => {
 
           color: rgba(255,255,255,0.76);
 
-          font-size: 9px;
+          font-size: 10px;
           font-weight: 700;
           letter-spacing: 1px;
         }
@@ -398,7 +398,7 @@ const MSPSections = () => {
 
           color: #29292d;
 
-          font-size: clamp(34px, 3.4vw, 45px);
+         font-size: 34px;
           line-height: 1.08;
 
           letter-spacing: -1.5px;
@@ -427,7 +427,7 @@ const MSPSections = () => {
         }
 
         .msp-benefit {
-          min-height: 101px;
+          min-height: 85px;
 
           display: flex;
           align-items: flex-start;
@@ -529,10 +529,10 @@ const MSPSections = () => {
           margin: 0;
 
           color: #343438;
-
-          font-size: 13px;
+          font-family: "Inter";
+          font-size: 14px;
           line-height: 1.5;
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .msp-discuss-button {
@@ -545,9 +545,9 @@ const MSPSections = () => {
 
           background: #70003f;
           color: #fff;
-
+         font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 10px;
-          font-weight: 800;
+          font-weight: 600;
           letter-spacing: 0.6px;
 
           text-transform: uppercase;
@@ -595,12 +595,12 @@ const MSPSections = () => {
           margin: 17px 0 10px;
 
           color: #28282c;
-
-          font-size: clamp(34px, 3.5vw, 45px);
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 34px;
           line-height: 1.1;
 
           letter-spacing: -1.5px;
-          font-weight: 500;
+          font-weight: 600;
         }
 
         .msp-approach-header p {
@@ -721,10 +721,10 @@ const MSPSections = () => {
           margin-bottom: 7px;
 
           color: #70003f;
-
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 9px;
           line-height: 1.25;
-          font-weight: 800;
+          font-weight: 700;
           letter-spacing: 0.5px;
         }
 
@@ -743,7 +743,7 @@ const MSPSections = () => {
 
           color: #746b70;
 
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.62;
         }
 

@@ -70,8 +70,9 @@ const MSPSupportSections = () => {
           color: #70003f;
 
           font-size: 9px;
+          font-family: "Plus Jakarta Sans", sans-serif;
           line-height: 1;
-          font-weight: 800;
+          font-weight: 700;
           letter-spacing: 0.8px;
           text-transform: uppercase;
         }
@@ -136,8 +137,8 @@ const MSPSupportSections = () => {
           margin: 20px 0 10px;
 
           color: #25252a;
-
-          font-size: clamp(35px, 3.3vw, 47px);
+          font-family: "Plus Jakarta Sans",sans-serif;
+          font-size: 34px;
           line-height: 1.06;
           letter-spacing: -1.7px;
           font-weight: 500;
@@ -150,9 +151,9 @@ const MSPSupportSections = () => {
 
           color: #70003f;
 
-          font-size: 16px;
+          font-size: 15px;
           line-height: 1.4;
-          font-weight: 700;
+          font-weight: 500;
         }
 
         .msp-scale-text {
@@ -205,7 +206,7 @@ const MSPSupportSections = () => {
           color: #70003f;
 
           font-size: 9px;
-          font-weight: 800;
+          font-weight: 700;
           letter-spacing: 0.8px;
           text-transform: uppercase;
         }
@@ -213,7 +214,7 @@ const MSPSupportSections = () => {
         .msp-scale-aspects-badge {
           color: #81777c;
 
-          font-size: 8px;
+          font-size: 10px;
           font-weight: 700;
         }
 
@@ -256,10 +257,10 @@ const MSPSupportSections = () => {
           margin: 0 0 5px;
 
           color: #303035;
-
-          font-size: 13px;
+          font-family: "Plus Jakarta Sans",sans-serif;
+          font-size: 14px;
           line-height: 1.3;
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .msp-scale-point p {
@@ -267,7 +268,7 @@ const MSPSupportSections = () => {
 
           color: #776d72;
 
-          font-size: 10.5px;
+          font-size: 12px;
           line-height: 1.52;
         }
 
@@ -327,8 +328,8 @@ const MSPSupportSections = () => {
           margin: 16px 0 14px;
 
           color: #fff;
-
-          font-size: clamp(35px, 3.4vw, 46px);
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 34px;
           line-height: 1.08;
           letter-spacing: -1.5px;
           font-weight: 500;
@@ -340,7 +341,7 @@ const MSPSupportSections = () => {
           margin: 0;
 
           color: rgba(255,255,255,0.91);
-
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.62;
         }
@@ -423,7 +424,7 @@ const MSPSupportSections = () => {
 
           color: rgba(255,255,255,0.67);
 
-          font-size: 9px;
+          font-size: 12px;
           line-height: 1.5;
         }
 
@@ -452,8 +453,8 @@ const MSPSupportSections = () => {
           margin: 16px 0 10px;
 
           color: #29292d;
-
-          font-size: clamp(34px, 3.2vw, 44px);
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 34px;
           line-height: 1.1;
           letter-spacing: -1.5px;
           font-weight: 500;
@@ -465,8 +466,8 @@ const MSPSupportSections = () => {
           margin: 0 auto;
 
           color: #746a70;
-
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
           line-height: 1.65;
         }
 
@@ -534,8 +535,8 @@ const MSPSupportSections = () => {
           margin: 16px auto 10px;
 
           color: #29292d;
-
-          font-size: clamp(26px, 2.5vw, 34px);
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 28px;
           line-height: 1.1;
           letter-spacing: -1px;
           font-weight: 500;
@@ -548,7 +549,7 @@ const MSPSupportSections = () => {
 
           color: #766c71;
 
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -576,9 +577,9 @@ const MSPSupportSections = () => {
         vertical-align: middle;
 
         border-radius: 7px;
-
-        font-size: 9px;
-        font-weight: 800;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 10px;
+        font-weight: 600;
         letter-spacing: 0.4px;
 
         cursor: pointer;
