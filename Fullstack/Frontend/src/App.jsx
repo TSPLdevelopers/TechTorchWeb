@@ -297,6 +297,10 @@ import MSP3 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP3.jsx";
 import DiscussPriorities from "./pages/Capabilities/ItAugmentation/MSPSupport/DiscussPriorities.jsx";
 import ConnectMSP from "./pages/Capabilities/ItAugmentation/MSPSupport/ConnectMSP.jsx";
 
+
+import OffshoreStrategy  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/OffshoreStrategy.jsx";
+
+
 // =================================================
 // SCROLL TO TOP
 // =================================================
@@ -794,6 +798,14 @@ function MSPSupport() {
   );
 }
 
+function OffshoreTeams() {
+  return (
+    <>
+     <OffshoreStrategy/>
+    </>
+  );
+}
+
 // =================================================
 // APP
 // =================================================
@@ -1036,7 +1048,11 @@ function App() {
             path="/connect-msp"
             element={<ConnectMSP />}
           />
-
+           
+           <Route
+            path="/offshore-teams"
+            element={<OffshoreTeams />}
+          />
         </Route>
 
       </Routes>

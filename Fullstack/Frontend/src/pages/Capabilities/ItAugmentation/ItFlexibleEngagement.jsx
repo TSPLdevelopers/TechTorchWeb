@@ -460,7 +460,7 @@ export default function ITAugmentationServices() {
 
             {/* Link */}
             <a
-              href="#"
+              href="/offshore-teams"
               className="
                 ml-11
                 inline-flex
