@@ -1,5 +1,5 @@
 import React from "react";
-import { Check, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 
 const BRAND = "#8B0046";
 
@@ -37,7 +37,6 @@ const teamModels = [
     label: "NICHE SUBJECT MATTER EXPERTS",
   },
 ];
-
 
 /* ============================================================
    TECHNOLOGY EXPERTISE
@@ -81,7 +80,6 @@ const technology = [
   },
 ];
 
-
 /* ============================================================
    WHY WORK WITH OFFSHORE TEAM
 ============================================================ */
@@ -113,7 +111,6 @@ const benefits = [
       "The offshore team can complement your internal developers and technical professionals.",
   },
 ];
-
 
 /* ============================================================
    OUR APPROACH
@@ -157,7 +154,6 @@ const approach = [
   },
 ];
 
-
 /* ============================================================
    COMPONENT
 ============================================================ */
@@ -167,14 +163,27 @@ export default function OffshoreTeamSections() {
     <main className="w-full overflow-hidden font-['Inter']">
 
       {/* ======================================================
-          SECTION 1 — FLEXIBLE TEAM MODELS
+          SECTION 1 — ENGAGEMENT ARCHITECTURE
       ====================================================== */}
 
       <section
         className="w-full"
-        style={{ backgroundColor: BRAND }}
+        style={{ backgroundColor: "#6d0038" }}
       >
-        <div className="mx-auto max-w-[1180px] px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-[70px]">
+        <div
+          className="
+            mx-auto
+            w-full
+            max-w-[1180px]
+            px-5
+            py-12
+            sm:px-8
+            sm:py-14
+            md:py-16
+            lg:px-10
+            lg:py-[70px]
+          "
+        >
 
           {/* Header */}
           <div className="max-w-[760px]">
@@ -197,34 +206,123 @@ export default function OffshoreTeamSections() {
               involvement. Our team models can be structured according to your
               project scope and development requirements.
             </p>
+
           </div>
 
-
           {/* Cards */}
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div
+            className="
+              mt-8
+              grid
+              grid-cols-1
+              gap-4
+              sm:mt-10
+              sm:grid-cols-2
+              lg:grid-cols-4
+            "
+          >
 
             {teamModels.map((item) => (
               <div
                 key={item.number}
-                className="group relative flex min-h-[290px] flex-col overflow-hidden rounded-[13px] border border-white/15 bg-white/[0.10] px-5 py-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.15] hover:shadow-[0_15px_35px_rgba(0,0,0,0.15)]"
+                className="
+                  group
+                  relative
+                  flex
+                  min-h-[290px]
+                  flex-col
+                  overflow-hidden
+                  rounded-[12px]
+                  border
+                  border-white/[0.18]
+                  bg-[linear-gradient(135deg,rgba(255,255,255,0.13)_0%,rgba(255,255,255,0.08)_45%,rgba(255,255,255,0.05)_100%)]
+                  px-5
+                  py-5
+                  transition-all
+                  duration-300
+                  ease-out
+                  hover:-translate-y-2
+                  hover:border-white
+                  hover:bg-white
+                  hover:shadow-[0_16px_32px_rgba(30,0,20,0.24)]
+                "
               >
 
-                {/* Decorative Circle */}
-                <div className="pointer-events-none absolute -right-8 -top-8 h-[75px] w-[75px] rounded-full bg-white/[0.07] transition-transform duration-500 group-hover:scale-[2.5]" />
+                {/* Glass Glow */}
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -right-[45px]
+                    -top-[45px]
+                    h-[130px]
+                    w-[130px]
+                    rounded-full
+                    bg-white/[0.10]
+                    blur-[28px]
+                    transition-opacity
+                    duration-300
+                    group-hover:opacity-0
+                  "
+                />
 
                 {/* Number */}
-                <div className="relative z-10 flex h-[32px] w-[32px] items-center justify-center rounded-[8px] border border-white/20 bg-white/[0.13] text-[11px] font-bold text-white">
+                <div
+                  className="
+                    relative
+                    z-10
+                    flex
+                    h-[32px]
+                    w-[32px]
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-[8px]
+                    border
+                    border-white/20
+                    bg-white/[0.13]
+                    text-[11px]
+                    font-bold
+                    text-white
+                    transition-all
+                    duration-300
+                    group-hover:border-[#e5bfd0]
+                    group-hover:bg-[#fff5f8]
+                    group-hover:text-[#8B0046]
+                  "
+                >
                   {item.number}
                 </div>
 
                 {/* Content */}
                 <div className="relative z-10 mt-5">
 
-                  <h3 className="max-w-[190px] text-[16px] font-semibold leading-[1.25] text-white">
+                  <h3
+                    className="
+                      max-w-[190px]
+                      text-[16px]
+                      font-semibold
+                      leading-[1.25]
+                      text-white
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#8B0046]
+                    "
+                  >
                     {item.title}
                   </h3>
 
-                  <p className="mt-3 text-[12px] leading-[1.6] text-white/75">
+                  <p
+                    className="
+                      mt-3
+                      text-[12px]
+                      leading-[1.6]
+                      text-white/75
+                      transition-colors
+                      duration-300
+                      group-hover:text-black
+                    "
+                  >
                     {item.description}
                   </p>
 
@@ -233,19 +331,53 @@ export default function OffshoreTeamSections() {
                 {/* Bottom */}
                 <div className="relative z-10 mt-auto pt-5">
 
-                  <div className="mb-3 h-px w-full bg-white/15" />
+                  {/* Bottom Line */}
+                  <div
+                    className="
+                      mb-3
+                      h-px
+                      w-full
+                      bg-white/15
+                      transition-colors
+                      duration-300
+                      group-hover:bg-[#8B0046]
+                    "
+                  />
 
                   <div className="flex items-end justify-between gap-2">
 
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.06em] text-white/75">
+                    <span
+                      className="
+                        text-[9px]
+                        font-semibold
+                        uppercase
+                        tracking-[0.06em]
+                        text-white/75
+                        transition-colors
+                        duration-300
+                        group-hover:text-[#8B0046]
+                      "
+                    >
                       {item.label}
                     </span>
 
-                    <span className="h-[5px] w-[5px] shrink-0 rounded-full bg-[#20d89a]" />
+                    <span
+                      className="
+                        h-[5px]
+                        w-[5px]
+                        shrink-0
+                        rounded-full
+                        bg-[#20d89a]
+                        transition-all
+                        duration-300
+                        group-hover:bg-[#8B0046]
+                      "
+                    />
 
                   </div>
 
                 </div>
+
               </div>
             ))}
 
@@ -259,9 +391,22 @@ export default function OffshoreTeamSections() {
       ====================================================== */}
 
       <section className="w-full bg-[#f8fafc]">
-        <div className="mx-auto max-w-[1180px] px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-[70px]">
 
-          {/* Header */}
+        <div
+          className="
+            mx-auto
+            w-full
+            max-w-[1180px]
+            px-5
+            py-12
+            sm:px-8
+            sm:py-14
+            md:py-16
+            lg:px-10
+            lg:py-[70px]
+          "
+        >
+
           <div className="max-w-[850px]">
 
             <span
@@ -285,17 +430,22 @@ export default function OffshoreTeamSections() {
 
           </div>
 
-
-          {/* Technology Cards */}
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="
+              mt-8
+              grid
+              grid-cols-1
+              gap-4
+              sm:grid-cols-2
+              lg:grid-cols-3
+            "
+          >
 
             {technology.map((item, index) => (
               <div
                 key={index}
                 className={`group rounded-[10px] border border-[#e2e7ed] bg-white px-5 py-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#e2bfd0] hover:shadow-[0_8px_22px_rgba(60,20,40,0.06)] ${
-                  index === 6
-                    ? "lg:col-span-3"
-                    : ""
+                  index === 6 ? "lg:col-span-3" : ""
                 }`}
               >
 
@@ -307,6 +457,7 @@ export default function OffshoreTeamSections() {
                   />
 
                   <div>
+
                     <h3 className="text-[14px] font-semibold leading-[1.3] text-[#1d293d] sm:text-[15px]">
                       {item.title}
                     </h3>
@@ -314,6 +465,7 @@ export default function OffshoreTeamSections() {
                     <p className="mt-2 text-[11px] leading-[1.5] text-[#69768b] sm:text-[12px]">
                       {item.description}
                     </p>
+
                   </div>
 
                 </div>
@@ -327,16 +479,29 @@ export default function OffshoreTeamSections() {
 
 
       {/* ======================================================
-          SECTION 3 — WHY WORK WITH OFFSHORE TEAM
+          SECTION 3 — STRATEGIC VALUE
       ====================================================== */}
 
       <section
         className="w-full"
-        style={{ backgroundColor: BRAND }}
+        style={{ backgroundColor: "#6d0038" }}
       >
-        <div className="mx-auto max-w-[1180px] px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-[70px]">
 
-          {/* Header */}
+        <div
+          className="
+            mx-auto
+            w-full
+            max-w-[1180px]
+            px-5
+            py-12
+            sm:px-8
+            sm:py-14
+            md:py-16
+            lg:px-10
+            lg:py-[70px]
+          "
+        >
+
           <div className="max-w-[820px]">
 
             <div className="mb-4 inline-flex rounded-[5px] border border-white/20 bg-white/10 px-3 py-1.5">
@@ -363,32 +528,57 @@ export default function OffshoreTeamSections() {
 
           </div>
 
-
-          {/* Benefit Cards */}
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="
+              mt-8
+              grid
+              grid-cols-1
+              gap-4
+              sm:mt-10
+              sm:grid-cols-2
+              lg:grid-cols-3
+            "
+          >
 
             {benefits.map((item, index) => (
               <div
                 key={item.title}
-                className={`group relative overflow-hidden rounded-[10px] border border-white/20 bg-white/[0.10] px-5 py-5 transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.14] hover:shadow-[0_12px_30px_rgba(0,0,0,0.15)] ${
+                className={`group relative overflow-hidden rounded-[12px] border border-white/[0.18] px-5 py-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_32px_rgba(30,0,20,0.24)] ${
                   index === 3
                     ? "lg:col-span-1"
                     : index === 4
                     ? "lg:col-span-2"
                     : ""
                 }`}
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.05) 100%)",
+                }}
               >
 
-                {/* Decorative Circle */}
-                <div className="pointer-events-none absolute -right-8 -top-8 h-[70px] w-[70px] rounded-full bg-white/[0.07] transition-transform duration-500 group-hover:scale-[2.4]" />
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    -right-[45px]
+                    -top-[45px]
+                    h-[130px]
+                    w-[130px]
+                    rounded-full
+                    bg-white/[0.10]
+                    blur-[28px]
+                  "
+                />
 
                 <div className="relative z-10 flex items-start gap-3">
 
                   <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-white">
+
                     <Check
                       className="h-[12px] w-[12px]"
                       style={{ color: BRAND }}
                     />
+
                   </div>
 
                   <div>
@@ -418,7 +608,19 @@ export default function OffshoreTeamSections() {
       ====================================================== */}
 
       <section className="w-full bg-white">
-        <div className="mx-auto max-w-[1180px] px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-[72px]">
+
+        <div
+          className="
+            mx-auto
+            w-full
+            max-w-[1180px]
+            px-5
+            py-16
+            sm:py-20
+            md:py-24
+            lg:py-[80px]    
+          "
+        >
 
           {/* Header */}
           <div className="text-center">
@@ -430,56 +632,148 @@ export default function OffshoreTeamSections() {
               EXECUTION METHODOLOGY
             </span>
 
-            <h2 className="mt-3 text-[31px] font-semibold leading-[1.1] tracking-[-0.04em] text-[#172033] sm:text-[36px]">
+            <h2
+              className="
+                mt-3
+                text-[29px]
+                font-semibold
+                leading-[1.1]
+                tracking-[-0.04em]
+                text-[#172033]
+                sm:text-[34px]
+                md:text-[36px]
+              "
+            >
               Our Approach
             </h2>
 
-            <p className="mt-3 text-[15px] text-[#69768b] sm:text-[17px]">
+            <p
+              className="
+                mt-3
+                text-[13px]
+                text-[#69768b]
+                sm:text-[14px]
+                md:text-[15px]
+              "
+            >
               A Clear Process for Building Your Development Team
             </p>
 
           </div>
 
 
-          {/* Process Wrapper */}
-          <div className="relative mt-12">
+          {/* Process */}
+          <div className="relative mt-8 sm:mt-10">
 
-            {/* Connecting Line - Desktop */}
-            <div className="pointer-events-none absolute left-[9%] right-[9%] top-[26px] hidden h-[2px] bg-[#ead6df] lg:block" />
+            {/* Connecting Line — Desktop */}
+            <div
+              className="
+                pointer-events-none
+                absolute
+                left-[9%]
+                right-[9%]
+                top-[26px]
+                hidden
+                h-[2px]
+                bg-[#d4a6bc]
+                lg:block
+              "
+            />
 
-            {/* Process Cards */}
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            {/* Cards */}
+            <div
+              className="
+                grid
+                grid-cols-1
+                gap-4
+                sm:grid-cols-2
+                lg:grid-cols-5
+                lg:gap-4
+              "
+            >
 
-              {approach.map((item, index) => (
+              {approach.map((item) => (
                 <div
                   key={item.number}
-                  className="group relative z-10 flex min-h-[265px] flex-col rounded-[14px] border border-[#e5e9ee] bg-white px-5 py-5 shadow-[0_2px_8px_rgba(20,30,45,0.025)] transition-all duration-300 hover:-translate-y-1 hover:border-[#e2bfd0] hover:shadow-[0_12px_28px_rgba(70,20,45,0.08)]"
+                  className="
+                    group
+                    relative
+                    z-10
+                    flex
+                    min-h-[235px]
+                    flex-col
+                    rounded-[14px]
+                    border
+                    border-[#e5e9ee]
+                    bg-white
+                    px-5
+                    py-4
+                    shadow-[0_2px_8px_rgba(20,30,45,0.025)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-[#e2bfd0]
+                    hover:shadow-[0_12px_28px_rgba(70,20,45,0.08)]
+                  "
                 >
 
                   {/* Top Line */}
                   <div
-                    className="absolute left-5 right-5 top-5 h-[3px] rounded-full"
-                    style={{
-                      backgroundColor:
-                        index === 0 ? BRAND : "#d4a6bc",
-                    }}
+                    className="
+                      absolute
+                      left-5
+                      right-5
+                      top-5
+                      h-[3px]
+                      rounded-full
+                      bg-[#d4a6bc]
+                      transition-colors
+                      duration-300
+                      group-hover:bg-[#8B0046]
+                    "
                   />
 
                   {/* Number + Label */}
-                  <div className="mt-7 flex items-center justify-between gap-2">
+                  <div
+                    className="
+                      mt-7
+                      flex
+                      items-center
+                      justify-between
+                      gap-2
+                    "
+                  >
 
                     <div
-                      className="flex h-[38px] w-[38px] items-center justify-center rounded-[10px] border font-bold text-[13px]"
-                      style={{
-                        color: BRAND,
-                        borderColor: "#e9ccda",
-                        backgroundColor: "#fff7fa",
-                      }}
+                      className="
+                        flex
+                        h-[36px]
+                        w-[36px]
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-[10px]
+                        border
+                        border-[#e9ccda]
+                        bg-[#fff7fa]
+                        text-[13px]
+                        font-bold
+                      "
+                      style={{ color: BRAND }}
                     >
                       {item.number}
                     </div>
 
-                    <span className="text-[10px] font-bold tracking-[0.05em] text-[#9aabc0]">
+                    <span
+                      className="
+                        text-right
+                        text-[9px]
+                        font-bold
+                        tracking-[0.05em]
+                        text-[#9aabc0]
+                        sm:text-[10px]
+                      "
+                    >
                       {item.label}
                     </span>
 
@@ -487,13 +781,30 @@ export default function OffshoreTeamSections() {
 
 
                   {/* Content */}
-                  <div className="mt-5">
+                  <div className="mt-4">
 
-                    <h3 className="text-[18px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#172033]">
+                    <h3
+                      className="
+                        text-[17px]
+                        font-semibold
+                        leading-[1.2]
+                        tracking-[-0.02em]
+                        text-[#172033]
+                        sm:text-[18px]
+                      "
+                    >
                       {item.title}
                     </h3>
 
-                    <p className="mt-3 text-[13px] leading-[1.65] text-[#6a7689]">
+                    <p
+                      className="
+                        mt-2.5
+                        text-[12px]
+                        leading-[1.6]
+                        text-[#6a7689]
+                        sm:text-[13px]
+                      "
+                    >
                       {item.description}
                     </p>
 
@@ -503,17 +814,10 @@ export default function OffshoreTeamSections() {
               ))}
 
             </div>
-          </div>
 
+          </div>
         </div>
       </section>
-
-
-      {/* ======================================================
-          END SPACING
-      ====================================================== */}
-
-      <div className="h-8 bg-white sm:h-10" />
 
     </main>
   );
