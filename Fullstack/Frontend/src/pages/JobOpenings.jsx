@@ -605,28 +605,21 @@ export default function JobOpeningsCMS() {
                     </Dropdown>
                   </div>
                   <div className="relative">
-                    <FieldLabel>LOCATION &amp; ARRANGEMENT</FieldLabel>
-                    <button
-                      onClick={() => setOpenDrop(openDrop === "location" ? null : "location")}
-                      className="w-full flex items-center justify-between border border-stone-200 rounded-md px-3 py-2 text-sm bg-stone-50 text-left"
-                    >
-                      {form.location} <ChevronDown size={14} className="text-stone-400" />
-                    </button>
-                    <Dropdown open={openDrop === "location"} onClose={() => setOpenDrop(null)}>
-                      {LOCATIONS.map((l) => (
-                        <button
-                          key={l}
-                          onClick={() => {
-                            updateForm({ location: l });
-                            setOpenDrop(null);
-                          }}
-                          className="w-full text-left px-3 py-2 hover:bg-stone-50"
-                        >
-                          {l}
-                        </button>
-                      ))}
-                    </Dropdown>
-                  </div>
+  <FieldLabel>LOCATION &amp; ARRANGEMENT</FieldLabel>
+
+  <input
+    type="text"
+    value={form.location || ""}
+    onFocus={() => {
+      updateForm({
+        location: "",
+      });
+    }}
+    onChange={(e) => updateForm({ location: e.target.value })}
+    placeholder="Enter location & arrangement"
+    className="w-full border border-stone-200 rounded-md px-3 py-2 text-sm bg-white text-stone-700 focus:outline-none focus:ring-2"
+  />
+</div>
                   <div className="relative">
                     <FieldLabel>SENIORITY LEVEL</FieldLabel>
                     <button
@@ -655,11 +648,14 @@ export default function JobOpeningsCMS() {
                 {/* Title */}
                 <div>
                   <FieldLabel>OFFICIAL REQUISITION TITLE</FieldLabel>
-                  <input
-                    value={form.title}
-                    onChange={(e) => updateForm({ title: e.target.value })}
-                    className="w-full text-2xl font-semibold leading-tight text-stone-900 border border-stone-200 rounded-md px-4 py-3 focus:outline-none focus:ring-2"
-                  />
+                   <input
+  value={form.title}
+  onFocus={() => {
+    updateForm({ title: "" });
+  }}
+  onChange={(e) => updateForm({ title: e.target.value })}
+  className="w-full text-2xl font-semibold leading-tight text-stone-900 border border-stone-200 rounded-md px-4 py-3 focus:outline-none focus:ring-2"
+/>
                 </div>
 
                 {/* Pitch */}
@@ -701,50 +697,34 @@ export default function JobOpeningsCMS() {
                   className="text-sm leading-relaxed text-stone-700 space-y-5 outline-none"
                 >
                   <div>
-                    <h3 className="font-semibold text-stone-900 flex items-center gap-2 mb-2">
-                      <span className="w-1 h-4 rounded-sm" style={{ backgroundColor: ACCENT }} />
-                      About the Role &amp; Strategic Impact
-                    </h3>
-                    <p className="mb-3">
-                      As a <span className="font-semibold text-stone-900">{form.title || "this role"}</span> at
-                      TechTorch, you will stand at the intersection of autonomic multi-agent design and mission-critical
-                      cloud backbones. You will design, benchmark, and deploy self-optimizing distributed architectures
-                      that convert ambiguous business requirements into deterministic, policy-constrained generative
-                      agent ecosystems.
-                    </p>
-                    <p>
-                      This role directly advises Global 2000 Chief Technology Officers and Engineering VPs, ensuring
-                      enterprise AI workloads execute with verifiable zero-trust guarantees, sub-25ms vector retrieval
-                      latencies, and rigorous regulatory compliance.
-                    </p>
-                  </div>
+  <h3 className="font-semibold text-stone-900 flex items-center gap-2 mb-2">
+    <span
+      className="w-1 h-4 rounded-sm"
+      style={{ backgroundColor: ACCENT }}
+    />
+    About the Role &amp; Strategic Impact
+  </h3>
+</div>
 
-                  <div>
-                    <h3 className="font-semibold text-stone-900 flex items-center gap-2 mb-2">
-                      <span className="w-1 h-4 rounded-sm" style={{ backgroundColor: ACCENT }} />
-                      Key Responsibilities &amp; Deliverables
-                    </h3>
-                    <ul className="space-y-2 list-disc list-outside ml-4">
-                      <li>Architect and deliver end-to-end multi-agent orchestration fabrics across hybrid Kubernetes clusters (AWS EKS, Azure AKS, GCP GKE).</li>
-                      <li>Spearhead client reference implementations incorporating semantic routing, high-throughput vector databases, and real-time state synchronizers.</li>
-                      <li>Partner with internal Security Officers to enforce SOC2 Type II, FedRAMP, and HIPAA guardrails across dynamic inference pipelines.</li>
-                      <li>Act as the primary technical authority in executive architecture reviews, post-mortems, and high-stakes production go-lives.</li>
-                    </ul>
-                  </div>
+<div>
+  <h3 className="font-semibold text-stone-900 flex items-center gap-2 mb-2">
+    <span
+      className="w-1 h-4 rounded-sm"
+      style={{ backgroundColor: ACCENT }}
+    />
+    Key Responsibilities &amp; Deliverables
+  </h3>
+</div>
 
-                  <div>
-                    <h3 className="font-semibold text-stone-900 flex items-center gap-2 mb-2">
-                      <span className="w-1 h-4 rounded-sm" style={{ backgroundColor: ACCENT }} />
-                      Required Qualifications &amp; Technical Depth
-                    </h3>
-                    <ul className="space-y-2 list-disc list-outside ml-4">
-                      <li>8+ years of production experience in distributed systems engineering (Go, Python, Rust, or modern C++).</li>
-                      <li>Deep mastery of container orchestrators, service meshes (Istio/Envoy), and zero-trust perimeter network topologies.</li>
-                      <li>Proven track record architecting LLM-driven autonomous systems, RAG pipelines, and high-concurrency vector indexes (Milvus, Pinecone, pgvector).</li>
-                      <li>Exceptional client-facing technical communication skills; comfortable presenting before Board-level stakeholders.</li>
-                    </ul>
-                  </div>
-                </div>
+<div>
+  <h3 className="font-semibold text-stone-900 flex items-center gap-2 mb-2">
+    <span
+      className="w-1 h-4 rounded-sm"
+      style={{ backgroundColor: ACCENT }}
+    />
+    Required Qualifications &amp; Technical Depth
+  </h3>
+</div>
 
                 <div className="rounded-lg border p-4" style={{ backgroundColor: `${ACCENT}0d`, borderColor: `${ACCENT}33` }}>
                   <div className="text-[11px] font-semibold tracking-wide mb-1" style={{ color: ACCENT }}>
@@ -784,6 +764,8 @@ export default function JobOpeningsCMS() {
                     {wordCount} words · {(form.title.length + form.pitch.length)} characters · {Math.max(1, Math.round(wordCount / 200))} min read
                   </span>
                 </div>
+                </div>
+
               </div>
 
               {/* Right rail */}
@@ -804,96 +786,84 @@ export default function JobOpeningsCMS() {
 
                   <div className="space-y-4">
                     <div className="relative">
-                      <FieldLabel>HIRING MANAGER</FieldLabel>
-                      <button
-                        onClick={() => setOpenDrop(openDrop === "manager" ? null : "manager")}
-                        className="w-full flex items-center justify-between border border-stone-200 rounded-md px-3 py-2 text-sm text-left"
-                      >
-                        <span className="flex items-center gap-2">
-                          <span className="w-7 h-7 rounded-full bg-stone-900 text-white text-[10px] flex items-center justify-center font-semibold">
-                            {form.hiringManager.initials}
-                          </span>
-                          <span>
-                            {form.hiringManager.name}
-                            <span className="block text-xs text-stone-400">{form.hiringManager.title}</span>
-                          </span>
-                        </span>
-                        <ChevronDown size={14} className="text-stone-400 shrink-0" />
-                      </button>
-                      <Dropdown open={openDrop === "manager"} onClose={() => setOpenDrop(null)}>
-                        {MANAGERS.map((m) => (
-                          <button
-                            key={m.name}
-                            onClick={() => {
-                              updateForm({ hiringManager: m });
-                              setOpenDrop(null);
-                            }}
-                            className="w-full flex items-center gap-2 text-left px-3 py-2 hover:bg-stone-50"
-                          >
-                            <span className="w-6 h-6 rounded-full bg-stone-900 text-white text-[9px] flex items-center justify-center font-semibold">
-                              {m.initials}
-                            </span>
-                            <span>
-                              {m.name}
-                              <span className="block text-xs text-stone-400">{m.title}</span>
-                            </span>
-                          </button>
-                        ))}
-                      </Dropdown>
-                    </div>
-
+                  <div>
+  <FieldLabel>HIRING MANAGER</FieldLabel>
+<input
+  type="text"
+  value={form.hiringManager?.name || ""}
+  onFocus={() => {
+    updateForm({
+      hiringManager: {
+        initials: "",
+        name: "",
+        title: "",
+      },
+    });
+  }}
+  onChange={(e) =>
+    updateForm({
+      hiringManager: {
+        initials: e.target.value
+          .split(" ")
+          .map((word) => word[0])
+          .join("")
+          .toUpperCase()
+          .slice(0, 2),
+        name: e.target.value,
+        title: "",
+      },
+    })
+  }
+  placeholder="Enter hiring manager name"
+  className="w-full border border-stone-200 rounded-md px-3 py-2 text-sm text-stone-700 bg-white focus:outline-none focus:ring-2"
+/>
+</div>
+</div>
                     <div className="relative">
-                      <FieldLabel>LEAD TECHNICAL RECRUITER</FieldLabel>
-                      <button
-                        onClick={() => setOpenDrop(openDrop === "recruiter" ? null : "recruiter")}
-                        className="w-full flex items-center justify-between border border-stone-200 rounded-md px-3 py-2 text-sm text-left"
-                      >
-                        <span className="flex items-center gap-2">
-                          <span
-                            className="w-7 h-7 rounded-full text-white text-[10px] flex items-center justify-center font-semibold"
-                            style={{ backgroundColor: form.recruiter.color || ACCENT }}
-                          >
-                            {form.recruiter.initials}
-                          </span>
-                          <span>
-                            {form.recruiter.name}
-                            <span className="block text-xs text-stone-400">{form.recruiter.title}</span>
-                          </span>
-                        </span>
-                        <ChevronDown size={14} className="text-stone-400 shrink-0" />
-                      </button>
-                      <Dropdown open={openDrop === "recruiter"} onClose={() => setOpenDrop(null)}>
-                        {RECRUITERS.map((r) => (
-                          <button
-                            key={r.name}
-                            onClick={() => {
-                              updateForm({ recruiter: r });
-                              setOpenDrop(null);
-                            }}
-                            className="w-full flex items-center gap-2 text-left px-3 py-2 hover:bg-stone-50"
-                          >
-                            <span
-                              className="w-6 h-6 rounded-full text-white text-[9px] flex items-center justify-center font-semibold"
-                              style={{ backgroundColor: r.color || ACCENT }}
-                            >
-                              {r.initials}
-                            </span>
-                            <span>
-                              {r.name}
-                              <span className="block text-xs text-stone-400">{r.title}</span>
-                            </span>
-                          </button>
-                        ))}
-                      </Dropdown>
-                    </div>
+  <FieldLabel>LEAD TECHNICAL RECRUITER</FieldLabel>
 
-                    <div>
-                      <FieldLabel>COST CENTER &amp; ENTITY</FieldLabel>
-                      <div className="border border-stone-200 rounded-md px-3 py-2 text-sm font-mono bg-stone-50">
-                        Engineering Services / Cost Cen
-                      </div>
-                    </div>
+  <input
+    type="text"
+    value={form.recruiter?.name || ""}
+    onFocus={() => {
+      updateForm({
+        recruiter: {
+          initials: "",
+          name: "",
+          title: "",
+        },
+      });
+    }}
+    onChange={(e) =>
+      updateForm({
+        recruiter: {
+          initials: e.target.value
+            .split(" ")
+            .map((word) => word[0])
+            .join("")
+            .toUpperCase()
+            .slice(0, 2),
+          name: e.target.value,
+          title: "",
+        },
+      })
+    }
+    placeholder="Enter lead technical recruiter name"
+    className="w-full border border-stone-200 rounded-md px-3 py-2 text-sm text-stone-700 bg-white focus:outline-none focus:ring-2"
+  />
+</div>
 
+                      <div>
+  <FieldLabel>COST CENTER &amp; ENTITY</FieldLabel>
+
+  <input
+    type="text"
+    value={form.costCenter || ""}
+    onChange={(e) => updateForm({ costCenter: e.target.value })}
+    placeholder="Enter cost center & entity"
+    className="w-full border border-stone-200 rounded-md px-3 py-2 text-sm text-stone-700 bg-white focus:outline-none focus:ring-2"
+  />
+</div>
                     <div>
                       <FieldLabel>HIRING URGENCY</FieldLabel>
                       <div className="space-y-2 text-sm">

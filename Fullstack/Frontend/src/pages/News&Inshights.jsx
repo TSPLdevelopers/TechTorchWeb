@@ -32,6 +32,96 @@ import {
   X,
 } from "lucide-react";
 
+/* ----------------------------------------------------------------------
+   Dashboard sync — self-contained, no external file needed.
+
+   The Admin Dashboard reads its "Publishing Directory" from the
+   localStorage key `ttad_news_records`, and refreshes as soon as it
+   sees a `ttad:data-updated` event on the window. Everything below
+   talks to that same key/event so publishing here shows up there
+   immediately, without any other file to add to the project.
+------------------------------------------------------------------------ */
+const DASHBOARD_KEY = "ttad_news_records";
+const PAGE_DISPATCHES_KEY = "ttad_page_news_dispatches";
+const PAGE_ARTICLES_KEY = "ttad_page_news_articles";
+const DATA_UPDATED_EVENT = "ttad:data-updated";
+
+function readJSON(key, fallback) {
+  try {
+    const raw = window.localStorage.getItem(key);
+    if (!raw) return fallback;
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeJSON(key, value) {
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/* Icons are React components and can't go into localStorage as-is, so
+   dispatches are stored by icon name and turned back into the actual
+   icon component when loaded. */
+const DISPATCH_ICON_MAP = { Megaphone, Newspaper, Settings };
+const iconKeyFor = (icon) =>
+  Object.keys(DISPATCH_ICON_MAP).find((k) => DISPATCH_ICON_MAP[k] === icon) || "Megaphone";
+
+function loadDispatches(seed) {
+  const stored = readJSON(PAGE_DISPATCHES_KEY, null);
+  if (!stored) return seed;
+  return stored.map((d) => ({ ...d, icon: DISPATCH_ICON_MAP[d.iconKey] || Megaphone }));
+}
+
+function saveDispatches(list) {
+  writeJSON(
+    PAGE_DISPATCHES_KEY,
+    list.map(({ icon, ...rest }) => ({ ...rest, iconKey: iconKeyFor(icon) }))
+  );
+}
+
+function loadArticles(seed) {
+  return readJSON(PAGE_ARTICLES_KEY, seed);
+}
+
+function saveArticles(list) {
+  writeJSON(PAGE_ARTICLES_KEY, list);
+}
+
+/* Pushes the current articles + dispatches into the dashboard's
+   Publishing Directory (ttad_news_records) and tells it to refresh.
+   Rows created from inside the dashboard itself are tagged
+   `__src: "dashboard"` there, so they're kept and never overwritten. */
+function syncDashboard(articles, dispatches) {
+  const rows = [
+    ...articles.map((a) => ({
+      id: `news-a-${a.id}`,
+      status: a.status || "Published",
+      title: a.title,
+      domain: a.category,
+      author: a.author,
+    })),
+    ...dispatches.map((d) => ({
+      id: `news-d-${d.id}`,
+      status: "Published",
+      title: d.title,
+      domain: d.category,
+      author: "Press Desk",
+    })),
+  ];
+
+  const current = readJSON(DASHBOARD_KEY, []);
+  const fromDashboard = current.filter((r) => r && r.__src === "dashboard");
+  const saved = writeJSON(DASHBOARD_KEY, [...rows, ...fromDashboard]);
+  if (saved) window.dispatchEvent(new Event(DATA_UPDATED_EVENT));
+}
+
 /* ---------------- STATIC DATA ---------------- */
 
 const CATEGORIES = [
@@ -66,6 +156,16 @@ const DISPATCH_FILTERS = [
   "Company Milestones (4)",
   "Executive Press (3)",
 ];
+
+/* Icons are React components, so they are stored by name and restored on load. */
+const DISPATCH_ICONS = { Megaphone, Newspaper, Settings };
+const DISPATCH_STORAGE = {
+  serialize: ({ icon, ...rest }) => ({
+    ...rest,
+    iconKey: Object.keys(DISPATCH_ICONS).find((k) => DISPATCH_ICONS[k] === icon) || "Megaphone",
+  }),
+  deserialize: (d) => ({ ...d, icon: DISPATCH_ICONS[d.iconKey] || Megaphone }),
+};
 
 const INITIAL_DISPATCHES = [
   {
@@ -223,6 +323,7 @@ export default function TechTorchCMS() {
   const [category, setCategory] = useState(CATEGORIES[0]);
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [author, setAuthor] = useState(AUTHORS[0]);
+  const [draftMode, setDraftMode] = useState(false);
   const [authorOpen, setAuthorOpen] = useState(false);
   const [publishTiming, setPublishTiming] = useState("immediate");
   const [scheduleDate, setScheduleDate] = useState("");
@@ -241,8 +342,8 @@ export default function TechTorchCMS() {
   const [wordCount, setWordCount] = useState(248);
   const [charCount, setCharCount] = useState(1640);
 
-  const [dispatches, setDispatches] = useState(INITIAL_DISPATCHES);
-  const [articles, setArticles] = useState(INITIAL_ARTICLES);
+  const [dispatches, setDispatches] = useState(() => loadDispatches(INITIAL_DISPATCHES));
+  const [articles, setArticles] = useState(() => loadArticles(INITIAL_ARTICLES));
   const [dispatchFilter, setDispatchFilter] = useState("All Releases");
   const [dispatchSearch, setDispatchSearch] = useState("");
   const [articleSearch, setArticleSearch] = useState("");
@@ -312,7 +413,7 @@ export default function TechTorchCMS() {
     setCharCount(text.length);
   };
 
-  const readMinutes = Math.max(1, Math.round(wordCount / 200));
+  const readMinutes = Math.max(1, Math.ceil(wordCount / 200));
 
   /* ----- tags ----- */
   const addTag = () => {
@@ -375,16 +476,16 @@ export default function TechTorchCMS() {
           slug: slugify("/insights/", title),
           category,
           author: author.name,
-          status: "Published",
+          status: draftMode ? "Draft" : "Published",
           date: "Just now",
-          metric: "0 views",
+          metric: draftMode ? "Unpublished" : "0 views",
           read: `${readMinutes}m read`,
         },
         ...prev,
       ]);
-      showToast("Article published");
+      showToast(draftMode ? "Saved as draft" : "Article published");
     }
-    setDraftStatus("Published");
+    setDraftStatus(draftMode ? "Draft Saved just now" : "Published");
   };
 
   const startNewPressRelease = () => {
@@ -393,13 +494,28 @@ export default function TechTorchCMS() {
     if (subtitleRef.current)
       subtitleRef.current.innerText = "Add a one-line summary for this release.";
     if (bodyRef.current)
-      bodyRef.current.innerHTML = "<p>Start writing the press release body here.</p>";
+      bodyRef.current.innerHTML = "<p class=\"text-stone-400\">Type here...</p>";
     updateWordCount();
     setCoverImage(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
     titleRef.current?.focus();
     showToast("New press release draft started");
   };
+
+  /* Every article / press release published here is saved locally and
+     mirrored into the Admin Dashboard's Publishing Directory, live —
+     no separate file needed, it all happens right here. */
+  useEffect(() => {
+    saveArticles(articles);
+    syncDashboard(articles, dispatches);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [articles]);
+
+  useEffect(() => {
+    saveDispatches(dispatches);
+    syncDashboard(articles, dispatches);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatches]);
 
   /* ----- dispatch table ----- */
   const matchesDispatchFilter = (d) => {
@@ -484,6 +600,13 @@ export default function TechTorchCMS() {
     };
     document.addEventListener("click", close);
     return () => document.removeEventListener("click", close);
+  }, []);
+
+  /* sync word/read-time count with the actual body content as soon as it renders,
+     so the reading time shown (near Draft Mode, and in the sidebar) always
+     reflects the real article text instead of the initial placeholder count */
+  useEffect(() => {
+    updateWordCount();
   }, []);
 
   return (
@@ -665,11 +788,15 @@ export default function TechTorchCMS() {
                   </div>
                 )}
                 <span className="text-stone-400 flex items-center gap-1">~{readMinutes} min read</span>
-                <span className="text-stone-400">·</span>
-                <span className="flex items-center gap-1 text-stone-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                <label className="flex items-center gap-1.5 text-stone-400 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={draftMode}
+                    onChange={(e) => setDraftMode(e.target.checked)}
+                    className="accent-amber-500 w-3.5 h-3.5 cursor-pointer"
+                  />
                   Draft Mode
-                </span>
+                </label>
               </div>
 
               {/* Title */}
@@ -697,73 +824,99 @@ export default function TechTorchCMS() {
               </div>
 
               {/* Image drop zone */}
-              <div
-                onClick={() => {
-                  if (!coverImage) chooseCoverFile();
-                }}
-                className={`relative border-2 border-dashed border-stone-200 rounded-lg py-10 flex flex-col items-center justify-center text-center bg-stone-50/50 overflow-hidden min-h-[200px] ${
-                  coverImage ? "" : "cursor-pointer"
-                }`}
-              >
-                {!coverImage ? (
-                  <div className="flex flex-col items-center">
-                    <div className="w-11 h-11 rounded-lg bg-white border border-stone-200 flex items-center justify-center mb-3 text-stone-400">
-                      <ImagePlus size={20} />
-                    </div>
-                    <div className="text-sm font-medium text-stone-700">
-                      Choose a high-resolution cover image
-                    </div>
-                    <div className="text-xs text-stone-400 mt-1">
-                      Recommended 1920×1080px (PNG, JPG, or WebP up to 10MB)
-                    </div>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        chooseCoverFile();
-                      }}
-                      className="mt-4 flex items-center gap-1.5 border border-stone-200 rounded-md px-3 py-1.5 text-sm bg-white hover:bg-stone-50"
-                    >
-                      Browse Library
-                    </button>
-                  </div>
-                ) : (
-                  <div className="w-full h-full absolute inset-0">
-                    <div
-                      className="w-full h-full"
-                      style={{
-                        background: coverImage.startsWith("url(")
-                          ? `${coverImage} center/cover no-repeat`
-                          : coverImage,
-                      }}
-                    />
-                    <div className="absolute top-2 right-2 flex gap-2">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          chooseCoverFile();
-                        }}
-                        className="text-xs bg-white/90 border border-stone-200 rounded-md px-2 py-1 hover:bg-white"
-                      >
-                        Change
-                      </button>
-                      <button
-                        onClick={() => setCoverImage(null)}
-                        className="text-xs bg-white/90 border border-stone-200 rounded-md px-2 py-1 hover:bg-white text-rose-600"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                )}
-                <input
-                  ref={coverFileInputRef}
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={(e) => readFileAsCover(e.target.files[0])}
-                />
-              </div>
+<div
+  onClick={() => {
+    if (!coverImage) chooseCoverFile();
+  }}
+  className={`relative w-full aspect-video border-2 border-dashed border-stone-200 rounded-lg overflow-hidden bg-stone-50 ${
+    coverImage ? "" : "cursor-pointer"
+  }`}
+>
+  {!coverImage ? (
+    <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+      <div className="w-11 h-11 rounded-lg bg-white border border-stone-200 flex items-center justify-center mb-3 text-stone-400">
+        <ImagePlus size={20} />
+      </div>
 
+      <div className="text-sm font-medium text-stone-700">
+        Choose a high-resolution cover image
+      </div>
+
+      <div className="text-xs text-stone-400 mt-1">
+        Recommended 1920×1080px (PNG, JPG, or WebP up to 10MB)
+      </div>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          chooseCoverFile();
+        }}
+        className="mt-4 flex items-center gap-1.5 border border-stone-200 rounded-md px-3 py-1.5 text-sm bg-white hover:bg-stone-50"
+      >
+        <ImagePlus size={14} />
+        Browse Library
+      </button>
+    </div>
+  ) : (
+    <>
+      {/* Selected image */}
+      {coverImage.startsWith("url(") ? (
+        <img
+          src={coverImage.slice(4, -1)}
+          alt="Cover preview"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            background: coverImage,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+      )}
+
+      {/* Image actions */}
+      <div className="absolute top-3 right-3 flex gap-2 z-10">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            chooseCoverFile();
+          }}
+          className="text-xs bg-white/95 border border-stone-200 rounded-md px-3 py-1.5 hover:bg-white shadow-sm"
+        >
+          Change
+        </button>
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setCoverImage(null);
+          }}
+          className="text-xs bg-white/95 border border-stone-200 rounded-md px-3 py-1.5 hover:bg-white text-rose-600 shadow-sm"
+        >
+          Remove
+        </button>
+      </div>
+
+      {/* Image overlay */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent h-20 pointer-events-none" />
+    </>
+  )}
+
+  <input
+    ref={coverFileInputRef}
+    type="file"
+    accept="image/png,image/jpeg,image/webp"
+    className="hidden"
+    onChange={(e) => {
+      readFileAsCover(e.target.files[0]);
+      e.target.value = "";
+    }}
+  />
+</div>
               {/* Rich text toolbar */}
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 pb-3">
                 <div className="flex items-center gap-1 text-stone-500 overflow-x-auto">
@@ -854,27 +1007,19 @@ export default function TechTorchCMS() {
                 suppressContentEditableWarning
                 spellCheck={false}
                 onInput={updateWordCount}
-                className="text-sm leading-relaxed text-stone-700 space-y-3 outline-none min-h-[120px]"
+                onFocus={(e) => {
+                  if (e.currentTarget.innerText.trim() === "Type here...") {
+                    e.currentTarget.innerHTML = "";
+                  }
+                }}
+                onBlur={(e) => {
+                  if (!e.currentTarget.innerText.trim()) {
+                    e.currentTarget.innerHTML = "<p>Type here...</p>";
+                  }
+                }}
+                className="text-sm leading-relaxed text-stone-700 outline-none min-h-[180px]"
               >
-                <p>
-                  <span className="font-semibold text-stone-900">
-                    [SAN FRANCISCO, CA • October 14, 2024]
-                  </span>{" "}
-                  — TechTorch, the enterprise platform for autonomous workflow
-                  orchestration, today detailed key architectural breakthroughs{" "}
-                  <span className="font-semibold text-stone-900">
-                    accelerating the migration from static, procedural
-                    microservice designs to intent-driven autonomous systems.
-                  </span>
-                </p>
-                <p>
-                  Modern distributed architectures require verifiable
-                  guardrails, real-time observability fabrics, and declarative
-                  governance policies. Through its new enterprise
-                  capabilities, organizations can operationalize multi-agent
-                  consensus while maintaining SOC2 and zero-trust perimeter
-                  conformance across hybrid infrastructure.
-                </p>
+                <p className="text-stone-400">Type here...</p>
               </div>
 
               <div className="flex items-center justify-between text-xs text-stone-400 border-t border-stone-100 pt-3">
@@ -897,48 +1042,70 @@ export default function TechTorchCMS() {
                     CORE METAS
                   </span>
                 </div>
+<div className="flex items-center gap-2 mb-4">
+  <input
+    type="checkbox"
+    id="draftMode"
+    checked={draftMode}
+    onChange={(e) => setDraftMode(e.target.checked)}
+    className="w-4 h-4 accent-[#6d1b3f] cursor-pointer"
+  />
 
-                <div className="space-y-4">
-                  <FieldBlock label="AUTHOR">
-                    <div className="relative">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setAuthorOpen((v) => !v);
-                          setCategoryOpen(false);
-                        }}
-                        className="w-full flex items-center justify-between border border-stone-200 rounded-md px-3 py-2 text-sm text-left"
-                      >
-                        <span>
-                          {author.name}
-                          <span className="block text-xs text-stone-400">
-                            ({author.title})
-                          </span>
-                        </span>
-                        <ChevronDown size={14} className="text-stone-400 shrink-0" />
-                      </button>
-                      {authorOpen && (
-                        <div
-                          onClick={(e) => e.stopPropagation()}
-                          className="absolute top-full left-0 mt-1 z-20 bg-white border border-stone-200 rounded-md shadow-lg py-1 w-full text-sm"
-                        >
-                          {AUTHORS.map((a) => (
-                            <div
-                              key={a.name}
-                              onClick={() => {
-                                setAuthor(a);
-                                setAuthorOpen(false);
-                              }}
-                              className="px-3 py-2 hover:bg-stone-50 cursor-pointer"
-                            >
-                              {a.name}
-                              <span className="block text-xs text-stone-400">({a.title})</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </FieldBlock>
+  <label
+    htmlFor="draftMode"
+    className="text-sm text-stone-600 cursor-pointer"
+  >
+    Draft Mode
+  </label>
+</div>
+
+<div className="space-y-4">
+  <FieldBlock label="AUTHOR">
+    <div>
+      <input
+        type="text"
+        value={author.name}
+        onChange={(e) =>
+          setAuthor({
+            ...author,
+            name: e.target.value,
+          })
+        }
+        placeholder="Enter author name"
+        onFocus={(e) => {
+          if (e.target.value === "Dr. Aris Thorne") {
+            setAuthor({ ...author, name: "" });
+          }
+        }}
+        className="w-full border border-stone-200 rounded-md px-3 py-2 text-sm text-stone-700 outline-none focus:ring-2 focus:ring-[#6d1b3f]/20"
+      />
+
+      <input
+        type="text"
+        value={author.title}
+        onChange={(e) =>
+          setAuthor({
+            ...author,
+            title: e.target.value,
+          })
+        }
+        placeholder="Enter author designation"
+        onFocus={(e) => {
+          if (e.target.value === "Chief AI Architect") {
+            setAuthor({ ...author, title: "" });
+          }
+        }}
+        className="w-full mt-2 border border-stone-200 rounded-md px-3 py-2 text-xs text-stone-500 outline-none focus:ring-2 focus:ring-[#6d1b3f]/20"
+      />
+    </div>
+  </FieldBlock>
+
+  <FieldBlock label="READING TIME">
+    <div className="border border-stone-200 rounded-md px-3 py-2 text-sm bg-stone-50 flex items-center justify-between">
+      <span className="text-stone-700 font-medium">~{readMinutes} min read</span>
+      <span className="text-xs text-stone-400">{wordCount} words</span>
+    </div>
+  </FieldBlock>
 
                   <FieldBlock label="PUBLISH DATE">
                     <div className="space-y-2 text-sm">
