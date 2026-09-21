@@ -73,21 +73,15 @@ const timelines = [
 ];
 
 export default function DevelopmentConsultation() {
-  const [requirement, setRequirement] = useState(
-    "New Software Development"
-  );
+  const [requirement, setRequirement] = useState("");
 
-  const [teamType, setTeamType] = useState("Dedicated Team");
+  const [teamType, setTeamType] = useState("");
 
-  const [selectedExpertise, setSelectedExpertise] = useState([
-    "Frontend Development",
-    "Backend Development",
-    "Full-Stack Development",
-  ]);
+  const [selectedExpertise, setSelectedExpertise] = useState([]);
 
-  const [teamSize, setTeamSize] = useState("3–5");
+  const [teamSize, setTeamSize] = useState("");
 
-  const [timeline, setTimeline] = useState("As soon as possible");
+  const [timeline, setTimeline] = useState("");
 
   const [formData, setFormData] = useState({
     project: "",
@@ -534,7 +528,7 @@ export default function DevelopmentConsultation() {
               title="What type of team are you looking for?"
               rightText="Choose the model that best describes your requirement"
             >
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-5">
                 {teamTypes.map((item) => (
                   <TeamCard
                     key={item.title}
@@ -570,7 +564,7 @@ export default function DevelopmentConsultation() {
                         px-3
                         py-2
                         font-['Inter']
-                        text-[10px]
+                        text-[11px]
                         font-medium
                         transition-all
                         duration-200
@@ -635,7 +629,7 @@ export default function DevelopmentConsultation() {
               title="How large is the team you are considering?"
               rightText="Estimated engineers"
             >
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-5">
                 {teamSizes.map((item) => {
                   const selected = teamSize === item;
 
@@ -696,7 +690,7 @@ export default function DevelopmentConsultation() {
               title="When do you need the team?"
               rightText="Target timeline"
             >
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-5">
                 {timelines.map((item) => {
                   const selected = timeline === item;
 

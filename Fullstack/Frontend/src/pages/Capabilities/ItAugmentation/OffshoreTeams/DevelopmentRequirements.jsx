@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Check, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const BRAND = "#8B0046";
 
@@ -82,11 +82,9 @@ const supportLevels = [
 ========================================================= */
 
 export default function DevelopmentConsultation() {
-  const [support, setSupport] = useState("Custom Software Development");
+  const [support, setSupport] = useState("");
 
-  const [supportType, setSupportType] = useState(
-    "Dedicated Development Team"
-  );
+  const [supportType, setSupportType] = useState("");
 
   const [selectedCapabilities, setSelectedCapabilities] = useState([]);
 
@@ -121,15 +119,6 @@ export default function DevelopmentConsultation() {
     );
   };
 
-  const scrollToForm = () => {
-    document
-      .getElementById("development-form")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -150,11 +139,11 @@ export default function DevelopmentConsultation() {
   return (
     <main className="w-full overflow-hidden bg-[#f8f9fa]">
 
-     {/* =====================================================
+    {/* =====================================================
     FIRST SECTION — DEVELOPMENT CONSULTATION
 ===================================================== */}
 
-<section className="w-full bg-[#f8f9fa] px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 lg:py-10">
+<section className="w-full bg-[#f8f9fa] px-3 py-4 sm:px-5 sm:py-6 md:px-7 md:py-8 lg:px-10 lg:py-10">
   <div
     className="
       mx-auto
@@ -170,7 +159,7 @@ export default function DevelopmentConsultation() {
     "
   >
 
-    {/* LEFT CONTENT */}
+    {/* ================= LEFT CONTENT ================= */}
     <div
       className="
         flex
@@ -182,8 +171,8 @@ export default function DevelopmentConsultation() {
         sm:py-10
         md:px-10
         md:py-12
-        lg:px-[52px]
-        lg:py-[48px]
+        lg:px-[48px]
+        lg:py-[42px]
       "
     >
 
@@ -196,27 +185,25 @@ export default function DevelopmentConsultation() {
           items-center
           gap-2
           rounded-full
-          border
-          border-[#ead5df]
-          bg-[#fff8fb]
-          px-3
+          bg-[#f5f5f6]
+          px-3.5
           py-1.5
         "
       >
         <span
-          className="h-[6px] w-[6px] rounded-full"
+          className="h-[7px] w-[7px] rounded-full"
           style={{ backgroundColor: BRAND }}
         />
 
         <span
           className="
             font-['Plus_Jakarta_Sans']
-            text-[9px]
+            text-[11px]
             font-bold
             uppercase
-            tracking-[0.06em]
+            tracking-[0.05em]
+            text-[#343434]
           "
-          style={{ color: BRAND }}
         >
           DEVELOPMENT CONSULTATION
         </span>
@@ -232,8 +219,8 @@ export default function DevelopmentConsultation() {
           leading-[1.08]
           tracking-[-0.04em]
           text-[#15151A]
-          sm:text-[34px]
-          md:text-[38px]
+          sm:text-[36px]
+          md:text-[40px]
           lg:text-[42px]
         "
       >
@@ -245,14 +232,15 @@ export default function DevelopmentConsultation() {
       {/* Description */}
       <p
         className="
-          mt-4
-          max-w-[610px]
+          mt-5
+          max-w-[620px]
           font-['Plus_Jakarta_Sans']
-          text-[12px]
-          leading-[1.65]
+          text-[13px]
+          leading-[1.7]
           text-[#6b6268]
-          sm:text-[13px]
-          md:text-[14px]
+          sm:text-[14px]
+          md:text-[15px]
+          lg:text-[15px]
         "
       >
         Tell us about your project, development goals, and the technical
@@ -264,31 +252,81 @@ export default function DevelopmentConsultation() {
     </div>
 
 
-    {/* RIGHT IMAGE */}
+    {/* ================= RIGHT IMAGE ================= */}
     <div
       className="
         relative
         flex
-        min-h-[250px]
+        min-h-[230px]
         items-center
         justify-center
         p-2
-        sm:min-h-[300px]
-        md:min-h-[350px]
+        sm:min-h-[280px]
+        md:min-h-[320px]
         lg:min-h-[360px]
       "
     >
-      <img
-        src="/DevelopmentTeam.png"
-        alt="Development Consultation"
-        className="
-          h-full
-          w-full
-          rounded-[12px]
-          object-cover
-          object-center
-        "
-      />
+
+      {/* Image */}
+      <div className="relative h-full w-full overflow-hidden rounded-[12px]">
+
+        <img
+          src="/DevelopmentTeam.png"
+          alt="Development Consultation"
+          className="
+            absolute
+            inset-0
+            h-full
+            w-full
+            object-cover
+            object-center
+          "
+        />
+
+        {/* ================= IMAGE TEXT OVERLAY ================= */}
+        <div
+          className="
+            absolute
+            bottom-0
+            left-0
+            right-0
+            p-3
+            sm:p-4
+          "
+        >
+          <div
+            className="
+              rounded-[10px]
+              border
+              border-white/15
+              bg-black/65
+              px-3
+              py-2.5
+              backdrop-blur-[3px]
+              sm:px-4
+              sm:py-3
+            "
+          >
+            <p
+              className="
+                font-['Plus_Jakarta_Sans']
+                text-[10px]
+                font-medium
+                leading-[1.35]
+                text-white
+                sm:text-[11px]
+                md:text-[12px]
+              "
+            >
+              TechTorch Solutions Architecture — Technical
+              <br className="hidden sm:block" />
+              Consultation & Requirement Discovery
+            </p>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
   </div>
@@ -301,7 +339,7 @@ export default function DevelopmentConsultation() {
 
       <section
         id="development-form"
-        className="w-full px-4 pb-10 sm:px-6 sm:pb-14 md:px-8 lg:px-10 lg:pb-16"
+        className="w-full px-3 pb-8 sm:px-5 sm:pb-10 md:px-7 md:pb-12 lg:px-10 lg:pb-16"
       >
         <div className="mx-auto w-full max-w-[1180px]">
 
@@ -313,17 +351,18 @@ export default function DevelopmentConsultation() {
 
             <div
               className="
-                rounded-[16px]
+                rounded-[14px]
                 border
                 border-[#e3e7eb]
                 bg-white
-                px-6
-                py-7
+                px-4
+                py-6
                 shadow-[0_2px_8px_rgba(20,30,45,0.025)]
-                sm:px-8
-                sm:py-9
-                md:px-10
-                md:py-10
+                sm:rounded-[16px]
+                sm:px-6
+                sm:py-8
+                md:px-8
+                md:py-9
                 lg:px-12
                 lg:py-11
               "
@@ -339,7 +378,7 @@ export default function DevelopmentConsultation() {
                 subtitle="Select the area closest to your requirement."
               >
 
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:gap-3 lg:grid-cols-4">
                   {supportOptions.map((item) => (
                     <ChoiceButton
                       key={item}
@@ -363,7 +402,7 @@ export default function DevelopmentConsultation() {
                 subtitle="Choose the engagement structure best suited for your plans."
               >
 
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:gap-3 lg:grid-cols-3">
                   {supportTypes.map((item) => (
                     <SupportTypeCard
                       key={item.title}
@@ -404,10 +443,10 @@ export default function DevelopmentConsultation() {
                           py-2
                           font-['Plus_Jakarta_Sans']
                           text-[9px]
-                          font-medium
+                          font-semibold
                           transition-all
                           duration-200
-                          sm:text-[10px]
+                          sm:text-[11px]
                           ${
                             selected
                               ? "border-[#8B0046] bg-[#8B0046] text-white"
@@ -441,7 +480,7 @@ export default function DevelopmentConsultation() {
                     text-[10px]
                     leading-[1.5]
                     text-[#71686d]
-                    sm:text-[11px]
+                    sm:text-[12px]
                   "
                 >
                   Describe your project, current application, technology
@@ -456,6 +495,7 @@ export default function DevelopmentConsultation() {
                   rows={4}
                   placeholder="Briefly describe your project and the development support you are looking for..."
                   className="
+                    min-h-[120px]
                     w-full
                     resize-none
                     rounded-[9px]
@@ -504,10 +544,10 @@ export default function DevelopmentConsultation() {
                           py-2
                           font-['Plus_Jakarta_Sans']
                           text-[9px]
-                          font-medium
+                          font-semibold
                           transition-all
                           duration-200
-                          sm:text-[10px]
+                          sm:text-[11px]
                           ${
                             selected
                               ? "border-[#8B0046] bg-[#fff7fa] text-[#8B0046]"
@@ -553,7 +593,7 @@ export default function DevelopmentConsultation() {
                           font-medium
                           transition-all
                           duration-200
-                          sm:text-[10px]
+                          sm:text-[11px]
                           ${
                             selected
                               ? "border-[#8B0046] bg-[#fff7fa] text-[#8B0046]"
@@ -578,16 +618,19 @@ export default function DevelopmentConsultation() {
 
             <div
               className="
-                mt-6
-                rounded-[16px]
+                mt-5
+                rounded-[14px]
                 border
                 border-[#e3e7eb]
                 bg-white
-                px-6
-                py-7
-                sm:px-8
-                sm:py-9
-                md:px-10
+                px-4
+                py-6
+                sm:mt-6
+                sm:rounded-[16px]
+                sm:px-6
+                sm:py-8
+                md:px-8
+                md:py-9
                 lg:px-12
                 lg:py-10
               "
@@ -610,13 +653,14 @@ export default function DevelopmentConsultation() {
                 className="
                   mt-2
                   font-['Plus_Jakarta_Sans']
-                  text-[23px]
+                  text-[21px]
                   font-semibold
                   leading-[1.15]
                   tracking-[-0.035em]
                   text-[#15151A]
-                  sm:text-[26px]
-                  md:text-[28px]
+                  sm:text-[24px]
+                  md:text-[26px]
+                  lg:text-[28px]
                 "
               >
                 Let’s Continue the Conversation
@@ -626,7 +670,7 @@ export default function DevelopmentConsultation() {
                 className="
                   mt-1
                   max-w-[850px]
-                  font-['Plus_Jakarta_Sans']
+                  font-['Inter']
                   text-[10px]
                   leading-[1.6]
                   text-[#6d6469]
@@ -698,12 +742,13 @@ export default function DevelopmentConsultation() {
                   type="submit"
                   className="
                     inline-flex
+                    w-full
                     min-h-[44px]
                     items-center
                     justify-center
                     gap-2
                     rounded-[7px]
-                    bg-[#8B0046]
+                    bg-[#780042]
                     px-6
                     font-['Plus_Jakarta_Sans']
                     text-[10px]
@@ -713,7 +758,8 @@ export default function DevelopmentConsultation() {
                     text-white
                     transition-all
                     duration-300
-                    hover:bg-[#78003d]
+                    hover:bg-[#8B0046]
+                    sm:w-auto
                     sm:text-[11px]
                   "
                 >
@@ -724,10 +770,10 @@ export default function DevelopmentConsultation() {
                 <p
                   className="
                     mt-2
-                    font-['Plus_Jakarta_Sans']
+                    font-['Inter']
                     text-[8px]
                     text-[#766d72]
-                    sm:text-[9px]
+                    sm:text-[11px]
                   "
                 >
                   The information you provide will be used to understand your
@@ -771,7 +817,7 @@ function FormSection({
 
       <div className="mb-4">
 
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-2.5 sm:gap-3">
 
           <span
             className="
@@ -792,7 +838,7 @@ function FormSection({
             {number}
           </span>
 
-          <div>
+          <div className="min-w-0">
 
             <h3
               className="
@@ -847,21 +893,26 @@ function ChoiceButton({
       className={`
         relative
         flex
-        min-h-[50px]
+        min-h-[52px]
+        w-full
         items-center
         justify-between
+        gap-2
         rounded-[9px]
         border
         px-3
-        py-3
+        py-2.5
         text-left
         font-['Plus_Jakarta_Sans']
-        text-[9px]
+        text-[10px]
         font-medium
+        leading-[1.35]
         transition-all
         duration-200
         sm:min-h-[54px]
-        sm:text-[10px]
+        sm:px-3.5
+        sm:text-[11px]
+        md:text-[12px]
         ${
           selected
             ? "border-[#d3a3b9] bg-[#fff9fb] text-[#29252a]"
@@ -876,8 +927,8 @@ function ChoiceButton({
       <span
         className={`
           flex
-          h-[12px]
-          w-[12px]
+          h-[15px]
+          w-[15px]
           shrink-0
           items-center
           justify-center
@@ -891,7 +942,7 @@ function ChoiceButton({
         `}
       >
         {selected && (
-          <span className="h-[5px] w-[5px] rounded-full bg-[#8B0046]" />
+          <span className="h-[6px] w-[6px] rounded-full bg-[#8B0046]" />
         )}
       </span>
     </button>
@@ -915,13 +966,17 @@ function SupportTypeCard({
       onClick={onClick}
       className={`
         relative
-        min-h-[100px]
+        min-h-[112px]
+        w-full
         rounded-[10px]
         border
-        p-3
+        p-3.5
         text-left
         transition-all
         duration-200
+        sm:min-h-[118px]
+        sm:p-4
+        md:min-h-[122px]
         ${
           selected
             ? "border-[#d3a3b9] bg-[#fff9fb]"
@@ -937,8 +992,8 @@ function SupportTypeCard({
           right-3
           top-3
           flex
-          h-[12px]
-          w-[12px]
+          h-[15px]
+          w-[15px]
           items-center
           justify-center
           rounded-full
@@ -951,19 +1006,21 @@ function SupportTypeCard({
         `}
       >
         {selected && (
-          <span className="h-[5px] w-[5px] rounded-full bg-[#8B0046]" />
+          <span className="h-[6px] w-[6px] rounded-full bg-[#8B0046]" />
         )}
       </span>
 
       <h4
         className="
+          max-w-[92%]
           pr-5
           font-['Plus_Jakarta_Sans']
-          text-[10px]
+          text-[12px]
           font-bold
-          leading-[1.35]
+          leading-[1.4]
           text-[#30343a]
-          sm:text-[11px]
+          sm:text-[13px]
+          md:text-[14px]
         "
       >
         {title}
@@ -971,13 +1028,15 @@ function SupportTypeCard({
 
       <p
         className="
-          mt-3
-          max-w-[230px]
-          font-['Plus_Jakarta_Sans']
-          text-[8px]
-          leading-[1.6]
+          mt-2.5
+          max-w-[310px]
+          pr-1
+          font-['Inter']
+          text-[10px]
+          leading-[1.5]
           text-[#766d72]
-          sm:text-[9px]
+          sm:text-[11px]
+          md:text-[12px]
         "
       >
         {description}
@@ -1008,10 +1067,12 @@ function InputField({
           mb-1.5
           block
           font-['Plus_Jakarta_Sans']
-          text-[9px]
+          text-[11px]
           font-bold
+          leading-[1.4]
           text-[#34383e]
-          sm:text-[10px]
+          sm:text-[12px]
+          md:text-[13px]
         "
       >
         {label}
@@ -1024,7 +1085,7 @@ function InputField({
         onChange={onChange}
         placeholder={placeholder}
         className="
-          h-[40px]
+          h-[42px]
           w-full
           rounded-[8px]
           border
@@ -1032,15 +1093,17 @@ function InputField({
           bg-[#fafbfc]
           px-3
           font-['Plus_Jakarta_Sans']
-          text-[10px]
+          text-[11px]
+          font-medium
           text-[#303641]
           outline-none
           transition-all
           placeholder:text-[#aeb5be]
           focus:border-[#c58ba7]
           focus:bg-white
-          sm:h-[42px]
-          sm:text-[11px]
+          sm:h-[44px]
+          sm:text-[12px]
+          md:text-[13px]
         "
       />
 

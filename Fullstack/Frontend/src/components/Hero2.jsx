@@ -33,14 +33,14 @@ export default function BuildConnectGrow() {
           <div className="flex items-center gap-4 mt-14">
             <Link
               to="/KnowMore"
-              className="px-6 py-2.5 rounded-md bg-[#8a1538] text-white text-[13px] font-semibold tracking-wide no-underline hover:bg-[#CD166E] transition-colors duration-200"
+              className="px-6 py-2.5 rounded-md bg-[#730042] text-white text-[13px] font-semibold tracking-wide no-underline hover:bg-[#CD166E] transition-colors duration-200"
             >
               KNOW MORE
             </Link>
 
             <Link
               to="/Philosophy"
-              className="px-6 py-2.5 rounded-md border border-[#8a1538] text-[#8a1538] text-[13px] font-semibold tracking-wide no-underline hover:bg-[#8a1538] hover:text-white transition-colors duration-200"
+              className="px-6 py-2.5 rounded-md border border-[#730042] text-[#730042] text-[13px] font-semibold tracking-wide no-underline hover:bg-[#730042] hover:text-white transition-colors duration-200"
             >
               OUR STORY
             </Link>
