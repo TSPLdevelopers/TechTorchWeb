@@ -138,7 +138,7 @@ function Toggle({ on, onClick, label }) {
       aria-checked={on}
       aria-label={label}
       onClick={onClick}
-      className="w-10 h-5.5 h-6 rounded-full px-0.5 flex items-center transition-colors shrink-0"
+      className="w-10 h-6 rounded-full px-0.5 flex items-center transition-colors shrink-0"
       style={{ backgroundColor: on ? ACCENT : "#d6d3d1" }}
     >
       <span
@@ -152,12 +152,13 @@ function FieldLabel({ children }) {
   return <label className="text-sm font-medium text-stone-700 mb-1.5 block">{children}</label>;
 }
 
-function InputBox({ value, onChange, mono, type = "text" }) {
+function InputBox({ value, onChange, mono, type = "text", onFocus }) {
   return (
     <input
       type={type}
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      onFocus={onFocus}
       className={`w-full min-w-0 border border-stone-200 rounded-md px-3.5 py-2.5 text-sm bg-white text-stone-900 focus:outline-none focus:border-stone-400 ${mono ? "font-mono" : ""}`}
     />
   );
@@ -202,6 +203,11 @@ function SelectBox({ value, options, onChange }) {
 export default function SystemSettingsConsole() {
   const [tab, setTab] = useState("General & Profile");
   const [query, setQuery] = useState("");
+  // Set by goTo() when the user clicks a tab (or "View full audit trail").
+  // A ref effect below performs the actual scroll once the target section
+  // is guaranteed to be mounted — see the note on goTo for why this is
+  // needed instead of scrolling synchronously.
+  const [scrollTarget, setScrollTarget] = useState(null);
 
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
   const [saved, setSaved] = useState(DEFAULT_SETTINGS);
@@ -238,7 +244,46 @@ export default function SystemSettingsConsole() {
     return () => window.removeEventListener("beforeunload", warn);
   }, [dirty]);
 
+  /* ----- search filter ----- */
+  const SECTION_TERMS = {
+    "General & Profile": "01 general platform organization profile legal name org id email headquarters noida domain helpline timezone session timeout concurrent sessions maintenance mode",
+    "Security & 2FA": "02 security two factor authentication 2fa fido2 webauthn yubikey totp password expiration lockout cidr ip whitelist subnet perimeter firewall",
+    "Notifications & Alerts": "03 notifications alerts email sms digest changelog incident dispatch health report audit alerts",
+    "Database & Maintenance": "04 database cluster cache storage maintenance postgresql backup s3 snapshot redis vacuum retention",
+    "Webhooks & Audit Logs": "05 webhooks audit logs stream hmac secret rotate test ping events compliance trail",
+  };
+  const q = query.trim().toLowerCase();
+  const show = (name) => !q || SECTION_TERMS[name].includes(q) || name.toLowerCase().includes(q);
+  const noResults = q && !TABS.some(show);
+
+  // Previously, clicking a tab (or "View full audit trail" in the bell
+  // dropdown) while an active search query hid that section did nothing —
+  // the section wasn't mounted yet, so scrollIntoView had no element to
+  // scroll to. This effect waits until the search is cleared (which makes
+  // every section visible again) and only then performs the scroll, once
+  // the target section is guaranteed to be in the DOM.
+  useEffect(() => {
+    if (scrollTarget && query === "") {
+      refs[scrollTarget]?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      setScrollTarget(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollTarget, query]);
+
   const set = (key, value) => setSettings((s) => ({ ...s, [key]: value }));
+
+  // Fields that start pre-filled with sample/default text. The first time
+  // the user clicks into one of these, its current value is cleared so
+  // they can type fresh — but only the first time, so clicking back into
+  // a field to fix a typo later doesn't wipe out what they've already
+  // typed.
+  const [touchedFields, setTouchedFields] = useState({});
+  const clearOnFirstFocus = (key) => () => {
+    if (!touchedFields[key]) {
+      setTouchedFields((t) => ({ ...t, [key]: true }));
+      set(key, "");
+    }
+  };
 
   const toast = (msg, tone = "ok") => {
     const id = Date.now() + Math.random();
@@ -353,22 +398,17 @@ export default function SystemSettingsConsole() {
     }, 900);
   };
 
+  // Fix: previously this only set `tab` and immediately called
+  // scrollIntoView. If a search query was hiding the target section, the
+  // ref was still null at that moment (nothing to scroll to) and the click
+  // silently did nothing. Now it also clears the search — which makes the
+  // section visible again — and defers the actual scroll to the effect
+  // above, which fires once the section is really in the DOM.
   const goTo = (t) => {
     setTab(t);
-    refs[t]?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setQuery("");
+    setScrollTarget(t);
   };
-
-  /* ----- search filter ----- */
-  const SECTION_TERMS = {
-    "General & Profile": "01 general platform organization profile legal name org id email headquarters noida domain helpline timezone session timeout concurrent sessions maintenance mode",
-    "Security & 2FA": "02 security two factor authentication 2fa fido2 webauthn yubikey totp password expiration lockout cidr ip whitelist subnet perimeter firewall",
-    "Notifications & Alerts": "03 notifications alerts email sms digest changelog incident dispatch health report audit alerts",
-    "Database & Maintenance": "04 database cluster cache storage maintenance postgresql backup s3 snapshot redis vacuum retention",
-    "Webhooks & Audit Logs": "05 webhooks audit logs stream hmac secret rotate test ping events compliance trail",
-  };
-  const q = query.trim().toLowerCase();
-  const show = (name) => !q || SECTION_TERMS[name].includes(q) || name.toLowerCase().includes(q);
-  const noResults = q && !TABS.some(show);
 
   const dbPct = +((dbUsedGb / 250) * 100).toFixed(1);
 
@@ -560,30 +600,30 @@ export default function SystemSettingsConsole() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
                 <div>
                   <FieldLabel>Platform / Organization Legal Name</FieldLabel>
-                  <InputBox value={settings.orgName} onChange={(v) => set("orgName", v)} />
+                  <InputBox value={settings.orgName} onChange={(v) => set("orgName", v)} onFocus={clearOnFirstFocus("orgName")} />
                 </div>
                 <div>
                   <FieldLabel>Enterprise Organization ID</FieldLabel>
-                  <InputBox value={settings.orgId} onChange={(v) => set("orgId", v)} mono />
+                  <InputBox value={settings.orgId} onChange={(v) => set("orgId", v)} onFocus={clearOnFirstFocus("orgId")} mono />
                 </div>
                 <div>
                   <FieldLabel>Primary Super Admin Email</FieldLabel>
-                  <InputBox value={settings.adminEmail} onChange={(v) => set("adminEmail", v)} type="email" />
+                  <InputBox value={settings.adminEmail} onChange={(v) => set("adminEmail", v)} onFocus={clearOnFirstFocus("adminEmail")} type="email" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
                 <div>
                   <FieldLabel>Corporate Headquarters</FieldLabel>
-                  <InputBox value={settings.hq} onChange={(v) => set("hq", v)} />
+                  <InputBox value={settings.hq} onChange={(v) => set("hq", v)} onFocus={clearOnFirstFocus("hq")} />
                 </div>
                 <div>
                   <FieldLabel>Canonical Domain URL</FieldLabel>
-                  <InputBox value={settings.domain} onChange={(v) => set("domain", v)} mono />
+                  <InputBox value={settings.domain} onChange={(v) => set("domain", v)} onFocus={clearOnFirstFocus("domain")} mono />
                 </div>
                 <div>
                   <FieldLabel>Priority Support Helpline</FieldLabel>
-                  <InputBox value={settings.helpline} onChange={(v) => set("helpline", v)} />
+                  <InputBox value={settings.helpline} onChange={(v) => set("helpline", v)} onFocus={clearOnFirstFocus("helpline")} />
                 </div>
               </div>
 
@@ -891,7 +931,7 @@ export default function SystemSettingsConsole() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                   <div className="min-w-0">
                     <FieldLabel>Destination Webhook Endpoint URL</FieldLabel>
-                    <InputBox value={settings.webhookUrl} onChange={(v) => set("webhookUrl", v)} mono />
+                    <InputBox value={settings.webhookUrl} onChange={(v) => set("webhookUrl", v)} onFocus={clearOnFirstFocus("webhookUrl")} mono />
                   </div>
                   <div className="min-w-0">
                     <FieldLabel>Webhook HMAC Secret Signature</FieldLabel>
