@@ -8,7 +8,7 @@ const ROWS = [
     title: "CONNECT PEOPLE",
     copy:
       "Empowering teams with actionable insights rather than burying them in data entry. Connected operations mean employees spend less time searching for information and more time executing high-value strategic initiatives.",
-    image: "/OverlayShadow2.png",
+    image: "/AI visualization.png",
     imageSide: "right",
   },
   {
