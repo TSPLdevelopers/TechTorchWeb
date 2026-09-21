@@ -297,6 +297,13 @@ import MSP3 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP3.jsx";
 import DiscussPriorities from "./pages/Capabilities/ItAugmentation/MSPSupport/DiscussPriorities.jsx";
 import ConnectMSP from "./pages/Capabilities/ItAugmentation/MSPSupport/ConnectMSP.jsx";
 
+
+import OffshoreStrategy  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/OffshoreStrategy.jsx";
+import EngagementArchitecture  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/EngagementArchitecture.jsx";
+import LifecycleGovernance  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/LifecycleGovernance.jsx";
+import DevelopmentTeam  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/DevelopmentTeam.jsx";
+import DevelopmentRequirements  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/DevelopmentRequirements.jsx";
+
 // =================================================
 // SCROLL TO TOP
 // =================================================
@@ -794,6 +801,16 @@ function MSPSupport() {
   );
 }
 
+function OffshoreTeams() {
+  return (
+    <>
+     <OffshoreStrategy/>
+     <EngagementArchitecture/>
+     <LifecycleGovernance/>
+    </>
+  );
+}
+
 // =================================================
 // APP
 // =================================================
@@ -1036,7 +1053,21 @@ function App() {
             path="/connect-msp"
             element={<ConnectMSP />}
           />
+           
+           <Route
+            path="/offshore-teams"
+            element={<OffshoreTeams />}
+          />
 
+          <Route
+            path="/development-team"
+            element={<DevelopmentTeam/>}
+          />
+
+           <Route
+            path="/development-requirements"
+            element={<DevelopmentRequirements/>}
+          />
         </Route>
 
       </Routes>
