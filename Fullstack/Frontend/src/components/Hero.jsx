@@ -218,8 +218,8 @@ const Hero = () => {
             to={active.ctaHref}
             className="
               self-start
-              px-7
-              py-3.5
+              px-5
+              py-2.5
               border-[1.5px]
               border-white
               text-white
@@ -239,8 +239,8 @@ const Hero = () => {
             href={active.ctaHref}
             className="
               self-start
-              px-7
-              py-3.5
+              px-5
+              py-2.5
               border-[1.5px]
               border-white
               text-white
