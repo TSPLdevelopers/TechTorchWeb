@@ -17,7 +17,7 @@ export default function DigitalEnvironmentSection() {
       className="
         w-full
         overflow-hidden
-        bg-[#6B0F41]
+        bg-[#730042]
         px-4
         py-10
         sm:px-6

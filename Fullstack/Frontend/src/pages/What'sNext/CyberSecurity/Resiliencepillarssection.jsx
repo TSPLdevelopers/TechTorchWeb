@@ -116,7 +116,7 @@ export default function ResiliencePillarsSection() {
               </p>
             </div>
 
-            <div className="rounded-lg border border-fuchsia-900/40 bg-gradient-to-b from-fuchsia-950 to-[#2a0a1c] p-6 sm:p-7 lg:max-h-[62vh] lg:overflow-y-auto">
+            <div className="rounded-lg border border-fuchsia-900/40 bg-gradient-to-b from-[#730042] to-[#2a0a1c] p-6 sm:p-7 lg:max-h-[62vh] lg:overflow-y-auto">
               <span className="inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-rose-100">
                 BUSINESS CONTINUITY
               </span>

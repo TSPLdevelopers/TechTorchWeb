@@ -60,7 +60,7 @@ export default function ApproachSection() {
             text-[9px]
             font-semibold
             tracking-[0.15em]
-            text-fuchsia-900
+            text-[#730042]
             sm:text-[10px]
           "
           style={{
@@ -181,7 +181,7 @@ export default function ApproachSection() {
                   text-[15px]
                   font-semibold
                   leading-[1.4]
-                  text-fuchsia-900
+                  text-[#730042]
                   sm:text-[16px]
                   md:text-[17px]
                 "
@@ -210,7 +210,7 @@ export default function ApproachSection() {
               </p>
 
               {/* BOTTOM LINE */}
-              <div className="mt-4 h-0.5 w-6 bg-fuchsia-900" />
+              <div className="mt-4 h-0.5 w-6 bg-[#730042]" />
             </div>
           ))}
         </div>

@@ -36,7 +36,7 @@ export default function CostOfWaitingSection() {
             text-[9px]
             font-semibold
             tracking-[0.15em]
-            text-fuchsia-900
+            text-[#730042]
             sm:text-[10px]
           "
           style={{
@@ -94,7 +94,7 @@ export default function CostOfWaitingSection() {
             mt-6
             w-full
             border-l-4
-            border-fuchsia-900
+            border-[#730042]
             bg-slate-50
             px-4
             py-3

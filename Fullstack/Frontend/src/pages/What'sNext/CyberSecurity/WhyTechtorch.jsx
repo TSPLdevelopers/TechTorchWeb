@@ -57,7 +57,7 @@ export default function BusinessFocusedApproachSection() {
               text-[9px]
               font-semibold
               tracking-[0.15em]
-              text-fuchsia-900
+              text-[#730042]
               sm:text-[10px]
             "
             style={{
@@ -144,7 +144,7 @@ export default function BusinessFocusedApproachSection() {
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:border-fuchsia-900/30
+                hover:border-[#730042]
                 hover:shadow-md
                 sm:p-6
                 lg:p-6
@@ -168,7 +168,7 @@ export default function BusinessFocusedApproachSection() {
                 </span>
 
                 {/* Top Line */}
-                <span className="h-0.5 w-8 bg-fuchsia-900 transition-all duration-300 group-hover:w-12" />
+                <span className="h-0.5 w-8 bg-[#730042] transition-all duration-300 group-hover:w-12" />
               </div>
 
               {/* Card Title */}

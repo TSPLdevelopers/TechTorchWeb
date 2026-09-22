@@ -100,14 +100,14 @@ export default function SecurityOutcomesSection() {
                 text-[9px]
                 font-semibold
                 tracking-[0.15em]
-                text-fuchsia-900
+                text-[#730042]
                 sm:text-[10px]
               "
               style={{
                 fontFamily: "'Inter', sans-serif",
               }}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-fuchsia-900" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#730042]" />
               SECURITY OUTCOMES
             </span>
 
@@ -243,7 +243,7 @@ export default function SecurityOutcomesSection() {
                       py-1
                       text-[10px]
                       font-semibold
-                      text-fuchsia-900
+                      text-[#730042]
                     "
                     style={{
                       fontFamily: "'Inter', sans-serif",
@@ -346,7 +346,7 @@ export default function SecurityOutcomesSection() {
                     text-[8px]
                     font-semibold
                     tracking-[0.08em]
-                    text-fuchsia-900
+                    text-[#730042]
                     sm:text-[9px]
                     md:text-[10px]
                   "
