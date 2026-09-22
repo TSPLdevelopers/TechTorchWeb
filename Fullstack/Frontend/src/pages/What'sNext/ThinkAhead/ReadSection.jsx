@@ -127,7 +127,7 @@ export default function TechHeroSection() {
             justify-center
             gap-2
             rounded-md
-            bg-[#730042]
+            bg-[#8A1538]
             px-5
             py-3
             text-[11px]
@@ -137,7 +137,8 @@ export default function TechHeroSection() {
             transition-all
             duration-300
             hover:-translate-y-0.5
-            hover:bg-[#730042]
+            hover:bg-white
+            hover:text-[#8A1538]
             active:translate-y-0
             sm:mt-7
             sm:w-auto

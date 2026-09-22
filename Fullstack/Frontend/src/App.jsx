@@ -305,6 +305,20 @@ import DevelopmentTeam  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/
 import DevelopmentRequirements  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/DevelopmentRequirements.jsx";
 
 // =================================================
+// EDUCATION
+// =================================================
+
+import EducationHero from "./pages/Industry/Education/EducationHero.jsx";
+import EducationWork from "./pages/Industry/Education/EducationWork.jsx";
+import EducationTechnology from "./pages/Industry/Education/EducationTechnology.jsx";
+import EducationGrowth from "./pages/Industry/Education/EducationGrowth.jsx";
+import EducationMethodology from "./pages/Industry/Education/EducationMethodology.jsx";
+import EducationTransform from "./pages/Industry/Education/EducationTransform.jsx";
+
+
+
+
+// =================================================
 // SCROLL TO TOP
 // =================================================
 function ScrollToTop() {
@@ -811,6 +825,18 @@ function OffshoreTeams() {
   );
 }
 
+function Education(){
+  return( 
+    <>
+    <EducationHero />
+    <EducationWork />
+    <EducationTechnology />
+    <EducationGrowth />
+    <EducationMethodology />
+    <EducationTransform />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1068,11 +1094,16 @@ function App() {
             path="/development-requirements"
             element={<DevelopmentRequirements/>}
           />
+
+            <Route
+            path="//industries/education"
+            element={<Education/>}
+          />
+
         </Route>
 
       </Routes>
     </>
   );
 }
-
 export default App;
