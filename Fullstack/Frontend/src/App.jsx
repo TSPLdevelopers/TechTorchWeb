@@ -316,6 +316,17 @@ import EducationMethodology from "./pages/Industry/Education/EducationMethodolog
 import EducationTransform from "./pages/Industry/Education/EducationTransform.jsx";
 
 
+// =================================================
+// INSURANCE
+// =================================================
+
+import InsuranceHero from "./pages/Industry/Insurance/InsuranceHero.jsx";
+import InsuranceSolution from "./pages/Industry/Insurance/InsuranceSolution.jsx";
+import ConnectedOperation from "./pages/Industry/Insurance/ConnectedOperations.jsx";
+import InsuranceDigitalTransformation from "./pages/Industry/Insurance/InsuranceDigitalTransformation.jsx";
+
+
+
 
 
 // =================================================
@@ -837,6 +848,16 @@ function Education(){
     </>
   )
 }
+function Insurance(){
+  return(
+    <>
+    <InsuranceHero />
+    <InsuranceSolution />
+    <ConnectedOperation />
+    <InsuranceDigitalTransformation />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1096,8 +1117,12 @@ function App() {
           />
 
             <Route
-            path="//industries/education"
+            path="/industries/education"
             element={<Education/>}
+          />
+          <Route
+            path="/industries/insurance"
+            element={<Insurance/>}
           />
 
         </Route>

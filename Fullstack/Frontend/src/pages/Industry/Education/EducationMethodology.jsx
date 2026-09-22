@@ -29,6 +29,7 @@ const INSTITUTION_IMAGES = {
    METHODOLOGY STEPS
 ===================================================== */
 
+
 const steps = [
   {
     num: "01",
