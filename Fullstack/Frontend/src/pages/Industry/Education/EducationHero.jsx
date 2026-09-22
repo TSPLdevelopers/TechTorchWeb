@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   ChevronRight,
   ArrowRight,
@@ -48,6 +50,7 @@ const roleCards = [
 ];
 
 export default function EducationSection() {
+   const navigate = useNavigate();
   return (
     <div style={{ background: "#faf8f6", color: INK }} className="w-full font-sans">
       <div className="max-w-6xl mx-auto px-6 py-20 space-y-28">
@@ -70,7 +73,8 @@ export default function EducationSection() {
               complicated.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <button
+              <button 
+              onClick={() => navigate("/education-solutions")}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-md text-white text-sm font-medium transition-colors"
                 style={{ background: WINE }}
                 onMouseOver={(e) => (e.currentTarget.style.background = WINE_DARK)}
