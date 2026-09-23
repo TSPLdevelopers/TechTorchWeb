@@ -319,6 +319,25 @@ import EducationTransform from "./pages/Industry/Education/EducationTransform.js
 import EducationSolutions from "./pages/Industry/Education/EducationSolutions.jsx";
 import ScheduleDiscovery  from "./pages/Industry/Education/ScheduleDiscovery.jsx";
 
+// =================================================
+// INSURANCE
+// =================================================
+
+import InsuranceHero from "./pages/Industry/Insurance/InsuranceHero.jsx";
+import InsuranceSolution from "./pages/Industry/Insurance/InsuranceSolution.jsx";
+import ConnectedOperation from "./pages/Industry/Insurance/ConnectedOperations.jsx";
+import InsuranceDigitalTransformation from "./pages/Industry/Insurance/InsuranceDigitalTransformation.jsx";
+import InsuranceCustomer from "./pages/Industry/Insurance/InsuranceCustomer.jsx";
+import InsuranceWhyTt from "./pages/Industry/Insurance/InsuranceWhyTt.jsx";
+
+// =================================================
+// FINANCE
+// =================================================
+
+import FinanceHero from "./pages/Industry/Finance/FinanceHero.jsx";
+
+
+
 
 
 // =================================================
@@ -840,6 +859,25 @@ function Education(){
     </>
   )
 }
+function Insurance(){
+  return(
+    <>
+    <InsuranceHero />
+    <InsuranceSolution />
+    <ConnectedOperation />
+    <InsuranceDigitalTransformation />
+    <InsuranceCustomer />
+    <InsuranceWhyTt />
+    </>
+  )
+}
+function Finance(){
+  return(
+    <>
+    <FinanceHero />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1099,8 +1137,16 @@ function App() {
           />
 
             <Route
-            path="//industries/education"
+            path="/industries/education"
             element={<Education/>}
+          />
+          <Route
+            path="/industries/insurance"
+            element={<Insurance/>}
+          />
+          <Route
+            path="/industries/finance"
+            element={<Finance/>}
           />
 
            <Route
