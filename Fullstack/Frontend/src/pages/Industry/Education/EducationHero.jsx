@@ -1,4 +1,8 @@
 import React from "react";
+<<<<<<< HEAD
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> fcd4d37a2658f9c1798bcb6219ff875c5006f9ba
 import {
   ChevronRight,
   ArrowRight,
@@ -100,6 +104,10 @@ const roleCards = [
 ===================================================== */
 
 export default function EducationSection() {
+<<<<<<< HEAD
+=======
+  const navigate = useNavigate();
+>>>>>>> fcd4d37a2658f9c1798bcb6219ff875c5006f9ba
   return (
     <section
       className="education-section"
@@ -1097,6 +1105,10 @@ export default function EducationSection() {
               <button
                 type="button"
                 className="education-primary-button"
+<<<<<<< HEAD
+=======
+                onClick={() => navigate("/education-solutions")}
+>>>>>>> fcd4d37a2658f9c1798bcb6219ff875c5006f9ba
               >
                 Explore Education Solutions
 
