@@ -236,13 +236,13 @@ function EditorialSection() {
         Editorial Perspective · Modern Institutional Architecture
       </Eyebrow>
 
-      <h2 className="mt-6 max-w-[900px] text-[31px] font-['Plus_Jakarta_Sans']font-medium leading-[1.08] tracking-[-0.04em] text-[#171719] sm:text-[38px]">
+      <h2 className="mt-6 max-w-[900px] text-[28px] font-['Plus_Jakarta_Sans'] [word-spacing:5px] font-medium leading-[1.08] tracking-[-0.04em] text-[#171719] sm:text-[30px]">
         Connecting People, Processes, and Learning
         <br className="hidden sm:block" />
         Systems into One Unified Institutional Ecosystem
       </h2>
 
-      <p className="mt-5 max-w-[1020px] text-[15px] leading-7 text-[#6D6266]">
+      <p className="mt-5 max-w-[1020px] font-['Inter'] text-[14px] leading-6 text-[#6D6266]">
         Educational institutions today face a structural challenge: academic
         departments, admissions pipelines, student records, and campus
         operations frequently run on disconnected legacy platforms. When
@@ -306,11 +306,11 @@ function SimpleInfoCard({ icon, title, description }) {
     <div className="rounded-xl border border-[#E7E4E4] bg-[#F9F9F8] p-5">
       <IconBox>{icon}</IconBox>
 
-      <h3 className="mt-5 text-[15px] font-semibold leading-5 text-[#252125]">
+      <h3 className="mt-5 text-[15px] font-['Inter'] font-semibold leading-5 text-[#252125]">
         {title}
       </h3>
 
-      <p className="mt-2 text-[12px] leading-5 text-[#766B70]">
+      <p className="mt-2 text-[13px] font-['Inter'] leading-5 text-[#766B70]">
         {description}
       </p>
     </div>
@@ -368,7 +368,7 @@ function CoreSolutionsSection() {
       <Eyebrow>Practical Digital Capabilities</Eyebrow>
 
       {/* Heading */}
-      <h2 className="mt-5 text-[32px] font-medium tracking-[-0.04em] text-[#171719] sm:text-[39px]">
+      <h2 className="mt-5 text-[28px] font-['Plus_Jakarta_Sans'] font-semibold tracking-[-0.04em] text-[#171719] sm:text-[30px]">
         Core Education Solutions
       </h2>
 
@@ -461,7 +461,8 @@ function SolutionCard({ icon, title, description }) {
           className="
             mt-5
             max-w-[230px]
-            text-[15px]
+            text-[14px]
+            font-['Plus_Jakarta_Sans']
             font-semibold
             leading-5
             text-[#292327]
@@ -479,7 +480,8 @@ function SolutionCard({ icon, title, description }) {
         <p
           className="
             mt-2
-            text-[12px]
+            text-[13px]
+            font-['Inter']
             leading-5
             text-[#756A70]
 
@@ -551,11 +553,11 @@ function PillarsSection() {
     <section className="rounded-[18px] border border-[#E6E1D8] bg-[#FBFAF4] px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
       <Eyebrow>Modular Institutional Taxonomy</Eyebrow>
 
-      <h2 className="mt-5 text-[32px] font-medium tracking-[-0.04em] text-[#171719] sm:text-[39px]">
+      <h2 className="mt-5 text-[28px] font-['Plus_Jakarta_Sans'] font-semibold tracking-[-0.04em] text-[#171719] sm:text-[30px]">
         Six Specialized Education Pillars
       </h2>
 
-      <p className="mt-3 max-w-[780px] text-[14px] leading-6 text-[#71666B]">
+      <p className="mt-3 max-w-[780px] text-[14px] font-['Inter'] leading-6 text-[#71666B]">
         Each capability can be integrated independently into legacy
         environments or combined to create a unified campus operating standard.
       </p>
@@ -585,11 +587,11 @@ function PillarCard({ icon, number, title, description }) {
           </span>
         </div>
 
-        <h3 className="mt-5 text-[14px] font-semibold leading-5 text-[#292327]">
+        <h3 className="mt-5 text-[14px] font-['Plus_Jakarta_Sans'] font-semibold leading-5 text-[#292327]">
           {title}
         </h3>
 
-        <p className="mt-2 text-[12px] leading-5 text-[#756A70]">
+        <p className="mt-2 font-['Inter'] text-[13px] leading-5 text-[#756A70]">
           {description}
         </p>
       </div>
@@ -790,11 +792,11 @@ function ImplementationSection() {
     <section className="rounded-[18px] border border-[#E3E3E2] bg-white px-6 py-12 text-center sm:px-10 lg:px-12 lg:py-14">
       <Eyebrow>Structured Methodology</Eyebrow>
 
-      <h2 className="mt-5 text-[31px] font-medium tracking-[-0.04em] text-[#171719] sm:text-[39px]">
+      <h2 className="mt-5 text-[28px] font-semibold font-['Plus_Jakarta_Sans'] tracking-[-0.04em] text-[#171719] sm:text-[30px]">
         A Structured Approach to Implementation
       </h2>
 
-      <p className="mx-auto mt-3 max-w-[720px] text-[14px] leading-6 text-[#71666B]">
+      <p className="mx-auto mt-3 max-w-[720px] text-[14px] font-['Inter'] leading-6 text-[#71666B]">
         A practical three-phase approach designed to help institutions move
         from planning to adoption with greater clarity.
       </p>
@@ -815,7 +817,7 @@ function ImplementationSection() {
             "
           >
             <div className="relative flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#730042] text-sm font-bold text-white">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#730042] text-sm font-bold text-white">
                 {item.number}
               </div>
 
@@ -824,11 +826,11 @@ function ImplementationSection() {
               </span>
             </div>
 
-            <h3 className="mt-6 text-[18px] font-semibold text-[#292327]">
+            <h3 className="mt-6 font-['Plus_Jakarta_Sans'] text-[15px] font-semibold text-[#292327]">
               {item.title}
             </h3>
 
-            <p className="mt-2.5 max-w-[280px] text-[13px] leading-6 text-[#756A70]">
+            <p className="mt-2.5 font-['Inter'] max-w-[280px] text-[13px] leading-5 text-[#756A70]">
               {item.description}
             </p>
           </div>
@@ -851,13 +853,13 @@ function CTASection() {
             Institutional Collaboration
           </Eyebrow>
 
-          <h2 className="mt-6 max-w-[720px] text-[31px] font-medium leading-[1.05] tracking-[-0.045em] text-[#171719] sm:text-[40px]">
+          <h2 className="mt-6 max-w-[720px] text-[28px] font-['Plus_Jakarta_Sans'] [word-spacing:5px] font-semibold leading-[1.05] tracking-[-0.045em] text-[#171719] sm:text-[30px]">
             Ready to Build a More Connected
             <br className="hidden sm:block" />
             Education Environment?
           </h2>
 
-          <p className="mt-5 max-w-[700px] text-[15px] leading-7 text-[#70656A]">
+          <p className="mt-5 max-w-[700px] font-['Inter'] text-[14px] leading-6 text-[#70656A]">
             Let's discuss your institution's technology requirements and explore
             a practical approach for your next stage of digital growth.
           </p>

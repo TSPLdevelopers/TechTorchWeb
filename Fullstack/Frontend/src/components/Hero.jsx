@@ -229,7 +229,7 @@ const Hero = () => {
               transition-colors
               duration-200
               hover:bg-white
-              hover:text-[#7a1440]
+              hover:text-[#730042]
             "
           >
             {active.ctaText}
@@ -250,7 +250,7 @@ const Hero = () => {
               transition-colors
               duration-200
               hover:bg-white
-              hover:text-[#7a1440]
+              hover:text-[#730042]
             "
           >
             {active.ctaText}
@@ -349,7 +349,7 @@ const Hero = () => {
             h-[32px]
             rounded-full
             bg-[#9b1a4f]
-            hover:bg-[#7a1440]
+            hover:bg-[#730042]
             text-white
             flex
             items-center
