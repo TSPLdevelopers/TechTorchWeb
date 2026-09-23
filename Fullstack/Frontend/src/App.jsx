@@ -350,6 +350,9 @@ import HealthcareExplore from "./pages/Industry/Healthcare/HealthcareExplore.jsx
 import HealthcareTechnology from "./pages/Industry/Healthcare/HealthcareTechnology.jsx";
 import HealthcareOperation from "./pages/Industry/Healthcare/HealthcareOperation.jsx";
 import ExperianceSecurity from "./pages/Industry/Healthcare/ExperianceSecurity.jsx";
+import InsightOperations from "./pages/Industry/Healthcare/InsightOperations.jsx";
+import HealthcareApproach from "./pages/Industry/Healthcare/HealthcareApproach.jsx";
+import TransformationDesk from "./pages/Industry/Healthcare/TransformationDesk.jsx";
 
 
 // =================================================
@@ -903,6 +906,9 @@ function Healthcare(){
     <HealthcareTechnology />
     <HealthcareOperation />
     <ExperianceSecurity />
+    <InsightOperations />
+    <HealthcareApproach />
+    <TransformationDesk />
     </>
   )
 }
