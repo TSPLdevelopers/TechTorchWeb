@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+
 import {
   LayoutGrid,
   FileText,
@@ -30,7 +31,14 @@ import {
   Newspaper,
   Lightbulb,
   X,
+
 } from "lucide-react";
+import {
+  getNews,
+  createNews,
+  updateNews,
+  deleteNews,
+} from "../api/adminDashboardApi";
 
 /* ----------------------------------------------------------------------
    Dashboard sync — self-contained, no external file needed.
@@ -343,7 +351,8 @@ export default function TechTorchCMS() {
   const [charCount, setCharCount] = useState(1640);
 
   const [dispatches, setDispatches] = useState(() => loadDispatches(INITIAL_DISPATCHES));
-  const [articles, setArticles] = useState(() => loadArticles(INITIAL_ARTICLES));
+  const [articles, setArticles] = useState([]);
+const [newsLoading, setNewsLoading] = useState(true); 
   const [dispatchFilter, setDispatchFilter] = useState("All Releases");
   const [dispatchSearch, setDispatchSearch] = useState("");
   const [articleSearch, setArticleSearch] = useState("");
@@ -368,6 +377,48 @@ export default function TechTorchCMS() {
     setToasts((t) => [...t, { id, message }]);
     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 2200);
   }, []);
+  useEffect(() => {
+  const loadNewsFromBackend = async () => {
+    try {
+      setNewsLoading(true);
+
+      const news = await getNews();
+
+      const publishedArticles = news
+        .filter(
+          (item) =>
+            item.status === "Published" &&
+            item.format !== "News & Press Release"
+        )
+        .map((item) => ({
+          id: item._id,
+          title: item.title || "Untitled",
+          slug: item.slug || "",
+          category: item.category || "General",
+          author: item.author || "TechTorch",
+          status: item.status || "Published",
+          date: item.createdAt
+            ? new Date(item.createdAt).toLocaleDateString()
+            : "Recently",
+          metric: "0 views",
+          read: "1m read",
+        }));
+
+      setArticles(publishedArticles);
+    } catch (error) {
+      console.error(
+        "Failed to load News from backend:",
+        error
+      );
+
+      showToast("Failed to load published articles");
+    } finally {
+      setNewsLoading(false);
+    }
+  };
+
+  loadNewsFromBackend();
+}, [showToast]);
 
   /* ----- cover image ----- */
   const readFileAsCover = (file) => {
@@ -442,51 +493,140 @@ export default function TechTorchCMS() {
     setPreviewOpen(true);
   };
 
-  const publish = () => {
-    const title = titleRef.current?.innerText.trim();
-    if (!title) {
-      showToast("Add a title before publishing");
-      return;
-    }
-    const id = nextId.current++;
+  const publish = async () => {
+  const title = titleRef.current?.innerText.trim();
+
+  if (!title) {
+    showToast("Add a title before publishing");
+    return;
+  }
+
+  try {
+    const newsData = {
+      title,
+      description: bodyRef.current?.innerText.trim() || "",
+      image: coverImage || "",
+      category,
+      author: author.name,
+      status: draftMode ? "Draft" : "Published",
+
+      format,
+      dek: subtitleRef.current?.innerText.trim() || "",
+      dateline: datelineRef.current?.innerText.trim() || "",
+      wire: wireRef.current?.innerText.trim() || "",
+      tags,
+
+      breakingSpotlight: badgeBreaking,
+      mediaKitReady: badgeMediaKit,
+
+      body: bodyRef.current?.innerHTML || "",
+
+      publishTiming,
+
+      scheduledDate:
+        publishTiming === "scheduled"
+          ? `${scheduleDate} ${scheduleTime}`
+          : "",
+
+      slug: slugify(
+        format === "News & Press Release"
+          ? "/press/"
+          : "/insights/",
+        title
+      ),
+
+      wireStatus:
+        format === "News & Press Release"
+          ? "Dispatched"
+          : "",
+
+      statusDate: new Date().toISOString(),
+    };
+
+    // Backend me save
+    await createNews(newsData);
+
+    // Latest data backend se lao
+    const latestNews = await getNews();
+
     if (format === "News & Press Release") {
-      setDispatches((prev) => [
-        {
-          id,
+      const mappedDispatches = latestNews
+        .filter(
+          (item) =>
+            item.format === "News & Press Release"
+        )
+        .map((item) => ({
+          id: item._id,
           icon: Megaphone,
-          title,
-          badge: badgeBreaking ? "BREAKING" : null,
-          dateline: datelineRef.current?.innerText.trim() || "",
-          slug: slugify("/press/", title),
-          category,
-          wire: wireRef.current?.innerText.trim() || "",
-          status: "Dispatched",
-          statusDate: "Just now",
+          title: item.title,
+          badge: item.breakingSpotlight
+            ? "BREAKING"
+            : null,
+          dateline: item.dateline || "",
+          slug: item.slug || "",
+          category: item.category || "",
+          wire: item.wire || "",
+          status: item.wireStatus || "Dispatched",
+          statusDate:
+            item.statusDate || item.createdAt,
           reach: "0 syndications",
           outlets: "0 Outlets",
-        },
-        ...prev,
-      ]);
+        }));
+
+      setDispatches(mappedDispatches);
+
       showToast("Press release dispatched");
     } else {
-      setArticles((prev) => [
-        {
-          id,
-          title,
-          slug: slugify("/insights/", title),
-          category,
-          author: author.name,
-          status: draftMode ? "Draft" : "Published",
-          date: "Just now",
-          metric: draftMode ? "Unpublished" : "0 views",
-          read: `${readMinutes}m read`,
-        },
-        ...prev,
-      ]);
-      showToast(draftMode ? "Saved as draft" : "Article published");
+      const mappedArticles = latestNews
+        .filter(
+          (item) =>
+            item.format !== "News & Press Release"
+        )
+        .map((item) => ({
+          id: item._id,
+          title: item.title,
+          slug: item.slug || "",
+          category: item.category || "",
+          author: item.author || "",
+          status: item.status || "Draft",
+          date: item.createdAt
+            ? new Date(
+                item.createdAt
+              ).toLocaleDateString()
+            : "Just now",
+          metric:
+            item.status === "Draft"
+              ? "Unpublished"
+              : "0 views",
+          read: "1m read",
+        }));
+
+      setArticles(mappedArticles);
+
+      showToast(
+        draftMode
+          ? "Saved as draft"
+          : "Article published"
+      );
     }
-    setDraftStatus(draftMode ? "Draft Saved just now" : "Published");
-  };
+
+    setDraftStatus(
+      draftMode
+        ? "Draft Saved just now"
+        : "Published"
+    );
+  } catch (error) {
+    console.error(
+      "Publish News Error:",
+      error
+    );
+
+    showToast(
+      error.message ||
+        "Failed to save news"
+    );
+  }
+};
 
   const startNewPressRelease = () => {
     setFormat("News & Press Release");
@@ -505,12 +645,12 @@ export default function TechTorchCMS() {
   /* Every article / press release published here is saved locally and
      mirrored into the Admin Dashboard's Publishing Directory, live —
      no separate file needed, it all happens right here. */
-  useEffect(() => {
-    saveArticles(articles);
-    syncDashboard(articles, dispatches);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [articles]);
 
+  useEffect(() => {
+  saveArticles(articles);
+  syncDashboard(articles, dispatches);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [articles]);
   useEffect(() => {
     saveDispatches(dispatches);
     syncDashboard(articles, dispatches);

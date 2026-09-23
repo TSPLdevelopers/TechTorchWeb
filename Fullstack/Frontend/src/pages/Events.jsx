@@ -4,6 +4,12 @@ import {
   ClipboardList, Eye, Pencil, SlidersHorizontal, MonitorPlay, FileText,
   X, Check, ChevronDown, Trash2, ArrowDownToLine, ArchiveRestore,
 } from "lucide-react";
+import {
+  getEvents,
+  createEvent,
+  updateEvent,
+  deleteEvent as deleteEventApi,
+} from "../api/adminDashboardApi";
 
 const ACCENT = "#780042";
 const FONT = "Inter,sans-serif";
@@ -146,7 +152,8 @@ function Dropdown({ open, onClose, children, align = "left" }) {
 }
 
 export default function AddEventStudio() {
-  const [events, setEvents] = useState(INITIAL_EVENTS);
+const [events, setEvents] = useState([]);
+const [eventsLoading, setEventsLoading] = useState(true);
   const [form, setForm] = useState(emptyForm());
   const [editingId, setEditingId] = useState(null);
   const [toast, setToast] = useState(null);
@@ -154,7 +161,24 @@ export default function AddEventStudio() {
   const [previewEvent, setPreviewEvent] = useState(null); // when set, modal shows this event instead of the live form
   const [manageOpenId, setManageOpenId] = useState(null);
   const [compareOn, setCompareOn] = useState(false);
+ useEffect(() => {
+  loadEvents();
+}, []);
 
+async function loadEvents() {
+  try {
+    setEventsLoading(true);
+
+    const data = await getEvents();
+
+    setEvents(Array.isArray(data) ? data : []);
+  } catch (error) {
+    console.error("Failed to load events:", error);
+    flashToast(error.message || "Failed to load events");
+  } finally {
+    setEventsLoading(false);
+  }
+}
   const [dateOpen, setDateOpen] = useState(false);
   const [dateDraft, setDateDraft] = useState({ start: "", end: "" });
   const [timeOpen, setTimeOpen] = useState(false);
@@ -219,7 +243,7 @@ export default function AddEventStudio() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  function saveAs(status) {
+  eAs(status) {
     if (!form.title.trim()) {
       flashToast("Add an event title before saving");
       return;
@@ -409,7 +433,7 @@ export default function AddEventStudio() {
                 <div className="flex items-center justify-between mb-1.5">
                   <label className="text-sm font-medium text-stone-700">Event Title &amp; Primary Anchor</label>
                   <span className="text-xs text-stone-400">Required</span>
-                </div>
+               </div>
                 <input
                   value={form.title}
                   onChange={(e) => updateForm({ title: e.target.value })}

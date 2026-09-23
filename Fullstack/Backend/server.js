@@ -8,6 +8,9 @@ const {connectDB} = require("./src/config/db");
 const errorMiddleware = require("./src/middlewares/error.middleware");
 const authRoutes = require("./src/routes/authRoutes");
 const adminRoutes = require("./src/routes/adminRoutes");
+const newsRoutes = require("./src/routes/newsRoutes");
+const jobOpeningRoutes = require("./src/routes/jobOpeningRoutes");
+const eventRoutes = require("./src/routes/eventRoutes");
 connectDB();
 const express = require("express");
 const cors = require("cors");
@@ -30,6 +33,9 @@ app.use("/api/opportunities", opportunityRoutes);
 app.use("/api/upcoming-events", upcomingEventRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/news", newsRoutes);
+app.use("/api/job-openings", jobOpeningRoutes);
+app.use("/api/events", eventRoutes);
 app.use(errorMiddleware);
 
 

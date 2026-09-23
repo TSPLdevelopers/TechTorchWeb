@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { createNews } from "../api/adminDashboardApi";
+import { useEffect, useMemo, useState } from "react";
+import useAdminDashboard from "../hooks/useAdminDashboard";
 import { useNavigate } from "react-router-dom";
-import {
-  Newspaper,
+import {  Newspaper,
   Briefcase,
   CalendarDays,
   FolderOpen,
@@ -82,32 +83,7 @@ const STAT_CARDS = [
 
 const TABS = ["News & Insights", "Job Openings", "Enterprise Events", "Whitepapers"];
 
-const ARTICLES = [
-  {
-    status: "Published",
-    title: "Engineering the Shift to Autonomous Enterprise Architecture",
-    domain: "Cloud Platform",
-    author: "Dr. Aris Thorne",
-  },
-  {
-    status: "Published",
-    title: "Securing Hybrid Cloud Workloads with Multi-Layer Telemetry",
-    domain: "Cyber Defense",
-    author: "Evelyn Vance",
-  },
-  {
-    status: "Scheduled",
-    title: "Predictive Workforce Analytics: Optimizing Enterprise Hiring",
-    domain: "Enterprise HCM",
-    author: "Marcus Liu",
-  },
-  {
-    status: "Draft",
-    title: "Legacy Core Modernization: Decoupled API-First Migration",
-    domain: "Systems Arch",
-    author: "Sarah Jenkins",
-  },
-];
+
 
 /* -------------------------------------------------------------------------- */
 /* Publishing Directory — data layer                                          */
@@ -129,7 +105,7 @@ const STORAGE_KEYS = {
   whitepapers: "ttad_whitepaper_records",
 };
 
-const NEWS_SEED = ARTICLES.map((a, i) => ({ id: `news-${i + 1}`, ...a }));
+
 
 const JOBS_SEED = [
   { id: "job-1", status: "Active", title: "Senior DevOps Engineer", department: "Cloud Platform", location: "Remote", applicants: 84 },
@@ -156,7 +132,7 @@ const TAB_CONFIG = [
   {
     key: "news",
     storageKey: STORAGE_KEYS.news,
-    seed: NEWS_SEED,
+    seed: [],
     titleField: "title",
     domainField: "domain",
     fixedDomainOptions: ["All Domains", "Cloud Platform", "Cyber Defense", "Enterprise HCM", "Systems Arch"],
@@ -650,8 +626,17 @@ const TREND_WEEKS = [
 /* -------------------------------------------------------------------------- */
 
 export default function AdminDashboard() {
-
   const navigate = useNavigate();
+
+  const {
+    news,
+    jobs,
+    events,
+    whitepapers,
+    loading,
+    error,
+    refetch,
+  } = useAdminDashboard();
 
   const [activeTab, setActiveTab] = useState(0);
   const [page, setPage] = useState(1);
@@ -659,6 +644,7 @@ export default function AdminDashboard() {
   const [filter, setFilter] = useState("");
   const [domain, setDomain] = useState("All Domains");
   const [domainOpen, setDomainOpen] = useState(false);
+
 
   return (
     <div className="ttad-root">
@@ -669,7 +655,13 @@ export default function AdminDashboard() {
         <TopNavbar search={search} setSearch={setSearch} />
 
         <div className="ttad-content">
-          <Hero navigate={navigate} />
+          <Hero
+  navigate={navigate}
+  newsCount={news.length}
+  jobsCount={jobs.length}
+  eventsCount={events.length}
+  whitepapersCount={whitepapers.length}
+/>
 
           <div className="ttad-stats-grid">
             {STAT_CARDS.map((s) => (
@@ -681,6 +673,7 @@ export default function AdminDashboard() {
             <div className="ttad-left-col">
               <PublishingDirectory
                 activeTab={activeTab}
+                  recordsByTab={[news, jobs, events, whitepapers]}
                 setActiveTab={setActiveTab}
                 page={page}
                 setPage={setPage}
@@ -808,7 +801,7 @@ function TopNavbar({ search, setSearch }) {
 /* -------------------------------------------------------------------------- */
 /* Hero                                                                        */
 /* -------------------------------------------------------------------------- */
-function Hero({ navigate }) {
+function Hero({ navigate,newsCount,jobsCount,eventsCount,whitepapersCount   }) {
   return (
     <section className="ttad-hero">
       <div className="ttad-hero-glow" />
@@ -882,9 +875,17 @@ function Hero({ navigate }) {
             boxSizing: "border-box",
           }}
         >
-          {HERO_METRICS.map((m) => {
-            const Icon = m.icon;
+     
+      
+         {HERO_METRICS.map((m, i) => {
+  const Icon = m.icon;
 
+  const value = [
+    newsCount,
+    jobsCount,
+    eventsCount,
+    whitepapersCount,
+  ][i];
             return (
               <div
                 className="ttad-hero-metric"
@@ -901,7 +902,7 @@ function Hero({ navigate }) {
 
                 <div>
                   <div className="ttad-hero-metric-value">
-                    {m.value}
+                    {value}
                   </div>
 
                   <div className="ttad-hero-metric-label">
@@ -1117,16 +1118,37 @@ function NewEntryModal({ config, onClose, onSaved }) {
       .map((f) => f.label);
   }
 
-  function handleSubmit(status) {
-    const missing = getMissingRequiredLabels();
-    if (missing.length > 0) {
-      setErrorMsg(`Please fill in: ${missing.join(", ")}`);
+ async function handleSubmit(status) {
+  const missing = getMissingRequiredLabels();
+
+  if (missing.length > 0) {
+    setErrorMsg(`Please fill in: ${missing.join(", ")}`);
+    return;
+  }
+
+  try {
+    if (config.key === "news") {
+      await createNews({
+        title: values.title || "",
+        description: values.body || values.dek || "",
+        image: "",
+        category: values.domain || "",
+        author: values.author || "",
+        status,
+      });
+
+      onSaved();
       return;
     }
+
     const record = config.buildRecord(values, status);
     saveNewRecord(config, record);
     onSaved();
+  } catch (error) {
+    console.error("Create News Error:", error);
+    setErrorMsg(error.message || "Failed to create news.");
   }
+}
 
   return (
     <div className="ttad-modal-overlay" onClick={onClose}>
@@ -1200,9 +1222,11 @@ function PublishingDirectory({
   domainOpen,
   setDomainOpen,
   navigate,
+   recordsByTab,
 }) {
   const config = TAB_CONFIG[activeTab];
-  const records = useTabRecords(activeTab);
+  const records = recordsByTab[activeTab] || [];
+
   const [showEntryModal, setShowEntryModal] = useState(false);
 
   // Close the New Entry modal automatically if the tab changes underneath it.
@@ -1268,6 +1292,7 @@ function PublishingDirectory({
   const startIdx = (safePage - 1) * ROWS_PER_PAGE;
   const endIdx = Math.min(startIdx + ROWS_PER_PAGE, totalRecords);
   const pageRecords = filteredRecords.slice(startIdx, startIdx + ROWS_PER_PAGE);
+
   const pageNumbers = getPageNumbers(totalPages, safePage);
 
   function cellClassName(colKey) {
@@ -1459,6 +1484,7 @@ function PublishingDirectory({
           onSaved={() => {
             setShowEntryModal(false);
             setPage(1);
+            window.location.reload();
           }}
         />
       )}
