@@ -327,6 +327,12 @@ import InsuranceDigitalTransformation from "./pages/Industry/Insurance/Insurance
 import InsuranceCustomer from "./pages/Industry/Insurance/InsuranceCustomer.jsx";
 import InsuranceWhyTt from "./pages/Industry/Insurance/InsuranceWhyTt.jsx";
 
+// =================================================
+// FINANCE
+// =================================================
+
+import FinanceHero from "./pages/Industry/Finance/FinanceHero.jsx";
+
 
 
 
@@ -862,6 +868,13 @@ function Insurance(){
     </>
   )
 }
+function Finance(){
+  return(
+    <>
+    <FinanceHero />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1127,6 +1140,10 @@ function App() {
           <Route
             path="/industries/insurance"
             element={<Insurance/>}
+          />
+          <Route
+            path="/industries/finance"
+            element={<Finance/>}
           />
 
         </Route>
