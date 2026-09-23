@@ -1,11 +1,13 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
 
 export default function InsuranceHeroBgSection() {
+  const navigate = useNavigate();
   return (
     <section className="insurance-hero">
       <style>{`
@@ -724,7 +726,7 @@ export default function InsuranceHeroBgSection() {
             <button
               type="button"
               className="insurance-secondary-button"
-               onClick={() => nav("/get-in-touch")}
+               onClick={() => navigate("/get-in-touch")}
             >
 
               GET IN TOUCH

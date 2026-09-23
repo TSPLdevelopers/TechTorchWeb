@@ -329,6 +329,7 @@ import ConnectedOperation from "./pages/Industry/Insurance/ConnectedOperations.j
 import InsuranceDigitalTransformation from "./pages/Industry/Insurance/InsuranceDigitalTransformation.jsx";
 import InsuranceCustomer from "./pages/Industry/Insurance/InsuranceCustomer.jsx";
 import InsuranceWhyTt from "./pages/Industry/Insurance/InsuranceWhyTt.jsx";
+import GetInTouch from "./pages/Industry/Insurance/GetInTouch.jsx";
 
 // =================================================
 // FINANCE
@@ -1157,6 +1158,11 @@ function App() {
            <Route
             path="/schedule-discovery"
             element={<ScheduleDiscovery/>}
+          />
+
+          <Route
+            path="/get-in-touch"
+            element={<GetInTouch/>}
           />
 
         </Route>
