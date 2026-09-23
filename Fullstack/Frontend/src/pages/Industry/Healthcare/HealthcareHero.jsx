@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, ShieldCheck, Activity, Lock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
@@ -12,6 +13,7 @@ const trustItems = [
 ];
 
 export default function HealthcareHeroSection() {
+  const navigate = useNavigate();
   return (
     <div className="w-full font-sans bg-white" style={{ color: INK }}>
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-14 items-center">
@@ -52,6 +54,7 @@ export default function HealthcareHeroSection() {
             <button
               className="px-6 py-3.5 rounded-full text-sm font-medium border"
               style={{ borderColor: "#d8d5d0", color: INK }}
+              onClick={() => navigate("/healthcare-get-in-touch")}
             >
               Get in Touch
             </button>

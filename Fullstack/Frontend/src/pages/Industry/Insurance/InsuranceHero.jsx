@@ -726,7 +726,7 @@ export default function InsuranceHeroBgSection() {
             <button
               type="button"
               className="insurance-secondary-button"
-               onClick={() => navigate("/get-in-touch")}
+               onClick={() => navigate("/insurance-get-in-touch")}
             >
 
               GET IN TOUCH

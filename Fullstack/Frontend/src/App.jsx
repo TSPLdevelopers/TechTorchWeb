@@ -341,6 +341,7 @@ import FinanceTechnology from "./pages/Industry/Finance/FinanceTechnology.jsx";
 import FinanceKeyBusiness from "./pages/Industry/Finance/FinanceKeyBusiness.jsx";
 import FinanceFintech from "./pages/Industry/Finance/FinanceFintech.jsx";
 import FinanceNextStep from "./pages/Industry/Finance/FinanceNextStep.jsx";
+import FinanceGetInTouch from "./pages/Industry/Finance/FinanceGetInTouch.jsx";
 
 // =================================================
 // HEALTHCARE
@@ -354,7 +355,7 @@ import ExperianceSecurity from "./pages/Industry/Healthcare/ExperianceSecurity.j
 import InsightOperations from "./pages/Industry/Healthcare/InsightOperations.jsx";
 import HealthcareApproach from "./pages/Industry/Healthcare/HealthcareApproach.jsx";
 import TransformationDesk from "./pages/Industry/Healthcare/TransformationDesk.jsx";
-
+import HealthcareGetInTouch from "./pages/Industry/Healthcare/HealthcareGetInTouch.jsx";
 
 // =================================================
 // SCROLL TO TOP
@@ -1199,8 +1200,18 @@ function App() {
           />
 
           <Route
-            path="/get-in-touch"
+            path="/insurance-get-in-touch"
             element={<GetInTouch/>}
+          />
+
+          <Route
+            path="/finance-get-in-touch"
+            element={<FinanceGetInTouch/>}
+          />
+
+          <Route
+            path="/healthcare-get-in-touch"
+            element={<HealthcareGetInTouch/>}
           />
 
         </Route>

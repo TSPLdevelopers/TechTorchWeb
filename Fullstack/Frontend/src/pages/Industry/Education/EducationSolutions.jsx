@@ -56,7 +56,7 @@ function Eyebrow({ icon: Icon, children, light = false }) {
 
 function PrimaryButton({ children }) {
   return (
-    <button className="group inline-flex items-center justify-center gap-3 rounded-xl bg-[#85004A] px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.08em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#70003F]">
+    <button className="group inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[#85004A] px-6 py-3.5 sm:w-auto text-[12px] font-semibold uppercase tracking-[0.08em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#70003F]">
       {children}
       <ArrowRight
         size={17}
@@ -68,7 +68,7 @@ function PrimaryButton({ children }) {
 
 function SecondaryButton({ children }) {
   return (
-    <button className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#E2E6EA] bg-[#F8F9FA] px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.08em] text-[#302A2D] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">
+    <button className="inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[#E2E6EA] bg-[#F8F9FA] px-6 py-3.5 sm:w-auto text-[12px] font-semibold uppercase tracking-[0.08em] text-[#302A2D] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">
       {children}
     </button>
   );
@@ -94,8 +94,8 @@ function IconBox({ children, dark = false }) {
 function HeroSection() {
 const navigate = useNavigate();
   return (
-    <section className="rounded-[18px] border border-[#E8E5E5] bg-white px-6 py-12 shadow-[0_2px_8px_rgba(0,0,0,0.03)] sm:px-10 lg:px-12 lg:py-14">
-      <div className="grid items-stretch gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+    <section className="rounded-[18px] border border-[#E8E5E5] bg-white px-4 py-8 shadow-[0_2px_8px_rgba(0,0,0,0.03)] sm:px-8 sm:py-10 md:px-10 lg:px-12 lg:py-14">
+      <div className="grid items-stretch gap-8 md:gap-10 md:grid-cols-[1.08fr_0.92fr]">
 
         {/* Left Content */}
         <div className="flex h-full flex-col justify-center">
@@ -106,21 +106,21 @@ const navigate = useNavigate();
             <span>TechTorch Solutions · Education Platform</span>
           </div>
 
-          <h1 className="mt-7 max-w-[650px] font-['Plus_Jakarta_Sans'] text-[36px] [word-spacing:8px] font-semibold leading-[0.98] tracking-[-0.055em] text-[#111113] sm:text-[34px] lg:text-[36px]">
+          <h1 className="mt-6 max-w-[650px] font-['Plus_Jakarta_Sans'] text-[30px] [word-spacing:5px] font-semibold leading-[1.02] tracking-[-0.05em] text-[#111113] sm:mt-7 sm:text-[34px] lg:text-[36px]">
             <span className="block">Technology Solutions for</span>
             <span className="mt-1 block">Modern Education</span>
           </h1>
 
-          <p className="mt-7 max-w-[650px] font-['Inter'] text-[15px] leading-5 text-[#6C6065]">
+          <p className="mt-6 max-w-[650px] font-['Inter'] text-[14px] leading-6 text-[#6C6065] sm:mt-7 sm:text-[15px]">
             Connected digital solutions for academic, administrative and
             institutional operations.
           </p>
 
           {/* Buttons */}
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-7 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button
               onClick={() => navigate("/contact")}
-              className="group inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#730042] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#620038]"
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#730042] px-5 py-2.5 sm:w-auto text-[11px] font-semibold uppercase tracking-[0.06em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#620038]"
             >
               Talk to Our Experts
 
@@ -132,7 +132,7 @@ const navigate = useNavigate();
 
             <button
               onClick={() => navigate("/schedule-discovery")}
-              className="inline-flex items-center justify-center gap-2.5 rounded-xl border border-[#E2E6EA] bg-[#F8F9FA] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-[#302A2D] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm"
+              className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-[#E2E6EA] bg-[#F8F9FA] px-5 py-2.5 sm:w-auto text-[11px] font-semibold uppercase tracking-[0.06em] text-[#302A2D] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm"
             >
               <CalendarDays size={16} className="text-[#730042]" />
               Schedule Discovery
@@ -169,7 +169,7 @@ const navigate = useNavigate();
               <img
                 src={HERO_IMAGE}
                 alt="Modern university education environment"
-                className="h-full min-h-[390px] w-full object-cover"
+                className="h-full min-h-[300px] w-full object-cover sm:min-h-[360px] lg:min-h-[390px]"
               />
 
               {/* Top Badge */}
@@ -231,7 +231,7 @@ function FeatureLine({ icon, text }) {
 
 function EditorialSection() {
   return (
-    <section className="rounded-[18px] border border-[#E7E1D8] bg-[#FBFAF4] px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
+    <section className="rounded-[18px] border border-[#E7E1D8] bg-[#FBFAF4] px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
       <Eyebrow icon={BookOpen}>
         Editorial Perspective · Modern Institutional Architecture
       </Eyebrow>
@@ -362,7 +362,7 @@ const CORE_SOLUTIONS = [
 
 function CoreSolutionsSection() {
   return (
-    <section className="rounded-[18px] border border-[#E4E4E3] bg-white px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
+    <section className="rounded-[18px] border border-[#E4E4E3] bg-white px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
       
       {/* Eyebrow */}
       <Eyebrow>Practical Digital Capabilities</Eyebrow>
@@ -550,7 +550,7 @@ const PILLARS = [
 
 function PillarsSection() {
   return (
-    <section className="rounded-[18px] border border-[#E6E1D8] bg-[#FBFAF4] px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
+    <section className="rounded-[18px] border border-[#E6E1D8] bg-[#FBFAF4] px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
       <Eyebrow>Modular Institutional Taxonomy</Eyebrow>
 
       <h2 className="mt-5 text-[28px] font-['Plus_Jakarta_Sans'] font-semibold tracking-[-0.04em] text-[#171719] sm:text-[30px]">
@@ -632,7 +632,7 @@ const INTEGRATION = [
 
 function IntegrationSection() {
   return (
-    <section className="rounded-[18px] bg-[#730042] px-6 py-10 text-white shadow-[0_12px_30px_rgba(95,0,50,0.16)] sm:px-10 lg:px-12 lg:py-12">
+    <section className="rounded-[18px] bg-[#730042] px-4 py-8 text-white shadow-[0_12px_30px_rgba(95,0,50,0.16)] sm:px-8 sm:py-10 lg:px-12 lg:py-12">
 
       {/* Eyebrow */}
       <Eyebrow icon={Network} light>
@@ -640,7 +640,7 @@ function IntegrationSection() {
       </Eyebrow>
 
       {/* Heading */}
-      <h2 className="mt-6 text-[32px] font-medium tracking-[-0.045em] sm:text-[40px]">
+      <h2 className="mt-6 text-[28px] font-medium leading-tight tracking-[-0.045em] sm:text-[34px] md:text-[40px]">
         Connect With Your Existing Systems
       </h2>
 
@@ -789,7 +789,7 @@ const PHASES = [
 
 function ImplementationSection() {
   return (
-    <section className="rounded-[18px] border border-[#E3E3E2] bg-white px-6 py-12 text-center sm:px-10 lg:px-12 lg:py-14">
+    <section className="rounded-[18px] border border-[#E3E3E2] bg-white px-4 py-8 text-center sm:px-8 sm:py-10 lg:px-12 lg:py-14">
       <Eyebrow>Structured Methodology</Eyebrow>
 
       <h2 className="mt-5 text-[28px] font-semibold font-['Plus_Jakarta_Sans'] tracking-[-0.04em] text-[#171719] sm:text-[30px]">
@@ -846,8 +846,8 @@ function ImplementationSection() {
 
 function CTASection() {
   return (
-    <section className="rounded-[18px] border border-[#E2E0E0] bg-white px-7 py-10 shadow-[0_2px_8px_rgba(0,0,0,0.04)] sm:px-10 lg:px-12 lg:py-12">
-      <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto]">
+    <section className="rounded-[18px] border border-[#E2E0E0] bg-white px-4 py-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)] sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+      <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-10">
         <div>
           <Eyebrow icon={Handshake}>
             Institutional Collaboration
@@ -884,7 +884,7 @@ function CTASection() {
           </div>
         </div>
 
-        <div className="flex w-full flex-col gap-3 lg:w-[280px]">
+        <div className="flex w-full flex-row gap-3 sm:max-w-none lg:w-[280px] lg:flex-col lg:max-w-none">
           <PrimaryButton >Talk to Our Experts</PrimaryButton>
 
           <SecondaryButton>
@@ -903,8 +903,8 @@ function CTASection() {
 
 export default function EducationSolutions() {
   return (
-    <main className="min-h-screen bg-[#F5F6F7] px-3 py-4 sm:px-5 lg:px-8">
-      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-6">
+    <main className="min-h-screen bg-[#F5F6F7] px-3 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8 lg:py-6">
+      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-6 sm:gap-8 lg:gap-9">
         <HeroSection />
 
         <EditorialSection />
