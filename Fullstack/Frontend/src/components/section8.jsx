@@ -38,13 +38,7 @@ const industries = [
     image: "/Healthcare 2 [Vectorized].svg",
     path: "/industries/healthcare",
   },
-  {
-    id: "insurance-2",
-    title: "Insurance",
-    description: "Digital solutions for smarter, more resilient insurance.",
-    image: "/Insurance 2 [Vectorized].svg",
-    path: "/industries/insurance",
-  },
+  
   {
     id: "manufacturing",
     title: "Manufacturing",
