@@ -336,9 +336,24 @@ import GetInTouch from "./pages/Industry/Insurance/GetInTouch.jsx";
 // =================================================
 
 import FinanceHero from "./pages/Industry/Finance/FinanceHero.jsx";
+import FinanceArchitecture from "./pages/Industry/Finance/FinanceArchitecture.jsx";
+import FinanceTechnology from "./pages/Industry/Finance/FinanceTechnology.jsx";
+import FinanceKeyBusiness from "./pages/Industry/Finance/FinanceKeyBusiness.jsx";
+import FinanceFintech from "./pages/Industry/Finance/FinanceFintech.jsx";
+import FinanceNextStep from "./pages/Industry/Finance/FinanceNextStep.jsx";
 
+// =================================================
+// HEALTHCARE
+// =================================================
 
-
+import HealthcareHero from "./pages/Industry/Healthcare/HealthcareHero.jsx";
+import HealthcareExplore from "./pages/Industry/Healthcare/HealthcareExplore.jsx";
+import HealthcareTechnology from "./pages/Industry/Healthcare/HealthcareTechnology.jsx";
+import HealthcareOperation from "./pages/Industry/Healthcare/HealthcareOperation.jsx";
+import ExperianceSecurity from "./pages/Industry/Healthcare/ExperianceSecurity.jsx";
+import InsightOperations from "./pages/Industry/Healthcare/InsightOperations.jsx";
+import HealthcareApproach from "./pages/Industry/Healthcare/HealthcareApproach.jsx";
+import TransformationDesk from "./pages/Industry/Healthcare/TransformationDesk.jsx";
 
 
 // =================================================
@@ -876,6 +891,25 @@ function Finance(){
   return(
     <>
     <FinanceHero />
+    <FinanceArchitecture />
+    <FinanceTechnology />
+    <FinanceKeyBusiness />
+    <FinanceFintech  />
+    <FinanceNextStep />
+    </>
+  )
+}
+function Healthcare(){
+  return(
+    <>
+    <HealthcareHero />
+    <HealthcareExplore />
+    <HealthcareTechnology />
+    <HealthcareOperation />
+    <ExperianceSecurity />
+    <InsightOperations />
+    <HealthcareApproach />
+    <TransformationDesk />
     </>
   )
 }
@@ -1148,6 +1182,10 @@ function App() {
           <Route
             path="/industries/finance"
             element={<Finance/>}
+          />
+          <Route
+            path="/industries/healthcare"
+            element={<Healthcare/>}
           />
 
            <Route
