@@ -41,7 +41,7 @@ export default function CapabilitiesOfferings() {
         lg:py-20
       "
       style={{
-        background: "linear-gradient(160deg, #7a1750 0%, #5c0f3d 100%)",
+        background: "#730042",
       }}
     >
       <div

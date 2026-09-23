@@ -72,17 +72,19 @@ export default function Hero3() {
                   sm:gap-3
                   border
                   border-white
-                  px-4
-                  sm:px-5
-                  py-2
-                  sm:py-2.5
+                  px-3
+                  sm:px-4
+                  py-1.5
+                  sm:py-2
                   text-white
-                  text-[16px]
-                  sm:text-[18px]
+                  text-[14px]
+                  sm:text-[16px]
                   font-inter
-                  hover:text-[#FF0080]
-                  hover:border-[#FF0080]
-                  transition
+                  hover:bg-white/90
+                  hover:text-[#730042]
+                  hover:border-white
+                  transition-all
+                  duration-300
                 "
               >
                 <span className="text-[26px] sm:text-[30px] leading-none">
@@ -182,17 +184,19 @@ export default function Hero3() {
                   sm:gap-3
                   border
                   border-white
-                  px-4
-                  sm:px-5
-                  py-2
-                  sm:py-2.5
+                  px-3
+                  sm:px-4
+                  py-1.5
+                  sm:py-2
                   text-white
-                  text-[16px]
-                  sm:text-[18px]
+                  text-[14px]
+                  sm:text-[16px]
                   font-inter
-                  hover:text-[#FF0080]
-                  hover:border-[#FF0080]
-                  transition
+                  hover:bg-white/90
+                  hover:text-[#730042]
+                  hover:border-white
+                  transition-all
+                  duration-300
                 "
               >
                 <span className="text-[26px] sm:text-[30px] leading-none">
@@ -291,17 +295,19 @@ export default function Hero3() {
                   sm:gap-3
                   border
                   border-white
-                  px-4
-                  sm:px-5
-                  py-2
-                  sm:py-2.5
+                  px-3
+                  sm:px-4
+                  py-1.5
+                  sm:py-2
                   text-white
-                  text-[16px]
-                  sm:text-[18px]
+                  text-[14px]
+                  sm:text-[16px]
                   font-inter
-                  hover:text-[#FF0080]
-                  hover:border-[#FF0080]
-                  transition
+                  hover:bg-white/90
+                  hover:text-[#730042]
+                  hover:border-white
+                  transition-all
+                  duration-300
                 "
               >
                 <span className="text-[26px] sm:text-[30px] leading-none">

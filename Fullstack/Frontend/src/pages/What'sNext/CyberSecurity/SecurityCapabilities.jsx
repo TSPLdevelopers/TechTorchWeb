@@ -91,7 +91,7 @@ export default function CybersecurityCapabilitiesSection() {
                 text-[9px]
                 font-semibold
                 tracking-[0.15em]
-                text-fuchsia-900
+                text-[#730042]
                 sm:text-[10px]
               "
               style={{
@@ -277,7 +277,7 @@ export default function CybersecurityCapabilitiesSection() {
                   py-1
                   text-[10px]
                   font-semibold
-                  text-fuchsia-900
+                  text-[#730042]
                 "
                 style={{
                   fontFamily: "'Inter', sans-serif",

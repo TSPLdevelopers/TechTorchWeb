@@ -69,13 +69,13 @@ export default function CyberSecurityHeroSection() {
             w-fit
             items-center
             rounded-full
-            bg-[#7A1338]
+            bg-[#730042]
             px-3
             py-1
             text-[10px]
             font-semibold
             tracking-[0.15em]
-            text-white
+            text-white 
           "
           style={{
             fontFamily: "'Inter', sans-serif",
@@ -172,7 +172,7 @@ export default function CyberSecurityHeroSection() {
             items-center
             gap-2
             rounded-full
-            bg-[#7A1338]
+            bg-[#730042]
             px-6
             py-3
             text-xs

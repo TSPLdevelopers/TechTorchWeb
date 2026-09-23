@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   ChevronRight,
   ArrowRight,
@@ -100,6 +102,7 @@ const roleCards = [
 ===================================================== */
 
 export default function EducationSection() {
+   const navigate = useNavigate();
   return (
     <section
       className="education-section"
@@ -1091,12 +1094,22 @@ export default function EducationSection() {
               should make their everyday experience easier, not more
               complicated.
             </p>
+<<<<<<< HEAD
 
             <div className="education-buttons">
 
               <button
                 type="button"
                 className="education-primary-button"
+=======
+            <div className="flex flex-wrap items-center gap-3">
+              <button 
+              onClick={() => navigate("/education-solutions")}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-md text-white text-sm font-medium transition-colors"
+                style={{ background: WINE }}
+                onMouseOver={(e) => (e.currentTarget.style.background = WINE_DARK)}
+                onMouseOut={(e) => (e.currentTarget.style.background = WINE)}
+>>>>>>> 7b2cc975bebc6fcf4385b014ea23773e4abd51f4
               >
                 Explore Education Solutions
 

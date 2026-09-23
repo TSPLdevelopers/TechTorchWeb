@@ -297,7 +297,9 @@ import MSP3 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP3.jsx";
 import DiscussPriorities from "./pages/Capabilities/ItAugmentation/MSPSupport/DiscussPriorities.jsx";
 import ConnectMSP from "./pages/Capabilities/ItAugmentation/MSPSupport/ConnectMSP.jsx";
 
-
+// =================================================
+// OFSHORE TEAMS
+// =================================================
 import OffshoreStrategy  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/OffshoreStrategy.jsx";
 import EngagementArchitecture  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/EngagementArchitecture.jsx";
 import LifecycleGovernance  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/LifecycleGovernance.jsx";
@@ -314,7 +316,8 @@ import EducationTechnology from "./pages/Industry/Education/EducationTechnology.
 import EducationGrowth from "./pages/Industry/Education/EducationGrowth.jsx";
 import EducationMethodology from "./pages/Industry/Education/EducationMethodology.jsx";
 import EducationTransform from "./pages/Industry/Education/EducationTransform.jsx";
-
+import EducationSolutions from "./pages/Industry/Education/EducationSolutions.jsx";
+import ScheduleDiscovery  from "./pages/Industry/Education/ScheduleDiscovery.jsx";
 
 // =================================================
 // INSURANCE
@@ -1176,6 +1179,16 @@ function App() {
           <Route
             path="/industries/healthcare"
             element={<Healthcare/>}
+          />
+
+           <Route
+            path="/education-solutions"
+            element={<EducationSolutions/>}
+          />
+
+           <Route
+            path="/schedule-discovery"
+            element={<ScheduleDiscovery/>}
           />
 
         </Route>

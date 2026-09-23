@@ -37,7 +37,7 @@ export default function SecurityPerspectiveSection() {
             w-fit
             items-center
             rounded-full
-            bg-[#7A1338]
+            bg-[#730042]
             px-3
             py-1
             text-[9px]
@@ -127,7 +127,7 @@ export default function SecurityPerspectiveSection() {
             mt-5
             w-full
             border-l-4
-            border-[#7A1338]
+            border-[#730042]
             bg-white
             px-4
             py-3
@@ -160,7 +160,7 @@ export default function SecurityPerspectiveSection() {
             w-full
             rounded-md
             border-l-4
-            border-[#7A1338]
+            border-[#730042]
             bg-white
             px-4
             py-5
@@ -175,7 +175,7 @@ export default function SecurityPerspectiveSection() {
               text-[9px]
               font-semibold
               tracking-[0.15em]
-              text-[#7A1338]
+              text-[#730042]
               sm:text-[10px]
             "
             style={{
@@ -279,7 +279,7 @@ export default function SecurityPerspectiveSection() {
             mt-5
             w-full
             border-l-4
-            border-[#7A1338]
+            border-[#730042]
             bg-white
             px-4
             py-3

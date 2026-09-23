@@ -149,7 +149,7 @@ export default function ReadyForNextThreatSection() {
               transition-all
               duration-300
               hover:-translate-y-0.5
-              hover:bg-[#730042]
+              hover:bg-[#8F1945]
               active:translate-y-0
               sm:mt-8
               sm:px-6
