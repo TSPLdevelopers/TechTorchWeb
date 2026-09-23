@@ -9,6 +9,7 @@ export default function InsuranceHeroBgSection() {
   return (
     <section className="insurance-hero">
       <style>{`
+
         /* =====================================================
            FONTS
         ===================================================== */
@@ -45,8 +46,7 @@ export default function InsuranceHeroBgSection() {
           width: 100%;
           height: 100%;
 
-          background-image:
-            url("/Insurance.png");
+          background-image: url("/Insurance.png");
 
           background-size: cover;
           background-position: center center;
@@ -89,12 +89,12 @@ export default function InsuranceHeroBgSection() {
           z-index: 2;
 
           width: 100%;
-          max-width: 1152px;
+          max-width: 1250px;
 
           margin: 0 auto;
 
           padding:
-            62px 24px 58px;
+            62px 20px 58px;
 
           box-sizing: border-box;
         }
@@ -106,6 +106,19 @@ export default function InsuranceHeroBgSection() {
 
         .insurance-hero-content {
           max-width: 570px;
+        }
+
+
+        /* =====================================================
+           DESKTOP RIGHT SHIFT
+        ===================================================== */
+
+        @media (min-width: 1101px) {
+
+          .insurance-hero-container {
+            transform: translateX(20px);
+          }
+
         }
 
 
@@ -131,9 +144,7 @@ export default function InsuranceHeroBgSection() {
 
           color: ${WINE};
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 10px;
 
@@ -187,7 +198,7 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           BODY
+           BODY TEXT
            INTER
         ===================================================== */
 
@@ -274,7 +285,8 @@ export default function InsuranceHeroBgSection() {
         ===================================================== */
 
         .insurance-primary-button {
-          border: 1px solid ${WINE};
+          border:
+            1px solid ${WINE};
 
           background: ${WINE};
 
@@ -304,7 +316,8 @@ export default function InsuranceHeroBgSection() {
           border:
             1px solid #d8d5d0;
 
-          background: rgba(255, 255, 255, 0.92);
+          background:
+            rgba(255, 255, 255, 0.92);
 
           color: ${INK};
         }
@@ -334,6 +347,8 @@ export default function InsuranceHeroBgSection() {
           .insurance-hero-container {
             padding:
               58px 32px 54px;
+
+            transform: none;
           }
 
 
@@ -389,6 +404,8 @@ export default function InsuranceHeroBgSection() {
           .insurance-hero-container {
             padding:
               48px 20px 46px;
+
+            transform: none;
           }
 
 
@@ -473,6 +490,8 @@ export default function InsuranceHeroBgSection() {
           .insurance-hero-container {
             padding:
               40px 16px 38px;
+
+            transform: none;
           }
 
 
@@ -552,6 +571,8 @@ export default function InsuranceHeroBgSection() {
           .insurance-hero-container {
             padding:
               34px 14px 34px;
+
+            transform: none;
           }
 
 
@@ -644,6 +665,7 @@ export default function InsuranceHeroBgSection() {
           <h1 className="insurance-heading">
 
             Technology Solutions
+
             <br />
 
             for{" "}
@@ -662,18 +684,22 @@ export default function InsuranceHeroBgSection() {
           {/* DESCRIPTION */}
 
           <p className="insurance-description">
+
             Insurance organizations operate across complex processes,
             customer relationships, financial activities and business
             systems. Managing these functions effectively requires
             technology that is connected, reliable and aligned with business
             requirements.
+
           </p>
 
 
           <p className="insurance-description">
+
             TechTorch delivers digital and technology solutions that help
             insurance organizations streamline operations, connect business
             functions and build a scalable technology environment.
+
           </p>
 
 
@@ -685,11 +711,13 @@ export default function InsuranceHeroBgSection() {
               type="button"
               className="insurance-primary-button"
             >
+
               TALK TO OUR EXPERTS
 
               <ArrowRight
                 size={14}
               />
+
             </button>
 
 
@@ -697,7 +725,9 @@ export default function InsuranceHeroBgSection() {
               type="button"
               className="insurance-secondary-button"
             >
+
               GET IN TOUCH
+
             </button>
 
           </div>

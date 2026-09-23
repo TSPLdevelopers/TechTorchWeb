@@ -324,6 +324,8 @@ import InsuranceHero from "./pages/Industry/Insurance/InsuranceHero.jsx";
 import InsuranceSolution from "./pages/Industry/Insurance/InsuranceSolution.jsx";
 import ConnectedOperation from "./pages/Industry/Insurance/ConnectedOperations.jsx";
 import InsuranceDigitalTransformation from "./pages/Industry/Insurance/InsuranceDigitalTransformation.jsx";
+import InsuranceCustomer from "./pages/Industry/Insurance/InsuranceCustomer.jsx";
+import InsuranceWhyTt from "./pages/Industry/Insurance/InsuranceWhyTt.jsx";
 
 
 
@@ -855,6 +857,8 @@ function Insurance(){
     <InsuranceSolution />
     <ConnectedOperation />
     <InsuranceDigitalTransformation />
+    <InsuranceCustomer />
+    <InsuranceWhyTt />
     </>
   )
 }
