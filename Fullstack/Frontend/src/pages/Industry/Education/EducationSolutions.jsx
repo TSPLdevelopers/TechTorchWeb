@@ -363,17 +363,22 @@ const CORE_SOLUTIONS = [
 function CoreSolutionsSection() {
   return (
     <section className="rounded-[18px] border border-[#E4E4E3] bg-white px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
+      
+      {/* Eyebrow */}
       <Eyebrow>Practical Digital Capabilities</Eyebrow>
 
+      {/* Heading */}
       <h2 className="mt-5 text-[32px] font-medium tracking-[-0.04em] text-[#171719] sm:text-[39px]">
         Core Education Solutions
       </h2>
 
+      {/* Description */}
       <p className="mt-3 max-w-[760px] text-[14px] leading-6 text-[#71666B]">
         Practical digital capabilities designed to support every layer of
         institutional operations.
       </p>
 
+      {/* Cards */}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {CORE_SOLUTIONS.map((item) => (
           <SolutionCard key={item.title} {...item} />
@@ -385,16 +390,109 @@ function CoreSolutionsSection() {
 
 function SolutionCard({ icon, title, description }) {
   return (
-    <div className="group min-h-[175px] rounded-xl border border-[#E5E2E3] bg-[#FAFAFA] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-[#D8C3CF] hover:bg-white hover:shadow-[0_8px_25px_rgba(80,0,45,0.06)]">
-      <IconBox>{icon}</IconBox>
+    <div
+      className="
+        group
+        relative
+        min-h-[175px]
+        overflow-hidden
+        rounded-xl
+        border
+        border-[#E5E2E3]
+        bg-[#FAFAFA]
+        p-5
 
-      <h3 className="mt-5 max-w-[230px] text-[15px] font-semibold leading-5 text-[#292327]">
-        {title}
-      </h3>
+        shadow-[0_7px_18px_rgba(30,0,20,0.06)]
 
-      <p className="mt-2 text-[12px] leading-5 text-[#756A70]">
-        {description}
-      </p>
+        transition-all
+        duration-300
+        ease-in-out
+
+        hover:-translate-y-2
+        hover:border-[#730042]
+        hover:bg-[#eee9ec]
+        hover:shadow-[0_16px_32px_rgba(30,0,20,0.16)]
+      "
+    >
+      {/* Upper-right glass glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-[45px]
+          -top-[45px]
+          z-0
+          h-[130px]
+          w-[130px]
+          rounded-full
+          bg-[#730042]/[0.04]
+          blur-[28px]
+          transition-opacity
+          duration-300
+        "
+      />
+
+      <div className="relative z-10">
+
+        {/* Icon */}
+        <div
+          className="
+            flex
+            h-10
+            w-10
+            items-center
+            justify-center
+            rounded-lg
+            bg-[#730042]/10
+            text-[#730042]
+
+            transition-all
+            duration-300
+
+            group-hover:bg-[#730042]/10
+            group-hover:text-[#730042]
+          "
+        >
+          {icon}
+        </div>
+
+        {/* Heading */}
+        <h3
+          className="
+            mt-5
+            max-w-[230px]
+            text-[15px]
+            font-semibold
+            leading-5
+            text-[#292327]
+
+            transition-colors
+            duration-300
+
+            group-hover:text-[#730042]
+          "
+        >
+          {title}
+        </h3>
+
+        {/* Paragraph */}
+        <p
+          className="
+            mt-2
+            text-[12px]
+            leading-5
+            text-[#756A70]
+
+            transition-colors
+            duration-300
+
+            group-hover:text-[#475569]
+          "
+        >
+          {description}
+        </p>
+
+      </div>
     </div>
   );
 }
@@ -532,33 +630,126 @@ const INTEGRATION = [
 
 function IntegrationSection() {
   return (
-    <section className="rounded-[18px] bg-[#85004A] px-6 py-10 text-white shadow-[0_12px_30px_rgba(95,0,50,0.16)] sm:px-10 lg:px-12 lg:py-12">
+    <section className="rounded-[18px] bg-[#730042] px-6 py-10 text-white shadow-[0_12px_30px_rgba(95,0,50,0.16)] sm:px-10 lg:px-12 lg:py-12">
+
+      {/* Eyebrow */}
       <Eyebrow icon={Network} light>
         Seamless System Interoperability
       </Eyebrow>
 
+      {/* Heading */}
       <h2 className="mt-6 text-[32px] font-medium tracking-[-0.045em] sm:text-[40px]">
         Connect With Your Existing Systems
       </h2>
 
+      {/* Description */}
       <p className="mt-3 max-w-[820px] text-[15px] leading-6 text-white/75">
         Modernize your education environment without disrupting the systems and
         processes your institution already depends on.
       </p>
 
+      {/* Cards */}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {INTEGRATION.map((item) => (
           <div
             key={item.title}
-            className="rounded-xl border border-white/15 bg-white/[0.07] p-5"
+            className="
+              group
+              relative
+              overflow-hidden
+              rounded-xl
+              border
+              border-white/15
+              bg-white/[0.07]
+              p-5
+
+              shadow-[0_7px_18px_rgba(30,0,20,0.10)]
+
+              transition-all
+              duration-300
+              ease-in-out
+
+              hover:-translate-y-2
+              hover:border-[#730042]
+              hover:bg-[#eee9ec]
+              hover:shadow-[0_16px_32px_rgba(30,0,20,0.24)]
+            "
           >
-            <IconBox dark>{item.icon}</IconBox>
+            {/* Upper-right glass glow */}
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -right-[45px]
+                -top-[45px]
+                h-[130px]
+                w-[130px]
+                rounded-full
+                bg-white/10
+                blur-[28px]
+              "
+            />
 
-            <h3 className="mt-5 text-[15px] font-semibold">{item.title}</h3>
+            {/* Content */}
+            <div className="relative z-10">
 
-            <p className="mt-2 text-[12px] leading-5 text-white/65">
-              {item.description}
-            </p>
+              {/* ICON */}
+              <div
+                className="
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-lg
+                  bg-white/10
+                  text-white
+
+                  transition-all
+                  duration-300
+
+                  group-hover:bg-[#970052]/10
+                  group-hover:text-[#730042]
+                "
+              >
+                {item.icon}
+              </div>
+
+              {/* Heading */}
+              <h3
+                className="
+                  mt-5
+                  text-[15px]
+                  font-semibold
+                  text-white
+
+                  transition-colors
+                  duration-300
+
+                  group-hover:text-[#730042]
+                "
+              >
+                {item.title}
+              </h3>
+
+              {/* Paragraph */}
+              <p
+                className="
+                  mt-2
+                  text-[12px]
+                  leading-5
+                  text-white/65
+
+                  transition-colors
+                  duration-300
+
+                  group-hover:text-[#475569]
+                "
+              >
+                {item.description}
+              </p>
+
+            </div>
           </div>
         ))}
       </div>
@@ -612,27 +803,32 @@ function ImplementationSection() {
         {PHASES.map((item) => (
           <div
             key={item.number}
-            className="relative min-h-[235px] overflow-hidden rounded-xl border border-[#E4E2E3] bg-[#FAFAFA] p-7"
+            className="
+              relative
+              min-h-[205px]
+              overflow-hidden
+              rounded-xl
+              border
+              border-[#E4E2E3]
+              bg-[#FAFAFA]
+              p-6
+            "
           >
-            <span className="pointer-events-none absolute right-4 top-0 text-[54px] font-light leading-none text-[#F0EEEE]">
-              0{item.number}
-            </span>
-
             <div className="relative flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#85004A] text-sm font-bold text-white">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#730042] text-sm font-bold text-white">
                 {item.number}
               </div>
 
-              <span className="rounded-md border border-[#E6D8DF] bg-[#F7EFF3] px-2.5 py-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-[#7A174B]">
+              <span className="rounded-md border border-[#E6D8DF] bg-[#F7EFF3] px-2.5 py-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-[#730042]">
                 {item.phase}
               </span>
             </div>
 
-            <h3 className="mt-7 text-[18px] font-semibold text-[#292327]">
+            <h3 className="mt-6 text-[18px] font-semibold text-[#292327]">
               {item.title}
             </h3>
 
-            <p className="mt-3 max-w-[280px] text-[13px] leading-6 text-[#756A70]">
+            <p className="mt-2.5 max-w-[280px] text-[13px] leading-6 text-[#756A70]">
               {item.description}
             </p>
           </div>
@@ -687,10 +883,10 @@ function CTASection() {
         </div>
 
         <div className="flex w-full flex-col gap-3 lg:w-[280px]">
-          <PrimaryButton>Talk to Our Experts</PrimaryButton>
+          <PrimaryButton >Talk to Our Experts</PrimaryButton>
 
           <SecondaryButton>
-            <CalendarDays size={17} className="text-[#85004A]" />
+            <CalendarDays size={17} className="text-[#730042]" />
             Schedule Discovery
           </SecondaryButton>
         </div>
