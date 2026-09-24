@@ -360,6 +360,13 @@ import TransformationDesk from "./pages/Industry/Healthcare/TransformationDesk.j
 import ItHero from "./pages/Industry/InformationTechnology/ItHero.jsx";
 import ItBusiness from "./pages/Industry/InformationTechnology/ItBusiness.jsx";
 import ItService from "./pages/Industry/InformationTechnology/ItService.jsx";
+import ItSoftware from "./pages/Industry/InformationTechnology/ItSoftware.jsx";
+import ItDigitalSolution from "./pages/Industry/InformationTechnology/ItDigitalSolution.jsx";
+import ItInfrastructure from "./pages/Industry/InformationTechnology/ItInfrastructure.jsx";
+import ItApproach from "./pages/Industry/InformationTechnology/ItApproach.jsx";
+import ItTechTorch from "./pages/Industry/InformationTechnology/ItTechTorch.jsx";
+import ItFoundation from "./pages/Industry/InformationTechnology/ItFoundation.jsx";
+
 
 
 // =================================================
@@ -925,6 +932,12 @@ function InformationTechnology(){
     <ItHero />
     <ItBusiness />
     <ItService />
+    <ItSoftware />
+    <ItDigitalSolution />
+    <ItInfrastructure />
+    <ItApproach />
+    <ItTechTorch />
+    <ItFoundation />
     </>
   )
 }
