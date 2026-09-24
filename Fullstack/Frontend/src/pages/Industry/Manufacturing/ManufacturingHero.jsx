@@ -1,11 +1,13 @@
 import React from "react";
 import { ArrowRight, Cpu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
 
 export default function ManufacturingHeroSection() {
+  const navigate = useNavigate();
   return (
     <div style={{ background: "#f7f7fa", color: INK }} className="w-full font-sans">
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-14 items-center">
@@ -42,6 +44,7 @@ export default function ManufacturingHeroSection() {
             <button
               className="px-5 py-3 rounded-full text-sm font-medium"
               style={{ background: "#e9e8ec", color: INK }}
+              onClick={() => navigate("/manufacturing-get-in-touch")}
             >
               Get in Touch
             </button>
