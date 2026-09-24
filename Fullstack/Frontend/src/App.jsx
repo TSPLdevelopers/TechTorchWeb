@@ -355,7 +355,18 @@ import ExperianceSecurity from "./pages/Industry/Healthcare/ExperianceSecurity.j
 import InsightOperations from "./pages/Industry/Healthcare/InsightOperations.jsx";
 import HealthcareApproach from "./pages/Industry/Healthcare/HealthcareApproach.jsx";
 import TransformationDesk from "./pages/Industry/Healthcare/TransformationDesk.jsx";
+
 import HealthcareGetInTouch from "./pages/Industry/Healthcare/HealthcareGetInTouch.jsx";
+
+
+// =================================================
+// INFORMATION TECHNOLOGY
+// =================================================
+import ItHero from "./pages/Industry/InformationTechnology/ItHero.jsx";
+import ItBusiness from "./pages/Industry/InformationTechnology/ItBusiness.jsx";
+import ItService from "./pages/Industry/InformationTechnology/ItService.jsx";
+
+
 
 // =================================================
 // SCROLL TO TOP
@@ -914,6 +925,15 @@ function Healthcare(){
     </>
   )
 }
+function InformationTechnology(){
+  return(
+    <>
+    <ItHero />
+    <ItBusiness />
+    <ItService />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1197,6 +1217,10 @@ function App() {
            <Route
             path="/schedule-discovery"
             element={<ScheduleDiscovery/>}
+          />
+          <Route
+            path="/industries/information-technology"
+            element={<InformationTechnology/>}
           />
 
           <Route
