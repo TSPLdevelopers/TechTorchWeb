@@ -43,7 +43,7 @@ export default function HealthcareHeroSection() {
           'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
         );
 
-<<<<<<< HEAD
+
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <button
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-white text-sm font-medium"
@@ -55,7 +55,7 @@ export default function HealthcareHeroSection() {
             <button
               className="px-6 py-3.5 rounded-full text-sm font-medium border"
               style={{ borderColor: "#d8d5d0", color: INK }}
-              onClick={() => navigate("/healthcare-get-in-touch")}
+
             >
               Get in Touch
             </button>
@@ -1013,7 +1013,8 @@ export default function HealthcareHeroSection() {
               </button>
 
 
-              <button className="healthcare-secondary-btn">
+              <button className="healthcare-secondary-btn"
+               onClick={() => navigate("/healthcare-get-in-touch")}>
 
                 Get in Touch
 
