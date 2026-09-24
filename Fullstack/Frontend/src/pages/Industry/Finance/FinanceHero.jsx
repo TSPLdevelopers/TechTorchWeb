@@ -1,11 +1,14 @@
 import React from "react";
-import { ArrowRight } from "lucide-react";
+
+import { ArrowRight, Landmark, Building2, Calculator, Smartphone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
 
 export default function FinancialHeroSection() {
+    const navigate = useNavigate();
   return (
     <section className="financial-hero">
       <style>{`
@@ -553,8 +556,13 @@ export default function FinancialHeroSection() {
 
 
             <button
+
+              className="px-6 py-3.5 rounded-full text-sm font-medium border financial-secondary-button"
+              style={{ borderColor: "#f0d6de", color: WINE }}
+              onClick={() => navigate("/finance-get-in-touch")}
+
               type="button"
-              className="financial-secondary-button"
+
             >
               GET IN TOUCH
             </button>

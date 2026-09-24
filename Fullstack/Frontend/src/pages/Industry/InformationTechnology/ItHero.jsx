@@ -1,11 +1,13 @@
 import React from "react";
 import { ArrowRight, Share2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
 
 export default function ItHeroSection() {
+  const navigate = useNavigate();
   return (
     <div
       className="w-full font-sans"
@@ -55,6 +57,7 @@ export default function ItHeroSection() {
             <button
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium border bg-white"
               style={{ borderColor: "#d8d5d0", color: INK }}
+              onClick={() => navigate("/it-get-in-touch")}
             >
               Get in Touch
               <ArrowRight size={16} />

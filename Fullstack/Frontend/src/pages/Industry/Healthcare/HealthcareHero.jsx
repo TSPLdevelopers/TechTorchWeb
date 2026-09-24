@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, ShieldCheck, Activity, Lock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
@@ -29,6 +30,7 @@ const trustItems = [
 ];
 
 export default function HealthcareHeroSection() {
+  const navigate = useNavigate();
   return (
     <section className="healthcare-hero-section">
       <style>{`
@@ -40,6 +42,24 @@ export default function HealthcareHeroSection() {
         @import url(
           'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
         );
+
+
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <button
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-white text-sm font-medium"
+              style={{ background: WINE }}
+            >
+              Talk to Our Healthcare Experts
+              <ArrowRight size={16} />
+            </button>
+            <button
+              className="px-6 py-3.5 rounded-full text-sm font-medium border"
+              style={{ borderColor: "#d8d5d0", color: INK }}
+
+            >
+              Get in Touch
+            </button>
+          </div>
 
 
         /* =====================================================
@@ -993,7 +1013,8 @@ export default function HealthcareHeroSection() {
               </button>
 
 
-              <button className="healthcare-secondary-btn">
+              <button className="healthcare-secondary-btn"
+               onClick={() => navigate("/healthcare-get-in-touch")}>
 
                 Get in Touch
 

@@ -31,18 +31,22 @@ export default function ScheduleDiscovery() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!institutionType) {
-      alert("Please select Institution Type.");
-      return;
-    }
+    const form = e.currentTarget;
 
-    if (!studentScale) {
-      alert("Please select Current Student Count / Scale.");
-      return;
-    }
+    // Use the browser's native validation message.
+    if (!form.checkValidity()) {
+      const invalidField = form.querySelector(":invalid");
 
-    if (!timeline) {
-      alert("Please select Expected Timeline.");
+      if (invalidField) {
+        invalidField.focus();
+        form.reportValidity();
+
+        // Hide the native validation bubble after 43 seconds.
+        setTimeout(() => {
+          invalidField.blur();
+        }, 43000);
+      }
+
       return;
     }
 
@@ -57,13 +61,13 @@ export default function ScheduleDiscovery() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F6F7F8] px-4 py-10 font-['Inter'] sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#F6F7F8] px-3 py-6 font-['Inter'] sm:px-5 sm:py-8 md:px-6 lg:px-8 lg:py-10">
 
       {/* =====================================================
           PAGE HEADER
       ===================================================== */}
 
-      <div className="mx-auto max-w-[900px] text-center">
+      <div className="mx-auto w-full max-w-[900px] text-center">
 
         {/* Eyebrow */}
         <div className="inline-flex items-center gap-2 rounded-full border border-[#E4D4DC] bg-[#F8F1F4] px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#730042]">
@@ -75,12 +79,12 @@ export default function ScheduleDiscovery() {
         </div>
 
         {/* Heading */}
-        <h1 className="mt-4 font-['Plus_Jakarta_Sans'] text-[32px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#171719] sm:text-[40px] lg:text-[42px]">
+        <h1 className="mt-4 font-['Plus_Jakarta_Sans'] text-[26px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#171719] sm:text-[34px] md:text-[38px] lg:text-[32px]">
           Schedule Education Discovery Session
         </h1>
 
         {/* Description */}
-        <p className="mx-auto mt-2 max-w-[700px] text-[14px] leading-5 text-[#65595E] sm:text-[15px]">
+        <p className="mx-auto mt-2 max-w-[700px] font-['Inter'] text-[13px] leading-5 text-[#65595E] sm:text-[14px]">
           Connect with our education technology architects to evaluate your
           institution's digital ecosystem and roadmap.
         </p>
@@ -93,7 +97,7 @@ export default function ScheduleDiscovery() {
 
       <form
         onSubmit={handleSubmit}
-        className="mx-auto mt-7 max-w-[900px] rounded-[10px] border border-[#DDE2E6] bg-white px-6 py-8 shadow-[0_2px_8px_rgba(0,0,0,0.03)] sm:px-8 sm:py-9 lg:px-10"
+        className="mx-auto mt-6 w-full max-w-[900px] rounded-[10px] border border-[#DDE2E6] bg-white px-4 py-6 shadow-[0_2px_8px_rgba(0,0,0,0.03)] sm:mt-7 sm:px-6 sm:py-8 md:px-8 md:py-9 lg:px-10"
       >
 
         {/* ===================================================
@@ -385,7 +389,7 @@ export default function ScheduleDiscovery() {
 
         <button
           type="submit"
-          className="group mt-5 flex h-[46px] w-full items-center justify-center gap-3 rounded-[9px] bg-[#730042] px-5 text-[12px] font-semibold uppercase tracking-[0.01em] text-white shadow-[0_3px_8px_rgba(115,0,66,0.18)] transition-all duration-200 hover:bg-[#730042] hover:shadow-[0_5px_12px_rgba(115,0,66,0.22)]"
+          className="group mt-5 flex h-[46px] w-full items-center justify-center gap-3 rounded-[9px] bg-[#730042] px-5 text-[12px] font-semibold uppercase tracking-[0.01em] text-white shadow-[0_3px_8px_rgba(115,0,66,0.18)] transition-all duration-200 hover:bg-[#620038] hover:shadow-[0_5px_12px_rgba(115,0,66,0.22)]"
         >
           Submit Consultation Request
 
@@ -400,7 +404,7 @@ export default function ScheduleDiscovery() {
             TRUST INDICATORS
         =================================================== */}
 
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[9px] font-medium text-[#564D51]">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[9px] font-medium text-[#564D51] sm:gap-x-5">
 
           <span className="flex items-center gap-1.5">
             <ShieldCheck
@@ -452,7 +456,7 @@ function FormSectionHeader({
   rightText,
 }) {
   return (
-    <div className="flex items-center justify-between border-b border-[#E2E5E7] pb-2.5">
+    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2E5E7] pb-2.5">
 
       <div className="flex items-center gap-2.5">
 
@@ -488,7 +492,7 @@ function ChoiceButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex min-h-[48px] items-center justify-center rounded-[7px] border px-3 py-2 text-center text-[12px] font-semibold leading-5 transition-all duration-150 ${
+      className={`flex min-h-[48px] w-full items-center justify-center rounded-[7px] border px-2.5 py-2 text-center text-[11px] font-semibold leading-5 transition-all duration-150 sm:px-3 sm:text-[12px] ${
         selected
           ? "border-[#730042] bg-[#F5E5ED] text-[#730042] shadow-[inset_0_0_0_1px_#730042]"
           : "border-[#E2E5E8] bg-[#ECEFF1] text-[#29292B] hover:border-[#730042] hover:bg-[#F5E5ED]"
@@ -514,19 +518,13 @@ function InterestCard({
     <button
       type="button"
       onClick={onClick}
-      className={`flex min-h-[57px] items-start gap-3 rounded-[9px] border px-3 py-2.5 text-left transition-all duration-150 ${
-        selected
-          ? "border-[#730042] bg-[#F5E5ED]"
-          : "border-[#E2E5E8] bg-[#ECEFF1] hover:border-[#730042] hover:bg-[#F3F4F5]"
-      }`}
+      className="flex min-h-[57px] w-full items-start gap-3 rounded-[9px] border border-[#E2E5E8] bg-[#ECEFF1] px-3 py-2.5 text-left transition-all duration-150 hover:border-[#E2E5E8] hover:bg-[#ECEFF1]"
     >
 
       {/* Checkbox */}
       <span
-        className={`mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[2px] border ${
-          selected
-            ? "border-[#730042] bg-[#730042]"
-            : "border-[#85888A] bg-white"
+        className={`mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[2px] ${
+          selected ? "bg-[#730042]" : "bg-white"
         }`}
       >
         {selected && (
