@@ -365,8 +365,29 @@ import HealthcareGetInTouch from "./pages/Industry/Healthcare/HealthcareGetInTou
 import ItHero from "./pages/Industry/InformationTechnology/ItHero.jsx";
 import ItBusiness from "./pages/Industry/InformationTechnology/ItBusiness.jsx";
 import ItService from "./pages/Industry/InformationTechnology/ItService.jsx";
+<<<<<<< HEAD
+import ItSoftware from "./pages/Industry/InformationTechnology/ItSoftware.jsx";
+import ItDigitalSolution from "./pages/Industry/InformationTechnology/ItDigitalSolution.jsx";
+import ItInfrastructure from "./pages/Industry/InformationTechnology/ItInfrastructure.jsx";
+import ItApproach from "./pages/Industry/InformationTechnology/ItApproach.jsx";
+import ItTechTorch from "./pages/Industry/InformationTechnology/ItTechTorch.jsx";
+import ItFoundation from "./pages/Industry/InformationTechnology/ItFoundation.jsx";
+
+// =================================================
+// INFORMATION TECHNOLOGY
+// =================================================
+
+import ManufacturingHero from "./pages/Industry/Manufacturing/ManufacturingHero.jsx";
+import ManufacturingTechnology from "./pages/Industry/Manufacturing/ManufacturingTechnology.jsx";
+import ManufacturingSolution from "./pages/Industry/Manufacturing/ManufacturingSolution.jsx";
+import ManufacturingErp from "./pages/Industry/Manufacturing/ManufacturingErp.jsx";
+import SoftwareEngineering from "./pages/Industry/Manufacturing/SoftwareEngineering.jsx";
+import ManufacturingApproach from "./pages/Industry/Manufacturing/ManufacturingApproach.jsx";
+import ManufacturingTechTorch from "./pages/Industry/Manufacturing/ManufacturingTechTorch.jsx";
+=======
 import ITGetInTouch from "./pages/Industry/InformationTechnology/ITGetInTouch.jsx";
 
+>>>>>>> f5eee67814555d927fc47e40a9be64657dbf04d4
 
 
 // =================================================
@@ -932,6 +953,25 @@ function InformationTechnology(){
     <ItHero />
     <ItBusiness />
     <ItService />
+    <ItSoftware />
+    <ItDigitalSolution />
+    <ItInfrastructure />
+    <ItApproach />
+    <ItTechTorch />
+    <ItFoundation />
+    </>
+  )
+}
+function Manufacturing(){
+  return(
+    <>
+    <ManufacturingHero />
+    <ManufacturingTechnology />
+    <ManufacturingSolution />
+    <ManufacturingErp />
+    <SoftwareEngineering />
+    <ManufacturingApproach />
+    <ManufacturingTechTorch />
     </>
   )
 }
@@ -1225,6 +1265,10 @@ function App() {
           />
 
           <Route
+<<<<<<< HEAD
+            path="/industries/manufacturing"
+            element={<Manufacturing/>}
+=======
             path="/insurance-get-in-touch"
             element={<GetInTouch/>}
           />
@@ -1242,6 +1286,7 @@ function App() {
            <Route
             path="/it-get-in-touch"
             element={<ITGetInTouch/>}
+>>>>>>> f5eee67814555d927fc47e40a9be64657dbf04d4
           />
 
         </Route>
