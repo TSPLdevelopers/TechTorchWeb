@@ -91,7 +91,7 @@ const industries = [
     title: "E-Commerce",
     description:
       "Scalable experiences for a connected marketplace.",
-    image: "\E-Commerce.svg",
+    image: "\TechTorch_E-Commerce_Icon 1.svg",
     path: "/industries/transportation",
   },
 ];

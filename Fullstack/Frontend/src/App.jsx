@@ -384,11 +384,20 @@ import ManufacturingErp from "./pages/Industry/Manufacturing/ManufacturingErp.js
 import SoftwareEngineering from "./pages/Industry/Manufacturing/SoftwareEngineering.jsx";
 import ManufacturingApproach from "./pages/Industry/Manufacturing/ManufacturingApproach.jsx";
 import ManufacturingTechTorch from "./pages/Industry/Manufacturing/ManufacturingTechTorch.jsx";
-<<<<<<< HEAD
-=======
 import ManufacturingGetInTouch from "./pages/Industry/Manufacturing/ManufacturingGetInTouch.jsx";
 
->>>>>>> 4fd0915bf866a2decd83030cf08902a3a2e43293
+
+// =================================================
+// TELECOMMUNICATIONS
+// =================================================
+
+import TcHero from "./pages/Industry/Telecommunication/TcHero.jsx";
+import TcTechnology from "./pages/Industry/Telecommunication/TcTechnology.jsx";
+import TcKeySolution from "./pages/Industry/Telecommunication/TcKeySolution.jsx";
+import TcSoftwareEngineer from "./pages/Industry/Telecommunication/TcSoftwareEngineer.jsx";
+import TcService from "./pages/Industry/Telecommunication/TcService.jsx";
+import TcApproach from "./pages/Industry/Telecommunication/TcApproach.jsx";
+
 
 
 // =================================================
@@ -976,6 +985,18 @@ function Manufacturing(){
     </>
   )
 }
+function Telecommunications(){
+  return (
+    <>
+    <TcHero />
+    <TcTechnology />
+    <TcKeySolution />
+    <TcSoftwareEngineer />
+    <TcService />
+    <TcApproach />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1266,10 +1287,6 @@ function App() {
           />
 
           <Route
-<<<<<<< HEAD
-            path="/industries/manufacturing"
-            element={<Manufacturing/>}
-=======
 
             path="/industries/manufacturing"
             element={<Manufacturing/>}
@@ -1299,7 +1316,11 @@ function App() {
             path="/manufacturing-get-in-touch"
             element={<ManufacturingGetInTouch/>}
 
->>>>>>> 4fd0915bf866a2decd83030cf08902a3a2e43293
+          />
+          <Route
+            path="/industries/telecommunications"
+            element={<Telecommunications/>}
+
           />
 
         </Route>
