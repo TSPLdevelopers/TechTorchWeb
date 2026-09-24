@@ -137,12 +137,13 @@ export async function deleteJobOpening(id) {
 export async function getAdminDashboardData() {
   const news = await getNews();
   const jobs = await getJobs();
+  const whitepapers = await getWhitepapers();
 
   return {
     news,
     jobs,
     events: [],
-    whitepapers: [],
+    whitepapers: whitepapers,
   };
 }
 // =========================
@@ -177,6 +178,50 @@ export async function updateEvent(id, eventData) {
 
 export async function deleteEvent(id) {
   return await request(`/api/events/${id}`, {
+    method: "DELETE",
+  });
+}
+// =========================
+// WHITEPAPER APIs
+// =========================
+
+// GET ALL WHITEPAPERS
+export async function getWhitepapers() {
+  const result = await request("/api/whitepapers");
+
+  console.log("========== WHITEPAPERS FROM MONGODB ==========");
+  console.log(result);
+  console.log("==============================================");
+
+  return extractData(result);
+}
+
+// GET SINGLE WHITEPAPER
+export async function getWhitepaperById(id) {
+  const result = await request(`/api/whitepapers/${id}`);
+
+  return result?.data || null;
+}
+
+// CREATE WHITEPAPER
+export async function createWhitepaper(whitepaperData) {
+  return await request("/api/whitepapers", {
+    method: "POST",
+    body: JSON.stringify(whitepaperData),
+  });
+}
+
+// UPDATE WHITEPAPER
+export async function updateWhitepaper(id, whitepaperData) {
+  return await request(`/api/whitepapers/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(whitepaperData),
+  });
+}
+
+// DELETE WHITEPAPER
+export async function deleteWhitepaper(id) {
+  return await request(`/api/whitepapers/${id}`, {
     method: "DELETE",
   });
 }

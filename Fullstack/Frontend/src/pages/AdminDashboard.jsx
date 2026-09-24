@@ -1,6 +1,7 @@
 import { createNews } from "../api/adminDashboardApi";
 import { useEffect, useMemo, useState } from "react";
 import useAdminDashboard from "../hooks/useAdminDashboard";
+import { getEvents } from "../api/adminDashboardApi";
 import { useNavigate } from "react-router-dom";
 import {  Newspaper,
   Briefcase,
@@ -644,7 +645,35 @@ export default function AdminDashboard() {
   const [filter, setFilter] = useState("");
   const [domain, setDomain] = useState("All Domains");
   const [domainOpen, setDomainOpen] = useState(false);
+  const [realEvents, setRealEvents] = useState([]);
+useEffect(() => {
+  loadDashboardEvents();
+}, []);
 
+async function loadDashboardEvents() {
+  try {
+    const data = await getEvents();
+
+    const mappedEvents = (Array.isArray(data) ? data : []).map((event) => ({
+      id: event._id || event.id,
+      status:
+        event.status === "upcoming"
+          ? "Upcoming"
+          : event.status === "past"
+            ? "Completed"
+            : "Draft",
+      name: event.title || "",
+      date: event.date || event.dateRange || "TBD",
+      location: event.location || event.venue || "TBD",
+      registrants: Number(event.registered || 0),
+    }));
+
+    setRealEvents(mappedEvents);
+  } catch (error) {
+    console.error("Dashboard events load error:", error);
+    setRealEvents([]);
+  }
+}
 
   return (
     <div className="ttad-root">
@@ -659,7 +688,7 @@ export default function AdminDashboard() {
   navigate={navigate}
   newsCount={news.length}
   jobsCount={jobs.length}
-  eventsCount={events.length}
+  eventsCount={realEvents.length}
   whitepapersCount={whitepapers.length}
 />
 
@@ -673,7 +702,7 @@ export default function AdminDashboard() {
             <div className="ttad-left-col">
               <PublishingDirectory
                 activeTab={activeTab}
-                  recordsByTab={[news, jobs, events, whitepapers]}
+                  recordsByTab={[news, jobs, realEvents, whitepapers]}
                 setActiveTab={setActiveTab}
                 page={page}
                 setPage={setPage}

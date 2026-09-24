@@ -11,6 +11,7 @@ const adminRoutes = require("./src/routes/adminRoutes");
 const newsRoutes = require("./src/routes/newsRoutes");
 const jobOpeningRoutes = require("./src/routes/jobOpeningRoutes");
 const eventRoutes = require("./src/routes/eventRoutes");
+const whitepaperRoutes = require("./src/routes/whitepaperRoutes");;
 connectDB();
 const express = require("express");
 const cors = require("cors");
@@ -36,6 +37,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/news", newsRoutes);
 app.use("/api/job-openings", jobOpeningRoutes);
 app.use("/api/events", eventRoutes);
+app.use("/api/whitepapers", whitepaperRoutes);
 app.use(errorMiddleware);
 
 

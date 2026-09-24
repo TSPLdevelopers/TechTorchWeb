@@ -4,6 +4,12 @@ import {
   UploadCloud, FileType2, Download, Trash2, GripVertical, Plus,
   BarChart3, PenSquare, Archive, ClipboardList, RefreshCw, X, Check, PencilLine, Send,
 } from "lucide-react";
+import {
+  getWhitepapers,
+  createWhitepaper,
+  updateWhitepaper,
+  deleteWhitepaper,
+} from "../api/adminDashboardApi";
  
 const ACCENT = "#780042";
 const FONT = "Inter, sans-serif";
@@ -153,9 +159,117 @@ function SectionHeader({ number, title, badge }) {
 }
  
 export default function LatestUpdateConsole() {
-  const [releases, setReleases] = useState(INITIAL_RELEASES);
+  const [releases, setReleases] = useState([]);
   const [form, setForm] = useState(emptyForm());
   const [editingId, setEditingId] = useState(null);
+  useEffect(() => {
+  loadWhitepapers();
+}, []);
+
+function mapWhitepaperToRelease(item) {
+  const status =
+    item?.status === "draft" || item?.status === "published"
+      ? item.status
+      : "published";
+
+  const isDraft = status === "draft";
+
+  return {
+    ...item,
+    id: item?._id || item?.id || `whitepaper-${Date.now()}`,
+    status,
+
+    tag: isDraft
+      ? "Under Peer Review • Draft"
+      : "Latest Published Update",
+
+    tagStyle: isDraft
+      ? "bg-amber-50 text-amber-600"
+      : "bg-rose-50 text-rose-500",
+
+    published:
+      item?.published ||
+      (isDraft ? "Last edited: just now" : "Published"),
+
+    meta: `Series TT-NEW • Primary Architect: ${
+      item?.architects || "Unassigned"
+    }`,
+
+    stats: isDraft
+      ? [
+          {
+            label: "WORD COUNT",
+            value: String(
+              (item?.abstract || "")
+                .split(/\s+/)
+                .filter(Boolean).length
+            ),
+            sub: "Draft",
+            subColor: "text-stone-400",
+            isText: true,
+          },
+          {
+            label: "REVIEWERS",
+            value: "0 / 4",
+            sub: "Awaiting sign-off",
+            subColor: "text-amber-600",
+            isText: true,
+          },
+          {
+            label: "TARGET",
+            value: "TBD",
+            sub: "Publish window",
+            subColor: "text-stone-400",
+            isText: true,
+          },
+        ]
+      : [
+          {
+            label: "DOWNLOADS",
+            value: String(item?.downloads ?? 0),
+            sub: "Published",
+            subColor: "text-stone-400",
+          },
+          {
+            label: "LEAD CONVERSION",
+            value: item?.leadConversion || "0%",
+            sub: "Collecting data",
+            subColor: "text-stone-400",
+          },
+          {
+            label: "AVG. READ TIME",
+            value: item?.avgReadTime || "0m",
+            sub: "Collecting data",
+            subColor: "text-stone-400",
+          },
+        ],
+
+    bullets: Array.isArray(item?.bullets) ? item.bullets : [],
+    draft: isDraft,
+  };
+}
+
+async function loadWhitepapers() {
+  try {
+    const response = await getWhitepapers();
+
+    // Support both:
+    // 1. API helper returning an array
+    // 2. API helper returning { success: true, data: [...] }
+    const data = Array.isArray(response)
+      ? response
+      : Array.isArray(response?.data)
+      ? response.data
+      : [];
+
+    console.log("WHITEPAPERS LOADED:", data);
+
+    setReleases(data.map(mapWhitepaperToRelease));
+  } catch (error) {
+    console.error("Load Whitepapers Error:", error);
+    flashToast(error.message || "Failed to load whitepapers");
+  }
+}
  
   const [tab, setTab] = useState("published");
   const [search, setSearch] = useState("");
@@ -201,54 +315,80 @@ export default function LatestUpdateConsole() {
     flashToast(`Loaded "${r.title}" into the editor`);
   }
  
-  function saveAs(status) {
-    if (!form.title.trim()) {
-      flashToast("Add a document title before saving");
-      return;
-    }
-    setReleases((list) => {
-      const base = {
-        id: editingId ?? makeId(list),
-        status,
-        tag:
-          status === "draft"
-            ? "Under Peer Review • Draft"
-            : `Latest Published Update • ${new Date().toLocaleString("en-US", { month: "short", year: "numeric" })}`,
-        tagStyle: status === "draft" ? "bg-amber-50 text-amber-600" : "bg-rose-50 text-rose-500",
-        published: status === "draft" ? "Last edited: just now" : "Published: just now",
-        title: form.title,
-        architects: form.architects,
-        domain: form.domain,
-        abstract: form.abstract,
-        bullets: form.bullets,
-        gating: form.gating,
-        fileName: form.fileName,
-        fileSize: form.fileSize,
-        meta: `Series TT-NEW • Primary Architect: ${form.architects || "Unassigned"}`,
-        stats:
-          status === "draft"
-            ? [
-                { label: "WORD COUNT", value: String(form.abstract.split(/\s+/).filter(Boolean).length), sub: "Draft", subColor: "text-stone-400", isText: true },
-                { label: "REVIEWERS", value: "0 / 4", sub: "Awaiting sign-off", subColor: "text-amber-600", isText: true },
-                { label: "TARGET", value: "TBD", sub: "Publish window", subColor: "text-stone-400", isText: true },
-              ]
-            : [
-                { label: "DOWNLOADS", value: "0", sub: "Just published", subColor: "text-stone-400" },
-                { label: "LEAD CONVERSION", value: "—", sub: "Collecting data", subColor: "text-stone-400" },
-                { label: "AVG. READ TIME", value: "—", sub: "Collecting data", subColor: "text-stone-400" },
-              ],
-        draft: status === "draft",
-      };
-      if (editingId) {
-        return list.map((r) => (r.id === editingId ? { ...r, ...base } : r));
-      }
-      setEditingId(base.id);
-      return [base, ...list];
-    });
-    setTab(status);
-    flashToast(status === "draft" ? "Saved as draft" : "Latest update published");
+  async function saveAs(status) {
+  if (!form.title.trim()) {
+    flashToast("Add a document title before saving");
+    return;
   }
- 
+
+  const whitepaperData = {
+    title: form.title,
+    domain: form.domain,
+    architects: form.architects,
+    abstract: form.abstract,
+    bullets: form.bullets,
+    gating: form.gating,
+    fileName: form.fileName,
+    fileSize: form.fileSize,
+    status,
+    published:
+      status === "published"
+        ? `Published: ${new Date().toLocaleString("en-US", {
+            month: "short",
+            year: "numeric",
+          })}`
+        : "Draft",
+  };
+
+  try {
+    if (editingId) {
+      const result = await updateWhitepaper(editingId, whitepaperData);
+      const updated = result?.data || result;
+
+      setReleases((list) =>
+        list.map((r) =>
+          r._id === editingId || r.id === editingId
+            ? {
+                ...r,
+                ...updated,
+                id: updated._id || editingId,
+              }
+            : r
+        )
+      );
+
+      setTab(status);
+
+      flashToast(
+        status === "draft"
+          ? "Whitepaper updated as draft"
+          : "Whitepaper updated & published"
+      );
+    } else {
+      const result = await createWhitepaper(whitepaperData);
+      const created = result?.data || result;
+
+      const newRelease = mapWhitepaperToRelease(created);
+
+      setReleases((list) => [
+        newRelease,
+        ...list,
+      ]);
+
+      setEditingId(created?._id || created?.id || null);
+      setTab(status);
+
+      flashToast(
+        status === "draft"
+          ? "Whitepaper saved as draft"
+          : "Whitepaper published successfully"
+      );
+    }
+  } catch (error) {
+    console.error("Whitepaper Save Error:", error);
+    flashToast(error.message || "Failed to save whitepaper");
+  }
+}
   // ---- bullets ----
   function updateBullet(i, text) {
     setForm((f) => ({ ...f, bullets: f.bullets.map((b, idx) => (idx === i ? text : b)) }));
@@ -309,14 +449,27 @@ export default function LatestUpdateConsole() {
   const filteredReleases = useMemo(() => {
     const q = search.trim().toLowerCase();
     return releases.filter((r) => {
-      const inTab = r.status === tab;
-      const inSearch = !q || r.title.toLowerCase().includes(q) || (r.architects || "").toLowerCase().includes(q);
+      const normalizedStatus =
+        r.status === "draft" ? "draft" : "published";
+
+      const inTab = normalizedStatus === tab;
+
+      const inSearch =
+        !q ||
+        (r.title || "").toLowerCase().includes(q) ||
+        (r.architects || "").toLowerCase().includes(q);
+
       return inTab && inSearch;
     });
   }, [releases, tab, search]);
  
-  const publishedCount = releases.filter((r) => r.status === "published").length;
-  const draftCount = releases.filter((r) => r.status === "draft").length;
+  const publishedCount = releases.filter(
+    (r) => r.status !== "draft"
+  ).length;
+
+  const draftCount = releases.filter(
+    (r) => r.status === "draft"
+  ).length;
  
   function performAction(release, label) {
     switch (label) {
@@ -326,8 +479,37 @@ export default function LatestUpdateConsole() {
         loadIntoEditor(release);
         break;
       case "Submit for Review":
-        setReleases((list) => list.map((r) => (r.id === release.id ? { ...r, status: "published", draft: false } : r)));
-        flashToast("Submitted for publication review");
+        (async () => {
+          try {
+            const result = await updateWhitepaper(release.id, {
+              status: "published",
+              published: `Published: ${new Date().toLocaleString("en-US", {
+                month: "short",
+                year: "numeric",
+              })}`,
+            });
+
+            const updated = result?.data || result;
+
+            setReleases((list) =>
+              list.map((r) =>
+                r.id === release.id
+                  ? mapWhitepaperToRelease({
+                      ...r,
+                      ...updated,
+                      _id: updated?._id || r.id,
+                    })
+                  : r
+              )
+            );
+
+            setTab("published");
+            flashToast("Whitepaper published successfully");
+          } catch (error) {
+            console.error("Submit Whitepaper Error:", error);
+            flashToast(error.message || "Failed to publish whitepaper");
+          }
+        })();
         break;
       case "View Analytics":
         flashToast(`Opening analytics for "${release.title}"`);
@@ -737,7 +919,7 @@ export default function LatestUpdateConsole() {
                   </div>
  
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                    {r.stats.map((s) => (
+                    {(r.stats || []).map((s) => (
                       <div key={s.label}>
                         <div className="text-[10px] font-semibold tracking-wide text-stone-400 mb-1">{s.label}</div>
                         <div className={`font-semibold text-stone-900 ${s.isText ? "text-base" : "text-xl"}`}>{s.value}</div>
