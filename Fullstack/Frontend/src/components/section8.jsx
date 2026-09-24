@@ -86,6 +86,14 @@ const industries = [
     image: "/Transportation 2 [Vectorized].svg",
     path: "/industries/transportation",
   },
+   {
+    id: "E-Commerce",
+    title: "E-Commerce",
+    description:
+      "Scalable experiences for a connected marketplace.",
+    image: "\TechTorch_E-Commerce_Icon 1.svg",
+    path: "/industries/transportation",
+  },
 ];
 
 /* =====================================================

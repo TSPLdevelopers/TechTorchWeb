@@ -387,6 +387,18 @@ import ManufacturingTechTorch from "./pages/Industry/Manufacturing/Manufacturing
 import ManufacturingGetInTouch from "./pages/Industry/Manufacturing/ManufacturingGetInTouch.jsx";
 
 
+// =================================================
+// TELECOMMUNICATIONS
+// =================================================
+
+import TcHero from "./pages/Industry/Telecommunication/TcHero.jsx";
+import TcTechnology from "./pages/Industry/Telecommunication/TcTechnology.jsx";
+import TcKeySolution from "./pages/Industry/Telecommunication/TcKeySolution.jsx";
+import TcSoftwareEngineer from "./pages/Industry/Telecommunication/TcSoftwareEngineer.jsx";
+import TcService from "./pages/Industry/Telecommunication/TcService.jsx";
+import TcApproach from "./pages/Industry/Telecommunication/TcApproach.jsx";
+
+
 
 // =================================================
 // SCROLL TO TOP
@@ -973,6 +985,18 @@ function Manufacturing(){
     </>
   )
 }
+function Telecommunications(){
+  return (
+    <>
+    <TcHero />
+    <TcTechnology />
+    <TcKeySolution />
+    <TcSoftwareEngineer />
+    <TcService />
+    <TcApproach />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1291,6 +1315,11 @@ function App() {
           <Route
             path="/manufacturing-get-in-touch"
             element={<ManufacturingGetInTouch/>}
+
+          />
+          <Route
+            path="/industries/telecommunications"
+            element={<Telecommunications/>}
 
           />
 
