@@ -371,6 +371,7 @@ import ItInfrastructure from "./pages/Industry/InformationTechnology/ItInfrastru
 import ItApproach from "./pages/Industry/InformationTechnology/ItApproach.jsx";
 import ItTechTorch from "./pages/Industry/InformationTechnology/ItTechTorch.jsx";
 import ItFoundation from "./pages/Industry/InformationTechnology/ItFoundation.jsx";
+import ITGetInTouch from "./pages/Industry/InformationTechnology/ITGetInTouch.jsx";
 
 // =================================================
 // INFORMATION TECHNOLOGY
@@ -383,6 +384,11 @@ import ManufacturingErp from "./pages/Industry/Manufacturing/ManufacturingErp.js
 import SoftwareEngineering from "./pages/Industry/Manufacturing/SoftwareEngineering.jsx";
 import ManufacturingApproach from "./pages/Industry/Manufacturing/ManufacturingApproach.jsx";
 import ManufacturingTechTorch from "./pages/Industry/Manufacturing/ManufacturingTechTorch.jsx";
+<<<<<<< HEAD
+=======
+import ManufacturingGetInTouch from "./pages/Industry/Manufacturing/ManufacturingGetInTouch.jsx";
+
+>>>>>>> 4fd0915bf866a2decd83030cf08902a3a2e43293
 
 
 // =================================================
@@ -1260,8 +1266,40 @@ function App() {
           />
 
           <Route
+<<<<<<< HEAD
             path="/industries/manufacturing"
             element={<Manufacturing/>}
+=======
+
+            path="/industries/manufacturing"
+            element={<Manufacturing/>}
+          />
+
+            <Route
+            path="/insurance-get-in-touch"
+            element={<GetInTouch/>}
+          />
+
+          <Route
+            path="/finance-get-in-touch"
+            element={<FinanceGetInTouch/>}
+          />
+
+          <Route
+            path="/healthcare-get-in-touch"
+            element={<HealthcareGetInTouch/>}
+          />
+
+           <Route
+            path="/it-get-in-touch"
+            element={<ITGetInTouch/>}
+
+          />
+          <Route
+            path="/manufacturing-get-in-touch"
+            element={<ManufacturingGetInTouch/>}
+
+>>>>>>> 4fd0915bf866a2decd83030cf08902a3a2e43293
           />
 
         </Route>

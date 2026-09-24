@@ -300,19 +300,19 @@ export default function InformationTechnologyGetInTouch() {
           background: var(--it-beetroot);
         }
 
-        .it-image-bottom-card {
-          position: absolute;
-          left: 20px;
-          right: 20px;
-          bottom: 20px;
-          display: flex;
-          align-items: center;
-          gap: 13px;
-          padding: 16px 18px;
-          background: rgba(255, 255, 255, 0.97);
-          border-radius: 13px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
+       .it-image-bottom-card {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 9px 18px; /* only height reduced */
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 13px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
 
         .it-bottom-icon {
           width: 44px;
