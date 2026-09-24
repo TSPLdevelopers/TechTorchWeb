@@ -365,7 +365,6 @@ import HealthcareGetInTouch from "./pages/Industry/Healthcare/HealthcareGetInTou
 import ItHero from "./pages/Industry/InformationTechnology/ItHero.jsx";
 import ItBusiness from "./pages/Industry/InformationTechnology/ItBusiness.jsx";
 import ItService from "./pages/Industry/InformationTechnology/ItService.jsx";
-<<<<<<< HEAD
 import ItSoftware from "./pages/Industry/InformationTechnology/ItSoftware.jsx";
 import ItDigitalSolution from "./pages/Industry/InformationTechnology/ItDigitalSolution.jsx";
 import ItInfrastructure from "./pages/Industry/InformationTechnology/ItInfrastructure.jsx";
@@ -384,10 +383,6 @@ import ManufacturingErp from "./pages/Industry/Manufacturing/ManufacturingErp.js
 import SoftwareEngineering from "./pages/Industry/Manufacturing/SoftwareEngineering.jsx";
 import ManufacturingApproach from "./pages/Industry/Manufacturing/ManufacturingApproach.jsx";
 import ManufacturingTechTorch from "./pages/Industry/Manufacturing/ManufacturingTechTorch.jsx";
-=======
-import ITGetInTouch from "./pages/Industry/InformationTechnology/ITGetInTouch.jsx";
-
->>>>>>> f5eee67814555d927fc47e40a9be64657dbf04d4
 
 
 // =================================================
@@ -1265,28 +1260,8 @@ function App() {
           />
 
           <Route
-<<<<<<< HEAD
             path="/industries/manufacturing"
             element={<Manufacturing/>}
-=======
-            path="/insurance-get-in-touch"
-            element={<GetInTouch/>}
-          />
-
-          <Route
-            path="/finance-get-in-touch"
-            element={<FinanceGetInTouch/>}
-          />
-
-          <Route
-            path="/healthcare-get-in-touch"
-            element={<HealthcareGetInTouch/>}
-          />
-
-           <Route
-            path="/it-get-in-touch"
-            element={<ITGetInTouch/>}
->>>>>>> f5eee67814555d927fc47e40a9be64657dbf04d4
           />
 
         </Route>
