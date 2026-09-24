@@ -365,6 +365,7 @@ import HealthcareGetInTouch from "./pages/Industry/Healthcare/HealthcareGetInTou
 import ItHero from "./pages/Industry/InformationTechnology/ItHero.jsx";
 import ItBusiness from "./pages/Industry/InformationTechnology/ItBusiness.jsx";
 import ItService from "./pages/Industry/InformationTechnology/ItService.jsx";
+import ITGetInTouch from "./pages/Industry/InformationTechnology/ITGetInTouch.jsx";
 
 
 
@@ -1236,6 +1237,11 @@ function App() {
           <Route
             path="/healthcare-get-in-touch"
             element={<HealthcareGetInTouch/>}
+          />
+
+           <Route
+            path="/it-get-in-touch"
+            element={<ITGetInTouch/>}
           />
 
         </Route>
