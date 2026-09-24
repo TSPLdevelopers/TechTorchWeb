@@ -367,6 +367,17 @@ import ItApproach from "./pages/Industry/InformationTechnology/ItApproach.jsx";
 import ItTechTorch from "./pages/Industry/InformationTechnology/ItTechTorch.jsx";
 import ItFoundation from "./pages/Industry/InformationTechnology/ItFoundation.jsx";
 
+// =================================================
+// INFORMATION TECHNOLOGY
+// =================================================
+
+import ManufacturingHero from "./pages/Industry/Manufacturing/ManufacturingHero.jsx";
+import ManufacturingTechnology from "./pages/Industry/Manufacturing/ManufacturingTechnology.jsx";
+import ManufacturingSolution from "./pages/Industry/Manufacturing/ManufacturingSolution.jsx";
+import ManufacturingErp from "./pages/Industry/Manufacturing/ManufacturingErp.jsx";
+import SoftwareEngineering from "./pages/Industry/Manufacturing/SoftwareEngineering.jsx";
+import ManufacturingApproach from "./pages/Industry/Manufacturing/ManufacturingApproach.jsx";
+import ManufacturingTechTorch from "./pages/Industry/Manufacturing/ManufacturingTechTorch.jsx";
 
 
 // =================================================
@@ -941,6 +952,19 @@ function InformationTechnology(){
     </>
   )
 }
+function Manufacturing(){
+  return(
+    <>
+    <ManufacturingHero />
+    <ManufacturingTechnology />
+    <ManufacturingSolution />
+    <ManufacturingErp />
+    <SoftwareEngineering />
+    <ManufacturingApproach />
+    <ManufacturingTechTorch />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1228,6 +1252,11 @@ function App() {
           <Route
             path="/industries/information-technology"
             element={<InformationTechnology/>}
+          />
+
+          <Route
+            path="/industries/manufacturing"
+            element={<Manufacturing/>}
           />
 
         </Route>
