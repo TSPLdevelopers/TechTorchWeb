@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -6,7 +7,6 @@ import {
   ArrowLeftRight,
   ListChecks,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const BEETROOT = "#730042";
 
@@ -67,7 +67,7 @@ export default function InformationTechnologyGetInTouch() {
     company: "",
     service: "",
     requirement: "",
-    contactMethod: "email",
+    contactMethod: "",
     consent: false,
   });
 
@@ -123,7 +123,7 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-hero {
           background: #fff;
-          padding: 78px 5% 90px;
+          padding: 45px 5% 55px;
         }
 
         .it-hero-container {
@@ -156,10 +156,12 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-hero-content h1 {
           margin: 23px 0 20px;
-          font-size: clamp(42px, 4vw, 58px);
+          font-size: 35px;
+          font-family: "Plus Jakarta Sans", sans-serif;
           line-height: 1.05;
           letter-spacing: -2px;
-          font-weight: 700;
+          font-weight: 600;
+          word-spacing: 6px;
         }
 
         .it-hero-content h1 span {
@@ -170,7 +172,8 @@ export default function InformationTechnologyGetInTouch() {
           max-width: 650px;
           margin: 0 0 30px;
           color: #696969;
-          font-size: 16px;
+          font-family: "Inter";
+          font-size: 14px;
           line-height: 1.65;
         }
 
@@ -186,7 +189,7 @@ export default function InformationTechnologyGetInTouch() {
         .it-consultation-card {
           display: flex;
           gap: 12px;
-          padding: 17px 16px;
+          padding: 12px 14px;
           background: #fff;
           border: 1px solid #eee;
           border-radius: 10px;
@@ -201,13 +204,15 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-consultation-card h3 {
           margin: 0 0 5px;
+          font-family: "Inter";
           font-size: 14px;
-          font-weight: 700;
+          font-weight: 500;
         }
 
         .it-consultation-card p {
           margin: 0;
           color: #777;
+          font-family: "Inter";
           font-size: 12px;
           line-height: 1.45;
         }
@@ -260,14 +265,14 @@ export default function InformationTechnologyGetInTouch() {
         .it-hero-image-wrapper {
           position: relative;
           width: 100%;
-          max-width: 540px;
+          max-width: 460px;
           margin-left: auto;
         }
 
         .it-hero-image {
           display: block;
           width: 100%;
-          height: 470px;
+          height: 370px;
           object-fit: cover;
           border-radius: 15px;
           box-shadow: 0 25px 45px rgba(0, 0, 0, 0.13);
@@ -382,7 +387,9 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-form-heading h2 {
           margin: 12px 0 8px;
-          font-size: 27px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 25px;
+          font-weight: 600;
           line-height: 1.2;
           letter-spacing: -0.6px;
         }
@@ -391,7 +398,8 @@ export default function InformationTechnologyGetInTouch() {
           max-width: 730px;
           margin: 0 0 28px;
           color: #777;
-          font-size: 13px;
+          font-family: "Inter";
+          font-size: 14px;
           line-height: 1.55;
         }
 
@@ -412,8 +420,9 @@ export default function InformationTechnologyGetInTouch() {
         .it-field label {
           display: block;
           margin-bottom: 7px;
-          font-size: 11px;
-          font-weight: 700;
+          font-family: "Inter";
+          font-size: 13px;
+          font-weight: 500;
         }
 
         .it-field label span {
@@ -437,14 +446,14 @@ export default function InformationTechnologyGetInTouch() {
         .it-field select {
           height: 40px;
           padding: 0 13px;
-          font-size: 12px;
+          font-size: 13px;
         }
 
         .it-field textarea {
           min-height: 92px;
           padding: 12px 13px;
           resize: vertical;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.5;
         }
 
@@ -468,20 +477,26 @@ export default function InformationTechnologyGetInTouch() {
           gap: 12px;
         }
 
-        .it-radio-box {
+        .it-field .it-radio-box {
           height: 40px;
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 7px;
           background: #f4f4f4;
           border-radius: 8px;
-          font-size: 11px;
+          font-size: 13px;
           cursor: pointer;
+          margin: 0;
+          padding: 0;
         }
 
-        .it-radio-box input {
+        .it-field .it-radio-box input {
+          width: 12px;
+          height: 12px;
           accent-color: var(--it-beetroot);
+          margin: 0;
         }
 
         /* ================= CHECKBOX ================= */
@@ -492,7 +507,7 @@ export default function InformationTechnologyGetInTouch() {
           gap: 9px;
           margin-top: 22px;
           color: #777;
-          font-size: 11px;
+          font-size: 13px;
           cursor: pointer;
         }
 
@@ -514,11 +529,12 @@ export default function InformationTechnologyGetInTouch() {
           gap: 9px;
           margin-top: 24px;
           border: none;
-          border-radius: 8px;
+          border-radius: 10px;
           background: var(--it-beetroot);
           color: #fff;
-          font-size: 11px;
-          font-weight: 700;
+          font-family: "Inter";
+          font-size: 13px;
+          font-weight: 600;
           cursor: pointer;
           transition: 0.2s ease;
         }
@@ -531,7 +547,8 @@ export default function InformationTechnologyGetInTouch() {
           margin: 10px 0 0;
           text-align: center;
           color: #777;
-          font-size: 9px;
+          font-family: "Inter";
+          font-size: 11px;
         }
 
         .it-privacy-text a {
@@ -553,7 +570,9 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-process-heading h2 {
           margin: 11px 0 8px;
-          font-size: 29px;
+          font-size: 28px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-weight: 600;
           line-height: 1.2;
           letter-spacing: -0.7px;
         }
@@ -561,7 +580,8 @@ export default function InformationTechnologyGetInTouch() {
         .it-process-heading p {
           margin: 0;
           color: #777;
-          font-size: 13px;
+          font-family: "Inter";
+          font-size: 14px;
           line-height: 1.5;
         }
 
@@ -574,7 +594,7 @@ export default function InformationTechnologyGetInTouch() {
         }
 
         .it-process-card {
-          min-height: 205px;
+          min-height: 200px;
           padding: 27px;
           background: #fafafa;
           border: 1px solid #eee;
@@ -597,14 +617,17 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-process-card h3 {
           margin: 0 0 11px;
-          font-size: 15px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 16px;
+          font-weight: 600;
           line-height: 1.3;
         }
 
         .it-process-card p {
           margin: 0;
           color: #777;
-          font-size: 12px;
+          font-family: "Inter";
+          font-size: 13px;
           line-height: 1.65;
         }
 
@@ -626,7 +649,9 @@ export default function InformationTechnologyGetInTouch() {
         .it-bottom-cta h2 {
           margin: 0 0 12px;
           color: #fff;
-          font-size: 26px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 24px;
+          font-weight: 600;
           line-height: 1.2;
         }
 
@@ -634,7 +659,8 @@ export default function InformationTechnologyGetInTouch() {
           max-width: 650px;
           margin: 0;
           color: rgba(255, 255, 255, 0.88);
-          font-size: 12px;
+          font-family: "Inter";
+          font-size: 14px;
           line-height: 1.65;
         }
 
@@ -651,7 +677,7 @@ export default function InformationTechnologyGetInTouch() {
           border-radius: 8px;
           background: #fff;
           color: var(--it-beetroot);
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 700;
           cursor: pointer;
           transition: 0.2s ease;
@@ -663,12 +689,38 @@ export default function InformationTechnologyGetInTouch() {
 
         /* ================= RESPONSIVE ================= */
 
+        @media (max-width: 1200px) {
+          .it-hero-container,
+          .it-process-grid,
+          .it-bottom-cta {
+            max-width: 100%;
+          }
+
+          .it-hero-container {
+            gap: 40px;
+          }
+
+          .it-process-grid {
+            gap: 20px;
+          }
+
+          .it-bottom-cta {
+            padding: 38px 40px;
+          }
+        }
+
         @media (max-width: 1000px) {
           .it-hero-container {
             grid-template-columns: 1fr;
           }
 
+          .it-hero-content {
+            min-width: 0;
+          }
+
           .it-hero-image-wrapper {
+            width: 100%;
+            max-width: 620px;
             margin: 10px auto 0;
           }
 
@@ -680,6 +732,10 @@ export default function InformationTechnologyGetInTouch() {
             flex-direction: column;
             align-items: flex-start;
           }
+
+          .it-bottom-cta p {
+            max-width: 100%;
+          }
         }
 
         @media (max-width: 700px) {
@@ -688,8 +744,13 @@ export default function InformationTechnologyGetInTouch() {
           }
 
           .it-hero-content h1 {
-            font-size: 38px;
+            font-size: clamp(30px, 8vw, 38px);
             letter-spacing: -1.3px;
+            word-spacing: 2px;
+          }
+
+          .it-hero-description {
+            font-size: 14px;
           }
 
           .it-consultation-grid {
@@ -705,14 +766,26 @@ export default function InformationTechnologyGetInTouch() {
             width: 100%;
           }
 
+          .it-hero-image-wrapper {
+            max-width: 100%;
+          }
+
           .it-hero-image {
             height: 390px;
+          }
+
+          .it-image-label {
+            top: 12px;
+            right: 12px;
+            max-width: calc(100% - 24px);
+            white-space: normal;
           }
 
           .it-image-bottom-card {
             left: 12px;
             right: 12px;
             bottom: 12px;
+            padding: 13px 14px;
           }
 
           .it-bottom-brand {
@@ -731,16 +804,173 @@ export default function InformationTechnologyGetInTouch() {
             grid-template-columns: 1fr;
           }
 
+          .it-field,
+          .it-field.full-width {
+            min-width: 0;
+          }
+
           .it-process-section {
             padding: 55px 20px;
           }
 
+          .it-process-heading h2 {
+            font-size: clamp(24px, 7vw, 28px);
+          }
+
           .it-bottom-cta {
             padding: 32px 25px;
+            gap: 25px;
           }
 
           .it-bottom-cta h2 {
             font-size: 23px;
+          }
+
+          .it-bottom-cta button {
+            width: 100%;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .it-hero {
+            padding: 40px 15px 50px;
+          }
+
+          .it-eyebrow {
+            max-width: 100%;
+            font-size: 10px;
+            padding: 6px 11px;
+          }
+
+          .it-hero-content h1 {
+            font-size: clamp(28px, 9vw, 34px);
+          }
+
+          .it-consultation-card {
+            padding: 11px 12px;
+          }
+
+          .it-consultation-card h3 {
+            font-size: 13px;
+          }
+
+          .it-consultation-card p {
+            font-size: 11px;
+          }
+
+          .it-hero-image {
+            height: 320px;
+            border-radius: 12px;
+          }
+
+          .it-image-label {
+            padding: 9px 12px;
+            font-size: 10px;
+          }
+
+          .it-image-bottom-card {
+            gap: 9px;
+            padding: 11px 12px;
+          }
+
+          .it-bottom-icon {
+            width: 38px;
+            height: 38px;
+          }
+
+          .it-bottom-content h4 {
+            font-size: 12px;
+          }
+
+          .it-bottom-content p {
+            font-size: 10px;
+          }
+
+          .it-form-section {
+            padding: 40px 10px;
+          }
+
+          .it-form-card {
+            padding: 25px 15px;
+            border-radius: 14px;
+          }
+
+          .it-form-heading h2 {
+            font-size: 22px;
+          }
+
+          .it-form-heading p {
+            font-size: 13px;
+          }
+
+          .it-radio-row {
+            gap: 8px;
+          }
+
+          .it-field .it-radio-box {
+            gap: 5px;
+          }
+
+          .it-consent {
+            align-items: flex-start;
+            line-height: 1.45;
+          }
+
+          .it-submit-btn {
+            height: 42px;
+          }
+
+          .it-process-section {
+            padding: 45px 15px;
+          }
+
+          .it-process-heading {
+            margin-bottom: 35px;
+          }
+
+          .it-process-card {
+            min-height: auto;
+            padding: 22px;
+          }
+
+          .it-bottom-cta {
+            margin-top: 50px;
+            padding: 28px 20px;
+            border-radius: 14px;
+          }
+
+          .it-bottom-cta h2 {
+            font-size: 21px;
+          }
+
+          .it-bottom-cta p {
+            font-size: 13px;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .it-hero {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+
+          .it-form-section {
+            padding-left: 8px;
+            padding-right: 8px;
+          }
+
+          .it-form-card {
+            padding-left: 13px;
+            padding-right: 13px;
+          }
+
+          .it-radio-row {
+            grid-template-columns: 1fr;
+          }
+
+          .it-bottom-cta {
+            padding-left: 17px;
+            padding-right: 17px;
           }
         }
       `}</style>
@@ -773,7 +1003,10 @@ export default function InformationTechnologyGetInTouch() {
 
               <div className="it-consultation-grid">
                 {CONSULTATION_CARDS.map((card, index) => (
-                  <div className="it-consultation-card" key={index}>
+                  <div
+                    className="it-consultation-card"
+                    key={index}
+                  >
                     <div className="it-card-icon">
                       {card.icon}
                     </div>
@@ -850,13 +1083,13 @@ export default function InformationTechnologyGetInTouch() {
           </div>
         </section>
 
-
         {/* ================= FORM ================= */}
 
         <section
           className="it-form-section"
           id="technology-enquiry-form"
         >
+
           <div className="it-form-card">
 
             <div className="it-form-heading">
@@ -880,6 +1113,7 @@ export default function InformationTechnologyGetInTouch() {
               <div className="it-form-grid">
 
                 <div className="it-field">
+
                   <label>
                     01. Full Name <span>*</span>
                   </label>
@@ -892,10 +1126,11 @@ export default function InformationTechnologyGetInTouch() {
                     placeholder="Enter your full name"
                     required
                   />
+
                 </div>
 
-
                 <div className="it-field">
+
                   <label>
                     02. Business Email <span>*</span>
                   </label>
@@ -908,10 +1143,11 @@ export default function InformationTechnologyGetInTouch() {
                     placeholder="name@company.com"
                     required
                   />
+
                 </div>
 
-
                 <div className="it-field">
+
                   <label>03. Phone Number</label>
 
                   <input
@@ -921,10 +1157,11 @@ export default function InformationTechnologyGetInTouch() {
                     onChange={handleChange}
                     placeholder="Enter your phone number"
                   />
+
                 </div>
 
-
                 <div className="it-field">
+
                   <label>
                     04. Company / Organization <span>*</span>
                   </label>
@@ -937,12 +1174,13 @@ export default function InformationTechnologyGetInTouch() {
                     placeholder="Enter your company name"
                     required
                   />
+
                 </div>
 
               </div>
 
-
               <div className="it-field full-width">
+
                 <label>
                   05. What Can We Help You With? <span>*</span>
                 </label>
@@ -953,6 +1191,7 @@ export default function InformationTechnologyGetInTouch() {
                   onChange={handleChange}
                   required
                 >
+
                   <option value="" disabled>
                     Select a service or technology area
                   </option>
@@ -984,9 +1223,10 @@ export default function InformationTechnologyGetInTouch() {
                   <option value="technology-support">
                     Technology Support
                   </option>
-                </select>
-              </div>
 
+                </select>
+
+              </div>
 
               <div className="it-field full-width">
 
@@ -1003,7 +1243,6 @@ export default function InformationTechnologyGetInTouch() {
                 />
 
               </div>
-
 
               <div className="it-field full-width">
 
@@ -1029,7 +1268,6 @@ export default function InformationTechnologyGetInTouch() {
 
                   </label>
 
-
                   <label className="it-radio-box">
 
                     <input
@@ -1050,7 +1288,6 @@ export default function InformationTechnologyGetInTouch() {
 
               </div>
 
-
               <label className="it-consent">
 
                 <input
@@ -1066,7 +1303,6 @@ export default function InformationTechnologyGetInTouch() {
 
               </label>
 
-
               <button
                 type="submit"
                 className="it-submit-btn"
@@ -1075,20 +1311,22 @@ export default function InformationTechnologyGetInTouch() {
                 <ArrowRight size={17} />
               </button>
 
-
               <p className="it-privacy-text">
                 Your information is used to respond to your enquiry.{" "}
+
                 <a href="/privacy-policy">
                   View our Privacy Policy.
                 </a>
+
               </p>
 
             </form>
+
           </div>
+
         </section>
 
-
-        {/* ================= ENGAGEMENT PROCESS ================= */}
+                {/* ================= ENGAGEMENT PROCESS ================= */}
 
         <section className="it-process-section">
 
@@ -1106,7 +1344,6 @@ export default function InformationTechnologyGetInTouch() {
             </p>
 
           </div>
-
 
           <div className="it-process-grid">
 
@@ -1131,7 +1368,6 @@ export default function InformationTechnologyGetInTouch() {
 
           </div>
 
-
           {/* BOTTOM CTA */}
 
           <div className="it-bottom-cta">
@@ -1151,7 +1387,6 @@ export default function InformationTechnologyGetInTouch() {
               </p>
 
             </div>
-
 
             <button
               type="button"
