@@ -69,7 +69,6 @@ export default function CapabilitiesMarquee() {
     );
   };
 
-  // Automatic watch-like tick movement
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) =>
@@ -105,9 +104,20 @@ export default function CapabilitiesMarquee() {
   return (
     <section className="cap-section">
       <style>{`
-        /* ================= SECTION ================= */
+        /* =====================================================
+           SECTION
+           Same horizontal spacing as HOW WE WORK
+
+           Mobile  : 16px
+           SM      : 24px
+           MD      : 40px
+           Desktop : 100px
+        ===================================================== */
 
         .cap-section {
+          width: 100%;
+          box-sizing: border-box;
+
           background: #6d0e42;
 
           background-image:
@@ -123,7 +133,8 @@ export default function CapabilitiesMarquee() {
 
           background-size: 18px 18px;
 
-          padding: 56px 0 64px;
+          padding-top: 56px;
+          padding-bottom: 64px;
 
           overflow: hidden;
 
@@ -135,14 +146,20 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= HEADER ================= */
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         .cap-header {
-          max-width: 1200px;
+          width: 100%;
+          max-width: none;
 
           margin: 0 auto 35px;
 
-          padding: 0 40px;
+          padding-left: 16px;
+          padding-right: 16px;
+
+          box-sizing: border-box;
 
           display: flex;
 
@@ -156,7 +173,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= TITLE ================= */
+        /* =====================================================
+           TITLE
+        ===================================================== */
 
         .cap-title {
           color: #ffffff;
@@ -169,11 +188,13 @@ export default function CapabilitiesMarquee() {
 
           letter-spacing: -0.02em;
 
-          transform: translate(-10px, -10px);
+          transform: translate(0, -10px);
         }
 
 
-        /* ================= DESCRIPTION ================= */
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
 
         .cap-desc {
           color: rgba(255,255,255,0.92);
@@ -182,7 +203,7 @@ export default function CapabilitiesMarquee() {
 
           line-height: 1.5;
 
-          max-width: 700px;
+          max-width: 620px;
 
           margin: 0;
 
@@ -190,7 +211,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= SLIDER ================= */
+        /* =====================================================
+           SLIDER
+        ===================================================== */
 
         .cap-slider {
           width: 100%;
@@ -198,10 +221,14 @@ export default function CapabilitiesMarquee() {
           overflow: hidden;
 
           padding: 35px 0 45px;
+
+          box-sizing: border-box;
         }
 
 
-        /* ================= CARDS TRACK ================= */
+        /* =====================================================
+           CARDS TRACK
+        ===================================================== */
 
         .cap-slider-track {
           display: flex;
@@ -210,19 +237,22 @@ export default function CapabilitiesMarquee() {
 
           justify-content: center;
 
-          /* GAP INCREASED */
-          gap: 55px;
+          gap: 45px;
 
           min-height: 430px;
 
-          padding: 0 30px;
+          padding: 0 20px;
+
+          box-sizing: border-box;
         }
 
 
-        /* ================= CARD ================= */
+        /* =====================================================
+           CARD
+        ===================================================== */
 
         .cap-card {
-          width: 326px;
+          width: 300px;
 
           flex-shrink: 0;
 
@@ -251,7 +281,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= LEFT CARD ================= */
+        /* =====================================================
+           LEFT CARD
+        ===================================================== */
 
         .cap-card-left {
           transform:
@@ -264,7 +296,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= CENTER CARD ================= */
+        /* =====================================================
+           CENTER CARD
+        ===================================================== */
 
         .cap-card-center {
           transform:
@@ -285,7 +319,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= RIGHT CARD ================= */
+        /* =====================================================
+           RIGHT CARD
+        ===================================================== */
 
         .cap-card-right {
           transform:
@@ -298,7 +334,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= WATCH TICK EFFECT ================= */
+        /* =====================================================
+           WATCH TICK EFFECT
+        ===================================================== */
 
         @keyframes centerTick {
           0% {
@@ -321,7 +359,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= IMAGE ================= */
+        /* =====================================================
+           IMAGE
+        ===================================================== */
 
         .cap-card-art {
           width: 100%;
@@ -343,7 +383,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= LABEL ================= */
+        /* =====================================================
+           LABEL
+        ===================================================== */
 
         .cap-card-label {
           padding: 14px 18px 16px;
@@ -379,7 +421,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= ARROW ================= */
+        /* =====================================================
+           ARROW
+        ===================================================== */
 
         .cap-card-arrow {
           margin-left: 8px;
@@ -409,7 +453,9 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= CONTROLS ================= */
+        /* =====================================================
+           CONTROLS
+        ===================================================== */
 
         .cap-controls {
           display: flex;
@@ -470,48 +516,51 @@ export default function CapabilitiesMarquee() {
         }
 
 
-        /* ================= LAPTOP ================= */
+        /* =====================================================
+           SMALL
+           HOW WE WORK = sm:px-6
+        ===================================================== */
 
-        @media (max-width: 1150px) {
-          .cap-card {
-            width: 290px;
+        @media (min-width: 640px) {
+
+          .cap-header {
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
-          .cap-slider-track {
-            gap: 35px;
-          }
-
-          .cap-card-center {
-            transform:
-              scale(1.06)
-              translateY(-6px);
-          }
         }
 
 
-        /* ================= TABLET ================= */
+        /* =====================================================
+           TABLET
+           HOW WE WORK = md:px-10
+        ===================================================== */
 
-        @media (max-width: 900px) {
+        @media (min-width: 768px) {
+
           .cap-header {
-            padding: 0 30px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .cap-title {
             font-size: 36px;
+
             transform: none;
           }
 
           .cap-desc {
             font-size: 16px;
+
             transform: none;
           }
 
           .cap-card {
-            width: 245px;
+            width: 270px;
           }
 
           .cap-slider-track {
-            gap: 25px;
+            gap: 30px;
           }
 
           .cap-card-left,
@@ -524,30 +573,87 @@ export default function CapabilitiesMarquee() {
             transform:
               scale(1.03);
           }
+
         }
 
 
-        /* ================= MOBILE ================= */
+        /* =====================================================
+           DESKTOP
+           HOW WE WORK = lg:px-[100px]
+        ===================================================== */
 
-        @media (max-width: 768px) {
+        @media (min-width: 1024px) {
+
+          .cap-header {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+
+          .cap-card {
+            width: 285px;
+          }
+
+          .cap-slider-track {
+            gap: 40px;
+
+            /*
+              Track remains centered,
+              but content/card size is reduced.
+            */
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+
+        }
+
+
+        /* =====================================================
+           LARGE DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1200px) {
+
+          .cap-card {
+            width: 300px;
+          }
+
+          .cap-slider-track {
+            gap: 45px;
+          }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 767px) {
+
           .cap-section {
-            padding: 48px 0 55px;
+            padding-top: 48px;
+            padding-bottom: 55px;
           }
 
           .cap-header {
-            padding: 0 20px;
+            padding-left: 16px;
+            padding-right: 16px;
 
             margin-bottom: 15px;
           }
 
           .cap-title {
             font-size: 30px;
+
+            transform: none;
           }
 
           .cap-desc {
             font-size: 16px;
 
             max-width: 100%;
+
+            transform: none;
           }
 
           .cap-slider {
@@ -593,18 +699,25 @@ export default function CapabilitiesMarquee() {
             padding:
               13px 15px 15px;
           }
+
         }
 
 
-        /* ================= SMALL MOBILE ================= */
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
 
         @media (max-width: 480px) {
+
           .cap-section {
             padding:
               42px 0 50px;
           }
 
           .cap-header {
+            padding-left: 16px;
+            padding-right: 16px;
+
             gap:
               16px;
           }
@@ -651,25 +764,32 @@ export default function CapabilitiesMarquee() {
             font-size:
               20px;
           }
+
         }
 
 
-        /* ================= REDUCED MOTION ================= */
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
+
           .cap-card,
           .cap-card-center {
             animation: none;
 
             transition: none;
           }
+
         }
 
       `}</style>
 
+
       {/* ================= HEADER ================= */}
 
       <div className="cap-header">
+
         <h2 className="cap-title">
           Capabilities
         </h2>
@@ -679,26 +799,32 @@ export default function CapabilitiesMarquee() {
           solve complex business challenges. From digital platforms to AI, we
           help businesses work smarter, adapt and grow.
         </p>
+
       </div>
 
 
       {/* ================= WATCH TICK SLIDER ================= */}
 
       <div className="cap-slider">
+
         <div className="cap-slider-track">
+
           {visibleCards.map((card) => (
             <Card
               key={`${card.position}-${card.title}`}
               {...card}
             />
           ))}
+
         </div>
+
       </div>
 
 
       {/* ================= CONTROLS ================= */}
 
       <div className="cap-controls">
+
         <button
           type="button"
           className="cap-control-btn"
@@ -716,7 +842,9 @@ export default function CapabilitiesMarquee() {
         >
           →
         </button>
+
       </div>
+
     </section>
   );
 }

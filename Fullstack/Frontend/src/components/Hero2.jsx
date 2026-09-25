@@ -14,7 +14,17 @@ export default function BuildConnectGrow() {
     >
       {/* ================= LEFT CONTENT ================= */}
       <div className="relative bg-[#F6F2EA]/80 flex items-center overflow-hidden h-[400px] lg:h-[540px]">
-        <div className="relative z-10 px-8 sm:px-12 lg:px-20 max-w-xl">
+        <div
+          className="
+            relative
+            z-10
+            px-4
+            sm:px-6
+            md:px-10
+            lg:px-[100px]
+            max-w-xl
+          "
+        >
           <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-Plus Jakarta Sans text-gray-900 leading-tight">
             Build. Connect. Grow.
           </h2>
