@@ -397,6 +397,7 @@ import TcKeySolution from "./pages/Industry/Telecommunication/TcKeySolution.jsx"
 import TcSoftwareEngineer from "./pages/Industry/Telecommunication/TcSoftwareEngineer.jsx";
 import TcService from "./pages/Industry/Telecommunication/TcService.jsx";
 import TcApproach from "./pages/Industry/Telecommunication/TcApproach.jsx";
+import TcGetinTouch from "./pages/Industry/Telecommunication/TcGetInTouch.jsx";
 
 
 
@@ -1320,6 +1321,12 @@ function App() {
           <Route
             path="/industries/telecommunications"
             element={<Telecommunications/>}
+
+          />
+
+           <Route
+            path="/telecommunication-get-in-touch"
+            element={<TcGetinTouch/>}
 
           />
 

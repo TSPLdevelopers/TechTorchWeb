@@ -164,7 +164,7 @@ function YouTubeIcon() {
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-br from-[#7a1750] to-[#5c0f3d] text-white">
+    <footer className="w-full bg-[#730042] text-white">
       <div className="mx-auto max-w-6xl px-6 pt-16 pb-8">
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">

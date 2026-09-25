@@ -186,7 +186,8 @@ export default function ManufacturingGetInTouch() {
         .mfg-hero-heading h1 {
           margin: 22px 0 15px;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 42px;
+          font-size: 38px;
+          word-spacing: 6px;
           line-height: 1.12;
           letter-spacing: -1.8px;
           font-weight: 600;
@@ -237,7 +238,7 @@ export default function ManufacturingGetInTouch() {
         .mfg-consultation-card h3 {
           margin: 0 0 4px;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.25;
           font-weight: 600;
         }
@@ -246,7 +247,7 @@ export default function ManufacturingGetInTouch() {
           margin: 0;
           color: #777;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.45;
         }
 
@@ -321,7 +322,7 @@ export default function ManufacturingGetInTouch() {
         .mfg-image-content h3 {
           margin: 0;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 18px;
+          font-size: 16px;
           line-height: 1.3;
           font-weight: 500;
         }
@@ -333,9 +334,9 @@ export default function ManufacturingGetInTouch() {
         .mfg-requirement-content h2 {
           margin: 0 0 16px;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 18px;
+          font-size: 20px;
           line-height: 1.35;
-          font-weight: 600;
+          font-weight: 700;
         }
 
         .mfg-point {
@@ -349,8 +350,8 @@ export default function ManufacturingGetInTouch() {
         }
 
         .mfg-point-number {
-          width: 25px;
-          height: 25px;
+          width: 27px;
+          height: 27px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
@@ -358,14 +359,14 @@ export default function ManufacturingGetInTouch() {
           background: #f4e5ed;
           color: var(--mfg-beetroot);
           border-radius: 50%;
-          font-size: 9px;
+          font-size: 12px;
           font-weight: 700;
         }
 
         .mfg-point-text h4 {
           margin: 1px 0 3px;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 600;
         }
 
@@ -373,7 +374,7 @@ export default function ManufacturingGetInTouch() {
           margin: 0;
           color: #777;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.5;
         }
 
@@ -395,7 +396,7 @@ export default function ManufacturingGetInTouch() {
           padding-bottom: 11px;
           border-bottom: 1px solid #ededed;
           color: var(--mfg-beetroot);
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 700;
         }
 
@@ -425,13 +426,15 @@ export default function ManufacturingGetInTouch() {
           display: block;
           margin-bottom: 2px;
           color: #777;
-          font-size: 9px;
+          font-size: 12px;
+          font-weight: 600;
         }
 
         .mfg-contact-item strong {
           display: block;
           color: #333;
-          font-size: 10px;
+          font-size: 12px;
+          font-family: "Inter";
           font-weight: 600;
         }
 
@@ -458,7 +461,7 @@ export default function ManufacturingGetInTouch() {
           margin: 0 0 24px;
           color: #777;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.5;
         }
 
@@ -481,7 +484,7 @@ export default function ManufacturingGetInTouch() {
           display: block;
           margin-bottom: 6px;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 600;
           color: #333;
         }
@@ -507,14 +510,14 @@ export default function ManufacturingGetInTouch() {
         .mfg-field select {
           height: 39px;
           padding: 0 11px;
-          font-size: 11px;
+          font-size: 12px;
         }
 
         .mfg-field textarea {
           min-height: 74px;
           padding: 10px 11px;
           resize: vertical;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.45;
         }
 
@@ -543,7 +546,7 @@ export default function ManufacturingGetInTouch() {
           gap: 6px;
           margin: 0 !important;
           cursor: pointer;
-          font-size: 11px !important;
+          font-size: 13px !important;
           font-weight: 400 !important;
         }
 
@@ -567,7 +570,7 @@ export default function ManufacturingGetInTouch() {
           border-radius: 8px;
           color: #777;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 10px;
+          font-size: 12px;
           cursor: pointer;
         }
 
@@ -594,7 +597,7 @@ export default function ManufacturingGetInTouch() {
           background: var(--mfg-beetroot);
           color: #fff;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 700;
           cursor: pointer;
           transition: 0.2s ease;
@@ -665,7 +668,7 @@ export default function ManufacturingGetInTouch() {
           margin: 0;
           color: #777;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 10px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -697,7 +700,7 @@ export default function ManufacturingGetInTouch() {
           margin: 0;
           color: rgba(255, 255, 255, 0.88);
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -714,7 +717,7 @@ export default function ManufacturingGetInTouch() {
           border-radius: 8px;
           background: #fff;
           color: var(--mfg-beetroot);
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 700;
           cursor: pointer;
         }
