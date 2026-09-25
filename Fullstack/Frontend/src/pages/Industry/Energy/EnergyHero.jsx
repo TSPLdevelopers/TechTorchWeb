@@ -1,11 +1,13 @@
 import React from "react";
 import { ArrowRight, Settings } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
 
 export default function EnergyHeroSection() {
+  const navigate = useNavigate();
   return (
     <div className="w-full font-sans bg-white" style={{ color: INK }}>
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-14 items-center">
@@ -41,6 +43,7 @@ export default function EnergyHeroSection() {
             <button
               className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-white text-sm font-medium"
               style={{ background: WINE }}
+              onClick={() => navigate("/energy-get-in-touch")}
             >
               Get in Touch
               <ArrowRight size={16} />

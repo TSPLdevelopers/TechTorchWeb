@@ -409,6 +409,7 @@ import EnergyKeySolution from "./pages/Industry/Energy/EnergyKeySolution.jsx";
 import EnergySoftwareEngineering from "./pages/Industry/Energy/EnergySoftwareEngineering.jsx";
 import EnergyTechnologyService from "./pages/Industry/Energy/EnergyTechnologyService.jsx";
 import EnergyApproach from "./pages/Industry/Energy/EnergyApproach.jsx";
+import EnergyGetInTouch from "./pages/Industry/Energy/EnergyGetInTouch.jsx";
 
 // =================================================
 // SCROLL TO TOP
@@ -1332,7 +1333,6 @@ function App() {
            <Route
             path="/it-get-in-touch"
             element={<ITGetInTouch/>}
-
           />
           <Route
             path="/manufacturing-get-in-touch"
@@ -1347,13 +1347,16 @@ function App() {
            <Route
             path="/industries/energy"
             element={<Energy/>}
-
           />
 
            <Route
             path="/telecommunication-get-in-touch"
             element={<TcGetinTouch/>}
+          />
 
+           <Route
+            path="/energy-get-in-touch"
+            element={<EnergyGetInTouch/>}
           />
 
         </Route>
