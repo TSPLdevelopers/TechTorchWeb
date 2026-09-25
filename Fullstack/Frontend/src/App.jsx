@@ -412,6 +412,15 @@ import EnergyApproach from "./pages/Industry/Energy/EnergyApproach.jsx";
 import EnergyGetInTouch from "./pages/Industry/Energy/EnergyGetInTouch.jsx";
 
 // =================================================
+// TRANSPORTATION
+// =================================================
+
+import TransHero from "./pages/Industry/Transportation/TransHero.jsx";
+import TransportationConnected from "./pages/Industry/Transportation/TransportationConnected.jsx";
+import TransportationSolution from "./pages/Industry/Transportation/TransportationSolution.jsx";
+
+
+// =================================================
 // SCROLL TO TOP
 // =================================================
 function ScrollToTop() {
@@ -1008,6 +1017,7 @@ function Telecommunications(){
     </>
   )
 }
+
 function Energy(){
   return(
     <>
@@ -1017,6 +1027,15 @@ function Energy(){
     <EnergySoftwareEngineering />
     <EnergyTechnologyService />
     <EnergyApproach />
+    </>
+  )
+}
+function Transportation(){
+  return(
+    <>
+    <TransHero />
+    <TransportationConnected />
+    <TransportationSolution />
     </>
   )
 }
@@ -1357,6 +1376,11 @@ function App() {
            <Route
             path="/energy-get-in-touch"
             element={<EnergyGetInTouch/>}
+          />
+          <Route
+            path="/industries/transportation"
+            element={<Transportation/>}
+
           />
 
         </Route>
