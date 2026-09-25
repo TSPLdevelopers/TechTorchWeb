@@ -416,6 +416,10 @@ import EnergyApproach from "./pages/Industry/Energy/EnergyApproach.jsx";
 import TransHero from "./pages/Industry/Transportation/TransHero.jsx";
 import TransportationConnected from "./pages/Industry/Transportation/TransportationConnected.jsx";
 import TransportationSolution from "./pages/Industry/Transportation/TransportationSolution.jsx";
+import TransportationSupplyChain from "./pages/Industry/Transportation/TransportationSupplyChain.jsx";
+import TransportationSoftware from "./pages/Industry/Transportation/TransportationSoftware.jsx";
+import TransportationApproach from "./pages/Industry/Transportation/TransportationApproach.jsx";
+import TransportationEnterprise from "./pages/Industry/Transportation/TransportationEnterprise.jsx";
 
 
 // =================================================
@@ -1034,6 +1038,10 @@ function Transportation(){
     <TransHero />
     <TransportationConnected />
     <TransportationSolution />
+    <TransportationSupplyChain />
+    <TransportationSoftware />
+    <TransportationApproach />
+    <TransportationEnterprise />
     </>
   )
 }
