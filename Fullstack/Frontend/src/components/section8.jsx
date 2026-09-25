@@ -38,7 +38,6 @@ const industries = [
     image: "/Healthcare 2 [Vectorized].svg",
     path: "/industries/healthcare",
   },
-  
   {
     id: "manufacturing",
     title: "Manufacturing",
@@ -86,13 +85,13 @@ const industries = [
     image: "/Transportation 2 [Vectorized].svg",
     path: "/industries/transportation",
   },
-   {
+  {
     id: "E-Commerce",
     title: "E-Commerce",
     description:
       "Scalable experiences for a connected marketplace.",
-    image: "\TechTorch_E-Commerce_Icon 1.svg",
-    path: "/industries/transportation",
+    image: "/TechTorch_E-Commerce_Icon 1.svg",
+    path: "/industries/e-commerce",
   },
 ];
 
@@ -385,9 +384,17 @@ export default function IndustriesCarousel() {
 
           width: 100%;
 
+          /*
+             HOW WE WORK SAME HORIZONTAL SPACING
+             Mobile = 16px
+             Small = 24px
+             Tablet = 40px
+             Desktop = 100px
+          */
+
           padding:
             64px
-            80px
+            16px
             72px;
 
           background: ${COLORS.cream};
@@ -412,6 +419,47 @@ export default function IndustriesCarousel() {
           color: ${COLORS.ink};
 
           overflow: hidden;
+
+          box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           SMALL
+           640px+
+        ===================================================== */
+
+        @media (min-width: 640px) {
+          .industries-section {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+
+        /* =====================================================
+           TABLET
+           768px+
+        ===================================================== */
+
+        @media (min-width: 768px) {
+          .industries-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+
+        /* =====================================================
+           DESKTOP
+           1024px+
+        ===================================================== */
+
+        @media (min-width: 1024px) {
+          .industries-section {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
         }
 
 
@@ -544,6 +592,12 @@ export default function IndustriesCarousel() {
 
           overflow: hidden;
 
+          padding-top: 14px;
+
+          padding-bottom: 8px;
+
+          margin-top: -14px;
+
           mask-image:
             linear-gradient(
               90deg,
@@ -586,14 +640,14 @@ export default function IndustriesCarousel() {
 
           min-width: 280px;
 
-          height: 380px;
+          height: 360px;
 
           margin-right: 24px;
 
           padding:
-            32px
+            30px
             28px
-            28px;
+            26px;
 
           background: #ffffff;
 
@@ -620,6 +674,8 @@ export default function IndustriesCarousel() {
           transition:
             box-shadow 0.3s ease,
             transform 0.3s ease;
+
+          box-sizing: border-box;
         }
 
 
@@ -642,9 +698,15 @@ export default function IndustriesCarousel() {
 
           height: 100px;
 
-          margin-bottom: 24px;
+          margin-bottom: 22px;
 
           flex-shrink: 0;
+
+          overflow: visible;
+
+          position: relative;
+
+          z-index: 2;
         }
 
 
@@ -653,7 +715,7 @@ export default function IndustriesCarousel() {
 
           height: 100%;
 
-          overflow: hidden;
+          overflow: visible;
 
           border-radius: 12px;
 
@@ -662,6 +724,8 @@ export default function IndustriesCarousel() {
           align-items: center;
 
           justify-content: center;
+
+          position: relative;
         }
 
 
@@ -671,6 +735,8 @@ export default function IndustriesCarousel() {
           height: 100%;
 
           object-fit: contain;
+
+          transform-origin: center center;
 
           transition:
             transform 0.4s ease,
@@ -701,8 +767,8 @@ export default function IndustriesCarousel() {
 
           50% {
             transform:
-              translateY(-10px)
-              scale(1.06);
+              translateY(-7px)
+              scale(1.04);
           }
 
           100% {
@@ -722,7 +788,7 @@ export default function IndustriesCarousel() {
           margin:
             0
             0
-            10px;
+            9px;
 
           font-size: 20px;
 
@@ -742,7 +808,7 @@ export default function IndustriesCarousel() {
           margin:
             0
             0
-            24px;
+            20px;
 
           font-size: 14.5px;
 
@@ -796,10 +862,8 @@ export default function IndustriesCarousel() {
         @media (max-width: 1023px) {
 
           .industries-section {
-            padding:
-              56px
-              40px
-              64px;
+            padding-top: 56px;
+            padding-bottom: 64px;
           }
 
 
@@ -830,12 +894,12 @@ export default function IndustriesCarousel() {
 
             min-width: 260px;
 
-            height: 360px;
+            height: 345px;
 
             margin-right: 20px;
 
             padding:
-              28px
+              26px
               24px
               24px;
           }
@@ -846,7 +910,7 @@ export default function IndustriesCarousel() {
 
             height: 88px;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
           }
 
 
@@ -869,10 +933,8 @@ export default function IndustriesCarousel() {
         @media (max-width: 767px) {
 
           .industries-section {
-            padding:
-              48px
-              20px
-              56px;
+            padding-top: 48px;
+            padding-bottom: 56px;
           }
 
 
@@ -930,10 +992,13 @@ export default function IndustriesCarousel() {
 
 
           .industries-viewport {
-            margin-left: -5px;
+            margin-left: 0;
 
-            width:
-              calc(100% + 10px);
+            width: 100%;
+
+            padding-top: 12px;
+
+            margin-top: -12px;
           }
 
 
@@ -942,14 +1007,14 @@ export default function IndustriesCarousel() {
 
             min-width: 250px;
 
-            height: 350px;
+            height: 335px;
 
             margin-right: 16px;
 
             padding:
-              26px
+              25px
               22px
-              24px;
+              23px;
 
             border-radius: 14px;
           }
@@ -960,7 +1025,7 @@ export default function IndustriesCarousel() {
 
             height: 82px;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
           }
 
 
@@ -976,7 +1041,7 @@ export default function IndustriesCarousel() {
 
             line-height: 1.5;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
           }
 
 
@@ -994,10 +1059,8 @@ export default function IndustriesCarousel() {
         @media (max-width: 479px) {
 
           .industries-section {
-            padding:
-              40px
-              16px
-              48px;
+            padding-top: 40px;
+            padding-bottom: 48px;
           }
 
 
@@ -1039,14 +1102,14 @@ export default function IndustriesCarousel() {
 
             min-width: 235px;
 
-            height: 335px;
+            height: 320px;
 
             margin-right: 14px;
 
             padding:
-              24px
+              23px
               20px
-              22px;
+              21px;
           }
 
 
@@ -1055,7 +1118,7 @@ export default function IndustriesCarousel() {
 
             height: 76px;
 
-            margin-bottom: 18px;
+            margin-bottom: 17px;
           }
 
 

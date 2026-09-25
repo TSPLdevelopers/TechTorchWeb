@@ -165,7 +165,28 @@ function YouTubeIcon() {
 export default function Footer() {
   return (
     <footer className="w-full bg-[#730042] text-white">
-      <div className="mx-auto max-w-6xl px-6 pt-16 pb-8">
+
+
+      {/* ================= MAIN FOOTER CONTAINER ================= */}
+
+      <div
+        className="
+          w-full
+          px-4
+          pt-12
+          pb-8
+
+          sm:px-6
+
+          md:px-10
+          md:pt-16
+
+          lg:px-[100px]
+        "
+      >
+
+        {/* ================= FOOTER GRID ================= */}
+
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
 
@@ -217,6 +238,7 @@ export default function Footer() {
             </div>
           </div>
 
+
           {/* ================= EXPLORE ================= */}
 
           <div>
@@ -229,7 +251,12 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-[15px] text-white/80 transition-colors hover:text-white"
+                    className="
+                      text-[15px]
+                      text-white/80
+                      transition-colors
+                      hover:text-white
+                    "
                   >
                     {link}
                   </a>
@@ -237,6 +264,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
 
           {/* ================= COMPANY ================= */}
 
@@ -250,7 +278,12 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-[15px] text-white/80 transition-colors hover:text-white"
+                    className="
+                      text-[15px]
+                      text-white/80
+                      transition-colors
+                      hover:text-white
+                    "
                   >
                     {link}
                   </a>
@@ -258,6 +291,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
 
           {/* ================= CTA ================= */}
 
@@ -273,7 +307,18 @@ export default function Footer() {
 
             <a
               href="#"
-              className="mb-5 inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-wide transition-all hover:gap-3"
+              className="
+                mb-5
+                inline-flex
+                items-center
+                gap-2
+                text-[14px]
+                font-semibold
+                uppercase
+                tracking-wide
+                transition-all
+                hover:gap-3
+              "
             >
               Talk to our experts
               <ArrowRight size={16} />
@@ -297,7 +342,9 @@ export default function Footer() {
 
             </div>
           </div>
+
         </div>
+
 
         {/* ================= DISCLAIMER ================= */}
 
@@ -313,9 +360,25 @@ export default function Footer() {
           </p>
         </div>
 
+
         {/* ================= BOTTOM ================= */}
 
-        <div className="mt-6 flex flex-col items-start justify-between gap-4 border-t border-white/20 pt-6 sm:flex-row sm:items-center">
+        <div
+          className="
+            mt-6
+            flex
+            flex-col
+            items-start
+            justify-between
+            gap-4
+            border-t
+            border-white/20
+            pt-6
+
+            sm:flex-row
+            sm:items-center
+          "
+        >
 
           <p className="text-[13px] text-white/70">
             © 2024 — 2026 TechTorch Solutions Private Limited. All rights
@@ -327,7 +390,12 @@ export default function Footer() {
               <a
                 key={link}
                 href="#"
-                className="text-[13px] text-white/80 transition-colors hover:text-white"
+                className="
+                  text-[13px]
+                  text-white/80
+                  transition-colors
+                  hover:text-white
+                "
               >
                 {link}
               </a>
@@ -335,6 +403,7 @@ export default function Footer() {
           </div>
 
         </div>
+
       </div>
     </footer>
   );

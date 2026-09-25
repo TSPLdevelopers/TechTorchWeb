@@ -82,8 +82,6 @@ function CopyPanel() {
       style={{
         paddingTop: "65px",
         paddingBottom: "65px",
-        paddingLeft: "70px",
-        paddingRight: "70px",
       }}
     >
       <Eyebrow>The Next Chapter</Eyebrow>
@@ -212,6 +210,11 @@ export default function TorchXVideoSection() {
           align-items: stretch;
           background: ${colors.cream};
           overflow: hidden;
+
+          /* Same spacing as HOW WE WORK */
+          padding-left: 16px;
+          padding-right: 16px;
+          box-sizing: border-box;
         }
 
         .tx-copy-wrapper {
@@ -255,6 +258,30 @@ export default function TorchXVideoSection() {
         }
 
         /* =====================================================
+           SMALL DEVICES
+           640px+
+        ===================================================== */
+
+        @media (min-width: 640px) {
+          .tx-section {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+        /* =====================================================
+           TABLET
+           768px+
+        ===================================================== */
+
+        @media (min-width: 768px) {
+          .tx-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+        /* =====================================================
            MOBILE
         ===================================================== */
 
@@ -281,7 +308,7 @@ export default function TorchXVideoSection() {
           .tx-copy {
             width: 100%;
             max-width: none;
-            padding: 40px 20px 35px !important;
+            padding: 40px 0 35px !important;
           }
 
           .tx-heading {
@@ -356,7 +383,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-copy {
-            padding-left: 45px !important;
+            padding-left: 0 !important;
             padding-right: 30px !important;
             padding-top: 45px !important;
             padding-bottom: 45px !important;
@@ -389,6 +416,18 @@ export default function TorchXVideoSection() {
 
         /* =====================================================
            DESKTOP
+           1024px+
+        ===================================================== */
+
+        @media (min-width: 1024px) {
+          .tx-section {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+        }
+
+        /* =====================================================
+           DESKTOP
         ===================================================== */
 
         @media (min-width: 1024px) and (max-width: 1279px) {
@@ -412,7 +451,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-copy {
-            padding-left: 60px !important;
+            padding-left: 0 !important;
             padding-right: 35px !important;
             padding-top: 50px !important;
             padding-bottom: 50px !important;
@@ -468,7 +507,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-copy {
-            padding-left: 75px !important;
+            padding-left: 0 !important;
             padding-right: 45px !important;
             padding-top: 60px !important;
             padding-bottom: 60px !important;
@@ -494,7 +533,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-copy {
-            padding-left: 85px !important;
+            padding-left: 0 !important;
             padding-right: 55px !important;
           }
 

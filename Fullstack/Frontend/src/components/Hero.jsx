@@ -171,9 +171,10 @@ const Hero = () => {
           flex-col
           justify-center
           max-w-[640px]
-          px-6
-          md:px-16
-          lg:px-20
+          px-4
+          sm:px-6
+          md:px-10
+          lg:px-[100px]
           text-white
           animate-[fadeIn_0.5s_ease]
         "

@@ -399,7 +399,16 @@ import TcService from "./pages/Industry/Telecommunication/TcService.jsx";
 import TcApproach from "./pages/Industry/Telecommunication/TcApproach.jsx";
 import TcGetinTouch from "./pages/Industry/Telecommunication/TcGetInTouch.jsx";
 
+// =================================================
+// ENERGY
+// =================================================
 
+import EnergyHero from "./pages/Industry/Energy/EnergyHero.jsx";
+import EnergyTechnology from "./pages/Industry/Energy/EnergyTechnology.jsx";
+import EnergyKeySolution from "./pages/Industry/Energy/EnergyKeySolution.jsx";
+import EnergySoftwareEngineering from "./pages/Industry/Energy/EnergySoftwareEngineering.jsx";
+import EnergyTechnologyService from "./pages/Industry/Energy/EnergyTechnologyService.jsx";
+import EnergyApproach from "./pages/Industry/Energy/EnergyApproach.jsx";
 
 // =================================================
 // SCROLL TO TOP
@@ -998,6 +1007,18 @@ function Telecommunications(){
     </>
   )
 }
+function Energy(){
+  return(
+    <>
+    <EnergyHero />
+    <EnergyTechnology />
+    <EnergyKeySolution />
+    <EnergySoftwareEngineering />
+    <EnergyTechnologyService />
+    <EnergyApproach />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1321,6 +1342,11 @@ function App() {
           <Route
             path="/industries/telecommunications"
             element={<Telecommunications/>}
+
+          />
+           <Route
+            path="/industries/energy"
+            element={<Energy/>}
 
           />
 
