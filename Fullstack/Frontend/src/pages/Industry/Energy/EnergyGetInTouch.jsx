@@ -608,12 +608,45 @@ export default function EnergyGetInTouch() {
           box-shadow: 0 3px 15px rgba(20, 30, 50, 0.035);
         }
 
+        .energy-image-media {
+          position: relative;
+          width: 100%;
+          background: #eaf1f7;
+        }
+
         .energy-image {
           display: block;
           width: 100%;
           height: auto;
           aspect-ratio: 1.78 / 1;
-          object-fit: cover;
+          object-fit: contain;
+        }
+
+        .energy-image-label {
+          position: absolute;
+          left: 4%;
+          bottom: 7%;
+          min-height: 34px;
+          padding: 0 13px;
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          border-radius: 5px;
+          background: var(--energy-beetroot);
+          color: #fff;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.2px;
+          white-space: nowrap;
+          z-index: 2;
+        }
+
+        .energy-label-dot {
+          width: 7px;
+          height: 7px;
+          flex-shrink: 0;
+          border-radius: 50%;
+          background: #fff;
         }
 
         .energy-image-content {
@@ -759,70 +792,73 @@ export default function EnergyGetInTouch() {
           }
         }
 
-        /* ================= TABLET / IPAD PRO ================= */
+        /* ================= IPAD PRO 13 / SURFACE PRO 10 / IPAD MINI ================= */
 
-        @media (max-width: 1024px) {
+        @media (min-width: 700px) and (max-width: 1199px) {
           .energy-page {
             padding: 40px 38px 60px;
           }
 
           .energy-main-grid {
-            grid-template-columns: 1fr;
-            gap: 25px;
+            grid-template-columns: minmax(0, 1.42fr) minmax(250px, 0.88fr);
+            gap: 24px;
           }
 
           .energy-side {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            align-items: start;
+            display: block;
           }
 
+          .energy-image-card,
+          .energy-expect-card,
           .energy-help-card {
-            grid-column: 1 / -1;
-            margin-top: 0;
+            width: 100%;
           }
 
           .energy-expect-card {
-            margin-top: 0;
+            margin-top: 15px;
           }
 
-          .energy-image-card {
-            height: 100%;
+          .energy-help-card {
+            margin-top: 15px;
+          }
+
+          .energy-form-card {
+            padding: 28px;
           }
         }
 
-        /* ================= IPAD MINI / SMALL TABLET ================= */
+        /* ================= IPAD MINI ================= */
 
-        @media (max-width: 820px) {
+        @media (min-width: 700px) and (max-width: 820px) {
           .energy-page {
-            padding: 34px 28px 50px;
+            padding: 32px 24px 50px;
           }
 
-          .energy-hero h1 {
-            font-size: 34px;
+          .energy-main-grid {
+            grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.85fr);
+            gap: 18px;
           }
 
-          .energy-side {
-            grid-template-columns: 1fr;
+          .energy-form-card {
+            padding: 22px;
           }
 
-          .energy-expect-card {
-            margin-top: 0;
-          }
-
-          .energy-help-card {
-            grid-column: auto;
+          .energy-fields-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
 
           .energy-stage-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .energy-side {
+            display: block;
           }
         }
 
         /* ================= MOBILE ================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 699px) {
           .energy-page {
             padding: 25px 15px 40px;
           }
@@ -884,6 +920,21 @@ export default function EnergyGetInTouch() {
 
           .energy-image {
             aspect-ratio: 1.6 / 1;
+          }
+
+          .energy-image-label {
+            left: 3%;
+            bottom: 6%;
+            min-height: 24px;
+            padding: 0 8px;
+            gap: 4px;
+            font-size: 6px;
+            border-radius: 3px;
+          }
+
+          .energy-label-dot {
+            width: 4px;
+            height: 4px;
           }
 
           .energy-image-content h2 {
@@ -1351,11 +1402,18 @@ export default function EnergyGetInTouch() {
 
             <div className="energy-image-card">
 
-              <img
-                className="energy-image"
-                src="/EnergyGetInTouch.png"
-                alt="Energy technology consultation"
-              />
+              <div className="energy-image-media">
+                <img
+                  className="energy-image"
+                  src="/EnergyGetInTouch.png"
+                  alt="Energy technology consultation"
+                />
+
+                <div className="energy-image-label">
+                  <span className="energy-label-dot" />
+                  ENERGY TECHNOLOGY CONSULTATION
+                </div>
+              </div>
 
               <div className="energy-image-content">
 
