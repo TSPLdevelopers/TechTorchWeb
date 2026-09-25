@@ -418,7 +418,7 @@ import EnergyGetInTouch from "./pages/Industry/Energy/EnergyGetInTouch.jsx";
 import TransHero from "./pages/Industry/Transportation/TransHero.jsx";
 import TransportationConnected from "./pages/Industry/Transportation/TransportationConnected.jsx";
 import TransportationSolution from "./pages/Industry/Transportation/TransportationSolution.jsx";
-
+import TransportationGetInTouch from "./pages/Industry/Transportation/TransportationGetInTouch.jsx";
 
 // =================================================
 // SCROLL TO TOP
@@ -1380,6 +1380,12 @@ function App() {
           <Route
             path="/industries/transportation"
             element={<Transportation/>}
+
+          />
+
+            <Route
+            path="/transportation-get-in-touch"
+            element={<TransportationGetInTouch/>}
 
           />
 
