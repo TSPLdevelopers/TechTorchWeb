@@ -209,11 +209,11 @@ const FMCGGetInTouch = () => {
           margin: 0;
           max-width: 720px;
 
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: clamp(36px, 4vw, 53px);
+          font-size: 34px;
           line-height: 1.08;
-          font-weight: 800;
+          font-weight: 700;
 
           letter-spacing: -1.5px;
         }
@@ -223,10 +223,10 @@ const FMCGGetInTouch = () => {
 
           margin: 20px 0 28px;
 
-          color: #66676a;
-
-          font-size: 17px;
-          line-height: 1.65;
+          color: #626366;
+          font-family: "Inter",sans-serif;
+          font-size: 15px;
+          line-height: 1.60;
         }
 
         /* ================= CONSULTATION CARDS ================= */
@@ -261,7 +261,7 @@ const FMCGGetInTouch = () => {
         .consultation-title span {
           color: var(--beetroot);
 
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 800;
           letter-spacing: 0.5px;
         }
@@ -269,7 +269,7 @@ const FMCGGetInTouch = () => {
         .consultation-title h3 {
           margin: 0;
 
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 16px;
           line-height: 1.25;
@@ -279,9 +279,9 @@ const FMCGGetInTouch = () => {
         .consultation-card p {
           margin: 12px 0 0;
 
-          color: #77787b;
-
-          font-size: 12px;
+          color: #626366;
+          font-family: "Inter",sans-serif;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -356,16 +356,16 @@ const FMCGGetInTouch = () => {
         .fmcg-image-overlay h2 {
           margin: 0 0 8px;
 
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+          font-family: "Plus Jakarta Sans",sans-serif;
 
-          font-size: 22px;
+          font-size: 18px;
           line-height: 1.25;
-          font-weight: 750;
+          font-weight: 600;
         }
 
         .fmcg-image-overlay p {
           margin: 0;
-
+          font-family: "Inter",sans-serif;
           font-size: 13px;
           line-height: 1.55;
 
@@ -393,11 +393,11 @@ const FMCGGetInTouch = () => {
         .fmcg-form-intro h2 {
           margin: 0;
 
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 31px;
+          font-size: 28px;
           line-height: 1.25;
-          font-weight: 800;
+          font-weight: 700;
 
           letter-spacing: -0.8px;
         }
@@ -405,8 +405,8 @@ const FMCGGetInTouch = () => {
         .fmcg-form-intro p {
           margin: 8px 0 0;
 
-          color: #6c6d70;
-
+          color: #626366;
+          font-family: "Inter",sans-serif;
           font-size: 14px;
           line-height: 1.6;
         }
@@ -444,11 +444,11 @@ const FMCGGetInTouch = () => {
 
           margin: 0;
 
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+          font-family: "Plus Jakarta Sans",sans-serif;
 
-          font-size: 18px;
+          font-size: 16px;
           line-height: 1.35;
-          font-weight: 750;
+          font-weight: 700;
         }
 
         .section-heading-row h3 span {
@@ -461,15 +461,15 @@ const FMCGGetInTouch = () => {
         .section-heading-row p {
           margin: 5px 0 0;
 
-          color: #85868a;
+          color: #626366;
 
-          font-size: 11px;
+          font-size: 12px;
         }
 
         .select-label {
           padding-top: 4px;
 
-          color: #85868a;
+          color: #626366;
 
           font-size: 9px;
           line-height: 1.2;
@@ -568,15 +568,15 @@ const FMCGGetInTouch = () => {
 
           font-size: 14px;
           line-height: 1.3;
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .help-card p {
           margin: 2px 0 0;
 
-          color: #77787b;
+          color: #626366;
 
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.35;
         }
 
@@ -598,7 +598,7 @@ const FMCGGetInTouch = () => {
           border: 0;
           outline: 0;
 
-          padding: 8px 15px;
+          padding: 10px 18px;
 
           border-radius: 30px;
 
@@ -608,9 +608,9 @@ const FMCGGetInTouch = () => {
 
           font-family: inherit;
 
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1;
-          font-weight: 650;
+          font-weight: 600;
 
           cursor: pointer;
 
@@ -657,7 +657,7 @@ const FMCGGetInTouch = () => {
           border: 1px solid transparent;
 
           border-radius: 8px;
-
+          font-family: "Inter",sans-serif;
           cursor: pointer;
 
           font-size: 13px;
@@ -719,10 +719,10 @@ const FMCGGetInTouch = () => {
 
         .input-group label {
           margin-bottom: 9px;
-
-          font-size: 11px;
+          font-family: "Inter",sans-serif;
+          font-size: 13px;
           line-height: 1.2;
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .input-group label span {
@@ -794,7 +794,7 @@ const FMCGGetInTouch = () => {
 
           color: #414246;
 
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.4;
 
           cursor: pointer;
@@ -861,7 +861,7 @@ const FMCGGetInTouch = () => {
 
           color: #85868a;
 
-          font-size: 9px;
+          font-size: 12px;
           line-height: 1.55;
         }
 
@@ -882,7 +882,7 @@ const FMCGGetInTouch = () => {
 
           height: 50px;
 
-          padding: 0 20px;
+          padding: 0 10px;
 
           border: 0;
 
@@ -894,11 +894,11 @@ const FMCGGetInTouch = () => {
 
           font-family: inherit;
 
-          font-size: 11px;
+          font-size: 12px;
 
           line-height: 1;
 
-          font-weight: 750;
+          font-weight: 600;
 
           letter-spacing: 0.5px;
 
@@ -1272,7 +1272,7 @@ const FMCGGetInTouch = () => {
           <div className="fmcg-hero-image-wrapper">
 
             <img
-              src="/FMCGGetInTouvh.png"
+              src="/FMCGGetInTouch.png"
               alt="FMCG Technology Consultation"
               className="fmcg-hero-image"
             />

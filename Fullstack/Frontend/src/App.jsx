@@ -422,6 +422,7 @@ import TransportationSupplyChain from "./pages/Industry/Transportation/Transport
 import TransportationSoftware from "./pages/Industry/Transportation/TransportationSoftware.jsx";
 import TransportationApproach from "./pages/Industry/Transportation/TransportationApproach.jsx";
 import TransportationEnterprise from "./pages/Industry/Transportation/TransportationEnterprise.jsx";
+import TransportationGetInTouch from "./pages/Industry/Transportation/TransportationGetInTouch.jsx";
 
 // =================================================
 // FMCG
@@ -435,7 +436,7 @@ import FmcgBusiness from "./pages/Industry/Fmcg/FmcgBusiness.jsx";
 import FmcgSoftwareEngineering from "./pages/Industry/Fmcg/FmcgSoftwareEngineering.jsx";
 import FmcgTechnologyService from "./pages/Industry/Fmcg/FmcgTechnologyService.jsx";
 import FmcgApproach from "./pages/Industry/Fmcg/FmcgApproach.jsx";
-
+import FmcgGetInTouch from "./pages/Industry/Fmcg/FmcgGetInTouch.jsx";
 
 
 
@@ -1419,18 +1420,21 @@ function App() {
           <Route
             path="/industries/transportation"
             element={<Transportation/>}
-
           />
+
+          <Route
+            path="/transportation-get-in-touch"
+            element={<TransportationGetInTouch/>}
+          />
+
           <Route
             path="/industries/fmcg"
             element={<Fmcg/>}
-
           />
 
-            <Route
-            path="/transportation-get-in-touch"
-            element={<TransportationGetInTouch/>}
-
+          <Route
+            path="/fmcg-get-in-touch"
+            element={<FmcgGetInTouch/>}
           />
 
         </Route>
