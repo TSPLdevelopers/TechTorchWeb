@@ -418,7 +418,27 @@ import EnergyGetInTouch from "./pages/Industry/Energy/EnergyGetInTouch.jsx";
 import TransHero from "./pages/Industry/Transportation/TransHero.jsx";
 import TransportationConnected from "./pages/Industry/Transportation/TransportationConnected.jsx";
 import TransportationSolution from "./pages/Industry/Transportation/TransportationSolution.jsx";
-import TransportationGetInTouch from "./pages/Industry/Transportation/TransportationGetInTouch.jsx";
+import TransportationSupplyChain from "./pages/Industry/Transportation/TransportationSupplyChain.jsx";
+import TransportationSoftware from "./pages/Industry/Transportation/TransportationSoftware.jsx";
+import TransportationApproach from "./pages/Industry/Transportation/TransportationApproach.jsx";
+import TransportationEnterprise from "./pages/Industry/Transportation/TransportationEnterprise.jsx";
+
+// =================================================
+// FMCG
+// =================================================
+
+import FmcgHero from "./pages/Industry/Fmcg/FmcgHero.jsx";
+import FmcgSolution from "./pages/Industry/Fmcg/FmcgSolution.jsx";
+import FmcgOurSolution from "./pages/Industry/Fmcg/FmcgOurSolution.jsx";
+import FmcgManagement from "./pages/Industry/Fmcg/FmcgManagement.jsx";
+import FmcgBusiness from "./pages/Industry/Fmcg/FmcgBusiness.jsx";
+import FmcgSoftwareEngineering from "./pages/Industry/Fmcg/FmcgSoftwareEngineering.jsx";
+import FmcgTechnologyService from "./pages/Industry/Fmcg/FmcgTechnologyService.jsx";
+import FmcgApproach from "./pages/Industry/Fmcg/FmcgApproach.jsx";
+
+
+
+
 
 // =================================================
 // SCROLL TO TOP
@@ -1036,8 +1056,27 @@ function Transportation(){
     <TransHero />
     <TransportationConnected />
     <TransportationSolution />
+    <TransportationSupplyChain />
+    <TransportationSoftware />
+    <TransportationApproach />
+    <TransportationEnterprise />
     </>
   )
+}
+function Fmcg(){
+  return(
+    <>
+    <FmcgHero />
+    <FmcgSolution />
+    <FmcgOurSolution />
+    <FmcgManagement />
+    <FmcgBusiness />
+    <FmcgSoftwareEngineering />
+    <FmcgTechnologyService />
+    <FmcgApproach />
+    </>
+  )
+
 }
 // =================================================
 // APP
@@ -1380,6 +1419,11 @@ function App() {
           <Route
             path="/industries/transportation"
             element={<Transportation/>}
+
+          />
+          <Route
+            path="/industries/fmcg"
+            element={<Fmcg/>}
 
           />
 
