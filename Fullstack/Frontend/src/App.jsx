@@ -397,6 +397,7 @@ import TcKeySolution from "./pages/Industry/Telecommunication/TcKeySolution.jsx"
 import TcSoftwareEngineer from "./pages/Industry/Telecommunication/TcSoftwareEngineer.jsx";
 import TcService from "./pages/Industry/Telecommunication/TcService.jsx";
 import TcApproach from "./pages/Industry/Telecommunication/TcApproach.jsx";
+import TcGetinTouch from "./pages/Industry/Telecommunication/TcGetInTouch.jsx";
 
 // =================================================
 // ENERGY
@@ -408,6 +409,7 @@ import EnergyKeySolution from "./pages/Industry/Energy/EnergyKeySolution.jsx";
 import EnergySoftwareEngineering from "./pages/Industry/Energy/EnergySoftwareEngineering.jsx";
 import EnergyTechnologyService from "./pages/Industry/Energy/EnergyTechnologyService.jsx";
 import EnergyApproach from "./pages/Industry/Energy/EnergyApproach.jsx";
+import EnergyGetInTouch from "./pages/Industry/Energy/EnergyGetInTouch.jsx";
 
 // =================================================
 // TRANSPORTATION
@@ -1389,7 +1391,6 @@ function App() {
            <Route
             path="/it-get-in-touch"
             element={<ITGetInTouch/>}
-
           />
           <Route
             path="/manufacturing-get-in-touch"
@@ -1404,7 +1405,16 @@ function App() {
            <Route
             path="/industries/energy"
             element={<Energy/>}
+          />
 
+           <Route
+            path="/telecommunication-get-in-touch"
+            element={<TcGetinTouch/>}
+          />
+
+           <Route
+            path="/energy-get-in-touch"
+            element={<EnergyGetInTouch/>}
           />
           <Route
             path="/industries/transportation"
@@ -1414,6 +1424,12 @@ function App() {
           <Route
             path="/industries/fmcg"
             element={<Fmcg/>}
+
+          />
+
+            <Route
+            path="/transportation-get-in-touch"
+            element={<TransportationGetInTouch/>}
 
           />
 

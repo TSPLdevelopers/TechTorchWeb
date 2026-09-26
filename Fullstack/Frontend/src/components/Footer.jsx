@@ -166,6 +166,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#730042] text-white">
 
+
       {/* ================= MAIN FOOTER CONTAINER ================= */}
 
       <div
@@ -185,6 +186,7 @@ export default function Footer() {
       >
 
         {/* ================= FOOTER GRID ================= */}
+
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
 
