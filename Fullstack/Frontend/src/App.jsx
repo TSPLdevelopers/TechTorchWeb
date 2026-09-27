@@ -447,6 +447,9 @@ import EcommerceCapabilities from "./pages/Industry/ECommerce/EcommerceCapabilit
 import EcommerceFrontend from "./pages/Industry/ECommerce/EcommerceFrontend.jsx";
 import EcommerceSynergy from "./pages/Industry/ECommerce/EcommerceSynergy.jsx";
 import EcommerceCustom from "./pages/Industry/ECommerce/EcommerceCustom.jsx";
+import EcommerceIntelligence from "./pages/Industry/ECommerce/EcommerceIntelligence.jsx";
+import EcommerceApproach from "./pages/Industry/ECommerce/EcommerceApproach.jsx";
+import EcommerceNextPhase from "./pages/Industry/ECommerce/EcommerceNextPhase.jsx";
 
 
 
@@ -1097,6 +1100,9 @@ function ECommerce(){
     <EcommerceFrontend />
     <EcommerceSynergy />
     <EcommerceCustom />
+    <EcommerceIntelligence />
+    <EcommerceApproach />
+    <EcommerceNextPhase />
     </>
   )
 }
