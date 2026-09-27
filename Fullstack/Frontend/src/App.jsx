@@ -422,6 +422,7 @@ import TransportationSupplyChain from "./pages/Industry/Transportation/Transport
 import TransportationSoftware from "./pages/Industry/Transportation/TransportationSoftware.jsx";
 import TransportationApproach from "./pages/Industry/Transportation/TransportationApproach.jsx";
 import TransportationEnterprise from "./pages/Industry/Transportation/TransportationEnterprise.jsx";
+import TransportationGetInTouch from "./pages/Industry/Transportation/TransportationGetInTouch.jsx";
 
 // =================================================
 // FMCG
@@ -436,6 +437,16 @@ import FmcgSoftwareEngineering from "./pages/Industry/Fmcg/FmcgSoftwareEngineeri
 import FmcgTechnologyService from "./pages/Industry/Fmcg/FmcgTechnologyService.jsx";
 import FmcgApproach from "./pages/Industry/Fmcg/FmcgApproach.jsx";
 
+
+// =================================================
+// E-COMMERCE
+// =================================================
+import EcommerceHero from "./pages/Industry/ECommerce/EcommerceHero.jsx";
+import EcommerceEnterprise from "./pages/Industry/ECommerce/EcommerceEnterprise.jsx";
+import EcommerceCapabilities from "./pages/Industry/ECommerce/EcommerceCapabilities.jsx";
+import EcommerceFrontend from "./pages/Industry/ECommerce/EcommerceFrontend.jsx";
+import EcommerceSynergy from "./pages/Industry/ECommerce/EcommerceSynergy.jsx";
+import EcommerceCustom from "./pages/Industry/ECommerce/EcommerceCustom.jsx";
 
 
 
@@ -1076,7 +1087,18 @@ function Fmcg(){
     <FmcgApproach />
     </>
   )
-
+}
+function ECommerce(){
+  return(
+    <>
+    <EcommerceHero />
+    <EcommerceEnterprise />
+    <EcommerceCapabilities />
+    <EcommerceFrontend />
+    <EcommerceSynergy />
+    <EcommerceCustom />
+    </>
+  )
 }
 // =================================================
 // APP
@@ -1421,18 +1443,21 @@ function App() {
             element={<Transportation/>}
 
           />
+           <Route
+            path="/transportation-get-in-touch"
+            element={<TransportationGetInTouch/>}
+
+          />
           <Route
             path="/industries/fmcg"
             element={<Fmcg/>}
 
           />
-
-            <Route
-            path="/transportation-get-in-touch"
-            element={<TransportationGetInTouch/>}
+          <Route
+            path="industries/e-commerce"
+            element={<ECommerce/>}
 
           />
-
         </Route>
 
       </Routes>
