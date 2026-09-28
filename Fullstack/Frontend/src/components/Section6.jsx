@@ -118,7 +118,7 @@ export default function CapabilitiesMarquee() {
           width: 100%;
           box-sizing: border-box;
 
-          background: #6d0e42;
+          background: #730042;
 
           background-image:
             linear-gradient(
