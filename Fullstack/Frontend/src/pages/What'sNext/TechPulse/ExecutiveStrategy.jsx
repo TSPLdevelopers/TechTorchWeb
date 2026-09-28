@@ -117,7 +117,7 @@ export default function ExecutiveStrategy() {
           border-radius: 20px;
 
           background: #fff9fc;
-          color: #8b0750;
+          color: #730042;
 
           font-size: 10px;
           line-height: 1;
@@ -180,7 +180,7 @@ export default function ExecutiveStrategy() {
         .strategy-action {
           margin: 16px 0 0;
 
-          color: #8d0750;
+          color: #730042;
 
           font-size: 14px;
           line-height: 1.4;
@@ -207,7 +207,7 @@ export default function ExecutiveStrategy() {
           border: 1px solid #970052;
           border-radius: 10px;
 
-          background: #970052;
+          background: #730042;
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
@@ -228,8 +228,8 @@ export default function ExecutiveStrategy() {
         }
 
         .strategy-primary:hover {
-          background: #a91a68;
-          border-color: #a91a68;
+          background: #970052;
+          border-color: #970052;
 
           box-shadow:
             0 10px 20px rgba(151, 0, 82, 0.22);

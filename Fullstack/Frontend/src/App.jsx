@@ -450,8 +450,7 @@ import EcommerceCustom from "./pages/Industry/ECommerce/EcommerceCustom.jsx";
 import EcommerceIntelligence from "./pages/Industry/ECommerce/EcommerceIntelligence.jsx";
 import EcommerceApproach from "./pages/Industry/ECommerce/EcommerceApproach.jsx";
 import EcommerceNextPhase from "./pages/Industry/ECommerce/EcommerceNextPhase.jsx";
-
-
+import ECommerceGetInTouch from "./pages/Industry/ECommerce/ECommerceGetInTouch.jsx";
 
 
 // =================================================
@@ -1476,6 +1475,11 @@ function App() {
           <Route
             path="industries/e-commerce"
             element={<ECommerce/>}
+          />
+
+          <Route
+            path="/ecommerce-get-in-touch"
+            element={<ECommerceGetInTouch/>}
           />
         </Route>
 

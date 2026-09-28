@@ -170,7 +170,7 @@ export default function CrossFunctionalContext() {
 
           background: #fffafd;
 
-          color: #8c0750;
+          color: #730042;
 
           font-size: 10px;
 
@@ -306,7 +306,7 @@ export default function CrossFunctionalContext() {
 
           border-radius: 50%;
 
-          background: #970052;
+          background: #730042;
         }
 
         .connection-item-text {
@@ -364,7 +364,7 @@ export default function CrossFunctionalContext() {
 
           background: #fffafd;
 
-          color: #8d0750;
+          color: #730042;
 
           font-size: 10px;
 

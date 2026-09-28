@@ -147,11 +147,11 @@ export default function TechnologyArticleSection() {
                   leading-[1.45]
                   transition-colors
                   duration-200
-                  hover:text-fuchsia-900
+                  hover:text-[#730042]
                   xl:text-xs
                   ${
                     activeId === s.id
-                      ? "font-semibold text-fuchsia-900"
+                      ? "font-semibold text-[#730042]"
                       : "text-slate-500"
                   }
                 `}
@@ -205,7 +205,7 @@ export default function TechnologyArticleSection() {
                   className="
                     w-full
                     border-l-[3px]
-                    border-fuchsia-900
+                    border-[#730042]
                     bg-rose-50/70
                     py-2.5
                     pl-3

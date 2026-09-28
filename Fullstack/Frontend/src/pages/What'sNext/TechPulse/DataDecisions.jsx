@@ -243,15 +243,15 @@ export default function DataDecisions() {
         /* ================= PRIMARY BUTTON ================= */
 
         .data-decisions-primary-btn {
-          border: 1px solid #970052;
-          background: #970052;
+          border: 1px solid #730042;
+          background: #730042;
           color: #ffffff;
           box-shadow: 0 7px 18px rgba(128, 0, 68, 0.25);
         }
 
         .data-decisions-primary-btn:hover {
-          background: #ad075f;
-          border-color: #ad075f;
+          background: #970052;
+          border-color: #970052;
         }
 
         /* ================= SECONDARY BUTTON ================= */

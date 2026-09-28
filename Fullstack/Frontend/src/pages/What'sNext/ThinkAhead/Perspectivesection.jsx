@@ -174,10 +174,10 @@ export default function PerspectiveSection() {
                   justify-center
                   rounded-full
                   border
-                  border-fuchsia-900/30
+                 border-[#730042]
                   transition-colors
                   duration-300
-                  group-hover:border-fuchsia-900/60
+                  group-hover:border-[#730042]
                   sm:mb-5
                 "
               >

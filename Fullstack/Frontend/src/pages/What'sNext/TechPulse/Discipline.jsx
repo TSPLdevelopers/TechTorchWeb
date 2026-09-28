@@ -152,7 +152,7 @@ return ( <section className="technology-capabilities"> <div className="technolog
       border: 1px solid #e4bfd1;
       border-radius: 14px;
       background: #fff9fc;
-      color: #850047;
+      color: #730042;
       font-size: 9.5px;
       line-height: 1;
       font-weight: 800;
@@ -236,7 +236,7 @@ return ( <section className="technology-capabilities"> <div className="technolog
       background: #fffafc;
       border: 1px solid #e2c0d1;
       border-radius: 2px;
-      color: #830047;
+      color: #730042;
       font-family: "Inter", sans-serif;
       font-size: 9px;
       line-height: 1;

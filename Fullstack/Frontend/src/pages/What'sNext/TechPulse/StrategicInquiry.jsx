@@ -164,7 +164,7 @@ return ( <section className="strategic-framework"> <div className="framework-con
       border-radius: 20px;
 
       background: #fffafd;
-      color: #8c0750;
+      color: #730042;
 
       font-size: 10px;
       font-weight: 800;
@@ -198,7 +198,7 @@ return ( <section className="strategic-framework"> <div className="framework-con
     }
 
     .framework-heading span {
-      color: #8d0750;
+      color: #730042;
     }
 
     /* DESCRIPTION */
@@ -269,20 +269,20 @@ return ( <section className="strategic-framework"> <div className="framework-con
     /* HOVER - NUMBER */
 
     .framework-card:hover .framework-number {
-      background: #970052;
+      background: #730042;
       color: #ffffff;
     }
 
     /* HOVER - LABEL */
 
     .framework-card:hover .framework-label {
-      color: #970052;
+      color: #730042;
     }
 
     /* HOVER - UNDERLINE */
 
     .framework-card:hover .framework-card-bottom {
-      border-top-color: #970052;
+      border-top-color: #730042;
     }
 
     /* ACTIVE CARD - NORMAL STATE */
@@ -438,7 +438,7 @@ return ( <section className="strategic-framework"> <div className="framework-con
     }
 
     .value-highlight {
-      color: #970052;
+      color: #730042;
     }
 
     .bottom-dot {
@@ -449,7 +449,7 @@ return ( <section className="strategic-framework"> <div className="framework-con
 
       border-radius: 50%;
 
-      background: #970052;
+      background: #730042;
     }
 
     /* LARGE DESKTOP */
