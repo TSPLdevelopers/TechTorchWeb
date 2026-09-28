@@ -104,15 +104,40 @@ export default function ConnectedPlatformSection() {
           font-family: "Inter", sans-serif;
           box-sizing: border-box;
 
-          padding: 70px 80px;
+          /* Vertical padding */
+          padding-top: 70px;
+          padding-bottom: 70px;
+
+          /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        @media (min-width: 640px) {
+          .connected-platform-section {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .connected-platform-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .connected-platform-section {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
         }
 
         /* ================= CONTENT ================= */
 
         .connected-platform-content {
           width: 100%;
-          max-width: 1400px;
-          margin: 0 auto;
         }
 
         /* ================= MAIN HEADING ================= */
@@ -181,11 +206,8 @@ export default function ConnectedPlatformSection() {
 
         @media (max-width: 1200px) {
           .connected-platform-section {
-            padding: 65px 60px;
-          }
-
-          .connected-platform-content {
-            max-width: 1100px;
+            padding-top: 65px;
+            padding-bottom: 65px;
           }
 
           .connected-platform-content h1 {
@@ -207,11 +229,8 @@ export default function ConnectedPlatformSection() {
 
         @media (max-width: 900px) {
           .connected-platform-section {
-            padding: 55px 45px;
-          }
-
-          .connected-platform-content {
-            max-width: 100%;
+            padding-top: 55px;
+            padding-bottom: 55px;
           }
 
           .connected-platform-content h1 {
@@ -245,7 +264,8 @@ export default function ConnectedPlatformSection() {
 
         @media (max-width: 768px) {
           .connected-platform-section {
-            padding: 50px 30px;
+            padding-top: 50px;
+            padding-bottom: 50px;
           }
 
           .connected-platform-content h1 {
@@ -280,7 +300,8 @@ export default function ConnectedPlatformSection() {
 
         @media (max-width: 600px) {
           .connected-platform-section {
-            padding: 42px 20px;
+            padding-top: 42px;
+            padding-bottom: 42px;
           }
 
           .connected-platform-content h1 {
@@ -315,7 +336,8 @@ export default function ConnectedPlatformSection() {
 
         @media (max-width: 380px) {
           .connected-platform-section {
-            padding: 38px 16px;
+            padding-top: 38px;
+            padding-bottom: 38px;
           }
 
           .connected-platform-content h1 {

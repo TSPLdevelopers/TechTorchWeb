@@ -111,8 +111,15 @@ export default function MarketExpertiseSection() {
 
     window.addEventListener("resize", updateCardWidth);
 
+    let observer;
+    if (typeof ResizeObserver !== "undefined" && viewportRef.current) {
+      observer = new ResizeObserver(updateCardWidth);
+      observer.observe(viewportRef.current);
+    }
+
     return () => {
       window.removeEventListener("resize", updateCardWidth);
+      if (observer) observer.disconnect();
     };
   }, []);
 
@@ -174,85 +181,31 @@ export default function MarketExpertiseSection() {
 
   return (
     <section
-      className="
-        w-full
-        overflow-hidden
-        bg-white
-        px-4
-        py-16
-        sm:px-6
-        sm:py-20
-        md:px-8
-        lg:px-10
-        xl:px-12
-      "
-      style={{
-        fontFamily: "'Inter', sans-serif",
-      }}
+      className="w-full overflow-hidden bg-white px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20"
+      style={{ fontFamily: "'Inter', sans-serif" }}
     >
-      <div className="mx-auto w-full max-w-6xl">
-
+      <div className="w-full">
         {/* ================= HEADER ================= */}
-
-        <div
-          className="
-            mb-8
-            flex
-            items-end
-            justify-between
-            gap-6
-            sm:mb-10
-          "
-        >
+        <div className="mb-8 flex items-end justify-between gap-6 sm:mb-10">
           {/* LEFT CONTENT */}
-
           <div className="max-w-3xl">
             <p
-              className="
-                mb-3
-                text-xs
-                font-semibold
-                tracking-[0.18em]
-                text-[#6B1E3F]
-                sm:text-sm
-              "
-              style={{
-                fontFamily: "'Inter', sans-serif",
-              }}
+              className="mb-3 text-xs font-semibold tracking-[0.18em] text-[#6B1E3F] sm:text-sm"
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               MARKET EXPERTISE
             </p>
 
             <h1
-              className="
-                text-3xl
-                font-semibold
-                leading-tight
-                tracking-tight
-                text-[#1B1B1B]
-                sm:text-4xl
-                md:text-5xl
-              "
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-              }}
+              className="text-3xl font-semibold leading-tight tracking-tight text-[#1B1B1B] sm:text-4xl md:text-5xl"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Technology That Understands Different Industries
             </h1>
 
             <p
-              className="
-                mt-5
-                max-w-2xl
-                text-sm
-                leading-7
-                text-gray-600
-                sm:text-base
-                sm:leading-8
-              "
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-              }}
+              className="mt-5 max-w-2xl text-sm leading-7 text-gray-600 sm:text-base sm:leading-8"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Every industry operates differently. We build technology
               solutions that understand specific business processes,
@@ -261,84 +214,32 @@ export default function MarketExpertiseSection() {
           </div>
 
           {/* ================= NAVIGATION BUTTONS ================= */}
-
           <div className="flex shrink-0 gap-2 pb-1">
             {/* PREVIOUS */}
-
             <button
               type="button"
               onClick={handlePrevious}
               aria-label="Previous industry"
-              className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-gray-200
-                bg-white
-                text-[#6B1E3F]
-                shadow-sm
-                transition-all
-                duration-300
-                hover:bg-[#6B1E3F]
-                hover:text-white
-                hover:shadow-md
-                sm:h-11
-                sm:w-11
-              "
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-[#6B1E3F] shadow-sm transition-all duration-300 hover:bg-[#6B1E3F] hover:text-white hover:shadow-md sm:h-11 sm:w-11"
             >
-              <ChevronLeft
-                size={19}
-                strokeWidth={2}
-              />
+              <ChevronLeft size={19} strokeWidth={2} />
             </button>
 
             {/* NEXT */}
-
             <button
               type="button"
               onClick={handleNext}
               aria-label="Next industry"
-              className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-gray-200
-                bg-white
-                text-[#6B1E3F]
-                shadow-sm
-                transition-all
-                duration-300
-                hover:bg-[#6B1E3F]
-                hover:text-white
-                hover:shadow-md
-                sm:h-11
-                sm:w-11
-              "
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-[#6B1E3F] shadow-sm transition-all duration-300 hover:bg-[#6B1E3F] hover:text-white hover:shadow-md sm:h-11 sm:w-11"
             >
-              <ChevronRight
-                size={19}
-                strokeWidth={2}
-              />
+              <ChevronRight size={19} strokeWidth={2} />
             </button>
           </div>
         </div>
 
         {/* ================= CAROUSEL VIEWPORT ================= */}
-
-        <div
-          ref={viewportRef}
-          className="w-full overflow-hidden"
-        >
+        <div ref={viewportRef} className="w-full overflow-hidden">
           {/* ================= CAROUSEL TRACK ================= */}
-
           <div
             className={`flex ${
               isTransitioning
@@ -357,91 +258,30 @@ export default function MarketExpertiseSection() {
               return (
                 <div
                   key={`${industry.title}-${index}`}
-                  className="
-                    group
-                    flex
-                    min-w-0
-                    shrink-0
-                    flex-col
-                    rounded-md
-                    bg-slate-50
-                    p-5
-                    transition-all
-                    duration-300
-                    ease-out
-                    hover:-translate-y-1
-                    hover:bg-white
-                    hover:shadow-lg
-                    sm:p-6
-                  "
-                  style={{
-                    width: `${cardWidth}px`,
-                  }}
+                  className="group flex min-w-0 shrink-0 flex-col rounded-md bg-slate-50 p-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white hover:shadow-lg sm:p-6"
+                  style={{ width: `${cardWidth}px` }}
                 >
                   {/* ================= ICON ================= */}
-
-                  <span
-                    className="
-                      flex
-                      h-10
-                      w-10
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-md
-                      bg-rose-100
-                      text-[#6B1E3F]
-                      transition-all
-                      duration-500
-                      ease-out
-                      group-hover:scale-110
-                      group-hover:bg-[#6B1E3F]
-                      group-hover:text-white
-                      sm:h-11
-                      sm:w-11
-                    "
-                  >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-rose-100 text-[#6B1E3F] transition-all duration-500 ease-out group-hover:scale-110 group-hover:bg-[#6B1E3F] group-hover:text-white sm:h-11 sm:w-11">
                     <Icon
                       size={17}
                       strokeWidth={2}
-                      className="
-                        transition-transform
-                        duration-500
-                        ease-out
-                        group-hover:scale-110
-                      "
+                      className="transition-transform duration-500 ease-out group-hover:scale-110"
                     />
                   </span>
 
                   {/* ================= TITLE ================= */}
-
                   <h3
-                    className="
-                      mt-5
-                      text-base
-                      font-semibold
-                      leading-snug
-                      text-[#1B1B1B]
-                    "
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                    }}
+                    className="mt-5 text-base font-semibold leading-snug text-[#1B1B1B]"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     {industry.title}
                   </h3>
 
                   {/* ================= DESCRIPTION ================= */}
-
                   <p
-                    className="
-                      mt-3
-                      text-sm
-                      leading-6
-                      text-gray-500
-                    "
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                    }}
+                    className="mt-3 text-sm leading-6 text-gray-500"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     {industry.description}
                   </p>

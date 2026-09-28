@@ -3,8 +3,8 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function ParadigmSection() {
   return (
-    <section className="w-full bg-white px-4 py-12 sm:px-6 sm:py-14 md:px-8 md:py-16 lg:px-10 lg:py-20 xl:px-12">
-      <div className="mx-auto w-full max-w-4xl text-center">
+    <section className="w-full overflow-hidden bg-white px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20">
+      <div className="w-full text-center">
         {/* Label */}
         <span
           className="text-[10px] font-semibold tracking-[0.15em] text-[#6B1E3F]"
@@ -62,7 +62,7 @@ export default function ParadigmSection() {
         </div>
 
         {/* Image */}
-        <div className="relative mt-10 overflow-hidden rounded-xl sm:mt-12">
+        <div className="relative mt-10 w-full overflow-hidden rounded-xl sm:mt-12">
           <img
             src="/Senior cybersecurity advisors consulting around a digital holographic security display.png"
             alt="Executives discussing enterprise architecture"
@@ -96,10 +96,7 @@ export default function ParadigmSection() {
               className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[10px] font-semibold text-slate-800 sm:text-[11px]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              <CheckCircle2
-                size={13}
-                className="shrink-0 text-emerald-600"
-              />
+              <CheckCircle2 size={13} className="shrink-0 text-emerald-600" />
               Verified Enterprise Architecture
             </span>
           </div>

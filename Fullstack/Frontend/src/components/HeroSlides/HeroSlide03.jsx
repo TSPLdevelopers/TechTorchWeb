@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const MAROON = "#8f1046";
 const LINE_COLOR = "#8f1046";
@@ -121,12 +121,50 @@ const steps = [
 ];
 
 export default function HowWeWork() {
-  return (
-    <section className="how-work-section">
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (entry.isIntersecting) {
+          setIsVisible(false);
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              setIsVisible(true);
+            });
+          });
+        } else {
+          setIsVisible(false);
+        }
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className={`how-work-section ${isVisible ? "is-visible" : ""}`}
+    >
       <div className="how-work-container">
 
-        {/* ================= HEADER ================= */}
+        {/* =========================
+            HEADER
+        ========================== */}
 
         <p className="how-work-label">
           HOW WE WORK
@@ -143,11 +181,15 @@ export default function HowWeWork() {
         </p>
 
 
-        {/* ================= PROCESS ================= */}
+        {/* =========================
+            PROCESS
+        ========================== */}
 
         <div className="process-wrapper">
 
-          {/* ================= CONNECTING LINE ================= */}
+          {/* =========================
+              CONNECTING LINE
+          ========================== */}
 
           <svg
             className="process-line"
@@ -155,63 +197,94 @@ export default function HowWeWork() {
             preserveAspectRatio="none"
           >
             <path
-              d="
-                M 45 35
-                H 440
-                H 857
-                H 1000
-                V 260
-                H 10
-                V 325
-                H 370
-              "
-              fill="none"
-              stroke={LINE_COLOR}
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+  className="process-path"
+  pathLength="1"
+  d="
+    M 35 35
+    H 450
+    H 875
+    H 1000
+    V 260
+    H 20
+    V 325
+    H 390
+  "
+  fill="none"
+  stroke={LINE_COLOR}
+  strokeWidth="2.5"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+/>
           </svg>
 
 
-          {/* ================= STEPS ================= */}
+          {/* =========================
+              STEP 01
+          ========================== */}
 
           <Step
             step={steps[0]}
             className="step-1"
+            delay="0s"
           />
+
+
+          {/* =========================
+              STEP 02
+          ========================== */}
 
           <Step
             step={steps[1]}
             className="step-2"
+            delay="0.45s"
           />
+
+
+          {/* =========================
+              STEP 03
+          ========================== */}
 
           <Step
             step={steps[2]}
             className="step-3"
+            delay="0.90s"
           />
+
+
+          {/* =========================
+              STEP 04
+          ========================== */}
 
           <Step
             step={steps[3]}
             className="step-4"
+            delay="1.35s"
           />
+
+
+          {/* =========================
+              STEP 05
+          ========================== */}
 
           <Step
             step={steps[4]}
             className="step-5"
+            delay="1.80s"
           />
 
         </div>
       </div>
 
 
-      {/* ================= RESPONSIVE CSS ================= */}
+      {/* =========================
+          STYLES
+      ========================== */}
 
       <style>{`
 
-        /* =================================================
-           SECTION
-        ================================================= */
+        /* =========================================
+           MAIN SECTION
+        ========================================== */
 
         .how-work-section {
           width: 100%;
@@ -221,91 +294,72 @@ export default function HowWeWork() {
         }
 
 
-        /* =================================================
-           CONTAINER
-        ================================================= */
-
         .how-work-container {
           width: 100%;
-          max-width: 1100px;
+          max-width: 1200px;
           margin: 0 auto;
-
           padding: 56px 32px 70px;
-
           box-sizing: border-box;
         }
 
 
-        /* =================================================
+        /* =========================================
            HEADER
-        ================================================= */
+        ========================================== */
 
         .how-work-label {
           text-align: center;
-
           font-size: 12px;
           font-weight: 700;
-
           letter-spacing: 0.12em;
-
           color: #141414;
-
           margin: -15px 0 16px;
         }
 
+
         .how-work-heading {
           text-align: center;
-
           font-size: 30px;
           font-weight: 700;
-
           line-height: 1.25;
-
           color: #141414;
-
           margin: 0 0 16px;
         }
+
 
         .how-work-heading span {
           color: ${MAROON};
         }
 
+
         .how-work-description {
           text-align: center;
-
           font-size: 17px;
           font-weight: 400;
-
-          color: #444;
-
+          color: #444444;
           line-height: 1.5;
-
           margin: 0 auto 56px;
-
-          max-width: 820px;
+          max-width: 850px;
         }
 
 
-        /* =================================================
+        /* =========================================
            PROCESS WRAPPER
-        ================================================= */
+        ========================================== */
 
         .process-wrapper {
           position: relative;
-
           width: 100%;
-
           height: 520px;
         }
 
 
-        /* =================================================
+        /* =========================================
            CONNECTING LINE
-        ================================================= */
+        ========================================== */
 
         .process-line {
           position: absolute;
-
           inset: 0;
 
           width: 100%;
@@ -314,19 +368,47 @@ export default function HowWeWork() {
           pointer-events: none;
 
           z-index: 1;
+
+          overflow: visible;
         }
 
 
-        /* =================================================
-           STEP
-        ================================================= */
+        .process-path {
+          /*
+            Line completely hidden initially.
+          */
+
+          stroke-dasharray: 2400;
+          stroke-dashoffset: 2400;
+
+          transition:
+            stroke-dashoffset 2.5s
+            cubic-bezier(0.65, 0, 0.35, 1);
+
+          transition-delay: 0.05s;
+        }
+
+
+        /*
+          Line draws completely
+          when section enters viewport.
+        */
+
+        .how-work-section.is-visible .process-path {
+          stroke-dashoffset: 0;
+        }
+
+
+        /* =========================================
+           PROCESS STEP
+        ========================================== */
 
         .process-step {
           position: absolute;
 
           transform: translate(-50%, -50%);
 
-          width: 230px;
+          width: 235px;
 
           z-index: 2;
 
@@ -334,39 +416,49 @@ export default function HowWeWork() {
         }
 
 
-        /* =================================================
-           STEP POSITIONS
-        ================================================= */
+        /* =========================================
+           DESKTOP POSITIONS
+        ========================================== */
 
         .step-1 {
-          left: 12%;
+          left: 10%;
           top: 100px;
         }
+
 
         .step-2 {
           left: 50%;
           top: 100px;
         }
 
+
         .step-3 {
-          left: 90%;
+          left: 91%;
           top: 100px;
         }
 
+
         .step-4 {
-          left: 11%;
+          left: 10%;
           top: 400px;
         }
+
+
+        /*
+          Evolve is positioned at 46%.
+          SVG endpoint is also aligned to
+          this position.
+        */
 
         .step-5 {
-          left: 44%;
+          left: 46%;
           top: 400px;
         }
 
 
-        /* =================================================
-           ICON
-        ================================================= */
+        /* =========================================
+           ICON CIRCLE
+        ========================================== */
 
         .step-icon {
           width: 62px;
@@ -374,63 +466,144 @@ export default function HowWeWork() {
 
           border-radius: 50%;
 
-          border: 1.5px solid ${MAROON};
+          border: 1.8px solid ${MAROON};
 
           background: #ffffff;
 
           display: flex;
-
           align-items: center;
           justify-content: center;
 
           position: relative;
 
           z-index: 3;
+
+          opacity: 0;
+
+          transform:
+            translateY(30px)
+            scale(0.55);
+
+          transition:
+            opacity 0.55s ease,
+            transform 0.8s
+              cubic-bezier(0.16, 1, 0.3, 1);
+
+          transition-delay: var(--step-delay);
+
+          will-change:
+            transform,
+            opacity;
         }
 
 
-        /* =================================================
-           TEXT
-        ================================================= */
+        .how-work-section.is-visible .step-icon {
+          opacity: 1;
+
+          transform:
+            translateY(0)
+            scale(1);
+        }
+
+
+        /* =========================================
+           INNER ICON
+        ========================================== */
+
+        .step-icon svg {
+          opacity: 0;
+
+          transform:
+            scale(0.4)
+            rotate(-15deg);
+
+          transition:
+            opacity 0.45s ease,
+            transform 0.7s
+              cubic-bezier(0.16, 1, 0.3, 1);
+
+          transition-delay:
+            calc(var(--step-delay) + 0.15s);
+
+          will-change:
+            transform,
+            opacity;
+        }
+
+
+        .how-work-section.is-visible .step-icon svg {
+          opacity: 1;
+
+          transform:
+            scale(1)
+            rotate(0deg);
+        }
+
+
+        /* =========================================
+           CONTENT
+        ========================================== */
 
         .step-content {
           margin-top: 20px;
+
+          opacity: 0;
+
+          transform: translateY(22px);
+
+          transition:
+            opacity 0.6s ease,
+            transform 0.7s
+              cubic-bezier(0.16, 1, 0.3, 1);
+
+          transition-delay:
+            calc(var(--step-delay) + 0.15s);
+
+          will-change:
+            transform,
+            opacity;
         }
+
+
+        .how-work-section.is-visible .step-content {
+          opacity: 1;
+
+          transform: translateY(0);
+        }
+
+
+        /* =========================================
+           TEXT
+        ========================================== */
 
         .step-number {
           font-size: 15px;
           font-weight: 600;
-
           color: #141414;
-
           margin: 0 0 4px;
         }
+
 
         .step-title {
           font-size: 18px;
           font-weight: 700;
-
           color: ${MAROON};
-
           margin: 0 0 10px;
         }
 
+
         .step-description {
           font-size: 14px;
-
           color: #3a3a3a;
-
           line-height: 1.55;
-
           margin: 0;
-
-          max-width: 210px;
+          max-width: 215px;
         }
 
 
-        /* =================================================
-           LARGE TABLET
-        ================================================= */
+        /* =========================================
+           TABLET
+        ========================================== */
 
         @media (max-width: 1100px) {
 
@@ -449,7 +622,7 @@ export default function HowWeWork() {
           }
 
           .step-1 {
-            left: 11%;
+            left: 10%;
           }
 
           .step-2 {
@@ -457,22 +630,22 @@ export default function HowWeWork() {
           }
 
           .step-3 {
-            left: 89%;
+            left: 90%;
           }
 
           .step-4 {
-            left: 12%;
+            left: 11%;
           }
 
           .step-5 {
-            left: 45%;
+            left: 46%;
           }
         }
 
 
-        /* =================================================
-           TABLET
-        ================================================= */
+        /* =========================================
+           SMALL TABLET
+        ========================================== */
 
         @media (max-width: 850px) {
 
@@ -538,9 +711,9 @@ export default function HowWeWork() {
         }
 
 
-        /* =================================================
+        /* =========================================
            MOBILE
-        ================================================= */
+        ========================================== */
 
         @media (max-width: 600px) {
 
@@ -556,28 +729,20 @@ export default function HowWeWork() {
           .how-work-heading {
             font-size: 24px;
             line-height: 1.25;
-
             margin-bottom: 12px;
           }
 
           .how-work-description {
             font-size: 14px;
-
             line-height: 1.55;
-
             max-width: 340px;
-
             margin-bottom: 35px;
           }
-
-
-          /* Vertical process */
 
           .process-wrapper {
             height: auto;
 
             display: flex;
-
             flex-direction: column;
 
             gap: 38px;
@@ -586,14 +751,14 @@ export default function HowWeWork() {
           }
 
 
-          /* Hide desktop zig-zag line */
+          /*
+            No connecting line on mobile.
+          */
 
           .process-line {
             display: none;
           }
 
-
-          /* Reset positions */
 
           .process-step {
             position: relative;
@@ -604,7 +769,6 @@ export default function HowWeWork() {
             transform: none;
 
             width: 100%;
-
             max-width: 420px;
 
             display: grid;
@@ -627,38 +791,33 @@ export default function HowWeWork() {
 
           .step-content {
             margin-top: 0;
-
             padding-top: 1px;
           }
 
 
           .step-number {
             font-size: 13px;
-
             margin-bottom: 3px;
           }
 
 
           .step-title {
             font-size: 18px;
-
             margin-bottom: 7px;
           }
 
 
           .step-description {
             font-size: 13.5px;
-
             line-height: 1.55;
-
             max-width: 100%;
           }
         }
 
 
-        /* =================================================
+        /* =========================================
            SMALL MOBILE
-        ================================================= */
+        ========================================== */
 
         @media (max-width: 400px) {
 
@@ -708,19 +867,41 @@ export default function HowWeWork() {
           }
         }
 
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+          .process-path,
+          .step-icon,
+          .step-icon svg,
+          .step-content {
+            transition: none !important;
+            transform: none !important;
+            opacity: 1 !important;
+          }
+        }
+
       `}</style>
     </section>
   );
 }
 
 
-/* =================================================
+/* =========================================
    STEP COMPONENT
-================================================= */
+========================================= */
 
-function Step({ step, className }) {
+function Step({ step, className, delay }) {
   return (
-    <div className={`process-step ${className}`}>
+    <div
+      className={`process-step ${className}`}
+      style={{
+        "--step-delay": delay,
+      }}
+    >
 
       {/* ICON */}
 
@@ -729,7 +910,7 @@ function Step({ step, className }) {
       </div>
 
 
-      {/* TEXT */}
+      {/* CONTENT */}
 
       <div className="step-content">
 

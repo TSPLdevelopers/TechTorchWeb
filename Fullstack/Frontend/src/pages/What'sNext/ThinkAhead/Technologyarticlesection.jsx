@@ -81,6 +81,7 @@ export default function TechnologyArticleSection() {
   }, []);
 
   return (
+    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
     <section
       className="
         w-full
@@ -89,20 +90,17 @@ export default function TechnologyArticleSection() {
         py-10
         sm:px-6
         sm:py-12
-        md:px-8
+        md:px-10
         md:py-14
-        lg:px-10
+        lg:px-[100px]
         lg:py-16
-        xl:px-12
         xl:py-20
       "
     >
       <div
         className="
-          mx-auto
           grid
           w-full
-          max-w-7xl
           grid-cols-1
           gap-10
           sm:gap-12

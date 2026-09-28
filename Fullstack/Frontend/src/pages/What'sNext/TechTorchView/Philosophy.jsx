@@ -13,24 +13,22 @@ export default function Philosophy() {
         lg:py-20
       "
     >
+      {/* Left/right padding same as Hero: 16 / 24 / 40 / 100 */}
       <div
         className="
-          mx-auto
           grid
           w-full
-          max-w-7xl
           grid-cols-1
           items-center
           gap-8
           px-4
           sm:gap-10
           sm:px-6
-          md:px-8
+          md:px-10
           lg:grid-cols-2
           lg:gap-14
-          lg:px-10
+          lg:px-[100px]
           xl:gap-16
-          xl:px-12
         "
       >
         {/* =====================================================
@@ -40,8 +38,6 @@ export default function Philosophy() {
           className="
             w-full
             min-w-0
-            lg:-ml-8
-            xl:-ml-12
           "
         >
           {/* ================= MAIN HEADING ================= */}

@@ -29,20 +29,29 @@ export default function HowWeWork() {
         >
 
           {/* ================= LEFT ================= */}
+          {/* Left padding same as Hero: 16 / 24 / 40 / 100 */}
           <div
             className="
               flex
               flex-col
               justify-center
-              px-5
+
+              pl-4
+              pr-4
               py-10
-              sm:px-7
+
+              sm:pl-6
+              sm:pr-6
               sm:py-12
-              md:px-8
+
+              md:pl-10
+              md:pr-8
               md:py-10
-              lg:px-12
+
+              lg:pl-[100px]
+              lg:pr-8
               lg:py-6
-              xl:px-24
+
               xl:py-6
             "
           >

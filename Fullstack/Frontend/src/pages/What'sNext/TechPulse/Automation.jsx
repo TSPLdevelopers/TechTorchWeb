@@ -4,7 +4,6 @@ export default function IntegratedAutomation() {
   return (
     <section className="integrated-automation">
       <div className="automation-container">
-
         {/* BADGE */}
         <div className="automation-badge">
           <span className="automation-badge-dot"></span>
@@ -28,10 +27,8 @@ export default function IntegratedAutomation() {
 
         {/* MAIN CARDS */}
         <div className="automation-cards">
-
           {/* LEFT CARD */}
           <div className="automation-card manual-card">
-
             <div className="automation-card-title">
               <span className="card-title-dot manual-dot"></span>
               <h3>THE COST OF MANUAL FRICTION</h3>
@@ -45,24 +42,14 @@ export default function IntegratedAutomation() {
             </p>
 
             <div className="automation-points">
-              <div>
-                • Stale spreadsheets hindering real-time decisions
-              </div>
-
-              <div>
-                • Human transcription errors across siloed databases
-              </div>
-
-              <div>
-                • High operational drag on high-value employees
-              </div>
+              <div>• Stale spreadsheets hindering real-time decisions</div>
+              <div>• Human transcription errors across siloed databases</div>
+              <div>• High operational drag on high-value employees</div>
             </div>
-
           </div>
 
           {/* RIGHT CARD */}
           <div className="automation-card intelligent-card">
-
             <div className="automation-card-title">
               <span className="card-title-dot intelligent-dot"></span>
               <h3>INTELLIGENT PROCESS AUTOMATION</h3>
@@ -78,24 +65,19 @@ export default function IntegratedAutomation() {
               <div>
                 • Unified cross-functional workflows with guaranteed integrity
               </div>
-
               <div>
                 • Instant notification and routing of mission-critical tasks
               </div>
-
               <div>
                 • Embedded AI, cloud infrastructure, and modern software
                 support
               </div>
             </div>
-
           </div>
-
         </div>
 
         {/* BOTTOM MESSAGE */}
         <div className="automation-bottom">
-
           <div className="automation-bottom-main">
             Less manual effort. Better visibility. More reliable information.
             Faster decisions.
@@ -104,35 +86,50 @@ export default function IntegratedAutomation() {
           <div className="automation-bottom-small">
             TECHTORCH ERP &amp; AUTOMATION ARCHITECTURE
           </div>
-
         </div>
-
       </div>
 
       <style>{`
-        * {
-          box-sizing: border-box;
-        }
-
         /* ================================
-           MAIN SECTION
+           MAIN SECTION (padding same as other sections)
         ================================= */
 
         .integrated-automation {
           width: 100%;
           margin: 0;
-          padding: 52px 0 58px;
+          padding: 40px 16px;
           background: #faf9f4;
           color: #11172b;
           font-family: "Inter", sans-serif;
           overflow: hidden;
         }
 
+        @media (min-width: 640px) {
+          .integrated-automation {
+            padding: 48px 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .integrated-automation {
+            padding: 56px 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .integrated-automation {
+            padding: 64px 100px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .integrated-automation {
+            padding: 80px 100px;
+          }
+        }
+
         .automation-container {
           width: 100%;
-          max-width: 1500px;
-          margin: 0 auto;
-          padding: 0 38px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -203,8 +200,7 @@ export default function IntegratedAutomation() {
 
         .automation-cards {
           width: 100%;
-          max-width: 1100px;
-          margin: 38px auto 0;
+          margin: 38px 0 0;
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 24px;
@@ -222,11 +218,8 @@ export default function IntegratedAutomation() {
           border-radius: 16px;
           display: flex;
           flex-direction: column;
-
-          /* BOTH CARDS SAME INITIALLY */
           background: #f7fafc;
           border: 1px solid #e3e9ef;
-
           transition:
             transform 0.3s ease,
             background 0.3s ease,
@@ -234,16 +227,11 @@ export default function IntegratedAutomation() {
             box-shadow 0.3s ease;
         }
 
-        /* ================================
-           BOTH CARDS HOVER
-        ================================= */
-
         .automation-card:hover {
           transform: translateY(-7px);
           background: #fcf8f8;
           border-color: #e8d1dd;
-          box-shadow:
-            0 12px 28px rgba(151, 0, 82, 0.10);
+          box-shadow: 0 12px 28px rgba(151, 0, 82, 0.10);
         }
 
         /* ================================
@@ -265,11 +253,8 @@ export default function IntegratedAutomation() {
           line-height: 1.3;
           font-weight: 700;
           letter-spacing: -0.2px;
-
           transition: color 0.3s ease;
         }
-
-        /* HOVER TITLE FOR BOTH */
 
         .automation-card:hover .automation-card-title h3 {
           color: #8d0750;
@@ -285,11 +270,8 @@ export default function IntegratedAutomation() {
           flex: 0 0 auto;
           border-radius: 50%;
           background: #91a4bb;
-
           transition: background 0.3s ease;
         }
-
-        /* HOVER DOT FOR BOTH */
 
         .automation-card:hover .card-title-dot {
           background: #970052;
@@ -325,13 +307,10 @@ export default function IntegratedAutomation() {
           font-size: 12.5px;
           line-height: 1.65;
           font-weight: 600;
-
           transition:
             border-color 0.3s ease,
             box-shadow 0.3s ease;
         }
-
-        /* HOVER POINTS FOR BOTH */
 
         .automation-card:hover .automation-points {
           border-color: #ead6df;
@@ -347,7 +326,6 @@ export default function IntegratedAutomation() {
 
         .automation-bottom {
           width: 100%;
-          max-width: 1100px;
           min-height: 97px;
           margin-top: 38px;
           padding: 20px 30px;
@@ -384,12 +362,6 @@ export default function IntegratedAutomation() {
         ================================= */
 
         @media (min-width: 1600px) {
-
-          .automation-container {
-            max-width: 1600px;
-            padding: 0 45px;
-          }
-
           .automation-heading {
             font-size: 38px;
           }
@@ -399,7 +371,6 @@ export default function IntegratedAutomation() {
           }
 
           .automation-cards {
-            max-width: 1150px;
             gap: 26px;
             margin-top: 40px;
           }
@@ -421,10 +392,6 @@ export default function IntegratedAutomation() {
             font-size: 10px;
           }
 
-          .automation-bottom {
-            max-width: 1150px;
-          }
-
           .automation-bottom-main {
             font-size: 18px;
           }
@@ -435,15 +402,6 @@ export default function IntegratedAutomation() {
         ================================= */
 
         @media (max-width: 1100px) {
-
-          .integrated-automation {
-            padding: 45px 0 52px;
-          }
-
-          .automation-container {
-            padding: 0 25px;
-          }
-
           .automation-heading {
             font-size: 31px;
           }
@@ -453,7 +411,6 @@ export default function IntegratedAutomation() {
           }
 
           .automation-cards {
-            max-width: 950px;
             gap: 18px;
           }
 
@@ -474,10 +431,6 @@ export default function IntegratedAutomation() {
             font-size: 9px;
           }
 
-          .automation-bottom {
-            max-width: 950px;
-          }
-
           .automation-bottom-main {
             font-size: 15px;
           }
@@ -488,7 +441,6 @@ export default function IntegratedAutomation() {
         ================================= */
 
         @media (max-width: 800px) {
-
           .automation-heading {
             font-size: 28px;
           }
@@ -499,7 +451,6 @@ export default function IntegratedAutomation() {
 
           .automation-cards {
             grid-template-columns: 1fr;
-            max-width: 650px;
             gap: 16px;
           }
 
@@ -509,7 +460,6 @@ export default function IntegratedAutomation() {
           }
 
           .automation-bottom {
-            max-width: 650px;
             margin-top: 30px;
           }
         }
@@ -519,15 +469,6 @@ export default function IntegratedAutomation() {
         ================================= */
 
         @media (max-width: 600px) {
-
-          .integrated-automation {
-            padding: 38px 0 44px;
-          }
-
-          .automation-container {
-            padding: 0 17px;
-          }
-
           .automation-badge {
             height: 24px;
             padding: 0 11px;
@@ -551,7 +492,6 @@ export default function IntegratedAutomation() {
           }
 
           .automation-cards {
-            width: 100%;
             margin-top: 28px;
             gap: 13px;
           }
@@ -595,7 +535,6 @@ export default function IntegratedAutomation() {
           }
 
           .automation-bottom {
-            width: 100%;
             min-height: 0;
             margin-top: 27px;
             padding: 18px 16px;
@@ -618,11 +557,6 @@ export default function IntegratedAutomation() {
         ================================= */
 
         @media (max-width: 380px) {
-
-          .automation-container {
-            padding: 0 14px;
-          }
-
           .automation-heading {
             font-size: 22px;
           }

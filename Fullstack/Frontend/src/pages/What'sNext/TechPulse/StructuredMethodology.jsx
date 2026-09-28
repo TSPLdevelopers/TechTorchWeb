@@ -1,43 +1,42 @@
 import React from "react";
 
-export default function StructuredMethodology() {
-  const phases = [
-    {
-      number: "01",
-      title: "CONNECT",
-      description:
-        "Bring relevant information together across business functions, legacy tools, and third-party systems.",
-    },
-    {
-      number: "02",
-      title: "ORGANIZE",
-      description:
-        "Create structured, clean, and accessible single-source datasets that teams can reliably depend upon.",
-    },
-    {
-      number: "03",
-      title: "ANALYZE",
-      description:
-        "Deploy analytics, reporting, and key performance indicators to identify meaningful underlying patterns.",
-    },
-    {
-      number: "04",
-      title: "UNDERSTAND",
-      description:
-        "Put information into business context so decision-makers understand what numbers actually mean in practice.",
-    },
-    {
-      number: "05",
-      title: "ACT",
-      description:
-        "Turn analytical insights into decisions that improve operational efficiency, agility, and business outcomes.",
-    },
-  ];
+const phases = [
+  {
+    number: "01",
+    title: "CONNECT",
+    description:
+      "Bring relevant information together across business functions, legacy tools, and third-party systems.",
+  },
+  {
+    number: "02",
+    title: "ORGANIZE",
+    description:
+      "Create structured, clean, and accessible single-source datasets that teams can reliably depend upon.",
+  },
+  {
+    number: "03",
+    title: "ANALYZE",
+    description:
+      "Deploy analytics, reporting, and key performance indicators to identify meaningful underlying patterns.",
+  },
+  {
+    number: "04",
+    title: "UNDERSTAND",
+    description:
+      "Put information into business context so decision-makers understand what numbers actually mean in practice.",
+  },
+  {
+    number: "05",
+    title: "ACT",
+    description:
+      "Turn analytical insights into decisions that improve operational efficiency, agility, and business outcomes.",
+  },
+];
 
+export default function StructuredMethodology() {
   return (
     <section className="structured-methodology">
       <div className="methodology-container">
-
         {/* TOP CONTENT */}
         <div className="methodology-top-content">
           <div className="methodology-badge">
@@ -50,7 +49,8 @@ export default function StructuredMethodology() {
           </h2>
 
           <p className="methodology-description">
-            An end-to-end framework turning disorganized raw inputs into strategic business momentum.
+            An end-to-end framework turning disorganized raw inputs into
+            strategic business momentum.
           </p>
         </div>
 
@@ -61,9 +61,7 @@ export default function StructuredMethodology() {
               className={`methodology-card phase-${phase.number}`}
               key={phase.number}
             >
-              <div className="phase-number">
-                PHASE {phase.number}
-              </div>
+              <div className="phase-number">PHASE {phase.number}</div>
 
               <h3>{phase.title}</h3>
 
@@ -82,37 +80,53 @@ export default function StructuredMethodology() {
           reporting and analytics, automation, scalability and data-led
           decision-making.
         </div>
-
       </div>
 
       <style>{`
-        * {
-          box-sizing: border-box;
-        }
+        /* ================= SECTION (padding same as other sections) ================= */
 
         .structured-methodology {
           width: 100%;
           margin: 0;
-          padding: 48px 0 50px;
+          padding: 40px 16px;
           background: #6d0038;
           font-family: "Inter", sans-serif;
           color: #ffffff;
           overflow: hidden;
         }
 
+        @media (min-width: 640px) {
+          .structured-methodology {
+            padding: 48px 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .structured-methodology {
+            padding: 56px 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .structured-methodology {
+            padding: 64px 100px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .structured-methodology {
+            padding: 80px 100px;
+          }
+        }
+
         .methodology-container {
           width: 100%;
-          max-width: 1500px;
-          margin: 0 auto;
-          padding: 0 38px;
         }
 
         /* TOP CONTENT */
 
         .methodology-top-content {
-          width: 92%;
-          margin: 0 auto;
-          transform: translateX(-1.5%);
+          width: 100%;
         }
 
         /* BADGE */
@@ -164,14 +178,13 @@ export default function StructuredMethodology() {
           font-size: 13px;
           line-height: 1.7;
           font-weight: 500;
-          white-space: nowrap;
         }
 
         /* CARDS */
 
         .methodology-cards {
-          width: 96%;
-          margin: 54px auto 0;
+          width: 100%;
+          margin: 54px 0 0;
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: 16px;
@@ -181,29 +194,21 @@ export default function StructuredMethodology() {
         .methodology-card {
           position: relative;
           overflow: hidden;
-
-          width: 92%;
-          justify-self: center;
+          width: 100%;
           min-width: 0;
           min-height: 235px;
           padding: 21px 20px 16px;
           display: flex;
           flex-direction: column;
-
-          background:
-            linear-gradient(
-              135deg,
-              rgba(255, 255, 255, 0.13) 0%,
-              rgba(255, 255, 255, 0.08) 45%,
-              rgba(255, 255, 255, 0.05) 100%
-            );
-
+          background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.08) 45%,
+            rgba(255, 255, 255, 0.05) 100%
+          );
           border: 1px solid rgba(255, 255, 255, 0.18);
           border-radius: 12px;
-
-          box-shadow:
-            0 7px 18px rgba(30, 0, 20, 0.10);
-
+          box-shadow: 0 7px 18px rgba(30, 0, 20, 0.10);
           transition:
             background 0.35s ease,
             border-color 0.35s ease,
@@ -221,10 +226,8 @@ export default function StructuredMethodology() {
           width: 130px;
           height: 130px;
           border-radius: 50%;
-
           background: rgba(255, 255, 255, 0.10);
           filter: blur(28px);
-
           pointer-events: none;
           z-index: 0;
         }
@@ -244,10 +247,7 @@ export default function StructuredMethodology() {
         .methodology-card:hover {
           background: #eee9ec;
           border-color: #970052;
-
-          box-shadow:
-            0 16px 32px rgba(30, 0, 20, 0.24);
-
+          box-shadow: 0 16px 32px rgba(30, 0, 20, 0.24);
           transform: translateY(-8px);
         }
 
@@ -296,7 +296,6 @@ export default function StructuredMethodology() {
           border-radius: 999px;
           background: #970052;
           opacity: 0.35;
-
           transition:
             width 0.5s ease,
             opacity 0.5s ease,
@@ -317,8 +316,6 @@ export default function StructuredMethodology() {
           color: #475569;
         }
 
-        /* HOVER LINE */
-
         .methodology-card:hover .methodology-card-line {
           width: 48px;
           opacity: 1;
@@ -335,21 +332,18 @@ export default function StructuredMethodology() {
         /* BOTTOM MESSAGE */
 
         .methodology-bottom {
-          width: 58%;
+          width: 100%;
           min-height: 70px;
-          margin: 46px auto 0;
+          margin: 46px 0 0;
           padding: 17px 30px;
           display: flex;
           align-items: center;
           justify-content: center;
           text-align: center;
-
           border: 1px solid rgba(255, 255, 255, 0.18);
           border-radius: 12px;
-
           background: rgba(30, 0, 18, 0.22);
           color: rgba(255, 255, 255, 0.78);
-
           font-size: 12.5px;
           line-height: 1.6;
           font-weight: 500;
@@ -358,26 +352,15 @@ export default function StructuredMethodology() {
         /* LARGE DESKTOP */
 
         @media (min-width: 1600px) {
-          .methodology-container {
-            max-width: 1600px;
-            padding: 0 45px;
-          }
-
-          .methodology-top-content {
-            width: 92%;
-          }
-
           .methodology-heading {
             font-size: 42px;
           }
 
           .methodology-cards {
-            width: 96%;
             gap: 18px;
           }
 
           .methodology-card {
-            width: 92%;
             min-height: 250px;
             padding: 23px 22px 17px;
           }
@@ -392,25 +375,13 @@ export default function StructuredMethodology() {
           }
 
           .methodology-card p {
-            font-size: 11px;
+            font-size: 12.5px;
           }
         }
 
-        /* TABLET */
+        /* TABLET / SMALL DESKTOP */
 
         @media (max-width: 1100px) {
-          .structured-methodology {
-            padding: 45px 0 48px;
-          }
-
-          .methodology-container {
-            padding: 0 25px;
-          }
-
-          .methodology-top-content {
-            width: 92%;
-          }
-
           .methodology-heading {
             font-size: 34px;
           }
@@ -420,12 +391,10 @@ export default function StructuredMethodology() {
           }
 
           .methodology-cards {
-            width: 100%;
             gap: 11px;
           }
 
           .methodology-card {
-            width: 92%;
             padding: 19px 15px 15px;
             min-height: 240px;
           }
@@ -440,37 +409,23 @@ export default function StructuredMethodology() {
           }
 
           .methodology-card p {
-            font-size: 9.5px;
-          }
-
-          .methodology-bottom {
-            width: 70%;
+            font-size: 11.5px;
           }
         }
 
         /* TABLET */
 
         @media (max-width: 850px) {
-          .methodology-top-content {
-            width: 92%;
-          }
-
           .methodology-heading {
             font-size: 31px;
           }
 
-          .methodology-description {
-            white-space: normal;
-          }
-
           .methodology-cards {
-            width: 100%;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 14px;
           }
 
           .methodology-card {
-            width: 92%;
             min-height: 220px;
           }
 
@@ -481,31 +436,14 @@ export default function StructuredMethodology() {
 
           .methodology-card:last-child {
             grid-column: span 2;
-            width: 46%;
+            width: calc(50% - 7px);
             justify-self: center;
-          }
-
-          .methodology-bottom {
-            width: 80%;
           }
         }
 
         /* MOBILE */
 
         @media (max-width: 600px) {
-          .structured-methodology {
-            padding: 38px 0 42px;
-          }
-
-          .methodology-container {
-            padding: 0 17px;
-          }
-
-          .methodology-top-content {
-            width: 92%;
-            transform: none;
-          }
-
           .methodology-badge {
             height: 25px;
             font-size: 8px;
@@ -519,10 +457,8 @@ export default function StructuredMethodology() {
           }
 
           .methodology-description {
-            width: 100%;
             font-size: 11px;
             line-height: 1.6;
-            white-space: normal;
           }
 
           .desktop-break {
@@ -530,7 +466,6 @@ export default function StructuredMethodology() {
           }
 
           .methodology-cards {
-            width: 100%;
             margin-top: 34px;
             display: flex;
             flex-direction: column;
@@ -538,7 +473,6 @@ export default function StructuredMethodology() {
           }
 
           .methodology-card {
-            width: 92%;
             min-height: 0;
             padding: 19px 18px 16px;
           }
@@ -549,7 +483,7 @@ export default function StructuredMethodology() {
           }
 
           .methodology-card:last-child {
-            width: 92%;
+            width: 100%;
           }
 
           .phase-number {
@@ -562,7 +496,7 @@ export default function StructuredMethodology() {
           }
 
           .methodology-card p {
-            font-size: 10px;
+            font-size: 11.5px;
             line-height: 1.6;
           }
 
@@ -571,11 +505,10 @@ export default function StructuredMethodology() {
           }
 
           .methodology-bottom {
-            width: 100%;
             min-height: 0;
             margin-top: 32px;
             padding: 16px 18px;
-            font-size: 10px;
+            font-size: 11px;
             line-height: 1.55;
           }
         }
@@ -583,25 +516,15 @@ export default function StructuredMethodology() {
         /* SMALL MOBILE */
 
         @media (max-width: 380px) {
-          .methodology-container {
-            padding: 0 14px;
-          }
-
-          .methodology-top-content {
-            width: 92%;
-            transform: none;
-          }
-
           .methodology-heading {
             font-size: 24px;
           }
 
           .methodology-description {
-            font-size: 10px;
+            font-size: 10.5px;
           }
 
           .methodology-card {
-            width: 92%;
             padding: 17px 16px 15px;
           }
 
@@ -610,7 +533,7 @@ export default function StructuredMethodology() {
           }
 
           .methodology-card p {
-            font-size: 9.5px;
+            font-size: 11px;
           }
         }
       `}</style>

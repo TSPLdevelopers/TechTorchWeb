@@ -59,8 +59,8 @@ export default function TechHero() {
           px-6
           sm:px-10
           md:px-16
-          lg:px-20
-          xl:px-24
+          lg:px-[100px]
+          xl:px-[100px]
 
           box-border
         "
@@ -86,11 +86,7 @@ export default function TechHero() {
             md:max-w-[520px]
             lg:max-w-[600px]
 
-            ml-2
-            sm:ml-4
-            md:ml-8
-            lg:ml-12
-            xl:ml-16
+            ml-0
 
             translate-y-0
           "
@@ -124,11 +120,7 @@ export default function TechHero() {
             md:max-w-[480px]
             lg:max-w-[560px]
 
-            ml-2
-            sm:ml-4
-            md:ml-8
-            lg:ml-12
-            xl:ml-16
+            ml-0
           "
         >
           Let's look at how the right ERP approach can simplify your
@@ -146,11 +138,7 @@ export default function TechHero() {
             md:mt-10
             lg:mt-14
 
-            ml-2
-            sm:ml-4
-            md:ml-8
-            lg:ml-12
-            xl:ml-16
+            ml-0
           "
         >
           <button
