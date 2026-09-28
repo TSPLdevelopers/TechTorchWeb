@@ -38,51 +38,16 @@ export default function MethodologySection() {
       <div className="w-full">
         {/* ================= LABEL ================= */}
         <span
-<<<<<<< HEAD
           className="text-[9px] font-semibold tracking-[0.15em] text-[#6B1E3F] sm:text-[10px] md:text-[11px]"
           style={{ fontFamily: "'Inter', sans-serif" }}
-=======
-          className="
-            text-[9px]
-            font-semibold
-            tracking-[0.15em]
-            text-[#730042]
-            sm:text-[10px]
-            md:text-[11px]
-          "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
         >
           METHODOLOGY
         </span>
 
         {/* ================= MAIN HEADING ================= */}
         <h1
-<<<<<<< HEAD
           className="mt-3 w-full max-w-[360px] text-[22px] font-bold leading-[1.3] text-[#6B1E3F] sm:max-w-2xl sm:text-[26px] md:text-[29px] lg:max-w-3xl lg:text-[32px] xl:text-[34px]"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-=======
-          className="
-            mt-3
-            w-full
-            max-w-[360px]
-            text-[22px]
-            font-bold
-            leading-[1.3]
-            text-[#730042]
-            sm:max-w-2xl
-            sm:text-[26px]
-            md:text-[29px]
-            lg:max-w-3xl
-            lg:text-[32px]
-            xl:text-[34px]
-          "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
         >
           Technology Starts With Understanding Your Business
         </h1>

@@ -55,22 +55,8 @@ export default function ContinuityArchitectureSection() {
       <div className="w-full">
         {/* ================= TOP LABEL ================= */}
         <span
-<<<<<<< HEAD
           className="text-[9px] font-semibold tracking-[0.15em] text-[#6B1E3F] sm:text-[10px] md:text-[11px]"
           style={{ fontFamily: "'Inter', sans-serif" }}
-=======
-          className="
-            text-[9px]
-            font-semibold
-            tracking-[0.15em]
-            text-[#730042]
-            sm:text-[10px]
-            md:text-[11px]
-          "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
         >
           CONTINUITY ARCHITECTURE
         </span>
@@ -114,28 +100,7 @@ export default function ContinuityArchitectureSection() {
             return (
               <div
                 key={c.number}
-<<<<<<< HEAD
                 className="flex min-w-0 flex-col justify-between border-l-4 border-[#6B1E3F] bg-slate-50 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-sm sm:p-6 lg:p-5 xl:p-6"
-=======
-                className="
-                  flex
-                  min-w-0
-                  flex-col
-                  justify-between
-                  border-l-4
-                  border-[#730042]
-                  bg-slate-50
-                  p-5
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:shadow-sm
-                  sm:p-6
-                  md:p-6
-                  lg:p-5
-                  xl:p-6
-                "
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
               >
                 {/* CARD CONTENT */}
                 <div>
@@ -148,25 +113,7 @@ export default function ContinuityArchitectureSection() {
                       {c.number}
                     </span>
 
-<<<<<<< HEAD
                     <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-rose-100 text-[#6B1E3F] sm:h-10 sm:w-10">
-=======
-                    <span
-                      className="
-                        flex
-                        h-9
-                        w-9
-                        flex-shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-rose-100
-                        text-[#730042]
-                        sm:h-10
-                        sm:w-10
-                      "
-                    >
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
                       <Icon size={16} />
                     </span>
                   </div>
@@ -191,21 +138,8 @@ export default function ContinuityArchitectureSection() {
                 {/* CARD FOOTER */}
                 <div className="mt-6 flex items-center justify-between gap-3">
                   <span
-<<<<<<< HEAD
                     className="text-[9px] font-semibold tracking-[0.08em] text-[#6B1E3F] sm:text-[10px]"
                     style={{ fontFamily: "'Inter', sans-serif" }}
-=======
-                    className="
-                      text-[9px]
-                      font-semibold
-                      tracking-[0.08em]
-                      text-[#730042]
-                      sm:text-[10px]
-                    "
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                    }}
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
                   >
                     {c.tag}
                   </span>
@@ -217,37 +151,9 @@ export default function ContinuityArchitectureSection() {
           })}
         </div>
 
-<<<<<<< HEAD
         {/* ================= UNIFIED STANDARD ================= */}
         <div className="mt-6 flex items-start gap-4 rounded-md bg-slate-100 p-5">
           <span className="mt-0.5 h-8 w-8 flex-shrink-0 rounded-md bg-[#6B1E3F]" />
-=======
-        {/* =======================================================
-            UNIFIED STANDARD
-            SAME AS YOUR ORIGINAL VERSION
-        ======================================================= */}
-        <div
-          className="
-            mt-6
-            flex
-            items-start
-            gap-4
-            rounded-md
-            bg-slate-100
-            p-5
-          "
-        >
-          <span
-            className="
-              mt-0.5
-              h-8
-              w-8
-              flex-shrink-0
-              rounded-md
-              bg-[#730042]
-            "
-          />
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
 
           <p
             className="text-sm leading-relaxed text-slate-700"
