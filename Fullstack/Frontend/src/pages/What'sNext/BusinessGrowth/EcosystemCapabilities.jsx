@@ -277,7 +277,7 @@ export default function EcosystemCapabilitiesSection() {
                 font-semibold
                 uppercase
                 tracking-[0.18em]
-                text-[#6B1E3F]
+                text-[#730042]
                 sm:text-xs
               "
               style={{
@@ -376,11 +376,11 @@ export default function EcosystemCapabilitiesSection() {
                 border
                 border-[#6B1E3F]/20
                 bg-white
-                text-[#6B1E3F]
+                text-[#730042]
                 transition-all
                 duration-300
-                hover:border-[#6B1E3F]
-                hover:bg-[#6B1E3F]
+                hover:border-[#730042]
+                hover:bg-[#730042]
                 hover:text-white
                 active:scale-95
                 sm:h-10
@@ -406,12 +406,12 @@ export default function EcosystemCapabilitiesSection() {
                 items-center
                 justify-center
                 rounded-md
-                bg-[#6B1E3F]
+                bg-[#730042]
                 text-white
                 transition-all
                 duration-300
                 hover:-translate-x-0.5
-                hover:bg-[#6B1E3F]
+                hover:bg-[#730042]
                 active:scale-95
                 sm:h-10
                 sm:w-10
@@ -637,10 +637,10 @@ export default function EcosystemCapabilitiesSection() {
                           text-[8px]
                           font-semibold
                           tracking-[0.12em]
-                          text-[#6B1E3F]
+                          text-[#730042]
                           transition-colors
                           duration-300
-                          group-hover:bg-[#6B1E3F]
+                          group-hover:bg-[#730042]
                           group-hover:text-white
                           sm:text-[9px]
                         "

@@ -76,7 +76,7 @@ export default function ContinuityArchitectureSection() {
             text-[9px]
             font-semibold
             tracking-[0.15em]
-            text-[#6B1E3F]
+            text-[#730042]
             sm:text-[10px]
             md:text-[11px]
           "
@@ -188,7 +188,7 @@ export default function ContinuityArchitectureSection() {
                   flex-col
                   justify-between
                   border-l-4
-                  border-[#6B1E3F]
+                  border-[#730042]
                   bg-slate-50
                   p-5
                   transition-all
@@ -231,7 +231,7 @@ export default function ContinuityArchitectureSection() {
                         justify-center
                         rounded-full
                         bg-rose-100
-                        text-[#6B1E3F]
+                        text-[#730042]
                         sm:h-10
                         sm:w-10
                       "
@@ -283,7 +283,7 @@ export default function ContinuityArchitectureSection() {
                       text-[9px]
                       font-semibold
                       tracking-[0.08em]
-                      text-[#6B1E3F]
+                      text-[#730042]
                       sm:text-[10px]
                     "
                     style={{
@@ -325,7 +325,7 @@ export default function ContinuityArchitectureSection() {
               w-8
               flex-shrink-0
               rounded-md
-              bg-[#6B1E3F]
+              bg-[#730042]
             "
           />
 

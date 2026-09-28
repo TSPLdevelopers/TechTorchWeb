@@ -182,7 +182,7 @@ export default function InstitutionalCommitmentSection() {
                       justify-center
                       rounded-full
                       bg-rose-100
-                      text-[#6B1E3F]
+                      text-[#730042]
                     "
                   >
                     <Icon size={15} strokeWidth={2} />

@@ -87,7 +87,7 @@ export default function CoreEngineering() {
               sm:text-[11px]
             "
             style={{
-              color: "#9d174d",
+              color: "#730042",
               fontFamily: "'Inter', sans-serif",
             }}
           >
@@ -196,7 +196,7 @@ export default function CoreEngineering() {
                   size={17}
                   className="sm:h-[18px] sm:w-[18px]"
                   style={{
-                    color: "#9d174d",
+                    color: "#730042",
                   }}
                   strokeWidth={2}
                 />

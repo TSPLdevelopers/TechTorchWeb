@@ -72,15 +72,15 @@ export default function GrowWithBusinessSection() {
                 fontFamily: "'Inter', sans-serif",
               }}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#730042]" />
 
               TECHNOLOGY
 
-              <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#730042]" />
 
               GROWTH
 
-              <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#730042]" />
 
               POSSIBILITY
             </span>
@@ -95,7 +95,7 @@ export default function GrowWithBusinessSection() {
                 text-[23px]
                 font-bold
                 leading-[1.3]
-                text-[#6B1E3F]
+                text-[#730042]
                 sm:text-[27px]
                 md:text-[30px]
                 lg:text-[34px]
@@ -199,7 +199,7 @@ export default function GrowWithBusinessSection() {
                 items-center
                 gap-2
                 rounded-full
-                bg-[#5C1533]
+                bg-[#730042]
                 px-5
                 py-3
                 text-[11px]
@@ -336,7 +336,7 @@ export default function GrowWithBusinessSection() {
                         text-[9px]
                         font-semibold
                         tracking-[0.1em]
-                        text-[#7A1443]
+                        text-[#730042]
                         sm:text-[10px]
                       "
                       style={{

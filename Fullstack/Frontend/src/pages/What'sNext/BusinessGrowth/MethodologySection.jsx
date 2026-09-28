@@ -59,7 +59,7 @@ export default function MethodologySection() {
             text-[9px]
             font-semibold
             tracking-[0.15em]
-            text-[#6B1E3F]
+            text-[#730042]
             sm:text-[10px]
             md:text-[11px]
           "
@@ -79,7 +79,7 @@ export default function MethodologySection() {
             text-[22px]
             font-bold
             leading-[1.3]
-            text-[#6B1E3F]
+            text-[#730042]
             sm:max-w-2xl
             sm:text-[26px]
             md:text-[29px]
@@ -223,7 +223,7 @@ export default function MethodologySection() {
                   <Icon
                     size={18}
                     strokeWidth={1.8}
-                    className="text-[#6B1E3F]"
+                    className="text-[#730042]"
                   />
                 </span>
 

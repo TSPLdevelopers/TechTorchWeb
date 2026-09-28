@@ -279,11 +279,11 @@ export default function MarketExpertiseSection() {
                 border
                 border-gray-200
                 bg-white
-                text-[#6B1E3F]
+                text-[#730042]
                 shadow-sm
                 transition-all
                 duration-300
-                hover:bg-[#6B1E3F]
+                hover:bg-[#730042]
                 hover:text-white
                 hover:shadow-md
                 sm:h-11
