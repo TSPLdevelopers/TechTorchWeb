@@ -37,7 +37,7 @@ export default function GrowthPerspectiveSection() {
               text-[9px]
               font-semibold
               tracking-[0.15em]
-              text-[#6B1E3F]
+              text-[#730042]
               sm:text-[10px]
             "
             style={{
@@ -59,7 +59,7 @@ export default function GrowthPerspectiveSection() {
             text-[22px]
             font-bold
             leading-[1.3]
-            text-[#6B1E3F]
+            text-[#730042]
             sm:text-[26px]
             md:text-[30px]
             lg:text-[34px]
@@ -125,7 +125,7 @@ export default function GrowthPerspectiveSection() {
             w-full
             rounded-md
             border-l-4
-            border-[#6B1E3F]
+            border-[#730042]
             bg-white
             px-4
             py-4

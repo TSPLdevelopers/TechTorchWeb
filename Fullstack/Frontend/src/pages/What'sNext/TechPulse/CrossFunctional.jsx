@@ -149,9 +149,19 @@ export default function IntegratedAutomation() {
           border: 1px solid #e6c8d8;
           border-radius: 20px;
           background: #fffafd;
+<<<<<<< HEAD
           color: #8c0750;
           font-size: 9px;
           font-weight: 900;
+=======
+
+          color: #730042;
+
+          font-size: 10px;
+
+          font-weight: 800;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           letter-spacing: 0.65px;
           margin-bottom: 17px;
         }
@@ -188,9 +198,188 @@ export default function IntegratedAutomation() {
           margin: 13px 0 0;
           width: 100%;
           text-align: center;
+<<<<<<< HEAD
           color: #8d0750;
           font-size: 15px;
           line-height: 1.55;
+=======
+
+          color: #65738a;
+          font-family: "Inter", sans-serif;
+          font-size: 13.5px;
+
+          line-height: 1.6;
+
+          font-weight: 500;
+        }
+
+        /* =====================================
+           CONNECTION BOX
+        ====================================== */
+
+        .connection-wrapper {
+          width: 100%;
+
+          max-width: 1050px;
+
+          margin-top: 31px;
+
+          padding: 32px 42px 27px;
+
+          background: #ffffff;
+
+          border: 1px solid #e5eaf0;
+
+          border-radius: 14px;
+
+          box-shadow:
+            0 4px 14px rgba(20, 30, 50, 0.025);
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .connection-list {
+          width: 100%;
+
+          max-width: 690px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        /* =====================================
+           CONNECTION ITEM
+        ====================================== */
+
+        .connection-item {
+          width: 100%;
+
+          min-height: 42px;
+
+          padding: 0 14px;
+
+          display: flex;
+
+          align-items: center;
+
+          gap: 10px;
+
+          background: #f7f9fb;
+
+          border: 1px solid #e4eaf0;
+
+          border-radius: 7px;
+        }
+
+        .connection-item-dot {
+          width: 7px;
+          height: 7px;
+
+          flex: 0 0 auto;
+
+          border-radius: 50%;
+
+          background: #730042;
+        }
+
+        .connection-item-text {
+          color: #293448;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+
+          line-height: 1.45;
+
+          font-weight: 600;
+        }
+
+        /* =====================================
+           ARROWS
+        ====================================== */
+
+        .connection-arrow {
+          height: 24px;
+
+          display: flex;
+
+          align-items: center;
+          justify-content: center;
+
+          color: #bd6b91;
+
+          font-size: 16px;
+
+          line-height: 1;
+
+          font-weight: 700;
+        }
+
+        /* =====================================
+           EVERYTHING CONNECTED
+        ====================================== */
+
+        .everything-connected {
+          min-height: 34px;
+
+          margin-top: 20px;
+
+          padding: 0 17px;
+
+          display: inline-flex;
+
+          align-items: center;
+          justify-content: center;
+
+          gap: 8px;
+
+          border: 1px solid #e2bdd0;
+
+          border-radius: 20px;
+
+          background: #fffafd;
+
+          color: #730042;
+
+          font-size: 10px;
+
+          font-weight: 900;
+
+          letter-spacing: 0.4px;
+        }
+
+        .everything-dot {
+          width: 7px;
+          height: 7px;
+
+          flex: 0 0 auto;
+
+          border-radius: 50%;
+
+          background: #970052;
+        }
+
+        /* =====================================
+           DESCRIPTION
+        ====================================== */
+
+        .cross-functional-description {
+          width: 100%;
+
+          max-width: 920px;
+
+          margin-top: 28px;
+
+          padding: 0 10px;
+
+          color: #52627a;
+
+          font-size: 13.5px;
+
+          line-height: 1.7;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-weight: 500;
         }
 

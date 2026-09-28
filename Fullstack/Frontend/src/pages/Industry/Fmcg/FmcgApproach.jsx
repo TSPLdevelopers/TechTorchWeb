@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const steps = [
   {
@@ -28,6 +29,7 @@ const steps = [
 ];
 
 export default function ApproachSection() {
+  const navigate = useNavigate();
   return (
     <section className="bg-white">
       {/* Steps */}
@@ -85,7 +87,8 @@ export default function ApproachSection() {
               Talk to our experts
               <ArrowRight className="h-4 w-4" />
             </button>
-            <button className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white/90">
+            <button className="rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-neutral-900 transition-colors hover:bg-white/90"
+            onClick={() => navigate("/fmcg-get-in-touch")}>
               Get in touch
             </button>
           </div>

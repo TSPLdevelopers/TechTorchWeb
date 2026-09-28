@@ -61,8 +61,23 @@ export default function CoreEngineering() {
         <div className="w-full lg:sticky lg:top-20 lg:self-start">
           {/* LABEL - INTER */}
           <p
+<<<<<<< HEAD
             className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] sm:text-[11px]"
             style={{ color: "#9d174d", fontFamily: "'Inter', sans-serif" }}
+=======
+            className="
+              mb-3
+              text-[10px]
+              font-semibold
+              uppercase
+              tracking-[0.15em]
+              sm:text-[11px]
+            "
+            style={{
+              color: "#730042",
+              fontFamily: "'Inter', sans-serif",
+            }}
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           >
             Core Engineering
           </p>
@@ -116,7 +131,13 @@ export default function CoreEngineering() {
                 <Icon
                   size={17}
                   className="sm:h-[18px] sm:w-[18px]"
+<<<<<<< HEAD
                   style={{ color: "#9d174d" }}
+=======
+                  style={{
+                    color: "#730042",
+                  }}
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
                   strokeWidth={2}
                 />
               </div>

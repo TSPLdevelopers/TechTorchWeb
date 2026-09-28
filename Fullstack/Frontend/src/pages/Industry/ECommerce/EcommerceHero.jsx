@@ -1,11 +1,13 @@
 import React from "react";
 import { ArrowRight, Download, ShoppingBag } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
 
 export default function EcommerceHeroSection() {
+  const navigate = useNavigate();
   return (
     <div className="w-full font-sans bg-white" style={{ color: INK }}>
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-14 items-center">
@@ -42,6 +44,7 @@ export default function EcommerceHeroSection() {
             <button
               className="inline-flex items-center gap-2 px-5 py-3 rounded-md text-sm font-medium border"
               style={{ borderColor: "#d8d5d0", color: INK }}
+              onClick={() => navigate("/ecommerce-get-in-touch")}
             >
               Get In Touch
               <Download size={15} />

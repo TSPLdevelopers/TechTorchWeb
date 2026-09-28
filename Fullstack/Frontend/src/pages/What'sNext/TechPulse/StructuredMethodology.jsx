@@ -88,8 +88,13 @@ export default function StructuredMethodology() {
         .structured-methodology {
           width: 100%;
           margin: 0;
+<<<<<<< HEAD
           padding: 40px 16px;
           background: #6d0038;
+=======
+          padding: 48px 0 50px;
+          background: #730042;
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-family: "Inter", sans-serif;
           color: #ffffff;
           overflow: hidden;
@@ -246,8 +251,16 @@ export default function StructuredMethodology() {
 
         .methodology-card:hover {
           background: #eee9ec;
+<<<<<<< HEAD
           border-color: #970052;
           box-shadow: 0 16px 32px rgba(30, 0, 20, 0.24);
+=======
+          border-color: #730042;
+
+          box-shadow:
+            0 16px 32px rgba(30, 0, 20, 0.24);
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           transform: translateY(-8px);
         }
 
@@ -294,7 +307,7 @@ export default function StructuredMethodology() {
           height: 2px;
           margin-top: 18px;
           border-radius: 999px;
-          background: #970052;
+          background: #730042;
           opacity: 0.35;
           transition:
             width 0.5s ease,
@@ -305,11 +318,11 @@ export default function StructuredMethodology() {
         /* HOVER CONTENT */
 
         .methodology-card:hover .phase-number {
-          color: #970052;
+          color: #730042;
         }
 
         .methodology-card:hover h3 {
-          color: #970052;
+          color: #730042;
         }
 
         .methodology-card:hover p {

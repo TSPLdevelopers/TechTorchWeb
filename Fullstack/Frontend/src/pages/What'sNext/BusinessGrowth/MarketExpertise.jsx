@@ -220,7 +220,30 @@ export default function MarketExpertiseSection() {
               type="button"
               onClick={handlePrevious}
               aria-label="Previous industry"
+<<<<<<< HEAD
               className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-[#6B1E3F] shadow-sm transition-all duration-300 hover:bg-[#6B1E3F] hover:text-white hover:shadow-md sm:h-11 sm:w-11"
+=======
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-gray-200
+                bg-white
+                text-[#730042]
+                shadow-sm
+                transition-all
+                duration-300
+                hover:bg-[#730042]
+                hover:text-white
+                hover:shadow-md
+                sm:h-11
+                sm:w-11
+              "
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
             >
               <ChevronLeft size={19} strokeWidth={2} />
             </button>

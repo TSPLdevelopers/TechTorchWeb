@@ -136,6 +136,7 @@ export default function EcosystemHeroSection() {
         </p>
 
         {/* ================= BUTTON ================= */}
+<<<<<<< HEAD
         <button
           type="button"
           className="
@@ -173,6 +174,45 @@ export default function EcosystemHeroSection() {
           }}
         >
           <span>TALK TO OUR EXPERTS</span>
+=======
+       <button
+  type="button"
+  className="
+    mt-6
+    inline-flex
+    w-full
+    max-w-[260px]
+    items-center
+    justify-center
+    gap-2
+    bg-[#730042]
+    px-5
+    py-3
+    text-[11px]
+    font-semibold
+    tracking-[0.05em]
+    text-white
+    transition-all
+    duration-300
+    hover:-translate-y-0.5
+    hover:bg-white
+    hover:text-[#730042]
+    active:translate-y-0
+    sm:mt-7
+    sm:w-auto
+    sm:max-w-none
+    sm:px-6
+    sm:text-xs
+    md:mt-8
+    md:py-3.5
+    md:text-sm
+  "
+  style={{
+    fontFamily: "'Inter', sans-serif",
+  }}
+>
+  <span>TALK TO OUR EXPERTS</span>
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
 
           <span
             aria-hidden="true"

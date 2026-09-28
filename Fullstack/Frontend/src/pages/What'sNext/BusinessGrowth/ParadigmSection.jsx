@@ -7,7 +7,7 @@ export default function ParadigmSection() {
       <div className="w-full text-center">
         {/* Label */}
         <span
-          className="text-[10px] font-semibold tracking-[0.15em] text-[#6B1E3F]"
+          className="text-[10px] font-semibold tracking-[0.15em] text-[#730042]"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           THE PARADIGM
@@ -15,7 +15,7 @@ export default function ParadigmSection() {
 
         {/* Main Heading */}
         <h1
-          className="mx-auto mt-3 max-w-3xl text-2xl font-semibold leading-snug text-[#6B1E3F] sm:text-3xl md:text-4xl"
+          className="mx-auto mt-3 max-w-3xl text-2xl font-semibold leading-snug text-[#730042] sm:text-3xl md:text-4xl"
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Don't Let Technology Become the Limit to Your Growth
@@ -34,7 +34,7 @@ export default function ParadigmSection() {
 
         {/* Highlight Text */}
         <p
-          className="mx-auto mt-5 max-w-2xl text-sm font-semibold leading-relaxed text-[#6B1E3F] sm:text-[15px] md:text-base"
+          className="mx-auto mt-5 max-w-2xl text-sm font-semibold leading-relaxed text-[#730042] sm:text-[15px] md:text-base"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Technology should create possibilities.
@@ -52,7 +52,7 @@ export default function ParadigmSection() {
         </p>
 
         {/* Growth Statement */}
-        <div className="mx-auto mt-8 inline-flex max-w-full items-center justify-center rounded-full bg-[#5C1533] px-5 py-3 sm:px-6">
+        <div className="mx-auto mt-8 inline-flex max-w-full items-center justify-center rounded-full bg-[#730042] px-5 py-3 sm:px-6">
           <span
             className="text-center text-[10px] font-semibold uppercase tracking-wide text-white sm:text-[11px]"
             style={{ fontFamily: "'Inter', sans-serif" }}

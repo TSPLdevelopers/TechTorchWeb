@@ -67,7 +67,7 @@ export default function TechnologyCapabilities() {
       className="
         w-full
         overflow-hidden
-        bg-[#6d0e42]
+        bg-[#730042]
         px-4
         py-10
         sm:px-6
@@ -260,7 +260,7 @@ export default function TechnologyCapabilities() {
                     duration-500
                     ease-out
                     group-hover:scale-125
-                    group-hover:bg-[#6d0e42]
+                    group-hover:bg-[#730042]
                     group-hover:text-white
                     group-hover:shadow-lg
                     sm:h-11
@@ -289,7 +289,7 @@ export default function TechnologyCapabilities() {
                     text-white
                     transition-colors
                     duration-300
-                    group-hover:text-[#6d0e42]
+                    group-hover:text-[#730042]
                     sm:text-[16px]
                     md:text-[17px]
                   "
@@ -332,7 +332,7 @@ export default function TechnologyCapabilities() {
                     duration-500
                     ease-out
                     group-hover:w-12
-                    group-hover:bg-[#6d0e42]
+                    group-hover:bg-[#730042]
                   "
                 />
               </div>

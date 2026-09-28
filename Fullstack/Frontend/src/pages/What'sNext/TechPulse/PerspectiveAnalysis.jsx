@@ -129,7 +129,7 @@ export default function PerspectiveAnalysis() {
           padding: 40px 16px;
           margin: 0;
           background: #ffffff;
-          color: #151a2a;
+          color: #730042;
           font-family: "Inter", sans-serif;
           overflow: hidden;
         }
@@ -182,7 +182,13 @@ export default function PerspectiveAnalysis() {
           border: 1px solid #ecc7d8;
           border-radius: 20px;
           background: #fff8fb;
+<<<<<<< HEAD
           color: #8f0050;
+=======
+
+          color: #730042;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-size: 9px;
           font-weight: 800;
           letter-spacing: 0.7px;
@@ -193,7 +199,7 @@ export default function PerspectiveAnalysis() {
           width: 6px;
           height: 6px;
           border-radius: 50%;
-          background: #970052;
+          background: #730042;
         }
 
         .perspective-left h2 {
@@ -219,7 +225,12 @@ export default function PerspectiveAnalysis() {
 
         .card-label {
           margin-bottom: 11px;
+<<<<<<< HEAD
           color: #970052;
+=======
+
+          color: #730042;
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 9.5px;
           font-weight: 800;
@@ -320,7 +331,13 @@ export default function PerspectiveAnalysis() {
 
         .friction-card span {
           flex: 0 0 auto;
+<<<<<<< HEAD
           color: #970052;
+=======
+
+          color: #730042;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-size: 15px;
           line-height: 1;
         }
@@ -410,11 +427,17 @@ export default function PerspectiveAnalysis() {
 
         .goal-card h3 {
           margin: 0;
+<<<<<<< HEAD
           color: #8c0750;
+=======
+
+          color: #730042;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 15px;
           line-height: 1.4;
-          font-weight: 800;
+          font-weight: 700;
         }
 
         /* XL & DESKTOP */

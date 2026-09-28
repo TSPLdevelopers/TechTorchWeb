@@ -96,7 +96,23 @@ export default function InstitutionalCommitmentSection() {
                     {c.number}
                   </span>
 
+<<<<<<< HEAD
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose-100 text-[#6B1E3F]">
+=======
+                  <span
+                    className="
+                      flex
+                      h-8
+                      w-8
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-rose-100
+                      text-[#730042]
+                    "
+                  >
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
                     <Icon size={15} strokeWidth={2} />
                   </span>
                 </div>

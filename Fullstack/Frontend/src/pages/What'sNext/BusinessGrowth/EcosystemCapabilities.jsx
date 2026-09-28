@@ -187,8 +187,23 @@ export default function EcosystemCapabilitiesSection() {
           <div className="max-w-3xl">
             {/* LABEL */}
             <p
+<<<<<<< HEAD
               className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6B1E3F] sm:text-xs"
               style={{ fontFamily: "'Inter', sans-serif" }}
+=======
+              className="
+                mb-3
+                text-[10px]
+                font-semibold
+                uppercase
+                tracking-[0.18em]
+                text-[#730042]
+                sm:text-xs
+              "
+              style={{
+                fontFamily: "'Inter', sans-serif",
+              }}
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
             >
               OUR ECOSYSTEM
             </p>
@@ -226,7 +241,30 @@ export default function EcosystemCapabilitiesSection() {
               type="button"
               onClick={previousSlide}
               aria-label="Previous cards"
+<<<<<<< HEAD
               className="flex h-9 w-9 items-center justify-center rounded-md border border-[#6B1E3F]/20 bg-white text-[#6B1E3F] transition-all duration-300 hover:border-[#6B1E3F] hover:bg-[#6B1E3F] hover:text-white active:scale-95 sm:h-10 sm:w-10"
+=======
+              className="
+                flex
+                h-9
+                w-9
+                items-center
+                justify-center
+                rounded-md
+                border
+                border-[#6B1E3F]/20
+                bg-white
+                text-[#730042]
+                transition-all
+                duration-300
+                hover:border-[#730042]
+                hover:bg-[#730042]
+                hover:text-white
+                active:scale-95
+                sm:h-10
+                sm:w-10
+              "
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
             >
               <ChevronLeft size={18} strokeWidth={1.8} />
             </button>
@@ -236,7 +274,27 @@ export default function EcosystemCapabilitiesSection() {
               type="button"
               onClick={nextSlide}
               aria-label="Next cards"
+<<<<<<< HEAD
               className="flex h-9 w-9 items-center justify-center rounded-md bg-[#6B1E3F] text-white transition-all duration-300 hover:-translate-x-0.5 hover:bg-[#6B1E3F] active:scale-95 sm:h-10 sm:w-10"
+=======
+              className="
+                flex
+                h-9
+                w-9
+                items-center
+                justify-center
+                rounded-md
+                bg-[#730042]
+                text-white
+                transition-all
+                duration-300
+                hover:-translate-x-0.5
+                hover:bg-[#730042]
+                active:scale-95
+                sm:h-10
+                sm:w-10
+              "
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
             >
               <ChevronRight size={18} strokeWidth={1.8} />
             </button>
@@ -304,8 +362,30 @@ export default function EcosystemCapabilitiesSection() {
                     {/* TAG */}
                     <div className="mt-6">
                       <span
+<<<<<<< HEAD
                         className="inline-flex rounded-full bg-white px-3 py-1.5 text-[8px] font-semibold tracking-[0.12em] text-[#6B1E3F] transition-colors duration-300 group-hover:bg-[#6B1E3F] group-hover:text-white sm:text-[9px]"
                         style={{ fontFamily: "'Inter', sans-serif" }}
+=======
+                        className="
+                          inline-flex
+                          rounded-full
+                          bg-white
+                          px-3
+                          py-1.5
+                          text-[8px]
+                          font-semibold
+                          tracking-[0.12em]
+                          text-[#730042]
+                          transition-colors
+                          duration-300
+                          group-hover:bg-[#730042]
+                          group-hover:text-white
+                          sm:text-[9px]
+                        "
+                        style={{
+                          fontFamily: "'Inter', sans-serif",
+                        }}
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
                       >
                         {item.tag}
                       </span>

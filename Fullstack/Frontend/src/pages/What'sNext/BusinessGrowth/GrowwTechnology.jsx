@@ -15,18 +15,50 @@ export default function GrowWithBusinessSection() {
               className="inline-flex flex-wrap items-center gap-1.5 rounded-full bg-[#FBDCEA] px-3 py-1 text-[9px] font-semibold tracking-[0.1em] text-[#7A1443] sm:text-[10px]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
+<<<<<<< HEAD
               <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
               TECHNOLOGY
               <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
               GROWTH
               <span className="h-1.5 w-1.5 rounded-full bg-[#7A1443]" />
+=======
+              <span className="h-1.5 w-1.5 rounded-full bg-[#730042]" />
+
+              TECHNOLOGY
+
+              <span className="h-1.5 w-1.5 rounded-full bg-[#730042]" />
+
+              GROWTH
+
+              <span className="h-1.5 w-1.5 rounded-full bg-[#730042]" />
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
               POSSIBILITY
             </span>
 
             {/* ================= MAIN HEADING ================= */}
             <h1
+<<<<<<< HEAD
               className="mt-7 w-full max-w-[500px] text-[23px] font-bold leading-[1.3] text-[#6B1E3F] sm:text-[27px] md:text-[30px] lg:text-[34px] xl:text-[38px]"
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+=======
+              className="
+                mt-7
+                w-full
+                max-w-[500px]
+                text-[23px]
+                font-bold
+                leading-[1.3]
+                text-[#730042]
+                sm:text-[27px]
+                md:text-[30px]
+                lg:text-[34px]
+                xl:text-[38px]
+              "
+              style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
             >
               Technology Should Grow With Your Business
             </h1>
@@ -64,8 +96,38 @@ export default function GrowWithBusinessSection() {
             {/* ================= BUTTON ================= */}
             <button
               type="button"
+<<<<<<< HEAD
               className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#5C1533] px-5 py-3 text-[11px] font-semibold tracking-wide text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4A1029] active:translate-y-0 sm:mt-7 sm:px-6 sm:text-xs md:text-sm"
               style={{ fontFamily: "'Inter', sans-serif" }}
+=======
+              className="
+                mt-6
+                inline-flex
+                w-fit
+                items-center
+                gap-2
+                rounded-full
+                bg-[#730042]
+                px-5
+                py-3
+                text-[11px]
+                font-semibold
+                tracking-wide
+                text-white
+                transition-all
+                duration-300
+                hover:-translate-y-0.5
+                hover:bg-[#4A1029]
+                active:translate-y-0
+                sm:mt-7
+                sm:px-6
+                sm:text-xs
+                md:text-sm
+              "
+              style={{
+                fontFamily: "'Inter', sans-serif",
+              }}
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
             >
               TALK TO OUR EXPERTS
               <span aria-hidden="true">&rarr;</span>
@@ -93,8 +155,22 @@ export default function GrowWithBusinessSection() {
                   {/* ================= CARD TEXT ================= */}
                   <div className="min-w-0">
                     <span
+<<<<<<< HEAD
                       className="block text-[9px] font-semibold tracking-[0.1em] text-[#7A1443] sm:text-[10px]"
                       style={{ fontFamily: "'Inter', sans-serif" }}
+=======
+                      className="
+                        block
+                        text-[9px]
+                        font-semibold
+                        tracking-[0.1em]
+                        text-[#730042]
+                        sm:text-[10px]
+                      "
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                      }}
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
                     >
                       STRATEGIC ARCHITECTURE
                     </span>

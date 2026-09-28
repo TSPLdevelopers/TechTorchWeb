@@ -137,7 +137,7 @@ export default function OperationalImpact() {
           border: 1px solid #edc9da;
           border-radius: 20px;
           background: #fff9fc;
-          color: #8c0750;
+          color: #730042;
           font-size: 9px;
           font-weight: 900;
           letter-spacing: 0.65px;
@@ -149,7 +149,7 @@ export default function OperationalImpact() {
           height: 6px;
           flex: 0 0 auto;
           border-radius: 50%;
-          background: #970052;
+          background: #730042;
         }
 
         .impact-heading {
@@ -199,7 +199,12 @@ export default function OperationalImpact() {
 
         .impact-card:hover {
           transform: translateY(-5px);
+<<<<<<< HEAD
           border-color: #970052;
+=======
+          border-color: #730042;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           box-shadow:
             0 0 8px rgba(151, 0, 82, 0.15),
             0 0 16px rgba(151, 0, 82, 0.08),
@@ -207,8 +212,8 @@ export default function OperationalImpact() {
         }
 
         .impact-card:hover .impact-number {
-          background: #970052;
-          border-color: #970052;
+          background: #730042;
+          border-color: #730042;
           color: #ffffff;
         }
 
@@ -229,7 +234,12 @@ export default function OperationalImpact() {
           border: 1px solid #eccddd;
           border-radius: 6px;
           background: #fff8fb;
+<<<<<<< HEAD
           color: #970052;
+=======
+          color: #730042;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-size: 10px;
           font-weight: 800;
           transition:
@@ -248,7 +258,7 @@ export default function OperationalImpact() {
         }
 
         .impact-card:hover .impact-label {
-          color: #970052;
+          color: #730042;
         }
 
         .impact-card h3 {
@@ -273,7 +283,7 @@ export default function OperationalImpact() {
           margin-top: auto;
           padding-top: 11px;
           border-top: 1px solid #e2e7ed;
-          color: #970052;
+          color: #730042;
           font-size: 9.5px;
           line-height: 1.3;
           font-weight: 800;

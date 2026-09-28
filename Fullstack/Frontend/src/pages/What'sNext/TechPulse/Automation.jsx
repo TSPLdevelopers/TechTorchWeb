@@ -149,7 +149,7 @@ export default function IntegratedAutomation() {
           border: 1px solid #e6c8d8;
           border-radius: 20px;
           background: #fffafd;
-          color: #8c0750;
+          color: #730042;
           font-size: 9px;
           font-weight: 900;
           letter-spacing: 0.65px;
@@ -161,7 +161,7 @@ export default function IntegratedAutomation() {
           height: 6px;
           flex: 0 0 auto;
           border-radius: 50%;
-          background: #970052;
+          background: #730042;
         }
 
         /* ================================
@@ -188,7 +188,7 @@ export default function IntegratedAutomation() {
           margin: 13px 0 0;
           width: 100%;
           text-align: center;
-          color: #8d0750;
+          color: #730042;
           font-size: 15px;
           line-height: 1.55;
           font-weight: 500;
@@ -257,7 +257,7 @@ export default function IntegratedAutomation() {
         }
 
         .automation-card:hover .automation-card-title h3 {
-          color: #8d0750;
+          color: #730042;
         }
 
         /* ================================
@@ -274,7 +274,7 @@ export default function IntegratedAutomation() {
         }
 
         .automation-card:hover .card-title-dot {
-          background: #970052;
+          background: #730042;
         }
 
         /* ================================
@@ -340,17 +340,17 @@ export default function IntegratedAutomation() {
         }
 
         .automation-bottom-main {
-          color: #8d0750;
+          color: #730042;
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 17px;
           line-height: 1.35;
-          font-weight: 720;
+          font-weight: 600;
           letter-spacing: -0.3px;
         }
 
         .automation-bottom-small {
           margin-top: 6px;
-          color: #7d8da4;
+          color: #730042;
           font-size: 10px;
           line-height: 1.3;
           font-weight: 600;
