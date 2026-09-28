@@ -4,7 +4,7 @@ const IMAGE_URL = "/fieldnote.png";
 
 export default function TechnologySection() {
   return (
-    <section className="w-full bg-[#7a0e42] px-6 py-16 md:py-20 flex flex-col items-center text-center">
+    <section className="w-full bg-[#730042] px-6 py-16 md:py-20 flex flex-col items-center text-center">
 
       {/* Heading - Plus Jakarta Sans */}
       <h2

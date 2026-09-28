@@ -42,7 +42,7 @@ function Row({ step, title, copy, image, imageSide }) {
     <div>
       {/* Heading - Plus Jakarta Sans */}
       <span
-        className="block text-[13px] tracking-[0.14em] font-semibold text-[#8C2F3B] mb-3"
+        className="block text-[13px] tracking-[0.14em] font-semibold text-[#730042] mb-3"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         {step} — {title}
