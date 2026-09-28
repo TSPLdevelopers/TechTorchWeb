@@ -32,9 +32,6 @@ export default function WithPurpose() {
             text-[#252525]
 
             sm:text-[12px]
-
-            lg:-translate-x-5
-            xl:-translate-x-7
           "
         >
           OUR PERSPECTIVE
@@ -52,15 +49,15 @@ export default function WithPurpose() {
 
             sm:gap-y-12
 
-            md:grid-cols-[minmax(0,1fr)_220px_minmax(0,1fr)]
-            md:gap-x-8
+            md:grid-cols-[minmax(0,1fr)_200px_minmax(0,1fr)]
+            md:gap-x-6
             md:gap-y-0
 
-            lg:grid-cols-[minmax(0,1fr)_235px_minmax(0,1fr)]
-            lg:gap-x-10
+            lg:grid-cols-[minmax(0,1fr)_215px_minmax(0,1fr)]
+            lg:gap-x-7
 
-            xl:grid-cols-[minmax(0,1fr)_245px_minmax(0,1fr)]
-            xl:gap-x-12
+            xl:grid-cols-[minmax(0,1fr)_225px_minmax(0,1fr)]
+            xl:gap-x-8
           "
         >
           {/* =====================================================
@@ -71,9 +68,6 @@ export default function WithPurpose() {
             className="
               min-w-0
               max-w-full
-
-              lg:-translate-x-5
-              xl:-translate-x-7
             "
           >
             {/* HEADING */}
@@ -164,7 +158,7 @@ export default function WithPurpose() {
             <div
               className="
                 w-full
-                max-w-[215px]
+                max-w-[205px]
                 rounded-[7px]
                 border
                 border-[#C9C9C9]
@@ -255,9 +249,6 @@ export default function WithPurpose() {
 
               md:mt-2
               lg:mt-2
-
-              lg:translate-x-5
-              xl:translate-x-7
             "
           >
             <p>

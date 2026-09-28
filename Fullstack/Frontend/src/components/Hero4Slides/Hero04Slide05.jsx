@@ -47,27 +47,27 @@ export default function LetsConnect() {
           items-center
         "
       >
+        {/* Left padding same as Hero: 16 / 24 / 40 / 100 */}
         <div
           className="
             w-[62%]
 
-            pl-6
+            pl-4
             pr-3
 
             sm:w-[61%]
-            sm:pl-9
+            sm:pl-6
             sm:pr-4
 
             md:w-[60%]
-            md:pl-12
+            md:pl-10
             md:pr-5
 
             lg:w-[59%]
-            lg:pl-16
+            lg:pl-[100px]
             lg:pr-6
 
             xl:w-[58%]
-            xl:pl-20
             xl:pr-8
           "
         >
@@ -96,7 +96,7 @@ export default function LetsConnect() {
               lg:mb-8
               lg:text-[18px]
 
-              xl:-translate-y-15
+              xl:-translate-y-[60px]
               xl:mb-9
               xl:text-[19px]
             "

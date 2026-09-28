@@ -32,16 +32,16 @@ export default function EcosystemHeroSection() {
       {/* ================= DARK OVERLAY ================= */}
       <div className="absolute inset-0 bg-black/55" />
 
-      {/* ================= CONTENT ================= */}
+      {/* ================= CONTENT =================
+          Left/right padding same as Hero: 16 / 24 / 40 / 100
+      ============================================ */}
       <div
         className="
           relative
           z-10
-          mx-auto
           flex
           min-h-[400px]
           w-full
-          max-w-6xl
           flex-col
           items-center
           justify-center
@@ -52,10 +52,10 @@ export default function EcosystemHeroSection() {
           sm:px-6
           sm:py-16
           md:min-h-[480px]
-          md:px-8
+          md:px-10
           md:py-20
           lg:min-h-[520px]
-          lg:px-10
+          lg:px-[100px]
           lg:py-24
           xl:min-h-[560px]
         "
@@ -136,51 +136,51 @@ export default function EcosystemHeroSection() {
         </p>
 
         {/* ================= BUTTON ================= */}
-       <button
-  type="button"
-  className="
-    mt-6
-    inline-flex
-    w-full
-    max-w-[260px]
-    items-center
-    justify-center
-    gap-2
-    bg-[#730042]
-    px-5
-    py-3
-    text-[11px]
-    font-semibold
-    tracking-[0.05em]
-    text-white
-    transition-all
-    duration-300
-    hover:-translate-y-0.5
-    hover:bg-white
-    hover:text-[#730042]
-    active:translate-y-0
-    sm:mt-7
-    sm:w-auto
-    sm:max-w-none
-    sm:px-6
-    sm:text-xs
-    md:mt-8
-    md:py-3.5
-    md:text-sm
-  "
-  style={{
-    fontFamily: "'Inter', sans-serif",
-  }}
->
-  <span>TALK TO OUR EXPERTS</span>
+        <button
+          type="button"
+          className="
+            mt-6
+            inline-flex
+            w-full
+            max-w-[260px]
+            items-center
+            justify-center
+            gap-2
+            bg-[#8A1538]
+            px-5
+            py-3
+            text-[11px]
+            font-semibold
+            tracking-[0.05em]
+            text-white
+            transition-all
+            duration-300
+            hover:-translate-y-0.5
+            hover:bg-white
+            hover:text-[#8A1538]
+            active:translate-y-0
+            sm:mt-7
+            sm:w-auto
+            sm:max-w-none
+            sm:px-6
+            sm:text-xs
+            md:mt-8
+            md:py-3.5
+            md:text-sm
+          "
+          style={{
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
+          <span>TALK TO OUR EXPERTS</span>
 
-  <span
-    aria-hidden="true"
-    className="text-base leading-none"
-  >
-    →
-  </span>
-</button>
+          <span
+            aria-hidden="true"
+            className="text-base leading-none"
+          >
+            →
+          </span>
+        </button>
       </div>
     </section>
   );

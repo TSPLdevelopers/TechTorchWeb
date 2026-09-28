@@ -1,14 +1,11 @@
 import React from "react";
-import executiveStrategyImage from "/ExecutiveStrategy.png";
 
 export default function ExecutiveStrategy() {
   return (
     <section className="executive-strategy">
       <div className="executive-strategy-card">
-
         {/* CONTENT */}
         <div className="executive-strategy-content">
-
           {/* BADGE */}
           <div className="executive-strategy-badge">
             <span className="strategy-dot"></span>
@@ -48,41 +45,54 @@ export default function ExecutiveStrategy() {
               Talk to Our Experts <span>→</span>
             </button>
           </div>
-
         </div>
 
         {/* IMAGE */}
         <div className="executive-strategy-image">
-          <img
-            src={executiveStrategyImage}
-            alt="Executive Strategy"
-          />
+          <img src="/ExecutiveStrategy.png" alt="Executive Strategy" />
         </div>
-
       </div>
 
       <style>{`
-        * {
-          box-sizing: border-box;
-        }
+        /* ================= SECTION (padding same as other sections) ================= */
 
         .executive-strategy {
           width: 100%;
-          padding: 35px 0;
+          padding: 40px 16px;
           background: #ffffff;
           font-family: "Inter", sans-serif;
           overflow: hidden;
         }
 
-        .executive-strategy-card {
-          width: calc(100% - 140px);
-          max-width: 1320px;
-          min-height: 520px;
-          margin: 0 auto;
+        @media (min-width: 640px) {
+          .executive-strategy {
+            padding: 48px 24px;
+          }
+        }
 
+        @media (min-width: 768px) {
+          .executive-strategy {
+            padding: 56px 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .executive-strategy {
+            padding: 64px 100px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .executive-strategy {
+            padding: 80px 100px;
+          }
+        }
+
+        .executive-strategy-card {
+          width: 100%;
+          min-height: 520px;
           display: grid;
           grid-template-columns: 1fr 0.9fr;
-
           background: #f7fafc;
           border: 1px solid #e0e7ed;
           border-radius: 22px;
@@ -93,12 +103,10 @@ export default function ExecutiveStrategy() {
 
         .executive-strategy-content {
           padding: 42px 45px 40px 55px;
-
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
-
           min-width: 0;
         }
 
@@ -108,22 +116,22 @@ export default function ExecutiveStrategy() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-
           max-width: 100%;
           height: 32px;
           padding: 0 12px;
-
           border: 1px solid #e5bfd1;
           border-radius: 20px;
-
           background: #fff9fc;
+<<<<<<< HEAD
+          color: #8b0750;
+=======
           color: #730042;
 
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-size: 10px;
           line-height: 1;
           font-weight: 800;
           letter-spacing: 0.7px;
-
           white-space: nowrap;
         }
 
@@ -131,7 +139,6 @@ export default function ExecutiveStrategy() {
           width: 7px;
           height: 7px;
           flex: 0 0 auto;
-
           border-radius: 50%;
           background: #970052;
         }
@@ -140,10 +147,8 @@ export default function ExecutiveStrategy() {
 
         .executive-strategy-content h2 {
           margin: 23px 0 18px;
-
           color: #101629;
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 35px;
           line-height: 1.12;
           letter-spacing: -1.4px;
@@ -154,10 +159,8 @@ export default function ExecutiveStrategy() {
 
         .strategy-description {
           margin: 0;
-
           color: #64738a;
           font-family: "Inter", sans-serif;
-
           font-size: 14px;
           line-height: 1.5;
           font-weight: 400;
@@ -167,9 +170,7 @@ export default function ExecutiveStrategy() {
 
         .strategy-highlight {
           margin: 16px 0 0;
-
           color: #202a3e;
-
           font-size: 13px;
           line-height: 1.48;
           font-weight: 600;
@@ -179,9 +180,13 @@ export default function ExecutiveStrategy() {
 
         .strategy-action {
           margin: 16px 0 0;
+<<<<<<< HEAD
+          color: #8d0750;
+=======
 
           color: #730042;
 
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-size: 14px;
           line-height: 1.4;
           font-weight: 750;
@@ -191,7 +196,6 @@ export default function ExecutiveStrategy() {
 
         .strategy-buttons {
           margin-top: 22px;
-
           display: flex;
           flex-direction: column;
           align-items: flex-start;
@@ -203,23 +207,21 @@ export default function ExecutiveStrategy() {
           min-width: 255px;
           height: 45px;
           padding: 0 14px;
-
           border: 1px solid #970052;
           border-radius: 10px;
+<<<<<<< HEAD
+          background: #970052;
+=======
 
           background: #730042;
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           color: #ffffff;
-
           font-family: "Inter", sans-serif;
           font-size: 13px;
           font-weight: 600;
-
           cursor: pointer;
           white-space: nowrap;
-
-          box-shadow:
-            0 7px 15px rgba(151, 0, 82, 0.18);
-
+          box-shadow: 0 7px 15px rgba(151, 0, 82, 0.18);
           transition:
             background 0.45s ease,
             color 0.45s ease,
@@ -228,14 +230,18 @@ export default function ExecutiveStrategy() {
         }
 
         .strategy-primary:hover {
+<<<<<<< HEAD
+          background: #a91a68;
+          border-color: #a91a68;
+          box-shadow: 0 10px 20px rgba(151, 0, 82, 0.22);
+=======
           background: #970052;
           border-color: #970052;
 
           box-shadow:
             0 10px 20px rgba(151, 0, 82, 0.22);
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
         }
-
-        /* ARROW */
 
         .strategy-primary span {
           display: inline;
@@ -249,17 +255,14 @@ export default function ExecutiveStrategy() {
           width: 100%;
           height: 100%;
           min-height: 520px;
-
           overflow: hidden;
           background: #202633;
         }
 
         .executive-strategy-image img {
           display: block;
-
           width: 100%;
           height: 100%;
-
           object-fit: cover;
           object-position: center;
         }
@@ -268,8 +271,6 @@ export default function ExecutiveStrategy() {
 
         @media (min-width: 1600px) {
           .executive-strategy-card {
-            width: calc(100% - 160px);
-            max-width: 1380px;
             min-height: 550px;
           }
 
@@ -286,10 +287,6 @@ export default function ExecutiveStrategy() {
         /* LAPTOP */
 
         @media (max-width: 1200px) {
-          .executive-strategy-card {
-            width: calc(100% - 80px);
-          }
-
           .executive-strategy-content {
             padding: 38px 35px 38px 42px;
           }
@@ -314,15 +311,8 @@ export default function ExecutiveStrategy() {
         /* TABLET LANDSCAPE */
 
         @media (max-width: 1000px) {
-          .executive-strategy {
-            padding: 30px 0;
-          }
-
           .executive-strategy-card {
-            width: calc(100% - 50px);
             min-height: 460px;
-
-            grid-template-columns: 1fr 0.9fr;
           }
 
           .executive-strategy-content {
@@ -372,9 +362,7 @@ export default function ExecutiveStrategy() {
 
         @media (max-width: 800px) {
           .executive-strategy-card {
-            width: calc(100% - 40px);
             min-height: auto;
-
             grid-template-columns: 1fr;
           }
 
@@ -401,7 +389,6 @@ export default function ExecutiveStrategy() {
           }
 
           .executive-strategy-image {
-            width: 100%;
             height: 320px;
             min-height: 320px;
           }
@@ -410,15 +397,7 @@ export default function ExecutiveStrategy() {
         /* MOBILE */
 
         @media (max-width: 600px) {
-          .executive-strategy {
-            width: 100%;
-            padding: 20px 0 28px;
-          }
-
           .executive-strategy-card {
-            width: calc(100% - 24px);
-            min-height: auto;
-
             border-radius: 16px;
           }
 
@@ -430,10 +409,8 @@ export default function ExecutiveStrategy() {
           .executive-strategy-badge {
             width: fit-content;
             max-width: 100%;
-
             height: 28px;
             padding: 0 10px;
-
             font-size: 8px;
             letter-spacing: 0.5px;
             gap: 6px;
@@ -446,9 +423,7 @@ export default function ExecutiveStrategy() {
 
           .executive-strategy-content h2 {
             width: 100%;
-
             margin: 20px 0 16px;
-
             font-size: 27px;
             line-height: 1.12;
             letter-spacing: -1px;
@@ -456,7 +431,6 @@ export default function ExecutiveStrategy() {
 
           .strategy-description {
             width: 100%;
-
             font-size: 12px;
             line-height: 1.55;
           }
@@ -468,18 +442,14 @@ export default function ExecutiveStrategy() {
 
           .strategy-highlight {
             width: 100%;
-
             margin-top: 16px;
-
             font-size: 12px;
             line-height: 1.5;
           }
 
           .strategy-action {
             width: 100%;
-
             margin-top: 16px;
-
             font-size: 13px;
             line-height: 1.45;
           }
@@ -492,10 +462,8 @@ export default function ExecutiveStrategy() {
           .strategy-primary {
             width: 100%;
             min-width: 0;
-
             height: 44px;
             padding: 0 11px;
-
             font-size: 12px;
           }
 
@@ -504,7 +472,6 @@ export default function ExecutiveStrategy() {
           }
 
           .executive-strategy-image {
-            width: 100%;
             height: 245px;
             min-height: 245px;
           }
@@ -513,10 +480,6 @@ export default function ExecutiveStrategy() {
         /* SMALL MOBILE */
 
         @media (max-width: 480px) {
-          .executive-strategy-card {
-            width: calc(100% - 18px);
-          }
-
           .executive-strategy-content {
             padding: 26px 18px 28px;
           }

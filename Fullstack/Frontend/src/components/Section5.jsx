@@ -1,370 +1,430 @@
-// import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-// export default function BigVision() {
-//   return (
-//     <section className="relative w-full min-h-[550px] overflow-hidden bg-[#f9f8f3]">
+export default function BigVision() {
+  const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
 
-//       {/* ================= CURVED LINES ================= */}
-//       <div
-//         className="absolute z-0 pointer-events-none hidden sm:block opacity-30"
-//         style={{
-//           width: "1650px",
-//           height: "850px",
-//           right: "-500px",
-//           top: "-80px",
-//           backgroundImage: "url('/Section.png')",
-//           backgroundSize: "contain",
-//           backgroundPosition: "center",
-//           backgroundRepeat: "no-repeat",
-//           transform: "rotate(-55deg)",
-//         }}
-//       />
+  // Smooth reveal when the section enters the viewport (runs once)
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
 
-//       {/* ================= MAIN CONTENT ================= */}
-//       <div
-//         className="
-//           relative
-//           z-10
-//           mx-auto
-//           flex
-//           min-h-[550px]
-//           w-full
-//           max-w-[1440px]
-//           flex-col
-//           px-[20px]
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
 
-//           sm:px-[30px]
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
-//           md:px-[40px]
+  const reveal = `bv-reveal ${inView ? "bv-in" : ""}`;
 
-//           lg:flex-row
-//           lg:items-center
-//           lg:px-[100px]
-//         "
-//       >
+  return (
+    <section
+      ref={sectionRef}
+      className="relative w-full min-h-[550px] overflow-hidden bg-[#f9f8f3]"
+    >
+      <style>{`
+        .bv-reveal {
+          opacity: 0;
+          transform: translateY(28px);
+          transition:
+            opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: opacity, transform;
+        }
 
-//         {/* ================= LEFT CONTENT ================= */}
-//         <div
-//           className="
-//             relative
-//             z-20
-//             w-full
-//             pt-[30px]
+        .bv-reveal.bv-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
 
-//             sm:pt-[35px]
+        @media (prefers-reduced-motion: reduce) {
+          .bv-reveal {
+            transition: none;
+            opacity: 1;
+            transform: none;
+          }
+        }
+      `}</style>
 
-//             md:w-[60%]
-//             md:pt-[40px]
-//             md:-translate-x-5
+      {/* ================= CURVED LINES ================= */}
+      <div
+        className="absolute z-0 pointer-events-none hidden sm:block opacity-30"
+        style={{
+          width: "1650px",
+          height: "850px",
+          right: "-500px",
+          top: "-80px",
+          backgroundImage: "url('/Section.png')",
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          transform: "rotate(-55deg)",
+        }}
+      />
 
-//             lg:w-[45%]
-//             lg:pt-[10px]
-//             lg:-translate-x-8
-//           "
-//         >
+      {/* ================= MAIN CONTENT ================= */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          flex
+          min-h-[550px]
+          w-full
+          max-w-[1440px]
+          flex-col
+          px-[20px]
 
-//           <p
-//             className="
-//               mb-[15px]
-//               text-[16px]
-//               font-medium
-//               leading-none
-//               text-black
+          sm:px-[30px]
 
-//               sm:text-[17px]
+          md:px-[40px]
 
-//               md:text-[18px]
+          lg:flex-row
+          lg:items-center
+          lg:px-[100px]
+        "
+      >
 
-//               lg:text-[18px]
-//             "
-//           >
-//             THE BIG VISION
-//           </p>
+        {/* ================= LEFT CONTENT ================= */}
+        <div
+          className="
+            relative
+            z-20
+            w-full
+            pt-[30px]
 
-//           <h1
-//             className="
-//               translate-y-[10px]
-//               font-plus-jakarta
-//               text-[29px]
-//               font-bold
-//               leading-[1.32]
-//               tracking-[-1px]
-//               text-black
+            sm:pt-[35px]
 
-//               sm:text-[32px]
+            md:w-[60%]
+            md:pt-[40px]
+            md:-translate-x-8
 
-//               md:text-[35px]
+            lg:w-[45%]
+            lg:pt-[10px]
+            lg:-translate-x-14
+          "
+        >
+          <div className={reveal}>
+            <p
+              className="
+                mb-[15px]
+                text-[16px]
+                font-medium
+                leading-none
+                text-black
 
-//               lg:text-[36px]
-//             "
-//           >
-//             <span className="text-[#83004f]">Leading</span> With Vision.
-//             <br />
-//             Shaping <span className="text-[#83004f]">What’s Next.</span>
-//           </h1>
+                sm:text-[17px]
 
-//           <p
-//             className="
-//               mt-[25px]
-//               max-w-[600px]
-//               text-[16px]
-//               font-normal
-//               leading-[1.4]
-//               text-[#1e1e1e]
+                md:text-[18px]
 
-//               sm:mt-[27px]
-//               sm:text-[17px]
+                lg:text-[18px]
+              "
+            >
+              THE BIG VISION
+            </p>
 
-//               md:mt-[30px]
-//               md:text-[18px]
+            <h1
+              className="
+                translate-y-[10px]
+                font-plus-jakarta
+                text-[29px]
+                font-bold
+                leading-[1.32]
+                tracking-[-1px]
+                text-black
 
-//               lg:mt-[34px]
-//               lg:text-[18px]
-//             "
-//           >
-//             The future is not simply something we prepare for
-//             <br className="hidden sm:block" />
-//             — it is something we have the opportunity to shape.
-//             <br className="hidden sm:block" />
-//             At TechTorch, our leadership is grounded in a clear
-//             <br className="hidden sm:block" />
-//             belief: technology should create meaningful progress,
-//             <br className="hidden sm:block" />
-//             strengthen businesses and open new possibilities
-//             <br className="hidden sm:block" />
-//             for the future.
-//           </p>
+                sm:text-[32px]
 
-//           {/* ================= BUTTON ================= */}
-//           <div
-//             className="
-//               mt-[30px]
-//               flex
-//               flex-wrap
-//               items-center
+                md:text-[35px]
 
-//               sm:mt-[32px]
+                lg:text-[36px]
+              "
+            >
+              <span className="text-[#83004f]">Leading</span> With Vision.
+              <br />
+              Shaping <span className="text-[#83004f]">What’s Next.</span>
+            </h1>
 
-//               md:mt-[35px]
+            <p
+              className="
+                mt-[25px]
+                max-w-[600px]
+                text-[16px]
+                font-normal
+                leading-[1.4]
+                text-[#1e1e1e]
 
-//               lg:mt-[50px]
-//             "
-//           >
-//             <button
-//               className="
-//                 rounded-[4px]
-//                 border
-//                 border-[#8a0055]
-//                 bg-transparent
-//                 px-[9px]
-//                 py-[7px]
-//                 font-plus-jakarta
-//                 text-[17px]
-//                 font-semibold
-//                 leading-none
-//                 text-[#83004f]
-//                 transition-all
-//                 duration-300
-//                 hover:bg-[#83004f]
-//                 hover:text-white
+                sm:mt-[27px]
+                sm:text-[17px]
 
-//                 sm:px-[10px]
-//                 sm:py-[8px]
-//                 sm:text-[19px]
+                md:mt-[30px]
+                md:text-[18px]
 
-//                 lg:px-[11px]
-//                 lg:py-[9px]
-//                 lg:text-[18px]
-//               "
-//             >
-//               Explore Our Leadership →
-//             </button>
-//           </div>
-//         </div>
+                lg:mt-[34px]
+                lg:text-[18px]
+              "
+            >
+              The future is not simply something we prepare for
+              <br className="hidden sm:block" />
+              — it is something we have the opportunity to shape.
+              <br className="hidden sm:block" />
+              At TechTorch, our leadership is grounded in a clear
+              <br className="hidden sm:block" />
+              belief: technology should create meaningful progress,
+              <br className="hidden sm:block" />
+              strengthen businesses and open new possibilities
+              <br className="hidden sm:block" />
+              for the future.
+            </p>
 
-//         {/* ================= LEADERSHIP IMAGES ================= */}
-//         <div
-//           className="
-//             relative
-//             z-20
-//             mt-[45px]
-//             flex
-//             w-full
-//             items-end
-//             justify-center
-//             gap-[35px]
+            {/* ================= BUTTON ================= */}
+            <div
+              className="
+                mt-[30px]
+                flex
+                flex-wrap
+                items-center
 
-//             md:absolute
-//             md:right-[20px]
-//             md:bottom-0
-//             md:mt-0
-//             md:w-[55%]
-//             md:justify-normal
+                sm:mt-[32px]
 
-//             lg:right-[10px]
-//             lg:w-[55%]
-//             lg:gap-[45px]
-//           "
-//         >
+                md:mt-[35px]
 
-//           {/* ================= SIDDHARTH ================= */}
-//           <div
-//             className="
-//               flex
-//               w-[45%]
-//               -translate-y-[50px]
-//               translate-x-[20px]
-//               flex-col
-//               items-center
-//               justify-end
-//               text-center
-//             "
-//           >
-//             <img
-//               src="/img.png"
-//               alt="Siddharth Pathak"
-//               className="
-//                 block
-//                 h-auto
-//                 w-[180px]
-//                 object-contain
+                lg:mt-[50px]
+              "
+            >
+              <button
+                className="
+                  rounded-[4px]
+                  border
+                  border-[#8a0055]
+                  bg-transparent
+                  px-[9px]
+                  py-[7px]
+                  font-plus-jakarta
+                  text-[17px]
+                  font-semibold
+                  leading-none
+                  text-[#83004f]
+                  transition-all
+                  duration-300
+                  hover:bg-[#83004f]
+                  hover:text-white
 
-//                 sm:w-[210px]
+                  sm:px-[10px]
+                  sm:py-[8px]
+                  sm:text-[19px]
 
-//                 md:w-[240px]
+                  lg:px-[11px]
+                  lg:py-[9px]
+                  lg:text-[18px]
+                "
+              >
+                Explore Our Leadership →
+              </button>
+            </div>
+          </div>
+        </div>
 
-//                 lg:w-[250px]
-//               "
-//               style={{
-//                 maskImage:
-//                   "linear-gradient(to bottom, black 98%, transparent 100%)",
-//                 WebkitMaskImage:
-//                   "linear-gradient(to bottom, black 98%, transparent 100%)",
-//               }}
-//             />
+        {/* ================= LEADERSHIP IMAGES ================= */}
+        <div
+          className="
+            relative
+            z-20
+            mt-[45px]
+            flex
+            w-full
+            items-end
+            justify-center
+            gap-[35px]
 
-//             <div className="mt-[18px]">
-//               <h2
-//                 className="
-//                   whitespace-nowrap
-//                   font-plus-jakarta
-//                   text-[19px]
-//                   font-medium
-//                   leading-none
-//                   text-black
+            md:absolute
+            md:right-[20px]
+            md:bottom-0
+            md:mt-0
+            md:w-[55%]
+            md:justify-normal
 
-//                   sm:text-[20px]
+            lg:right-[10px]
+            lg:w-[55%]
+            lg:gap-[45px]
+          "
+        >
 
-//                   md:text-[22px]
+          {/* ================= SIDDHARTH ================= */}
+          <div
+            className="
+              flex
+              w-[45%]
+              -translate-y-[50px]
+              translate-x-[20px]
+              flex-col
+              items-center
+              justify-end
+              text-center
+            "
+          >
+            <div
+              className={`${reveal} flex flex-col items-center`}
+              style={{ transitionDelay: "0.25s" }}
+            >
+              <img
+                src="/img.png"
+                alt="Siddharth Pathak"
+                className="
+                  block
+                  h-auto
+                  w-[180px]
+                  object-contain
 
-//                   lg:text-[23px]
-//                 "
-//               >
-//                 Siddharth Pathak
-//               </h2>
+                  sm:w-[210px]
 
-//               <p
-//                 className="
-//                   mt-[8px]
-//                   whitespace-nowrap
-//                   font-inter
-//                   text-[12px]
-//                   font-normal
-//                   leading-[1.2]
-//                   text-[#83004f]
+                  md:w-[240px]
 
-//                   sm:text-[13px]
+                  lg:w-[250px]
+                "
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, black 98%, transparent 100%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 98%, transparent 100%)",
+                }}
+              />
 
-//                   md:text-[14px]
+              <div className="mt-[18px]">
+                <h2
+                  className="
+                    whitespace-nowrap
+                    font-plus-jakarta
+                    text-[19px]
+                    font-medium
+                    leading-none
+                    text-black
 
-//                   lg:text-[16px]
-//                 "
-//               >
-//                 Chief Executive Officer
-//               </p>
-//             </div>
-//           </div>
+                    sm:text-[20px]
 
-//           {/* ================= AMIT SIR ================= */}
-//           <div
-//             className="
-//               flex
-//               w-[45%]
-//               -translate-y-[30px]
-//               flex-col
-//               items-center
-//               justify-end
-//               text-center
-//             "
-//           >
-//             <img
-//               src="/Amit sir.png"
-//               alt="Amit Gaur"
-//               className="
-//                 block
-//                 h-auto
-//                 w-[180px]
-//                 object-contain
+                    md:text-[22px]
 
-//                 sm:w-[210px]
+                    lg:text-[23px]
+                  "
+                >
+                  Siddharth Pathak
+                </h2>
 
-//                 md:w-[240px]
+                <p
+                  className="
+                    mt-[8px]
+                    whitespace-nowrap
+                    font-inter
+                    text-[12px]
+                    font-normal
+                    leading-[1.2]
+                    text-[#83004f]
 
-//                 lg:w-[255px]
-//               "
-//               style={{
-//                 maskImage:
-//                   "linear-gradient(to bottom, black 98%, transparent 100%)",
-//                 WebkitMaskImage:
-//                   "linear-gradient(to bottom, black 98%, transparent 100%)",
-//               }}
-//             />
+                    sm:text-[13px]
 
-//             <div className="mt-[18px]">
-//               <h2
-//                 className="
-//                   whitespace-nowrap
-//                   font-plus-jakarta
-//                   text-[19px]
-//                   font-medium
-//                   leading-none
-//                   text-black
+                    md:text-[14px]
 
-//                   sm:text-[20px]
+                    lg:text-[16px]
+                  "
+                >
+                  Chief Executive Officer
+                </p>
+              </div>
+            </div>
+          </div>
 
-//                   md:text-[22px]
+          {/* ================= AMIT SIR ================= */}
+          <div
+            className="
+              flex
+              w-[45%]
+              -translate-y-[30px]
+              flex-col
+              items-center
+              justify-end
+              text-center
+            "
+          >
+            <div
+              className={`${reveal} flex flex-col items-center`}
+              style={{ transitionDelay: "0.45s" }}
+            >
+              <img
+                src="/Amit sir.png"
+                alt="Amit Gaur"
+                className="
+                  block
+                  h-auto
+                  w-[180px]
+                  object-contain
 
-//                   lg:text-[23px]
-//                 "
-//               >
-//                 Amit Gaur
-//               </h2>
+                  sm:w-[210px]
 
-//               <p
-//                 className="
-//                   mt-[8px]
-//                   whitespace-nowrap
-//                   font-inter
-//                   text-[12px]
-//                   font-normal
-//                   leading-[1.2]
-//                   text-[#83004f]
+                  md:w-[240px]
 
-//                   sm:text-[13px]
+                  lg:w-[255px]
+                "
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, black 98%, transparent 100%)",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 98%, transparent 100%)",
+                }}
+              />
 
-//                   md:text-[14px]
+              <div className="mt-[18px]">
+                <h2
+                  className="
+                    whitespace-nowrap
+                    font-plus-jakarta
+                    text-[19px]
+                    font-medium
+                    leading-none
+                    text-black
 
-//                   lg:text-[16px]
-//                 "
-//               >
-//                 Chief Operating Officer
-//               </p>
+                    sm:text-[20px]
 
-//             </div>
-//           </div>
+                    md:text-[22px]
 
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
+                    lg:text-[23px]
+                  "
+                >
+                  Amit Gaur
+                </h2>
+
+                <p
+                  className="
+                    mt-[8px]
+                    whitespace-nowrap
+                    font-inter
+                    text-[12px]
+                    font-normal
+                    leading-[1.2]
+                    text-[#83004f]
+
+                    sm:text-[13px]
+
+                    md:text-[14px]
+
+                    lg:text-[16px]
+                  "
+                >
+                  Chief Operating Officer
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}

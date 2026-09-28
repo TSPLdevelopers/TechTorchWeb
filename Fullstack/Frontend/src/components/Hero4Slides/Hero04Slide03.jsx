@@ -198,7 +198,14 @@ export default function TechnologyServicesSection() {
 
         .technology-services-section {
           position: relative;
-          padding: 60px 80px;
+
+          /* Vertical padding */
+          padding-top: 60px;
+          padding-bottom: 60px;
+
+          /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+          padding-left: 16px;
+          padding-right: 16px;
 
           background: ${MAROON};
 
@@ -217,11 +224,31 @@ export default function TechnologyServicesSection() {
           box-sizing: border-box;
         }
 
+        @media (min-width: 640px) {
+          .technology-services-section {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .technology-services-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .technology-services-section {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+        }
+
         /* ================= CONTAINER ================= */
 
         .technology-services-container {
-          max-width: 1300px;
-          margin: 0 auto;
+          width: 100%;
         }
 
         /* ================= HEADER ================= */
@@ -313,10 +340,8 @@ export default function TechnologyServicesSection() {
 
           gap: ${CARD_GAP}px;
 
-          /*
-            Cards ko halka sa right side shift
-          */
-          padding-left: 20px;
+          /* No left padding, so first card aligns with heading */
+          padding-left: 0;
 
           box-sizing: border-box;
 
@@ -410,31 +435,16 @@ export default function TechnologyServicesSection() {
           gap: 11px;
         }
 
-        /* ================= LAPTOP ================= */
-
-        @media (max-width: 1300px) {
-          .technology-services-section {
-            padding: 60px 50px;
-          }
-
-          .cards-track {
-            padding-left: 18px;
-          }
-        }
-
         /* ================= TABLET ================= */
 
         @media (max-width: 900px) {
           .technology-services-section {
-            padding: 55px 35px;
+            padding-top: 55px;
+            padding-bottom: 55px;
           }
 
           .services-header {
             gap: 25px;
-          }
-
-          .cards-track {
-            padding-left: 12px;
           }
 
           .service-card {
@@ -446,7 +456,8 @@ export default function TechnologyServicesSection() {
 
         @media (max-width: 768px) {
           .technology-services-section {
-            padding: 50px 25px;
+            padding-top: 50px;
+            padding-bottom: 50px;
           }
 
           .services-header {
@@ -465,10 +476,6 @@ export default function TechnologyServicesSection() {
             font-size: 22px;
           }
 
-          .cards-track {
-            padding-left: 8px;
-          }
-
           .service-card {
             min-height: 310px;
           }
@@ -478,7 +485,8 @@ export default function TechnologyServicesSection() {
 
         @media (max-width: 480px) {
           .technology-services-section {
-            padding: 42px 20px;
+            padding-top: 42px;
+            padding-bottom: 42px;
           }
 
           .services-header {
@@ -493,10 +501,6 @@ export default function TechnologyServicesSection() {
             font-size: 14px;
           }
 
-          .cards-track {
-            padding-left: 5px;
-          }
-
           .service-card {
             min-height: 300px;
             padding: 26px 22px;
@@ -505,4 +509,4 @@ export default function TechnologyServicesSection() {
       `}</style>
     </section>
   );
-}
+} 

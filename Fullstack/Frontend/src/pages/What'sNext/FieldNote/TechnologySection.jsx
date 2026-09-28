@@ -4,7 +4,8 @@ const IMAGE_URL = "/fieldnote.png";
 
 export default function TechnologySection() {
   return (
-    <section className="w-full bg-[#730042] px-6 py-16 md:py-20 flex flex-col items-center text-center">
+    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+    <section className="w-full bg-[#7a0e42] px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-[100px] flex flex-col items-center text-center">
 
       {/* Heading - Plus Jakarta Sans */}
       <h2
@@ -17,7 +18,6 @@ export default function TechnologySection() {
 
         <span className="block">
           They need technology that works better together
-          
         </span>
       </h2>
 

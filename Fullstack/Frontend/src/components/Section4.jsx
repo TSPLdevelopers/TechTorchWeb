@@ -128,13 +128,39 @@ export default function WhatsNext() {
       <style>{`
   .wn-wrap {
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
     font-family: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;
     color: #111;
-    padding: 60px 40px;
     background: #fff;
     box-sizing: border-box;
+
+    /* Vertical padding */
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .wn-wrap {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .wn-wrap {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .wn-wrap {
+      padding-left: 100px;
+      padding-right: 100px;
+    }
   }
 
   /* ================= HEADER ================= */
@@ -178,7 +204,7 @@ export default function WhatsNext() {
   .wn-card {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 340px;
     border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
@@ -253,12 +279,12 @@ export default function WhatsNext() {
 
   .wn-tag {
     position: absolute;
-    top: 24px;
-    left: 24px;
-    right: 24px;
+    top: 20px;
+    left: 20px;
+    right: 20px;
 
     width: fit-content;
-    max-width: calc(100% - 48px);
+    max-width: calc(100% - 40px);
 
     z-index: 3;
 
@@ -266,7 +292,7 @@ export default function WhatsNext() {
     color: #fff;
 
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 700;
     letter-spacing: 0.6px;
 
@@ -286,7 +312,7 @@ export default function WhatsNext() {
 
     z-index: 3;
 
-    padding: 28px;
+    padding: 24px;
     box-sizing: border-box;
   }
 
@@ -297,7 +323,7 @@ export default function WhatsNext() {
 
     font-family: "Plus Jakarta Sans", sans-serif;
 
-    font-size: 26px;
+    font-size: 23px;
     font-weight: 800;
     line-height: 1.2;
 
@@ -317,7 +343,7 @@ export default function WhatsNext() {
 
     font-family: "Plus Jakarta Sans", sans-serif;
 
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
 
     max-width: 420px;
@@ -387,7 +413,8 @@ export default function WhatsNext() {
   @media (max-width: 1100px) {
 
     .wn-wrap {
-      padding: 50px 30px;
+      padding-top: 50px;
+      padding-bottom: 50px;
     }
 
     .wn-header h1 {
@@ -404,19 +431,19 @@ export default function WhatsNext() {
     }
 
     .wn-card {
-      height: 380px;
+      height: 320px;
     }
 
     .wn-title {
-      font-size: 23px;
+      font-size: 21px;
     }
 
     .wn-desc {
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .wn-content {
-      padding: 24px;
+      padding: 22px;
     }
   }
 
@@ -428,7 +455,8 @@ export default function WhatsNext() {
   @media (max-width: 900px) {
 
     .wn-wrap {
-      padding: 45px 24px;
+      padding-top: 45px;
+      padding-bottom: 45px;
     }
 
     .wn-header {
@@ -452,25 +480,25 @@ export default function WhatsNext() {
     }
 
     .wn-card {
-      height: 360px;
+      height: 300px;
     }
 
     .wn-title {
-      font-size: 21px;
+      font-size: 19px;
     }
 
     .wn-desc {
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .wn-content {
-      padding: 22px;
+      padding: 20px;
     }
 
     .wn-tag {
-      top: 18px;
-      left: 18px;
-      font-size: 11px;
+      top: 16px;
+      left: 16px;
+      font-size: 10.5px;
       padding: 5px 9px;
     }
   }
@@ -483,7 +511,8 @@ export default function WhatsNext() {
   @media (max-width: 600px) {
 
     .wn-wrap {
-      padding: 40px 16px;
+      padding-top: 40px;
+      padding-bottom: 40px;
     }
 
     .wn-header {
@@ -507,7 +536,7 @@ export default function WhatsNext() {
 
     .wn-card {
       width: 100%;
-      height: 360px;
+      height: 300px;
       border-radius: 6px;
     }
 
@@ -527,16 +556,16 @@ export default function WhatsNext() {
     }
 
     .wn-content {
-      padding: 20px;
+      padding: 18px;
     }
 
     .wn-title {
-      font-size: 22px;
+      font-size: 20px;
       line-height: 1.25;
     }
 
     .wn-desc {
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.45;
       max-width: 100%;
     }
@@ -563,7 +592,8 @@ export default function WhatsNext() {
   @media (max-width: 400px) {
 
     .wn-wrap {
-      padding: 32px 12px;
+      padding-top: 32px;
+      padding-bottom: 32px;
     }
 
     .wn-header h1 {
@@ -575,19 +605,19 @@ export default function WhatsNext() {
     }
 
     .wn-card {
-      height: 340px;
+      height: 290px;
     }
 
     .wn-content {
-      padding: 18px;
+      padding: 16px;
     }
 
     .wn-title {
-      font-size: 20px;
+      font-size: 19px;
     }
 
     .wn-desc {
-      font-size: 14px;
+      font-size: 13.5px;
     }
 
     .wn-tag {
@@ -597,13 +627,16 @@ export default function WhatsNext() {
 `}</style>
 
       <div className="wn-header">
-        <h1 fontFamily="Plus Jakarta Sans">What's Next</h1>
-        <p fontFamily="Plus Jakarta Sans">Ideas, trends and technology shaping how businesses adapt, evolve and move forward.</p>
+        <h1>What's Next</h1>
+        <p>
+          Ideas, trends and technology shaping how businesses adapt, evolve and
+          move forward.
+        </p>
       </div>
 
       <div className="wn-grid">
         {cards.map((c) => (
-          <Card key={c.title} {...c} />
+          <Card key={c.tag} {...c} />
         ))}
       </div>
     </div>

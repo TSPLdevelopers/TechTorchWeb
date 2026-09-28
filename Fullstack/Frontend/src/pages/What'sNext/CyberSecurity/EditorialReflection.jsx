@@ -7,41 +7,19 @@ export default function CostOfWaitingSection() {
         w-full
         overflow-hidden
         bg-white
-        px-4
-        py-10
-        sm:px-6
-        sm:py-12
-        md:px-8
-        md:py-14
-        lg:px-10
-        lg:py-16
-        xl:px-12
+        px-4 py-10
+        sm:px-6 sm:py-12
+        md:px-10 md:py-14
+        lg:px-[100px] lg:py-16
         xl:py-20
       "
     >
-      {/* ================= CENTER CONTAINER ================= */}
-      <div
-        className="
-          mx-auto
-          w-full
-          max-w-3xl
-          sm:max-w-4xl
-          lg:max-w-5xl
-          xl:max-w-6xl
-        "
-      >
+      {/* ================= CONTAINER ================= */}
+      <div className="w-full">
         {/* ================= LABEL ================= */}
         <span
-          className="
-            text-[9px]
-            font-semibold
-            tracking-[0.15em]
-            text-[#730042]
-            sm:text-[10px]
-          "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
+          className="text-[9px] font-semibold tracking-[0.15em] text-[#730042] sm:text-[10px]"
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
           EDITORIAL REFLECTION
         </span>
@@ -60,9 +38,7 @@ export default function CostOfWaitingSection() {
             lg:text-[34px]
             xl:text-[36px]
           "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           The Cost of Waiting Can Be Greater Than the Cost of Preparing
         </h1>
@@ -80,9 +56,7 @@ export default function CostOfWaitingSection() {
             md:text-[15px]
             md:leading-[1.8]
           "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Cybersecurity often receives attention after something has
           already gone wrong.
@@ -105,17 +79,8 @@ export default function CostOfWaitingSection() {
           "
         >
           <p
-            className="
-              text-[13px]
-              font-medium
-              leading-[1.6]
-              text-slate-900
-              sm:text-[14px]
-              md:text-[15px]
-            "
-            style={{
-              fontFamily: "'Inter', sans-serif",
-            }}
+            className="text-[13px] font-medium leading-[1.6] text-slate-900 sm:text-[14px] md:text-[15px]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             A suspicious login. A compromised account. An unavailable
             system. A data exposure.
@@ -125,51 +90,22 @@ export default function CostOfWaitingSection() {
         {/* ================= CONTENT ================= */}
         <div className="mt-6 w-full sm:mt-7">
           <p
-            className="
-              text-[13px]
-              leading-[1.75]
-              text-slate-600
-              sm:text-[14px]
-              md:text-[15px]
-              md:leading-[1.8]
-            "
-            style={{
-              fontFamily: "'Inter', sans-serif",
-            }}
+            className="text-[13px] leading-[1.75] text-slate-600 sm:text-[14px] md:text-[15px] md:leading-[1.8]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             By that point, the organization is responding under pressure.
           </p>
 
           <p
-            className="
-              mt-4
-              text-[13px]
-              leading-[1.75]
-              text-slate-600
-              sm:text-[14px]
-              md:text-[15px]
-              md:leading-[1.8]
-            "
-            style={{
-              fontFamily: "'Inter', sans-serif",
-            }}
+            className="mt-4 text-[13px] leading-[1.75] text-slate-600 sm:text-[14px] md:text-[15px] md:leading-[1.8]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             A proactive security approach changes the conversation.
           </p>
 
           <p
-            className="
-              mt-4
-              text-[13px]
-              leading-[1.75]
-              text-slate-600
-              sm:text-[14px]
-              md:text-[15px]
-              md:leading-[1.8]
-            "
-            style={{
-              fontFamily: "'Inter', sans-serif",
-            }}
+            className="mt-4 text-[13px] leading-[1.75] text-slate-600 sm:text-[14px] md:text-[15px] md:leading-[1.8]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Instead of asking what to do after an incident, businesses can
             ask where they are exposed today, what information needs greater
@@ -178,18 +114,8 @@ export default function CostOfWaitingSection() {
           </p>
 
           <p
-            className="
-              mt-4
-              text-[13px]
-              leading-[1.75]
-              text-slate-600
-              sm:text-[14px]
-              md:text-[15px]
-              md:leading-[1.8]
-            "
-            style={{
-              fontFamily: "'Inter', sans-serif",
-            }}
+            className="mt-4 text-[13px] leading-[1.75] text-slate-600 sm:text-[14px] md:text-[15px] md:leading-[1.8]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             That shift—from reaction to preparation—is what makes
             cybersecurity part of good business management.
@@ -210,9 +136,7 @@ export default function CostOfWaitingSection() {
             md:text-[16px]
             md:leading-[1.75]
           "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Security isn't about assuming nothing will go wrong. It's about
           being prepared when it does.

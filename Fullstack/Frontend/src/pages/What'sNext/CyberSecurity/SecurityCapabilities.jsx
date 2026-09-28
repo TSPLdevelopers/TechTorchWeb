@@ -58,45 +58,21 @@ export default function CybersecurityCapabilitiesSection() {
         w-full
         overflow-hidden
         bg-white
-        px-4
-        py-10
-        sm:px-6
-        sm:py-12
-        md:px-8
-        md:py-14
-        lg:px-10
-        lg:py-16
-        xl:px-12
+        px-4 py-10
+        sm:px-6 sm:py-12
+        md:px-10 md:py-14
+        lg:px-[100px] lg:py-16
         xl:py-20
       "
     >
-      <div className="mx-auto w-full max-w-7xl">
-
+      <div className="w-full">
         {/* ================= HEADER ================= */}
-        <div
-          className="
-            flex
-            flex-col
-            gap-4
-            sm:flex-row
-            sm:items-start
-            sm:justify-between
-            sm:gap-6
-          "
-        >
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           <div className="min-w-0">
             {/* Section Label */}
             <span
-              className="
-                text-[9px]
-                font-semibold
-                tracking-[0.15em]
-                text-[#730042]
-                sm:text-[10px]
-              "
-              style={{
-                fontFamily: "'Inter', sans-serif",
-              }}
+              className="text-[9px] font-semibold tracking-[0.15em] text-[#730042] sm:text-[10px]"
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               CYBERSECURITY CAPABILITIES
             </span>
@@ -119,9 +95,7 @@ export default function CybersecurityCapabilitiesSection() {
                 lg:text-[30px]
                 xl:text-[32px]
               "
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-              }}
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Security Across the Digital Environment
             </h1>
@@ -146,26 +120,14 @@ export default function CybersecurityCapabilitiesSection() {
               sm:mt-1
               sm:text-[10px]
             "
-            style={{
-              fontFamily: "'Inter', sans-serif",
-            }}
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             DEFENSE DEPTH // ENTERPRISE GRADE
           </span>
         </div>
 
         {/* ================= BANNER IMAGE ================= */}
-        <div
-          className="
-            relative
-            mt-7
-            w-full
-            overflow-hidden
-            rounded-lg
-            sm:mt-8
-            sm:rounded-xl
-          "
-        >
+        <div className="relative mt-7 w-full overflow-hidden rounded-lg sm:mt-8 sm:rounded-xl">
           <img
             src="/Cryptographic Interface  Security Layers.png"
             alt="Enterprise layer encryption architecture"
@@ -203,30 +165,15 @@ export default function CybersecurityCapabilitiesSection() {
             "
           >
             <span
-              className="
-                text-[9px]
-                tracking-wide
-                text-slate-200
-                sm:text-[10px]
-              "
-              style={{
-                fontFamily: "'Inter', sans-serif",
-              }}
+              className="text-[9px] tracking-wide text-slate-200 sm:text-[10px]"
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Enterprise Layer Encryption Architecture
             </span>
 
             <span
-              className="
-                text-[8px]
-                tracking-wide
-                text-slate-400
-                sm:text-[9px]
-                md:text-[10px]
-              "
-              style={{
-                fontFamily: "'Inter', sans-serif",
-              }}
+              className="text-[8px] tracking-wide text-slate-400 sm:text-[9px] md:text-[10px]"
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               SECURED_STORAGE_ACTIVE
             </span>
@@ -268,55 +215,24 @@ export default function CybersecurityCapabilitiesSection() {
             >
               {/* Number */}
               <span
-                className="
-                  inline-flex
-                  items-center
-                  rounded-full
-                  bg-rose-100
-                  px-2.5
-                  py-1
-                  text-[10px]
-                  font-semibold
-                  text-[#730042]
-                "
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                className="inline-flex items-center rounded-full bg-rose-100 px-2.5 py-1 text-[10px] font-semibold text-[#730042]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {c.number}
               </span>
 
               {/* Card Heading */}
               <h3
-                className="
-                  mt-4
-                  text-[15px]
-                  font-semibold
-                  leading-[1.4]
-                  text-slate-900
-                  sm:text-[16px]
-                  md:text-[17px]
-                "
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                className="mt-4 text-[15px] font-semibold leading-[1.4] text-slate-900 sm:text-[16px] md:text-[17px]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {c.title}
               </h3>
 
               {/* Card Description */}
               <p
-                className="
-                  mt-2
-                  text-[13px]
-                  leading-[1.7]
-                  text-slate-500
-                  sm:text-[14px]
-                  sm:leading-[1.75]
-                "
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                className="mt-2 text-[13px] leading-[1.7] text-slate-500 sm:text-[14px] sm:leading-[1.75]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {c.description}
               </p>

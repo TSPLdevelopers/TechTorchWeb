@@ -54,7 +54,7 @@ export default function ConnectedExperienceSection() {
 
 
         /* =====================================================
-           IMAGE
+           IMAGE (full-bleed, no padding)
         ===================================================== */
 
         .connected-image-wrapper {
@@ -93,6 +93,7 @@ export default function ConnectedExperienceSection() {
 
         /* =====================================================
            CONTENT
+           Desktop: left padding 100px (Hero), right 60px
         ===================================================== */
 
         .connected-content {
@@ -100,7 +101,7 @@ export default function ConnectedExperienceSection() {
           width: 50%;
           min-width: 0;
 
-          padding: 45px 120px;
+          padding: 45px 60px 45px 100px;
 
           display: flex;
           flex-direction: column;
@@ -224,13 +225,13 @@ export default function ConnectedExperienceSection() {
           }
 
 
-          /* CONTENT */
+          /* CONTENT (left padding 40px = Hero md) */
 
           .connected-content {
             flex: 0 0 50%;
             width: 50%;
 
-            padding: 40px 45px;
+            padding: 40px 32px 40px 40px;
 
             justify-content: center;
           }
@@ -278,7 +279,7 @@ export default function ConnectedExperienceSection() {
           }
 
           .connected-content {
-            padding: 35px 35px;
+            padding: 35px 32px 35px 40px;
           }
 
           .connected-content h1 {
@@ -294,6 +295,7 @@ export default function ConnectedExperienceSection() {
 
         /* =====================================================
            MOBILE
+           (left padding 24px = Hero sm)
         ===================================================== */
 
         @media (max-width: 768px) {
@@ -355,7 +357,7 @@ export default function ConnectedExperienceSection() {
             width: 100%;
             flex: none;
 
-            padding: 40px 25px 45px;
+            padding: 40px 24px 45px;
 
             box-sizing: border-box;
 
@@ -400,6 +402,19 @@ export default function ConnectedExperienceSection() {
 
 
         /* =====================================================
+           BELOW 640px (left padding 16px = Hero base)
+        ===================================================== */
+
+        @media (max-width: 639px) {
+
+          .connected-content {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
+
+
+        /* =====================================================
            SMALL MOBILE
         ===================================================== */
 
@@ -429,7 +444,7 @@ export default function ConnectedExperienceSection() {
 
 
           .connected-content {
-            padding: 32px 20px 38px;
+            padding: 32px 16px 38px;
           }
 
           .connected-content h1 {
@@ -481,7 +496,7 @@ export default function ConnectedExperienceSection() {
           }
 
           .connected-content {
-            padding: 28px 17px 35px;
+            padding: 28px 16px 35px;
           }
 
           .connected-content h1 {

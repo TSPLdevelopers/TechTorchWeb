@@ -34,38 +34,18 @@ export default function ApproachSection() {
         w-full
         overflow-hidden
         bg-white
-        px-4
-        py-10
-        sm:px-6
-        sm:py-12
-        md:px-8
-        md:py-14
-        lg:px-10
-        lg:py-16
-        xl:px-12
+        px-4 py-10
+        sm:px-6 sm:py-12
+        md:px-10 md:py-14
+        lg:px-[100px] lg:py-16
         xl:py-20
       "
     >
-      <div className="mx-auto w-full max-w-7xl text-center">
-
+      <div className="w-full text-center">
         {/* ================= LABEL ================= */}
         <span
-          className="
-            inline-flex
-            items-center
-            rounded-full
-            bg-rose-50
-            px-3
-            py-1
-            text-[9px]
-            font-semibold
-            tracking-[0.15em]
-            text-[#730042]
-            sm:text-[10px]
-          "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
+          className="inline-flex items-center rounded-full bg-rose-50 px-3 py-1 text-[9px] font-semibold tracking-[0.15em] text-[#730042] sm:text-[10px]"
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
           OUR APPROACH
         </span>
@@ -89,9 +69,7 @@ export default function ApproachSection() {
             lg:text-[30px]
             xl:text-[32px]
           "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Protect. Detect. Respond. Improve.
         </h1>
@@ -112,9 +90,7 @@ export default function ApproachSection() {
             md:text-[15px]
             md:leading-[1.8]
           "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           We believe cybersecurity should be an ongoing process rather than
           a one-time implementation.
@@ -159,52 +135,24 @@ export default function ApproachSection() {
             >
               {/* NUMBER */}
               <span
-                className="
-                  text-[22px]
-                  font-bold
-                  leading-none
-                  text-slate-300
-                  sm:text-[24px]
-                  md:text-[26px]
-                "
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                className="text-[22px] font-bold leading-none text-slate-300 sm:text-[24px] md:text-[26px]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {s.number}
               </span>
 
               {/* CARD TITLE */}
               <h3
-                className="
-                  mt-3
-                  text-[15px]
-                  font-semibold
-                  leading-[1.4]
-                  text-[#730042]
-                  sm:text-[16px]
-                  md:text-[17px]
-                "
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                className="mt-3 text-[15px] font-semibold leading-[1.4] text-[#730042] sm:text-[16px] md:text-[17px]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {s.title}
               </h3>
 
               {/* CARD DESCRIPTION */}
               <p
-                className="
-                  mt-2
-                  text-[13px]
-                  leading-[1.7]
-                  text-slate-500
-                  sm:text-[14px]
-                  sm:leading-[1.75]
-                "
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                className="mt-2 text-[13px] leading-[1.7] text-slate-500 sm:text-[14px] sm:leading-[1.75]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {s.description}
               </p>

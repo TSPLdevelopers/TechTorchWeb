@@ -20,15 +20,10 @@ export default function CyberSecurityHeroSection() {
     >
       {/* ================= BACKGROUND IMAGE ================= */}
       <div
-        className="
-          absolute
-          inset-0
-          bg-cover
-          bg-center
-          bg-no-repeat
-        "
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/Futuristic Cybersecurity Operations Center with global threat visualization.png')",
+          backgroundImage:
+            "url('/Futuristic Cybersecurity Operations Center with global threat visualization.png')",
         }}
       />
 
@@ -40,46 +35,22 @@ export default function CyberSecurityHeroSection() {
         className="
           relative
           z-10
-          mx-auto
           flex
           min-h-[500px]
           w-full
-          max-w-7xl
           flex-col
           justify-center
-          px-4
-          py-12
-          sm:min-h-[560px]
-          sm:px-6
-          sm:py-16
-          md:min-h-[600px]
-          md:px-8
-          md:py-20
-          lg:min-h-[640px]
-          lg:px-10
-          lg:py-24
-          xl:min-h-[680px]
-          xl:px-12
+          px-4 py-10
+          sm:min-h-[560px] sm:px-6 sm:py-12
+          md:min-h-[600px] md:px-10 md:py-14
+          lg:min-h-[640px] lg:px-[100px] lg:py-16
+          xl:min-h-[680px] xl:py-20
         "
       >
         {/* ================= CYBER SECURITY LABEL ================= */}
         <span
-          className="
-            inline-flex
-            w-fit
-            items-center
-            rounded-full
-            bg-[#730042]
-            px-3
-            py-1
-            text-[10px]
-            font-semibold
-            tracking-[0.15em]
-            text-white 
-          "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
+          className="inline-flex w-fit items-center rounded-full bg-[#730042] px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-white"
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
           CYBER SECURITY
         </span>
@@ -102,9 +73,7 @@ export default function CyberSecurityHeroSection() {
             lg:text-[44px]
             xl:text-[48px]
           "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Security Built Into Your Business
         </h1>
@@ -126,9 +95,7 @@ export default function CyberSecurityHeroSection() {
             lg:text-[16px]
             lg:leading-[1.75]
           "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Cyber threats can affect more than your technology. They can
           disrupt operations, expose sensitive information and impact the
@@ -152,9 +119,7 @@ export default function CyberSecurityHeroSection() {
             lg:text-[16px]
             lg:leading-[1.75]
           "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           TechTorch helps organizations strengthen their security posture
           with practical cybersecurity solutions designed around their
@@ -183,15 +148,10 @@ export default function CyberSecurityHeroSection() {
             hover:bg-[#8F1945]
             sm:text-sm
           "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
+          style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Secure Your Business
-
-          <span aria-hidden="true">
-            →
-          </span>
+          <span aria-hidden="true">→</span>
         </button>
       </div>
     </section>
