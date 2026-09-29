@@ -37,19 +37,22 @@ export default function FinanceTechnologyHeroSection() {
 
         .finance-technology-container {
           width: 100%;
-          max-width: 1200px;
+          max-width: 1280px;
+
           margin: 0 auto;
 
-          padding: 70px 24px;
+          padding: 70px 40px;
 
           box-sizing: border-box;
 
           display: grid;
+
           grid-template-columns:
             minmax(0, 1fr)
             minmax(0, 1fr);
 
           gap: 55px;
+
           align-items: center;
         }
 
@@ -65,11 +68,14 @@ export default function FinanceTechnologyHeroSection() {
 
         /* =====================================================
            BADGE
+           INTER
         ===================================================== */
 
         .finance-technology-badge {
           display: inline-flex;
+
           align-items: center;
+
           gap: 7px;
 
           margin-bottom: 18px;
@@ -79,12 +85,15 @@ export default function FinanceTechnologyHeroSection() {
           border-radius: 999px;
 
           background: #fbeef1;
+
           color: ${WINE};
 
           font-family: "Inter", sans-serif;
 
           font-size: 10px;
+
           line-height: 1.3;
+
           font-weight: 700;
 
           letter-spacing: 0.06em;
@@ -104,57 +113,55 @@ export default function FinanceTechnologyHeroSection() {
 
 
         /* =====================================================
-           HEADING
+           MAIN HEADING
            PLUS JAKARTA SANS
         ===================================================== */
 
         .finance-technology-heading {
           margin: 0 0 22px;
 
-          max-width: 590px;
+          max-width: 610px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 38px;
+          font-size: 40px;
 
           line-height: 1.15;
 
           font-weight: 700;
 
-          letter-spacing: -0.8px;
+          letter-spacing: -0.9px;
 
           color: ${INK};
         }
 
 
         /* =====================================================
-           BODY
-           INTER
+           SUBHEADING / CONTENT
+           PLUS JAKARTA SANS
         ===================================================== */
 
         .finance-technology-text {
           display: flex;
+
           flex-direction: column;
+
           gap: 15px;
 
-          max-width: 590px;
+          max-width: 610px;
         }
 
 
         .finance-technology-text p {
           margin: 0;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 14px;
+          font-size: 13px;
 
-          line-height: 1.72;
+          line-height: 1.75;
 
-          font-weight: 400;
+          font-weight: 500;
 
           color: ${MUTED};
         }
@@ -166,7 +173,14 @@ export default function FinanceTechnologyHeroSection() {
 
         .finance-technology-image-wrapper {
           width: 100%;
+
           min-width: 0;
+
+          display: flex;
+
+          align-items: center;
+
+          justify-content: center;
         }
 
 
@@ -174,9 +188,11 @@ export default function FinanceTechnologyHeroSection() {
           display: block;
 
           width: 100%;
-          height: 390px;
+
+          height: 400px;
 
           object-fit: cover;
+
           object-position: center;
 
           border: 4px solid ${WINE};
@@ -186,6 +202,41 @@ export default function FinanceTechnologyHeroSection() {
           box-sizing: border-box;
 
           background: #eee;
+
+          box-shadow:
+            0 16px 30px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =====================================================
+           LARGE DESKTOP
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+
+          .finance-technology-container {
+            max-width: 1120px;
+
+            padding: 65px 32px;
+
+            gap: 45px;
+          }
+
+
+          .finance-technology-heading {
+            font-size: 37px;
+          }
+
+
+          .finance-technology-text p {
+            font-size: 13px;
+          }
+
+
+          .finance-technology-image {
+            height: 380px;
+          }
+
         }
 
 
@@ -193,24 +244,42 @@ export default function FinanceTechnologyHeroSection() {
            LARGE TABLET
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1000px) {
 
           .finance-technology-container {
-            max-width: 1000px;
+            grid-template-columns:
+              minmax(0, 1fr)
+              minmax(0, 0.95fr);
 
-            padding: 60px 30px;
+            gap: 35px;
 
-            gap: 42px;
+            padding: 55px 28px;
           }
 
 
           .finance-technology-heading {
-            font-size: 35px;
+            font-size: 34px;
+
+            letter-spacing: -0.7px;
+          }
+
+
+          .finance-technology-text {
+            gap: 13px;
+          }
+
+
+          .finance-technology-text p {
+            font-size: 12.5px;
+
+            line-height: 1.7;
           }
 
 
           .finance-technology-image {
-            height: 360px;
+            height: 350px;
+
+            border-radius: 21px;
           }
 
         }
@@ -225,34 +294,50 @@ export default function FinanceTechnologyHeroSection() {
           .finance-technology-container {
             grid-template-columns: 1fr;
 
-            gap: 40px;
+            gap: 42px;
 
-            padding: 55px 24px 60px;
+            padding:
+              55px 26px 60px;
           }
 
 
           .finance-technology-content {
-            max-width: 700px;
+            width: 100%;
+
+            max-width: 720px;
           }
 
 
           .finance-technology-heading {
-            font-size: 34px;
+            font-size: 35px;
           }
 
 
           .finance-technology-text {
-            max-width: 700px;
+            max-width: 720px;
+          }
+
+
+          .finance-technology-text p {
+            font-size: 13px;
+
+            line-height: 1.72;
           }
 
 
           .finance-technology-image-wrapper {
-            max-width: 700px;
+            width: 100%;
+
+            max-width: 720px;
+
+            margin: 0 auto;
           }
 
 
           .finance-technology-image {
-            height: 380px;
+            height: 390px;
+
+            border-radius: 22px;
           }
 
         }
@@ -272,6 +357,8 @@ export default function FinanceTechnologyHeroSection() {
           }
 
 
+          /* Badge */
+
           .finance-technology-badge {
             margin-bottom: 15px;
 
@@ -287,6 +374,8 @@ export default function FinanceTechnologyHeroSection() {
           }
 
 
+          /* Main Heading */
+
           .finance-technology-heading {
             margin-bottom: 17px;
 
@@ -294,9 +383,11 @@ export default function FinanceTechnologyHeroSection() {
 
             line-height: 1.18;
 
-            letter-spacing: -0.5px;
+            letter-spacing: -0.55px;
           }
 
+
+          /* Subheading / Body */
 
           .finance-technology-text {
             gap: 12px;
@@ -304,11 +395,13 @@ export default function FinanceTechnologyHeroSection() {
 
 
           .finance-technology-text p {
-            font-size: 13px;
+            font-size: 12px;
 
-            line-height: 1.7;
+            line-height: 1.72;
           }
 
+
+          /* Image */
 
           .finance-technology-image {
             height: 300px;
@@ -325,34 +418,39 @@ export default function FinanceTechnologyHeroSection() {
            SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
 
           .finance-technology-container {
             padding:
-              40px 16px 45px;
+              42px 17px 46px;
 
-            gap: 30px;
+            gap: 31px;
           }
 
 
           .finance-technology-heading {
-            font-size: 26px;
+            font-size: 27px;
 
             line-height: 1.18;
           }
 
 
-          .finance-technology-text p {
-            font-size: 12px;
+          .finance-technology-text {
+            gap: 11px;
+          }
 
-            line-height: 1.68;
+
+          .finance-technology-text p {
+            font-size: 11.5px;
+
+            line-height: 1.7;
           }
 
 
           .finance-technology-image {
-            height: 255px;
+            height: 270px;
 
-            border-radius: 16px;
+            border-radius: 17px;
           }
 
         }
@@ -362,20 +460,72 @@ export default function FinanceTechnologyHeroSection() {
            VERY SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 340px) {
+        @media (max-width: 400px) {
+
+          .finance-technology-container {
+            padding:
+              38px 15px 43px;
+
+            gap: 29px;
+          }
+
 
           .finance-technology-heading {
-            font-size: 24px;
+            font-size: 25px;
+
+            line-height: 1.18;
+
+            letter-spacing: -0.45px;
           }
 
 
           .finance-technology-text p {
-            font-size: 11.5px;
+            font-size: 11px;
+
+            line-height: 1.68;
           }
 
 
           .finance-technology-image {
-            height: 230px;
+            height: 250px;
+
+            border-radius: 16px;
+          }
+
+        }
+
+
+        /* =====================================================
+           EXTRA SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 340px) {
+
+          .finance-technology-heading {
+            font-size: 23px;
+          }
+
+
+          .finance-technology-text p {
+            font-size: 10.5px;
+          }
+
+
+          .finance-technology-image {
+            height: 225px;
+          }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+          * {
+            scroll-behavior: auto;
           }
 
         }
@@ -389,11 +539,14 @@ export default function FinanceTechnologyHeroSection() {
 
       <div className="finance-technology-container">
 
+
         {/* =================================================
             LEFT CONTENT
         ================================================= */}
 
         <div className="finance-technology-content">
+
+          {/* Badge - Inter */}
 
           <span className="finance-technology-badge">
 
@@ -404,10 +557,14 @@ export default function FinanceTechnologyHeroSection() {
           </span>
 
 
+          {/* Main Heading - Plus Jakarta Sans */}
+
           <h2 className="finance-technology-heading">
             Connect Financial Operations With the Rest of Your Business
           </h2>
 
+
+          {/* Subheading / Description - Plus Jakarta Sans */}
 
           <div className="finance-technology-text">
 
@@ -417,11 +574,13 @@ export default function FinanceTechnologyHeroSection() {
               other business functions.
             </p>
 
+
             <p>
               A connected technology environment can make it easier for
               teams to work with shared information and maintain greater
               visibility across business activities.
             </p>
+
 
             <p>
               TechTorch brings together ERP, financial management, payment
@@ -429,6 +588,7 @@ export default function FinanceTechnologyHeroSection() {
               organizations create technology environments suited to their
               operational requirements.
             </p>
+
 
             <p>
               Our focus is not simply on introducing another system. We

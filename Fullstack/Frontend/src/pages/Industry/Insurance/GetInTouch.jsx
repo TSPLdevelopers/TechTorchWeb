@@ -75,53 +75,65 @@ export default function InsuranceContact() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
         * {
           box-sizing: border-box;
         }
+
+        /* ================================
+           MAIN PAGE
+        ================================= */
 
         .insurance-page {
           width: 100%;
           min-height: 100vh;
           background: #f8fafc;
           padding: 40px 32px;
-          font-family: Inter, Arial, sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           color: #17213a;
+          overflow: hidden;
         }
 
         .insurance-container {
           width: 100%;
           max-width: 1280px;
-          margin: auto;
+          margin: 0 auto;
           display: grid;
-          grid-template-columns: 0.9fr 1.25fr;
+          grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
           gap: 38px;
           align-items: start;
         }
 
-        /* ================= LEFT SIDE ================= */
+        /* ================================
+           LEFT SIDE
+        ================================= */
 
         .insurance-left {
           padding-top: 2px;
+          min-width: 0;
         }
 
         .insurance-badge {
           display: inline-flex;
           align-items: center;
+          flex-wrap: wrap;
           gap: 8px;
           padding: 7px 13px;
           background: #f1f5f9;
           border: 1px solid #dce3eb;
           border-radius: 22px;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
           color: #3b4a63;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
         }
 
         .badge-dot {
           width: 8px;
           height: 8px;
+          flex-shrink: 0;
           border-radius: 50%;
           background: #12b981;
         }
@@ -134,24 +146,37 @@ export default function InsuranceContact() {
           color: #86004a;
         }
 
+        /* MAIN HEADING
+           Plus Jakarta Sans
+        */
+
         .insurance-left h1 {
           margin: 34px 0 15px;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 38px;
-          line-height: 1.04;
+          line-height: 1.08;
           letter-spacing: -1.5px;
           font-weight: 800;
           color: #121a31;
         }
 
+        /* SUBHEADING
+           Plus Jakarta Sans
+        */
+
         .insurance-description {
           max-width: 500px;
-          margin-bottom: 31px;
+          margin: 0 0 31px;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           color: #52647f;
-          font-size: 16px;
-          line-height: 1.65;
+          font-size: 15px;
+          line-height: 1.7;
+          font-weight: 500;
         }
 
-        /* INFO CARDS */
+        /* ================================
+           INFO CARDS
+        ================================= */
 
         .insurance-info-card {
           display: flex;
@@ -161,7 +186,7 @@ export default function InsuranceContact() {
           background: #ffffff;
           border: 1px solid #e0e6ee;
           border-radius: 13px;
-          box-shadow: 0 2px 5px rgba(22,35,55,0.04);
+          box-shadow: 0 2px 5px rgba(22, 35, 55, 0.04);
         }
 
         .info-icon {
@@ -178,18 +203,24 @@ export default function InsuranceContact() {
 
         .insurance-info-card h3 {
           margin: 1px 0 5px;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
+          font-weight: 700;
           color: #18233b;
         }
 
         .insurance-info-card p {
           margin: 0;
+          font-family: "Inter", Arial, sans-serif;
           color: #52627b;
           font-size: 13px;
-          line-height: 1.4;
+          line-height: 1.5;
+          font-weight: 400;
         }
 
-        /* CONTACT CARD */
+        /* ================================
+           CONTACT CARD
+        ================================= */
 
         .insurance-contact-info {
           margin-top: 31px;
@@ -210,6 +241,7 @@ export default function InsuranceContact() {
         .contact-top span,
         .governance-title {
           display: block;
+          font-family: "Inter", Arial, sans-serif;
           color: #8292aa;
           font-size: 11px;
           margin-bottom: 3px;
@@ -217,8 +249,11 @@ export default function InsuranceContact() {
 
         .contact-top strong {
           display: block;
+          font-family: "Inter", Arial, sans-serif;
           color: #85004a;
           font-size: 12px;
+          font-weight: 700;
+          word-break: break-word;
         }
 
         .contact-top > div:last-child strong {
@@ -244,6 +279,7 @@ export default function InsuranceContact() {
           border: 1px solid #cad5e2;
           background: #ffffff;
           border-radius: 4px;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 600;
           color: #34435b;
@@ -252,18 +288,23 @@ export default function InsuranceContact() {
         .governance-tags i {
           width: 6px;
           height: 6px;
+          flex-shrink: 0;
           border-radius: 50%;
           background: #12b981;
         }
 
-        /* ================= FORM ================= */
+        /* ================================
+           FORM CARD
+        ================================= */
 
         .insurance-form-card {
+          width: 100%;
           background: #ffffff;
           border: 1px solid #dce4ed;
           border-radius: 17px;
           padding: 32px;
-          box-shadow: 0 8px 25px rgba(31,45,65,0.05);
+          box-shadow: 0 8px 25px rgba(31, 45, 65, 0.05);
+          min-width: 0;
         }
 
         .form-heading {
@@ -272,17 +313,35 @@ export default function InsuranceContact() {
           margin-bottom: 26px;
         }
 
+        /* FORM HEADING
+           Plus Jakarta Sans
+        */
+
         .form-heading h2 {
-          margin: 0 0 6px;
+          margin: 0 0 7px;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 21px;
+          line-height: 1.35;
+          font-weight: 700;
           color: #172139;
         }
 
+        /* FORM SUBHEADING
+           Plus Jakarta Sans
+        */
+
         .form-heading p {
           margin: 0;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 13px;
+          line-height: 1.6;
+          font-weight: 500;
           color: #63748e;
         }
+
+        /* ================================
+           FORM SECTIONS
+        ================================= */
 
         .form-section {
           margin-bottom: 25px;
@@ -293,8 +352,10 @@ export default function InsuranceContact() {
           align-items: center;
           gap: 8px;
           margin-bottom: 13px;
+          font-family: "Inter", Arial, sans-serif;
           color: #94a4bb;
           font-size: 12px;
+          line-height: 1.4;
           font-weight: 800;
         }
 
@@ -308,10 +369,14 @@ export default function InsuranceContact() {
           display: flex;
           align-items: center;
           justify-content: center;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
+          font-weight: 700;
         }
 
-        /* INPUTS */
+        /* ================================
+           INPUTS
+        ================================= */
 
         .form-grid {
           display: grid;
@@ -319,10 +384,16 @@ export default function InsuranceContact() {
           gap: 14px;
         }
 
+        .input-group {
+          min-width: 0;
+        }
+
         .input-group label {
           display: block;
           margin-bottom: 5px;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
+          font-weight: 500;
           color: #263650;
         }
 
@@ -333,8 +404,11 @@ export default function InsuranceContact() {
           border: 1px solid #cbd6e4;
           border-radius: 7px;
           outline: none;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           color: #263650;
+          background: #ffffff;
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .input-group input::placeholder {
@@ -344,15 +418,18 @@ export default function InsuranceContact() {
         .input-group input:focus,
         .insurance-textarea:focus {
           border-color: #8b0050;
-          box-shadow: 0 0 0 2px rgba(139,0,80,0.08);
+          box-shadow: 0 0 0 2px rgba(139, 0, 80, 0.08);
         }
 
-        /* CAPABILITIES */
+        /* ================================
+           CAPABILITIES
+        ================================= */
 
         .capability-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: 15px;
           margin-bottom: 13px;
         }
 
@@ -360,10 +437,17 @@ export default function InsuranceContact() {
           display: flex;
           align-items: center;
           gap: 8px;
+          min-width: 0;
         }
 
-        .capability-header small {
+        .capability-header-left .section-title {
+          white-space: normal;
+        }
+
+        .capability-header > small {
+          flex-shrink: 0;
           color: #9ba9bd;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 500;
         }
@@ -376,7 +460,7 @@ export default function InsuranceContact() {
 
         .capability-button {
           min-height: 39px;
-          padding: 0 10px;
+          padding: 7px 10px;
           border: 1px solid #d8e0e9;
           border-radius: 8px;
           background: white;
@@ -384,18 +468,24 @@ export default function InsuranceContact() {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: 8px;
           text-align: left;
           cursor: pointer;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
+          font-weight: 500;
           transition: all 0.2s ease;
         }
 
         .capability-button:hover {
           border-color: #8b0050;
+          transform: translateY(-1px);
         }
 
         .capability-button small {
+          flex-shrink: 0;
           color: #61708a;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
         }
 
@@ -409,7 +499,9 @@ export default function InsuranceContact() {
           color: #f7c9df;
         }
 
-        /* TIMELINE */
+        /* ================================
+           TIMELINE
+        ================================= */
 
         .timeline-grid {
           display: grid;
@@ -419,18 +511,22 @@ export default function InsuranceContact() {
 
         .timeline-button {
           min-height: 36px;
-          padding: 0 8px;
+          padding: 7px 8px;
           border: 1px solid #d8e0e9;
           border-radius: 8px;
           background: white;
           color: #263650;
           cursor: pointer;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
+          font-weight: 500;
+          line-height: 1.3;
           transition: all 0.2s ease;
         }
 
         .timeline-button:hover {
           border-color: #8b0050;
+          transform: translateY(-1px);
         }
 
         .timeline-button.selected {
@@ -439,7 +535,9 @@ export default function InsuranceContact() {
           border-color: #8b0050;
         }
 
-        /* TEXTAREA */
+        /* ================================
+           TEXTAREA
+        ================================= */
 
         .optional-title {
           display: flex;
@@ -449,6 +547,7 @@ export default function InsuranceContact() {
 
         .optional-text {
           margin-left: auto;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 500;
           color: #94a4bb;
@@ -457,21 +556,28 @@ export default function InsuranceContact() {
         .insurance-textarea {
           width: 100%;
           height: 84px;
-          resize: none;
+          resize: vertical;
+          min-height: 84px;
+          max-height: 180px;
           padding: 11px 12px;
           border: 1px solid #cbd6e4;
           border-radius: 7px;
           outline: none;
-          font-family: inherit;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.5;
+          color: #263650;
+          background: #ffffff;
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .insurance-textarea::placeholder {
           color: #94a5bd;
         }
 
-        /* CHECKBOXES */
+        /* ================================
+           CHECKBOXES
+        ================================= */
 
         .checkbox-section {
           border-top: 1px solid #e5eaf0;
@@ -482,11 +588,13 @@ export default function InsuranceContact() {
         .checkbox-row {
           position: relative;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 9px;
           margin: 8px 0;
           color: #3c4c65;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
+          line-height: 1.5;
           cursor: pointer;
         }
 
@@ -500,21 +608,27 @@ export default function InsuranceContact() {
           width: 18px;
           height: 18px;
           flex-shrink: 0;
+          margin-top: 1px;
           display: flex;
           align-items: center;
           justify-content: center;
+          border: 1px solid #8b0050;
           border-radius: 4px;
           background: #8b0050;
           color: white;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
         }
 
-        /* SUBMIT */
+        /* ================================
+           SUBMIT
+        ================================= */
 
         .insurance-submit-button {
           width: 100%;
-          height: 49px;
+          min-height: 49px;
+          padding: 10px 16px;
           border: none;
           border-radius: 11px;
           background: #8b0050;
@@ -523,10 +637,13 @@ export default function InsuranceContact() {
           align-items: center;
           justify-content: center;
           gap: 9px;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
           font-weight: 600;
+          line-height: 1.4;
+          text-align: center;
           cursor: pointer;
-          box-shadow: 0 4px 9px rgba(139,0,80,0.18);
+          box-shadow: 0 4px 9px rgba(139, 0, 80, 0.18);
           transition: all 0.2s ease;
         }
 
@@ -535,63 +652,355 @@ export default function InsuranceContact() {
           transform: translateY(-1px);
         }
 
+        .insurance-submit-button:active {
+          transform: translateY(0);
+        }
+
         .form-footer {
           margin: 16px 0 0;
           text-align: center;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
+          line-height: 1.5;
           color: #60718b;
         }
 
-        /* ================= RESPONSIVE ================= */
+        /* ================================
+           LARGE TABLET
+        ================================= */
 
-        @media (max-width: 1000px) {
-          .insurance-container {
-            grid-template-columns: 1fr;
-          }
-
-          .insurance-left {
-            max-width: 750px;
-            margin: auto;
-          }
-
-          .insurance-form-card {
-            max-width: 750px;
-            width: 100%;
-            margin: auto;
-          }
-        }
-
-        @media (max-width: 650px) {
+        @media (max-width: 1100px) {
           .insurance-page {
-            padding: 25px 16px;
+            padding: 36px 24px;
+          }
+
+          .insurance-container {
+            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+            gap: 26px;
           }
 
           .insurance-left h1 {
-            font-size: 31px;
+            font-size: 34px;
           }
 
           .insurance-form-card {
-            padding: 20px;
-          }
-
-          .form-grid,
-          .capability-grid {
-            grid-template-columns: 1fr;
+            padding: 26px;
           }
 
           .timeline-grid {
             grid-template-columns: 1fr 1fr;
           }
+        }
 
-          .contact-top {
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 900px) {
+          .insurance-page {
+            padding: 32px 22px;
+          }
+
+          .insurance-container {
             grid-template-columns: 1fr;
+            gap: 28px;
+            max-width: 760px;
+          }
+
+          .insurance-left {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+          }
+
+          .insurance-description {
+            max-width: 650px;
+          }
+
+          .insurance-form-card {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto;
+          }
+
+          .insurance-left h1 {
+            font-size: 38px;
+          }
+
+          .capability-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .timeline-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 650px) {
+          .insurance-page {
+            padding: 26px 16px;
+          }
+
+          .insurance-container {
+            gap: 22px;
           }
 
           .insurance-badge {
+            max-width: 100%;
+            padding: 7px 10px;
+            font-size: 9px;
+            line-height: 1.4;
+          }
+
+          .insurance-left h1 {
+            margin-top: 25px;
+            font-size: 31px;
+            line-height: 1.12;
+            letter-spacing: -1px;
+          }
+
+          .insurance-description {
+            margin-bottom: 24px;
+            font-size: 14px;
+            line-height: 1.65;
+          }
+
+          .insurance-info-card {
+            gap: 11px;
+            padding: 14px;
+            margin-bottom: 11px;
+          }
+
+          .info-icon {
+            width: 36px;
+            height: 36px;
+          }
+
+          .insurance-info-card h3 {
+            font-size: 13px;
+          }
+
+          .insurance-info-card p {
+            font-size: 12px;
+          }
+
+          .insurance-contact-info {
+            margin-top: 24px;
+            padding: 16px;
+          }
+
+          .contact-top {
+            grid-template-columns: 1fr;
+            gap: 13px;
+          }
+
+          .governance {
+            padding-top: 14px;
+          }
+
+          .governance-tags {
+            gap: 6px;
+          }
+
+          .governance-tags div {
+            font-size: 9px;
+            padding: 5px 7px;
+          }
+
+          .insurance-form-card {
+            padding: 20px 16px;
+            border-radius: 14px;
+          }
+
+          .form-heading {
+            padding-bottom: 17px;
+            margin-bottom: 22px;
+          }
+
+          .form-heading h2 {
+            font-size: 19px;
+            line-height: 1.35;
+          }
+
+          .form-heading p {
+            font-size: 12px;
+            line-height: 1.55;
+          }
+
+          .form-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+
+          .capability-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .capability-header {
+            align-items: flex-start;
+          }
+
+          .capability-header > small {
+            display: none;
+          }
+
+          .capability-button {
+            min-height: 42px;
+          }
+
+          .timeline-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 7px;
+          }
+
+          .timeline-button {
+            min-height: 40px;
+            font-size: 10px;
+          }
+
+          .form-section {
+            margin-bottom: 22px;
+          }
+
+          .section-title {
+            font-size: 11px;
+          }
+
+          .insurance-textarea {
+            min-height: 100px;
+          }
+
+          .optional-title {
+            align-items: center;
+          }
+
+          .checkbox-section {
+            margin-bottom: 21px;
+          }
+
+          .checkbox-row {
+            font-size: 10px;
+          }
+
+          .insurance-submit-button {
+            min-height: 48px;
+            padding: 10px 13px;
+            font-size: 12px;
+          }
+        }
+
+        /* ================================
+           SMALL MOBILE
+        ================================= */
+
+        @media (max-width: 420px) {
+          .insurance-page {
+            padding: 22px 12px;
+          }
+
+          .insurance-left h1 {
+            font-size: 27px;
+            line-height: 1.15;
+          }
+
+          .insurance-description {
+            font-size: 13px;
+          }
+
+          .insurance-form-card {
+            padding: 17px 13px;
+          }
+
+          .form-heading h2 {
+            font-size: 17px;
+          }
+
+          .form-heading p {
+            font-size: 11px;
+          }
+
+          .timeline-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .timeline-button {
+            min-height: 38px;
+          }
+
+          .capability-button {
+            font-size: 11px;
+          }
+
+          .capability-button small {
+            font-size: 8px;
+          }
+
+          .insurance-submit-button {
+            font-size: 11px;
+          }
+
+          .insurance-submit-button svg {
+            width: 16px;
+            height: 16px;
+          }
+
+          .form-footer {
             font-size: 9px;
           }
         }
 
+        /* ================================
+           VERY SMALL DEVICES
+        ================================= */
+
+        @media (max-width: 340px) {
+          .insurance-page {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+
+          .insurance-badge {
+            font-size: 8px;
+          }
+
+          .insurance-left h1 {
+            font-size: 24px;
+          }
+
+          .insurance-form-card {
+            padding: 15px 11px;
+          }
+
+          .section-title {
+            font-size: 10px;
+          }
+
+          .insurance-submit-button {
+            font-size: 10px;
+          }
+        }
+
+        /* ================================
+           REDUCED MOTION
+        ================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          .capability-button,
+          .timeline-button,
+          .insurance-submit-button {
+            transition: none;
+          }
+
+          .capability-button:hover,
+          .timeline-button:hover,
+          .insurance-submit-button:hover {
+            transform: none;
+          }
+        }
       `}</style>
 
       <section className="insurance-page">
@@ -611,6 +1020,7 @@ export default function InsuranceContact() {
               <span className="sla-text">&lt;24h SLA</span>
             </div>
 
+            {/* PLUS JAKARTA SANS */}
             <h1>
               Connect with Principal
               <br />
@@ -619,6 +1029,7 @@ export default function InsuranceContact() {
               Architects
             </h1>
 
+            {/* PLUS JAKARTA SANS SUBHEADING */}
             <p className="insurance-description">
               Insurance businesses depend on connected operational
               foundations. Share your requirements across policy
@@ -689,12 +1100,18 @@ export default function InsuranceContact() {
 
                 <div>
                   <span>Direct Advisory Inbox</span>
-                  <strong>experts@techtorch.solutions</strong>
+
+                  <strong>
+                    experts@techtorch.solutions
+                  </strong>
                 </div>
 
                 <div>
                   <span>Engineering Pods</span>
-                  <strong>Bareilly HQ & Global Hybrid</strong>
+
+                  <strong>
+                    Bareilly HQ & Global Hybrid
+                  </strong>
                 </div>
 
               </div>
@@ -734,22 +1151,31 @@ export default function InsuranceContact() {
           <div className="insurance-form-card">
 
             <div className="form-heading">
-              <h2>Insurance Technology Scoping Console</h2>
 
+              {/* PLUS JAKARTA SANS */}
+              <h2>
+                Insurance Technology Scoping Console
+              </h2>
+
+              {/* PLUS JAKARTA SANS SUBHEADING */}
               <p>
                 Complete this technical intake to establish scope and
                 route directly to a principal architect.
               </p>
+
             </div>
 
             <form onSubmit={handleSubmit}>
 
-              {/* SECTION 1 */}
+              {/* ================= SECTION 1 ================= */}
 
               <div className="form-section">
 
                 <div className="section-title">
-                  <span className="section-number">1</span>
+                  <span className="section-number">
+                    1
+                  </span>
+
                   ORGANIZATION &amp; PRIMARY CONTACT
                 </div>
 
@@ -769,7 +1195,9 @@ export default function InsuranceContact() {
                   </div>
 
                   <div className="input-group">
-                    <label>Corporate Work Email *</label>
+                    <label>
+                      Corporate Work Email *
+                    </label>
 
                     <input
                       type="email"
@@ -782,7 +1210,9 @@ export default function InsuranceContact() {
                   </div>
 
                   <div className="input-group">
-                    <label>Organization / Carrier Name *</label>
+                    <label>
+                      Organization / Carrier Name *
+                    </label>
 
                     <input
                       type="text"
@@ -795,7 +1225,9 @@ export default function InsuranceContact() {
                   </div>
 
                   <div className="input-group">
-                    <label>Direct Phone / WhatsApp</label>
+                    <label>
+                      Direct Phone / WhatsApp
+                    </label>
 
                     <input
                       type="tel"
@@ -809,7 +1241,7 @@ export default function InsuranceContact() {
                 </div>
               </div>
 
-              {/* SECTION 2 */}
+              {/* ================= SECTION 2 ================= */}
 
               <div className="form-section">
 
@@ -817,15 +1249,23 @@ export default function InsuranceContact() {
 
                   <div className="capability-header-left">
 
-                    <span className="section-number">2</span>
+                    <span className="section-number">
+                      2
+                    </span>
 
-                    <span className="section-title" style={{ margin: 0 }}>
-                      SELECT INSURANCE CAPABILITIES (MULTI-SELECT)
+                    <span
+                      className="section-title"
+                      style={{ margin: 0 }}
+                    >
+                      SELECT INSURANCE CAPABILITIES
+                      (MULTI-SELECT)
                     </span>
 
                   </div>
 
-                  <small>CHOOSE ALL RELEVANT</small>
+                  <small>
+                    CHOOSE ALL RELEVANT
+                  </small>
 
                 </div>
 
@@ -843,7 +1283,9 @@ export default function InsuranceContact() {
                         className={`capability-button ${
                           selected ? "selected" : ""
                         }`}
-                        onClick={() => toggleCapability(name)}
+                        onClick={() =>
+                          toggleCapability(name)
+                        }
                       >
                         <span>{name}</span>
 
@@ -855,12 +1297,16 @@ export default function InsuranceContact() {
                 </div>
               </div>
 
-              {/* SECTION 3 */}
+              {/* ================= SECTION 3 ================= */}
 
               <div className="form-section">
 
                 <div className="section-title">
-                  <span className="section-number">3</span>
+
+                  <span className="section-number">
+                    3
+                  </span>
+
                   TARGET TIMELINE &amp; SCALE
                 </div>
 
@@ -888,13 +1334,15 @@ export default function InsuranceContact() {
                 </div>
               </div>
 
-              {/* SECTION 4 */}
+              {/* ================= SECTION 4 ================= */}
 
               <div className="form-section">
 
                 <div className="section-title optional-title">
 
-                  <span className="section-number">4</span>
+                  <span className="section-number">
+                    4
+                  </span>
 
                   TECHNICAL OBJECTIVES &amp; ENVIRONMENT
 
@@ -914,7 +1362,7 @@ export default function InsuranceContact() {
 
               </div>
 
-              {/* CHECKBOXES */}
+              {/* ================= CHECKBOXES ================= */}
 
               <div className="checkbox-section">
 
@@ -931,8 +1379,10 @@ export default function InsuranceContact() {
                     {formData.nda ? "✓" : ""}
                   </span>
 
-                  Execute Mutual Bilateral NDA prior to deep-dive
-                  architecture discussion
+                  <span>
+                    Execute Mutual Bilateral NDA prior to
+                    deep-dive architecture discussion
+                  </span>
 
                 </label>
 
@@ -949,14 +1399,16 @@ export default function InsuranceContact() {
                     {formData.briefing ? "✓" : ""}
                   </span>
 
-                  Request preliminary architecture consultation
-                  briefing document
+                  <span>
+                    Request preliminary architecture
+                    consultation briefing document
+                  </span>
 
                 </label>
 
               </div>
 
-              {/* SUBMIT */}
+              {/* ================= SUBMIT ================= */}
 
               <button
                 type="submit"

@@ -92,11 +92,11 @@ export default function DigitalExperienceAndApproachSections() {
     <section className="digital-experience-section">
       <style>{`
         /* =====================================================
-           FONTS
+           GOOGLE FONTS
         ===================================================== */
 
         @import url(
-          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
+          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
         );
 
 
@@ -132,9 +132,7 @@ export default function DigitalExperienceAndApproachSections() {
 
         .digital-experience-grid {
           display: grid;
-          grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 58px;
           align-items: center;
         }
@@ -182,8 +180,7 @@ export default function DigitalExperienceAndApproachSections() {
           border-radius: 12px;
           background: #ffffff;
 
-          box-shadow:
-            0 10px 28px rgba(0, 0, 0, 0.10);
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
 
           z-index: 2;
         }
@@ -215,6 +212,7 @@ export default function DigitalExperienceAndApproachSections() {
 
         /* =====================================================
            PILL
+           INTER
         ===================================================== */
 
         .digital-pill {
@@ -259,9 +257,7 @@ export default function DigitalExperienceAndApproachSections() {
 
           margin: 0 0 18px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 36px;
           line-height: 1.16;
@@ -278,8 +274,8 @@ export default function DigitalExperienceAndApproachSections() {
 
 
         /* =====================================================
-           BODY TEXT
-           INTER
+           SUBHEADING / DESCRIPTION
+           PLUS JAKARTA SANS
         ===================================================== */
 
         .digital-description {
@@ -287,11 +283,11 @@ export default function DigitalExperienceAndApproachSections() {
 
           margin: 0 0 13px;
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 14px;
           line-height: 1.72;
-          font-weight: 400;
+          font-weight: 500;
 
           color: ${MUTED};
         }
@@ -304,14 +300,12 @@ export default function DigitalExperienceAndApproachSections() {
 
         /* =====================================================
            EXPERIENCE FEATURES
+           OTHER TEXT = INTER
         ===================================================== */
 
         .digital-features-grid {
           display: grid;
-
-          grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           column-gap: 28px;
           row-gap: 24px;
         }
@@ -417,9 +411,7 @@ export default function DigitalExperienceAndApproachSections() {
 
           margin: 0;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 36px;
           line-height: 1.16;
@@ -436,8 +428,8 @@ export default function DigitalExperienceAndApproachSections() {
 
 
         /* =====================================================
-           APPROACH DESCRIPTION
-           INTER
+           APPROACH SUBHEADING
+           PLUS JAKARTA SANS
         ===================================================== */
 
         .approach-description {
@@ -445,11 +437,11 @@ export default function DigitalExperienceAndApproachSections() {
 
           margin: 0;
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 14px;
           line-height: 1.72;
-          font-weight: 400;
+          font-weight: 500;
 
           color: ${MUTED};
         }
@@ -475,7 +467,6 @@ export default function DigitalExperienceAndApproachSections() {
 
         .phase-card {
           min-width: 0;
-
           min-height: 245px;
 
           display: flex;
@@ -509,6 +500,7 @@ export default function DigitalExperienceAndApproachSections() {
 
         /* =====================================================
            PHASE TOP
+           INTER
         ===================================================== */
 
         .phase-top {
@@ -565,9 +557,7 @@ export default function DigitalExperienceAndApproachSections() {
         .phase-title {
           margin: 0 0 8px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 15px;
           line-height: 1.4;
@@ -596,6 +586,7 @@ export default function DigitalExperienceAndApproachSections() {
 
         /* =====================================================
            PHASE FOOTER
+           INTER
         ===================================================== */
 
         .phase-footer {
@@ -622,8 +613,7 @@ export default function DigitalExperienceAndApproachSections() {
         @media (max-width: 1100px) {
 
           .digital-main-container {
-            padding:
-              68px 32px 75px;
+            padding: 68px 32px 75px;
           }
 
 
@@ -669,8 +659,7 @@ export default function DigitalExperienceAndApproachSections() {
         @media (max-width: 900px) {
 
           .digital-main-container {
-            padding:
-              60px 24px 70px;
+            padding: 60px 24px 70px;
           }
 
 
@@ -753,8 +742,7 @@ export default function DigitalExperienceAndApproachSections() {
         @media (max-width: 600px) {
 
           .digital-main-container {
-            padding:
-              50px 20px 58px;
+            padding: 50px 20px 58px;
           }
 
 
@@ -764,8 +752,7 @@ export default function DigitalExperienceAndApproachSections() {
 
 
           .digital-image-area {
-            padding:
-              0 16px 18px 0;
+            padding: 0 16px 18px 0;
           }
 
 
@@ -805,8 +792,7 @@ export default function DigitalExperienceAndApproachSections() {
           .digital-pill {
             margin-bottom: 14px;
 
-            padding:
-              5px 10px;
+            padding: 5px 10px;
 
             font-size: 8px;
           }
@@ -817,6 +803,8 @@ export default function DigitalExperienceAndApproachSections() {
             height: 5px;
           }
 
+
+          /* MAIN HEADING */
 
           .digital-heading {
             margin-bottom: 16px;
@@ -829,12 +817,12 @@ export default function DigitalExperienceAndApproachSections() {
           }
 
 
+          /* SUBHEADING */
+
           .digital-description {
             font-size: 13px;
 
             line-height: 1.7;
-
-            margin-bottom: 11px;
           }
 
 
@@ -842,6 +830,8 @@ export default function DigitalExperienceAndApproachSections() {
             margin-bottom: 25px;
           }
 
+
+          /* FEATURES */
 
           .digital-features-grid {
             grid-template-columns: 1fr;
@@ -879,7 +869,9 @@ export default function DigitalExperienceAndApproachSections() {
           }
 
 
-          /* APPROACH */
+          /* =========================================
+             APPROACH
+          ========================================= */
 
           .approach-section {
             margin-top: 0;
@@ -908,6 +900,8 @@ export default function DigitalExperienceAndApproachSections() {
             line-height: 1.7;
           }
 
+
+          /* PHASE CARDS */
 
           .phases-grid {
             grid-template-columns: 1fr;
@@ -951,8 +945,7 @@ export default function DigitalExperienceAndApproachSections() {
         @media (max-width: 400px) {
 
           .digital-main-container {
-            padding:
-              42px 16px 50px;
+            padding: 42px 16px 50px;
           }
 
 
@@ -1117,6 +1110,8 @@ export default function DigitalExperienceAndApproachSections() {
             </Pill>
 
 
+            {/* PLUS JAKARTA SANS — HEADING */}
+
             <h2 className="digital-heading">
 
               Create Consistent{" "}
@@ -1127,6 +1122,8 @@ export default function DigitalExperienceAndApproachSections() {
 
             </h2>
 
+
+            {/* PLUS JAKARTA SANS — SUBHEADING */}
 
             <p className="digital-description">
 
@@ -1148,7 +1145,7 @@ export default function DigitalExperienceAndApproachSections() {
             </p>
 
 
-            {/* FEATURES */}
+            {/* FEATURES — INTER */}
 
             <div className="digital-features-grid">
 
@@ -1219,6 +1216,8 @@ export default function DigitalExperienceAndApproachSections() {
               </Pill>
 
 
+              {/* PLUS JAKARTA SANS — HEADING */}
+
               <h2 className="approach-heading">
 
                 From Business Requirements
@@ -1237,6 +1236,8 @@ export default function DigitalExperienceAndApproachSections() {
             {/* RIGHT */}
 
             <div className="approach-header-right">
+
+              {/* PLUS JAKARTA SANS — SUBHEADING */}
 
               <p className="approach-description">
 
@@ -1270,8 +1271,7 @@ export default function DigitalExperienceAndApproachSections() {
                   className="phase-card"
                 >
 
-
-                  {/* TOP */}
+                  {/* TOP — INTER */}
 
                   <div className="phase-top">
 
@@ -1292,21 +1292,21 @@ export default function DigitalExperienceAndApproachSections() {
                   </div>
 
 
-                  {/* TITLE */}
+                  {/* TITLE — PLUS JAKARTA SANS */}
 
                   <h3 className="phase-title">
                     {title}
                   </h3>
 
 
-                  {/* BODY */}
+                  {/* BODY — INTER */}
 
                   <p className="phase-body">
                     {body}
                   </p>
 
 
-                  {/* FOOTER */}
+                  {/* FOOTER — INTER */}
 
                   <p className="phase-footer">
                     {footer}

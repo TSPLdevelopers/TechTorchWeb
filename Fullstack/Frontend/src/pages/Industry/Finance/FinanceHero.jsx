@@ -1,6 +1,5 @@
 import React from "react";
-
-import { ArrowRight, Landmark, Building2, Calculator, Smartphone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const WINE = "#7A1F3D";
@@ -8,11 +7,11 @@ const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
 
 export default function FinancialHeroSection() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
     <section className="financial-hero">
       <style>{`
-
         /* =====================================================
            FONTS
         ===================================================== */
@@ -41,9 +40,10 @@ export default function FinancialHeroSection() {
 
         .financial-hero-container {
           width: 100%;
-          max-width: 1200px;
+          max-width: 1280px;
           margin: 0 auto;
-          padding: 70px 24px;
+          padding: 70px 40px;
+
           box-sizing: border-box;
 
           display: grid;
@@ -63,7 +63,7 @@ export default function FinancialHeroSection() {
 
 
         /* =====================================================
-           BADGE
+           BADGE - INTER
         ===================================================== */
 
         .financial-badge {
@@ -72,7 +72,7 @@ export default function FinancialHeroSection() {
           gap: 7px;
 
           margin-bottom: 20px;
-          padding: 6px 11px;
+          padding: 7px 12px;
 
           border-radius: 999px;
 
@@ -91,27 +91,25 @@ export default function FinancialHeroSection() {
           width: 6px;
           height: 6px;
           flex-shrink: 0;
+
           border-radius: 50%;
           background: ${WINE};
         }
 
 
         /* =====================================================
-           HEADING
-           PLUS JAKARTA SANS
+           MAIN HEADING - PLUS JAKARTA SANS
         ===================================================== */
 
         .financial-heading {
-          margin: 0 0 20px;
+          margin: 0 0 22px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 42px;
           line-height: 1.1;
           font-weight: 700;
-          letter-spacing: -1px;
+          letter-spacing: -1.2px;
 
           color: ${INK};
         }
@@ -123,20 +121,20 @@ export default function FinancialHeroSection() {
 
 
         /* =====================================================
-           DESCRIPTION
-           INTER
+           SUBHEADING / DESCRIPTION
+           PLUS JAKARTA SANS
         ===================================================== */
 
         .financial-description {
           max-width: 580px;
 
-          margin: 0 0 13px;
+          margin: 0 0 14px;
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 14px;
-          line-height: 1.72;
-          font-weight: 400;
+          line-height: 1.75;
+          font-weight: 500;
 
           color: ${MUTED};
         }
@@ -148,7 +146,7 @@ export default function FinancialHeroSection() {
 
 
         /* =====================================================
-           BUTTONS
+           BUTTONS - INTER
         ===================================================== */
 
         .financial-buttons {
@@ -186,6 +184,10 @@ export default function FinancialHeroSection() {
         }
 
 
+        /* =====================================================
+           PRIMARY BUTTON
+        ===================================================== */
+
         .financial-primary-button {
           border: 1px solid ${WINE};
           background: ${WINE};
@@ -196,13 +198,17 @@ export default function FinancialHeroSection() {
         .financial-primary-button:hover {
           background: #5c1730;
           border-color: #5c1730;
-          transform: translateY(-1px);
+
+          transform: translateY(-2px);
 
           box-shadow:
-            0 8px 20px
-            rgba(122, 31, 61, 0.18);
+            0 8px 20px rgba(122, 31, 61, 0.18);
         }
 
+
+        /* =====================================================
+           SECONDARY BUTTON
+        ===================================================== */
 
         .financial-secondary-button {
           border: 1px solid #ead4db;
@@ -213,7 +219,11 @@ export default function FinancialHeroSection() {
 
         .financial-secondary-button:hover {
           border-color: ${WINE};
-          transform: translateY(-1px);
+
+          transform: translateY(-2px);
+
+          box-shadow:
+            0 6px 16px rgba(122, 31, 61, 0.08);
         }
 
 
@@ -261,28 +271,63 @@ export default function FinancialHeroSection() {
 
 
         /* =====================================================
-           LARGE TABLET
+           LARGE DESKTOP
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
 
           .financial-hero-container {
-            max-width: 1000px;
-            gap: 40px;
-            padding: 60px 30px;
+            max-width: 1120px;
+            gap: 45px;
+            padding: 65px 32px;
           }
-
 
           .financial-heading {
-            font-size: 37px;
+            font-size: 39px;
           }
 
+          .financial-description {
+            font-size: 13.5px;
+          }
 
           .financial-image {
-            height: 370px;
-            border-radius: 22px;
+            height: 390px;
+          }
+        }
+
+
+        /* =====================================================
+           TABLET / SMALL LAPTOP
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+          .financial-hero-container {
+            grid-template-columns: 1fr 0.95fr;
+            gap: 35px;
+
+            padding: 55px 28px;
           }
 
+          .financial-heading {
+            font-size: 35px;
+            letter-spacing: -0.9px;
+          }
+
+          .financial-description {
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .financial-image {
+            height: 350px;
+            border-radius: 20px;
+          }
+
+          .financial-image-glow {
+            inset: -10px;
+            filter: blur(25px);
+          }
         }
 
 
@@ -294,37 +339,34 @@ export default function FinancialHeroSection() {
 
           .financial-hero-container {
             grid-template-columns: 1fr;
+
             gap: 45px;
 
             padding:
-              55px 24px 60px;
+              55px 28px 60px;
           }
-
 
           .financial-hero-content {
-            max-width: 700px;
+            max-width: 720px;
           }
-
 
           .financial-heading {
-            font-size: 36px;
+            font-size: 37px;
           }
-
 
           .financial-description {
-            max-width: 680px;
-          }
-
-
-          .financial-image-wrapper {
             max-width: 700px;
           }
 
+          .financial-image-wrapper {
+            width: 100%;
+            max-width: 720px;
+          }
 
           .financial-image {
             height: 390px;
+            border-radius: 22px;
           }
-
         }
 
 
@@ -338,14 +380,19 @@ export default function FinancialHeroSection() {
             padding:
               45px 20px 50px;
 
-            gap: 38px;
+            gap: 35px;
           }
 
 
+          /* Badge */
+
           .financial-badge {
             margin-bottom: 15px;
-            padding: 5px 10px;
+
+            padding: 6px 10px;
+
             font-size: 8.5px;
+            letter-spacing: 0.05em;
           }
 
 
@@ -355,19 +402,27 @@ export default function FinancialHeroSection() {
           }
 
 
+          /* Heading */
+
           .financial-heading {
-            margin-bottom: 16px;
+            margin-bottom: 17px;
 
             font-size: 30px;
-            line-height: 1.14;
-            letter-spacing: -0.6px;
+            line-height: 1.15;
+
+            letter-spacing: -0.7px;
           }
 
 
+          /* Subheading */
+
           .financial-description {
-            font-size: 13px;
-            line-height: 1.7;
             margin-bottom: 11px;
+
+            font-size: 12.5px;
+            line-height: 1.72;
+
+            font-weight: 500;
           }
 
 
@@ -375,6 +430,8 @@ export default function FinancialHeroSection() {
             margin-bottom: 24px;
           }
 
+
+          /* Buttons */
 
           .financial-buttons {
             gap: 9px;
@@ -384,7 +441,9 @@ export default function FinancialHeroSection() {
           .financial-primary-button,
           .financial-secondary-button {
             min-height: 40px;
+
             padding: 0 16px;
+
             font-size: 9px;
           }
 
@@ -395,17 +454,20 @@ export default function FinancialHeroSection() {
           }
 
 
+          /* Image */
+
           .financial-image {
             height: 300px;
+
             border-radius: 18px;
           }
 
 
           .financial-image-glow {
             inset: -8px;
+
             filter: blur(20px);
           }
-
         }
 
 
@@ -413,7 +475,7 @@ export default function FinancialHeroSection() {
            SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
 
           .financial-hero-container {
             padding:
@@ -424,34 +486,47 @@ export default function FinancialHeroSection() {
 
 
           .financial-heading {
-            font-size: 27px;
+            font-size: 28px;
             line-height: 1.16;
+
+            letter-spacing: -0.6px;
           }
 
 
           .financial-description {
             font-size: 12px;
-            line-height: 1.68;
+            line-height: 1.7;
           }
 
 
           .financial-buttons {
             flex-direction: column;
             align-items: stretch;
+
+            width: 100%;
           }
 
 
           .financial-primary-button,
           .financial-secondary-button {
             width: 100%;
+
+            min-height: 42px;
+
+            padding: 0 14px;
+          }
+
+
+          .financial-primary-button {
+            gap: 6px;
           }
 
 
           .financial-image {
-            height: 255px;
-            border-radius: 16px;
-          }
+            height: 270px;
 
+            border-radius: 17px;
+          }
         }
 
 
@@ -459,27 +534,70 @@ export default function FinancialHeroSection() {
            VERY SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 340px) {
+        @media (max-width: 380px) {
+
+          .financial-hero-container {
+            padding:
+              36px 14px 40px;
+
+            gap: 28px;
+          }
+
+
+          .financial-badge {
+            font-size: 8px;
+          }
+
 
           .financial-heading {
             font-size: 25px;
+            line-height: 1.17;
           }
 
 
           .financial-description {
             font-size: 11.5px;
+            line-height: 1.68;
           }
 
 
           .financial-image {
-            height: 230px;
+            height: 240px;
+            border-radius: 15px;
           }
 
+
+          .financial-primary-button,
+          .financial-secondary-button {
+            font-size: 8.5px;
+          }
         }
 
 
         /* =====================================================
-           REDUCED MOTION
+           VERY VERY SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 340px) {
+
+          .financial-heading {
+            font-size: 23px;
+          }
+
+
+          .financial-description {
+            font-size: 11px;
+          }
+
+
+          .financial-image {
+            height: 220px;
+          }
+        }
+
+
+        /* =====================================================
+           ACCESSIBILITY
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
@@ -488,7 +606,6 @@ export default function FinancialHeroSection() {
           .financial-secondary-button {
             transition: none;
           }
-
         }
 
       `}</style>
@@ -500,17 +617,22 @@ export default function FinancialHeroSection() {
 
       <div className="financial-hero-container">
 
+
         {/* =================================================
             LEFT CONTENT
         ================================================= */}
 
         <div className="financial-hero-content">
 
+          {/* Badge - Inter */}
+
           <span className="financial-badge">
             <span className="financial-badge-dot" />
             FINANCIAL TECHNOLOGY SOLUTIONS
           </span>
 
+
+          {/* Main Heading - Plus Jakarta Sans */}
 
           <h1 className="financial-heading">
 
@@ -526,6 +648,8 @@ export default function FinancialHeroSection() {
 
           </h1>
 
+
+          {/* Subheading - Plus Jakarta Sans */}
 
           <p className="financial-description">
             Financial institutions and forward-looking finance departments
@@ -543,6 +667,8 @@ export default function FinancialHeroSection() {
           </p>
 
 
+          {/* Buttons - Inter */}
+
           <div className="financial-buttons">
 
             <button
@@ -556,13 +682,9 @@ export default function FinancialHeroSection() {
 
 
             <button
-
-              className="px-6 py-3.5 rounded-full text-sm font-medium border financial-secondary-button"
-              style={{ borderColor: "#f0d6de", color: WINE }}
-              onClick={() => navigate("/finance-get-in-touch")}
-
               type="button"
-
+              className="financial-secondary-button"
+              onClick={() => navigate("/finance-get-in-touch")}
             >
               GET IN TOUCH
             </button>
@@ -573,7 +695,7 @@ export default function FinancialHeroSection() {
 
 
         {/* =================================================
-            RIGHT SIDE — ONLY IMAGE
+            RIGHT IMAGE
         ================================================= */}
 
         <div className="financial-image-wrapper">

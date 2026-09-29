@@ -8,6 +8,7 @@ const MUTED = "#5b5a63";
 
 export default function InsuranceHeroBgSection() {
   const navigate = useNavigate();
+
   return (
     <section className="insurance-hero">
       <style>{`
@@ -29,11 +30,12 @@ export default function InsuranceHeroBgSection() {
           position: relative;
           width: 100%;
           min-height: 520px;
+
           overflow: hidden;
 
-          font-family: "Inter", sans-serif;
-
           background: #ffffff;
+
+          font-family: "Inter", sans-serif;
         }
 
 
@@ -95,8 +97,7 @@ export default function InsuranceHeroBgSection() {
 
           margin: 0 auto;
 
-          padding:
-            62px 20px 58px;
+          padding: 62px 24px 58px;
 
           box-sizing: border-box;
         }
@@ -107,6 +108,7 @@ export default function InsuranceHeroBgSection() {
         ===================================================== */
 
         .insurance-hero-content {
+          width: 100%;
           max-width: 570px;
         }
 
@@ -126,6 +128,7 @@ export default function InsuranceHeroBgSection() {
 
         /* =====================================================
            BADGE
+           INTER
         ===================================================== */
 
         .insurance-badge {
@@ -137,8 +140,7 @@ export default function InsuranceHeroBgSection() {
 
           margin-bottom: 18px;
 
-          padding:
-            6px 11px;
+          padding: 6px 11px;
 
           border-radius: 999px;
 
@@ -171,16 +173,16 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           HEADING
+           MAIN HEADING
            PLUS JAKARTA SANS
         ===================================================== */
 
         .insurance-heading {
           margin: 0 0 18px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          max-width: 570px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 42px;
 
@@ -200,8 +202,8 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           BODY TEXT
-           INTER
+           SUBHEADING / DESCRIPTION
+           PLUS JAKARTA SANS
         ===================================================== */
 
         .insurance-description {
@@ -209,15 +211,13 @@ export default function InsuranceHeroBgSection() {
 
           max-width: 555px;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 14px;
+          font-size: 13.5px;
 
-          line-height: 1.7;
+          line-height: 1.72;
 
-          font-weight: 400;
+          font-weight: 500;
 
           color: ${MUTED};
         }
@@ -229,7 +229,8 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           BUTTONS
+           BUTTON CONTAINER
+           INTER
         ===================================================== */
 
         .insurance-buttons {
@@ -243,6 +244,11 @@ export default function InsuranceHeroBgSection() {
         }
 
 
+        /* =====================================================
+           BUTTONS
+           INTER
+        ===================================================== */
+
         .insurance-primary-button,
         .insurance-secondary-button {
           display: inline-flex;
@@ -255,14 +261,11 @@ export default function InsuranceHeroBgSection() {
 
           min-height: 42px;
 
-          padding:
-            0 20px;
+          padding: 0 20px;
 
           border-radius: 999px;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 10px;
 
@@ -277,6 +280,7 @@ export default function InsuranceHeroBgSection() {
           transition:
             background 0.25s ease,
             border-color 0.25s ease,
+            color 0.25s ease,
             transform 0.25s ease,
             box-shadow 0.25s ease;
         }
@@ -287,8 +291,7 @@ export default function InsuranceHeroBgSection() {
         ===================================================== */
 
         .insurance-primary-button {
-          border:
-            1px solid ${WINE};
+          border: 1px solid ${WINE};
 
           background: ${WINE};
 
@@ -301,8 +304,7 @@ export default function InsuranceHeroBgSection() {
 
           border-color: #5c1730;
 
-          transform:
-            translateY(-1px);
+          transform: translateY(-2px);
 
           box-shadow:
             0 7px 18px
@@ -315,11 +317,9 @@ export default function InsuranceHeroBgSection() {
         ===================================================== */
 
         .insurance-secondary-button {
-          border:
-            1px solid #d8d5d0;
+          border: 1px solid #d8d5d0;
 
-          background:
-            rgba(255, 255, 255, 0.92);
+          background: rgba(255, 255, 255, 0.92);
 
           color: ${INK};
         }
@@ -330,8 +330,36 @@ export default function InsuranceHeroBgSection() {
 
           color: ${WINE};
 
-          transform:
-            translateY(-1px);
+          transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           LARGE DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1200px) {
+
+          .insurance-hero {
+            min-height: 550px;
+          }
+
+          .insurance-hero-container {
+            padding: 72px 32px 66px;
+          }
+
+          .insurance-hero-content {
+            max-width: 590px;
+          }
+
+          .insurance-heading {
+            font-size: 44px;
+          }
+
+          .insurance-description {
+            font-size: 14px;
+          }
+
         }
 
 
@@ -345,19 +373,19 @@ export default function InsuranceHeroBgSection() {
             min-height: 500px;
           }
 
-
           .insurance-hero-container {
-            padding:
-              58px 32px 54px;
+            padding: 58px 32px 54px;
 
             transform: none;
           }
-
 
           .insurance-heading {
             font-size: 39px;
           }
 
+          .insurance-description {
+            font-size: 13px;
+          }
 
           .insurance-hero-overlay {
             background:
@@ -378,18 +406,52 @@ export default function InsuranceHeroBgSection() {
            TABLET
         ===================================================== */
 
+        @media (max-width: 900px) {
+
+          .insurance-hero {
+            min-height: 510px;
+          }
+
+          .insurance-hero-container {
+            padding: 52px 24px 50px;
+          }
+
+          .insurance-hero-content {
+            max-width: 650px;
+          }
+
+          .insurance-heading {
+            max-width: 620px;
+
+            font-size: 36px;
+
+            line-height: 1.1;
+          }
+
+          .insurance-description {
+            max-width: 640px;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+          }
+
+        }
+
+
+        /* =====================================================
+           SMALL TABLET
+        ===================================================== */
+
         @media (max-width: 767px) {
 
           .insurance-hero {
             min-height: auto;
           }
 
-
           .insurance-hero-bg {
-            background-position:
-              65% center;
+            background-position: 65% center;
           }
-
 
           .insurance-hero-overlay {
             background:
@@ -402,26 +464,21 @@ export default function InsuranceHeroBgSection() {
               );
           }
 
-
           .insurance-hero-container {
-            padding:
-              48px 20px 46px;
+            padding: 48px 20px 46px;
 
             transform: none;
           }
 
-
           .insurance-hero-content {
             max-width: 620px;
           }
-
 
           .insurance-badge {
             margin-bottom: 15px;
 
             font-size: 9px;
           }
-
 
           .insurance-heading {
             max-width: 570px;
@@ -435,29 +492,25 @@ export default function InsuranceHeroBgSection() {
             letter-spacing: -0.7px;
           }
 
-
           .insurance-description {
             max-width: 600px;
 
-            font-size: 13.5px;
+            font-size: 13px;
 
             line-height: 1.7;
 
             margin-bottom: 11px;
           }
 
-
           .insurance-description:last-of-type {
             margin-bottom: 22px;
           }
-
 
           .insurance-primary-button,
           .insurance-secondary-button {
             min-height: 40px;
 
-            padding:
-              0 18px;
+            padding: 0 18px;
 
             font-size: 9.5px;
           }
@@ -472,10 +525,8 @@ export default function InsuranceHeroBgSection() {
         @media (max-width: 480px) {
 
           .insurance-hero-bg {
-            background-position:
-              62% center;
+            background-position: 62% center;
           }
-
 
           .insurance-hero-overlay {
             background:
@@ -488,30 +539,28 @@ export default function InsuranceHeroBgSection() {
               );
           }
 
-
           .insurance-hero-container {
-            padding:
-              40px 16px 38px;
+            padding: 40px 16px 38px;
 
             transform: none;
           }
 
+          .insurance-hero-content {
+            max-width: 100%;
+          }
 
           .insurance-badge {
             margin-bottom: 13px;
 
-            padding:
-              5px 10px;
+            padding: 5px 10px;
 
             font-size: 8.5px;
           }
-
 
           .insurance-badge-dot {
             width: 5px;
             height: 5px;
           }
-
 
           .insurance-heading {
             margin-bottom: 14px;
@@ -523,20 +572,17 @@ export default function InsuranceHeroBgSection() {
             letter-spacing: -0.5px;
           }
 
-
           .insurance-description {
-            font-size: 12.5px;
+            font-size: 12px;
 
-            line-height: 1.68;
+            line-height: 1.7;
 
             margin-bottom: 10px;
           }
 
-
           .insurance-description:last-of-type {
             margin-bottom: 20px;
           }
-
 
           .insurance-buttons {
             width: 100%;
@@ -544,17 +590,14 @@ export default function InsuranceHeroBgSection() {
             gap: 9px;
           }
 
-
           .insurance-primary-button,
           .insurance-secondary-button {
             min-height: 40px;
 
-            padding:
-              0 15px;
+            padding: 0 15px;
 
             font-size: 8.5px;
           }
-
 
           .insurance-primary-button svg {
             width: 13px;
@@ -571,12 +614,8 @@ export default function InsuranceHeroBgSection() {
         @media (max-width: 360px) {
 
           .insurance-hero-container {
-            padding:
-              34px 14px 34px;
-
-            transform: none;
+            padding: 34px 14px 34px;
           }
-
 
           .insurance-heading {
             font-size: 25px;
@@ -584,24 +623,48 @@ export default function InsuranceHeroBgSection() {
             line-height: 1.16;
           }
 
-
           .insurance-description {
-            font-size: 12px;
+            font-size: 11.5px;
 
-            line-height: 1.65;
+            line-height: 1.68;
           }
-
 
           .insurance-buttons {
             flex-direction: column;
 
             align-items: stretch;
-          }
 
+            width: 100%;
+          }
 
           .insurance-primary-button,
           .insurance-secondary-button {
             width: 100%;
+          }
+
+        }
+
+
+        /* =====================================================
+           VERY SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 320px) {
+
+          .insurance-hero-container {
+            padding: 30px 12px;
+          }
+
+          .insurance-heading {
+            font-size: 23px;
+          }
+
+          .insurance-description {
+            font-size: 11px;
+          }
+
+          .insurance-badge {
+            font-size: 8px;
           }
 
         }
@@ -662,7 +725,7 @@ export default function InsuranceHeroBgSection() {
           </span>
 
 
-          {/* HEADING */}
+          {/* MAIN HEADING */}
 
           <h1 className="insurance-heading">
 
@@ -683,7 +746,7 @@ export default function InsuranceHeroBgSection() {
           </h1>
 
 
-          {/* DESCRIPTION */}
+          {/* SUBHEADING / DESCRIPTION */}
 
           <p className="insurance-description">
 
@@ -713,24 +776,21 @@ export default function InsuranceHeroBgSection() {
               type="button"
               className="insurance-primary-button"
             >
-
               TALK TO OUR EXPERTS
 
               <ArrowRight
                 size={14}
+                strokeWidth={1.8}
               />
-
             </button>
 
 
             <button
               type="button"
               className="insurance-secondary-button"
-               onClick={() => navigate("/insurance-get-in-touch")}
+              onClick={() => navigate("/insurance-get-in-touch")}
             >
-
               GET IN TOUCH
-
             </button>
 
           </div>

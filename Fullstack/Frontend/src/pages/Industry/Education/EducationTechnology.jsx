@@ -13,16 +13,6 @@ const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
 
-/* =====================================================
-   IMAGE PATH
-   Put your image inside the public folder
-   Example:
-   public/education-team.png
-
-   Then use:
-   /education-team.png
-===================================================== */
-
 const EDUCATION_WORK_IMAGE = "/college.png";
 
 const personas = [
@@ -74,15 +64,8 @@ const meansList = [
 
 function Eyebrow({ children }) {
   return (
-    <div
-      className="education-eyebrow"
-      style={{ color: WINE }}
-    >
-      <ChevronRight
-        size={14}
-        strokeWidth={3}
-      />
-
+    <div className="education-eyebrow">
+      <ChevronRight size={14} strokeWidth={3} />
       <span>{children}</span>
     </div>
   );
@@ -97,7 +80,7 @@ export default function PeopleAndWorkSections() {
       <style>{`
 
         /* =====================================================
-           FONTS
+           GOOGLE FONTS
         ===================================================== */
 
         @import url(
@@ -112,8 +95,8 @@ export default function PeopleAndWorkSections() {
         .people-work-section {
           width: 100%;
           overflow: hidden;
-          font-family: "Inter", sans-serif;
           background: #ffffff;
+          font-family: "Inter", sans-serif;
         }
 
 
@@ -136,6 +119,7 @@ export default function PeopleAndWorkSections() {
         ===================================================== */
 
         .personas-section {
+          width: 100%;
           background: #ffffff;
           padding-top: 80px;
           padding-bottom: 80px;
@@ -144,13 +128,13 @@ export default function PeopleAndWorkSections() {
 
         /* =====================================================
            EYEBROW
+           INTER
         ===================================================== */
 
         .education-eyebrow {
           display: flex;
           align-items: center;
           gap: 4px;
-
           margin-bottom: 16px;
 
           font-family: "Inter", sans-serif;
@@ -158,46 +142,42 @@ export default function PeopleAndWorkSections() {
           line-height: 1.4;
           font-weight: 700;
           letter-spacing: 0.06em;
+
+          color: ${WINE};
         }
 
 
         /* =====================================================
-           HEADINGS
+           MAIN HEADING
            PLUS JAKARTA SANS
         ===================================================== */
 
         .people-work-heading {
           margin: 0;
+          max-width: 680px;
 
-          max-width: 620px;
-
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
-
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 38px;
           line-height: 1.15;
-
           font-weight: 700;
-
           letter-spacing: -0.7px;
 
           color: ${INK};
         }
 
 
+        /* =====================================================
+           MAIN SUBHEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
+
         .people-work-subheading {
           margin: 16px 0 0;
+          max-width: 680px;
 
-          max-width: 620px;
-
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
-
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 17px;
           line-height: 1.6;
-
           font-weight: 500;
 
           color: ${MUTED};
@@ -210,12 +190,8 @@ export default function PeopleAndWorkSections() {
 
         .persona-grid {
           display: grid;
-
-          grid-template-columns:
-            repeat(5, minmax(0, 1fr));
-
+          grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: 16px;
-
           margin-top: 40px;
         }
 
@@ -226,14 +202,10 @@ export default function PeopleAndWorkSections() {
 
         .persona-card {
           min-width: 0;
-
           padding: 20px;
 
-          border:
-            1px solid #ece9e4;
-
+          border: 1px solid #ece9e4;
           border-radius: 12px;
-
           background: #ffffff;
 
           transition:
@@ -244,15 +216,11 @@ export default function PeopleAndWorkSections() {
 
 
         .persona-card:hover {
-          transform:
-            translateY(-4px);
-
-          border-color:
-            #e2d4d9;
+          transform: translateY(-4px);
+          border-color: #e2d4d9;
 
           box-shadow:
-            0 12px 28px
-            rgba(0, 0, 0, 0.07);
+            0 12px 28px rgba(0, 0, 0, 0.07);
         }
 
 
@@ -269,7 +237,6 @@ export default function PeopleAndWorkSections() {
           justify-content: center;
 
           margin-bottom: 16px;
-
           flex-shrink: 0;
         }
 
@@ -294,13 +261,9 @@ export default function PeopleAndWorkSections() {
         .persona-title {
           margin: 0 0 8px;
 
-          font-family:
-            "Inter",
-            sans-serif;
-
+          font-family: "Inter", sans-serif;
           font-size: 14px;
           line-height: 1.4;
-
           font-weight: 700;
 
           color: ${INK};
@@ -309,18 +272,15 @@ export default function PeopleAndWorkSections() {
 
         /* =====================================================
            CARD BODY
+           INTER
         ===================================================== */
 
         .persona-body {
           margin: 0;
 
-          font-family:
-            "Inter",
-            sans-serif;
-
+          font-family: "Inter", sans-serif;
           font-size: 12px;
           line-height: 1.7;
-
           font-weight: 400;
 
           color: ${MUTED};
@@ -333,7 +293,6 @@ export default function PeopleAndWorkSections() {
 
         .manual-work-section {
           width: 100%;
-
           background: #f3f1ec;
 
           padding-top: 64px;
@@ -350,7 +309,6 @@ export default function PeopleAndWorkSections() {
             minmax(0, 0.8fr);
 
           gap: 32px;
-
           align-items: start;
         }
 
@@ -359,41 +317,31 @@ export default function PeopleAndWorkSections() {
            IMAGE
         ===================================================== */
 
+        .education-work-image-wrapper {
+          width: 100%;
+          overflow: hidden;
+
+          border-radius: 16px;
+          background: #e9e4e0;
+        }
+
+
         .education-work-image {
           width: 100%;
-
           height: 288px;
 
           display: block;
 
           object-fit: cover;
-
           object-position: center;
 
-          border-radius: 16px;
-
-          background: #e9e4e0;
-
-          transition:
-            transform 0.4s ease;
-        }
-
-
-        .education-work-image-wrapper {
-          width: 100%;
-
-          overflow: hidden;
-
-          border-radius: 16px;
-
-          background: #e9e4e0;
+          transition: transform 0.4s ease;
         }
 
 
         .education-work-image-wrapper:hover
         .education-work-image {
-          transform:
-            scale(1.025);
+          transform: scale(1.025);
         }
 
 
@@ -405,16 +353,10 @@ export default function PeopleAndWorkSections() {
         .manual-work-heading {
           margin: 0 0 16px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
-
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 30px;
-
           line-height: 1.2;
-
           font-weight: 700;
-
           letter-spacing: -0.5px;
 
           color: ${INK};
@@ -429,14 +371,9 @@ export default function PeopleAndWorkSections() {
         .manual-work-body {
           margin: 0;
 
-          font-family:
-            "Inter",
-            sans-serif;
-
+          font-family: "Inter", sans-serif;
           font-size: 15px;
-
           line-height: 1.75;
-
           font-weight: 400;
 
           color: ${MUTED};
@@ -456,26 +393,24 @@ export default function PeopleAndWorkSections() {
           padding: 20px;
 
           border-radius: 12px;
-
           background: #ffffff;
 
           box-sizing: border-box;
         }
 
 
+        /* =====================================================
+           MEANS TITLE
+           INTER
+        ===================================================== */
+
         .means-title {
           margin: 0 0 16px;
 
-          font-family:
-            "Inter",
-            sans-serif;
-
+          font-family: "Inter", sans-serif;
           font-size: 12px;
-
           line-height: 1.4;
-
           font-weight: 700;
-
           letter-spacing: 0.06em;
 
           color: #8a8378;
@@ -484,17 +419,15 @@ export default function PeopleAndWorkSections() {
 
         /* =====================================================
            LIST
+           INTER
         ===================================================== */
 
         .means-list {
           display: flex;
-
           flex-direction: column;
-
           gap: 12px;
 
           margin: 0;
-
           padding: 0;
 
           list-style: none;
@@ -503,19 +436,12 @@ export default function PeopleAndWorkSections() {
 
         .means-item {
           display: flex;
-
           align-items: flex-start;
-
           gap: 8px;
 
-          font-family:
-            "Inter",
-            sans-serif;
-
+          font-family: "Inter", sans-serif;
           font-size: 13px;
-
           line-height: 1.5;
-
           font-weight: 400;
 
           color: ${INK};
@@ -524,15 +450,38 @@ export default function PeopleAndWorkSections() {
 
         .means-check {
           flex-shrink: 0;
-
           margin-top: 2px;
-
           color: ${WINE};
         }
 
 
         /* =====================================================
-           LARGE TABLET
+           LARGE DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1280px) {
+
+          .people-work-container {
+            max-width: 1180px;
+          }
+
+          .people-work-heading {
+            font-size: 40px;
+          }
+
+          .people-work-subheading {
+            font-size: 18px;
+          }
+
+          .manual-work-heading {
+            font-size: 32px;
+          }
+
+        }
+
+
+        /* =====================================================
+           TABLET / LARGE LAPTOP
         ===================================================== */
 
         @media (max-width: 1100px) {
@@ -542,23 +491,18 @@ export default function PeopleAndWorkSections() {
             padding-right: 32px;
           }
 
-
           .persona-grid {
-            grid-template-columns:
-              repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
           }
-
 
           .manual-work-grid {
             grid-template-columns:
               minmax(0, 1fr)
-              minmax(0, 1.3fr);
+              minmax(0, 1.25fr);
           }
 
-
           .means-card {
-            grid-column:
-              1 / -1;
+            grid-column: 1 / -1;
           }
 
         }
@@ -575,79 +519,65 @@ export default function PeopleAndWorkSections() {
             padding-right: 20px;
           }
 
-
           .personas-section {
             padding-top: 56px;
             padding-bottom: 56px;
           }
-
 
           .manual-work-section {
             padding-top: 52px;
             padding-bottom: 52px;
           }
 
+          .education-eyebrow {
+            font-size: 11px;
+          }
 
           .people-work-heading {
+            max-width: 600px;
             font-size: 32px;
-
             line-height: 1.18;
-
             letter-spacing: -0.5px;
           }
 
-
           .people-work-subheading {
+            max-width: 600px;
+            margin-top: 14px;
             font-size: 15px;
-
             line-height: 1.65;
           }
 
-
           .persona-grid {
-            grid-template-columns:
-              repeat(2, minmax(0, 1fr));
-
-            gap: 12px;
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
             margin-top: 32px;
           }
-
 
           .persona-card {
             padding: 18px;
           }
 
-
           .manual-work-grid {
             grid-template-columns: 1fr;
-
             gap: 28px;
           }
-
 
           .education-work-image {
             height: 320px;
           }
 
-
           .manual-work-heading {
             font-size: 28px;
-
             line-height: 1.2;
           }
 
-
           .manual-work-body {
             font-size: 14px;
-
             line-height: 1.7;
           }
 
-
           .means-card {
             grid-column: auto;
-
             padding: 18px;
           }
 
@@ -665,54 +595,50 @@ export default function PeopleAndWorkSections() {
             padding-right: 16px;
           }
 
-
           .personas-section {
             padding-top: 48px;
             padding-bottom: 48px;
           }
-
 
           .manual-work-section {
             padding-top: 44px;
             padding-bottom: 44px;
           }
 
-
           .education-eyebrow {
-            font-size: 10px;
-
-            line-height: 1.5;
-
+            gap: 2px;
             margin-bottom: 12px;
-          }
 
+            font-size: 10px;
+            line-height: 1.5;
+            letter-spacing: 0.045em;
+          }
 
           .people-work-heading {
-            font-size: 27px;
+            max-width: 100%;
 
+            font-size: 27px;
             line-height: 1.2;
+            letter-spacing: -0.4px;
           }
 
-
           .people-work-subheading {
+            max-width: 100%;
+
             margin-top: 12px;
 
             font-size: 14px;
+            line-height: 1.65;
           }
-
 
           .persona-grid {
             grid-template-columns: 1fr;
-
             gap: 10px;
-
             margin-top: 28px;
           }
 
-
           .persona-card {
             display: grid;
-
             grid-template-columns: auto 1fr;
 
             column-gap: 12px;
@@ -720,64 +646,53 @@ export default function PeopleAndWorkSections() {
             padding: 15px;
           }
 
-
           .persona-icon {
-            grid-row:
-              1 / span 2;
-
-            margin-bottom: 0;
+            grid-row: 1 / span 2;
 
             width: 40px;
             height: 40px;
-          }
 
+            margin-bottom: 0;
+          }
 
           .persona-title {
             margin-bottom: 4px;
-
             font-size: 13px;
           }
 
-
           .persona-body {
             font-size: 11.5px;
-
             line-height: 1.6;
           }
-
-
-          .education-work-image {
-            height: 260px;
-
-            border-radius: 14px;
-          }
-
 
           .education-work-image-wrapper {
             border-radius: 14px;
           }
 
+          .education-work-image {
+            height: 260px;
+          }
 
           .manual-work-heading {
             font-size: 25px;
-
             line-height: 1.22;
           }
 
-
           .manual-work-body {
             font-size: 13.5px;
-
             line-height: 1.7;
           }
 
+          .manual-work-body + .manual-work-body {
+            margin-top: 16px;
+          }
 
           .means-card {
             padding: 16px;
           }
 
-
           .means-item {
+            gap: 7px;
             font-size: 12px;
           }
 
@@ -795,19 +710,25 @@ export default function PeopleAndWorkSections() {
             padding-right: 14px;
           }
 
-
           .people-work-heading {
-            font-size: 25px;
+            font-size: 24px;
+            line-height: 1.22;
           }
 
+          .people-work-subheading {
+            font-size: 13px;
+          }
 
           .manual-work-heading {
             font-size: 23px;
           }
 
-
           .education-work-image {
             height: 235px;
+          }
+
+          .persona-card {
+            padding: 13px;
           }
 
         }
@@ -834,17 +755,18 @@ export default function PeopleAndWorkSections() {
       ===================================================== */}
 
       <section className="personas-section">
-
         <div className="people-work-container">
 
           <Eyebrow>
             TECHNOLOGY FOR THE PEOPLE BEHIND EDUCATION
           </Eyebrow>
 
+          {/* HEADING - PLUS JAKARTA SANS */}
           <h2 className="people-work-heading">
             Better experiences start with understanding every user.
           </h2>
 
+          {/* SUBHEADING - PLUS JAKARTA SANS */}
           <p className="people-work-subheading">
             An education platform is only useful when it works well for the
             people using it.
@@ -864,14 +786,12 @@ export default function PeopleAndWorkSections() {
                 iconBg,
                 iconColor,
               }) => (
-
                 <div
                   key={title}
                   className="persona-card"
                 >
 
                   {variant === "filled" ? (
-
                     <span
                       className="
                         persona-icon
@@ -883,9 +803,7 @@ export default function PeopleAndWorkSections() {
                         strokeWidth={1.8}
                       />
                     </span>
-
                   ) : (
-
                     <span
                       className="
                         persona-icon
@@ -901,9 +819,7 @@ export default function PeopleAndWorkSections() {
                         strokeWidth={1.8}
                       />
                     </span>
-
                   )}
-
 
                   <h3 className="persona-title">
                     {title}
@@ -914,14 +830,12 @@ export default function PeopleAndWorkSections() {
                   </p>
 
                 </div>
-
               )
             )}
 
           </div>
 
         </div>
-
       </section>
 
 
@@ -959,9 +873,13 @@ export default function PeopleAndWorkSections() {
               LESS MANUAL WORK, MORE MEANINGFUL WORK
             </Eyebrow>
 
+            {/* HEADING - PLUS JAKARTA SANS */}
+
             <h2 className="manual-work-heading">
               Give your teams more time for what matters.
             </h2>
+
+            {/* BODY - INTER */}
 
             <p className="manual-work-body">
               Manual processes often become part of an institution simply
@@ -989,7 +907,6 @@ export default function PeopleAndWorkSections() {
             <ul className="means-list">
 
               {meansList.map((item) => (
-
                 <li
                   key={item}
                   className="means-item"
@@ -1005,7 +922,6 @@ export default function PeopleAndWorkSections() {
                   </span>
 
                 </li>
-
               ))}
 
             </ul>

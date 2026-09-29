@@ -33,11 +33,13 @@ const PRACTICE_AREAS = [
   },
   {
     title: "Cyber Security & SOX Audit Readiness",
-    description: "Financial compliance, immutable audit trails, data protection",
+    description:
+      "Financial compliance, immutable audit trails, data protection",
   },
   {
     title: "Cloud Infrastructure & Microservices",
-    description: "High-frequency institutional portals, mainframe offloading",
+    description:
+      "High-frequency institutional portals, mainframe offloading",
   },
   {
     title: "Software Development & API Modernization",
@@ -45,7 +47,8 @@ const PRACTICE_AREAS = [
   },
   {
     title: "TorchX Finance Suite Platform",
-    description: "Automated invoicing, expense & payroll control, real-time reporting",
+    description:
+      "Automated invoicing, expense & payroll control, real-time reporting",
   },
 ];
 
@@ -58,7 +61,6 @@ const TIMELINES = [
 
 export default function FinancialContact() {
   const [selectedAreas, setSelectedAreas] = useState([]);
-
   const [timeline, setTimeline] = useState("");
 
   const [formData, setFormData] = useState({
@@ -104,32 +106,40 @@ export default function FinancialContact() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
         * {
           box-sizing: border-box;
         }
 
+        /* =====================================
+           MAIN PAGE
+        ====================================== */
+
         .financial-page {
           width: 100%;
           min-height: 100vh;
           background: #f8f9fa;
-          padding: 52px 32px;
-          font-family: Inter, Arial, sans-serif;
+          padding: 64px 24px;
           color: #24242a;
+          font-family: "Inter", Arial, sans-serif;
+          overflow: hidden;
         }
 
         .financial-container {
-          max-width: 1220px;
+          width: 100%;
+          max-width: 1280px;
           margin: 0 auto;
+
           display: grid;
-          grid-template-columns: 0.88fr 1.22fr;
+          grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.22fr);
           gap: 46px;
           align-items: start;
         }
 
-        /* =========================
+        /* =====================================
            LEFT SIDE
-        ========================= */
+        ====================================== */
 
         .financial-left {
           min-width: 0;
@@ -139,74 +149,113 @@ export default function FinancialContact() {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          padding: 5px 12px;
+
+          padding: 6px 12px;
           border-radius: 20px;
+
           background: #ffdce9;
           color: #57002e;
+
+          font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 700;
           letter-spacing: 0.3px;
+          line-height: 1.3;
         }
 
         .financial-badge svg {
           width: 12px;
           height: 12px;
+          flex-shrink: 0;
         }
 
+        /* =====================================
+           MAIN HEADING
+           PLUS JAKARTA SANS
+        ====================================== */
+
         .financial-left h1 {
-        font-family: "Inter", sans-serif;
           margin: 18px 0 14px;
-          font-size: 32px;
-          line-height: 1.08;
-          font-weight: 500;
-          letter-spacing: -1.3px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 36px;
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: -1.2px;
+
           color: #202027;
         }
 
+        /* =====================================
+           MAIN SUBHEADING
+           PLUS JAKARTA SANS
+        ====================================== */
+
         .financial-intro {
-         font-family: "Inter", sans-serif;
-          max-width: 450px;
+          max-width: 500px;
           margin: 0 0 28px;
-          color: #66545c;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 14px;
-          line-height: 1.65;
+          line-height: 1.75;
+          font-weight: 500;
+
+          color: #66545c;
         }
 
-        /* IMAGE */
+        /* =====================================
+           IMAGE
+        ====================================== */
 
         .financial-image-card {
           position: relative;
-          height: 248px;
+
+          width: 100%;
+          height: 270px;
+
           overflow: hidden;
           border-radius: 15px;
+
           background: #35001e;
+
           box-shadow: 0 5px 16px rgba(70, 0, 40, 0.13);
         }
 
         .financial-image {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+
           display: block;
+
+          object-fit: cover;
         }
 
         .financial-image-overlay {
           position: absolute;
+
           left: 14px;
           right: 14px;
           bottom: 13px;
+
           min-height: 58px;
+
           padding: 11px 13px;
+
           display: flex;
           align-items: center;
           justify-content: space-between;
+
           gap: 12px;
+
           background: rgba(255, 255, 255, 0.97);
           border-radius: 15px;
-          box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
         }
 
         .architecture-desk {
+          min-width: 0;
+
           display: flex;
           align-items: center;
           gap: 10px;
@@ -215,97 +264,145 @@ export default function FinancialContact() {
         .architecture-icon {
           width: 35px;
           height: 35px;
+
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           background: #ffe0ec;
           color: #650037;
+
           border-radius: 8px;
         }
 
+        .architecture-text {
+          min-width: 0;
+        }
+
+        /* Card heading - Plus Jakarta Sans */
+
         .architecture-text h3 {
           margin: 0 0 3px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 12px;
           font-weight: 700;
+
           color: #222228;
         }
 
+        /* Card text - Inter */
+
         .architecture-text p {
           margin: 0;
+
+          font-family: "Inter", sans-serif;
           font-size: 10px;
           color: #68646a;
         }
 
         .online-badge {
+          flex-shrink: 0;
+
           padding: 7px 11px;
+
           border-radius: 5px;
+
           background: #a8f49d;
           color: #154d19;
+
+          font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 800;
         }
 
-        /* LEFT INFO CARDS */
+        /* =====================================
+           LEFT INFO CARDS
+        ====================================== */
 
         .financial-info-card {
           display: flex;
           gap: 12px;
+
           margin-top: 18px;
           padding: 17px 15px;
+
           background: white;
           border: 1px solid #ededee;
           border-radius: 12px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.025);
+
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.025);
         }
 
         .financial-info-icon {
           width: 38px;
           height: 38px;
+
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 8px;
+
           background: #f8e9f0;
           color: #68003a;
         }
 
+        /* Info card heading - Plus Jakarta Sans */
+
         .financial-info-card h3 {
           margin: 0 0 4px;
-          font-weight: 600;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-weight: 700;
           font-size: 13px;
+          line-height: 1.45;
+
           color: #27272d;
         }
 
+        /* Info card body - Inter */
+
         .financial-info-card p {
           margin: 0;
+
+          font-family: "Inter", sans-serif;
           color: #696269;
           font-size: 12px;
-          font-family: "Inter", sans-serif;
-          line-height: 1.5;
+          line-height: 1.6;
         }
 
-        /* FOOTER BOX */
+        /* =====================================
+           SUPPORT BOX
+        ====================================== */
 
         .financial-support-box {
           margin-top: 27px;
           padding: 19px 17px;
+
           background: #e8e8e9;
           border-radius: 13px;
         }
 
         .support-title {
           margin-bottom: 12px;
+
+          font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 800;
           letter-spacing: 1px;
+
           color: #646166;
         }
 
         .support-details {
           display: flex;
           align-items: center;
+
           gap: 22px;
           margin-bottom: 13px;
         }
@@ -314,7 +411,10 @@ export default function FinancialContact() {
           display: flex;
           align-items: center;
           gap: 7px;
+
           color: #363038;
+
+          font-family: "Inter", sans-serif;
           font-size: 11px;
         }
 
@@ -322,6 +422,7 @@ export default function FinancialContact() {
           color: #70003e;
           width: 14px;
           height: 14px;
+          flex-shrink: 0;
         }
 
         .support-email {
@@ -331,19 +432,26 @@ export default function FinancialContact() {
 
         .support-description {
           margin: 0;
+
           color: #6e6a70;
+
+          font-family: "Inter", sans-serif;
           font-size: 11px;
           line-height: 1.6;
         }
 
-        /* =========================
+        /* =====================================
            RIGHT FORM
-        ========================= */
+        ====================================== */
 
         .financial-form-card {
+          min-width: 0;
+
           background: white;
           border-radius: 17px;
+
           padding: 31px 32px 27px;
+
           box-shadow: 0 11px 30px rgba(20, 20, 30, 0.08);
         }
 
@@ -351,35 +459,58 @@ export default function FinancialContact() {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
+
+          gap: 20px;
+
           padding-bottom: 20px;
           border-bottom: 1px solid #ededee;
         }
 
+        /* Form heading - Plus Jakarta Sans */
+
         .form-top h2 {
-          margin: 0 0 4px;
-          font-size: 21px;
-          font-weight: 600;
+          margin: 0 0 5px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 22px;
+          line-height: 1.35;
+          font-weight: 700;
+
           color: #222228;
         }
 
+        /* Form subheading - Plus Jakarta Sans */
+
         .form-top p {
-         font-family: "Inter", sans-serif;
           max-width: 500px;
           margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
           color: #77727a;
           font-size: 12px;
-          line-height: 1.55;
+          line-height: 1.6;
+          font-weight: 500;
         }
 
         .step-badge {
+          flex-shrink: 0;
+
           padding: 7px 10px;
+
           border-radius: 4px;
+
           background: #f0f0f1;
           color: #424148;
+
+          font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 600;
           white-space: nowrap;
         }
+
+        /* =====================================
+           FORM SECTION
+        ====================================== */
 
         .form-section {
           margin-top: 24px;
@@ -389,6 +520,9 @@ export default function FinancialContact() {
           display: flex;
           align-items: center;
           justify-content: space-between;
+
+          gap: 12px;
+
           margin-bottom: 10px;
         }
 
@@ -396,48 +530,75 @@ export default function FinancialContact() {
           display: flex;
           align-items: center;
           gap: 7px;
+          min-width: 0;
         }
 
         .section-dot {
           width: 5px;
           height: 5px;
+
+          flex-shrink: 0;
+
           border-radius: 50%;
           background: #750040;
         }
 
+        /* Form section headings - Plus Jakarta Sans */
+
         .form-section-title h3 {
           margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 13px;
+          line-height: 1.4;
           font-weight: 700;
+
           color: #343138;
         }
 
-        .form-section-title span {
+        .form-section-title > span {
           color: #777178;
+
+          font-family: "Inter", sans-serif;
           font-size: 10px;
+          white-space: nowrap;
         }
 
-        /* PRACTICE AREA GRID */
+        /* =====================================
+           PRACTICE AREA GRID
+        ====================================== */
 
         .practice-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 9px 12px;
         }
 
         .practice-button {
           min-height: 73px;
+
           padding: 11px 12px;
+
           border: 1px solid transparent;
           border-radius: 10px;
+
           background: #f1f1f2;
+
           text-align: left;
+
+          font-family: "Inter", sans-serif;
+
           cursor: pointer;
-          transition: all 0.2s ease;
+
+          transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease;
         }
 
         .practice-button:hover {
           background: #ecebee;
+          transform: translateY(-1px);
         }
 
         .practice-button.selected {
@@ -454,11 +615,15 @@ export default function FinancialContact() {
         .practice-check {
           width: 16px;
           height: 16px;
+
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 4px;
+
           background: #dedfe0;
           color: white;
         }
@@ -467,26 +632,41 @@ export default function FinancialContact() {
           background: #650037;
         }
 
+        /* Practice heading - Plus Jakarta Sans */
+
         .practice-title {
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 12px;
-          line-height: 1.35;
-          font-weight: 600;
+          line-height: 1.4;
+          font-weight: 700;
+
           color: #2d2d32;
         }
 
+        /* Practice description - Inter */
+
         .practice-description {
           margin: 7px 0 0 25px;
+
           color: #777278;
+
+          font-family: "Inter", sans-serif;
           font-size: 11px;
           line-height: 1.5;
         }
 
-        /* INPUT GRID */
+        /* =====================================
+           INPUT GRID
+        ====================================== */
 
         .contact-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 13px;
+        }
+
+        .input-field {
+          min-width: 0;
         }
 
         .input-field.full {
@@ -495,10 +675,15 @@ export default function FinancialContact() {
 
         .input-field label {
           display: block;
+
           margin-bottom: 6px;
+
           color: #6d5961;
+
+          font-family: "Inter", sans-serif;
           font-size: 9px;
           font-weight: 700;
+
           text-transform: uppercase;
           letter-spacing: 0.4px;
         }
@@ -509,24 +694,33 @@ export default function FinancialContact() {
 
         .input-wrapper svg {
           position: absolute;
+
           left: 12px;
           top: 50%;
+
           transform: translateY(-50%);
+
           width: 14px;
           height: 14px;
+
           color: #77747a;
+
           pointer-events: none;
         }
 
         .input-field input,
         .scope-textarea {
           width: 100%;
+
           border: none;
           outline: none;
+
           background: #f1f1f2;
           border-radius: 9px;
+
           color: #35343a;
-          font-family: inherit;
+
+          font-family: "Inter", sans-serif;
           font-size: 11px;
         }
 
@@ -545,33 +739,48 @@ export default function FinancialContact() {
           box-shadow: 0 0 0 2px rgba(101, 0, 55, 0.12);
         }
 
-        /* TIMELINE */
+        /* =====================================
+           TIMELINE
+        ====================================== */
 
         .timeline-label {
           margin: 0 0 9px;
+
           color: #777078;
+
+          font-family: "Inter", sans-serif;
           font-size: 11px;
         }
 
         .timeline-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 7px;
         }
 
         .timeline-button {
           min-height: 56px;
+
           border: none;
           border-radius: 8px;
+
           background: #f1f1f2;
           color: #4e454b;
+
+          font-family: "Inter", sans-serif;
           font-size: 11px;
+          line-height: 1.4;
+
           cursor: pointer;
-          transition: 0.2s ease;
+
+          transition:
+            background 0.2s ease,
+            transform 0.2s ease;
         }
 
         .timeline-button:hover {
           background: #ecebed;
+          transform: translateY(-1px);
         }
 
         .timeline-button.selected {
@@ -580,84 +789,125 @@ export default function FinancialContact() {
           font-weight: 700;
         }
 
-        /* SCOPE */
+        /* =====================================
+           SCOPE
+        ====================================== */
 
         .scope-label {
           margin: 18px 0 8px;
+
           color: #6d5961;
+
+          font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 700;
+
           text-transform: uppercase;
           letter-spacing: 0.4px;
         }
 
         .scope-textarea {
           height: 105px;
+
           padding: 13px;
-          resize: none;
+
+          resize: vertical;
+
           line-height: 1.55;
         }
 
-        /* CHECK OPTIONS */
+        /* =====================================
+           REQUEST OPTIONS
+        ====================================== */
 
         .request-options {
           margin-top: 24px;
+
           padding: 13px;
+
           border-radius: 10px;
+
           background: #f1f1f2;
         }
 
         .request-option {
           display: flex;
           align-items: flex-start;
+
           gap: 9px;
+
           margin: 8px 0;
+
           color: #37343a;
+
+          font-family: "Inter", sans-serif;
           font-size: 12px;
-          line-height: 1.35;
+          line-height: 1.45;
+
           cursor: pointer;
         }
 
         .request-option input {
           width: 13px;
           height: 13px;
-          margin: 0;
+
+          flex-shrink: 0;
+
+          margin: 1px 0 0;
+
           accent-color: #650037;
+
           cursor: pointer;
         }
 
-        /* SUBMIT */
+        /* =====================================
+           SUBMIT
+        ====================================== */
 
         .financial-submit {
           width: 100%;
           min-height: 58px;
+
           margin-top: 28px;
           padding: 10px 20px;
+
           border: none;
           border-radius: 10px;
+
           background: #730042;
           color: white;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           gap: 12px;
+
           text-align: center;
-          font-family: inherit;
+
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           font-weight: 600;
-          line-height: 1.3;
+          line-height: 1.4;
+
           cursor: pointer;
+
           box-shadow: 0 5px 13px rgba(96, 0, 47, 0.2);
-          transition: all 0.2s ease;
+
+          transition:
+            background 0.2s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
         }
 
         .financial-submit:hover {
           background: #620038;
           transform: translateY(-1px);
+          box-shadow: 0 8px 18px rgba(96, 0, 47, 0.24);
         }
 
         .financial-submit svg {
-          margin-left: 20px;
+          margin-left: 10px;
           flex-shrink: 0;
         }
 
@@ -665,40 +915,68 @@ export default function FinancialContact() {
           display: flex;
           justify-content: center;
           align-items: center;
+
           gap: 6px;
+
           margin: 13px 0 0;
+
           color: #756b72;
+
+          font-family: "Inter", sans-serif;
           font-size: 9px;
+          line-height: 1.5;
+
+          text-align: center;
         }
 
         .form-note svg {
           width: 12px;
           height: 12px;
+
+          flex-shrink: 0;
+
           color: #650037;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        /* =====================================
+           LARGE TABLET
+        ====================================== */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1100px) {
+          .financial-page {
+            padding: 55px 24px;
+          }
+
           .financial-container {
             grid-template-columns: 1fr;
-            max-width: 760px;
+            max-width: 850px;
+            gap: 35px;
           }
 
           .financial-left {
             width: 100%;
           }
 
+          .financial-intro {
+            max-width: 680px;
+          }
+
           .financial-form-card {
             width: 100%;
           }
+
+          .financial-left h1 {
+            font-size: 34px;
+          }
         }
 
-        @media (max-width: 650px) {
+        /* =====================================
+           TABLET
+        ====================================== */
+
+        @media (max-width: 800px) {
           .financial-page {
-            padding: 25px 15px;
+            padding: 48px 20px;
           }
 
           .financial-left h1 {
@@ -706,10 +984,139 @@ export default function FinancialContact() {
           }
 
           .financial-form-card {
-            padding: 21px 17px;
+            padding: 26px 24px;
           }
 
-          .practice-grid,
+          .practice-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .timeline-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        /* =====================================
+           MOBILE
+        ====================================== */
+
+        @media (max-width: 600px) {
+          .financial-page {
+            padding: 38px 16px;
+          }
+
+          .financial-container {
+            gap: 26px;
+          }
+
+          .financial-badge {
+            font-size: 9px;
+            padding: 6px 10px;
+          }
+
+          .financial-left h1 {
+            margin-top: 15px;
+            font-size: 27px;
+            line-height: 1.25;
+            letter-spacing: -0.8px;
+          }
+
+          .financial-intro {
+            margin-bottom: 22px;
+
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .financial-image-card {
+            height: 220px;
+            border-radius: 13px;
+          }
+
+          .financial-image-overlay {
+            left: 9px;
+            right: 9px;
+            bottom: 9px;
+
+            min-height: 53px;
+
+            padding: 9px 10px;
+
+            border-radius: 12px;
+          }
+
+          .architecture-icon {
+            width: 32px;
+            height: 32px;
+          }
+
+          .architecture-text h3 {
+            font-size: 10px;
+          }
+
+          .architecture-text p {
+            font-size: 8px;
+          }
+
+          .online-badge {
+            padding: 6px 8px;
+            font-size: 8px;
+          }
+
+          .financial-info-card {
+            padding: 15px 13px;
+          }
+
+          .financial-info-card h3 {
+            font-size: 12px;
+          }
+
+          .financial-info-card p {
+            font-size: 11px;
+          }
+
+          .support-details {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 9px;
+          }
+
+          .financial-form-card {
+            padding: 21px 17px;
+            border-radius: 14px;
+          }
+
+          .form-top {
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .form-top h2 {
+            font-size: 19px;
+          }
+
+          .form-top p {
+            font-size: 11px;
+          }
+
+          .step-badge {
+            align-self: flex-start;
+          }
+
+          .form-section-title {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 5px;
+          }
+
+          .form-section-title > span {
+            margin-left: 12px;
+          }
+
+          .practice-grid {
+            grid-template-columns: 1fr;
+          }
+
           .contact-grid {
             grid-template-columns: 1fr;
           }
@@ -722,36 +1129,164 @@ export default function FinancialContact() {
             grid-template-columns: 1fr 1fr;
           }
 
-          .support-details {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 9px;
-          }
+          .financial-submit {
+            min-height: 56px;
+            padding: 10px 14px;
 
-          .financial-image-card {
-            height: 220px;
-          }
-
-          .financial-image-overlay {
-            left: 9px;
-            right: 9px;
-            bottom: 9px;
-          }
-
-          .architecture-text h3 {
             font-size: 11px;
           }
 
-          .architecture-text p {
-            font-size: 8px;
+          .financial-submit svg {
+            margin-left: 4px;
           }
 
-          .online-badge {
-            font-size: 9px;
-            padding: 6px 8px;
+          .form-note {
+            font-size: 8px;
           }
         }
 
+        /* =====================================
+           SMALL MOBILE
+        ====================================== */
+
+        @media (max-width: 400px) {
+          .financial-page {
+            padding: 30px 12px;
+          }
+
+          .financial-left h1 {
+            font-size: 24px;
+          }
+
+          .financial-intro {
+            font-size: 12px;
+          }
+
+          .financial-image-card {
+            height: 195px;
+          }
+
+          .financial-image-overlay {
+            gap: 7px;
+          }
+
+          .architecture-desk {
+            gap: 7px;
+          }
+
+          .architecture-text h3 {
+            font-size: 9px;
+          }
+
+          .architecture-text p {
+            font-size: 7px;
+          }
+
+          .online-badge {
+            font-size: 7px;
+            padding: 5px 7px;
+          }
+
+          .financial-info-card {
+            gap: 9px;
+          }
+
+          .financial-info-icon {
+            width: 34px;
+            height: 34px;
+          }
+
+          .financial-info-card h3 {
+            font-size: 11px;
+          }
+
+          .financial-info-card p {
+            font-size: 10px;
+          }
+
+          .financial-support-box {
+            padding: 16px 13px;
+          }
+
+          .financial-form-card {
+            padding: 18px 13px;
+          }
+
+          .form-top h2 {
+            font-size: 17px;
+          }
+
+          .form-section-title h3 {
+            font-size: 12px;
+          }
+
+          .practice-title {
+            font-size: 11px;
+          }
+
+          .practice-description {
+            font-size: 10px;
+          }
+
+          .timeline-button {
+            min-height: 52px;
+            font-size: 10px;
+          }
+
+          .financial-submit {
+            font-size: 10px;
+          }
+        }
+
+        /* =====================================
+           VERY SMALL MOBILE
+        ====================================== */
+
+        @media (max-width: 340px) {
+          .financial-page {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+
+          .financial-left h1 {
+            font-size: 22px;
+          }
+
+          .financial-intro {
+            font-size: 11px;
+          }
+
+          .financial-form-card {
+            padding: 16px 11px;
+          }
+
+          .timeline-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .financial-submit {
+            min-height: 54px;
+            font-size: 9px;
+          }
+        }
+
+        /* =====================================
+           REDUCED MOTION
+        ====================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+          .practice-button,
+          .timeline-button,
+          .financial-submit {
+            transition: none;
+          }
+
+          .practice-button:hover,
+          .timeline-button:hover,
+          .financial-submit:hover {
+            transform: none;
+          }
+        }
       `}</style>
 
       <section className="financial-page">
@@ -768,14 +1303,14 @@ export default function FinancialContact() {
               DIRECT FINANCIAL ARCHITECTURE CONSULTATION
             </div>
 
+            {/* PLUS JAKARTA SANS */}
             <h1>
-              Connect with TechTorch 
+              Connect with TechTorch
               <br />
-             Financial Technology Architects
-              
-              
+              Financial Technology Architects
             </h1>
 
+            {/* PLUS JAKARTA SANS */}
             <p className="financial-intro">
               Discuss your institution’s core modernization,
               integrated accounting workflows, multi-ERP
@@ -787,7 +1322,6 @@ export default function FinancialContact() {
             {/* IMAGE */}
 
             <div className="financial-image-card">
-
               <img
                 src="/FinanceGetInTouch.png"
                 alt="Financial technology architecture team"
@@ -803,7 +1337,9 @@ export default function FinancialContact() {
                   </div>
 
                   <div className="architecture-text">
-                    <h3>Principal Architecture Desk</h3>
+                    <h3>
+                      Principal Architecture Desk
+                    </h3>
 
                     <p>
                       Direct engagement • Guaranteed &lt;24h turn
@@ -905,7 +1441,6 @@ export default function FinancialContact() {
 
                 <div className="support-item">
                   <Headphones size={14} />
-
                   24/7 Enterprise Tier-1 Desk
                 </div>
 
@@ -922,7 +1457,7 @@ export default function FinancialContact() {
           </div>
 
           {/* =====================================================
-              RIGHT SIDE
+              RIGHT FORM
           ===================================================== */}
 
           <div className="financial-form-card">
@@ -930,8 +1465,12 @@ export default function FinancialContact() {
             <div className="form-top">
 
               <div>
-                <h2>Institutional Inquiry Console</h2>
+                {/* PLUS JAKARTA SANS */}
+                <h2>
+                  Institutional Inquiry Console
+                </h2>
 
+                {/* PLUS JAKARTA SANS */}
                 <p>
                   Specify your technical challenges to route this
                   directly to the appropriate domain architects.
@@ -946,7 +1485,9 @@ export default function FinancialContact() {
 
             <form onSubmit={handleSubmit}>
 
-              {/* ================= PRACTICE AREAS ================= */}
+              {/* =================================================
+                  PRACTICE AREAS
+              ================================================= */}
 
               <div className="form-section">
 
@@ -956,6 +1497,7 @@ export default function FinancialContact() {
 
                     <span className="section-dot"></span>
 
+                    {/* PLUS JAKARTA SANS */}
                     <h3>
                       1. Financial Practice Areas of Interest
                     </h3>
@@ -1011,7 +1553,9 @@ export default function FinancialContact() {
 
               </div>
 
-              {/* ================= CONTACT INFORMATION ================= */}
+              {/* =================================================
+                  CONTACT INFORMATION
+              ================================================= */}
 
               <div className="form-section">
 
@@ -1021,6 +1565,7 @@ export default function FinancialContact() {
 
                     <span className="section-dot"></span>
 
+                    {/* PLUS JAKARTA SANS */}
                     <h3>
                       2. Institution &amp; Executive Contact Information
                     </h3>
@@ -1135,9 +1680,8 @@ export default function FinancialContact() {
                   <div className="input-field full">
 
                     <label>
-                      Direct Phone or Secure WhatsApp
+                      Direct Phone or Secure WhatsApp{" "}
                       <span style={{ fontWeight: 400 }}>
-                        {" "}
                         (E.G. +1 (555) 019-2834 OR +91 98765 43210)
                       </span>
                     </label>
@@ -1162,7 +1706,9 @@ export default function FinancialContact() {
 
               </div>
 
-              {/* ================= TIMELINE ================= */}
+              {/* =================================================
+                  TIMELINE
+              ================================================= */}
 
               <div className="form-section">
 
@@ -1172,6 +1718,7 @@ export default function FinancialContact() {
 
                     <span className="section-dot"></span>
 
+                    {/* PLUS JAKARTA SANS */}
                     <h3>
                       3. Deployment Timeline &amp; Architecture Scope
                     </h3>
@@ -1217,7 +1764,9 @@ export default function FinancialContact() {
 
               </div>
 
-              {/* ================= REQUEST OPTIONS ================= */}
+              {/* =================================================
+                  REQUEST OPTIONS
+              ================================================= */}
 
               <div className="request-options">
 
@@ -1256,7 +1805,9 @@ export default function FinancialContact() {
 
               </div>
 
-              {/* ================= SUBMIT ================= */}
+              {/* =================================================
+                  SUBMIT
+              ================================================= */}
 
               <button
                 type="submit"

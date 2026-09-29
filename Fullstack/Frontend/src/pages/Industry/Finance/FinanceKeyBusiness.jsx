@@ -19,10 +19,11 @@ const MUTED = "#5b5a63";
    IMAGE PATH
    Put your image inside the public folder.
    Example:
-   public/finance-dashboard.png
+   public/financeentprise.png
 ========================================================= */
 
 const TORCHX_IMAGE = "/financeentprise.png";
+
 
 const areas = [
   {
@@ -62,6 +63,7 @@ const areas = [
   },
 ];
 
+
 const modules = [
   {
     icon: FileText,
@@ -89,6 +91,7 @@ const modules = [
   },
 ];
 
+
 function Pill({ children }) {
   return (
     <span className="finance-pill">
@@ -97,6 +100,7 @@ function Pill({ children }) {
     </span>
   );
 }
+
 
 export default function KeyAreasAndTorchXSections() {
   return (
@@ -132,16 +136,19 @@ export default function KeyAreasAndTorchXSections() {
 
         .finance-container {
           width: 100%;
-          max-width: 1152px;
+          max-width: 1200px;
           margin: 0 auto;
-          padding-left: 24px;
-          padding-right: 24px;
+
+          padding-left: 32px;
+          padding-right: 32px;
+
           box-sizing: border-box;
         }
 
 
         /* =====================================================
            PILL
+           INTER
         ===================================================== */
 
         .finance-pill {
@@ -158,6 +165,7 @@ export default function KeyAreasAndTorchXSections() {
           color: ${WINE};
 
           font-family: "Inter", sans-serif;
+
           font-size: 9px;
           line-height: 1.3;
           font-weight: 700;
@@ -165,9 +173,11 @@ export default function KeyAreasAndTorchXSections() {
           letter-spacing: 0.04em;
         }
 
+
         .finance-pill-dot {
           width: 6px;
           height: 6px;
+
           flex-shrink: 0;
 
           border-radius: 50%;
@@ -184,25 +194,29 @@ export default function KeyAreasAndTorchXSections() {
           background: #f4f1ec;
         }
 
+
         .finance-areas-container {
-          padding-top: 46px;
-          padding-bottom: 48px;
+          padding-top: 52px;
+          padding-bottom: 55px;
         }
 
 
         /* =====================================================
-           SECTION 1 HEADING
+           MAIN HEADING
+           PLUS JAKARTA SANS
         ===================================================== */
 
         .finance-main-heading {
-          margin: 0 0 26px;
+          margin: 0 0 28px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 28px;
+
+          font-size: 29px;
           line-height: 1.2;
           font-weight: 700;
 
-          letter-spacing: -0.6px;
+          letter-spacing: -0.7px;
+
           color: ${INK};
         }
 
@@ -217,7 +231,7 @@ export default function KeyAreasAndTorchXSections() {
           grid-template-columns:
             repeat(5, minmax(0, 1fr));
 
-          gap: 12px;
+          gap: 14px;
         }
 
 
@@ -227,21 +241,31 @@ export default function KeyAreasAndTorchXSections() {
 
         .finance-area-card {
           min-width: 0;
+          min-height: 145px;
 
-          min-height: 134px;
-
-          padding: 14px;
+          padding: 16px;
 
           box-sizing: border-box;
 
           background: #ffffff;
 
           border: 1px solid #e7e4df;
-
-          border-radius: 11px;
+          border-radius: 12px;
 
           box-shadow:
             0 1px 3px rgba(0, 0, 0, 0.035);
+
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+        }
+
+
+        .finance-area-card:hover {
+          transform: translateY(-2px);
+
+          box-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.06);
         }
 
 
@@ -255,8 +279,8 @@ export default function KeyAreasAndTorchXSections() {
 
 
         .finance-area-icon {
-          width: 30px;
-          height: 30px;
+          width: 31px;
+          height: 31px;
 
           display: flex;
           align-items: center;
@@ -285,13 +309,18 @@ export default function KeyAreasAndTorchXSections() {
         }
 
 
-        .finance-area-title {
-          margin: 0 0 5px;
+        /* =====================================================
+           AREA CARD HEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
 
-          font-family: "Inter", sans-serif;
+        .finance-area-title {
+          margin: 0 0 6px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 11px;
-          line-height: 1.35;
+          line-height: 1.4;
 
           font-weight: 700;
 
@@ -299,13 +328,18 @@ export default function KeyAreasAndTorchXSections() {
         }
 
 
+        /* =====================================================
+           AREA CARD BODY
+           INTER
+        ===================================================== */
+
         .finance-area-body {
           margin: 0;
 
           font-family: "Inter", sans-serif;
 
           font-size: 8.5px;
-          line-height: 1.55;
+          line-height: 1.58;
 
           color: ${MUTED};
         }
@@ -316,21 +350,22 @@ export default function KeyAreasAndTorchXSections() {
         ===================================================== */
 
         .finance-torchx-section {
+          width: 100%;
           background: #ffffff;
         }
 
 
         .finance-torchx-container {
-          padding-top: 62px;
-          padding-bottom: 68px;
+          padding-top: 68px;
+          padding-bottom: 72px;
 
           display: grid;
 
           grid-template-columns:
-            minmax(0, 0.86fr)
-            minmax(0, 1.34fr);
+            minmax(0, 0.88fr)
+            minmax(0, 1.32fr);
 
-          gap: 48px;
+          gap: 55px;
 
           align-items: center;
         }
@@ -353,7 +388,7 @@ export default function KeyAreasAndTorchXSections() {
 
         .finance-image {
           width: 100%;
-          max-width: 470px;
+          max-width: 480px;
 
           height: auto;
 
@@ -363,7 +398,6 @@ export default function KeyAreasAndTorchXSections() {
 
           border-radius: 18px;
 
-          /* image shadow similar to screenshot */
           filter:
             drop-shadow(
               0 16px 20px
@@ -381,33 +415,45 @@ export default function KeyAreasAndTorchXSections() {
         }
 
 
-        .finance-torchx-heading {
-          margin: 0 0 12px;
+        /* =====================================================
+           TORCHX HEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
 
-          max-width: 540px;
+        .finance-torchx-heading {
+          margin: 0 0 14px;
+
+          max-width: 560px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 27px;
-          line-height: 1.17;
+          font-size: 28px;
+          line-height: 1.18;
 
           font-weight: 700;
 
-          letter-spacing: -0.65px;
+          letter-spacing: -0.7px;
 
           color: ${INK};
         }
 
 
+        /* =====================================================
+           TORCHX SUBHEADING / DESCRIPTION
+           PLUS JAKARTA SANS
+        ===================================================== */
+
         .finance-torchx-description {
-          max-width: 600px;
+          max-width: 610px;
 
           margin: 0 0 20px;
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 11px;
-          line-height: 1.65;
+          line-height: 1.7;
+
+          font-weight: 500;
 
           color: ${MUTED};
         }
@@ -415,10 +461,11 @@ export default function KeyAreasAndTorchXSections() {
 
         /* =====================================================
            MODULE LABEL
+           INTER
         ===================================================== */
 
         .finance-module-label {
-          margin: 0 0 10px;
+          margin: 0 0 11px;
 
           font-family: "Inter", sans-serif;
 
@@ -443,7 +490,7 @@ export default function KeyAreasAndTorchXSections() {
           grid-template-columns:
             repeat(2, minmax(0, 1fr));
 
-          gap: 10px;
+          gap: 11px;
         }
 
 
@@ -454,7 +501,7 @@ export default function KeyAreasAndTorchXSections() {
         .finance-module-card {
           min-width: 0;
 
-          padding: 14px;
+          padding: 15px;
 
           box-sizing: border-box;
 
@@ -480,8 +527,8 @@ export default function KeyAreasAndTorchXSections() {
 
 
         .finance-module-icon {
-          width: 28px;
-          height: 28px;
+          width: 29px;
+          height: 29px;
 
           display: flex;
           align-items: center;
@@ -496,13 +543,18 @@ export default function KeyAreasAndTorchXSections() {
         }
 
 
-        .finance-module-title {
-          margin: 0 0 5px;
+        /* =====================================================
+           MODULE HEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
 
-          font-family: "Inter", sans-serif;
+        .finance-module-title {
+          margin: 0 0 6px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 10px;
-          line-height: 1.4;
+          line-height: 1.45;
 
           font-weight: 700;
 
@@ -510,13 +562,18 @@ export default function KeyAreasAndTorchXSections() {
         }
 
 
+        /* =====================================================
+           MODULE BODY
+           INTER
+        ===================================================== */
+
         .finance-module-body {
           margin: 0;
 
           font-family: "Inter", sans-serif;
 
           font-size: 8px;
-          line-height: 1.55;
+          line-height: 1.58;
 
           color: ${MUTED};
         }
@@ -529,21 +586,24 @@ export default function KeyAreasAndTorchXSections() {
         @media (max-width: 1100px) {
 
           .finance-container {
-            padding-left: 32px;
-            padding-right: 32px;
+            padding-left: 30px;
+            padding-right: 30px;
           }
+
 
           .finance-areas-grid {
             grid-template-columns:
               repeat(3, minmax(0, 1fr));
           }
 
+
           .finance-torchx-container {
-            gap: 38px;
+            gap: 42px;
           }
 
+
           .finance-torchx-heading {
-            font-size: 25px;
+            font-size: 26px;
           }
 
         }
@@ -560,14 +620,17 @@ export default function KeyAreasAndTorchXSections() {
             padding-right: 24px;
           }
 
+
           .finance-areas-container {
-            padding-top: 42px;
-            padding-bottom: 44px;
+            padding-top: 45px;
+            padding-bottom: 48px;
           }
 
+
           .finance-main-heading {
-            font-size: 26px;
+            font-size: 27px;
           }
+
 
           .finance-areas-grid {
             grid-template-columns:
@@ -576,10 +639,12 @@ export default function KeyAreasAndTorchXSections() {
             gap: 14px;
           }
 
+
           .finance-area-card {
             min-height: 145px;
             padding: 16px;
           }
+
 
           .finance-torchx-container {
             grid-template-columns: 1fr;
@@ -588,36 +653,44 @@ export default function KeyAreasAndTorchXSections() {
 
             align-items: start;
 
-            padding-top: 55px;
-            padding-bottom: 58px;
+            padding-top: 58px;
+            padding-bottom: 62px;
           }
+
 
           .finance-image-wrapper {
-            max-width: 560px;
+            max-width: 580px;
             margin: 0 auto;
           }
+
 
           .finance-image {
-            max-width: 500px;
+            max-width: 520px;
           }
 
+
           .finance-torchx-content {
-            max-width: 680px;
-            margin: 0 auto;
             width: 100%;
+            max-width: 700px;
+
+            margin: 0 auto;
           }
+
 
           .finance-torchx-heading {
             font-size: 27px;
           }
 
+
           .finance-torchx-description {
             font-size: 12px;
           }
 
+
           .finance-module-title {
             font-size: 11px;
           }
+
 
           .finance-module-body {
             font-size: 9px;
@@ -637,100 +710,140 @@ export default function KeyAreasAndTorchXSections() {
             padding-right: 18px;
           }
 
+
+          /* Section 1 */
+
           .finance-areas-container {
-            padding-top: 36px;
-            padding-bottom: 40px;
+            padding-top: 38px;
+            padding-bottom: 42px;
           }
+
 
           .finance-pill {
             font-size: 8px;
+
             padding: 5px 9px;
+
             margin-bottom: 13px;
           }
+
 
           .finance-pill-dot {
             width: 5px;
             height: 5px;
           }
 
+
           .finance-main-heading {
             font-size: 23px;
-            line-height: 1.2;
+            line-height: 1.22;
+
+            letter-spacing: -0.5px;
+
             margin-bottom: 22px;
           }
 
+
           .finance-areas-grid {
             grid-template-columns: 1fr;
+
             gap: 11px;
           }
 
+
           .finance-area-card {
             min-height: auto;
+
             padding: 15px;
           }
+
 
           .finance-area-top {
             margin-bottom: 12px;
           }
 
+
           .finance-area-title {
             font-size: 12px;
           }
 
+
           .finance-area-body {
             font-size: 10px;
-            line-height: 1.55;
+
+            line-height: 1.58;
           }
 
+
+          /* Section 2 */
+
           .finance-torchx-container {
-            padding-top: 44px;
-            padding-bottom: 48px;
+            padding-top: 45px;
+            padding-bottom: 50px;
 
             gap: 34px;
           }
+
 
           .finance-image-wrapper {
             width: 100%;
           }
 
+
           .finance-image {
-            width: 92%;
-            max-width: 420px;
+            width: 94%;
+
+            max-width: 430px;
+
             border-radius: 15px;
           }
 
+
           .finance-torchx-heading {
             font-size: 23px;
+
             line-height: 1.2;
-            letter-spacing: -0.4px;
+
+            letter-spacing: -0.45px;
           }
+
 
           .finance-torchx-description {
             font-size: 11px;
-            line-height: 1.65;
-            margin-bottom: 18px;
+
+            line-height: 1.68;
+
+            margin-bottom: 19px;
           }
+
 
           .finance-module-label {
             font-size: 8px;
+
             margin-bottom: 9px;
           }
 
+
           .finance-module-grid {
             grid-template-columns: 1fr;
+
             gap: 11px;
           }
+
 
           .finance-module-card {
             padding: 15px;
           }
 
+
           .finance-module-title {
             font-size: 11px;
           }
 
+
           .finance-module-body {
             font-size: 9px;
+
             line-height: 1.6;
           }
 
@@ -748,24 +861,34 @@ export default function KeyAreasAndTorchXSections() {
             padding-right: 15px;
           }
 
+
           .finance-main-heading {
             font-size: 21px;
           }
+
 
           .finance-torchx-heading {
             font-size: 21px;
           }
 
+
           .finance-image {
             width: 96%;
           }
+
 
           .finance-area-card {
             padding: 14px;
           }
 
+
           .finance-area-body {
             font-size: 9.5px;
+          }
+
+
+          .finance-module-card {
+            padding: 14px;
           }
 
         }
@@ -781,12 +904,24 @@ export default function KeyAreasAndTorchXSections() {
             font-size: 20px;
           }
 
+
           .finance-torchx-heading {
             font-size: 20px;
           }
 
+
           .finance-torchx-description {
             font-size: 10px;
+          }
+
+
+          .finance-area-title {
+            font-size: 11px;
+          }
+
+
+          .finance-area-body {
+            font-size: 9px;
           }
 
         }
@@ -798,10 +933,13 @@ export default function KeyAreasAndTorchXSections() {
 
         @media (prefers-reduced-motion: reduce) {
 
+          .finance-area-card,
           .finance-module-card {
             transition: none;
           }
 
+
+          .finance-area-card:hover,
           .finance-module-card:hover {
             transform: none;
           }
@@ -812,14 +950,19 @@ export default function KeyAreasAndTorchXSections() {
 
 
       {/* =====================================================
-          SECTION 1
+          SECTION 1 — KEY BUSINESS AREAS
       ===================================================== */}
 
       <section className="finance-areas-section">
 
         <div className="finance-container finance-areas-container">
 
-          <Pill>KEY BUSINESS AREAS</Pill>
+          <Pill>
+            KEY BUSINESS AREAS
+          </Pill>
+
+
+          {/* Heading - Plus Jakarta Sans */}
 
           <h2 className="finance-main-heading">
             Supporting Better Financial Operations
@@ -844,11 +987,14 @@ export default function KeyAreasAndTorchXSections() {
                   <div className="finance-area-top">
 
                     <span className="finance-area-icon">
+
                       <Icon
                         size={15}
                         strokeWidth={1.8}
                       />
+
                     </span>
+
 
                     <span className="finance-area-number">
                       {num}
@@ -857,10 +1003,14 @@ export default function KeyAreasAndTorchXSections() {
                   </div>
 
 
+                  {/* Card Heading - Plus Jakarta Sans */}
+
                   <h3 className="finance-area-title">
                     {title}
                   </h3>
 
+
+                  {/* Card Body - Inter */}
 
                   <p className="finance-area-body">
                     {body}
@@ -879,7 +1029,7 @@ export default function KeyAreasAndTorchXSections() {
 
 
       {/* =====================================================
-          SECTION 2
+          SECTION 2 — TORCHX
       ===================================================== */}
 
       <section className="finance-torchx-section">
@@ -913,20 +1063,30 @@ export default function KeyAreasAndTorchXSections() {
             </Pill>
 
 
+            {/* Heading - Plus Jakarta Sans */}
+
             <h2 className="finance-torchx-heading">
+
               Financial Management Within
               <br />
               a Unified Operating Platform
+
             </h2>
 
 
+            {/* Subheading - Plus Jakarta Sans */}
+
             <p className="finance-torchx-description">
+
               TorchX is TechTorch's proprietary all-in-one operating
               platform. Its dedicated Accounts module integrates directly
               with CRM, Human Resource Management, and project invoicing—
               eliminating duplicate data entry and manual reconciliation.
+
             </p>
 
+
+            {/* Label - Inter */}
 
             <p className="finance-module-label">
               CORE INTEGRATED MODULES
@@ -957,10 +1117,14 @@ export default function KeyAreasAndTorchXSections() {
                     </span>
 
 
+                    {/* Module Heading - Plus Jakarta Sans */}
+
                     <h3 className="finance-module-title">
                       {title}
                     </h3>
 
+
+                    {/* Module Body - Inter */}
 
                     <p className="finance-module-body">
                       {body}

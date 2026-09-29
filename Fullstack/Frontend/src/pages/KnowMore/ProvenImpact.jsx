@@ -1,14 +1,11 @@
-
 import React from "react";
 
 export default function ProvenImpact() {
   return (
     <section className="proven-impact-section">
       <div className="proven-impact-container">
-
         {/* ================= HEADER ================= */}
         <div className="proven-impact-header">
-
           <div className="proven-impact-title-wrap">
             <div className="proven-impact-label">
               <span></span>
@@ -24,18 +21,13 @@ export default function ProvenImpact() {
             </p>
           </div>
 
-          <button className="view-industries-btn">
-            View All Industries
-          </button>
+          <button className="view-industries-btn">View All Industries</button>
         </div>
-
 
         {/* ================= CARDS ================= */}
         <div className="proven-impact-grid">
-
           {/* ================= MANUFACTURING ================= */}
           <div className="impact-card">
-
             <div className="impact-image-wrap">
               <img
                 src="/Proven Impact1.png"
@@ -50,10 +42,7 @@ export default function ProvenImpact() {
             </div>
 
             <div className="impact-card-content">
-
-              <h3>
-                IoT-Driven Yield Optimization
-              </h3>
+              <h3>IoT-Driven Yield Optimization</h3>
 
               <p>
                 Implemented real-time edge computing pipelines
@@ -64,14 +53,11 @@ export default function ProvenImpact() {
                 <span>Edge Computing</span>
                 <span>Telemetry</span>
               </div>
-
             </div>
           </div>
 
-
           {/* ================= FINANCIAL SERVICES ================= */}
           <div className="impact-card">
-
             <div className="impact-image-wrap">
               <img
                 src="/Proven Impact2.png"
@@ -86,7 +72,6 @@ export default function ProvenImpact() {
             </div>
 
             <div className="impact-card-content">
-
               <h3>
                 Sub-Millisecond
                 <br />
@@ -102,14 +87,11 @@ export default function ProvenImpact() {
                 <span>Distributed Ledger</span>
                 <span>Event-Driven</span>
               </div>
-
             </div>
           </div>
 
-
           {/* ================= MORE INDUSTRIES ================= */}
           <div className="more-industries-card">
-
             <div className="more-industries-icon">
               <span>△</span>
               <span>○</span>
@@ -126,50 +108,52 @@ export default function ProvenImpact() {
               architectures.
             </p>
 
-            <a href="#">
-              Explore Case Studies →
-            </a>
-
+            <a href="#">Explore Case Studies →</a>
           </div>
-
         </div>
       </div>
 
-
       <style>{`
-
-        * {
-          box-sizing: border-box;
-        }
-
-
-        /* =====================================================
-           SECTION
-        ===================================================== */
+        /* ================= SECTION (padding same as other sections) ================= */
 
         .proven-impact-section {
           width: 100%;
           background: #85003f;
-          padding: 28px 0 48px;
+          padding: 40px 16px;
           overflow: hidden;
         }
 
+        @media (min-width: 640px) {
+          .proven-impact-section {
+            padding: 48px 24px;
+          }
+        }
 
-        /* =====================================================
-           CONTAINER
-        ===================================================== */
+        @media (min-width: 768px) {
+          .proven-impact-section {
+            padding: 56px 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .proven-impact-section {
+            padding: 64px 100px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .proven-impact-section {
+            padding: 80px 100px;
+          }
+        }
+
+        /* ================= CONTAINER ================= */
 
         .proven-impact-container {
           width: 100%;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 15px;
         }
 
-
-        /* =====================================================
-           HEADER
-        ===================================================== */
+        /* ================= HEADER ================= */
 
         .proven-impact-header {
           display: flex;
@@ -179,12 +163,9 @@ export default function ProvenImpact() {
           margin-bottom: 20px;
         }
 
-
         .proven-impact-title-wrap {
-          transform: translateX(-45px);
           min-width: 0;
         }
-
 
         .proven-impact-label {
           display: flex;
@@ -193,14 +174,12 @@ export default function ProvenImpact() {
           margin-bottom: 8px;
         }
 
-
         .proven-impact-label span {
           width: 3px;
           height: 17px;
           background: #ffffff;
           display: block;
         }
-
 
         .proven-impact-label p {
           margin: 0;
@@ -210,36 +189,29 @@ export default function ProvenImpact() {
           letter-spacing: 1.4px;
         }
 
-
-        /* =====================================================
-           TITLE
-        ===================================================== */
+        /* ================= TITLE ================= */
 
         .proven-impact-title-wrap h2 {
           margin: 0;
           color: #ffffff;
-          font-family: "Plus Jakarta Sans";
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 34px;
-           opacity: 0.9;
+          opacity: 0.9;
           line-height: 1.05;
           font-weight: 500;
           letter-spacing: -1.4px;
         }
 
-
         .proven-impact-subtitle {
           margin: 8px 0 0;
           color: #ffffff;
           font-size: 16px;
-           opacity: 0.9;
+          opacity: 0.9;
           line-height: 1.4;
           font-weight: 400;
         }
 
-
-        /* =====================================================
-           BUTTON
-        ===================================================== */
+        /* ================= BUTTON ================= */
 
         .view-industries-btn {
           flex-shrink: 0;
@@ -255,37 +227,25 @@ export default function ProvenImpact() {
           transition: all 0.25s ease;
         }
 
-
         .view-industries-btn:hover {
           background: rgba(255, 255, 255, 0.08);
           border-color: rgba(255, 255, 255, 0.5);
         }
 
-
-        /* =====================================================
-           GRID
-        ===================================================== */
+        /* ================= GRID ================= */
 
         .proven-impact-grid {
           display: grid;
-
           grid-template-columns:
             minmax(0, 0.92fr)
             minmax(0, 0.92fr)
             minmax(0, 0.88fr);
-
           column-gap: 40px;
           row-gap: 40px;
-
-          transform: translateX(-45px);
-
-          width: calc(100% - 45px);
+          width: 100%;
         }
 
-
-        /* =====================================================
-           NORMAL CARD
-        ===================================================== */
+        /* ================= NORMAL CARD ================= */
 
         .impact-card {
           min-width: 0;
@@ -295,10 +255,7 @@ export default function ProvenImpact() {
           background: #951554;
         }
 
-
-        /* =====================================================
-           IMAGE
-        ===================================================== */
+        /* ================= IMAGE ================= */
 
         .impact-image-wrap {
           position: relative;
@@ -306,7 +263,6 @@ export default function ProvenImpact() {
           height: 200px;
           overflow: hidden;
         }
-
 
         .impact-image {
           display: block;
@@ -319,41 +275,32 @@ export default function ProvenImpact() {
           border: 0;
         }
 
-
         .impact-image-wrap::after {
           content: "";
           position: absolute;
           inset: 0;
-
           background: linear-gradient(
             to bottom,
             transparent 45%,
             rgba(0, 0, 0, 0.52) 100%
           );
-
           pointer-events: none;
         }
 
-
-        /* =====================================================
-           IMAGE LABEL
-        ===================================================== */
+        /* ================= IMAGE LABEL ================= */
 
         .impact-image-label {
           position: absolute;
           left: 16px;
           bottom: 13px;
           z-index: 2;
-
           display: flex;
           align-items: center;
           gap: 8px;
-
           color: #ffffff;
           font-size: 13px;
           font-weight: 500;
         }
-
 
         .industry-icon {
           color: #ffffff;
@@ -361,16 +308,12 @@ export default function ProvenImpact() {
           line-height: 1;
         }
 
-
-        /* =====================================================
-           CARD CONTENT
-        ===================================================== */
+        /* ================= CARD CONTENT ================= */
 
         .impact-card-content {
           min-height: 200px;
           padding: 15px 16px 13px;
         }
-
 
         .impact-card-content h3 {
           margin: 0;
@@ -379,9 +322,8 @@ export default function ProvenImpact() {
           line-height: 1.23;
           font-weight: 500;
           letter-spacing: -0.3px;
-           opacity: 0.9;
+          opacity: 0.9;
         }
-
 
         .impact-card-content p {
           margin: 8px 0 0;
@@ -389,13 +331,10 @@ export default function ProvenImpact() {
           font-size: 16px;
           line-height: 1.42;
           font-weight: 400;
-           opacity: 0.9;
+          opacity: 0.9;
         }
 
-
-        /* =====================================================
-           TAGS
-        ===================================================== */
+        /* ================= TAGS ================= */
 
         .impact-tags {
           display: flex;
@@ -403,7 +342,6 @@ export default function ProvenImpact() {
           gap: 6px;
           margin-top: 12px;
         }
-
 
         .impact-tags span {
           padding: 5px 8px;
@@ -414,25 +352,18 @@ export default function ProvenImpact() {
           border-radius: 2px;
         }
 
-
-        /* =====================================================
-           MORE INDUSTRIES
-        ===================================================== */
+        /* ================= MORE INDUSTRIES ================= */
 
         .more-industries-card {
           min-height: 400px;
-
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-
           text-align: center;
           padding: 24px 18px;
-
           border: 1px solid rgba(255, 255, 255, 0.18);
           border-radius: 8px;
-
           background: linear-gradient(
             to bottom right,
             #70154f 0%,
@@ -441,26 +372,19 @@ export default function ProvenImpact() {
           );
         }
 
-
         .more-industries-icon {
           position: relative;
-
           width: 56px;
           height: 56px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           margin-bottom: 14px;
-
           border-radius: 10px;
           background: rgba(255, 255, 255, 0.08);
           border: 1px solid rgba(255, 255, 255, 0.12);
-
           color: #ffffff;
         }
-
 
         .more-industries-icon span:nth-child(1) {
           position: absolute;
@@ -469,7 +393,6 @@ export default function ProvenImpact() {
           font-size: 14px;
         }
 
-
         .more-industries-icon span:nth-child(2) {
           position: absolute;
           bottom: 10px;
@@ -477,14 +400,12 @@ export default function ProvenImpact() {
           font-size: 11px;
         }
 
-
         .more-industries-icon span:nth-child(3) {
           position: absolute;
           bottom: 10px;
           right: 12px;
           font-size: 11px;
         }
-
 
         .more-industries-card h3 {
           margin: 0;
@@ -494,7 +415,6 @@ export default function ProvenImpact() {
           font-weight: 500;
         }
 
-
         .more-industries-card p {
           margin: 9px 0 0;
           color: #ffffff;
@@ -502,7 +422,6 @@ export default function ProvenImpact() {
           line-height: 1.5;
           font-weight: 400;
         }
-
 
         .more-industries-card a {
           margin-top: 17px;
@@ -512,107 +431,55 @@ export default function ProvenImpact() {
           font-weight: 500;
         }
 
-
         .more-industries-card a:hover {
           text-decoration: underline;
         }
 
-
-        /* =====================================================
-           1100px
-        ===================================================== */
+        /* ================= 1100px ================= */
 
         @media (max-width: 1100px) {
-
-          .proven-impact-container {
-            max-width: 1100px;
-            padding: 0 20px;
-          }
-
-
-          .proven-impact-title-wrap {
-            transform: translateX(-35px);
-          }
-
-
           .proven-impact-grid {
-            transform: translateX(-35px);
-            width: calc(100% - 35px);
-
             grid-template-columns:
               minmax(0, 0.92fr)
               minmax(0, 0.92fr)
               minmax(0, 0.88fr);
-
             column-gap: 30px;
             row-gap: 30px;
           }
-
 
           .proven-impact-title-wrap h2 {
             font-size: 39px;
           }
 
-
           .proven-impact-subtitle {
             font-size: 16px;
           }
-
 
           .impact-image-wrap {
             width: 100%;
             height: 190px;
           }
 
-
           .impact-card-content {
             min-height: 190px;
           }
-
 
           .impact-card-content h3 {
             font-size: 20px;
           }
 
-
           .impact-card-content p {
             font-size: 15px;
           }
-
 
           .more-industries-card {
             min-height: 380px;
           }
         }
 
-
-        /* =====================================================
-           IPAD PRO / 951px - 1100px
-           KEEP CONTENT FULLY INSIDE SCREEN
-        ===================================================== */
-
-        @media (min-width: 951px) and (max-width: 1100px) {
-
-          .proven-impact-title-wrap {
-            transform: none;
-          }
-
-
-          .proven-impact-grid {
-            transform: none;
-            width: 100%;
-            column-gap: 24px;
-          }
-        }
-
-
-        /* =====================================================
-           MEDIUM DEVICES: 701px - 950px
-           3 CARDS + BUTTON ON RIGHT
-        ===================================================== */
+        /* ================= MEDIUM DEVICES: 701px - 950px ================= */
 
         @media (max-width: 950px) and (min-width: 701px) {
-
           .proven-impact-header {
             flex-direction: row;
             align-items: flex-end;
@@ -620,67 +487,49 @@ export default function ProvenImpact() {
             gap: 18px;
           }
 
-
-          .proven-impact-title-wrap {
-            transform: none;
-          }
-
-
           .view-industries-btn {
             align-self: flex-end;
             margin-left: auto;
           }
-
 
           .proven-impact-grid {
             grid-template-columns:
               minmax(0, 1fr)
               minmax(0, 1fr)
               minmax(0, 1fr);
-
-            transform: none;
-            width: 100%;
-
             column-gap: 18px;
             row-gap: 0;
           }
-
 
           .impact-image-wrap {
             width: 100%;
             height: 175px;
           }
 
-
           .impact-card-content {
             min-height: 190px;
             padding: 14px;
           }
-
 
           .impact-card-content h3 {
             font-size: 18px;
             line-height: 1.2;
           }
 
-
           .impact-card-content p {
             font-size: 14px;
             line-height: 1.4;
           }
-
 
           .impact-tags {
             gap: 5px;
             margin-top: 10px;
           }
 
-
           .impact-tags span {
             font-size: 9px;
             padding: 5px 6px;
           }
-
 
           .impact-image-label {
             left: 12px;
@@ -688,11 +537,9 @@ export default function ProvenImpact() {
             font-size: 11px;
           }
 
-
           .industry-icon {
             font-size: 15px;
           }
-
 
           .more-industries-card {
             grid-column: auto;
@@ -700,23 +547,19 @@ export default function ProvenImpact() {
             padding: 20px 12px;
           }
 
-
           .more-industries-card h3 {
             font-size: 20px;
           }
-
 
           .more-industries-card p {
             font-size: 14px;
             line-height: 1.45;
           }
 
-
           .more-industries-card a {
             font-size: 12px;
             margin-top: 14px;
           }
-
 
           .more-industries-icon {
             width: 50px;
@@ -725,38 +568,17 @@ export default function ProvenImpact() {
           }
         }
 
-
-        /* =====================================================
-           LAPTOP + XL
-           CARDS END EXACTLY WITH BUTTON RIGHT EDGE
-        ===================================================== */
+        /* ================= LAPTOP + XL ================= */
 
         @media (min-width: 951px) {
-
           .proven-impact-grid {
-            width: 100%;
             column-gap: clamp(28px, 3.35vw, 40px);
           }
         }
 
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+        /* ================= MOBILE ================= */
 
         @media (max-width: 700px) {
-
-          .proven-impact-section {
-            padding: 30px 0 44px;
-          }
-
-
-          .proven-impact-container {
-            padding: 0 20px;
-          }
-
-
-          /* FIX: prevent header content from getting cut */
           .proven-impact-header {
             flex-direction: column;
             align-items: stretch;
@@ -764,18 +586,14 @@ export default function ProvenImpact() {
             gap: 18px;
           }
 
-
           .proven-impact-title-wrap {
-            transform: none;
             width: 100%;
           }
-
 
           .proven-impact-title-wrap h2 {
             font-size: 34px;
             overflow-wrap: break-word;
           }
-
 
           .proven-impact-subtitle {
             font-size: 15px;
@@ -783,26 +601,20 @@ export default function ProvenImpact() {
             max-width: 100%;
           }
 
-
           .desktop-break {
             display: none;
           }
-
 
           .view-industries-btn {
             width: 100%;
             min-width: 0;
           }
 
-
           .proven-impact-grid {
             grid-template-columns: 1fr;
-            transform: none;
-            width: 100%;
             column-gap: 0;
             row-gap: 20px;
           }
-
 
           .impact-image-wrap {
             width: 100%;
@@ -810,29 +622,24 @@ export default function ProvenImpact() {
             aspect-ratio: 16 / 10;
           }
 
-
           .impact-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
 
-
           .impact-card-content {
             min-height: auto;
             padding: 16px;
           }
 
-
           .impact-card-content h3 {
             font-size: 22px;
           }
 
-
           .impact-card-content p {
             font-size: 15px;
           }
-
 
           .more-industries-card {
             grid-column: auto;
@@ -840,39 +647,22 @@ export default function ProvenImpact() {
           }
         }
 
-
-        /* =====================================================
-           480px
-        ===================================================== */
+        /* ================= 480px ================= */
 
         @media (max-width: 480px) {
-
-          .proven-impact-section {
-            padding: 28px 0 40px;
-          }
-
-
-          .proven-impact-container {
-            padding: 0 16px;
-          }
-
-
           .proven-impact-title-wrap h2 {
             font-size: 30px;
             letter-spacing: -0.8px;
           }
 
-
           .proven-impact-subtitle {
             font-size: 14px;
           }
-
 
           .proven-impact-label p {
             font-size: 10px;
             letter-spacing: 1.1px;
           }
-
 
           .impact-image-wrap {
             width: 100%;
@@ -880,13 +670,11 @@ export default function ProvenImpact() {
             aspect-ratio: 16 / 10;
           }
 
-
           .impact-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
-
 
           .impact-image-label {
             left: 12px;
@@ -894,47 +682,38 @@ export default function ProvenImpact() {
             font-size: 11px;
           }
 
-
           .industry-icon {
             font-size: 15px;
           }
-
 
           .impact-card-content {
             padding: 14px;
           }
 
-
           .impact-card-content h3 {
             font-size: 20px;
           }
-
 
           .impact-card-content p {
             font-size: 14px;
           }
 
-
           .impact-tags span {
             font-size: 10px;
           }
-
 
           .more-industries-card {
             min-height: 250px;
             padding: 20px 15px;
           }
 
-
           .more-industries-card h3 {
             font-size: 22px;
           }
 
-
           .more-industries-card p {
             font-size: 15px;
           }
-
 
           .more-industries-icon {
             width: 52px;
@@ -942,34 +721,22 @@ export default function ProvenImpact() {
           }
         }
 
-
-        /* =====================================================
-           360px / IPHONE SE
-        ===================================================== */
+        /* ================= 360px / IPHONE SE ================= */
 
         @media (max-width: 360px) {
-
-          .proven-impact-container {
-            padding: 0 12px;
-          }
-
-
           .proven-impact-header {
             gap: 16px;
           }
-
 
           .proven-impact-title-wrap h2 {
             font-size: 27px;
             line-height: 1.08;
           }
 
-
           .proven-impact-subtitle {
             font-size: 13px;
             line-height: 1.45;
           }
-
 
           .impact-image-wrap {
             width: 100%;
@@ -977,13 +744,11 @@ export default function ProvenImpact() {
             aspect-ratio: 16 / 10;
           }
 
-
           .impact-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
-
 
           .impact-image-label {
             left: 12px;
@@ -991,30 +756,24 @@ export default function ProvenImpact() {
             font-size: 11px;
           }
 
-
           .industry-icon {
             font-size: 15px;
           }
 
-
           .impact-card-content {
             padding: 14px;
           }
-
 
           .impact-card-content h3 {
             font-size: 18px;
             line-height: 1.2;
           }
 
-
           .impact-card-content p {
             font-size: 13px;
             line-height: 1.4;
           }
-
         }
-
       `}</style>
     </section>
   );

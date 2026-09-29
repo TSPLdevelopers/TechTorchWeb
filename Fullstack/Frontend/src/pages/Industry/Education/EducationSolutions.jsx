@@ -25,6 +25,10 @@ import {
   Handshake,
 } from "lucide-react";
 
+/* =========================================================
+   COLORS
+========================================================= */
+
 const MAROON = "#85004A";
 const MAROON_DARK = "#70003F";
 const MAROON_LIGHT = "#F5EAF0";
@@ -35,14 +39,23 @@ const CREAM = "#FBFAF5";
 
 const HERO_IMAGE = "/EducationSolutions.png";
 
-/* -------------------------------------------------------
-   Small reusable components
-------------------------------------------------------- */
+/* =========================================================
+   FONT SYSTEM
+   Heading / Subheading -> Plus Jakarta Sans
+   Other text -> Inter
+========================================================= */
+
+const HEADING_FONT = "font-['Plus_Jakarta_Sans']";
+const BODY_FONT = "font-['Inter']";
+
+/* =========================================================
+   SMALL REUSABLE COMPONENTS
+========================================================= */
 
 function Eyebrow({ icon: Icon, children, light = false }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] ${
+      className={`inline-flex w-fit items-center gap-2 rounded-full border px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] ${BODY_FONT} ${
         light
           ? "border-white/25 bg-white/10 text-white"
           : "border-[#E4D2DC] bg-[#F8F0F4] text-[#741044]"
@@ -56,8 +69,11 @@ function Eyebrow({ icon: Icon, children, light = false }) {
 
 function PrimaryButton({ children }) {
   return (
-    <button className="group inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[#85004A] px-6 py-3.5 sm:w-auto text-[12px] font-semibold uppercase tracking-[0.08em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#70003F]">
+    <button
+      className={`group inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[#85004A] px-6 py-3.5 sm:w-auto ${BODY_FONT} text-[12px] font-semibold uppercase tracking-[0.08em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#70003F]`}
+    >
       {children}
+
       <ArrowRight
         size={17}
         className="transition-transform duration-200 group-hover:translate-x-1"
@@ -68,7 +84,9 @@ function PrimaryButton({ children }) {
 
 function SecondaryButton({ children }) {
   return (
-    <button className="inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[#E2E6EA] bg-[#F8F9FA] px-6 py-3.5 sm:w-auto text-[12px] font-semibold uppercase tracking-[0.08em] text-[#302A2D] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">
+    <button
+      className={`inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[#E2E6EA] bg-[#F8F9FA] px-6 py-3.5 sm:w-auto ${BODY_FONT} text-[12px] font-semibold uppercase tracking-[0.08em] text-[#302A2D] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm`}
+    >
       {children}
     </button>
   );
@@ -88,39 +106,113 @@ function IconBox({ children, dark = false }) {
   );
 }
 
-/* -------------------------------------------------------
-   Hero
-------------------------------------------------------- */
+/* =========================================================
+   HERO
+========================================================= */
+
 function HeroSection() {
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
-    <section className="rounded-[18px] border border-[#E8E5E5] bg-white px-4 py-8 shadow-[0_2px_8px_rgba(0,0,0,0.03)] sm:px-8 sm:py-10 md:px-10 lg:px-12 lg:py-14">
-      <div className="grid items-stretch gap-8 md:gap-10 md:grid-cols-[1.08fr_0.92fr]">
-
-        {/* Left Content */}
+    <section
+      className="
+        rounded-[18px]
+        border border-[#E8E5E5]
+        bg-white
+        px-4 py-8
+        shadow-[0_2px_8px_rgba(0,0,0,0.03)]
+        sm:px-8 sm:py-10
+        md:px-10
+        lg:px-12 lg:py-14
+      "
+    >
+      <div
+        className="
+          grid
+          items-stretch
+          gap-8
+          md:grid-cols-[1.08fr_0.92fr]
+          md:gap-10
+        "
+      >
+        {/* LEFT CONTENT */}
         <div className="flex h-full flex-col justify-center">
-
           {/* Eyebrow */}
-          <div className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#E4D2DC] bg-[#F8F0F4] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#741044]">
+          <div
+            className={`inline-flex w-fit items-center gap-1.5 rounded-full border border-[#E4D2DC] bg-[#F8F0F4] px-3 py-1.5 ${BODY_FONT} text-[9px] font-semibold uppercase tracking-[0.14em] text-[#741044]`}
+          >
             <span className="h-[7px] w-[7px] rounded-full bg-[#730042]" />
             <span>TechTorch Solutions · Education Platform</span>
           </div>
 
-          <h1 className="mt-6 max-w-[650px] font-['Plus_Jakarta_Sans'] text-[30px] [word-spacing:5px] font-semibold leading-[1.02] tracking-[-0.05em] text-[#111113] sm:mt-7 sm:text-[34px] lg:text-[36px]">
+          {/* MAIN HEADING */}
+          <h1
+            className={`
+              mt-6
+              max-w-[650px]
+              ${HEADING_FONT}
+              text-[30px]
+              font-semibold
+              leading-[1.05]
+              tracking-[-0.05em]
+              text-[#111113]
+              sm:mt-7
+              sm:text-[34px]
+              md:text-[38px]
+              lg:text-[42px]
+              xl:text-[44px]
+            `}
+          >
             <span className="block">Technology Solutions for</span>
+
             <span className="mt-1 block">Modern Education</span>
           </h1>
 
-          <p className="mt-6 max-w-[650px] font-['Inter'] text-[14px] leading-6 text-[#6C6065] sm:mt-7 sm:text-[15px]">
+          {/* SUBHEADING */}
+          <p
+            className={`
+              mt-6
+              max-w-[650px]
+              ${BODY_FONT}
+              text-[14px]
+              leading-6
+              text-[#6C6065]
+              sm:mt-7
+              sm:text-[15px]
+              md:text-[16px]
+            `}
+          >
             Connected digital solutions for academic, administrative and
             institutional operations.
           </p>
 
-          {/* Buttons */}
+          {/* BUTTONS */}
           <div className="mt-7 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button
               onClick={() => navigate("/contact")}
-              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#730042] px-5 py-2.5 sm:w-auto text-[11px] font-semibold uppercase tracking-[0.06em] text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#620038]"
+              className={`
+                group
+                inline-flex
+                w-full
+                items-center
+                justify-center
+                gap-2.5
+                rounded-xl
+                bg-[#730042]
+                px-5 py-2.5
+                sm:w-auto
+                ${BODY_FONT}
+                text-[11px]
+                font-semibold
+                uppercase
+                tracking-[0.06em]
+                text-white
+                shadow-sm
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:bg-[#620038]
+              `}
             >
               Talk to Our Experts
 
@@ -132,14 +224,37 @@ const navigate = useNavigate();
 
             <button
               onClick={() => navigate("/schedule-discovery")}
-              className="inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-[#E2E6EA] bg-[#F8F9FA] px-5 py-2.5 sm:w-auto text-[11px] font-semibold uppercase tracking-[0.06em] text-[#302A2D] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm"
+              className={`
+                inline-flex
+                w-full
+                items-center
+                justify-center
+                gap-2.5
+                rounded-xl
+                border
+                border-[#E2E6EA]
+                bg-[#F8F9FA]
+                px-5 py-2.5
+                sm:w-auto
+                ${BODY_FONT}
+                text-[11px]
+                font-semibold
+                uppercase
+                tracking-[0.06em]
+                text-[#302A2D]
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:bg-white
+                hover:shadow-sm
+              `}
             >
               <CalendarDays size={16} className="text-[#730042]" />
               Schedule Discovery
             </button>
           </div>
 
-          {/* Features */}
+          {/* FEATURES */}
           <div className="mt-8 border-t border-[#ECE8E9] pt-5">
             <div className="flex flex-col gap-3">
               <FeatureLine
@@ -160,89 +275,154 @@ const navigate = useNavigate();
           </div>
         </div>
 
-        {/* Right Image */}
+        {/* RIGHT IMAGE */}
         <div className="flex h-full items-stretch justify-center">
           <div className="relative h-full w-full max-w-[420px]">
-
             <div className="h-full overflow-hidden rounded-[18px] border border-[#DDD9D9] bg-black shadow-[0_8px_24px_rgba(0,0,0,0.09)]">
-
               <img
                 src={HERO_IMAGE}
                 alt="Modern university education environment"
-                className="h-full min-h-[300px] w-full object-cover sm:min-h-[360px] lg:min-h-[390px]"
+                className="
+                  h-full
+                  min-h-[280px]
+                  w-full
+                  object-cover
+                  sm:min-h-[360px]
+                  lg:min-h-[390px]
+                "
               />
 
-              {/* Top Badge */}
-              <div className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.07em] text-[#292326] shadow-md">
+              {/* TOP BADGE */}
+              <div
+                className={`
+                  absolute
+                  left-3 top-3
+                  flex
+                  items-center
+                  gap-1.5
+                  rounded-full
+                  bg-white
+                  px-3 py-1.5
+                  ${BODY_FONT}
+                  text-[9px]
+                  font-bold
+                  uppercase
+                  tracking-[0.07em]
+                  text-[#292326]
+                  shadow-md
+                  sm:left-4 sm:top-4
+                `}
+              >
                 <span className="h-[7px] w-[7px] rounded-full bg-[#1DBA82]" />
                 Smart Campus Hub
               </div>
 
-              {/* Bottom Card */}
+              {/* BOTTOM CARD */}
               <div className="absolute bottom-3 left-3 right-3 rounded-[13px] border border-white/70 bg-white/95 p-2.5 shadow-lg backdrop-blur-sm">
                 <div className="flex items-center gap-2.5">
-
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#730042] text-white">
                     <GraduationCap size={18} />
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-[12px] font-semibold leading-4 text-[#191719]">
+                    <h3
+                      className={`${HEADING_FONT} text-[12px] font-semibold leading-4 text-[#191719]`}
+                    >
                       Next-Gen Campus Deployment
                     </h3>
 
-                    <p className="mt-0.5 text-[10px] leading-3.5 text-[#756B70]">
+                    <p
+                      className={`mt-0.5 ${BODY_FONT} text-[10px] leading-3.5 text-[#756B70]`}
+                    >
                       Connecting educators, administrators & students
                     </p>
                   </div>
 
-                  <div className="hidden items-center gap-1 rounded-full border border-[#A7E7D0] bg-[#F1FFF9] px-2 py-1 text-[9px] font-semibold text-[#23936E] sm:flex">
+                  <div
+                    className={`hidden items-center gap-1 rounded-full border border-[#A7E7D0] bg-[#F1FFF9] px-2 py-1 ${BODY_FONT} text-[9px] font-semibold text-[#23936E] sm:flex`}
+                  >
                     <ShieldCheck size={11} />
                     Active
                   </div>
-
                 </div>
               </div>
-
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
 }
 
+/* =========================================================
+   FEATURE LINE
+========================================================= */
+
 function FeatureLine({ icon, text }) {
   return (
-    <div className="flex items-start gap-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#655B60]">
-      <span className="mt-0.5 text-[#730042]">
-        {icon}
-      </span>
+    <div
+      className={`flex items-start gap-2.5 ${BODY_FONT} text-[10px] font-semibold uppercase tracking-[0.15em] text-[#655B60]`}
+    >
+      <span className="mt-0.5 shrink-0 text-[#730042]">{icon}</span>
 
       <span>{text}</span>
     </div>
   );
 }
 
-/* -------------------------------------------------------
-   Editorial section
-------------------------------------------------------- */
+/* =========================================================
+   EDITORIAL SECTION
+========================================================= */
 
 function EditorialSection() {
   return (
-    <section className="rounded-[18px] border border-[#E7E1D8] bg-[#FBFAF4] px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+    <section
+      className="
+        rounded-[18px]
+        border border-[#E7E1D8]
+        bg-[#FBFAF4]
+        px-4 py-8
+        sm:px-8 sm:py-10
+        lg:px-12 lg:py-12
+      "
+    >
       <Eyebrow icon={BookOpen}>
         Editorial Perspective · Modern Institutional Architecture
       </Eyebrow>
 
-      <h2 className="mt-6 max-w-[900px] text-[28px] font-['Plus_Jakarta_Sans'] [word-spacing:5px] font-medium leading-[1.08] tracking-[-0.04em] text-[#171719] sm:text-[30px]">
+      {/* HEADING */}
+      <h2
+        className={`
+          mt-6
+          max-w-[900px]
+          ${HEADING_FONT}
+          text-[28px]
+          font-medium
+          leading-[1.08]
+          tracking-[-0.04em]
+          text-[#171719]
+          sm:text-[30px]
+          md:text-[34px]
+          lg:text-[38px]
+        `}
+      >
         Connecting People, Processes, and Learning
         <br className="hidden sm:block" />
         Systems into One Unified Institutional Ecosystem
       </h2>
 
-      <p className="mt-5 max-w-[1020px] font-['Inter'] text-[14px] leading-6 text-[#6D6266]">
+      {/* SUBHEADING / DESCRIPTION */}
+      <p
+        className={`
+          mt-5
+          max-w-[1020px]
+          ${BODY_FONT}
+          text-[14px]
+          leading-6
+          text-[#6D6266]
+          sm:text-[15px]
+        `}
+      >
         Educational institutions today face a structural challenge: academic
         departments, admissions pipelines, student records, and campus
         operations frequently run on disconnected legacy platforms. When
@@ -251,29 +431,35 @@ function EditorialSection() {
         lacks real-time institutional visibility.
       </p>
 
-      {/* Quote */}
+      {/* QUOTE */}
       <div className="mt-7 overflow-hidden rounded-xl border border-[#ECE8E8] bg-[#F5F5F5]">
-        <div className="border-l-[3px] border-[#85004A] px-6 py-6 sm:px-8">
-          <p className="max-w-[950px] text-[14px] font-medium italic leading-6 text-[#40383C]">
-            “At TechTorch Solutions, our belief is simple: Technology shouldn't
-            add layers of complexity. It should connect people, streamline
-            essential workflows, and give institutions the digital agility to
-            grow sustainably.”
+        <div className="border-l-[3px] border-[#85004A] px-5 py-5 sm:px-8 sm:py-6">
+          <p
+            className={`${BODY_FONT} max-w-[950px] text-[14px] font-medium italic leading-6 text-[#40383C]`}
+          >
+            “At TechTorch Solutions, our belief is simple: Technology
+            shouldn't add layers of complexity. It should connect people,
+            streamline essential workflows, and give institutions the digital
+            agility to grow sustainably.”
           </p>
 
           <div className="mt-5 flex items-center gap-3">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#85004A] text-[9px] font-bold text-white">
+            <div
+              className={`flex h-7 w-7 items-center justify-center rounded-md bg-[#85004A] ${BODY_FONT} text-[9px] font-bold text-white`}
+            >
               TT
             </div>
 
-            <span className="text-[9px] font-semibold uppercase tracking-[0.15em] text-[#756A70]">
+            <span
+              className={`${BODY_FONT} text-[9px] font-semibold uppercase tracking-[0.15em] text-[#756A70]`}
+            >
               TechTorch Architectural Principles · Campus Transformation
             </span>
           </div>
         </div>
       </div>
 
-      {/* Three cards */}
+      {/* THREE CARDS */}
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <SimpleInfoCard
           icon={<Database size={18} />}
@@ -306,20 +492,24 @@ function SimpleInfoCard({ icon, title, description }) {
     <div className="rounded-xl border border-[#E7E4E4] bg-[#F9F9F8] p-5">
       <IconBox>{icon}</IconBox>
 
-      <h3 className="mt-5 text-[15px] font-['Inter'] font-semibold leading-5 text-[#252125]">
+      <h3
+        className={`mt-5 ${HEADING_FONT} text-[15px] font-semibold leading-5 text-[#252125]`}
+      >
         {title}
       </h3>
 
-      <p className="mt-2 text-[13px] font-['Inter'] leading-5 text-[#766B70]">
+      <p
+        className={`mt-2 ${BODY_FONT} text-[13px] leading-5 text-[#766B70]`}
+      >
         {description}
       </p>
     </div>
   );
 }
 
-/* -------------------------------------------------------
-   Core Solutions
-------------------------------------------------------- */
+/* =========================================================
+   CORE SOLUTIONS
+========================================================= */
 
 const CORE_SOLUTIONS = [
   {
@@ -362,23 +552,43 @@ const CORE_SOLUTIONS = [
 
 function CoreSolutionsSection() {
   return (
-    <section className="rounded-[18px] border border-[#E4E4E3] bg-white px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
-      
-      {/* Eyebrow */}
+    <section
+      className="
+        rounded-[18px]
+        border border-[#E4E4E3]
+        bg-white
+        px-4 py-8
+        sm:px-8 sm:py-10
+        lg:px-12 lg:py-12
+      "
+    >
       <Eyebrow>Practical Digital Capabilities</Eyebrow>
 
-      {/* Heading */}
-      <h2 className="mt-5 text-[28px] font-['Plus_Jakarta_Sans'] font-semibold tracking-[-0.04em] text-[#171719] sm:text-[30px]">
+      {/* HEADING */}
+      <h2
+        className={`
+          mt-5
+          ${HEADING_FONT}
+          text-[28px]
+          font-semibold
+          tracking-[-0.04em]
+          text-[#171719]
+          sm:text-[30px]
+          md:text-[34px]
+        `}
+      >
         Core Education Solutions
       </h2>
 
-      {/* Description */}
-      <p className="mt-3 max-w-[760px] text-[14px] leading-6 text-[#71666B]">
+      {/* SUBHEADING */}
+      <p
+        className={`mt-3 max-w-[760px] ${BODY_FONT} text-[14px] leading-6 text-[#71666B] sm:text-[15px]`}
+      >
         Practical digital capabilities designed to support every layer of
         institutional operations.
       </p>
 
-      {/* Cards */}
+      {/* CARDS */}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {CORE_SOLUTIONS.map((item) => (
           <SolutionCard key={item.title} {...item} />
@@ -401,20 +611,17 @@ function SolutionCard({ icon, title, description }) {
         border-[#E5E2E3]
         bg-[#FAFAFA]
         p-5
-
         shadow-[0_7px_18px_rgba(30,0,20,0.06)]
-
         transition-all
         duration-300
         ease-in-out
-
         hover:-translate-y-2
         hover:border-[#730042]
         hover:bg-[#eee9ec]
         hover:shadow-[0_16px_32px_rgba(30,0,20,0.16)]
       "
     >
-      {/* Upper-right glass glow */}
+      {/* GLOW */}
       <div
         className="
           pointer-events-none
@@ -433,8 +640,7 @@ function SolutionCard({ icon, title, description }) {
       />
 
       <div className="relative z-10">
-
-        {/* Icon */}
+        {/* ICON */}
         <div
           className="
             flex
@@ -445,10 +651,8 @@ function SolutionCard({ icon, title, description }) {
             rounded-lg
             bg-[#730042]/10
             text-[#730042]
-
             transition-all
             duration-300
-
             group-hover:bg-[#730042]/10
             group-hover:text-[#730042]
           "
@@ -456,52 +660,47 @@ function SolutionCard({ icon, title, description }) {
           {icon}
         </div>
 
-        {/* Heading */}
+        {/* CARD HEADING */}
         <h3
-          className="
+          className={`
             mt-5
             max-w-[230px]
+            ${HEADING_FONT}
             text-[14px]
-            font-['Plus_Jakarta_Sans']
             font-semibold
             leading-5
             text-[#292327]
-
             transition-colors
             duration-300
-
             group-hover:text-[#730042]
-          "
+          `}
         >
           {title}
         </h3>
 
-        {/* Paragraph */}
+        {/* CARD TEXT */}
         <p
-          className="
+          className={`
             mt-2
+            ${BODY_FONT}
             text-[13px]
-            font-['Inter']
             leading-5
             text-[#756A70]
-
             transition-colors
             duration-300
-
             group-hover:text-[#475569]
-          "
+          `}
         >
           {description}
         </p>
-
       </div>
     </div>
   );
 }
 
-/* -------------------------------------------------------
-   Six Pillars
-------------------------------------------------------- */
+/* =========================================================
+   SIX PILLARS
+========================================================= */
 
 const PILLARS = [
   {
@@ -550,18 +749,43 @@ const PILLARS = [
 
 function PillarsSection() {
   return (
-    <section className="rounded-[18px] border border-[#E6E1D8] bg-[#FBFAF4] px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+    <section
+      className="
+        rounded-[18px]
+        border border-[#E6E1D8]
+        bg-[#FBFAF4]
+        px-4 py-8
+        sm:px-8 sm:py-10
+        lg:px-12 lg:py-12
+      "
+    >
       <Eyebrow>Modular Institutional Taxonomy</Eyebrow>
 
-      <h2 className="mt-5 text-[28px] font-['Plus_Jakarta_Sans'] font-semibold tracking-[-0.04em] text-[#171719] sm:text-[30px]">
+      {/* HEADING */}
+      <h2
+        className={`
+          mt-5
+          ${HEADING_FONT}
+          text-[28px]
+          font-semibold
+          tracking-[-0.04em]
+          text-[#171719]
+          sm:text-[30px]
+          md:text-[34px]
+        `}
+      >
         Six Specialized Education Pillars
       </h2>
 
-      <p className="mt-3 max-w-[780px] text-[14px] font-['Inter'] leading-6 text-[#71666B]">
+      {/* SUBHEADING */}
+      <p
+        className={`mt-3 max-w-[780px] ${BODY_FONT} text-[14px] leading-6 text-[#71666B] sm:text-[15px]`}
+      >
         Each capability can be integrated independently into legacy
         environments or combined to create a unified campus operating standard.
       </p>
 
+      {/* CARDS */}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {PILLARS.map((item) => (
           <PillarCard key={item.number} {...item} />
@@ -574,7 +798,9 @@ function PillarsSection() {
 function PillarCard({ icon, number, title, description }) {
   return (
     <div className="relative min-h-[175px] overflow-hidden rounded-xl border border-[#E4E0E0] bg-[#FAFAFA] p-5">
-      <span className="pointer-events-none absolute right-3 top-0 text-[52px] font-light leading-none text-[#F0EEEE]">
+      <span
+        className={`pointer-events-none absolute right-3 top-0 ${BODY_FONT} text-[52px] font-light leading-none text-[#F0EEEE]`}
+      >
         {number}
       </span>
 
@@ -582,16 +808,22 @@ function PillarCard({ icon, number, title, description }) {
         <div className="flex items-start justify-between gap-4">
           <IconBox>{icon}</IconBox>
 
-          <span className="rounded-md border border-[#E6D8DF] bg-[#F7EFF3] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.1em] text-[#7A174B]">
+          <span
+            className={`rounded-md border border-[#E6D8DF] bg-[#F7EFF3] px-2 py-1 ${BODY_FONT} text-[9px] font-semibold uppercase tracking-[0.1em] text-[#7A174B]`}
+          >
             Pillar {number}
           </span>
         </div>
 
-        <h3 className="mt-5 text-[14px] font-['Plus_Jakarta_Sans'] font-semibold leading-5 text-[#292327]">
+        <h3
+          className={`mt-5 ${HEADING_FONT} text-[14px] font-semibold leading-5 text-[#292327]`}
+        >
           {title}
         </h3>
 
-        <p className="mt-2 font-['Inter'] text-[13px] leading-5 text-[#756A70]">
+        <p
+          className={`mt-2 ${BODY_FONT} text-[13px] leading-5 text-[#756A70]`}
+        >
           {description}
         </p>
       </div>
@@ -599,9 +831,9 @@ function PillarCard({ icon, number, title, description }) {
   );
 }
 
-/* -------------------------------------------------------
-   Integration Section
-------------------------------------------------------- */
+/* =========================================================
+   INTEGRATION SECTION
+========================================================= */
 
 const INTEGRATION = [
   {
@@ -632,25 +864,47 @@ const INTEGRATION = [
 
 function IntegrationSection() {
   return (
-    <section className="rounded-[18px] bg-[#730042] px-4 py-8 text-white shadow-[0_12px_30px_rgba(95,0,50,0.16)] sm:px-8 sm:py-10 lg:px-12 lg:py-12">
-
-      {/* Eyebrow */}
+    <section
+      className="
+        rounded-[18px]
+        bg-[#730042]
+        px-4 py-8
+        text-white
+        shadow-[0_12px_30px_rgba(95,0,50,0.16)]
+        sm:px-8 sm:py-10
+        lg:px-12 lg:py-12
+      "
+    >
       <Eyebrow icon={Network} light>
         Seamless System Interoperability
       </Eyebrow>
 
-      {/* Heading */}
-      <h2 className="mt-6 text-[28px] font-medium leading-tight tracking-[-0.045em] sm:text-[34px] md:text-[40px]">
+      {/* HEADING */}
+      <h2
+        className={`
+          mt-6
+          ${HEADING_FONT}
+          text-[28px]
+          font-medium
+          leading-tight
+          tracking-[-0.045em]
+          sm:text-[34px]
+          md:text-[40px]
+          lg:text-[42px]
+        `}
+      >
         Connect With Your Existing Systems
       </h2>
 
-      {/* Description */}
-      <p className="mt-3 max-w-[820px] text-[15px] leading-6 text-white/75">
+      {/* SUBHEADING */}
+      <p
+        className={`mt-3 max-w-[820px] ${BODY_FONT} text-[14px] leading-6 text-white/75 sm:text-[15px]`}
+      >
         Modernize your education environment without disrupting the systems and
         processes your institution already depends on.
       </p>
 
-      {/* Cards */}
+      {/* CARDS */}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {INTEGRATION.map((item) => (
           <div
@@ -664,20 +918,17 @@ function IntegrationSection() {
               border-white/15
               bg-white/[0.07]
               p-5
-
               shadow-[0_7px_18px_rgba(30,0,20,0.10)]
-
               transition-all
               duration-300
               ease-in-out
-
               hover:-translate-y-2
               hover:border-[#730042]
               hover:bg-[#eee9ec]
               hover:shadow-[0_16px_32px_rgba(30,0,20,0.24)]
             "
           >
-            {/* Upper-right glass glow */}
+            {/* GLOW */}
             <div
               className="
                 pointer-events-none
@@ -692,9 +943,7 @@ function IntegrationSection() {
               "
             />
 
-            {/* Content */}
             <div className="relative z-10">
-
               {/* ICON */}
               <div
                 className="
@@ -706,10 +955,8 @@ function IntegrationSection() {
                   rounded-lg
                   bg-white/10
                   text-white
-
                   transition-all
                   duration-300
-
                   group-hover:bg-[#970052]/10
                   group-hover:text-[#730042]
                 "
@@ -717,40 +964,37 @@ function IntegrationSection() {
                 {item.icon}
               </div>
 
-              {/* Heading */}
+              {/* HEADING */}
               <h3
-                className="
+                className={`
                   mt-5
+                  ${HEADING_FONT}
                   text-[15px]
                   font-semibold
                   text-white
-
                   transition-colors
                   duration-300
-
                   group-hover:text-[#730042]
-                "
+                `}
               >
                 {item.title}
               </h3>
 
-              {/* Paragraph */}
+              {/* TEXT */}
               <p
-                className="
+                className={`
                   mt-2
+                  ${BODY_FONT}
                   text-[12px]
                   leading-5
                   text-white/65
-
                   transition-colors
                   duration-300
-
                   group-hover:text-[#475569]
-                "
+                `}
               >
                 {item.description}
               </p>
-
             </div>
           </div>
         ))}
@@ -759,9 +1003,9 @@ function IntegrationSection() {
   );
 }
 
-/* -------------------------------------------------------
-   Implementation
-------------------------------------------------------- */
+/* =========================================================
+   IMPLEMENTATION
+========================================================= */
 
 const PHASES = [
   {
@@ -789,18 +1033,44 @@ const PHASES = [
 
 function ImplementationSection() {
   return (
-    <section className="rounded-[18px] border border-[#E3E3E2] bg-white px-4 py-8 text-center sm:px-8 sm:py-10 lg:px-12 lg:py-14">
+    <section
+      className="
+        rounded-[18px]
+        border border-[#E3E3E2]
+        bg-white
+        px-4 py-8
+        text-center
+        sm:px-8 sm:py-10
+        lg:px-12 lg:py-14
+      "
+    >
       <Eyebrow>Structured Methodology</Eyebrow>
 
-      <h2 className="mt-5 text-[28px] font-semibold font-['Plus_Jakarta_Sans'] tracking-[-0.04em] text-[#171719] sm:text-[30px]">
+      {/* HEADING */}
+      <h2
+        className={`
+          mt-5
+          ${HEADING_FONT}
+          text-[28px]
+          font-semibold
+          tracking-[-0.04em]
+          text-[#171719]
+          sm:text-[30px]
+          md:text-[34px]
+        `}
+      >
         A Structured Approach to Implementation
       </h2>
 
-      <p className="mx-auto mt-3 max-w-[720px] text-[14px] font-['Inter'] leading-6 text-[#71666B]">
+      {/* SUBHEADING */}
+      <p
+        className={`mx-auto mt-3 max-w-[720px] ${BODY_FONT} text-[14px] leading-6 text-[#71666B] sm:text-[15px]`}
+      >
         A practical three-phase approach designed to help institutions move
         from planning to adoption with greater clarity.
       </p>
 
+      {/* PHASES */}
       <div className="mt-9 grid gap-5 text-left md:grid-cols-3">
         {PHASES.map((item) => (
           <div
@@ -813,24 +1083,33 @@ function ImplementationSection() {
               border
               border-[#E4E2E3]
               bg-[#FAFAFA]
-              p-6
+              p-5
+              sm:p-6
             "
           >
-            <div className="relative flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#730042] text-sm font-bold text-white">
+            <div className="relative flex flex-wrap items-center gap-3">
+              <div
+                className={`flex h-9 w-9 items-center justify-center rounded-xl bg-[#730042] ${BODY_FONT} text-sm font-bold text-white`}
+              >
                 {item.number}
               </div>
 
-              <span className="rounded-md border border-[#E6D8DF] bg-[#F7EFF3] px-2.5 py-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-[#730042]">
+              <span
+                className={`rounded-md border border-[#E6D8DF] bg-[#F7EFF3] px-2.5 py-1.5 ${BODY_FONT} text-[9px] font-semibold uppercase tracking-[0.1em] text-[#730042]`}
+              >
                 {item.phase}
               </span>
             </div>
 
-            <h3 className="mt-6 font-['Plus_Jakarta_Sans'] text-[15px] font-semibold text-[#292327]">
+            <h3
+              className={`mt-6 ${HEADING_FONT} text-[15px] font-semibold text-[#292327]`}
+            >
               {item.title}
             </h3>
 
-            <p className="mt-2.5 font-['Inter'] max-w-[280px] text-[13px] leading-5 text-[#756A70]">
+            <p
+              className={`mt-2.5 max-w-[280px] ${BODY_FONT} text-[13px] leading-5 text-[#756A70]`}
+            >
               {item.description}
             </p>
           </div>
@@ -840,26 +1119,54 @@ function ImplementationSection() {
   );
 }
 
-/* -------------------------------------------------------
+/* =========================================================
    CTA
-------------------------------------------------------- */
+========================================================= */
 
 function CTASection() {
   return (
-    <section className="rounded-[18px] border border-[#E2E0E0] bg-white px-4 py-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)] sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+    <section
+      className="
+        rounded-[18px]
+        border border-[#E2E0E0]
+        bg-white
+        px-4 py-8
+        shadow-[0_2px_8px_rgba(0,0,0,0.04)]
+        sm:px-8 sm:py-10
+        lg:px-12 lg:py-12
+      "
+    >
       <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-10">
         <div>
           <Eyebrow icon={Handshake}>
             Institutional Collaboration
           </Eyebrow>
 
-          <h2 className="mt-6 max-w-[720px] text-[28px] font-['Plus_Jakarta_Sans'] [word-spacing:5px] font-semibold leading-[1.05] tracking-[-0.045em] text-[#171719] sm:text-[30px]">
+          {/* HEADING */}
+          <h2
+            className={`
+              mt-6
+              max-w-[720px]
+              ${HEADING_FONT}
+              text-[28px]
+              font-semibold
+              leading-[1.05]
+              tracking-[-0.045em]
+              text-[#171719]
+              sm:text-[30px]
+              md:text-[34px]
+              lg:text-[38px]
+            `}
+          >
             Ready to Build a More Connected
             <br className="hidden sm:block" />
             Education Environment?
           </h2>
 
-          <p className="mt-5 max-w-[700px] font-['Inter'] text-[14px] leading-6 text-[#70656A]">
+          {/* SUBHEADING */}
+          <p
+            className={`mt-5 max-w-[700px] ${BODY_FONT} text-[14px] leading-6 text-[#70656A] sm:text-[15px]`}
+          >
             Let's discuss your institution's technology requirements and explore
             a practical approach for your next stage of digital growth.
           </p>
@@ -884,8 +1191,9 @@ function CTASection() {
           </div>
         </div>
 
-        <div className="flex w-full flex-row gap-3 sm:max-w-none lg:w-[280px] lg:flex-col lg:max-w-none">
-          <PrimaryButton >Talk to Our Experts</PrimaryButton>
+        {/* CTA BUTTONS */}
+        <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-[280px] lg:flex-col">
+          <PrimaryButton>Talk to Our Experts</PrimaryButton>
 
           <SecondaryButton>
             <CalendarDays size={17} className="text-[#730042]" />
@@ -897,14 +1205,76 @@ function CTASection() {
   );
 }
 
-/* -------------------------------------------------------
+/* =========================================================
    MAIN PAGE
-------------------------------------------------------- */
+========================================================= */
 
 export default function EducationSolutions() {
   return (
-    <main className="min-h-screen bg-[#F5F6F7] px-3 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8 lg:py-6">
-      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-6 sm:gap-8 lg:gap-9">
+    <main
+      className="
+        min-h-screen
+        bg-[#F5F6F7]
+        px-3 py-4
+        sm:px-5 sm:py-5
+        md:px-6
+        lg:px-8 lg:py-6
+      "
+      style={{
+        fontFamily: "Inter, sans-serif",
+      }}
+    >
+      {/* GOOGLE FONTS */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        * {
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          margin: 0;
+          font-family: 'Inter', sans-serif;
+        }
+
+        button {
+          font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 640px) {
+          .education-mobile-heading {
+            letter-spacing: -0.035em;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            scroll-behavior: auto !important;
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+          }
+        }
+      `}</style>
+
+      <div
+        className="
+          mx-auto
+          flex
+          w-full
+          max-w-[1180px]
+          flex-col
+          gap-5
+          sm:gap-6
+          md:gap-7
+          lg:gap-9
+        "
+      >
         <HeroSection />
 
         <EditorialSection />

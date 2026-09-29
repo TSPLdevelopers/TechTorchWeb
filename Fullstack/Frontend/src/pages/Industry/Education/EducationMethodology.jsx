@@ -14,7 +14,6 @@ const MUTED = "#5b5a63";
 
 /* =====================================================
    IMAGE PATHS
-   Put these images inside your public folder
 ===================================================== */
 
 const INSTITUTION_IMAGES = {
@@ -28,7 +27,6 @@ const INSTITUTION_IMAGES = {
 /* =====================================================
    METHODOLOGY STEPS
 ===================================================== */
-
 
 const steps = [
   {
@@ -170,6 +168,12 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            FONTS
+           
+           HEADING + SUBHEADING
+           → PLUS JAKARTA SANS
+
+           OTHER CONTENT
+           → INTER
         ===================================================== */
 
         @import url(
@@ -190,15 +194,17 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            COMMON CONTAINER
+
+           Same spacing standard
         ===================================================== */
 
         .methodology-container {
           width: 100%;
-          max-width: 1152px;
+          max-width: 1400px;
           margin: 0 auto;
 
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 100px;
+          padding-right: 100px;
 
           box-sizing: border-box;
         }
@@ -206,23 +212,20 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            EYEBROW
+           INTER
         ===================================================== */
 
         .methodology-eyebrow {
           display: flex;
-
           align-items: center;
 
           gap: 4px;
-
           margin-bottom: 16px;
 
           font-family: "Inter", sans-serif;
 
           font-size: 11px;
-
           line-height: 1.5;
-
           font-weight: 700;
 
           letter-spacing: 0.06em;
@@ -234,38 +237,15 @@ export default function MethodologyAndInstitutionsSections() {
            PLUS JAKARTA SANS
         ===================================================== */
 
-        .methodology-heading {
-          margin: 0;
-
-          max-width: 620px;
-
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
-
-          font-size: 38px;
-
-          line-height: 1.15;
-
-          font-weight: 700;
-
-          letter-spacing: -0.7px;
-
-          color: ${INK};
-        }
-
-
+        .methodology-heading,
         .institutions-heading {
           margin: 0;
 
-          max-width: 620px;
+          max-width: 700px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 38px;
-
+          font-size: 40px;
           line-height: 1.15;
 
           font-weight: 700;
@@ -284,14 +264,11 @@ export default function MethodologyAndInstitutionsSections() {
         .methodology-subheading {
           margin: 16px 0 0;
 
-          max-width: 620px;
+          max-width: 700px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 16px;
-
           line-height: 1.65;
 
           font-weight: 500;
@@ -310,7 +287,6 @@ export default function MethodologyAndInstitutionsSections() {
           background: #f4f1ec;
 
           padding-top: 80px;
-
           padding-bottom: 80px;
         }
 
@@ -333,13 +309,13 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            STEP CARD
+           INTER
         ===================================================== */
 
         .step-card {
           min-width: 0;
 
           display: flex;
-
           flex-direction: column;
 
           padding: 20px;
@@ -349,36 +325,31 @@ export default function MethodologyAndInstitutionsSections() {
           background: #ffffff;
 
           box-shadow:
-            0 1px 3px
-            rgba(0, 0, 0, 0.05);
+            0 1px 3px rgba(0, 0, 0, 0.05);
 
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease;
         }
 
-
         .step-card:hover {
-          transform:
-            translateY(-4px);
+          transform: translateY(-4px);
 
           box-shadow:
-            0 12px 28px
-            rgba(0, 0, 0, 0.08);
+            0 12px 28px rgba(0, 0, 0, 0.08);
         }
 
 
         /* =====================================================
            STEP TOP
+           INTER
         ===================================================== */
 
         .step-top {
           display: flex;
-
           align-items: center;
 
           gap: 8px;
-
           margin-bottom: 20px;
 
           flex-wrap: wrap;
@@ -387,13 +358,10 @@ export default function MethodologyAndInstitutionsSections() {
 
         .step-number {
           width: 28px;
-
           height: 28px;
 
           display: flex;
-
           align-items: center;
-
           justify-content: center;
 
           flex-shrink: 0;
@@ -401,35 +369,26 @@ export default function MethodologyAndInstitutionsSections() {
           border-radius: 50%;
 
           background: ${WINE};
-
           color: #ffffff;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 10px;
-
           font-weight: 700;
         }
 
 
         .step-stage {
-          padding:
-            5px 8px;
+          padding: 5px 8px;
 
           border-radius: 999px;
 
           background: #fbeef1;
-
           color: ${WINE};
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 9px;
-
           line-height: 1.2;
 
           font-weight: 700;
@@ -440,17 +399,15 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            STEP ICON
+           INTER
         ===================================================== */
 
         .step-icon {
           width: 32px;
-
           height: 32px;
 
           display: flex;
-
           align-items: center;
-
           justify-content: center;
 
           margin-bottom: 16px;
@@ -458,7 +415,6 @@ export default function MethodologyAndInstitutionsSections() {
           border-radius: 8px;
 
           background: #fbeef1;
-
           color: ${WINE};
         }
 
@@ -471,12 +427,9 @@ export default function MethodologyAndInstitutionsSections() {
         .step-title {
           margin: 0 0 8px;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 15px;
-
           line-height: 1.4;
 
           font-weight: 700;
@@ -487,17 +440,15 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            STEP BODY
+           INTER
         ===================================================== */
 
         .step-body {
           margin: 0 0 16px;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 12px;
-
           line-height: 1.7;
 
           color: ${MUTED};
@@ -506,11 +457,11 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            BULLETS
+           INTER
         ===================================================== */
 
         .step-bullets {
           display: flex;
-
           flex-direction: column;
 
           gap: 7px;
@@ -525,17 +476,13 @@ export default function MethodologyAndInstitutionsSections() {
 
         .step-bullet {
           display: flex;
-
           align-items: flex-start;
 
           gap: 8px;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 11px;
-
           line-height: 1.5;
 
           color: ${MUTED};
@@ -544,7 +491,6 @@ export default function MethodologyAndInstitutionsSections() {
 
         .step-bullet-dot {
           width: 4px;
-
           height: 4px;
 
           flex-shrink: 0;
@@ -567,7 +513,6 @@ export default function MethodologyAndInstitutionsSections() {
           background: #ffffff;
 
           padding-top: 80px;
-
           padding-bottom: 80px;
         }
 
@@ -590,11 +535,11 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            INSTITUTION CARD
+           INTER
         ===================================================== */
 
         .institution-card {
           min-width: 0;
-
           overflow: hidden;
         }
 
@@ -605,8 +550,7 @@ export default function MethodologyAndInstitutionsSections() {
 
         .institution-image-wrapper {
           width: 100%;
-
-          height: 140px;
+          height: 160px;
 
           margin-bottom: 16px;
 
@@ -627,11 +571,9 @@ export default function MethodologyAndInstitutionsSections() {
           display: block;
 
           width: 100%;
-
           height: 100%;
 
           object-fit: cover;
-
           object-position: center;
 
           transition:
@@ -639,10 +581,8 @@ export default function MethodologyAndInstitutionsSections() {
         }
 
 
-        .institution-card:hover
-        .institution-image {
-          transform:
-            scale(1.04);
+        .institution-card:hover .institution-image {
+          transform: scale(1.04);
         }
 
 
@@ -654,12 +594,9 @@ export default function MethodologyAndInstitutionsSections() {
         .institution-title {
           margin: 0 0 8px;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 15px;
-
           line-height: 1.4;
 
           font-weight: 700;
@@ -670,17 +607,15 @@ export default function MethodologyAndInstitutionsSections() {
 
         /* =====================================================
            INSTITUTION BODY
+           INTER
         ===================================================== */
 
         .institution-body {
           margin: 0;
 
-          font-family:
-            "Inter",
-            sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 13px;
-
           line-height: 1.7;
 
           color: ${MUTED};
@@ -694,9 +629,8 @@ export default function MethodologyAndInstitutionsSections() {
         @media (max-width: 1100px) {
 
           .methodology-container {
-            padding-left: 32px;
-
-            padding-right: 32px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
 
@@ -711,6 +645,12 @@ export default function MethodologyAndInstitutionsSections() {
               repeat(2, minmax(0, 1fr));
           }
 
+
+          .methodology-heading,
+          .institutions-heading {
+            font-size: 36px;
+          }
+
         }
 
 
@@ -721,19 +661,19 @@ export default function MethodologyAndInstitutionsSections() {
         @media (max-width: 767px) {
 
           .methodology-container {
-            padding-left: 20px;
-
-            padding-right: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
 
           .methodology-section,
           .institutions-section {
-            padding-top: 56px;
-
-            padding-bottom: 56px;
+            padding-top: 60px;
+            padding-bottom: 60px;
           }
 
+
+          /* PLUS JAKARTA SANS */
 
           .methodology-heading,
           .institutions-heading {
@@ -747,16 +687,17 @@ export default function MethodologyAndInstitutionsSections() {
 
           .methodology-subheading {
             font-size: 14px;
-
             line-height: 1.7;
           }
 
+
+          /* STEP GRID */
 
           .steps-grid {
             grid-template-columns:
               repeat(2, minmax(0, 1fr));
 
-            gap: 12px;
+            gap: 14px;
 
             margin-top: 32px;
           }
@@ -767,18 +708,36 @@ export default function MethodologyAndInstitutionsSections() {
           }
 
 
+          .step-top {
+            margin-bottom: 16px;
+          }
+
+
+          .step-title {
+            font-size: 14px;
+          }
+
+
+          .step-body {
+            font-size: 12px;
+            line-height: 1.65;
+          }
+
+
+          /* INSTITUTIONS */
+
           .institutions-grid {
             grid-template-columns:
               repeat(2, minmax(0, 1fr));
 
-            gap: 16px;
+            gap: 18px;
 
             margin-top: 32px;
           }
 
 
           .institution-image-wrapper {
-            height: 150px;
+            height: 160px;
           }
 
 
@@ -797,7 +756,6 @@ export default function MethodologyAndInstitutionsSections() {
 
           .methodology-container {
             padding-left: 16px;
-
             padding-right: 16px;
           }
 
@@ -805,24 +763,22 @@ export default function MethodologyAndInstitutionsSections() {
           .methodology-section,
           .institutions-section {
             padding-top: 48px;
-
             padding-bottom: 48px;
           }
 
 
           .methodology-eyebrow {
             font-size: 10px;
-
             line-height: 1.5;
-
             margin-bottom: 12px;
           }
 
 
+          /* PLUS JAKARTA SANS */
+
           .methodology-heading,
           .institutions-heading {
             font-size: 27px;
-
             line-height: 1.2;
           }
 
@@ -831,27 +787,23 @@ export default function MethodologyAndInstitutionsSections() {
             margin-top: 12px;
 
             font-size: 13px;
-
             line-height: 1.7;
           }
 
 
+          /* STEP CARDS */
+
           .steps-grid {
             grid-template-columns: 1fr;
 
-            gap: 10px;
+            gap: 12px;
 
             margin-top: 28px;
           }
 
 
           .step-card {
-            padding: 16px;
-          }
-
-
-          .step-top {
-            margin-bottom: 16px;
+            padding: 17px;
           }
 
 
@@ -862,10 +814,11 @@ export default function MethodologyAndInstitutionsSections() {
 
           .step-body {
             font-size: 12px;
-
             line-height: 1.65;
           }
 
+
+          /* INSTITUTION CARDS */
 
           .institutions-grid {
             grid-template-columns: 1fr;
@@ -892,7 +845,6 @@ export default function MethodologyAndInstitutionsSections() {
 
           .institution-body {
             font-size: 12.5px;
-
             line-height: 1.7;
           }
 
@@ -900,14 +852,13 @@ export default function MethodologyAndInstitutionsSections() {
 
 
         /* =====================================================
-           SMALL MOBILE
+           VERY SMALL MOBILE
         ===================================================== */
 
         @media (max-width: 360px) {
 
           .methodology-container {
             padding-left: 14px;
-
             padding-right: 14px;
           }
 
@@ -953,10 +904,14 @@ export default function MethodologyAndInstitutionsSections() {
             OUR METHODOLOGY &amp; DELIVERY FRAMEWORK
           </Eyebrow>
 
+
+          {/* PLUS JAKARTA SANS */}
           <h2 className="methodology-heading">
             We start with your institution, not a software checklist.
           </h2>
 
+
+          {/* PLUS JAKARTA SANS */}
           <p className="methodology-subheading">
             A predictable, collaborative methodology engineered to modernize
             institutional processes with zero disruption to daily academic
@@ -1071,6 +1026,8 @@ export default function MethodologyAndInstitutionsSections() {
             SOLUTIONS FOR DIFFERENT EDUCATIONAL ENVIRONMENTS
           </Eyebrow>
 
+
+          {/* PLUS JAKARTA SANS */}
           <h2 className="institutions-heading">
             Different institutions. Different priorities.
           </h2>

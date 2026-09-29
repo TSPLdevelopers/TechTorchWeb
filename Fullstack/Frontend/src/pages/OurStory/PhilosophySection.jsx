@@ -41,13 +41,7 @@ const pillars = [
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <circle
-          cx="12"
-          cy="12"
-          r="9"
-          stroke="#8B1E5C"
-          strokeWidth="1.8"
-        />
+        <circle cx="12" cy="12" r="9" stroke="#8B1E5C" strokeWidth="1.8" />
         <path
           d="M8.5 12.2L10.7 14.5L15.5 9.5"
           stroke="#8B1E5C"
@@ -83,9 +77,8 @@ const pillars = [
 
 export default function PhilosophySection() {
   return (
-    <section className="w-full bg-[#EEF1FC] px-5 py-12 font-inter sm:px-8 sm:py-16 lg:px-10 lg:py-[72px]">
-      <div className="mx-auto w-full max-w-[1100px] text-center">
-        
+    <section className="w-full overflow-hidden bg-[#EEF1FC] px-4 py-10 font-inter sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20">
+      <div className="w-full text-center">
         {/* Subtitle */}
         <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.08em] text-[#8B1E5C] sm:text-[12px] md:text-[13px]">
           Our Philosophy
@@ -93,10 +86,8 @@ export default function PhilosophySection() {
 
         {/* Heading */}
         <h2
-          className="mb-4 text-[30px] font-medium leading-tight tracking-[-0.01em] text-[#1B2233] font-plus-jakarta sm:mb-5 sm:text-[36px] md:text-[42px]"
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
+          className="mb-4 text-[30px] font-medium leading-tight tracking-[-0.01em] text-[#1B2233] sm:mb-5 sm:text-[36px] md:text-[42px]"
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Scale at Speed
         </h2>
