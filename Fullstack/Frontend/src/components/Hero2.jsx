@@ -25,15 +25,15 @@ export default function BuildConnectGrow() {
             max-w-xl
           "
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-Plus Jakarta Sans text-gray-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-plus-jakarta text-gray-900 leading-tight">
             Build. Connect. Grow.
           </h2>
 
-          <h3 className="text-xl sm:text-2xl lg:text-[24px] font-Plus Jakarta Sans text-[#8a1538] mt-1">
+          <h3 className="text-xl sm:text-2xl lg:text-[24px] font-plus-jakarta text-[#730042] mt-1">
             With TechTorch Solutions
           </h3>
 
-          <p className="text-gray-600 text-[15px] sm:text-[16px] Plus Jakarta Sans mt-10 max-w-md">
+          <p className="text-gray-600 text-[15px] sm:text-[15px] font-inter mt-10 max-w-md">
             We bring technology, expertise and people together to solve real
             business challenges, create practical digital solutions and help
             businesses work smarter, adapt faster, and move forward with
@@ -43,14 +43,14 @@ export default function BuildConnectGrow() {
           <div className="flex items-center gap-4 mt-14">
             <Link
               to="/KnowMore"
-              className="px-6 py-2.5 rounded-md bg-[#730042] text-white text-[13px] font-semibold tracking-wide no-underline hover:bg-[#CD166E] transition-colors duration-200"
+              className="px-6 py-2.5 rounded-md bg-[#730042] text-white text-[13px] font-inter font-semibold tracking-wide no-underline hover:bg-[#970052] transition-colors duration-200"
             >
               KNOW MORE
             </Link>
 
             <Link
               to="/Philosophy"
-              className="px-6 py-2.5 rounded-md border border-[#730042] text-[#730042] text-[13px] font-semibold tracking-wide no-underline hover:bg-[#730042] hover:text-white transition-colors duration-200"
+              className="px-6 py-2.5 rounded-md border border-[#730042] text-[#730042] text-[13px] font-inter font-semibold tracking-wide no-underline hover:bg-[#730042] hover:text-white transition-colors duration-200"
             >
               OUR STORY
             </Link>

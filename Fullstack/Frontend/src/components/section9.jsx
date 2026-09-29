@@ -90,10 +90,10 @@ export default function CtaSection({
 
         .cta-title {
           margin: 0 0 24px;
-
-          font-size: 45px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
           line-height: 1.2;
-          font-weight: 800;
+          font-weight: 700;
 
           color: ${COLORS.white};
 
@@ -109,8 +109,8 @@ export default function CtaSection({
           max-width: 480px;
 
           margin: 0 0 40px;
-
-          font-size: 17px;
+          font-family: "Inter", sans-serif;
+          font-size: 16px;
           line-height: 1.6;
 
           color: rgba(255,255,255,0.9);
@@ -132,7 +132,7 @@ export default function CtaSection({
           color: ${COLORS.maroon};
 
           font-weight: 700;
-          font-size: 16px;
+          font-size: 14px;
 
           padding: 14px 24px;
 
@@ -150,6 +150,8 @@ export default function CtaSection({
         }
 
         .cta-button:hover {
+         background: #730042;
+         color: #ffffff;
           transform: translateY(-2px);
 
           box-shadow:

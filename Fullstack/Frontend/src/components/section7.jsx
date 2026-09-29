@@ -65,7 +65,7 @@ function CTAButton({ children }) {
         border: `1.5px solid ${colors.brand}`,
         color: colors.brand,
         padding: "6px 14px",
-        fontSize: "18px",
+        fontSize: "16px",
         fontWeight: 700,
       }}
     >
@@ -90,7 +90,7 @@ function CopyPanel() {
         className="tx-heading"
         style={{
           marginBottom: "24px",
-          fontSize: "28px",
+          fontSize: "26px",
           lineHeight: 1.18,
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 600,
@@ -107,7 +107,7 @@ function CopyPanel() {
         className="tx-suite"
         style={{
           marginBottom: "20px",
-          fontSize: "30px",
+          fontSize: "25px",
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 600,
           lineHeight: 1.25,
@@ -121,7 +121,7 @@ function CopyPanel() {
         className="tx-intro"
         style={{
           marginBottom: "40px",
-          fontSize: "21px",
+          fontSize: "20px",
           fontFamily: "Plus Jakarta Sans",
           maxWidth: "28rem",
           lineHeight: 1.5,
@@ -137,7 +137,8 @@ function CopyPanel() {
         style={{
           marginBottom: "16px",
           marginTop: "-10px",
-          fontSize: "17px",
+          fontFamily: "Inter",
+          fontSize: "15px",
           fontFamily: "Inter",
           maxWidth: "28rem",
           lineHeight: 1.65,
@@ -402,7 +403,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-description {
-            font-size: 17px !important;
+            font-size: 16px !important;
           }
 
           .tx-image {
@@ -470,7 +471,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-description {
-            font-size: 17px !important;
+            font-size: 15px !important;
           }
 
           .tx-image {

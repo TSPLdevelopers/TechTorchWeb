@@ -27,10 +27,10 @@ export default function Hero3() {
                 className="
                   translate-y-[10px]
                   text-[32px]
-                  sm:text-[36px]
-                  lg:text-[38px]
-                  font-bold
+                  sm:text-[34px]
+                  lg:text-[36px]
                   font-plus-jakarta
+                  font-bold
                   text-white
                 "
               >
@@ -44,7 +44,7 @@ export default function Hero3() {
                   lg:mt-12
                   text-[15px]
                   sm:text-[16px]
-                  lg:text-[17px]
+                  lg:text-[16px]
                   font-inter
                   leading-relaxed
                   max-w-[650px]
@@ -80,6 +80,7 @@ export default function Hero3() {
                   text-[14px]
                   sm:text-[16px]
                   font-inter
+                  font-semibold
                   hover:bg-white/90
                   hover:text-[#730042]
                   hover:border-white
@@ -87,7 +88,7 @@ export default function Hero3() {
                   duration-300
                 "
               >
-                <span className="text-[26px] sm:text-[30px] leading-none">
+                <span className="text-[24px] sm:text-[26px] leading-none">
                   ←
                 </span>
 
@@ -138,11 +139,11 @@ export default function Hero3() {
               <h2
                 className="
                   translate-y-[10px]
-                  text-[32px]
-                  sm:text-[36px]
-                  lg:text-[38px]
-                  font-bold
+                 text-[32px]
+                  sm:text-[34px]
+                  lg:text-[36px]
                   font-plus-jakarta
+                  font-bold
                   text-white
                 "
               >
@@ -156,7 +157,7 @@ export default function Hero3() {
                   lg:mt-12
                   text-[15px]
                   sm:text-[16px]
-                  lg:text-[17px]
+                  lg:text-[16px]
                   font-inter
                   leading-relaxed
                   max-w-[650px]
@@ -192,6 +193,7 @@ export default function Hero3() {
                   text-[14px]
                   sm:text-[16px]
                   font-inter
+                  font-semibold
                   hover:bg-white/90
                   hover:text-[#730042]
                   hover:border-white
@@ -199,7 +201,7 @@ export default function Hero3() {
                   duration-300
                 "
               >
-                <span className="text-[26px] sm:text-[30px] leading-none">
+                <span className="text-[24px] sm:text-[26px] leading-none">
                   ←
                 </span>
 
@@ -251,9 +253,10 @@ export default function Hero3() {
                 className="
                   translate-y-[1px]
                   text-[32px]
-                  sm:text-[36px]
-                  lg:text-[38px]
-                  font-plus-jakarta sans
+                  sm:text-[34px]
+                  lg:text-[36px]
+                  font-plus-jakarta
+                  font-bold
                   text-white
                 "
               >
@@ -267,7 +270,7 @@ export default function Hero3() {
                   lg:mt-12
                   text-[15px]
                   sm:text-[16px]
-                  lg:text-[17px]
+                  lg:text-[16px]
                   font-inter
                   leading-relaxed
                   max-w-[650px]
@@ -303,6 +306,7 @@ export default function Hero3() {
                   text-[14px]
                   sm:text-[16px]
                   font-inter
+                  font-semibold
                   hover:bg-white/90
                   hover:text-[#730042]
                   hover:border-white
@@ -310,7 +314,7 @@ export default function Hero3() {
                   duration-300
                 "
               >
-                <span className="text-[26px] sm:text-[30px] leading-none">
+                <span className="text-[24px] sm:text-[26px] leading-none">
                   ←
                 </span>
 
@@ -361,11 +365,11 @@ export default function Hero3() {
             <h2
               className="
                 mt-1
-                text-[30px]
+                text-[32px]
                 sm:text-[34px]
                 lg:text-[36px]
                 font-bold
-                font-plus-jakarta sans
+                font-plus-jakarta
               "
             >
               HOW WE WORK
@@ -375,9 +379,9 @@ export default function Hero3() {
               className="
                 mt-6
                 sm:mt-9
-                text-[17px]
-                sm:text-[20px]
-                lg:text-[16px]
+                text-[15px]
+                sm:text-[14px]
+                lg:text-[15px]
                 font-inter
                 text-white
                 max-w-[650px]
@@ -416,8 +420,8 @@ export default function Hero3() {
                   bg-white
                   text-[#730042]
                   px-4
-                  py-1
-                  text-[14px]
+                  py-2
+                  text-[13px]
                   font-bold
                   font-inter
                   border
@@ -442,7 +446,7 @@ export default function Hero3() {
                   text-[#730042]
                   px-4
                   py-2
-                  text-[14px]
+                  text-[13px]
                   font-bold
                   font-inter
                   border
@@ -467,7 +471,7 @@ export default function Hero3() {
                   text-[#730042]
                   px-4
                   py-2
-                  text-[14px]
+                  text-[13px]
                   font-bold
                   font-inter
                   border
