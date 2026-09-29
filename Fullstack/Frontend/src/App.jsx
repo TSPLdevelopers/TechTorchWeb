@@ -10,6 +10,7 @@ import AdminLogin from "./pages/AdminLogin.jsx";
 import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
 import AdminVerifyOTP from "./pages/AdminVerifyOTP.jsx";
 import AdminResetPassword from "./pages/AdminResetPassword.jsx";
+import SignupPage from "./pages/SignupPage"; 
 
 // ================= HOME COMPONENTS =================
 import Hero from "./components/Hero";
@@ -582,6 +583,7 @@ function App() {
         path="/admin-reset-password"
         element={<AdminResetPassword />}
       />
+      <Route path="/admin-signup" element={<SignupPage />} />
 
       {/* ================= ADMIN PAGES ================= */}
 
