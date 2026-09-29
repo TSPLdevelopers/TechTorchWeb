@@ -65,7 +65,9 @@ function NavCapabilities() {
     updatePosition();
     window.addEventListener("resize", updatePosition);
 
-    return () => window.removeEventListener("resize", updatePosition);
+    return () => {
+      window.removeEventListener("resize", updatePosition);
+    };
   }, [isOpen]);
 
   const cancelClose = useCallback(() => {
@@ -101,16 +103,27 @@ function NavCapabilities() {
       onMouseLeave={closeMenu}
     >
       {/* ================= NAV LINK ================= */}
+
       <span
         className="
-          relative inline-flex items-center h-full cursor-pointer
-          text-[17px] text-gray-900
+          relative
+          inline-flex
+          items-center
+          h-full
+          cursor-pointer
+          text-[17px]
+          text-gray-900
           hover:text-[#8a1538]
-          transition-colors duration-200
-          after:absolute after:left-0 after:bottom-0
-          after:h-[2px] after:w-0
+          transition-colors
+          duration-200
+          after:absolute
+          after:left-0
+          after:bottom-0
+          after:h-[2px]
+          after:w-0
           after:bg-[#8a1538]
-          after:transition-all after:duration-200
+          after:transition-all
+          after:duration-200
           hover:after:w-full
         "
       >
@@ -118,6 +131,7 @@ function NavCapabilities() {
       </span>
 
       {/* ================= MEGA MENU ================= */}
+
       {isOpen && (
         <div
           style={{
@@ -134,9 +148,11 @@ function NavCapabilities() {
             shadow-2xl
             z-[9999]
             overflow-y-auto
+            max-h-[calc(100vh-70px)]
           "
         >
           {/* ================= BACKGROUND IMAGE ================= */}
+
           <img
             src={Navbarcap}
             alt=""
@@ -145,100 +161,199 @@ function NavCapabilities() {
               top-0
               left-0
               w-full
-             h-[650px]
+              h-[650px]
               pointer-events-none
               select-none
-               opacity-35
+              opacity-30
+              object-cover
             "
           />
 
           {/* ================= MENU CONTENT ================= */}
+
           <div
             className="
               relative
               z-10
-              grid
-              grid-cols-1
-              md:grid-cols-2
-              gap-10
-              md:gap-20
               px-[11%]
-              py-10
-              md:py-14
+              pt-7
+              pb-10
+              md:pt-9
+              md:pb-14
             "
           >
-            {columns.map((col) => (
-              <div
-                key={col.heading}
-                className="flex flex-col gap-3"
-              >
-                {/* MAIN HEADING */}
-                <h3
-                  className="
-                    text-xl
-                    md:text-2xl
-                    font-bold
-                    text-gray-900
-                    font-plus-jakarta
-                    mb-2
-                  "
-                >
-                  {col.heading}
-                </h3>
+            {/* ================= MAIN HEADINGS ================= */}
 
-                {/* NORMAL ITEMS */}
-                {col.items &&
-                  col.items.map((title) => (
+            <div
+              className="
+                grid
+                grid-cols-1
+                md:grid-cols-2
+                gap-6
+                md:gap-20
+                mb-6
+              "
+            >
+              {/* IT CAPABILITIES */}
+
+              <h2
+                className="
+                  text-[22px]
+                  md:text-[25px]
+                  font-bold
+                  text-gray-900
+                  font-plus-jakarta
+                  text-left
+                  m-0
+                  leading-[1.2]
+                "
+              >
+                IT Capabilities
+              </h2>
+
+              {/* AI CAPABILITIES */}
+
+              <h2
+                className="
+                  text-[22px]
+                  md:text-[25px]
+                  font-bold
+                  text-gray-900
+                  font-plus-jakarta
+                  text-right
+                  md:text-right
+                  m-0
+                  leading-[1.2]
+                "
+              >
+                AI Capabilities
+              </h2>
+            </div>
+
+            {/* ================= CAPABILITIES CONTENT ================= */}
+
+            <div
+              className="
+                grid
+                grid-cols-1
+                md:grid-cols-2
+                gap-10
+                md:gap-20
+              "
+            >
+              {/* ================= IT CAPABILITIES ================= */}
+
+              <div
+                className="
+                  grid
+                  grid-cols-1
+                  sm:grid-cols-2
+                  gap-8
+                  items-start
+                "
+              >
+                {/* ================= DIGITAL SOLUTIONS ================= */}
+
+                <div className="flex flex-col gap-3">
+                  <h3
+                    className="
+                      text-[20px]
+                      md:text-[20px]
+                      font-semibold
+                      text-gray-900
+                      font-plus-jakarta
+                      mb-2
+                      leading-[1.25]
+                    "
+                  >
+                    Digital Solutions
+                  </h3>
+
+                  {columns[0].items.map((title) => (
                     <a
                       key={title}
                       href="#"
                       className="
-                        text-base
-                        md:text-lg
+                        text-[15px]
+                        md:text-[15px]
                         text-gray-800
                         font-inter
+                        leading-[1.35]
                         hover:text-[#8a1538]
                         transition-colors
+                        duration-200
                       "
                     >
                       {title}
                     </a>
                   ))}
+                </div>
 
-                {/* SECTIONS */}
-                {col.sections &&
-                  col.sections.map((section, idx) => (
+                {/* ================= IT AUGMENTATION ================= */}
+
+                <div
+                  className="
+                    flex
+                    flex-col
+                    gap-3
+                    ml-2
+                    md:ml-4
+                  "
+                >
+                  <h3
+                    className="
+                      text-[20px]
+                      md:text-[20px]
+                      font-semibold
+                      text-gray-900
+                      font-plus-jakarta
+                      mb-2
+                      leading-[1.25]
+                    "
+                  >
+                    IT Augmentation Service
+                  </h3>
+
+                  {columns[1].sections.map((section, idx) => (
                     <div
                       key={section.subheading}
-                      className={`flex flex-col gap-3 ${
-                        idx > 0 ? "mt-4" : ""
-                      }`}
+                      className={`
+                        flex
+                        flex-col
+                        gap-3
+                        ${idx > 0 ? "mt-3" : ""}
+                      `}
                     >
                       {/* SUB HEADING */}
+
                       <h4
                         className="
-                          text-lg
-                          md:text-xl
-                          font-bold
+                          text-[16px]
+                          md:text-[18px]
+                          font-semibold
                           text-gray-900
                           font-plus-jakarta
+                          leading-[1.3]
                         "
                       >
                         {section.subheading}
                       </h4>
 
                       {/* SECTION ITEMS */}
+
                       {section.items.map((title) => (
                         <a
                           key={title}
                           href="#"
                           className="
-                            text-base
-                            md:text-lg
+                            text-[15px]
+                            md:text-[15px]
                             text-gray-800
                             font-inter
+                            leading-[1.35]
                             hover:text-[#8a1538]
                             transition-colors
+                            duration-200
                           "
                         >
                           {title}
@@ -246,8 +361,23 @@ function NavCapabilities() {
                       ))}
                     </div>
                   ))}
+                </div>
               </div>
-            ))}
+
+              {/* ================= AI CAPABILITIES ================= */}
+
+              <div
+                className="
+                  flex
+                  flex-col
+                  items-end
+                  text-right
+                  min-h-[200px]
+                "
+              >
+                {/* AI CAPABILITIES CONTENT CAN BE ADDED HERE */}
+              </div>
+            </div>
           </div>
         </div>
       )}

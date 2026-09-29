@@ -5,22 +5,22 @@ export default function WithPurpose() {
     <section className="w-full overflow-hidden bg-[#F8F7F0] text-[#191919]">
       <div
         className="
-          mx-auto
           w-full
-          max-w-[1340px]
           px-4
           py-9
+
           sm:px-6
           sm:py-10
-          md:px-8
+
+          md:px-10
           md:py-11
-          lg:px-10
+
+          lg:px-[100px]
           lg:py-11
-          xl:px-12
         "
       >
-
         {/* ================= TOP LABEL ================= */}
+
         <p
           className="
             font-['Plus_Jakarta_Sans']
@@ -30,17 +30,15 @@ export default function WithPurpose() {
             leading-none
             tracking-[0.01em]
             text-[#252525]
-            sm:text-[12px]
 
-            lg:-translate-x-5
-            xl:-translate-x-7
+            sm:text-[12px]
           "
         >
           OUR PERSPECTIVE
         </p>
 
-
         {/* ================= MAIN CONTENT ================= */}
+
         <div
           className="
             mt-6
@@ -51,32 +49,29 @@ export default function WithPurpose() {
 
             sm:gap-y-12
 
-            md:grid-cols-[minmax(0,1fr)_220px_minmax(0,1fr)]
-            md:gap-x-8
+            md:grid-cols-[minmax(0,1fr)_200px_minmax(0,1fr)]
+            md:gap-x-6
             md:gap-y-0
 
-            lg:grid-cols-[minmax(0,1fr)_235px_minmax(0,1fr)]
-            lg:gap-x-10
+            lg:grid-cols-[minmax(0,1fr)_215px_minmax(0,1fr)]
+            lg:gap-x-7
 
-            xl:grid-cols-[minmax(0,1fr)_245px_minmax(0,1fr)]
-            xl:gap-x-12
+            xl:grid-cols-[minmax(0,1fr)_225px_minmax(0,1fr)]
+            xl:gap-x-8
           "
         >
-
           {/* =====================================================
               LEFT COLUMN
           ===================================================== */}
+
           <div
             className="
               min-w-0
               max-w-full
-
-              lg:-translate-x-5
-              xl:-translate-x-7
             "
           >
-
             {/* HEADING */}
+
             <h1
               className="
                 font-['Plus_Jakarta_Sans']
@@ -85,9 +80,9 @@ export default function WithPurpose() {
                 leading-[1.08]
                 tracking-[-0.035em]
 
-                sm:text-[27px]
-                md:text-[28px]
-                lg:text-[29px]
+                sm:text-[26px]
+                md:text-[26px]
+                lg:text-[28px]
               "
             >
               Building Technology
@@ -95,8 +90,8 @@ export default function WithPurpose() {
               With Purpose
             </h1>
 
-
             {/* LEFT TEXT */}
+
             <div
               className="
                 mt-7
@@ -110,11 +105,10 @@ export default function WithPurpose() {
 
                 sm:text-[15px]
                 md:text-[15px]
-                lg:text-[16px]
+                lg:text-[15px]
                 lg:leading-[1.36]
               "
             >
-
               <p>
                 Technology is now a fundamental part of how businesses
                 operate, serve customers and respond to change. But
@@ -141,14 +135,13 @@ export default function WithPurpose() {
                 forward. The right solution depends on the problem, not the
                 technology trend.
               </p>
-
             </div>
           </div>
-
 
           {/* =====================================================
               CENTER QUOTE CARD
           ===================================================== */}
+
           <div
             className="
               flex
@@ -162,11 +155,10 @@ export default function WithPurpose() {
               lg:mt-[96px]
             "
           >
-
             <div
               className="
                 w-full
-                max-w-[215px]
+                max-w-[205px]
                 rounded-[7px]
                 border
                 border-[#C9C9C9]
@@ -181,8 +173,8 @@ export default function WithPurpose() {
                 md:py-5
               "
             >
-
               {/* QUOTE ICON */}
+
               <div
                 className="
                   relative
@@ -191,25 +183,25 @@ export default function WithPurpose() {
                   text-[40px]
                   font-bold
                   leading-[0.55]
-                  text-[#850052]
+                  text-[#730042]
                 "
               >
                 “
               </div>
 
-
               {/* QUOTE TEXT */}
+
               <p
                 className="
                   mt-5
                   font-['Inter']
-                  text-[21px]
+                  text-[20px]
                   font-medium
                   leading-[1.65]
                   tracking-[-0.025em]
                   text-[#111111]
 
-                  sm:text-[22px]
+                  sm:text-[20px]
                 "
               >
                 Transformation
@@ -221,8 +213,8 @@ export default function WithPurpose() {
                 complicated.
               </p>
 
-
               {/* PURPLE LINE */}
+
               <div
                 className="
                   relative
@@ -230,17 +222,16 @@ export default function WithPurpose() {
                   mt-5
                   h-[3px]
                   w-[58px]
-                  bg-[#850052]
+                  bg-[#730042]
                 "
               />
-
             </div>
           </div>
-
 
           {/* =====================================================
               RIGHT COLUMN
           ===================================================== */}
+
           <div
             className="
               min-w-0
@@ -258,12 +249,8 @@ export default function WithPurpose() {
 
               md:mt-2
               lg:mt-2
-
-              lg:translate-x-5
-              xl:translate-x-7
             "
           >
-
             <p>
               Our capabilities across digital solutions, AI and automation,
               technology services, IT augmentation, B.P.O services and
@@ -290,9 +277,7 @@ export default function WithPurpose() {
               That is the role we aim to play — helping businesses turn
               technology into practical progress.
             </p>
-
           </div>
-
         </div>
       </div>
     </section>

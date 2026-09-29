@@ -1,4 +1,10 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+
 import {
   Search,
   ClipboardList,
@@ -56,6 +62,7 @@ const steps = [
 const MAROON = "#7a1338";
 
 export default function StructuredApproachSection() {
+  const sectionRef = useRef(null);
   const containerRef = useRef(null);
   const iconRefs = useRef({});
 
@@ -65,6 +72,54 @@ export default function StructuredApproachSection() {
     height: 0,
   });
 
+  const [iconsVisible, setIconsVisible] = useState(false);
+
+  // =========================================================
+  // ICON ANIMATION
+  // Section enter -> animation
+  // Section leave -> reset
+  // Section enter again -> animation again
+  // =========================================================
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Reset first
+            setIconsVisible(false);
+
+            // Start animation again
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                setIconsVisible(true);
+              });
+            });
+          } else {
+            // Reset when section leaves viewport
+            setIconsVisible(false);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // =========================================================
+  // CONNECTOR LINE
+  // Calculates exact icon center positions
+  // =========================================================
   useLayoutEffect(() => {
     const computePath = () => {
       const container = containerRef.current;
@@ -86,9 +141,19 @@ export default function StructuredApproachSection() {
         const rect = element.getBoundingClientRect();
 
         return {
-          x: rect.left + rect.width / 2 - containerRect.left,
-          y: rect.top + rect.height / 2 - containerRect.top,
-          top: rect.top - containerRect.top,
+          x:
+            rect.left +
+            rect.width / 2 -
+            containerRect.left,
+
+          y:
+            rect.top +
+            rect.height / 2 -
+            containerRect.top,
+
+          top:
+            rect.top -
+            containerRect.top,
         };
       };
 
@@ -97,9 +162,17 @@ export default function StructuredApproachSection() {
       const validate = getPosition("validate");
       const launch = getPosition("launch");
 
-      if (!understand || !develop || !validate || !launch) return;
+      if (
+        !understand ||
+        !develop ||
+        !validate ||
+        !launch
+      ) {
+        return;
+      }
 
       const rightEdge = containerRect.width - 1;
+
       const bottomLineY = develop.top - 28;
 
       const path = `
@@ -115,8 +188,10 @@ export default function StructuredApproachSection() {
       setLinePath(path);
     };
 
+    // Initial calculation
     computePath();
 
+    // Recalculate when container changes
     const resizeObserver = new ResizeObserver(() => {
       requestAnimationFrame(computePath);
     });
@@ -134,35 +209,49 @@ export default function StructuredApproachSection() {
   }, []);
 
   return (
-    <section className="structured-approach-section">
+    <section
+      ref={sectionRef}
+      className="structured-approach-section"
+    >
       <div className="structured-container">
-        {/* ================= HEADING ================= */}
 
+        {/* =================================================
+            HEADING
+        ================================================= */}
         <h1>
-          A Structured Approach to <span>Software Development</span>
+          A Structured Approach to{" "}
+          <span>Software Development</span>
         </h1>
 
+        {/* =================================================
+            INTRO
+        ================================================= */}
         <p className="intro-text">
-          Successful software starts with a clear understanding of the problem.
+          Successful software starts with a clear understanding
+          of the problem.
         </p>
 
         <p className="intro-text intro-bottom">
-          Our development approach brings business requirements, user needs and
-          technology together at every stage.
+          Our development approach brings business requirements,
+          user needs and technology together at every stage.
         </p>
 
-        {/* ================= GRID ================= */}
-
-        <div ref={containerRef} className="structured-grid">
-          {/* CONNECTING LINE */}
-
+        {/* =================================================
+            STEPS
+        ================================================= */}
+        <div
+          ref={containerRef}
+          className="structured-grid"
+        >
+          {/* =================================================
+              CONNECTOR LINE
+          ================================================= */}
           {containerSize.width > 0 && linePath && (
             <svg
-              width="100%"
-              height="100%"
+              className="connector-svg"
               viewBox={`0 0 ${containerSize.width} ${containerSize.height}`}
               preserveAspectRatio="none"
-              className="connector-svg"
+              aria-hidden="true"
             >
               <path
                 d={linePath}
@@ -174,18 +263,29 @@ export default function StructuredApproachSection() {
             </svg>
           )}
 
-          {/* STEPS */}
-
-          {steps.map((step) => {
+          {/* =================================================
+              STEP CARDS
+          ================================================= */}
+          {steps.map((step, index) => {
             const Icon = step.icon;
 
             return (
-              <div key={step.id} className="step-card">
+              <div
+                key={step.id}
+                className={`step-card ${
+                  iconsVisible
+                    ? "step-card-visible"
+                    : ""
+                }`}
+              >
                 <div
                   ref={(element) => {
                     iconRefs.current[step.id] = element;
                   }}
                   className="step-icon"
+                  style={{
+                    "--icon-delay": `${index * 0.16}s`,
+                  }}
                 >
                   <Icon
                     size={20}
@@ -203,9 +303,10 @@ export default function StructuredApproachSection() {
         </div>
       </div>
 
+      {/* =====================================================
+          STYLES
+      ===================================================== */}
       <style>{`
-        /* ================= SECTION ================= */
-
         .structured-approach-section {
           padding: 70px 40px;
           background-color: #ffffff;
@@ -228,8 +329,6 @@ export default function StructuredApproachSection() {
           margin: 0 auto;
         }
 
-        /* ================= HEADING ================= */
-
         .structured-container > h1 {
           font-size: 28px;
           font-weight: 700;
@@ -246,7 +345,7 @@ export default function StructuredApproachSection() {
         .intro-text {
           font-size: 15px;
           text-align: center;
-          color: #333333;
+          color: #333;
           margin: 0 auto 6px;
           max-width: 700px;
           line-height: 1.6;
@@ -256,27 +355,20 @@ export default function StructuredApproachSection() {
           margin-bottom: 60px;
         }
 
-        /* ================= GRID ================= */
-
         .structured-grid {
           position: relative;
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           column-gap: 40px;
           row-gap: 70px;
-
-          /*
-            Desktop par niche wala content
-            halka sa right shift
-          */
           transform: translateX(35px);
-
           width: calc(100% - 35px);
           box-sizing: border-box;
         }
 
-        /* ================= CONNECTOR ================= */
-
+        /* =====================================================
+           CONNECTOR
+        ===================================================== */
         .connector-svg {
           position: absolute;
           inset: 0;
@@ -287,8 +379,6 @@ export default function StructuredApproachSection() {
           overflow: visible;
         }
 
-        /* ================= CARD ================= */
-
         .step-card {
           position: relative;
           z-index: 1;
@@ -296,14 +386,20 @@ export default function StructuredApproachSection() {
           max-width: 340px;
         }
 
-        /* ================= ICON ================= */
-
+        /* =====================================================
+           ICON
+           
+           IMPORTANT:
+           No scale() here.
+           Only translateY is used so the connector remains
+           visually aligned with the icon center.
+        ===================================================== */
         .step-icon {
           width: 48px;
           height: 48px;
           border-radius: 50%;
           border: 1.5px solid ${MAROON};
-          background: #ffffff;
+          background: #fff;
 
           display: flex;
           align-items: center;
@@ -313,11 +409,32 @@ export default function StructuredApproachSection() {
 
           position: relative;
           z-index: 2;
-
           flex-shrink: 0;
+
+          /* Animation */
+          opacity: 0;
+          transform: translateY(25px);
+
+          transition:
+            opacity 0.5s ease,
+            transform 0.65s cubic-bezier(
+              0.22,
+              1,
+              0.36,
+              1
+            );
+
+          transition-delay: 0s;
+
+          will-change: opacity, transform;
         }
 
-        /* ================= TITLE ================= */
+        .step-card-visible .step-icon {
+          opacity: 1;
+          transform: translateY(0);
+
+          transition-delay: var(--icon-delay);
+        }
 
         .step-card h3 {
           font-size: 17px;
@@ -327,17 +444,16 @@ export default function StructuredApproachSection() {
           line-height: 1.35;
         }
 
-        /* ================= DESCRIPTION ================= */
-
         .step-card p {
           font-size: 14px;
           line-height: 1.6;
-          color: #555555;
+          color: #555;
           margin: 0;
         }
 
-        /* ================= LARGE LAPTOP ================= */
-
+        /* =====================================================
+           TABLET
+        ===================================================== */
         @media (max-width: 1200px) {
           .structured-approach-section {
             padding: 65px 35px;
@@ -346,14 +462,14 @@ export default function StructuredApproachSection() {
           .structured-grid {
             column-gap: 35px;
             row-gap: 65px;
-
             transform: translateX(25px);
             width: calc(100% - 25px);
           }
         }
 
-        /* ================= TABLET ================= */
-
+        /* =====================================================
+           SMALL TABLET
+        ===================================================== */
         @media (max-width: 900px) {
           .structured-approach-section {
             padding: 60px 30px;
@@ -370,7 +486,6 @@ export default function StructuredApproachSection() {
           .structured-grid {
             column-gap: 28px;
             row-gap: 60px;
-
             transform: translateX(15px);
             width: calc(100% - 15px);
           }
@@ -388,8 +503,9 @@ export default function StructuredApproachSection() {
           }
         }
 
-        /* ================= SMALL TABLET ================= */
-
+        /* =====================================================
+           MOBILE
+        ===================================================== */
         @media (max-width: 768px) {
           .structured-approach-section {
             padding: 55px 25px;
@@ -410,7 +526,6 @@ export default function StructuredApproachSection() {
           .structured-grid {
             grid-template-columns: 1fr;
             row-gap: 42px;
-
             transform: translateX(0);
             width: 100%;
           }
@@ -428,8 +543,9 @@ export default function StructuredApproachSection() {
           }
         }
 
-        /* ================= MOBILE ================= */
-
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
         @media (max-width: 480px) {
           .structured-approach-section {
             padding: 45px 20px;
@@ -469,8 +585,9 @@ export default function StructuredApproachSection() {
           }
         }
 
-        /* ================= VERY SMALL MOBILE ================= */
-
+        /* =====================================================
+           EXTRA SMALL MOBILE
+        ===================================================== */
         @media (max-width: 360px) {
           .structured-approach-section {
             padding: 40px 16px;
@@ -482,6 +599,22 @@ export default function StructuredApproachSection() {
 
           .structured-grid {
             row-gap: 35px;
+          }
+
+          .step-icon {
+            width: 44px;
+            height: 44px;
+          }
+        }
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+        @media (prefers-reduced-motion: reduce) {
+          .step-icon {
+            opacity: 1;
+            transform: none;
+            transition: none;
           }
         }
       `}</style>

@@ -8,7 +8,7 @@ const ROWS = [
     title: "CONNECT PEOPLE",
     copy:
       "Empowering teams with actionable insights rather than burying them in data entry. Connected operations mean employees spend less time searching for information and more time executing high-value strategic initiatives.",
-    image: "/OverlayShadow2.png",
+    image: "/AI visualization.png",
     imageSide: "right",
   },
   {
@@ -42,7 +42,7 @@ function Row({ step, title, copy, image, imageSide }) {
     <div>
       {/* Heading - Plus Jakarta Sans */}
       <span
-        className="block text-[13px] tracking-[0.14em] font-semibold text-[#8C2F3B] mb-3"
+        className="block text-[13px] tracking-[0.14em] font-semibold text-[#730042] mb-3"
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         {step} — {title}
@@ -87,8 +87,9 @@ function Row({ step, title, copy, image, imageSide }) {
 
 export default function ConnectSection() {
   return (
-    <div className="w-full bg-[#F7F6F3] flex items-center justify-center px-6 py-16">
-      <div className="max-w-4xl w-full divide-y divide-[#E2DED5]">
+    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+    <div className="w-full bg-[#F7F6F3] px-4 py-16 sm:px-6 md:px-10 lg:px-[100px]">
+      <div className="w-full divide-y divide-[#E2DED5]">
         {ROWS.map((row) => (
           <Row key={row.step} {...row} />
         ))}

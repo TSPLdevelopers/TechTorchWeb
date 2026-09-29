@@ -12,42 +12,12 @@ const values = [
 
 export default function CoreFoundation() {
   return (
-    <section
-      className="w-full bg-[#F4F6FB] py-12 sm:py-14 md:py-16 lg:py-20 px-5 sm:px-8 lg:px-10 font-inter overflow-hidden"
-    >
-      <div
-        className="
-          w-full
-          max-w-6xl
-          mx-auto
-          grid
-          grid-cols-1
-          md:grid-cols-[240px_minmax(0,1fr)]
-          lg:grid-cols-[280px_minmax(0,1fr)]
-          gap-10
-          md:gap-8
-          lg:gap-10
-        "
-      >
+    <section className="w-full overflow-hidden bg-[#F4F6FB] px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20 font-inter">
+      <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-10">
         {/* ================= LEFT COLUMN ================= */}
-        <div
-          className="
-            w-full
-            md:self-start
-            md:-ml-2
-            lg:-ml-5
-          "
-        >
+        <div className="w-full max-w-xl lg:max-w-none lg:self-start">
           <h2
-            className="
-              text-[26px]
-              sm:text-[30px]
-              lg:text-[32px]
-              font-bold
-              mb-3
-              font-plus-jakarta
-              leading-tight
-            "
+            className="mb-3 text-[24px] font-bold leading-tight sm:text-[30px] lg:text-[32px]"
             style={{
               color: "#111827",
               fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -57,60 +27,39 @@ export default function CoreFoundation() {
           </h2>
 
           <div
-            className="w-10 h-[3px] mb-5 sm:mb-6"
+            className="mb-4 h-[3px] w-10 sm:mb-6"
             style={{ backgroundColor: "#9d174d" }}
           />
 
-          <p
-            className="
-              max-w-[360px]
-              text-[15px]
-              sm:text-[16px]
-              leading-relaxed
-              text-black
-              font-inter
-            "
-          >
+          <p className="max-w-[420px] text-[15px] leading-relaxed text-black sm:text-[16px] lg:max-w-[360px]">
             Everything we build is rooted in a steadfast commitment to
             foundational integrity and visionary execution.
           </p>
         </div>
 
         {/* ================= RIGHT COLUMN ================= */}
-        <div className="min-w-0 flex flex-col gap-5 sm:gap-6 font-inter">
-
+        <div className="flex min-w-0 flex-col gap-5 font-inter sm:gap-6">
           {/* ================= MISSION / VISION ================= */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
             {/* Mission */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm">
-              <img
-                src={MISSION_IMG}
-                alt="Mission"
-                className="
-                  w-full
-                  h-44
-                  sm:h-40
-                  md:h-44
-                  lg:h-48
-                  object-cover
-                "
-              />
+            <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+              <div className="aspect-[16/10] w-full sm:aspect-[4/3] lg:aspect-[16/10]">
+                <img
+                  src={MISSION_IMG}
+                  alt="Mission"
+                  className="h-full w-full object-cover"
+                />
+              </div>
 
-              <div className="p-5 sm:p-6">
+              <div className="p-4 sm:p-5 md:p-6">
                 <h3
-                  className="
-                    text-[18px]
-                    font-semibold
-                    mb-2
-                    font-inter
-                  "
+                  className="mb-2 text-[17px] font-semibold sm:text-[18px]"
                   style={{ color: "#111827" }}
                 >
                   Mission
                 </h3>
 
-                <p className="text-gray-500 text-sm leading-relaxed font-inter">
+                <p className="text-sm leading-relaxed text-gray-500">
                   Unlock transformative growth through trust, precision
                   engineering, and human ingenuity. We deliver solutions
                   that move markets.
@@ -119,34 +68,24 @@ export default function CoreFoundation() {
             </div>
 
             {/* Vision */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm">
-              <img
-                src={VISION_IMG}
-                alt="Vision"
-                className="
-                  w-full
-                  h-44
-                  sm:h-40
-                  md:h-44
-                  lg:h-48
-                  object-cover
-                "
-              />
+            <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+              <div className="aspect-[16/10] w-full sm:aspect-[4/3] lg:aspect-[16/10]">
+                <img
+                  src={VISION_IMG}
+                  alt="Vision"
+                  className="h-full w-full object-cover"
+                />
+              </div>
 
-              <div className="p-5 sm:p-6">
+              <div className="p-4 sm:p-5 md:p-6">
                 <h3
-                  className="
-                    text-[18px]
-                    font-semibold
-                    mb-2
-                    font-inter
-                  "
+                  className="mb-2 text-[17px] font-semibold sm:text-[18px]"
                   style={{ color: "#111827" }}
                 >
                   Vision
                 </h3>
 
-                <p className="text-gray-500 text-sm leading-relaxed font-inter">
+                <p className="text-sm leading-relaxed text-gray-500">
                   Building the world's most resilient digital foundations.
                   We envision an enterprise landscape where technology is
                   a frictionless enabler.
@@ -156,79 +95,34 @@ export default function CoreFoundation() {
           </div>
 
           {/* ================= CORE VALUES ================= */}
-          <div className="bg-white rounded-xl shadow-sm p-5 sm:p-6 lg:p-8">
-            <div
-              className="
-                flex
-                flex-col
-                lg:flex-row
-                lg:items-center
-                gap-6
-                lg:gap-8
-              "
-            >
+          <div className="rounded-xl bg-white p-4 shadow-sm sm:p-6 lg:p-8">
+            <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:gap-8">
               {/* Core Values Text */}
-              <div
-                className="
-                  w-full
-                  lg:w-64
-                  flex-shrink-0
-                "
-              >
+              <div className="w-full flex-shrink-0 lg:w-64">
                 <h3
-                  className="
-                    font-semibold
-                    text-[18px]
-                    mb-2
-                    font-inter
-                  "
+                  className="mb-2 text-[17px] font-semibold sm:text-[18px]"
                   style={{ color: "#111827" }}
                 >
                   Core Values
                 </h3>
 
-                <p className="text-gray-500 text-sm leading-relaxed font-inter">
+                <p className="text-sm leading-relaxed text-gray-500">
                   The principles that guide our architecture and
                   partnerships.
                 </p>
               </div>
 
               {/* Values */}
-              <div
-                className="
-                  grid
-                  grid-cols-1
-                  sm:grid-cols-3
-                  gap-3
-                  sm:gap-4
-                  flex-1
-                  w-full
-                "
-              >
+              <div className="grid w-full flex-1 grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
                 {values.map(({ icon: Icon, label }) => (
                   <div
                     key={label}
-                    className="
-                      min-h-[105px]
-                      border
-                      border-gray-100
-                      rounded-lg
-                      px-4
-                      py-5
-                      flex
-                      flex-col
-                      items-center
-                      justify-center
-                      gap-2
-                    "
+                    className="flex min-h-[90px] flex-col items-center justify-center gap-2 rounded-lg border border-gray-100 px-3 py-4 text-center sm:min-h-[105px] sm:px-4 sm:py-5"
                     style={{ backgroundColor: "#FAFAFB" }}
                   >
-                    <Icon
-                      size={20}
-                      color="#9d174d"
-                    />
+                    <Icon size={20} color="#9d174d" />
 
-                    <span className="text-sm font-medium text-gray-700 font-inter">
+                    <span className="text-sm font-medium text-gray-700">
                       {label}
                     </span>
                   </div>
@@ -236,7 +130,6 @@ export default function CoreFoundation() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

@@ -33,8 +33,9 @@ function Check() {
 
 export default function OperationalAdvantage() {
   return (
-    <div className="min-h-screen w-full bg-[#F7F4EF] flex items-center justify-center px-6 py-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-5xl w-full items-center">
+    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+    <div className="min-h-screen w-full bg-[#F7F4EF] flex items-center px-4 py-16 sm:px-6 md:px-10 lg:px-[100px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 w-full items-center">
 
         {/* Visual panel */}
         <div
