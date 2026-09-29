@@ -319,7 +319,7 @@ export default function HowWeWork() {
 
         .how-work-heading {
           text-align: center;
-          font-size: 30px;
+          font-size: 28px;
           font-weight: 700;
           line-height: 1.25;
           color: #141414;
@@ -334,7 +334,7 @@ export default function HowWeWork() {
 
         .how-work-description {
           text-align: center;
-          font-size: 17px;
+          font-size: 15px;
           font-weight: 400;
           color: #444444;
           line-height: 1.5;
