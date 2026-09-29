@@ -100,6 +100,12 @@ export default function InformationTechnologyGetInTouch() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        * {
+          box-sizing: border-box;
+        }
+
         :root {
           --it-beetroot: #730042;
           --it-dark: #181818;
@@ -107,137 +113,206 @@ export default function InformationTechnologyGetInTouch() {
           --it-light-text: #777;
         }
 
-        * {
-          box-sizing: border-box;
-        }
-
         .it-consultation-page {
           width: 100%;
           background: #fff;
           color: var(--it-dark);
           overflow: hidden;
-          font-family: Arial, Helvetica, sans-serif;
+          font-family: "Inter", Arial, Helvetica, sans-serif;
         }
 
-        /* ================= HERO ================= */
+        /* =========================================
+           HERO
+        ========================================= */
 
         .it-hero {
+          width: 100%;
           background: #fff;
-          padding: 45px 5% 55px;
+          padding: 70px 40px 75px;
         }
 
         .it-hero-container {
-          max-width: 1250px;
+          width: min(1250px, 100%);
           margin: 0 auto;
+
           display: grid;
-          grid-template-columns: 1.05fr 0.95fr;
+          grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
           gap: 58px;
           align-items: center;
+        }
+
+        .it-hero-content {
+          min-width: 0;
         }
 
         .it-eyebrow {
           display: inline-flex;
           align-items: center;
           gap: 8px;
+
           padding: 7px 14px;
+
           background: #ffe2ed;
           color: var(--it-beetroot);
+
           border-radius: 999px;
-          font-size: 11px;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 10px;
+          line-height: 1.3;
           font-weight: 700;
+          letter-spacing: 0.6px;
         }
 
         .it-eyebrow span {
           width: 5px;
           height: 5px;
+          flex-shrink: 0;
+
           border-radius: 50%;
           background: var(--it-beetroot);
         }
 
+        /* =========================================
+           HERO HEADING
+        ========================================= */
+
         .it-hero-content h1 {
-          margin: 23px 0 20px;
-          font-size: 35px;
+          max-width: 700px;
+
+          margin: 24px 0 20px;
+
+          color: var(--it-dark);
+
           font-family: "Plus Jakarta Sans", sans-serif;
-          line-height: 1.05;
-          letter-spacing: -2px;
-          font-weight: 600;
-          word-spacing: 6px;
+          font-size: 42px;
+          line-height: 1.15;
+          letter-spacing: -1.3px;
+          font-weight: 800;
         }
 
         .it-hero-content h1 span {
           color: var(--it-beetroot);
         }
 
+        /* =========================================
+           HERO SUBHEADING
+        ========================================= */
+
         .it-hero-description {
           max-width: 650px;
+
           margin: 0 0 30px;
+
           color: #696969;
-          font-family: "Inter";
+
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 14px;
-          line-height: 1.65;
+          line-height: 1.75;
+          font-weight: 500;
         }
 
-        /* ================= CONSULTATION CARDS ================= */
+        /* =========================================
+           CONSULTATION CARDS
+        ========================================= */
 
         .it-consultation-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 14px;
+          width: 100%;
           max-width: 690px;
+
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
         }
 
         .it-consultation-card {
           display: flex;
+          align-items: flex-start;
           gap: 12px;
-          padding: 12px 14px;
+
+          min-width: 0;
+          padding: 15px;
+
           background: #fff;
           border: 1px solid #eee;
-          border-radius: 10px;
+          border-radius: 11px;
+
           box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+        }
+
+        .it-consultation-card:hover {
+          transform: translateY(-3px);
+          border-color: #e5bfd1;
+          box-shadow: 0 9px 22px rgba(115, 0, 66, 0.07);
         }
 
         .it-card-icon {
           flex-shrink: 0;
-          color: var(--it-beetroot);
           padding-top: 2px;
+          color: var(--it-beetroot);
         }
 
         .it-consultation-card h3 {
           margin: 0 0 5px;
-          font-family: "Inter";
-          font-size: 14px;
-          font-weight: 500;
+
+          color: #222;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 13px;
+          line-height: 1.4;
+          font-weight: 700;
         }
 
         .it-consultation-card p {
           margin: 0;
+
           color: #777;
-          font-family: "Inter";
-          font-size: 12px;
-          line-height: 1.45;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 11.5px;
+          line-height: 1.5;
         }
 
-        /* ================= BUTTONS ================= */
+        /* =========================================
+           HERO BUTTONS
+        ========================================= */
 
         .it-hero-buttons {
           display: flex;
+          align-items: center;
           gap: 12px;
+
           margin-top: 28px;
         }
 
         .it-primary-btn,
         .it-secondary-btn {
+          min-height: 44px;
+
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 9px;
-          min-height: 42px;
+
           padding: 0 20px;
+
           border-radius: 8px;
-          font-size: 13px;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12px;
           font-weight: 600;
+
           cursor: pointer;
-          transition: 0.2s ease;
+
+          transition:
+            background 0.2s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
         }
 
         .it-primary-btn {
@@ -248,6 +323,8 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-primary-btn:hover {
           background: #5d0035;
+          transform: translateY(-1px);
+          box-shadow: 0 7px 16px rgba(115, 0, 66, 0.18);
         }
 
         .it-secondary-btn {
@@ -258,23 +335,32 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-secondary-btn:hover {
           background: #e7e7e7;
+          transform: translateY(-1px);
         }
 
-        /* ================= HERO IMAGE ================= */
+        /* =========================================
+           HERO IMAGE
+        ========================================= */
 
         .it-hero-image-wrapper {
           position: relative;
+
           width: 100%;
-          max-width: 460px;
+          max-width: 500px;
+
           margin-left: auto;
         }
 
         .it-hero-image {
           display: block;
+
           width: 100%;
-          height: 370px;
+          height: 410px;
+
           object-fit: cover;
-          border-radius: 15px;
+
+          border-radius: 17px;
+
           box-shadow: 0 25px 45px rgba(0, 0, 0, 0.13);
         }
 
@@ -282,57 +368,85 @@ export default function InformationTechnologyGetInTouch() {
           position: absolute;
           top: 20px;
           right: 20px;
+
           display: flex;
           align-items: center;
           gap: 9px;
-          padding: 11px 17px;
+
+          max-width: calc(100% - 40px);
+
+          padding: 10px 15px;
+
           background: rgba(255, 255, 255, 0.96);
+
           border-radius: 12px;
-          font-size: 12px;
+
+          color: #222;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 11px;
           font-weight: 600;
+
           box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
         }
 
         .it-label-dot {
           width: 7px;
           height: 7px;
+          flex-shrink: 0;
+
           border-radius: 50%;
           background: var(--it-beetroot);
         }
 
-       .it-image-bottom-card {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  padding: 9px 18px; /* only height reduced */
-  background: rgba(255, 255, 255, 0.97);
-  border-radius: 13px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
+        .it-image-bottom-card {
+          position: absolute;
+          left: 20px;
+          right: 20px;
+          bottom: 20px;
+
+          display: flex;
+          align-items: center;
+          gap: 13px;
+
+          padding: 10px 18px;
+
+          background: rgba(255, 255, 255, 0.97);
+
+          border-radius: 13px;
+
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
 
         .it-bottom-icon {
           width: 44px;
           height: 44px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           flex-shrink: 0;
+
           color: var(--it-beetroot);
           background: #ffe0eb;
+
           border-radius: 11px;
         }
 
         .it-bottom-content {
           flex: 1;
+          min-width: 0;
         }
 
         .it-bottom-content h4 {
           margin: 0 0 4px;
-          font-size: 14px;
+
+          color: #222;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 13px;
+          line-height: 1.4;
           font-weight: 700;
         }
 
@@ -340,14 +454,21 @@ export default function InformationTechnologyGetInTouch() {
           display: flex;
           align-items: center;
           gap: 7px;
+
           margin: 0;
+
           color: #666;
-          font-size: 11px;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 10px;
+          line-height: 1.4;
         }
 
         .it-bottom-content p span {
           width: 6px;
           height: 6px;
+          flex-shrink: 0;
+
           background: #18b779;
           border-radius: 50%;
         }
@@ -356,61 +477,87 @@ export default function InformationTechnologyGetInTouch() {
           display: flex;
           align-items: center;
           gap: 5px;
+
+          flex-shrink: 0;
+
           color: var(--it-beetroot);
-          font-size: 13px;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12px;
           font-weight: 700;
         }
 
-        /* ================= FORM ================= */
+        /* =========================================
+           FORM SECTION
+        ========================================= */
 
         .it-form-section {
-          padding: 75px 5% 85px;
+          padding: 80px 40px 90px;
           background: #faf9f6;
         }
 
         .it-form-card {
           width: 100%;
           max-width: 850px;
+
           margin: 0 auto;
-          padding: 43px 48px 38px;
+          padding: 46px 48px 40px;
+
           background: #fff;
           border-radius: 17px;
+
           box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
         }
 
         .it-form-heading > span,
         .it-process-heading > span {
           color: var(--it-beetroot);
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
+          line-height: 1.3;
           font-weight: 700;
+          letter-spacing: 0.8px;
         }
 
         .it-form-heading h2 {
-          margin: 12px 0 8px;
+          margin: 12px 0 9px;
+
+          color: #181818;
+
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 25px;
-          font-weight: 600;
-          line-height: 1.2;
+          font-size: 26px;
+          font-weight: 800;
+          line-height: 1.25;
           letter-spacing: -0.6px;
         }
 
         .it-form-heading p {
           max-width: 730px;
-          margin: 0 0 28px;
+
+          margin: 0 0 30px;
+
           color: #777;
-          font-family: "Inter";
-          font-size: 14px;
-          line-height: 1.55;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 13px;
+          line-height: 1.7;
+          font-weight: 500;
         }
+
+        /* =========================================
+           FORM GRID
+        ========================================= */
 
         .it-form-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 18px;
         }
 
         .it-field {
           width: 100%;
+          min-width: 0;
         }
 
         .it-field.full-width {
@@ -419,10 +566,14 @@ export default function InformationTechnologyGetInTouch() {
 
         .it-field label {
           display: block;
+
           margin-bottom: 7px;
-          font-family: "Inter";
-          font-size: 13px;
-          font-weight: 500;
+
+          color: #222;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12px;
+          font-weight: 600;
         }
 
         .it-field label span {
@@ -433,28 +584,39 @@ export default function InformationTechnologyGetInTouch() {
         .it-field select,
         .it-field textarea {
           width: 100%;
+
           border: 1px solid transparent;
           background: #f4f4f4;
+
           border-radius: 8px;
           outline: none;
-          font-family: inherit;
+
           color: #333;
-          transition: 0.2s ease;
+
+          font-family: "Inter", Arial, sans-serif;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
         }
 
         .it-field input,
         .it-field select {
-          height: 40px;
+          height: 42px;
           padding: 0 13px;
-          font-size: 13px;
+
+          font-size: 12px;
         }
 
         .it-field textarea {
-          min-height: 92px;
+          min-height: 100px;
+
           padding: 12px 13px;
+
           resize: vertical;
-          font-size: 13px;
-          line-height: 1.5;
+
+          font-size: 12px;
+          line-height: 1.55;
         }
 
         .it-field input::placeholder,
@@ -469,239 +631,361 @@ export default function InformationTechnologyGetInTouch() {
           background: #fff;
         }
 
-        /* ================= RADIO ================= */
+        /* =========================================
+           RADIO
+        ========================================= */
 
         .it-radio-row {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 12px;
         }
 
         .it-field .it-radio-box {
-          height: 40px;
+          height: 42px;
           width: 100%;
+
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 7px;
-          background: #f4f4f4;
-          border-radius: 8px;
-          font-size: 13px;
-          cursor: pointer;
+
           margin: 0;
           padding: 0;
+
+          background: #f4f4f4;
+          border-radius: 8px;
+
+          color: #333;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12px;
+          font-weight: 500;
+
+          cursor: pointer;
         }
 
         .it-field .it-radio-box input {
           width: 12px;
           height: 12px;
-          accent-color: var(--it-beetroot);
+
           margin: 0;
+
+          accent-color: var(--it-beetroot);
         }
 
-        /* ================= CHECKBOX ================= */
+        /* =========================================
+           CONSENT
+        ========================================= */
 
         .it-consent {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 9px;
+
           margin-top: 22px;
+
           color: #777;
-          font-size: 13px;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 11.5px;
+          line-height: 1.5;
+
           cursor: pointer;
         }
 
         .it-consent input {
           width: 13px;
           height: 13px;
-          margin: 0;
+
+          flex-shrink: 0;
+
+          margin: 1px 0 0;
+
           accent-color: var(--it-beetroot);
         }
 
-        /* ================= SUBMIT ================= */
+        /* =========================================
+           SUBMIT
+        ========================================= */
 
         .it-submit-btn {
           width: 100%;
-          height: 40px;
+          height: 42px;
+
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 9px;
+
           margin-top: 24px;
+
           border: none;
           border-radius: 10px;
+
           background: var(--it-beetroot);
           color: #fff;
-          font-family: "Inter";
-          font-size: 13px;
-          font-weight: 600;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+
           cursor: pointer;
-          transition: 0.2s ease;
+
+          transition:
+            background 0.2s ease,
+            transform 0.2s ease;
         }
 
         .it-submit-btn:hover {
           background: #5d0035;
+          transform: translateY(-1px);
         }
 
         .it-privacy-text {
           margin: 10px 0 0;
+
           text-align: center;
+
           color: #777;
-          font-family: "Inter";
-          font-size: 11px;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 10px;
+          line-height: 1.5;
         }
 
         .it-privacy-text a {
           color: var(--it-beetroot);
+          text-decoration: none;
         }
 
-        /* ================= PROCESS ================= */
+        /* =========================================
+           PROCESS SECTION
+        ========================================= */
 
         .it-process-section {
-          padding: 80px 5% 85px;
+          padding: 85px 40px 90px;
           background: #fff;
         }
 
         .it-process-heading {
-          text-align: center;
           max-width: 700px;
+
           margin: 0 auto 48px;
+
+          text-align: center;
         }
 
         .it-process-heading h2 {
-          margin: 11px 0 8px;
-          font-size: 28px;
+          margin: 11px 0 9px;
+
+          color: #181818;
+
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-weight: 600;
-          line-height: 1.2;
+          font-size: 30px;
+          font-weight: 800;
+          line-height: 1.25;
           letter-spacing: -0.7px;
         }
 
         .it-process-heading p {
           margin: 0;
+
           color: #777;
-          font-family: "Inter";
-          font-size: 14px;
-          line-height: 1.5;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 13px;
+          line-height: 1.65;
+          font-weight: 500;
         }
 
         .it-process-grid {
-          max-width: 1250px;
+          width: min(1250px, 100%);
+
           margin: 0 auto;
+
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 28px;
         }
 
         .it-process-card {
           min-height: 200px;
+
           padding: 27px;
+
           background: #fafafa;
           border: 1px solid #eee;
+
           border-radius: 14px;
+
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+        }
+
+        .it-process-card:hover {
+          transform: translateY(-4px);
+
+          border-color: #e5bfd1;
+
+          box-shadow: 0 10px 25px rgba(115, 0, 66, 0.06);
         }
 
         .it-step-number {
           width: 39px;
           height: 39px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           margin-bottom: 22px;
+
           background: #ffdce9;
           color: var(--it-beetroot);
+
           border-radius: 10px;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
         }
 
         .it-process-card h3 {
           margin: 0 0 11px;
+
+          color: #181818;
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 16px;
-          font-weight: 600;
-          line-height: 1.3;
+          font-weight: 700;
+          line-height: 1.4;
         }
 
         .it-process-card p {
           margin: 0;
+
           color: #777;
-          font-family: "Inter";
-          font-size: 13px;
-          line-height: 1.65;
+
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12px;
+          line-height: 1.7;
         }
 
-        /* ================= BOTTOM CTA ================= */
+        /* =========================================
+           BOTTOM CTA
+        ========================================= */
 
         .it-bottom-cta {
-          max-width: 1250px;
+          width: min(1250px, 100%);
+
           margin: 75px auto 0;
+
           padding: 42px 52px;
+
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: 40px;
+
           background: var(--it-beetroot);
+
           border-radius: 17px;
+
           box-shadow: 0 14px 30px rgba(115, 0, 66, 0.18);
+        }
+
+        .it-bottom-cta-content {
+          min-width: 0;
         }
 
         .it-bottom-cta h2 {
           margin: 0 0 12px;
+
           color: #fff;
+
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 24px;
-          font-weight: 600;
-          line-height: 1.2;
+          font-size: 25px;
+          font-weight: 800;
+          line-height: 1.3;
+          letter-spacing: -0.4px;
         }
 
         .it-bottom-cta p {
           max-width: 650px;
+
           margin: 0;
+
           color: rgba(255, 255, 255, 0.88);
-          font-family: "Inter";
-          font-size: 14px;
-          line-height: 1.65;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 12.5px;
+          line-height: 1.7;
+          font-weight: 500;
         }
 
         .it-bottom-cta button {
           flex-shrink: 0;
+
+          min-width: 165px;
+          height: 42px;
+
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 8px;
-          min-width: 165px;
-          height: 40px;
+
           padding: 0 18px;
+
           border: none;
           border-radius: 8px;
+
           background: #fff;
           color: var(--it-beetroot);
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
+
           cursor: pointer;
-          transition: 0.2s ease;
+
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
         }
 
         .it-bottom-cta button:hover {
-          transform: translateY(-1px);
+          transform: translateY(-2px);
+          box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
         }
 
-        /* ================= RESPONSIVE ================= */
+        /* =========================================
+           LARGE TABLET
+        ========================================= */
 
-        @media (max-width: 1200px) {
-          .it-hero-container,
-          .it-process-grid,
-          .it-bottom-cta {
-            max-width: 100%;
+        @media (max-width: 1100px) {
+          .it-hero {
+            padding: 60px 32px 65px;
           }
 
           .it-hero-container {
-            gap: 40px;
+            gap: 42px;
           }
 
-          .it-process-grid {
-            gap: 20px;
+          .it-hero-content h1 {
+            font-size: 38px;
+          }
+
+          .it-hero-image {
+            height: 380px;
+          }
+
+          .it-form-section,
+          .it-process-section {
+            padding-left: 32px;
+            padding-right: 32px;
           }
 
           .it-bottom-cta {
@@ -709,145 +993,78 @@ export default function InformationTechnologyGetInTouch() {
           }
         }
 
-        @media (max-width: 1000px) {
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 900px) {
           .it-hero-container {
             grid-template-columns: 1fr;
+            gap: 45px;
           }
 
           .it-hero-content {
-            min-width: 0;
+            max-width: 760px;
+            margin: 0 auto;
           }
 
           .it-hero-image-wrapper {
             width: 100%;
-            max-width: 620px;
-            margin: 10px auto 0;
-          }
-
-          .it-process-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .it-bottom-cta {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-
-          .it-bottom-cta p {
-            max-width: 100%;
-          }
-        }
-
-        @media (max-width: 700px) {
-          .it-hero {
-            padding: 50px 20px 65px;
-          }
-
-          .it-hero-content h1 {
-            font-size: clamp(30px, 8vw, 38px);
-            letter-spacing: -1.3px;
-            word-spacing: 2px;
-          }
-
-          .it-hero-description {
-            font-size: 14px;
-          }
-
-          .it-consultation-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .it-hero-buttons {
-            flex-direction: column;
-          }
-
-          .it-primary-btn,
-          .it-secondary-btn {
-            width: 100%;
-          }
-
-          .it-hero-image-wrapper {
-            max-width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
           }
 
           .it-hero-image {
-            height: 390px;
+            height: 410px;
           }
 
-          .it-image-label {
-            top: 12px;
-            right: 12px;
-            max-width: calc(100% - 24px);
-            white-space: normal;
-          }
-
-          .it-image-bottom-card {
-            left: 12px;
-            right: 12px;
-            bottom: 12px;
-            padding: 13px 14px;
-          }
-
-          .it-bottom-brand {
-            display: none;
-          }
-
-          .it-form-section {
-            padding: 50px 15px;
-          }
-
-          .it-form-card {
-            padding: 30px 20px;
-          }
-
-          .it-form-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .it-field,
-          .it-field.full-width {
-            min-width: 0;
-          }
-
-          .it-process-section {
-            padding: 55px 20px;
-          }
-
-          .it-process-heading h2 {
-            font-size: clamp(24px, 7vw, 28px);
+          .it-process-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
 
           .it-bottom-cta {
-            padding: 32px 25px;
-            gap: 25px;
-          }
-
-          .it-bottom-cta h2 {
-            font-size: 23px;
-          }
-
-          .it-bottom-cta button {
-            width: 100%;
+            align-items: flex-start;
           }
         }
 
-        @media (max-width: 480px) {
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 650px) {
           .it-hero {
-            padding: 40px 15px 50px;
+            padding: 48px 18px 55px;
           }
 
           .it-eyebrow {
             max-width: 100%;
-            font-size: 10px;
-            padding: 6px 11px;
+            font-size: 9px;
+            letter-spacing: 0.4px;
           }
 
           .it-hero-content h1 {
-            font-size: clamp(28px, 9vw, 34px);
+            margin-top: 20px;
+            margin-bottom: 18px;
+
+            font-size: 30px;
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+          }
+
+          .it-hero-description {
+            margin-bottom: 25px;
+
+            font-size: 12.5px;
+            line-height: 1.7;
+          }
+
+          .it-consultation-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
           }
 
           .it-consultation-card {
-            padding: 11px 12px;
+            padding: 13px;
           }
 
           .it-consultation-card h3 {
@@ -858,74 +1075,109 @@ export default function InformationTechnologyGetInTouch() {
             font-size: 11px;
           }
 
+          .it-hero-buttons {
+            flex-direction: column;
+            align-items: stretch;
+
+            margin-top: 22px;
+          }
+
+          .it-primary-btn,
+          .it-secondary-btn {
+            width: 100%;
+          }
+
           .it-hero-image {
-            height: 320px;
-            border-radius: 12px;
+            height: 350px;
           }
 
           .it-image-label {
+            top: 12px;
+            right: 12px;
+
+            max-width: calc(100% - 24px);
+
             padding: 9px 12px;
-            font-size: 10px;
+
+            font-size: 9.5px;
           }
 
           .it-image-bottom-card {
-            gap: 9px;
-            padding: 11px 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+
+            gap: 10px;
+
+            padding: 11px 13px;
           }
 
           .it-bottom-icon {
-            width: 38px;
-            height: 38px;
+            width: 39px;
+            height: 39px;
           }
 
           .it-bottom-content h4 {
-            font-size: 12px;
+            font-size: 11.5px;
           }
 
           .it-bottom-content p {
-            font-size: 10px;
+            font-size: 9px;
           }
 
+          .it-bottom-brand {
+            display: none;
+          }
+
+          /* FORM */
+
           .it-form-section {
-            padding: 40px 10px;
+            padding: 55px 15px;
           }
 
           .it-form-card {
-            padding: 25px 15px;
+            padding: 31px 20px;
             border-radius: 14px;
           }
 
           .it-form-heading h2 {
-            font-size: 22px;
+            font-size: 23px;
           }
 
           .it-form-heading p {
-            font-size: 13px;
+            font-size: 12px;
           }
 
-          .it-radio-row {
-            gap: 8px;
+          .it-form-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
           }
 
-          .it-field .it-radio-box {
-            gap: 5px;
+          .it-field.full-width {
+            margin-top: 15px;
           }
 
-          .it-consent {
-            align-items: flex-start;
-            line-height: 1.45;
-          }
-
-          .it-submit-btn {
-            height: 42px;
-          }
+          /* PROCESS */
 
           .it-process-section {
-            padding: 45px 15px;
+            padding: 58px 18px;
           }
 
           .it-process-heading {
-            margin-bottom: 35px;
+            margin-bottom: 34px;
+          }
+
+          .it-process-heading h2 {
+            font-size: 25px;
+          }
+
+          .it-process-heading p {
+            font-size: 12px;
+          }
+
+          .it-process-grid {
+            grid-template-columns: 1fr;
+            gap: 13px;
           }
 
           .it-process-card {
@@ -933,44 +1185,210 @@ export default function InformationTechnologyGetInTouch() {
             padding: 22px;
           }
 
+          /* CTA */
+
           .it-bottom-cta {
+            flex-direction: column;
+            align-items: stretch;
+
             margin-top: 50px;
-            padding: 28px 20px;
+
+            padding: 30px 22px;
+
+            gap: 25px;
+
             border-radius: 14px;
           }
 
           .it-bottom-cta h2 {
-            font-size: 21px;
+            font-size: 22px;
           }
 
           .it-bottom-cta p {
-            font-size: 13px;
+            font-size: 11.5px;
+          }
+
+          .it-bottom-cta button {
+            width: 100%;
           }
         }
 
-        @media (max-width: 360px) {
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 430px) {
           .it-hero {
-            padding-left: 12px;
-            padding-right: 12px;
+            padding: 40px 14px 48px;
+          }
+
+          .it-hero-content h1 {
+            font-size: 27px;
+            line-height: 1.22;
+          }
+
+          .it-hero-description {
+            font-size: 11.5px;
+          }
+
+          .it-consultation-card {
+            gap: 9px;
+            padding: 12px;
+          }
+
+          .it-consultation-card h3 {
+            font-size: 12px;
+          }
+
+          .it-consultation-card p {
+            font-size: 10.5px;
+          }
+
+          .it-hero-image {
+            height: 300px;
+            border-radius: 13px;
+          }
+
+          .it-image-label {
+            padding: 8px 10px;
+            font-size: 9px;
+          }
+
+          .it-image-bottom-card {
+            padding: 9px 10px;
+          }
+
+          .it-bottom-icon {
+            width: 35px;
+            height: 35px;
           }
 
           .it-form-section {
-            padding-left: 8px;
-            padding-right: 8px;
+            padding: 42px 10px;
           }
 
           .it-form-card {
-            padding-left: 13px;
-            padding-right: 13px;
+            padding: 25px 15px;
+          }
+
+          .it-form-heading h2 {
+            font-size: 21px;
+          }
+
+          .it-form-heading p {
+            font-size: 11.5px;
+          }
+
+          .it-field input,
+          .it-field select {
+            height: 40px;
+          }
+
+          .it-field textarea {
+            min-height: 90px;
+          }
+
+          .it-radio-row {
+            gap: 8px;
+          }
+
+          .it-field .it-radio-box {
+            font-size: 11px;
+          }
+
+          .it-process-section {
+            padding: 46px 14px;
+          }
+
+          .it-process-heading h2 {
+            font-size: 23px;
+          }
+
+          .it-process-card {
+            padding: 20px;
+          }
+
+          .it-process-card h3 {
+            font-size: 14px;
+          }
+
+          .it-process-card p {
+            font-size: 11px;
+          }
+
+          .it-bottom-cta {
+            padding: 27px 18px;
+          }
+
+          .it-bottom-cta h2 {
+            font-size: 20px;
+          }
+
+          .it-bottom-cta p {
+            font-size: 11px;
+          }
+        }
+
+        /* =========================================
+           VERY SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 350px) {
+          .it-hero {
+            padding-left: 11px;
+            padding-right: 11px;
+          }
+
+          .it-hero-content h1 {
+            font-size: 25px;
+          }
+
+          .it-form-section {
+            padding-left: 7px;
+            padding-right: 7px;
+          }
+
+          .it-form-card {
+            padding-left: 12px;
+            padding-right: 12px;
           }
 
           .it-radio-row {
             grid-template-columns: 1fr;
           }
 
+          .it-process-section {
+            padding-left: 11px;
+            padding-right: 11px;
+          }
+
           .it-bottom-cta {
-            padding-left: 17px;
-            padding-right: 17px;
+            padding-left: 15px;
+            padding-right: 15px;
+          }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          .it-consultation-card,
+          .it-primary-btn,
+          .it-secondary-btn,
+          .it-submit-btn,
+          .it-process-card,
+          .it-bottom-cta button {
+            transition: none;
+          }
+
+          .it-consultation-card:hover,
+          .it-primary-btn:hover,
+          .it-secondary-btn:hover,
+          .it-submit-btn:hover,
+          .it-process-card:hover,
+          .it-bottom-cta button:hover {
+            transform: none;
           }
         }
       `}</style>
@@ -1040,9 +1458,10 @@ export default function InformationTechnologyGetInTouch() {
                 </button>
 
               </div>
+
             </div>
 
-            {/* IMAGE */}
+            {/* ================= HERO IMAGE ================= */}
 
             <div className="it-hero-image-wrapper">
 
@@ -1064,12 +1483,16 @@ export default function InformationTechnologyGetInTouch() {
                 </div>
 
                 <div className="it-bottom-content">
-                  <h4>Senior Technology Advisory</h4>
+
+                  <h4>
+                    Senior Technology Advisory
+                  </h4>
 
                   <p>
                     <span />
                     Direct consultation with domain leads
                   </p>
+
                 </div>
 
                 <div className="it-bottom-brand">
@@ -1078,6 +1501,7 @@ export default function InformationTechnologyGetInTouch() {
                 </div>
 
               </div>
+
             </div>
 
           </div>
@@ -1094,7 +1518,9 @@ export default function InformationTechnologyGetInTouch() {
 
             <div className="it-form-heading">
 
-              <span>CONSULTATION INTAKE</span>
+              <span>
+                CONSULTATION INTAKE
+              </span>
 
               <h2>
                 Tell Us About Your Technology Requirements
@@ -1113,7 +1539,6 @@ export default function InformationTechnologyGetInTouch() {
               <div className="it-form-grid">
 
                 <div className="it-field">
-
                   <label>
                     01. Full Name <span>*</span>
                   </label>
@@ -1126,11 +1551,9 @@ export default function InformationTechnologyGetInTouch() {
                     placeholder="Enter your full name"
                     required
                   />
-
                 </div>
 
                 <div className="it-field">
-
                   <label>
                     02. Business Email <span>*</span>
                   </label>
@@ -1143,12 +1566,12 @@ export default function InformationTechnologyGetInTouch() {
                     placeholder="name@company.com"
                     required
                   />
-
                 </div>
 
                 <div className="it-field">
-
-                  <label>03. Phone Number</label>
+                  <label>
+                    03. Phone Number
+                  </label>
 
                   <input
                     type="tel"
@@ -1157,11 +1580,9 @@ export default function InformationTechnologyGetInTouch() {
                     onChange={handleChange}
                     placeholder="Enter your phone number"
                   />
-
                 </div>
 
                 <div className="it-field">
-
                   <label>
                     04. Company / Organization <span>*</span>
                   </label>
@@ -1174,7 +1595,6 @@ export default function InformationTechnologyGetInTouch() {
                     placeholder="Enter your company name"
                     required
                   />
-
                 </div>
 
               </div>
@@ -1191,7 +1611,6 @@ export default function InformationTechnologyGetInTouch() {
                   onChange={handleChange}
                   required
                 >
-
                   <option value="" disabled>
                     Select a service or technology area
                   </option>
@@ -1223,7 +1642,6 @@ export default function InformationTechnologyGetInTouch() {
                   <option value="technology-support">
                     Technology Support
                   </option>
-
                 </select>
 
               </div>
@@ -1313,11 +1731,9 @@ export default function InformationTechnologyGetInTouch() {
 
               <p className="it-privacy-text">
                 Your information is used to respond to your enquiry.{" "}
-
                 <a href="/privacy-policy">
                   View our Privacy Policy.
                 </a>
-
               </p>
 
             </form>
@@ -1326,13 +1742,15 @@ export default function InformationTechnologyGetInTouch() {
 
         </section>
 
-                {/* ================= ENGAGEMENT PROCESS ================= */}
+        {/* ================= ENGAGEMENT PROCESS ================= */}
 
         <section className="it-process-section">
 
           <div className="it-process-heading">
 
-            <span>ENGAGEMENT PROCESS</span>
+            <span>
+              ENGAGEMENT PROCESS
+            </span>
 
             <h2>
               From Requirement to Next Steps
@@ -1348,7 +1766,6 @@ export default function InformationTechnologyGetInTouch() {
           <div className="it-process-grid">
 
             {ENGAGEMENT_STEPS.map((step) => (
-
               <div
                 className="it-process-card"
                 key={step.number}
@@ -1358,21 +1775,24 @@ export default function InformationTechnologyGetInTouch() {
                   {step.number}
                 </div>
 
-                <h3>{step.title}</h3>
+                <h3>
+                  {step.title}
+                </h3>
 
-                <p>{step.description}</p>
+                <p>
+                  {step.description}
+                </p>
 
               </div>
-
             ))}
 
           </div>
 
-          {/* BOTTOM CTA */}
+          {/* ================= BOTTOM CTA ================= */}
 
           <div className="it-bottom-cta">
 
-            <div>
+            <div className="it-bottom-cta-content">
 
               <h2>
                 Let's Discuss Your Technology
