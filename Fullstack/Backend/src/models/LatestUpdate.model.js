@@ -6,19 +6,50 @@ const latestUpdateSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      maxlength: 200,
     },
+
     description: {
       type: String,
       required: true,
       trim: true,
     },
-    publishDate: {
+
+    category: {
+      type: String,
+      enum: ["update", "news", "announcement", "whitepaper"],
+      default: "update",
+    },
+
+    image: {
+      type: String,
+      default: "",
+    },
+
+    link: {
+      type: String,
+      default: "",
+    },
+
+    author: {
+      type: String,
+      default: "TechTorch",
+      trim: true,
+    },
+
+    status: {
+      type: String,
+      enum: ["published", "draft"],
+      default: "published",
+    },
+
+    publishedAt: {
       type: Date,
-      required: true,
+      default: Date.now,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 module.exports = mongoose.model("LatestUpdate", latestUpdateSchema);

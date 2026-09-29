@@ -24,7 +24,7 @@ import Section9 from "./components/section9";
 
 
 import AdminDashboard from "./pages/AdminDashboard.jsx";
-import NewsInsights from "./pages/News&Inshights.jsx";
+import NewsInsights from "./pages/NewsInsights.jsx";
 import JobOpenings from "./pages/JobOpenings.jsx";
 import Events from "./pages/Events.jsx";
 import LatestUpdate from "./pages/LatestUpdate.jsx";
@@ -594,7 +594,7 @@ function App() {
         />
 
         <Route
-          path="/News-Insights"
+          path="/news-insights"
           element={<NewsInsights />}
         />
 

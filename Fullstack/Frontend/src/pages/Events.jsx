@@ -1,15 +1,12 @@
 import { useState, useRef, useEffect, useMemo } from "react";
-import AdminSidebar from "../components/AdminSidebar.jsx";
 import {
   Plus, Calendar, Clock, MapPin, CircleCheck, Share2, Rocket, Sparkles,
   ClipboardList, Eye, Pencil, SlidersHorizontal, MonitorPlay, FileText,
-  X, Check, ChevronDown, Trash2, ArrowDownToLine, ArchiveRestore, Menu,
+  X, Check, ChevronDown, Trash2, ArrowDownToLine, ArchiveRestore,
 } from "lucide-react";
 
 const ACCENT = "#780042";
 const FONT = "Inter,sans-serif";
-
-const FORMATS = ["Hybrid", "In-Person", "Virtual"];
 
 const TIMEZONES = [
   "PST (UTC-8)",
@@ -75,12 +72,12 @@ const INITIAL_EVENTS = [
     title: "Global Enterprise AI & Autonomous Systems Summit 2026",
     summary:
       "Pioneering autonomous data fabrics, quantum vector algorithms, and institutional algorithmic governance with 500+ C-suite leaders.",
-    dateRange: "Nov 14 – 16, 2026",
-    timing: "09:00 AM – 05:30 PM PST (UTC-8)",
-    venue: "TechTorch Center, San Francisco",
-    format: "Hybrid",
-    tiers: [150, 350, 250],
-    registered: 578,
+    description: "",
+    image: "",
+    link: "",
+    date: "Nov 14 – 16, 2026",
+    time: "09:00 AM – 05:30 PM PST (UTC-8)",
+    location: "TechTorch Center, San Francisco",
   },
   {
     id: 2,
@@ -89,27 +86,28 @@ const INITIAL_EVENTS = [
     title: "European Enterprise Cyber Sovereignty Summit 2025",
     summary:
       "Three days of closed-door executive workshops in London on decentralized data sovereignty and NIS2 compliance frameworks.",
-    dateRange: "Oct 08 – 10, 2025",
-    timing: "09:00 AM – 05:00 PM GMT",
-    venue: "London, UK (Chatham House)",
-    format: "In-Person",
-    tiers: [140, 140, 140],
-    registered: 420,
+    description: "",
+    image: "",
+    link: "",
+    date: "Oct 08 – 10, 2025",
+    time: "09:00 AM – 05:00 PM GMT",
+    location: "London, UK (Chatham House)",
   },
 ];
 
+// Fields mirror Event.model.js: title, summary, description, tag, status, image, date, time, location, link
 function emptyForm() {
   return {
     id: null,
-    tag: "FLAGSHIP PLENARY",
+    tag: "",
     title: "",
-    dateRange: "",
-    timing: "",
-    venue: "",
-    format: "Hybrid",
-    tiers: [150, 350, 250],
     summary: "",
-    registered: 0,
+    description: "",
+    image: "",
+    date: "",
+    time: "",
+    location: "",
+    link: "",
   };
 }
 
@@ -155,14 +153,6 @@ export default function AddEventStudio() {
   const [previewEvent, setPreviewEvent] = useState(null); // when set, modal shows this event instead of the live form
   const [manageOpenId, setManageOpenId] = useState(null);
   const [compareOn, setCompareOn] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = sidebarOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [sidebarOpen]);
 
   const [dateOpen, setDateOpen] = useState(false);
   const [dateDraft, setDateDraft] = useState({ start: "", end: "" });
@@ -178,7 +168,7 @@ export default function AddEventStudio() {
       setDateOpen(false);
       return;
     }
-    updateForm({ dateRange: formatDateRange(dateDraft.start, dateDraft.end || dateDraft.start) });
+    updateForm({ date: formatDateRange(dateDraft.start, dateDraft.end || dateDraft.start) });
     setDateOpen(false);
   }
   function openTimePicker() {
@@ -186,7 +176,7 @@ export default function AddEventStudio() {
     setTimeOpen(true);
   }
   function applyTime() {
-    updateForm({ timing: formatTimeRange(timeDraft.start, timeDraft.end, timeDraft.tz) });
+    updateForm({ time: formatTimeRange(timeDraft.start, timeDraft.end, timeDraft.tz) });
     setTimeOpen(false);
   }
 
@@ -199,10 +189,6 @@ export default function AddEventStudio() {
   function updateForm(patch) {
     setForm((f) => ({ ...f, ...patch }));
   }
-  function updateTier(idx, value) {
-    setForm((f) => ({ ...f, tiers: f.tiers.map((t, i) => (i === idx ? Math.max(0, value) : t)) }));
-  }
-  const totalCapacity = form.tiers.reduce((a, b) => a + Number(b || 0), 0);
 
   function resetToNew() {
     setForm(emptyForm());
@@ -214,15 +200,15 @@ export default function AddEventStudio() {
   function loadIntoEditor(ev) {
     setForm({
       id: ev.id,
-      tag: ev.tag,
+      tag: ev.tag || "",
       title: ev.title,
-      dateRange: ev.dateRange,
-      timing: ev.timing,
-      venue: ev.venue,
-      format: ev.format,
-      tiers: [...ev.tiers],
-      summary: ev.summary,
-      registered: ev.registered,
+      summary: ev.summary || "",
+      description: ev.description || "",
+      image: ev.image || "",
+      date: ev.date || "",
+      time: ev.time || "",
+      location: ev.location || "",
+      link: ev.link || "",
     });
     setEditingId(ev.id);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -237,15 +223,15 @@ export default function AddEventStudio() {
       const base = {
         id: editingId ?? makeId(list),
         status,
-        tag: form.tag,
-        title: form.title,
-        summary: form.summary,
-        dateRange: form.dateRange || "Date TBD",
-        timing: form.timing || "Time TBD",
-        venue: form.venue || "Venue TBD",
-        format: form.format,
-        tiers: form.tiers,
-        registered: form.registered,
+        tag: form.tag.trim(),
+        title: form.title.trim(),
+        summary: form.summary.trim(),
+        description: form.description,
+        image: form.image.trim(),
+        date: form.date,
+        time: form.time,
+        location: form.location.trim(),
+        link: form.link.trim(),
       };
       if (editingId) {
         return list.map((e) => (e.id === editingId ? base : e));
@@ -298,27 +284,17 @@ export default function AddEventStudio() {
 
   const pv = previewEvent || {
     title: form.title || "Untitled Event",
-    dateRange: form.dateRange || "Date TBD",
-    venue: form.venue || "Venue TBD",
-    format: form.format,
+    tag: form.tag,
+    date: form.date,
+    time: form.time,
+    location: form.location,
     summary: form.summary,
-    tiers: form.tiers,
-    registered: form.registered,
+    description: form.description,
+    link: form.link,
   };
-  const pvTotal = pv.tiers.reduce((a, b) => a + Number(b || 0), 0) || 1;
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-stone-50 text-stone-900" style={{ fontFamily: FONT }}>
-      <AdminSidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
+    <div className="min-h-screen bg-stone-50 text-stone-900" style={{ fontFamily: FONT }}>
       <Toast toast={toast} />
 
       {showPreview && (
@@ -335,26 +311,24 @@ export default function AddEventStudio() {
               {previewEvent ? "EVENT DETAILS" : "LIVE PREVIEW"}
             </div>
             <h3 className="text-xl font-semibold text-stone-900 mb-2">{pv.title}</h3>
-            <div className="flex items-center gap-4 text-sm text-stone-600 mb-3">
+            <div className="flex items-center gap-4 text-sm text-stone-600 mb-3 flex-wrap">
               <span className="flex items-center gap-1.5">
-                <Calendar size={14} className="text-stone-400" /> {pv.dateRange}
+                <Calendar size={14} className="text-stone-400" /> {pv.date || "Date TBD"}
               </span>
               <span className="flex items-center gap-1.5">
-                <MapPin size={14} className="text-stone-400" /> {pv.venue}
+                <Clock size={14} className="text-stone-400" /> {pv.time || "Time TBD"}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <MapPin size={14} className="text-stone-400" /> {pv.location || "Venue TBD"}
               </span>
             </div>
             <p className="text-sm text-stone-500 leading-relaxed mb-4">{pv.summary || "No summary written yet."}</p>
-            <div>
-              <div className="flex items-center justify-between text-xs text-stone-500 mb-1.5">
-                <span>Capacity Registered</span>
-                <span className="font-medium text-stone-700">
-                  {pv.registered} / {pvTotal} ({Math.round((pv.registered / pvTotal) * 100)}%)
-                </span>
-              </div>
-              <div className="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
-                <div className="h-full rounded-full" style={{ width: `${Math.min(100, (pv.registered / pvTotal) * 100)}%`, backgroundColor: ACCENT }} />
-              </div>
-            </div>
+            {pv.description ? <p className="text-sm text-stone-500 leading-relaxed mb-4">{pv.description}</p> : null}
+            {pv.link ? (
+              <a href={pv.link} target="_blank" rel="noreferrer" className="text-sm underline" style={{ color: ACCENT }}>
+                {pv.link}
+              </a>
+            ) : null}
             <button
               onClick={() => setShowPreview(false)}
               className="mt-5 w-full py-2.5 rounded-lg text-white text-sm font-medium"
@@ -366,19 +340,11 @@ export default function AddEventStudio() {
         </div>
       )}
 
-      <div className="min-h-screen ">
+      <div className="min-h-screen">
         {/* Top bar */}
         <div className="bg-white border-b border-stone-200 px-4 sm:px-8 py-6">
-          <div className="relative flex items-center justify-between flex-wrap gap-4">
-            <button
-              type="button"
-              onClick={() => setSidebarOpen(true)}
-              className="lg:hidden absolute left-0 top-0 w-9 h-9 flex items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-600 z-10"
-              aria-label="Open menu"
-            >
-              <Menu size={18} />
-            </button>
-            <div className="lg:pl-0 pl-0">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div>
               <div className="text-xs text-stone-400 tracking-wide mb-2 flex items-center gap-1.5 flex-wrap">
                 <span>ENTERPRISE PORTAL</span>
                 <span>/</span>
@@ -454,8 +420,8 @@ export default function AddEventStudio() {
                     className="w-full flex items-center gap-2 border border-stone-200 rounded-lg px-4 py-3 text-sm bg-stone-50 text-left"
                   >
                     <Calendar size={15} className="text-stone-400 shrink-0" />
-                    <span className={form.dateRange ? "text-stone-800" : "text-stone-400"}>
-                      {form.dateRange || "Select date range"}
+                    <span className={form.date ? "text-stone-800" : "text-stone-400"}>
+                      {form.date || "Select date range"}
                     </span>
                     <ChevronDown size={14} className="text-stone-400 ml-auto shrink-0" />
                   </button>
@@ -505,8 +471,8 @@ export default function AddEventStudio() {
                     className="w-full flex items-center gap-2 border border-stone-200 rounded-lg px-4 py-3 text-sm bg-stone-50 text-left"
                   >
                     <Clock size={15} className="text-stone-400 shrink-0" />
-                    <span className={form.timing ? "text-stone-800" : "text-stone-400"}>
-                      {form.timing || "Select session time"}
+                    <span className={form.time ? "text-stone-800" : "text-stone-400"}>
+                      {form.time || "Select session time"}
                     </span>
                     <ChevronDown size={14} className="text-stone-400 ml-auto shrink-0" />
                   </button>
@@ -572,63 +538,21 @@ export default function AddEventStudio() {
                   <div className="flex items-center gap-2 border border-stone-200 rounded-lg px-4 py-3 text-sm bg-stone-50">
                     <MapPin size={15} className="text-stone-400 shrink-0" />
                     <input
-                      value={form.venue}
-                      onChange={(e) => updateForm({ venue: e.target.value })}
+                      value={form.location}
+                      onChange={(e) => updateForm({ location: e.target.value })}
                       placeholder="TechTorch Innovation Center, San Francisco, CA"
                       className="w-full bg-transparent focus:outline-none"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-stone-700 mb-1.5 block">Event Format &amp; Delivery</label>
-                  <div className="flex gap-2">
-                    {FORMATS.map((f) => {
-                      const active = form.format === f;
-                      return (
-                        <button
-                          key={f}
-                          onClick={() => updateForm({ format: f })}
-                          className={`flex-1 px-3 py-2.5 rounded-lg text-sm border ${
-                            active ? "text-white border-transparent font-medium" : "border-stone-200 text-stone-500 hover:bg-stone-50"
-                          }`}
-                          style={active ? { backgroundColor: ACCENT } : {}}
-                        >
-                          {f}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <label className="text-sm font-medium text-stone-700">Max Capacity &amp; Tier Allocations</label>
-                  <span className="text-xs bg-stone-100 text-stone-500 px-2.5 py-1 rounded-md font-medium">
-                    Total: {totalCapacity} Passes
-                  </span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {[
-                    { label: "Internal Teams / Engineers", tag: "Staff", tagStyle: "bg-rose-50 text-rose-500", note: "Invited Quota • Internal" },
-                    { label: "Enterprise Clients", tag: "Executive", tagStyle: "bg-stone-100 text-stone-500", note: "Invited Quota • Partner Tier" },
-                    { label: "Virtual Broadcasters", tag: "Remote", tagStyle: "bg-emerald-50 text-emerald-600", note: "Global Streaming Seats" },
-                  ].map((t, i) => (
-                    <div key={t.label} className="border border-stone-200 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-stone-700">{t.label}</span>
-                        <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${t.tagStyle}`}>{t.tag}</span>
-                      </div>
-                      <input
-                        type="number"
-                        min={0}
-                        value={form.tiers[i]}
-                        onChange={(e) => updateTier(i, Number(e.target.value))}
-                        className="text-2xl font-semibold text-stone-900 w-full bg-transparent border-b border-transparent hover:border-stone-200 focus:outline-none focus:border-stone-400"
-                      />
-                      <div className="text-xs text-stone-400 mt-1">{t.note}</div>
-                    </div>
-                  ))}
+                  <label className="text-sm font-medium text-stone-700 mb-1.5 block">Event Tag</label>
+                  <input
+                    value={form.tag}
+                    onChange={(e) => updateForm({ tag: e.target.value })}
+                    placeholder="FLAGSHIP PLENARY"
+                    className="w-full border border-stone-200 rounded-lg px-4 py-3 text-sm bg-stone-50 focus:outline-none focus:ring-2"
+                  />
                 </div>
               </div>
 
@@ -641,6 +565,38 @@ export default function AddEventStudio() {
                   placeholder="Convening 500+ Fortune 500 CIOs, enterprise architects, and engineering leaders..."
                   className="w-full border border-stone-200 rounded-lg px-4 py-3 text-sm text-stone-600 leading-relaxed bg-stone-50 focus:outline-none focus:ring-2 resize-y"
                 />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium text-stone-700 mb-1.5 block">Full Event Description</label>
+                <textarea
+                  value={form.description}
+                  onChange={(e) => updateForm({ description: e.target.value })}
+                  rows={5}
+                  placeholder="What the event covers, agenda highlights, who it's for..."
+                  className="w-full border border-stone-200 rounded-lg px-4 py-3 text-sm text-stone-600 leading-relaxed bg-stone-50 focus:outline-none focus:ring-2 resize-y"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="text-sm font-medium text-stone-700 mb-1.5 block">Event Image URL</label>
+                  <input
+                    value={form.image}
+                    onChange={(e) => updateForm({ image: e.target.value })}
+                    placeholder="https://..."
+                    className="w-full border border-stone-200 rounded-lg px-4 py-3 text-sm bg-stone-50 focus:outline-none focus:ring-2"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-stone-700 mb-1.5 block">Registration / Event Link</label>
+                  <input
+                    value={form.link}
+                    onChange={(e) => updateForm({ link: e.target.value })}
+                    placeholder="https://..."
+                    className="w-full border border-stone-200 rounded-lg px-4 py-3 text-sm bg-stone-50 focus:outline-none focus:ring-2"
+                  />
+                </div>
               </div>
 
               <div className="flex items-center justify-between pt-2 border-t border-stone-100 flex-wrap gap-3">
@@ -669,7 +625,7 @@ export default function AddEventStudio() {
             <div className="rounded-lg overflow-hidden border border-stone-200">
               <div className="h-40 overflow-hidden bg-stone-100">
                 <img
-                  src="/event-hall-image.png"
+                  src={form.image || "/event-hall-image.png"}
                   alt="TechTorch Enterprise Event"
                   className="w-full h-full object-cover"
                 />
@@ -678,15 +634,15 @@ export default function AddEventStudio() {
               <div className="p-4 space-y-3">
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-[10px] font-semibold" style={{ color: ACCENT }}>
-                    FLAGSHIP {form.format.toUpperCase()} PLENARY
+                    {form.tag || "EVENT TAG"}
                   </span>
-                  <span className="text-stone-400 text-xs">3 Days</span>
+                  <span className="text-stone-400 text-xs">{form.time || "Time TBD"}</span>
                 </div>
 
                 <div className="flex items-center justify-between gap-2">
-                  <span className="text-xs text-stone-500">{form.dateRange || "Date TBD"}</span>
+                  <span className="text-xs text-stone-500">{form.date || "Date TBD"}</span>
                   <span className="text-white text-[10px] font-medium px-2.5 py-1 rounded" style={{ backgroundColor: ACCENT }}>
-                    {form.venue ? form.venue.split(",").slice(-2).join(",").trim() || form.venue : "Venue TBD"}
+                    {form.location ? form.location.split(",").slice(-2).join(",").trim() || form.location : "Venue TBD"}
                   </span>
                 </div>
 
@@ -695,24 +651,6 @@ export default function AddEventStudio() {
                 <p className="text-sm text-stone-500 leading-relaxed">
                   {form.summary ? form.summary.slice(0, 90) + (form.summary.length > 90 ? "…" : "") : "Write a summary to see it here..."}
                 </p>
-
-                <div>
-                  <div className="flex items-center justify-between text-xs text-stone-500 mb-1.5">
-                    <span>Capacity Registered</span>
-                    <span className="font-medium text-stone-700">
-                      {form.registered} / {totalCapacity || 1} ({Math.round((form.registered / (totalCapacity || 1)) * 100)}%)
-                    </span>
-                  </div>
-                  <div className="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full"
-                      style={{
-                        width: `${Math.min(100, (form.registered / (totalCapacity || 1)) * 100)}%`,
-                        backgroundColor: ACCENT,
-                      }}
-                    />
-                  </div>
-                </div>
 
                 <div className="flex items-center gap-2 pt-1">
                   <button
@@ -745,8 +683,7 @@ export default function AddEventStudio() {
                 </div>
                 <h2 className="text-2xl font-semibold text-stone-900">Enterprise Events Schedule</h2>
                 <p className="text-sm text-stone-500 mt-1 max-w-lg">
-                  Monitor registration velocity, booking allocations, and historical archives across all
-                  institutional regions.
+                  Manage upcoming, draft and past events across all institutional regions.
                 </p>
               </div>
               <button
@@ -767,8 +704,6 @@ export default function AddEventStudio() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {events.map((ev) => {
-                const total = ev.tiers.reduce((a, b) => a + b, 0) || 1;
-                const pct = Math.round((ev.registered / total) * 100);
                 const isPast = ev.status === "past";
                 const isDraft = ev.status === "draft";
                 return (
@@ -796,16 +731,6 @@ export default function AddEventStudio() {
                         {ev.tag}
                       </span>
                       {!isPast && (
-                        <span className="flex items-center gap-1 text-[10px] font-semibold bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-full">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> {ev.format} Mode
-                        </span>
-                      )}
-                      {isPast && pct >= 100 && (
-                        <span className="ml-auto text-[10px] font-semibold bg-stone-100 text-stone-500 px-2.5 py-1 rounded-full">
-                          🔒 100% Sold Out
-                        </span>
-                      )}
-                      {!isPast && (
                         <span className="flex items-center gap-1 text-[10px] font-semibold border border-stone-200 text-stone-500 px-2.5 py-1 rounded-full">
                           <CircleCheck size={11} /> {isDraft ? "Unpublished" : "Confirmed"}
                         </span>
@@ -822,26 +747,14 @@ export default function AddEventStudio() {
 
                     <div className="flex items-center gap-6 text-sm text-stone-600 flex-wrap">
                       <span className="flex items-center gap-1.5">
-                        <Calendar size={14} className="text-stone-400" /> {ev.dateRange}
+                        <Calendar size={14} className="text-stone-400" /> {ev.date || "Date TBD"}
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <MapPin size={14} className="text-stone-400" /> {ev.venue}
+                        <Clock size={14} className="text-stone-400" /> {ev.time || "Time TBD"}
                       </span>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center justify-between text-xs text-stone-500 mb-1.5">
-                        <span>{isPast ? "Final Attendance (Verified Quota)" : "Allocated Capacity (Tier Quotas)"}</span>
-                        <span className="font-medium text-stone-700">
-                          {ev.registered} / {total} {isPast ? "Attendees" : `(${pct}%)`}
-                        </span>
-                      </div>
-                      <div className="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full"
-                          style={{ width: `${Math.min(100, pct)}%`, backgroundColor: isPast ? "#a8a29e" : ACCENT }}
-                        />
-                      </div>
+                      <span className="flex items-center gap-1.5">
+                        <MapPin size={14} className="text-stone-400" /> {ev.location || "Venue TBD"}
+                      </span>
                     </div>
 
                     <div className="flex items-center gap-3 pt-2 flex-wrap relative">

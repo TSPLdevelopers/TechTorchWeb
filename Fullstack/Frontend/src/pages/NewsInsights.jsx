@@ -1,6 +1,4 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import AdminSidebar from "../components/AdminSidebar.jsx";
-
 import {
   LayoutGrid,
   FileText,
@@ -32,15 +30,7 @@ import {
   Newspaper,
   Lightbulb,
   X,
-  Menu,
-
 } from "lucide-react";
-import {
-  getNews,
-  createNews,
-  updateNews,
-  deleteNews,
-} from "../api/adminDashboardApi";
 
 /* ----------------------------------------------------------------------
    Dashboard sync — self-contained, no external file needed.
@@ -114,15 +104,15 @@ function syncDashboard(articles, dispatches) {
       id: `news-a-${a.id}`,
       status: a.status || "Published",
       title: a.title,
-      domain: a.category,
+      category: a.category,
       author: a.author,
     })),
     ...dispatches.map((d) => ({
       id: `news-d-${d.id}`,
-      status: "Published",
+      status: d.status === "Draft" ? "Draft" : "Published",
       title: d.title,
-      domain: d.category,
-      author: "Press Desk",
+      category: d.category,
+      author: d.author || "",
     })),
   ];
 
@@ -324,12 +314,6 @@ function Toasts({ toasts }) {
 /* ---------------- MAIN COMPONENT ---------------- */
 
 export default function TechTorchCMS() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = sidebarOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [sidebarOpen]);
   const [tags, setTags] = useState([
     "Enterprise AI",
     "Cloud Architecture",
@@ -343,13 +327,9 @@ export default function TechTorchCMS() {
   const [authorOpen, setAuthorOpen] = useState(false);
   const [publishTiming, setPublishTiming] = useState("immediate");
   const [scheduleDate, setScheduleDate] = useState("");
-  const [scheduleTime, setScheduleTime] = useState("");
-  const [embargoed, setEmbargoed] = useState(false);
-  const [embargoDate, setEmbargoDate] = useState("");
-  const [embargoTime, setEmbargoTime] = useState("");
-  const [badgeBreaking, setBadgeBreaking] = useState(true);
-  const [badgeMediaKit, setBadgeMediaKit] = useState(true);
-  const [syndicate, setSyndicate] = useState(true);
+  const [description, setDescription] = useState("");
+  const [badgeBreaking, setBadgeBreaking] = useState(false);
+  const [badgeMediaKit, setBadgeMediaKit] = useState(false);
 
   const [coverImage, setCoverImage] = useState(null); // css background string
   const [libraryOpen, setLibraryOpen] = useState(false);
@@ -359,8 +339,7 @@ export default function TechTorchCMS() {
   const [charCount, setCharCount] = useState(1640);
 
   const [dispatches, setDispatches] = useState(() => loadDispatches(INITIAL_DISPATCHES));
-  const [articles, setArticles] = useState([]);
-const [newsLoading, setNewsLoading] = useState(true); 
+  const [articles, setArticles] = useState(() => loadArticles(INITIAL_ARTICLES));
   const [dispatchFilter, setDispatchFilter] = useState("All Releases");
   const [dispatchSearch, setDispatchSearch] = useState("");
   const [articleSearch, setArticleSearch] = useState("");
@@ -385,48 +364,6 @@ const [newsLoading, setNewsLoading] = useState(true);
     setToasts((t) => [...t, { id, message }]);
     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 2200);
   }, []);
-  useEffect(() => {
-  const loadNewsFromBackend = async () => {
-    try {
-      setNewsLoading(true);
-
-      const news = await getNews();
-
-      const publishedArticles = news
-        .filter(
-          (item) =>
-            item.status === "Published" &&
-            item.format !== "News & Press Release"
-        )
-        .map((item) => ({
-          id: item._id,
-          title: item.title || "Untitled",
-          slug: item.slug || "",
-          category: item.category || "General",
-          author: item.author || "TechTorch",
-          status: item.status || "Published",
-          date: item.createdAt
-            ? new Date(item.createdAt).toLocaleDateString()
-            : "Recently",
-          metric: "0 views",
-          read: "1m read",
-        }));
-
-      setArticles(publishedArticles);
-    } catch (error) {
-      console.error(
-        "Failed to load News from backend:",
-        error
-      );
-
-      showToast("Failed to load published articles");
-    } finally {
-      setNewsLoading(false);
-    }
-  };
-
-  loadNewsFromBackend();
-}, [showToast]);
 
   /* ----- cover image ----- */
   const readFileAsCover = (file) => {
@@ -484,10 +421,72 @@ const [newsLoading, setNewsLoading] = useState(true);
   const removeTag = (t) => setTags((prev) => prev.filter((x) => x !== t));
 
   /* ----- top actions ----- */
-  const saveDraft = () => {
-    setDraftStatus("Draft Saved just now");
-    showToast("Draft saved");
+  /* One record shape = News.model.js fields
+     (title, description, image, category, author, status, format, dek, dateline,
+      wire, tags, breakingSpotlight, mediaKitReady, body, publishTiming, scheduledDate).
+     slug / wireStatus / statusDate are generated the same way the backend does. */
+  const submitRecord = (status) => {
+    const title = titleRef.current?.innerText.trim();
+    if (!title || title === "Untitled Press Release") {
+      showToast("Add a title before saving");
+      return;
+    }
+    const isDraft = status === "Draft";
+    const dek = subtitleRef.current?.innerText.trim() || "";
+    const bodyHtml = bodyRef.current?.innerText.trim() === "Type here..." ? "" : bodyRef.current?.innerHTML || "";
+    const record = {
+      id: nextId.current++,
+      title,
+      description: description.trim() || dek,
+      image: coverImage || "",
+      category,
+      author: author.name.trim(),
+      status,
+      format,
+      dek,
+      dateline: datelineRef.current?.innerText.trim() || "",
+      wire: wireRef.current?.innerText.trim() || "",
+      tags,
+      breakingSpotlight: badgeBreaking,
+      mediaKitReady: badgeMediaKit,
+      body: bodyHtml,
+      publishTiming,
+      scheduledDate: publishTiming === "scheduled" ? scheduleDate : "",
+      wireStatus: isDraft ? "Draft" : "Dispatched",
+      statusDate: isDraft ? "Draft" : "Just now",
+    };
+
+    if (format === "News & Press Release") {
+      setDispatches((prev) => [
+        {
+          ...record,
+          icon: Megaphone,
+          badge: badgeBreaking ? "BREAKING" : null,
+          slug: slugify("/press/", title),
+          status: isDraft ? "Draft" : "Published",
+          reach: "0 syndications",
+          outlets: "0 Outlets",
+        },
+        ...prev,
+      ]);
+      showToast(isDraft ? "Press release saved as draft" : "Press release dispatched");
+    } else {
+      setArticles((prev) => [
+        {
+          ...record,
+          slug: slugify("/insights/", title),
+          date: "Just now",
+          metric: isDraft ? "Unpublished" : "0 views",
+          read: `${readMinutes}m read`,
+        },
+        ...prev,
+      ]);
+      showToast(isDraft ? "Saved as draft" : "Article published");
+    }
+    setDraftStatus(isDraft ? "Draft Saved just now" : "Published");
   };
+
+  const saveDraft = () => submitRecord("Draft");
 
   const openPreview = () => {
     setPreviewData({
@@ -501,140 +500,7 @@ const [newsLoading, setNewsLoading] = useState(true);
     setPreviewOpen(true);
   };
 
-  const publish = async () => {
-  const title = titleRef.current?.innerText.trim();
-
-  if (!title) {
-    showToast("Add a title before publishing");
-    return;
-  }
-
-  try {
-    const newsData = {
-      title,
-      description: bodyRef.current?.innerText.trim() || "",
-      image: coverImage || "",
-      category,
-      author: author.name,
-      status: draftMode ? "Draft" : "Published",
-
-      format,
-      dek: subtitleRef.current?.innerText.trim() || "",
-      dateline: datelineRef.current?.innerText.trim() || "",
-      wire: wireRef.current?.innerText.trim() || "",
-      tags,
-
-      breakingSpotlight: badgeBreaking,
-      mediaKitReady: badgeMediaKit,
-
-      body: bodyRef.current?.innerHTML || "",
-
-      publishTiming,
-
-      scheduledDate:
-        publishTiming === "scheduled"
-          ? `${scheduleDate} ${scheduleTime}`
-          : "",
-
-      slug: slugify(
-        format === "News & Press Release"
-          ? "/press/"
-          : "/insights/",
-        title
-      ),
-
-      wireStatus:
-        format === "News & Press Release"
-          ? "Dispatched"
-          : "",
-
-      statusDate: new Date().toISOString(),
-    };
-
-    // Backend me save
-    await createNews(newsData);
-
-    // Latest data backend se lao
-    const latestNews = await getNews();
-
-    if (format === "News & Press Release") {
-      const mappedDispatches = latestNews
-        .filter(
-          (item) =>
-            item.format === "News & Press Release"
-        )
-        .map((item) => ({
-          id: item._id,
-          icon: Megaphone,
-          title: item.title,
-          badge: item.breakingSpotlight
-            ? "BREAKING"
-            : null,
-          dateline: item.dateline || "",
-          slug: item.slug || "",
-          category: item.category || "",
-          wire: item.wire || "",
-          status: item.wireStatus || "Dispatched",
-          statusDate:
-            item.statusDate || item.createdAt,
-          reach: "0 syndications",
-          outlets: "0 Outlets",
-        }));
-
-      setDispatches(mappedDispatches);
-
-      showToast("Press release dispatched");
-    } else {
-      const mappedArticles = latestNews
-        .filter(
-          (item) =>
-            item.format !== "News & Press Release"
-        )
-        .map((item) => ({
-          id: item._id,
-          title: item.title,
-          slug: item.slug || "",
-          category: item.category || "",
-          author: item.author || "",
-          status: item.status || "Draft",
-          date: item.createdAt
-            ? new Date(
-                item.createdAt
-              ).toLocaleDateString()
-            : "Just now",
-          metric:
-            item.status === "Draft"
-              ? "Unpublished"
-              : "0 views",
-          read: "1m read",
-        }));
-
-      setArticles(mappedArticles);
-
-      showToast(
-        draftMode
-          ? "Saved as draft"
-          : "Article published"
-      );
-    }
-
-    setDraftStatus(
-      draftMode
-        ? "Draft Saved just now"
-        : "Published"
-    );
-  } catch (error) {
-    console.error(
-      "Publish News Error:",
-      error
-    );
-
-    showToast(
-      error.message ||
-        "Failed to save news"
-    );
-  }
-};
+  const publish = () => submitRecord(draftMode ? "Draft" : "Published");
 
   const startNewPressRelease = () => {
     setFormat("News & Press Release");
@@ -644,6 +510,7 @@ const [newsLoading, setNewsLoading] = useState(true);
     if (bodyRef.current)
       bodyRef.current.innerHTML = "<p class=\"text-stone-400\">Type here...</p>";
     updateWordCount();
+    setDescription("");
     setCoverImage(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
     titleRef.current?.focus();
@@ -653,12 +520,12 @@ const [newsLoading, setNewsLoading] = useState(true);
   /* Every article / press release published here is saved locally and
      mirrored into the Admin Dashboard's Publishing Directory, live —
      no separate file needed, it all happens right here. */
-
   useEffect(() => {
-  saveArticles(articles);
-  syncDashboard(articles, dispatches);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [articles]);
+    saveArticles(articles);
+    syncDashboard(articles, dispatches);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [articles]);
+
   useEffect(() => {
     saveDispatches(dispatches);
     syncDashboard(articles, dispatches);
@@ -759,37 +626,17 @@ const [newsLoading, setNewsLoading] = useState(true);
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900" style={{ fontFamily: "Inter, sans-serif" }}>
-      <AdminSidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-      />
-
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
-      <div className="min-h-screen ">
+      <div className="min-h-screen">
         {/* Top bar */}
-        <header className="flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 border-b border-stone-200 bg-white flex-wrap">
-          <button
-            type="button"
-            onClick={() => setSidebarOpen(true)}
-            className="lg:hidden w-9 h-9 shrink-0 flex items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-600"
-            aria-label="Open menu"
-          >
-            <Menu size={18} />
-          </button>
-          <div className="w-full sm:flex-1 sm:max-w-xl relative">
+        <header className="flex items-center gap-4 px-4 sm:px-6 py-3 border-b border-stone-200 bg-white flex-wrap">
+          <div className="flex-1 max-w-xl relative">
             <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
               placeholder="Search records, nodes, taxonomy..."
               className="w-full pl-9 pr-3 py-2 rounded-md bg-stone-50 border border-stone-200 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-[#6d1b3f]/30"
             />
           </div>
-          <div className="ml-auto flex items-center gap-2 text-sm text-right shrink-0">
+          <div className="ml-auto flex items-center gap-2 text-sm text-right">
             <div>
               <div className="font-medium leading-tight">Admin</div>
               <div className="text-xs text-stone-400 leading-tight">Editor</div>
@@ -802,7 +649,7 @@ const [newsLoading, setNewsLoading] = useState(true);
 
         <main className="p-4 sm:p-6 space-y-6">
           {/* Breadcrumb + actions */}
-          <div className="bg-white rounded-lg border border-stone-200 p-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+          <div className="bg-white rounded-lg border border-stone-200 p-4 flex items-center justify-between flex-wrap gap-3">
             <div className="flex items-center gap-2 text-sm text-stone-500 flex-wrap">
               <span>TechTorch CMS</span>
               <span>/</span>
@@ -814,24 +661,24 @@ const [newsLoading, setNewsLoading] = useState(true);
                 {draftStatus}
               </span>
             </div>
-            <div className="w-full lg:w-auto flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-2">
               <button
                 onClick={openPreview}
-                className="flex items-center justify-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50 flex-1 sm:flex-none"
+                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50"
               >
                 <Eye size={14} />
                 Preview
               </button>
               <button
                 onClick={saveDraft}
-                className="flex items-center justify-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50 flex-1 sm:flex-none"
+                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50"
               >
                 <Save size={14} />
                 Save Draft
               </button>
               <button
                 onClick={publish}
-                className="flex items-center justify-center gap-1.5 text-sm px-3 py-1.5 rounded-md bg-[#6d1b3f] text-white hover:bg-[#5c1735] flex-1 sm:flex-none"
+                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md bg-[#6d1b3f] text-white hover:bg-[#5c1735]"
               >
                 <Play size={14} />
                 Publish Article
@@ -842,7 +689,7 @@ const [newsLoading, setNewsLoading] = useState(true);
           {/* Editor + Right Rail */}
           <div className="lg:flex gap-6 items-start lg:flex-row">
             {/* Editor column */}
-            <div className="flex-1 min-w-0 bg-white rounded-lg border border-stone-200 p-4 sm:p-6 space-y-5">
+            <div className="flex-1 min-w-0 bg-white rounded-lg border border-stone-200 p-6 space-y-5">
               <FieldBlock label="PUBLICATION FORMAT — Select schema archetype">
                 <div className="flex gap-2">
                   <button
@@ -955,16 +802,6 @@ const [newsLoading, setNewsLoading] = useState(true);
                     ))}
                   </div>
                 )}
-                <span className="text-stone-400 flex items-center gap-1">~{readMinutes} min read</span>
-                <label className="flex items-center gap-1.5 text-stone-400 cursor-pointer select-none">
-                  <input
-                    type="checkbox"
-                    checked={draftMode}
-                    onChange={(e) => setDraftMode(e.target.checked)}
-                    className="accent-amber-500 w-3.5 h-3.5 cursor-pointer"
-                  />
-                  Draft Mode
-                </label>
               </div>
 
               {/* Title */}
@@ -990,6 +827,16 @@ const [newsLoading, setNewsLoading] = useState(true);
                   autonomous systems.
                 </p>
               </div>
+
+              <FieldBlock label="SHORT DESCRIPTION">
+                <textarea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  rows={2}
+                  placeholder="Short excerpt shown on news listing cards"
+                  className="w-full border border-stone-200 rounded-md px-3 py-2 text-sm bg-stone-50 text-stone-700 outline-none focus:ring-2 focus:ring-[#6d1b3f]/20 resize-y"
+                />
+              </FieldBlock>
 
               {/* Image drop zone */}
 <div
@@ -1240,38 +1087,8 @@ const [newsLoading, setNewsLoading] = useState(true);
           })
         }
         placeholder="Enter author name"
-        onFocus={(e) => {
-          if (e.target.value === "Dr. Aris Thorne") {
-            setAuthor({ ...author, name: "" });
-          }
-        }}
         className="w-full border border-stone-200 rounded-md px-3 py-2 text-sm text-stone-700 outline-none focus:ring-2 focus:ring-[#6d1b3f]/20"
       />
-
-      <input
-        type="text"
-        value={author.title}
-        onChange={(e) =>
-          setAuthor({
-            ...author,
-            title: e.target.value,
-          })
-        }
-        placeholder="Enter author designation"
-        onFocus={(e) => {
-          if (e.target.value === "Chief AI Architect") {
-            setAuthor({ ...author, title: "" });
-          }
-        }}
-        className="w-full mt-2 border border-stone-200 rounded-md px-3 py-2 text-xs text-stone-500 outline-none focus:ring-2 focus:ring-[#6d1b3f]/20"
-      />
-    </div>
-  </FieldBlock>
-
-  <FieldBlock label="READING TIME">
-    <div className="border border-stone-200 rounded-md px-3 py-2 text-sm bg-stone-50 flex items-center justify-between">
-      <span className="text-stone-700 font-medium">~{readMinutes} min read</span>
-      <span className="text-xs text-stone-400">{wordCount} words</span>
     </div>
   </FieldBlock>
 
@@ -1305,12 +1122,6 @@ const [newsLoading, setNewsLoading] = useState(true);
                             onChange={(e) => setScheduleDate(e.target.value)}
                             className="border border-stone-200 rounded-md px-2 py-1 text-xs"
                           />
-                          <input
-                            type="time"
-                            value={scheduleTime}
-                            onChange={(e) => setScheduleTime(e.target.value)}
-                            className="border border-stone-200 rounded-md px-2 py-1 text-xs"
-                          />
                         </div>
                       )}
                     </div>
@@ -1337,71 +1148,6 @@ const [newsLoading, setNewsLoading] = useState(true);
                     </button>
                   </FieldBlock>
                 </div>
-              </div>
-
-              <div className="bg-white rounded-lg border border-stone-200 p-4">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2 font-medium text-sm">
-                    <Megaphone size={15} />
-                    News &amp; Media Channel
-                  </div>
-                  <span className="text-[10px] bg-rose-50 text-[#6d1b3f] px-2 py-0.5 rounded-full font-medium">
-                    PRESS WIRE
-                  </span>
-                </div>
-
-                <FieldBlock label="PRESS OFFICER LIAISON">
-                  <div className="flex items-center gap-2 border border-stone-200 rounded-md px-3 py-2">
-                    <div className="w-8 h-8 rounded-full bg-rose-100 text-[#6d1b3f] text-xs flex items-center justify-center font-semibold">
-                      PR
-                    </div>
-                    <div className="text-sm">
-                      <div className="font-medium">Claire Montrose</div>
-                      <div className="text-xs text-stone-400">press@techtorch.solutions</div>
-                    </div>
-                  </div>
-                </FieldBlock>
-
-                <div className="mt-4">
-                  <FieldBlock label="EMBARGO DATE & TIME">
-                    <button
-                      onClick={() => setEmbargoed((v) => !v)}
-                      className="w-full flex items-center justify-between border border-stone-200 rounded-md px-3 py-2 text-sm"
-                    >
-                      <span>{embargoed ? "Embargoed until:" : "Immediate Release (No Embargo)"}</span>
-                      {!embargoed && <span className="text-emerald-500">✓</span>}
-                    </button>
-                    {embargoed && (
-                      <div className="pt-2 flex gap-2">
-                        <input
-                          type="date"
-                          value={embargoDate}
-                          onChange={(e) => setEmbargoDate(e.target.value)}
-                          className="border border-stone-200 rounded-md px-2 py-1 text-xs"
-                        />
-                        <input
-                          type="time"
-                          value={embargoTime}
-                          onChange={(e) => setEmbargoTime(e.target.value)}
-                          className="border border-stone-200 rounded-md px-2 py-1 text-xs"
-                        />
-                      </div>
-                    )}
-                  </FieldBlock>
-                </div>
-
-                <label className="flex items-center justify-between mt-4 text-sm">
-                  <span className="flex items-center gap-1.5 text-stone-600">
-                    <Rss size={13} />
-                    Syndicate to Newsroom RSS
-                  </span>
-                  <input
-                    type="checkbox"
-                    checked={syndicate}
-                    onChange={(e) => setSyndicate(e.target.checked)}
-                    className="accent-[#6d1b3f]"
-                  />
-                </label>
               </div>
 
               <div className="bg-amber-50 border border-amber-100 rounded-lg p-4">
