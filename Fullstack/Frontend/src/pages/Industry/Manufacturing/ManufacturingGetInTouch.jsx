@@ -114,17 +114,21 @@ export default function ManufacturingGetInTouch() {
     }
 
     console.log("Manufacturing enquiry:", formData);
+
+    alert("Thank you! Your enquiry has been submitted.");
   };
 
   const scrollToForm = () => {
     document
       .getElementById("manufacturing-enquiry-form")
-      ?.scrollIntoView({ behavior: "smooth" });
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
         :root {
           --mfg-beetroot: #730042;
           --mfg-dark: #181818;
@@ -142,25 +146,29 @@ export default function ManufacturingGetInTouch() {
           background: #fff;
           color: var(--mfg-dark);
           overflow: hidden;
-          font-family: Arial, Helvetica, sans-serif;
+          font-family: "Inter", sans-serif;
         }
 
-        /* ================= HERO ================= */
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         .mfg-hero {
-          padding: 45px 5% 55px;
+          width: 100%;
+          padding: 55px 40px 65px;
           background: #fff;
         }
 
         .mfg-hero-container {
-          max-width: 1250px;
+          width: 100%;
+          max-width: 1280px;
           margin: 0 auto;
         }
 
         .mfg-hero-heading {
-          text-align: center;
-          max-width: 850px;
+          max-width: 900px;
           margin: 0 auto;
+          text-align: center;
         }
 
         .mfg-eyebrow {
@@ -172,55 +180,76 @@ export default function ManufacturingGetInTouch() {
           background: #f5e5ed;
           color: var(--mfg-beetroot);
           border-radius: 999px;
+          font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 700;
+          letter-spacing: 0.07em;
         }
 
         .mfg-eyebrow-dot {
           width: 6px;
           height: 6px;
+          flex-shrink: 0;
           border-radius: 50%;
           background: var(--mfg-beetroot);
         }
 
+        /* MAIN HEADING - PLUS JAKARTA SANS */
+
         .mfg-hero-heading h1 {
-          margin: 22px 0 15px;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 38px;
-          word-spacing: 6px;
-          line-height: 1.12;
-          letter-spacing: -1.8px;
-          font-weight: 600;
+          margin: 22px auto 16px;
+          max-width: 850px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(34px, 4vw, 48px);
+          line-height: 1.14;
+          letter-spacing: -0.035em;
+          font-weight: 700;
+          color: var(--mfg-dark);
         }
+
+        /* SUBHEADING - PLUS JAKARTA SANS */
 
         .mfg-hero-heading p {
           max-width: 760px;
           margin: 0 auto;
           color: #707070;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 15px;
-          line-height: 1.6;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
+          line-height: 1.8;
+          font-weight: 500;
         }
 
-        /* ================= CONSULTATION CARDS ================= */
+        /* =====================================================
+           CONSULTATION CARDS
+        ===================================================== */
 
         .mfg-consultation-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 14px;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 15px;
           margin-top: 48px;
         }
 
         .mfg-consultation-card {
           min-width: 0;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 12px;
-          padding: 16px 14px;
+          padding: 17px 15px;
           background: #fff;
           border: 1px solid #e8e8e8;
-          border-radius: 11px;
+          border-radius: 12px;
           box-shadow: 0 3px 12px rgba(0, 0, 0, 0.035);
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+        }
+
+        .mfg-consultation-card:hover {
+          transform: translateY(-4px);
+          border-color: #dfc2d0;
+          box-shadow: 0 12px 28px rgba(115, 0, 66, 0.08);
         }
 
         .mfg-card-icon {
@@ -236,50 +265,56 @@ export default function ManufacturingGetInTouch() {
         }
 
         .mfg-consultation-card h3 {
-          margin: 0 0 4px;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 14px;
-          line-height: 1.25;
+          margin: 0 0 5px;
+          color: #252525;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1.35;
           font-weight: 600;
         }
 
         .mfg-consultation-card p {
           margin: 0;
           color: #777;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
-          line-height: 1.45;
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
+          line-height: 1.55;
         }
 
-        /* ================= MAIN CONTENT ================= */
+        /* =====================================================
+           MAIN CONTENT
+        ===================================================== */
 
         .mfg-main-grid {
+          width: 100%;
           max-width: 1250px;
-          margin: 45px auto 0;
+          margin: 50px auto 0;
           display: grid;
-          grid-template-columns: 0.95fr 1.05fr;
+          grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
           gap: 30px;
           align-items: start;
         }
-
-        /* ================= LEFT IMAGE CARD ================= */
 
         .mfg-left-column {
           min-width: 0;
         }
 
+        /* =====================================================
+           IMAGE CARD
+        ===================================================== */
+
         .mfg-image-card {
           overflow: hidden;
           background: #fff;
           border: 1px solid #e8e8e8;
-          border-radius: 15px;
+          border-radius: 16px;
           box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
         }
 
         .mfg-image-wrapper {
           position: relative;
           width: 100%;
-          height: 275px;
+          height: 310px;
           overflow: hidden;
         }
 
@@ -288,61 +323,75 @@ export default function ManufacturingGetInTouch() {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: center;
+          transition: transform 0.5s ease;
+        }
+
+        .mfg-image-card:hover .mfg-image {
+          transform: scale(1.03);
         }
 
         .mfg-image-overlay {
           position: absolute;
           inset: auto 0 0;
-          height: 46%;
+          height: 55%;
           background: linear-gradient(
             to top,
-            rgba(115, 0, 66, 0.92),
+            rgba(115, 0, 66, 0.94),
             rgba(115, 0, 66, 0)
           );
         }
 
         .mfg-image-content {
           position: absolute;
-          left: 20px;
-          right: 20px;
-          bottom: 18px;
+          left: 22px;
+          right: 22px;
+          bottom: 20px;
           color: #fff;
         }
 
         .mfg-image-tag {
           display: inline-flex;
           padding: 6px 11px;
-          margin-bottom: 8px;
+          margin-bottom: 9px;
           background: var(--mfg-beetroot);
           border-radius: 7px;
+          font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 600;
         }
 
         .mfg-image-content h3 {
           margin: 0;
-          font-family: "Inter", Arial, sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 16px;
-          line-height: 1.3;
-          font-weight: 500;
+          line-height: 1.4;
+          font-weight: 600;
         }
+
+        /* =====================================================
+           REQUIREMENTS
+        ===================================================== */
 
         .mfg-requirement-content {
-          padding: 20px 22px 22px;
+          padding: 23px 24px 25px;
         }
 
+        /* Heading - Plus Jakarta Sans */
+
         .mfg-requirement-content h2 {
-          margin: 0 0 16px;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          margin: 0 0 18px;
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 20px;
-          line-height: 1.35;
+          line-height: 1.4;
           font-weight: 700;
+          letter-spacing: -0.02em;
         }
 
         .mfg-point {
           display: flex;
-          gap: 10px;
-          margin-bottom: 16px;
+          gap: 11px;
+          margin-bottom: 17px;
         }
 
         .mfg-point:last-child {
@@ -350,8 +399,8 @@ export default function ManufacturingGetInTouch() {
         }
 
         .mfg-point-number {
-          width: 27px;
-          height: 27px;
+          width: 28px;
+          height: 28px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
@@ -359,30 +408,33 @@ export default function ManufacturingGetInTouch() {
           background: #f4e5ed;
           color: var(--mfg-beetroot);
           border-radius: 50%;
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
           font-weight: 700;
         }
 
         .mfg-point-text h4 {
-          margin: 1px 0 3px;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 14px;
+          margin: 1px 0 4px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
           font-weight: 600;
         }
 
         .mfg-point-text p {
           margin: 0;
           color: #777;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
-          line-height: 1.5;
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
+          line-height: 1.6;
         }
 
-        /* ================= CONTACT DESK ================= */
+        /* =====================================================
+           CONTACT DESK
+        ===================================================== */
 
         .mfg-contact-desk {
           margin-top: 18px;
-          padding: 17px;
+          padding: 18px;
           background: #fff;
           border: 1px solid #e8e8e8;
           border-radius: 15px;
@@ -393,11 +445,13 @@ export default function ManufacturingGetInTouch() {
           display: flex;
           align-items: center;
           gap: 8px;
-          padding-bottom: 11px;
+          padding-bottom: 12px;
           border-bottom: 1px solid #ededed;
           color: var(--mfg-beetroot);
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
           font-weight: 700;
+          letter-spacing: 0.04em;
         }
 
         .mfg-contact-item {
@@ -426,49 +480,60 @@ export default function ManufacturingGetInTouch() {
           display: block;
           margin-bottom: 2px;
           color: #777;
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
           font-weight: 600;
         }
 
         .mfg-contact-item strong {
           display: block;
           color: #333;
-          font-size: 12px;
-          font-family: "Inter";
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
           font-weight: 600;
+          word-break: break-word;
         }
 
-        /* ================= FORM ================= */
+        /* =====================================================
+           FORM
+        ===================================================== */
 
         .mfg-form-card {
           width: 100%;
-          padding: 32px 36px;
+          padding: 34px 36px;
           background: #fff;
           border: 1px solid #e8e8e8;
-          border-radius: 15px;
+          border-radius: 16px;
           box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+          scroll-margin-top: 30px;
         }
+
+        /* Heading - Plus Jakarta Sans */
 
         .mfg-form-heading h2 {
-          margin: 0 0 7px;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 20px;
-          line-height: 1.3;
-          font-weight: 600;
+          margin: 0 0 8px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 21px;
+          line-height: 1.35;
+          font-weight: 700;
+          letter-spacing: -0.02em;
         }
 
+        /* Subheading - Plus Jakarta Sans */
+
         .mfg-form-heading p {
-          margin: 0 0 24px;
+          margin: 0 0 25px;
           color: #777;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 13px;
-          line-height: 1.5;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 12.5px;
+          line-height: 1.65;
+          font-weight: 500;
         }
 
         .mfg-form-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 15px;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 16px;
         }
 
         .mfg-field {
@@ -477,16 +542,16 @@ export default function ManufacturingGetInTouch() {
         }
 
         .mfg-field.full-width {
-          margin-top: 15px;
+          margin-top: 16px;
         }
 
         .mfg-field label {
           display: block;
-          margin-bottom: 6px;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 13px;
-          font-weight: 600;
+          margin-bottom: 7px;
           color: #333;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 600;
         }
 
         .mfg-field label span {
@@ -502,23 +567,23 @@ export default function ManufacturingGetInTouch() {
           border-radius: 8px;
           outline: none;
           color: #333;
-          font-family: "Inter", Arial, sans-serif;
-          transition: 0.2s ease;
+          font-family: "Inter", sans-serif;
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .mfg-field input,
         .mfg-field select {
-          height: 39px;
-          padding: 0 11px;
+          height: 42px;
+          padding: 0 12px;
           font-size: 12px;
         }
 
         .mfg-field textarea {
-          min-height: 74px;
-          padding: 10px 11px;
+          min-height: 100px;
+          padding: 11px 12px;
           resize: vertical;
           font-size: 12px;
-          line-height: 1.45;
+          line-height: 1.55;
         }
 
         .mfg-field input::placeholder,
@@ -529,137 +594,165 @@ export default function ManufacturingGetInTouch() {
         .mfg-field input:focus,
         .mfg-field select:focus,
         .mfg-field textarea:focus {
-          border-color: #d6a1bc;
+          border-color: #c48baa;
+          box-shadow: 0 0 0 3px rgba(115, 0, 66, 0.06);
         }
 
-        /* ================= RADIO ================= */
+        /* =====================================================
+           RADIO
+        ===================================================== */
 
         .mfg-radio-row {
           display: flex;
           align-items: center;
-          gap: 18px;
+          gap: 20px;
         }
 
         .mfg-radio-box {
           display: inline-flex !important;
           align-items: center;
-          gap: 6px;
+          gap: 7px;
           margin: 0 !important;
           cursor: pointer;
-          font-size: 13px !important;
+          font-size: 12px !important;
           font-weight: 400 !important;
         }
 
         .mfg-radio-box input {
-          width: 12px !important;
-          height: 12px !important;
+          width: 13px !important;
+          height: 13px !important;
           margin: 0;
           padding: 0;
           accent-color: var(--mfg-beetroot);
         }
 
-        /* ================= CHECKBOX ================= */
+        /* =====================================================
+           CONSENT
+        ===================================================== */
 
         .mfg-consent {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 9px;
-          margin-top: 16px;
-          padding: 10px 11px;
+          margin-top: 17px;
+          padding: 11px 12px;
           background: #f7f7f7;
           border-radius: 8px;
           color: #777;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          line-height: 1.5;
           cursor: pointer;
         }
 
         .mfg-consent input {
-          width: 12px;
-          height: 12px;
+          width: 13px;
+          height: 13px;
           flex-shrink: 0;
-          margin: 0;
+          margin: 1px 0 0;
           accent-color: var(--mfg-beetroot);
         }
 
-        /* ================= SUBMIT ================= */
+        /* =====================================================
+           SUBMIT
+        ===================================================== */
 
         .mfg-submit-btn {
           width: 100%;
-          height: 39px;
+          min-height: 42px;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 7px;
-          margin-top: 15px;
+          margin-top: 16px;
+          padding: 10px 16px;
           border: none;
           border-radius: 8px;
           background: var(--mfg-beetroot);
           color: #fff;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
           font-weight: 700;
+          letter-spacing: 0.03em;
           cursor: pointer;
-          transition: 0.2s ease;
+          transition: background 0.2s ease, transform 0.2s ease;
         }
 
         .mfg-submit-btn:hover {
           background: #5d0035;
+          transform: translateY(-1px);
         }
 
-        /* ================= PROCESS ================= */
+        /* =====================================================
+           PROCESS
+        ===================================================== */
 
         .mfg-process-section {
+          width: 100%;
           max-width: 1250px;
-          margin: 70px auto 0;
-          padding-top: 55px;
+          margin: 75px auto 0;
+          padding-top: 58px;
           border-top: 1px solid #e8e8e8;
         }
 
         .mfg-process-heading {
           text-align: center;
-          margin-bottom: 35px;
+          margin-bottom: 38px;
         }
 
         .mfg-process-heading span {
           color: var(--mfg-beetroot);
-          font-size: 9px;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
           font-weight: 700;
+          letter-spacing: 0.12em;
         }
 
+        /* Heading - Plus Jakarta Sans */
+
         .mfg-process-heading h2 {
-          margin: 8px 0 0;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 24px;
-          line-height: 1.25;
-          font-weight: 600;
+          margin: 9px 0 0;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 27px;
+          line-height: 1.3;
+          font-weight: 700;
+          letter-spacing: -0.025em;
         }
 
         .mfg-process-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 20px;
         }
 
         .mfg-process-card {
-          min-height: 145px;
-          padding: 20px;
+          min-height: 155px;
+          padding: 22px;
           background: #fff;
           border: 1px solid #e8e8e8;
-          border-radius: 12px;
+          border-radius: 13px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.025);
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+        }
+
+        .mfg-process-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.07);
         }
 
         .mfg-process-number {
           margin-bottom: 14px;
           color: var(--mfg-beetroot);
-          font-size: 16px;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
           font-weight: 700;
         }
 
         .mfg-process-card h3 {
           margin: 0 0 7px;
-          font-family: "Inter", Arial, sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           font-weight: 600;
         }
@@ -667,48 +760,56 @@ export default function ManufacturingGetInTouch() {
         .mfg-process-card p {
           margin: 0;
           color: #777;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 13px;
-          line-height: 1.55;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.6;
         }
 
-        /* ================= BOTTOM CTA ================= */
+        /* =====================================================
+           BOTTOM CTA
+        ===================================================== */
 
         .mfg-bottom-cta {
-          margin-top: 38px;
+          margin-top: 40px;
           margin-bottom: 60px;
-          padding: 34px 38px;
+          padding: 36px 40px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 30px;
+          gap: 35px;
           background: var(--mfg-beetroot);
-          border-radius: 13px;
+          border-radius: 14px;
         }
+
+        /* Heading - Plus Jakarta Sans */
 
         .mfg-bottom-cta h2 {
-          margin: 0 0 7px;
+          margin: 0 0 8px;
           color: #fff;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 21px;
-          line-height: 1.25;
-          font-weight: 600;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 22px;
+          line-height: 1.35;
+          font-weight: 700;
+          letter-spacing: -0.02em;
         }
 
+        /* Subheading - Plus Jakarta Sans */
+
         .mfg-bottom-cta p {
-          max-width: 600px;
+          max-width: 620px;
           margin: 0;
           color: rgba(255, 255, 255, 0.88);
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 13px;
-          line-height: 1.55;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 12.5px;
+          line-height: 1.7;
+          font-weight: 500;
         }
 
         .mfg-bottom-cta button {
           flex-shrink: 0;
-          min-width: 145px;
-          height: 37px;
-          padding: 0 16px;
+          min-width: 155px;
+          min-height: 42px;
+          padding: 0 18px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -717,50 +818,74 @@ export default function ManufacturingGetInTouch() {
           border-radius: 8px;
           background: #fff;
           color: var(--mfg-beetroot);
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
           font-weight: 700;
           cursor: pointer;
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
         }
 
-        /* ================= RESPONSIVE ================= */
+        .mfg-bottom-cta button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        /* =====================================================
+           LARGE TABLET
+        ===================================================== */
 
         @media (max-width: 1100px) {
+          .mfg-hero {
+            padding: 52px 32px 60px;
+          }
+
           .mfg-consultation-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
 
           .mfg-main-grid {
             grid-template-columns: 1fr;
+            max-width: 900px;
           }
 
           .mfg-left-column {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 18px;
           }
 
           .mfg-contact-desk {
             margin-top: 0;
+            height: fit-content;
           }
 
-          .mfg-form-card {
-            max-width: 100%;
+          .mfg-process-section {
+            margin-left: 32px;
+            margin-right: 32px;
           }
         }
 
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
         @media (max-width: 800px) {
           .mfg-hero {
-            padding: 40px 20px 50px;
+            padding: 48px 26px 55px;
           }
 
           .mfg-hero-heading h1 {
-            font-size: 34px;
+            font-size: 35px;
           }
 
-          .mfg-main-grid,
-          .mfg-process-section {
-            margin-left: 20px;
-            margin-right: 20px;
+          .mfg-hero-heading p {
+            font-size: 13.5px;
+          }
+
+          .mfg-main-grid {
+            margin-top: 42px;
           }
 
           .mfg-left-column {
@@ -771,8 +896,25 @@ export default function ManufacturingGetInTouch() {
             margin-top: 18px;
           }
 
+          .mfg-image-wrapper {
+            height: 330px;
+          }
+
+          .mfg-form-card {
+            padding: 30px;
+          }
+
+          .mfg-process-section {
+            margin-left: 26px;
+            margin-right: 26px;
+          }
+
           .mfg-process-grid {
             grid-template-columns: 1fr;
+          }
+
+          .mfg-process-card {
+            min-height: auto;
           }
 
           .mfg-bottom-cta {
@@ -785,41 +927,72 @@ export default function ManufacturingGetInTouch() {
           }
         }
 
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
         @media (max-width: 600px) {
           .mfg-hero {
-            padding: 35px 15px 45px;
+            padding: 40px 18px 48px;
+          }
+
+          .mfg-eyebrow {
+            font-size: 9px;
+            padding: 6px 11px;
+            letter-spacing: 0.05em;
           }
 
           .mfg-hero-heading h1 {
+            margin-top: 18px;
             font-size: 29px;
-            letter-spacing: -1px;
+            line-height: 1.18;
+            letter-spacing: -0.025em;
           }
 
           .mfg-hero-heading p {
-            font-size: 13px;
+            font-size: 12.5px;
+            line-height: 1.75;
           }
 
           .mfg-consultation-grid {
             grid-template-columns: 1fr;
+            gap: 12px;
             margin-top: 32px;
           }
 
           .mfg-consultation-card {
-            padding: 13px;
+            padding: 14px;
           }
 
-          .mfg-main-grid,
-          .mfg-process-section {
-            margin-left: 15px;
-            margin-right: 15px;
+          .mfg-card-icon {
+            width: 36px;
+            height: 36px;
+          }
+
+          .mfg-main-grid {
+            margin-top: 35px;
           }
 
           .mfg-image-wrapper {
-            height: 245px;
+            height: 255px;
+          }
+
+          .mfg-image-content {
+            left: 16px;
+            right: 16px;
+            bottom: 15px;
           }
 
           .mfg-image-content h3 {
-            font-size: 15px;
+            font-size: 14px;
+          }
+
+          .mfg-requirement-content {
+            padding: 20px 18px 22px;
+          }
+
+          .mfg-requirement-content h2 {
+            font-size: 18px;
           }
 
           .mfg-form-card {
@@ -835,42 +1008,67 @@ export default function ManufacturingGetInTouch() {
             margin-top: 14px;
           }
 
+          .mfg-form-heading h2 {
+            font-size: 19px;
+          }
+
+          .mfg-form-heading p {
+            font-size: 12px;
+          }
+
           .mfg-process-section {
-            margin-top: 50px;
-            padding-top: 40px;
+            margin-top: 55px;
+            margin-left: 18px;
+            margin-right: 18px;
+            padding-top: 42px;
+          }
+
+          .mfg-process-heading {
+            margin-bottom: 30px;
           }
 
           .mfg-process-heading h2 {
-            font-size: 22px;
+            font-size: 23px;
           }
 
           .mfg-bottom-cta {
-            padding: 28px 22px;
-            margin-bottom: 40px;
+            padding: 28px 21px;
+            margin-bottom: 35px;
+            gap: 22px;
           }
 
           .mfg-bottom-cta h2 {
             font-size: 19px;
           }
+
+          .mfg-bottom-cta h2 br {
+            display: none;
+          }
+
+          .mfg-bottom-cta p {
+            font-size: 12px;
+          }
         }
 
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
         @media (max-width: 400px) {
+          .mfg-hero {
+            padding: 35px 14px 42px;
+          }
+
           .mfg-hero-heading h1 {
             font-size: 26px;
           }
 
+          .mfg-hero-heading p {
+            font-size: 12px;
+          }
+
           .mfg-image-wrapper {
             height: 220px;
-          }
-
-          .mfg-image-content {
-            left: 14px;
-            right: 14px;
-            bottom: 13px;
-          }
-
-          .mfg-image-content h3 {
-            font-size: 13px;
           }
 
           .mfg-image-tag {
@@ -878,12 +1076,74 @@ export default function ManufacturingGetInTouch() {
             padding: 5px 8px;
           }
 
+          .mfg-image-content h3 {
+            font-size: 13px;
+          }
+
           .mfg-form-card {
             padding: 22px 14px;
           }
 
+          .mfg-requirement-content {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
+
+          .mfg-point-text p {
+            font-size: 11px;
+          }
+
+          .mfg-process-section {
+            margin-left: 14px;
+            margin-right: 14px;
+          }
+
           .mfg-bottom-cta {
-            padding: 24px 18px;
+            padding: 24px 17px;
+          }
+
+          .mfg-bottom-cta h2 {
+            font-size: 18px;
+          }
+        }
+
+        /* =====================================================
+           VERY SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 340px) {
+          .mfg-hero-heading h1 {
+            font-size: 24px;
+          }
+
+          .mfg-image-wrapper {
+            height: 200px;
+          }
+
+          .mfg-form-card {
+            padding: 20px 12px;
+          }
+
+          .mfg-process-heading h2 {
+            font-size: 21px;
+          }
+
+          .mfg-bottom-cta {
+            padding: 22px 15px;
+          }
+        }
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+          .mfg-consultation-card,
+          .mfg-image,
+          .mfg-submit-btn,
+          .mfg-process-card,
+          .mfg-bottom-cta button {
+            transition: none;
           }
         }
       `}</style>
@@ -916,6 +1176,8 @@ export default function ManufacturingGetInTouch() {
 
             </div>
 
+            {/* ================= CONSULTATION CARDS ================= */}
+
             <div className="mfg-consultation-grid">
 
               {CONSULTATION_CARDS.map((card, index) => (
@@ -940,7 +1202,7 @@ export default function ManufacturingGetInTouch() {
 
             <div className="mfg-main-grid">
 
-              {/* LEFT */}
+              {/* LEFT COLUMN */}
 
               <div className="mfg-left-column">
 
@@ -981,14 +1243,19 @@ export default function ManufacturingGetInTouch() {
                         className="mfg-point"
                         key={point.number}
                       >
+
                         <div className="mfg-point-number">
                           {point.number}
                         </div>
 
                         <div className="mfg-point-text">
+
                           <h4>{point.title}</h4>
+
                           <p>{point.description}</p>
+
                         </div>
+
                       </div>
                     ))}
 
@@ -1013,7 +1280,9 @@ export default function ManufacturingGetInTouch() {
 
                     <div>
                       <small>Email Enquiries</small>
-                      <strong>contact@techtorch.solutions</strong>
+                      <strong>
+                        contact@techtorch.solutions
+                      </strong>
                     </div>
 
                   </div>
@@ -1026,7 +1295,9 @@ export default function ManufacturingGetInTouch() {
 
                     <div>
                       <small>Office Locations</small>
-                      <strong>Noida · Bareilly · Florida, USA</strong>
+                      <strong>
+                        Noida · Bareilly · Florida, USA
+                      </strong>
                     </div>
 
                   </div>
@@ -1035,7 +1306,7 @@ export default function ManufacturingGetInTouch() {
 
               </div>
 
-              {/* RIGHT FORM */}
+              {/* ================= FORM ================= */}
 
               <div
                 className="mfg-form-card"
@@ -1044,7 +1315,9 @@ export default function ManufacturingGetInTouch() {
 
                 <div className="mfg-form-heading">
 
-                  <h2>Submit Your Requirement</h2>
+                  <h2>
+                    Submit Your Requirement
+                  </h2>
 
                   <p>
                     Please share your details and requirement. Our team will
@@ -1093,7 +1366,9 @@ export default function ManufacturingGetInTouch() {
 
                     <div className="mfg-field">
 
-                      <label>Phone Number</label>
+                      <label>
+                        Phone Number
+                      </label>
 
                       <input
                         type="tel"
@@ -1192,7 +1467,9 @@ export default function ManufacturingGetInTouch() {
                           type="radio"
                           name="contactMethod"
                           value="email"
-                          checked={formData.contactMethod === "email"}
+                          checked={
+                            formData.contactMethod === "email"
+                          }
                           onChange={handleChange}
                         />
 
@@ -1206,7 +1483,9 @@ export default function ManufacturingGetInTouch() {
                           type="radio"
                           name="contactMethod"
                           value="phone"
-                          checked={formData.contactMethod === "phone"}
+                          checked={
+                            formData.contactMethod === "phone"
+                          }
                           onChange={handleChange}
                         />
 
@@ -1256,9 +1535,13 @@ export default function ManufacturingGetInTouch() {
 
           <div className="mfg-process-heading">
 
-            <span>ENGAGEMENT PROCESS</span>
+            <span>
+              ENGAGEMENT PROCESS
+            </span>
 
-            <h2>From Requirement to Next Steps</h2>
+            <h2>
+              From Requirement to Next Steps
+            </h2>
 
           </div>
 
@@ -1274,9 +1557,13 @@ export default function ManufacturingGetInTouch() {
                   {step.number}
                 </div>
 
-                <h3>{step.title}</h3>
+                <h3>
+                  {step.title}
+                </h3>
 
-                <p>{step.description}</p>
+                <p>
+                  {step.description}
+                </p>
 
               </div>
             ))}
