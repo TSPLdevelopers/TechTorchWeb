@@ -497,12 +497,12 @@ export default function IndustriesCarousel() {
 
         .industries-heading {
           margin: 0 0 16px;
-
-          font-size: 44px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
 
           line-height: 1.15;
 
-          font-weight: 800;
+          font-weight: 700;
 
           letter-spacing: -0.5px;
         }
@@ -515,8 +515,8 @@ export default function IndustriesCarousel() {
 
         .industries-subtitle {
           margin: 0;
-
-          font-size: 20px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
 
           line-height: 1.5;
 
@@ -789,8 +789,8 @@ export default function IndustriesCarousel() {
             0
             0
             9px;
-
-          font-size: 20px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 18px;
 
           line-height: 1.3;
 
@@ -809,8 +809,8 @@ export default function IndustriesCarousel() {
             0
             0
             20px;
-
-          font-size: 14.5px;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
 
           line-height: 1.5;
 
@@ -834,8 +834,9 @@ export default function IndustriesCarousel() {
           width: fit-content;
 
           color: ${COLORS.maroon};
+          font-family: "Inter", sans-serif;
 
-          font-size: 14.5px;
+          font-size: 14px;
 
           font-weight: 600;
 
@@ -873,7 +874,7 @@ export default function IndustriesCarousel() {
 
 
           .industries-heading {
-            font-size: 38px;
+            font-size: 36px;
           }
 
 

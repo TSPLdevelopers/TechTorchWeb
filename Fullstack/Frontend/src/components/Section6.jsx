@@ -140,8 +140,6 @@ export default function CapabilitiesMarquee() {
 
           font-family:
             "Plus Jakarta Sans",
-            "Segoe UI",
-            Roboto,
             sans-serif;
         }
 
@@ -180,9 +178,9 @@ export default function CapabilitiesMarquee() {
         .cap-title {
           color: #ffffff;
 
-          font-size: 42px;
+          font-size: 38px;
 
-          font-weight: 700;
+          font-weight: 600;
 
           margin: 0;
 
@@ -551,7 +549,7 @@ export default function CapabilitiesMarquee() {
 
           .cap-desc {
             font-size: 16px;
-
+            font-family: "Inter", sans-serif;
             transform: none;
           }
 

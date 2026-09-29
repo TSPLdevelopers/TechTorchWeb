@@ -128,7 +128,7 @@ export default function WhatsNext() {
       <style>{`
   .wn-wrap {
     width: 100%;
-    font-family: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     color: #111;
     background: #fff;
     box-sizing: border-box;
@@ -176,7 +176,7 @@ export default function WhatsNext() {
 
   .wn-header h1 {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 44px;
+    font-size: 36px;
     font-weight: 800;
     letter-spacing: -0.5px;
     margin: 0;
@@ -184,7 +184,7 @@ export default function WhatsNext() {
 
   .wn-header p {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 19px;
+    font-size: 16px;
     line-height: 1.5;
     color: #4a4a4a;
     max-width: 520px;
@@ -292,7 +292,7 @@ export default function WhatsNext() {
     color: #fff;
 
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.6px;
 
@@ -323,7 +323,7 @@ export default function WhatsNext() {
 
     font-family: "Plus Jakarta Sans", sans-serif;
 
-    font-size: 23px;
+    font-size: 22px;
     font-weight: 800;
     line-height: 1.2;
 
@@ -341,9 +341,9 @@ export default function WhatsNext() {
   .wn-desc {
     color: #e7e7e7;
 
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Inter", sans-serif;
 
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.5;
 
     max-width: 420px;
@@ -377,9 +377,9 @@ export default function WhatsNext() {
 
     color: #fff;
 
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
 
     text-decoration: none;
 
@@ -471,7 +471,7 @@ export default function WhatsNext() {
 
     .wn-header p {
       max-width: 100%;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .wn-grid {

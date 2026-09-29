@@ -403,7 +403,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-description {
-            font-size: 17px !important;
+            font-size: 16px !important;
           }
 
           .tx-image {
@@ -471,7 +471,7 @@ export default function TorchXVideoSection() {
           }
 
           .tx-description {
-            font-size: 17px !important;
+            font-size: 15px !important;
           }
 
           .tx-image {
