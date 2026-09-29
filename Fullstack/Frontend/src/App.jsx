@@ -28,7 +28,7 @@ import NewsInsights from "./pages/News&Inshights.jsx";
 import JobOpenings from "./pages/JobOpenings.jsx";
 import Events from "./pages/Events.jsx";
 import LatestUpdate from "./pages/LatestUpdate.jsx";
-import SystemSettings from "./pages/SystemSettings.jsx";
+
 
 // ================= ADMIN LAYOUT =================
 
@@ -613,10 +613,7 @@ function App() {
           element={<LatestUpdate />}
         />
 
-        <Route
-          path="/system-settings"
-          element={<SystemSettings />}
-        />
+        
 
         <Route
           path="/TechTorchView"

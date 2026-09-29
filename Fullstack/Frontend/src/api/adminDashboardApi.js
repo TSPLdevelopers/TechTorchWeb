@@ -133,17 +133,23 @@ export async function deleteJobOpening(id) {
 // =========================
 // ADMIN DASHBOARD
 // =========================
+// =========================
+// ADMIN DASHBOARD
+// =========================
 
 export async function getAdminDashboardData() {
-  const news = await getNews();
-  const jobs = await getJobs();
-  const whitepapers = await getWhitepapers();
+  const [news, jobs, events, whitepapers] = await Promise.all([
+    getNews(),
+    getJobs(),
+    getEvents(),
+    getWhitepapers(),
+  ]);
 
   return {
     news,
     jobs,
-    events: [],
-    whitepapers: whitepapers,
+    events,
+    whitepapers,
   };
 }
 // =========================

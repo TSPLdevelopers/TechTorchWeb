@@ -1,7 +1,12 @@
-import { createNews } from "../api/adminDashboardApi";
+import AdminSidebar from "../components/AdminSidebar.jsx";
+import {
+  createNews,
+  createJobOpening,
+  createEvent,
+  createWhitepaper,
+} from "../api/adminDashboardApi";
 import { useEffect, useMemo, useState } from "react";
-import useAdminDashboard from "../hooks/useAdminDashboard";
-import { getEvents } from "../api/adminDashboardApi";
+
 import { useNavigate } from "react-router-dom";
 import {  Newspaper,
   Briefcase,
@@ -27,7 +32,14 @@ import {  Newspaper,
   Network,
   Timer,
   X,
+  Menu,
 } from "lucide-react";
+import {
+  getNews,
+  getJobs,
+  getEvents,
+  getWhitepapers,
+} from "../api/adminDashboardApi";
 
 /* -------------------------------------------------------------------------- */
 /* Static / mock data                                                          */
@@ -89,14 +101,8 @@ const TABS = ["News & Insights", "Job Openings", "Enterprise Events", "Whitepape
 /* -------------------------------------------------------------------------- */
 /* Publishing Directory — data layer                                          */
 /*                                                                            */
-/* NOTE: The 4 management pages (News & Insights, Job Openings, Enterprise    */
-/* Events, Whitepapers) do not currently persist data anywhere (no API call,  */
-/* no localStorage write). Until those pages are wired to save records, this  */
-/* layer keeps the Publishing Directory fully functional against localStorage */
-/* so the table, search, filter, and pagination work against real state       */
-/* rather than a frozen array. Once those pages start writing to the same     */
-/* localStorage keys below (or a real API), this directory will reflect that  */
-/* data automatically — no changes needed here.                               */
+/* API-backed dashboard data is loaded in AdminDashboard below.                */
+/* The localStorage helpers remain only for legacy UI compatibility.           */
 /* -------------------------------------------------------------------------- */
 
 const STORAGE_KEYS = {
@@ -629,15 +635,12 @@ const TREND_WEEKS = [
 export default function AdminDashboard() {
   const navigate = useNavigate();
 
-  const {
-    news,
-    jobs,
-    events,
-    whitepapers,
-    loading,
-    error,
-    refetch,
-  } = useAdminDashboard();
+  const [news, setNews] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [whitepapers, setWhitepapers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [activeTab, setActiveTab] = useState(0);
   const [page, setPage] = useState(1);
@@ -645,50 +648,141 @@ export default function AdminDashboard() {
   const [filter, setFilter] = useState("");
   const [domain, setDomain] = useState("All Domains");
   const [domainOpen, setDomainOpen] = useState(false);
-  const [realEvents, setRealEvents] = useState([]);
-useEffect(() => {
-  loadDashboardEvents();
-}, []);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-async function loadDashboardEvents() {
-  try {
-    const data = await getEvents();
+  useEffect(() => {
+    loadAllDashboardData();
+  }, []);
 
-    const mappedEvents = (Array.isArray(data) ? data : []).map((event) => ({
-      id: event._id || event.id,
-      status:
-        event.status === "upcoming"
-          ? "Upcoming"
-          : event.status === "past"
-            ? "Completed"
-            : "Draft",
-      name: event.title || "",
-      date: event.date || event.dateRange || "TBD",
-      location: event.location || event.venue || "TBD",
-      registrants: Number(event.registered || 0),
-    }));
+  // Drawer khula ho to page scroll lock, desktop par aate hi drawer band
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? "hidden" : "";
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = (e) => {
+      if (e.matches) setSidebarOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => {
+      document.body.style.overflow = "";
+      mq.removeEventListener("change", onChange);
+    };
+  }, [sidebarOpen]);
 
-    setRealEvents(mappedEvents);
-  } catch (error) {
-    console.error("Dashboard events load error:", error);
-    setRealEvents([]);
+  async function loadAllDashboardData() {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const [newsData, jobsData, eventsData, whitepaperData] = await Promise.all([
+        getNews(),
+        getJobs(),
+        getEvents(),
+        getWhitepapers(),
+      ]);
+
+      const mappedNews = (Array.isArray(newsData) ? newsData : []).map((item) => ({
+        ...item,
+        id: item._id || item.id,
+        status: item.status
+          ? String(item.status).charAt(0).toUpperCase() + String(item.status).slice(1)
+          : "Published",
+        title: item.title || item.headline || "",
+        domain: item.domain || item.category || "",
+        author: item.author || "",
+      }));
+
+      const mappedJobs = (Array.isArray(jobsData) ? jobsData : []).map((item) => ({
+        ...item,
+        id: item._id || item.id,
+        status: item.status
+          ? String(item.status).charAt(0).toUpperCase() + String(item.status).slice(1)
+          : "Active",
+        title: item.title || item.jobTitle || item.name || "",
+        department: item.department || item.category || "",
+        location: item.location || item.venue || "",
+        applicants: Number(item.applicants || item.applicationCount || 0),
+      }));
+
+      const mappedEvents = (Array.isArray(eventsData) ? eventsData : []).map((item) => ({
+        ...item,
+        id: item._id || item.id,
+        status:
+          item.status === "upcoming"
+            ? "Upcoming"
+            : item.status === "past"
+              ? "Completed"
+              : item.status
+                ? String(item.status).charAt(0).toUpperCase() + String(item.status).slice(1)
+                : "Upcoming",
+        name: item.name || item.title || "",
+        date: item.date || item.dateRange || "TBD",
+        location: item.location || item.venue || "TBD",
+        registrants: Number(item.registered || item.registrants || 0),
+      }));
+
+      const mappedWhitepapers = (Array.isArray(whitepaperData) ? whitepaperData : []).map((item) => ({
+        ...item,
+        id: item._id || item.id,
+        status:
+          item.status === "draft"
+            ? "Draft"
+            : item.status === "published"
+              ? "Published"
+              : item.status
+                ? String(item.status).charAt(0).toUpperCase() + String(item.status).slice(1)
+                : "Published",
+        title: item.title || "",
+        category: item.category || item.domain || "",
+        downloads: Number(item.downloads || 0),
+        author: item.author || item.architects || "",
+      }));
+
+      setNews(mappedNews);
+      setJobs(mappedJobs);
+      setEvents(mappedEvents);
+      setWhitepapers(mappedWhitepapers);
+    } catch (err) {
+      console.error("Dashboard APIs Error:", err);
+      setError(err.message || "Failed to load dashboard data");
+      setNews([]);
+      setJobs([]);
+      setEvents([]);
+      setWhitepapers([]);
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
   return (
     <div className="ttad-root">
       <StyleBlock />
 
+      <AdminSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
+
+      {/* Tablet / mobile overlay */}
+      {sidebarOpen && (
+        <div
+          className="ttad-sb-overlay"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
       <div className="ttad-main">
-        <TopNavbar search={search} setSearch={setSearch} />
+        <TopNavbar
+          search={search}
+          setSearch={setSearch}
+          onMenu={() => setSidebarOpen(true)}
+        />
 
         <div className="ttad-content">
           <Hero
   navigate={navigate}
   newsCount={news.length}
   jobsCount={jobs.length}
-  eventsCount={realEvents.length}
+  eventsCount={events.length}
   whitepapersCount={whitepapers.length}
 />
 
@@ -702,7 +796,7 @@ async function loadDashboardEvents() {
             <div className="ttad-left-col">
               <PublishingDirectory
                 activeTab={activeTab}
-                  recordsByTab={[news, jobs, realEvents, whitepapers]}
+                  recordsByTab={[news, jobs, events, whitepapers]}
                 setActiveTab={setActiveTab}
                 page={page}
                 setPage={setPage}
@@ -738,12 +832,21 @@ async function loadDashboardEvents() {
 /* Top navbar                                                                  */
 /* -------------------------------------------------------------------------- */
 
-function TopNavbar({ search, setSearch }) {
+function TopNavbar({ search, setSearch, onMenu }) {
   const [notifOpen, setNotifOpen] = useState(false);
 
   return (
     <header className="ttad-topbar">
 
+      {/* MOBILE / TABLET — SIDEBAR MENU BUTTON */}
+      <button
+        type="button"
+        className="ttad-menu-btn"
+        onClick={onMenu}
+        aria-label="Open menu"
+      >
+        <Menu size={18} />
+      </button>
 
       {/* LEFT — SEARCH */}
       <div className="ttad-search">
@@ -1165,17 +1268,59 @@ function NewEntryModal({ config, onClose, onSaved }) {
         author: values.author || "",
         status,
       });
-
-      onSaved();
-      return;
+    } else if (config.key === "jobs") {
+      await createJobOpening({
+        title: values.title || "",
+        department: values.department || "",
+        location: values.location || "",
+        seniority: values.seniority || "",
+        pitch: values.pitch || "",
+        description: values.description || "",
+        compMin: values.compMin || "",
+        compMax: values.compMax || "",
+        hiringManager: values.hiringManager || "",
+        recruiter: values.recruiter || "",
+        costCenter: values.costCenter || "",
+        urgency: values.urgency || "",
+        tags: values.tags || [],
+        screening: values.screening || {},
+        syndication: values.syndication || {},
+        status,
+      });
+    } else if (config.key === "events") {
+      await createEvent({
+        title: values.name || "",
+        name: values.name || "",
+        date: values.date || "",
+        dateRange: values.date || "",
+        sessionTiming: values.sessionTiming || "",
+        location: values.location || "",
+        venue: values.location || "",
+        formatType: values.formatType || "Hybrid",
+        capacityInternal: Number(values.capacityInternal || 0),
+        capacityEnterprise: Number(values.capacityEnterprise || 0),
+        capacityVirtual: Number(values.capacityVirtual || 0),
+        description: values.description || "",
+        status: String(status).toLowerCase(),
+      });
+    } else if (config.key === "whitepapers") {
+      await createWhitepaper({
+        title: values.title || "",
+        domain: values.category || "",
+        category: values.category || "",
+        architects: values.author || "",
+        author: values.author || "",
+        abstract: values.abstract || "",
+        bullets: values.takeaways || "",
+        gating: values.gating || "",
+        status: String(status).toLowerCase(),
+      });
     }
 
-    const record = config.buildRecord(values, status);
-    saveNewRecord(config, record);
     onSaved();
   } catch (error) {
-    console.error("Create News Error:", error);
-    setErrorMsg(error.message || "Failed to create news.");
+    console.error(`Create ${config.key} Error:`, error);
+    setErrorMsg(error.message || `Failed to create ${config.entryLabel}.`);
   }
 }
 
@@ -2372,6 +2517,1282 @@ function StyleBlock() {
         .ttad-hero-actions { flex-wrap: wrap; }
         .ttad-hero-actions .ttad-hero-btn { flex: 1 1 calc(50% - 8px); justify-content: center; }
       }
+
+      /* ================================================================
+         FULL RESPONSIVE OVERRIDE
+         Existing layout/design/functionality is preserved.
+         These rules only improve sizing, wrapping and overflow.
+         ================================================================ */
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .ttad-root,
+      .ttad-main,
+      .ttad-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .ttad-content > *,
+      .ttad-body-grid > *,
+      .ttad-left-col > *,
+      .ttad-right-col > *,
+      .ttad-bottom-grid > * {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      /* Large desktop */
+      @media (min-width: 1441px) {
+        .ttad-content {
+          padding-left: clamp(24px, 2.5vw, 48px);
+          padding-right: clamp(24px, 2.5vw, 48px);
+        }
+
+        .ttad-body-grid {
+          grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+        }
+      }
+
+      /* Desktop / laptop */
+      @media (max-width: 1180px) {
+        .ttad-body-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-right-col {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        .ttad-stats-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .ttad-hero-main {
+          gap: 24px;
+        }
+
+        .ttad-hero-copy,
+        .ttad-hero-metrics {
+          min-width: 0;
+        }
+      }
+
+      /* Tablet landscape / tablet */
+      @media (max-width: 900px) {
+        .ttad-topbar {
+          gap: 12px;
+        }
+
+        .ttad-search {
+          min-width: 0;
+        }
+
+        .ttad-topbar-right {
+          min-width: 0;
+          flex-wrap: wrap;
+        }
+
+        .ttad-hero-top {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .ttad-hero-meta {
+          max-width: 100%;
+          white-space: normal;
+          text-align: right;
+        }
+
+        .ttad-hero-main {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .ttad-hero-copy {
+          width: 100%;
+        }
+
+        .ttad-hero-metrics {
+          width: 100%;
+        }
+
+        .ttad-bottom-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-right-col {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-directory-head {
+          gap: 16px;
+        }
+
+        .ttad-tabs {
+          max-width: 100%;
+          overflow-x: auto;
+          scrollbar-width: thin;
+          flex-wrap: nowrap;
+        }
+
+        .ttad-tab {
+          flex: 0 0 auto;
+          white-space: nowrap;
+        }
+
+        .ttad-toolbar {
+          flex-wrap: wrap;
+        }
+
+        .ttad-filter-input {
+          flex: 1 1 260px;
+          min-width: 0;
+        }
+
+        .ttad-domain-select,
+        .ttad-new-entry {
+          flex: 0 1 auto;
+        }
+      }
+
+      /* Tablet portrait / large mobile */
+      @media (max-width: 780px) {
+        .ttad-content {
+          padding: 18px 16px 32px;
+        }
+
+        .ttad-topbar {
+          padding: 12px 16px;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+
+        .ttad-search {
+          order: 3;
+          flex: 1 1 100%;
+          width: 100%;
+          max-width: none;
+        }
+
+        .ttad-topbar-right {
+          margin-left: auto;
+          flex: 0 1 auto;
+        }
+
+        .ttad-status-pill {
+          white-space: nowrap;
+        }
+
+        .ttad-stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-profile-text {
+          display: none;
+        }
+
+        .ttad-hero {
+          padding: 22px 18px 24px;
+        }
+
+        .ttad-hero-top {
+          align-items: flex-start;
+        }
+
+        .ttad-hero-meta {
+          width: 100%;
+          text-align: left;
+        }
+
+        .ttad-hero-actions {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .ttad-hero-actions .ttad-hero-btn {
+          width: 100%;
+          min-width: 0;
+          justify-content: center;
+        }
+
+        .ttad-hero-metrics {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: 100%;
+        }
+
+        .ttad-hero-metric {
+          min-width: 0;
+        }
+
+        .ttad-directory-head {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .ttad-tabs {
+          width: 100%;
+          padding-bottom: 3px;
+        }
+
+        .ttad-toolbar {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: 10px;
+        }
+
+        .ttad-filter-input,
+        .ttad-domain-select,
+        .ttad-new-entry {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .ttad-filter-input {
+          grid-column: 1 / -1;
+        }
+
+        .ttad-domain-btn,
+        .ttad-new-entry {
+          width: 100%;
+        }
+
+        .ttad-table-wrap {
+          width: 100%;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .ttad-table {
+          min-width: 620px;
+        }
+
+        .ttad-pagination {
+          align-items: stretch;
+        }
+
+        .ttad-pagination-info {
+          width: 100%;
+        }
+
+        .ttad-pagination-controls {
+          width: 100%;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+        }
+
+        .ttad-modal-overlay {
+          padding: 12px;
+          align-items: flex-start;
+        }
+
+        .ttad-modal-panel {
+          width: 100%;
+          max-width: 100%;
+          max-height: calc(100vh - 24px);
+        }
+
+        .ttad-modal-head,
+        .ttad-modal-body,
+        .ttad-modal-footer {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .ttad-modal-footer {
+          flex-wrap: wrap;
+        }
+
+        .ttad-modal-footer button {
+          flex: 1 1 150px;
+          min-width: 0;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 520px) {
+        .ttad-content {
+          padding: 12px 10px 24px;
+        }
+
+        .ttad-topbar {
+          padding: 10px;
+          gap: 10px;
+        }
+
+        .ttad-topbar-right {
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .ttad-status-pill {
+          font-size: 10px;
+          padding: 7px 9px;
+        }
+
+        .ttad-profile {
+          flex-shrink: 0;
+        }
+
+        .ttad-avatar,
+        .techtorch-avatar {
+          width: 34px;
+          height: 34px;
+        }
+
+        .ttad-notif-panel {
+          position: fixed;
+          top: 58px;
+          right: 10px;
+          left: 10px;
+          width: auto;
+          max-width: none;
+          z-index: 9999;
+        }
+
+        .ttad-hero {
+          padding: 18px 14px 20px;
+          border-radius: 14px;
+        }
+
+        .ttad-hero-badge {
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .ttad-hero-copy h1 {
+          font-size: clamp(24px, 8vw, 30px);
+          line-height: 1.08;
+        }
+
+        .ttad-hero-copy p {
+          font-size: 12.5px;
+          line-height: 1.55;
+        }
+
+        .ttad-hero-actions {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-hero-actions .ttad-hero-btn {
+          min-height: 40px;
+        }
+
+        .ttad-hero-metrics {
+          grid-template-columns: 1fr 1fr;
+          gap: 6px;
+          padding: 5px !important;
+        }
+
+        .ttad-hero-metric {
+          padding: 9px 7px;
+          gap: 7px;
+        }
+
+        .ttad-hero-metric-value {
+          font-size: 16px;
+        }
+
+        .ttad-hero-metric-label {
+          font-size: 9.5px;
+          line-height: 1.25;
+          overflow-wrap: anywhere;
+        }
+
+        .ttad-stat-card {
+          padding: 16px;
+        }
+
+        .ttad-stat-value {
+          font-size: 24px;
+        }
+
+        .ttad-card {
+          border-radius: 12px;
+        }
+
+        .ttad-directory {
+          overflow: visible;
+        }
+
+        .ttad-directory-head {
+          padding: 16px;
+        }
+
+        .ttad-directory-head h2 {
+          font-size: 22px;
+        }
+
+        .ttad-tabs {
+          margin-right: -16px;
+          padding-right: 16px;
+        }
+
+        .ttad-tab {
+          font-size: 11px;
+          padding: 8px 10px;
+        }
+
+        .ttad-toolbar {
+          grid-template-columns: 1fr;
+          padding: 12px 16px;
+        }
+
+        .ttad-filter-input {
+          grid-column: auto;
+        }
+
+        .ttad-table-wrap {
+          margin: 0;
+        }
+
+        .ttad-table {
+          min-width: 600px;
+        }
+
+        .ttad-pagination {
+          padding: 12px 16px;
+        }
+
+        .ttad-pagination-controls {
+          gap: 5px;
+        }
+
+        .ttad-page-btn {
+          padding: 7px 9px;
+        }
+
+        .ttad-page-num {
+          width: 28px;
+          height: 28px;
+        }
+
+        .ttad-trend-card,
+        .ttad-panel {
+          padding: 16px;
+        }
+
+        .ttad-trend-bars {
+          gap: 8px;
+          height: 90px;
+        }
+
+        .ttad-trend-labels {
+          gap: 8px;
+        }
+
+        .ttad-trend-labels span {
+          font-size: 10px;
+        }
+
+        .ttad-cdn-card {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .ttad-cdn-visual {
+          width: 100%;
+          height: 150px;
+        }
+
+        .ttad-cdn-body {
+          width: 100%;
+        }
+
+        .ttad-edge-row {
+          align-items: flex-start;
+        }
+
+        .ttad-edge-name {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+
+        .ttad-edge-value {
+          flex-shrink: 0;
+        }
+
+        .ttad-modal-overlay {
+          padding: 8px;
+        }
+
+        .ttad-modal-panel {
+          max-height: calc(100vh - 16px);
+          border-radius: 12px;
+        }
+
+        .ttad-modal-head {
+          padding: 14px;
+        }
+
+        .ttad-modal-body {
+          padding: 14px;
+          gap: 14px;
+        }
+
+        .ttad-modal-footer {
+          padding: 12px 14px;
+          flex-direction: column;
+        }
+
+        .ttad-modal-footer button {
+          width: 100%;
+          flex: none;
+        }
+
+        .ttad-form-field-head {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 3px;
+        }
+
+        .ttad-form-hint {
+          white-space: normal;
+        }
+
+        .ttad-form-input {
+          min-width: 0;
+          font-size: 16px;
+        }
+
+        .ttad-form-radio,
+        .ttad-form-checkbox {
+          align-items: flex-start;
+          line-height: 1.4;
+        }
+      }
+
+      /* Very small phones */
+      @media (max-width: 360px) {
+        .ttad-content {
+          padding-left: 7px;
+          padding-right: 7px;
+        }
+
+        .ttad-topbar {
+          padding-left: 7px;
+          padding-right: 7px;
+        }
+
+        .ttad-hero {
+          padding-left: 11px;
+          padding-right: 11px;
+        }
+
+        .ttad-hero-metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-hero-metric {
+          display: flex;
+          justify-content: flex-start;
+        }
+
+        .ttad-status-pill {
+          display: none;
+        }
+
+        .ttad-page-btn {
+          font-size: 11px;
+        }
+
+        .ttad-page-btn svg {
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+
+      /* ================================================================
+         SAFE FULL-DEVICE RESPONSIVE LAYER
+         UI/branding/layout hierarchy preserved.
+         CSS-only: no component/API/functionality changes.
+         ================================================================ */
+
+      html, body, #root {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100%;
+        margin: 0;
+      }
+
+      .ttad-root {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+      }
+
+      .ttad-main {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .ttad-content {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .ttad-topbar,
+      .ttad-content,
+      .ttad-hero,
+      .ttad-card,
+      .ttad-stat-card,
+      .ttad-body-grid,
+      .ttad-left-col,
+      .ttad-right-col,
+      .ttad-bottom-grid {
+        min-width: 0;
+      }
+
+      .ttad-hero-copy,
+      .ttad-hero-metrics,
+      .ttad-hero-metric,
+      .ttad-topbar-right,
+      .ttad-profile,
+      .ttad-directory,
+      .ttad-directory-head,
+      .ttad-toolbar,
+      .ttad-filter-input,
+      .ttad-cdn-body {
+        min-width: 0;
+      }
+
+      .ttad-hero-copy h1,
+      .ttad-hero-copy p,
+      .ttad-directory-head h2,
+      .ttad-activity-title,
+      .ttad-activity-meta,
+      .ttad-security-desc,
+      .ttad-edge-name,
+      .ttad-table-title,
+      .ttad-table-author {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .ttad-table-wrap {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .ttad-table {
+        width: 100%;
+      }
+
+      .ttad-modal-overlay {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100dvh;
+      }
+
+      .ttad-modal-panel {
+        width: min(640px, 100%);
+        min-width: 0;
+      }
+
+      .ttad-modal-body {
+        min-height: 0;
+        overscroll-behavior: contain;
+      }
+
+      /* ---------- Wide desktop ---------- */
+      @media (min-width: 1441px) {
+        .ttad-content {
+          padding-left: clamp(24px, 2.5vw, 48px);
+          padding-right: clamp(24px, 2.5vw, 48px);
+        }
+      }
+
+      /* ---------- Laptop / smaller desktop ---------- */
+      @media (max-width: 1180px) {
+        .ttad-body-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .ttad-right-col {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .ttad-stats-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      /* ---------- Tablet ---------- */
+      @media (max-width: 900px) {
+        .ttad-topbar {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .ttad-search {
+          flex: 1 1 260px;
+          min-width: 0;
+          max-width: none;
+        }
+
+        .ttad-topbar-right {
+          flex: 0 1 auto;
+          min-width: 0;
+          flex-wrap: wrap;
+        }
+
+        .ttad-hero-top {
+          flex-wrap: wrap;
+        }
+
+        .ttad-hero-meta {
+          max-width: 100%;
+          white-space: normal;
+        }
+
+        .ttad-hero-main {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .ttad-hero-copy,
+        .ttad-hero-metrics {
+          width: 100%;
+        }
+
+        .ttad-bottom-grid,
+        .ttad-right-col {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-directory-head {
+          gap: 14px;
+        }
+
+        .ttad-tabs {
+          max-width: 100%;
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          scrollbar-width: thin;
+        }
+
+        .ttad-tab {
+          flex: 0 0 auto;
+          white-space: nowrap;
+        }
+
+        .ttad-toolbar {
+          flex-wrap: wrap;
+        }
+
+        .ttad-filter-input {
+          flex: 1 1 240px;
+          min-width: 0;
+        }
+      }
+
+      /* ---------- Tablet portrait ---------- */
+      @media (max-width: 780px) {
+        .ttad-content {
+          padding: 18px 16px 32px;
+        }
+
+        .ttad-topbar {
+          padding: 12px 16px;
+        }
+
+        .ttad-search {
+          order: 3;
+          flex: 1 1 100%;
+          width: 100%;
+        }
+
+        .ttad-topbar-right {
+          margin-left: auto;
+        }
+
+        .ttad-stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-profile-text {
+          display: none;
+        }
+
+        .ttad-hero {
+          padding: 22px 18px 24px;
+        }
+
+        .ttad-hero-top {
+          align-items: flex-start;
+        }
+
+        .ttad-hero-meta {
+          width: 100%;
+          text-align: left;
+        }
+
+        .ttad-hero-actions {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .ttad-hero-actions .ttad-hero-btn {
+          width: 100%;
+          min-width: 0;
+          justify-content: center;
+        }
+
+        .ttad-hero-metrics {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: 100%;
+        }
+
+        .ttad-hero-metric {
+          min-width: 0;
+        }
+
+        .ttad-directory-head {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .ttad-tabs {
+          width: 100%;
+        }
+
+        .ttad-toolbar {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: 10px;
+        }
+
+        .ttad-filter-input {
+          grid-column: 1 / -1;
+          width: 100%;
+        }
+
+        .ttad-domain-select,
+        .ttad-new-entry,
+        .ttad-domain-btn {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .ttad-table {
+          min-width: 620px;
+        }
+
+        .ttad-pagination {
+          align-items: stretch;
+        }
+
+        .ttad-pagination-info,
+        .ttad-pagination-controls {
+          width: 100%;
+        }
+
+        .ttad-pagination-controls {
+          justify-content: flex-start;
+          flex-wrap: wrap;
+        }
+
+        .ttad-modal-overlay {
+          padding: 12px;
+          align-items: flex-start;
+        }
+
+        .ttad-modal-panel {
+          width: 100%;
+          max-width: 100%;
+          max-height: calc(100dvh - 24px);
+        }
+
+        .ttad-modal-head,
+        .ttad-modal-body,
+        .ttad-modal-footer {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .ttad-modal-footer {
+          flex-wrap: wrap;
+        }
+
+        .ttad-modal-footer button {
+          flex: 1 1 150px;
+          min-width: 0;
+        }
+      }
+
+      /* ---------- Mobile ---------- */
+      @media (max-width: 520px) {
+        .ttad-content {
+          padding: 12px 10px 24px;
+        }
+
+        .ttad-topbar {
+          padding: 10px;
+          gap: 10px;
+        }
+
+        .ttad-topbar-right {
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .ttad-status-pill {
+          font-size: 10px;
+          padding: 7px 9px;
+        }
+
+        .ttad-avatar,
+        .techtorch-avatar {
+          width: 34px;
+          height: 34px;
+        }
+
+        .ttad-notif-panel {
+          position: fixed;
+          top: 58px;
+          left: 10px;
+          right: 10px;
+          width: auto;
+          max-width: none;
+          z-index: 9999;
+        }
+
+        .ttad-hero {
+          padding: 18px 14px 20px;
+          border-radius: 14px;
+        }
+
+        .ttad-hero-badge {
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .ttad-hero-copy h1 {
+          font-size: clamp(24px, 8vw, 30px);
+          line-height: 1.08;
+        }
+
+        .ttad-hero-copy p {
+          font-size: 12.5px;
+          line-height: 1.55;
+        }
+
+        .ttad-hero-actions {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-hero-actions .ttad-hero-btn {
+          min-height: 40px;
+        }
+
+        .ttad-hero-metrics {
+          grid-template-columns: 1fr 1fr;
+          gap: 6px;
+          padding: 5px !important;
+        }
+
+        .ttad-hero-metric {
+          padding: 9px 7px;
+          gap: 7px;
+        }
+
+        .ttad-hero-metric-value {
+          font-size: 16px;
+        }
+
+        .ttad-hero-metric-label {
+          font-size: 9.5px;
+          line-height: 1.25;
+          overflow-wrap: anywhere;
+        }
+
+        .ttad-stat-card {
+          padding: 16px;
+        }
+
+        .ttad-stat-value {
+          font-size: 24px;
+        }
+
+        .ttad-directory {
+          overflow: visible;
+        }
+
+        .ttad-directory-head {
+          padding: 16px;
+        }
+
+        .ttad-directory-head h2 {
+          font-size: 22px;
+        }
+
+        .ttad-tabs {
+          margin-right: -16px;
+          padding-right: 16px;
+        }
+
+        .ttad-tab {
+          font-size: 11px;
+          padding: 8px 10px;
+        }
+
+        .ttad-toolbar {
+          grid-template-columns: 1fr;
+          padding: 12px 16px;
+        }
+
+        .ttad-filter-input {
+          grid-column: auto;
+        }
+
+        .ttad-table-wrap {
+          margin: 0;
+        }
+
+        .ttad-table {
+          min-width: 600px;
+        }
+
+        .ttad-pagination {
+          padding: 12px 16px;
+        }
+
+        .ttad-pagination-controls {
+          gap: 5px;
+        }
+
+        .ttad-page-btn {
+          padding: 7px 9px;
+        }
+
+        .ttad-page-num {
+          width: 28px;
+          height: 28px;
+        }
+
+        .ttad-trend-card,
+        .ttad-panel {
+          padding: 16px;
+        }
+
+        .ttad-cdn-card {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .ttad-cdn-visual,
+        .ttad-cdn-body {
+          width: 100%;
+        }
+
+        .ttad-cdn-visual {
+          height: 150px;
+        }
+
+        .ttad-edge-row {
+          align-items: flex-start;
+        }
+
+        .ttad-edge-name {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+
+        .ttad-edge-value {
+          flex-shrink: 0;
+        }
+
+        .ttad-modal-overlay {
+          padding: 8px;
+        }
+
+        .ttad-modal-panel {
+          max-height: calc(100dvh - 16px);
+          border-radius: 12px;
+        }
+
+        .ttad-modal-head {
+          padding: 14px;
+        }
+
+        .ttad-modal-body {
+          padding: 14px;
+          gap: 14px;
+        }
+
+        .ttad-modal-footer {
+          padding: 12px 14px;
+          flex-direction: column;
+        }
+
+        .ttad-modal-footer button {
+          width: 100%;
+          flex: none;
+        }
+
+        .ttad-form-field-head {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 3px;
+        }
+
+        .ttad-form-hint {
+          white-space: normal;
+        }
+
+        .ttad-form-input {
+          min-width: 0;
+          font-size: 16px;
+        }
+
+        .ttad-form-radio,
+        .ttad-form-checkbox {
+          align-items: flex-start;
+          line-height: 1.4;
+        }
+      }
+
+      /* ---------- Very small phones ---------- */
+      @media (max-width: 360px) {
+        .ttad-content {
+          padding-left: 7px;
+          padding-right: 7px;
+        }
+
+        .ttad-topbar {
+          padding-left: 7px;
+          padding-right: 7px;
+        }
+
+        .ttad-hero {
+          padding-left: 11px;
+          padding-right: 11px;
+        }
+
+        .ttad-hero-metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .ttad-hero-metric {
+          display: flex;
+          justify-content: flex-start;
+        }
+
+        .ttad-status-pill {
+          display: none;
+        }
+      }
+
+
+      /* ================================================================
+         SIDEBAR + FINAL RESPONSIVE FIXES
+         (ye block hamesha sabse neeche rahe, taaki upar ke rules override ho)
+         ================================================================ */
+
+      /* sticky topbar tootne se bachane ke liye: hidden ki jagah clip */
+      html, body { overflow-x: clip; }
+      .ttad-root { overflow-x: clip; }
+
+      .ttad-menu-btn {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+        border: 1px solid var(--ttad-border);
+        background: #fff;
+        border-radius: 10px;
+        cursor: pointer;
+        color: var(--ttad-text);
+      }
+
+      .ttad-sb-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        background: rgba(20, 15, 25, 0.5);
+      }
+
+      /* ---------- Desktop: sidebar 256px (Tailwind w-64) fixed ---------- */
+      @media (min-width: 1024px) {
+        .ttad-root .ttad-main {
+          margin-left: 0px;
+          width:100%;
+          max-width: 100%;
+        }
+        .ttad-sb-overlay { display: none; }
+      }
+
+      /* Sidebar ki wajah se content 256px chhota hua, isliye breakpoints aage */
+      @media (min-width: 1024px) and (max-width: 1279px) {
+        .ttad-body-grid { grid-template-columns: minmax(0, 1fr); }
+        .ttad-right-col {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      @media (min-width: 1181px) and (max-width: 1279px) {
+        .ttad-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+
+      /* ---------- Tablet + Mobile: hamburger dikhao ---------- */
+      @media (max-width: 1023px) {
+        .ttad-menu-btn { display: flex; }
+      }
+
+      /* Topbar: pehli line = hamburger + right side, doosri line = search */
+      @media (max-width: 900px) {
+        .ttad-root .ttad-topbar { flex-wrap: wrap; }
+        .ttad-root .ttad-search { order: 3; flex: 1 1 100%; width: 100%; max-width: none; }
+        .ttad-root .ttad-topbar-right { width: auto; margin-left: auto; flex-wrap: nowrap; }
+      }
+
+      /* Phone: "Production Gateway Live" sirf green dot bane, taaki topbar ek line mein aaye */
+      @media (max-width: 520px) {
+        .ttad-root .ttad-status-pill {
+          font-size: 0;
+          gap: 0;
+          padding: 0;
+          width: 36px;
+          height: 36px;
+          justify-content: center;
+        }
+        .ttad-root .ttad-status-pill span { display: block; }
+        .ttad-root .ttad-status-dot { width: 9px; height: 9px; }
+      }
+      @media (max-width: 360px) {
+        .ttad-root .ttad-status-pill { display: flex; }
+      }
+
     `}</style>
   );
 }

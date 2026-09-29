@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import AdminSidebar from "../components/AdminSidebar.jsx";
 
 import {
   LayoutGrid,
@@ -31,6 +32,7 @@ import {
   Newspaper,
   Lightbulb,
   X,
+  Menu,
 
 } from "lucide-react";
 import {
@@ -322,6 +324,12 @@ function Toasts({ toasts }) {
 /* ---------------- MAIN COMPONENT ---------------- */
 
 export default function TechTorchCMS() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [sidebarOpen]);
   const [tags, setTags] = useState([
     "Enterprise AI",
     "Cloud Architecture",
@@ -751,17 +759,37 @@ const [newsLoading, setNewsLoading] = useState(true);
 
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900" style={{ fontFamily: "Inter, sans-serif" }}>
-      <div className="min-h-screen">
+      <AdminSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
+
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <div className="min-h-screen ">
         {/* Top bar */}
-        <header className="flex items-center gap-4 px-4 sm:px-6 py-3 border-b border-stone-200 bg-white flex-wrap">
-          <div className="flex-1 max-w-xl relative">
+        <header className="flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 border-b border-stone-200 bg-white flex-wrap">
+          <button
+            type="button"
+            onClick={() => setSidebarOpen(true)}
+            className="lg:hidden w-9 h-9 shrink-0 flex items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-600"
+            aria-label="Open menu"
+          >
+            <Menu size={18} />
+          </button>
+          <div className="w-full sm:flex-1 sm:max-w-xl relative">
             <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
               placeholder="Search records, nodes, taxonomy..."
               className="w-full pl-9 pr-3 py-2 rounded-md bg-stone-50 border border-stone-200 text-sm placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-[#6d1b3f]/30"
             />
           </div>
-          <div className="ml-auto flex items-center gap-2 text-sm text-right">
+          <div className="ml-auto flex items-center gap-2 text-sm text-right shrink-0">
             <div>
               <div className="font-medium leading-tight">Admin</div>
               <div className="text-xs text-stone-400 leading-tight">Editor</div>
@@ -774,7 +802,7 @@ const [newsLoading, setNewsLoading] = useState(true);
 
         <main className="p-4 sm:p-6 space-y-6">
           {/* Breadcrumb + actions */}
-          <div className="bg-white rounded-lg border border-stone-200 p-4 flex items-center justify-between flex-wrap gap-3">
+          <div className="bg-white rounded-lg border border-stone-200 p-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
             <div className="flex items-center gap-2 text-sm text-stone-500 flex-wrap">
               <span>TechTorch CMS</span>
               <span>/</span>
@@ -786,24 +814,24 @@ const [newsLoading, setNewsLoading] = useState(true);
                 {draftStatus}
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="w-full lg:w-auto flex flex-wrap items-center gap-2">
               <button
                 onClick={openPreview}
-                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50"
+                className="flex items-center justify-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50 flex-1 sm:flex-none"
               >
                 <Eye size={14} />
                 Preview
               </button>
               <button
                 onClick={saveDraft}
-                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50"
+                className="flex items-center justify-center gap-1.5 text-sm px-3 py-1.5 rounded-md border border-stone-200 text-stone-600 hover:bg-stone-50 flex-1 sm:flex-none"
               >
                 <Save size={14} />
                 Save Draft
               </button>
               <button
                 onClick={publish}
-                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-md bg-[#6d1b3f] text-white hover:bg-[#5c1735]"
+                className="flex items-center justify-center gap-1.5 text-sm px-3 py-1.5 rounded-md bg-[#6d1b3f] text-white hover:bg-[#5c1735] flex-1 sm:flex-none"
               >
                 <Play size={14} />
                 Publish Article
@@ -814,7 +842,7 @@ const [newsLoading, setNewsLoading] = useState(true);
           {/* Editor + Right Rail */}
           <div className="lg:flex gap-6 items-start lg:flex-row">
             {/* Editor column */}
-            <div className="flex-1 min-w-0 bg-white rounded-lg border border-stone-200 p-6 space-y-5">
+            <div className="flex-1 min-w-0 bg-white rounded-lg border border-stone-200 p-4 sm:p-6 space-y-5">
               <FieldBlock label="PUBLICATION FORMAT — Select schema archetype">
                 <div className="flex gap-2">
                   <button

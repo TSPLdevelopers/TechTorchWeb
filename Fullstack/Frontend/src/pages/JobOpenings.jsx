@@ -7,8 +7,10 @@ import {
   deleteJobOpening,
 } from "../api/adminDashboardApi";
 
+import AdminSidebar from "../components/AdminSidebar.jsx";
+
 import {
-  Search, ChevronDown, Eye, Save, TriangleAlert, Bell, Bold, Italic,
+  Search, ChevronDown, Eye, Save, TriangleAlert, Bell, Bold, Italic, Menu,
 
   Link2, AlignLeft, ChevronRight, Code2, Plus, Pencil, Copy, ExternalLink,
 
@@ -515,6 +517,25 @@ export default function JobOpeningsCMS() {
 
   const [tagDraft, setTagDraft] = useState("");
 
+  // Responsive admin sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? "hidden" : "";
+
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const handleChange = (e) => {
+      if (e.matches) setSidebarOpen(false);
+    };
+
+    mq.addEventListener("change", handleChange);
+
+    return () => {
+      document.body.style.overflow = "";
+      mq.removeEventListener("change", handleChange);
+    };
+  }, [sidebarOpen]);
+
 
 
   const bodyRef = useRef(null);
@@ -779,6 +800,18 @@ export default function JobOpeningsCMS() {
 
     <div className="min-h-screen bg-stone-50 text-stone-900" style={{ fontFamily: "Inter, sans-serif" }}>
 
+      <AdminSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
+
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       <Toast toast={toast} />
 
 
@@ -871,9 +904,18 @@ export default function JobOpeningsCMS() {
 
       <div className="flex">
 
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 ">
 
           <header className="flex items-center gap-3 px-4 sm:px-6 py-3 border-b border-stone-200 bg-white flex-wrap">
+
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(true)}
+              className="lg:hidden w-9 h-9 shrink-0 flex items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-600"
+              aria-label="Open menu"
+            >
+              <Menu size={18} />
+            </button>
 
             <div className="flex-1 min-w-[160px] max-w-xl relative order-3 sm:order-none basis-full sm:basis-auto">
 

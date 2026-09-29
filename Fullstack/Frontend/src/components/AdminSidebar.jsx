@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutGrid,
@@ -6,48 +6,224 @@ import {
   Briefcase,
   Calendar,
   FolderOpen,
-  SlidersHorizontal,
   X,
 } from "lucide-react";
+
+import {
+  getNews,
+  getJobs,
+  getEvents,
+  getWhitepapers,
+} from "../api/adminDashboardApi";
 
 const ACCENT = "#780042";
 
 const NAV_ITEMS = [
   {
+    key: "dashboard",
     label: "Dashboard Overview",
     icon: LayoutGrid,
     path: "/admin-dashboard",
   },
   {
+    key: "news",
     label: "News & Insights",
     icon: FileText,
     path: "/News-Insights",
-    badge: "28",
   },
   {
+    key: "jobs",
     label: "Job Openings",
     icon: Briefcase,
     path: "/job-openings",
-    badge: "14",
   },
   {
+    key: "events",
     label: "Enterprise Events",
     icon: Calendar,
     path: "/events",
-    badge: "6",
   },
   {
+    key: "whitepapers",
     label: "Whitepapers / Case Studies",
     icon: FolderOpen,
     path: "/latest-updates",
-    badge: "9",
-  },
-  {
-    label: "System Settings",
-    icon: SlidersHorizontal,
-    path: "/system-settings",
   },
 ];
+
+/* -------------------------------------------------------------------------- */
+/* Sidebar Styles                                                             */
+/* -------------------------------------------------------------------------- */
+
+const SIDEBAR_CSS = `
+.ttsb {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 256px;
+  max-width: 85vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: #fff;
+  border-right: 1px solid #e7e5e4;
+  padding: 16px 12px;
+  transform: translateX(-100%);
+  transition: transform .2s ease;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+.ttsb *,
+.ttsb *::before,
+.ttsb *::after {
+  box-sizing: border-box;
+}
+
+.ttsb.open {
+  transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+  .ttsb {
+    transform: translateX(0);
+  }
+}
+
+.ttsb-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px 20px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #f5f5f4;
+}
+
+.ttsb-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.ttsb-name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #1c1917;
+}
+
+.ttsb-sub {
+  font-size: 10px;
+  color: #a8a29e;
+  letter-spacing: .025em;
+  line-height: 1.25;
+}
+
+.ttsb-close {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  color: #78716c;
+  cursor: pointer;
+}
+
+.ttsb-close:hover {
+  background: #f5f5f4;
+}
+
+@media (min-width: 1024px) {
+  .ttsb-close {
+    display: none;
+  }
+}
+
+.ttsb-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: #a8a29e;
+  letter-spacing: .025em;
+  padding: 0 12px;
+  margin: 12px 0 8px;
+}
+
+.ttsb-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ttsb-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  color: #57534e;
+  cursor: pointer;
+  transition: background-color .15s;
+}
+
+.ttsb-item:hover {
+  background: #f5f5f4;
+}
+
+.ttsb-item.active,
+.ttsb-item.active:hover {
+  color: #fff;
+  font-weight: 500;
+  background: ${ACCENT};
+}
+
+.ttsb-item svg {
+  flex-shrink: 0;
+}
+
+.ttsb-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ttsb-badge {
+  min-width: 24px;
+  text-align: center;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-weight: 600;
+  background: #f5f5f4;
+  color: #78716c;
+  flex-shrink: 0;
+}
+
+.ttsb-item.active .ttsb-badge {
+  background: rgba(255,255,255,.2);
+  color: #fff;
+}
+`;
 
 export default function AdminSidebar({
   sidebarOpen,
@@ -56,104 +232,212 @@ export default function AdminSidebar({
   const navigate = useNavigate();
   const location = useLocation();
 
+  /* ------------------------------------------------------------------------ */
+  /* LIVE COUNTS                                                              */
+  /* ------------------------------------------------------------------------ */
+
+  const [counts, setCounts] = useState({
+    news: 0,
+    jobs: 0,
+    events: 0,
+    whitepapers: 0,
+  });
+
+  const [countsLoading, setCountsLoading] = useState(true);
+
+  /* ------------------------------------------------------------------------ */
+  /* LOAD LIVE COUNTS                                                         */
+  /* ------------------------------------------------------------------------ */
+
+  const loadCounts = async () => {
+    try {
+      setCountsLoading(true);
+
+      const [
+        newsData,
+        jobsData,
+        eventsData,
+        whitepaperData,
+      ] = await Promise.all([
+        getNews(),
+        getJobs(),
+        getEvents(),
+        getWhitepapers(),
+      ]);
+
+      setCounts({
+        news: Array.isArray(newsData) ? newsData.length : 0,
+        jobs: Array.isArray(jobsData) ? jobsData.length : 0,
+        events: Array.isArray(eventsData) ? eventsData.length : 0,
+        whitepapers: Array.isArray(whitepaperData)
+          ? whitepaperData.length
+          : 0,
+      });
+    } catch (error) {
+      console.error("Sidebar live count error:", error);
+
+      /*
+       * API fail hone par previous count ko preserve karenge.
+       * Sidebar break nahi hoga.
+       */
+    } finally {
+      setCountsLoading(false);
+    }
+  };
+
+  /* ------------------------------------------------------------------------ */
+  /* INITIAL LOAD + AUTO REFRESH                                              */
+  /* ------------------------------------------------------------------------ */
+
+  useEffect(() => {
+    loadCounts();
+
+    /*
+     * Agar kisi page se data update hone ke baad
+     * "ttad:data-updated" event fire hota hai,
+     * sidebar immediately refresh hoga.
+     */
+    const handleDataUpdate = () => {
+      loadCounts();
+    };
+
+    window.addEventListener(
+      "ttad:data-updated",
+      handleDataUpdate
+    );
+
+    /*
+     * Backup refresh:
+     * Har 10 seconds latest database count check hoga.
+     */
+    const interval = setInterval(() => {
+      loadCounts();
+    }, 10000);
+
+    return () => {
+      window.removeEventListener(
+        "ttad:data-updated",
+        handleDataUpdate
+      );
+
+      clearInterval(interval);
+    };
+  }, []);
+
+  /* ------------------------------------------------------------------------ */
+  /* GET BADGE COUNT                                                          */
+  /* ------------------------------------------------------------------------ */
+
+  const getBadgeCount = (key) => {
+    switch (key) {
+      case "news":
+        return counts.news;
+
+      case "jobs":
+        return counts.jobs;
+
+      case "events":
+        return counts.events;
+
+      case "whitepapers":
+        return counts.whitepapers;
+
+      default:
+        return null;
+    }
+  };
+
+  /* ------------------------------------------------------------------------ */
+  /* RENDER                                                                   */
+  /* ------------------------------------------------------------------------ */
+
   return (
-    <aside
-      className={`fixed left-0 top-0 z-50 h-screen w-64 bg-white border-r border-stone-200 px-3 py-4
-      transition-transform duration-200
-      ${
-        sidebarOpen
-          ? "translate-x-0"
-          : "-translate-x-full"
-      }
-      lg:translate-x-0`}
-    >
-      {/* LOGO */}
-      <div className="flex items-center gap-2 px-2 pb-5 mb-2 border-b border-stone-100">
-        <div
-          className="w-9 h-9 rounded-md flex items-center justify-center text-white font-bold text-sm"
-          style={{ backgroundColor: ACCENT }}
-        >
-          T
-        </div>
+    <>
+      <style>{SIDEBAR_CSS}</style>
 
-        <div>
-          <div className="font-semibold text-sm leading-tight">
-            TechTorch
+      <aside
+        className={"ttsb" + (sidebarOpen ? " open" : "")}
+        aria-label="Main navigation"
+      >
+        {/* LOGO */}
+        <div className="ttsb-logo">
+          <div
+            className="ttsb-mark"
+            style={{ backgroundColor: ACCENT }}
+          >
+            T
           </div>
 
-          <div className="text-[10px] text-stone-400 tracking-wide leading-tight">
-            ENTERPRISE CORE
+          <div>
+            <div className="ttsb-name">
+              TechTorch
+            </div>
+
+            <div className="ttsb-sub">
+              ENTERPRISE CORE
+            </div>
           </div>
+
+          {/* MOBILE CLOSE */}
+          <button
+            type="button"
+            aria-label="Close menu"
+            className="ttsb-close"
+            onClick={() => setSidebarOpen(false)}
+          >
+            <X size={18} />
+          </button>
         </div>
 
-        {/* MOBILE CLOSE */}
-        <button
-          type="button"
-          aria-label="Close menu"
-          className="ml-auto w-8 h-8 flex items-center justify-center rounded-md text-stone-500 hover:bg-stone-100 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        >
-          <X size={18} />
-        </button>
-      </div>
+        <div className="ttsb-title">
+          CORE ARCHITECTURE
+        </div>
 
-      {/* NAVIGATION TITLE */}
-      <div className="text-[10px] font-semibold text-stone-400 tracking-wide px-3 mb-2 mt-3">
-        CORE ARCHITECTURE
-      </div>
+        <nav className="ttsb-nav">
+          {NAV_ITEMS.map((item) => {
+            const Icon = item.icon;
 
-      {/* NAVIGATION */}
-      <nav className="space-y-1">
-        {NAV_ITEMS.map((item) => {
-          const Icon = item.icon;
+            const active =
+              location.pathname === item.path;
 
-          const active =
-            location.pathname === item.path;
+            const badgeCount =
+              getBadgeCount(item.key);
 
-          return (
-            <button
-              key={item.path}
-              type="button"
-              onClick={() => {
-                navigate(item.path);
-                setSidebarOpen(false);
-              }}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-sm text-left transition-colors ${
-                active
-                  ? "text-white font-medium"
-                  : "text-stone-600 hover:bg-stone-100"
-              }`}
-              style={
-                active
-                  ? { backgroundColor: ACCENT }
-                  : {}
-              }
-            >
-              <Icon
-                size={17}
-                strokeWidth={2}
-                className="shrink-0"
-              />
+            return (
+              <button
+                key={item.path}
+                type="button"
+                className={
+                  "ttsb-item" +
+                  (active ? " active" : "")
+                }
+                onClick={() => {
+                  navigate(item.path);
+                  setSidebarOpen(false);
+                }}
+              >
+                <Icon
+                  size={17}
+                  strokeWidth={2}
+                />
 
-              <span className="flex-1 whitespace-nowrap">
-                {item.label}
-              </span>
-
-              {item.badge && (
-                <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-semibold ${
-                    active
-                      ? "bg-white/20 text-white"
-                      : "bg-stone-100 text-stone-500"
-                  }`}
-                >
-                  {item.badge}
+                <span className="ttsb-label">
+                  {item.label}
                 </span>
-              )}
-            </button>
-          );
-        })}
-      </nav>
-    </aside>
+
+                {/* LIVE BADGE */}
+                {item.key !== "dashboard" && (
+                  <span className="ttsb-badge">
+                    {countsLoading
+                      ? "..."
+                      : badgeCount}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </nav>
+      </aside>
+    </>
   );
 }

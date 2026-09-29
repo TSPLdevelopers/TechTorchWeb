@@ -1,18 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
+import AdminSidebar from "../components/AdminSidebar.jsx";
 import {
   Plus, Calendar, Clock, MapPin, CircleCheck, Share2, Rocket, Sparkles,
   ClipboardList, Eye, Pencil, SlidersHorizontal, MonitorPlay, FileText,
-  X, Check, ChevronDown, Trash2, ArrowDownToLine, ArchiveRestore,
+  X, Check, ChevronDown, Trash2, ArrowDownToLine, ArchiveRestore, Menu,
 } from "lucide-react";
-import {
-  getEvents,
-  createEvent,
-  updateEvent,
-  deleteEvent as deleteEventApi,
-} from "../api/adminDashboardApi";
+
 const ACCENT = "#780042";
 const FONT = "Inter,sans-serif";
+
 const FORMATS = ["Hybrid", "In-Person", "Virtual"];
+
 const TIMEZONES = [
   "PST (UTC-8)",
   "MST (UTC-7)",
@@ -23,15 +21,18 @@ const TIMEZONES = [
   "IST (UTC+5:30)",
   "SGT (UTC+8)",
 ];
+
 const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December",
 ];
+
 function parseLocalDate(str) {
   // "YYYY-MM-DD" -> Date, avoiding UTC off-by-one
   const [y, m, d] = str.split("-").map(Number);
   return new Date(y, m - 1, d);
 }
+
 function formatDateRange(startStr, endStr) {
   if (!startStr) return "";
   const start = parseLocalDate(startStr);
@@ -44,6 +45,7 @@ function formatDateRange(startStr, endStr) {
   }
   return `${MONTH_NAMES[start.getMonth()]} ${start.getDate()} – ${MONTH_NAMES[end.getMonth()]} ${end.getDate()}, ${end.getFullYear()}`;
 }
+
 function formatTime12(t) {
   if (!t) return "";
   let [h, m] = t.split(":").map(Number);
@@ -52,6 +54,7 @@ function formatTime12(t) {
   if (h === 0) h = 12;
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")} ${suffix}`;
 }
+
 function formatTimeRange(startStr, endStr, tz) {
   if (!startStr && !endStr) return "";
   const parts = [];
@@ -59,9 +62,11 @@ function formatTimeRange(startStr, endStr, tz) {
   if (endStr) parts.push(formatTime12(endStr));
   return `${parts.join(" – ")}${tz ? ` ${tz}` : ""}`;
 }
+
 function makeId(list) {
   return list.reduce((m, e) => Math.max(m, e.id), 0) + 1;
 }
+
 const INITIAL_EVENTS = [
   {
     id: 1,
@@ -92,6 +97,7 @@ const INITIAL_EVENTS = [
     registered: 420,
   },
 ];
+
 function emptyForm() {
   return {
     id: null,
@@ -106,6 +112,7 @@ function emptyForm() {
     registered: 0,
   };
 }
+
 function Toast({ toast }) {
   if (!toast) return null;
   return (
@@ -115,6 +122,7 @@ function Toast({ toast }) {
     </div>
   );
 }
+
 function Dropdown({ open, onClose, children, align = "left" }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -137,9 +145,9 @@ function Dropdown({ open, onClose, children, align = "left" }) {
     </div>
   );
 }
+
 export default function AddEventStudio() {
-const [events, setEvents] = useState([]);
-const [eventsLoading, setEventsLoading] = useState(true);
+  const [events, setEvents] = useState(INITIAL_EVENTS);
   const [form, setForm] = useState(emptyForm());
   const [editingId, setEditingId] = useState(null);
   const [toast, setToast] = useState(null);
@@ -147,31 +155,20 @@ const [eventsLoading, setEventsLoading] = useState(true);
   const [previewEvent, setPreviewEvent] = useState(null); // when set, modal shows this event instead of the live form
   const [manageOpenId, setManageOpenId] = useState(null);
   const [compareOn, setCompareOn] = useState(false);
- useEffect(() => {
-  loadEvents();
-}, []);
-async function loadEvents() {
-  try {
-    setEventsLoading(true);
-    const data = await getEvents();
-    const mappedEvents = (Array.isArray(data) ? data : []).map((event) => ({
-      ...event,
-      id: event._id || event.id,
-      tiers: Array.isArray(event.tiers) ? event.tiers.map(Number) : [150, 350, 250],
-      registered: Number(event.registered || 0),
-    }));
-    setEvents(mappedEvents);
-  } catch (error) {
-    console.error("Failed to load events:", error);
-    flashToast(error.message || "Failed to load events");
-  } finally {
-    setEventsLoading(false);
-  }
-}
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [sidebarOpen]);
+
   const [dateOpen, setDateOpen] = useState(false);
   const [dateDraft, setDateDraft] = useState({ start: "", end: "" });
   const [timeOpen, setTimeOpen] = useState(false);
   const [timeDraft, setTimeDraft] = useState({ start: "09:00", end: "17:30", tz: "PST (UTC-8)" });
+
   function openDatePicker() {
     setDateDraft((d) => ({ ...d }));
     setDateOpen(true);
@@ -192,11 +189,13 @@ async function loadEvents() {
     updateForm({ timing: formatTimeRange(timeDraft.start, timeDraft.end, timeDraft.tz) });
     setTimeOpen(false);
   }
+
   function flashToast(msg) {
     setToast(msg);
     window.clearTimeout(flashToast._t);
     flashToast._t = window.setTimeout(() => setToast(null), 2200);
   }
+
   function updateForm(patch) {
     setForm((f) => ({ ...f, ...patch }));
   }
@@ -204,12 +203,14 @@ async function loadEvents() {
     setForm((f) => ({ ...f, tiers: f.tiers.map((t, i) => (i === idx ? Math.max(0, value) : t)) }));
   }
   const totalCapacity = form.tiers.reduce((a, b) => a + Number(b || 0), 0);
+
   function resetToNew() {
     setForm(emptyForm());
     setEditingId(null);
     flashToast("Started a new event draft");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
   function loadIntoEditor(ev) {
     setForm({
       id: ev.id,
@@ -226,127 +227,53 @@ async function loadEvents() {
     setEditingId(ev.id);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
-   async function saveAs(status) {
-  if (!form.title.trim()) {
-    flashToast("Add an event title before saving");
-    return;
+
+  function saveAs(status) {
+    if (!form.title.trim()) {
+      flashToast("Add an event title before saving");
+      return;
+    }
+    setEvents((list) => {
+      const base = {
+        id: editingId ?? makeId(list),
+        status,
+        tag: form.tag,
+        title: form.title,
+        summary: form.summary,
+        dateRange: form.dateRange || "Date TBD",
+        timing: form.timing || "Time TBD",
+        venue: form.venue || "Venue TBD",
+        format: form.format,
+        tiers: form.tiers,
+        registered: form.registered,
+      };
+      if (editingId) {
+        return list.map((e) => (e.id === editingId ? base : e));
+      }
+      setEditingId(base.id);
+      return [base, ...list];
+    });
+    flashToast(status === "draft" ? "Saved as draft" : "Event created & published");
   }
-  const payload = {
-    status,
-    tag: form.tag?.trim() || "FLAGSHIP PLENARY",
-    title: form.title.trim(),
-    summary: form.summary?.trim() || "",
-    dateRange: form.dateRange || "Date TBD",
-    timing: form.timing || "Time TBD",
-    venue: form.venue?.trim() || "Venue TBD",
-    format: form.format || "Hybrid",
-    tiers: (form.tiers || [150, 350, 250]).map(Number),
-    registered: Number(form.registered || 0),
-  };
-  console.log("EVENT PAYLOAD:", payload);
-  try {
-    let result;
-    if (editingId) {
-      result = await updateEvent(editingId, payload);
-    } else {
-      result = await createEvent(payload);
-    }
-    console.log("EVENT API RESPONSE:", result);
-    const saved = result?.data || result?.event || result;
-    if (!saved) {
-      throw new Error("Event was not returned by server");
-    }
-    const mapped = {
-      ...saved,
-      id: saved._id || saved.id,
-      status: saved.status || status,
-      tag: saved.tag || payload.tag,
-      title: saved.title || payload.title,
-      summary: saved.summary || payload.summary,
-      dateRange: saved.dateRange || payload.dateRange,
-      timing: saved.timing || payload.timing,
-      venue: saved.venue || payload.venue,
-      format: saved.format || payload.format,
-      tiers: Array.isArray(saved.tiers)
-        ? saved.tiers
-        : payload.tiers,
-      registered: saved.registered ?? payload.registered,
-    };
-    if (editingId) {
-      setEvents((list) =>
-        list.map((e) =>
-          e.id === editingId ? mapped : e
-        )
-      );
-    } else {
-      setEvents((list) => [mapped, ...list]);
-      setEditingId(mapped.id);
-    }
-    flashToast(
-      status === "draft"
-        ? "Event saved as draft"
-        : "Event created & published successfully"
-    );
-  } catch (error) {
-    console.error("EVENT SAVE ERROR:", error);
-    flashToast(error.message || "Failed to save event");
-  }
-}
-  async function deleteEvent(id) {
+
+  function deleteEvent(id) {
     const ev = events.find((e) => e.id === id);
     if (!ev) return;
     if (!window.confirm(`Delete "${ev.title}"? This cannot be undone.`)) return;
-    try {
-      await deleteEventApi(id);
-      setEvents((list) => list.filter((e) => e.id !== id));
-      if (editingId === id) resetToNew();
-      setManageOpenId(null);
-      flashToast("Event deleted");
-    } catch (error) {
-      console.error("EVENT DELETE ERROR:", error);
-      flashToast(error.message || "Failed to delete event");
-    }
+    setEvents((list) => list.filter((e) => e.id !== id));
+    if (editingId === id) resetToNew();
+    setManageOpenId(null);
+    flashToast("Event deleted");
   }
-  async function setStatus(id, status) {
-    const ev = events.find((e) => e.id === id);
-    if (!ev) return;
-    try {
-      const payload = {
-        status,
-        tag: ev.tag || "FLAGSHIP PLENARY",
-        title: ev.title,
-        summary: ev.summary || "",
-        dateRange: ev.dateRange || "Date TBD",
-        timing: ev.timing || "Time TBD",
-        venue: ev.venue || "Venue TBD",
-        format: ev.format || "Hybrid",
-        tiers: (ev.tiers || [150, 350, 250]).map(Number),
-        registered: Number(ev.registered || 0),
-      };
-      const result = await updateEvent(id, payload);
-      const saved = result?.data || result?.event || result;
-      const mapped = {
-        ...ev,
-        ...(saved || {}),
-        id: saved?._id || saved?.id || id,
-        status,
-        tiers: Array.isArray(saved?.tiers) ? saved.tiers.map(Number) : payload.tiers,
-        registered: saved?.registered ?? payload.registered,
-      };
-      setEvents((list) => list.map((e) => (e.id === id ? mapped : e)));
-      setManageOpenId(null);
-      flashToast(
-        status === "upcoming"
-          ? "Event published"
-          : status === "draft"
-            ? "Moved to draft"
-            : "Event archived"
-      );
-    } catch (error) {
-      console.error("EVENT STATUS ERROR:", error);
-      flashToast(error.message || "Failed to update event status");
-    }
+
+  function setStatus(id, status) {
+    setEvents((list) => list.map((e) => (e.id === id ? { ...e, status } : e)));
+    setManageOpenId(null);
+    flashToast(
+      status === "upcoming" ? "Event published" : status === "draft" ? "Moved to draft" : "Event archived"
+    );
   }
+
   function openPreviewFor(ev) {
     setPreviewEvent(ev);
     setShowPreview(true);
@@ -355,6 +282,7 @@ async function loadEvents() {
     setPreviewEvent(null);
     setShowPreview(true);
   }
+
   async function shareLink(id) {
     const url = `https://events.techtorch.io/e/${id ?? "draft"}`;
     try {
@@ -364,8 +292,10 @@ async function loadEvents() {
       flashToast(url);
     }
   }
+
   const activeCount = events.filter((e) => e.status !== "past").length;
   const pastCount = events.filter((e) => e.status === "past").length;
+
   const pv = previewEvent || {
     title: form.title || "Untitled Event",
     dateRange: form.dateRange || "Date TBD",
@@ -376,9 +306,21 @@ async function loadEvents() {
     registered: form.registered,
   };
   const pvTotal = pv.tiers.reduce((a, b) => a + Number(b || 0), 0) || 1;
+
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900" style={{ fontFamily: FONT }}>
+    <div className="min-h-screen overflow-x-hidden bg-stone-50 text-stone-900" style={{ fontFamily: FONT }}>
+      <AdminSidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       <Toast toast={toast} />
+
       {showPreview && (
         <div className="fixed inset-0 z-40 bg-black/40 flex items-start sm:items-center justify-center p-4 overflow-y-auto">
           <div className="bg-white rounded-xl max-w-lg w-full p-6 relative my-8">
@@ -423,11 +365,20 @@ async function loadEvents() {
           </div>
         </div>
       )}
-      <div className="min-h-screen">
+
+      <div className="min-h-screen ">
         {/* Top bar */}
         <div className="bg-white border-b border-stone-200 px-4 sm:px-8 py-6">
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div>
+          <div className="relative flex items-center justify-between flex-wrap gap-4">
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(true)}
+              className="lg:hidden absolute left-0 top-0 w-9 h-9 flex items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-600 z-10"
+              aria-label="Open menu"
+            >
+              <Menu size={18} />
+            </button>
+            <div className="lg:pl-0 pl-0">
               <div className="text-xs text-stone-400 tracking-wide mb-2 flex items-center gap-1.5 flex-wrap">
                 <span>ENTERPRISE PORTAL</span>
                 <span>/</span>
@@ -456,6 +407,7 @@ async function loadEvents() {
             </button>
           </div>
         </div>
+
         <main className="px-4 sm:px-8 py-6 space-y-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
             {/* Form column */}
@@ -479,11 +431,12 @@ async function loadEvents() {
                   <CircleCheck size={13} /> {form.title.trim() ? "VALIDATED MODE" : "AWAITING TITLE"}
                 </span>
               </div>
+
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <label className="text-sm font-medium text-stone-700">Event Title &amp; Primary Anchor</label>
                   <span className="text-xs text-stone-400">Required</span>
-               </div>
+                </div>
                 <input
                   value={form.title}
                   onChange={(e) => updateForm({ title: e.target.value })}
@@ -491,6 +444,7 @@ async function loadEvents() {
                   className="w-full border border-stone-200 rounded-lg px-4 py-3 text-sm bg-stone-50 focus:outline-none focus:ring-2"
                 />
               </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="relative">
                   <label className="text-sm font-medium text-stone-700 mb-1.5 block">Date Timeline</label>
@@ -611,6 +565,7 @@ async function loadEvents() {
                   </Dropdown>
                 </div>
               </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="text-sm font-medium text-stone-700 mb-1.5 block">Physical Venue / Campus</label>
@@ -645,6 +600,7 @@ async function loadEvents() {
                   </div>
                 </div>
               </div>
+
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-sm font-medium text-stone-700">Max Capacity &amp; Tier Allocations</label>
@@ -675,6 +631,7 @@ async function loadEvents() {
                   ))}
                 </div>
               </div>
+
               <div>
                 <label className="text-sm font-medium text-stone-700 mb-1.5 block">Short Summary &amp; Briefing Synopsis</label>
                 <textarea
@@ -685,6 +642,7 @@ async function loadEvents() {
                   className="w-full border border-stone-200 rounded-lg px-4 py-3 text-sm text-stone-600 leading-relaxed bg-stone-50 focus:outline-none focus:ring-2 resize-y"
                 />
               </div>
+
               <div className="flex items-center justify-between pt-2 border-t border-stone-100 flex-wrap gap-3">
                 <div className="flex items-center gap-2 text-sm text-emerald-600">
                   <span className="text-emerald-500">☁</span> Autosaved just now to cloud directory
@@ -706,6 +664,7 @@ async function loadEvents() {
                 </div>
               </div>
             </div>
+
             {/* Preview column */}
             <div className="rounded-lg overflow-hidden border border-stone-200">
               <div className="h-40 overflow-hidden bg-stone-100">
@@ -715,6 +674,7 @@ async function loadEvents() {
                   className="w-full h-full object-cover"
                 />
               </div>
+
               <div className="p-4 space-y-3">
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-[10px] font-semibold" style={{ color: ACCENT }}>
@@ -722,16 +682,20 @@ async function loadEvents() {
                   </span>
                   <span className="text-stone-400 text-xs">3 Days</span>
                 </div>
+
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-xs text-stone-500">{form.dateRange || "Date TBD"}</span>
                   <span className="text-white text-[10px] font-medium px-2.5 py-1 rounded" style={{ backgroundColor: ACCENT }}>
                     {form.venue ? form.venue.split(",").slice(-2).join(",").trim() || form.venue : "Venue TBD"}
                   </span>
                 </div>
+
                 <h3 className="font-semibold text-stone-900 leading-snug">{form.title || "Untitled Event"}</h3>
+
                 <p className="text-sm text-stone-500 leading-relaxed">
                   {form.summary ? form.summary.slice(0, 90) + (form.summary.length > 90 ? "…" : "") : "Write a summary to see it here..."}
                 </p>
+
                 <div>
                   <div className="flex items-center justify-between text-xs text-stone-500 mb-1.5">
                     <span>Capacity Registered</span>
@@ -749,6 +713,7 @@ async function loadEvents() {
                     />
                   </div>
                 </div>
+
                 <div className="flex items-center gap-2 pt-1">
                   <button
                     onClick={openPreviewLive}
@@ -758,6 +723,7 @@ async function loadEvents() {
                     <Sparkles size={14} />
                     Launch Event Hub
                   </button>
+
                   <button
                     onClick={() => shareLink(form.id)}
                     className="w-10 h-10 flex items-center justify-center border border-stone-200 rounded-lg text-stone-500 hover:bg-stone-50"
@@ -769,6 +735,7 @@ async function loadEvents() {
               </div>
             </div>
           </div>
+
           {/* Enterprise Events Schedule */}
           <div>
             <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
@@ -797,6 +764,7 @@ async function loadEvents() {
                 </span>
               </button>
             </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {events.map((ev) => {
                 const total = ev.tiers.reduce((a, b) => a + b, 0) || 1;
@@ -848,8 +816,10 @@ async function loadEvents() {
                         <CircleCheck size={11} /> Concluded · Completed
                       </span>
                     )}
+
                     <h3 className="text-xl font-semibold text-stone-900">{ev.title}</h3>
                     <p className="text-sm text-stone-500 leading-relaxed">{ev.summary}</p>
+
                     <div className="flex items-center gap-6 text-sm text-stone-600 flex-wrap">
                       <span className="flex items-center gap-1.5">
                         <Calendar size={14} className="text-stone-400" /> {ev.dateRange}
@@ -858,6 +828,7 @@ async function loadEvents() {
                         <MapPin size={14} className="text-stone-400" /> {ev.venue}
                       </span>
                     </div>
+
                     <div>
                       <div className="flex items-center justify-between text-xs text-stone-500 mb-1.5">
                         <span>{isPast ? "Final Attendance (Verified Quota)" : "Allocated Capacity (Tier Quotas)"}</span>
@@ -872,6 +843,7 @@ async function loadEvents() {
                         />
                       </div>
                     </div>
+
                     <div className="flex items-center gap-3 pt-2 flex-wrap relative">
                       {isPast ? (
                         <>

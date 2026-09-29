@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect, useMemo } from "react";
+import AdminSidebar from "../components/AdminSidebar.jsx";
 import {
   Search, Bell, History, ChevronDown, ChevronRight, Save, ArrowRight, CircleCheck,
   UploadCloud, FileType2, Download, Trash2, GripVertical, Plus,
-  BarChart3, PenSquare, Archive, ClipboardList, RefreshCw, X, Check, PencilLine, Send,
+  BarChart3, PenSquare, Archive, ClipboardList, RefreshCw, X, Check, PencilLine, Send, Menu,
 } from "lucide-react";
 import {
   getWhitepapers,
@@ -281,6 +282,25 @@ async function loadWhitepapers() {
  
   const fileInputRef = useRef(null);
   const dragIndex = useRef(null);
+
+  // Responsive admin sidebar
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? "hidden" : "";
+
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const handleChange = (e) => {
+      if (e.matches) setSidebarOpen(false);
+    };
+
+    mq.addEventListener("change", handleChange);
+
+    return () => {
+      document.body.style.overflow = "";
+      mq.removeEventListener("change", handleChange);
+    };
+  }, [sidebarOpen]);
  
   function flashToast(msg) {
     setToast(msg);
@@ -527,6 +547,17 @@ async function loadWhitepapers() {
  
   return (
     <div className="min-h-screen bg-stone-50 text-stone-900" style={{ fontFamily: FONT }}>
+      <AdminSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
+
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
       <Toast toast={toast} />
  
       {changelogOpen && (
@@ -556,6 +587,14 @@ async function loadWhitepapers() {
  
       <div className="min-h-screen">
         <header className="flex items-center gap-4 px-4 sm:px-6 py-3 border-b border-stone-200 bg-white flex-wrap">
+          <button
+            type="button"
+            onClick={() => setSidebarOpen(true)}
+            className="lg:hidden w-9 h-9 shrink-0 flex items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-600"
+            aria-label="Open menu"
+          >
+            <Menu size={18} />
+          </button>
           <div className="flex-1 max-w-xl relative">
             <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
