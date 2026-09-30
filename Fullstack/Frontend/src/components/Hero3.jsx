@@ -47,7 +47,7 @@ export default function Hero3() {
                   lg:text-[17px]
                   font-inter
                   leading-relaxed
-                  max-w-[650px]
+                  max-w-[650px] max-w-full
                 "
               >
                 We take the time to understand your business, requirements,
@@ -99,7 +99,7 @@ export default function Hero3() {
                 className={`
                   relative
                   w-full
-                  max-w-[420px]
+                  max-w-[420px] max-w-full
                   border-[5px]
                   border-white
                   overflow-hidden
@@ -157,7 +157,7 @@ export default function Hero3() {
                   lg:text-[17px]
                   font-inter
                   leading-relaxed
-                  max-w-[650px]
+                  max-w-[650px] max-w-full
                 "
               >
                 Once we understand your business needs, we turn ideas and
@@ -209,7 +209,7 @@ export default function Hero3() {
                 className={`
                   relative
                   w-full
-                  max-w-[420px]
+                  max-w-[420px] max-w-full
                   border-[5px]
                   border-white
                   overflow-hidden
@@ -266,7 +266,7 @@ export default function Hero3() {
                   lg:text-[17px]
                   font-inter
                   leading-relaxed
-                  max-w-[650px]
+                  max-w-[650px] max-w-full
                 "
               >
                 Our relationship continues beyond deployment. We provide ongoing
@@ -318,7 +318,7 @@ export default function Hero3() {
                 className={`
                   relative
                   w-full
-                  max-w-[420px]
+                  max-w-[420px] max-w-full
                   border-[5px]
                   border-white
                   overflow-hidden
@@ -374,7 +374,7 @@ export default function Hero3() {
                 lg:text-[16px]
                 font-inter
                 text-white
-                max-w-[650px]
+                max-w-[650px] max-w-full
                 leading-relaxed
               "
             >
@@ -390,7 +390,7 @@ export default function Hero3() {
                 text-[14px]
                 font-inter
                 leading-relaxed
-                max-w-[650px]
+                max-w-[650px] max-w-full
               "
             >
               Our approach is simple:
@@ -487,7 +487,7 @@ export default function Hero3() {
               className="
                 relative
                 w-full
-                max-w-[440px]
+                max-w-[440px] max-w-full
                 aspect-square
                 border-[5px]
                 border-white

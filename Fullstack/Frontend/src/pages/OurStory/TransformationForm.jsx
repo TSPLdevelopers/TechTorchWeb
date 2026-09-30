@@ -152,7 +152,7 @@ export default function TransformationForm() {
                   sm:text-[16px]
                   leading-relaxed
                   text-white/70
-                  max-w-[300px]
+                  max-w-[300px] max-w-full
                   font-inter
                 "
               >
@@ -250,7 +250,7 @@ export default function TransformationForm() {
                     text-slate-500
                     text-[14px]
                     sm:text-[15px]
-                    max-w-[280px]
+                    max-w-[280px] max-w-full
                     font-inter
                   "
                 >

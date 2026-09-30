@@ -14,11 +14,13 @@ const upcomingEventRoutes = require("./routes/upcomingEvent.routes");
 const featuredStoryRoutes = require("./routes/featuredStory.routes");
 const companyEnvironmentRoutes = require("./routes/companyEnvironment.routes");
 const opportunityRoutes = require("./routes/opportunity.routes");
+const newsRoutes = require("./routes/news.routes");
 const cookieParser = require("cookie-parser");
 
 app.use(cookieParser());
 app.use("/api/company-environments", companyEnvironmentRoutes);
 app.use("/api/opportunities", opportunityRoutes);
+app.use("/api/news", newsRoutes);
 
 app.use("/api/admin", adminRoutes);
 app.use("/api/auth", authRoutes);

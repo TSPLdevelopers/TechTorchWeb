@@ -22,9 +22,9 @@ export default function PurpleHero() {
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 min-h-[600px] w-full flex items-center">
-        <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-8 md:px-10 lg:px-2 xl:px-8">
+        <div className="w-full max-w-[1400px] max-w-full mx-auto px-4 sm:px-8 md:px-10 lg:px-2 xl:px-8">
 
-          <div className="max-w-[600px] text-white">
+          <div className="max-w-[600px] max-w-full text-white">
 
             {/* HEADING */}
             <h1
@@ -51,7 +51,7 @@ export default function PurpleHero() {
               className="
               relative -top-4
                 mt-7
-                max-w-[540px]
+                max-w-[540px] max-w-full
                 font-['Inter']
                 text-[15px]
                 sm:text-[17px]

@@ -76,7 +76,7 @@ export default function HowWeWork() {
             <p
               className="
                 mt-5
-                max-w-[600px]
+                max-w-[600px] max-w-full
                 text-[14px]
                 leading-[1.55]
                 text-[#333]
@@ -123,7 +123,7 @@ export default function HowWeWork() {
                   className="
                     flex
                     h-[42px]
-                    w-[42px]
+                    w-[42px] max-w-full
                     shrink-0
                     items-center
                     justify-center
@@ -169,7 +169,7 @@ export default function HowWeWork() {
                   className="
                     flex
                     h-[42px]
-                    w-[42px]
+                    w-[42px] max-w-full
                     shrink-0
                     items-center
                     justify-center
@@ -216,7 +216,7 @@ export default function HowWeWork() {
                   className="
                     flex
                     h-[42px]
-                    w-[42px]
+                    w-[42px] max-w-full
                     shrink-0
                     items-center
                     justify-center
@@ -297,7 +297,7 @@ export default function HowWeWork() {
                 block
                 h-auto
                 w-[82%]
-                max-w-[500px]
+                max-w-[500px] max-w-full
                 object-contain
 
                 sm:w-[80%]

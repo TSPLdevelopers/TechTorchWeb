@@ -84,7 +84,7 @@ const pillars = [
 export default function PhilosophySection() {
   return (
     <section className="w-full bg-[#EEF1FC] px-5 py-12 font-inter sm:px-8 sm:py-16 lg:px-10 lg:py-[72px]">
-      <div className="mx-auto w-full max-w-[1100px] text-center">
+      <div className="mx-auto w-full max-w-[1100px] max-w-full text-center">
         
         {/* Subtitle */}
         <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.08em] text-[#8B1E5C] sm:text-[12px] md:text-[13px]">
@@ -102,7 +102,7 @@ export default function PhilosophySection() {
         </h2>
 
         {/* Description */}
-        <p className="mx-auto mb-9 max-w-[620px] text-[14px] leading-relaxed text-[#4B5468] sm:mb-12 sm:text-[16px] md:text-[17px]">
+        <p className="mx-auto mb-9 max-w-[620px] max-w-full text-[14px] leading-relaxed text-[#4B5468] sm:mb-12 sm:text-[16px] md:text-[17px]">
           We believe in rapid innovation without compromising on structural
           invulnerability. Our foundation is built on three unwavering
           pillars.

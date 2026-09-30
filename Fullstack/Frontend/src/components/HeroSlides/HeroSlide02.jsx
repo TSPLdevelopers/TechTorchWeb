@@ -7,7 +7,7 @@ export default function WithPurpose() {
         className="
           mx-auto
           w-full
-          max-w-[1340px]
+          max-w-[1340px] max-w-full
           px-4
           py-9
           sm:px-6
@@ -166,7 +166,7 @@ export default function WithPurpose() {
             <div
               className="
                 w-full
-                max-w-[215px]
+                max-w-[215px] max-w-full
                 rounded-[7px]
                 border
                 border-[#C9C9C9]
@@ -229,7 +229,7 @@ export default function WithPurpose() {
                   -top-2
                   mt-5
                   h-[3px]
-                  w-[58px]
+                  w-[58px] max-w-full
                   bg-[#850052]
                 "
               />

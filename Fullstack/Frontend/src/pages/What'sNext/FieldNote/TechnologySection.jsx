@@ -16,8 +16,8 @@ export default function TechnologySection() {
         </span>
 
         <span className="block">
-          They need technology that{" "}
-          <em className="italic">works better together</em>.
+          They need technology that works better together
+          
         </span>
       </h2>
 

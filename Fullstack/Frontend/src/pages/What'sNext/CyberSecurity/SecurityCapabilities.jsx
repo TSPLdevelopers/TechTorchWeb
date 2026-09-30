@@ -53,50 +53,271 @@ const capabilities = [
 
 export default function CybersecurityCapabilitiesSection() {
   return (
-    <section className="w-full bg-white px-6 py-16 sm:px-10 lg:px-16">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
-          <div>
-            <span className="text-[10px] font-semibold tracking-[0.15em] text-fuchsia-900">
+    <section
+      className="
+        w-full
+        overflow-hidden
+        bg-white
+        px-4
+        py-10
+        sm:px-6
+        sm:py-12
+        md:px-8
+        md:py-14
+        lg:px-10
+        lg:py-16
+        xl:px-12
+        xl:py-20
+      "
+    >
+      <div className="mx-auto w-full max-w-7xl">
+
+        {/* ================= HEADER ================= */}
+        <div
+          className="
+            flex
+            flex-col
+            gap-4
+            sm:flex-row
+            sm:items-start
+            sm:justify-between
+            sm:gap-6
+          "
+        >
+          <div className="min-w-0">
+            {/* Section Label */}
+            <span
+              className="
+                text-[9px]
+                font-semibold
+                tracking-[0.15em]
+                text-fuchsia-900
+                sm:text-[10px]
+              "
+              style={{
+                fontFamily: "'Inter', sans-serif",
+              }}
+            >
               CYBERSECURITY CAPABILITIES
             </span>
-            <h1 className="mt-2 max-w-lg text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
+
+            {/* Main Heading */}
+            <h1
+              className="
+                mt-2
+                w-full
+                max-w-[350px]
+                text-[22px]
+                font-bold
+                leading-[1.3]
+                text-slate-900
+                sm:max-w-xl
+                sm:text-[25px]
+                md:max-w-2xl
+                md:text-[28px]
+                lg:max-w-3xl
+                lg:text-[30px]
+                xl:text-[32px]
+              "
+              style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}
+            >
               Security Across the Digital Environment
             </h1>
           </div>
-          <span className="mt-1 inline-flex w-fit items-center rounded-full border border-slate-200 px-3 py-1 text-[10px] font-medium tracking-wide text-slate-500">
+
+          {/* Security Badge */}
+          <span
+            className="
+              inline-flex
+              w-fit
+              shrink-0
+              items-center
+              rounded-full
+              border
+              border-slate-200
+              px-3
+              py-1
+              text-[9px]
+              font-medium
+              tracking-wide
+              text-slate-500
+              sm:mt-1
+              sm:text-[10px]
+            "
+            style={{
+              fontFamily: "'Inter', sans-serif",
+            }}
+          >
             DEFENSE DEPTH // ENTERPRISE GRADE
           </span>
         </div>
 
-        {/* Banner image */}
-        <div className="relative mt-8 overflow-hidden rounded-lg">
+        {/* ================= BANNER IMAGE ================= */}
+        <div
+          className="
+            relative
+            mt-7
+            w-full
+            overflow-hidden
+            rounded-lg
+            sm:mt-8
+            sm:rounded-xl
+          "
+        >
           <img
             src="/Cryptographic Interface  Security Layers.png"
             alt="Enterprise layer encryption architecture"
-            className="h-48 w-full object-cover sm:h-56"
+            loading="lazy"
+            className="
+              block
+              h-[220px]
+              w-full
+              object-cover
+              object-center
+              sm:h-[260px]
+              md:h-[280px]
+              lg:h-[300px]
+              xl:h-[320px]
+            "
           />
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-black/60 px-4 py-2">
-            <span className="text-[10px] tracking-wide text-slate-200">
+
+          {/* Image Bottom Overlay */}
+          <div
+            className="
+              absolute
+              inset-x-0
+              bottom-0
+              flex
+              flex-col
+              gap-1
+              bg-black/55
+              px-3
+              py-2
+              sm:flex-row
+              sm:items-center
+              sm:justify-between
+              sm:px-4
+              sm:py-2.5
+            "
+          >
+            <span
+              className="
+                text-[9px]
+                tracking-wide
+                text-slate-200
+                sm:text-[10px]
+              "
+              style={{
+                fontFamily: "'Inter', sans-serif",
+              }}
+            >
               Enterprise Layer Encryption Architecture
             </span>
-            <span className="text-[10px] tracking-wide text-slate-400">
-              H::CIPHER_ROUTER_ACTIVE
+
+            <span
+              className="
+                text-[8px]
+                tracking-wide
+                text-slate-400
+                sm:text-[9px]
+                md:text-[10px]
+              "
+              style={{
+                fontFamily: "'Inter', sans-serif",
+              }}
+            >
+              SECURED_STORAGE_ACTIVE
             </span>
           </div>
         </div>
 
-        {/* Capability cards */}
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* ================= CAPABILITY CARDS ================= */}
+        <div
+          className="
+            mt-8
+            grid
+            grid-cols-1
+            gap-4
+            sm:mt-10
+            sm:grid-cols-2
+            sm:gap-5
+            lg:grid-cols-4
+            lg:gap-5
+            xl:gap-6
+          "
+        >
           {capabilities.map((c) => (
-            <div key={c.number} className="rounded-md bg-slate-50 p-6">
-              <span className="inline-flex items-center rounded-full bg-rose-100 px-2.5 py-1 text-[10px] font-semibold text-fuchsia-900">
+            <div
+              key={c.number}
+              className="
+                w-full
+                min-w-0
+                rounded-lg
+                bg-slate-50
+                p-5
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-sm
+                sm:p-6
+                lg:p-5
+                xl:p-6
+              "
+            >
+              {/* Number */}
+              <span
+                className="
+                  inline-flex
+                  items-center
+                  rounded-full
+                  bg-rose-100
+                  px-2.5
+                  py-1
+                  text-[10px]
+                  font-semibold
+                  text-fuchsia-900
+                "
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                }}
+              >
                 {c.number}
               </span>
-              <h3 className="mt-4 text-base font-semibold text-slate-900">
+
+              {/* Card Heading */}
+              <h3
+                className="
+                  mt-4
+                  text-[15px]
+                  font-semibold
+                  leading-[1.4]
+                  text-slate-900
+                  sm:text-[16px]
+                  md:text-[17px]
+                "
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                }}
+              >
                 {c.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-500">
+
+              {/* Card Description */}
+              <p
+                className="
+                  mt-2
+                  text-[13px]
+                  leading-[1.7]
+                  text-slate-500
+                  sm:text-[14px]
+                  sm:leading-[1.75]
+                "
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                }}
+              >
                 {c.description}
               </p>
             </div>

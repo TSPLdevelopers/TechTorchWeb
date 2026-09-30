@@ -17,8 +17,8 @@ const FEATURES = [
 
 function Check() {
   return (
-    <span className="flex-none w-[22px] h-[22px] rounded-full border-[1.5px] border-[#9A4B3E] flex items-center justify-center mt-0.5">
-      <svg viewBox="0 0 12 12" fill="none" className="w-[11px] h-[11px]">
+    <span className="flex-none w-[22px] max-w-full h-[22px] rounded-full border-[1.5px] border-[#9A4B3E] flex items-center justify-center mt-0.5">
+      <svg viewBox="0 0 12 12" fill="none" className="w-[11px] max-w-full h-[11px]">
         <path
           d="M2 6.2L4.6 9L10 2.5"
           stroke="#9A4B3E"

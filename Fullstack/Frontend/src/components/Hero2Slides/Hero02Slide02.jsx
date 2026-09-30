@@ -19,7 +19,7 @@ export default function ERPApproach() {
         className="
           mx-auto
           w-full
-          max-w-[1180px]
+          max-w-[1180px] max-w-full
           px-4
           py-6
 
@@ -101,7 +101,7 @@ export default function ERPApproach() {
             <p
               className="
                 mt-4
-                max-w-[550px]
+                max-w-[550px] max-w-full
                 font-['Inter']
                 text-[13px]
                 font-normal
@@ -127,7 +127,7 @@ export default function ERPApproach() {
             <p
               className="
                 mt-4
-                max-w-[550px]
+                max-w-[550px] max-w-full
                 font-['Inter']
                 text-[13px]
                 font-normal
@@ -152,7 +152,7 @@ export default function ERPApproach() {
             <p
               className="
                 mt-4
-                max-w-[550px]
+                max-w-[550px] max-w-full
                 font-['Inter']
                 text-[13px]
                 font-normal
@@ -202,21 +202,21 @@ export default function ERPApproach() {
                 w-full
                 mx-auto
                 aspect-[4/3]
-                max-w-[280px]
+                max-w-[280px] max-w-full
 
-                xs:max-w-[300px]
+                xs:max-w-[300px] max-w-full
                 sm:h-[300px]
-                sm:max-w-[350px]
+                sm:max-w-[350px] max-w-full
                 sm:aspect-auto
 
                 md:h-[370px]
-                md:max-w-[450px]
+                md:max-w-[450px] max-w-full
 
                 lg:h-[350px]
-                lg:max-w-[425px]
+                lg:max-w-[425px] max-w-full
 
                 xl:h-[370px]
-                xl:max-w-[445px]
+                xl:max-w-[445px] max-w-full
               "
             >
               {/* ================= CONNECTING LINES ================= */}
@@ -369,7 +369,7 @@ export default function ERPApproach() {
                   z-[3]
                   flex
                   h-[46px]
-                  w-[46px]
+                  w-[46px] max-w-full
                   -translate-x-1/2
                   items-center
                   justify-center
@@ -378,19 +378,19 @@ export default function ERPApproach() {
                   bg-white
 
                   xs:h-[52px]
-                  xs:w-[52px]
+                  xs:w-[52px] max-w-full
 
                   sm:h-[66px]
-                  sm:w-[66px]
+                  sm:w-[66px] max-w-full
 
                   md:h-[80px]
-                  md:w-[80px]
+                  md:w-[80px] max-w-full
 
                   lg:h-[80px]
-                  lg:w-[80px]
+                  lg:w-[80px] max-w-full
 
                   xl:h-[84px]
-                  xl:w-[84px]
+                  xl:w-[84px] max-w-full
                 "
               >
                 <img
@@ -411,24 +411,24 @@ export default function ERPApproach() {
               className="
                 mt-4
                 w-full
-                max-w-[320px]
+                max-w-[320px] max-w-full
                 rounded-[8px]
                 bg-[#FCECF6]
                 px-3
                 py-2.5
 
                 sm:mt-4
-                sm:max-w-[300px]
+                sm:max-w-[300px] max-w-full
                 sm:px-4
                 sm:py-3
 
                 md:-mt-4
-                md:max-w-[390px]
+                md:max-w-[390px] max-w-full
                 md:px-5
                 md:py-4
 
                 lg:-mt-1
-                lg:max-w-[400px]
+                lg:max-w-[400px] max-w-full
                 lg:translate-x-6
 
                 xl:translate-x-4
@@ -529,7 +529,7 @@ function ERPItem({
         className="
           flex
           h-[32px]
-          w-[32px]
+          w-[32px] max-w-full
           items-center
           justify-center
           rounded-full
@@ -537,16 +537,16 @@ function ERPItem({
           text-white
 
           xs:h-[38px]
-          xs:w-[38px]
+          xs:w-[38px] max-w-full
 
           sm:h-[45px]
-          sm:w-[45px]
+          sm:w-[45px] max-w-full
 
           md:h-[58px]
-          md:w-[58px]
+          md:w-[58px] max-w-full
 
           lg:h-[62px]
-          lg:w-[62px]
+          lg:w-[62px] max-w-full
         "
       >
         {icon}
@@ -604,23 +604,23 @@ function FinanceIcon() {
       className="
         flex
         h-[21px]
-        w-[21px]
+        w-[21px] max-w-full
         items-center
         justify-center
         rounded-full
         bg-white
 
         xs:h-[24px]
-        xs:w-[24px]
+        xs:w-[24px] max-w-full
 
         sm:h-[28px]
-        sm:w-[28px]
+        sm:w-[28px] max-w-full
 
         md:h-[34px]
-        md:w-[34px]
+        md:w-[34px] max-w-full
 
         lg:h-[38px]
-        lg:w-[38px]
+        lg:w-[38px] max-w-full
       "
     >
       <span
@@ -653,19 +653,19 @@ function WalletIcon() {
       viewBox="0 0 48 48"
       className="
         h-[19px]
-        w-[19px]
+        w-[19px] max-w-full
 
         xs:h-[22px]
-        xs:w-[22px]
+        xs:w-[22px] max-w-full
 
         sm:h-[26px]
-        sm:w-[26px]
+        sm:w-[26px] max-w-full
 
         md:h-[31px]
-        md:w-[31px]
+        md:w-[31px] max-w-full
 
         lg:h-[34px]
-        lg:w-[34px]
+        lg:w-[34px] max-w-full
       "
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -708,19 +708,19 @@ function InventoryIcon() {
       viewBox="0 0 48 48"
       className="
         h-[20px]
-        w-[20px]
+        w-[20px] max-w-full
 
         xs:h-[23px]
-        xs:w-[23px]
+        xs:w-[23px] max-w-full
 
         sm:h-[27px]
-        sm:w-[27px]
+        sm:w-[27px] max-w-full
 
         md:h-[32px]
-        md:w-[32px]
+        md:w-[32px] max-w-full
 
         lg:h-[35px]
-        lg:w-[35px]
+        lg:w-[35px] max-w-full
       "
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -775,19 +775,19 @@ function UsersIcon() {
       viewBox="0 0 48 48"
       className="
         h-[20px]
-        w-[20px]
+        w-[20px] max-w-full
 
         xs:h-[23px]
-        xs:w-[23px]
+        xs:w-[23px] max-w-full
 
         sm:h-[27px]
-        sm:w-[27px]
+        sm:w-[27px] max-w-full
 
         md:h-[32px]
-        md:w-[32px]
+        md:w-[32px] max-w-full
 
         lg:h-[35px]
-        lg:w-[35px]
+        lg:w-[35px] max-w-full
       "
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
@@ -813,19 +813,19 @@ function TalentIcon() {
       viewBox="0 0 48 48"
       className="
         h-[20px]
-        w-[20px]
+        w-[20px] max-w-full
 
         xs:h-[23px]
-        xs:w-[23px]
+        xs:w-[23px] max-w-full
 
         sm:h-[27px]
-        sm:w-[27px]
+        sm:w-[27px] max-w-full
 
         md:h-[32px]
-        md:w-[32px]
+        md:w-[32px] max-w-full
 
         lg:h-[35px]
-        lg:w-[35px]
+        lg:w-[35px] max-w-full
       "
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"

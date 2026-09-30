@@ -114,10 +114,10 @@ export default function ErpHero() {
 
             w-full
 
-            max-w-[340px]
-            sm:max-w-[520px]
-            md:max-w-[700px]
-            lg:max-w-[850px]
+            max-w-[340px] max-w-full
+            sm:max-w-[520px] max-w-full
+            md:max-w-[700px] max-w-full
+            lg:max-w-[850px] max-w-full
 
             text-[1.65rem]
             sm:text-[2rem]
@@ -149,10 +149,10 @@ export default function ErpHero() {
 
             w-full
 
-            max-w-[330px]
-            sm:max-w-[540px]
-            md:max-w-[680px]
-            lg:max-w-[800px]
+            max-w-[330px] max-w-full
+            sm:max-w-[540px] max-w-full
+            md:max-w-[680px] max-w-full
+            lg:max-w-[800px] max-w-full
 
             text-[13px]
             sm:text-sm

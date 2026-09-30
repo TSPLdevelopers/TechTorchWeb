@@ -7,7 +7,7 @@ export default function TechnologyBusinessValue() {
         className="
           mx-auto
           w-full
-          max-w-[1400px]
+          max-w-[1400px] max-w-full
 
           px-5
           py-10
@@ -95,7 +95,7 @@ export default function TechnologyBusinessValue() {
           >
             <p
               className="
-                max-w-[650px]
+                max-w-[650px] max-w-full
                 font-['Inter']
                 text-[15px]
                 font-normal
@@ -116,7 +116,7 @@ export default function TechnologyBusinessValue() {
             <p
               className="
                 mt-5
-                max-w-[650px]
+                max-w-[650px] max-w-full
                 font-['Inter']
                 text-[15px]
                 font-normal
@@ -142,7 +142,7 @@ export default function TechnologyBusinessValue() {
             <p
               className="
                 mt-5
-                max-w-[650px]
+                max-w-[650px] max-w-full
                 font-['Inter']
                 text-[15px]
                 font-normal
@@ -191,14 +191,14 @@ export default function TechnologyBusinessValue() {
                 leading-[1.65]
                 text-[#5c5c5c]
 
-                sm:max-w-[580px]
+                sm:max-w-[580px] max-w-full
                 sm:text-[16px]
 
-                md:max-w-[480px]
+                md:max-w-[480px] max-w-full
 
-                lg:max-w-[500px]
+                lg:max-w-[500px] max-w-full
 
-                xl:max-w-[500px]
+                xl:max-w-[500px] max-w-full
               "
             >
               The right technology should also be practical. Not every
@@ -220,16 +220,16 @@ export default function TechnologyBusinessValue() {
                 text-[#5c5c5c]
 
                 sm:mt-6
-                sm:max-w-[580px]
+                sm:max-w-[580px] max-w-full
                 sm:text-[16px]
 
                 md:mt-7
-                md:max-w-[480px]
+                md:max-w-[480px] max-w-full
 
                 lg:mt-8
-                lg:max-w-[500px]
+                lg:max-w-[500px] max-w-full
 
-                xl:max-w-[500px]
+                xl:max-w-[500px] max-w-full
               "
             >
               Our approach is simple: understand the problem, choose the
@@ -248,16 +248,16 @@ export default function TechnologyBusinessValue() {
                 text-[#5c5c5c]
 
                 sm:mt-6
-                sm:max-w-[580px]
+                sm:max-w-[580px] max-w-full
                 sm:text-[16px]
 
                 md:mt-7
-                md:max-w-[480px]
+                md:max-w-[480px] max-w-full
 
                 lg:mt-8
-                lg:max-w-[500px]
+                lg:max-w-[500px] max-w-full
 
-                xl:max-w-[500px]
+                xl:max-w-[500px] max-w-full
               "
             >
               Software should simplify work, connect people and information,
@@ -277,17 +277,17 @@ export default function TechnologyBusinessValue() {
                 text-[#850052]
 
                 sm:mt-8
-                sm:max-w-[580px]
+                sm:max-w-[580px] max-w-full
                 sm:text-[18px]
 
                 md:mt-9
-                md:max-w-[480px]
+                md:max-w-[480px] max-w-full
                 md:text-[19px]
 
-                lg:max-w-[500px]
+                lg:max-w-[500px] max-w-full
                 lg:text-[20px]
 
-                xl:max-w-[500px]
+                xl:max-w-[500px] max-w-full
                 xl:text-[18px]
               "
             >

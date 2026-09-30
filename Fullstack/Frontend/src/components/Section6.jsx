@@ -5,17 +5,17 @@ const CARDS = [
   {
     title: "Platforms",
     img: "/card1.png",
-    href: "/platforms",
+    href: "/platform",
   },
   {
     title: "Digital Solutions",
     img: "/card2.png",
-    href: "/digital-solutions",
+    href: "/digitalsolution",
   },
   {
     title: "Our Services",
     img: "/card3.png",
-    href: "/services",
+    href: "/OurService",
   },
   {
     title: "Business Process Outsourcing",
@@ -25,12 +25,12 @@ const CARDS = [
   {
     title: "IT Augmentation Service",
     img: "/card5.png",
-    href: "/it-augmentation",
+    href: "/ItAugmentation",
   },
   {
     title: "Artificial Intelligent",
     img: "/card6.png",
-    href: "/artificial-intelligence",
+    href: "/ArtificialIntelligent",
   },
 ];
 

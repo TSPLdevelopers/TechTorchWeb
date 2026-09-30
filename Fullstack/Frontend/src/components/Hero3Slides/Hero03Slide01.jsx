@@ -107,15 +107,15 @@ export default function SoftwareDevelopmentHero() {
         <div
           className="
             w-full
-            max-w-[560px]
+            max-w-[560px] max-w-full
 
             text-white
 
-            sm:max-w-[580px]
+            sm:max-w-[580px] max-w-full
 
-            md:max-w-[540px]
+            md:max-w-[540px] max-w-full
 
-            lg:max-w-[520px]
+            lg:max-w-[520px] max-w-full
           "
         >
           {/* ================= EYEBROW ================= */}
@@ -177,7 +177,7 @@ export default function SoftwareDevelopmentHero() {
 
           <div
             className="
-              max-w-[520px]
+              max-w-[520px] max-w-full
 
               text-[14px]
               font-normal
@@ -188,7 +188,7 @@ export default function SoftwareDevelopmentHero() {
               sm:text-[15px]
               sm:leading-[1.65]
 
-              md:max-w-[500px]
+              md:max-w-[500px] max-w-full
               md:text-[16px]
 
               lg:text-[16px]

@@ -43,7 +43,7 @@ export default function PracticalERPPath() {
         className="
           relative mx-auto
           w-full
-          max-w-[1520px]
+          max-w-[1520px] max-w-full
           overflow-hidden
           bg-white
 
@@ -176,26 +176,26 @@ export default function PracticalERPPath() {
               right-5
               top-6
               z-40
-              w-[95px]
+              w-[95px] max-w-full
 
               xs:right-6
               xs:top-7
-              xs:w-[105px]
+              xs:w-[105px] max-w-full
 
               sm:right-8
               sm:top-8
-              sm:w-[125px]
+              sm:w-[125px] max-w-full
 
               md:right-10
               md:top-9
-              md:w-[150px]
+              md:w-[150px] max-w-full
 
               lg:right-[50px]
               lg:top-[30px]
-              lg:w-[230px]
+              lg:w-[230px] max-w-full
 
               xl:right-[52px]
-              xl:w-[250px]
+              xl:w-[250px] max-w-full
             "
           >
             <img
@@ -275,17 +275,17 @@ export default function PracticalERPPath() {
               xs:leading-[1.32]
 
               sm:mt-[16px]
-              sm:max-w-[600px]
+              sm:max-w-[600px] max-w-full
               sm:pr-[125px]
               sm:text-[14px]
 
               md:mt-[17px]
-              md:max-w-[620px]
+              md:max-w-[620px] max-w-full
               md:pr-[145px]
               md:text-[15px]
 
               lg:mt-[12px]
-              lg:max-w-[700px]
+              lg:max-w-[700px] max-w-full
               lg:pr-0
               lg:text-[16px]
               lg:leading-[1.32]
@@ -307,23 +307,23 @@ export default function PracticalERPPath() {
             className="
               mt-[28px]
               w-[72%]
-              max-w-[390px]
+              max-w-[390px] max-w-full
 
               xs:mt-[30px]
               xs:w-[70%]
 
               sm:mt-[32px]
               sm:w-[64%]
-              sm:max-w-[420px]
+              sm:max-w-[420px] max-w-full
 
               md:mt-[34px]
               md:w-[61%]
-              md:max-w-[430px]
+              md:max-w-[430px] max-w-full
 
               lg:mt-[45px]
-              lg:w-[430px]
+              lg:w-[430px] max-w-full
 
-              xl:w-[440px]
+              xl:w-[440px] max-w-full
             "
           >
             {steps.map((step, index) => (
@@ -351,7 +351,7 @@ export default function PracticalERPPath() {
                   className="
                     flex
                     h-[34px]
-                    w-[34px]
+                    w-[34px] max-w-full
                     shrink-0
                     items-center
                     justify-center
@@ -364,19 +364,19 @@ export default function PracticalERPPath() {
                     text-white
 
                     xs:h-[40px]
-                    xs:w-[40px]
+                    xs:w-[40px] max-w-full
                     xs:text-[15px]
 
                     sm:h-[43px]
-                    sm:w-[43px]
+                    sm:w-[43px] max-w-full
                     sm:text-[16px]
 
                     md:h-[44px]
-                    md:w-[44px]
+                    md:w-[44px] max-w-full
                     md:text-[17px]
 
                     lg:h-[44px]
-                    lg:w-[44px]
+                    lg:w-[44px] max-w-full
                     lg:text-[18px]
                   "
                 >
@@ -409,7 +409,7 @@ export default function PracticalERPPath() {
                   <p
                     className="
                       mt-[3px]
-                      max-w-[370px]
+                      max-w-[370px] max-w-full
 
                       font-['Inter']
                       text-[11px]

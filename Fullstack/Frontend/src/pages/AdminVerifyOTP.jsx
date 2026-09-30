@@ -53,7 +53,11 @@ export default function OtpVerification() {
       // Abhi next reset-password page nahi banaya hai,
       // isliye filhaal login page par bhej rahe hain.
       setTimeout(() => {
-        navigate("/admin-login");
+        navigate("/admin-reset-password",{
+          state:  {
+            email: email.trim(),
+          }
+        });
       }, 1000);
     } catch (error) {
       console.error("Verify OTP error:", error);
@@ -134,7 +138,7 @@ const styles = {
   card: {
     width: "100%",
     maxWidth: 420,
-    padding: "32px 28px",
+    padding: "28px 20px",
     borderRadius: 12,
     background: "#ffffff",
     boxShadow: "0 4px 20px rgba(0,0,0,0.06)",

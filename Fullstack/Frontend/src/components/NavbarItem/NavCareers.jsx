@@ -129,7 +129,7 @@ function NavCareers() {
                     Life & Culture at TechTorch
                   </h2>
 
-                  <p className="text-[16px] font-inter mt-[20px] max-w-[330px]">
+                  <p className="text-[16px] font-inter mt-[20px] max-w-[330px] max-w-full">
                     Discover our people, culture and the
                     <br />
                     values that shape the way we work
@@ -165,7 +165,7 @@ function NavCareers() {
                     Opportunities at TechTorch
                   </h2>
 
-                  <p className="text-[16px] font-inter mt-[20px] max-w-[330px]">
+                  <p className="text-[16px] font-inter mt-[20px] max-w-[330px] max-w-full">
                     Explore opportunities to learn, contribute
                     <br />
                     and build your career with a growing

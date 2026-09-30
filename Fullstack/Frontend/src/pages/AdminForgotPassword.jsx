@@ -75,7 +75,7 @@ export default function ResetPasswordPage() {
           background: "#ffffff",
           borderRadius: "20px",
           boxShadow: "0 20px 50px rgba(20,20,30,0.08)",
-          padding: "48px 44px 44px",
+          padding: "36px 24px 32px",
         }}
       >
         <h1

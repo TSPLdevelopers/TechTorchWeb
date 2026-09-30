@@ -172,7 +172,7 @@ export default function LetsConnect() {
             className="
               -translate-y-5
               mt-2
-              max-w-[480px]
+              max-w-[480px] max-w-full
               text-[13px]
               font-normal
               leading-[1.4]

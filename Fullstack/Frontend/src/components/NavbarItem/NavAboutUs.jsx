@@ -137,7 +137,7 @@ function NavAboutUs() {
                   Your Business
                 </h2>
 
-                <div className="w-[255px] h-[2px] bg-white mt-2" />
+                <div className="w-[255px] max-w-full h-[2px] bg-white mt-2" />
               </div>
 
             <a href="#" className="text-[16px] font-bold font-inter text-white mb-8">

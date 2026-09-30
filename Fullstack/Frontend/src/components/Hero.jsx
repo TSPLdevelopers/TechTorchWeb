@@ -170,7 +170,7 @@ const Hero = () => {
           flex
           flex-col
           justify-center
-          max-w-[640px]
+          max-w-[640px] max-w-full
           px-6
           md:px-16
           lg:px-20
@@ -202,7 +202,7 @@ const Hero = () => {
             leading-relaxed
             font-medium
             text-white/90
-            max-w-[520px]
+            max-w-[520px] max-w-full
             mb-14
           "
         >
@@ -279,7 +279,7 @@ const Hero = () => {
             onClick={() => setCurrent(i)}
             aria-label={`Go to slide ${i + 1}`}
             className={`
-              w-[11px]
+              w-[11px] max-w-full
               h-[11px]
               rounded-full
               transition-transform
@@ -316,7 +316,7 @@ const Hero = () => {
           onClick={prevSlide}
           aria-label="Previous slide"
           className="
-            w-[32px]
+            w-[32px] max-w-full
             h-[32px]
             rounded-full
             bg-[#9b1a4f]
@@ -345,7 +345,7 @@ const Hero = () => {
           onClick={nextSlide}
           aria-label="Next slide"
           className="
-            w-[32px]
+            w-[32px] max-w-full
             h-[32px]
             rounded-full
             bg-[#9b1a4f]

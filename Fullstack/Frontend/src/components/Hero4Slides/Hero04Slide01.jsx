@@ -47,7 +47,7 @@ export default function TechnologyMovesForward() {
             inset-0
             mx-auto
             w-full
-            max-w-[1400px]
+            max-w-[1400px] max-w-full
 
             px-5
 
@@ -64,7 +64,7 @@ export default function TechnologyMovesForward() {
             className="
               flex
               h-full
-              max-w-[590px]
+              max-w-[590px] max-w-full
               flex-col
               justify-start
 
@@ -116,7 +116,7 @@ export default function TechnologyMovesForward() {
             <p
               className="
                 mt-6
-                max-w-[560px]
+                max-w-[560px] max-w-full
                 font-['Inter']
                 text-[14px]
                 font-light

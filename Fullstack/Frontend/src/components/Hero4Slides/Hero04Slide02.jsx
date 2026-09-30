@@ -7,7 +7,7 @@ export default function TechnologyThatWorks() {
         className="
           mx-auto
           w-full
-          max-w-[1400px]
+          max-w-[1400px] max-w-full
 
           px-4
           py-8
@@ -32,7 +32,7 @@ export default function TechnologyThatWorks() {
         ====================================================== */}
         <h2
           className="
-            max-w-[650px]
+            max-w-[650px] max-w-full
             font-['Plus_Jakarta_Sans']
             text-[28px]
             font-medium
@@ -92,7 +92,7 @@ export default function TechnologyThatWorks() {
           <div
             className="
               w-full
-              max-w-[610px]
+              max-w-[610px] max-w-full
               font-['Inter']
               text-[14px]
               font-normal
@@ -136,7 +136,7 @@ export default function TechnologyThatWorks() {
           <div
             className="
               w-full
-              max-w-[560px]
+              max-w-[560px] max-w-full
 
               lg:translate-x-12
               xl:translate-x-16

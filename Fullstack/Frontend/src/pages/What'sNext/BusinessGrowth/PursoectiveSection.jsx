@@ -8,7 +8,7 @@ export default function GrowthPerspectiveSection() {
           <span className="text-[10px] font-semibold tracking-[0.15em] text-[#6B1E3F]">
             PERSPECTIVE
           </span>
-          <span className="h-px flex-1 max-w-[60px] bg-slate-300" />
+          <span className="h-px flex-1 max-w-[60px] max-w-full bg-slate-300" />
         </div>
 
         <h1 className="mt-4 text-2xl font-semibold leading-snug text-[#6B1E3F] sm:text-3xl">

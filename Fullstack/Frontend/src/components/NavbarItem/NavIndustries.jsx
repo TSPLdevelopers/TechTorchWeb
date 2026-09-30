@@ -96,7 +96,7 @@ function NavIndustries() {
               Industries
             </h3>
 
-            <div className="grid grid-cols-2 gap-x-[120px] gap-y-[22px] max-w-[700px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[120px] gap-y-[22px] max-w-[700px] max-w-full">
               {industries.map((industry) => (
                 <a
                   key={industry}
