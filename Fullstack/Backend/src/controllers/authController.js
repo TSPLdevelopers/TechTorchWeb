@@ -1,152 +1,98 @@
-const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const Admin = require("../models/Admin.model");
 const asyncHandler = require("../utils/asyncHandler");
-const { generateToken } = require("../utils/generateToken");
+const {
+  generateToken,
+  generateResetToken,
+  cookieOptions,
+} = require("../utils/generateToken");
 const { sendEmail } = require("../services/emailService.js");
 
-// ================= GENERATE OTP =================
+const generateOtp = () => Math.floor(100000 + Math.random() * 900000).toString();
 
-const generateOtp = () => {
-  return Math.floor(100000 + Math.random() * 900000).toString();
-};
+const publicAdmin = (a) => ({
+  _id: a._id,
+  name: a.name,
+  email: a.email,
+  role: a.role,
+  status: a.status,
+  lastLogin: a.lastLogin,
+  createdAt: a.createdAt,
+});
 
-// ================= REGISTER ADMIN =================
+const fail = (res, code, message) =>
+  res.status(code).json({ success: false, message });
 
+// ================= REGISTER =================
 const registerAdmin = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
-  if (!name || !email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: "All fields are required",
-    });
-  }
+  if (!name || !email || !password) return fail(res, 400, "All fields are required");
+  if (password.length < 6) return fail(res, 400, "Password must be at least 6 characters");
 
-  const existingAdmin = await Admin.findOne({
+  const existing = await Admin.findOne({ email: email.toLowerCase() });
+  if (existing) return fail(res, 409, "Admin already exists with this email");
+
+  // The very first account becomes the superadmin
+  const isFirst = (await Admin.countDocuments()) === 0;
+
+  const hashed = await bcrypt.hash(password, await bcrypt.genSalt(10));
+
+  const saved = await Admin.create({
+    name: name.trim(),
     email: email.toLowerCase(),
+    password: hashed,
+    role: isFirst ? "superadmin" : "admin",
   });
-
-  if (existingAdmin) {
-    return res.status(409).json({
-      success: false,
-      message: "Admin already exists with this email",
-    });
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-
-  const newAdmin = new Admin({
-    name,
-    email: email.toLowerCase(),
-    password: hashedPassword,
-  });
-
-  const savedAdmin = await newAdmin.save();
 
   return res.status(201).json({
     success: true,
     message: "Account created successfully",
-    data: {
-      _id: savedAdmin._id,
-      name: savedAdmin.name,
-      email: savedAdmin.email,
-      activeStatus: savedAdmin.activeStatus,
-    },
+    data: publicAdmin(saved),
   });
 });
 
-// ================= LOGIN ADMIN =================
-
+// ================= LOGIN =================
 const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: "Email and password are required",
-    });
-  }
+  if (!email || !password) return fail(res, 400, "Email and password are required");
 
-  const admin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
-
-  if (!admin) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid email or password",
-    });
-  }
-
- if (admin.status !== "active") {
-  return res.status(403).json({
-    success: false,
-    message: "Admin account is inactive",
-  });
-}
+  const admin = await Admin.findOne({ email: email.toLowerCase() });
+  if (!admin) return fail(res, 401, "Invalid email or password");
 
   const isMatch = await bcrypt.compare(password, admin.password);
+  if (!isMatch) return fail(res, 401, "Invalid email or password");
 
-  if (!isMatch) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid email or password",
-    });
-  }
+  if (admin.status !== "active") return fail(res, 403, "Admin account is inactive");
 
-  const token = generateToken(admin._id);
+  admin.lastLogin = new Date();
+  await admin.save();
 
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+  res.cookie("token", generateToken(admin._id), {
+    ...cookieOptions(),
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
   return res.status(200).json({
     success: true,
-    data: {
-      _id: admin._id,
-      name: admin.name,
-      email: admin.email,
-      activeStatus: admin.activeStatus,
-    },
+    message: "Login successful",
+    data: publicAdmin(admin),
   });
 });
 
 // ================= FORGOT PASSWORD =================
-
 const forgotPassword = asyncHandler(async (req, res) => {
   const { email } = req.body;
+  if (!email) return fail(res, 400, "Email is required");
 
-  if (!email) {
-    return res.status(400).json({
-      success: false,
-      message: "Email is required",
-    });
-  }
-
-  const admin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found with this email",
-    });
-  }
+  const admin = await Admin.findOne({ email: email.toLowerCase() });
+  if (!admin) return fail(res, 404, "Admin not found with this email");
 
   const otp = generateOtp();
-
-  admin.otp = otp;
-
-  admin.otpExpiry = new Date(
-    Date.now() + 10 * 60 * 1000
-  );
-
+  admin.otp = await bcrypt.hash(otp, 8); // stored hashed
+  admin.otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
   await admin.save();
 
   await sendEmail({
@@ -155,304 +101,77 @@ const forgotPassword = asyncHandler(async (req, res) => {
     text: `Your TechTorch password reset code is ${otp}. This code will expire in 10 minutes.`,
   });
 
-  return res.status(200).json({
-    success: true,
-    message: "Reset code sent to your registered email",
-  });
+  return res.status(200).json({ success: true, message: "Reset code sent to your registered email" });
 });
 
 // ================= VERIFY OTP =================
-
 const verifyOTP = asyncHandler(async (req, res) => {
   const { email, otp } = req.body;
+  if (!email || !otp) return fail(res, 400, "Email and OTP are required");
 
-  if (!email || !otp) {
-    return res.status(400).json({
-      success: false,
-      message: "Email and OTP are required",
-    });
-  }
-
-  const admin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found with this email",
-    });
-  }
+  const admin = await Admin.findOne({ email: email.toLowerCase() });
+  if (!admin) return fail(res, 404, "Admin not found with this email");
 
   if (!admin.otp || !admin.otpExpiry) {
-    return res.status(400).json({
-      success: false,
-      message: "OTP not found. Please request a new OTP",
-    });
+    return fail(res, 400, "OTP not found. Please request a new OTP");
   }
 
   if (new Date() > admin.otpExpiry) {
     admin.otp = null;
     admin.otpExpiry = null;
-
     await admin.save();
-
-    return res.status(400).json({
-      success: false,
-      message: "OTP has expired. Please request a new OTP",
-    });
+    return fail(res, 400, "OTP has expired. Please request a new OTP");
   }
 
-  if (admin.otp !== otp.toString()) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid OTP",
-    });
-  }
+  const ok = await bcrypt.compare(otp.toString(), admin.otp);
+  if (!ok) return fail(res, 400, "Invalid OTP");
 
   admin.otp = null;
   admin.otpExpiry = null;
-
   await admin.save();
 
   return res.status(200).json({
     success: true,
     message: "OTP verified successfully",
+    resetToken: generateResetToken(admin._id),
   });
 });
 
 // ================= RESET PASSWORD =================
-
+// Now requires the resetToken returned by verify-otp
+// (before, anyone knowing an admin email could reset the password).
 const resetPassword = asyncHandler(async (req, res) => {
-  const { email, newPassword } = req.body;
+  const { email, newPassword, resetToken } = req.body;
 
-  if (!email || !newPassword) {
-    return res.status(400).json({
-      success: false,
-      message: "Email and new password are required",
-    });
+  if (!email || !newPassword || !resetToken) {
+    return fail(res, 400, "Email, new password and reset token are required");
+  }
+  if (newPassword.length < 6) return fail(res, 400, "Password must be at least 6 characters");
+
+  let decoded;
+  try {
+    decoded = jwt.verify(resetToken, process.env.JWT_SECRET);
+  } catch {
+    return fail(res, 401, "Reset session expired. Please start again");
+  }
+  if (decoded.purpose !== "reset") return fail(res, 401, "Invalid reset token");
+
+  const admin = await Admin.findOne({ email: email.toLowerCase() });
+  if (!admin || String(admin._id) !== String(decoded.id)) {
+    return fail(res, 404, "Admin not found");
   }
 
-  if (newPassword.length < 6) {
-    return res.status(400).json({
-      success: false,
-      message: "Password must be at least 6 characters",
-    });
-  }
-
-  const admin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  admin.password = await bcrypt.hash(newPassword, salt);
-
+  admin.password = await bcrypt.hash(newPassword, await bcrypt.genSalt(10));
   await admin.save();
 
-  return res.status(200).json({
-    success: true,
-    message: "Password reset successfully",
-  });
+  return res.status(200).json({ success: true, message: "Password reset successfully" });
 });
 
-// ================= ADMIN PROFILE =================
-
-const getAdminProfile = asyncHandler(async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: req.admin,
-  });
-});
-
-// ================= GET ADMIN BY ID =================
-
-const getAdminById = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
-  }
-
-  const admin = await Admin.findById(id).select("-password");
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
-  }
-
-  return res.status(200).json({
-    success: true,
-    data: admin,
-  });
-});
-
-// ================= UPDATE ADMIN =================
-
-const updateAdmin = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
-  }
-
-  const { contact, emergency, email } = req.body;
-
-  const updatedAdmin = await Admin.findByIdAndUpdate(
-    id,
-    {
-      contact,
-      emergency,
-      email,
-    },
-    {
-      new: true,
-      runValidators: true,
-    }
-  ).select("-password");
-
-  if (!updatedAdmin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
-  }
-
-  return res.status(200).json({
-    success: true,
-    data: updatedAdmin,
-  });
-});
-
-// ================= UPDATE ADMIN PASSWORD =================
-
-const updateAdminPassword = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const { oldPassword, newPassword } = req.body;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
-  }
-
-  const admin = await Admin.findById(id);
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
-  }
-
-  const isMatch = await bcrypt.compare(
-    oldPassword,
-    admin.password
-  );
-
-  if (!isMatch) {
-    return res.status(401).json({
-      success: false,
-      message: "Old password is incorrect",
-    });
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  admin.password = await bcrypt.hash(newPassword, salt);
-
-  await admin.save();
-
-  return res.status(200).json({
-    success: true,
-    message: "Password updated successfully",
-  });
-});
-
-// ================= TOGGLE ADMIN STATUS =================
-
-const toggleAdminStatus = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
-  }
-
-  const admin = await Admin.findById(id);
-
-  if (!admin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
-  }
-
-  admin.activeStatus = !admin.activeStatus;
-
-  await admin.save();
-
-  return res.status(200).json({
-    success: true,
-    data: admin,
-  });
-});
-
-// ================= DELETE ADMIN =================
-
-const deleteAdmin = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid ID format",
-    });
-  }
-
-  const deletedAdmin = await Admin.findByIdAndDelete(id);
-
-  if (!deletedAdmin) {
-    return res.status(404).json({
-      success: false,
-      message: "Admin not found",
-    });
-  }
-
-  return res.status(200).json({
-    success: true,
-    message: "Admin deleted successfully",
-  });
-});
-
-// ================= LOGOUT ADMIN =================
-
+// ================= LOGOUT =================
 const logoutAdmin = asyncHandler(async (req, res) => {
-  res.clearCookie("token");
-
-  return res.status(200).json({
-    success: true,
-    message: "Logged out successfully",
-  });
+  res.clearCookie("token", cookieOptions());
+  return res.status(200).json({ success: true, message: "Logged out successfully" });
 });
-
-// ================= EXPORTS =================
 
 module.exports = {
   registerAdmin,
@@ -461,10 +180,4 @@ module.exports = {
   verifyOTP,
   resetPassword,
   logoutAdmin,
-  getAdminProfile,
-  getAdminById,
-  updateAdmin,
-  updateAdminPassword,
-  toggleAdminStatus,
-  deleteAdmin,
 };

@@ -9,9 +9,10 @@ const {
 } = require("../controllers/jobOpeningController");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 // Create Job
-router.post("/", createJobOpening);
+router.post("/", authMiddleware, createJobOpening);
 
 // Get All Jobs
 router.get("/", getAllJobOpenings);
@@ -20,9 +21,9 @@ router.get("/", getAllJobOpenings);
 router.get("/:id", getJobOpeningById);
 
 // Update Job
-router.put("/:id", updateJobOpening);
+router.put("/:id", authMiddleware, updateJobOpening);
 
 // Delete Job
-router.delete("/:id", deleteJobOpening);
+router.delete("/:id", authMiddleware, deleteJobOpening);
 
 module.exports = router;

@@ -9,11 +9,12 @@ const {
 } = require("../controllers/whitepaperController");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
-router.post("/", createWhitepaper);
+router.post("/", authMiddleware, createWhitepaper);
 router.get("/", getAllWhitepapers);
 router.get("/:id", getWhitepaperById);
-router.put("/:id", updateWhitepaper);
-router.delete("/:id", deleteWhitepaper);
+router.put("/:id", authMiddleware, updateWhitepaper);
+router.delete("/:id", authMiddleware, deleteWhitepaper);
 
 module.exports = router;

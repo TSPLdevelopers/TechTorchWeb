@@ -145,6 +145,12 @@ const updateNews = async (req, res) => {
       updates.slug = slugify(updates.title);
     }
 
+    // keep wire fields in sync when status changes
+    if (updates.status) {
+      updates.wireStatus = updates.status === "Published" ? "Dispatched" : "Draft";
+      updates.statusDate = updates.status === "Published" ? "Just now" : "Draft";
+    }
+
     const news = await News.findByIdAndUpdate(
       req.params.id,
       updates,

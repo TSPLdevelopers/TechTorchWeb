@@ -1,257 +1,119 @@
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const Admin = require("../models/Admin.model");
-const {generateToken} = require("../utils/generateToken");
 const asyncHandler = require("../utils/asyncHandler");
 
-const registerAdmin = asyncHandler(async (req, res) => {
-  const {name, contact, emergency, email, password } = req.body;
+const fail = (res, code, message) =>
+  res.status(code).json({ success: false, message });
 
-  if (!name || !contact || !emergency || !email || !password) {
-    res.status(400);
-    throw new Error("All fields are required");
-  }
+const validId = (id) => mongoose.Types.ObjectId.isValid(id);
 
-  const existingAdmin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
+const SAFE = "-password -otp -otpExpiry";
 
-  if (existingAdmin) {
-    res.status(409);
-    throw new Error("Admin already exists with this email");
-  }
+// Only a superadmin may touch other admins; anyone may touch themselves.
+const canManage = (req, id) =>
+  req.admin.role === "superadmin" || String(req.admin._id) === String(id);
 
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
-
-  const newAdmin = new Admin({
-    name,
-    contact,
-    emergency,
-    email: email.toLowerCase(),
-    password: hashedPassword,
-  });
-
-  const savedAdmin = await newAdmin.save();
-
-  return res.status(201).json({
-    success: true,
-    data: {
-      _id: savedAdmin._id,
-        name: savedAdmin.name,
-      contact: savedAdmin.contact,
-      emergency: savedAdmin.emergency,
-      email: savedAdmin.email,
-      activeStatus: savedAdmin.activeStatus,
-    },
-  });
-});
-
-const loginAdmin = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-    res.status(400);
-    throw new Error("Email and password are required");
-  }
-
-  const admin = await Admin.findOne({
-    email: email.toLowerCase(),
-  });
-
-  if (!admin) {
-    res.status(401);
-    throw new Error("Invalid email or password");
-  }
-
-  if (!admin.activeStatus) {
-    res.status(403);
-    throw new Error("Admin account is inactive");
-  }
-
-  const isMatch = await bcrypt.compare(password, admin.password);
-
-  if (!isMatch) {
-    res.status(401);
-    throw new Error("Invalid email or password");
-  }
-
-  const token = generateToken(admin._id);
-
-  res.cookie("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
-
-  return res.status(200).json({
-    success: true,
-    message: "Admin login successful",
-    data: {
-      _id: admin._id,
-       name: admin.name,
-      contact: admin.contact,
-      emergency: admin.emergency,
-      email: admin.email,
-      activeStatus: admin.activeStatus,
-    },
-  });
-});
-
+// GET /api/admin/profile
 const getAdminProfile = asyncHandler(async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: req.admin,
-  });
+  return res.status(200).json({ success: true, data: req.admin });
 });
 
+// GET /api/admin  (superadmin)
+const getAllAdmins = asyncHandler(async (req, res) => {
+  const admins = await Admin.find().select(SAFE).sort({ createdAt: -1 });
+  return res.status(200).json({ success: true, count: admins.length, data: admins });
+});
+
+// GET /api/admin/:id
 const getAdminById = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  if (!validId(id)) return fail(res, 400, "Invalid ID format");
+  if (!canManage(req, id)) return fail(res, 403, "Not allowed");
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(400);
-    throw new Error("Invalid ID format");
-  }
+  const admin = await Admin.findById(id).select(SAFE);
+  if (!admin) return fail(res, 404, "Admin not found");
 
-  const admin = await Admin.findById(id).select("-password");
-
-  if (!admin) {
-    res.status(404);
-    throw new Error("Admin not found");
-  }
-
-  return res.status(200).json({
-    success: true,
-    data: admin,
-  });
+  return res.status(200).json({ success: true, data: admin });
 });
 
+// PUT /api/admin/:id   (name, email, and role for superadmin)
 const updateAdmin = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  if (!validId(id)) return fail(res, 400, "Invalid ID format");
+  if (!canManage(req, id)) return fail(res, 403, "Not allowed");
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(400);
-    throw new Error("Invalid ID format");
+  const updates = {};
+  if (req.body.name !== undefined) updates.name = String(req.body.name).trim();
+  if (req.body.email !== undefined) updates.email = String(req.body.email).toLowerCase().trim();
+  if (req.body.role !== undefined && req.admin.role === "superadmin") {
+    if (!["admin", "superadmin"].includes(req.body.role)) return fail(res, 400, "Invalid role");
+    updates.role = req.body.role;
   }
 
-  const { contact, emergency, email } = req.body;
+  const updated = await Admin.findByIdAndUpdate(id, updates, {
+    new: true,
+    runValidators: true,
+  }).select(SAFE);
 
-  const updatedAdmin = await Admin.findByIdAndUpdate(
-    id,
-    {
-      contact,
-      emergency,
-      email: email?.toLowerCase(),
-    },
-    {
-      new: true,
-      runValidators: true,
-    }
-  ).select("-password");
+  if (!updated) return fail(res, 404, "Admin not found");
 
-  if (!updatedAdmin) {
-    res.status(404);
-    throw new Error("Admin not found");
-  }
-
-  return res.status(200).json({
-    success: true,
-    message: "Admin updated successfully",
-    data: updatedAdmin,
-  });
+  return res.status(200).json({ success: true, message: "Admin updated successfully", data: updated });
 });
 
+// PUT /api/admin/:id/password
 const updateAdminPassword = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { oldPassword, newPassword } = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(400);
-    throw new Error("Invalid ID format");
-  }
-
-  if (!oldPassword || !newPassword) {
-    res.status(400);
-    throw new Error("Old password and new password are required");
-  }
+  if (!validId(id)) return fail(res, 400, "Invalid ID format");
+  if (String(req.admin._id) !== String(id)) return fail(res, 403, "You can only change your own password");
+  if (!oldPassword || !newPassword) return fail(res, 400, "Old password and new password are required");
+  if (newPassword.length < 6) return fail(res, 400, "Password must be at least 6 characters");
 
   const admin = await Admin.findById(id);
-
-  if (!admin) {
-    res.status(404);
-    throw new Error("Admin not found");
-  }
+  if (!admin) return fail(res, 404, "Admin not found");
 
   const isMatch = await bcrypt.compare(oldPassword, admin.password);
+  if (!isMatch) return fail(res, 401, "Old password is incorrect");
 
-  if (!isMatch) {
-    res.status(401);
-    throw new Error("Old password is incorrect");
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  admin.password = await bcrypt.hash(newPassword, salt);
-
+  admin.password = await bcrypt.hash(newPassword, await bcrypt.genSalt(10));
   await admin.save();
 
-  return res.status(200).json({
-    success: true,
-    message: "Password updated successfully",
-  });
+  return res.status(200).json({ success: true, message: "Password updated successfully" });
 });
 
+// PATCH /api/admin/:id/status   (superadmin) -> active <-> inactive
 const toggleAdminStatus = asyncHandler(async (req, res) => {
   const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(400);
-    throw new Error("Invalid ID format");
-  }
+  if (!validId(id)) return fail(res, 400, "Invalid ID format");
+  if (String(req.admin._id) === String(id)) return fail(res, 400, "You cannot deactivate your own account");
 
   const admin = await Admin.findById(id);
+  if (!admin) return fail(res, 404, "Admin not found");
 
-  if (!admin) {
-    res.status(404);
-    throw new Error("Admin not found");
-  }
-
-  admin.activeStatus = !admin.activeStatus;
-
+  admin.status = admin.status === "active" ? "inactive" : "active";
   await admin.save();
 
-  return res.status(200).json({
-    success: true,
-    message: "Admin status updated successfully",
-    data: admin,
-  });
+  const { password, otp, otpExpiry, ...safe } = admin.toObject();
+  return res.status(200).json({ success: true, message: "Admin status updated successfully", data: safe });
 });
 
+// DELETE /api/admin/:id   (superadmin)
 const deleteAdmin = asyncHandler(async (req, res) => {
   const { id } = req.params;
+  if (!validId(id)) return fail(res, 400, "Invalid ID format");
+  if (String(req.admin._id) === String(id)) return fail(res, 400, "You cannot delete your own account");
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(400);
-    throw new Error("Invalid ID format");
-  }
+  const deleted = await Admin.findByIdAndDelete(id);
+  if (!deleted) return fail(res, 404, "Admin not found");
 
-  const deletedAdmin = await Admin.findByIdAndDelete(id);
-
-  if (!deletedAdmin) {
-    res.status(404);
-    throw new Error("Admin not found");
-  }
-
-  return res.status(200).json({
-    success: true,
-    message: "Admin deleted successfully",
-  });
+  return res.status(200).json({ success: true, message: "Admin deleted successfully" });
 });
 
 module.exports = {
-  registerAdmin,
-  loginAdmin,
   getAdminProfile,
+  getAllAdmins,
   getAdminById,
   updateAdmin,
   updateAdminPassword,
