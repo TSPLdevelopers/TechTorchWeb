@@ -136,7 +136,7 @@ export default function SoftwareThatWorks() {
           margin: 0;
           max-width: 700px;
 
-          font-size: 48px;
+          font-size: 38px;
           font-weight: 600;
           line-height: 1.1;
           letter-spacing: -1.8px;
@@ -145,7 +145,7 @@ export default function SoftwareThatWorks() {
         }
 
         .software-works-heading span {
-          color: #850052;
+          color: #730042;
         }
 
         /* =====================================================
@@ -189,7 +189,7 @@ export default function SoftwareThatWorks() {
 
         .software-works-image {
           width: 100%;
-          max-width: 520px;
+          max-width: 400px;
 
           border-radius: 20px;
           overflow: hidden;
@@ -213,12 +213,12 @@ export default function SoftwareThatWorks() {
 
           margin: 38px 0 0;
 
-          font-size: 21px;
+          font-size: 18px;
           font-weight: 700;
           line-height: 1.3;
           letter-spacing: -0.4px;
 
-          color: #850052;
+          color: #730042;
         }
 
         /* =====================================================

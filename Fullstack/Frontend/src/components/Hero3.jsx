@@ -397,7 +397,7 @@ export default function Hero3() {
             <p
               className="
                 mt-8
-                text-[14px]
+                text-[13.5px]
                 font-inter
                 leading-relaxed
                 max-w-[650px]

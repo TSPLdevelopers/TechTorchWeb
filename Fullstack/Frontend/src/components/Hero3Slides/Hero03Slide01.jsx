@@ -123,7 +123,7 @@ export default function SoftwareDevelopmentHero() {
           <p
             className="
               mb-4
-
+              font-['Plus_Jakarta_Sans']  
               text-[11px]
               font-semibold
               tracking-[0.7px]
@@ -136,7 +136,7 @@ export default function SoftwareDevelopmentHero() {
               md:text-[14px]
 
               lg:mb-5
-              lg:text-[14px]
+              lg:text-[13px]
             "
           >
             SOFTWARE DEVELOPMENT
@@ -146,6 +146,7 @@ export default function SoftwareDevelopmentHero() {
 
           <h1
             className="
+             font-['Plus_Jakarta_Sans']  
               mb-5
 
               font-medium
@@ -153,19 +154,19 @@ export default function SoftwareDevelopmentHero() {
 
               tracking-[-0.8px]
 
-              text-[30px]
+              text-[34px]
 
               min-[400px]:text-[34px]
 
-              sm:text-[38px]
+              sm:text-[34px]
               sm:tracking-[-1px]
 
-              md:text-[42px]
+              md:text-[36px]
 
               lg:mb-6
-              lg:text-[44px]
+              lg:text-[38px]
 
-              xl:text-[46px]
+              xl:text-[38px]
             "
           >
             Software Built
@@ -177,6 +178,7 @@ export default function SoftwareDevelopmentHero() {
 
           <div
             className="
+             font-['Inter']  
               max-w-[520px]
 
               text-[14px]
@@ -191,7 +193,7 @@ export default function SoftwareDevelopmentHero() {
               md:max-w-[500px]
               md:text-[16px]
 
-              lg:text-[16px]
+              lg:text-[15px]
               lg:leading-[1.5]
             "
           >
@@ -224,6 +226,7 @@ export default function SoftwareDevelopmentHero() {
           <button
             type="button"
             className="
+             font-['Inter']  
               mt-7
 
               inline-flex
@@ -232,12 +235,12 @@ export default function SoftwareDevelopmentHero() {
 
               rounded-[3px]
 
-              bg-[#970052]
+              bg-[#730042]
 
               px-5
               py-[10px]
 
-              text-[14px]
+              text-[13px]
               font-semibold
               text-white
 
@@ -245,7 +248,7 @@ export default function SoftwareDevelopmentHero() {
               duration-300
 
               hover:bg-white
-              hover:text-[#970052]
+              hover:text-[#730042]
 
               sm:mt-8
               sm:px-6
