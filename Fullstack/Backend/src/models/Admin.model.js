@@ -39,7 +39,7 @@ const adminSchema = new mongoose.Schema(
       default: null,
     },
 
-    otpExpires: {
+    otpExpiry: {
       type: Date,
       default: null,
     },

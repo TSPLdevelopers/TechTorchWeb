@@ -85,20 +85,39 @@ export default function SignupPage() {
       setLoading(true);
       setMessage("");
 
-      const response = await fetch("http://localhost:5000/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          password,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:5000/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            name: name.trim(),
+            email: email.trim(),
+            password,
+          }),
+        }
+      );
 
-      const data = await response.json();
+      // Check response type before parsing JSON
+      const contentType = response.headers.get("content-type");
+
+      let data;
+
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+
+        console.error("Server returned non-JSON:", text);
+
+        throw new Error(
+          `Server error: ${response.status}`
+        );
+      }
+
       console.log("SIGNUP RESPONSE:", data);
 
       if (!response.ok) {
@@ -109,11 +128,24 @@ export default function SignupPage() {
 
       setSuccess(true);
       setMessage("Account created! Redirecting to login...");
-      setTimeout(() => navigate("/admin-login"), 1500);
+
+      setTimeout(() => {
+        navigate("/admin-login");
+      }, 1500);
     } catch (error) {
       console.error("Signup error:", error);
+
       setSuccess(false);
-      setMessage("Unable to connect to server");
+
+      if (error.message.startsWith("Server error:")) {
+        setMessage(
+          "Signup API not found. Please check the backend route."
+        );
+      } else {
+        setMessage(
+          error.message || "Unable to connect to server"
+        );
+      }
     } finally {
       setLoading(false);
     }
@@ -165,38 +197,62 @@ export default function SignupPage() {
 
         {/* Name */}
         <label style={labelStyle}>Full name</label>
+
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter your full name"
-          style={{ ...inputStyle, marginBottom: "22px" }}
+          style={{
+            ...inputStyle,
+            marginBottom: "22px",
+          }}
         />
 
         {/* Email */}
         <label style={labelStyle}>Email address</label>
+
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
-          style={{ ...inputStyle, marginBottom: "22px" }}
+          style={{
+            ...inputStyle,
+            marginBottom: "22px",
+          }}
         />
 
         {/* Password */}
         <label style={labelStyle}>Password</label>
-        <div style={{ position: "relative", marginBottom: "22px" }}>
+
+        <div
+          style={{
+            position: "relative",
+            marginBottom: "22px",
+          }}
+        >
           <input
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Create a password"
-            style={{ ...inputStyle, padding: "13px 44px 13px 16px" }}
+            style={{
+              ...inputStyle,
+              padding: "13px 44px 13px 16px",
+            }}
           />
+
           <button
             type="button"
-            onClick={() => setShowPassword((v) => !v)}
-            aria-label={showPassword ? "Hide password" : "Show password"}
+            onClick={() =>
+              setShowPassword((v) => !v)
+            }
+            aria-label={
+              showPassword
+                ? "Hide password"
+                : "Show password"
+            }
             style={{
               position: "absolute",
               right: "14px",
@@ -215,19 +271,39 @@ export default function SignupPage() {
         </div>
 
         {/* Confirm Password */}
-        <label style={labelStyle}>Confirm password</label>
-        <div style={{ position: "relative", marginBottom: "28px" }}>
+        <label style={labelStyle}>
+          Confirm password
+        </label>
+
+        <div
+          style={{
+            position: "relative",
+            marginBottom: "28px",
+          }}
+        >
           <input
             type={showConfirm ? "text" : "password"}
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e) =>
+              setConfirmPassword(e.target.value)
+            }
             placeholder="Re-enter your password"
-            style={{ ...inputStyle, padding: "13px 44px 13px 16px" }}
+            style={{
+              ...inputStyle,
+              padding: "13px 44px 13px 16px",
+            }}
           />
+
           <button
             type="button"
-            onClick={() => setShowConfirm((v) => !v)}
-            aria-label={showConfirm ? "Hide password" : "Show password"}
+            onClick={() =>
+              setShowConfirm((v) => !v)
+            }
+            aria-label={
+              showConfirm
+                ? "Hide password"
+                : "Show password"
+            }
             style={{
               position: "absolute",
               right: "14px",
@@ -272,7 +348,9 @@ export default function SignupPage() {
             fontWeight: 700,
             border: "none",
             borderRadius: "12px",
-            cursor: loading ? "not-allowed" : "pointer",
+            cursor: loading
+              ? "not-allowed"
+              : "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -281,10 +359,18 @@ export default function SignupPage() {
             opacity: loading ? 0.7 : 1,
           }}
         >
-          {loading ? "Creating account..." : "Sign up"}
-          {!loading && <span style={{ fontSize: "18px" }}>&rarr;</span>}
+          {loading
+            ? "Creating account..."
+            : "Sign up"}
+
+          {!loading && (
+            <span style={{ fontSize: "18px" }}>
+              &rarr;
+            </span>
+          )}
         </button>
 
+        {/* Login Link */}
         <p
           style={{
             textAlign: "center",
@@ -294,6 +380,7 @@ export default function SignupPage() {
           }}
         >
           Already have an account?{" "}
+
           <Link
             to="/admin-login"
             style={{

@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 const MAROON = "#6e0f3d";
 
-export default function LoginPage() {
+export default function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -38,6 +38,7 @@ export default function LoginPage() {
       );
 
       const data = await response.json();
+
       console.log("LOGIN RESPONSE:", data);
 
       if (!response.ok) {
@@ -66,6 +67,7 @@ export default function LoginPage() {
         justifyContent: "center",
         fontFamily: "'Helvetica Neue', Arial, sans-serif",
         padding: "24px",
+        boxSizing: "border-box",
       }}
     >
       <div
@@ -76,8 +78,10 @@ export default function LoginPage() {
           borderRadius: "20px",
           boxShadow: "0 20px 50px rgba(20,20,30,0.08)",
           padding: "36px 24px 32px",
+          boxSizing: "border-box",
         }}
       >
+        {/* Heading */}
         <h1
           style={{
             fontSize: "32px",
@@ -96,7 +100,7 @@ export default function LoginPage() {
             margin: "0 0 32px 0",
           }}
         >
-          Sign in to your TechTorch  official website
+          Sign in to your TechTorch official website
         </p>
 
         {/* Email */}
@@ -131,7 +135,7 @@ export default function LoginPage() {
           }}
         />
 
-        {/* Password */}
+        {/* Password Header */}
         <div
           style={{
             display: "flex",
@@ -150,7 +154,6 @@ export default function LoginPage() {
             Password
           </label>
 
-          {/* Forgot Password Link */}
           <Link
             to="/admin-forgot-password"
             style={{
@@ -163,7 +166,13 @@ export default function LoginPage() {
           </Link>
         </div>
 
-        <div style={{ position: "relative", marginBottom: "28px" }}>
+        {/* Password Input */}
+        <div
+          style={{
+            position: "relative",
+            marginBottom: "28px",
+          }}
+        >
           <input
             type={showPassword ? "text" : "password"}
             value={password}
@@ -182,10 +191,13 @@ export default function LoginPage() {
             }}
           />
 
+          {/* Show / Hide Password */}
           <button
             type="button"
             onClick={() => setShowPassword((v) => !v)}
-            aria-label={showPassword ? "Hide password" : "Show password"}
+            aria-label={
+              showPassword ? "Hide password" : "Show password"
+            }
             style={{
               position: "absolute",
               right: "14px",
@@ -244,7 +256,7 @@ export default function LoginPage() {
           </p>
         )}
 
-        {/* Sign in button */}
+        {/* Sign In Button */}
         <button
           type="button"
           onClick={handleLogin}
@@ -270,10 +282,13 @@ export default function LoginPage() {
           {loading ? "Signing in..." : "Sign in"}
 
           {!loading && (
-            <span style={{ fontSize: "18px" }}>&rarr;</span>
+            <span style={{ fontSize: "18px" }}>
+              &rarr;
+            </span>
           )}
         </button>
 
+        {/* Sign Up */}
         <p
           style={{
             textAlign: "center",
@@ -283,16 +298,16 @@ export default function LoginPage() {
           }}
         >
           Don&apos;t have an account?{" "}
-          <a
-            href="#"
+          <Link
+            to="/admin-signup"
             style={{
               color: MAROON,
               fontWeight: 700,
               textDecoration: "none",
             }}
           >
-          
-          </a>
+            Sign up
+          </Link>
         </p>
       </div>
     </div>

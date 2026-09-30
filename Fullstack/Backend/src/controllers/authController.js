@@ -14,9 +14,9 @@ const generateOtp = () => {
 // ================= REGISTER ADMIN =================
 
 const registerAdmin = asyncHandler(async (req, res) => {
-  const { name, contact, emergency, email, password } = req.body;
+  const { name, email, password } = req.body;
 
-  if (!name || !contact || !emergency || !email || !password) {
+  if (!name || !email || !password) {
     return res.status(400).json({
       success: false,
       message: "All fields are required",
@@ -39,8 +39,6 @@ const registerAdmin = asyncHandler(async (req, res) => {
 
   const newAdmin = new Admin({
     name,
-    contact,
-    emergency,
     email: email.toLowerCase(),
     password: hashedPassword,
   });
@@ -49,10 +47,10 @@ const registerAdmin = asyncHandler(async (req, res) => {
 
   return res.status(201).json({
     success: true,
+    message: "Account created successfully",
     data: {
       _id: savedAdmin._id,
-      contact: savedAdmin.contact,
-      emergency: savedAdmin.emergency,
+      name: savedAdmin.name,
       email: savedAdmin.email,
       activeStatus: savedAdmin.activeStatus,
     },
@@ -82,12 +80,12 @@ const loginAdmin = asyncHandler(async (req, res) => {
     });
   }
 
-  if (!admin.activeStatus) {
-    return res.status(403).json({
-      success: false,
-      message: "Admin account is inactive",
-    });
-  }
+ if (admin.status !== "active") {
+  return res.status(403).json({
+    success: false,
+    message: "Admin account is inactive",
+  });
+}
 
   const isMatch = await bcrypt.compare(password, admin.password);
 
@@ -111,8 +109,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
     success: true,
     data: {
       _id: admin._id,
-      contact: admin.contact,
-      emergency: admin.emergency,
+      name: admin.name,
       email: admin.email,
       activeStatus: admin.activeStatus,
     },
@@ -142,10 +139,8 @@ const forgotPassword = asyncHandler(async (req, res) => {
     });
   }
 
-  // Generate a 6-digit OTP
   const otp = generateOtp();
 
-  // Save OTP and expiry
   admin.otp = otp;
 
   admin.otpExpiry = new Date(
@@ -154,7 +149,6 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   await admin.save();
 
-  // Send OTP to registered email
   await sendEmail({
     to: admin.email,
     subject: "TechTorch Admin Password Reset",
@@ -190,7 +184,6 @@ const verifyOTP = asyncHandler(async (req, res) => {
     });
   }
 
-  // Check whether OTP exists
   if (!admin.otp || !admin.otpExpiry) {
     return res.status(400).json({
       success: false,
@@ -198,7 +191,6 @@ const verifyOTP = asyncHandler(async (req, res) => {
     });
   }
 
-  // Check OTP expiry
   if (new Date() > admin.otpExpiry) {
     admin.otp = null;
     admin.otpExpiry = null;
@@ -211,7 +203,6 @@ const verifyOTP = asyncHandler(async (req, res) => {
     });
   }
 
-  // Check OTP
   if (admin.otp !== otp.toString()) {
     return res.status(400).json({
       success: false,
@@ -219,7 +210,6 @@ const verifyOTP = asyncHandler(async (req, res) => {
     });
   }
 
-  // OTP verified successfully
   admin.otp = null;
   admin.otpExpiry = null;
 
@@ -230,6 +220,7 @@ const verifyOTP = asyncHandler(async (req, res) => {
     message: "OTP verified successfully",
   });
 });
+
 // ================= RESET PASSWORD =================
 
 const resetPassword = asyncHandler(async (req, res) => {
@@ -261,7 +252,6 @@ const resetPassword = asyncHandler(async (req, res) => {
   }
 
   const salt = await bcrypt.genSalt(10);
-
   admin.password = await bcrypt.hash(newPassword, salt);
 
   await admin.save();
@@ -370,7 +360,10 @@ const updateAdminPassword = asyncHandler(async (req, res) => {
     });
   }
 
-  const isMatch = await bcrypt.compare(oldPassword, admin.password);
+  const isMatch = await bcrypt.compare(
+    oldPassword,
+    admin.password
+  );
 
   if (!isMatch) {
     return res.status(401).json({
@@ -468,5 +461,10 @@ module.exports = {
   verifyOTP,
   resetPassword,
   logoutAdmin,
+  getAdminProfile,
+  getAdminById,
+  updateAdmin,
+  updateAdminPassword,
+  toggleAdminStatus,
+  deleteAdmin,
 };
-
