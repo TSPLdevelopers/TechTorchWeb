@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const steps = [
   {
@@ -28,9 +28,39 @@ const steps = [
 ];
 
 export default function ApproachSection() {
+  const sectionRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        } else {
+          setIsInView(false);
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="
+        approach-section
         w-full
         overflow-hidden
         bg-white
@@ -114,28 +144,45 @@ export default function ApproachSection() {
             xl:gap-6
           "
         >
-          {steps.map((s) => (
+          {steps.map((s, index) => (
             <div
               key={s.number}
-              className="
+              className={`
+                approach-card
+                group
+                relative
                 w-full
                 min-w-0
+                overflow-hidden
                 rounded-lg
                 bg-slate-50
                 p-5
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-sm
                 sm:p-6
                 md:p-6
                 lg:p-5
                 xl:p-6
-              "
+                ${
+                  isInView
+                    ? "approach-card-show"
+                    : "approach-card-hide"
+                }
+              `}
+              style={{
+                transitionDelay: isInView
+                  ? `${index * 180}ms`
+                  : "0ms",
+              }}
             >
               {/* NUMBER */}
               <span
-                className="text-[22px] font-bold leading-none text-slate-300 sm:text-[24px] md:text-[26px]"
+                className="
+                  text-[22px]
+                  font-bold
+                  leading-none
+                  text-slate-300
+                  sm:text-[24px]
+                  md:text-[26px]
+                "
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {s.number}
@@ -143,7 +190,15 @@ export default function ApproachSection() {
 
               {/* CARD TITLE */}
               <h3
-                className="mt-3 text-[15px] font-semibold leading-[1.4] text-[#730042] sm:text-[16px] md:text-[17px]"
+                className="
+                  mt-3
+                  text-[15px]
+                  font-semibold
+                  leading-[1.4]
+                  text-[#730042]
+                  sm:text-[16px]
+                  md:text-[17px]
+                "
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {s.title}
@@ -151,18 +206,117 @@ export default function ApproachSection() {
 
               {/* CARD DESCRIPTION */}
               <p
-                className="mt-2 text-[13px] leading-[1.7] text-slate-500 sm:text-[14px] sm:leading-[1.75]"
+                className="
+                  mt-2
+                  text-[13px]
+                  leading-[1.7]
+                  text-slate-500
+                  sm:text-[14px]
+                  sm:leading-[1.75]
+                "
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {s.description}
               </p>
 
-              {/* BOTTOM LINE */}
-              <div className="mt-4 h-0.5 w-6 bg-[#730042]" />
+              {/* ================= BOTTOM LINE ================= */}
+              <div
+                className="
+                  approach-line
+                  mt-4
+                  h-0.5
+                  w-6
+                  bg-[#730042]
+                  transition-all
+                  duration-500
+                  ease-out
+                  group-hover:w-full
+                "
+              />
             </div>
           ))}
         </div>
       </div>
+
+      {/* ================= ANIMATION CSS ================= */}
+      <style>{`
+        /*
+          Initial state:
+          Cards hidden + slightly down + small scale
+        */
+        .approach-card {
+          opacity: 0;
+          transform: translateY(45px) scale(0.92);
+          filter: blur(4px);
+
+          transition:
+            opacity 0.7s ease,
+            transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+            filter 0.7s ease,
+            box-shadow 0.3s ease;
+        }
+
+        /*
+          Visible state:
+          Cards pop into their original position
+        */
+        .approach-card-show {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0);
+        }
+
+        /*
+          Hover effect:
+          Card moves slightly upward
+        */
+        .approach-card-show:hover {
+          transform: translateY(-6px) scale(1);
+          box-shadow: 0 12px 30px rgba(115, 0, 66, 0.08);
+        }
+
+        /*
+          Bottom line:
+          Normal = small line
+          Hover = full card width
+        */
+        .approach-line {
+          width: 24px;
+        }
+
+        .approach-card:hover .approach-line {
+          width: 100%;
+        }
+
+        /*
+          Mobile touch devices:
+          Keep animation but avoid aggressive hover behavior
+        */
+        @media (hover: none) {
+          .approach-card-show:hover {
+            transform: translateY(0) scale(1);
+            box-shadow: none;
+          }
+        }
+
+        /*
+          Accessibility:
+          Users who prefer reduced motion
+          won't get the pop-up animation.
+        */
+        @media (prefers-reduced-motion: reduce) {
+          .approach-card {
+            opacity: 1;
+            transform: none;
+            filter: none;
+            transition: none !important;
+          }
+
+          .approach-line {
+            transition: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
