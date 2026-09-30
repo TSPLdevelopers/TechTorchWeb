@@ -6,11 +6,8 @@ import { Routes, Route } from "react-router-dom";
 // ================= ADMIN PAGES =================
 
 
-import AdminLogin from "./pages/AdminLogin.jsx";
-import AdminForgotPassword from "./pages/AdminForgotPassword.jsx";
-import AdminVerifyOTP from "./pages/AdminVerifyOTP.jsx";
-import AdminResetPassword from "./pages/AdminResetPassword.jsx";
-import SignupPage from "./pages/SignupPage"; 
+import { adminRoutes } from "./admin/routes.jsx";
+import Login from "./admin/pages/Login.jsx";
 
 // ================= HOME COMPONENTS =================
 import Hero from "./components/Hero";
@@ -24,16 +21,10 @@ import Section8 from "./components/section8";
 import Section9 from "./components/section9";
 
 
-import AdminDashboard from "./pages/AdminDashboard.jsx";
-import NewsInsights from "./pages/NewsInsights.jsx";
-import JobOpenings from "./pages/JobOpenings.jsx";
-import Events from "./pages/Events.jsx";
-import LatestUpdate from "./pages/LatestUpdate.jsx";
 
 
 // ================= ADMIN LAYOUT =================
 
-import AdminLayout from "./layout/AdminLayout.jsx";
 
 
 // ================= HERO SLIDE 4 =================
@@ -555,7 +546,7 @@ function App() {
       {/* ================= AUTH PAGES ================= */}
 
 
-      <Route path="/" element={<AdminLogin />} />
+      <Route path="/" element={<Login />} />
 
         {/* SLIDE PAGES */}
         <Route path="/Slide1" element={<Slide1Page />} />
@@ -564,59 +555,10 @@ function App() {
         <Route path="/Slide4" element={<Slide4Page />} />
         {/* <Route path="/Slide5" element={<Slide5Page />} /> */}
 
-      <Route
-        path="/admin-login"
-        element={<AdminLogin />}
-      />
+      {/* ================= ADMIN (login, signup, dashboard...) ================= */}
+      {adminRoutes}
 
-      <Route
-        path="/admin-forgot-password"
-        element={<AdminForgotPassword />}
-      />
-
-      <Route
-        path="/admin-verify-otp"
-        element={<AdminVerifyOTP />}
-      />
-
-      <Route
-        path="/admin-reset-password"
-        element={<AdminResetPassword />}
-      />
-      <Route path="/admin-signup" element={<SignupPage />} />
-
-      {/* ================= ADMIN PAGES ================= */}
-
-      <Route element={<AdminLayout />}>
-
-        <Route
-
-          path="/admin-dashboard"
-          element={<AdminDashboard />}
-        />
-
-        <Route
-          path="/news-insights"
-          element={<NewsInsights />}
-        />
-
-        <Route
-          path="/job-openings"
-          element={<JobOpenings />}
-        />
-
-        <Route
-          path="/events"
-          element={<Events />}
-        />
-
-        <Route
-          path="/latest-updates"
-          element={<LatestUpdate />}
-        />
-
-        
-
+      {/* ================= PUBLIC WEBSITE PAGES ================= */}
         <Route
           path="/TechTorchView"
           element={<WhatNextPage />}
@@ -706,7 +648,6 @@ function App() {
           element={<DigitalSolution />}
         />
 
-      </Route>
 
 
 
