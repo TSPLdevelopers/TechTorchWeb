@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { createNews } from "../api/adminDashboardApi";
 import {
   LayoutGrid,
   FileText,
@@ -33,13 +34,11 @@ import {
 } from "lucide-react";
 
 /* ----------------------------------------------------------------------
-   Dashboard sync — self-contained, no external file needed.
+   Page-local persistence helpers.
 
-   The Admin Dashboard reads its "Publishing Directory" from the
-   localStorage key `ttad_news_records`, and refreshes as soon as it
-   sees a `ttad:data-updated` event on the window. Everything below
-   talks to that same key/event so publishing here shows up there
-   immediately, without any other file to add to the project.
+   Published content is saved through the real backend API. These
+   localStorage helpers are retained only for this page's editor/table
+   state and are NOT used as the dashboard source of truth.
 ------------------------------------------------------------------------ */
 const DASHBOARD_KEY = "ttad_news_records";
 const PAGE_DISPATCHES_KEY = "ttad_page_news_dispatches";
@@ -425,17 +424,23 @@ export default function TechTorchCMS() {
      (title, description, image, category, author, status, format, dek, dateline,
       wire, tags, breakingSpotlight, mediaKitReady, body, publishTiming, scheduledDate).
      slug / wireStatus / statusDate are generated the same way the backend does. */
-  const submitRecord = (status) => {
+  const submitRecord = async (status) => {
     const title = titleRef.current?.innerText.trim();
     if (!title || title === "Untitled Press Release") {
       showToast("Add a title before saving");
       return;
     }
+
     const isDraft = status === "Draft";
     const dek = subtitleRef.current?.innerText.trim() || "";
-    const bodyHtml = bodyRef.current?.innerText.trim() === "Type here..." ? "" : bodyRef.current?.innerHTML || "";
-    const record = {
-      id: nextId.current++,
+    const bodyHtml =
+      bodyRef.current?.innerText.trim() === "Type here..."
+        ? ""
+        : bodyRef.current?.innerHTML || "";
+
+    // Save the real record in MongoDB through the backend first.
+    // This is the important part: the previous version only saved to localStorage.
+    const newsPayload = {
       title,
       description: description.trim() || dek,
       image: coverImage || "",
@@ -452,40 +457,56 @@ export default function TechTorchCMS() {
       body: bodyHtml,
       publishTiming,
       scheduledDate: publishTiming === "scheduled" ? scheduleDate : "",
-      wireStatus: isDraft ? "Draft" : "Dispatched",
-      statusDate: isDraft ? "Draft" : "Just now",
     };
 
-    if (format === "News & Press Release") {
-      setDispatches((prev) => [
-        {
-          ...record,
-          icon: Megaphone,
-          badge: badgeBreaking ? "BREAKING" : null,
-          slug: slugify("/press/", title),
-          status: isDraft ? "Draft" : "Published",
-          reach: "0 syndications",
-          outlets: "0 Outlets",
-        },
-        ...prev,
-      ]);
-      showToast(isDraft ? "Press release saved as draft" : "Press release dispatched");
-    } else {
-      setArticles((prev) => [
-        {
-          ...record,
-          slug: slugify("/insights/", title),
-          date: "Just now",
-          metric: isDraft ? "Unpublished" : "0 views",
-          read: `${readMinutes}m read`,
-        },
-        ...prev,
-      ]);
-      showToast(isDraft ? "Saved as draft" : "Article published");
-    }
-    setDraftStatus(isDraft ? "Draft Saved just now" : "Published");
-  };
+    try {
+      const response = await createNews(newsPayload);
+      const saved = response?.data || response?.news || response;
 
+      const record = {
+        ...newsPayload,
+        id: saved?._id || saved?.id || nextId.current++,
+        _id: saved?._id,
+        slug: saved?.slug || slugify("/insights/", title),
+        wireStatus: saved?.wireStatus || (isDraft ? "Draft" : "Dispatched"),
+        statusDate: saved?.statusDate || (isDraft ? "Draft" : "Just now"),
+      };
+
+      if (format === "News & Press Release") {
+        setDispatches((prev) => [
+          {
+            ...record,
+            icon: Megaphone,
+            badge: badgeBreaking ? "BREAKING" : null,
+            slug: saved?.slug || slugify("/press/", title),
+            status: saved?.status || status,
+            reach: "0 syndications",
+            outlets: "0 Outlets",
+          },
+          ...prev,
+        ]);
+        showToast(isDraft ? "Press release saved as draft" : "Press release published");
+      } else {
+        setArticles((prev) => [
+          {
+            ...record,
+            slug: saved?.slug || slugify("/insights/", title),
+            date: "Just now",
+            metric: isDraft ? "Unpublished" : "0 views",
+            read: `${readMinutes}m read`,
+          },
+          ...prev,
+        ]);
+        showToast(isDraft ? "Saved as draft" : "Article published");
+      }
+
+      setDraftStatus(isDraft ? "Draft Saved just now" : "Published");
+      window.dispatchEvent(new Event(DATA_UPDATED_EVENT));
+    } catch (error) {
+      console.error("Failed to save news to backend:", error);
+      showToast(error?.message || "Failed to save. Please try again.");
+    }
+  };
   const saveDraft = () => submitRecord("Draft");
 
   const openPreview = () => {
@@ -517,19 +538,18 @@ export default function TechTorchCMS() {
     showToast("New press release draft started");
   };
 
-  /* Every article / press release published here is saved locally and
-     mirrored into the Admin Dashboard's Publishing Directory, live —
-     no separate file needed, it all happens right here. */
+  /*
+     Backend is the source of truth for published content.
+     localStorage is kept only for this page's temporary UI state.
+     Do NOT mirror these records into the dashboard localStorage key,
+     because the Admin Dashboard now loads real records from /api/news.
+  */
   useEffect(() => {
     saveArticles(articles);
-    syncDashboard(articles, dispatches);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [articles]);
 
   useEffect(() => {
     saveDispatches(dispatches);
-    syncDashboard(articles, dispatches);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatches]);
 
   /* ----- dispatch table ----- */

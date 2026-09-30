@@ -1,31 +1,65 @@
 const API_BASE_URL = "http://localhost:5000";
 
 async function request(endpoint, options = {}) {
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-    credentials: "include",
+  const url = `${API_BASE_URL}${endpoint}`;
 
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
+  console.log("API REQUEST:", url);
 
-    ...options,
-  });
+  try {
+    const response = await fetch(url, {
+      ...options,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        ...(options.headers || {}),
+      },
+    });
 
-  const result = await response.json().catch(() => ({}));
+    const text = await response.text();
 
-  if (!response.ok) {
-    throw new Error(
-      result.message ||
-        result.error ||
-        `Request failed with status ${response.status}`
-    );
+    let result = {};
+
+    try {
+      result = text ? JSON.parse(text) : {};
+    } catch {
+      result = {
+        message: text || "Invalid server response",
+      };
+    }
+
+    console.log("API RESPONSE:", response.status, result);
+
+    if (!response.ok) {
+      throw new Error(
+        result.message ||
+          result.error ||
+          `Server error: ${response.status}`
+      );
+    }
+
+    return result;
+  } catch (error) {
+    console.error("API ERROR:", error);
+
+    // Browser/backend connection problem
+    if (error instanceof TypeError) {
+      throw new Error(
+        "Backend server se connection nahi ho raha. " +
+        "Please check that backend is running on http://localhost:5000"
+      );
+    }
+
+    throw error;
   }
-
-  return result;
 }
 
-function extractData(result) {
+/* =========================
+   NEWS
+========================= */
+
+export async function getNews() {
+  const result = await request("/api/news");
+
   if (Array.isArray(result)) {
     return result;
   }
@@ -37,28 +71,6 @@ function extractData(result) {
   return [];
 }
 
-
-// =========================
-// NEWS APIs
-// =========================
-
-// GET ALL NEWS
-export async function getNews() {
-  const result = await request("/api/news");
-
-  return extractData(result);
-}
-
-
-// GET SINGLE NEWS
-export async function getNewsById(id) {
-  const result = await request(`/api/news/${id}`);
-
-  return result?.data || null;
-}
-
-
-// CREATE NEWS
 export async function createNews(newsData) {
   return await request("/api/news", {
     method: "POST",
@@ -66,8 +78,6 @@ export async function createNews(newsData) {
   });
 }
 
-
-// UPDATE NEWS
 export async function updateNews(id, newsData) {
   return await request(`/api/news/${id}`, {
     method: "PUT",
@@ -75,36 +85,30 @@ export async function updateNews(id, newsData) {
   });
 }
 
-
-// DELETE NEWS
 export async function deleteNews(id) {
   return await request(`/api/news/${id}`, {
     method: "DELETE",
   });
 }
 
+/* =========================
+   JOBS
+========================= */
 
-// =========================
-// JOB OPENING APIs
-// =========================
-
-// GET ALL JOB OPENINGS
 export async function getJobs() {
   const result = await request("/api/job-openings");
 
-  return extractData(result);
+  if (Array.isArray(result)) {
+    return result;
+  }
+
+  if (Array.isArray(result?.data)) {
+    return result.data;
+  }
+
+  return [];
 }
 
-
-// GET SINGLE JOB OPENING
-export async function getJobOpeningById(id) {
-  const result = await request(`/api/job-openings/${id}`);
-
-  return result?.data || null;
-}
-
-
-// CREATE JOB OPENING
 export async function createJobOpening(jobData) {
   return await request("/api/job-openings", {
     method: "POST",
@@ -112,8 +116,6 @@ export async function createJobOpening(jobData) {
   });
 }
 
-
-// UPDATE JOB OPENING
 export async function updateJobOpening(id, jobData) {
   return await request(`/api/job-openings/${id}`, {
     method: "PUT",
@@ -121,51 +123,28 @@ export async function updateJobOpening(id, jobData) {
   });
 }
 
-
-// DELETE JOB OPENING
 export async function deleteJobOpening(id) {
   return await request(`/api/job-openings/${id}`, {
     method: "DELETE",
   });
 }
 
-
-// =========================
-// ADMIN DASHBOARD
-// =========================
-// =========================
-// ADMIN DASHBOARD
-// =========================
-
-export async function getAdminDashboardData() {
-  const [news, jobs, events, whitepapers] = await Promise.all([
-    getNews(),
-    getJobs(),
-    getEvents(),
-    getWhitepapers(),
-  ]);
-
-  return {
-    news,
-    jobs,
-    events,
-    whitepapers,
-  };
-}
-// =========================
-// EVENT APIs
-// =========================
+/* =========================
+   EVENTS
+========================= */
 
 export async function getEvents() {
   const result = await request("/api/events");
 
-  return extractData(result);
-}
+  if (Array.isArray(result)) {
+    return result;
+  }
 
-export async function getEventById(id) {
-  const result = await request(`/api/events/${id}`);
+  if (Array.isArray(result?.data)) {
+    return result.data;
+  }
 
-  return result?.data || result;
+  return [];
 }
 
 export async function createEvent(eventData) {
@@ -187,29 +166,25 @@ export async function deleteEvent(id) {
     method: "DELETE",
   });
 }
-// =========================
-// WHITEPAPER APIs
-// =========================
 
-// GET ALL WHITEPAPERS
+/* =========================
+   WHITEPAPERS
+========================= */
+
 export async function getWhitepapers() {
   const result = await request("/api/whitepapers");
 
-  console.log("========== WHITEPAPERS FROM MONGODB ==========");
-  console.log(result);
-  console.log("==============================================");
+  if (Array.isArray(result)) {
+    return result;
+  }
 
-  return extractData(result);
+  if (Array.isArray(result?.data)) {
+    return result.data;
+  }
+
+  return [];
 }
 
-// GET SINGLE WHITEPAPER
-export async function getWhitepaperById(id) {
-  const result = await request(`/api/whitepapers/${id}`);
-
-  return result?.data || null;
-}
-
-// CREATE WHITEPAPER
 export async function createWhitepaper(whitepaperData) {
   return await request("/api/whitepapers", {
     method: "POST",
@@ -217,7 +192,6 @@ export async function createWhitepaper(whitepaperData) {
   });
 }
 
-// UPDATE WHITEPAPER
 export async function updateWhitepaper(id, whitepaperData) {
   return await request(`/api/whitepapers/${id}`, {
     method: "PUT",
@@ -225,7 +199,6 @@ export async function updateWhitepaper(id, whitepaperData) {
   });
 }
 
-// DELETE WHITEPAPER
 export async function deleteWhitepaper(id) {
   return await request(`/api/whitepapers/${id}`, {
     method: "DELETE",
