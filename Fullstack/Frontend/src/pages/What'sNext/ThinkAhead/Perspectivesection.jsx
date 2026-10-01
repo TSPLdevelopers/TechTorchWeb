@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Search, Activity, Share2, Clock } from "lucide-react";
 
 const items = [
@@ -29,10 +29,43 @@ const items = [
 ];
 
 export default function PerspectiveSection() {
+  const sectionRef = useRef(null);
+
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Section screen par aaya
+          setIsInView(true);
+        } else {
+          // Section screen se bahar gaya
+          // Isse next time dobara animation chalegi
+          setIsInView(false);
+        }
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
     <section
+      ref={sectionRef}
       className="
+        perspective-section
         w-full
         overflow-hidden
         bg-white
@@ -144,24 +177,35 @@ export default function PerspectiveSection() {
             xl:gap-6
           "
         >
-          {items.map(({ icon: Icon, title, description }) => (
+          {items.map(({ icon: Icon, title, description }, index) => (
             <div
               key={title}
-              className="
+              className={`
+                perspective-card
                 group
                 w-full
                 rounded-lg
                 bg-slate-50
                 p-5
                 transition-all
-                duration-300
+                duration-700
                 hover:-translate-y-1
                 hover:shadow-sm
                 sm:p-6
                 md:p-6
                 lg:p-5
                 xl:p-6
-              "
+                ${
+                  isInView
+                    ? "perspective-card-show"
+                    : "perspective-card-hide"
+                }
+              `}
+              style={{
+                transitionDelay: isInView
+                  ? `${index * 180}ms`
+                  : "0ms",
+              }}
             >
               {/* ================= ICON ================= */}
               <div
@@ -174,7 +218,7 @@ export default function PerspectiveSection() {
                   justify-center
                   rounded-full
                   border
-                 border-[#730042]
+                  border-[#730042]
                   transition-colors
                   duration-300
                   group-hover:border-[#730042]
@@ -224,6 +268,45 @@ export default function PerspectiveSection() {
           ))}
         </div>
       </div>
+
+      {/* ================= ANIMATION ================= */}
+      <style>{`
+        .perspective-card {
+          opacity: 0;
+          transform: translateY(45px) scale(0.92);
+          filter: blur(5px);
+          will-change: transform, opacity, filter;
+        }
+
+        .perspective-card-show {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          filter: blur(0);
+        }
+
+        .perspective-card-hide {
+          opacity: 0;
+          transform: translateY(45px) scale(0.92);
+          filter: blur(5px);
+        }
+
+        /* 
+          Jab hover ho to animation ke baad
+          card thoda upar move kare
+        */
+        .perspective-card-show:hover {
+          transform: translateY(-4px) scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .perspective-card {
+            opacity: 1;
+            transform: none;
+            filter: none;
+            transition: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
