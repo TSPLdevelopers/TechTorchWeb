@@ -188,7 +188,7 @@ function MainLayout() {
       {/* FOOTER */}
       <Footer />
 
-    </div>
+    </>
   );
 }
 
