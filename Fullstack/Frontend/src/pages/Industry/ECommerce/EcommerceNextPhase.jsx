@@ -5,52 +5,200 @@ const WINE = "#7A1F3D";
 
 export default function BuildOnlineBusinessCtaSection() {
   return (
-    <div className="w-full font-sans relative overflow-hidden">
-      {/* Background image */}
+    <section className="w-full relative overflow-hidden font-['Inter']">
+      {/* ================= BACKGROUND IMAGE ================= */}
+      <div className="absolute inset-0">
+        <img
+          src="/build-online-business.jpg"
+          alt="Building online business with technology"
+          className="
+            w-full
+            h-full
+            object-cover
+            scale-[1.02]
+          "
+        />
+      </div>
+
+      {/* ================= DARK OVERLAY ================= */}
       <div
         className="absolute inset-0"
         style={{
-          background: "linear-gradient(115deg, #14161c 0%, #1a1c24 45%, #14161c 100%)",
+          background:
+            "linear-gradient(115deg, rgba(20,22,28,0.88) 0%, rgba(26,28,36,0.78) 45%, rgba(20,22,28,0.88) 100%)",
         }}
       />
-      <div className="absolute inset-0" style={{ background: "rgba(10,10,12,0.55)" }} />
 
-      <div className="relative max-w-3xl mx-auto px-6 py-16 text-center">
+      {/* ================= CONTENT ================= */}
+      <div
+        className="
+          relative
+          max-w-4xl
+          mx-auto
+          px-4
+          sm:px-6
+          md:px-10
+          lg:px-[100px]
+          py-14
+          sm:py-16
+          md:py-20
+          lg:py-24
+          text-center
+        "
+      >
+        {/* Badge */}
         <span
-          className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-wide px-3 py-1.5 rounded-full mb-5"
-          style={{ background: WINE, color: "#fff" }}
+          className="
+            inline-flex
+            items-center
+            gap-1.5
+            text-[9px]
+            sm:text-[10px]
+            font-semibold
+            tracking-[0.08em]
+            px-3
+            py-1.5
+            rounded-full
+            mb-5
+            font-['Inter']
+            transition-all
+            duration-300
+            hover:scale-105
+          "
+          style={{
+            background: WINE,
+            color: "#fff",
+          }}
         >
           <ChevronRight size={11} strokeWidth={3} />
           NEXT PHASE
         </span>
 
-        <h2 className="text-3xl md:text-[2rem] leading-[1.2] font-bold tracking-tight text-white mb-4">
+        {/* ================= HEADING ================= */}
+        <h2
+          className="
+            font-['Plus_Jakarta_Sans']
+            text-2xl
+            sm:text-3xl
+            md:text-[2rem]
+            lg:text-[2.2rem]
+            leading-[1.2]
+            font-bold
+            tracking-tight
+            text-white
+            mb-4
+          "
+        >
           Build Your Online Business With the
-          <br />
+          <br className="hidden sm:block" />
           Right Technology
         </h2>
 
-        <p className="text-sm leading-relaxed max-w-xl mx-auto mb-7" style={{ color: "#c9c6cc" }}>
+        {/* ================= DESCRIPTION ================= */}
+        <p
+          className="
+            font-['Inter']
+            text-xs
+            sm:text-sm
+            md:text-[15px]
+            leading-6
+            sm:leading-relaxed
+            max-w-2xl
+            mx-auto
+            mb-7
+            px-2
+            sm:px-0
+          "
+          style={{
+            color: "#c9c6cc",
+          }}
+        >
           Bring your products, customers and e-commerce operations together
           with technology designed around your business requirements.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        {/* ================= BUTTONS ================= */}
+        <div
+          className="
+            flex
+            flex-col
+            sm:flex-row
+            items-stretch
+            sm:items-center
+            justify-center
+            gap-3
+            w-full
+          "
+        >
+          {/* Primary Button */}
           <button
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-white text-sm font-medium"
-            style={{ background: WINE }}
+            className="
+              group
+              inline-flex
+              items-center
+              justify-center
+              gap-2
+              px-5
+              py-3
+              rounded-md
+              text-white
+              text-sm
+              font-medium
+              font-['Inter']
+              transition-all
+              duration-300
+              hover:-translate-y-1
+              hover:shadow-[0_10px_25px_rgba(122,31,61,0.35)]
+              w-full
+              sm:w-auto
+            "
+            style={{
+              background: WINE,
+            }}
           >
             Talk to Our Experts
-            <ArrowRight size={15} />
+
+            <ArrowRight
+              size={15}
+              className="
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+              "
+            />
           </button>
+
+          {/* Secondary Button */}
           <button
-            className="px-5 py-2.5 rounded-md text-sm font-medium text-white"
-            style={{ background: "rgba(255,255,255,0.12)" }}
+            className="
+              inline-flex
+              items-center
+              justify-center
+              px-5
+              py-3
+              rounded-md
+              text-sm
+              font-medium
+              text-white
+              font-['Inter']
+              border
+              transition-all
+              duration-300
+              hover:-translate-y-1
+              hover:bg-white/20
+              hover:border-white/30
+              w-full
+              sm:w-auto
+            "
+            style={{
+              background: "rgba(255,255,255,0.12)",
+              borderColor: "rgba(255,255,255,0.12)",
+            }}
           >
             Get in Touch
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
