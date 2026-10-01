@@ -264,7 +264,7 @@ export default function ErpIntelligence() {
 
 
         .erp-label {
-          font-size: 24px;
+          font-size: 20px;
 
           font-weight: 700;
 
@@ -299,7 +299,7 @@ export default function ErpIntelligence() {
 
 
         .erp-description {
-          font-size: 16px;
+          font-size: 15px;
 
           color: #2c2c2c;
 
@@ -373,11 +373,11 @@ export default function ErpIntelligence() {
         ================================================= */
 
         .erp-icon {
-          width: 54px;
+          width: 50px;
 
-          height: 54px;
+          height: 50px;
 
-          min-width: 54px;
+          min-width: 50px;
 
           border-radius: 50%;
 
@@ -432,9 +432,9 @@ export default function ErpIntelligence() {
         ================================================= */
 
         .erp-card-title {
-          font-size: 22px;
+          font-size: 20px;
 
-          font-weight: 700;
+          font-weight: 600;
 
           color: #141414;
 
@@ -449,8 +449,8 @@ export default function ErpIntelligence() {
         ================================================= */
 
         .erp-card-description {
-          font-size: 15px;
-
+          font-size: 13.5px;
+           font-family: "Inter", sans-serif;
           color: #3a3a3a;
 
           line-height: 1.5;

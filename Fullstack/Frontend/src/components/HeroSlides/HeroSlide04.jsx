@@ -43,9 +43,9 @@ export default function PurpleHero() {
                 font-['Plus_Jakarta_Sans']
                 font-semibold
                 text-[30px]
-                sm:text-[36px]
-                md:text-[48px]
-                lg:text-[40px]
+                sm:text-[34px]
+                md:text-[34px]
+                lg:text-[36px]
                 leading-[1.08]
                 tracking-tight
                 -translate-y-10
@@ -67,9 +67,9 @@ export default function PurpleHero() {
                 max-w-[540px]
                 font-['Inter']
                 text-[15px]
-                sm:text-[17px]
-                md:text-[18px]
-                lg:text-[18px]
+                sm:text-[16px]
+                md:text-[16px]
+                lg:text-[16px]
                 leading-[1.4]
                 text-white/85
               "
@@ -90,8 +90,8 @@ export default function PurpleHero() {
                 mt-24
                 border
                 border-white/80
-                px-3
-                py-1.5
+                px-4
+                py-2
                 text-[14px]
                 font-medium
                 text-white

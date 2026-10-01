@@ -46,29 +46,31 @@ export default function TechHero() {
       >
 
         <h1
-  className="
-    text-white
-    font-semibold
-    leading-[1.09]
-    text-[2.1rem]
-    sm:text-[2.6rem]
-    md:text-[2.8rem]
-    tracking-tight
-    translate-y-8
-    whitespace-nowrap
-  "
->
-  Technology Solutions Built
-  <br />
-  Around Your Business
-</h1>
+          className="
+            text-white
+            font-['Plus_Jakarta_Sans']
+            font-semibold
+            leading-[1.09]
+            text-[34px]
+            sm:text-[34px]
+            md:text-[36px]
+            tracking-tight
+            translate-y-8
+            whitespace-nowrap
+          "
+        >
+          Technology Solutions Built
+          <br />
+          Around Your Business
+        </h1>
 
         <p
           className="
             mt-20
             text-white/85
-            text-base
-            sm:text-lg
+            font-['Inter']
+            text-[15px]
+            sm:text-[16px]
             leading-relaxed
             max-w-md
           "
@@ -84,11 +86,11 @@ export default function TechHero() {
               border
               border-white/70
               text-white
-              text-sm
+              text-[14px]
               font-medium
               tracking-wide
-              px-3
-              py-1.5
+              px-4
+              py-2
               hover:bg-white
               hover:text-[#0a1128]
               transition-colors

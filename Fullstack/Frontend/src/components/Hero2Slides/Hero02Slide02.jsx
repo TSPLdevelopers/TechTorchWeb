@@ -48,7 +48,7 @@ export default function ERPApproach() {
             text-[13px]
             sm:text-[15px]
             md:text-[16px]
-            lg:text-[17px]
+            lg:text-[16px]
           "
         >
           OUR ERP APPROACH
@@ -87,15 +87,15 @@ export default function ERPApproach() {
                 tracking-[-0.03em]
 
                 xs:text-[24px]
-                sm:text-[28px]
-                md:text-[36px]
-                lg:text-[40px]
+                sm:text-[26px]
+                md:text-[30px]
+                lg:text-[30px]
                 xl:text-[32px]
               "
             >
               A Business That
               <br />
-              <span className="text-[#850052]">Works as One</span>
+              <span className="text-[#730042]">Works as One</span>
             </h1>
 
             <p
@@ -114,7 +114,7 @@ export default function ERPApproach() {
                 md:mt-5
                 md:text-[15px]
 
-                lg:text-[16px]
+                lg:text-[15px]
               "
             >
               As businesses grow, their operations become more connected —
@@ -140,7 +140,7 @@ export default function ERPApproach() {
                 md:mt-5
                 md:text-[15px]
 
-                lg:text-[16px]
+                lg:text-[15px]
               "
             >
               An ERP brings these essential business functions together in one
@@ -165,7 +165,7 @@ export default function ERPApproach() {
                 md:mt-5
                 md:text-[15px]
 
-                lg:text-[16px]
+                lg:text-[15px]
               "
             >
               At TechTorch, we take a practical approach to ERP. We first
@@ -442,9 +442,9 @@ export default function ERPApproach() {
                   leading-[1.4]
                   text-[#151515]
 
-                  sm:text-[11px]
-                  md:text-[16px]
-                  lg:text-[16px]
+                  sm:text-[13px]
+                  md:text-[15px]
+                  lg:text-[15px]
                 "
               >
                 The goal is simple:

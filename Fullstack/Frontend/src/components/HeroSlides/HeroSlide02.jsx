@@ -80,9 +80,9 @@ export default function WithPurpose() {
                 leading-[1.08]
                 tracking-[-0.035em]
 
-                sm:text-[27px]
-                md:text-[28px]
-                lg:text-[29px]
+                sm:text-[26px]
+                md:text-[26px]
+                lg:text-[28px]
               "
             >
               Building Technology
@@ -105,7 +105,7 @@ export default function WithPurpose() {
 
                 sm:text-[15px]
                 md:text-[15px]
-                lg:text-[16px]
+                lg:text-[15px]
                 lg:leading-[1.36]
               "
             >
@@ -183,7 +183,7 @@ export default function WithPurpose() {
                   text-[40px]
                   font-bold
                   leading-[0.55]
-                  text-[#850052]
+                  text-[#730042]
                 "
               >
                 “
@@ -195,13 +195,13 @@ export default function WithPurpose() {
                 className="
                   mt-5
                   font-['Inter']
-                  text-[21px]
+                  text-[20px]
                   font-medium
                   leading-[1.65]
                   tracking-[-0.025em]
                   text-[#111111]
 
-                  sm:text-[22px]
+                  sm:text-[20px]
                 "
               >
                 Transformation
@@ -222,7 +222,7 @@ export default function WithPurpose() {
                   mt-5
                   h-[3px]
                   w-[58px]
-                  bg-[#850052]
+                  bg-[#730042]
                 "
               />
             </div>

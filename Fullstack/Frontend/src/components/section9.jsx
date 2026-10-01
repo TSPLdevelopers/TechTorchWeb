@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const COLORS = {
   maroon: "#7A1350",
@@ -8,6 +9,7 @@ const COLORS = {
 export default function CtaSection({
   backgroundImage = "/sec9.png",
 }) {
+  const navigate = useNavigate();
   return (
     <section className="cta-section">
       <style>{`
@@ -437,6 +439,10 @@ export default function CtaSection({
         <a
           href="#contact"
           className="cta-button"
+           onClick={(e) => {
+    e.preventDefault();
+    navigate("/start-conversation");
+  }}
         >
           Start a conversation
 
