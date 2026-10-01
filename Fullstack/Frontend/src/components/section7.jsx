@@ -61,14 +61,12 @@ function CTAButton({ children }) {
     <button
       className="tx-cta inline-flex items-center justify-center gap-2.5 self-start rounded-lg whitespace-nowrap w-full sm:w-auto"
       style={{
-        marginTop: "clamp(16px, 2vw, 24px)",
+        marginTop: "10px",
         border: `1.5px solid ${colors.brand}`,
         color: colors.brand,
-        padding: "12px 22px",
-        fontSize: "clamp(14px, 1vw, 16px)",
+        padding: "6px 14px",
+        fontSize: "16px",
         fontWeight: 700,
-        backgroundColor: "transparent",
-        cursor: "pointer",
       }}
     >
       {children}
@@ -80,10 +78,10 @@ function CTAButton({ children }) {
 function CopyPanel() {
   return (
     <div
-      className="flex w-full flex-col justify-center"
+      className="flex w-full max-w-2xl flex-col justify-center tx-copy"
       style={{
-        padding:
-          "clamp(40px, 6vw, 80px) clamp(24px, 5vw, 80px)",
+        paddingTop: "65px",
+        paddingBottom: "65px",
       }}
     >
       <Eyebrow>The Next Chapter</Eyebrow>
@@ -92,7 +90,7 @@ function CopyPanel() {
         className="tx-heading"
         style={{
           marginBottom: "24px",
-          fontSize: "28px",
+          fontSize: "26px",
           lineHeight: 1.18,
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 600,
@@ -109,7 +107,7 @@ function CopyPanel() {
         className="tx-suite"
         style={{
           marginBottom: "20px",
-          fontSize: "30px",
+          fontSize: "25px",
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 600,
           lineHeight: 1.25,
@@ -123,7 +121,7 @@ function CopyPanel() {
         className="tx-intro"
         style={{
           marginBottom: "40px",
-          fontSize: "21px",
+          fontSize: "20px",
           fontFamily: "Plus Jakarta Sans",
           maxWidth: "28rem",
           lineHeight: 1.5,
@@ -139,7 +137,8 @@ function CopyPanel() {
         style={{
           marginBottom: "16px",
           marginTop: "-10px",
-          fontSize: "17px",
+          fontFamily: "Inter",
+          fontSize: "15px",
           fontFamily: "Inter",
           maxWidth: "28rem",
           lineHeight: 1.65,
@@ -161,11 +160,11 @@ function CopyPanel() {
 
 function ImagePanel() {
   return (
-    <div className="tx-image-panel relative w-full overflow-hidden">
+    <div className="tx-image-panel relative w-full h-full flex items-center justify-end overflow-hidden">
       <img
         src="/sec7.png"
         alt="TorchX"
-        className="tx-image block w-full h-full"
+        className="tx-image block"
       />
     </div>
   );
@@ -176,26 +175,19 @@ function ImagePanel() {
 export default function TorchXVideoSection() {
   return (
     <div
-      className="w-full font-sans overflow-hidden"
+      className="w-full font-sans"
       style={{
         backgroundColor: "#fff",
         isolation: "isolate",
       }}
     >
       <style>{`
-        /* ---------------------------------------------------------------
-           CTA
-        ---------------------------------------------------------------- */
-
         .tx-cta {
-          transition:
-            background-color 0.25s ease,
-            color 0.25s ease,
-            transform 0.25s ease;
+          transition: all 0.25s ease;
         }
 
         .tx-cta:hover {
-          background-color: ${colors.brand} !important;
+          background-color: ${colors.brand};
           color: ${colors.cream} !important;
           transform: translateY(-1px);
         }
@@ -208,155 +200,365 @@ export default function TorchXVideoSection() {
           transform: translateX(3px);
         }
 
-
-        /* ---------------------------------------------------------------
+        /* =====================================================
            MAIN SECTION
-        ---------------------------------------------------------------- */
+        ===================================================== */
 
         .tx-section {
           width: 100%;
+          display: grid;
+          grid-template-columns: 45% 55%;
+          align-items: stretch;
           background: ${colors.cream};
+          overflow: hidden;
+
+          /* Same spacing as HOW WE WORK */
+          padding-left: 16px;
+          padding-right: 16px;
+          box-sizing: border-box;
         }
 
+        .tx-copy-wrapper {
+          width: 100%;
+          min-width: 0;
+          display: flex;
+          align-items: center;
+        }
 
-        /* ---------------------------------------------------------------
-           IMAGE
-        ---------------------------------------------------------------- */
+        .tx-image-wrapper {
+          width: 100%;
+          min-width: 0;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          overflow: hidden;
+        }
 
         .tx-image-panel {
           width: 100%;
-          height: auto;
+          height: 100%;
           display: flex;
           align-items: center;
-          justify-content: center;
-          background: ${colors.cream};
+          justify-content: flex-end;
+          overflow: hidden;
         }
+
+        /*
+          Image remains fully visible.
+          object-fit: contain prevents vertical cropping.
+        */
 
         .tx-image {
-          width: 100%;
-          height: auto;
           display: block;
+          width: 120%;
+          height: 100%;
           object-fit: contain;
-          object-position: center;
+          object-position: center right;
+          max-width: none;
         }
 
+        /* =====================================================
+           SMALL DEVICES
+           640px+
+        ===================================================== */
 
-        /* ---------------------------------------------------------------
-           TABLET / MEDIUM
-        ---------------------------------------------------------------- */
-
-        @media (min-width: 640px) and (max-width: 1023px) {
+        @media (min-width: 640px) {
           .tx-section {
-            display: grid;
-            grid-template-columns: 1fr;
-          }
-
-          .tx-image-panel {
-            max-height: 500px;
-          }
-
-          .tx-image {
-            max-height: 500px;
-            object-fit: contain;
+            padding-left: 24px;
+            padding-right: 24px;
           }
         }
 
+        /* =====================================================
+           TABLET
+           768px+
+        ===================================================== */
 
-        /* ---------------------------------------------------------------
-           LAPTOP
-        ---------------------------------------------------------------- */
-
-        @media (min-width: 1024px) {
+        @media (min-width: 768px) {
           .tx-section {
-            display: grid;
-            grid-template-columns: 50% 50%;
-            min-height: 560px;
-          }
-
-          .tx-image-panel {
-            height: 560px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            overflow: hidden;
-          }
-
-          .tx-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: right center;
+            padding-left: 40px;
+            padding-right: 40px;
           }
         }
 
-
-        /* ---------------------------------------------------------------
-           LARGE DESKTOP
-        ---------------------------------------------------------------- */
-
-        @media (min-width: 1280px) {
-          .tx-section {
-            grid-template-columns: 50% 50%;
-            min-height: 600px;
-          }
-
-          .tx-image-panel {
-            height: 600px;
-          }
-
-          .tx-image {
-            object-position: right center;
-          }
-        }
-
-
-        /* ---------------------------------------------------------------
-           EXTRA LARGE DESKTOP
-        ---------------------------------------------------------------- */
-
-        @media (min-width: 1536px) {
-          .tx-section {
-            grid-template-columns: 48% 52%;
-            min-height: 620px;
-          }
-
-          .tx-image-panel {
-            height: 620px;
-          }
-        }
-
-
-        /* ---------------------------------------------------------------
+        /* =====================================================
            MOBILE
-        ---------------------------------------------------------------- */
+        ===================================================== */
 
-        @media (max-width: 639px) {
+        @media (max-width: 767px) {
           .tx-section {
             display: flex;
             flex-direction: column;
+            height: auto;
+          }
+
+          .tx-copy-wrapper {
+            order: 1;
+            width: 100%;
+            height: auto;
+          }
+
+          .tx-image-wrapper {
+            order: 2;
+            width: 100%;
+            height: auto;
+            min-height: 0;
+          }
+
+          .tx-copy {
+            width: 100%;
+            max-width: none;
+            padding: 40px 0 35px !important;
+          }
+
+          .tx-heading {
+            font-size: 26px !important;
+            line-height: 1.25 !important;
+            margin-bottom: 18px !important;
+          }
+
+          .tx-suite {
+            font-size: 25px !important;
+            margin-bottom: 14px !important;
+          }
+
+          .tx-intro {
+            font-size: 18px !important;
+            line-height: 1.5 !important;
+            margin-bottom: 22px !important;
+            max-width: 100% !important;
+          }
+
+          .tx-description {
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            margin-bottom: 18px !important;
+            max-width: 100% !important;
+          }
+
+          .tx-cta {
+            width: 100%;
+            font-size: 15px !important;
+            padding: 11px 18px !important;
           }
 
           .tx-image-panel {
-            order: 1;
+            width: 100%;
+            height: auto;
+            min-height: 0;
           }
 
           .tx-image {
+            display: block;
             width: 100%;
             height: auto;
+            max-width: 100%;
             object-fit: contain;
+            object-position: center center;
+          }
+        }
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .tx-section {
+            height: 450px;
+            grid-template-columns: 46% 54%;
+            align-items: stretch;
+          }
+
+          .tx-copy-wrapper {
+            height: 450px;
+          }
+
+          .tx-image-wrapper {
+            height: 450px;
+          }
+
+          .tx-image-panel {
+            width: 100%;
+            height: 450px;
+          }
+
+          .tx-copy {
+            padding-left: 0 !important;
+            padding-right: 30px !important;
+            padding-top: 45px !important;
+            padding-bottom: 45px !important;
+          }
+
+          .tx-heading {
+            font-size: 28px !important;
+          }
+
+          .tx-suite {
+            font-size: 27px !important;
+          }
+
+          .tx-intro {
+            font-size: 20px !important;
+          }
+
+          .tx-description {
+            font-size: 16px !important;
+          }
+
+          .tx-image {
+            width: 120%;
+            height: 100%;
+            max-width: none;
+            object-fit: contain;
+            object-position: center right;
+          }
+        }
+
+        /* =====================================================
+           DESKTOP
+           1024px+
+        ===================================================== */
+
+        @media (min-width: 1024px) {
+          .tx-section {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+        }
+
+        /* =====================================================
+           DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          .tx-section {
+            height: 460px;
+            grid-template-columns: 44% 56%;
+            align-items: stretch;
+          }
+
+          .tx-copy-wrapper {
+            height: 460px;
+          }
+
+          .tx-image-wrapper {
+            height: 460px;
+          }
+
+          .tx-image-panel {
+            width: 100%;
+            height: 460px;
+          }
+
+          .tx-copy {
+            padding-left: 0 !important;
+            padding-right: 35px !important;
+            padding-top: 50px !important;
+            padding-bottom: 50px !important;
+          }
+
+          .tx-heading {
+            font-size: 30px !important;
+          }
+
+          .tx-suite {
+            font-size: 28px !important;
+          }
+
+          .tx-intro {
+            font-size: 21px !important;
+          }
+
+          .tx-description {
+            font-size: 15px !important;
+          }
+
+          .tx-image {
+            width: 125%;
+            height: 100%;
+            max-width: none;
+            object-fit: contain;
+            object-position: center right;
+          }
+        }
+
+        /* =====================================================
+           LARGE DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1280px) {
+          .tx-section {
+            height: 510px;
+            grid-template-columns: 43% 57%;
+            align-items: stretch;
+          }
+
+          .tx-copy-wrapper {
+            height: 510px;
+          }
+
+          .tx-image-wrapper {
+            height: 510px;
+          }
+
+          .tx-image-panel {
+            width: 100%;
+            height: 510px;
+          }
+
+          .tx-copy {
+            padding-left: 0 !important;
+            padding-right: 45px !important;
+            padding-top: 60px !important;
+            padding-bottom: 60px !important;
+          }
+
+          .tx-image {
+            width: 125%;
+            height: 100%;
+            max-width: none;
+            object-fit: contain;
+            object-position: center right;
+          }
+        }
+
+        /* =====================================================
+           EXTRA LARGE DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1600px) {
+          .tx-section {
+            height: 490px;
+            grid-template-columns: 42% 58%;
+          }
+
+          .tx-copy {
+            padding-left: 0 !important;
+            padding-right: 55px !important;
+          }
+
+          .tx-image {
+            width: 130%;
+            height: 100%;
+            max-width: none;
+            object-fit: contain;
+            object-position: center right;
           }
         }
       `}</style>
 
       <section className="tx-section">
-        {/* IMAGE */}
-        <div className="order-1 lg:order-2 w-full">
-          <ImagePanel />
+        {/* ================= COPY ================= */}
+
+        <div className="tx-copy-wrapper">
+          <CopyPanel />
         </div>
 
-        {/* COPY */}
-        <div className="order-2 lg:order-1 flex items-center w-full">
-          <CopyPanel />
+        {/* ================= IMAGE ================= */}
+
+        <div className="tx-image-wrapper">
+          <ImagePanel />
         </div>
       </section>
     </div>

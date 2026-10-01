@@ -94,9 +94,36 @@ export default function TorchXSuiteSection() {
           width: 100%;
           max-width: 620px;
 
-          padding: 60px 80px;
+          /* Vertical padding */
+          padding-top: 60px;
+          padding-bottom: 60px;
+
+          /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+          padding-left: 16px;
+          padding-right: 16px;
 
           box-sizing: border-box;
+        }
+
+        @media (min-width: 640px) {
+          .torchx-content {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .torchx-content {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .torchx-content {
+            padding-left: 100px;
+            padding-right: 40px;
+          }
         }
 
         /* ================= HEADING ================= */
@@ -186,7 +213,8 @@ export default function TorchXSuiteSection() {
 
           .torchx-content {
             max-width: 590px;
-            padding: 55px 65px;
+            padding-top: 55px;
+            padding-bottom: 55px;
           }
 
           .torchx-content h1 {
@@ -215,7 +243,8 @@ export default function TorchXSuiteSection() {
 
           .torchx-content {
             max-width: 560px;
-            padding: 50px 45px;
+            padding-top: 50px;
+            padding-bottom: 50px;
           }
 
           .torchx-content h1 {
@@ -266,7 +295,8 @@ export default function TorchXSuiteSection() {
           .torchx-content {
             max-width: 100%;
 
-            padding: 60px 24px 45px;
+            padding-top: 60px;
+            padding-bottom: 45px;
           }
 
           .torchx-content h1 {
@@ -312,7 +342,8 @@ export default function TorchXSuiteSection() {
           }
 
           .torchx-content {
-            padding: 50px 18px 40px;
+            padding-top: 50px;
+            padding-bottom: 40px;
           }
 
           .torchx-content h1 {

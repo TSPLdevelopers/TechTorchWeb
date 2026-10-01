@@ -29,20 +29,29 @@ export default function HowWeWork() {
         >
 
           {/* ================= LEFT ================= */}
+          {/* Left padding same as Hero: 16 / 24 / 40 / 100 */}
           <div
             className="
               flex
               flex-col
               justify-center
-              px-5
+
+              pl-4
+              pr-4
               py-10
-              sm:px-7
+
+              sm:pl-6
+              sm:pr-6
               sm:py-12
-              md:px-8
+
+              md:pl-10
+              md:pr-8
               md:py-10
-              lg:px-12
+
+              lg:pl-[100px]
+              lg:pr-8
               lg:py-6
-              xl:px-24
+
               xl:py-6
             "
           >
@@ -76,7 +85,7 @@ export default function HowWeWork() {
             <p
               className="
                 mt-5
-                max-w-[600px] max-w-full
+                max-w-[600px]
                 text-[14px]
                 leading-[1.55]
                 text-[#333]
@@ -123,7 +132,7 @@ export default function HowWeWork() {
                   className="
                     flex
                     h-[42px]
-                    w-[42px] max-w-full
+                    w-[42px]
                     shrink-0
                     items-center
                     justify-center
@@ -169,7 +178,7 @@ export default function HowWeWork() {
                   className="
                     flex
                     h-[42px]
-                    w-[42px] max-w-full
+                    w-[42px]
                     shrink-0
                     items-center
                     justify-center
@@ -216,7 +225,7 @@ export default function HowWeWork() {
                   className="
                     flex
                     h-[42px]
-                    w-[42px] max-w-full
+                    w-[42px]
                     shrink-0
                     items-center
                     justify-center
@@ -297,7 +306,7 @@ export default function HowWeWork() {
                 block
                 h-auto
                 w-[82%]
-                max-w-[500px] max-w-full
+                max-w-[500px]
                 object-contain
 
                 sm:w-[80%]

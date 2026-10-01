@@ -92,7 +92,14 @@ function NavInsights() {
 
           {/* LEFT CONTENT */}
           <div className="px-[11%] pt-[65px]">
-            <h3 className="text-[30px] font-bold text-gray-900 font-plus-jakarta mb-[32px]">
+            <h3 className=" text-[22px]
+                  md:text-[25px]
+                  font-semibold
+                  text-gray-900
+                  font-plus-jakarta
+                  text-left
+                  m-0
+                  leading-[1.2] mb-[32px]">
               Insights
             </h3>
 
@@ -101,7 +108,14 @@ function NavInsights() {
                 <a
                   key={title}
                   href="#"
-                  className="text-[20px] text-gray-800 font-inter hover:text-[#8a1538] transition-colors duration-200"
+                  className="text-[15px]
+                        md:text-[15px]
+                        text-gray-800
+                        font-inter
+                        leading-[1.35]
+                        hover:text-[#8a1538]
+                        transition-colors
+                        duration-200"
                 >
                   {title}
                 </a>

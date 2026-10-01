@@ -1,232 +1,208 @@
 import React from "react";
 
-export default function CrossFunctionalContext() {
-  const connections = [
-    "A financial decision may depend on operational performance.",
-    "An operational decision may depend on inventory.",
-    "Inventory may depend on demand.",
-    "Demand may depend on customer behaviour.",
-    "Customer behaviour may influence sales and planning.",
-  ];
-
-  const solutions = [
-    "ERP",
-    "Operations Management",
-    "Supply Chain Management",
-    "Aviation Management",
-    "People Resources",
-    "Web Portals",
-    "Financial Management",
-    "Payment Management",
-    "Healthcare & Hospital Management",
-    "CRM",
-    "E-Commerce",
-    "Project Management",
-  ];
-
+export default function IntegratedAutomation() {
   return (
-    <section className="cross-functional-context">
-      <div className="cross-functional-container">
-
+    <section className="integrated-automation">
+      <div className="automation-container">
         {/* BADGE */}
-        <div className="cross-functional-badge">
-          <span className="cross-functional-dot"></span>
-          CROSS-FUNCTIONAL CONTEXT
+        <div className="automation-badge">
+          <span className="automation-badge-dot"></span>
+          INTEGRATED AUTOMATION
         </div>
 
         {/* HEADING */}
-        <h2 className="cross-functional-heading">
-          Business Decisions Don’t Happen
+        <h2 className="automation-heading">
+          Better Decisions Start With Better
           <br />
-          in Silos
+          Processes
         </h2>
 
         {/* SUBHEADING */}
-        <p className="cross-functional-subheading">
-          Every departmental choice triggers an operational ripple throughout
-          the enterprise.
+        <p className="automation-subheading">
+          Good decisions depend on good information. And good information
+          depends on
+          <br className="desktop-break" />
+          good processes.
         </p>
 
-        {/* CONNECTION FLOW */}
-        <div className="connection-wrapper">
-          <div className="connection-list">
+        {/* MAIN CARDS */}
+        <div className="automation-cards">
+          {/* LEFT CARD */}
+          <div className="automation-card manual-card">
+            <div className="automation-card-title">
+              <span className="card-title-dot manual-dot"></span>
+              <h3>THE COST OF MANUAL FRICTION</h3>
+            </div>
 
-            {connections.map((item, index) => (
-              <React.Fragment key={index}>
+            <p className="automation-card-description">
+              When business information is created through disconnected or
+              highly manual workflows, organizations face unavoidable delays,
+              inconsistencies, repetitive reconciliation, and unnecessary
+              administrative burden.
+            </p>
 
-                <div className="connection-item">
-                  <span className="connection-item-dot"></span>
-
-                  <span className="connection-item-text">
-                    {item}
-                  </span>
-                </div>
-
-                {index < connections.length - 1 && (
-                  <div className="connection-arrow">
-                    ↓
-                  </div>
-                )}
-
-              </React.Fragment>
-            ))}
-
+            <div className="automation-points">
+              <div>• Stale spreadsheets hindering real-time decisions</div>
+              <div>• Human transcription errors across siloed databases</div>
+              <div>• High operational drag on high-value employees</div>
+            </div>
           </div>
 
-          {/* EVERYTHING CONNECTED */}
-          <div className="everything-connected">
-            <span className="everything-dot"></span>
-            EVERYTHING IS CONNECTED.
+          {/* RIGHT CARD */}
+          <div className="automation-card intelligent-card">
+            <div className="automation-card-title">
+              <span className="card-title-dot intelligent-dot"></span>
+              <h3>INTELLIGENT PROCESS AUTOMATION</h3>
+            </div>
+
+            <p className="automation-card-description">
+              Automation reduces repetitive tasks, improves consistency, and
+              frees operational teams to focus on strategic work that requires
+              judgment, creativity, and human problem-solving.
+            </p>
+
+            <div className="automation-points">
+              <div>
+                • Unified cross-functional workflows with guaranteed integrity
+              </div>
+              <div>
+                • Instant notification and routing of mission-critical tasks
+              </div>
+              <div>
+                • Embedded AI, cloud infrastructure, and modern software
+                support
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* DESCRIPTION */}
-        <div className="cross-functional-description">
+        {/* BOTTOM MESSAGE */}
+        <div className="automation-bottom">
+          <div className="automation-bottom-main">
+            Less manual effort. Better visibility. More reliable information.
+            Faster decisions.
+          </div>
 
-          <p>
-            That is why digital transformation should not simply mean adding
-            more software.
-          </p>
-
-          <p>
-            It should mean creating a more connected business environment
-            where information can move effectively between functions and
-            support the people responsible for making decisions.
-          </p>
-
+          <div className="automation-bottom-small">
+            TECHTORCH ERP &amp; AUTOMATION ARCHITECTURE
+          </div>
         </div>
-
-        {/* SOLUTIONS TITLE */}
-        <div className="solutions-title">
-          TECHTORCH'S DIGITAL SOLUTIONS PORTFOLIO SPANS
-        </div>
-
-        {/* SOLUTION PILLS */}
-        <div className="solutions-list">
-          {solutions.map((solution) => (
-            <span className="solution-pill" key={solution}>
-              {solution}
-            </span>
-          ))}
-        </div>
-
       </div>
 
       <style>{`
-        * {
-          box-sizing: border-box;
-        }
+        /* ================================
+           MAIN SECTION (padding same as other sections)
+        ================================= */
 
-        /* =====================================
-           MAIN SECTION
-        ====================================== */
-
-        .cross-functional-context {
+        .integrated-automation {
           width: 100%;
           margin: 0;
-          padding: 45px 0 55px;
-
-          background: #f8fafc;
-
+          padding: 40px 16px;
+          background: #faf9f4;
           color: #11172b;
-
           font-family: "Inter", sans-serif;
-
           overflow: hidden;
         }
 
-        .cross-functional-container {
+        @media (min-width: 640px) {
+          .integrated-automation {
+            padding: 48px 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .integrated-automation {
+            padding: 56px 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .integrated-automation {
+            padding: 64px 100px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .integrated-automation {
+            padding: 80px 100px;
+          }
+        }
+
+        .automation-container {
           width: 100%;
-          max-width: 1500px;
-
-          margin: 0 auto;
-
-          padding: 0 38px;
-
           display: flex;
           flex-direction: column;
           align-items: center;
         }
 
-        /* =====================================
+        /* ================================
            BADGE
-        ====================================== */
+        ================================= */
 
-        .cross-functional-badge {
+        .automation-badge {
           display: inline-flex;
-
           align-items: center;
           justify-content: center;
-
           gap: 8px;
-
-          height: 26px;
-
+          height: 25px;
           padding: 0 13px;
-
-          border: 1px solid #e6c9d8;
-
+          border: 1px solid #e6c8d8;
           border-radius: 20px;
-
           background: #fffafd;
-
+<<<<<<< HEAD
           color: #8c0750;
+          font-size: 9px;
+          font-weight: 900;
+=======
+
+          color: #730042;
 
           font-size: 10px;
 
           font-weight: 800;
 
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           letter-spacing: 0.65px;
-
-          margin-bottom: 14px;
+          margin-bottom: 17px;
         }
 
-        .cross-functional-dot {
+        .automation-badge-dot {
           width: 6px;
           height: 6px;
-
           flex: 0 0 auto;
-
           border-radius: 50%;
-
           background: #970052;
         }
 
-        /* =====================================
+        /* ================================
            HEADING
-           SAME SIZE
-        ====================================== */
+        ================================= */
 
-        .cross-functional-heading {
+        .automation-heading {
           width: 100%;
-
           margin: 0;
-
           text-align: center;
-
           color: #11172b;
-
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 32px;
-
-          line-height: 1.08;
-
-          letter-spacing: -1px;
-
+          line-height: 1.12;
+          letter-spacing: -1.2px;
           font-weight: 600;
         }
 
-        /* =====================================
+        /* ================================
            SUBHEADING
-        ====================================== */
+        ================================= */
 
-        .cross-functional-subheading {
-          width: 100%;
-
+        .automation-subheading {
           margin: 13px 0 0;
-
+          width: 100%;
           text-align: center;
+<<<<<<< HEAD
+          color: #8d0750;
+          font-size: 15px;
+          line-height: 1.55;
+=======
 
           color: #65738a;
           font-family: "Inter", sans-serif;
@@ -306,7 +282,7 @@ export default function CrossFunctionalContext() {
 
           border-radius: 50%;
 
-          background: #970052;
+          background: #730042;
         }
 
         .connection-item-text {
@@ -364,7 +340,7 @@ export default function CrossFunctionalContext() {
 
           background: #fffafd;
 
-          color: #8d0750;
+          color: #730042;
 
           font-size: 10px;
 
@@ -403,422 +379,404 @@ export default function CrossFunctionalContext() {
 
           line-height: 1.7;
 
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
           font-weight: 500;
         }
 
-        .cross-functional-description p {
-          margin: 0;
-        }
+        /* ================================
+           MAIN CARDS
+        ================================= */
 
-        .cross-functional-description p + p {
-          margin-top: 14px;
-        }
-
-        /* =====================================
-           SOLUTIONS TITLE
-        ====================================== */
-
-        .solutions-title {
-          margin-top: 24px;
-
-          text-align: center;
-
-          color: #9aa8ba;
-
-          font-size: 10px;
-
-          line-height: 1.4;
-
-          font-weight: 800;
-
-          letter-spacing: 0.45px;
-        }
-
-        /* =====================================
-           SOLUTION PILLS
-           INCREASED SIZE
-        ====================================== */
-
-        .solutions-list {
+        .automation-cards {
           width: 100%;
+          margin: 38px 0 0;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+          align-items: stretch;
+        }
 
-          max-width: 900px;
+        /* ================================
+           CARD
+        ================================= */
 
-          margin-top: 10px;
-
+        .automation-card {
+          min-width: 0;
+          min-height: 313px;
+          padding: 29px 27px 25px;
+          border-radius: 16px;
           display: flex;
-
-          flex-wrap: wrap;
-
-          align-items: center;
-
-          justify-content: center;
-
-          gap: 8px;
+          flex-direction: column;
+          background: #f7fafc;
+          border: 1px solid #e3e9ef;
+          transition:
+            transform 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
         }
 
-        .solution-pill {
-          min-height: 28px;
+        .automation-card:hover {
+          transform: translateY(-7px);
+          background: #fcf8f8;
+          border-color: #e8d1dd;
+          box-shadow: 0 12px 28px rgba(151, 0, 82, 0.10);
+        }
 
-          padding: 0 12px;
+        /* ================================
+           CARD TITLE
+        ================================= */
 
-          display: inline-flex;
-
+        .automation-card-title {
+          display: flex;
           align-items: center;
-          justify-content: center;
+          gap: 10px;
+          margin-bottom: 20px;
+        }
 
-          background: #ffffff;
-
-          border: 1px solid #e0e6ec;
-
-          border-radius: 14px;
-
-          color: #536178;
-
-          font-size: 11.5px;
-
+        .automation-card-title h3 {
+          margin: 0;
+          color: #202a3e;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
           line-height: 1.3;
-
           font-weight: 700;
-
-          white-space: nowrap;
+          letter-spacing: -0.2px;
+          transition: color 0.3s ease;
         }
 
-        /* =====================================
+        .automation-card:hover .automation-card-title h3 {
+          color: #8d0750;
+        }
+
+        /* ================================
+           DOT
+        ================================= */
+
+        .card-title-dot {
+          width: 9px;
+          height: 9px;
+          flex: 0 0 auto;
+          border-radius: 50%;
+          background: #91a4bb;
+          transition: background 0.3s ease;
+        }
+
+        .automation-card:hover .card-title-dot {
+          background: #970052;
+        }
+
+        /* ================================
+           CARD DESCRIPTION
+        ================================= */
+
+        .automation-card-description {
+          margin: 0;
+          max-width: 560px;
+          color: #627188;
+          font-family: "Inter", sans-serif;
+          font-size: 13.5px;
+          line-height: 1.65;
+          font-weight: 500;
+        }
+
+        /* ================================
+           POINTS BOX
+        ================================= */
+
+        .automation-points {
+          width: 100%;
+          margin-top: 20px;
+          padding: 13px 13px;
+          border: 1px solid #e4e9ee;
+          border-radius: 9px;
+          background: #ffffff;
+          color: #617087;
+          font-family: "Inter", sans-serif;
+          font-size: 12.5px;
+          line-height: 1.65;
+          font-weight: 600;
+          transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .automation-card:hover .automation-points {
+          border-color: #ead6df;
+        }
+
+        .automation-points div + div {
+          margin-top: 3px;
+        }
+
+        /* ================================
+           BOTTOM MESSAGE
+        ================================= */
+
+        .automation-bottom {
+          width: 100%;
+          min-height: 97px;
+          margin-top: 38px;
+          padding: 20px 30px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          border: 1px solid #e3bdd0;
+          border-radius: 12px;
+          background: #fff8fb;
+        }
+
+        .automation-bottom-main {
+          color: #8d0750;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 17px;
+          line-height: 1.35;
+          font-weight: 720;
+          letter-spacing: -0.3px;
+        }
+
+        .automation-bottom-small {
+          margin-top: 6px;
+          color: #7d8da4;
+          font-size: 10px;
+          line-height: 1.3;
+          font-weight: 600;
+          letter-spacing: 0.25px;
+        }
+
+        /* ================================
            LARGE DESKTOP
-        ====================================== */
+        ================================= */
 
         @media (min-width: 1600px) {
-
-          .cross-functional-container {
-            max-width: 1600px;
-
-            padding: 0 45px;
+          .automation-heading {
+            font-size: 38px;
           }
 
-          .cross-functional-heading {
-            font-size: 34px;
-          }
-
-          .cross-functional-subheading {
+          .automation-subheading {
             font-size: 14px;
           }
 
-          .connection-wrapper {
-            max-width: 1100px;
-
-            padding:
-              34px 48px 29px;
+          .automation-cards {
+            gap: 26px;
+            margin-top: 40px;
           }
 
-          .connection-list {
-            max-width: 720px;
+          .automation-card {
+            min-height: 325px;
+            padding: 31px 29px 27px;
           }
 
-          .connection-item {
-            min-height: 44px;
+          .automation-card-title h3 {
+            font-size: 16px;
           }
 
-          .connection-item-text {
+          .automation-card-description {
             font-size: 11.5px;
           }
 
-          .connection-arrow {
-            font-size: 17px;
-          }
-
-          .cross-functional-description {
-            max-width: 950px;
-
-            font-size: 12px;
-          }
-
-          .solution-pill {
-            min-height: 29px;
-
-            padding: 0 13px;
-
+          .automation-points {
             font-size: 10px;
+          }
+
+          .automation-bottom-main {
+            font-size: 18px;
           }
         }
 
-        /* =====================================
-           TABLET / SMALL DESKTOP
-        ====================================== */
+        /* ================================
+           SMALL DESKTOP / TABLET
+        ================================= */
 
         @media (max-width: 1100px) {
-
-          .cross-functional-context {
-            padding: 42px 0 50px;
+          .automation-heading {
+            font-size: 31px;
           }
 
-          .cross-functional-container {
-            padding: 0 25px;
-          }
-
-          .cross-functional-heading {
-            font-size: 29px;
-          }
-
-          .cross-functional-subheading {
+          .automation-subheading {
             font-size: 12px;
           }
 
-          .connection-wrapper {
-            max-width: 900px;
-
-            padding:
-              28px 35px 25px;
+          .automation-cards {
+            gap: 18px;
           }
 
-          .connection-list {
-            max-width: 650px;
+          .automation-card {
+            min-height: 300px;
+            padding: 25px 22px 22px;
           }
 
-          .connection-item {
-            min-height: 41px;
+          .automation-card-title h3 {
+            font-size: 14px;
           }
 
-          .connection-item-text {
-            font-size: 10.5px;
-          }
-
-          .cross-functional-description {
-            max-width: 820px;
-
-            font-size: 11px;
-          }
-
-          .solution-pill {
-            min-height: 28px;
-
-            font-size: 9px;
-          }
-        }
-
-        /* =====================================
-           TABLET
-        ====================================== */
-
-        @media (max-width: 800px) {
-
-          .cross-functional-heading {
-            font-size: 27px;
-          }
-
-          .cross-functional-subheading {
-            font-size: 11px;
-          }
-
-          .connection-wrapper {
-            max-width: 700px;
-
-            padding:
-              25px 25px 23px;
-          }
-
-          .connection-list {
-            max-width: 100%;
-          }
-
-          .connection-item {
-            min-height: 41px;
-          }
-
-          .connection-item-text {
+          .automation-card-description {
             font-size: 10px;
           }
 
-          .cross-functional-description {
-            max-width: 650px;
-
-            font-size: 10.5px;
+          .automation-points {
+            font-size: 9px;
           }
 
-          .solution-pill {
-            min-height: 27px;
-
-            padding: 0 11px;
-
-            font-size: 8.5px;
+          .automation-bottom-main {
+            font-size: 15px;
           }
         }
 
-        /* =====================================
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 800px) {
+          .automation-heading {
+            font-size: 28px;
+          }
+
+          .automation-subheading {
+            font-size: 11px;
+          }
+
+          .automation-cards {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .automation-card {
+            min-height: auto;
+            padding: 25px 23px 23px;
+          }
+
+          .automation-bottom {
+            margin-top: 30px;
+          }
+        }
+
+        /* ================================
            MOBILE
-        ====================================== */
+        ================================= */
 
         @media (max-width: 600px) {
-
-          .cross-functional-context {
-            padding: 35px 0 42px;
-          }
-
-          .cross-functional-container {
-            padding: 0 17px;
-          }
-
-          .cross-functional-badge {
+          .automation-badge {
             height: 24px;
-
-            padding: 0 10px;
-
-            font-size: 8px;
+            padding: 0 11px;
+            font-size: 7.5px;
           }
 
-          /* HEADING SAME */
-
-          .cross-functional-heading {
-            font-size: 24px;
-
-            line-height: 1.12;
-
-            letter-spacing: -0.7px;
+          .automation-heading {
+            font-size: 25px;
+            line-height: 1.13;
+            letter-spacing: -0.8px;
           }
 
-          .cross-functional-subheading {
+          .automation-subheading {
             margin-top: 12px;
-
-            font-size: 10.5px;
-
-            line-height: 1.65;
+            font-size: 10px;
+            line-height: 1.6;
           }
 
           .desktop-break {
             display: none;
           }
 
-          .connection-wrapper {
+          .automation-cards {
+            margin-top: 28px;
+            gap: 13px;
+          }
+
+          .automation-card {
             width: 100%;
-
-            margin-top: 26px;
-
-            padding:
-              22px 15px 21px;
-
-            border-radius: 12px;
+            min-height: 0;
+            padding: 21px 18px 19px;
+            border-radius: 13px;
           }
 
-          .connection-item {
-            min-height: 43px;
+          .automation-card:hover {
+            transform: translateY(-5px);
+          }
 
-            padding: 0 10px;
-
+          .automation-card-title {
             gap: 8px;
+            margin-bottom: 15px;
           }
 
-          .connection-item-dot {
-            width: 6px;
-            height: 6px;
+          .card-title-dot {
+            width: 8px;
+            height: 8px;
           }
 
-          .connection-item-text {
-            font-size: 9.5px;
+          .automation-card-title h3 {
+            font-size: 13px;
+            line-height: 1.35;
+          }
 
+          .automation-card-description {
+            font-size: 10px;
+            line-height: 1.65;
+          }
+
+          .automation-points {
+            margin-top: 17px;
+            padding: 12px 11px;
+            font-size: 9px;
+            line-height: 1.65;
+          }
+
+          .automation-bottom {
+            min-height: 0;
+            margin-top: 27px;
+            padding: 18px 16px;
+            border-radius: 11px;
+          }
+
+          .automation-bottom-main {
+            font-size: 13px;
             line-height: 1.45;
           }
 
-          .connection-arrow {
-            height: 21px;
-
-            font-size: 14px;
-          }
-
-          .everything-connected {
-            min-height: 31px;
-
-            margin-top: 18px;
-
-            padding: 0 13px;
-
-            font-size: 8.5px;
-          }
-
-          .everything-dot {
-            width: 6px;
-            height: 6px;
-          }
-
-          .cross-functional-description {
-            margin-top: 24px;
-
-            padding: 0;
-
-            font-size: 10px;
-
-            line-height: 1.7;
-          }
-
-          .cross-functional-description p + p {
-            margin-top: 13px;
-          }
-
-          .solutions-title {
-            margin-top: 22px;
-
+          .automation-bottom-small {
+            margin-top: 7px;
             font-size: 7px;
-          }
-
-          .solutions-list {
-            max-width: 100%;
-
-            gap: 7px;
-
-            margin-top: 9px;
-          }
-
-          .solution-pill {
-            min-height: 27px;
-
-            padding: 0 10px;
-
-            font-size: 8.5px;
           }
         }
 
-        /* =====================================
+        /* ================================
            SMALL MOBILE
-        ====================================== */
+        ================================= */
 
         @media (max-width: 380px) {
-
-          .cross-functional-container {
-            padding: 0 14px;
-          }
-
-          .cross-functional-heading {
+          .automation-heading {
             font-size: 22px;
           }
 
-          .cross-functional-subheading {
-            font-size: 10px;
-          }
-
-          .connection-wrapper {
-            padding:
-              19px 11px 19px;
-          }
-
-          .connection-item {
-            min-height: 41px;
-
-            padding: 0 8px;
-          }
-
-          .connection-item-text {
-            font-size: 9px;
-          }
-
-          .cross-functional-description {
+          .automation-subheading {
             font-size: 9.5px;
           }
 
-          .solution-pill {
-            min-height: 26px;
+          .automation-card {
+            padding: 19px 16px 17px;
+          }
 
-            padding: 0 9px;
+          .automation-card-title h3 {
+            font-size: 12px;
+          }
 
-            font-size: 8px;
+          .automation-card-description {
+            font-size: 9.5px;
+          }
+
+          .automation-points {
+            font-size: 8.5px;
+            padding: 11px 10px;
+          }
+
+          .automation-bottom-main {
+            font-size: 11.5px;
+          }
+
+          .automation-bottom-small {
+            font-size: 6.5px;
           }
         }
       `}</style>

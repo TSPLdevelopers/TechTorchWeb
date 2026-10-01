@@ -1,0 +1,804 @@
+import React from "react";
+import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+const WINE = "#7A1F3D";
+const INK = "#1B1B2A";
+const MUTED = "#5b5a63";
+
+export default function InsuranceHeroBgSection() {
+  const navigate = useNavigate();
+
+  return (
+    <section className="insurance-hero">
+      <style>{`
+
+        /* =====================================================
+           FONTS
+        ===================================================== */
+
+        @import url(
+          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
+        );
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .insurance-hero {
+          position: relative;
+          width: 100%;
+          min-height: 520px;
+
+          overflow: hidden;
+
+          background: #ffffff;
+
+          font-family: "Inter", sans-serif;
+        }
+
+
+        /* =====================================================
+           BACKGROUND IMAGE
+        ===================================================== */
+
+        .insurance-hero-bg {
+          position: absolute;
+          inset: 0;
+
+          width: 100%;
+          height: 100%;
+
+          background-image: url("/Insurance.png");
+
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+
+          z-index: 0;
+        }
+
+
+        /* =====================================================
+           OVERLAY
+        ===================================================== */
+
+        .insurance-hero-overlay {
+          position: absolute;
+          inset: 0;
+
+          background:
+            linear-gradient(
+              90deg,
+              #ffffff 0%,
+              #ffffff 38%,
+              rgba(255, 255, 255, 0.94) 50%,
+              rgba(255, 255, 255, 0.55) 65%,
+              rgba(255, 255, 255, 0.08) 82%,
+              rgba(255, 255, 255, 0) 100%
+            );
+
+          z-index: 1;
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .insurance-hero-container {
+          position: relative;
+
+          z-index: 2;
+
+          width: 100%;
+          max-width: 1250px;
+
+          margin: 0 auto;
+
+          padding: 62px 24px 58px;
+
+          box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .insurance-hero-content {
+          width: 100%;
+          max-width: 570px;
+        }
+
+
+        /* =====================================================
+           DESKTOP RIGHT SHIFT
+        ===================================================== */
+
+        @media (min-width: 1101px) {
+
+          .insurance-hero-container {
+            transform: translateX(20px);
+          }
+
+        }
+
+
+        /* =====================================================
+           BADGE
+           INTER
+        ===================================================== */
+
+        .insurance-badge {
+          display: inline-flex;
+
+          align-items: center;
+
+          gap: 7px;
+
+          margin-bottom: 18px;
+
+          padding: 6px 11px;
+
+          border-radius: 999px;
+
+          background: #fbeef1;
+
+          color: ${WINE};
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+
+          line-height: 1.3;
+
+          font-weight: 700;
+
+          letter-spacing: 0.06em;
+        }
+
+
+        .insurance-badge-dot {
+          width: 6px;
+          height: 6px;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+
+          background: ${WINE};
+        }
+
+
+        /* =====================================================
+           MAIN HEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
+
+        .insurance-heading {
+          margin: 0 0 18px;
+
+          max-width: 570px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 42px;
+
+          line-height: 1.08;
+
+          font-weight: 700;
+
+          letter-spacing: -1px;
+
+          color: ${INK};
+        }
+
+
+        .insurance-heading-highlight {
+          color: ${WINE};
+        }
+
+
+        /* =====================================================
+           SUBHEADING / DESCRIPTION
+           PLUS JAKARTA SANS
+        ===================================================== */
+
+        .insurance-description {
+          margin: 0 0 13px;
+
+          max-width: 555px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 13.5px;
+
+          line-height: 1.72;
+
+          font-weight: 500;
+
+          color: ${MUTED};
+        }
+
+
+        .insurance-description:last-of-type {
+          margin-bottom: 24px;
+        }
+
+
+        /* =====================================================
+           BUTTON CONTAINER
+           INTER
+        ===================================================== */
+
+        .insurance-buttons {
+          display: flex;
+
+          align-items: center;
+
+          flex-wrap: wrap;
+
+          gap: 10px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+           INTER
+        ===================================================== */
+
+        .insurance-primary-button,
+        .insurance-secondary-button {
+          display: inline-flex;
+
+          align-items: center;
+
+          justify-content: center;
+
+          gap: 8px;
+
+          min-height: 42px;
+
+          padding: 0 20px;
+
+          border-radius: 999px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+
+          line-height: 1;
+
+          font-weight: 700;
+
+          letter-spacing: 0.05em;
+
+          cursor: pointer;
+
+          transition:
+            background 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+        }
+
+
+        /* =====================================================
+           PRIMARY BUTTON
+        ===================================================== */
+
+        .insurance-primary-button {
+          border: 1px solid ${WINE};
+
+          background: ${WINE};
+
+          color: #ffffff;
+        }
+
+
+        .insurance-primary-button:hover {
+          background: #5c1730;
+
+          border-color: #5c1730;
+
+          transform: translateY(-2px);
+
+          box-shadow:
+            0 7px 18px
+            rgba(122, 31, 61, 0.18);
+        }
+
+
+        /* =====================================================
+           SECONDARY BUTTON
+        ===================================================== */
+
+        .insurance-secondary-button {
+          border: 1px solid #d8d5d0;
+
+          background: rgba(255, 255, 255, 0.92);
+
+          color: ${INK};
+        }
+
+
+        .insurance-secondary-button:hover {
+          border-color: ${WINE};
+
+          color: ${WINE};
+
+          transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           LARGE DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1200px) {
+
+          .insurance-hero {
+            min-height: 550px;
+          }
+
+          .insurance-hero-container {
+            padding: 72px 32px 66px;
+          }
+
+          .insurance-hero-content {
+            max-width: 590px;
+          }
+
+          .insurance-heading {
+            font-size: 44px;
+          }
+
+          .insurance-description {
+            font-size: 14px;
+          }
+
+        }
+
+
+        /* =====================================================
+           LARGE TABLET
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+          .insurance-hero {
+            min-height: 500px;
+          }
+
+          .insurance-hero-container {
+            padding: 58px 32px 54px;
+
+            transform: none;
+          }
+
+          .insurance-heading {
+            font-size: 39px;
+          }
+
+          .insurance-description {
+            font-size: 13px;
+          }
+
+          .insurance-hero-overlay {
+            background:
+              linear-gradient(
+                90deg,
+                #ffffff 0%,
+                #ffffff 42%,
+                rgba(255, 255, 255, 0.92) 57%,
+                rgba(255, 255, 255, 0.25) 78%,
+                rgba(255, 255, 255, 0) 100%
+              );
+          }
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+          .insurance-hero {
+            min-height: 510px;
+          }
+
+          .insurance-hero-container {
+            padding: 52px 24px 50px;
+          }
+
+          .insurance-hero-content {
+            max-width: 650px;
+          }
+
+          .insurance-heading {
+            max-width: 620px;
+
+            font-size: 36px;
+
+            line-height: 1.1;
+          }
+
+          .insurance-description {
+            max-width: 640px;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+          }
+
+        }
+
+
+        /* =====================================================
+           SMALL TABLET
+        ===================================================== */
+
+        @media (max-width: 767px) {
+
+          .insurance-hero {
+            min-height: auto;
+          }
+
+          .insurance-hero-bg {
+            background-position: 65% center;
+          }
+
+          .insurance-hero-overlay {
+            background:
+              linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(255, 255, 255, 0.95) 48%,
+                rgba(255, 255, 255, 0.78) 72%,
+                rgba(255, 255, 255, 0.42) 100%
+              );
+          }
+
+          .insurance-hero-container {
+            padding: 48px 20px 46px;
+
+            transform: none;
+          }
+
+          .insurance-hero-content {
+            max-width: 620px;
+          }
+
+          .insurance-badge {
+            margin-bottom: 15px;
+
+            font-size: 9px;
+          }
+
+          .insurance-heading {
+            max-width: 570px;
+
+            margin-bottom: 16px;
+
+            font-size: 34px;
+
+            line-height: 1.12;
+
+            letter-spacing: -0.7px;
+          }
+
+          .insurance-description {
+            max-width: 600px;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-bottom: 11px;
+          }
+
+          .insurance-description:last-of-type {
+            margin-bottom: 22px;
+          }
+
+          .insurance-primary-button,
+          .insurance-secondary-button {
+            min-height: 40px;
+
+            padding: 0 18px;
+
+            font-size: 9.5px;
+          }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
+          .insurance-hero-bg {
+            background-position: 62% center;
+          }
+
+          .insurance-hero-overlay {
+            background:
+              linear-gradient(
+                180deg,
+                #ffffff 0%,
+                rgba(255, 255, 255, 0.97) 45%,
+                rgba(255, 255, 255, 0.86) 70%,
+                rgba(255, 255, 255, 0.58) 100%
+              );
+          }
+
+          .insurance-hero-container {
+            padding: 40px 16px 38px;
+
+            transform: none;
+          }
+
+          .insurance-hero-content {
+            max-width: 100%;
+          }
+
+          .insurance-badge {
+            margin-bottom: 13px;
+
+            padding: 5px 10px;
+
+            font-size: 8.5px;
+          }
+
+          .insurance-badge-dot {
+            width: 5px;
+            height: 5px;
+          }
+
+          .insurance-heading {
+            margin-bottom: 14px;
+
+            font-size: 28px;
+
+            line-height: 1.15;
+
+            letter-spacing: -0.5px;
+          }
+
+          .insurance-description {
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            margin-bottom: 10px;
+          }
+
+          .insurance-description:last-of-type {
+            margin-bottom: 20px;
+          }
+
+          .insurance-buttons {
+            width: 100%;
+
+            gap: 9px;
+          }
+
+          .insurance-primary-button,
+          .insurance-secondary-button {
+            min-height: 40px;
+
+            padding: 0 15px;
+
+            font-size: 8.5px;
+          }
+
+          .insurance-primary-button svg {
+            width: 13px;
+            height: 13px;
+          }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 360px) {
+
+          .insurance-hero-container {
+            padding: 34px 14px 34px;
+          }
+
+          .insurance-heading {
+            font-size: 25px;
+
+            line-height: 1.16;
+          }
+
+          .insurance-description {
+            font-size: 11.5px;
+
+            line-height: 1.68;
+          }
+
+          .insurance-buttons {
+            flex-direction: column;
+
+            align-items: stretch;
+
+            width: 100%;
+          }
+
+          .insurance-primary-button,
+          .insurance-secondary-button {
+            width: 100%;
+          }
+
+        }
+
+
+        /* =====================================================
+           VERY SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 320px) {
+
+          .insurance-hero-container {
+            padding: 30px 12px;
+          }
+
+          .insurance-heading {
+            font-size: 23px;
+          }
+
+          .insurance-description {
+            font-size: 11px;
+          }
+
+          .insurance-badge {
+            font-size: 8px;
+          }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+          .insurance-primary-button,
+          .insurance-secondary-button {
+            transition: none;
+          }
+
+        }
+
+      `}</style>
+
+
+      {/* =====================================================
+          BACKGROUND IMAGE
+      ===================================================== */}
+
+      <div
+        className="insurance-hero-bg"
+        aria-hidden="true"
+      />
+
+
+      {/* =====================================================
+          OVERLAY
+      ===================================================== */}
+
+      <div
+        className="insurance-hero-overlay"
+        aria-hidden="true"
+      />
+
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
+
+      <div className="insurance-hero-container">
+
+        <div className="insurance-hero-content">
+
+          {/* BADGE */}
+
+          <span className="insurance-badge">
+
+            <span className="insurance-badge-dot" />
+
+            INSURANCE
+
+          </span>
+
+
+          {/* MAIN HEADING */}
+
+          <h1 className="insurance-heading">
+
+            Technology Solutions
+
+            <br />
+
+            for{" "}
+
+            <span className="insurance-heading-highlight">
+              Modern Insurance
+            </span>
+
+            <br />
+
+            Operations
+
+          </h1>
+
+
+          {/* SUBHEADING / DESCRIPTION */}
+
+          <p className="insurance-description">
+
+            Insurance organizations operate across complex processes,
+            customer relationships, financial activities and business
+            systems. Managing these functions effectively requires
+            technology that is connected, reliable and aligned with business
+            requirements.
+
+          </p>
+
+
+          <p className="insurance-description">
+
+            TechTorch delivers digital and technology solutions that help
+            insurance organizations streamline operations, connect business
+            functions and build a scalable technology environment.
+
+          </p>
+
+
+          {/* BUTTONS */}
+
+          <div className="insurance-buttons">
+
+            <button
+              type="button"
+              className="insurance-primary-button"
+            >
+              TALK TO OUR EXPERTS
+
+              <ArrowRight
+                size={14}
+                strokeWidth={1.8}
+              />
+            </button>
+
+
+            <button
+              type="button"
+              className="insurance-secondary-button"
+              onClick={() => navigate("/insurance-get-in-touch")}
+            >
+              GET IN TOUCH
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  );
+}

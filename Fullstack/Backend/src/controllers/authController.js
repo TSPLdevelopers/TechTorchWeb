@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const Admin = require("../models/Admin.model");
+const mongoose = require("mongoose");
+const Admin = require("../models/admin.model");
 const asyncHandler = require("../utils/asyncHandler");
 const {
   generateToken,
@@ -81,6 +82,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
     data: publicAdmin(admin),
   });
 });
+  
 
 // ================= FORGOT PASSWORD =================
 const forgotPassword = asyncHandler(async (req, res) => {

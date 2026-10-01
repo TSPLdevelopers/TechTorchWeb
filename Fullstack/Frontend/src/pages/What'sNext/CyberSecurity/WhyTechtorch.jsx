@@ -35,34 +35,20 @@ export default function BusinessFocusedApproachSection() {
         w-full
         overflow-hidden
         bg-[#FAF6F1]
-        px-4
-        py-10
-        sm:px-6
-        sm:py-12
-        md:px-8
-        md:py-14
-        lg:px-10
-        lg:py-16
-        xl:px-12
+        px-4 py-10
+        sm:px-6 sm:py-12
+        md:px-10 md:py-14
+        lg:px-[100px] lg:py-16
         xl:py-20
       "
     >
-      <div className="mx-auto w-full max-w-7xl">
-
+      <div className="w-full">
         {/* ================= HEADER ================= */}
         <div className="w-full">
           {/* Section Label */}
           <span
-            className="
-              text-[9px]
-              font-semibold
-              tracking-[0.15em]
-              text-fuchsia-900
-              sm:text-[10px]
-            "
-            style={{
-              fontFamily: "'Inter', sans-serif",
-            }}
+            className="text-[9px] font-semibold tracking-[0.15em] text-[#730042] sm:text-[10px]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             WHY TECHTORCH
           </span>
@@ -85,9 +71,7 @@ export default function BusinessFocusedApproachSection() {
               lg:text-[30px]
               xl:text-[32px]
             "
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-            }}
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             A Business-Focused Approach to Cybersecurity
           </h1>
@@ -105,9 +89,7 @@ export default function BusinessFocusedApproachSection() {
               md:text-[15px]
               md:leading-[1.8]
             "
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-            }}
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             Our approach focuses on understanding the business first and
             building security around its people, systems, risks and goals.
@@ -144,7 +126,7 @@ export default function BusinessFocusedApproachSection() {
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:border-fuchsia-900/30
+                hover:border-[#730042]
                 hover:shadow-md
                 sm:p-6
                 lg:p-6
@@ -153,55 +135,28 @@ export default function BusinessFocusedApproachSection() {
               {/* Card Number */}
               <div className="flex items-center justify-between">
                 <span
-                  className="
-                    text-[22px]
-                    font-bold
-                    leading-none
-                    text-slate-200
-                    sm:text-[24px]
-                  "
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                  }}
+                  className="text-[22px] font-bold leading-none text-slate-200 sm:text-[24px]"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
                 {/* Top Line */}
-                <span className="h-0.5 w-8 bg-fuchsia-900 transition-all duration-300 group-hover:w-12" />
+                <span className="h-0.5 w-8 bg-[#730042] transition-all duration-300 group-hover:w-12" />
               </div>
 
               {/* Card Title */}
               <h3
-                className="
-                  mt-5
-                  text-[15px]
-                  font-semibold
-                  leading-[1.4]
-                  text-slate-900
-                  sm:text-[16px]
-                  md:text-[17px]
-                "
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                className="mt-5 text-[15px] font-semibold leading-[1.4] text-slate-900 sm:text-[16px] md:text-[17px]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {t.title}
               </h3>
 
               {/* Card Description */}
               <p
-                className="
-                  mt-2
-                  text-[13px]
-                  leading-[1.7]
-                  text-slate-500
-                  sm:text-[14px]
-                  sm:leading-[1.75]
-                "
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                }}
+                className="mt-2 text-[13px] leading-[1.7] text-slate-500 sm:text-[14px] sm:leading-[1.75]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {t.description}
               </p>

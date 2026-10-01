@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 
 export default function SecurityIntake() {
-  const [selectedScopes, setSelectedScopes] = useState([
-    "Multi-Cloud (AWS / Azure / GCP)",
-    "Hybrid Enterprise & On-Prem",
-    "Enterprise SaaS & Identity (Okta / Entra ID)",
-  ]);
+  // Initially NO scope is selected
+  const [selectedScopes, setSelectedScopes] = useState([]);
 
   const [telemetryMode, setTelemetryMode] = useState("readonly");
 
@@ -64,38 +61,46 @@ export default function SecurityIntake() {
 
       </header>
 
+
       {/* ================= PROGRESS ================= */}
 
       <section className="progress-bar">
 
         <div className="progress-step completed">
+
           <span className="step-number">01</span>
 
           <div>
             <small>STEP 01 · COMPLETE</small>
             <strong>Protocol Acceptance</strong>
           </div>
+
         </div>
 
         <div className="progress-step active">
+
           <span className="step-number">02</span>
 
           <div>
             <small>STEP 02 · CURRENT</small>
             <strong>Scope & Telemetry Config</strong>
           </div>
+
         </div>
 
         <div className="progress-step next">
+
           <span className="step-number">03</span>
 
           <div>
             <small>STEP 03 · NEXT</small>
             <strong>Architect Dispatch</strong>
           </div>
+
         </div>
 
       </section>
+
 
       {/* ================= MAIN GRID ================= */}
 
@@ -105,13 +110,14 @@ export default function SecurityIntake() {
 
         <div className="intake-left">
 
-          {/* SECTION 01 */}
+          {/* ================= SECTION 01 ================= */}
 
           <section className="intake-card">
 
             <div className="section-top">
 
               <div>
+
                 <span className="section-label">
                   SECTION 01
                 </span>
@@ -119,6 +125,7 @@ export default function SecurityIntake() {
                 <h2>
                   Primary Infrastructure Perimeter
                 </h2>
+
               </div>
 
               <div className="section-icon">
@@ -140,6 +147,7 @@ export default function SecurityIntake() {
             <div className="scope-options">
 
               {scopes.map((scope) => (
+
                 <button
                   key={scope}
                   type="button"
@@ -150,12 +158,17 @@ export default function SecurityIntake() {
                   }`}
                   onClick={() => toggleScope(scope)}
                 >
+
                   <span>
-                    {selectedScopes.includes(scope) ? "⊙" : "○"}
+                    {selectedScopes.includes(scope)
+                      ? "⊙"
+                      : "○"}
                   </span>
 
                   {scope}
+
                 </button>
+
               ))}
 
             </div>
@@ -165,12 +178,14 @@ export default function SecurityIntake() {
             </label>
 
             <div className="input-box">
+
               <span>▤</span>
 
               <input
                 type="text"
                 defaultValue="corp.fintech-global.internal, 10.240.0.0/16"
               />
+
             </div>
 
             <p className="field-note">
@@ -180,13 +195,15 @@ export default function SecurityIntake() {
 
           </section>
 
-          {/* SECTION 02 */}
+
+          {/* ================= SECTION 02 ================= */}
 
           <section className="intake-card">
 
             <div className="section-top">
 
               <div>
+
                 <span className="section-label">
                   SECTION 02
                 </span>
@@ -194,6 +211,7 @@ export default function SecurityIntake() {
                 <h2>
                   Designated Security Authority
                 </h2>
+
               </div>
 
               <div className="section-icon">
@@ -217,12 +235,14 @@ export default function SecurityIntake() {
                 </label>
 
                 <div className="input-box">
+
                   <span>♙</span>
 
                   <input
                     type="text"
                     defaultValue="Katherine Montgomery"
                   />
+
                 </div>
 
               </div>
@@ -234,12 +254,14 @@ export default function SecurityIntake() {
                 </label>
 
                 <div className="input-box">
+
                   <span>✉</span>
 
                   <input
                     type="email"
                     defaultValue="k.montgomery@fintech-global.corp"
                   />
+
                 </div>
 
               </div>
@@ -250,7 +272,9 @@ export default function SecurityIntake() {
 
               <label>
                 EMERGENCY ESCALATION LINE{" "}
-                <span>(optional · 24/7 incident hotline)</span>
+                <span>
+                  (optional · 24/7 incident hotline)
+                </span>
               </label>
 
               <div className="input-box">
@@ -268,13 +292,15 @@ export default function SecurityIntake() {
 
           </section>
 
-          {/* SECTION 03 */}
+
+          {/* ================= SECTION 03 ================= */}
 
           <section className="intake-card telemetry-card">
 
             <div className="section-top">
 
               <div>
+
                 <span className="section-label">
                   SECTION 03
                 </span>
@@ -282,6 +308,7 @@ export default function SecurityIntake() {
                 <h2>
                   Diagnostic Telemetry Mode
                 </h2>
+
               </div>
 
               <div className="section-icon">
@@ -327,11 +354,15 @@ export default function SecurityIntake() {
 
           </section>
 
-          {/* AUTHORIZE */}
+
+          {/* ================= AUTHORIZE ================= */}
 
           <button className="authorize-button">
+
             AUTHORIZE SCOPE & DISPATCH INTAKE DOSSIER
+
             <span>→</span>
+
           </button>
 
           <div className="authorize-note">
@@ -341,11 +372,12 @@ export default function SecurityIntake() {
 
         </div>
 
+
         {/* ================= RIGHT ================= */}
 
         <aside className="intake-right">
 
-          {/* PROTOCOL RECAP */}
+          {/* ================= PROTOCOL RECAP ================= */}
 
           <section className="side-card">
 
@@ -388,8 +420,15 @@ export default function SecurityIntake() {
             <div className="handshake">
 
               <div className="handshake-header">
-                <strong>Telemetry Handshake Node</strong>
-                <span>READY FOR PING</span>
+
+                <strong>
+                  Telemetry Handshake Node
+                </strong>
+
+                <span>
+                  READY FOR PING
+                </span>
+
               </div>
 
               <div className="handshake-grid">
@@ -415,7 +454,8 @@ export default function SecurityIntake() {
 
           </section>
 
-          {/* ARCHITECTS */}
+
+          {/* ================= ARCHITECTS ================= */}
 
           <section className="side-card">
 
@@ -447,7 +487,8 @@ export default function SecurityIntake() {
 
           </section>
 
-          {/* ZERO RETENTION */}
+
+          {/* ================= ZERO RETENTION ================= */}
 
           <section className="side-card retention-card">
 
@@ -490,6 +531,7 @@ export default function SecurityIntake() {
 
       </main>
 
+
       {/* ================= INCIDENT BANNER ================= */}
 
       <section className="incident-banner">
@@ -503,9 +545,7 @@ export default function SecurityIntake() {
           <div>
 
             <h2>
-              Facing an Active Incident or
-              <br />
-              Suspected Breach?
+              Facing an Active Incident or Suspected Breach?
             </h2>
 
             <p>
@@ -537,6 +577,7 @@ export default function SecurityIntake() {
 
       </section>
 
+
       <style>{`
 
         * {
@@ -551,6 +592,7 @@ export default function SecurityIntake() {
           color: #20242b;
           font-family: "Inter", Arial, sans-serif;
         }
+
 
         /* ================= HEADER ================= */
 
@@ -571,7 +613,7 @@ export default function SecurityIntake() {
           border-radius: 4px;
           background: #ffffff;
           color: #5c6068;
-          font-size: 8px;
+          font-size: 9px;
           font-weight: 800;
           letter-spacing: .5px;
           box-shadow: 0 1px 4px rgba(0,0,0,.04);
@@ -582,7 +624,7 @@ export default function SecurityIntake() {
           align-items: center;
           gap: 18px;
           color: #666b74;
-          font-size: 8px;
+          font-size: 9px;
           font-weight: 700;
           letter-spacing: 1px;
         }
@@ -599,7 +641,7 @@ export default function SecurityIntake() {
           margin: 0;
           color: #202327;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 34px;
+          font-size: 36px;
           line-height: 1.12;
           letter-spacing: -1.6px;
           font-weight: 650;
@@ -609,9 +651,10 @@ export default function SecurityIntake() {
           max-width: 800px;
           margin: 10px 0 0;
           color: #454b54;
-          font-size: 13px;
+          font-size: 15px;
           line-height: 1.55;
         }
+
 
         /* ================= PROGRESS ================= */
 
@@ -634,10 +677,11 @@ export default function SecurityIntake() {
           border: 1px solid #e9eaec;
         }
 
+        /* STEP 02 IS NOW NORMAL */
         .progress-step.active {
-          background: #650033;
-          border-color: #650033;
-          color: #ffffff;
+          background: #ffffff;
+          border-color: #e9eaec;
+          color: #20242b;
         }
 
         .progress-step.next {
@@ -653,38 +697,42 @@ export default function SecurityIntake() {
           border-radius: 4px;
           background: #f1f2f3;
           color: #666b72;
-          font-size: 9px;
+          font-size: 11px;
           font-weight: 800;
         }
 
+        /* STEP 02 NUMBER ALSO NORMAL */
         .active .step-number {
-          background: #ffffff;
-          color: #650033;
+          background: #f1f2f3;
+          color: #666b72;
         }
 
         .progress-step small {
           display: block;
           margin-bottom: 3px;
           color: #8a8e95;
-          font-size: 7px;
+          font-size: 9px;
           font-weight: 800;
           letter-spacing: .5px;
         }
 
+        /* STEP 02 SMALL TEXT NORMAL */
         .active small {
-          color: #ead6e0;
+          color: #8a8e95;
         }
 
         .progress-step strong {
           display: block;
           color: #292d32;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 800;
         }
 
+        /* STEP 02 STRONG TEXT NORMAL */
         .active strong {
-          color: #ffffff;
+          color: #292d32;
         }
+
 
         /* ================= MAIN ================= */
 
@@ -715,6 +763,7 @@ export default function SecurityIntake() {
           padding: 25px 21px;
         }
 
+
         /* ================= SECTION ================= */
 
         .section-top {
@@ -730,7 +779,7 @@ export default function SecurityIntake() {
           display: block;
           margin-bottom: 5px;
           color: #701040;
-          font-size: 7.5px;
+          font-size: 11px;
           font-weight: 850;
           letter-spacing: .8px;
         }
@@ -739,7 +788,7 @@ export default function SecurityIntake() {
           margin: 0;
           color: #22262c;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 21px;
+          font-size: 25px;
           line-height: 1.1;
           letter-spacing: -.8px;
           font-weight: 600;
@@ -747,7 +796,7 @@ export default function SecurityIntake() {
 
         .section-icon {
           color: #72003e;
-          font-size: 18px;
+          font-size: 22px;
           padding-top: 2px;
         }
 
@@ -755,7 +804,7 @@ export default function SecurityIntake() {
           margin: 16px 0 17px;
           max-width: 680px;
           color: #565d66;
-          font-size: 10.5px;
+          font-size: 14px;
           line-height: 1.55;
         }
 
@@ -764,10 +813,11 @@ export default function SecurityIntake() {
           display: block;
           margin-bottom: 7px;
           color: #383d45;
-          font-size: 8px;
+          font-size: 11px;
           font-weight: 850;
           letter-spacing: .25px;
         }
+
 
         /* ================= SCOPES ================= */
 
@@ -779,7 +829,7 @@ export default function SecurityIntake() {
         }
 
         .scope-pill {
-          height: 26px;
+          height: 28px;
           padding: 0 10px;
           display: inline-flex;
           align-items: center;
@@ -788,16 +838,18 @@ export default function SecurityIntake() {
           border-radius: 4px;
           background: #f7f7f8;
           color: #4d535c;
-          font-size: 8.5px;
+          font-size: 11.5px;
           font-weight: 700;
           cursor: pointer;
         }
 
+        /* ONLY USER-SELECTED SCOPE BECOMES BEETROOT */
         .scope-pill.selected {
           background: #650033;
           border-color: #650033;
           color: #ffffff;
         }
+
 
         /* ================= INPUTS ================= */
 
@@ -815,7 +867,7 @@ export default function SecurityIntake() {
 
         .input-box > span {
           color: #7a7f87;
-          font-size: 12px;
+          font-size: 15px;
         }
 
         .input-box input {
@@ -825,16 +877,17 @@ export default function SecurityIntake() {
           background: transparent;
           color: #444a52;
           font-family: inherit;
-          font-size: 9.5px;
+          font-size: 12.5px;
         }
 
         .field-note {
           margin: 9px 0 0;
           color: #8a6f7e;
           font-family: monospace;
-          font-size: 7px;
+          font-size: 10px;
           letter-spacing: .8px;
         }
+
 
         /* ================= FORM ================= */
 
@@ -852,6 +905,7 @@ export default function SecurityIntake() {
           color: #765968;
           font-weight: 600;
         }
+
 
         /* ================= TELEMETRY ================= */
 
@@ -910,7 +964,7 @@ export default function SecurityIntake() {
           align-items: center;
           gap: 7px;
           color: #33383f;
-          font-size: 10px;
+          font-size: 13px;
           font-weight: 800;
         }
 
@@ -919,16 +973,17 @@ export default function SecurityIntake() {
           border-radius: 3px;
           background: #72003e;
           color: white;
-          font-size: 6.5px;
+          font-size: 9px;
           letter-spacing: .3px;
         }
 
         .telemetry-description {
           margin: 6px 0 0;
           color: #60666f;
-          font-size: 9px;
+          font-size: 12px;
           line-height: 1.5;
         }
+
 
         /* ================= AUTHORIZE ================= */
 
@@ -939,7 +994,7 @@ export default function SecurityIntake() {
           border-radius: 6px;
           background: #650033;
           color: #ffffff;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 800;
           letter-spacing: .2px;
           box-shadow: 0 5px 12px rgba(101, 0, 51, .12);
@@ -955,9 +1010,10 @@ export default function SecurityIntake() {
           padding-left: 2px;
           color: #806b76;
           font-family: monospace;
-          font-size: 7px;
+          font-size: 8px;
           letter-spacing: .7px;
         }
+
 
         /* ================= SIDEBAR ================= */
 
@@ -983,7 +1039,7 @@ export default function SecurityIntake() {
           margin: 0;
           color: #282c31;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 650;
           letter-spacing: -.3px;
         }
@@ -993,7 +1049,7 @@ export default function SecurityIntake() {
           border-radius: 3px;
           background: #b9f2ad;
           color: #24652b;
-          font-size: 7px;
+          font-size: 9px;
           font-weight: 850;
         }
 
@@ -1002,9 +1058,10 @@ export default function SecurityIntake() {
           border-radius: 3px;
           background: #eceeef;
           color: #60656c;
-          font-size: 6.5px;
+          font-size: 8px;
           font-weight: 850;
         }
+
 
         /* ================= RECAP ================= */
 
@@ -1027,12 +1084,13 @@ export default function SecurityIntake() {
 
         .recap-row span {
           color: #5e646d;
-          font-size: 8px;
+          font-size: 12px;
+          font-weight: 600;
         }
 
         .recap-row strong {
           color: #373c44;
-          font-size: 8px;
+          font-size: 11px;
           text-align: right;
         }
 
@@ -1052,13 +1110,13 @@ export default function SecurityIntake() {
         .handshake-header strong {
           color: #474d55;
           font-family: monospace;
-          font-size: 7px;
+          font-size: 12px;
           letter-spacing: 1px;
         }
 
         .handshake-header span {
           color: #4d535b;
-          font-size: 7px;
+          font-size: 11px;
           font-weight: 800;
         }
 
@@ -1079,13 +1137,15 @@ export default function SecurityIntake() {
           display: block;
           margin-bottom: 3px;
           color: #858990;
-          font-size: 5.5px;
+          font-size: 10px;
+          font-weight: 700;
         }
 
         .handshake-grid strong {
           color: #3d424a;
-          font-size: 7px;
+          font-size: 10px;
         }
+
 
         /* ================= ARCHITECTS ================= */
 
@@ -1117,22 +1177,23 @@ export default function SecurityIntake() {
 
         .architect-name {
           color: #30353d;
-          font-size: 9.5px;
+          font-size: 12.5px;
           font-weight: 800;
         }
 
         .architect-title {
           margin-top: 2px;
           color: #711040;
-          font-size: 7.5px;
+          font-size: 10.5px;
           font-weight: 800;
         }
 
         .architect-credential {
           margin-top: 2px;
           color: #727881;
-          font-size: 7px;
+          font-size: 10px;
         }
+
 
         /* ================= RETENTION ================= */
 
@@ -1153,14 +1214,14 @@ export default function SecurityIntake() {
           margin: 0;
           color: #30343b;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.25;
         }
 
         .retention-card > p {
           margin: 13px 0 15px;
           color: #555b64;
-          font-size: 9.5px;
+          font-size: 12.5px;
           line-height: 1.55;
         }
 
@@ -1169,10 +1230,11 @@ export default function SecurityIntake() {
           justify-content: space-between;
           gap: 10px;
           color: #4b5159;
-          font-size: 7px;
+          font-size: 10px;
           font-weight: 800;
           letter-spacing: .8px;
         }
+
 
         /* ================= INCIDENT ================= */
 
@@ -1212,7 +1274,7 @@ export default function SecurityIntake() {
         .incident-content h2 {
           margin: 0;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 19px;
+          font-size: 20px;
           line-height: 1.1;
           letter-spacing: -.5px;
         }
@@ -1220,7 +1282,7 @@ export default function SecurityIntake() {
         .incident-content p {
           margin: 7px 0 0;
           color: #e8cdd9;
-          font-size: 8.5px;
+          font-size: 12px;
         }
 
         .incident-actions {
@@ -1238,7 +1300,7 @@ export default function SecurityIntake() {
           padding: 0 13px;
           border-radius: 5px;
           text-decoration: none;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 800;
           white-space: nowrap;
         }
@@ -1252,6 +1314,7 @@ export default function SecurityIntake() {
           background: #771044;
           color: white;
         }
+
 
         /* ================= LAPTOP ================= */
 
@@ -1284,6 +1347,7 @@ export default function SecurityIntake() {
           }
 
         }
+
 
         /* ================= TABLET ================= */
 
@@ -1318,6 +1382,7 @@ export default function SecurityIntake() {
           }
 
         }
+
 
         /* ================= MOBILE ================= */
 
@@ -1365,11 +1430,24 @@ export default function SecurityIntake() {
             padding: 18px 15px;
           }
 
+          .section-label {
+            font-size: 10.5px;
+          }
+
           .section-top h2 {
-            font-size: 19px;
+            font-size: 22px;
+          }
+
+          .section-icon {
+            font-size: 20px;
           }
 
           .section-description {
+            font-size: 12.5px;
+          }
+
+          .field-label,
+          .form-field label {
             font-size: 10px;
           }
 
@@ -1379,9 +1457,21 @@ export default function SecurityIntake() {
 
           .scope-pill {
             height: auto;
-            min-height: 27px;
+            min-height: 28px;
             padding: 6px 8px;
-            font-size: 7.5px;
+            font-size: 10.5px;
+          }
+
+          .input-box > span {
+            font-size: 14px;
+          }
+
+          .input-box input {
+            font-size: 12px;
+          }
+
+          .field-note {
+            font-size: 9px;
           }
 
           .form-grid {
@@ -1390,12 +1480,60 @@ export default function SecurityIntake() {
           }
 
           .telemetry-title {
-            font-size: 9px;
+            font-size: 11px;
             line-height: 1.35;
           }
 
           .telemetry-description {
+            font-size: 10px;
+          }
+
+          .recommended {
             font-size: 8px;
+          }
+
+          .architect-name {
+            font-size: 11.5px;
+          }
+
+          .architect-title {
+            font-size: 9.5px;
+          }
+
+          .architect-credential {
+            font-size: 9px;
+          }
+
+          .retention-card > p {
+            font-size: 11px;
+          }
+
+          .retention-certificates {
+            font-size: 9px;
+          }
+
+          .recap-row span {
+            font-size: 10px;
+          }
+
+          .recap-row strong {
+            font-size: 10px;
+          }
+
+          .handshake-header strong {
+            font-size: 9px;
+          }
+
+          .handshake-header span {
+            font-size: 9px;
+          }
+
+          .handshake-grid small {
+            font-size: 8px;
+          }
+
+          .handshake-grid strong {
+            font-size: 9px;
           }
 
           .intake-right {
@@ -1432,6 +1570,7 @@ export default function SecurityIntake() {
         }
 
       `}</style>
+
     </div>
   );
 }
@@ -1440,12 +1579,19 @@ export default function SecurityIntake() {
 /* ================= RECAP ROW ================= */
 
 function RecapRow({ label, value }) {
+
   return (
+
     <div className="recap-row">
+
       <span>{label}</span>
+
       <strong>{value}</strong>
+
     </div>
+
   );
+
 }
 
 
@@ -1458,7 +1604,9 @@ function TelemetryOption({
   description,
   recommended,
 }) {
+
   return (
+
     <div
       className={`telemetry-option ${
         selected ? "selected" : ""
@@ -1489,7 +1637,9 @@ function TelemetryOption({
       </div>
 
     </div>
+
   );
+
 }
 
 
@@ -1501,7 +1651,9 @@ function Architect({
   title,
   credential,
 }) {
+
   return (
+
     <div className="architect">
 
       <img
@@ -1526,5 +1678,7 @@ function Architect({
       </div>
 
     </div>
+
   );
+
 }

@@ -52,8 +52,11 @@ export default function ResiliencePillarsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#0B0A12] px-6 py-16 sm:px-10 lg:px-16 lg:py-10">
-      <div className="mx-auto max-w-5xl">
+    <section
+      ref={sectionRef}
+      className="w-full overflow-hidden bg-[#0B0A12] px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20"
+    >
+      <div className="w-full">
         <div className="text-center">
           <span className="inline-flex items-center rounded-full bg-[#730042] px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-rose-100">
             CORE RESILIENCE PILLARS
@@ -116,7 +119,7 @@ export default function ResiliencePillarsSection() {
               </p>
             </div>
 
-            <div className="rounded-lg border border-fuchsia-900/40 bg-gradient-to-b from-fuchsia-950 to-[#2a0a1c] p-6 sm:p-7 lg:max-h-[62vh] lg:overflow-y-auto">
+            <div className="rounded-lg border border-fuchsia-900/40 bg-gradient-to-b from-[#730042] to-[#2a0a1c] p-6 sm:p-7 lg:max-h-[62vh] lg:overflow-y-auto">
               <span className="inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-rose-100">
                 BUSINESS CONTINUITY
               </span>

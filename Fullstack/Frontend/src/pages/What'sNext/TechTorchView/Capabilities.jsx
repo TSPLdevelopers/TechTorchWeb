@@ -41,19 +41,17 @@ export default function CapabilitiesOfferings() {
         lg:py-20
       "
       style={{
-        background: "linear-gradient(160deg, #7a1750 0%, #5c0f3d 100%)",
+        background: "#730042",
       }}
     >
+      {/* Left/right padding same as Hero: 16 / 24 / 40 / 100 */}
       <div
         className="
-          mx-auto
           w-full
-          max-w-7xl
           px-4
           sm:px-6
-          md:px-8
-          lg:px-10
-          xl:px-12
+          md:px-10
+          lg:px-[100px]
         "
       >
         {/* ================= SUB HEADING ================= */}

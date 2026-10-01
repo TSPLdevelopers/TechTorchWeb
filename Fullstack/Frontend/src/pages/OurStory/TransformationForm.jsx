@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  Mail,
-  ChevronDown,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
+import { Mail, ChevronDown, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const INDUSTRIES = [
   "Technology & Software",
@@ -28,10 +23,7 @@ export default function TransformationForm() {
   const [submitted, setSubmitted] = useState(false);
 
   const update = (field) => (e) =>
-    setForm((f) => ({
-      ...f,
-      [field]: e.target.value,
-    }));
+    setForm((f) => ({ ...f, [field]: e.target.value }));
 
   const validate = () => {
     const next = {};
@@ -72,52 +64,11 @@ export default function TransformationForm() {
 
   return (
     <section className="w-full bg-slate-950 font-inter">
-      <div
-        className="
-          min-h-screen
-          w-full
-          flex
-          items-center
-          justify-center
-          px-4
-          py-8
-          sm:px-6
-          sm:py-10
-          lg:px-8
-          lg:py-14
-        "
-      >
-        <div
-          className="
-            w-full
-            max-w-4xl
-            rounded-2xl
-            sm:rounded-3xl
-            overflow-hidden
-            shadow-2xl
-            flex
-            flex-col
-            md:flex-row
-          "
-        >
+      <div className="flex min-h-screen w-full items-center justify-center px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20">
+        <div className="flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl shadow-2xl sm:rounded-3xl md:flex-row">
           {/* ================= LEFT PANEL ================= */}
           <div
-            className="
-              relative
-              w-full
-              md:w-[42%]
-              p-7
-              sm:p-9
-              md:p-10
-              lg:p-12
-              flex
-              flex-col
-              justify-between
-              gap-10
-              md:gap-16
-              overflow-hidden
-              font-inter
-            "
+            className="relative flex w-full flex-col justify-between gap-10 overflow-hidden p-7 font-inter sm:p-9 md:w-[42%] md:gap-16 md:p-10 lg:p-12"
             style={{
               background:
                 "radial-gradient(120% 140% at 15% 15%, #6b1345 0%, #3d0d2c 45%, #1a0716 100%)",
@@ -126,36 +77,13 @@ export default function TransformationForm() {
             <div>
               {/* Heading */}
               <h1
-                className="
-                  text-white
-                  font-semibold
-                  text-[28px]
-                  sm:text-[32px]
-                  md:text-[30px]
-                  lg:text-[34px]
-                  leading-[1.15]
-                  tracking-tight
-                  font-plus-jakarta
-                "
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                }}
+                className="text-[28px] font-semibold leading-[1.15] tracking-tight text-white sm:text-[32px] md:text-[30px] lg:text-[34px]"
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
                 Start Your Transformation
               </h1>
 
-              <p
-                className="
-                  mt-4
-                  sm:mt-5
-                  text-[14px]
-                  sm:text-[16px]
-                  leading-relaxed
-                  text-white/70
-                  max-w-[300px] max-w-full
-                  font-inter
-                "
-              >
+              <p className="mt-4 max-w-[300px] text-[14px] leading-relaxed text-white/70 sm:mt-5 sm:text-[16px]">
                 Connect with our engineering leadership to architect your next
                 phase of growth.
               </p>
@@ -164,36 +92,9 @@ export default function TransformationForm() {
             {/* Email */}
             <a
               href="mailto:contact@techtorch.solutions"
-              className="
-                inline-flex
-                items-center
-                gap-3
-                rounded-xl
-                bg-white/10
-                hover:bg-white/15
-                transition-colors
-                px-4
-                py-3
-                text-white/90
-                text-[12px]
-                sm:text-[14px]
-                w-fit
-                font-inter
-                break-all
-              "
+              className="inline-flex w-fit items-center gap-3 break-all rounded-xl bg-white/10 px-4 py-3 text-[12px] text-white/90 transition-colors hover:bg-white/15 sm:text-[14px]"
             >
-              <span
-                className="
-                  flex
-                  items-center
-                  justify-center
-                  min-w-7
-                  w-7
-                  h-7
-                  rounded-md
-                  bg-white/15
-                "
-              >
+              <span className="flex h-7 w-7 min-w-7 items-center justify-center rounded-md bg-white/15">
                 <Mail size={14} />
               </span>
 
@@ -202,58 +103,16 @@ export default function TransformationForm() {
           </div>
 
           {/* ================= RIGHT PANEL ================= */}
-          <div
-            className="
-              w-full
-              md:w-[58%]
-              bg-white
-              p-7
-              sm:p-9
-              md:p-10
-              lg:p-12
-              font-inter
-            "
-          >
+          <div className="w-full bg-white p-7 font-inter sm:p-9 md:w-[58%] md:p-10 lg:p-12">
             {submitted ? (
-              <div
-                className="
-                  min-h-[380px]
-                  sm:min-h-[420px]
-                  flex
-                  flex-col
-                  items-center
-                  justify-center
-                  text-center
-                  gap-4
-                  font-inter
-                "
-              >
-                <CheckCircle2
-                  className="text-[#7a1750]"
-                  size={40}
-                />
+              <div className="flex min-h-[380px] flex-col items-center justify-center gap-4 text-center sm:min-h-[420px]">
+                <CheckCircle2 className="text-[#7a1750]" size={40} />
 
-                <h2
-                  className="
-                    text-lg
-                    sm:text-xl
-                    font-semibold
-                    text-slate-900
-                    font-inter
-                  "
-                >
+                <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
                   Inquiry received
                 </h2>
 
-                <p
-                  className="
-                    text-slate-500
-                    text-[14px]
-                    sm:text-[15px]
-                    max-w-[280px] max-w-full
-                    font-inter
-                  "
-                >
+                <p className="max-w-[280px] text-[14px] text-slate-500 sm:text-[15px]">
                   Someone from our engineering leadership team will reach out
                   to {form.email} shortly.
                 </p>
@@ -261,60 +120,26 @@ export default function TransformationForm() {
                 <button
                   onClick={() => {
                     setSubmitted(false);
-
                     setForm({
                       fullName: "",
                       email: "",
                       industry: "",
                       message: "",
                     });
-
                     setErrors({});
                   }}
-                  className="
-                    mt-2
-                    text-[14px]
-                    text-[#7a1750]
-                    hover:underline
-                    font-inter
-                  "
+                  className="mt-2 text-[14px] text-[#7a1750] hover:underline"
                 >
                   Submit another inquiry
                 </button>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="
-                  flex
-                  flex-col
-                  gap-6
-                  sm:gap-7
-                  font-inter
-                "
-              >
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6 sm:gap-7">
                 {/* ================= NAME + EMAIL ================= */}
-                <div
-                  className="
-                    grid
-                    grid-cols-1
-                    sm:grid-cols-2
-                    gap-6
-                  "
-                >
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   {/* Full Name */}
                   <div>
-                    <label
-                      className="
-                        block
-                        text-[12px]
-                        font-semibold
-                        tracking-wide
-                        text-slate-500
-                        mb-2
-                        font-inter
-                      "
-                    >
+                    <label className="mb-2 block text-[12px] font-semibold tracking-wide text-slate-500">
                       Full Name
                     </label>
 
@@ -331,7 +156,7 @@ export default function TransformationForm() {
                     />
 
                     {errors.fullName && (
-                      <p className="mt-1 text-[12px] text-red-500 font-inter">
+                      <p className="mt-1 text-[12px] text-red-500">
                         {errors.fullName}
                       </p>
                     )}
@@ -339,17 +164,7 @@ export default function TransformationForm() {
 
                   {/* Email */}
                   <div>
-                    <label
-                      className="
-                        block
-                        text-[12px]
-                        font-semibold
-                        tracking-wide
-                        text-slate-500
-                        mb-2
-                        font-inter
-                      "
-                    >
+                    <label className="mb-2 block text-[12px] font-semibold tracking-wide text-slate-500">
                       Company Email
                     </label>
 
@@ -366,7 +181,7 @@ export default function TransformationForm() {
                     />
 
                     {errors.email && (
-                      <p className="mt-1 text-[12px] text-red-500 font-inter">
+                      <p className="mt-1 text-[12px] text-red-500">
                         {errors.email}
                       </p>
                     )}
@@ -375,17 +190,7 @@ export default function TransformationForm() {
 
                 {/* ================= INDUSTRY ================= */}
                 <div>
-                  <label
-                    className="
-                      block
-                      text-[12px]
-                      font-semibold
-                      tracking-wide
-                      text-slate-500
-                      mb-2
-                      font-inter
-                    "
-                  >
+                  <label className="mb-2 block text-[12px] font-semibold tracking-wide text-slate-500">
                     Industry
                   </label>
 
@@ -393,10 +198,8 @@ export default function TransformationForm() {
                     <select
                       value={form.industry}
                       onChange={update("industry")}
-                      className={`${inputBase} appearance-none pr-8 cursor-pointer ${
-                        form.industry
-                          ? "text-slate-800"
-                          : "text-slate-400"
+                      className={`${inputBase} cursor-pointer appearance-none pr-8 ${
+                        form.industry ? "text-slate-800" : "text-slate-400"
                       } ${
                         errors.industry
                           ? "border-red-400"
@@ -416,19 +219,12 @@ export default function TransformationForm() {
 
                     <ChevronDown
                       size={18}
-                      className="
-                        pointer-events-none
-                        absolute
-                        right-1
-                        top-1/2
-                        -translate-y-1/2
-                        text-[#7a1750]
-                      "
+                      className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[#7a1750]"
                     />
                   </div>
 
                   {errors.industry && (
-                    <p className="mt-1 text-[12px] text-red-500 font-inter">
+                    <p className="mt-1 text-[12px] text-red-500">
                       {errors.industry}
                     </p>
                   )}
@@ -436,17 +232,7 @@ export default function TransformationForm() {
 
                 {/* ================= MESSAGE ================= */}
                 <div>
-                  <label
-                    className="
-                      block
-                      text-[12px]
-                      font-semibold
-                      tracking-wide
-                      text-slate-500
-                      mb-2
-                      font-inter
-                    "
-                  >
+                  <label className="mb-2 block text-[12px] font-semibold tracking-wide text-slate-500">
                     Message
                   </label>
 
@@ -455,30 +241,15 @@ export default function TransformationForm() {
                     placeholder="Briefly describe your enterprise objectives..."
                     value={form.message}
                     onChange={update("message")}
-                    className={`
-                      w-full
-                      rounded-lg
-                      border
-                      p-3
-                      sm:p-4
-                      text-[14px]
-                      sm:text-[15px]
-                      text-slate-800
-                      placeholder:text-slate-400
-                      focus:outline-none
-                      resize-none
-                      transition-colors
-                      font-inter
-                      ${
-                        errors.message
-                          ? "border-red-400"
-                          : "border-slate-200 focus:border-[#7a1750]"
-                      }
-                    `}
+                    className={`w-full resize-none rounded-lg border p-3 text-[14px] text-slate-800 placeholder:text-slate-400 transition-colors focus:outline-none sm:p-4 sm:text-[15px] ${
+                      errors.message
+                        ? "border-red-400"
+                        : "border-slate-200 focus:border-[#7a1750]"
+                    }`}
                   />
 
                   {errors.message && (
-                    <p className="mt-1 text-[12px] text-red-500 font-inter">
+                    <p className="mt-1 text-[12px] text-red-500">
                       {errors.message}
                     </p>
                   )}
@@ -487,26 +258,7 @@ export default function TransformationForm() {
                 {/* ================= SUBMIT ================= */}
                 <button
                   type="submit"
-                  className="
-                    mt-1
-                    inline-flex
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-lg
-                    py-3
-                    sm:py-3.5
-                    px-5
-                    text-white
-                    text-[14px]
-                    sm:text-[15px]
-                    font-medium
-                    transition-all
-                    duration-300
-                    hover:brightness-110
-                    active:scale-[0.99]
-                    font-inter
-                  "
+                  className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-[14px] font-medium text-white transition-all duration-300 hover:brightness-110 active:scale-[0.99] sm:py-3.5 sm:text-[15px]"
                   style={{
                     background:
                       "linear-gradient(135deg, #8a1a5c 0%, #5c0f3d 100%)",

@@ -27,10 +27,10 @@ export default function Hero3() {
                 className="
                   translate-y-[10px]
                   text-[32px]
-                  sm:text-[36px]
-                  lg:text-[38px]
-                  font-bold
+                  sm:text-[34px]
+                  lg:text-[36px]
                   font-plus-jakarta
+                  font-bold
                   text-white
                 "
               >
@@ -44,10 +44,10 @@ export default function Hero3() {
                   lg:mt-12
                   text-[15px]
                   sm:text-[16px]
-                  lg:text-[17px]
+                  lg:text-[16px]
                   font-inter
                   leading-relaxed
-                  max-w-[650px] max-w-full
+                  max-w-[650px]
                 "
               >
                 We take the time to understand your business, requirements,
@@ -72,20 +72,23 @@ export default function Hero3() {
                   sm:gap-3
                   border
                   border-white
-                  px-4
-                  sm:px-5
-                  py-2
-                  sm:py-2.5
+                  px-3
+                  sm:px-4
+                  py-1.5
+                  sm:py-2
                   text-white
-                  text-[16px]
-                  sm:text-[18px]
+                  text-[14px]
+                  sm:text-[16px]
                   font-inter
-                  hover:text-[#FF0080]
-                  hover:border-[#FF0080]
-                  transition
+                  font-semibold
+                  hover:bg-white/90
+                  hover:text-[#730042]
+                  hover:border-white
+                  transition-all
+                  duration-300
                 "
               >
-                <span className="text-[26px] sm:text-[30px] leading-none">
+                <span className="text-[24px] sm:text-[26px] leading-none">
                   ←
                 </span>
 
@@ -99,7 +102,7 @@ export default function Hero3() {
                 className={`
                   relative
                   w-full
-                  max-w-[420px] max-w-full
+                  max-w-[420px]
                   border-[5px]
                   border-white
                   overflow-hidden
@@ -136,11 +139,11 @@ export default function Hero3() {
               <h2
                 className="
                   translate-y-[10px]
-                  text-[32px]
-                  sm:text-[36px]
-                  lg:text-[38px]
-                  font-bold
+                 text-[32px]
+                  sm:text-[34px]
+                  lg:text-[36px]
                   font-plus-jakarta
+                  font-bold
                   text-white
                 "
               >
@@ -154,10 +157,10 @@ export default function Hero3() {
                   lg:mt-12
                   text-[15px]
                   sm:text-[16px]
-                  lg:text-[17px]
+                  lg:text-[16px]
                   font-inter
                   leading-relaxed
-                  max-w-[650px] max-w-full
+                  max-w-[650px]
                 "
               >
                 Once we understand your business needs, we turn ideas and
@@ -182,20 +185,23 @@ export default function Hero3() {
                   sm:gap-3
                   border
                   border-white
-                  px-4
-                  sm:px-5
-                  py-2
-                  sm:py-2.5
+                  px-3
+                  sm:px-4
+                  py-1.5
+                  sm:py-2
                   text-white
-                  text-[16px]
-                  sm:text-[18px]
+                  text-[14px]
+                  sm:text-[16px]
                   font-inter
-                  hover:text-[#FF0080]
-                  hover:border-[#FF0080]
-                  transition
+                  font-semibold
+                  hover:bg-white/90
+                  hover:text-[#730042]
+                  hover:border-white
+                  transition-all
+                  duration-300
                 "
               >
-                <span className="text-[26px] sm:text-[30px] leading-none">
+                <span className="text-[24px] sm:text-[26px] leading-none">
                   ←
                 </span>
 
@@ -209,7 +215,7 @@ export default function Hero3() {
                 className={`
                   relative
                   w-full
-                  max-w-[420px] max-w-full
+                  max-w-[420px]
                   border-[5px]
                   border-white
                   overflow-hidden
@@ -247,9 +253,10 @@ export default function Hero3() {
                 className="
                   translate-y-[1px]
                   text-[32px]
-                  sm:text-[36px]
-                  lg:text-[38px]
-                  font-plus-jakarta sans
+                  sm:text-[34px]
+                  lg:text-[36px]
+                  font-plus-jakarta
+                  font-bold
                   text-white
                 "
               >
@@ -263,10 +270,10 @@ export default function Hero3() {
                   lg:mt-12
                   text-[15px]
                   sm:text-[16px]
-                  lg:text-[17px]
+                  lg:text-[16px]
                   font-inter
                   leading-relaxed
-                  max-w-[650px] max-w-full
+                  max-w-[650px]
                 "
               >
                 Our relationship continues beyond deployment. We provide ongoing
@@ -291,20 +298,23 @@ export default function Hero3() {
                   sm:gap-3
                   border
                   border-white
-                  px-4
-                  sm:px-5
-                  py-2
-                  sm:py-2.5
+                  px-3
+                  sm:px-4
+                  py-1.5
+                  sm:py-2
                   text-white
-                  text-[16px]
-                  sm:text-[18px]
+                  text-[14px]
+                  sm:text-[16px]
                   font-inter
-                  hover:text-[#FF0080]
-                  hover:border-[#FF0080]
-                  transition
+                  font-semibold
+                  hover:bg-white/90
+                  hover:text-[#730042]
+                  hover:border-white
+                  transition-all
+                  duration-300
                 "
               >
-                <span className="text-[26px] sm:text-[30px] leading-none">
+                <span className="text-[24px] sm:text-[26px] leading-none">
                   ←
                 </span>
 
@@ -318,7 +328,7 @@ export default function Hero3() {
                 className={`
                   relative
                   w-full
-                  max-w-[420px] max-w-full
+                  max-w-[420px]
                   border-[5px]
                   border-white
                   overflow-hidden
@@ -355,11 +365,11 @@ export default function Hero3() {
             <h2
               className="
                 mt-1
-                text-[30px]
+                text-[32px]
                 sm:text-[34px]
                 lg:text-[36px]
                 font-bold
-                font-plus-jakarta sans
+                font-plus-jakarta
               "
             >
               HOW WE WORK
@@ -369,12 +379,12 @@ export default function Hero3() {
               className="
                 mt-6
                 sm:mt-9
-                text-[17px]
-                sm:text-[20px]
-                lg:text-[16px]
+                text-[15px]
+                sm:text-[14px]
+                lg:text-[15px]
                 font-inter
                 text-white
-                max-w-[650px] max-w-full
+                max-w-[650px]
                 leading-relaxed
               "
             >
@@ -387,10 +397,10 @@ export default function Hero3() {
             <p
               className="
                 mt-8
-                text-[14px]
+                text-[13.5px]
                 font-inter
                 leading-relaxed
-                max-w-[650px] max-w-full
+                max-w-[650px]
               "
             >
               Our approach is simple:
@@ -410,8 +420,8 @@ export default function Hero3() {
                   bg-white
                   text-[#730042]
                   px-4
-                  py-1
-                  text-[14px]
+                  py-2
+                  text-[13px]
                   font-bold
                   font-inter
                   border
@@ -436,7 +446,7 @@ export default function Hero3() {
                   text-[#730042]
                   px-4
                   py-2
-                  text-[14px]
+                  text-[13px]
                   font-bold
                   font-inter
                   border
@@ -461,7 +471,7 @@ export default function Hero3() {
                   text-[#730042]
                   px-4
                   py-2
-                  text-[14px]
+                  text-[13px]
                   font-bold
                   font-inter
                   border
@@ -487,7 +497,7 @@ export default function Hero3() {
               className="
                 relative
                 w-full
-                max-w-[440px] max-w-full
+                max-w-[440px]
                 aspect-square
                 border-[5px]
                 border-white

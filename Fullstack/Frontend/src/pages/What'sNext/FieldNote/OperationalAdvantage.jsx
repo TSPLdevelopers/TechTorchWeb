@@ -17,8 +17,8 @@ const FEATURES = [
 
 function Check() {
   return (
-    <span className="flex-none w-[22px] max-w-full h-[22px] rounded-full border-[1.5px] border-[#9A4B3E] flex items-center justify-center mt-0.5">
-      <svg viewBox="0 0 12 12" fill="none" className="w-[11px] max-w-full h-[11px]">
+    <span className="flex-none w-[22px] h-[22px] rounded-full border-[1.5px] border-[#9A4B3E] flex items-center justify-center mt-0.5">
+      <svg viewBox="0 0 12 12" fill="none" className="w-[11px] h-[11px]">
         <path
           d="M2 6.2L4.6 9L10 2.5"
           stroke="#9A4B3E"
@@ -33,8 +33,9 @@ function Check() {
 
 export default function OperationalAdvantage() {
   return (
-    <div className="min-h-screen w-full bg-[#F7F4EF] flex items-center justify-center px-6 py-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-5xl w-full items-center">
+    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+    <div className="min-h-screen w-full bg-[#F7F4EF] flex items-center px-4 py-16 sm:px-6 md:px-10 lg:px-[100px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 w-full items-center">
 
         {/* Visual panel */}
         <div

@@ -2,6 +2,7 @@ import React from "react";
 
 export default function GrowthPerspectiveSection() {
   return (
+    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
     <section
       className="
         w-full
@@ -11,17 +12,15 @@ export default function GrowthPerspectiveSection() {
         py-10
         sm:px-6
         sm:py-12
-        md:px-8
+        md:px-10
         md:py-14
-        lg:px-10
+        lg:px-[100px]
         lg:py-16
-        xl:px-12
         xl:py-20
       "
     >
       <div
         className="
-          mx-auto
           w-full
           max-w-3xl
           sm:max-w-4xl
@@ -37,7 +36,7 @@ export default function GrowthPerspectiveSection() {
               text-[9px]
               font-semibold
               tracking-[0.15em]
-              text-[#6B1E3F]
+              text-[#730042]
               sm:text-[10px]
             "
             style={{
@@ -59,7 +58,7 @@ export default function GrowthPerspectiveSection() {
             text-[22px]
             font-bold
             leading-[1.3]
-            text-[#6B1E3F]
+            text-[#730042]
             sm:text-[26px]
             md:text-[30px]
             lg:text-[34px]
@@ -125,7 +124,7 @@ export default function GrowthPerspectiveSection() {
             w-full
             rounded-md
             border-l-4
-            border-[#6B1E3F]
+            border-[#730042]
             bg-white
             px-4
             py-4

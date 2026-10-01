@@ -1,769 +1,388 @@
 import React, { useState } from "react";
+import {
+  Gavel,
+  Target,
+  Shield,
+  BadgeCheck,
+  KeyRound,
+  Download,
+  FileCheck2,
+  Building2,
+  Cloud,
+  LockKeyhole,
+  Mail,
+  Clock3,
+  Send,
+  Presentation,
+  FileText,
+  CircleHelp,
+  Phone,
+  CheckCircle2,
+  Lock,
+} from "lucide-react";
 
-export default function AcceptProceed() {
-  const [email, setEmail] = useState("ciso@enterprise-corp.com");
-  const [copied, setCopied] = useState(false);
-
-  const hash =
-    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+export default function ExportProtocolPackage() {
+  const [downloadInitiated, setDownloadInitiated] = useState(false);
 
   const artifacts = [
     {
       number: "01",
-      icon: "⚖",
+      icon: Gavel,
       title: "Bilateral Mutual Non-Disclosure Agreement (MNDA)",
       description:
         "Cryptographically counter-signed via TechTorch KMS Enclave. Universal jurisdiction binding covenants.",
-      type: "PDF / A-1b",
-      size: "2.4 MB",
-      status: "Signed & Locked",
-      statusType: "green",
+      tags: ["PDF / A-1b", "2.4 MB", "Signed & Locked"],
     },
     {
       number: "02",
-      icon: "◎",
+      icon: Target,
       title: "Diagnostic Telemetry & Non-Intrusive Scanning Scope Matrix",
       description:
         "Explicit CIDR network boundaries, VPC telemetry hook definitions, passive inspection guarantees.",
-      type: "XLSX / PDF",
-      size: "1.8 MB",
-      status: "Production-Safe",
-      statusType: "gray",
+      tags: ["XLSX / PDF", "1.8 MB", "Production-Safe"],
     },
     {
       number: "03",
-      icon: "♢",
+      icon: Shield,
       title: "Institutional SLA & Incident Escalation Matrix",
       description:
-        "Zero-Impact operational uptime warranty, 15-minute Tier-1 warm room SLA, legal liability indemnification.",
-      type: "PDF",
-      size: "1.2 MB",
-      status: "Underwritten",
-      statusType: "green",
+        "Zero-Impact operational uptime warranty, 15-minute Tier-1 warm SLA, legal liability indemnification.",
+      tags: ["PDF", "1.2 MB", "Underwritten"],
     },
     {
       number: "04",
-      icon: "♙",
+      icon: BadgeCheck,
       title: "Lead Architect Clearance & Accreditation Dossier",
       description:
         "Dr. Evelyn Vance & Marcus Chen credentials, ISO/IEC 27001 Lead Auditor certifications, background clearance.",
-      type: "PDF / Portfolios",
-      size: "3.6 MB",
-      status: "Gov-Grade Clearance",
-      statusType: "gray",
+      tags: ["PDF / Portfolios", "3.6 MB", "Gov-Grade Clearance"],
     },
     {
       number: "05",
-      icon: "⚿",
+      icon: KeyRound,
       title: "Digital Signature & Verification Key Ring",
       description:
         "TechTorch OpenPGP 4096-bit public master key, per-document SHA-256 manifests, and timestamped root certs.",
-      type: "ASC / TXT",
-      size: "48 KB",
-      status: "4096-bit RSA",
-      statusType: "purple",
+      tags: ["ASC / TXT", "48 KB", "4096-bit RSA"],
     },
   ];
 
-  const copyHash = async () => {
-    try {
-      await navigator.clipboard.writeText(hash);
-      setCopied(true);
-
-      setTimeout(() => {
-        setCopied(false);
-      }, 1800);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const downloadArchive = () => {
-    alert("Signed archive download initiated.");
-  };
-
-  const dispatchLink = () => {
-    if (!email.trim()) {
-      alert("Please enter a corporate email address.");
-      return;
-    }
-
-    alert(`Ephemeral link dispatched to ${email}`);
-  };
-
   return (
-    <div className="accept-proceed-page">
+    <div className="protocol-page">
 
-      {/* =====================================================
-          TOP HEADER
-      ===================================================== */}
+      {/* ================= DOWNLOAD ALERT ================= */}
 
-      <header className="export-header">
-
-        <div className="breadcrumb">
-          <span>PROTOCOL MANAGEMENT</span>
-          <b>/</b>
-          <span>ENGAGEMENT PROTOCOLS</span>
-          <b>/</b>
-          <strong>PACKAGE TT-SEC-2026-V4.2</strong>
-        </div>
-
-        <div className="verification-badges">
-
-          <span className="verified-badge">
-            ♙ CRYPTOGRAPHICALLY VERIFIED BUNDLE
-          </span>
-
-          <span className="hash-badge">
-            ◉ SHA-256 Validated
-          </span>
-
-        </div>
-
-      </header>
-
-
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
-      <section className="export-hero">
-
-        <h1>
-          Export Institutional Protocol Package
-        </h1>
-
-        <p>
-          Download or securely dispatch the authoritative governance
-          archive. This dossier contains executed Bilateral MNDAs,
-          diagnostic telemetry scope definitions, SLA covenants, and
-          independent third-party auditor clearance credentials.
-        </p>
-
-      </section>
-
-
-      {/* =====================================================
-          MAIN GRID
-      ===================================================== */}
-
-      <main className="export-grid">
-
-        {/* =================================================
-            LEFT COLUMN
-        ================================================= */}
-
-        <div className="export-left">
-
-          {/* DOCUMENT MANIFEST */}
-
-          <section className="manifest-card">
-
-            <div className="manifest-heading">
-
-              <div>
-                <span className="small-heading">
-                  DOCUMENT MANIFEST
-                </span>
-
-                <h2>
-                  Package File Inventory
-                </h2>
-              </div>
-
-              <div className="artifact-count">
-                5 Artifacts · 9.04 MB
-              </div>
-
+      {downloadInitiated && (
+        <div className="download-alert-overlay">
+          <div className="download-alert">
+            <div className="download-alert-icon">
+              <CheckCircle2 size={18} strokeWidth={2} />
             </div>
 
-
-            <div className="artifact-list">
-
-              {artifacts.map((artifact) => (
-                <Artifact
-                  key={artifact.number}
-                  {...artifact}
-                />
-              ))}
-
-            </div>
-
-
-            <div className="manifest-footer">
-
-              <div>
-                <span className="manifest-check">
-                  ◉
-                </span>
-
-                All 5 artifacts compile to standard
-                ISO/IEC 27001 evidentiary preservation specs.
-              </div>
-
-              <button>
-                Export manifest as
-                <br />
-                JSON
-              </button>
-
-            </div>
-
-          </section>
-
-
-          {/* =================================================
-              CRYPTOGRAPHIC INTEGRITY
-          ================================================= */}
-
-          <section className="integrity-card">
-
-            <div className="integrity-heading">
-
-              <div>
-
-                <h2>
-                  ▣ Cryptographic Integrity & Custody
-                </h2>
-
-                <p>
-                  The generated package archive matches the exact
-                  cryptographic hash generated by the TechTorch trust
-                  engine. Verify this checksum in your local terminal
-                  prior to opening any unencrypted archive files.
-                </p>
-
-              </div>
-
-              <span className="immutable">
-                IMMUTABLE HASH
-              </span>
-
-            </div>
-
-
-            <div className="master-hash">
-
-              <div>
-                <span>
-                  SHA-256 MASTER FINGERPRINT
-                </span>
-
-                <strong>
-                  {hash}
-                </strong>
-              </div>
-
-              <button onClick={copyHash}>
-                {copied ? "COPIED" : "COPY HASH"}
-              </button>
-
-            </div>
-
-
-            <div className="certification-boxes">
-
-              <Certification
-                icon="♙"
-                title="ISO/IEC 27001"
-                subtitle="Clause A.18 Certified"
-              />
-
-              <Certification
-                icon="♜"
-                title="SOC 2 Type II"
-                subtitle="Trust Criteria Evaluated"
-              />
-
-              <Certification
-                icon="⌁"
-                title="CSA STAR"
-                subtitle="Level 2 Attestation"
-              />
-
-            </div>
-
-          </section>
-
-        </div>
-
-
-        {/* =================================================
-            RIGHT COLUMN
-        ================================================= */}
-
-        <aside className="export-right">
-
-          {/* PRIMARY DELIVERY */}
-
-          <section className="delivery-card primary-card">
-
-            <span className="right-label">
-              ● PRIMARY DELIVERY
-            </span>
-
-            <h2>
-              Direct Instant Download
-            </h2>
-
-            <p>
-              Immediate retrieval of the complete digitally-signed
-              archive package formatted for legal and enterprise
-              architecture review.
-            </p>
-
-
-            <div className="zip-file">
-
-              <div className="zip-icon">
-                ZIP
-              </div>
-
-              <div className="zip-info">
-
-                <strong>
-                  TechTorch_Sec_Protocol_v4.2.zip
-                </strong>
-
-                <span>
-                  Full Package · 9.04 MB · Signed
-                </span>
-
-              </div>
-
-              <div className="lock-icon">
-                ♧
-              </div>
-
-            </div>
-
-
-            <button
-              className="download-button"
-              onClick={downloadArchive}
-            >
-              DOWNLOAD SIGNED ARCHIVE (.ZIP)
-              <span>→</span>
-            </button>
-
-
-            <div className="encryption-note">
-              ♧ &nbsp; AES-256 Enclave Encryption standard applied
-            </div>
-
-          </section>
-
-
-          {/* SECURE ENCLAVE RELAY */}
-
-          <section className="delivery-card relay-card">
-
-            <span className="right-label plain-label">
-              SECURE ENCLAVE RELAY
-            </span>
-
-            <h2>
-              Encrypted Dispatch
-            </h2>
-
-            <p>
-              Deliver an ephemeral, single-use download portal access
-              key directly to your corporate inbox or designated
-              outside legal counsel.
-            </p>
-
-
-            <label>
-              Authorized Corporate Email
-            </label>
-
-            <div className="email-input">
-
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-
+            <div className="download-alert-content">
+              <strong>DOWNLOAD INITIATED</strong>
               <span>
-                ✉
+                Your signed archive download has been initiated.
               </span>
-
             </div>
-
-
-            <div className="expiry">
-              ◷ &nbsp; Expires strictly 48 hours from generation.
-            </div>
-
 
             <button
-              className="dispatch-button"
-              onClick={dispatchLink}
+              className="download-alert-ok"
+              onClick={() => setDownloadInitiated(false)}
             >
-              ▷ Dispatch Ephemeral Link
+              OK
             </button>
-
-          </section>
-
-
-          {/* EXECUTIVE PRESENTATION */}
-
-          <section className="delivery-card presentation-card">
-
-            <div className="presentation-top">
-
-              <span className="right-label plain-label">
-                EXECUTIVE PRESENTATION
-              </span>
-
-              <span className="wide-badge">
-                16:9 Widescreen
-              </span>
-
-            </div>
-
-            <h2>
-              Boardroom Briefing Deck
-            </h2>
-
-            <p>
-              Curated visual deck designed specifically for Audit
-              Committee, Chief Legal Officer, and Board Governance
-              reviews.
-            </p>
-
-
-            <div className="presentation-actions">
-
-              <button>
-                ▷ &nbsp; Deck (PPTX)
-              </button>
-
-              <button>
-                ▤ &nbsp; Briefing (PDF)
-              </button>
-
-            </div>
-
-          </section>
-
-        </aside>
-
-      </main>
-
-
-      {/* =====================================================
-          ARCHITECT ATTESTATION
-      ===================================================== */}
-
-      <section className="attestation-card">
-
-        <div className="attestation-person">
-
-          <img
-            src="/EvelynVance.png"
-            alt="Dr. Evelyn Vance"
-          />
-
-          <div>
-
-            <h3>
-              Dr. Evelyn Vance, CISSP
-            </h3>
-
-            <span>
-              Principal Advisory Architect & Engagement Director
-              · TechTorch Solutions
-            </span>
-
-            <p>
-              "Every artifact packaged within TT-SEC-2026-V4.2 has
-              undergone rigorous multi-signature review. Scope
-              constraints are cryptographically bound to protect
-              production workloads without compromise."
-            </p>
-
           </div>
-
         </div>
-
-
-        <div className="attestation-stamp">
-
-          <span>
-            STAMP OF ATTESTATION
-          </span>
-
-          <strong>
-            VAL-2026-ENCLAVE-91
-          </strong>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          FOOTER CONTACT
-      ===================================================== */}
-
-      <footer className="export-footer">
-
-        <div className="footer-question-icon">
-          ?
-        </div>
-
-        <div className="footer-message">
-
-          <h2>
-            Questions Regarding Scope or Governance Terms?
-          </h2>
-
-          <p>
-            Direct real-time consultation with the assigned
-            engagement lead and governance council.
-          </p>
-
-        </div>
-
-
-        <a
-          href="tel:+919999366708"
-          className="footer-phone"
-        >
-          ♧ &nbsp; +91 99933 66708
-        </a>
-
-
-        <a
-          href="mailto:advisory@techtorch.solutions"
-          className="footer-email"
-        >
-          ✉ &nbsp; advisory@techtorch.solutions
-        </a>
-
-      </footer>
-
-
-      {/* =====================================================
-          CSS
-      ===================================================== */}
+      )}
 
       <style>{`
-
         * {
           box-sizing: border-box;
         }
 
         body {
           margin: 0;
-        }
-
-        button,
-        input {
-          font-family: inherit;
-        }
-
-        button {
-          cursor: pointer;
-        }
-
-        .accept-proceed-page {
-          min-height: 100vh;
-          padding: 35px 30px 0;
-          background: #f7f8fa;
-          color: #222630;
+          background: #f7f8f9;
+          color: #20242b;
           font-family: "Inter", Arial, sans-serif;
         }
 
+        .protocol-page {
+          width: 100%;
+          min-height: 100vh;
+          padding: 50px 28px 35px;
+          background: #f7f8f9;
+        }
 
-        /* ===============================================
-           HEADER
-        =============================================== */
-
-        .export-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 25px;
+        .protocol-container {
           max-width: 1180px;
           margin: 0 auto;
         }
 
-        .breadcrumb {
+        /* ================= DOWNLOAD ALERT ================= */
+
+        .download-alert-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          padding-top: 25px;
+          background: rgba(20, 24, 28, 0.18);
+        }
+
+        .download-alert {
+          width: min(420px, calc(100% - 30px));
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 15px 16px;
+          border: 1px solid #dfe1e4;
+          border-radius: 7px;
+          background: #ffffff;
+          color: #30343a;
+          box-shadow: 0 10px 30px rgba(20, 25, 30, 0.15);
+          animation: downloadAlertIn 0.25s ease-out;
+        }
+
+        .download-alert-icon {
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #e8f1e9;
+          color: #4d8054;
+        }
+
+        .download-alert-content {
+          flex: 1;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .download-alert-content strong {
+          color: #30343a;
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 0.35px;
+        }
+
+        .download-alert-content span {
+          color: #777c83;
+          font-size: 10px;
+          line-height: 1.4;
+        }
+
+        .download-alert-ok {
+          flex-shrink: 0;
+          min-width: 48px;
+          height: 30px;
+          padding: 0 12px;
+          border: 1px solid #d7d9dc;
+          border-radius: 5px;
+          background: #f1f2f3;
+          color: #30343a;
+          font-size: 10px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: 0.2s ease;
+        }
+
+        .download-alert-ok:hover {
+          background: #e4e5e7;
+        }
+
+        @keyframes downloadAlertIn {
+          from {
+            opacity: 0;
+            transform: translateY(-12px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* ================= TOP ================= */
+
+        .protocol-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 20px;
+        }
+
+        .breadcrumbs {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
-          gap: 9px;
-          color: #707680;
-          font-size: 8.5px;
-          font-weight: 750;
-          letter-spacing: 1px;
-        }
-
-        .breadcrumb b {
-          color: #b8bbc0;
-        }
-
-        .breadcrumb strong {
-          color: #5e103c;
-        }
-
-        .verification-badges {
-          display: flex;
-          align-items: center;
-          gap: 9px;
-          flex-shrink: 0;
-        }
-
-        .verified-badge,
-        .hash-badge {
-          padding: 5px 9px;
-          border-radius: 12px;
-          font-size: 7.5px;
+          gap: 8px;
+          font-size: 10px;
           font-weight: 800;
-          letter-spacing: .6px;
+          letter-spacing: 0.65px;
+          text-transform: uppercase;
+          color: #666b73;
+        }
+
+        .breadcrumbs span {
           white-space: nowrap;
         }
 
-        .verified-badge {
+        .breadcrumbs .separator {
+          color: #c5c7ca;
+        }
+
+        .breadcrumbs .current {
+          color: #650033;
+        }
+
+        .verification {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .verify-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: 6px 10px;
+          border-radius: 20px;
+          font-size: 9px;
+          font-weight: 800;
+          letter-spacing: 0.45px;
+          white-space: nowrap;
+        }
+
+        .verify-green {
           background: #005b20;
-          color: white;
+          color: #fff;
         }
 
-        .hash-badge {
-          background: #e8e7eb;
-          color: #64103e;
+        .verify-grey {
+          background: #e4e5e7;
+          color: #650033;
         }
 
+        /* ================= HEADING ================= */
 
-        /* ===============================================
-           HERO
-        =============================================== */
-
-        .export-hero {
-          max-width: 1180px;
-          margin: 30px auto 0;
+        .protocol-heading {
+          margin-top: 27px;
         }
 
-        .export-hero h1 {
+        .protocol-heading h1 {
           margin: 0;
-          color: #22262a;
+          color: #202327;
           font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 31px;
-          line-height: 1.15;
-          letter-spacing: -1.4px;
-          font-weight: 650;
+          font-size: 32px;
+          line-height: 1.12;
+          letter-spacing: -1.6px;
+          font-weight: 550;
         }
 
-        .export-hero p {
-          max-width: 850px;
-          margin: 12px 0 0;
-          color: #66545d;
+        .protocol-heading p {
+          max-width: 800px;
+          margin: 11px 0 0;
+          color: #555b64;
           font-size: 14px;
           line-height: 1.55;
         }
 
+        /* ================= GRID ================= */
 
-        /* ===============================================
-           MAIN GRID
-        =============================================== */
-
-        .export-grid {
-          max-width: 1180px;
-          margin: 38px auto 0;
+        .protocol-grid {
+          margin-top: 27px;
           display: grid;
-          grid-template-columns: minmax(0, 1.45fr) minmax(320px, 1fr);
-          gap: 25px;
+          grid-template-columns: minmax(0, 1.55fr) minmax(300px, 1fr);
+          gap: 22px;
           align-items: start;
         }
 
-        .export-left,
-        .export-right {
+        .left-column,
+        .right-column {
           display: flex;
           flex-direction: column;
           gap: 20px;
         }
 
+        /* ================= CARD ================= */
 
-        /* ===============================================
-           COMMON CARD
-        =============================================== */
-
-        .manifest-card,
-        .integrity-card,
-        .delivery-card,
-        .attestation-card {
+        .protocol-card {
           background: #ffffff;
-          border: 1px solid #e5e7e9;
-          border-radius: 9px;
-          box-shadow: 0 2px 8px rgba(20, 25, 30, .025);
+          border: 1px solid #e7e8ea;
+          border-radius: 8px;
+          box-shadow: 0 2px 7px rgba(20, 25, 30, 0.025);
         }
-
-
-        /* ===============================================
-           MANIFEST
-        =============================================== */
 
         .manifest-card {
-          padding: 23px 24px;
+          padding: 25px 21px;
         }
 
-        .manifest-heading {
+        /* ================= MANIFEST ================= */
+
+        .manifest-header {
           display: flex;
-          align-items: center;
           justify-content: space-between;
+          align-items: flex-end;
           gap: 15px;
-          margin-bottom: 17px;
+          padding-bottom: 14px;
+          border-bottom: 1px solid #eeeeef;
         }
 
-        .small-heading,
-        .right-label {
+        .eyebrow {
           display: block;
-          color: #6b0b3c;
-          font-size: 8px;
+          margin: 0 0 5px;
+          color: #701040;
+          font-size: 11px;
           font-weight: 850;
-          letter-spacing: 1px;
+          letter-spacing: 0.8px;
+          text-transform: uppercase;
         }
 
-        .manifest-heading h2 {
-          margin: 6px 0 0;
-          color: #272b31;
-          font-size: 17px;
-          font-weight: 650;
+        .manifest-title {
+          margin: 0;
+          color: #22262c;
+          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+          font-size: 18px;
+          line-height: 1.1;
+          letter-spacing: -0.8px;
+          font-weight: 600;
         }
 
         .artifact-count {
-          padding: 6px 10px;
+          padding: 6px 9px;
           border-radius: 4px;
-          background: #e9ebed;
-          color: #535b66;
+          background: #eceeef;
+          color: #22262c;
+          font-weight: 600;
           font-family: monospace;
-          font-size: 8px;
-          letter-spacing: .5px;
+          font-size: 10px;
           white-space: nowrap;
         }
-
-
-        /* ===============================================
-           ARTIFACT
-        =============================================== */
 
         .artifact-list {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 9px;
+          margin-top: 17px;
         }
 
         .artifact {
-          min-height: 76px;
-          display: flex;
-          align-items: center;
-          gap: 11px;
-          padding: 9px 11px;
+          display: grid;
+          grid-template-columns: 36px minmax(0, 1fr) 20px;
+          gap: 10px;
+          align-items: start;
+          padding: 12px 10px;
           border-radius: 6px;
-          background: #f4f5f6;
+          background: #f7f8f9;
         }
 
         .artifact-icon {
@@ -773,175 +392,297 @@ export default function AcceptProceed() {
           align-items: center;
           justify-content: center;
           border-radius: 6px;
-          background: #e9dfe5;
-          color: #68103e;
-          font-size: 15px;
-          flex-shrink: 0;
-        }
-
-        .artifact-content {
-          flex: 1;
-          min-width: 0;
+          background: #e9e0e5;
+          color: #650033;
         }
 
         .artifact-title {
-          display: flex;
-          align-items: center;
-          gap: 7px;
-          color: #2f3339;
-          font-size: 10.5px;
+          margin: 0;
+          color: #33383f;
+          font-size: 13px;
+          line-height: 1.35;
           font-weight: 800;
         }
 
-        .artifact-title span {
-          color: #6b0b3c;
-          font-family: monospace;
-          letter-spacing: .6px;
+        .artifact-number {
+          margin-right: 6px;
+          color: #650033;
+          font-size: 11px;
+          letter-spacing: 0.8px;
         }
 
         .artifact-description {
-          margin: 4px 0 5px;
-          color: #68717c;
-          font-size: 8.5px;
-          line-height: 1.35;
+          margin: 4px 0 7px;
+          color: #626871;
+          font-size: 12px;
+          line-height: 1.45;
         }
 
-        .artifact-meta {
+        .artifact-tags {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
-          gap: 9px;
+          gap: 7px;
         }
 
-        .file-type {
+        .artifact-tag {
           padding: 3px 5px;
           border-radius: 3px;
           background: #dedfe1;
-          color: #424951;
-          font-size: 6.5px;
-          font-weight: 850;
+          color: #44484e;
+          font-size: 8.5px;
+          font-weight: 800;
         }
 
-        .file-size {
-          color: #656c75;
-          font-size: 7px;
-        }
-
-        .file-status {
-          font-family: monospace;
-          font-size: 6.8px;
-        }
-
-        .status-green {
-          color: #28663a;
-        }
-
-        .status-gray {
-          color: #646a72;
-        }
-
-        .status-purple {
-          color: #721044;
+        .artifact-tag:last-child {
+          padding-left: 0;
+          background: transparent;
+          color: #4a8054;
         }
 
         .artifact-download {
-          border: 0;
-          background: transparent;
-          color: #5c636d;
-          font-size: 13px;
+          display: flex;
+          justify-content: center;
+          color: #565b62;
         }
 
-
-        /* ===============================================
-           MANIFEST FOOTER
-        =============================================== */
+        /* ================= MANIFEST FOOTER ================= */
 
         .manifest-footer {
-          min-height: 49px;
-          margin-top: 15px;
-          padding: 8px 11px;
+          margin-top: 17px;
+          padding: 11px 12px;
           display: flex;
-          align-items: center;
           justify-content: space-between;
+          align-items: center;
           gap: 15px;
           border-radius: 6px;
-          background: #f1f2f3;
-          color: #6c737c;
-          font-size: 8px;
-          line-height: 1.35;
+          background: #f0f1f2;
         }
 
-        .manifest-check {
-          color: #75103f;
-          margin-right: 7px;
+        .manifest-note {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          color: #666b73;
+          font-size: 11px;
+          line-height: 1.4;
         }
 
-        .manifest-footer button {
-          border: 0;
-          background: transparent;
-          color: #6b0b3c;
-          font-size: 8px;
+        .manifest-note-icon {
+          color: #650033;
+          flex-shrink: 0;
+        }
+
+        .manifest-json {
+          color: #650033;
+          font-size: 11px;
           font-weight: 800;
           text-align: right;
         }
 
+        /* ================= CRYPTO ================= */
 
-        /* ===============================================
-           RIGHT CARDS
-        =============================================== */
+        .crypto-card {
+          padding: 25px 21px;
+        }
+
+        .crypto-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 15px;
+          padding-bottom: 13px;
+          border-bottom: 1px solid #eeeeef;
+        }
+
+        .crypto-title {
+          display: flex;
+          align-items: center;
+          gap: 9px;
+        }
+
+        .crypto-icon {
+          color: #72003e;
+          flex-shrink: 0;
+        }
+
+        .crypto-title h2 {
+          margin: 0;
+          color: #22262c;
+          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .immutable {
+          padding: 5px 8px;
+          border-radius: 3px;
+          background: #dce8dc;
+          color: #4d9a55;
+          font-family: monospace;
+          font-size: 9px;
+          font-weight: 800;
+          white-space: nowrap;
+        }
+
+        .crypto-description {
+          margin: 14px 0 16px;
+          color: #565d66;
+          font-size: 13px;
+          line-height: 1.55;
+        }
+
+        .hash-box {
+          padding: 11px 12px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 12px;
+          border-radius: 6px;
+          background: #e7e8ea;
+        }
+
+        .hash-content {
+          min-width: 0;
+        }
+
+        .hash-label {
+          display: block;
+          margin-bottom: 5px;
+          color: #777c83;
+          font-family: monospace;
+          font-size: 10px;
+          letter-spacing: 1px;
+        }
+
+        .hash-value {
+          display: block;
+          color: #292d32;
+          font-family: monospace;
+          font-size: 11px;
+          font-weight: 700;
+          word-break: break-all;
+        }
+
+        .copy-hash {
+          border: 0;
+          padding: 7px 9px;
+          border-radius: 4px;
+          background: #f0f1f2;
+          color: #30343a;
+          font-size: 9px;
+          font-weight: 800;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+
+        .compliance-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 9px;
+          margin-top: 18px;
+        }
+
+        .compliance-item {
+          min-height: 65px;
+          padding: 8px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          border-radius: 6px;
+          background: #f7f8f9;
+        }
+
+        .compliance-item .icon {
+          margin-bottom: 5px;
+          color: #650033;
+        }
+
+        .compliance-item strong {
+          color: #30343a;
+          font-size: 9.5px;
+          letter-spacing: 1px;
+        }
+
+        .compliance-item span {
+          margin-top: 4px;
+          color: #777c82;
+          font-size: 10px;
+        }
+
+        /* ================= RIGHT CARDS ================= */
+
+        .right-card {
+          padding: 20px;
+        }
 
         .delivery-card {
-          padding: 24px;
           position: relative;
           overflow: hidden;
+          padding: 25px 21px;
         }
 
-        .primary-card::after {
+        .delivery-card::after {
           content: "";
           position: absolute;
-          width: 75px;
-          height: 75px;
-          right: -1px;
-          top: -1px;
+          width: 110px;
+          height: 110px;
+          right: -38px;
+          top: -45px;
           border-radius: 50%;
-          background: #f6f0f3;
-          z-index: 0;
+          background: #f3edf0;
         }
 
-        .primary-card > * {
+        .delivery-content {
           position: relative;
           z-index: 1;
         }
 
-        .delivery-card h2 {
-          margin: 8px 0 7px;
-          color: #272b30;
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 16px;
-          font-weight: 650;
-          letter-spacing: -.4px;
+        .delivery-label {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          margin-bottom: 7px;
+          color: #650033;
+          font-size: 10px;
+          font-weight: 850;
+          letter-spacing: 0.8px;
         }
 
-        .delivery-card p {
+        .delivery-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #650033;
+        }
+
+        .right-card h2 {
           margin: 0;
-          color: #6a6268;
-          font-size: 9.5px;
+          color: #22262c;
+          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+          font-size: 18px;
+          line-height: 1.15;
+          font-weight: 600;
+        }
+
+        .right-description {
+          margin: 9px 0 15px;
+          color: #60545a;
+          font-size: 12px;
           line-height: 1.5;
         }
 
-
-        /* ===============================================
-           ZIP
-        =============================================== */
+        /* ================= ZIP FILE ================= */
 
         .zip-file {
-          min-height: 51px;
-          margin-top: 16px;
-          padding: 8px 11px;
+          padding: 10px;
           display: flex;
           align-items: center;
-          gap: 9px;
+          gap: 7px;
           border-radius: 6px;
-          background: #f4f5f6;
+          background: #f5f6f7;
         }
 
         .zip-icon {
@@ -950,743 +691,1032 @@ export default function AcceptProceed() {
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-shrink: 0;
           border-radius: 4px;
-          background: #ffd8e4;
-          color: #721040;
-          font-size: 8px;
+          background: #ffdce9;
+          color: #650033;
+          font-size: 10px;
           font-weight: 900;
         }
 
         .zip-info {
           flex: 1;
+          min-width: 0;
         }
 
         .zip-info strong {
           display: block;
-          color: #3c4148;
-          font-size: 9.5px;
+          margin-bottom: 4px;
+          color: #30343a;
+          font-size: 11px;
+          line-height: 1.1;
         }
 
         .zip-info span {
           display: block;
-          margin-top: 3px;
-          color: #737981;
-          font-size: 7.5px;
+          margin-top: 0;
+          color: #777c83;
+          font-size: 10px;
+          line-height: 1.1;
         }
 
-        .lock-icon {
-          color: #126225;
-          font-size: 17px;
+        .zip-lock {
+          display: flex;
+          flex-shrink: 0;
+          color: #075d20;
         }
 
-
-        /* ===============================================
-           BUTTONS
-        =============================================== */
+        /* ================= DOWNLOAD ================= */
 
         .download-button {
           width: 100%;
-          height: 37px;
-          margin-top: 11px;
+          height: 40px;
+          margin-top: 15px;
+          border: 1px solid #650033;
+          border-radius: 6px;
+          background: #650033;
+          color: white;
+          font-size: 11.5px;
+          font-weight: 800;
+          letter-spacing: 0.25px;
+          cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 7px;
-          border: 0;
-          border-radius: 6px;
-          background: #650033;
-          color: white;
-          font-size: 9.5px;
-          font-weight: 850;
-          letter-spacing: .4px;
-          box-shadow: 0 5px 10px rgba(101, 0, 51, .14);
+          transition: 0.2s ease;
         }
 
-        .download-button span {
-          font-size: 15px;
+        .download-button:hover {
+          background: #4e0028;
         }
 
         .encryption-note {
-          margin-top: 13px;
-          text-align: center;
-          color: #757a80;
-          font-size: 7.5px;
+          margin: 13px 0 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          color: #777c83;
+          font-size: 10px;
         }
 
+        /* ================= DISPATCH ================= */
 
-        /* ===============================================
-           RELAY
-        =============================================== */
-
-        .plain-label {
-          color: #73777c;
+        .dispatch-label {
+          margin-bottom: 6px;
+          color: #701040;
+          font-size: 10px;
+          font-weight: 850;
+          letter-spacing: 0.8px;
+          text-transform: uppercase;
         }
 
-        .relay-card h2 {
-          margin-top: 8px;
+        .dispatch-description {
+          margin: 8px 0 15px;
+          color: #5f565b;
+          font-size: 12px;
+          line-height: 1.55;
         }
 
-        .relay-card label {
-          display: block;
-          margin: 16px 0 7px;
-          color: #3f444a;
-          font-family: monospace;
-          font-size: 7.5px;
-          font-weight: 800;
-          letter-spacing: 1px;
+        .email-label {
+          margin-bottom: 6px;
+          color: #30343a;
+          font-size: 11px;
+          font-weight: 850;
+          letter-spacing: 0.9px;
+        }
+
+        .email-input-wrapper {
+          position: relative;
+          width: 100%;
         }
 
         .email-input {
-          height: 34px;
-          display: flex;
-          align-items: center;
-          padding: 0 10px;
-          border-radius: 5px;
-          background: #f2f3f4;
-        }
-
-        .email-input input {
           width: 100%;
+          height: 34px;
+          padding: 0 34px 0 10px;
           border: 0;
-          outline: 0;
-          background: transparent;
-          color: #7d6b74;
-          font-size: 9px;
+          outline: none;
+          border-radius: 6px;
+          background: #f2f3f4;
+          color: #866e78;
+          font-family: monospace;
+          font-size: 10px;
         }
 
-        .email-input span {
-          color: #777d84;
-          font-size: 13px;
+        .email-input-wrapper svg {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #555b62;
+          pointer-events: none;
         }
 
         .expiry {
-          margin-top: 11px;
-          color: #777d84;
-          font-size: 7.5px;
+          margin: 11px 0 14px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          color: #777b81;
+          font-size: 10px;
         }
 
         .dispatch-button {
           width: 100%;
-          height: 32px;
-          margin-top: 13px;
+          height: 35px;
           border: 0;
-          border-radius: 6px;
+          border-radius: 5px;
           background: #e9eaec;
-          color: #68103d;
-          font-size: 9px;
-          font-weight: 800;
-          letter-spacing: .3px;
-        }
-
-
-        /* ===============================================
-           PRESENTATION
-        =============================================== */
-
-        .presentation-top {
+          color: #650033;
+          font-size: 11px;
+          font-weight: 850;
+          cursor: pointer;
           display: flex;
           align-items: center;
+          justify-content: center;
+          gap: 5px;
+        }
+
+        /* ================= PRESENTATION ================= */
+
+        .presentation-header {
+          display: flex;
           justify-content: space-between;
-          gap: 10px;
+          align-items: flex-start;
+          gap: 12px;
         }
 
-        .wide-badge {
-          padding: 4px 7px;
-          border-radius: 4px;
-          background: #f0e9ee;
-          color: #6b0b3c;
-          font-size: 6.5px;
-          font-weight: 800;
+        .presentation-title {
+          margin: 0 0 7px !important;
         }
 
-        .presentation-card h2 {
-          margin-top: 10px;
+        .presentation-description {
+          margin: 0;
+          color: #60555b;
+          font-size: 12px;
+          line-height: 1.5;
         }
 
-        .presentation-actions {
+        .aspect {
+          padding: 5px 7px;
+          border-radius: 3px;
+          background: #eee7eb;
+          color: #650033;
+          font-size: 8px;
+          font-weight: 850;
+          white-space: nowrap;
+        }
+
+        .presentation-buttons {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 9px;
           margin-top: 15px;
         }
 
-        .presentation-actions button {
+        .presentation-button {
           height: 34px;
           border: 0;
-          border-radius: 6px;
-          background: #f5f5f6;
-          color: #3d4249;
-          font-size: 8px;
-          font-weight: 800;
-        }
-
-
-        /* ===============================================
-           INTEGRITY
-        =============================================== */
-
-        .integrity-card {
-          padding: 24px;
-        }
-
-        .integrity-heading {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 15px;
-        }
-
-        .integrity-heading h2 {
-          margin: 0;
-          color: #272c32;
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 17px;
-        }
-
-        .integrity-heading p {
-          max-width: 680px;
-          margin: 10px 0 0;
-          color: #6b737e;
-          font-size: 9.5px;
-          line-height: 1.5;
-        }
-
-        .immutable {
-          padding: 6px 8px;
-          border-radius: 4px;
-          background: #e5eee6;
-          color: #5b9661;
-          font-family: monospace;
-          font-size: 7px;
-          font-weight: 800;
-          white-space: nowrap;
-        }
-
-        .master-hash {
-          min-height: 54px;
-          margin-top: 17px;
-          padding: 9px 11px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 15px;
-          border-radius: 6px;
-          background: #e7e8ea;
-        }
-
-        .master-hash span {
-          display: block;
-          margin-bottom: 5px;
-          color: #747b83;
-          font-family: monospace;
-          font-size: 7px;
-          letter-spacing: 1px;
-        }
-
-        .master-hash strong {
-          display: block;
-          color: #3d434a;
-          font-family: monospace;
-          font-size: 7px;
-          word-break: break-all;
-        }
-
-        .master-hash button {
-          height: 27px;
-          padding: 0 10px;
-          border: 0;
-          border-radius: 4px;
-          background: #eef0f1;
-          color: #41464c;
-          font-size: 7px;
+          border-radius: 5px;
+          background: #f6f7f8;
+          color: #30343a;
+          font-size: 9px;
           font-weight: 850;
-          white-space: nowrap;
-        }
-
-        .certification-boxes {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 9px;
-          margin-top: 17px;
-        }
-
-        .certification {
-          min-height: 66px;
+          letter-spacing: 0.7px;
+          cursor: pointer;
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
-          text-align: center;
-          border-radius: 6px;
-          background: #f6f7f8;
+          gap: 6px;
         }
 
-        .certification-icon {
-          color: #710b3e;
-          font-size: 15px;
-          margin-bottom: 5px;
-        }
+        /* ================= ATTESTATION ================= */
 
-        .certification strong {
-          color: #343941;
-          font-family: monospace;
-          font-size: 9px;
-          letter-spacing: 1px;
-        }
-
-        .certification span {
-          margin-top: 4px;
-          color: #777e86;
-          font-size: 7px;
-        }
-
-
-        /* ===============================================
-           ATTESTATION
-        =============================================== */
-
-        .attestation-card {
+        .attestation {
           max-width: 1180px;
-          min-height: 101px;
-          margin: 42px auto 0;
-          padding: 17px 25px;
+          margin: 37px auto 0;
+          padding: 20px 21px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 25px;
+          gap: 20px;
+          background: #ffffff;
+          border: 1px solid #e7e8ea;
+          border-radius: 8px;
+          box-shadow: 0 2px 7px rgba(20, 25, 30, 0.025);
         }
 
         .attestation-person {
           display: flex;
           align-items: center;
-          gap: 15px;
+          gap: 13px;
+          min-width: 0;
         }
 
-        .attestation-person img {
-          width: 55px;
-          height: 55px;
+        .person-image {
+          width: 52px;
+          height: 52px;
+          flex-shrink: 0;
           object-fit: cover;
           border-radius: 50%;
-          background: #ddd;
+          background: #d9dde2;
         }
 
-        .attestation-person h3 {
-          margin: 0;
-          color: #272b31;
+        .person-info h3 {
+          margin: 0 0 3px;
+          color: #292d32;
+          font-size: 12px;
+          font-weight: 800;
+        }
+
+        .person-designation {
+          margin-bottom: 6px;
+          color: #777c83;
           font-size: 11px;
-          font-weight: 850;
         }
 
-        .attestation-person span {
-          display: block;
-          margin-top: 3px;
-          color: #7a8088;
-          font-size: 7.5px;
-        }
-
-        .attestation-person p {
-          max-width: 730px;
-          margin: 7px 0 0;
-          color: #6d737b;
-          font-size: 7.5px;
-          line-height: 1.4;
+        .quote {
+          max-width: 750px;
+          margin: 0;
+          color: #62585d;
+          font-size: 10px;
+          line-height: 1.45;
         }
 
         .attestation-stamp {
-          min-width: 135px;
-          padding: 9px 12px;
-          border-radius: 5px;
-          background: #f7f2f5;
+          min-width: 130px;
+          padding: 8px 11px;
           text-align: center;
+          border-radius: 5px;
+          background: #faf7f8;
         }
 
-        .attestation-stamp span {
+        .stamp-title {
           display: block;
-          color: #6b0b3c;
-          font-size: 7px;
+          margin-bottom: 0;
+          color: #650033;
+          font-size: 9px;
           font-weight: 850;
-          letter-spacing: .7px;
+          letter-spacing: 0.7px;
+          line-height: 1;
         }
 
-        .attestation-stamp strong {
+        .stamp-code {
           display: block;
-          margin-top: 5px;
-          color: #7a8089;
+          margin-top: 0;
+          color: #777b81;
           font-family: monospace;
-          font-size: 7px;
+          font-size: 10px;
+          line-height: 1;
         }
 
+        /* ================= FOOTER ================= */
 
-        /* ===============================================
-           FOOTER
-        =============================================== */
-
-        .export-footer {
-          min-height: 90px;
-          margin: 48px -30px 0;
-          padding: 16px max(30px, calc((100vw - 1180px) / 2));
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          background: #5b0030;
-          color: white;
-        }
-
-        .footer-question-icon {
-          width: 37px;
-          height: 37px;
+        .protocol-footer {
+          width: calc(100% + 56px);
+          margin-left: -28px;
+          margin-top: 37px;
+          min-height: 104px;
+          padding: 18px 28px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 7px;
-          background: #731044;
+          background: #5e0030;
           color: white;
-          font-size: 17px;
-          flex-shrink: 0;
         }
 
-        .footer-message {
-          flex: 1;
+        .footer-inner {
+          width: 100%;
+          max-width: 1180px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 25px;
         }
 
-        .footer-message h2 {
-          margin: 0;
-          color: white;
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 15px;
-        }
-
-        .footer-message p {
-          margin: 4px 0 0;
-          color: #e5cbd8;
-          font-size: 8px;
-        }
-
-        .footer-phone,
-        .footer-email {
-          height: 38px;
-          padding: 0 15px;
+        .footer-content {
           display: flex;
           align-items: center;
+          gap: 13px;
+        }
+
+        .footer-icon {
+          width: 38px;
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
           border-radius: 6px;
-          text-decoration: none;
-          font-size: 9px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+
+        .footer-content h3 {
+          margin: 0 0 4px;
+          font-size: 16px;
+          line-height: 1.15;
+        }
+
+        .footer-content p {
+          margin: 0;
+          color: #e7ceda;
+          font-size: 11px;
+        }
+
+        .footer-actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .footer-contact {
+          height: 37px;
+          padding: 0 13px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          border-radius: 5px;
+          font-size: 10.5px;
           font-weight: 800;
           white-space: nowrap;
         }
 
         .footer-phone {
-          background: #731044;
+          background: #771044;
           color: white;
         }
 
         .footer-email {
           background: white;
-          color: #5f1239;
+          color: #5d1637;
         }
 
-
-        /* ===============================================
-           LAPTOP
-        =============================================== */
+        /* ================= RESPONSIVE ================= */
 
         @media (max-width: 1050px) {
-
-          .accept-proceed-page {
-            padding-left: 20px;
-            padding-right: 20px;
+          .protocol-grid {
+            grid-template-columns: 1.45fr 1fr;
           }
 
-          .export-grid {
-            grid-template-columns: 1.4fr 1fr;
+          .protocol-heading h1 {
+            font-size: 33px;
           }
-
-          .export-footer {
-            margin-left: -20px;
-            margin-right: -20px;
-          }
-
-          .footer-message h2 {
-            font-size: 13px;
-          }
-
         }
 
-
-        /* ===============================================
-           TABLET
-        =============================================== */
-
-        @media (max-width: 850px) {
-
-          .export-header {
+        @media (max-width: 800px) {
+          .protocol-top {
             flex-direction: column;
             align-items: flex-start;
           }
 
-          .verification-badges {
+          .verification {
             width: 100%;
+            justify-content: flex-start;
+            flex-wrap: wrap;
           }
 
-          .export-grid {
+          .protocol-grid {
             grid-template-columns: 1fr;
           }
 
-          .export-right {
+          .right-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            align-items: start;
           }
 
-          .presentation-card {
+          .delivery-card {
             grid-column: 1 / -1;
           }
 
-          .attestation-card {
+          .footer-inner {
+            flex-direction: column;
             align-items: flex-start;
           }
 
-          .export-footer {
-            flex-wrap: wrap;
+          .footer-actions {
+            width: 100%;
           }
 
+          .footer-contact {
+            flex: 1;
+          }
         }
 
-
-        /* ===============================================
-           MOBILE
-        =============================================== */
-
         @media (max-width: 600px) {
-
-          .accept-proceed-page {
-            padding: 20px 12px 0;
+          .protocol-page {
+            padding: 25px 12px;
           }
 
-          .breadcrumb {
-            font-size: 7px;
-            line-height: 1.5;
+          .download-alert-overlay {
+            padding-top: 15px;
+            padding-left: 12px;
+            padding-right: 12px;
           }
 
-          .verification-badges {
-            flex-wrap: wrap;
+          .download-alert {
+            width: 100%;
+            padding: 13px;
+            gap: 10px;
           }
 
-          .verified-badge,
-          .hash-badge {
-            font-size: 6.5px;
+          .download-alert-content strong {
+            font-size: 11px;
           }
 
-          .export-hero {
-            margin-top: 23px;
+          .download-alert-content span {
+            font-size: 9.5px;
           }
 
-          .export-hero h1 {
-            font-size: 25px;
+          .download-alert-ok {
+            min-width: 44px;
+            height: 29px;
+            font-size: 9.5px;
+          }
+
+          .protocol-heading {
+            margin-top: 22px;
+          }
+
+          .protocol-heading h1 {
+            font-size: 28px;
             letter-spacing: -1px;
           }
 
-          .export-hero p {
-            font-size: 10.5px;
+          .protocol-heading p {
+            font-size: 12px;
           }
 
-          .export-grid {
-            margin-top: 25px;
+          .protocol-grid {
+            margin-top: 20px;
           }
 
           .manifest-card,
-          .integrity-card,
-          .delivery-card {
-            padding: 17px 15px;
+          .crypto-card,
+          .right-card {
+            padding: 20px 15px;
           }
 
-          .manifest-heading {
-            align-items: flex-start;
+          .manifest-header {
             flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .manifest-title {
+            font-size: 22px;
           }
 
           .artifact {
-            align-items: flex-start;
+            grid-template-columns: 32px minmax(0, 1fr) 16px;
+            gap: 8px;
           }
 
           .artifact-title {
-            font-size: 9px;
-            line-height: 1.35;
+            font-size: 11.5px;
           }
 
           .artifact-description {
-            font-size: 7.5px;
+            font-size: 9.5px;
           }
 
-          .artifact-meta {
-            flex-wrap: wrap;
-            gap: 5px;
-          }
-
-          .artifact-download {
-            display: none;
-          }
-
-          .manifest-footer {
-            align-items: flex-start;
-            flex-direction: column;
-          }
-
-          .manifest-footer button {
-            text-align: left;
-          }
-
-          .export-right {
-            display: flex;
-          }
-
-          .integrity-heading {
-            flex-direction: column;
-          }
-
-          .master-hash {
-            align-items: flex-start;
-            flex-direction: column;
-          }
-
-          .master-hash button {
-            width: 100%;
-          }
-
-          .certification-boxes {
+          .compliance-grid {
             grid-template-columns: 1fr;
           }
 
-          .attestation-card {
+          .hash-box {
             flex-direction: column;
-            padding: 17px;
-          }
-
-          .attestation-person {
             align-items: flex-start;
           }
 
-          .attestation-person img {
-            width: 45px;
-            height: 45px;
+          .copy-hash {
+            align-self: flex-end;
+          }
+
+          .right-column {
+            display: flex;
+          }
+
+          .presentation-buttons {
+            grid-template-columns: 1fr;
+          }
+
+          .attestation {
+            margin-top: 28px;
+            padding: 18px 15px;
+            flex-direction: column;
+            align-items: flex-start;
           }
 
           .attestation-stamp {
-            width: 100%;
+            align-self: stretch;
           }
 
-          .export-footer {
+          .protocol-footer {
+            width: calc(100% + 24px);
             margin-left: -12px;
-            margin-right: -12px;
-            padding: 20px 15px;
+            margin-top: 28px;
+            padding: 18px 15px;
+          }
+
+          .footer-actions {
             flex-direction: column;
-            align-items: stretch;
           }
 
-          .footer-message h2 {
-            font-size: 14px;
-          }
-
-          .footer-phone,
-          .footer-email {
-            justify-content: center;
+          .footer-contact {
             width: 100%;
           }
-
         }
-
       `}</style>
 
-    </div>
-  );
-}
+      <div className="protocol-container">
 
+        {/* ================= TOP ================= */}
 
-/* =========================================================
-   ARTIFACT COMPONENT
-========================================================= */
+        <div className="protocol-top">
+          <div className="breadcrumbs">
+            <span>Protocol Management</span>
+            <span className="separator">/</span>
+            <span>Engagement Protocols</span>
+            <span className="separator">/</span>
+            <span className="current">
+              Package TT-SEC-2026-V4.2
+            </span>
+          </div>
 
-function Artifact({
-  number,
-  icon,
-  title,
-  description,
-  type,
-  size,
-  status,
-  statusType,
-}) {
-  return (
-    <div className="artifact">
+          <div className="verification">
+            <span className="verify-badge verify-green">
+              <Lock size={10} strokeWidth={2} />
+              CRYPTOGRAPHICALLY VERIFIED BUNDLE
+            </span>
 
-      <div className="artifact-icon">
-        {icon}
-      </div>
-
-      <div className="artifact-content">
-
-        <div className="artifact-title">
-          <span>{number}</span>
-          {title}
+            <span className="verify-badge verify-grey">
+              <CheckCircle2 size={10} strokeWidth={2} />
+              SHA-256 Validated
+            </span>
+          </div>
         </div>
 
-        <p className="artifact-description">
-          {description}
-        </p>
+        {/* ================= HEADING ================= */}
 
-        <div className="artifact-meta">
+        <div className="protocol-heading">
+          <h1>Export Institutional Protocol Package</h1>
 
-          <span className="file-type">
-            {type}
-          </span>
-
-          <span className="file-size">
-            {size}
-          </span>
-
-          <span
-            className={`file-status status-${statusType}`}
-          >
-            {status}
-          </span>
-
+          <p>
+            Download or securely dispatch the authoritative governance
+            archive. This dossier contains executed Bilateral MNDAs,
+            diagnostic telemetry scope definitions, SLA covenants, and
+            independent third-party auditor clearance credentials.
+          </p>
         </div>
 
+        {/* ================= MAIN GRID ================= */}
+
+        <div className="protocol-grid">
+
+          {/* ================= LEFT ================= */}
+
+          <div className="left-column">
+
+            <section className="protocol-card manifest-card">
+              <div className="manifest-header">
+                <div>
+                  <span className="eyebrow">
+                    Document Manifest
+                  </span>
+
+                  <h2 className="manifest-title">
+                    Package File Inventory
+                  </h2>
+                </div>
+
+                <div className="artifact-count">
+                  5 Artifacts · 9.04 MB
+                </div>
+              </div>
+
+              <div className="artifact-list">
+                {artifacts.map((artifact) => {
+                  const Icon = artifact.icon;
+
+                  return (
+                    <div
+                      className="artifact"
+                      key={artifact.number}
+                    >
+                      <div className="artifact-icon">
+                        <Icon
+                          size={17}
+                          strokeWidth={1.8}
+                        />
+                      </div>
+
+                      <div>
+                        <p className="artifact-title">
+                          <span className="artifact-number">
+                            {artifact.number}
+                          </span>
+
+                          {artifact.title}
+                        </p>
+
+                        <p className="artifact-description">
+                          {artifact.description}
+                        </p>
+
+                        <div className="artifact-tags">
+                          {artifact.tags.map((tag, index) => (
+                            <span
+                              className="artifact-tag"
+                              key={index}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="artifact-download">
+                        <Download
+                          size={15}
+                          strokeWidth={1.8}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="manifest-footer">
+                <div className="manifest-note">
+                  <CheckCircle2
+                    className="manifest-note-icon"
+                    size={13}
+                    strokeWidth={1.8}
+                  />
+
+                  <span>
+                    All 5 artifacts compile to standard ISO/IEC
+                    27001 evidentiary preservation specs.
+                  </span>
+                </div>
+
+                <div className="manifest-json">
+                  Export manifest as JSON
+                </div>
+              </div>
+            </section>
+
+            <section className="protocol-card crypto-card">
+              <div className="crypto-header">
+                <div className="crypto-title">
+                  <FileCheck2
+                    className="crypto-icon"
+                    size={18}
+                    strokeWidth={1.8}
+                  />
+
+                  <h2>
+                    Cryptographic Integrity &amp; Custody
+                  </h2>
+                </div>
+
+                <span className="immutable">
+                  IMMUTABLE HASH
+                </span>
+              </div>
+
+              <p className="crypto-description">
+                The generated package archive matches the exact
+                cryptographic hash generated by the TechTorch Trust
+                Engine. Verify this checksum in your local terminal
+                prior to opening any unencrypted archive files.
+              </p>
+
+              <div className="hash-box">
+                <div className="hash-content">
+                  <span className="hash-label">
+                    SHA-256 MASTER FINGERPRINT
+                  </span>
+
+                  <span className="hash-value">
+                    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+                  </span>
+                </div>
+
+                <button className="copy-hash">
+                  COPY HASH
+                </button>
+              </div>
+
+              <div className="compliance-grid">
+                <div className="compliance-item">
+                  <Building2
+                    className="icon"
+                    size={17}
+                    strokeWidth={1.8}
+                  />
+
+                  <strong>ISO/IEC 27001</strong>
+
+                  <span>
+                    Clause A.18 Certified
+                  </span>
+                </div>
+
+                <div className="compliance-item">
+                  <Shield
+                    className="icon"
+                    size={17}
+                    strokeWidth={1.8}
+                  />
+
+                  <strong>SOC 2 Type II</strong>
+
+                  <span>
+                    Trust Criteria Evaluated
+                  </span>
+                </div>
+
+                <div className="compliance-item">
+                  <Cloud
+                    className="icon"
+                    size={17}
+                    strokeWidth={1.8}
+                  />
+
+                  <strong>CSA STAR</strong>
+
+                  <span>
+                    Level 2 Attestation
+                  </span>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          {/* ================= RIGHT ================= */}
+
+          <div className="right-column">
+
+            <section className="protocol-card delivery-card">
+              <div className="delivery-content">
+
+                <div className="delivery-label">
+                  <span className="delivery-dot"></span>
+                  PRIMARY DELIVERY
+                </div>
+
+                <h2>
+                  Direct Instant Download
+                </h2>
+
+                <p className="right-description">
+                  Immediate retrieval of the complete digitally-signed
+                  archive package formatted for legal and enterprise
+                  architecture review.
+                </p>
+
+                <div className="zip-file">
+                  <div className="zip-icon">
+                    ZIP
+                  </div>
+
+                  <div className="zip-info">
+                    <strong>
+                      TechTorch_Sec_Protocol_v4.2.zip
+                    </strong>
+
+                    <span>
+                      Full Package · 9.04 MB · Signed
+                    </span>
+                  </div>
+
+                  <span className="zip-lock">
+                    <LockKeyhole
+                      size={18}
+                      strokeWidth={1.8}
+                    />
+                  </span>
+                </div>
+
+                <button
+                  className="download-button"
+                  onClick={() => {
+                    setDownloadInitiated(true);
+                  }}
+                >
+                  DOWNLOAD SIGNED ARCHIVE (.ZIP)
+
+                  <Download
+                    size={14}
+                    strokeWidth={1.8}
+                  />
+                </button>
+
+                <p className="encryption-note">
+                  <Lock
+                    size={10}
+                    strokeWidth={1.8}
+                  />
+
+                  AES-256 Enclave Encryption standard applied
+                </p>
+              </div>
+            </section>
+
+            <section className="protocol-card right-card">
+              <div className="dispatch-label">
+                Secure Enclave Relay
+              </div>
+
+              <h2>
+                Encrypted Dispatch
+              </h2>
+
+              <p className="dispatch-description">
+                Deliver an ephemeral, single-use download portal
+                access key directly to your corporate inbox or
+                designated outside legal counsel.
+              </p>
+
+              <div className="email-label">
+                Authorized Corporate Email
+              </div>
+
+              <div className="email-input-wrapper">
+                <input
+                  type="email"
+                  className="email-input"
+                  defaultValue="ciso@enterprise-corp.com"
+                />
+
+                <Mail
+                  size={14}
+                  strokeWidth={1.7}
+                />
+              </div>
+
+              <div className="expiry">
+                <Clock3
+                  size={11}
+                  strokeWidth={1.8}
+                />
+
+                Expires strictly 48 hours from generation.
+              </div>
+
+              <button className="dispatch-button">
+                <Send
+                  size={12}
+                  strokeWidth={1.8}
+                />
+
+                Dispatch Ephemeral Link
+              </button>
+            </section>
+
+            <section className="protocol-card right-card">
+              <div className="presentation-header">
+                <div>
+                  <div className="eyebrow">
+                    Executive Presentation
+                  </div>
+
+                  <h2 className="presentation-title">
+                    Boardroom Briefing Deck
+                  </h2>
+
+                  <p className="presentation-description">
+                    Curated visual deck designed specifically for
+                    Audit Committee, Chief Legal Officer, and Board
+                    Governance reviews.
+                  </p>
+                </div>
+
+                <span className="aspect">
+                  16:9 Widescreen
+                </span>
+              </div>
+
+              <div className="presentation-buttons">
+                <button className="presentation-button">
+                  <Presentation
+                    size={12}
+                    strokeWidth={1.8}
+                  />
+
+                  Deck (PPTX)
+                </button>
+
+                <button className="presentation-button">
+                  <FileText
+                    size={12}
+                    strokeWidth={1.8}
+                  />
+
+                  Briefing (PDF)
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        {/* ================= ATTESTATION ================= */}
+
+        <section className="attestation">
+          <div className="attestation-person">
+            <img
+              src="/EvelynVance.png"
+              alt="Dr. Evelyn Vance"
+              className="person-image"
+            />
+
+            <div className="person-info">
+              <h3>
+                Dr. Evelyn Vance, CISSP
+              </h3>
+
+              <div className="person-designation">
+                Principal Advisory Architect &amp; Engagement Director
+                · TechTorch Solutions
+              </div>
+
+              <p className="quote">
+                "Every artifact packaged within TT-SEC-2026-V4.2 has
+                undergone rigorous multi-signature review. Scope
+                constraints are cryptographically bound to protect
+                production workloads without compromise."
+              </p>
+            </div>
+          </div>
+
+          <div className="attestation-stamp">
+            <span className="stamp-title">
+              STAMP OF ATTESTATION
+            </span>
+
+            <span className="stamp-code">
+              VAL-2026-ENCLAVE-91
+            </span>
+          </div>
+        </section>
       </div>
 
-      <button className="artifact-download">
-        ⇩
-      </button>
+      {/* ================= FOOTER ================= */}
 
-    </div>
-  );
-}
+      <footer className="protocol-footer">
+        <div className="footer-inner">
 
+          <div className="footer-content">
+            <div className="footer-icon">
+              <CircleHelp
+                size={17}
+                strokeWidth={1.8}
+              />
+            </div>
 
-/* =========================================================
-   CERTIFICATION COMPONENT
-========================================================= */
+            <div>
+              <h3>
+                Questions Regarding Scope or Governance Terms?
+              </h3>
 
-function Certification({
-  icon,
-  title,
-  subtitle,
-}) {
-  return (
-    <div className="certification">
+              <p>
+                Direct real-time consultation with the assigned
+                engagement lead and governance council.
+              </p>
+            </div>
+          </div>
 
-      <div className="certification-icon">
-        {icon}
-      </div>
+          <div className="footer-actions">
+            <a
+              href="tel:+919999366708"
+              className="footer-contact footer-phone"
+            >
+              <Phone
+                size={12}
+                strokeWidth={1.8}
+              />
 
-      <strong>
-        {title}
-      </strong>
+              +91 99933 66708
+            </a>
 
-      <span>
-        {subtitle}
-      </span>
+            <a
+              href="mailto:advisory@techtorch.solutions"
+              className="footer-contact footer-email"
+            >
+              <Mail
+                size={12}
+                strokeWidth={1.8}
+              />
 
+              advisory@techtorch.solutions
+            </a>
+          </div>
+
+        </div>
+      </footer>
     </div>
   );
 }

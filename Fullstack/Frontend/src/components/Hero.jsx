@@ -170,10 +170,11 @@ const Hero = () => {
           flex
           flex-col
           justify-center
-          max-w-[640px] max-w-full
-          px-6
-          md:px-16
-          lg:px-20
+          max-w-[640px]
+          px-4
+          sm:px-6
+          md:px-10
+          lg:px-[100px]
           text-white
           animate-[fadeIn_0.5s_ease]
         "
@@ -185,7 +186,8 @@ const Hero = () => {
           className="
             text-[26px]
             md:text-[36px]
-            lg:text-[44px]
+            lg:text-[38px]
+            font-plus-jakarta
             leading-[1.12]
             font-semibold
             mb-10
@@ -198,11 +200,12 @@ const Hero = () => {
 
         <p
           className="
-            text-base
+            text-[15px]
             leading-relaxed
+            font-inter
             font-medium
             text-white/90
-            max-w-[520px] max-w-full
+            max-w-[520px]
             mb-14
           "
         >
@@ -218,18 +221,19 @@ const Hero = () => {
             to={active.ctaHref}
             className="
               self-start
-              px-7
+              px-6
               py-3.5
               border-[1.5px]
               border-white
               text-white
               text-[13px]
+              font-inter
               font-bold
               uppercase
               transition-colors
               duration-200
               hover:bg-white
-              hover:text-[#7a1440]
+              hover:text-[#730042]
             "
           >
             {active.ctaText}
@@ -239,8 +243,8 @@ const Hero = () => {
             href={active.ctaHref}
             className="
               self-start
-              px-7
-              py-3.5
+              px-5
+              py-2.5
               border-[1.5px]
               border-white
               text-white
@@ -250,7 +254,7 @@ const Hero = () => {
               transition-colors
               duration-200
               hover:bg-white
-              hover:text-[#7a1440]
+              hover:text-[#730042]
             "
           >
             {active.ctaText}
@@ -279,7 +283,7 @@ const Hero = () => {
             onClick={() => setCurrent(i)}
             aria-label={`Go to slide ${i + 1}`}
             className={`
-              w-[11px] max-w-full
+              w-[11px]
               h-[11px]
               rounded-full
               transition-transform
@@ -316,11 +320,11 @@ const Hero = () => {
           onClick={prevSlide}
           aria-label="Previous slide"
           className="
-            w-[32px] max-w-full
+            w-[32px]
             h-[32px]
             rounded-full
-            bg-[#9b1a4f]
-            hover:bg-[#7a1440]
+            bg-[#970052]
+            hover:bg-[#730042]
             text-white
             flex
             items-center
@@ -345,11 +349,11 @@ const Hero = () => {
           onClick={nextSlide}
           aria-label="Next slide"
           className="
-            w-[32px] max-w-full
+            w-[32px]
             h-[32px]
             rounded-full
-            bg-[#9b1a4f]
-            hover:bg-[#7a1440]
+            bg-[#970052]
+            hover:bg-[#730042]
             text-white
             flex
             items-center

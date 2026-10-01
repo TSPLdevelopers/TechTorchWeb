@@ -227,7 +227,7 @@ export default function ERPIntegration() {
           background: #f7f8fa;
           color: #171717;
           font-family: "Inter", sans-serif;
-          overflow: hidden;
+          overflow: visible;
         }
 
 

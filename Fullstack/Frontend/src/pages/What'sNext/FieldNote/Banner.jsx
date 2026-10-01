@@ -13,7 +13,8 @@ export default function HeroSection() {
         backgroundPosition: "center",
       }}
     >
-      <div className="relative z-10 max-w-xl px-5 py-12 sm:px-6 sm:py-16 md:px-12 md:py-20">
+      {/* Left padding same as Hero: 16 / 24 / 40 / 100 */}
+      <div className="relative z-10 max-w-xl lg:max-w-[620px] pl-4 pr-4 py-12 sm:pl-6 sm:pr-6 sm:py-16 md:pl-10 md:pr-10 md:py-20 lg:pl-[100px] lg:pr-6">
         {/* Description / Label - Inter */}
         <div
           className="text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-white/80 mb-4 sm:mb-5"

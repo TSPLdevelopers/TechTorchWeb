@@ -116,22 +116,20 @@ export default function DeploymentMethodology() {
         lg:py-20
       "
     >
+      {/* Left/right padding same as Hero: 16 / 24 / 40 / 100 */}
       <div
         className="
-          mx-auto
           grid
           w-full
-          max-w-7xl
           grid-cols-1
           gap-10
           px-4
           sm:gap-12
           sm:px-6
-          md:px-8
+          md:px-10
           lg:grid-cols-[1fr_1.4fr]
           lg:gap-14
-          lg:px-10
-          xl:px-12
+          lg:px-[100px]
         "
       >
         {/* =====================================================
@@ -144,8 +142,6 @@ export default function DeploymentMethodology() {
             lg:sticky
             lg:top-[4px]
             lg:self-start
-            lg:ml-2
-            xl:ml-4
           "
         >
           {/* Main Heading - Plus Jakarta Sans */}

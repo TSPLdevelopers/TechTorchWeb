@@ -1,6 +1,6 @@
+import React from "react";
 
-// Apni background image yahan daalein (ya seedha URL string bhi de sakte ho)
-import backgroundImage from '/hero5slide4.png';
+const backgroundImage = "/Hero5slide4.png";
 
 export default function BringBusinessTogetherSection() {
   return (
@@ -114,9 +114,36 @@ export default function BringBusinessTogetherSection() {
 
           max-width: 560px;
 
-          padding: 45px 70px;
+          /* Vertical padding */
+          padding-top: 45px;
+          padding-bottom: 45px;
+
+          /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
+          padding-left: 16px;
+          padding-right: 16px;
 
           box-sizing: border-box;
+        }
+
+        @media (min-width: 640px) {
+          .business-content {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .business-content {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .business-content {
+            padding-left: 100px;
+            padding-right: 40px;
+          }
         }
 
 
@@ -192,7 +219,8 @@ export default function BringBusinessTogetherSection() {
           }
 
           .business-content {
-            padding: 40px 55px;
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
 
         }
@@ -212,7 +240,8 @@ export default function BringBusinessTogetherSection() {
 
           .business-content {
             max-width: 520px;
-            padding: 40px 45px;
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
 
           .business-text {
@@ -249,7 +278,8 @@ export default function BringBusinessTogetherSection() {
 
           .business-content {
             max-width: 100%;
-            padding: 40px 30px;
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
 
           .business-text {
@@ -283,7 +313,8 @@ export default function BringBusinessTogetherSection() {
           }
 
           .business-content {
-            padding: 35px 20px;
+            padding-top: 35px;
+            padding-bottom: 35px;
           }
 
           .business-content h1 {
@@ -307,4 +338,3 @@ export default function BringBusinessTogetherSection() {
     </section>
   );
 }
-

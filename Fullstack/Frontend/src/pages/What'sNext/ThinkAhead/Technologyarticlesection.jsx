@@ -81,6 +81,7 @@ export default function TechnologyArticleSection() {
   }, []);
 
   return (
+    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
     <section
       className="
         w-full
@@ -89,20 +90,17 @@ export default function TechnologyArticleSection() {
         py-10
         sm:px-6
         sm:py-12
-        md:px-8
+        md:px-10
         md:py-14
-        lg:px-10
+        lg:px-[100px]
         lg:py-16
-        xl:px-12
         xl:py-20
       "
     >
       <div
         className="
-          mx-auto
           grid
           w-full
-          max-w-7xl
           grid-cols-1
           gap-10
           sm:gap-12
@@ -147,11 +145,11 @@ export default function TechnologyArticleSection() {
                   leading-[1.45]
                   transition-colors
                   duration-200
-                  hover:text-fuchsia-900
+                  hover:text-[#730042]
                   xl:text-xs
                   ${
                     activeId === s.id
-                      ? "font-semibold text-fuchsia-900"
+                      ? "font-semibold text-[#730042]"
                       : "text-slate-500"
                   }
                 `}
@@ -205,7 +203,7 @@ export default function TechnologyArticleSection() {
                   className="
                     w-full
                     border-l-[3px]
-                    border-fuchsia-900
+                    border-[#730042]
                     bg-rose-50/70
                     py-2.5
                     pl-3

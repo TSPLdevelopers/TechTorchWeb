@@ -26,7 +26,7 @@ export default function DataDecisions() {
 
           <div className="data-decisions-eyebrow">
             <span></span>
-            TECH PULSE · DATA & DECISIONS
+            TECH PULSE · DATA &amp; DECISIONS
           </div>
 
           {/* HEADING */}
@@ -77,10 +77,7 @@ export default function DataDecisions() {
 
             {/* TALK TO EXPERTS */}
 
-            <Link
-              to="/contact"
-              className="data-decisions-secondary-btn"
-            >
+            <Link to="/contact" className="data-decisions-secondary-btn">
               Talk to Our Experts
             </Link>
           </div>
@@ -103,7 +100,7 @@ export default function DataDecisions() {
         .data-decisions-hero {
           position: relative;
           width: 100%;
-          height: 500px;
+          min-height: 500px;
           margin: 0;
           overflow: hidden;
           background: #101d32;
@@ -124,7 +121,6 @@ export default function DataDecisions() {
         .data-decisions-hero-overlay {
           position: absolute;
           inset: 0;
-
           background:
             linear-gradient(
               90deg,
@@ -140,17 +136,41 @@ export default function DataDecisions() {
             );
         }
 
-        /* ================= HERO CONTENT ================= */
+        /* ================= HERO CONTENT (padding same as other sections) ================= */
 
         .data-decisions-hero-content {
           position: relative;
           z-index: 2;
           width: 100%;
-          height: 100%;
-          padding: 38px 6%;
+          min-height: 500px;
+          padding: 40px 16px;
           display: flex;
           flex-direction: column;
           justify-content: center;
+        }
+
+        @media (min-width: 640px) {
+          .data-decisions-hero-content {
+            padding: 48px 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .data-decisions-hero-content {
+            padding: 56px 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .data-decisions-hero-content {
+            padding: 64px 100px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .data-decisions-hero-content {
+            padding: 80px 100px;
+          }
         }
 
         /* ================= EYEBROW ================= */
@@ -243,15 +263,15 @@ export default function DataDecisions() {
         /* ================= PRIMARY BUTTON ================= */
 
         .data-decisions-primary-btn {
-          border: 1px solid #970052;
-          background: #970052;
+          border: 1px solid #730042;
+          background: #730042;
           color: #ffffff;
           box-shadow: 0 7px 18px rgba(128, 0, 68, 0.25);
         }
 
         .data-decisions-primary-btn:hover {
-          background: #ad075f;
-          border-color: #ad075f;
+          background: #970052;
+          border-color: #970052;
         }
 
         /* ================= SECONDARY BUTTON ================= */
@@ -270,14 +290,6 @@ export default function DataDecisions() {
         /* ================= TABLET ================= */
 
         @media (max-width: 900px) {
-          .data-decisions-hero {
-            height: 470px;
-          }
-
-          .data-decisions-hero-content {
-            padding: 35px 5%;
-          }
-
           .data-decisions-hero h1 {
             font-size: 28px;
           }
@@ -286,12 +298,9 @@ export default function DataDecisions() {
         /* ================= MOBILE ================= */
 
         @media (max-width: 650px) {
-          .data-decisions-hero {
-            height: 570px;
-          }
-
+          .data-decisions-hero,
           .data-decisions-hero-content {
-            padding: 35px 22px;
+            min-height: 570px;
           }
 
           .data-decisions-eyebrow {
@@ -327,13 +336,9 @@ export default function DataDecisions() {
         /* ================= SMALL MOBILE ================= */
 
         @media (max-width: 420px) {
-          .data-decisions-hero {
-            height: 560px;
-          }
-
+          .data-decisions-hero,
           .data-decisions-hero-content {
-            padding-left: 18px;
-            padding-right: 18px;
+            min-height: 560px;
           }
 
           .data-decisions-hero h1 {

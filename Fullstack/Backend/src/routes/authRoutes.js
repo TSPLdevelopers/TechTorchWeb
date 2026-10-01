@@ -25,4 +25,16 @@ router.post("/reset-password", resetPassword);
 
 router.post("/logout", authMiddleware, logoutAdmin);
 
+router.get("/profile", authMiddleware, getAdminProfile);
+
+router.get("/:id", authMiddleware, getAdminById);
+
+router.put("/:id", authMiddleware, updateAdmin);
+
+router.put("/:id/password", authMiddleware, updateAdminPassword);
+
+router.patch("/:id/status", authMiddleware, toggleAdminStatus);
+
+router.delete("/:id", authMiddleware, deleteAdmin);
+
 module.exports = router;

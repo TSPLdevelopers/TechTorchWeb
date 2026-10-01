@@ -43,7 +43,7 @@ export default function PracticalERPPath() {
         className="
           relative mx-auto
           w-full
-          max-w-[1520px] max-w-full
+          max-w-[1520px]
           overflow-hidden
           bg-white
 
@@ -176,26 +176,26 @@ export default function PracticalERPPath() {
               right-5
               top-6
               z-40
-              w-[95px] max-w-full
+              w-[95px]
 
               xs:right-6
               xs:top-7
-              xs:w-[105px] max-w-full
+              xs:w-[105px]
 
               sm:right-8
               sm:top-8
-              sm:w-[125px] max-w-full
+              sm:w-[125px]
 
               md:right-10
               md:top-9
-              md:w-[150px] max-w-full
+              md:w-[150px]
 
               lg:right-[50px]
               lg:top-[30px]
-              lg:w-[230px] max-w-full
+              lg:w-[230px]
 
               xl:right-[52px]
-              xl:w-[250px] max-w-full
+              xl:w-[250px]
             "
           >
             <img
@@ -241,11 +241,11 @@ export default function PracticalERPPath() {
               md:text-[35px]
 
               lg:pr-0
-              lg:text-[39px]
+              lg:text-[32px]
               lg:leading-[1.12]
               lg:tracking-[-0.03em]
 
-              xl:text-[33px]
+              xl:text-[32px]
             "
           >
             A Practical Path to{" "}
@@ -275,22 +275,22 @@ export default function PracticalERPPath() {
               xs:leading-[1.32]
 
               sm:mt-[16px]
-              sm:max-w-[600px] max-w-full
+              sm:max-w-[600px]
               sm:pr-[125px]
               sm:text-[14px]
 
               md:mt-[17px]
-              md:max-w-[620px] max-w-full
+              md:max-w-[620px]
               md:pr-[145px]
               md:text-[15px]
 
               lg:mt-[12px]
-              lg:max-w-[700px] max-w-full
+              lg:max-w-[700px]
               lg:pr-0
               lg:text-[16px]
               lg:leading-[1.32]
 
-              xl:text-[15.5px]
+              xl:text-[15px]
             "
           >
             Every business is different, so there is no single ERP approach
@@ -307,23 +307,23 @@ export default function PracticalERPPath() {
             className="
               mt-[28px]
               w-[72%]
-              max-w-[390px] max-w-full
+              max-w-[390px]
 
               xs:mt-[30px]
               xs:w-[70%]
 
               sm:mt-[32px]
               sm:w-[64%]
-              sm:max-w-[420px] max-w-full
+              sm:max-w-[420px]
 
               md:mt-[34px]
               md:w-[61%]
-              md:max-w-[430px] max-w-full
+              md:max-w-[430px]
 
               lg:mt-[45px]
-              lg:w-[430px] max-w-full
+              lg:w-[430px]
 
-              xl:w-[440px] max-w-full
+              xl:w-[440px]
             "
           >
             {steps.map((step, index) => (
@@ -351,7 +351,7 @@ export default function PracticalERPPath() {
                   className="
                     flex
                     h-[34px]
-                    w-[34px] max-w-full
+                    w-[34px]
                     shrink-0
                     items-center
                     justify-center
@@ -364,19 +364,19 @@ export default function PracticalERPPath() {
                     text-white
 
                     xs:h-[40px]
-                    xs:w-[40px] max-w-full
+                    xs:w-[40px]
                     xs:text-[15px]
 
                     sm:h-[43px]
-                    sm:w-[43px] max-w-full
+                    sm:w-[43px]
                     sm:text-[16px]
 
                     md:h-[44px]
-                    md:w-[44px] max-w-full
+                    md:w-[44px]
                     md:text-[17px]
 
                     lg:h-[44px]
-                    lg:w-[44px] max-w-full
+                    lg:w-[44px]
                     lg:text-[18px]
                   "
                 >
@@ -400,7 +400,7 @@ export default function PracticalERPPath() {
 
                       md:text-[19px]
 
-                      lg:text-[19px]
+                      lg:text-[18px]
                     "
                   >
                     {step.title}
@@ -409,7 +409,7 @@ export default function PracticalERPPath() {
                   <p
                     className="
                       mt-[3px]
-                      max-w-[370px] max-w-full
+                      max-w-[370px]
 
                       font-['Inter']
                       text-[11px]

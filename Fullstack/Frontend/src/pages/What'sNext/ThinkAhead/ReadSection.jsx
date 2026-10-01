@@ -32,16 +32,16 @@ export default function TechHeroSection() {
       {/* ================= DARK OVERLAY ================= */}
       <div className="absolute inset-0 bg-black/60" />
 
-      {/* ================= CONTENT ================= */}
+      {/* ================= CONTENT =================
+          Left/right padding same as Hero: 16 / 24 / 40 / 100
+      ============================================ */}
       <div
         className="
           relative
           z-10
-          mx-auto
           flex
           min-h-[400px]
           w-full
-          max-w-6xl
           flex-col
           items-center
           justify-center
@@ -52,10 +52,10 @@ export default function TechHeroSection() {
           sm:px-6
           sm:py-16
           md:min-h-[480px]
-          md:px-8
+          md:px-10
           md:py-20
           lg:min-h-[520px]
-          lg:px-10
+          lg:px-[100px]
           lg:py-24
           xl:min-h-[560px]
         "
@@ -137,7 +137,8 @@ export default function TechHeroSection() {
             transition-all
             duration-300
             hover:-translate-y-0.5
-            hover:bg-[#730042]
+            hover:bg-white
+            hover:text-[#730042]
             active:translate-y-0
             sm:mt-7
             sm:w-auto
