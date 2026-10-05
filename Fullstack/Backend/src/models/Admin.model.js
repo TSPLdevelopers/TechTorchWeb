@@ -2,22 +2,12 @@ const mongoose = require("mongoose");
 
 const adminSchema = new mongoose.Schema(
   {
-
     name: {
       type: String,
-      required: [true, "Name is required"],
+      required: true,
       trim: true,
     },
-    contact: {
-      type: String,
-      required: [true, "Contact is required"],
-      trim: true,
-    },
-    emergency: {
-      type: String,
-      required: [true, "Emergency contact is required"],
-      trim: true,
-    },
+
     email: {
       type: String,
       required: [true, "Email is required"],
@@ -27,12 +17,35 @@ const adminSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
-    },
-    activeStatus: {
-      type: Boolean,
       required: true,
-      default: true,
+      minlength: 6,
+    },
+
+    role: {
+      type: String,
+      enum: ["admin", "superadmin"],
+      default: "admin",
+    },
+
+    status: {
+      type: String,
+      enum: ["active", "inactive"],
+      default: "active",
+    },
+
+    otp: {
+      type: String,
+      default: null,
+    },
+
+    otpExpiry: {
+      type: Date,
+      default: null,
+    },
+
+    lastLogin: {
+      type: Date,
+      default: null,
     },
   },
   {
@@ -40,4 +53,5 @@ const adminSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Admin", adminSchema);
+module.exports =
+  mongoose.models.Admin || mongoose.model("Admin", adminSchema);
