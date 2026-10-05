@@ -13,14 +13,15 @@ export default function EnterpriseAlignmentSection() {
     >
       <div
         className="
-          max-w-6xl
+          w-full
+          max-w-[1320px]
           mx-auto
           px-4 sm:px-6 md:px-10 lg:px-[100px]
           py-12 sm:py-14 md:py-16 lg:py-20
           grid
           grid-cols-1
           md:grid-cols-2
-          gap-8 sm:gap-10 md:gap-12 lg:gap-14
+          gap-10 sm:gap-12 md:gap-14 lg:gap-16
           items-start
         "
       >
@@ -28,7 +29,9 @@ export default function EnterpriseAlignmentSection() {
         <div>
           <p
             className="
-              text-[10px] sm:text-[11px] md:text-xs
+              text-[10px]
+              sm:text-[11px]
+              md:text-xs
               font-semibold
               tracking-[0.08em]
               mb-3
@@ -59,15 +62,16 @@ export default function EnterpriseAlignmentSection() {
         </div>
 
         {/* ================= RIGHT ================= */}
-        <div>
+        <div className="w-full">
           <p
             className="
               text-sm
               sm:text-[14px]
               md:text-sm
               leading-7
-              mb-6
+              mb-7
               font-['Inter']
+              max-w-2xl
             "
             style={{ color: MUTED }}
           >
@@ -84,9 +88,11 @@ export default function EnterpriseAlignmentSection() {
           <div
             className="
               group
+              w-full
               bg-white
               rounded-lg
-              p-4 sm:p-5
+              p-5
+              sm:p-6
               border-l-4
               transition-all
               duration-300
@@ -100,9 +106,9 @@ export default function EnterpriseAlignmentSection() {
             }}
           >
             {/* Card Heading */}
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2.5 mb-3">
               <Share2
-                size={16}
+                size={17}
                 strokeWidth={1.8}
                 style={{ color: WINE }}
                 className="shrink-0"
@@ -111,7 +117,7 @@ export default function EnterpriseAlignmentSection() {
               <h3
                 className="
                   text-sm
-                  sm:text-[14px]
+                  sm:text-[15px]
                   font-semibold
                   font-['Plus_Jakarta_Sans']
                 "
@@ -125,7 +131,7 @@ export default function EnterpriseAlignmentSection() {
               className="
                 text-xs
                 sm:text-[13px]
-                leading-relaxed
+                leading-[1.7]
                 font-['Inter']
               "
               style={{ color: MUTED }}

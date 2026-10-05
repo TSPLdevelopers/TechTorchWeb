@@ -70,16 +70,18 @@ export default function ShoppingExperienceSection() {
     >
       <div
         className="
-          max-w-6xl
+          w-full
+          max-w-[1320px]
           mx-auto
           px-4 sm:px-6 md:px-10 lg:px-[100px]
           py-12 sm:py-14 md:py-16 lg:py-20
           grid
           grid-cols-1
           md:grid-cols-2
-          gap-8
-          sm:gap-10
-          lg:gap-14
+          gap-10
+          sm:gap-12
+          md:gap-14
+          lg:gap-16
           items-start
         "
       >
@@ -218,8 +220,9 @@ export default function ShoppingExperienceSection() {
               text-sm
               sm:text-[14px]
               leading-7
-              mb-6
+              mb-7
               font-['Inter']
+              max-w-2xl
             "
             style={{ color: MUTED }}
           >
@@ -229,19 +232,27 @@ export default function ShoppingExperienceSection() {
           </p>
 
           {/* ================= FEATURE CARDS ================= */}
-          <div className="flex flex-col gap-3">
+          <div
+            className="
+              flex
+              flex-col
+              gap-4
+              sm:gap-5
+            "
+          >
             {features.map(({ icon: Icon, title, body }, index) => (
               <div
                 key={title}
                 className={`
                   group
+                  w-full
                   bg-white
                   rounded-lg
-                  p-3.5
-                  sm:p-4
+                  p-4
+                  sm:p-5
                   flex
                   items-start
-                  gap-3
+                  gap-3.5
                   border
                   border-transparent
                   transition-all
@@ -281,8 +292,7 @@ export default function ShoppingExperienceSection() {
                   }}
                 >
                   <Icon
-                    size={15}
-                    sm-size={16}
+                    size={16}
                     strokeWidth={1.8}
                   />
                 </span>
@@ -306,7 +316,7 @@ export default function ShoppingExperienceSection() {
                     className="
                       text-xs
                       sm:text-[13px]
-                      leading-relaxed
+                      leading-[1.7]
                       font-['Inter']
                     "
                     style={{ color: MUTED }}

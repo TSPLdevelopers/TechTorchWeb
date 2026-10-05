@@ -73,7 +73,8 @@ export default function IntelligenceVisibilitySection() {
     >
       <div
         className="
-          max-w-6xl
+          w-full
+          max-w-[1320px]
           mx-auto
           px-4
           sm:px-6
@@ -86,16 +87,14 @@ export default function IntelligenceVisibilitySection() {
           grid
           grid-cols-1
           lg:grid-cols-2
-          gap-8
-          sm:gap-10
-          lg:gap-14
+          gap-10
+          sm:gap-12
+          md:gap-14
+          lg:gap-16
           items-start
         "
       >
-        {/* ================================================= */}
         {/* LEFT CONTENT */}
-        {/* ================================================= */}
-
         <div className="w-full">
           {/* Section Label */}
           <p
@@ -138,7 +137,7 @@ export default function IntelligenceVisibilitySection() {
               sm:text-[14px]
               md:text-sm
               leading-7
-              mb-6
+              mb-7
               font-['Inter']
               max-w-xl
             "
@@ -150,19 +149,18 @@ export default function IntelligenceVisibilitySection() {
             decisions.
           </p>
 
-          {/* ================================================= */}
           {/* METRIC CARDS */}
-          {/* ================================================= */}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             {metrics.map(({ icon: Icon, title, body }, index) => (
               <div
                 key={title}
                 className={`
                   group
+                  w-full
+                  min-h-[150px]
                   rounded-xl
-                  p-4
-                  sm:p-5
+                  p-5
+                  sm:p-6
                   border
                   border-transparent
                   transition-all
@@ -238,10 +236,7 @@ export default function IntelligenceVisibilitySection() {
           </div>
         </div>
 
-        {/* ================================================= */}
         {/* RIGHT DATA PANEL */}
-        {/* ================================================= */}
-
         <div
           className={`
             w-full
@@ -323,10 +318,7 @@ export default function IntelligenceVisibilitySection() {
             Structured operational telemetry
           </p>
 
-          {/* ================================================= */}
           {/* CHART */}
-          {/* ================================================= */}
-
           <div
             className="
               rounded-xl
@@ -343,7 +335,6 @@ export default function IntelligenceVisibilitySection() {
               className="w-full h-28 sm:h-32"
               preserveAspectRatio="none"
             >
-              {/* Soft chart area */}
               <defs>
                 <linearGradient
                   id="chartGradient"
@@ -357,6 +348,7 @@ export default function IntelligenceVisibilitySection() {
                     stopColor={WINE}
                     stopOpacity="0.18"
                   />
+
                   <stop
                     offset="100%"
                     stopColor={WINE}
@@ -382,7 +374,6 @@ export default function IntelligenceVisibilitySection() {
                 fill="url(#chartGradient)"
               />
 
-              {/* Main Line */}
               <polyline
                 points="
                   10,72
@@ -402,7 +393,6 @@ export default function IntelligenceVisibilitySection() {
                 className={isVisible ? "chart-line" : ""}
               />
 
-              {/* Data Points */}
               {[
                 [10, 72],
                 [60, 55],
@@ -430,10 +420,7 @@ export default function IntelligenceVisibilitySection() {
             </svg>
           </div>
 
-          {/* ================================================= */}
           {/* STATS */}
-          {/* ================================================= */}
-
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
             {stats.map(({ label, value }, index) => (
               <div
@@ -491,10 +478,7 @@ export default function IntelligenceVisibilitySection() {
         </div>
       </div>
 
-      {/* ================================================= */}
       {/* ANIMATION STYLES */}
-      {/* ================================================= */}
-
       <style>{`
         .chart-line {
           stroke-dasharray: 500;

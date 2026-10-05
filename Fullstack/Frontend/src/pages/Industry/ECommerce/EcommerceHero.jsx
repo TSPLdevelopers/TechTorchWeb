@@ -16,22 +16,29 @@ export default function EcommerceHeroSection() {
     >
       <div
         className="
-          max-w-6xl
+          w-full
+          max-w-[1320px]
           mx-auto
+
           px-4
           sm:px-6
           md:px-10
           lg:px-[100px]
+
           py-12
           sm:py-14
           md:py-16
           lg:py-20
+
           grid
           grid-cols-1
-          lg:grid-cols-2
+          lg:grid-cols-[0.95fr_1.05fr]
+
           gap-10
           sm:gap-12
-          lg:gap-14
+          md:gap-14
+          lg:gap-16
+
           items-center
         "
       >
@@ -118,6 +125,7 @@ export default function EcommerceHeroSection() {
               items-stretch
               sm:items-center
               gap-3
+              sm:gap-4
             "
           >
             {/* Primary Button */}
@@ -128,7 +136,8 @@ export default function EcommerceHeroSection() {
                 items-center
                 justify-center
                 gap-2
-                px-5
+                px-6
+                sm:px-7
                 py-3
                 rounded-md
                 text-white
@@ -139,6 +148,8 @@ export default function EcommerceHeroSection() {
                 duration-300
                 hover:-translate-y-1
                 hover:shadow-lg
+                w-full
+                sm:w-auto
               "
               style={{ background: WINE }}
             >
@@ -163,7 +174,8 @@ export default function EcommerceHeroSection() {
                 items-center
                 justify-center
                 gap-2
-                px-5
+                px-6
+                sm:px-7
                 py-3
                 rounded-md
                 text-sm
@@ -174,6 +186,8 @@ export default function EcommerceHeroSection() {
                 duration-300
                 hover:-translate-y-1
                 hover:shadow-md
+                w-full
+                sm:w-auto
               "
               style={{
                 borderColor: "#d8d5d0",
@@ -195,17 +209,27 @@ export default function EcommerceHeroSection() {
         </div>
 
         {/* ================= RIGHT IMAGE ================= */}
-        <div className="relative w-full mt-4 lg:mt-0 pb-16 sm:pb-14 lg:pb-10">
+        <div
+          className="
+            relative
+            w-full
+            mt-4
+            lg:mt-0
+            pb-16
+            sm:pb-14
+            lg:pb-10
+          "
+        >
           {/* Image */}
           <div
             className="
               relative
               w-full
-              h-[270px]
-              sm:h-[330px]
-              md:h-[380px]
-              lg:h-[400px]
-              xl:h-[420px]
+              h-[280px]
+              sm:h-[340px]
+              md:h-[390px]
+              lg:h-[410px]
+              xl:h-[430px]
               rounded-2xl
               overflow-hidden
               group
@@ -250,15 +274,15 @@ export default function EcommerceHeroSection() {
               right-3
               sm:left-5
               sm:right-5
-              lg:left-5
-              lg:right-5
+              lg:left-6
+              lg:right-6
               bg-white
               rounded-xl
               shadow-[0_12px_35px_rgba(0,0,0,0.10)]
-              px-3
-              sm:px-4
-              py-3
-              sm:py-3.5
+              px-4
+              sm:px-5
+              py-3.5
+              sm:py-4
               flex
               items-center
               gap-2.5
@@ -321,7 +345,6 @@ export default function EcommerceHeroSection() {
             <span
               className="
                 hidden
-                xs:inline-flex
                 sm:inline-flex
                 items-center
                 gap-1

@@ -75,7 +75,8 @@ export default function EnterpriseSynergySection() {
     >
       <div
         className="
-          max-w-6xl
+          w-full
+          max-w-[1320px]
           mx-auto
           px-4
           sm:px-6
@@ -148,9 +149,9 @@ export default function EnterpriseSynergySection() {
             grid-cols-1
             sm:grid-cols-2
             lg:grid-cols-4
-            gap-3
-            sm:gap-4
-            lg:gap-5
+            gap-4
+            sm:gap-5
+            lg:gap-6
           "
         >
           {cards.map(({ icon: Icon, title, body, footer }, index) => (
@@ -158,10 +159,13 @@ export default function EnterpriseSynergySection() {
               key={title}
               className={`
                 group
+                relative
+                w-full
+                min-h-[220px]
                 bg-white
                 rounded-xl
-                p-4
-                sm:p-5
+                p-5
+                sm:p-6
                 flex
                 flex-col
                 border
@@ -260,7 +264,7 @@ export default function EnterpriseSynergySection() {
                 />
               </div>
 
-              {/* Bottom hover line */}
+              {/* Bottom Hover Line */}
               <span
                 className="
                   absolute
