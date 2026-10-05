@@ -1,23 +1,36 @@
 const express = require("express");
+
 const router = express.Router();
 
 const {
-  registerAdmin,
+ registerAdmin,
   loginAdmin,
-  logoutAdmin, 
+  forgotPassword,
+  verifyOTP,
+  resetPassword,
+  logoutAdmin,
   getAdminProfile,
+} = require("../controllers/authController");
+const {
   getAdminById,
   updateAdmin,
   updateAdminPassword,
   toggleAdminStatus,
   deleteAdmin,
-} = require("../controllers/authController");
+} = require("../controllers/adminController");
 
 const authMiddleware = require("../middlewares/auth.middleware");
 
 router.post("/register", registerAdmin);
 
 router.post("/login", loginAdmin);
+
+router.post("/forgot-password", forgotPassword);
+
+router.post("/verify-otp", verifyOTP);
+
+router.post("/reset-password", resetPassword);
+
 router.post("/logout", authMiddleware, logoutAdmin);
 
 router.get("/profile", authMiddleware, getAdminProfile);

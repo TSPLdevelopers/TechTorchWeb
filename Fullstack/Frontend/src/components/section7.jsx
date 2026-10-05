@@ -139,7 +139,7 @@ function CopyPanel() {
           marginTop: "-10px",
           fontFamily: "Inter",
           fontSize: "15px",
-          fontFamily: "Inter",
+          
           maxWidth: "28rem",
           lineHeight: 1.65,
           fontWeight: 400,
