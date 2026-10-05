@@ -96,7 +96,7 @@ export default function TechnologyMovesForward() {
                 md:text-[38px]
                 md:tracking-[-1.5px]
 
-                lg:text-[44px]
+                lg:text-[40px]
                 lg:tracking-[-1.8px]
 
                 xl:text-[36px]
@@ -125,10 +125,10 @@ export default function TechnologyMovesForward() {
                 sm:text-[15px]
 
                 md:mt-8
-                md:text-[16px]
+                md:text-[15px]
 
                 lg:mt-8
-                lg:text-[17px]
+                lg:text-[16px]
               "
             >
               We help businesses use technology to work smarter, solve
@@ -179,9 +179,9 @@ export default function TechnologyMovesForward() {
 
                   sm:text-[15px]
 
-                  md:text-[16px]
+                  md:text-[15px]
 
-                  lg:text-[17px]
+                  lg:text-[15px]
                 "
               >
                 <span>Talk to Our Experts</span>

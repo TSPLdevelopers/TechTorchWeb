@@ -6,45 +6,45 @@ export default function ERPApproach() {
       className="
         w-full
         min-h-[480px]
-        sm:min-h-[460px]
-        md:min-h-[500px]
-        lg:min-h-[520px]
         overflow-hidden
         bg-[#F8F7F0]
         text-[#191919]
+
+        sm:min-h-[460px]
+        md:min-h-[500px]
+        lg:min-h-[520px]
       "
       style={{ backgroundColor: "#F8F7F0" }}
     >
+      {/* ================= MAIN CONTAINER ================= */}
+
       <div
         className="
-          mx-auto
           w-full
-          max-w-[1180px]
           px-4
           py-6
 
-          sm:px-5
+          sm:px-6
           sm:py-5
 
-          md:px-7
+          md:px-10
           md:py-6
 
-          lg:px-10
+          lg:px-[100px]
           lg:py-8
-
-          xl:px-12
         "
       >
         {/* ================= TOP LABEL ================= */}
+
         <p
           className="
-          md:-translate-x-2 lg:-translate-x-10 xl:-translate-x-16
             font-['Plus_Jakarta_Sans']
             font-bold
             uppercase
             leading-none
             tracking-[0.01em]
             text-[#151515]
+
             text-[13px]
             sm:text-[15px]
             md:text-[16px]
@@ -55,7 +55,7 @@ export default function ERPApproach() {
         </p>
 
         {/* ================= MAIN CONTENT ================= */}
-        {/* Mobile-first: single column, stacked. From md up: two columns side by side. */}
+
         <div
           className="
             mt-5
@@ -77,7 +77,14 @@ export default function ERPApproach() {
           "
         >
           {/* ================= LEFT CONTENT ================= */}
-          <div className="min-w-0 order-1 md:order-1 md:-translate-x-2 lg:-translate-x-10 xl:-translate-x-16">
+
+          <div
+            className="
+              order-1
+              min-w-0
+              md:order-1
+            "
+          >
             <h1
               className="
                 font-['Plus_Jakarta_Sans']
@@ -95,7 +102,9 @@ export default function ERPApproach() {
             >
               A Business That
               <br />
-              <span className="text-[#730042]">Works as One</span>
+              <span className="text-[#730042]">
+                Works as One
+              </span>
             </h1>
 
             <p
@@ -176,35 +185,40 @@ export default function ERPApproach() {
           </div>
 
           {/* ================= RIGHT DIAGRAM ================= */}
+
           <div
             className="
               relative
-              min-w-0
-              w-full
+              order-2
               flex
+              w-full
+              min-w-0
               flex-col
               items-center
-              order-2 md:order-2
 
+              md:order-2
               md:items-center
               md:translate-x-2
 
               lg:translate-x-14
-              xl:translate-x-32
-
               lg:-translate-y-5
+
+              xl:translate-x-32
               xl:-translate-y-6
             "
           >
+            {/* ================= DIAGRAM ================= */}
+
             <div
               className="
                 relative
-                w-full
                 mx-auto
                 aspect-[4/3]
+                w-full
                 max-w-[280px]
 
                 xs:max-w-[300px]
+
                 sm:h-[300px]
                 sm:max-w-[350px]
                 sm:aspect-auto
@@ -222,6 +236,7 @@ export default function ERPApproach() {
               {/* ================= CONNECTING LINES ================= */}
 
               {/* Finance → TX */}
+
               <div
                 className="
                   absolute
@@ -238,6 +253,7 @@ export default function ERPApproach() {
               />
 
               {/* Payroll → TX */}
+
               <div
                 className="
                   absolute
@@ -254,6 +270,7 @@ export default function ERPApproach() {
               />
 
               {/* Inventory → TX */}
+
               <div
                 className="
                   absolute
@@ -270,6 +287,7 @@ export default function ERPApproach() {
               />
 
               {/* Engage → TX */}
+
               <div
                 className="
                   absolute
@@ -286,6 +304,7 @@ export default function ERPApproach() {
               />
 
               {/* Talent → TX */}
+
               <div
                 className="
                   absolute
@@ -300,6 +319,7 @@ export default function ERPApproach() {
               />
 
               {/* ================= FINANCE ================= */}
+
               <ERPItem
                 title="Finance"
                 subtitle="(Accounting)"
@@ -312,6 +332,7 @@ export default function ERPApproach() {
               />
 
               {/* ================= PAYROLL ================= */}
+
               <ERPItem
                 title="Payroll"
                 subtitle="(Payroll)"
@@ -324,6 +345,7 @@ export default function ERPApproach() {
               />
 
               {/* ================= INVENTORY ================= */}
+
               <ERPItem
                 title="Inventory"
                 subtitle="(Stock)"
@@ -336,6 +358,7 @@ export default function ERPApproach() {
               />
 
               {/* ================= ENGAGE ================= */}
+
               <ERPItem
                 title="Engage"
                 subtitle="(CRM)"
@@ -348,6 +371,7 @@ export default function ERPApproach() {
               />
 
               {/* ================= TALENT ================= */}
+
               <ERPItem
                 title="Talent"
                 subtitle="(HRMS)"
@@ -361,6 +385,7 @@ export default function ERPApproach() {
               />
 
               {/* ================= CENTER TORCHX LOGO ================= */}
+
               <div
                 className="
                   absolute
@@ -368,14 +393,15 @@ export default function ERPApproach() {
                   top-[34%]
                   z-[3]
                   flex
-                  h-[46px]
-                  w-[46px]
                   -translate-x-1/2
                   items-center
                   justify-center
                   overflow-hidden
                   rounded-full
                   bg-white
+
+                  h-[46px]
+                  w-[46px]
 
                   xs:h-[52px]
                   xs:w-[52px]
@@ -407,6 +433,7 @@ export default function ERPApproach() {
             </div>
 
             {/* ================= GOAL CARD ================= */}
+
             <div
               className="
                 mt-4
@@ -524,7 +551,8 @@ function ERPItem({
         </div>
       )}
 
-      {/* ICON CIRCLE */}
+      {/* ================= ICON CIRCLE ================= */}
+
       <div
         className="
           flex
@@ -685,7 +713,12 @@ function WalletIcon() {
         fill="#850052"
       />
 
-      <circle cx="32" cy="26" r="1.8" fill="white" />
+      <circle
+        cx="32"
+        cy="26"
+        r="1.8"
+        fill="white"
+      />
 
       <path
         d="M12 12V9C12 7.9 12.9 7 14 7H33L38 12"
@@ -792,11 +825,19 @@ function UsersIcon() {
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="17" cy="16" r="7" />
+      <circle
+        cx="17"
+        cy="16"
+        r="7"
+      />
 
       <path d="M6 37C6 30.4 10.8 26 17 26C23.2 26 28 30.4 28 37H6Z" />
 
-      <circle cx="31" cy="17" r="6" />
+      <circle
+        cx="31"
+        cy="17"
+        r="6"
+      />
 
       <path d="M25 28C26.8 26.7 29 26 31 26C36.8 26 41 30.2 42 36H27" />
     </svg>
@@ -830,15 +871,27 @@ function TalentIcon() {
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="13" cy="17" r="5" />
+      <circle
+        cx="13"
+        cy="17"
+        r="5"
+      />
 
       <path d="M5 35C5 29.5 8.2 26 13 26C16 26 18.5 27.3 20 29.5V35H5Z" />
 
-      <circle cx="35" cy="17" r="5" />
+      <circle
+        cx="35"
+        cy="17"
+        r="5"
+      />
 
       <path d="M28 29.5C29.5 27.3 32 26 35 26C39.8 26 43 29.5 43 35H28V29.5Z" />
 
-      <circle cx="24" cy="13" r="6" />
+      <circle
+        cx="24"
+        cy="13"
+        r="6"
+      />
 
       <path d="M13 36C13 29.3 17.6 25 24 25C30.4 25 35 29.3 35 36H13Z" />
 
