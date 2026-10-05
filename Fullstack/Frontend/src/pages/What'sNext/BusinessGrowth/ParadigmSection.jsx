@@ -3,11 +3,26 @@ import { CheckCircle2 } from "lucide-react";
 
 export default function ParadigmSection() {
   return (
-    <section className="w-full overflow-hidden bg-white px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20">
-      <div className="w-full text-center">
+    <section
+      className="
+        w-full
+        overflow-hidden
+        bg-white
+        px-4
+        py-8
+        sm:px-6
+        sm:py-9
+        md:px-10
+        md:py-10
+        lg:px-[100px]
+        lg:py-12
+        xl:py-14
+      "
+    >
+      <div className="mx-auto w-full max-w-[1320px] text-center">
         {/* Label */}
         <span
-          className="text-[10px] font-semibold tracking-[0.15em] text-[#730042]"
+          className="text-[9px] font-semibold tracking-[0.15em] text-[#730042] sm:text-[10px]"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           THE PARADIGM
@@ -15,15 +30,37 @@ export default function ParadigmSection() {
 
         {/* Main Heading */}
         <h1
-          className="mx-auto mt-3 max-w-3xl text-2xl font-semibold leading-snug text-[#730042] sm:text-3xl md:text-4xl"
+          className="
+            mx-auto
+            mt-2
+            max-w-3xl
+            text-[21px]
+            font-semibold
+            leading-[1.3]
+            text-[#730042]
+            sm:text-[25px]
+            md:text-[30px]
+            lg:text-[34px]
+            xl:text-[36px]
+          "
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Don't Let Technology Become the Limit to Your Growth
         </h1>
 
-        {/* Subheading / Intro */}
+        {/* First Subheading */}
         <p
-          className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-[15px] md:text-base"
+          className="
+            mx-auto
+            mt-4
+            max-w-2xl
+            text-[12px]
+            leading-[1.65]
+            text-slate-600
+            sm:text-[13px]
+            md:text-[14px]
+            lg:text-[15px]
+          "
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Your business shouldn't have to slow down because your systems
@@ -32,17 +69,37 @@ export default function ParadigmSection() {
           spend their time working around technology.
         </p>
 
-        {/* Highlight Text */}
+        {/* Highlight */}
         <p
-          className="mx-auto mt-5 max-w-2xl text-sm font-semibold leading-relaxed text-[#730042] sm:text-[15px] md:text-base"
+          className="
+            mx-auto
+            mt-3
+            max-w-2xl
+            text-[12px]
+            font-semibold
+            leading-[1.6]
+            text-[#730042]
+            sm:text-[13px]
+            md:text-[14px]
+          "
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Technology should create possibilities.
         </p>
 
-        {/* Subheading / Intro */}
+        {/* Second Subheading */}
         <p
-          className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-[15px] md:text-base"
+          className="
+            mx-auto
+            mt-3
+            max-w-2xl
+            text-[12px]
+            leading-[1.65]
+            text-slate-600
+            sm:text-[13px]
+            md:text-[14px]
+            lg:text-[15px]
+          "
           style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           It should help your people work better. It should give you a
@@ -52,9 +109,33 @@ export default function ParadigmSection() {
         </p>
 
         {/* Growth Statement */}
-        <div className="mx-auto mt-8 inline-flex max-w-full items-center justify-center rounded-full bg-[#730042] px-5 py-3 sm:px-6">
+        <div
+          className="
+            mx-auto
+            mt-5
+            inline-flex
+            max-w-full
+            items-center
+            justify-center
+            rounded-full
+            bg-[#730042]
+            px-4
+            py-2
+            sm:px-5
+            sm:py-2.5
+          "
+        >
           <span
-            className="text-center text-[10px] font-semibold uppercase tracking-wide text-white sm:text-[11px]"
+            className="
+              text-center
+              text-[8px]
+              font-semibold
+              uppercase
+              tracking-[0.08em]
+              text-white
+              sm:text-[9px]
+              md:text-[10px]
+            "
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             That's what it means to build technology for growth.
@@ -62,28 +143,92 @@ export default function ParadigmSection() {
         </div>
 
         {/* Image */}
-        <div className="relative mt-10 w-full overflow-hidden rounded-xl sm:mt-12">
+        <div
+          className="
+            relative
+            mt-5
+            w-full
+            overflow-hidden
+            rounded-lg
+            sm:mt-6
+            sm:rounded-xl
+            md:mt-7
+          "
+        >
           <img
             src="/Senior cybersecurity advisors consulting around a digital holographic security display.png"
             alt="Executives discussing enterprise architecture"
-            className="block h-56 w-full object-cover sm:h-64 md:h-72 lg:h-80"
+            className="
+              block
+              h-[10px]
+              w-full
+              object-cover
+              object-center
+              sm:h-[105px]
+              md:h-[120px]
+              lg:h-[135px]
+              xl:h-[145px]
+            "
           />
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#3A0A22]/80 via-transparent to-transparent" />
+          <div
+            className="
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-[#3A0A22]/80
+              via-[#3A0A22]/20
+              to-transparent
+            "
+          />
 
           {/* Image Bottom Content */}
-          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-4 text-left sm:p-5 md:flex-row md:items-center md:justify-between md:gap-5 lg:p-6">
+          <div
+            className="
+              absolute
+              inset-x-0
+              bottom-0
+              flex
+              flex-col
+              gap-1
+              p-2.5
+              text-left
+              sm:p-3
+              md:flex-row
+              md:items-end
+              md:justify-between
+              md:gap-4
+              lg:p-4
+            "
+          >
+            {/* Image Text */}
             <div className="min-w-0">
               <span
-                className="text-[9px] font-semibold tracking-[0.1em] text-rose-200 sm:text-[10px]"
+                className="
+                  text-[6px]
+                  font-semibold
+                  tracking-[0.1em]
+                  text-rose-200
+                  sm:text-[7px]
+                  md:text-[8px]
+                "
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 THE PARADIGM FOR GROWTH
               </span>
 
               <p
-                className="mt-1 text-sm font-medium leading-relaxed text-white sm:text-[15px] md:text-base"
+                className="
+                  mt-0.5
+                  max-w-xl
+                  text-[8px]
+                  font-medium
+                  leading-[1.3]
+                  text-white
+                  sm:text-[9px]
+                  md:text-[10px]
+                "
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Scalable enterprise architecture built for enduring
@@ -93,11 +238,34 @@ export default function ParadigmSection() {
 
             {/* Verification Badge */}
             <span
-              className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[10px] font-semibold text-slate-800 sm:text-[11px]"
+              className="
+                inline-flex
+                w-fit
+                shrink-0
+                items-center
+                gap-1
+                rounded-full
+                bg-white
+                px-2
+                py-1
+                text-[6px]
+                font-semibold
+                text-slate-800
+                sm:px-2.5
+                sm:py-1
+                sm:text-[7px]
+                md:text-[8px]
+              "
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              <CheckCircle2 size={13} className="shrink-0 text-emerald-600" />
-              Verified Enterprise Architecture
+              <CheckCircle2
+                size={10}
+                className="shrink-0 text-emerald-600 sm:h-3 sm:w-3"
+              />
+
+              <span className="whitespace-nowrap">
+                Verified Enterprise Architecture
+              </span>
             </span>
           </div>
         </div>
