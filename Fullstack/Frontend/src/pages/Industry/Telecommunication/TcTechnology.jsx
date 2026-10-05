@@ -18,36 +18,454 @@ const bullets = [
 
 export default function TelecomTechnologySection() {
   return (
-    <div style={{ background: "#f4f1ec", color: INK }} className="w-full font-sans">
-      <div className="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-[1.1fr_0.9fr] gap-12">
-        {/* Left: copy */}
+    <section className="telecom-technology-section">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        /* =========================================
+           MAIN SECTION
+        ========================================= */
+
+        .telecom-technology-section {
+          width: 100%;
+          overflow: hidden;
+
+          background: #f4f1ec;
+          color: ${INK};
+
+          font-family: "Inter", sans-serif;
+        }
+
+        .telecom-technology-container {
+          width: 100%;
+          max-width: 1180px;
+          margin: 0 auto;
+
+          padding: 90px 32px;
+
+          display: grid;
+          grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+          gap: 70px;
+          align-items: start;
+        }
+
+        /* =========================================
+           LEFT CONTENT
+        ========================================= */
+
+        .telecom-technology-label {
+          margin: 0 0 14px;
+
+          color: ${WINE};
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+        }
+
+        .telecom-technology-heading {
+          margin: 0 0 25px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(28px, 3vw, 40px);
+          font-weight: 700;
+          line-height: 1.22;
+          letter-spacing: -0.035em;
+        }
+
+        .telecom-technology-copy {
+          display: flex;
+          flex-direction: column;
+          gap: 17px;
+        }
+
+        .telecom-technology-copy p {
+          margin: 0;
+
+          color: ${MUTED};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 13.5px;
+          font-weight: 500;
+          line-height: 1.8;
+        }
+
+        /* =========================================
+           RIGHT PANEL
+        ========================================= */
+
+        .telecom-framework-panel {
+          width: 100%;
+          padding: 28px;
+
+          background: #ffffff;
+          border-radius: 20px;
+
+          box-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.06),
+            0 12px 35px rgba(30, 20, 25, 0.035);
+        }
+
+        /* =========================================
+           FRAMEWORK BADGE
+        ========================================= */
+
+        .telecom-framework-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+
+          margin-bottom: 20px;
+          padding: 6px 11px;
+
+          border-radius: 999px;
+
+          background: #fbeef1;
+          color: ${WINE};
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0.04em;
+        }
+
+        /* =========================================
+           PANEL HEADING
+        ========================================= */
+
+        .telecom-framework-title {
+          margin: 0 0 11px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: -0.02em;
+        }
+
+        .telecom-framework-description {
+          margin: 0 0 23px;
+
+          color: ${MUTED};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 11.5px;
+          font-weight: 500;
+          line-height: 1.75;
+        }
+
+        /* =========================================
+           BULLETS
+        ========================================= */
+
+        .telecom-bullets {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          column-gap: 22px;
+          row-gap: 11px;
+        }
+
+        .telecom-bullet {
+          min-width: 0;
+
+          display: flex;
+          align-items: center;
+          gap: 9px;
+        }
+
+        .telecom-bullet-dot {
+          width: 5px;
+          height: 5px;
+          flex-shrink: 0;
+
+          border-radius: 50%;
+          background: ${WINE};
+        }
+
+        .telecom-bullet-text {
+          color: ${INK};
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+
+        /* =========================================
+           ARCHITECTURAL NOTE
+        ========================================= */
+
+        .telecom-cohesion-note {
+          width: 100%;
+
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+
+          margin-top: 17px;
+          padding: 17px;
+
+          background: #ffffff;
+          border-radius: 15px;
+
+          box-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .telecom-cohesion-icon {
+          width: 30px;
+          height: 30px;
+          flex-shrink: 0;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 50%;
+
+          background: #fbeef1;
+          color: ${WINE};
+        }
+
+        .telecom-cohesion-content {
+          min-width: 0;
+        }
+
+        .telecom-cohesion-title {
+          margin: 0 0 5px;
+
+          color: ${INK};
+
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .telecom-cohesion-description {
+          margin: 0;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          font-weight: 400;
+          line-height: 1.65;
+        }
+
+        /* =========================================
+           LARGE TABLET
+        ========================================= */
+
+        @media (max-width: 1050px) {
+          .telecom-technology-container {
+            padding: 80px 28px;
+            gap: 45px;
+          }
+
+          .telecom-technology-heading {
+            font-size: 32px;
+          }
+
+          .telecom-framework-panel {
+            padding: 25px;
+          }
+        }
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 850px) {
+          .telecom-technology-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+
+            padding: 75px 28px;
+          }
+
+          .telecom-technology-heading {
+            max-width: 650px;
+            font-size: 32px;
+          }
+
+          .telecom-technology-copy {
+            max-width: 750px;
+          }
+
+          .telecom-framework-panel {
+            max-width: 100%;
+          }
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+          .telecom-technology-container {
+            padding: 60px 20px;
+            gap: 30px;
+          }
+
+          .telecom-technology-label {
+            margin-bottom: 11px;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+          }
+
+          .telecom-technology-heading {
+            margin-bottom: 20px;
+
+            font-size: 27px;
+            line-height: 1.28;
+            letter-spacing: -0.025em;
+          }
+
+          .telecom-technology-copy {
+            gap: 14px;
+          }
+
+          .telecom-technology-copy p {
+            font-size: 12.5px;
+            line-height: 1.75;
+          }
+
+          .telecom-framework-panel {
+            padding: 21px;
+            border-radius: 17px;
+          }
+
+          .telecom-framework-badge {
+            margin-bottom: 17px;
+            padding: 6px 10px;
+            font-size: 8.5px;
+          }
+
+          .telecom-framework-title {
+            font-size: 16px;
+            line-height: 1.4;
+          }
+
+          .telecom-framework-description {
+            margin-bottom: 20px;
+            font-size: 11px;
+            line-height: 1.7;
+          }
+
+          .telecom-bullets {
+            grid-template-columns: 1fr;
+            gap: 10px;
+          }
+
+          .telecom-bullet-text {
+            font-size: 11px;
+          }
+
+          .telecom-cohesion-note {
+            margin-top: 14px;
+            padding: 15px;
+            gap: 10px;
+          }
+
+          .telecom-cohesion-title {
+            font-size: 11px;
+          }
+
+          .telecom-cohesion-description {
+            font-size: 10px;
+          }
+        }
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 400px) {
+          .telecom-technology-container {
+            padding: 52px 16px;
+          }
+
+          .telecom-technology-heading {
+            font-size: 24px;
+          }
+
+          .telecom-technology-copy p {
+            font-size: 12px;
+          }
+
+          .telecom-framework-panel {
+            padding: 18px;
+          }
+
+          .telecom-framework-title {
+            font-size: 15px;
+          }
+
+          .telecom-framework-description {
+            font-size: 10.5px;
+          }
+
+          .telecom-cohesion-note {
+            padding: 14px;
+          }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            scroll-behavior: auto !important;
+          }
+        }
+      `}</style>
+
+      <div className="telecom-technology-container">
+
+        {/* =====================================
+            LEFT: COPY
+        ===================================== */}
+
         <div>
-          <p className="text-xs font-semibold tracking-wide mb-3" style={{ color: WINE }}>
-            TELECOMMUNICATIONS TECHNOLOGY
+          <p className="telecom-technology-label">
+            Telecommunications Technology
           </p>
-          <h2 className="text-2xl leading-[1.25] font-bold tracking-tight mb-6">
+
+          <h2 className="telecom-technology-heading">
             Connecting Technology With Business
-            <br />
+            <br className="desktop-break" />
             Operations
           </h2>
 
-          <div className="space-y-4">
-            <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
+          <div className="telecom-technology-copy">
+            <p>
               Modern telecommunications businesses work across multiple
               functions, applications and digital processes. Managing these
               areas effectively requires technology that fits the
               organization's requirements and works with its existing
               business environment.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
+
+            <p>
               TechTorch Solutions brings together a range of technology
-              services and business solutions to support these
-              requirements. Its capabilities include IT Consultancy,
-              Software Engineering, Cloud Infrastructure, Cyber Security,
-              Artificial Intelligence, Software Development &amp; Support,
-              Business Process Outsourcing and Resource &amp; Staffing.
+              services and business solutions to support these requirements.
+              Its capabilities include IT Consultancy, Software Engineering,
+              Cloud Infrastructure, Cyber Security, Artificial Intelligence,
+              Software Development &amp; Support, Business Process
+              Outsourcing and Resource &amp; Staffing.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: MUTED }}>
+
+            <p>
               The approach is centered around understanding the business
               requirement first and then developing or implementing
               technology that fits the organization. This can include
@@ -58,22 +476,28 @@ export default function TelecomTechnologySection() {
           </div>
         </div>
 
-        {/* Right: panel */}
+        {/* =====================================
+            RIGHT: FRAMEWORK
+        ===================================== */}
+
         <div>
-          <div
-            className="bg-white rounded-2xl p-6"
-            style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}
-          >
-            <span
-              className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-wide px-2.5 py-1 rounded-full mb-5"
-              style={{ background: "#fbeef1", color: WINE }}
-            >
-              <ChevronLeft size={10} strokeWidth={3} />
+
+          <div className="telecom-framework-panel">
+
+            <span className="telecom-framework-badge">
+              <ChevronLeft
+                size={10}
+                strokeWidth={3}
+              />
+
               Integrated Core Framework
             </span>
 
-            <h3 className="text-base font-semibold mb-3">Unified Enterprise Portfolio</h3>
-            <p className="text-xs leading-relaxed mb-5" style={{ color: MUTED }}>
+            <h3 className="telecom-framework-title">
+              Unified Enterprise Portfolio
+            </h3>
+
+            <p className="telecom-framework-description">
               TechTorch also provides digital solutions across Enterprise
               Resource Planning, Operations Management, Supply Chain
               Management, People Resources, Web Portals, Financial
@@ -81,40 +505,50 @@ export default function TelecomTechnologySection() {
               Management, E-Commerce and Project Management.
             </p>
 
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              {bullets.map((b) => (
-                <div key={b} className="flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full shrink-0" style={{ background: WINE }} />
-                  <span className="text-xs" style={{ color: INK }}>
-                    {b}
+            <div className="telecom-bullets">
+              {bullets.map((bullet) => (
+                <div
+                  key={bullet}
+                  className="telecom-bullet"
+                >
+                  <span className="telecom-bullet-dot" />
+
+                  <span className="telecom-bullet-text">
+                    {bullet}
                   </span>
                 </div>
               ))}
             </div>
+
           </div>
 
-          {/* Architectural Cohesion note */}
-          <div
-            className="bg-white rounded-xl p-4 mt-4 flex items-start gap-3"
-            style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}
-          >
-            <span
-              className="w-7 h-7 flex items-center justify-center rounded-full shrink-0"
-              style={{ background: "#fbeef1", color: WINE }}
-            >
-              <ShieldAlert size={13} />
+          {/* ARCHITECTURAL COHESION */}
+
+          <div className="telecom-cohesion-note">
+
+            <span className="telecom-cohesion-icon">
+              <ShieldAlert
+                size={14}
+                strokeWidth={1.8}
+              />
             </span>
-            <div>
-              <p className="text-xs font-semibold mb-1">Architectural Cohesion</p>
-              <p className="text-[11px] leading-relaxed" style={{ color: MUTED }}>
+
+            <div className="telecom-cohesion-content">
+              <p className="telecom-cohesion-title">
+                Architectural Cohesion
+              </p>
+
+              <p className="telecom-cohesion-description">
                 Every software component is integrated with strict adherence
                 to organizational security, regulatory mandates, and
                 operational continuous uptime.
               </p>
             </div>
+
           </div>
+
         </div>
       </div>
-    </div>
+    </section>
   );
 }
