@@ -82,6 +82,8 @@ export default function TelecommunicationsGetInTouch() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
         :root {
           --tc-beetroot: #730042;
           --tc-dark: #111827;
@@ -100,7 +102,7 @@ export default function TelecommunicationsGetInTouch() {
           min-height: 100vh;
           background: #fff;
           color: var(--tc-dark);
-          font-family: Arial, Helvetica, sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           overflow: hidden;
         }
 
@@ -108,11 +110,12 @@ export default function TelecommunicationsGetInTouch() {
 
         .tc-topbar {
           width: 100%;
-          height: 40px;
+          min-height: 40px;
           padding: 0 4%;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: 20px;
           border-bottom: 1px solid #eeeeee;
           background: #fff;
         }
@@ -134,11 +137,13 @@ export default function TelecommunicationsGetInTouch() {
         .tc-topbar-dot {
           width: 6px;
           height: 6px;
+          flex-shrink: 0;
           border-radius: 50%;
           background: var(--tc-beetroot);
         }
 
         .tc-topbar-text {
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 700;
           letter-spacing: 0.3px;
@@ -149,9 +154,11 @@ export default function TelecommunicationsGetInTouch() {
           display: flex;
           align-items: center;
           gap: 6px;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 600;
           color: #687487;
+          white-space: nowrap;
         }
 
         .tc-topbar-item svg {
@@ -161,16 +168,21 @@ export default function TelecommunicationsGetInTouch() {
         /* ================= HERO ================= */
 
         .tc-hero {
-          max-width: 1250px;
+          width: 100%;
+          max-width: 1450px;
           margin: 0 auto;
-          padding: 48px 25px 0;
+          padding: 70px 40px 0;
         }
 
         .tc-hero-grid {
           display: grid;
           grid-template-columns: 1.08fr 0.92fr;
-          gap: 48px;
+          gap: 70px;
           align-items: center;
+        }
+
+        .tc-hero-content {
+          min-width: 0;
         }
 
         .tc-eyebrow {
@@ -183,6 +195,7 @@ export default function TelecommunicationsGetInTouch() {
           background: #fff0f6;
           border: 1px solid #f6c7db;
           color: var(--tc-beetroot);
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.2px;
@@ -195,25 +208,29 @@ export default function TelecommunicationsGetInTouch() {
           background: var(--tc-beetroot);
         }
 
+        /* Heading = Plus Jakarta Sans */
+
         .tc-hero-content h1 {
-          margin: 25px 0 20px;
-          max-width: 560px;
+          margin: 28px 0 22px;
+          max-width: 680px;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 34px;
-          line-height: 0.98;
-          letter-spacing: -2px;
-          word-spacing: 4px;
-          font-weight: 600;
+          font-size: clamp(38px, 3.2vw, 54px);
+          line-height: 1.08;
+          letter-spacing: -2.4px;
+          word-spacing: 3px;
+          font-weight: 700;
           color: #111a2c;
         }
 
+        /* Normal content = Inter */
+
         .tc-hero-content > p {
-          max-width: 560px;
+          max-width: 670px;
           margin: 0;
           color: #607087;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 14px;
-          line-height: 1.6;
+          font-size: 15px;
+          line-height: 1.7;
         }
 
         /* ================= BENEFITS ================= */
@@ -221,40 +238,44 @@ export default function TelecommunicationsGetInTouch() {
         .tc-benefits {
           display: flex;
           flex-direction: column;
-          gap: 13px;
-          margin-top: 31px;
-          max-width: 610px;
+          gap: 14px;
+          margin-top: 34px;
+          max-width: 680px;
         }
 
         .tc-benefit-card {
           display: flex;
           align-items: center;
-          gap: 14px;
-          min-height: 83px;
-          padding: 14px 17px;
+          gap: 15px;
+          min-height: 88px;
+          padding: 16px 18px;
           background: #fff;
           border: 1px solid #e3e8ef;
-          border-radius: 11px;
-          box-shadow: 0 3px 10px rgba(20, 30, 50, 0.035);
+          border-radius: 12px;
+          box-shadow: 0 3px 12px rgba(20, 30, 50, 0.035);
         }
 
         .tc-benefit-icon {
-          width: 35px;
-          height: 35px;
+          width: 38px;
+          height: 38px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
           color: var(--tc-beetroot);
           background: #fff0f6;
-          border-radius: 8px;
+          border-radius: 9px;
+        }
+
+        .tc-benefit-content {
+          min-width: 0;
         }
 
         .tc-benefit-content h3 {
-          margin: 0 0 4px;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 13px;
-          line-height: 1.25;
+          margin: 0 0 5px;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 14px;
+          line-height: 1.3;
           font-weight: 600;
           color: #172033;
         }
@@ -264,20 +285,20 @@ export default function TelecommunicationsGetInTouch() {
           color: #607087;
           font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
-          line-height: 1.45;
+          line-height: 1.5;
         }
 
         /* ================= HERO IMAGE ================= */
 
         .tc-image-card {
           position: relative;
-          width: 92%;
-          height: 380px;
+          width: 100%;
+          height: 500px;
           justify-self: end;
           overflow: hidden;
-          border-radius: 14px;
+          border-radius: 18px;
           background: #ddd;
-          box-shadow: 0 7px 22px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .tc-image-card img {
@@ -292,7 +313,7 @@ export default function TelecommunicationsGetInTouch() {
           left: 0;
           right: 0;
           bottom: 0;
-          height: 35%;
+          height: 38%;
           background: linear-gradient(
             to top,
             rgba(115, 0, 66, 0.95),
@@ -302,17 +323,17 @@ export default function TelecommunicationsGetInTouch() {
 
         .tc-image-info {
           position: absolute;
-          left: 22px;
-          right: 22px;
-          bottom: 18px;
-          min-height: 60px;
-          padding: 13px 16px;
+          left: 25px;
+          right: 25px;
+          bottom: 22px;
+          min-height: 68px;
+          padding: 14px 17px;
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: 15px;
           background: rgba(255, 255, 255, 0.96);
-          border-radius: 12px;
+          border-radius: 13px;
         }
 
         .tc-image-info-left {
@@ -322,6 +343,7 @@ export default function TelecommunicationsGetInTouch() {
         .tc-image-label {
           margin-bottom: 5px;
           color: var(--tc-beetroot);
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
           font-weight: 700;
           letter-spacing: 0.5px;
@@ -329,7 +351,8 @@ export default function TelecommunicationsGetInTouch() {
 
         .tc-image-title {
           color: #182033;
-          font-size: 12px;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 13px;
           font-weight: 700;
         }
 
@@ -339,6 +362,7 @@ export default function TelecommunicationsGetInTouch() {
           align-items: center;
           gap: 7px;
           color: #647184;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 600;
           white-space: nowrap;
@@ -351,70 +375,74 @@ export default function TelecommunicationsGetInTouch() {
         /* ================= FORM SECTION ================= */
 
         .tc-form-section {
-          max-width: 1000px;
-          margin: 105px auto 70px;
-          padding: 0 25px;
+          width: 100%;
+          max-width: 1250px;
+          margin: 120px auto 80px;
+          padding: 0 40px;
         }
 
         .tc-form-heading {
           text-align: center;
-          margin-bottom: 38px;
+          margin-bottom: 42px;
         }
 
         .tc-form-heading .tc-section-label {
           color: var(--tc-beetroot);
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 700;
           letter-spacing: 0.8px;
         }
 
+        /* Form heading = Plus Jakarta */
+
         .tc-form-heading h2 {
-          margin: 9px 0 7px;
+          margin: 10px 0 8px;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 24px;
+          font-size: 28px;
           line-height: 1.25;
           font-weight: 700;
           color: #172033;
         }
 
         .tc-form-heading p {
-          max-width: 620px;
+          max-width: 680px;
           margin: 0 auto;
           color: #738095;
           font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
-          line-height: 1.55;
+          line-height: 1.6;
         }
 
         .tc-form-card {
           width: 100%;
-          padding: 31px 35px 30px;
+          padding: 38px 42px 36px;
           border: 1px solid #e3e8ef;
-          border-radius: 13px;
+          border-radius: 15px;
           background: #fff;
-          box-shadow: 0 4px 18px rgba(25, 35, 55, 0.035);
+          box-shadow: 0 5px 22px rgba(25, 35, 55, 0.035);
         }
 
         /* ================= FORM SECTIONS ================= */
 
         .tc-form-block {
-          margin-bottom: 28px;
+          margin-bottom: 32px;
         }
 
         .tc-form-block:last-of-type {
-          margin-bottom: 18px;
+          margin-bottom: 20px;
         }
 
         .tc-form-section-title {
           display: flex;
           align-items: flex-start;
-          gap: 10px;
-          margin-bottom: 13px;
+          gap: 11px;
+          margin-bottom: 15px;
         }
 
         .tc-number {
-          width: 25px;
-          height: 25px;
+          width: 27px;
+          height: 27px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
@@ -422,12 +450,13 @@ export default function TelecommunicationsGetInTouch() {
           border-radius: 7px;
           background: #fff0f6;
           color: var(--tc-beetroot);
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 800;
         }
 
         .tc-form-section-title h3 {
-          margin: 0 0 2px;
+          margin: 0 0 3px;
           font-size: 14px;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-weight: 600;
@@ -439,7 +468,7 @@ export default function TelecommunicationsGetInTouch() {
           color: #8792a2;
           font-size: 12px;
           font-family: "Inter", Arial, sans-serif;
-          line-height: 1.4;
+          line-height: 1.45;
         }
 
         /* ================= FOCUS AREAS ================= */
@@ -447,12 +476,12 @@ export default function TelecommunicationsGetInTouch() {
         .tc-focus-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 9px;
+          gap: 10px;
         }
 
         .tc-focus-option {
-          min-height: 51px;
-          padding: 10px 11px;
+          min-height: 54px;
+          padding: 11px 12px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -460,7 +489,7 @@ export default function TelecommunicationsGetInTouch() {
           border: 1px solid #dfe5ed;
           border-radius: 8px;
           background: #fff;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           color: #344054;
           font-size: 12px;
           line-height: 1.35;
@@ -480,8 +509,8 @@ export default function TelecommunicationsGetInTouch() {
         }
 
         .tc-focus-icon {
-          width: 18px;
-          height: 18px;
+          width: 19px;
+          height: 19px;
           flex-shrink: 0;
           display: flex;
           align-items: center;
@@ -501,7 +530,7 @@ export default function TelecommunicationsGetInTouch() {
         .tc-input-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 15px;
+          gap: 17px;
         }
 
         .tc-field {
@@ -510,7 +539,7 @@ export default function TelecommunicationsGetInTouch() {
 
         .tc-field label {
           display: block;
-          margin-bottom: 6px;
+          margin-bottom: 7px;
           color: #4d596b;
           font-family: "Inter", sans-serif;
           font-size: 11px;
@@ -537,13 +566,13 @@ export default function TelecommunicationsGetInTouch() {
         }
 
         .tc-field input {
-          height: 38px;
-          padding: 0 11px;
+          height: 42px;
+          padding: 0 12px;
         }
 
         .tc-field textarea {
-          min-height: 85px;
-          padding: 11px;
+          min-height: 100px;
+          padding: 12px;
           resize: vertical;
           line-height: 1.5;
         }
@@ -562,10 +591,10 @@ export default function TelecommunicationsGetInTouch() {
         /* ================= CHECKBOXES ================= */
 
         .tc-check-box {
-          padding: 14px;
+          padding: 15px;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 11px;
           background: #fafbfd;
           border: 1px solid #e3e8ef;
           border-radius: 8px;
@@ -582,8 +611,8 @@ export default function TelecommunicationsGetInTouch() {
         }
 
         .tc-check-row input {
-          width: 12px;
-          height: 12px;
+          width: 13px;
+          height: 13px;
           margin: 0;
           flex-shrink: 0;
           accent-color: var(--tc-beetroot);
@@ -595,15 +624,15 @@ export default function TelecommunicationsGetInTouch() {
           display: flex;
           justify-content: center;
           width: 100%;
-          margin-top: 25px;
+          margin-top: 28px;
         }
 
         .tc-submit {
           width: 100%;
-          max-width: 360px;
+          max-width: 420px;
           min-width: 0;
-          height: 40px;
-          padding: 0 20px;
+          min-height: 43px;
+          padding: 10px 22px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -622,10 +651,11 @@ export default function TelecommunicationsGetInTouch() {
 
         .tc-submit:hover {
           background: #5d0035;
+          transform: translateY(-1px);
         }
 
         .tc-confidential {
-          margin-top: 11px;
+          margin-top: 12px;
           text-align: center;
           color: #677386;
           font-family: "Inter", sans-serif;
@@ -635,25 +665,50 @@ export default function TelecommunicationsGetInTouch() {
 
         /* ================= RESPONSIVE ================= */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
           .tc-hero {
-            padding-left: 22px;
-            padding-right: 22px;
+            padding-left: 30px;
+            padding-right: 30px;
           }
 
           .tc-hero-grid {
-            grid-template-columns: 1fr 0.88fr;
-            gap: 32px;
+            gap: 45px;
           }
 
           .tc-image-card {
-            width: 100%;
+            height: 450px;
+          }
+
+          .tc-form-section {
+            max-width: 1100px;
+            padding-left: 30px;
+            padding-right: 30px;
+          }
+        }
+
+        @media (max-width: 1000px) {
+          .tc-hero-grid {
+            grid-template-columns: 1fr 0.9fr;
+            gap: 35px;
+          }
+
+          .tc-hero-content h1 {
+            font-size: 42px;
+          }
+
+          .tc-image-card {
+            height: 410px;
           }
         }
 
         @media (max-width: 900px) {
+          .tc-hero {
+            padding-top: 55px;
+          }
+
           .tc-hero-grid {
             grid-template-columns: 1fr;
+            gap: 55px;
           }
 
           .tc-hero-content {
@@ -678,14 +733,13 @@ export default function TelecommunicationsGetInTouch() {
 
           .tc-image-card {
             width: 100%;
-            height: 430px;
+            height: 450px;
             justify-self: stretch;
           }
         }
 
         @media (max-width: 700px) {
           .tc-topbar {
-            height: auto;
             min-height: 40px;
             padding: 9px 15px;
             gap: 10px;
@@ -700,20 +754,21 @@ export default function TelecommunicationsGetInTouch() {
           }
 
           .tc-hero {
-            padding: 35px 15px 0;
+            padding: 42px 18px 0;
           }
 
           .tc-hero-content h1 {
             font-size: 35px;
+            line-height: 1.12;
             letter-spacing: -1.5px;
           }
 
           .tc-hero-content > p {
             font-size: 14px;
+            line-height: 1.65;
           }
 
           .tc-image-card {
-            width: 100%;
             height: 380px;
           }
 
@@ -728,12 +783,12 @@ export default function TelecommunicationsGetInTouch() {
           }
 
           .tc-form-section {
-            margin-top: 70px;
-            padding: 0 15px;
+            margin-top: 80px;
+            padding: 0 18px;
           }
 
           .tc-form-card {
-            padding: 25px 18px;
+            padding: 28px 20px;
           }
 
           .tc-focus-grid {
@@ -745,28 +800,61 @@ export default function TelecommunicationsGetInTouch() {
           }
 
           .tc-submit {
-            width: min(100%, 360px);
-            min-width: 0;
-            padding: 0 14px;
-            text-align: center;
+            width: 100%;
+            max-width: 100%;
           }
         }
 
         @media (max-width: 480px) {
-          .tc-topbar-text {
-            font-size: 8px;
+          .tc-topbar {
+            justify-content: center;
           }
 
-          .tc-topbar-item {
+          .tc-topbar-right {
+            display: none;
+          }
+
+          .tc-topbar-text {
             font-size: 8px;
+            text-align: center;
+          }
+
+          .tc-hero {
+            padding: 35px 15px 0;
+          }
+
+          .tc-eyebrow {
+            font-size: 9px;
+            padding: 8px 11px;
           }
 
           .tc-hero-content h1 {
-            font-size: 30px;
+            font-size: 29px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+          }
+
+          .tc-hero-content > p {
+            font-size: 13px;
+          }
+
+          .tc-benefit-card {
+            align-items: flex-start;
+            min-height: auto;
+            padding: 15px;
+          }
+
+          .tc-benefit-content h3 {
+            font-size: 13px;
+          }
+
+          .tc-benefit-content p {
+            font-size: 12px;
           }
 
           .tc-image-card {
             height: 320px;
+            border-radius: 13px;
           }
 
           .tc-image-info {
@@ -775,21 +863,53 @@ export default function TelecommunicationsGetInTouch() {
             gap: 5px;
           }
 
-          .tc-focus-grid {
-            grid-template-columns: 1fr;
+          .tc-image-title {
+            font-size: 12px;
+          }
+
+          .tc-form-section {
+            margin-top: 65px;
+            padding: 0 15px;
+          }
+
+          .tc-form-heading {
+            margin-bottom: 28px;
           }
 
           .tc-form-heading h2 {
             font-size: 21px;
           }
 
+          .tc-form-heading p {
+            font-size: 12px;
+          }
+
+          .tc-form-card {
+            padding: 23px 15px;
+            border-radius: 11px;
+          }
+
+          .tc-focus-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .tc-focus-option {
+            min-height: 50px;
+          }
+
+          .tc-form-section-title h3 {
+            font-size: 13px;
+          }
+
+          .tc-form-section-title p {
+            font-size: 11px;
+          }
+
           .tc-submit {
             width: 100%;
-            min-width: 0;
-            height: auto;
-            min-height: 40px;
-            padding: 10px 14px;
-            line-height: 1.25;
+            min-height: 42px;
+            padding: 10px 12px;
+            line-height: 1.3;
           }
         }
       `}</style>
@@ -801,6 +921,7 @@ export default function TelecommunicationsGetInTouch() {
         <div className="tc-topbar">
           <div className="tc-topbar-left">
             <span className="tc-topbar-dot" />
+
             <span className="tc-topbar-text">
               TELECOMMUNICATIONS PRACTICE · DIRECT ARCHITECTURAL CONSULTATION
             </span>
@@ -863,7 +984,6 @@ export default function TelecommunicationsGetInTouch() {
                   </div>
                 ))}
               </div>
-
             </div>
 
             {/* RIGHT IMAGE */}
@@ -880,6 +1000,7 @@ export default function TelecommunicationsGetInTouch() {
               <div className="tc-image-info">
 
                 <div className="tc-image-info-left">
+
                   <div className="tc-image-label">
                     TELECOMMUNICATIONS SYSTEMS PRACTICE
                   </div>
@@ -887,6 +1008,7 @@ export default function TelecommunicationsGetInTouch() {
                   <div className="tc-image-title">
                     Direct Architect Access Desk
                   </div>
+
                 </div>
 
                 <div className="tc-image-time">
@@ -895,9 +1017,7 @@ export default function TelecommunicationsGetInTouch() {
                 </div>
 
               </div>
-
             </div>
-
           </div>
         </section>
 
@@ -932,10 +1052,15 @@ export default function TelecommunicationsGetInTouch() {
 
                 <div className="tc-form-section-title">
 
-                  <div className="tc-number">01</div>
+                  <div className="tc-number">
+                    01
+                  </div>
 
                   <div>
-                    <h3>Project Scope & Focus Areas</h3>
+                    <h3>
+                      Project Scope & Focus Areas
+                    </h3>
+
                     <p>
                       Select all relevant architecture and modernization
                       areas for your consultation.
@@ -947,6 +1072,7 @@ export default function TelecommunicationsGetInTouch() {
                 <div className="tc-focus-grid">
 
                   {FOCUS_AREAS.map((area, index) => {
+
                     const active = selectedAreas.includes(area);
 
                     return (
@@ -968,12 +1094,12 @@ export default function TelecommunicationsGetInTouch() {
                             <Plus size={10} />
                           )}
                         </span>
+
                       </div>
                     );
                   })}
 
                 </div>
-
               </div>
 
               {/* CONTACT DETAILS */}
@@ -982,10 +1108,15 @@ export default function TelecommunicationsGetInTouch() {
 
                 <div className="tc-form-section-title">
 
-                  <div className="tc-number">02</div>
+                  <div className="tc-number">
+                    02
+                  </div>
 
                   <div>
-                    <h3>Contact & Organization Details</h3>
+                    <h3>
+                      Contact & Organization Details
+                    </h3>
+
                     <p>
                       Direct architect matching and coordination.
                     </p>
@@ -1012,7 +1143,8 @@ export default function TelecommunicationsGetInTouch() {
 
                   <div className="tc-field">
                     <label>
-                      Corporate Email <span className="tc-required">*</span>
+                      Corporate Email{" "}
+                      <span className="tc-required">*</span>
                     </label>
 
                     <input
@@ -1042,7 +1174,9 @@ export default function TelecommunicationsGetInTouch() {
                   </div>
 
                   <div className="tc-field">
-                    <label>Phone Number</label>
+                    <label>
+                      Phone Number
+                    </label>
 
                     <input
                       type="tel"
@@ -1054,7 +1188,6 @@ export default function TelecommunicationsGetInTouch() {
                   </div>
 
                 </div>
-
               </div>
 
               {/* REQUIREMENTS */}
@@ -1063,10 +1196,15 @@ export default function TelecommunicationsGetInTouch() {
 
                 <div className="tc-form-section-title">
 
-                  <div className="tc-number">03</div>
+                  <div className="tc-number">
+                    03
+                  </div>
 
                   <div>
-                    <h3>Project Details & Requirements</h3>
+                    <h3>
+                      Project Details & Requirements
+                    </h3>
+
                     <p>
                       Briefly outline your systems scope, challenges, or goals.
                     </p>
@@ -1084,7 +1222,6 @@ export default function TelecommunicationsGetInTouch() {
                   />
 
                 </div>
-
               </div>
 
               {/* AGREEMENTS */}
@@ -1129,7 +1266,10 @@ export default function TelecommunicationsGetInTouch() {
 
               <div className="tc-submit-wrap">
 
-                <button type="submit" className="tc-submit">
+                <button
+                  type="submit"
+                  className="tc-submit"
+                >
                   SUBMIT REQUIREMENTS & REQUEST CONSULTATION
                   <ArrowRight size={14} />
                 </button>
@@ -1142,11 +1282,8 @@ export default function TelecommunicationsGetInTouch() {
               </div>
 
             </form>
-
           </div>
-
         </section>
-
       </div>
     </>
   );

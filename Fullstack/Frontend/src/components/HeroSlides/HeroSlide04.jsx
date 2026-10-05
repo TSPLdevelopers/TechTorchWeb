@@ -5,6 +5,7 @@ export default function PurpleHero() {
     <section className="relative w-full h-[535px] overflow-hidden bg-[#18001f]">
 
       {/* ================= BACKGROUND IMAGE ================= */}
+
       <img
         src="/slide1.2.png"
         alt="Technology future"
@@ -12,6 +13,7 @@ export default function PurpleHero() {
       />
 
       {/* ================= PURPLE DARK OVERLAY ================= */}
+
       <div
         className="absolute inset-0"
         style={{
@@ -21,23 +23,25 @@ export default function PurpleHero() {
       />
 
       {/* ================= CONTENT ================= */}
+
       <div className="relative z-10 min-h-[600px] w-full flex items-center">
+
+        {/* SAME HORIZONTAL PADDING AS FOOTER */}
+
         <div
           className="
             w-full
-            max-w-[1400px]
-            mx-auto
             px-4
-            sm:px-8
+            sm:px-6
             md:px-10
             lg:px-[100px]
-            xl:px-[100px]
           "
         >
 
           <div className="max-w-[600px] text-white">
 
             {/* ================= HEADING ================= */}
+
             <h1
               className="
                 font-['Plus_Jakarta_Sans']
@@ -59,6 +63,7 @@ export default function PurpleHero() {
             </h1>
 
             {/* ================= DESCRIPTION ================= */}
+
             <p
               className="
                 relative
@@ -75,14 +80,16 @@ export default function PurpleHero() {
               "
             >
               Whether you're looking to modernize,
-              automate,<br />
-              build or scale, let's explore what
-              the right technology <br />
+              <br />
+              automate, build or scale, let's explore what
+              the right technology
+              <br />
               approach could look like
               for your business.
             </p>
 
             {/* ================= BUTTON ================= */}
+
             <button
               className="
                 relative

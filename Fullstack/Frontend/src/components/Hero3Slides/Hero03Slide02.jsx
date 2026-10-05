@@ -12,11 +12,13 @@ export default function SoftwareThatWorks() {
     >
       <div className="software-works-container">
         <div className="software-works-grid">
+
           {/* =====================================================
               LEFT CONTENT
           ====================================================== */}
 
           <div className="software-works-content">
+
             {/* HEADING */}
 
             <h1 className="software-works-heading">
@@ -63,6 +65,7 @@ export default function SoftwareThatWorks() {
           ====================================================== */}
 
           <div className="software-works-right">
+
             {/* IMAGE */}
 
             <div className="software-works-image">
@@ -81,11 +84,17 @@ export default function SoftwareThatWorks() {
               <br className="desktop-break" />
               system.
             </p>
+
           </div>
         </div>
       </div>
 
+      {/* =====================================================
+          RESPONSIVE CSS
+      ====================================================== */}
+
       <style>{`
+
         /* =====================================================
            SECTION
         ====================================================== */
@@ -95,17 +104,27 @@ export default function SoftwareThatWorks() {
           box-sizing: border-box;
         }
 
+
         /* =====================================================
            CONTAINER
+
+           SAME ALIGNMENT AS FOOTER
+
+           Mobile  = 16px
+           Small   = 24px
+           Tablet  = 40px
+           Desktop = 100px
         ====================================================== */
 
         .software-works-container {
           width: 100%;
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 45px 80px;
+          margin: 0;
+
+          padding: 45px 100px;
+
           box-sizing: border-box;
         }
+
 
         /* =====================================================
            GRID
@@ -113,10 +132,16 @@ export default function SoftwareThatWorks() {
 
         .software-works-grid {
           display: grid;
-          grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+
+          grid-template-columns:
+            minmax(0, 1.15fr)
+            minmax(0, 0.85fr);
+
           gap: 70px;
+
           align-items: start;
         }
+
 
         /* =====================================================
            LEFT CONTENT
@@ -124,9 +149,17 @@ export default function SoftwareThatWorks() {
 
         .software-works-content {
           min-width: 0;
+
           padding-top: 10px;
-          transform: translateX(25px);
+
+          /*
+            No horizontal transform.
+            Text starts exactly with Footer alignment.
+          */
+
+          transform: none;
         }
+
 
         /* =====================================================
            HEADING
@@ -134,19 +167,23 @@ export default function SoftwareThatWorks() {
 
         .software-works-heading {
           margin: 0;
+
           max-width: 700px;
 
           font-size: 38px;
           font-weight: 600;
           line-height: 1.1;
+
           letter-spacing: -1.8px;
 
           color: #111111;
         }
 
+
         .software-works-heading span {
           color: #730042;
         }
+
 
         /* =====================================================
            PARAGRAPHS
@@ -154,23 +191,31 @@ export default function SoftwareThatWorks() {
 
         .software-works-content > p {
           max-width: 680px;
+
           margin: 0;
           margin-top: 28px;
 
           font-family: "Inter", sans-serif;
+
           font-size: 16px;
           font-weight: 400;
+
           line-height: 1.65;
 
           color: #292929;
         }
 
+
         .software-works-content > p:first-of-type {
           margin-top: 40px;
         }
 
+
         /* =====================================================
            RIGHT CONTENT
+
+           IMAGE IS SHIFTED TOWARDS RIGHT
+           TO MATCH FOOTER'S RIGHT SIDE.
         ====================================================== */
 
         .software-works-right {
@@ -178,10 +223,20 @@ export default function SoftwareThatWorks() {
 
           display: flex;
           flex-direction: column;
+
           align-items: flex-start;
 
           padding-top: 0;
+
+          /*
+            Desktop right-side shift.
+            This moves the image closer to the
+            right Footer alignment.
+          */
+
+          transform: translateX(45px);
         }
+
 
         /* =====================================================
            IMAGE
@@ -189,19 +244,24 @@ export default function SoftwareThatWorks() {
 
         .software-works-image {
           width: 100%;
+
           max-width: 400px;
 
           border-radius: 20px;
+
           overflow: hidden;
         }
+
 
         .software-works-image img {
           width: 100%;
           height: auto;
+
           display: block;
 
           object-fit: contain;
         }
+
 
         /* =====================================================
            HIGHLIGHT TEXT
@@ -209,78 +269,101 @@ export default function SoftwareThatWorks() {
 
         .software-works-highlight {
           width: 100%;
+
           max-width: 520px;
 
           margin: 38px 0 0;
 
           font-size: 18px;
           font-weight: 700;
+
           line-height: 1.3;
+
           letter-spacing: -0.4px;
 
           color: #730042;
         }
+
 
         /* =====================================================
            LARGE LAPTOP
         ====================================================== */
 
         @media (max-width: 1200px) {
+
           .software-works-container {
-            padding: 45px 55px;
+            padding-left: 70px;
+            padding-right: 70px;
           }
+
 
           .software-works-grid {
             gap: 50px;
           }
 
-          .software-works-content {
-            transform: translateX(15px);
+
+          .software-works-right {
+            transform: translateX(25px);
           }
+
 
           .software-works-heading {
             font-size: 42px;
           }
 
+
           .software-works-image {
             max-width: 480px;
           }
+
 
           .software-works-highlight {
             font-size: 20px;
           }
         }
 
+
         /* =====================================================
            TABLET / SMALL LAPTOP
         ====================================================== */
 
         @media (max-width: 1000px) {
+
           .software-works-container {
-            padding: 40px 40px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
+
           .software-works-grid {
-            grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+            grid-template-columns:
+              minmax(0, 1fr)
+              minmax(0, 0.9fr);
+
             gap: 35px;
           }
 
-          .software-works-content {
-            transform: translateX(8px);
+
+          .software-works-right {
+            transform: translateX(15px);
           }
+
 
           .software-works-heading {
             font-size: 38px;
           }
+
 
           .software-works-content > p {
             font-size: 15.5px;
             line-height: 1.6;
           }
 
+
           .software-works-image {
             max-width: 100%;
           }
+
 
           .software-works-highlight {
             margin-top: 28px;
@@ -288,119 +371,197 @@ export default function SoftwareThatWorks() {
           }
         }
 
+
         /* =====================================================
            TABLET
         ====================================================== */
 
         @media (max-width: 768px) {
+
           .software-works-container {
-            padding: 45px 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            padding-top: 45px;
+            padding-bottom: 45px;
           }
+
 
           .software-works-grid {
             grid-template-columns: 1fr;
+
             gap: 45px;
           }
 
+
           .software-works-content {
-            transform: translateX(0);
+            transform: none;
+
             padding-top: 0;
           }
 
+
           .software-works-heading {
             font-size: 36px;
+
             line-height: 1.12;
           }
 
+
           .software-works-content > p {
             max-width: 100%;
+
             font-size: 16px;
           }
 
+
+          /*
+            On tablet the image becomes centered
+            so it never gets cut off.
+          */
+
           .software-works-right {
             align-items: center;
+
             width: 100%;
+
+            transform: none;
           }
+
 
           .software-works-image {
             width: 100%;
+
             max-width: 600px;
           }
 
+
           .software-works-highlight {
             max-width: 600px;
+
             font-size: 20px;
+
             margin-top: 28px;
           }
         }
+
 
         /* =====================================================
            MOBILE
         ====================================================== */
 
         @media (max-width: 600px) {
+
+          /*
+            EXACT FOOTER MOBILE ALIGNMENT
+
+            Footer = px-4 = 16px
+          */
+
           .software-works-container {
-            padding: 40px 20px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
+
 
           .software-works-grid {
             gap: 38px;
           }
 
+
           .software-works-heading {
             font-size: 30px;
+
             line-height: 1.15;
+
             letter-spacing: -1px;
           }
+
 
           .software-works-content > p {
             margin-top: 20px;
 
             font-size: 15px;
+
             line-height: 1.6;
           }
+
 
           .software-works-content > p:first-of-type {
             margin-top: 28px;
           }
 
+
+          /*
+            Keep image centered on mobile.
+          */
+
+          .software-works-right {
+            width: 100%;
+
+            align-items: center;
+
+            transform: none;
+          }
+
+
           .software-works-image {
+            width: 100%;
+
+            max-width: 100%;
+
             border-radius: 14px;
           }
+
 
           .software-works-highlight {
             margin-top: 24px;
 
             font-size: 17px;
+
             line-height: 1.4;
           }
+
 
           .desktop-break {
             display: none;
           }
         }
 
+
         /* =====================================================
-           SMALL MOBILE
+           VERY SMALL MOBILE
         ====================================================== */
 
         @media (max-width: 380px) {
+
           .software-works-container {
-            padding: 35px 16px;
+            padding-left: 14px;
+            padding-right: 14px;
+
+            padding-top: 35px;
+            padding-bottom: 35px;
           }
+
 
           .software-works-heading {
             font-size: 27px;
           }
 
+
           .software-works-content > p {
             font-size: 14px;
           }
+
 
           .software-works-highlight {
             font-size: 16px;
           }
         }
+
       `}</style>
     </section>
   );

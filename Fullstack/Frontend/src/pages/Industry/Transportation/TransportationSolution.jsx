@@ -1,5 +1,14 @@
-import React from "react";
-import { LayoutGrid, Settings, Truck, Landmark, User, GitBranch, Monitor, Code2 } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  LayoutGrid,
+  Settings,
+  Truck,
+  Landmark,
+  User,
+  GitBranch,
+  Monitor,
+  Code2,
+} from "lucide-react";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
@@ -57,44 +66,581 @@ const cards = [
 ];
 
 export default function TransportationSolutionsGridSection() {
+  const sectionRef = useRef(null);
+  const [visibleCards, setVisibleCards] = useState([]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    let animationTimers = [];
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Clear any previous timers
+          animationTimers.forEach((timer) => clearTimeout(timer));
+          animationTimers = [];
+
+          // Reset cards first
+          setVisibleCards([]);
+
+          // Open cards one by one
+          cards.forEach((_, index) => {
+            const timer = setTimeout(() => {
+              setVisibleCards((prev) => {
+                if (prev.includes(index)) return prev;
+                return [...prev, index];
+              });
+            }, index * 150);
+
+            animationTimers.push(timer);
+          });
+        } else {
+          // Reset when leaving viewport
+          animationTimers.forEach((timer) => clearTimeout(timer));
+          animationTimers = [];
+
+          setVisibleCards([]);
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      animationTimers.forEach((timer) => clearTimeout(timer));
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="w-full font-sans bg-white" style={{ color: INK }}>
-      <div className="max-w-5xl mx-auto px-6 py-16">
-        <p className="text-xs font-semibold tracking-wide mb-3" style={{ color: WINE }}>
+    <section
+      ref={sectionRef}
+      className="transportation-solutions-section"
+    >
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        /* =========================================
+           MAIN SECTION
+        ========================================= */
+
+        .transportation-solutions-section {
+          width: 100%;
+          overflow: hidden;
+
+          background: #ffffff;
+          color: ${INK};
+
+          font-family: "Inter", sans-serif;
+        }
+
+        .transportation-solutions-container {
+          width: 100%;
+          max-width: 1240px;
+
+          margin: 0 auto;
+
+          padding: 88px 32px;
+        }
+
+        /* =========================================
+           SECTION LABEL
+           INTER
+        ========================================= */
+
+        .transportation-solutions-label {
+          margin: 0 0 14px;
+
+          color: ${WINE};
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: 0.13em;
+        }
+
+        /* =========================================
+           HEADING
+           PLUS JAKARTA SANS
+        ========================================= */
+
+        .transportation-solutions-heading {
+          max-width: 720px;
+
+          margin: 0 0 45px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(31px, 3.5vw, 43px);
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.045em;
+        }
+
+        /* =========================================
+           CARDS GRID
+        ========================================= */
+
+        .transportation-solutions-grid {
+          display: grid;
+
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+
+          gap: 18px;
+        }
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .transportation-solution-card {
+          position: relative;
+
+          min-height: 235px;
+
+          padding: 21px;
+
+          border: 1px solid #ece9e4;
+          border-radius: 15px;
+
+          background: #ffffff;
+
+          overflow: hidden;
+
+          opacity: 0;
+
+          transform:
+            translateY(42px)
+            scale(0.95);
+
+          transition:
+            opacity 0.65s ease,
+            transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.3s ease,
+            box-shadow 0.35s ease,
+            background 0.3s ease;
+        }
+
+        /* =========================================
+           CARD VISIBLE
+        ========================================= */
+
+        .transportation-solution-card.is-visible {
+          opacity: 1;
+
+          transform:
+            translateY(0)
+            scale(1);
+        }
+
+        /* =========================================
+           CARD HOVER
+        ========================================= */
+
+        .transportation-solution-card:hover {
+          border-color: #e4d4da;
+
+          background: #fffdfd;
+
+          box-shadow:
+            0 14px 35px rgba(40, 15, 30, 0.08);
+
+          transform:
+            translateY(-6px)
+            scale(1.01);
+        }
+
+        /* =========================================
+           CARD TOP
+        ========================================= */
+
+        .transportation-solution-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          margin-bottom: 27px;
+        }
+
+        /* =========================================
+           ICON BOX
+        ========================================= */
+
+        .transportation-solution-icon {
+          width: 42px;
+          height: 42px;
+
+          flex-shrink: 0;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 10px;
+
+          background: #fbeef1;
+          color: ${WINE};
+
+          transition:
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+            background 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        /* =========================================
+           ICON ZOOM ON CARD HOVER
+        ========================================= */
+
+        .transportation-solution-card:hover
+        .transportation-solution-icon {
+          transform: scale(1.16);
+
+          background: #f8e4e9;
+
+          box-shadow:
+            0 7px 16px rgba(122, 31, 61, 0.12);
+        }
+
+        .transportation-solution-icon svg {
+          transition:
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .transportation-solution-card:hover
+        .transportation-solution-icon svg {
+          transform: scale(1.08);
+        }
+
+        /* =========================================
+           NUMBER
+           INTER
+        ========================================= */
+
+        .transportation-solution-number {
+          margin: 0;
+
+          color: #e3d3d9;
+
+          font-family: "Inter", sans-serif;
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 1;
+
+          transition:
+            color 0.3s ease,
+            transform 0.3s ease;
+        }
+
+        .transportation-solution-card:hover
+        .transportation-solution-number {
+          color: #d7b7c2;
+
+          transform: translateX(-2px);
+        }
+
+        /* =========================================
+           CARD TITLE
+           INTER
+        ========================================= */
+
+        .transportation-solution-title {
+          margin: 0 0 9px;
+
+          color: ${INK};
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 1.45;
+        }
+
+        /* =========================================
+           CARD BODY
+           INTER
+        ========================================= */
+
+        .transportation-solution-body {
+          margin: 0;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
+          font-weight: 400;
+          line-height: 1.75;
+        }
+
+        /* =========================================
+           CARD DECORATIVE LINE
+        ========================================= */
+
+        .transportation-solution-card::after {
+          content: "";
+
+          position: absolute;
+
+          left: 21px;
+          right: 21px;
+          bottom: 0;
+
+          height: 2px;
+
+          background: ${WINE};
+
+          transform: scaleX(0);
+          transform-origin: left;
+
+          transition:
+            transform 0.4s ease;
+        }
+
+        .transportation-solution-card:hover::after {
+          transform: scaleX(1);
+        }
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 1050px) {
+          .transportation-solutions-container {
+            padding: 76px 28px;
+          }
+
+          .transportation-solutions-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+
+          .transportation-solution-card {
+            min-height: 225px;
+          }
+        }
+
+        /* =========================================
+           SMALL TABLET
+        ========================================= */
+
+        @media (max-width: 800px) {
+          .transportation-solutions-container {
+            padding: 68px 26px;
+          }
+
+          .transportation-solutions-heading {
+            margin-bottom: 38px;
+
+            font-size: 34px;
+          }
+
+          .transportation-solutions-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 15px;
+          }
+
+          .transportation-solution-card {
+            min-height: 215px;
+
+            padding: 20px;
+          }
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+          .transportation-solutions-container {
+            padding: 58px 20px;
+          }
+
+          .transportation-solutions-label {
+            margin-bottom: 11px;
+
+            font-size: 9px;
+            letter-spacing: 0.11em;
+          }
+
+          .transportation-solutions-heading {
+            margin-bottom: 32px;
+
+            font-size: 28px;
+            line-height: 1.25;
+            letter-spacing: -0.035em;
+          }
+
+          .transportation-solutions-grid {
+            grid-template-columns: 1fr;
+
+            gap: 13px;
+          }
+
+          .transportation-solution-card {
+            min-height: 190px;
+
+            padding: 19px;
+
+            border-radius: 13px;
+          }
+
+          .transportation-solution-card-top {
+            margin-bottom: 23px;
+          }
+
+          .transportation-solution-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 9px;
+          }
+
+          .transportation-solution-number {
+            font-size: 22px;
+          }
+
+          .transportation-solution-title {
+            margin-bottom: 8px;
+
+            font-size: 12.5px;
+          }
+
+          .transportation-solution-body {
+            font-size: 11px;
+            line-height: 1.7;
+          }
+        }
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 400px) {
+          .transportation-solutions-container {
+            padding: 50px 16px;
+          }
+
+          .transportation-solutions-heading {
+            font-size: 25px;
+          }
+
+          .transportation-solution-card {
+            min-height: 180px;
+
+            padding: 17px;
+          }
+
+          .transportation-solution-icon {
+            width: 37px;
+            height: 37px;
+          }
+
+          .transportation-solution-icon svg {
+            width: 16px;
+            height: 16px;
+          }
+
+          .transportation-solution-number {
+            font-size: 20px;
+          }
+
+          .transportation-solution-title {
+            font-size: 11.5px;
+          }
+
+          .transportation-solution-body {
+            font-size: 10.5px;
+          }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          .transportation-solution-card {
+            opacity: 1;
+            transform: none;
+
+            transition: none;
+          }
+
+          .transportation-solution-icon,
+          .transportation-solution-icon svg {
+            transition: none;
+          }
+
+          .transportation-solution-card::after {
+            transition: none;
+          }
+        }
+      `}</style>
+
+      <div className="transportation-solutions-container">
+
+        {/* =====================================
+            SECTION LABEL
+        ===================================== */}
+
+        <p className="transportation-solutions-label">
           TRANSPORTATION SOLUTIONS
         </p>
-        <h2 className="text-3xl leading-[1.25] font-bold tracking-tight mb-10">
+
+        {/* =====================================
+            HEADING
+        ===================================== */}
+
+        <h2 className="transportation-solutions-heading">
           Solutions Built Around Your
           <br />
           Business
         </h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
-          {cards.map(({ num, icon: Icon, title, body }) => (
+        {/* =====================================
+            CARDS
+        ===================================== */}
+
+        <div className="transportation-solutions-grid">
+          {cards.map(({ num, icon: Icon, title, body }, index) => (
             <div
               key={num}
-              className="rounded-xl p-5 border"
-              style={{ borderColor: "#ece9e4" }}
+              className={`transportation-solution-card ${
+                visibleCards.includes(index) ? "is-visible" : ""
+              }`}
             >
-              <div className="flex items-center justify-between mb-4">
-                <span
-                  className="w-10 h-10 flex items-center justify-center rounded-lg"
-                  style={{ background: "#fbeef1", color: WINE }}
-                >
-                  <Icon size={18} strokeWidth={1.8} />
+              <div className="transportation-solution-card-top">
+
+                <span className="transportation-solution-icon">
+                  <Icon
+                    size={18}
+                    strokeWidth={1.8}
+                  />
                 </span>
-                <span className="text-2xl font-bold" style={{ color: "#e3d3d9" }}>
+
+                <span className="transportation-solution-number">
                   {num}
                 </span>
+
               </div>
-              <h3 className="text-sm font-semibold mb-1.5">{title}</h3>
-              <p className="text-xs leading-relaxed" style={{ color: MUTED }}>
+
+              <h3 className="transportation-solution-title">
+                {title}
+              </h3>
+
+              <p className="transportation-solution-body">
                 {body}
               </p>
             </div>
           ))}
         </div>
+
       </div>
-    </div>
+    </section>
   );
 }

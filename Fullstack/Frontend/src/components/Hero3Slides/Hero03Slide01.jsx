@@ -85,23 +85,21 @@ export default function SoftwareDevelopmentHero() {
 
           min-h-[560px]
 
-          px-5
+          px-4
           py-14
 
           sm:min-h-[580px]
-          sm:px-8
+          sm:px-6
           sm:py-16
 
           md:min-h-[540px]
-          md:px-12
+          md:px-10
           md:py-14
 
           lg:h-full
           lg:min-h-0
-          lg:px-[7%]
+          lg:px-[100px]
           lg:py-10
-
-          xl:px-[8%]
         "
       >
         <div
@@ -123,7 +121,9 @@ export default function SoftwareDevelopmentHero() {
           <p
             className="
               mb-4
-              font-['Plus_Jakarta_Sans']  
+
+              font-['Plus_Jakarta_Sans']
+
               text-[11px]
               font-semibold
               tracking-[0.7px]
@@ -146,15 +146,14 @@ export default function SoftwareDevelopmentHero() {
 
           <h1
             className="
-             font-['Plus_Jakarta_Sans']  
               mb-5
 
-              font-medium
-              leading-[1.08]
-
-              tracking-[-0.8px]
+              font-['Plus_Jakarta_Sans']
 
               text-[34px]
+              font-medium
+              leading-[1.08]
+              tracking-[-0.8px]
 
               min-[400px]:text-[34px]
 
@@ -178,8 +177,9 @@ export default function SoftwareDevelopmentHero() {
 
           <div
             className="
-             font-['Inter']  
               max-w-[520px]
+
+              font-['Inter']
 
               text-[14px]
               font-normal
@@ -226,7 +226,6 @@ export default function SoftwareDevelopmentHero() {
           <button
             type="button"
             className="
-             font-['Inter']  
               mt-7
 
               inline-flex
@@ -239,6 +238,8 @@ export default function SoftwareDevelopmentHero() {
 
               px-5
               py-[10px]
+
+              font-['Inter']
 
               text-[13px]
               font-semibold
