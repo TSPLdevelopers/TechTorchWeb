@@ -3,13 +3,21 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  registerAdmin,
+ registerAdmin,
   loginAdmin,
   forgotPassword,
   verifyOTP,
   resetPassword,
   logoutAdmin,
+  getAdminProfile,
 } = require("../controllers/authController");
+const {
+  getAdminById,
+  updateAdmin,
+  updateAdminPassword,
+  toggleAdminStatus,
+  deleteAdmin,
+} = require("../controllers/adminController");
 
 const authMiddleware = require("../middlewares/auth.middleware");
 

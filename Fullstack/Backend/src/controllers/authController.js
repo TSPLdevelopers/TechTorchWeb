@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
-const Admin = require("../models/admin.model");
+const Admin = require("../models/Admin.model");
 const asyncHandler = require("../utils/asyncHandler");
 const {
   generateToken,
@@ -174,6 +174,25 @@ const logoutAdmin = asyncHandler(async (req, res) => {
   res.clearCookie("token", cookieOptions());
   return res.status(200).json({ success: true, message: "Logged out successfully" });
 });
+// ================= GET ADMIN PROFILE =================
+const getAdminProfile = asyncHandler(async (req, res) => {
+  const adminId = req.admin?.id || req.admin?._id;
+
+  if (!adminId) {
+    return fail(res, 401, "Unauthorized");
+  }
+
+  const admin = await Admin.findById(adminId).select("-password -otp -otpExpiry");
+
+  if (!admin) {
+    return fail(res, 404, "Admin not found");
+  }
+
+  return res.status(200).json({
+    success: true,
+    data: publicAdmin(admin),
+  });
+});
 
 module.exports = {
   registerAdmin,
@@ -182,4 +201,5 @@ module.exports = {
   verifyOTP,
   resetPassword,
   logoutAdmin,
+  getAdminProfile,
 };

@@ -5,8 +5,10 @@ import {
   Routes,
   Route,
   Outlet,
+  Navigate,
   useLocation,
 } from "react-router-dom";
+import { adminRoutes } from "./admin/routes.jsx";
 
 // =================================================
 // COMMON COMPONENTS
@@ -247,7 +249,7 @@ import ItOperational from "./pages/Capabilities/ItAugmentation/ItOperational.jsx
 // =================================================
 // CONTRACT STAFFING
 // =================================================
-import Contracthero from "./pages/Capabilities/ItAugmentation/ContractStaffing/Contracthero.jsx";
+import Contracthero from "./pages/Capabilities/ItAugmentation/ContractStaffing/contracthero.jsx";
 import CapabilityAnalysis from "./pages/Capabilities/ItAugmentation/ContractStaffing/CapabilityAnalysis.jsx";
 import Pipeline from "./pages/Capabilities/ItAugmentation/ContractStaffing/Pipeline.jsx";
 
@@ -1499,6 +1501,16 @@ function App() {
           />
 
         </Route>
+
+        {/* =================================================
+            ADMIN DASHBOARD (login, signup, forgot password,
+            dashboard + all content modules) - no site navbar/footer
+        ================================================= */}
+        {adminRoutes}
+        <Route path="/admin" element={<Navigate to="/admin-dashboard" replace />} />
+        <Route path="/dashboard" element={<Navigate to="/admin-dashboard" replace />} />
+        <Route path="/login" element={<Navigate to="/admin-login" replace />} />
+        <Route path="/signup" element={<Navigate to="/admin-signup" replace />} />
 
       </Routes>
     </>
