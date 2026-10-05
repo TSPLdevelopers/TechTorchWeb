@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
 import "./App.css";
 
-import { Routes, Route, Outlet } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 
-// ================= COMMON COMPONENTS =================
+// =================================================
+// COMMON COMPONENTS
+// =================================================
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -20,13 +27,17 @@ import Section7 from "./components/section7";
 import Section8 from "./components/section8";
 import Section9 from "./components/section9";
 
-// ================= HERO SLIDE 1 =================
+// =================================================
+// HERO SLIDE 1
+// =================================================
 import HeroSlide01 from "./components/HeroSlides/HeroSlide01.jsx";
 import HeroSlide02 from "./components/HeroSlides/HeroSlide02.jsx";
 import HeroSlide03 from "./components/HeroSlides/HeroSlide03.jsx";
 import HeroSlide04 from "./components/HeroSlides/HeroSlide04.jsx";
 
-// ================= HERO SLIDE 2 =================
+// =================================================
+// HERO SLIDE 2
+// =================================================
 import Hero02Slide01 from "./components/Hero2Slides/Hero02Slide01.jsx";
 import Hero02Slide02 from "./components/Hero2Slides/Hero02Slide02.jsx";
 import Hero02Slide03 from "./components/Hero2Slides/Hero02Slide03.jsx";
@@ -34,7 +45,9 @@ import Hero02Slide04 from "./components/Hero2Slides/Hero02Slide04.jsx";
 import Hero02Slide05 from "./components/Hero2Slides/Hero02Slide05.jsx";
 import Hero02Slide06 from "./components/Hero2Slides/Hero02Slide06.jsx";
 
-// ================= HERO SLIDE 3 =================
+// =================================================
+// HERO SLIDE 3
+// =================================================
 import Hero03Slide01 from "./components/Hero3Slides/Hero03Slide01.jsx";
 import Hero03Slide02 from "./components/Hero3Slides/Hero03Slide02.jsx";
 import Hero03Slide03 from "./components/Hero3Slides/Hero03Slide03.jsx";
@@ -96,6 +109,9 @@ import ConnectSection from "./pages/What'sNext/FieldNote/ConnectSection.jsx";
 import OperationalAdvantage from "./pages/What'sNext/FieldNote/OperationalAdvantage.jsx";
 import IntegratedCapabilities from "./pages/What'sNext/FieldNote/IntegratedCapabilities.jsx";
 
+// =================================================
+// INTEGRATED CAPABILITIES
+// =================================================
 import IntegratedCapLayout from "./pages/What'sNext/FieldNote/IntegratedCapabilities/IntegratedCapLayout.jsx";
 import ERPIntegration from "./pages/What'sNext/FieldNote/IntegratedCapabilities/ERPIntegration.jsx";
 import OpManagement from "./pages/What'sNext/FieldNote/IntegratedCapabilities/OpManagement.jsx";
@@ -124,22 +140,6 @@ import SecurityChallenge from "./pages/What'sNext/CyberSecurity/SecurityChalleng
 import EditorialReflection from "./pages/What'sNext/CyberSecurity/EditorialReflection.jsx";
 import OurApproach from "./pages/What'sNext/CyberSecurity/OurApproach.jsx";
 import WhyTechtorch from "./pages/What'sNext/CyberSecurity/WhyTechtorch.jsx";
-
-// ================= SECURE BUSINESS =================
-import SecurityInitiative  from "./pages/What'sNext/CyberSecurity/SecureBusiness/SecurityInitiative.jsx";
-import ProtocolDelivery from "./pages/What'sNext/CyberSecurity/SecureBusiness/ProtocolDelivery.jsx";
-import SelectionEngine from "./pages/What'sNext/CyberSecurity/SecureBusiness/SelectionEngine.jsx";
-import AdvisoryFramework from "./pages/What'sNext/CyberSecurity/SecureBusiness/AdvisoryFramework.jsx";
-
-
-import ViewEngagementProtocol  from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/ViewEngagementProtocol.jsx";
-import AcceptProceed  from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/AcceptProceed.jsx";
-import ExportProtocolPackage from "./pages/What'sNext/CyberSecurity/SecureBusiness/EngagementProtocol/ExportProtocolPackage.jsx";
-
-
-import AdvisoryDesk from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/AdvisoryDesk";
-import DispatchConsole from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/DispatchConsole.jsx";
-import TimeboxProtocol from "./pages/What'sNext/CyberSecurity/SecureBusiness/ScheduleAdvisoryBriefing/TimeboxProtocol.jsx";
 
 // =================================================
 // SECURE BUSINESS
@@ -170,14 +170,318 @@ import GrowWithBusinessSection from "./pages/What'sNext/BusinessGrowth/GrowwTech
 import PurspectiveSection from "./pages/What'sNext/BusinessGrowth/PurspectiveSection.jsx";
 import ArchitectureSection from "./pages/What'sNext/BusinessGrowth/ArchitectureSection.jsx";
 import MethodologySection from "./pages/What'sNext/BusinessGrowth/MethodologySection.jsx";
+import EcosystemCapabilitiesSection from "./pages/What'sNext/BusinessGrowth/EcosystemCapabilities.jsx";
+import TechnologyCapabilities from "./pages/What'sNext/BusinessGrowth/TechnologyCapabilties.jsx";
+import CoreEngineering from "./pages/What'sNext/BusinessGrowth/CoreEngineering.jsx";
+import MarketExpertiseSection from "./pages/What'sNext/BusinessGrowth/MarketExpertise.jsx";
+import InstitutionalCommitmentSection from "./pages/What'sNext/BusinessGrowth/InstitutionalCommitment.jsx";
+import ParadigmSection from "./pages/What'sNext/BusinessGrowth/ParadigmSection.jsx";
 
+// =================================================
+// TECH PULSE
+// =================================================
+import DataDecisions from "./pages/What'sNext/TechPulse/DataDecisions.jsx";
+import PerspectiveAnalysis from "./pages/What'sNext/TechPulse/PerspectiveAnalysis.jsx";
+import StrategicInquiry from "./pages/What'sNext/TechPulse/StrategicInquiry.jsx";
+import StructuredMethodology from "./pages/What'sNext/TechPulse/StructuredMethodology.jsx";
+import OperationalImpact from "./pages/What'sNext/TechPulse/OperationalImpact.jsx";
+import Automation from "./pages/What'sNext/TechPulse/Automation.jsx";
+import CrossFunctional from "./pages/What'sNext/TechPulse/CrossFunctional.jsx";
+import Discipline from "./pages/What'sNext/TechPulse/Discipline.jsx";
+import ExecutiveStrategy from "./pages/What'sNext/TechPulse/ExecutiveStrategy.jsx";
+
+// =================================================
+// DIGITAL SOLUTIONS
+// =================================================
+import EnterpriseSolution from "./pages/What'sNext/TechPulse/DigitalSolution/Enterprisesolution.jsx";
+import SystemicAgility from "./pages/What'sNext/TechPulse/DigitalSolution/SystemicAgility.jsx";
+import ArchitectureLifecycle from "./pages/What'sNext/TechPulse/DigitalSolution/ArchitectureLifecycle.jsx";
+import ValidatedSystems from "./pages/What'sNext/TechPulse/DigitalSolution/ValidatedSystem.jsx";
+
+// =================================================
+// CAPABILITIES - PLATFORM
+// =================================================
+import Businessplatformshero from "./pages/Capabilities/Platform/Businessplatformshero.jsx";
+import OurAproach from "./pages/Capabilities/Platform/OurAproach.jsx";
+import OurPlatforms from "./pages/Capabilities/Platform/OurPlatforms.jsx";
+import TechTorchPlatform from "./pages/Capabilities/Platform/TechTorchPlatform.jsx";
+import DirectEnterprise from "./pages/Capabilities/Platform/DirectEnterprise.jsx";
+
+// =================================================
+// CAPABILITIES - DIGITAL SOLUTIONS
+// =================================================
+import DigitalSolutionHero from "./pages/Capabilities/DigitalSolution/DigitalSolutionHero.jsx";
+import DigitalTransformation from "./pages/Capabilities/DigitalSolution/DigitalTransformation.jsx";
+import OurDigitalSolution from "./pages/Capabilities/DigitalSolution/OurDigitalSolution.jsx";
+import DiffrentIndustries from "./pages/Capabilities/DigitalSolution/DiffrentIndustries.jsx";
+import ConnectedBusiness from "./pages/Capabilities/DigitalSolution/ConnectedBusiness.jsx";
+import TechTorchTechnology from "./pages/Capabilities/DigitalSolution/TechTorchTechnology.jsx";
+import RequirementReality from "./pages/Capabilities/DigitalSolution/RequirementReality.jsx";
+
+// =================================================
+// CAPABILITIES - OUR SERVICE
+// =================================================
+import OurServiceHero from "./pages/Capabilities/OurService/OurServiceHero.jsx";
+import StrategicPerspective from "./pages/Capabilities/OurService/StrategicPerspective.jsx";
+import PortfolioArchitecture from "./pages/Capabilities/OurService/PortfolioArchitecture.jsx";
+import DeliveryBlueprint from "./pages/Capabilities/OurService/DeliveryBlueprint.jsx";
+import TechnologyRoadmap from "./pages/Capabilities/OurService/TechnologyRoadmap.jsx";
+
+// =================================================
+// CAPABILITIES - ARTIFICIAL INTELLIGENCE
+// =================================================
+import AiService from "./pages/Capabilities/Ai/AiService.jsx";
+import AiStrategic from "./pages/Capabilities/Ai/AiStrategic.jsx";
+import AiAdvantage from "./pages/Capabilities/Ai/AiAdvantage.jsx";
+import AiEcosystem from "./pages/Capabilities/Ai/AiEcosystem.jsx";
+import AiEcosystemIntegration from "./pages/Capabilities/Ai/AiEcosystemIntegration.jsx";
+
+// =================================================
+// CAPABILITIES - IT AUGMENTATION
+// =================================================
+import ItWorkforceVelocity from "./pages/Capabilities/ItAugmentation/ItWorkforceVelocity.jsx";
+import ItStrategicperspective from "./pages/Capabilities/ItAugmentation/ItStrategicperspective.jsx";
+import ItFlexibleEngagement from "./pages/Capabilities/ItAugmentation/ItFlexibleEngagement.jsx";
+import ItOperational from "./pages/Capabilities/ItAugmentation/ItOperational.jsx";
+
+// =================================================
+// CONTRACT STAFFING
+// =================================================
+import Contracthero from "./pages/Capabilities/ItAugmentation/ContractStaffing/Contracthero.jsx";
+import CapabilityAnalysis from "./pages/Capabilities/ItAugmentation/ContractStaffing/CapabilityAnalysis.jsx";
+import Pipeline from "./pages/Capabilities/ItAugmentation/ContractStaffing/Pipeline.jsx";
+
+// =================================================
+// CONTRACT TO HIRE
+// =================================================
+import ContractToHireHero from "./pages/Capabilities/ItAugmentation/ContractToHire/ContractToHireHero.jsx";
+import CthFramework from "./pages/Capabilities/ItAugmentation/ContractToHire/CthFramework.jsx";
+import BuildConfidence from "./pages/Capabilities/ItAugmentation/ContractToHire/BuildConfidence.jsx";
+
+// =================================================
+// DEDICATED DEVELOPMENT
+// =================================================
+import DdHero from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdHero.jsx";
+import DdOverview from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdOverview.jsx";
+import DdStrenghten from "./pages/Capabilities/ItAugmentation/DedicatedDevelopment/DdStrenghten.jsx";
+
+// =================================================
+// REMOTE ENGINEER
+// =================================================
+import ReHero from "./pages/Capabilities/ItAugmentation/RemoteEngineer/ReHero.jsx";
+import CapabilityOverview from "./pages/Capabilities/ItAugmentation/RemoteEngineer/CapabilityOverview.jsx";
+import ReStrengthen from "./pages/Capabilities/ItAugmentation/RemoteEngineer/ReStrengthen.jsx";
+
+// =================================================
+// PROJECT BASED HIRING
+// =================================================
+import PbhHero from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhHero.jsx";
+import PbhExecutive from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhExecutive.jsx";
+import PbhSpecialized from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhSpecialized.jsx";
+import PbhProjectForward from "./pages/Capabilities/ItAugmentation/ProjectBasedHiring/PbhProjectForward.jsx";
+
+// =================================================
+// RESOURCE / BENCH / VENDOR
+// =================================================
+import RrMain from "./pages/Capabilities/ItAugmentation/ResourceReplacement/RrMain.jsx";
+import BhMain from "./pages/Capabilities/ItAugmentation/BenchHiring/BhMain.jsx";
+import VpMain from "./pages/Capabilities/ItAugmentation/VendorPartnership/VpMain.jsx";
+import BecomePartner from "./pages/Capabilities/ItAugmentation/VendorPartnership/BecomePartner.jsx";
+
+// =================================================
+// MSP SUPPORT
+// =================================================
+import MSP1 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP1.jsx";
+import MSP2 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP2.jsx";
+import MSP3 from "./pages/Capabilities/ItAugmentation/MSPSupport/MSP3.jsx";
+import DiscussPriorities from "./pages/Capabilities/ItAugmentation/MSPSupport/DiscussPriorities.jsx";
+import ConnectMSP from "./pages/Capabilities/ItAugmentation/MSPSupport/ConnectMSP.jsx";
+
+// =================================================
+// OFSHORE TEAMS
+// =================================================
+import OffshoreStrategy  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/OffshoreStrategy.jsx";
+import EngagementArchitecture  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/EngagementArchitecture.jsx";
+import LifecycleGovernance  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/LifecycleGovernance.jsx";
+import DevelopmentTeam  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/DevelopmentTeam.jsx";
+import DevelopmentRequirements  from "./pages/Capabilities/ItAugmentation/OffshoreTeams/DevelopmentRequirements.jsx";
+
+// =================================================
+// EDUCATION
+// =================================================
+
+import EducationHero from "./pages/Industry/Education/EducationHero.jsx";
+import EducationWork from "./pages/Industry/Education/EducationWork.jsx";
+import EducationTechnology from "./pages/Industry/Education/EducationTechnology.jsx";
+import EducationGrowth from "./pages/Industry/Education/EducationGrowth.jsx";
+import EducationMethodology from "./pages/Industry/Education/EducationMethodology.jsx";
+import EducationTransform from "./pages/Industry/Education/EducationTransform.jsx";
+import EducationSolutions from "./pages/Industry/Education/EducationSolutions.jsx";
+import ScheduleDiscovery  from "./pages/Industry/Education/ScheduleDiscovery.jsx";
+
+// =================================================
+// INSURANCE
+// =================================================
+
+import InsuranceHero from "./pages/Industry/Insurance/InsuranceHero.jsx";
+import InsuranceSolution from "./pages/Industry/Insurance/InsuranceSolution.jsx";
+import ConnectedOperation from "./pages/Industry/Insurance/ConnectedOperations.jsx";
+import InsuranceDigitalTransformation from "./pages/Industry/Insurance/InsuranceDigitalTransformation.jsx";
+import InsuranceCustomer from "./pages/Industry/Insurance/InsuranceCustomer.jsx";
+import InsuranceWhyTt from "./pages/Industry/Insurance/InsuranceWhyTt.jsx";
+import GetInTouch from "./pages/Industry/Insurance/GetInTouch.jsx";
+
+// =================================================
+// FINANCE
+// =================================================
+
+import FinanceHero from "./pages/Industry/Finance/FinanceHero.jsx";
+import FinanceArchitecture from "./pages/Industry/Finance/FinanceArchitecture.jsx";
+import FinanceTechnology from "./pages/Industry/Finance/FinanceTechnology.jsx";
+import FinanceKeyBusiness from "./pages/Industry/Finance/FinanceKeyBusiness.jsx";
+import FinanceFintech from "./pages/Industry/Finance/FinanceFintech.jsx";
+import FinanceNextStep from "./pages/Industry/Finance/FinanceNextStep.jsx";
+import FinanceGetInTouch from "./pages/Industry/Finance/FinanceGetInTouch.jsx";
+
+// =================================================
+// HEALTHCARE
+// =================================================
+
+import HealthcareHero from "./pages/Industry/Healthcare/HealthcareHero.jsx";
+import HealthcareExplore from "./pages/Industry/Healthcare/HealthcareExplore.jsx";
+import HealthcareTechnology from "./pages/Industry/Healthcare/HealthcareTechnology.jsx";
+import HealthcareOperation from "./pages/Industry/Healthcare/HealthcareOperation.jsx";
+import ExperianceSecurity from "./pages/Industry/Healthcare/ExperianceSecurity.jsx";
+import InsightOperations from "./pages/Industry/Healthcare/InsightOperations.jsx";
+import HealthcareApproach from "./pages/Industry/Healthcare/HealthcareApproach.jsx";
+import TransformationDesk from "./pages/Industry/Healthcare/TransformationDesk.jsx";
+
+import HealthcareGetInTouch from "./pages/Industry/Healthcare/HealthcareGetInTouch.jsx";
+
+
+// =================================================
+// INFORMATION TECHNOLOGY
+// =================================================
+import ItHero from "./pages/Industry/InformationTechnology/ItHero.jsx";
+import ItBusiness from "./pages/Industry/InformationTechnology/ItBusiness.jsx";
+import ItService from "./pages/Industry/InformationTechnology/ItService.jsx";
+import ItSoftware from "./pages/Industry/InformationTechnology/ItSoftware.jsx";
+import ItDigitalSolution from "./pages/Industry/InformationTechnology/ItDigitalSolution.jsx";
+import ItInfrastructure from "./pages/Industry/InformationTechnology/ItInfrastructure.jsx";
+import ItApproach from "./pages/Industry/InformationTechnology/ItApproach.jsx";
+import ItTechTorch from "./pages/Industry/InformationTechnology/ItTechTorch.jsx";
+import ItFoundation from "./pages/Industry/InformationTechnology/ItFoundation.jsx";
+import ITGetInTouch from "./pages/Industry/InformationTechnology/ITGetInTouch.jsx";
+
+// =================================================
+// INFORMATION TECHNOLOGY
+// =================================================
+
+import ManufacturingHero from "./pages/Industry/Manufacturing/ManufacturingHero.jsx";
+import ManufacturingTechnology from "./pages/Industry/Manufacturing/ManufacturingTechnology.jsx";
+import ManufacturingSolution from "./pages/Industry/Manufacturing/ManufacturingSolution.jsx";
+import ManufacturingErp from "./pages/Industry/Manufacturing/ManufacturingErp.jsx";
+import SoftwareEngineering from "./pages/Industry/Manufacturing/SoftwareEngineering.jsx";
+import ManufacturingApproach from "./pages/Industry/Manufacturing/ManufacturingApproach.jsx";
+import ManufacturingTechTorch from "./pages/Industry/Manufacturing/ManufacturingTechTorch.jsx";
+import ManufacturingGetInTouch from "./pages/Industry/Manufacturing/ManufacturingGetInTouch.jsx";
+
+
+// =================================================
+// TELECOMMUNICATIONS
+// =================================================
+
+import TcHero from "./pages/Industry/Telecommunication/TcHero.jsx";
+import TcTechnology from "./pages/Industry/Telecommunication/TcTechnology.jsx";
+import TcKeySolution from "./pages/Industry/Telecommunication/TcKeySolution.jsx";
+import TcSoftwareEngineer from "./pages/Industry/Telecommunication/TcSoftwareEngineer.jsx";
+import TcService from "./pages/Industry/Telecommunication/TcService.jsx";
+import TcApproach from "./pages/Industry/Telecommunication/TcApproach.jsx";
+import TcGetinTouch from "./pages/Industry/Telecommunication/TcGetInTouch.jsx";
+
+// =================================================
+// ENERGY
+// =================================================
+
+import EnergyHero from "./pages/Industry/Energy/EnergyHero.jsx";
+import EnergyTechnology from "./pages/Industry/Energy/EnergyTechnology.jsx";
+import EnergyKeySolution from "./pages/Industry/Energy/EnergyKeySolution.jsx";
+import EnergySoftwareEngineering from "./pages/Industry/Energy/EnergySoftwareEngineering.jsx";
+import EnergyTechnologyService from "./pages/Industry/Energy/EnergyTechnologyService.jsx";
+import EnergyApproach from "./pages/Industry/Energy/EnergyApproach.jsx";
+import EnergyGetInTouch from "./pages/Industry/Energy/EnergyGetInTouch.jsx";
+
+// =================================================
+// TRANSPORTATION
+// =================================================
+
+import TransHero from "./pages/Industry/Transportation/TransHero.jsx";
+import TransportationConnected from "./pages/Industry/Transportation/TransportationConnected.jsx";
+import TransportationSolution from "./pages/Industry/Transportation/TransportationSolution.jsx";
+import TransportationSupplyChain from "./pages/Industry/Transportation/TransportationSupplyChain.jsx";
+import TransportationSoftware from "./pages/Industry/Transportation/TransportationSoftware.jsx";
+import TransportationApproach from "./pages/Industry/Transportation/TransportationApproach.jsx";
+import TransportationEnterprise from "./pages/Industry/Transportation/TransportationEnterprise.jsx";
+import TransportationGetInTouch from "./pages/Industry/Transportation/TransportationGetInTouch.jsx";
+
+// =================================================
+// FMCG
+// =================================================
+
+import FmcgHero from "./pages/Industry/Fmcg/FmcgHero.jsx";
+import FmcgSolution from "./pages/Industry/Fmcg/FmcgSolution.jsx";
+import FmcgOurSolution from "./pages/Industry/Fmcg/FmcgOurSolution.jsx";
+import FmcgManagement from "./pages/Industry/Fmcg/FmcgManagement.jsx";
+import FmcgBusiness from "./pages/Industry/Fmcg/FmcgBusiness.jsx";
+import FmcgSoftwareEngineering from "./pages/Industry/Fmcg/FmcgSoftwareEngineering.jsx";
+import FmcgTechnologyService from "./pages/Industry/Fmcg/FmcgTechnologyService.jsx";
+import FmcgApproach from "./pages/Industry/Fmcg/FmcgApproach.jsx";
+import FmcgGetInTouch from "./pages/Industry/Fmcg/FmcgGetInTouch.jsx";
+
+// =================================================
+// E-COMMERCE
+// =================================================
+import EcommerceHero from "./pages/Industry/ECommerce/EcommerceHero.jsx";
+import EcommerceEnterprise from "./pages/Industry/ECommerce/EcommerceEnterprise.jsx";
+import EcommerceCapabilities from "./pages/Industry/ECommerce/EcommerceCapabilities.jsx";
+import EcommerceFrontend from "./pages/Industry/ECommerce/EcommerceFrontend.jsx";
+import EcommerceSynergy from "./pages/Industry/ECommerce/EcommerceSynergy.jsx";
+import EcommerceCustom from "./pages/Industry/ECommerce/EcommerceCustom.jsx";
+import EcommerceIntelligence from "./pages/Industry/ECommerce/EcommerceIntelligence.jsx";
+import EcommerceApproach from "./pages/Industry/ECommerce/EcommerceApproach.jsx";
+import EcommerceNextPhase from "./pages/Industry/ECommerce/EcommerceNextPhase.jsx";
+import ECommerceGetInTouch from "./pages/Industry/ECommerce/ECommerceGetInTouch.jsx";
+
+import StartConversation from "./pages/StartConversation/StartConversation.jsx";
+import ExploreQuestions from "./pages/StartConversation/ExploreQuestions.jsx";
+import ConversationToggle from "./pages/StartConversation/ConversationToggle.jsx";
+
+
+// =================================================
+// SCROLL TO TOP
+// =================================================
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
+
+  return null;
+}
 
 // =================================================
 // COMMON LAYOUT
 // =================================================
 function MainLayout() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
+
+      {/* NAVBAR */}
       <Navbar />
 
       {/* PAGE CONTENT */}
@@ -188,7 +492,7 @@ function MainLayout() {
       {/* FOOTER */}
       <Footer />
 
-    </>
+    </div>
   );
 }
 
@@ -381,6 +685,37 @@ function CyberSecurityPage() {
     </>
   );
 }
+
+// =================================================
+// SECURE BUSINESS
+// =================================================
+function SecureBusinessPage() {
+  return (
+    <>
+      <SecurityInitiative />
+      <ProtocolDelivery />
+      <SelectionEngine />
+      <AdvisoryFramework />
+    </>
+  );
+}
+
+// =================================================
+// SCHEDULE ADVISORY
+// =================================================
+function ScheduleAdvisoryPage() {
+  return (
+    <>
+      <AdvisoryDesk />
+      <DispatchConsole />
+      <TimeboxProtocol />
+    </>
+  );
+}
+
+// =================================================
+// BUSINESS GROWTH
+// =================================================
 function BusinessGrowthPage() {
   return (
     <>
@@ -396,92 +731,6 @@ function BusinessGrowthPage() {
       <ParadigmSection />
     </>
   );
-}
-
-function TechPulsePage() {
-  return (
-    <>
-
-    <DataDecisions />
-    <PerspectiveAnalysis />
-    <StrategicInquiry />
-    <StructuredMethodology />
-    <OperationalImpact />
-    <Automation />
-    <CrossFunctional />
-    <Discipline />
-    <ExecutiveStrategy />
-
-    </>
-  );
-}
-function DigitalSolution() {
-  return (
-    <>
-      <EnterpriseSolution />
-      <SystemicAgility />
-      <ArchitectureLifecycle />
-      <ValidatedSystems />
-    </>
-  );
-}
-function Platform() {
-  return (
-    <>
-      <Businessplatformshero />
-      <OurAproach />
-      <OurPlatforms />
-      <TechTorchPlatform />
-      <DirectEnterprise />
-      </>
-  );
-}
-function CapabilitiesDigitalSolution() {
-  return (
-    <>
-      <DigitalSolutionHero />
-      <DigitalTransformation />
-      <OurDigitalSolution />
-      <DiffrentIndustries />
-      <ConnectedBusiness />
-      <TechTorchTechnology />
-      <RequirementReality />
-      </>
-  );
-}
-
-function OurServiceSection(){
-  return(
-    <>
-    <OurServiceHero />
-    <StrategicPerspective />
-    <PortfolioArchitecture />
-    <DeliveryBlueprint />
-    <TechnologyRoadmap />
-    </>
-  )
-}
-function ArtificialIntelligent(){
-  return(
-    <>
-    <AiService />
-    <AiStrategic />
-    <AiAdvantage />
-    <AiEcosystem />
-    <AiEcosystemIntegration />
-    <AiOperational />
-    </>
-  )
-}
-function ItAugmentational(){
-  return(
-    <>
-    <ItWorkforceVelocity />
-    <ItStrategicperspective />
-    <ItFlexibleEngagement />
-    <ItOperational />
-    </>
-  )
 }
 
 // =================================================
@@ -863,33 +1112,46 @@ function ECommerce(){
 // =================================================
 // APP
 // =================================================
-
 function App() {
   return (
-    <Routes>
-      <Route element={<MainLayout />}>
+    <>
+      {/* Always move to top when route changes */}
+      <ScrollToTop />
 
-        {/* HOME */}
-        <Route path="/" element={<Home />} />
+      <Routes>
 
-        {/* SLIDE PAGES */}
-        <Route path="/Slide1" element={<Slide1Page />} />
-        <Route path="/Slide2" element={<Slide2Page />} />
-        <Route path="/Slide3" element={<Slide3Page />} />
-        <Route path="/Slide4" element={<Slide4Page />} />
-        <Route path="/Slide5" element={<Slide5Page />} />
+        {/* =================================================
+            ALL PAGES USE SAME NAVBAR + FOOTER
+        ================================================= */}
+        <Route element={<MainLayout />}>
 
-        {/* OUR STORY */}
-        <Route path="/Philosophy" element={<PhilosophyPage />} />
+          {/* ================= HOME ================= */}
+          <Route path="/" element={<Home />} />
 
-        {/* KNOW MORE */}
-        <Route path="/KnowMore" element={<KnowMorePage />} />
+          {/* ================= SLIDES ================= */}
+          <Route path="/Slide1" element={<Slide1Page />} />
+          <Route path="/Slide2" element={<Slide2Page />} />
+          <Route path="/Slide3" element={<Slide3Page />} />
+          <Route path="/Slide4" element={<Slide4Page />} />
+          <Route path="/Slide5" element={<Slide5Page />} />
 
-        {/* WHAT'S NEXT - TECHTORCH */}
-        <Route
-          path="/TechTorchView"
-          element={<WhatNextPage />}
-        />
+          {/* ================= OUR STORY ================= */}
+          <Route
+            path="/Philosophy"
+            element={<PhilosophyPage />}
+          />
+
+          {/* ================= KNOW MORE ================= */}
+          <Route
+            path="/KnowMore"
+            element={<KnowMorePage />}
+          />
+
+          {/* ================= TECHTORCH VIEW ================= */}
+          <Route
+            path="/TechTorchView"
+            element={<WhatNextPage />}
+          />
 
           {/* ================= FIELD NOTE ================= */}
           <Route
@@ -897,17 +1159,31 @@ function App() {
             element={<FieldNotePage />}
           />
 
+          {/* ================= INTEGRATED CAPABILITIES ================= */}
+          <Route
+            path="/integrated-capabilities"
+            element={<IntegratedCapLayout />}
+          >
+            <Route
+              path="erp-integration"
+              element={<ERPIntegration />}
+            />
 
-{/* INTEGRATED CAPABILITIES */}
-<Route
-  path="/integrated-capabilities"
-  element={<IntegratedCapLayout />}
->
-  <Route
-    path="erp-integration"
-    element={<ERPIntegration />}
-  />
-</Route>
+            <Route
+              path="operations-management"
+              element={<OpManagement />}
+            />
+
+            <Route
+              path="data-orchestration"
+              element={<DataOrchestration />}
+            />
+
+            <Route
+              path="legacy-modernization"
+              element={<Legacy />}
+            />
+          </Route>
 
           {/* ================= THINK AHEAD ================= */}
           <Route
@@ -915,19 +1191,317 @@ function App() {
             element={<ThinkAheadPage />}
           />
 
-        {/* WHAT'S NEXT - CYBER SECURITY */}
-        <Route
-          path="/cyber-security"
-          element={<CyberSecurityPage />}
-        />
+          {/* ================= CYBER SECURITY ================= */}
+          <Route
+            path="/cyber-security"
+            element={<CyberSecurityPage />}
+          />
 
-        <Route
-          path="/Business-growth"
-          element={<BusinessGrowthPage />}
-        />
+          {/* ================= SECURE BUSINESS ================= */}
+          <Route
+            path="/secure-business"
+            element={<SecureBusinessPage />}
+          />
 
-      </Route>
-    </Routes>
+          {/* ================= SCHEDULE ADVISORY ================= */}
+          <Route
+            path="/schedule-advisory"
+            element={<ScheduleAdvisoryPage />}
+          />
+
+          {/* ================= ENGAGEMENT PROTOCOL ================= */}
+          <Route
+            path="/engagement-protocol"
+            element={<ViewEngagementProtocol />}
+          />
+
+          <Route
+            path="/accept-proceed"
+            element={<AcceptProceed />}
+          />
+
+          <Route
+            path="/export-protocol"
+            element={<ExportProtocolPackage />}
+          />
+
+          {/* ================= BUSINESS GROWTH ================= */}
+          <Route
+            path="/Business-growth"
+            element={<BusinessGrowthPage />}
+          />
+
+          {/* ================= TECH PULSE ================= */}
+          <Route
+            path="/data-decisions"
+            element={<TechPulsePage />}
+          />
+
+          {/* ================= DIGITAL SOLUTION ================= */}
+          <Route
+            path="/digital-solutions"
+            element={<DigitalSolution />}
+          />
+
+          {/* =================================================
+              CAPABILITIES
+          ================================================= */}
+
+          {/* PLATFORM */}
+          <Route
+            path="/platform"
+            element={<Platform />}
+          />
+
+          {/* DIGITAL SOLUTION */}
+          <Route
+            path="/digitalsolution"
+            element={<CapabilitiesDigitalSolution />}
+          />
+
+          {/* OUR SERVICE */}
+          <Route
+            path="/OurService"
+            element={<OurServiceSection />}
+          />
+
+          {/* ARTIFICIAL INTELLIGENCE */}
+          <Route
+            path="/ArtificialIntelligent"
+            element={<ArtificialIntelligent />}
+          />
+
+          {/* IT AUGMENTATION */}
+          <Route
+            path="/ItAugmentation"
+            element={<ItAugmentational />}
+          />
+
+          {/* =================================================
+              STAFFING
+          ================================================= */}
+
+          {/* CONTRACT STAFFING */}
+          <Route
+            path="/Contract-Staffing"
+            element={<ContractStaffing />}
+          />
+
+          {/* CONTRACT TO HIRE */}
+          <Route
+            path="/contract-to-hire"
+            element={<ContractToHire />}
+          />
+
+          {/* DEDICATED DEVELOPMENT */}
+          <Route
+            path="/Dedicated-Development-Teams"
+            element={<DedicatedDevelopment />}
+          />
+
+          {/* REMOTE ENGINEERS */}
+          <Route
+            path="/remote-engineers"
+            element={<RemoteEngineers />}
+          />
+
+          {/* PROJECT BASED HIRING */}
+          <Route
+            path="/project-based-hiring"
+            element={<ProjectBasedHiring />}
+          />
+
+          {/* RESOURCE REPLACEMENT */}
+          <Route
+            path="/resource-replacement"
+            element={<ResourceReplacement />}
+          />
+
+          {/* BENCH HIRING */}
+          <Route
+            path="/bench-hiring"
+            element={<BenchHiring />}
+          />
+
+          {/* VENDOR PARTNERSHIP */}
+          <Route
+            path="/vendor-partnership"
+            element={<VendorPartnership />}
+          />
+
+          {/* BECOME PARTNER */}
+          <Route
+            path="/become-partner"
+            element={<BecomePartner />}
+          />
+
+          {/* MSP SUPPORT */}
+          <Route
+            path="/msp-support"
+            element={<MSPSupport />}
+          />
+
+          {/* MSP SUB PAGES */}
+          <Route
+            path="/discuss-priorities"
+            element={<DiscussPriorities />}
+          />
+
+          <Route
+            path="/connect-msp"
+            element={<ConnectMSP />}
+          />
+           
+           <Route
+            path="/offshore-teams"
+            element={<OffshoreTeams />}
+          />
+
+          <Route
+            path="/development-team"
+            element={<DevelopmentTeam/>}
+          />
+
+           <Route
+            path="/development-requirements"
+            element={<DevelopmentRequirements/>}
+          />
+
+            <Route
+            path="/industries/education"
+            element={<Education/>}
+          />
+          <Route
+            path="/industries/insurance"
+            element={<Insurance/>}
+          />
+          <Route
+            path="/industries/finance"
+            element={<Finance/>}
+          />
+          <Route
+            path="/industries/healthcare"
+            element={<Healthcare/>}
+          />
+
+           <Route
+            path="/education-solutions"
+            element={<EducationSolutions/>}
+          />
+
+           <Route
+            path="/schedule-discovery"
+            element={<ScheduleDiscovery/>}
+          />
+          <Route
+            path="/industries/information-technology"
+            element={<InformationTechnology/>}
+          />
+
+          <Route
+
+            path="/industries/manufacturing"
+            element={<Manufacturing/>}
+          />
+
+            <Route
+            path="/insurance-get-in-touch"
+            element={<GetInTouch/>}
+          />
+
+          <Route
+            path="/finance-get-in-touch"
+            element={<FinanceGetInTouch/>}
+          />
+
+          <Route
+            path="/healthcare-get-in-touch"
+            element={<HealthcareGetInTouch/>}
+          />
+
+           <Route
+            path="/it-get-in-touch"
+            element={<ITGetInTouch/>}
+          />
+          <Route
+            path="/manufacturing-get-in-touch"
+            element={<ManufacturingGetInTouch/>}
+
+          />
+          <Route
+            path="/industries/telecommunications"
+            element={<Telecommunications/>}
+
+          />
+           <Route
+            path="/industries/energy"
+            element={<Energy/>}
+          />
+
+           <Route
+            path="/telecommunication-get-in-touch"
+            element={<TcGetinTouch/>}
+          />
+
+           <Route
+            path="/energy-get-in-touch"
+            element={<EnergyGetInTouch/>}
+          />
+          <Route
+            path="/industries/transportation"
+            element={<Transportation/>}
+          />
+
+
+          <Route
+            path="/transportation-get-in-touch"
+            element={<TransportationGetInTouch/>}
+          />
+
+
+           <Route
+            path="/transportation-get-in-touch"
+            element={<TransportationGetInTouch/>}
+
+          />
+
+          <Route
+            path="/industries/fmcg"
+            element={<Fmcg/>}
+          />
+
+
+          <Route
+            path="/fmcg-get-in-touch"
+            element={<FmcgGetInTouch/>}
+          />
+
+          <Route
+            path="/industries/e-commerce"
+            element={<ECommerce/>}
+          />
+
+          <Route
+            path="/ecommerce-get-in-touch"
+            element={<ECommerceGetInTouch/>}
+          />
+          <Route
+            path="/start-conversation"
+            element={<StartConversation/>}
+          />
+          <Route
+            path="/explore-questions"
+            element={<ExploreQuestions/>}
+          />
+           <Route
+            path="/conversation-toggle"
+            element={<ConversationToggle/>}
+          />
+
+        </Route>
+
+      </Routes>
+    </>
   );
 }
 export default App;
