@@ -197,7 +197,7 @@ export default function PracticalIntelligence() {
           margin: 0;
           color: #07182f;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 40px;
+          font-size: 38px;
           line-height: 1.18;
           font-weight: 700;
           letter-spacing: -2px;
@@ -209,7 +209,7 @@ export default function PracticalIntelligence() {
           max-width: 760px;
           margin: 20px 0 0;
           color: #5e5e5e;
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 15px;
           line-height: 1.55;
           font-weight: 400;
@@ -239,7 +239,7 @@ export default function PracticalIntelligence() {
         }
 
         .practical-stat strong {
-          color: #8b0047;
+          color: #730042;
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 26px;
           line-height: 1;

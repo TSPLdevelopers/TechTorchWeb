@@ -1,6 +1,6 @@
 import React from "react";
 
-const MAROON = "#a50050";
+const MAROON = "#970052";
 
 export default function EnterpriseAcceleration() {
   return (
@@ -164,7 +164,7 @@ export default function EnterpriseAcceleration() {
           margin: 55px 0 0;
           max-width: 900px;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 50px;
+          font-size: 44px;
           line-height: 1.08;
           font-weight: 600;
           letter-spacing: -2px;
@@ -199,7 +199,7 @@ export default function EnterpriseAcceleration() {
           max-width: 100%;
           margin-top: 52px;
           padding: 10px 15px;
-          background: #83003f;
+          background: #730042;
           color: #ffffff;
           border-radius: 0;
           font-family: "Inter", sans-serif;

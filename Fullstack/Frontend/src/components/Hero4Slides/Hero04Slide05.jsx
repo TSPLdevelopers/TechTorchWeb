@@ -112,21 +112,22 @@ export default function LetsConnect() {
               -translate-y-6
               text-[25px]
               font-semibold
+              font-['Plus_Jakarta_Sans']
               leading-[1.08]
               tracking-[-0.02em]
               text-white
 
               sm:-translate-y-7
-              sm:text-[29px]
+              sm:text-[32px]
 
               md:-translate-y-8
               md:text-[34px]
 
               lg:-translate-y-9
-              lg:text-[37px]
+              lg:text-[36px]
 
               xl:-translate-y-10
-              xl:text-[38px]
+              xl:text-[36px]
             "
           >
             LET'S BUILD WHAT'S NEXT
@@ -142,12 +143,13 @@ export default function LetsConnect() {
               whitespace-nowrap
               text-[18px]
               font-medium
+              font-['Inter']
               leading-[1.2]
               text-white
 
               sm:-translate-y-6
               sm:mt-5
-              sm:text-[21px]
+              sm:text-[20px]
 
               md:-translate-y-7
               md:mt-6
@@ -155,11 +157,11 @@ export default function LetsConnect() {
 
               lg:-translate-y-8
               lg:mt-7
-              lg:text-[28px]
+              lg:text-[26px]
 
               xl:-translate-y-9
               xl:mt-8
-              xl:text-[30px]
+              xl:text-[26px]
             "
           >
             Have a Technology Challenge?
@@ -174,6 +176,7 @@ export default function LetsConnect() {
               mt-2
               max-w-[480px]
               text-[13px]
+              font-['Inter']
               font-normal
               leading-[1.4]
               text-white
@@ -192,7 +195,7 @@ export default function LetsConnect() {
 
               xl:-translate-y-9
               xl:mt-4
-              xl:text-[18px]
+              xl:text-[17px]
             "
           >
             Let's understand your requirements and
@@ -240,7 +243,7 @@ export default function LetsConnect() {
               lg:translate-y-8
               lg:text-[17px]
 
-              xl:text-[19px]
+              xl:text-[17px]
             "
           >
             <span>Talk to Our Experts</span>
