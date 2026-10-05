@@ -162,10 +162,11 @@ function YouTubeIcon() {
   );
 }
 
+/* ================= FOOTER ================= */
+
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#730042] text-white">
-
+    <footer className="w-full bg-[#730042] font-inter text-white">
 
       {/* ================= MAIN FOOTER CONTAINER ================= */}
 
@@ -175,18 +176,14 @@ export default function Footer() {
           px-4
           pt-12
           pb-8
-
           sm:px-6
-
           md:px-10
           md:pt-16
-
           lg:px-[100px]
         "
       >
 
         {/* ================= FOOTER GRID ================= */}
-
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
 
@@ -201,11 +198,11 @@ export default function Footer() {
               />
             </div>
 
-            <h3 className="mb-4 text-xl font-semibold leading-snug">
+            <h3 className="mb-4 text-l font-semibold leading-snug">
               Technology. Expertise. Progress.
             </h3>
 
-            <p className="mb-6 max-w-[260px] text-[15px] leading-relaxed text-white/70">
+            <p className="mb-6 max-w-[260px] text-[14px] leading-relaxed text-white/70">
               We bring technology, expertise and people together to solve
               real business challenges and create practical digital
               solutions.
@@ -215,29 +212,24 @@ export default function Footer() {
 
             <div className="flex items-center gap-4">
 
-              {/* X */}
               <SocialIcon label="X (Twitter)">
                 <XIcon />
               </SocialIcon>
 
-              {/* LinkedIn */}
               <SocialIcon label="LinkedIn">
                 <LinkedInIcon />
               </SocialIcon>
 
-              {/* Instagram */}
               <SocialIcon label="Instagram">
                 <InstagramIcon />
               </SocialIcon>
 
-              {/* YouTube */}
               <SocialIcon label="YouTube">
                 <YouTubeIcon />
               </SocialIcon>
 
             </div>
           </div>
-
 
           {/* ================= EXPLORE ================= */}
 
@@ -252,7 +244,7 @@ export default function Footer() {
                   <a
                     href="#"
                     className="
-                      text-[15px]
+                      text-[14px]
                       text-white/80
                       transition-colors
                       hover:text-white
@@ -264,7 +256,6 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
 
           {/* ================= COMPANY ================= */}
 
@@ -279,7 +270,7 @@ export default function Footer() {
                   <a
                     href="#"
                     className="
-                      text-[15px]
+                      text-[14px]
                       text-white/80
                       transition-colors
                       hover:text-white
@@ -292,15 +283,14 @@ export default function Footer() {
             </ul>
           </div>
 
-
           {/* ================= CTA ================= */}
 
           <div>
-            <h4 className="mb-4 text-[18px] font-semibold">
+            <h4 className="mb-4 text-[16px] font-semibold">
               Let's build what's next.
             </h4>
 
-            <p className="mb-4 text-[15px] leading-relaxed text-white/70">
+            <p className="mb-4 text-[14px] leading-relaxed text-white/70">
               Have a project, technology requirement or business challenge?
               Let's talk.
             </p>
@@ -324,7 +314,7 @@ export default function Footer() {
               <ArrowRight size={16} />
             </a>
 
-            <div className="flex flex-col gap-1 text-[15px] text-white/80">
+            <div className="flex flex-col gap-1 text-[14px] text-white/80">
 
               <a
                 href="#"
@@ -345,7 +335,6 @@ export default function Footer() {
 
         </div>
 
-
         {/* ================= DISCLAIMER ================= */}
 
         <div className="mt-14 border-t border-white/20 pt-6">
@@ -360,7 +349,6 @@ export default function Footer() {
           </p>
         </div>
 
-
         {/* ================= BOTTOM ================= */}
 
         <div
@@ -374,7 +362,6 @@ export default function Footer() {
             border-t
             border-white/20
             pt-6
-
             sm:flex-row
             sm:items-center
           "

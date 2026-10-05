@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const MAROON = "#7a1140";
+const MAROON = "#730042";
 
 const icons = {
   automate: (
@@ -97,10 +97,6 @@ export default function ErpIntelligence() {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  /* =================================================
-     REPEAT ANIMATION EVERY TIME SECTION ENTERS
-  ================================================= */
-
   useEffect(() => {
     const section = sectionRef.current;
 
@@ -111,17 +107,14 @@ export default function ErpIntelligence() {
         const entry = entries[0];
 
         if (entry.isIntersecting) {
-          // Reset animation first
           setIsVisible(false);
 
-          // Start animation again
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
               setIsVisible(true);
             });
           });
         } else {
-          // Reset when leaving viewport
           setIsVisible(false);
         }
       },
@@ -141,23 +134,12 @@ export default function ErpIntelligence() {
       className={`erp-intelligence-section ${
         isVisible ? "is-visible" : ""
       }`}
-      style={{
-        width: "100%",
-        background: "#f6f3ec",
-        backgroundImage:
-          "repeating-linear-gradient(90deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 48px)",
-        fontFamily: "'Plus Jakarta Sans', sans-serif",
-        padding: "38px 0 48px",
-        overflow: "hidden",
-        boxSizing: "border-box",
-      }}
     >
       <div className="erp-intelligence-container">
 
         {/* ================= HEADER ================= */}
 
         <div className="erp-header">
-
           <p className="erp-label">
             ERP &amp; INTELLIGENCE
           </p>
@@ -175,22 +157,16 @@ export default function ErpIntelligence() {
             connected ERP system can help your teams work faster and make more
             informed decisions.
           </p>
-
         </div>
-
 
         {/* ================= CARDS ================= */}
 
         <div className="erp-intelligence-cards">
-
           {cards.map(({ icon, title, desc }, index) => (
             <div
               key={title}
               className="erp-card"
             >
-
-              {/* ================= ICON ================= */}
-
               <div
                 className="erp-icon"
                 style={{
@@ -200,54 +176,61 @@ export default function ErpIntelligence() {
                 {icon}
               </div>
 
-
-              {/* ================= TITLE ================= */}
-
               <p className="erp-card-title">
                 {title}
               </p>
 
-
-              {/* ================= DESCRIPTION ================= */}
-
               <p className="erp-card-description">
                 {desc}
               </p>
-
             </div>
           ))}
-
         </div>
-
       </div>
-
 
       {/* ================= RESPONSIVE CSS ================= */}
 
       <style>{`
 
         /* =================================================
-           DESKTOP
+           BASE / DESKTOP
         ================================================= */
+
+        .erp-intelligence-section {
+          width: 100%;
+          background: #f6f3ec;
+          background-image:
+            repeating-linear-gradient(
+              90deg,
+              rgba(0,0,0,0.05) 0px,
+              rgba(0,0,0,0.05) 1px,
+              transparent 1px,
+              transparent 48px
+            );
+          font-family: "Plus Jakarta Sans", sans-serif;
+          padding: 38px 0 48px;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        /*
+          EXACT SAME HORIZONTAL ALIGNMENT AS FOOTER
+
+          Footer:
+          px-4
+          sm:px-6
+          md:px-10
+          lg:px-[100px]
+        */
 
         .erp-intelligence-container {
           width: 100%;
-          max-width: 1450px;
-
-          margin: 0 auto;
-
-          /*
-            Same starting area as TechHero:
-            lg:px-[100px]
-          */
+          margin: 0;
           padding-left: 100px;
-          padding-right: 32px;
-
+          padding-right: 100px;
           box-sizing: border-box;
-
           transform: none;
         }
-
 
         /* =================================================
            HEADER
@@ -256,64 +239,41 @@ export default function ErpIntelligence() {
         .erp-header {
           width: 100%;
           max-width: 950px;
-
           margin-left: 0;
-
           box-sizing: border-box;
         }
 
-
         .erp-label {
-          font-size: 20px;
-
+          font-size: 18px;
           font-weight: 700;
-
           color: #141414;
-
           letter-spacing: 0.02em;
-
           margin: -8px 0 12px;
-
           text-align: left;
         }
-
 
         .erp-heading {
           font-size: 32px;
-
           font-weight: 700;
-
           line-height: 1.15;
-
           color: #141414;
-
           margin: 0 0 16px;
-
           text-align: left;
         }
-
 
         .erp-heading span {
           color: ${MAROON};
         }
 
-
         .erp-description {
           font-size: 15px;
-
           color: #2c2c2c;
-
           line-height: 1.6;
-
           margin: 0 0 32px;
-
           max-width: 820px;
-
           font-family: "Inter", sans-serif;
-
           text-align: left;
         }
-
 
         /* =================================================
            CARDS
@@ -321,52 +281,27 @@ export default function ErpIntelligence() {
 
         .erp-intelligence-cards {
           display: grid;
-
-          grid-template-columns:
-            repeat(4, minmax(0, 1fr));
-
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 28px;
-
-          /*
-            Reduced width
-          */
-          width: 88%;
-
-          /*
-            Cards start from same left area
-            as TechHero content
-          */
+          width: 100%;
           margin-left: 0;
-
           box-sizing: border-box;
-
           transform: none;
         }
 
-
         .erp-card {
           width: 100%;
-
           min-width: 0;
-
-          min-height: 260px;
-
+          min-height: 250px;
           background: #ffffff;
-
           padding: 32px;
-
           box-sizing: border-box;
-
           display: flex;
-
           flex-direction: column;
-
           border-radius: 16px;
-
           box-shadow:
             0 10px 28px rgba(20, 20, 20, 0.05);
         }
-
 
         /* =================================================
            ICON
@@ -374,26 +309,14 @@ export default function ErpIntelligence() {
 
         .erp-icon {
           width: 50px;
-
           height: 50px;
-
           min-width: 50px;
-
           border-radius: 50%;
-
           background: ${MAROON};
-
           display: flex;
-
           align-items: center;
-
           justify-content: center;
-
           margin-bottom: 22px;
-
-          /*
-            Initial state
-          */
 
           opacity: 0;
 
@@ -412,10 +335,8 @@ export default function ErpIntelligence() {
             opacity;
         }
 
-
         /* =================================================
            ICON ANIMATION
-           ONE BY ONE
         ================================================= */
 
         .erp-intelligence-section.is-visible .erp-icon {
@@ -426,23 +347,17 @@ export default function ErpIntelligence() {
             scale(1);
         }
 
-
         /* =================================================
            CARD TITLE
         ================================================= */
 
         .erp-card-title {
           font-size: 20px;
-
           font-weight: 600;
-
           color: #141414;
-
           margin: 0 0 10px;
-
           line-height: 1.2;
         }
-
 
         /* =================================================
            CARD DESCRIPTION
@@ -450,14 +365,11 @@ export default function ErpIntelligence() {
 
         .erp-card-description {
           font-size: 13.5px;
-           font-family: "Inter", sans-serif;
+          font-family: "Inter", sans-serif;
           color: #3a3a3a;
-
           line-height: 1.5;
-
           margin: 0;
         }
-
 
         /* =================================================
            LARGE TABLET
@@ -467,52 +379,38 @@ export default function ErpIntelligence() {
 
           .erp-intelligence-container {
             padding-left: 70px;
-            padding-right: 28px;
-
-            transform: none;
+            padding-right: 70px;
           }
 
-
           .erp-intelligence-cards {
-            width: 91%;
-
+            width: 100%;
             gap: 22px;
           }
 
-
           .erp-card {
             padding: 28px;
-
             min-height: 250px;
           }
-
 
           .erp-card-title {
             font-size: 20px;
           }
 
-
           .erp-card-description {
             font-size: 14px;
           }
 
-
           .erp-icon {
             width: 54px;
-
             height: 54px;
-
             min-width: 54px;
           }
 
-
           .erp-icon svg {
             width: 20px;
-
             height: 20px;
           }
         }
-
 
         /* =================================================
            TABLET
@@ -524,93 +422,68 @@ export default function ErpIntelligence() {
             padding: 36px 0 44px !important;
           }
 
+          /*
+            Footer-style tablet spacing
+            md = 40px
+          */
 
           .erp-intelligence-container {
             padding-left: 40px;
-
             padding-right: 40px;
-
-            transform: none;
           }
-
 
           .erp-header {
             width: 100%;
-
             max-width: 800px;
-
             margin-left: 0;
           }
-
 
           .erp-label {
             font-size: 21px;
           }
 
-
           .erp-heading {
             font-size: 29px;
           }
 
-
           .erp-description {
             font-size: 15px;
-
             max-width: 700px;
           }
 
-
           .erp-intelligence-cards {
-            grid-template-columns:
-              repeat(2, minmax(0, 1fr));
-
-            width: 96%;
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            width: 100%;
             gap: 20px;
-
             margin-left: 0;
-
-            transform: none;
           }
-
 
           .erp-card {
             min-height: 240px;
-
             padding: 26px 24px;
-
             border-radius: 14px;
           }
 
-
           .erp-icon {
             width: 54px;
-
             height: 54px;
-
             min-width: 54px;
-
             margin-bottom: 20px;
           }
 
-
           .erp-icon svg {
             width: 20px;
-
             height: 20px;
           }
-
 
           .erp-card-title {
             font-size: 20px;
           }
 
-
           .erp-card-description {
             font-size: 14px;
           }
         }
-
 
         /* =================================================
            SMALL TABLET
@@ -622,109 +495,71 @@ export default function ErpIntelligence() {
             padding: 32px 0 40px !important;
           }
 
-
           .erp-intelligence-container {
             padding-left: 20px;
-
             padding-right: 20px;
-
-            transform: none;
           }
-
 
           .erp-header {
             max-width: 100%;
-
             margin-left: 0;
-
             margin-right: 0;
           }
 
-
           .erp-label {
             font-size: 20px;
-
             margin: 0 0 10px;
-
             text-align: left;
           }
-
 
           .erp-heading {
             font-size: 28px;
-
             line-height: 1.2;
-
             margin: 0 0 14px;
-
             text-align: left;
           }
 
-
           .erp-description {
             font-size: 15px;
-
             line-height: 1.55;
-
             margin: 0 0 28px;
-
             max-width: 100%;
           }
 
-
           .erp-intelligence-cards {
-            grid-template-columns:
-              repeat(2, minmax(0, 1fr));
-
-            width: 96%;
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            width: 100%;
             gap: 18px;
-
             margin-left: 0;
-
-            transform: none;
           }
-
 
           .erp-card {
             min-height: 230px;
-
             padding: 25px 22px;
           }
 
-
           .erp-icon {
             width: 54px;
-
             height: 54px;
-
             min-width: 54px;
-
             margin-bottom: 18px;
           }
 
-
           .erp-icon svg {
             width: 20px;
-
             height: 20px;
           }
 
-
           .erp-card-title {
             font-size: 19px;
-
             margin-bottom: 8px;
           }
 
-
           .erp-card-description {
             font-size: 14px;
-
             line-height: 1.5;
           }
         }
-
 
         /* =================================================
            MOBILE
@@ -736,121 +571,84 @@ export default function ErpIntelligence() {
             padding: 28px 0 36px !important;
           }
 
+          /*
+            EXACT FOOTER MOBILE ALIGNMENT
+            Footer uses px-4 = 16px
+          */
 
           .erp-intelligence-container {
             padding-left: 16px;
-
             padding-right: 16px;
-
-            transform: none;
           }
-
 
           .erp-header {
             width: 100%;
-
             margin: 0;
           }
 
-
           .erp-label {
             font-size: 18px;
-
             line-height: 1.3;
-
             margin: 0 0 9px;
           }
 
-
           .erp-heading {
             font-size: 25px;
-
             line-height: 1.2;
-
             margin: 0 0 13px;
           }
 
-
           .erp-description {
             font-size: 14px;
-
             line-height: 1.55;
-
             margin: 0 0 24px;
-
             max-width: 100%;
           }
-
 
           .desktop-break {
             display: none;
           }
 
-
-          /* ==========================
-             ONE CARD PER ROW
-          ========================== */
+          /* ONE CARD PER ROW */
 
           .erp-intelligence-cards {
             display: grid;
-
             grid-template-columns: 1fr;
-
             width: 100%;
-
             gap: 16px;
-
             margin-left: 0;
-
-            transform: none;
           }
-
 
           .erp-card {
             width: 100%;
-
             min-height: auto;
-
             padding: 24px 20px;
-
             border-radius: 14px;
           }
 
-
           .erp-icon {
             width: 54px;
-
             height: 54px;
-
             min-width: 54px;
-
             margin-bottom: 17px;
           }
 
-
           .erp-icon svg {
             width: 20px;
-
             height: 20px;
           }
 
-
           .erp-card-title {
             font-size: 19px;
-
             line-height: 1.2;
-
             margin-bottom: 8px;
           }
 
-
           .erp-card-description {
             font-size: 14px;
-
             line-height: 1.5;
           }
         }
-
 
         /* =================================================
            VERY SMALL MOBILE
@@ -860,57 +658,44 @@ export default function ErpIntelligence() {
 
           .erp-intelligence-container {
             padding-left: 14px;
-
             padding-right: 14px;
           }
-
 
           .erp-label {
             font-size: 17px;
           }
 
-
           .erp-heading {
             font-size: 23px;
           }
-
 
           .erp-description {
             font-size: 13.5px;
           }
 
-
           .erp-card {
             padding: 22px 18px;
           }
 
-
           .erp-icon {
             width: 54px;
-
             height: 54px;
-
             min-width: 54px;
           }
 
-
           .erp-icon svg {
             width: 19px;
-
             height: 19px;
           }
-
 
           .erp-card-title {
             font-size: 18px;
           }
 
-
           .erp-card-description {
             font-size: 13.5px;
           }
         }
-
 
         /* =================================================
            REDUCED MOTION
@@ -920,9 +705,7 @@ export default function ErpIntelligence() {
 
           .erp-icon {
             transition: none !important;
-
             opacity: 1 !important;
-
             transform: none !important;
           }
         }
