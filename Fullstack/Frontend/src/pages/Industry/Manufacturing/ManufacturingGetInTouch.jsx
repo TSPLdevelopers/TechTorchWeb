@@ -9,6 +9,7 @@ import {
   Mail,
   MapPin,
   Factory,
+  CircleCheck,
 } from "lucide-react";
 
 const BEETROOT = "#730042";
@@ -85,6 +86,8 @@ const ENGAGEMENT_STEPS = [
 export default function ManufacturingGetInTouch() {
   const navigate = useNavigate();
 
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -108,14 +111,30 @@ export default function ManufacturingGetInTouch() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.consent) {
-      alert("Please agree to be contacted regarding your enquiry.");
+    const form = e.currentTarget;
+
+    if (!form.checkValidity()) {
+      const invalidField = form.querySelector(":invalid");
+
+      if (invalidField) {
+        invalidField.focus();
+        form.reportValidity();
+
+        setTimeout(() => {
+          invalidField.blur();
+        }, 4000);
+      }
+
       return;
     }
 
     console.log("Manufacturing enquiry:", formData);
 
-    alert("Thank you! Your enquiry has been submitted.");
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
 
   const scrollToForm = () => {
@@ -138,6 +157,99 @@ export default function ManufacturingGetInTouch() {
 
         * {
           box-sizing: border-box;
+        }
+
+        /* =====================================================
+           SUCCESS DIALOG - SAME STYLE AS INSURANCE GET IN TOUCH
+        ===================================================== */
+
+        .mfg-success-dialog {
+          position: fixed;
+          top: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          width: min(420px, calc(100% - 32px));
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 16px 20px;
+          background: #ffffff;
+          border: 1px solid #E5D3DC;
+          border-radius: 10px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+          font-family: "Inter", sans-serif;
+          animation: mfgSuccessDialogIn 0.25s ease-out;
+        }
+
+        .mfg-success-dialog-icon {
+          width: 44px;
+          height: 44px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #ffffff;
+          color: #22824D;
+        }
+
+        .mfg-success-dialog-content {
+          min-width: 0;
+        }
+
+        .mfg-success-dialog-title {
+          margin: 0;
+          color: #202022;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .mfg-success-dialog-text {
+          margin: 2px 0 0;
+          color: #65595E;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .mfg-success-dialog-ok {
+          width: 34px;
+          height: 34px;
+          margin-left: auto;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: none;
+          border-radius: 50%;
+          background: #730042;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .mfg-success-dialog-ok:hover {
+          background: #620038;
+          transform: scale(1.05);
+        }
+
+        @keyframes mfgSuccessDialogIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -12px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
         }
 
         .mfg-page {
@@ -200,10 +312,10 @@ export default function ManufacturingGetInTouch() {
           margin: 22px auto 16px;
           max-width: 850px;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: clamp(34px, 4vw, 48px);
+          font-size: 38px;
           line-height: 1.14;
           letter-spacing: -0.035em;
-          font-weight: 700;
+          font-weight: 600;
           color: var(--mfg-dark);
         }
 
@@ -213,7 +325,7 @@ export default function ManufacturingGetInTouch() {
           max-width: 760px;
           margin: 0 auto;
           color: #707070;
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 14px;
           line-height: 1.8;
           font-weight: 500;
@@ -268,7 +380,7 @@ export default function ManufacturingGetInTouch() {
           margin: 0 0 5px;
           color: #252525;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.35;
           font-weight: 600;
         }
@@ -277,7 +389,7 @@ export default function ManufacturingGetInTouch() {
           margin: 0;
           color: #777;
           font-family: "Inter", sans-serif;
-          font-size: 11.5px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -384,7 +496,7 @@ export default function ManufacturingGetInTouch() {
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 20px;
           line-height: 1.4;
-          font-weight: 700;
+          font-weight: 600;
           letter-spacing: -0.02em;
         }
 
@@ -416,7 +528,7 @@ export default function ManufacturingGetInTouch() {
         .mfg-point-text h4 {
           margin: 1px 0 4px;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
         }
 
@@ -424,7 +536,7 @@ export default function ManufacturingGetInTouch() {
           margin: 0;
           color: #777;
           font-family: "Inter", sans-serif;
-          font-size: 11.5px;
+          font-size: 12px;
           line-height: 1.6;
         }
 
@@ -481,7 +593,7 @@ export default function ManufacturingGetInTouch() {
           margin-bottom: 2px;
           color: #777;
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 600;
         }
 
@@ -489,7 +601,7 @@ export default function ManufacturingGetInTouch() {
           display: block;
           color: #333;
           font-family: "Inter", sans-serif;
-          font-size: 11.5px;
+          font-size: 13px;
           font-weight: 600;
           word-break: break-word;
         }
@@ -513,9 +625,9 @@ export default function ManufacturingGetInTouch() {
         .mfg-form-heading h2 {
           margin: 0 0 8px;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 21px;
+          font-size: 22px;
           line-height: 1.35;
-          font-weight: 700;
+          font-weight: 600;
           letter-spacing: -0.02em;
         }
 
@@ -524,8 +636,8 @@ export default function ManufacturingGetInTouch() {
         .mfg-form-heading p {
           margin: 0 0 25px;
           color: #777;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 12.5px;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
           line-height: 1.65;
           font-weight: 500;
         }
@@ -550,7 +662,7 @@ export default function ManufacturingGetInTouch() {
           margin-bottom: 7px;
           color: #333;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
         }
 
@@ -575,14 +687,14 @@ export default function ManufacturingGetInTouch() {
         .mfg-field select {
           height: 42px;
           padding: 0 12px;
-          font-size: 12px;
+          font-size: 13px;
         }
 
         .mfg-field textarea {
           min-height: 100px;
           padding: 11px 12px;
           resize: vertical;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -614,7 +726,7 @@ export default function ManufacturingGetInTouch() {
           gap: 7px;
           margin: 0 !important;
           cursor: pointer;
-          font-size: 12px !important;
+          font-size: 13px !important;
           font-weight: 400 !important;
         }
 
@@ -640,7 +752,7 @@ export default function ManufacturingGetInTouch() {
           border-radius: 8px;
           color: #777;
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.5;
           cursor: pointer;
         }
@@ -671,7 +783,7 @@ export default function ManufacturingGetInTouch() {
           background: var(--mfg-beetroot);
           color: #fff;
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.03em;
           cursor: pointer;
@@ -846,19 +958,22 @@ export default function ManufacturingGetInTouch() {
           }
 
           .mfg-main-grid {
-            grid-template-columns: 1fr;
-            max-width: 900px;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+            max-width: 1040px;
+            gap: 22px;
           }
 
           .mfg-left-column {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-            gap: 18px;
+            display: block;
           }
 
           .mfg-contact-desk {
-            margin-top: 0;
-            height: fit-content;
+            margin-top: 18px;
+            height: auto;
+          }
+
+          .mfg-form-card {
+            padding: 28px;
           }
 
           .mfg-process-section {
@@ -932,6 +1047,30 @@ export default function ManufacturingGetInTouch() {
         ===================================================== */
 
         @media (max-width: 600px) {
+          .mfg-success-dialog {
+            top: 16px;
+            width: calc(100% - 28px);
+            padding: 14px 16px;
+          }
+
+          .mfg-success-dialog-title {
+            font-size: 13px;
+          }
+
+          .mfg-success-dialog-text {
+            font-size: 11px;
+          }
+
+          .mfg-success-dialog-icon {
+            width: 40px;
+            height: 40px;
+          }
+
+          .mfg-success-dialog-icon svg {
+            width: 28px;
+            height: 28px;
+          }
+
           .mfg-hero {
             padding: 40px 18px 48px;
           }
@@ -1149,6 +1288,43 @@ export default function ManufacturingGetInTouch() {
       `}</style>
 
       <div className="mfg-page">
+
+        {showSuccess && (
+          <div
+            className="mfg-success-dialog"
+            role="alert"
+            aria-live="polite"
+            tabIndex={-1}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                setShowSuccess(false);
+              }
+            }}
+          >
+            <div className="mfg-success-dialog-icon">
+              <CircleCheck size={30} strokeWidth={2.5} />
+            </div>
+
+            <div className="mfg-success-dialog-content">
+              <p className="mfg-success-dialog-title">
+                Request Submitted
+              </p>
+              <p className="mfg-success-dialog-text">
+                Your enquiry has been submitted successfully.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              className="mfg-success-dialog-ok"
+              onClick={() => setShowSuccess(false)}
+              aria-label="Close success message"
+            >
+              OK
+            </button>
+          </div>
+        )}
 
         {/* ================= HERO ================= */}
 

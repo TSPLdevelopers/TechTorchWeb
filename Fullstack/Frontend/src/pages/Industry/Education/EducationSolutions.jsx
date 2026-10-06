@@ -1045,6 +1045,8 @@ function ImplementationSection() {
 ========================================================= */
 
 function CTASection() {
+  const navigate = useNavigate();
+
   return (
     <section className="education-section">
       <div className="education-container">
@@ -1106,10 +1108,14 @@ function CTASection() {
             <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-[280px] lg:flex-col">
               <PrimaryButton>Talk to Our Experts</PrimaryButton>
 
-              <SecondaryButton>
+              <button
+                type="button"
+                onClick={() => navigate("/schedule-discovery")}
+                className={`inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[#E2E6EA] bg-[#F8F9FA] px-6 py-3.5 sm:w-auto ${BODY_FONT} text-[12px] font-semibold uppercase tracking-[0.08em] text-[#302A2D] transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-sm`}
+              >
                 <CalendarDays size={17} className="text-[#730042]" />
                 Schedule Discovery
-              </SecondaryButton>
+              </button>
             </div>
           </div>
         </div>

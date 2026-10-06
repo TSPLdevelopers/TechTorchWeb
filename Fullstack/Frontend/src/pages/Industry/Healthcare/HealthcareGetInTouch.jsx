@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Scale,
   Timer,
+  CircleCheck,
 } from "lucide-react";
 
 const HEALTHCARE_REQUIREMENTS = [
@@ -68,6 +69,8 @@ export default function HealthcareContact() {
 
   const [consultationWindow, setConsultationWindow] = useState("");
 
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -97,6 +100,38 @@ export default function HealthcareContact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const form = e.currentTarget;
+
+    if (!form.checkValidity()) {
+      const invalidField = form.querySelector(":invalid");
+
+      if (invalidField) {
+        invalidField.focus();
+        form.reportValidity();
+
+        setTimeout(() => {
+          invalidField.blur();
+        }, 4000);
+      }
+
+      return;
+    }
+
+    if (!patientVolume) {
+      const volumeField = form.querySelector(".patient-volume-required");
+
+      if (volumeField) {
+        volumeField.focus();
+        volumeField.reportValidity();
+
+        setTimeout(() => {
+          volumeField.blur();
+        }, 4000);
+      }
+
+      return;
+    }
+
     const submissionData = {
       ...formData,
       healthcareRequirements: selectedRequirements,
@@ -107,7 +142,11 @@ export default function HealthcareContact() {
 
     console.log("Healthcare Consultation:", submissionData);
 
-    alert("Consultation request submitted successfully.");
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
 
   return (
@@ -145,6 +184,122 @@ export default function HealthcareContact() {
           color: #172036;
 
           overflow: hidden;
+        }
+
+
+        /* =====================================================
+           SUCCESS DIALOG
+        ===================================================== */
+
+        .success-dialog {
+          position: fixed;
+          top: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+
+          width: min(420px, calc(100% - 32px));
+
+          display: flex;
+          align-items: center;
+          gap: 14px;
+
+          padding: 16px 20px;
+
+          background: #ffffff;
+          border: 1px solid #E5D3DC;
+          border-radius: 10px;
+
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+          font-family: "Inter", sans-serif;
+
+          animation: successDialogIn 0.25s ease-out;
+        }
+
+        .success-dialog-icon {
+          width: 34px;
+          height: 34px;
+          flex-shrink: 0;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 50%;
+          background: #ffffff;
+          color: #22824D;
+
+          border: none;
+        }
+
+        .success-dialog-content {
+          min-width: 0;
+        }
+
+        .success-dialog-title {
+          margin: 0;
+
+          color: #202022;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .success-dialog-text {
+          margin: 2px 0 0;
+
+          color: #65595E;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .success-dialog-ok {
+          width: 34px;
+          height: 34px;
+
+          margin-left: auto;
+          flex-shrink: 0;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          padding: 0;
+
+          border: none;
+          border-radius: 50%;
+
+          background: #730042;
+          color: #ffffff;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+
+          cursor: pointer;
+
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .success-dialog-ok:hover {
+          background: #620038;
+          transform: scale(1.05);
+        }
+
+        @keyframes successDialogIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -12px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
         }
 
 
@@ -318,9 +473,9 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 13px;
+          font-size: 14px;
 
-          font-weight: 700;
+          font-weight: 500;
 
           color: #171e31;
         }
@@ -331,7 +486,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 10px;
+          font-size: 11px;
 
           font-weight: 400;
         }
@@ -444,11 +599,11 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 11.5px;
+          font-size: 13px;
 
           line-height: 1.4;
 
-          font-weight: 700;
+          font-weight: 600;
         }
 
 
@@ -459,7 +614,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 9.5px;
+          font-size: 12px;
 
           line-height: 1.5;
         }
@@ -491,7 +646,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 10.5px;
+          font-size: 13px;
 
           font-weight: 600;
         }
@@ -526,7 +681,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 11.5px;
+          font-size: 12px;
 
           appearance: none;
 
@@ -582,9 +737,9 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 10px;
+          font-size: 12px;
 
-          font-weight: 600;
+          font-weight: 500;
 
           cursor: pointer;
 
@@ -643,7 +798,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 10.5px;
+          font-size: 13px;
 
           font-weight: 600;
         }
@@ -692,7 +847,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 11px;
+          font-size: 13px;
         }
 
 
@@ -721,7 +876,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 10.5px;
+          font-size: 12px;
 
           font-weight: 600;
         }
@@ -760,7 +915,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 10px;
+          font-size: 12px;
 
           font-weight: 600;
 
@@ -848,7 +1003,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 10.5px;
+          font-size: 12px;
 
           font-weight: 600;
         }
@@ -886,7 +1041,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 11px;
+          font-size: 13px;
 
           line-height: 1.5;
         }
@@ -985,11 +1140,11 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 10.5px;
+          font-size: 13px;
 
           line-height: 1.4;
 
-          font-weight: 700;
+          font-weight: 600;
         }
 
 
@@ -1000,7 +1155,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 9.5px;
+          font-size: 11px;
 
           line-height: 1.5;
         }
@@ -1080,7 +1235,7 @@ export default function HealthcareContact() {
 
           font-family: "Inter", sans-serif;
 
-          font-size: 9.5px;
+          font-size: 10px;
 
           line-height: 1.5;
         }
@@ -1586,8 +1741,10 @@ export default function HealthcareContact() {
           .healthcare-requirement,
           .volume-button,
           .consultation-button,
-          .healthcare-submit {
+          .healthcare-submit,
+          .success-dialog {
             transition: none;
+            animation: none;
           }
 
 
@@ -1601,6 +1758,45 @@ export default function HealthcareContact() {
       `}</style>
 
       <section className="healthcare-page">
+
+        {showSuccess && (
+          <div
+            className="success-dialog"
+            role="alert"
+            aria-live="polite"
+            tabIndex={-1}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                setShowSuccess(false);
+              }
+            }}
+          >
+            <div className="success-dialog-icon">
+              <CircleCheck size={21} />
+            </div>
+
+            <div className="success-dialog-content">
+              <p className="success-dialog-title">
+                Request Submitted
+              </p>
+
+              <p className="success-dialog-text">
+                Your consultation request has been submitted successfully.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              className="success-dialog-ok"
+              onClick={() => setShowSuccess(false)}
+              autoFocus
+              aria-label="Close"
+            >
+              OK
+            </button>
+          </div>
+        )}
 
         <div className="healthcare-wrapper">
 
@@ -1810,6 +2006,27 @@ export default function HealthcareContact() {
                   </label>
 
 
+                  <input
+                    className="patient-volume-required"
+                    type="text"
+                    value={patientVolume}
+                    onChange={() => {}}
+                    required
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      width: "1px",
+                      height: "1px",
+                      padding: 0,
+                      margin: "-1px",
+                      overflow: "hidden",
+                      clip: "rect(0, 0, 0, 0)",
+                      whiteSpace: "nowrap",
+                      border: 0,
+                    }}
+                  />
+
                   <div className="volume-grid">
 
                     {PATIENT_VOLUMES.map((volume) => (
@@ -1823,7 +2040,9 @@ export default function HealthcareContact() {
                             : ""
                         }`}
                         onClick={() =>
-                          setPatientVolume(volume)
+                          setPatientVolume((prev) =>
+                            prev === volume ? "" : volume
+                          )
                         }
                       >
                         {volume}
@@ -2009,7 +2228,9 @@ export default function HealthcareContact() {
                         selected ? "selected" : ""
                       }`}
                       onClick={() =>
-                        setConsultationWindow(item.title)
+                        setConsultationWindow((prev) =>
+                          prev === item.title ? "" : item.title
+                        )
                       }
                     >
 
