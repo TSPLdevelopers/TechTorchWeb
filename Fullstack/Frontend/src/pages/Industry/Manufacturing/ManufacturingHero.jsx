@@ -24,21 +24,33 @@ export default function ManufacturingHeroSection() {
           overflow: hidden;
         }
 
+        /* =====================================================
+           MAIN CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ===================================================== */
+
         .manufacturing-hero-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 72px 40px;
+          padding: 72px 100px;
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 64px;
           align-items: center;
+          box-sizing: border-box;
         }
 
-        /* LEFT CONTENT */
+        /* =====================================================
+           LEFT CONTENT
+        ===================================================== */
 
         .manufacturing-hero-content {
           width: 100%;
+          min-width: 0;
         }
 
         .manufacturing-hero-badge {
@@ -66,26 +78,28 @@ export default function ManufacturingHeroSection() {
 
         .manufacturing-hero-heading {
           margin: 0 0 22px;
+          max-width: 650px;
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: clamp(36px, 4vw, 54px);
           line-height: 1.12;
           font-weight: 700;
           letter-spacing: -0.035em;
           color: ${INK};
-          max-width: 650px;
         }
 
         .manufacturing-hero-description {
           margin: 0 0 30px;
           max-width: 650px;
           color: ${MUTED};
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 15px;
           line-height: 1.8;
-          font-weight: 500;
+          font-weight: 400;
         }
 
-        /* BUTTONS */
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
 
         .manufacturing-hero-actions {
           display: flex;
@@ -134,7 +148,9 @@ export default function ManufacturingHeroSection() {
           background: #dedde2;
         }
 
-        /* IMAGE */
+        /* =====================================================
+           IMAGE
+        ===================================================== */
 
         .manufacturing-hero-image-wrapper {
           position: relative;
@@ -169,7 +185,9 @@ export default function ManufacturingHeroSection() {
           pointer-events: none;
         }
 
-        /* IMAGE CENTER LABEL */
+        /* =====================================================
+           IMAGE CENTER LABEL
+        ===================================================== */
 
         .manufacturing-hero-image-caption {
           position: absolute;
@@ -196,7 +214,9 @@ export default function ManufacturingHeroSection() {
           opacity: 1;
         }
 
-        /* IMAGE BOTTOM CARD */
+        /* =====================================================
+           IMAGE BOTTOM STATUS CARD
+        ===================================================== */
 
         .manufacturing-hero-status {
           position: absolute;
@@ -245,16 +265,19 @@ export default function ManufacturingHeroSection() {
           flex-shrink: 0;
         }
 
-        /* TABLET */
+        /* =====================================================
+           LARGE TABLET
+           40px horizontal spacing
+        ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
           .manufacturing-hero-container {
-            padding: 64px 32px;
-            gap: 42px;
+            padding: 68px 40px;
+            gap: 48px;
           }
 
           .manufacturing-hero-heading {
-            font-size: 42px;
+            font-size: 46px;
           }
 
           .manufacturing-hero-description {
@@ -263,17 +286,20 @@ export default function ManufacturingHeroSection() {
           }
 
           .manufacturing-hero-image-wrapper {
-            height: 420px;
+            height: 440px;
           }
         }
 
-        /* TABLET / SMALL LAPTOP */
+        /* =====================================================
+           TABLET
+           40px horizontal spacing
+        ===================================================== */
 
         @media (max-width: 900px) {
           .manufacturing-hero-container {
             grid-template-columns: 1fr;
             gap: 42px;
-            padding: 60px 28px;
+            padding: 60px 40px;
           }
 
           .manufacturing-hero-content {
@@ -300,11 +326,14 @@ export default function ManufacturingHeroSection() {
           }
         }
 
-        /* MOBILE */
+        /* =====================================================
+           MOBILE
+           24px horizontal spacing
+        ===================================================== */
 
         @media (max-width: 600px) {
           .manufacturing-hero-container {
-            padding: 50px 20px;
+            padding: 50px 24px;
             gap: 34px;
           }
 
@@ -362,7 +391,10 @@ export default function ManufacturingHeroSection() {
           }
         }
 
-        /* SMALL MOBILE */
+        /* =====================================================
+           SMALL MOBILE
+           16px horizontal spacing
+        ===================================================== */
 
         @media (max-width: 400px) {
           .manufacturing-hero-container {
@@ -388,7 +420,9 @@ export default function ManufacturingHeroSection() {
           }
         }
 
-        /* VERY SMALL MOBILE */
+        /* =====================================================
+           VERY SMALL MOBILE
+        ===================================================== */
 
         @media (max-width: 340px) {
           .manufacturing-hero-heading {
@@ -408,7 +442,9 @@ export default function ManufacturingHeroSection() {
           }
         }
 
-        /* ACCESSIBILITY */
+        /* =====================================================
+           ACCESSIBILITY
+        ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
           .manufacturing-hero-primary,
@@ -488,8 +524,8 @@ export default function ManufacturingHeroSection() {
                 className="manufacturing-hero-status-icon"
               />
             </div>
-          </div>
 
+          </div>
         </div>
       </section>
     </>

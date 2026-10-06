@@ -56,22 +56,37 @@ export default function SupplyChainManagementSection() {
           overflow: hidden;
         }
 
+        /* =====================================================
+           MAIN CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ===================================================== */
+
         .supply-chain-container {
           width: 100%;
-          max-width: 1200px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 64px 40px;
+          padding: 72px 100px;
         }
+
+        /* =====================================================
+           MAIN CARD
+        ===================================================== */
 
         .supply-chain-card {
           width: 100%;
           background: #ffffff;
           border-radius: 24px;
-          padding: 42px;
+          padding: 44px;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
         }
 
-        /* Badge */
+        /* =====================================================
+           BADGE
+        ===================================================== */
+
         .supply-chain-badge {
           display: inline-flex;
           align-items: center;
@@ -96,22 +111,30 @@ export default function SupplyChainManagementSection() {
           flex-shrink: 0;
         }
 
-        /* Heading - Plus Jakarta Sans */
+        /* =====================================================
+           HEADING
+           Plus Jakarta Sans
+        ===================================================== */
+
         .supply-chain-heading {
           margin: 0 0 16px;
-          max-width: 800px;
+          max-width: 850px;
           color: ${INK};
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 34px;
+          font-size: 36px;
           line-height: 1.2;
           font-weight: 700;
           letter-spacing: -0.025em;
         }
 
-        /* Subheading - Plus Jakarta Sans */
+        /* =====================================================
+           SUBHEADING
+           Plus Jakarta Sans
+        ===================================================== */
+
         .supply-chain-subheading {
-          max-width: 820px;
-          margin: 0 0 34px;
+          max-width: 950px;
+          margin: 0 0 36px;
           color: ${MUTED};
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 14px;
@@ -119,7 +142,10 @@ export default function SupplyChainManagementSection() {
           font-weight: 500;
         }
 
-        /* Cards */
+        /* =====================================================
+           CARDS GRID
+        ===================================================== */
+
         .supply-chain-grid {
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -128,7 +154,7 @@ export default function SupplyChainManagementSection() {
 
         .supply-chain-item {
           min-width: 0;
-          padding: 18px;
+          padding: 19px;
           border: 1px solid #ece9e4;
           border-radius: 16px;
           background: #ffffff;
@@ -143,6 +169,10 @@ export default function SupplyChainManagementSection() {
           border-color: #e4d8dc;
           box-shadow: 0 10px 25px rgba(122, 31, 61, 0.08);
         }
+
+        /* =====================================================
+           CARD TOP
+        ===================================================== */
 
         .supply-chain-item-top {
           display: flex;
@@ -172,7 +202,11 @@ export default function SupplyChainManagementSection() {
           flex-shrink: 0;
         }
 
-        /* Card title - Plus Jakarta Sans */
+        /* =====================================================
+           CARD TITLE
+           Plus Jakarta Sans
+        ===================================================== */
+
         .supply-chain-item-title {
           margin: 0 0 8px;
           color: ${INK};
@@ -182,7 +216,11 @@ export default function SupplyChainManagementSection() {
           font-weight: 700;
         }
 
-        /* Card body - Inter */
+        /* =====================================================
+           CARD BODY
+           Inter
+        ===================================================== */
+
         .supply-chain-item-body {
           margin: 0;
           color: ${MUTED};
@@ -192,16 +230,18 @@ export default function SupplyChainManagementSection() {
           font-weight: 400;
         }
 
-        /* --------------------------------
+        /* =====================================================
            LARGE TABLET
-        -------------------------------- */
+           40px horizontal spacing
+        ===================================================== */
+
         @media (max-width: 1100px) {
           .supply-chain-container {
-            padding: 56px 32px;
+            padding: 60px 40px;
           }
 
           .supply-chain-card {
-            padding: 34px;
+            padding: 36px;
           }
 
           .supply-chain-grid {
@@ -213,12 +253,14 @@ export default function SupplyChainManagementSection() {
           }
         }
 
-        /* --------------------------------
+        /* =====================================================
            TABLET
-        -------------------------------- */
+           40px horizontal spacing
+        ===================================================== */
+
         @media (max-width: 800px) {
           .supply-chain-container {
-            padding: 48px 24px;
+            padding: 50px 40px;
           }
 
           .supply-chain-card {
@@ -246,12 +288,14 @@ export default function SupplyChainManagementSection() {
           }
         }
 
-        /* --------------------------------
+        /* =====================================================
            MOBILE
-        -------------------------------- */
+           24px horizontal spacing
+        ===================================================== */
+
         @media (max-width: 600px) {
           .supply-chain-container {
-            padding: 38px 16px;
+            padding: 40px 24px;
           }
 
           .supply-chain-card {
@@ -301,12 +345,14 @@ export default function SupplyChainManagementSection() {
           }
         }
 
-        /* --------------------------------
+        /* =====================================================
            SMALL MOBILE
-        -------------------------------- */
+           16px horizontal spacing
+        ===================================================== */
+
         @media (max-width: 400px) {
           .supply-chain-container {
-            padding: 30px 12px;
+            padding: 32px 16px;
           }
 
           .supply-chain-card {
@@ -334,12 +380,14 @@ export default function SupplyChainManagementSection() {
           }
         }
 
-        /* --------------------------------
+        /* =====================================================
            VERY SMALL MOBILE
-        -------------------------------- */
+           16px horizontal spacing
+        ===================================================== */
+
         @media (max-width: 340px) {
           .supply-chain-container {
-            padding: 26px 10px;
+            padding: 28px 16px;
           }
 
           .supply-chain-card {
@@ -359,9 +407,10 @@ export default function SupplyChainManagementSection() {
           }
         }
 
-        /* --------------------------------
+        /* =====================================================
            REDUCED MOTION
-        -------------------------------- */
+        ===================================================== */
+
         @media (prefers-reduced-motion: reduce) {
           .supply-chain-item {
             transition: none;

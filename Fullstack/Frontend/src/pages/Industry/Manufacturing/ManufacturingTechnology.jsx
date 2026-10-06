@@ -7,7 +7,7 @@ export default function ManufacturingTechnology() {
         w-full
         overflow-hidden
         bg-white
-        px-4
+        px-6
         py-8
         sm:px-6
         sm:py-10
@@ -22,7 +22,7 @@ export default function ManufacturingTechnology() {
         className="
           mx-auto
           w-full
-          max-w-[1320px]
+          max-w-[1440px]
           overflow-hidden
           rounded-2xl
           bg-[#F3F4F6]
@@ -49,6 +49,7 @@ export default function ManufacturingTechnology() {
         >
           {/* ================= LEFT CONTENT ================= */}
           <div className="min-w-0">
+
             {/* Eyebrow */}
             <span
               className="
@@ -159,6 +160,7 @@ export default function ManufacturingTechnology() {
 
           {/* ================= RIGHT SIDE IMAGE ================= */}
           <div className="relative w-full">
+
             <div
               className="
                 relative
