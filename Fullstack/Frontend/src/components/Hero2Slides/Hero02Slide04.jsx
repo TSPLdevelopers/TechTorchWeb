@@ -56,11 +56,82 @@ export default function PracticalERPPath() {
           md:min-h-[585px]
 
           lg:min-h-[615px]
+
           xl:min-h-[600px]
+
+          2xl:min-h-[620px]
         "
       >
+
+        {/* =====================================================
+            TORCHX SUITE
+            SEPARATE TOP-RIGHT AREA
+        ====================================================== */}
+
+        <div
+          id="9k9mjj"
+          className="
+            absolute
+            right-5
+            top-5
+            z-40
+
+            flex
+            h-[65px]
+            w-[120px]
+            items-center
+            justify-center
+
+            bg-white
+
+            xs:right-6
+            xs:top-6
+            xs:h-[72px]
+            xs:w-[135px]
+
+            sm:right-8
+            sm:top-7
+            sm:h-[85px]
+            sm:w-[160px]
+
+            md:right-10
+            md:top-8
+            md:h-[100px]
+            md:w-[190px]
+
+            lg:right-[50px]
+            lg:top-[25px]
+            lg:h-[125px]
+            lg:w-[230px]
+
+            xl:right-[52px]
+            xl:top-[25px]
+            xl:h-[140px]
+            xl:w-[250px]
+
+            2xl:right-[55px]
+            2xl:top-[25px]
+            2xl:h-[150px]
+            2xl:w-[270px]
+          "
+        >
+          <img
+            src="/TorchX Suite.png"
+            alt="TorchX Suite"
+            className="
+              block
+              h-auto
+              w-[82%]
+              max-w-full
+              object-contain
+            "
+          />
+        </div>
+
         {/* =====================================================
             IMAGE
+            IMPORTANT:
+            IMAGE STARTS BELOW TORCHX SUITE
         ====================================================== */}
 
         <div
@@ -70,23 +141,33 @@ export default function PracticalERPPath() {
             bottom-0
             z-0
 
-            w-[115%]
+            flex
+            items-end
+            justify-end
 
-            xs:w-[110%]
+            w-[100%]
+            h-[calc(100%-105px)]
 
-            sm:w-[100%]
+            xs:h-[calc(100%-115px)]
 
-            md:w-[92%]
+            sm:h-[calc(100%-125px)]
 
-            lg:right-0
-            lg:top-[160px]
-            lg:bottom-auto
-            lg:h-[435px]
-            lg:w-[74%]
+            md:h-[calc(100%-135px)]
 
-            xl:top-[165px]
-            xl:h-[475px]
-            xl:w-[75%]
+            lg:top-[145px]
+            lg:h-auto
+            lg:bottom-0
+            lg:w-[76%]
+
+            xl:top-[160px]
+            xl:h-auto
+            xl:bottom-0
+            xl:w-[76%]
+
+            2xl:top-[170px]
+            2xl:h-auto
+            2xl:bottom-0
+            2xl:w-[74%]
           "
         >
           <img
@@ -95,17 +176,21 @@ export default function PracticalERPPath() {
             alt="TorchX ERP platform"
             className="
               block
-              h-auto
+              h-full
               w-full
+              max-h-full
+              max-w-full
               object-contain
-              object-right
+              object-right-bottom
 
-              lg:absolute
-              lg:right-0
-              lg:top-[-30px]
-              lg:h-[calc(100%+10px)]
-              lg:w-full
-              lg:object-fill
+              lg:h-auto
+              lg:max-h-full
+
+              xl:h-auto
+              xl:max-h-full
+
+              2xl:h-auto
+              2xl:max-h-full
             "
           />
 
@@ -118,6 +203,7 @@ export default function PracticalERPPath() {
               inset-y-0
               left-0
               z-10
+
               w-[30%]
 
               bg-gradient-to-r
@@ -126,10 +212,14 @@ export default function PracticalERPPath() {
               to-transparent
 
               xs:w-[29%]
+
               sm:w-[27%]
+
               md:w-[25%]
 
               lg:w-[27%]
+
+              xl:w-[25%]
             "
           />
         </div>
@@ -165,54 +255,6 @@ export default function PracticalERPPath() {
             xl:translate-x-12
           "
         >
-          {/* =====================================================
-              TORCHX SUITE
-          ====================================================== */}
-
-          <div
-            id="9k9mjj"
-            className="
-              absolute
-              right-5
-              top-6
-              z-40
-              w-[95px]
-
-              xs:right-6
-              xs:top-7
-              xs:w-[105px]
-
-              sm:right-8
-              sm:top-8
-              sm:w-[125px]
-
-              md:right-10
-              md:top-9
-              md:w-[150px]
-
-              lg:right-[50px]
-              lg:top-[30px]
-              lg:w-[230px]
-
-              xl:right-[52px]
-              xl:w-[250px]
-            "
-          >
-            <img
-              src="/TorchX Suite.png"
-              alt="TorchX Suite"
-              className="
-                block
-                h-auto
-                w-full
-                object-contain
-
-                lg:mx-auto
-                lg:mt-6
-                lg:w-[75%]
-              "
-            />
-          </div>
 
           {/* =====================================================
               HEADING
@@ -246,6 +288,8 @@ export default function PracticalERPPath() {
               lg:tracking-[-0.03em]
 
               xl:text-[32px]
+
+              2xl:text-[34px]
             "
           >
             A Practical Path to{" "}
@@ -291,6 +335,8 @@ export default function PracticalERPPath() {
               lg:leading-[1.32]
 
               xl:text-[15px]
+
+              2xl:max-w-[720px]
             "
           >
             Every business is different, so there is no single ERP approach
@@ -324,6 +370,8 @@ export default function PracticalERPPath() {
               lg:w-[430px]
 
               xl:w-[440px]
+
+              2xl:w-[450px]
             "
           >
             {steps.map((step, index) => (
@@ -345,6 +393,7 @@ export default function PracticalERPPath() {
                   }
                 `}
               >
+
                 {/* NUMBER */}
 
                 <div
@@ -429,6 +478,7 @@ export default function PracticalERPPath() {
                     {step.description}
                   </p>
                 </div>
+
               </div>
             ))}
           </div>
