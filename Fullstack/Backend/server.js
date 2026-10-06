@@ -14,24 +14,55 @@ const jobOpeningRoutes = require("./src/routes/jobOpeningRoutes");
 const eventRoutes = require("./src/routes/eventRoutes");
 const whitepaperRoutes = require("./src/routes/whitepaperRoutes");
 const latestUpdateRoutes = require("./src/routes/latestUpdateRoutes");
+
 const institutionConsultationRoutes = require(
   "./src/routes/institutionConsultationRoutes"
 );
+
 const insuranceIntakeRoutes = require(
   "./src/routes/insuranceIntakeRoutes"
 );
+
 const financialConsultationRoutes = require(
   "./src/routes/financialConsultationRoutes"
 );
+
 const healthcareConsultationRoutes = require(
   "./src/routes/healthcareConsultationRoutes"
 );
+
 const generalEnquiryRoutes = require(
   "./src/routes/generalEnquiryRoutes"
 );
+
 const transportationRoutes = require(
   "./src/routes/transportationRoutes"
 );
+
+const fmcgConsultationRoutes = require(
+  "./src/routes/fmcgConsultationRoutes"
+);
+
+const informationRoutes = require(
+  "./src/routes/informationRoutes"
+);
+
+const energyRoutes = require(
+  "./src/routes/energyRoutes"
+);
+
+const telecommunicationRoutes = require(
+  "./src/routes/telecommunicationRoutes"
+);
+
+const ecommerceRoutes = require(
+  "./src/routes/ecommerceRoutes"
+);
+
+const dataDecisionRoutes = require(
+  "./src/routes/dataDecisionRoutes"
+);
+const ourstoryRoutes = require("./src/routes/ourstoryRoutes");
 
 const app = express();
 
@@ -62,51 +93,59 @@ app.use("/api/news", newsRoutes);
 app.use("/api/job-openings", jobOpeningRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/whitepapers", whitepaperRoutes);
-app.use("/api/latest-updates", latestUpdateRoutes); // was never mounted before
-app.use("/api/institution-consultations", institutionConsultationRoutes);
-app.use("/api/insurance-intakes", insuranceIntakeRoutes);
+app.use("/api/latest-updates", latestUpdateRoutes);
+
+app.use(
+  "/api/institution-consultations",
+  institutionConsultationRoutes
+);
+
+app.use(
+  "/api/insurance-intakes",
+  insuranceIntakeRoutes
+);
+
 app.use(
   "/api/financial-consultations",
   financialConsultationRoutes
 );
+
 app.use(
   "/api/healthcare-consultations",
   healthcareConsultationRoutes
 );
+
 app.use(
   "/api/general-enquiries",
   generalEnquiryRoutes
 );
+
 app.use("/api/transportation", transportationRoutes);
-const fmcgConsultationRoutes = require(
-  "./src/routes/fmcgConsultationRoutes"
-);
-const informationRoutes = require(
-  "./src/routes/informationRoutes"
-);
-const energyRoutes = require(
-  "./src/routes/energyRoutes"
-);
-const telecommunicationRoutes = require(
-  "./src/routes/telecommunicationRoutes"
-);
-const ecommerceRoutes = require(
-  "./src/routes/ecommerceRoutes"
-);
+
 app.use("/api/fmcg-consultations", fmcgConsultationRoutes);
+
 app.use("/api/information", informationRoutes);
+
 app.use("/api/energy", energyRoutes);
-app.use("/api/general-enquiries", generalEnquiryRoutes);
+
 app.use("/api/telecommunications", telecommunicationRoutes);
+
+app.use("/api/data-decisions", dataDecisionRoutes);
+
 app.use(
   "/api/ecommerce",
   ecommerceRoutes
 );
+
+app.use("/api/ourstory", ourstoryRoutes);
+
+// 404
 app.use((req, res) => {
-  res.status(404).json({ success: false, message: "Route not found" });
+  res.status(404).json({
+    success: false,
+    message: "Route not found",
+  });
 });
-
-
 
 app.use(errorMiddleware);
 
