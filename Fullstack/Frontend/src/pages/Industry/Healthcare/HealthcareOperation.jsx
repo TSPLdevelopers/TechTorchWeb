@@ -75,7 +75,18 @@ export default function CoreOperationsAndClinicalSections() {
         );
 
         /* =====================================================
-           GLOBAL
+           SCOPED BOX SIZING
+        ===================================================== */
+
+        .core-healthcare-page,
+        .core-healthcare-page *,
+        .core-healthcare-page *::before,
+        .core-healthcare-page *::after {
+          box-sizing: border-box;
+        }
+
+        /* =====================================================
+           MAIN WRAPPER
         ===================================================== */
 
         .core-healthcare-page {
@@ -85,22 +96,17 @@ export default function CoreOperationsAndClinicalSections() {
           font-family: "Inter", sans-serif;
         }
 
-        .core-healthcare-page *,
-        .core-healthcare-page *::before,
-        .core-healthcare-page *::after {
-          box-sizing: border-box;
-        }
-
         /* =====================================================
            COMMON CONTAINER
+           DESKTOP = 100px LEFT / RIGHT
         ===================================================== */
 
         .healthcare-common-container {
           width: 100%;
-          max-width: 1152px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 100px;
+          padding-right: 100px;
         }
 
         /* =====================================================
@@ -110,7 +116,7 @@ export default function CoreOperationsAndClinicalSections() {
         .core-operations-section {
           width: 100%;
           background: #f6f7fa;
-          padding: 64px 0 72px;
+          padding: 78px 0;
         }
 
         .core-operations-eyebrow {
@@ -124,11 +130,11 @@ export default function CoreOperationsAndClinicalSections() {
         }
 
         .core-operations-heading {
-          max-width: 680px;
+          max-width: 760px;
           margin: 0 0 34px;
           color: ${INK};
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 30px;
+          font-size: 32px;
           line-height: 1.25;
           font-weight: 700;
           letter-spacing: -0.8px;
@@ -141,13 +147,13 @@ export default function CoreOperationsAndClinicalSections() {
         .core-operations-grid {
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));
-          gap: 14px;
+          gap: 16px;
         }
 
         .core-operation-card {
           min-width: 0;
-          min-height: 205px;
-          padding: 20px 17px;
+          min-height: 210px;
+          padding: 21px 18px;
           border-radius: 12px;
           background: #ffffff;
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
@@ -216,13 +222,15 @@ export default function CoreOperationsAndClinicalSections() {
         .clinical-workflow-section {
           width: 100%;
           background: #f4f1ec;
-          padding: 72px 0;
+          padding: 78px 0;
         }
 
         .clinical-workflow-container {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-          gap: 64px;
+          grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+          gap: 70px;
           align-items: center;
         }
 
@@ -238,7 +246,7 @@ export default function CoreOperationsAndClinicalSections() {
         .clinical-image-box {
           position: relative;
           width: 100%;
-          height: 390px;
+          height: 420px;
           overflow: hidden;
           border: 3px solid ${WINE};
           border-radius: 18px;
@@ -261,6 +269,7 @@ export default function CoreOperationsAndClinicalSections() {
         .clinical-content {
           width: 100%;
           min-width: 0;
+          max-width: 700px;
         }
 
         .clinical-eyebrow {
@@ -274,11 +283,11 @@ export default function CoreOperationsAndClinicalSections() {
         }
 
         .clinical-heading {
-          max-width: 600px;
+          max-width: 680px;
           margin: 0 0 20px;
           color: ${INK};
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 30px;
+          font-size: 32px;
           line-height: 1.25;
           font-weight: 700;
           letter-spacing: -0.8px;
@@ -287,7 +296,7 @@ export default function CoreOperationsAndClinicalSections() {
         .clinical-description {
           margin: 0 0 12px;
           color: ${MUTED};
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.75;
           font-weight: 500;
@@ -298,7 +307,7 @@ export default function CoreOperationsAndClinicalSections() {
         }
 
         .clinical-description-wrapper {
-          margin-bottom: 26px;
+          margin-bottom: 28px;
         }
 
         /* =====================================================
@@ -308,12 +317,12 @@ export default function CoreOperationsAndClinicalSections() {
         .clinical-features-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 12px;
+          gap: 13px;
         }
 
         .clinical-feature-card {
           min-width: 0;
-          padding: 15px;
+          padding: 16px;
           border-radius: 10px;
           background: #ffffff;
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
@@ -359,43 +368,45 @@ export default function CoreOperationsAndClinicalSections() {
         }
 
         /* =====================================================
-           LARGE TABLET
+           DESKTOP / LAPTOP
+           100px -> 40px
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
+
           .healthcare-common-container {
-            max-width: 100%;
-            padding-left: 32px;
-            padding-right: 32px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .core-operations-section {
-            padding: 58px 0 64px;
+            padding: 68px 0;
           }
 
           .core-operations-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
           }
 
           .core-operation-card {
-            min-height: 190px;
+            min-height: 195px;
           }
 
           .clinical-workflow-section {
-            padding: 64px 0;
+            padding: 68px 0;
           }
 
           .clinical-workflow-container {
-            gap: 44px;
+            gap: 48px;
           }
 
           .clinical-image-box {
-            height: 360px;
+            height: 390px;
           }
 
           .clinical-heading,
           .core-operations-heading {
-            font-size: 28px;
+            font-size: 29px;
           }
         }
 
@@ -403,7 +414,61 @@ export default function CoreOperationsAndClinicalSections() {
            TABLET
         ===================================================== */
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
+
+          .healthcare-common-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .core-operations-section {
+            padding: 58px 0 64px;
+          }
+
+          .core-operations-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+          }
+
+          .core-operation-card {
+            min-height: 180px;
+          }
+
+          .clinical-workflow-section {
+            padding: 62px 0;
+          }
+
+          .clinical-workflow-container {
+            grid-template-columns: 1fr;
+            gap: 42px;
+          }
+
+          .clinical-image-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+          }
+
+          .clinical-image-box {
+            height: 410px;
+          }
+
+          .clinical-content {
+            max-width: 800px;
+            margin: 0 auto;
+          }
+
+          .clinical-heading {
+            max-width: 760px;
+          }
+        }
+
+        /* =====================================================
+           SMALL TABLET
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
           .healthcare-common-container {
             padding-left: 24px;
             padding-right: 24px;
@@ -413,51 +478,55 @@ export default function CoreOperationsAndClinicalSections() {
             padding: 52px 0 58px;
           }
 
+          .core-operations-heading,
+          .clinical-heading {
+            font-size: 26px;
+            line-height: 1.3;
+            letter-spacing: -0.6px;
+          }
+
+          .core-operations-heading {
+            margin-bottom: 27px;
+          }
+
           .core-operations-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 13px;
+            grid-template-columns: 1fr;
+            gap: 12px;
           }
 
           .core-operation-card {
-            min-height: 175px;
+            min-height: auto;
+            padding: 18px;
           }
 
           .clinical-workflow-section {
-            padding: 58px 0;
-          }
-
-          .clinical-workflow-container {
-            grid-template-columns: 1fr;
-            gap: 40px;
-          }
-
-          .clinical-image-wrapper {
-            max-width: 720px;
-            margin: 0 auto;
+            padding: 56px 0;
           }
 
           .clinical-image-box {
-            height: 400px;
+            height: 340px;
           }
 
-          .clinical-content {
-            max-width: 720px;
-            margin: 0 auto;
+          .clinical-description {
+            font-size: 12px;
+            line-height: 1.72;
           }
 
-          .clinical-heading {
-            max-width: 700px;
+          .clinical-features-grid {
+            gap: 11px;
           }
         }
 
         /* =====================================================
            MOBILE
+           24px LEFT / RIGHT
         ===================================================== */
 
         @media (max-width: 600px) {
+
           .healthcare-common-container {
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .core-operations-section {
@@ -472,23 +541,18 @@ export default function CoreOperationsAndClinicalSections() {
 
           .core-operations-heading,
           .clinical-heading {
-            font-size: 25px;
-            line-height: 1.3;
+            font-size: 24px;
+            line-height: 1.32;
             letter-spacing: -0.5px;
           }
 
           .core-operations-heading {
-            margin-bottom: 25px;
-          }
-
-          .core-operations-grid {
-            grid-template-columns: 1fr;
-            gap: 11px;
+            margin-bottom: 24px;
           }
 
           .core-operation-card {
-            min-height: auto;
             padding: 17px;
+            border-radius: 11px;
           }
 
           .core-operation-top {
@@ -501,7 +565,7 @@ export default function CoreOperationsAndClinicalSections() {
 
           .core-operation-body {
             font-size: 11px;
-            line-height: 1.6;
+            line-height: 1.65;
           }
 
           .clinical-workflow-section {
@@ -523,8 +587,8 @@ export default function CoreOperationsAndClinicalSections() {
           }
 
           .clinical-description {
-            font-size: 12px;
-            line-height: 1.7;
+            font-size: 11.5px;
+            line-height: 1.72;
           }
 
           .clinical-description-wrapper {
@@ -551,26 +615,28 @@ export default function CoreOperationsAndClinicalSections() {
 
         /* =====================================================
            SMALL MOBILE
+           16px LEFT / RIGHT
         ===================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
+
           .healthcare-common-container {
             padding-left: 16px;
             padding-right: 16px;
           }
 
           .core-operations-section {
-            padding: 40px 0 45px;
+            padding: 42px 0 48px;
           }
 
           .clinical-workflow-section {
-            padding: 44px 0;
+            padding: 46px 0;
           }
 
           .core-operations-heading,
           .clinical-heading {
-            font-size: 23px;
-            line-height: 1.32;
+            font-size: 22px;
+            line-height: 1.34;
           }
 
           .core-operation-card {
@@ -581,13 +647,17 @@ export default function CoreOperationsAndClinicalSections() {
             font-size: 7.5px;
           }
 
+          .core-operation-body {
+            font-size: 10.5px;
+          }
+
           .clinical-image-box {
-            height: 255px;
+            height: 260px;
             border-radius: 13px;
           }
 
           .clinical-description {
-            font-size: 11.5px;
+            font-size: 11px;
           }
         }
 
@@ -596,14 +666,15 @@ export default function CoreOperationsAndClinicalSections() {
         ===================================================== */
 
         @media (max-width: 340px) {
+
           .healthcare-common-container {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .core-operations-heading,
           .clinical-heading {
-            font-size: 21px;
+            font-size: 20px;
           }
 
           .clinical-image-box {
@@ -611,7 +682,7 @@ export default function CoreOperationsAndClinicalSections() {
           }
 
           .core-operation-body {
-            font-size: 10.5px;
+            font-size: 10px;
           }
         }
 
@@ -620,19 +691,23 @@ export default function CoreOperationsAndClinicalSections() {
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
+
           .core-operation-card,
           .clinical-feature-card {
             transition: none;
           }
+
         }
       `}</style>
 
       {/* =====================================================
-          SECTION 1: CORE HEALTHCARE OPERATIONS
+          SECTION 1
+          CORE HEALTHCARE OPERATIONS
       ===================================================== */}
 
       <section className="core-operations-section">
         <div className="healthcare-common-container">
+
           <p className="core-operations-eyebrow">
             CORE HEALTHCARE OPERATIONS
           </p>
@@ -644,61 +719,84 @@ export default function CoreOperationsAndClinicalSections() {
           </h2>
 
           <div className="core-operations-grid">
-            {operations.map(({ num, tag, title, body }) => (
-              <div
-                key={num}
-                className="core-operation-card"
-              >
-                <div className="core-operation-top">
-                  <span className="core-operation-number">
-                    {num}
-                  </span>
 
-                  <span className="core-operation-tag">
-                    {tag}
-                  </span>
+            {operations.map(
+              ({ num, tag, title, body }) => (
+                <div
+                  key={num}
+                  className="core-operation-card"
+                >
+
+                  <div className="core-operation-top">
+
+                    <span className="core-operation-number">
+                      {num}
+                    </span>
+
+                    <span className="core-operation-tag">
+                      {tag}
+                    </span>
+
+                  </div>
+
+                  <h3 className="core-operation-title">
+                    {title}
+                  </h3>
+
+                  <p className="core-operation-body">
+                    {body}
+                  </p>
+
                 </div>
+              )
+            )}
 
-                <h3 className="core-operation-title">
-                  {title}
-                </h3>
-
-                <p className="core-operation-body">
-                  {body}
-                </p>
-              </div>
-            ))}
           </div>
+
         </div>
       </section>
 
+
       {/* =====================================================
-          SECTION 2: CLINICAL WORKFLOWS
+          SECTION 2
+          CLINICAL & DIAGNOSTIC TECHNOLOGY
       ===================================================== */}
 
       <section className="clinical-workflow-section">
+
         <div
           className="
             healthcare-common-container
             clinical-workflow-container
           "
         >
-          {/* IMAGE */}
+
+          {/* =================================================
+              IMAGE
+          ================================================= */}
 
           <div className="clinical-image-wrapper">
+
             <div className="clinical-image-box">
+
               <img
                 src={IMAGE_URL}
                 alt="Clinicians reviewing lab diagnostic screens"
                 className="clinical-image"
                 loading="lazy"
               />
+
             </div>
+
           </div>
 
-          {/* COPY */}
+
+          {/* =================================================
+              CONTENT
+          ================================================= */}
 
           <div className="clinical-content">
+
             <p className="clinical-eyebrow">
               CLINICAL &amp; DIAGNOSTIC TECHNOLOGY
             </p>
@@ -707,7 +805,9 @@ export default function CoreOperationsAndClinicalSections() {
               Connect Clinical Workflows With Relevant Information
             </h2>
 
+
             <div className="clinical-description-wrapper">
+
               <p className="clinical-description">
                 Clinical and diagnostic activities generate information
                 that needs to move between the appropriate teams and
@@ -720,18 +820,26 @@ export default function CoreOperationsAndClinicalSections() {
                 pharmacy and pathology systems, along with the sharing of
                 reports and test results with patients and physicians.
               </p>
+
             </div>
 
-            {/* CLINICAL FEATURE CARDS */}
+
+            {/* =================================================
+                FEATURE CARDS
+            ================================================= */}
 
             <div className="clinical-features-grid">
+
               {clinicalFeatures.map(
                 ({ icon: Icon, title, body }) => (
+
                   <div
                     key={title}
                     className="clinical-feature-card"
                   >
+
                     <div className="clinical-feature-header">
+
                       <Icon
                         size={14}
                         strokeWidth={1.8}
@@ -741,18 +849,26 @@ export default function CoreOperationsAndClinicalSections() {
                       <h3 className="clinical-feature-title">
                         {title}
                       </h3>
+
                     </div>
 
                     <p className="clinical-feature-body">
                       {body}
                     </p>
+
                   </div>
+
                 )
               )}
+
             </div>
+
           </div>
+
         </div>
+
       </section>
+
     </div>
   );
 }

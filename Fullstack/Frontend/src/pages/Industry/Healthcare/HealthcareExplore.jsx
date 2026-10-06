@@ -82,6 +82,11 @@ export default function HealthcareSolutionsGridSection() {
            MAIN SECTION
         ===================================================== */
 
+        .healthcare-solutions-section,
+        .healthcare-solutions-section * {
+          box-sizing: border-box;
+        }
+
         .healthcare-solutions-section {
           width: 100%;
 
@@ -97,18 +102,17 @@ export default function HealthcareSolutionsGridSection() {
 
         /* =====================================================
            CONTAINER
+           SAME HERO SPACING SYSTEM
         ===================================================== */
 
         .healthcare-solutions-container {
           width: 100%;
 
-          max-width: 1280px;
+          max-width: 1600px;
 
           margin: 0 auto;
 
-          padding: 72px 40px;
-
-          box-sizing: border-box;
+          padding: 78px 100px;
         }
 
 
@@ -261,8 +265,6 @@ export default function HealthcareSolutionsGridSection() {
 
           border-radius: 14px;
 
-          box-sizing: border-box;
-
           box-shadow:
             0 1px 4px rgba(0, 0, 0, 0.05);
 
@@ -409,15 +411,15 @@ export default function HealthcareSolutionsGridSection() {
 
 
         /* =====================================================
-           LARGE TABLET
+           LAPTOP
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
 
           .healthcare-solutions-container {
-            padding: 65px 32px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
-
 
           .healthcare-solutions-header {
             gap: 40px;
@@ -425,11 +427,9 @@ export default function HealthcareSolutionsGridSection() {
             margin-bottom: 36px;
           }
 
-
           .healthcare-solutions-heading {
             font-size: 32px;
           }
-
 
           .healthcare-solutions-grid {
             grid-template-columns:
@@ -438,11 +438,9 @@ export default function HealthcareSolutionsGridSection() {
             gap: 18px;
           }
 
-
           .healthcare-solution-card {
             padding: 20px;
           }
-
         }
 
 
@@ -450,12 +448,15 @@ export default function HealthcareSolutionsGridSection() {
            TABLET
         ===================================================== */
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
 
           .healthcare-solutions-container {
-            padding: 58px 26px;
-          }
+            padding-top: 65px;
+            padding-bottom: 65px;
 
+            padding-left: 40px;
+            padding-right: 40px;
+          }
 
           .healthcare-solutions-header {
             grid-template-columns: 1fr;
@@ -465,11 +466,9 @@ export default function HealthcareSolutionsGridSection() {
             margin-bottom: 34px;
           }
 
-
           .healthcare-solutions-header-right {
             padding-top: 0;
           }
-
 
           .healthcare-solutions-heading {
             max-width: 700px;
@@ -479,7 +478,6 @@ export default function HealthcareSolutionsGridSection() {
             line-height: 1.22;
           }
 
-
           .healthcare-solutions-subheading {
             max-width: 700px;
 
@@ -487,7 +485,6 @@ export default function HealthcareSolutionsGridSection() {
 
             line-height: 1.72;
           }
-
 
           .healthcare-solutions-grid {
             grid-template-columns:
@@ -498,11 +495,9 @@ export default function HealthcareSolutionsGridSection() {
             margin-bottom: 30px;
           }
 
-
           .healthcare-solution-card {
             padding: 20px;
           }
-
         }
 
 
@@ -514,9 +509,8 @@ export default function HealthcareSolutionsGridSection() {
 
           .healthcare-solutions-container {
             padding:
-              48px 20px 52px;
+              48px 24px 52px;
           }
-
 
           .healthcare-solutions-header {
             gap: 15px;
@@ -524,20 +518,17 @@ export default function HealthcareSolutionsGridSection() {
             margin-bottom: 30px;
           }
 
-
           .healthcare-solutions-eyebrow {
             margin-bottom: 10px;
 
             font-size: 8.5px;
           }
 
-
           .healthcare-solutions-eyebrow-dot {
             width: 5px;
 
             height: 5px;
           }
-
 
           .healthcare-solutions-heading {
             font-size: 27px;
@@ -547,13 +538,11 @@ export default function HealthcareSolutionsGridSection() {
             letter-spacing: -0.5px;
           }
 
-
           .healthcare-solutions-subheading {
             font-size: 11.5px;
 
             line-height: 1.72;
           }
-
 
           .healthcare-solutions-grid {
             grid-template-columns: 1fr;
@@ -563,13 +552,11 @@ export default function HealthcareSolutionsGridSection() {
             margin-bottom: 28px;
           }
 
-
           .healthcare-solution-card {
             padding: 19px;
 
             border-radius: 13px;
           }
-
 
           .healthcare-solution-icon {
             width: 38px;
@@ -579,13 +566,11 @@ export default function HealthcareSolutionsGridSection() {
             margin-bottom: 14px;
           }
 
-
           .healthcare-solution-title {
             font-size: 13px;
 
             margin-bottom: 7px;
           }
-
 
           .healthcare-solution-body {
             font-size: 11px;
@@ -595,20 +580,17 @@ export default function HealthcareSolutionsGridSection() {
             margin-bottom: 14px;
           }
 
-
           .healthcare-solution-tag {
             font-size: 8.5px;
 
             padding: 5px 7px;
           }
 
-
           .healthcare-solutions-footer {
             font-size: 9.5px;
 
             line-height: 1.6;
           }
-
         }
 
 
@@ -616,13 +598,12 @@ export default function HealthcareSolutionsGridSection() {
            SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
 
           .healthcare-solutions-container {
             padding:
               42px 16px 46px;
           }
-
 
           .healthcare-solutions-heading {
             font-size: 24px;
@@ -630,18 +611,15 @@ export default function HealthcareSolutionsGridSection() {
             line-height: 1.2;
           }
 
-
           .healthcare-solutions-subheading {
             font-size: 11px;
 
             line-height: 1.68;
           }
 
-
           .healthcare-solution-card {
             padding: 17px;
           }
-
 
           .healthcare-solution-icon {
             width: 36px;
@@ -651,16 +629,13 @@ export default function HealthcareSolutionsGridSection() {
             margin-bottom: 13px;
           }
 
-
           .healthcare-solution-title {
             font-size: 12.5px;
           }
 
-
           .healthcare-solution-body {
             font-size: 10.5px;
           }
-
 
           .healthcare-solution-tag {
             font-size: 8px;
@@ -668,11 +643,9 @@ export default function HealthcareSolutionsGridSection() {
             padding: 4px 6px;
           }
 
-
           .healthcare-solutions-footer {
             font-size: 9px;
           }
-
         }
 
 
@@ -684,29 +657,24 @@ export default function HealthcareSolutionsGridSection() {
 
           .healthcare-solutions-container {
             padding:
-              38px 14px 42px;
+              38px 16px 42px;
           }
-
 
           .healthcare-solutions-heading {
             font-size: 22px;
           }
 
-
           .healthcare-solutions-subheading {
             font-size: 10.5px;
           }
-
 
           .healthcare-solution-body {
             font-size: 10px;
           }
 
-
           .healthcare-solutions-footer {
             font-size: 8.5px;
           }
-
         }
 
 
@@ -720,11 +688,9 @@ export default function HealthcareSolutionsGridSection() {
             transition: none;
           }
 
-
           .healthcare-solution-card:hover {
             transform: none;
           }
-
         }
 
       `}</style>
