@@ -40,24 +40,21 @@ export default function TechnologyMovesForward() {
 
         {/* =====================================================
             CONTENT
+            (left padding same as Hero: 16 / 24 / 40 / 100)
         ====================================================== */}
         <div
           className="
             absolute
             inset-0
-            mx-auto
             w-full
-            max-w-[1400px]
 
-            px-5
+            px-4
 
-            sm:px-7
+            sm:px-6
 
             md:px-10
 
-            lg:px-8
-
-            xl:px-8
+            lg:px-[100px]
           "
         >
           <div
@@ -99,7 +96,7 @@ export default function TechnologyMovesForward() {
                 md:text-[38px]
                 md:tracking-[-1.5px]
 
-                lg:text-[44px]
+                lg:text-[40px]
                 lg:tracking-[-1.8px]
 
                 xl:text-[36px]
@@ -120,7 +117,7 @@ export default function TechnologyMovesForward() {
                 font-['Inter']
                 text-[14px]
                 font-light
-                
+
                 leading-[1.5]
                 text-white
 
@@ -128,10 +125,10 @@ export default function TechnologyMovesForward() {
                 sm:text-[15px]
 
                 md:mt-8
-                md:text-[16px]
+                md:text-[15px]
 
                 lg:mt-8
-                lg:text-[17px]
+                lg:text-[16px]
               "
             >
               We help businesses use technology to work smarter, solve
@@ -147,11 +144,11 @@ export default function TechnologyMovesForward() {
               className="
                 mt-12
 
-                sm:mt-13
+                sm:mt-[52px]
 
                 md:mt-14
 
-                lg:mt-15
+                lg:mt-[60px]
 
                 xl:mt-16
               "
@@ -182,9 +179,9 @@ export default function TechnologyMovesForward() {
 
                   sm:text-[15px]
 
-                  md:text-[16px]
+                  md:text-[15px]
 
-                  lg:text-[17px]
+                  lg:text-[15px]
                 "
               >
                 <span>Talk to Our Experts</span>

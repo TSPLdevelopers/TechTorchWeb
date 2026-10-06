@@ -3,27 +3,23 @@ import React from "react";
 export default function TechnologyThatWorks() {
   return (
     <section className="w-full bg-[#faf9f4]">
+      {/* Left/right padding same as Hero: 16 / 24 / 40 / 100 */}
       <div
         className="
-          mx-auto
           w-full
-          max-w-[1400px]
 
           px-4
           py-8
 
-          min-[400px]:px-5
-
           sm:px-6
           sm:py-9
 
-          md:px-8
+          md:px-10
           md:py-10
 
-          lg:px-10
+          lg:px-[100px]
           lg:py-11
 
-          xl:px-12
           xl:py-12
         "
       >
@@ -54,7 +50,7 @@ export default function TechnologyThatWorks() {
             xl:text-[34px]
           "
         >
-          <span className="text-[#8b1658]">Technology</span>{" "}
+          <span className="text-[#730042]">Technology</span>{" "}
           That Works
           <br />
           for Your Business
@@ -94,7 +90,7 @@ export default function TechnologyThatWorks() {
               w-full
               max-w-[610px]
               font-['Inter']
-              text-[14px]
+              text-[15px]
               font-normal
               leading-[1.5]
               text-[#333333]

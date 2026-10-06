@@ -88,7 +88,14 @@ function NavCareers() {
           {/* CONTENT */}
           <div className="px-[11%] pt-[65px] flex gap-[120px]">
             {/* CAREERS HEADING */}
-            <h3 className="text-[30px] font-bold font-plus-jakarta text-gray-900">
+            <h3 className="text-[22px]
+                  md:text-[25px]
+                  font-semibold
+                  text-gray-900
+                  font-plus-jakarta
+                  text-left
+                  m-0
+                  leading-[1.2]">
               Careers
             </h3>
 
@@ -98,9 +105,14 @@ function NavCareers() {
                 <a
                   key={title}
                   href="#"
-                  className="text-[20px] text-gray-800 font-inter
-                    hover:text-[#8a1538]
-                    transition-colors duration-200"
+                  className=" text-[15px]
+                        md:text-[15px]
+                        text-gray-800
+                        font-inter
+                        leading-[1.35]
+                        hover:text-[#8a1538]
+                        transition-colors
+                        duration-200"
                 >
                   {title}
                 </a>

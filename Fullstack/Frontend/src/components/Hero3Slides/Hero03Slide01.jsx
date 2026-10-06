@@ -85,23 +85,21 @@ export default function SoftwareDevelopmentHero() {
 
           min-h-[560px]
 
-          px-5
+          px-4
           py-14
 
           sm:min-h-[580px]
-          sm:px-8
+          sm:px-6
           sm:py-16
 
           md:min-h-[540px]
-          md:px-12
+          md:px-10
           md:py-14
 
           lg:h-full
           lg:min-h-0
-          lg:px-[7%]
+          lg:px-[100px]
           lg:py-10
-
-          xl:px-[8%]
         "
       >
         <div
@@ -124,6 +122,8 @@ export default function SoftwareDevelopmentHero() {
             className="
               mb-4
 
+              font-['Plus_Jakarta_Sans']
+
               text-[11px]
               font-semibold
               tracking-[0.7px]
@@ -136,7 +136,7 @@ export default function SoftwareDevelopmentHero() {
               md:text-[14px]
 
               lg:mb-5
-              lg:text-[14px]
+              lg:text-[13px]
             "
           >
             SOFTWARE DEVELOPMENT
@@ -148,24 +148,24 @@ export default function SoftwareDevelopmentHero() {
             className="
               mb-5
 
+              font-['Plus_Jakarta_Sans']
+
+              text-[34px]
               font-medium
               leading-[1.08]
-
               tracking-[-0.8px]
-
-              text-[30px]
 
               min-[400px]:text-[34px]
 
-              sm:text-[38px]
+              sm:text-[34px]
               sm:tracking-[-1px]
 
-              md:text-[42px]
+              md:text-[36px]
 
               lg:mb-6
-              lg:text-[44px]
+              lg:text-[38px]
 
-              xl:text-[46px]
+              xl:text-[38px]
             "
           >
             Software Built
@@ -179,6 +179,8 @@ export default function SoftwareDevelopmentHero() {
             className="
               max-w-[520px]
 
+              font-['Inter']
+
               text-[14px]
               font-normal
               leading-[1.6]
@@ -191,7 +193,7 @@ export default function SoftwareDevelopmentHero() {
               md:max-w-[500px]
               md:text-[16px]
 
-              lg:text-[16px]
+              lg:text-[15px]
               lg:leading-[1.5]
             "
           >
@@ -232,12 +234,14 @@ export default function SoftwareDevelopmentHero() {
 
               rounded-[3px]
 
-              bg-[#970052]
+              bg-[#730042]
 
               px-5
               py-[10px]
 
-              text-[14px]
+              font-['Inter']
+
+              text-[13px]
               font-semibold
               text-white
 
@@ -245,7 +249,7 @@ export default function SoftwareDevelopmentHero() {
               duration-300
 
               hover:bg-white
-              hover:text-[#970052]
+              hover:text-[#730042]
 
               sm:mt-8
               sm:px-6

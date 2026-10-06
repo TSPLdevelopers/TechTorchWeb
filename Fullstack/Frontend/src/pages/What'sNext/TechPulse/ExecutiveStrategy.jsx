@@ -1,0 +1,552 @@
+import React from "react";
+
+export default function ExecutiveStrategy() {
+  return (
+    <section className="executive-strategy">
+      <div className="executive-strategy-card">
+        {/* CONTENT */}
+        <div className="executive-strategy-content">
+          {/* BADGE */}
+          <div className="executive-strategy-badge">
+            <span className="strategy-dot"></span>
+            NEXT STEPS · EXECUTIVE STRATEGY
+          </div>
+
+          {/* HEADING */}
+          <h2>
+            Turn Information Into Better
+            <br /> Decisions
+          </h2>
+
+          {/* DESCRIPTION */}
+          <p className="strategy-description">
+            Your business already generates valuable information.
+            <br />
+            The opportunity is to connect it, understand it and use
+            <br />
+            it more effectively.
+          </p>
+
+          {/* HIGHLIGHT */}
+          <p className="strategy-highlight">
+            Improve visibility. Strengthen operations. Connect critical
+            <br />
+            business information. Make decisions with greater confidence.
+          </p>
+
+          {/* ACTION */}
+          <p className="strategy-action">
+            Let's build a clearer path from data to action.
+          </p>
+
+          {/* BUTTON */}
+          <div className="strategy-buttons">
+            <button className="strategy-primary">
+              Talk to Our Experts <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        {/* IMAGE */}
+        <div className="executive-strategy-image">
+          <img src="/ExecutiveStrategy.png" alt="Executive Strategy" />
+        </div>
+      </div>
+
+      <style>{`
+        /* ================= SECTION (padding same as other sections) ================= */
+
+        .executive-strategy {
+          width: 100%;
+          padding: 40px 16px;
+          background: #ffffff;
+          font-family: "Inter", sans-serif;
+          overflow: hidden;
+        }
+
+        @media (min-width: 640px) {
+          .executive-strategy {
+            padding: 48px 24px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .executive-strategy {
+            padding: 56px 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .executive-strategy {
+            padding: 64px 100px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .executive-strategy {
+            padding: 80px 100px;
+          }
+        }
+
+        .executive-strategy-card {
+          width: 100%;
+          min-height: 520px;
+          display: grid;
+          grid-template-columns: 1fr 0.9fr;
+          background: #f7fafc;
+          border: 1px solid #e0e7ed;
+          border-radius: 22px;
+          overflow: hidden;
+        }
+
+        /* CONTENT */
+
+        .executive-strategy-content {
+          padding: 42px 45px 40px 55px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          min-width: 0;
+        }
+
+        /* BADGE */
+
+        .executive-strategy-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          max-width: 100%;
+          height: 32px;
+          padding: 0 12px;
+          border: 1px solid #e5bfd1;
+          border-radius: 20px;
+          background: #fff9fc;
+<<<<<<< HEAD
+          color: #8b0750;
+=======
+          color: #730042;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
+          font-size: 10px;
+          line-height: 1;
+          font-weight: 800;
+          letter-spacing: 0.7px;
+          white-space: nowrap;
+        }
+
+        .strategy-dot {
+          width: 7px;
+          height: 7px;
+          flex: 0 0 auto;
+          border-radius: 50%;
+          background: #970052;
+        }
+
+        /* HEADING */
+
+        .executive-strategy-content h2 {
+          margin: 23px 0 18px;
+          color: #101629;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 35px;
+          line-height: 1.12;
+          letter-spacing: -1.4px;
+          font-weight: 500;
+        }
+
+        /* DESCRIPTION */
+
+        .strategy-description {
+          margin: 0;
+          color: #64738a;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.5;
+          font-weight: 400;
+        }
+
+        /* HIGHLIGHT */
+
+        .strategy-highlight {
+          margin: 16px 0 0;
+          color: #202a3e;
+          font-size: 13px;
+          line-height: 1.48;
+          font-weight: 600;
+        }
+
+        /* ACTION */
+
+        .strategy-action {
+          margin: 16px 0 0;
+<<<<<<< HEAD
+          color: #8d0750;
+=======
+
+          color: #730042;
+
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
+          font-size: 14px;
+          line-height: 1.4;
+          font-weight: 750;
+        }
+
+        /* BUTTON CONTAINER */
+
+        .strategy-buttons {
+          margin-top: 22px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        /* PRIMARY BUTTON */
+
+        .strategy-primary {
+          min-width: 255px;
+          height: 45px;
+          padding: 0 14px;
+          border: 1px solid #970052;
+          border-radius: 10px;
+<<<<<<< HEAD
+          background: #970052;
+=======
+
+          background: #730042;
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          white-space: nowrap;
+          box-shadow: 0 7px 15px rgba(151, 0, 82, 0.18);
+          transition:
+            background 0.45s ease,
+            color 0.45s ease,
+            border-color 0.45s ease,
+            box-shadow 0.45s ease;
+        }
+
+        .strategy-primary:hover {
+<<<<<<< HEAD
+          background: #a91a68;
+          border-color: #a91a68;
+          box-shadow: 0 10px 20px rgba(151, 0, 82, 0.22);
+=======
+          background: #970052;
+          border-color: #970052;
+
+          box-shadow:
+            0 10px 20px rgba(151, 0, 82, 0.22);
+>>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
+        }
+
+        .strategy-primary span {
+          display: inline;
+          margin-left: 5px;
+          font-size: 17px;
+        }
+
+        /* IMAGE */
+
+        .executive-strategy-image {
+          width: 100%;
+          height: 100%;
+          min-height: 520px;
+          overflow: hidden;
+          background: #202633;
+        }
+
+        .executive-strategy-image img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        /* LARGE DESKTOP */
+
+        @media (min-width: 1600px) {
+          .executive-strategy-card {
+            min-height: 550px;
+          }
+
+          .executive-strategy-content {
+            padding-left: 65px;
+            padding-right: 50px;
+          }
+
+          .executive-strategy-image {
+            min-height: 550px;
+          }
+        }
+
+        /* LAPTOP */
+
+        @media (max-width: 1200px) {
+          .executive-strategy-content {
+            padding: 38px 35px 38px 42px;
+          }
+
+          .executive-strategy-content h2 {
+            font-size: 32px;
+          }
+
+          .strategy-description {
+            font-size: 13px;
+          }
+
+          .strategy-highlight {
+            font-size: 12px;
+          }
+
+          .strategy-action {
+            font-size: 13px;
+          }
+        }
+
+        /* TABLET LANDSCAPE */
+
+        @media (max-width: 1000px) {
+          .executive-strategy-card {
+            min-height: 460px;
+          }
+
+          .executive-strategy-content {
+            padding: 32px 25px 32px 32px;
+          }
+
+          .executive-strategy-badge {
+            height: 30px;
+            padding: 0 10px;
+            font-size: 9px;
+          }
+
+          .executive-strategy-content h2 {
+            margin: 20px 0 16px;
+            font-size: 29px;
+            letter-spacing: -1px;
+          }
+
+          .strategy-description {
+            font-size: 12px;
+          }
+
+          .strategy-highlight {
+            font-size: 11px;
+          }
+
+          .strategy-action {
+            font-size: 12px;
+          }
+
+          .strategy-buttons {
+            margin-top: 20px;
+          }
+
+          .strategy-primary {
+            min-width: 205px;
+            height: 42px;
+            font-size: 11px;
+          }
+
+          .executive-strategy-image {
+            min-height: 460px;
+          }
+        }
+
+        /* TABLET */
+
+        @media (max-width: 800px) {
+          .executive-strategy-card {
+            min-height: auto;
+            grid-template-columns: 1fr;
+          }
+
+          .executive-strategy-content {
+            padding: 35px 30px;
+          }
+
+          .executive-strategy-content h2 {
+            font-size: 30px;
+          }
+
+          .strategy-description,
+          .strategy-highlight {
+            font-size: 13px;
+          }
+
+          .strategy-action {
+            font-size: 14px;
+          }
+
+          .strategy-primary {
+            min-width: 225px;
+            height: 43px;
+          }
+
+          .executive-strategy-image {
+            height: 320px;
+            min-height: 320px;
+          }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+          .executive-strategy-card {
+            border-radius: 16px;
+          }
+
+          .executive-strategy-content {
+            width: 100%;
+            padding: 28px 22px 30px;
+          }
+
+          .executive-strategy-badge {
+            width: fit-content;
+            max-width: 100%;
+            height: 28px;
+            padding: 0 10px;
+            font-size: 8px;
+            letter-spacing: 0.5px;
+            gap: 6px;
+          }
+
+          .strategy-dot {
+            width: 6px;
+            height: 6px;
+          }
+
+          .executive-strategy-content h2 {
+            width: 100%;
+            margin: 20px 0 16px;
+            font-size: 27px;
+            line-height: 1.12;
+            letter-spacing: -1px;
+          }
+
+          .strategy-description {
+            width: 100%;
+            font-size: 12px;
+            line-height: 1.55;
+          }
+
+          .strategy-description br,
+          .strategy-highlight br {
+            display: none;
+          }
+
+          .strategy-highlight {
+            width: 100%;
+            margin-top: 16px;
+            font-size: 12px;
+            line-height: 1.5;
+          }
+
+          .strategy-action {
+            width: 100%;
+            margin-top: 16px;
+            font-size: 13px;
+            line-height: 1.45;
+          }
+
+          .strategy-buttons {
+            width: 100%;
+            margin-top: 20px;
+          }
+
+          .strategy-primary {
+            width: 100%;
+            min-width: 0;
+            height: 44px;
+            padding: 0 11px;
+            font-size: 12px;
+          }
+
+          .strategy-primary span {
+            font-size: 16px;
+          }
+
+          .executive-strategy-image {
+            height: 245px;
+            min-height: 245px;
+          }
+        }
+
+        /* SMALL MOBILE */
+
+        @media (max-width: 480px) {
+          .executive-strategy-content {
+            padding: 26px 18px 28px;
+          }
+
+          .executive-strategy-content h2 {
+            font-size: 25px;
+          }
+
+          .strategy-description,
+          .strategy-highlight {
+            font-size: 11px;
+          }
+
+          .strategy-action {
+            font-size: 12px;
+          }
+
+          .strategy-primary {
+            width: 100%;
+            height: 42px;
+            font-size: 11px;
+          }
+
+          .executive-strategy-image {
+            height: 220px;
+            min-height: 220px;
+          }
+        }
+
+        /* VERY SMALL MOBILE */
+
+        @media (max-width: 350px) {
+          .executive-strategy-content {
+            padding: 23px 16px 25px;
+          }
+
+          .executive-strategy-badge {
+            height: 26px;
+            padding: 0 8px;
+            font-size: 7px;
+          }
+
+          .executive-strategy-content h2 {
+            font-size: 22px;
+          }
+
+          .strategy-description,
+          .strategy-highlight {
+            font-size: 10.5px;
+          }
+
+          .strategy-action {
+            font-size: 11px;
+          }
+
+          .strategy-primary {
+            height: 41px;
+            font-size: 10.5px;
+            padding: 0 8px;
+          }
+
+          .executive-strategy-image {
+            height: 200px;
+            min-height: 200px;
+          }
+        }
+      `}</style>
+    </section>
+  );
+}

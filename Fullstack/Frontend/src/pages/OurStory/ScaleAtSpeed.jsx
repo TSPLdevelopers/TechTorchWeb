@@ -22,19 +22,14 @@ export default function ScaleAtSpeed() {
       const rect = sectionRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // Start animation when section's lower part reaches viewport
       const shouldAnimate =
         rect.bottom <= viewportHeight * 0.95 &&
         rect.bottom >= viewportHeight * 0.15;
 
-      // Reset only after section has properly left the viewport
-      const isFarAway =
-        rect.bottom < -100 ||
-        rect.top > viewportHeight + 100;
+      const isFarAway = rect.bottom < -100 || rect.top > viewportHeight + 100;
 
       if (shouldAnimate && !hasTriggeredRef.current) {
         hasTriggeredRef.current = true;
-
         setAnimationKey((prev) => prev + 1);
         setStartAnimation(true);
       }
@@ -47,10 +42,7 @@ export default function ScaleAtSpeed() {
 
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
 
     return () => {
@@ -62,7 +54,7 @@ export default function ScaleAtSpeed() {
   return (
     <section
       ref={sectionRef}
-      className="w-full px-5 py-14 sm:px-8 sm:py-16 md:px-10 md:py-20 lg:px-12 font-inter overflow-hidden"
+      className="w-full overflow-hidden px-4 py-10 font-inter sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20"
       style={{
         background:
           "linear-gradient(135deg, #6e0f3e 0%, #8f1249 55%, #6e0f3e 100%)",
@@ -70,30 +62,18 @@ export default function ScaleAtSpeed() {
     >
       <style>{`
         @keyframes growBar1 {
-          from {
-            height: 0px;
-          }
-          to {
-            height: 90px;
-          }
+          from { height: 0px; }
+          to { height: 90px; }
         }
 
         @keyframes growBar2 {
-          from {
-            height: 0px;
-          }
-          to {
-            height: 140px;
-          }
+          from { height: 0px; }
+          to { height: 140px; }
         }
 
         @keyframes growBar3 {
-          from {
-            height: 0px;
-          }
-          to {
-            height: 180px;
-          }
+          from { height: 0px; }
+          to { height: 180px; }
         }
 
         .bar-fill {
@@ -118,32 +98,21 @@ export default function ScaleAtSpeed() {
         }
       `}</style>
 
-      <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+      <div className="grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
         {/* Left column */}
-        <div className="w-full lg:-ml-16 xl:-ml-24">
-          <p className="text-[11px] sm:text-[12px] tracking-[0.14em] font-semibold text-rose-200 mb-3 sm:mb-4">
+        <div className="w-full">
+          <p className="mb-3 text-[11px] font-semibold tracking-[0.14em] text-rose-200 sm:mb-4 sm:text-[12px]">
             METHODOLOGY
           </p>
 
           <h2
-            className="
-              text-white
-              font-bold
-              text-3xl
-              sm:text-4xl
-              md:text-[42px]
-              leading-tight
-              mb-5
-              sm:mb-6
-            "
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-            }}
+            className="mb-5 text-3xl font-bold leading-tight text-white sm:mb-6 sm:text-4xl md:text-[42px]"
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
           >
             Scale at Speed
           </h2>
 
-          <p className="text-rose-100/80 text-sm sm:text-base leading-relaxed mb-8 sm:mb-10 max-w-md">
+          <p className="mb-8 max-w-md text-sm leading-relaxed text-rose-100/80 sm:mb-10 sm:text-base">
             The TechTorch Philosophy balances the necessity for rapid
             innovation with the absolute requirement for structural
             invulnerability.
@@ -152,17 +121,14 @@ export default function ScaleAtSpeed() {
           <div className="space-y-6 sm:space-y-7">
             {/* Feature 1 */}
             <div className="flex gap-3 sm:gap-4">
-              <BadgeCheck
-                size={20}
-                className="text-white flex-shrink-0 mt-0.5"
-              />
+              <BadgeCheck size={20} className="mt-0.5 flex-shrink-0 text-white" />
 
               <div>
-                <h3 className="text-white text-base sm:text-[17px] font-semibold mb-1">
+                <h3 className="mb-1 text-base font-semibold text-white sm:text-[17px]">
                   Rapid Iteration
                 </h3>
 
-                <p className="text-rose-100/70 text-sm leading-relaxed max-w-md">
+                <p className="max-w-md text-sm leading-relaxed text-rose-100/70">
                   Deploying critical infrastructure enhancements in weeks,
                   not quarters.
                 </p>
@@ -171,17 +137,14 @@ export default function ScaleAtSpeed() {
 
             {/* Feature 2 */}
             <div className="flex gap-3 sm:gap-4">
-              <ShieldCheck
-                size={20}
-                className="text-white flex-shrink-0 mt-0.5"
-              />
+              <ShieldCheck size={20} className="mt-0.5 flex-shrink-0 text-white" />
 
               <div>
-                <h3 className="text-white text-base sm:text-[17px] font-semibold mb-1">
+                <h3 className="mb-1 text-base font-semibold text-white sm:text-[17px]">
                   Structural Invulnerability
                 </h3>
 
-                <p className="text-rose-100/70 text-sm leading-relaxed max-w-md">
+                <p className="max-w-md text-sm leading-relaxed text-rose-100/70">
                   Architecting zero-trust, high-availability systems from
                   day one.
                 </p>
@@ -203,56 +166,24 @@ export default function ScaleAtSpeed() {
           }}
         >
           {/* Chart */}
-          <div
-            className="
-              flex
-              items-end
-              justify-center
-              gap-3
-              sm:gap-5
-              md:gap-6
-              h-40
-              sm:h-44
-              mb-5
-              sm:mb-6
-              border-l
-              border-white/20
-              pl-4
-              sm:pl-6
-            "
-          >
+          <div className="mb-5 flex h-40 items-end justify-center gap-3 border-l border-white/20 pl-4 sm:mb-6 sm:h-44 sm:gap-5 sm:pl-6 md:gap-6">
             {bars.map((bar, i) => (
-              <div
-                key={i}
-                className="
-                  flex
-                  items-end
-                  w-10
-                  sm:w-12
-                  md:w-14
-                  h-[180px]
-                "
-              >
+              <div key={i} className="flex h-[180px] w-10 items-end sm:w-12 md:w-14">
                 <div
                   className={`bar-fill bar-fill-${i + 1} w-full rounded-t-sm`}
-                  style={{
-                    backgroundColor: bar.color,
-                  }}
+                  style={{ backgroundColor: bar.color }}
                 />
               </div>
             ))}
           </div>
 
           {/* Chart Footer */}
-          <div className="border-t border-white/15 pt-4 flex items-center justify-between gap-4">
-            <span className="text-rose-100/80 text-xs sm:text-sm">
+          <div className="flex items-center justify-between gap-4 border-t border-white/15 pt-4">
+            <span className="text-xs text-rose-100/80 sm:text-sm">
               Innovation Velocity
             </span>
 
-            <TrendingUp
-              size={18}
-              className="text-rose-200 flex-shrink-0"
-            />
+            <TrendingUp size={18} className="flex-shrink-0 text-rose-200" />
           </div>
         </div>
       </div>

@@ -241,11 +241,11 @@ export default function PracticalERPPath() {
               md:text-[35px]
 
               lg:pr-0
-              lg:text-[39px]
+              lg:text-[32px]
               lg:leading-[1.12]
               lg:tracking-[-0.03em]
 
-              xl:text-[33px]
+              xl:text-[32px]
             "
           >
             A Practical Path to{" "}
@@ -290,7 +290,7 @@ export default function PracticalERPPath() {
               lg:text-[16px]
               lg:leading-[1.32]
 
-              xl:text-[15.5px]
+              xl:text-[15px]
             "
           >
             Every business is different, so there is no single ERP approach
@@ -400,7 +400,7 @@ export default function PracticalERPPath() {
 
                       md:text-[19px]
 
-                      lg:text-[19px]
+                      lg:text-[18px]
                     "
                   >
                     {step.title}

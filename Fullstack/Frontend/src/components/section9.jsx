@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const COLORS = {
   maroon: "#7A1350",
@@ -8,6 +9,7 @@ const COLORS = {
 export default function CtaSection({
   backgroundImage = "/sec9.png",
 }) {
+  const navigate = useNavigate();
   return (
     <section className="cta-section">
       <style>{`
@@ -26,6 +28,12 @@ export default function CtaSection({
           align-items: center;
 
           font-family: "Plus Jakarta Sans", sans-serif;
+
+          /* HOW WE WORK SAME HORIZONTAL SPACING */
+          padding-left: 16px;
+          padding-right: 16px;
+
+          box-sizing: border-box;
         }
 
 
@@ -74,7 +82,7 @@ export default function CtaSection({
           width: 100%;
           max-width: 640px;
 
-          padding: 0 64px;
+          padding: 0;
         }
 
 
@@ -84,10 +92,10 @@ export default function CtaSection({
 
         .cta-title {
           margin: 0 0 24px;
-
-          font-size: 45px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
           line-height: 1.2;
-          font-weight: 800;
+          font-weight: 700;
 
           color: ${COLORS.white};
 
@@ -103,8 +111,8 @@ export default function CtaSection({
           max-width: 480px;
 
           margin: 0 0 40px;
-
-          font-size: 17px;
+          font-family: "Inter", sans-serif;
+          font-size: 16px;
           line-height: 1.6;
 
           color: rgba(255,255,255,0.9);
@@ -126,7 +134,7 @@ export default function CtaSection({
           color: ${COLORS.maroon};
 
           font-weight: 700;
-          font-size: 16px;
+          font-size: 14px;
 
           padding: 14px 24px;
 
@@ -144,6 +152,8 @@ export default function CtaSection({
         }
 
         .cta-button:hover {
+         background: #730042;
+         color: #ffffff;
           transform: translateY(-2px);
 
           box-shadow:
@@ -163,8 +173,50 @@ export default function CtaSection({
 
 
         /* =========================
+           SMALL DEVICES
+           640px+
+        ========================== */
+
+        @media (min-width: 640px) {
+
+          .cta-section {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+
+        /* =========================
            TABLET
-           768px - 1023px
+           768px+
+        ========================== */
+
+        @media (min-width: 768px) {
+
+          .cta-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+
+        /* =========================
+           DESKTOP
+           1024px+
+        ========================== */
+
+        @media (min-width: 1024px) {
+
+          .cta-section {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+        }
+
+
+        /* =========================
+           TABLET
+           Below 1023px
         ========================== */
 
         @media (max-width: 1023px) {
@@ -175,7 +227,6 @@ export default function CtaSection({
 
           .cta-content {
             max-width: 580px;
-            padding: 0 48px;
           }
 
           .cta-title {
@@ -230,7 +281,7 @@ export default function CtaSection({
 
             padding:
               40px
-              24px
+              0
               42px;
           }
 
@@ -287,7 +338,7 @@ export default function CtaSection({
           .cta-content {
             padding:
               32px
-              18px
+              0
               30px;
           }
 
@@ -335,7 +386,7 @@ export default function CtaSection({
           .cta-content {
             padding:
               28px
-              16px
+              0
               26px;
           }
 
@@ -388,6 +439,10 @@ export default function CtaSection({
         <a
           href="#contact"
           className="cta-button"
+           onClick={(e) => {
+    e.preventDefault();
+    navigate("/start-conversation");
+  }}
         >
           Start a conversation
 

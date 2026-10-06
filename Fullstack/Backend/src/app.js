@@ -4,8 +4,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
-const adminRoutes = require("./routes/adminRoutes");
-const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/admin.routes");
 const jobRoutes = require("./routes/job.routes");
 const candidateRoutes = require("./routes/candidate.routes");
 
@@ -14,14 +13,15 @@ const upcomingEventRoutes = require("./routes/upcomingEvent.routes");
 const featuredStoryRoutes = require("./routes/featuredStory.routes");
 const companyEnvironmentRoutes = require("./routes/companyEnvironment.routes");
 const opportunityRoutes = require("./routes/opportunity.routes");
+const newsRoutes = require("./routes/news.routes");
 const cookieParser = require("cookie-parser");
 
 app.use(cookieParser());
 app.use("/api/company-environments", companyEnvironmentRoutes);
 app.use("/api/opportunities", opportunityRoutes);
+app.use("/api/news", newsRoutes);
 
 app.use("/api/admin", adminRoutes);
-app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/candidates", candidateRoutes);
 app.use("/api/latest-updates", latestUpdateRoutes);

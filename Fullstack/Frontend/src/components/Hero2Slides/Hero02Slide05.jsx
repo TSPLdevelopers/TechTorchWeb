@@ -81,10 +81,10 @@ export default function TechHero() {
             lg:text-[2.7rem]
             xl:text-[3rem]
 
-            max-w-[330px]
-            sm:max-w-[420px]
-            md:max-w-[520px]
-            lg:max-w-[600px]
+            max-w-[330px] max-w-full
+            sm:max-w-[420px] max-w-full
+            md:max-w-[520px] max-w-full
+            lg:max-w-[600px] max-w-full
 
             ml-2
             sm:ml-4
@@ -119,10 +119,10 @@ export default function TechHero() {
 
             leading-[1.6]
 
-            max-w-[300px]
-            sm:max-w-[380px]
-            md:max-w-[480px]
-            lg:max-w-[560px]
+            max-w-[300px] max-w-full
+            sm:max-w-[380px] max-w-full
+            md:max-w-[480px] max-w-full
+            lg:max-w-[560px] max-w-full
 
             ml-2
             sm:ml-4

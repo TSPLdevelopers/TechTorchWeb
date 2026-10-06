@@ -83,7 +83,7 @@ function NavAboutUs() {
           <div className="h-px bg-gray-100 mx-[5px]" />
 
           <div className="px-[11%] pt-[65px] flex gap-[120px]">
-            <h3 className="text-[30px] font-bold text-gray-900 font-plus-jakarta whitespace-nowrap">
+            <h3 className="text-[25px] font-semibold text-gray-900 font-plus-jakarta whitespace-nowrap">
               About Us
             </h3>
 
@@ -92,7 +92,13 @@ function NavAboutUs() {
                 <a
                   key={title}
                   href="#"
-                  className="text-[20px] font-bold text-gray-900 font-plus-jakarta hover:text-[#8a1538] transition-colors duration-200"
+                  className=" text-[16px]
+                          md:text-[18px]
+                          font-semibold
+                          hover:text-[#8a1538]
+                          text-gray-900
+                          font-plus-jakarta
+                          leading-[1.3]"
                 >
                   {title}
                 </a>
@@ -102,7 +108,14 @@ function NavAboutUs() {
                 <a
                   key={title}
                   href="#"
-                  className="text-[20px] text-gray-700 font-inter hover:text-[#8a1538] transition-colors duration-200"
+                  className="text-[15px]
+                        md:text-[15px]
+                        text-gray-800
+                        font-inter
+                        leading-[1.35]
+                        hover:text-[#8a1538]
+                        transition-colors
+                        duration-200"
                 >
                   {title}
                 </a>
@@ -113,7 +126,13 @@ function NavAboutUs() {
                   <a
                     key={title}
                     href="#"
-                    className="text-[20px] font-bold text-gray-900 font-plus-jakarta hover:text-[#8a1538] transition-colors duration-200"
+                    className="text-[16px]
+                          md:text-[18px]
+                          font-semibold
+                          hover:text-[#8a1538]
+                          text-gray-900
+                          font-plus-jakarta
+                          leading-[1.3]"
                   >
                     {title}
                   </a>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const COLORS = {
   cream: "#F5F1E8",
@@ -14,36 +15,35 @@ const industries = [
     title: "Education",
     description: "Connected solutions for better learning experiences.",
     image: "/Education 2 [Vectorized].svg",
+    path: "/industries/education",
   },
   {
     id: "insurance",
     title: "Insurance",
     description: "Digital solutions for smarter, more resilient insurance.",
     image: "/Insurance 2 [Vectorized].svg",
+    path: "/industries/insurance",
   },
   {
     id: "finance",
     title: "Finance",
     description: "Secure technology built for modern financial services.",
     image: "/Finance.svg",
+    path: "/industries/finance",
   },
   {
     id: "healthcare",
     title: "Healthcare",
     description: "Technology that enables smarter, connected care.",
     image: "/Healthcare 2 [Vectorized].svg",
-  },
-  {
-    id: "insurance-2",
-    title: "Insurance",
-    description: "Digital solutions for smarter, more resilient insurance.",
-    image: "/Insurance 2 [Vectorized].svg",
+    path: "/industries/healthcare",
   },
   {
     id: "manufacturing",
     title: "Manufacturing",
     description: "Smarter technology for connected operations.",
     image: "/Manufacturing 2 [Vectorized].svg",
+    path: "/industries/manufacturing",
   },
   {
     id: "fmcg",
@@ -51,6 +51,7 @@ const industries = [
     description:
       "Connected solutions for smarter movement and operations.",
     image: "/FMCG 2 [Vectorized].svg",
+    path: "/industries/fmcg",
   },
   {
     id: "it",
@@ -58,6 +59,7 @@ const industries = [
     description:
       "Digital capabilities built to accelerate innovation.",
     image: "/Information-Technology 2 [Vectorized].svg",
+    path: "/industries/information-technology",
   },
   {
     id: "energy",
@@ -65,6 +67,7 @@ const industries = [
     description:
       "Technology for efficient, evolving energy ecosystems.",
     image: "/Energy 3 [Vectorized] (1).svg",
+    path: "/industries/energy",
   },
   {
     id: "telecommunications",
@@ -72,6 +75,7 @@ const industries = [
     description:
       "Scalable solution for connected experiences.",
     image: "/Telecommunications 2 [Vectorized].svg",
+    path: "/industries/telecommunications",
   },
   {
     id: "transportation",
@@ -79,9 +83,17 @@ const industries = [
     description:
       "Connected solutions for smarter movement and operations.",
     image: "/Transportation 2 [Vectorized].svg",
+    path: "/industries/transportation",
+  },
+  {
+    id: "E-Commerce",
+    title: "E-Commerce",
+    description:
+      "Scalable experiences for a connected marketplace.",
+    image: "/TechTorch_E-Commerce_Icon 1.svg",
+    path: "/industries/e-commerce",
   },
 ];
-
 
 /* =====================================================
    IMAGE
@@ -101,7 +113,6 @@ function IndustryImage({ src, alt, hovered }) {
   );
 }
 
-
 /* =====================================================
    CARD
 ===================================================== */
@@ -110,7 +121,8 @@ function Card({ item }) {
   const [hovered, setHovered] = React.useState(false);
 
   return (
-    <div
+    <Link
+      to={item.path}
       className={`industry-card ${
         hovered ? "industry-card-hovered" : ""
       }`}
@@ -127,13 +139,11 @@ function Card({ item }) {
         />
       </div>
 
-
       {/* TITLE */}
 
       <h3 className="industry-title">
         {item.title}
       </h3>
-
 
       {/* DESCRIPTION */}
 
@@ -141,10 +151,9 @@ function Card({ item }) {
         {item.description}
       </p>
 
-
       {/* LINK */}
 
-      <a href="#" className="industry-link">
+      <span className="industry-link">
         Explore Industry
 
         <svg
@@ -169,18 +178,16 @@ function Card({ item }) {
 
           <polyline points="12 5 19 12 12 19" />
         </svg>
-      </a>
-    </div>
+      </span>
+    </Link>
   );
 }
-
 
 /* =====================================================
    MAIN COMPONENT
 ===================================================== */
 
 export default function IndustriesCarousel() {
-
   const [paused, setPaused] = React.useState(false);
 
   const trackRef = React.useRef(null);
@@ -191,15 +198,12 @@ export default function IndustriesCarousel() {
 
   const animationRef = React.useRef(null);
 
-
   /* =====================================================
      CARD WIDTH
   ===================================================== */
 
   React.useEffect(() => {
-
     const updateCardWidth = () => {
-
       if (!trackRef.current) return;
 
       const card =
@@ -217,7 +221,6 @@ export default function IndustriesCarousel() {
         card.offsetWidth + marginRight;
     };
 
-
     updateCardWidth();
 
     window.addEventListener(
@@ -225,29 +228,24 @@ export default function IndustriesCarousel() {
       updateCardWidth
     );
 
-
     return () => {
       window.removeEventListener(
         "resize",
         updateCardWidth
       );
     };
-
   }, []);
-
 
   /* =====================================================
      NEXT
   ===================================================== */
 
   const nextCard = () => {
-
     if (!trackRef.current) return;
 
     setPaused(true);
 
     setPosition((prev) => {
-
       const next =
         prev - cardWidthRef.current;
 
@@ -261,19 +259,16 @@ export default function IndustriesCarousel() {
       `translateX(${position - cardWidthRef.current}px)`;
   };
 
-
   /* =====================================================
      PREVIOUS
   ===================================================== */
 
   const previousCard = () => {
-
     if (!trackRef.current) return;
 
     setPaused(true);
 
     setPosition((prev) => {
-
       const next =
         prev + cardWidthRef.current;
 
@@ -287,13 +282,11 @@ export default function IndustriesCarousel() {
       `translateX(${position + cardWidthRef.current}px)`;
   };
 
-
   /* =====================================================
      AUTO SCROLL
   ===================================================== */
 
   React.useEffect(() => {
-
     if (paused) return;
 
     const track = trackRef.current;
@@ -305,9 +298,7 @@ export default function IndustriesCarousel() {
     const speed = 0.45;
 
     const animate = () => {
-
       if (!paused) {
-
         currentPosition -= speed;
 
         setPosition(currentPosition);
@@ -320,30 +311,23 @@ export default function IndustriesCarousel() {
         requestAnimationFrame(animate);
     };
 
-
     animationRef.current =
       requestAnimationFrame(animate);
 
-
     return () => {
-
       if (animationRef.current) {
         cancelAnimationFrame(
           animationRef.current
         );
       }
-
     };
-
   }, [paused]);
-
 
   /* =====================================================
      RESET POSITION FOR INFINITE LOOP
   ===================================================== */
 
   React.useEffect(() => {
-
     const track = trackRef.current;
 
     if (!track) return;
@@ -352,9 +336,7 @@ export default function IndustriesCarousel() {
       industries.length *
       cardWidthRef.current;
 
-
     if (Math.abs(position) >= totalWidth) {
-
       const newPosition =
         position + totalWidth;
 
@@ -366,9 +348,7 @@ export default function IndustriesCarousel() {
         `translateX(${newPosition}px)`;
     }
 
-
     if (position > 0) {
-
       const newPosition =
         position - totalWidth;
 
@@ -379,9 +359,7 @@ export default function IndustriesCarousel() {
       track.style.transform =
         `translateX(${newPosition}px)`;
     }
-
   }, [position]);
-
 
   /* =====================================================
      DUPLICATE CARDS
@@ -391,7 +369,6 @@ export default function IndustriesCarousel() {
     ...industries,
     ...industries,
   ];
-
 
   return (
     <section className="industries-section">
@@ -407,9 +384,17 @@ export default function IndustriesCarousel() {
 
           width: 100%;
 
+          /*
+             HOW WE WORK SAME HORIZONTAL SPACING
+             Mobile = 16px
+             Small = 24px
+             Tablet = 40px
+             Desktop = 100px
+          */
+
           padding:
             64px
-            80px
+            16px
             72px;
 
           background: ${COLORS.cream};
@@ -434,6 +419,47 @@ export default function IndustriesCarousel() {
           color: ${COLORS.ink};
 
           overflow: hidden;
+
+          box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           SMALL
+           640px+
+        ===================================================== */
+
+        @media (min-width: 640px) {
+          .industries-section {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+
+        /* =====================================================
+           TABLET
+           768px+
+        ===================================================== */
+
+        @media (min-width: 768px) {
+          .industries-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+
+        /* =====================================================
+           DESKTOP
+           1024px+
+        ===================================================== */
+
+        @media (min-width: 1024px) {
+          .industries-section {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
         }
 
 
@@ -471,12 +497,12 @@ export default function IndustriesCarousel() {
 
         .industries-heading {
           margin: 0 0 16px;
-
-          font-size: 44px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
 
           line-height: 1.15;
 
-          font-weight: 800;
+          font-weight: 700;
 
           letter-spacing: -0.5px;
         }
@@ -489,8 +515,8 @@ export default function IndustriesCarousel() {
 
         .industries-subtitle {
           margin: 0;
-
-          font-size: 20px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
 
           line-height: 1.5;
 
@@ -566,6 +592,12 @@ export default function IndustriesCarousel() {
 
           overflow: hidden;
 
+          padding-top: 14px;
+
+          padding-bottom: 8px;
+
+          margin-top: -14px;
+
           mask-image:
             linear-gradient(
               90deg,
@@ -608,14 +640,14 @@ export default function IndustriesCarousel() {
 
           min-width: 280px;
 
-          height: 380px;
+          height: 360px;
 
           margin-right: 24px;
 
           padding:
-            32px
+            30px
             28px
-            28px;
+            26px;
 
           background: #ffffff;
 
@@ -633,9 +665,17 @@ export default function IndustriesCarousel() {
           box-shadow:
             0 1px 2px rgba(0,0,0,0.03);
 
+          text-decoration: none;
+
+          color: inherit;
+
+          cursor: pointer;
+
           transition:
             box-shadow 0.3s ease,
             transform 0.3s ease;
+
+          box-sizing: border-box;
         }
 
 
@@ -658,9 +698,15 @@ export default function IndustriesCarousel() {
 
           height: 100px;
 
-          margin-bottom: 24px;
+          margin-bottom: 22px;
 
           flex-shrink: 0;
+
+          overflow: visible;
+
+          position: relative;
+
+          z-index: 2;
         }
 
 
@@ -669,7 +715,7 @@ export default function IndustriesCarousel() {
 
           height: 100%;
 
-          overflow: hidden;
+          overflow: visible;
 
           border-radius: 12px;
 
@@ -678,6 +724,8 @@ export default function IndustriesCarousel() {
           align-items: center;
 
           justify-content: center;
+
+          position: relative;
         }
 
 
@@ -687,6 +735,8 @@ export default function IndustriesCarousel() {
           height: 100%;
 
           object-fit: contain;
+
+          transform-origin: center center;
 
           transition:
             transform 0.4s ease,
@@ -717,8 +767,8 @@ export default function IndustriesCarousel() {
 
           50% {
             transform:
-              translateY(-10px)
-              scale(1.06);
+              translateY(-7px)
+              scale(1.04);
           }
 
           100% {
@@ -738,9 +788,9 @@ export default function IndustriesCarousel() {
           margin:
             0
             0
-            10px;
-
-          font-size: 20px;
+            9px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 18px;
 
           line-height: 1.3;
 
@@ -758,9 +808,9 @@ export default function IndustriesCarousel() {
           margin:
             0
             0
-            24px;
-
-          font-size: 14.5px;
+            20px;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
 
           line-height: 1.5;
 
@@ -784,8 +834,9 @@ export default function IndustriesCarousel() {
           width: fit-content;
 
           color: ${COLORS.maroon};
+          font-family: "Inter", sans-serif;
 
-          font-size: 14.5px;
+          font-size: 14px;
 
           font-weight: 600;
 
@@ -812,10 +863,8 @@ export default function IndustriesCarousel() {
         @media (max-width: 1023px) {
 
           .industries-section {
-            padding:
-              56px
-              40px
-              64px;
+            padding-top: 56px;
+            padding-bottom: 64px;
           }
 
 
@@ -825,7 +874,7 @@ export default function IndustriesCarousel() {
 
 
           .industries-heading {
-            font-size: 38px;
+            font-size: 36px;
           }
 
 
@@ -846,12 +895,12 @@ export default function IndustriesCarousel() {
 
             min-width: 260px;
 
-            height: 360px;
+            height: 345px;
 
             margin-right: 20px;
 
             padding:
-              28px
+              26px
               24px
               24px;
           }
@@ -862,7 +911,7 @@ export default function IndustriesCarousel() {
 
             height: 88px;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
           }
 
 
@@ -885,10 +934,8 @@ export default function IndustriesCarousel() {
         @media (max-width: 767px) {
 
           .industries-section {
-            padding:
-              48px
-              20px
-              56px;
+            padding-top: 48px;
+            padding-bottom: 56px;
           }
 
 
@@ -946,10 +993,13 @@ export default function IndustriesCarousel() {
 
 
           .industries-viewport {
-            margin-left: -5px;
+            margin-left: 0;
 
-            width:
-              calc(100% + 10px);
+            width: 100%;
+
+            padding-top: 12px;
+
+            margin-top: -12px;
           }
 
 
@@ -958,14 +1008,14 @@ export default function IndustriesCarousel() {
 
             min-width: 250px;
 
-            height: 350px;
+            height: 335px;
 
             margin-right: 16px;
 
             padding:
-              26px
+              25px
               22px
-              24px;
+              23px;
 
             border-radius: 14px;
           }
@@ -976,7 +1026,7 @@ export default function IndustriesCarousel() {
 
             height: 82px;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
           }
 
 
@@ -992,7 +1042,7 @@ export default function IndustriesCarousel() {
 
             line-height: 1.5;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
           }
 
 
@@ -1010,10 +1060,8 @@ export default function IndustriesCarousel() {
         @media (max-width: 479px) {
 
           .industries-section {
-            padding:
-              40px
-              16px
-              48px;
+            padding-top: 40px;
+            padding-bottom: 48px;
           }
 
 
@@ -1055,14 +1103,14 @@ export default function IndustriesCarousel() {
 
             min-width: 235px;
 
-            height: 335px;
+            height: 320px;
 
             margin-right: 14px;
 
             padding:
-              24px
+              23px
               20px
-              22px;
+              21px;
           }
 
 
@@ -1071,7 +1119,7 @@ export default function IndustriesCarousel() {
 
             height: 76px;
 
-            margin-bottom: 18px;
+            margin-bottom: 17px;
           }
 
 
