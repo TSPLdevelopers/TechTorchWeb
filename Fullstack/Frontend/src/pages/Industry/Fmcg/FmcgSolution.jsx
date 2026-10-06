@@ -81,7 +81,8 @@ export default function FmcgConnectOperationsSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-        * {
+        .fmcg-connect-section,
+        .fmcg-connect-section * {
           box-sizing: border-box;
         }
 
@@ -93,21 +94,36 @@ export default function FmcgConnectOperationsSection() {
           overflow: hidden;
         }
 
+        /* =========================
+           MAIN CONTAINER
+           HERO SPACING SYSTEM
+        ========================= */
+
         .fmcg-connect-container {
-          width: min(1200px, 100%);
+          width: 100%;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 72px 40px;
+
+          padding: 78px 100px;
+
           display: grid;
-          grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+          grid-template-columns:
+            minmax(0, 0.95fr)
+            minmax(0, 1.05fr);
+
           align-items: center;
           gap: 64px;
         }
 
-        /* ================= LEFT CONTENT ================= */
+        /* =========================
+           LEFT CONTENT
+        ========================= */
 
         .fmcg-connect-eyebrow {
           margin: 0 0 13px;
+
           color: ${WINE};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           line-height: 1.2;
@@ -117,11 +133,12 @@ export default function FmcgConnectOperationsSection() {
         }
 
         .fmcg-connect-heading {
-          max-width: 580px;
+          max-width: 650px;
           margin: 0 0 22px;
+
           color: ${INK};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 40px;
           line-height: 1.18;
           font-weight: 800;
@@ -132,35 +149,47 @@ export default function FmcgConnectOperationsSection() {
           display: flex;
           flex-direction: column;
           gap: 15px;
-          max-width: 570px;
+
+          max-width: 650px;
         }
 
         .fmcg-connect-description {
           margin: 0;
+
           color: ${MUTED};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.75;
-          font-weight: 500;
+          font-weight: 400;
         }
 
-        /* ================= DASHBOARD ================= */
+        /* =========================
+           DASHBOARD
+        ========================= */
 
         .fmcg-dashboard {
           width: 100%;
           min-width: 0;
+
           padding: 21px;
+
           background: #ffffff;
           border-radius: 18px;
+
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
         }
+
+        /* =========================
+           DASHBOARD HEADER
+        ========================= */
 
         .fmcg-dashboard-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: 14px;
+
           margin-bottom: 20px;
         }
 
@@ -168,6 +197,7 @@ export default function FmcgConnectOperationsSection() {
           display: flex;
           align-items: center;
           gap: 7px;
+
           min-width: 0;
         }
 
@@ -175,18 +205,22 @@ export default function FmcgConnectOperationsSection() {
           width: 6px;
           height: 6px;
           flex-shrink: 0;
+
           border-radius: 50%;
           background: ${GREEN};
         }
 
         .fmcg-dashboard-live-text {
           margin: 0;
+
           color: ${INK};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1.3;
           font-weight: 700;
           letter-spacing: 0.55px;
+
           white-space: nowrap;
         }
 
@@ -194,13 +228,16 @@ export default function FmcgConnectOperationsSection() {
           display: flex;
           align-items: center;
           gap: 8px;
+
           flex-shrink: 0;
         }
 
         .fmcg-version {
           padding: 5px 8px;
+
           border-radius: 6px;
           background: #f2f1f5;
+
           color: ${MUTED};
 
           font-family: "Inter", Arial, sans-serif;
@@ -218,21 +255,30 @@ export default function FmcgConnectOperationsSection() {
           font-weight: 700;
         }
 
-        /* ================= SYSTEM GRID ================= */
+        /* =========================
+           SYSTEM GRID
+        ========================= */
 
         .fmcg-system-grid {
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
+
+          grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
           gap: 9px;
+
           margin-bottom: 14px;
         }
 
         .fmcg-system-card {
           position: relative;
           min-width: 0;
+
           padding: 12px;
+
           border: 1px solid #ece9e4;
           border-radius: 9px;
+
           background: #ffffff;
 
           transition:
@@ -242,16 +288,20 @@ export default function FmcgConnectOperationsSection() {
 
         .fmcg-system-card:hover {
           transform: translateY(-3px);
-          box-shadow: 0 7px 18px rgba(27, 27, 42, 0.06);
+
+          box-shadow:
+            0 7px 18px rgba(27, 27, 42, 0.06);
         }
 
         .fmcg-system-status-dot {
           position: absolute;
+
           top: 9px;
           right: 9px;
 
           width: 5px;
           height: 5px;
+
           border-radius: 50%;
           background: ${GREEN};
         }
@@ -263,6 +313,7 @@ export default function FmcgConnectOperationsSection() {
 
           width: 32px;
           height: 32px;
+
           margin-bottom: 10px;
 
           border-radius: 8px;
@@ -270,9 +321,10 @@ export default function FmcgConnectOperationsSection() {
 
         .fmcg-system-title {
           margin: 0 0 4px;
+
           color: ${INK};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 11px;
           line-height: 1.35;
           font-weight: 700;
@@ -280,6 +332,7 @@ export default function FmcgConnectOperationsSection() {
 
         .fmcg-system-status {
           margin: 0;
+
           color: ${GREEN};
 
           font-family: "Inter", Arial, sans-serif;
@@ -288,7 +341,9 @@ export default function FmcgConnectOperationsSection() {
           font-weight: 500;
         }
 
-        /* ================= FOOTER BAR ================= */
+        /* =========================
+           FOOTER BAR
+        ========================= */
 
         .fmcg-dashboard-footer {
           display: flex;
@@ -297,6 +352,7 @@ export default function FmcgConnectOperationsSection() {
           gap: 14px;
 
           padding: 14px;
+
           border-radius: 9px;
           background: #f6f7fa;
         }
@@ -305,6 +361,7 @@ export default function FmcgConnectOperationsSection() {
           display: flex;
           align-items: center;
           gap: 9px;
+
           min-width: 0;
         }
 
@@ -315,9 +372,10 @@ export default function FmcgConnectOperationsSection() {
 
         .fmcg-footer-title {
           margin: 0 0 3px;
+
           color: ${INK};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.35;
           font-weight: 700;
@@ -325,6 +383,7 @@ export default function FmcgConnectOperationsSection() {
 
         .fmcg-footer-subtitle {
           margin: 0;
+
           color: ${MUTED};
 
           font-family: "Inter", Arial, sans-serif;
@@ -337,37 +396,47 @@ export default function FmcgConnectOperationsSection() {
           display: inline-flex;
           align-items: center;
           gap: 5px;
+
           flex-shrink: 0;
 
           padding: 5px 9px;
+
           border-radius: 999px;
           background: #e5f7ec;
+
           color: ${GREEN};
 
           font-family: "Inter", Arial, sans-serif;
           font-size: 8.5px;
           line-height: 1;
           font-weight: 600;
+
           white-space: nowrap;
         }
 
         .fmcg-connected-dot {
           width: 5px;
           height: 5px;
+
           border-radius: 50%;
           background: ${GREEN};
         }
 
-        /* ================= 1100px ================= */
+        /* =========================
+           LAPTOP / TABLET
+           100px → 40px
+        ========================= */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
           .fmcg-connect-container {
-            padding: 62px 32px;
-            gap: 42px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            gap: 46px;
           }
 
           .fmcg-connect-heading {
-            font-size: 36px;
+            font-size: 38px;
           }
 
           .fmcg-connect-description {
@@ -385,41 +454,51 @@ export default function FmcgConnectOperationsSection() {
           .fmcg-system-card {
             padding: 10px;
           }
-
-          .fmcg-dashboard-live-text {
-            font-size: 9px;
-          }
         }
 
-        /* ================= 900px ================= */
+        /* =========================
+           TABLET
+        ========================= */
 
         @media (max-width: 900px) {
           .fmcg-connect-container {
             grid-template-columns: 1fr;
-            gap: 38px;
-            padding: 58px 28px;
+
+            gap: 40px;
+
+            padding-top: 60px;
+            padding-bottom: 60px;
           }
 
           .fmcg-connect-heading {
-            max-width: 720px;
+            max-width: 760px;
             font-size: 36px;
           }
 
           .fmcg-connect-copy {
-            max-width: 720px;
+            max-width: 760px;
           }
 
           .fmcg-dashboard {
-            max-width: 760px;
+            width: 100%;
+            max-width: 820px;
             margin: 0 auto;
           }
         }
 
-        /* ================= 650px ================= */
+        /* =========================
+           MOBILE
+           24px SIDE SPACING
+        ========================= */
 
-        @media (max-width: 650px) {
+        @media (max-width: 600px) {
           .fmcg-connect-container {
-            padding: 48px 18px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 48px;
+            padding-bottom: 48px;
+
             gap: 30px;
           }
 
@@ -430,6 +509,7 @@ export default function FmcgConnectOperationsSection() {
 
           .fmcg-connect-heading {
             margin-bottom: 17px;
+
             font-size: 30px;
             line-height: 1.22;
             letter-spacing: -0.7px;
@@ -456,7 +536,9 @@ export default function FmcgConnectOperationsSection() {
 
           .fmcg-dashboard-live-text {
             max-width: 190px;
+
             white-space: normal;
+
             font-size: 8.5px;
           }
 
@@ -469,7 +551,9 @@ export default function FmcgConnectOperationsSection() {
           }
 
           .fmcg-system-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
             gap: 8px;
           }
 
@@ -480,6 +564,7 @@ export default function FmcgConnectOperationsSection() {
           .fmcg-system-icon {
             width: 31px;
             height: 31px;
+
             margin-bottom: 8px;
           }
 
@@ -494,7 +579,9 @@ export default function FmcgConnectOperationsSection() {
           .fmcg-dashboard-footer {
             align-items: flex-start;
             flex-direction: column;
+
             gap: 10px;
+
             padding: 12px;
           }
 
@@ -503,15 +590,22 @@ export default function FmcgConnectOperationsSection() {
           }
         }
 
-        /* ================= 400px ================= */
+        /* =========================
+           SMALL MOBILE
+           16px SIDE SPACING
+        ========================= */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           .fmcg-connect-container {
-            padding: 40px 14px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
 
           .fmcg-connect-heading {
-            font-size: 26px;
+            font-size: 27px;
             letter-spacing: -0.5px;
           }
 
@@ -567,11 +661,17 @@ export default function FmcgConnectOperationsSection() {
           }
         }
 
-        /* ================= 340px ================= */
+        /* =========================
+           VERY SMALL MOBILE
+        ========================= */
 
         @media (max-width: 340px) {
           .fmcg-connect-container {
-            padding: 34px 11px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 34px;
+            padding-bottom: 34px;
           }
 
           .fmcg-connect-heading {
@@ -613,7 +713,9 @@ export default function FmcgConnectOperationsSection() {
           }
         }
 
-        /* ================= REDUCED MOTION ================= */
+        /* =========================
+           REDUCED MOTION
+        ========================= */
 
         @media (prefers-reduced-motion: reduce) {
           .fmcg-system-card {
@@ -629,7 +731,9 @@ export default function FmcgConnectOperationsSection() {
       <section className="fmcg-connect-section">
         <div className="fmcg-connect-container">
 
-          {/* ================= LEFT CONTENT ================= */}
+          {/* =========================
+              LEFT CONTENT
+          ========================= */}
 
           <div className="fmcg-connect-content">
             <p className="fmcg-connect-eyebrow">
@@ -656,11 +760,14 @@ export default function FmcgConnectOperationsSection() {
             </div>
           </div>
 
-          {/* ================= RIGHT DASHBOARD ================= */}
+          {/* =========================
+              RIGHT DASHBOARD
+          ========================= */}
 
           <div className="fmcg-dashboard">
 
             {/* Dashboard Header */}
+
             <div className="fmcg-dashboard-header">
 
               <div className="fmcg-dashboard-live">
@@ -684,6 +791,7 @@ export default function FmcgConnectOperationsSection() {
             </div>
 
             {/* System Grid */}
+
             <div className="fmcg-system-grid">
               {systems.map(
                 ({
@@ -725,6 +833,7 @@ export default function FmcgConnectOperationsSection() {
             </div>
 
             {/* Footer */}
+
             <div className="fmcg-dashboard-footer">
 
               <div className="fmcg-footer-info">
@@ -750,8 +859,8 @@ export default function FmcgConnectOperationsSection() {
               </span>
 
             </div>
-          </div>
 
+          </div>
         </div>
       </section>
     </>
