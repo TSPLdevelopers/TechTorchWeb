@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import ctaBackground from "/energy2.png";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
@@ -34,9 +35,9 @@ export default function ApproachAndImageCtaSections() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-        /* =================================================
+        /* =========================
            BASE
-        ================================================= */
+        ========================= */
 
         .approach-page {
           width: 100%;
@@ -52,9 +53,10 @@ export default function ApproachAndImageCtaSections() {
           box-sizing: border-box;
         }
 
-        /* =================================================
-           SECTION 1 — OUR APPROACH
-        ================================================= */
+
+        /* =========================
+           OUR APPROACH
+        ========================= */
 
         .approach-section {
           width: 100%;
@@ -65,20 +67,12 @@ export default function ApproachAndImageCtaSections() {
           width: 100%;
           max-width: 1600px;
           margin: 0 auto;
-
-          /*
-            HERO SPACING SYSTEM
-            Desktop: 100px
-          */
           padding: 72px 100px;
         }
 
         .approach-eyebrow {
           margin: 0 0 12px;
-
           color: ${WINE};
-
-          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
           line-height: 1.4;
@@ -88,9 +82,7 @@ export default function ApproachAndImageCtaSections() {
 
         .approach-heading {
           margin: 0 0 34px;
-
           color: ${INK};
-
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 38px;
           line-height: 1.2;
@@ -98,9 +90,10 @@ export default function ApproachAndImageCtaSections() {
           letter-spacing: -0.03em;
         }
 
-        /* =================================================
+
+        /* =========================
            APPROACH CARDS
-        ================================================= */
+        ========================= */
 
         .approach-steps {
           display: grid;
@@ -129,9 +122,7 @@ export default function ApproachAndImageCtaSections() {
 
         .approach-card:hover {
           transform: translateY(-5px);
-
-          box-shadow:
-            0 12px 30px rgba(27, 27, 42, 0.08);
+          box-shadow: 0 12px 30px rgba(27, 27, 42, 0.08);
         }
 
         .approach-number {
@@ -139,7 +130,6 @@ export default function ApproachAndImageCtaSections() {
 
           color: #e3d3d9;
 
-          font-family: "Inter", Arial, sans-serif;
           font-size: 36px;
           line-height: 1;
           font-weight: 700;
@@ -161,7 +151,6 @@ export default function ApproachAndImageCtaSections() {
 
           color: ${MUTED};
 
-          font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
           line-height: 1.7;
         }
@@ -175,13 +164,17 @@ export default function ApproachAndImageCtaSections() {
           background: ${WINE};
         }
 
-        /* =================================================
-           SECTION 2 — CTA
-        ================================================= */
+
+        /* =====================================
+           CTA WITH BACKGROUND IMAGE
+        ===================================== */
 
         .energy-cta {
           position: relative;
+
           width: 100%;
+          min-height: 520px;
+
           overflow: hidden;
 
           background: #1c2230;
@@ -191,20 +184,29 @@ export default function ApproachAndImageCtaSections() {
           position: absolute;
           inset: 0;
 
-          background:
-            linear-gradient(
-              135deg,
-              #1c2230 0%,
-              #2a2f3d 50%,
-              #4a1230 100%
-            );
+          background-image: url("${ctaBackground}");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+
+          z-index: 0;
+
+          transform: scale(1.02);
         }
 
         .energy-cta-overlay {
           position: absolute;
           inset: 0;
 
-          background: rgba(30, 10, 25, 0.55);
+          z-index: 1;
+
+          background:
+            linear-gradient(
+              135deg,
+              rgba(16, 18, 28, 0.84) 0%,
+              rgba(30, 20, 31, 0.78) 48%,
+              rgba(74, 18, 48, 0.82) 100%
+            );
         }
 
         .energy-cta-container {
@@ -213,13 +215,15 @@ export default function ApproachAndImageCtaSections() {
 
           width: 100%;
           max-width: 1600px;
-          margin: 0 auto;
+          min-height: 520px;
 
-          /*
-            Same Hero horizontal spacing
-            Desktop: 100px
-          */
-          padding: 100px 100px;
+          margin: 0 auto;
+          padding: 100px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
 
           text-align: center;
         }
@@ -227,9 +231,8 @@ export default function ApproachAndImageCtaSections() {
         .cta-eyebrow {
           margin: 0 0 20px;
 
-          color: #e3c3cf;
+          color: #f0ceda;
 
-          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 700;
           line-height: 1.4;
@@ -249,6 +252,8 @@ export default function ApproachAndImageCtaSections() {
           line-height: 1.2;
           font-weight: 700;
           letter-spacing: -0.035em;
+
+          text-shadow: 0 2px 14px rgba(0, 0, 0, 0.22);
         }
 
         .cta-description {
@@ -258,22 +263,25 @@ export default function ApproachAndImageCtaSections() {
 
           display: flex;
           flex-direction: column;
+
           gap: 12px;
         }
 
         .cta-description p {
           margin: 0;
 
-          color: #e3c3cf;
+          color: #f0dce4;
 
-          font-family: "Inter", Arial, sans-serif;
           font-size: 15px;
           line-height: 1.75;
+
+          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.22);
         }
 
-        /* =================================================
+
+        /* =========================
            CTA BUTTONS
-        ================================================= */
+        ========================= */
 
         .cta-buttons {
           display: flex;
@@ -291,11 +299,13 @@ export default function ApproachAndImageCtaSections() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+
           gap: 9px;
 
           padding: 12px 22px;
 
-          border-radius: 999px;
+          /* UPDATED: reduced border radius */
+          border-radius: 8px;
 
           font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
@@ -306,40 +316,56 @@ export default function ApproachAndImageCtaSections() {
           transition:
             transform 0.25s ease,
             background 0.25s ease,
-            border-color 0.25s ease;
+            border-color 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
         .cta-button:hover {
           transform: translateY(-2px);
         }
 
+
+        /* LEFT BUTTON */
+
+        .cta-secondary {
+          color: #ffffff;
+
+          background: rgba(255, 255, 255, 0.04);
+
+          border: 1px solid rgba(255, 255, 255, 0.45);
+
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+        }
+
+        .cta-secondary:hover {
+          border-color: rgba(255, 255, 255, 0.8);
+
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+
+        /* RIGHT BUTTON */
+
         .cta-primary {
           color: ${WINE};
 
           background: #ffffff;
+
           border: 1px solid #ffffff;
         }
 
         .cta-primary:hover {
           background: #f7f7f7;
+
+          box-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .cta-secondary {
-          color: #ffffff;
 
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .cta-secondary:hover {
-          border-color: rgba(255, 255, 255, 0.7);
-          background: rgba(255, 255, 255, 0.06);
-        }
-
-        /* =================================================
+        /* =========================
            TABLET
-           40px LEFT / RIGHT
-        ================================================= */
+        ========================= */
 
         @media (max-width: 1100px) {
           .approach-container {
@@ -355,11 +381,13 @@ export default function ApproachAndImageCtaSections() {
             min-height: 235px;
           }
 
+          .energy-cta,
           .energy-cta-container {
-            padding-left: 40px;
-            padding-right: 40px;
-            padding-top: 85px;
-            padding-bottom: 85px;
+            min-height: 480px;
+          }
+
+          .energy-cta-container {
+            padding: 85px 40px;
           }
 
           .cta-heading {
@@ -367,18 +395,14 @@ export default function ApproachAndImageCtaSections() {
           }
         }
 
-        /* =================================================
+
+        /* =========================
            MOBILE
-           24px LEFT / RIGHT
-        ================================================= */
+        ========================= */
 
         @media (max-width: 700px) {
           .approach-container {
-            padding-top: 50px;
-            padding-bottom: 50px;
-
-            padding-left: 24px;
-            padding-right: 24px;
+            padding: 50px 24px;
           }
 
           .approach-eyebrow {
@@ -389,21 +413,25 @@ export default function ApproachAndImageCtaSections() {
           .approach-heading {
             font-size: 30px;
             line-height: 1.25;
+
             margin-bottom: 26px;
           }
 
           .approach-steps {
             grid-template-columns: 1fr;
+
             gap: 14px;
           }
 
           .approach-card {
             min-height: auto;
+
             padding: 23px 20px;
           }
 
           .approach-number {
             font-size: 31px;
+
             margin-bottom: 17px;
           }
 
@@ -413,27 +441,36 @@ export default function ApproachAndImageCtaSections() {
 
           .approach-card-body {
             font-size: 13px;
+
             line-height: 1.65;
           }
 
+
           /* CTA */
 
+          .energy-cta,
           .energy-cta-container {
-            padding-top: 70px;
-            padding-bottom: 70px;
+            min-height: 500px;
+          }
 
-            padding-left: 24px;
-            padding-right: 24px;
+          .energy-cta-bg {
+            background-position: center center;
+          }
+
+          .energy-cta-container {
+            padding: 70px 24px;
           }
 
           .cta-eyebrow {
             font-size: 10px;
+
             margin-bottom: 16px;
           }
 
           .cta-heading {
             font-size: 30px;
             line-height: 1.25;
+
             margin-bottom: 22px;
           }
 
@@ -443,18 +480,26 @@ export default function ApproachAndImageCtaSections() {
 
           .cta-description p {
             font-size: 13px;
+
             line-height: 1.7;
           }
 
+
+          /* BUTTONS */
+
           .cta-buttons {
             flex-direction: column;
+
             width: 100%;
           }
 
           .cta-button {
             width: 100%;
             max-width: 320px;
+
             min-height: 48px;
+
+            border-radius: 8px;
           }
 
           .desktop-break {
@@ -462,18 +507,14 @@ export default function ApproachAndImageCtaSections() {
           }
         }
 
-        /* =================================================
+
+        /* =========================
            SMALL MOBILE
-           16px LEFT / RIGHT
-        ================================================= */
+        ========================= */
 
         @media (max-width: 480px) {
           .approach-container {
-            padding-top: 42px;
-            padding-bottom: 42px;
-
-            padding-left: 16px;
-            padding-right: 16px;
+            padding: 42px 16px;
           }
 
           .approach-heading {
@@ -482,6 +523,7 @@ export default function ApproachAndImageCtaSections() {
 
           .approach-card {
             border-radius: 13px;
+
             padding: 21px 18px;
           }
 
@@ -497,14 +539,11 @@ export default function ApproachAndImageCtaSections() {
             font-size: 12px;
           }
 
+
           /* CTA */
 
           .energy-cta-container {
-            padding-top: 58px;
-            padding-bottom: 58px;
-
-            padding-left: 16px;
-            padding-right: 16px;
+            padding: 58px 16px;
           }
 
           .cta-heading {
@@ -517,19 +556,20 @@ export default function ApproachAndImageCtaSections() {
 
           .cta-button {
             max-width: 100%;
+
             font-size: 12px;
+
+            border-radius: 8px;
           }
         }
 
-        /* =================================================
-           VERY SMALL DEVICES
-        ================================================= */
+
+        /* =========================
+           VERY SMALL MOBILE
+        ========================= */
 
         @media (max-width: 340px) {
-          .approach-heading {
-            font-size: 23px;
-          }
-
+          .approach-heading,
           .cta-heading {
             font-size: 23px;
           }
@@ -539,23 +579,29 @@ export default function ApproachAndImageCtaSections() {
           }
         }
 
-        /* =================================================
+
+        /* =========================
            REDUCED MOTION
-        ================================================= */
+        ========================= */
 
         @media (prefers-reduced-motion: reduce) {
           .approach-card,
           .cta-button {
             transition: none;
           }
+
+          .cta-button:hover {
+            transform: none;
+          }
         }
       `}</style>
 
+
       <div className="approach-page">
 
-        {/* =================================================
+        {/* =============================
             SECTION 1: OUR APPROACH
-        ================================================= */}
+        ============================== */}
 
         <section className="approach-section">
           <div className="approach-container">
@@ -569,11 +615,13 @@ export default function ApproachAndImageCtaSections() {
             </h2>
 
             <div className="approach-steps">
+
               {steps.map(({ num, title, body }) => (
                 <div
                   className="approach-card"
                   key={num}
                 >
+
                   <p className="approach-number">
                     {num}
                   </p>
@@ -587,23 +635,30 @@ export default function ApproachAndImageCtaSections() {
                   </p>
 
                   <div className="approach-line" />
+
                 </div>
               ))}
+
             </div>
 
           </div>
         </section>
 
-        {/* =================================================
+
+        {/* =============================
             SECTION 2: CTA
-        ================================================= */}
+        ============================== */}
 
         <section className="energy-cta">
 
+          {/* BACKGROUND IMAGE */}
           <div className="energy-cta-bg" />
 
+          {/* DARK OVERLAY */}
           <div className="energy-cta-overlay" />
 
+
+          {/* CTA CONTENT */}
           <div className="energy-cta-container">
 
             <p className="cta-eyebrow">
@@ -615,6 +670,7 @@ export default function ApproachAndImageCtaSections() {
               <br className="desktop-break" />
               Your Business
             </h2>
+
 
             <div className="cta-description">
 
@@ -633,16 +689,14 @@ export default function ApproachAndImageCtaSections() {
 
             </div>
 
+
+            {/* =============================
+                UPDATED / SWAPPED BUTTONS
+            ============================== */}
+
             <div className="cta-buttons">
 
-              <button
-                type="button"
-                className="cta-button cta-primary"
-              >
-                Get in Touch
-                <ArrowRight size={15} />
-              </button>
-
+              {/* LEFT BUTTON */}
               <button
                 type="button"
                 className="cta-button cta-secondary"
@@ -651,9 +705,20 @@ export default function ApproachAndImageCtaSections() {
                 <ArrowRight size={15} />
               </button>
 
+
+              {/* RIGHT BUTTON */}
+              <button
+                type="button"
+                className="cta-button cta-primary"
+              >
+                Get in Touch
+                <ArrowRight size={15} />
+              </button>
+
             </div>
 
           </div>
+
         </section>
 
       </div>

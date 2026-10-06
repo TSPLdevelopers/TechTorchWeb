@@ -429,7 +429,7 @@ export default function TelecomHeroSection() {
               "
             >
               <img
-                src="/Telecommunication.png"
+                src="/telecommunication.png"
                 alt="Telecommunications technology solutions"
                 className="
                   w-full

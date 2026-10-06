@@ -670,7 +670,7 @@ export default function SupplyChainProcurementSection() {
           <div className="supply-chain-image-wrapper">
 
             <img
-              src="/supply-chain-logistics.png"
+              src="/transportation3.png"
               alt="Supply chain and logistics operations"
               className="supply-chain-image"
             />
