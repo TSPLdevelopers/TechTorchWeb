@@ -18,20 +18,37 @@ export default function ConnectedTransportationSection() {
         .connected-transportation-section {
           width: 100%;
           overflow: hidden;
+
           background: #f7f5f2;
           color: ${INK};
+
           font-family: "Inter", sans-serif;
         }
 
+        .connected-transportation-section *,
+        .connected-transportation-section *::before,
+        .connected-transportation-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           MAIN CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .connected-transportation-container {
           width: 100%;
-          max-width: 1240px;
+          max-width: 1440px;
           margin: 0 auto;
 
-          padding: 88px 32px;
+          padding: 88px 100px;
 
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+
           gap: 65px;
           align-items: center;
         }
@@ -144,7 +161,7 @@ export default function ConnectedTransportationSection() {
 
           color: ${INK};
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 12.5px;
           font-weight: 700;
           line-height: 1.4;
@@ -269,12 +286,34 @@ export default function ConnectedTransportationSection() {
         }
 
         /* =========================================
+           LARGE TABLET
+           Desktop 100px → Tablet 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .connected-transportation-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 80px;
+            padding-bottom: 80px;
+
+            gap: 55px;
+          }
+        }
+
+        /* =========================================
            TABLET
         ========================================= */
 
         @media (max-width: 1050px) {
           .connected-transportation-container {
-            padding: 75px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 75px;
+            padding-bottom: 75px;
+
             gap: 45px;
           }
 
@@ -294,9 +333,14 @@ export default function ConnectedTransportationSection() {
         @media (max-width: 850px) {
           .connected-transportation-container {
             grid-template-columns: 1fr;
+
             gap: 42px;
 
-            padding: 70px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
           .connected-transportation-heading {
@@ -319,16 +363,23 @@ export default function ConnectedTransportationSection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
           .connected-transportation-container {
-            padding: 58px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 58px;
+            padding-bottom: 58px;
+
             gap: 32px;
           }
 
           .connected-transportation-label {
             margin-bottom: 11px;
+
             font-size: 9px;
             letter-spacing: 0.11em;
           }
@@ -390,11 +441,16 @@ export default function ConnectedTransportationSection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .connected-transportation-container {
-            padding: 50px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 50px;
+            padding-bottom: 50px;
           }
 
           .connected-transportation-heading {
@@ -460,7 +516,9 @@ export default function ConnectedTransportationSection() {
 
           </div>
 
-          {/* INTEGRATED FLOW */}
+          {/* =====================================
+              INTEGRATED FLOW
+          ===================================== */}
 
           <div className="connected-flow">
 

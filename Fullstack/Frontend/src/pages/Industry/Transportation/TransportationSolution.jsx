@@ -79,14 +79,11 @@ export default function TransportationSolutionsGridSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Clear any previous timers
           animationTimers.forEach((timer) => clearTimeout(timer));
           animationTimers = [];
 
-          // Reset cards first
           setVisibleCards([]);
 
-          // Open cards one by one
           cards.forEach((_, index) => {
             const timer = setTimeout(() => {
               setVisibleCards((prev) => {
@@ -98,7 +95,6 @@ export default function TransportationSolutionsGridSection() {
             animationTimers.push(timer);
           });
         } else {
-          // Reset when leaving viewport
           animationTimers.forEach((timer) => clearTimeout(timer));
           animationTimers = [];
 
@@ -140,13 +136,28 @@ export default function TransportationSolutionsGridSection() {
           font-family: "Inter", sans-serif;
         }
 
+        .transportation-solutions-section *,
+        .transportation-solutions-section *::before,
+        .transportation-solutions-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           MAIN CONTAINER
+
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .transportation-solutions-container {
           width: 100%;
-          max-width: 1240px;
+          max-width: 1440px;
 
           margin: 0 auto;
 
-          padding: 88px 32px;
+          padding: 88px 100px;
         }
 
         /* =========================================
@@ -295,10 +306,6 @@ export default function TransportationSolutionsGridSection() {
             box-shadow 0.3s ease;
         }
 
-        /* =========================================
-           ICON ZOOM ON CARD HOVER
-        ========================================= */
-
         .transportation-solution-card:hover
         .transportation-solution-icon {
           transform: scale(1.16);
@@ -348,7 +355,7 @@ export default function TransportationSolutionsGridSection() {
 
         /* =========================================
            CARD TITLE
-           INTER
+           PLUS JAKARTA SANS
         ========================================= */
 
         .transportation-solution-title {
@@ -356,7 +363,7 @@ export default function TransportationSolutionsGridSection() {
 
           color: ${INK};
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 13px;
           font-weight: 700;
           line-height: 1.45;
@@ -398,12 +405,26 @@ export default function TransportationSolutionsGridSection() {
           transform: scaleX(0);
           transform-origin: left;
 
-          transition:
-            transform 0.4s ease;
+          transition: transform 0.4s ease;
         }
 
         .transportation-solution-card:hover::after {
           transform: scaleX(1);
+        }
+
+        /* =========================================
+           LARGE TABLET
+           100px → 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .transportation-solutions-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 82px;
+            padding-bottom: 82px;
+          }
         }
 
         /* =========================================
@@ -412,7 +433,11 @@ export default function TransportationSolutionsGridSection() {
 
         @media (max-width: 1050px) {
           .transportation-solutions-container {
-            padding: 76px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 76px;
+            padding-bottom: 76px;
           }
 
           .transportation-solutions-grid {
@@ -430,7 +455,11 @@ export default function TransportationSolutionsGridSection() {
 
         @media (max-width: 800px) {
           .transportation-solutions-container {
-            padding: 68px 26px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 68px;
+            padding-bottom: 68px;
           }
 
           .transportation-solutions-heading {
@@ -454,11 +483,16 @@ export default function TransportationSolutionsGridSection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
           .transportation-solutions-container {
-            padding: 58px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 58px;
+            padding-bottom: 58px;
           }
 
           .transportation-solutions-label {
@@ -519,11 +553,16 @@ export default function TransportationSolutionsGridSection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .transportation-solutions-container {
-            padding: 50px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 50px;
+            padding-bottom: 50px;
           }
 
           .transportation-solutions-heading {
@@ -615,7 +654,6 @@ export default function TransportationSolutionsGridSection() {
               }`}
             >
               <div className="transportation-solution-card-top">
-
                 <span className="transportation-solution-icon">
                   <Icon
                     size={18}
@@ -626,7 +664,6 @@ export default function TransportationSolutionsGridSection() {
                 <span className="transportation-solution-number">
                   {num}
                 </span>
-
               </div>
 
               <h3 className="transportation-solution-title">

@@ -96,16 +96,33 @@ export default function ConnectedApproachStepsSection() {
         .connected-approach-section {
           width: 100%;
           overflow: hidden;
+
           background: #f5f6f8;
           color: ${INK};
+
           font-family: "Inter", sans-serif;
         }
 
+        .connected-approach-section *,
+        .connected-approach-section *::before,
+        .connected-approach-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           MAIN CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .connected-approach-container {
           width: 100%;
-          max-width: 1240px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 85px 32px;
+
+          padding: 85px 100px;
         }
 
         /* =========================================
@@ -168,9 +185,9 @@ export default function ConnectedApproachStepsSection() {
 
           color: ${MUTED};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13.5px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 1.8;
         }
 
@@ -206,7 +223,7 @@ export default function ConnectedApproachStepsSection() {
         }
 
         /* =========================================
-           CARD
+           CARD WRAPPER
         ========================================= */
 
         .approach-card-wrapper {
@@ -218,6 +235,10 @@ export default function ConnectedApproachStepsSection() {
 
           z-index: 1;
         }
+
+        /* =========================================
+           CARD
+        ========================================= */
 
         .approach-card {
           position: relative;
@@ -390,11 +411,30 @@ export default function ConnectedApproachStepsSection() {
 
         /* =========================================
            LARGE TABLET
+           Desktop 100px → Tablet 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .connected-approach-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 80px;
+            padding-bottom: 80px;
+          }
+        }
+
+        /* =========================================
+           TABLET
         ========================================= */
 
         @media (max-width: 1050px) {
           .connected-approach-container {
-            padding: 75px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 75px;
+            padding-bottom: 75px;
           }
 
           .approach-cards-wrapper {
@@ -421,7 +461,11 @@ export default function ConnectedApproachStepsSection() {
 
         @media (max-width: 768px) {
           .connected-approach-container {
-            padding: 65px 24px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 65px;
+            padding-bottom: 65px;
           }
 
           .approach-heading {
@@ -446,11 +490,16 @@ export default function ConnectedApproachStepsSection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
           .connected-approach-container {
-            padding: 55px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 55px;
+            padding-bottom: 55px;
           }
 
           .approach-badge {
@@ -523,11 +572,16 @@ export default function ConnectedApproachStepsSection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .connected-approach-container {
-            padding: 48px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 48px;
+            padding-bottom: 48px;
           }
 
           .approach-heading {
@@ -600,7 +654,6 @@ export default function ConnectedApproachStepsSection() {
 
         <div className="approach-cards-wrapper">
 
-          {/* Connecting Line */}
           <div className="approach-connecting-line" />
 
           {steps.map(
