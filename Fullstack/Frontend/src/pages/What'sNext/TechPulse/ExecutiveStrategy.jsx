@@ -122,13 +122,12 @@ export default function ExecutiveStrategy() {
           border: 1px solid #e5bfd1;
           border-radius: 20px;
           background: #fff9fc;
-<<<<<<< HEAD
+          
           color: #8b0750;
-=======
+
           color: #730042;
 
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
-          font-size: 10px;
+          font-size: 9px;
           line-height: 1;
           font-weight: 800;
           letter-spacing: 0.7px;
@@ -149,7 +148,7 @@ export default function ExecutiveStrategy() {
           margin: 23px 0 18px;
           color: #101629;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 35px;
+          font-size: 34px;
           line-height: 1.12;
           letter-spacing: -1.4px;
           font-weight: 500;
@@ -180,13 +179,13 @@ export default function ExecutiveStrategy() {
 
         .strategy-action {
           margin: 16px 0 0;
-<<<<<<< HEAD
+
           color: #8d0750;
-=======
+
 
           color: #730042;
 
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
+
           font-size: 14px;
           line-height: 1.4;
           font-weight: 750;
@@ -209,12 +208,12 @@ export default function ExecutiveStrategy() {
           padding: 0 14px;
           border: 1px solid #970052;
           border-radius: 10px;
-<<<<<<< HEAD
+
           background: #970052;
-=======
+
 
           background: #730042;
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
+
           color: #ffffff;
           font-family: "Inter", sans-serif;
           font-size: 13px;
@@ -230,17 +229,17 @@ export default function ExecutiveStrategy() {
         }
 
         .strategy-primary:hover {
-<<<<<<< HEAD
+
           background: #a91a68;
           border-color: #a91a68;
           box-shadow: 0 10px 20px rgba(151, 0, 82, 0.22);
-=======
+
           background: #970052;
           border-color: #970052;
 
           box-shadow:
             0 10px 20px rgba(151, 0, 82, 0.22);
->>>>>>> 386a3c761377b5c513cd6d475ffed43457664c16
+
         }
 
         .strategy-primary span {
