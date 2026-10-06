@@ -4,6 +4,7 @@ import {
   FileText,
   LockKeyhole,
   Zap,
+  CircleCheck,
 } from "lucide-react";
 
 const CAPABILITIES = [
@@ -25,13 +26,11 @@ const TIMELINES = [
 ];
 
 export default function InsuranceContact() {
-  const [selectedCapabilities, setSelectedCapabilities] = useState([
-    "Policy Administration & Lifecycle",
-    "Claims Processing & Smart FNOL",
-  ]);
+  const [selectedCapabilities, setSelectedCapabilities] = useState([]);
 
-  const [selectedTimeline, setSelectedTimeline] =
-    useState("< 30 Days (Urgent)");
+  const [selectedTimeline, setSelectedTimeline] = useState("");
+
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -39,8 +38,8 @@ export default function InsuranceContact() {
     organization: "",
     phone: "",
     objectives: "",
-    nda: true,
-    briefing: true,
+    nda: false,
+    briefing: false,
   });
 
   const toggleCapability = (name) => {
@@ -63,13 +62,34 @@ export default function InsuranceContact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const form = e.currentTarget;
+
+    if (!form.checkValidity()) {
+      const invalidField = form.querySelector(":invalid");
+
+      if (invalidField) {
+        invalidField.focus();
+        form.reportValidity();
+
+        setTimeout(() => {
+          invalidField.blur();
+        }, 4000);
+      }
+
+      return;
+    }
+
     console.log({
       ...formData,
       capabilities: selectedCapabilities,
       timeline: selectedTimeline,
     });
 
-    alert("Your intake has been submitted successfully.");
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
 
   return (
@@ -79,6 +99,92 @@ export default function InsuranceContact() {
 
         * {
           box-sizing: border-box;
+        }
+
+        /* ================================
+           SUCCESS DIALOG
+        ================================= */
+
+        .insurance-success-dialog {
+          position: fixed;
+          top: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          width: min(420px, calc(100% - 32px));
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 16px 20px;
+          background: #ffffff;
+          border: 1px solid #E5D3DC;
+          border-radius: 10px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+          font-family: "Inter", sans-serif;
+          animation: insuranceSuccessDialogIn 0.25s ease-out;
+        }
+
+        .insurance-success-dialog-icon {
+          width: 44px;
+          height: 44px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #ffffff;
+          color: #22824D;
+          border: none;
+        }
+
+        .insurance-success-dialog-content { min-width: 0; }
+
+        .insurance-success-dialog-title {
+          margin: 0;
+          color: #202022;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .insurance-success-dialog-text {
+          margin: 2px 0 0;
+          color: #65595E;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .insurance-success-dialog-ok {
+          width: 34px;
+          height: 34px;
+          margin-left: auto;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: none;
+          border-radius: 50%;
+          background: #730042;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .insurance-success-dialog-ok:hover {
+          background: #620038;
+          transform: scale(1.05);
+        }
+
+        @keyframes insuranceSuccessDialogIn {
+          from { opacity: 0; transform: translate(-50%, -12px); }
+          to { opacity: 1; transform: translate(-50%, 0); }
         }
 
         /* ================================
@@ -153,10 +259,10 @@ export default function InsuranceContact() {
         .insurance-left h1 {
           margin: 34px 0 15px;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 38px;
+          font-size: 36px;
           line-height: 1.08;
           letter-spacing: -1.5px;
-          font-weight: 800;
+          font-weight: 600;
           color: #121a31;
         }
 
@@ -605,21 +711,35 @@ export default function InsuranceContact() {
         }
 
         .custom-checkbox {
-          width: 18px;
-          height: 18px;
-          flex-shrink: 0;
-          margin-top: 1px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid #8b0050;
-          border-radius: 4px;
-          background: #8b0050;
-          color: white;
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
-          font-weight: 700;
-        }
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #E5D3DC;
+  border-radius: 4px;
+
+  background: #ffffff;
+  color: transparent;
+
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* CHECKED = BEETROOT + WHITE TICK */
+.checkbox-row input:checked + .custom-checkbox {
+  background: #730042 !important;
+  border-color: #730042 !important;
+  color: #ffffff !important;
+}
+         
 
         /* ================================
            SUBMIT
@@ -741,6 +861,17 @@ export default function InsuranceContact() {
         ================================= */
 
         @media (max-width: 650px) {
+          .insurance-success-dialog {
+            top: 16px;
+            width: calc(100% - 28px);
+            padding: 14px 16px;
+          }
+
+          .insurance-success-dialog-title { font-size: 13px; }
+          .insurance-success-dialog-text { font-size: 11px; }
+          .insurance-success-dialog-icon { width: 40px; height: 40px; }
+          .insurance-success-dialog-icon svg { width: 28px; height: 28px; }
+
           .insurance-page {
             padding: 26px 16px;
           }
@@ -1004,6 +1135,45 @@ export default function InsuranceContact() {
       `}</style>
 
       <section className="insurance-page">
+
+        {showSuccess && (
+          <div
+            className="insurance-success-dialog"
+            role="alert"
+            aria-live="polite"
+            tabIndex={-1}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                setShowSuccess(false);
+              }
+            }}
+          >
+            <div className="insurance-success-dialog-icon">
+              <CircleCheck size={30} strokeWidth={2.5} />
+            </div>
+
+            <div className="insurance-success-dialog-content">
+              <p className="insurance-success-dialog-title">
+                Request Submitted
+              </p>
+              <p className="insurance-success-dialog-text">
+                Your intake request has been submitted successfully.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              className="insurance-success-dialog-ok"
+              onClick={() => setShowSuccess(false)}
+              autoFocus
+              aria-label="Close"
+            >
+              OK
+            </button>
+          </div>
+        )}
+
         <div className="insurance-container">
 
           {/* ================= LEFT ================= */}
