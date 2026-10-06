@@ -29,6 +29,9 @@ const healthcareConsultationRoutes = require(
 const generalEnquiryRoutes = require(
   "./src/routes/generalEnquiryRoutes"
 );
+const transportationRoutes = require(
+  "./src/routes/transportationRoutes"
+);
 
 const app = express();
 
@@ -74,6 +77,7 @@ app.use(
   "/api/general-enquiries",
   generalEnquiryRoutes
 );
+app.use("/api/transportation", transportationRoutes);
 const fmcgConsultationRoutes = require(
   "./src/routes/fmcgConsultationRoutes"
 );
@@ -86,11 +90,18 @@ const energyRoutes = require(
 const telecommunicationRoutes = require(
   "./src/routes/telecommunicationRoutes"
 );
+const ecommerceRoutes = require(
+  "./src/routes/ecommerceRoutes"
+);
 app.use("/api/fmcg-consultations", fmcgConsultationRoutes);
 app.use("/api/information", informationRoutes);
 app.use("/api/energy", energyRoutes);
 app.use("/api/general-enquiries", generalEnquiryRoutes);
 app.use("/api/telecommunications", telecommunicationRoutes);
+app.use(
+  "/api/ecommerce",
+  ecommerceRoutes
+);
 app.use((req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
 });
