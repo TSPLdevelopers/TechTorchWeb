@@ -85,6 +85,7 @@ export default function InsuranceHeroBgSection() {
 
         /* =====================================================
            CONTAINER
+           DESKTOP — 100px HORIZONTAL SPACING
         ===================================================== */
 
         .insurance-hero-container {
@@ -93,11 +94,11 @@ export default function InsuranceHeroBgSection() {
           z-index: 2;
 
           width: 100%;
-          max-width: 1250px;
+          max-width: 1280px;
 
           margin: 0 auto;
 
-          padding: 62px 24px 58px;
+          padding: 72px 100px 66px;
 
           box-sizing: border-box;
         }
@@ -109,7 +110,7 @@ export default function InsuranceHeroBgSection() {
 
         .insurance-hero-content {
           width: 100%;
-          max-width: 570px;
+          max-width: 590px;
         }
 
 
@@ -180,11 +181,11 @@ export default function InsuranceHeroBgSection() {
         .insurance-heading {
           margin: 0 0 18px;
 
-          max-width: 570px;
+          max-width: 590px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 42px;
+          font-size: 44px;
 
           line-height: 1.08;
 
@@ -202,7 +203,7 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           SUBHEADING / DESCRIPTION
+           DESCRIPTION
            PLUS JAKARTA SANS
         ===================================================== */
 
@@ -213,7 +214,7 @@ export default function InsuranceHeroBgSection() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 13.5px;
+          font-size: 14px;
 
           line-height: 1.72;
 
@@ -335,48 +336,23 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           LARGE DESKTOP
+           TABLET — 40px HORIZONTAL SPACING
         ===================================================== */
 
-        @media (min-width: 1200px) {
+        @media (max-width: 1199px) {
 
           .insurance-hero {
-            min-height: 550px;
+            min-height: 510px;
           }
 
           .insurance-hero-container {
-            padding: 72px 32px 66px;
+            padding: 60px 40px 56px;
+
+            transform: none;
           }
 
           .insurance-hero-content {
             max-width: 590px;
-          }
-
-          .insurance-heading {
-            font-size: 44px;
-          }
-
-          .insurance-description {
-            font-size: 14px;
-          }
-
-        }
-
-
-        /* =====================================================
-           LARGE TABLET
-        ===================================================== */
-
-        @media (max-width: 1100px) {
-
-          .insurance-hero {
-            min-height: 500px;
-          }
-
-          .insurance-hero-container {
-            padding: 58px 32px 54px;
-
-            transform: none;
           }
 
           .insurance-heading {
@@ -404,6 +380,7 @@ export default function InsuranceHeroBgSection() {
 
         /* =====================================================
            TABLET
+           40px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 900px) {
@@ -413,7 +390,7 @@ export default function InsuranceHeroBgSection() {
           }
 
           .insurance-hero-container {
-            padding: 52px 24px 50px;
+            padding: 52px 40px 50px;
           }
 
           .insurance-hero-content {
@@ -440,7 +417,7 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           SMALL TABLET
+           SMALL TABLET — 24px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 767px) {
@@ -465,7 +442,7 @@ export default function InsuranceHeroBgSection() {
           }
 
           .insurance-hero-container {
-            padding: 48px 20px 46px;
+            padding: 48px 24px 46px;
 
             transform: none;
           }
@@ -519,7 +496,7 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           MOBILE
+           MOBILE — 24px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 480px) {
@@ -540,7 +517,7 @@ export default function InsuranceHeroBgSection() {
           }
 
           .insurance-hero-container {
-            padding: 40px 16px 38px;
+            padding: 40px 24px 38px;
 
             transform: none;
           }
@@ -608,13 +585,13 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           SMALL MOBILE
+           SMALL MOBILE — 16px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 360px) {
 
           .insurance-hero-container {
-            padding: 34px 14px 34px;
+            padding: 34px 16px 34px;
           }
 
           .insurance-heading {
@@ -646,13 +623,13 @@ export default function InsuranceHeroBgSection() {
 
 
         /* =====================================================
-           VERY SMALL MOBILE
+           VERY SMALL MOBILE — 16px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 320px) {
 
           .insurance-hero-container {
-            padding: 30px 12px;
+            padding: 30px 16px;
           }
 
           .insurance-heading {
@@ -717,54 +694,40 @@ export default function InsuranceHeroBgSection() {
           {/* BADGE */}
 
           <span className="insurance-badge">
-
             <span className="insurance-badge-dot" />
-
             INSURANCE
-
           </span>
 
 
           {/* MAIN HEADING */}
 
           <h1 className="insurance-heading">
-
             Technology Solutions
-
             <br />
-
             for{" "}
-
             <span className="insurance-heading-highlight">
               Modern Insurance
             </span>
-
             <br />
-
             Operations
-
           </h1>
 
 
-          {/* SUBHEADING / DESCRIPTION */}
+          {/* DESCRIPTION */}
 
           <p className="insurance-description">
-
             Insurance organizations operate across complex processes,
             customer relationships, financial activities and business
             systems. Managing these functions effectively requires
             technology that is connected, reliable and aligned with business
             requirements.
-
           </p>
 
 
           <p className="insurance-description">
-
             TechTorch delivers digital and technology solutions that help
             insurance organizations streamline operations, connect business
             functions and build a scalable technology environment.
-
           </p>
 
 

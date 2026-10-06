@@ -107,30 +107,23 @@ export default function InsuranceSolutionsGridSection() {
 
         .insurance-solutions-section {
           width: 100%;
-
           background: #f5f2ec;
-
           color: ${INK};
-
           font-family: "Inter", sans-serif;
-
           overflow: hidden;
         }
 
 
         /* =====================================================
            CONTAINER
+           DESKTOP — 100px HORIZONTAL SPACING
         ===================================================== */
 
         .insurance-solutions-container {
           width: 100%;
-
           max-width: 1280px;
-
           margin: 0 auto;
-
-          padding: 72px 24px;
-
+          padding: 80px 100px;
           box-sizing: border-box;
         }
 
@@ -146,26 +139,23 @@ export default function InsuranceSolutionsGridSection() {
             minmax(0, 1fr)
             minmax(0, 1fr);
 
-          gap: 60px;
+          gap: 72px;
 
           align-items: start;
 
-          margin-bottom: 52px;
+          margin-bottom: 56px;
         }
 
 
         .insurance-solutions-header-left {
           min-width: 0;
-
           max-width: 580px;
         }
 
 
         .insurance-solutions-header-right {
           min-width: 0;
-
           max-width: 570px;
-
           padding-top: 8px;
         }
 
@@ -228,7 +218,7 @@ export default function InsuranceSolutionsGridSection() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 36px;
+          font-size: 38px;
 
           line-height: 1.16;
 
@@ -284,7 +274,7 @@ export default function InsuranceSolutionsGridSection() {
         .insurance-solution-card {
           min-width: 0;
 
-          padding: 22px;
+          padding: 23px;
 
           background: #ffffff;
 
@@ -433,54 +423,23 @@ export default function InsuranceSolutionsGridSection() {
 
 
         /* =====================================================
-           LARGE DESKTOP
+           LARGE TABLET — 40px HORIZONTAL SPACING
         ===================================================== */
 
-        @media (min-width: 1200px) {
+        @media (max-width: 1199px) {
 
           .insurance-solutions-container {
-            padding: 80px 40px;
+            padding: 64px 40px;
           }
 
           .insurance-solutions-header {
-            gap: 72px;
+            gap: 48px;
 
-            margin-bottom: 56px;
+            margin-bottom: 48px;
           }
 
           .insurance-solutions-heading {
-            font-size: 38px;
-          }
-
-          .insurance-solutions-subheading {
-            font-size: 14px;
-          }
-
-          .insurance-solution-card {
-            padding: 23px;
-          }
-
-        }
-
-
-        /* =====================================================
-           LARGE TABLET
-        ===================================================== */
-
-        @media (max-width: 1100px) {
-
-          .insurance-solutions-container {
-            padding: 64px 32px;
-          }
-
-          .insurance-solutions-header {
-            gap: 40px;
-
-            margin-bottom: 45px;
-          }
-
-          .insurance-solutions-heading {
-            font-size: 33px;
+            font-size: 34px;
           }
 
           .insurance-solutions-subheading {
@@ -499,13 +458,13 @@ export default function InsuranceSolutionsGridSection() {
 
 
         /* =====================================================
-           TABLET
+           TABLET — 40px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 900px) {
 
           .insurance-solutions-container {
-            padding: 58px 24px;
+            padding: 58px 40px;
           }
 
           .insurance-solutions-header {
@@ -546,13 +505,13 @@ export default function InsuranceSolutionsGridSection() {
 
 
         /* =====================================================
-           MOBILE
+           MOBILE — 24px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 600px) {
 
           .insurance-solutions-container {
-            padding: 48px 20px;
+            padding: 48px 24px;
           }
 
           .insurance-solutions-header {
@@ -633,7 +592,7 @@ export default function InsuranceSolutionsGridSection() {
 
 
         /* =====================================================
-           SMALL MOBILE
+           SMALL MOBILE — 16px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 400px) {
@@ -674,13 +633,13 @@ export default function InsuranceSolutionsGridSection() {
 
 
         /* =====================================================
-           VERY SMALL MOBILE
+           VERY SMALL MOBILE — 16px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 340px) {
 
           .insurance-solutions-container {
-            padding: 36px 14px;
+            padding: 36px 16px;
           }
 
           .insurance-solutions-heading {

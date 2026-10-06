@@ -119,9 +119,9 @@ export default function DigitalExperienceAndApproachSections() {
 
         .digital-main-container {
           width: 100%;
-          max-width: 1152px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 75px 24px 85px;
+          padding: 75px 100px 85px;
           box-sizing: border-box;
         }
 
@@ -274,8 +274,8 @@ export default function DigitalExperienceAndApproachSections() {
 
 
         /* =====================================================
-           SUBHEADING / DESCRIPTION
-           PLUS JAKARTA SANS
+           DESCRIPTION
+           INTER
         ===================================================== */
 
         .digital-description {
@@ -283,11 +283,11 @@ export default function DigitalExperienceAndApproachSections() {
 
           margin: 0 0 13px;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 14px;
           line-height: 1.72;
-          font-weight: 500;
+          font-weight: 400;
 
           color: ${MUTED};
         }
@@ -300,7 +300,7 @@ export default function DigitalExperienceAndApproachSections() {
 
         /* =====================================================
            EXPERIENCE FEATURES
-           OTHER TEXT = INTER
+           INTER
         ===================================================== */
 
         .digital-features-grid {
@@ -428,8 +428,8 @@ export default function DigitalExperienceAndApproachSections() {
 
 
         /* =====================================================
-           APPROACH SUBHEADING
-           PLUS JAKARTA SANS
+           APPROACH DESCRIPTION
+           INTER
         ===================================================== */
 
         .approach-description {
@@ -437,11 +437,11 @@ export default function DigitalExperienceAndApproachSections() {
 
           margin: 0;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
 
           font-size: 14px;
           line-height: 1.72;
-          font-weight: 500;
+          font-weight: 400;
 
           color: ${MUTED};
         }
@@ -607,35 +607,31 @@ export default function DigitalExperienceAndApproachSections() {
 
 
         /* =====================================================
-           LARGE TABLET
+           TABLET / MEDIUM
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1199px) {
 
           .digital-main-container {
-            padding: 68px 32px 75px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
-
 
           .digital-experience-grid {
-            gap: 42px;
+            gap: 45px;
           }
-
 
           .digital-main-image {
             height: 350px;
           }
 
-
           .digital-heading {
             font-size: 33px;
           }
 
-
           .approach-heading {
             font-size: 33px;
           }
-
 
           .phases-grid {
             grid-template-columns:
@@ -644,11 +640,9 @@ export default function DigitalExperienceAndApproachSections() {
             gap: 17px;
           }
 
-
           .phase-card {
             min-height: 225px;
           }
-
         }
 
 
@@ -659,71 +653,55 @@ export default function DigitalExperienceAndApproachSections() {
         @media (max-width: 900px) {
 
           .digital-main-container {
-            padding: 60px 24px 70px;
+            padding-top: 60px;
+            padding-bottom: 70px;
           }
-
 
           .digital-experience-grid {
             grid-template-columns: 1fr;
-
             gap: 50px;
           }
 
-
           .digital-image-area {
             max-width: 700px;
-
             margin: 0 auto;
-
             padding-right: 25px;
           }
-
 
           .digital-main-image {
             height: 390px;
           }
 
-
           .digital-content {
             max-width: 700px;
-
             margin: 0 auto;
           }
-
 
           .digital-heading {
             font-size: 34px;
           }
 
-
           .digital-description {
             max-width: 700px;
           }
 
-
           .approach-header {
             grid-template-columns: 1fr;
-
             gap: 20px;
-
             margin-bottom: 38px;
           }
-
 
           .approach-header-right {
             padding-top: 0;
           }
 
-
           .approach-heading {
             font-size: 34px;
           }
 
-
           .approach-description {
             max-width: 700px;
           }
-
 
           .phases-grid {
             grid-template-columns:
@@ -731,7 +709,6 @@ export default function DigitalExperienceAndApproachSections() {
 
             gap: 17px;
           }
-
         }
 
 
@@ -739,135 +716,107 @@ export default function DigitalExperienceAndApproachSections() {
            MOBILE
         ===================================================== */
 
-        @media (max-width: 600px) {
+        @media (max-width: 767px) {
 
           .digital-main-container {
-            padding: 50px 20px 58px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 50px;
+            padding-bottom: 58px;
           }
-
 
           .digital-experience-grid {
             gap: 45px;
           }
 
-
           .digital-image-area {
             padding: 0 16px 18px 0;
           }
 
-
           .digital-main-image {
             height: 300px;
-
             border-radius: 15px;
           }
-
 
           .digital-icon-stack {
             top: 18px;
             left: 18px;
-
             gap: 6px;
-
             padding: 7px;
-
             border-radius: 10px;
           }
-
 
           .digital-icon-box {
             width: 30px;
             height: 30px;
-
             border-radius: 7px;
           }
-
 
           .digital-icon-box svg {
             width: 13px;
             height: 13px;
           }
 
-
           .digital-pill {
             margin-bottom: 14px;
-
             padding: 5px 10px;
-
             font-size: 8px;
           }
-
 
           .digital-pill-dot {
             width: 5px;
             height: 5px;
           }
 
-
           /* MAIN HEADING */
 
           .digital-heading {
             margin-bottom: 16px;
-
             font-size: 29px;
-
             line-height: 1.18;
-
             letter-spacing: -0.5px;
           }
 
-
-          /* SUBHEADING */
+          /* DESCRIPTION */
 
           .digital-description {
             font-size: 13px;
-
             line-height: 1.7;
           }
-
 
           .digital-description:last-of-type {
             margin-bottom: 25px;
           }
 
-
           /* FEATURES */
 
           .digital-features-grid {
             grid-template-columns: 1fr;
-
             gap: 20px;
           }
-
 
           .digital-feature {
             gap: 10px;
           }
-
 
           .digital-feature-icon {
             width: 34px;
             height: 34px;
           }
 
-
           .digital-feature-icon svg {
             width: 15px;
             height: 15px;
           }
 
-
           .digital-feature-title {
             font-size: 13px;
           }
 
-
           .digital-feature-body {
             font-size: 11.5px;
-
             line-height: 1.65;
           }
-
 
           /* =========================================
              APPROACH
@@ -877,64 +826,47 @@ export default function DigitalExperienceAndApproachSections() {
             margin-top: 0;
           }
 
-
           .approach-header {
             gap: 17px;
-
             margin-bottom: 30px;
           }
 
-
           .approach-heading {
             font-size: 29px;
-
             line-height: 1.18;
-
             letter-spacing: -0.5px;
           }
 
-
           .approach-description {
             font-size: 13px;
-
             line-height: 1.7;
           }
-
 
           /* PHASE CARDS */
 
           .phases-grid {
             grid-template-columns: 1fr;
-
             gap: 14px;
           }
 
-
           .phase-card {
             min-height: auto;
-
             padding: 20px;
-
             border-radius: 11px;
           }
-
 
           .phase-top {
             margin-bottom: 17px;
           }
 
-
           .phase-title {
             font-size: 15px;
           }
 
-
           .phase-body {
             font-size: 11.5px;
-
             line-height: 1.65;
           }
-
         }
 
 
@@ -942,72 +874,61 @@ export default function DigitalExperienceAndApproachSections() {
            SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
 
           .digital-main-container {
-            padding: 42px 16px 50px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 42px;
+            padding-bottom: 50px;
           }
-
 
           .digital-image-area {
             padding-right: 10px;
           }
 
-
           .digital-main-image {
             height: 260px;
           }
-
 
           .digital-icon-stack {
             top: 14px;
             left: 14px;
           }
 
-
           .digital-heading {
             font-size: 26px;
-
             line-height: 1.18;
           }
 
-
           .digital-description {
             font-size: 12px;
-
             line-height: 1.68;
           }
-
 
           .digital-feature-body {
             font-size: 11px;
           }
 
-
           .approach-heading {
             font-size: 26px;
           }
-
 
           .approach-description {
             font-size: 12px;
           }
 
-
           .phase-card {
             padding: 18px;
           }
-
 
           .phase-title {
             font-size: 14px;
           }
 
-
           .phase-body {
             font-size: 11px;
           }
-
         }
 
 
@@ -1021,16 +942,13 @@ export default function DigitalExperienceAndApproachSections() {
             height: 235px;
           }
 
-
           .digital-heading {
             font-size: 24px;
           }
 
-
           .approach-heading {
             font-size: 24px;
           }
-
         }
 
 
@@ -1043,9 +961,7 @@ export default function DigitalExperienceAndApproachSections() {
           .phase-card {
             transition: none;
           }
-
         }
-
       `}</style>
 
 
@@ -1055,13 +971,11 @@ export default function DigitalExperienceAndApproachSections() {
 
       <div className="digital-main-container">
 
-
         {/* ===================================================
             SECTION 1
         =================================================== */}
 
         <div className="digital-experience-grid">
-
 
           {/* =================================================
               IMAGE
@@ -1074,7 +988,6 @@ export default function DigitalExperienceAndApproachSections() {
               alt="Digital customer experience"
               className="digital-main-image"
             />
-
 
             {/* FLOATING ICONS */}
 
@@ -1110,7 +1023,7 @@ export default function DigitalExperienceAndApproachSections() {
             </Pill>
 
 
-            {/* PLUS JAKARTA SANS — HEADING */}
+            {/* HEADING — PLUS JAKARTA SANS */}
 
             <h2 className="digital-heading">
 
@@ -1123,7 +1036,7 @@ export default function DigitalExperienceAndApproachSections() {
             </h2>
 
 
-            {/* PLUS JAKARTA SANS — SUBHEADING */}
+            {/* DESCRIPTION — INTER */}
 
             <p className="digital-description">
 
@@ -1201,11 +1114,9 @@ export default function DigitalExperienceAndApproachSections() {
 
         <div className="approach-section">
 
-
           {/* APPROACH HEADER */}
 
           <div className="approach-header">
-
 
             {/* LEFT */}
 
@@ -1216,7 +1127,7 @@ export default function DigitalExperienceAndApproachSections() {
               </Pill>
 
 
-              {/* PLUS JAKARTA SANS — HEADING */}
+              {/* HEADING — PLUS JAKARTA SANS */}
 
               <h2 className="approach-heading">
 
@@ -1237,7 +1148,7 @@ export default function DigitalExperienceAndApproachSections() {
 
             <div className="approach-header-right">
 
-              {/* PLUS JAKARTA SANS — SUBHEADING */}
+              {/* DESCRIPTION — INTER */}
 
               <p className="approach-description">
 

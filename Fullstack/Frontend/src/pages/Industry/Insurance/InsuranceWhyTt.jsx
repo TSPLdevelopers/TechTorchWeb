@@ -83,9 +83,9 @@ export default function WhyTechTorchAndCtaSections() {
 
         .why-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 72px 24px;
+          padding: 80px 100px;
           box-sizing: border-box;
         }
 
@@ -142,7 +142,7 @@ export default function WhyTechTorchAndCtaSections() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 32px;
+          font-size: 34px;
           line-height: 1.2;
           font-weight: 700;
 
@@ -310,7 +310,7 @@ export default function WhyTechTorchAndCtaSections() {
 
           background: #ffffff;
 
-          padding: 72px 24px;
+          padding: 80px 100px;
 
           box-sizing: border-box;
         }
@@ -325,11 +325,11 @@ export default function WhyTechTorchAndCtaSections() {
 
           width: 100%;
 
-          max-width: 1280px;
+          max-width: 1440px;
 
           margin: 0 auto;
 
-          padding: 52px 56px;
+          padding: 58px 64px;
 
           border-radius: 26px;
 
@@ -422,7 +422,7 @@ export default function WhyTechTorchAndCtaSections() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 37px;
+          font-size: 40px;
 
           line-height: 1.18;
 
@@ -435,8 +435,8 @@ export default function WhyTechTorchAndCtaSections() {
 
 
         /* =====================================================
-           CTA SUBHEADING / DESCRIPTION
-           PLUS JAKARTA SANS
+           CTA DESCRIPTION
+           INTER
         ===================================================== */
 
         .cta-description {
@@ -444,13 +444,13 @@ export default function WhyTechTorchAndCtaSections() {
 
           margin: 0 0 28px;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
 
-          font-size: 13.5px;
+          font-size: 14px;
 
           line-height: 1.72;
 
-          font-weight: 500;
+          font-weight: 400;
 
           color: #d9c3cf;
         }
@@ -552,33 +552,25 @@ export default function WhyTechTorchAndCtaSections() {
 
 
         /* =====================================================
-           LARGE DESKTOP
+           TABLET / LAPTOP
         ===================================================== */
 
-        @media (min-width: 1200px) {
+        @media (max-width: 1200px) {
 
           .why-container {
-            padding: 80px 40px;
-          }
-
-          .why-heading {
-            font-size: 34px;
+            padding: 72px 40px;
           }
 
           .cta-section {
-            padding: 80px 40px;
+            padding: 72px 40px;
           }
 
           .cta-container {
-            padding: 58px 64px;
+            padding: 52px 48px;
           }
 
           .cta-heading {
-            font-size: 40px;
-          }
-
-          .cta-description {
-            font-size: 14px;
+            font-size: 37px;
           }
 
         }
@@ -591,7 +583,7 @@ export default function WhyTechTorchAndCtaSections() {
         @media (max-width: 1100px) {
 
           .why-container {
-            padding: 58px 32px;
+            padding: 64px 40px;
           }
 
           .reasons-grid {
@@ -600,11 +592,11 @@ export default function WhyTechTorchAndCtaSections() {
           }
 
           .cta-section {
-            padding: 58px 32px;
+            padding: 64px 40px;
           }
 
           .cta-container {
-            padding: 44px 42px;
+            padding: 46px 42px;
           }
 
           .cta-heading {
@@ -621,7 +613,7 @@ export default function WhyTechTorchAndCtaSections() {
         @media (max-width: 900px) {
 
           .why-container {
-            padding: 52px 24px;
+            padding: 56px 40px;
           }
 
           .why-heading {
@@ -636,11 +628,11 @@ export default function WhyTechTorchAndCtaSections() {
           }
 
           .cta-section {
-            padding: 52px 24px;
+            padding: 56px 40px;
           }
 
           .cta-container {
-            padding: 40px 36px;
+            padding: 42px 36px;
           }
 
           .cta-heading {
@@ -661,7 +653,7 @@ export default function WhyTechTorchAndCtaSections() {
         @media (max-width: 700px) {
 
           .why-container {
-            padding: 50px 22px;
+            padding: 50px 24px;
           }
 
           .why-heading {
@@ -673,7 +665,7 @@ export default function WhyTechTorchAndCtaSections() {
           }
 
           .cta-section {
-            padding: 48px 22px;
+            padding: 48px 24px;
           }
 
           .cta-container {
@@ -694,7 +686,7 @@ export default function WhyTechTorchAndCtaSections() {
         @media (max-width: 600px) {
 
           .why-container {
-            padding: 46px 20px;
+            padding: 46px 24px;
           }
 
           .why-badge,
@@ -750,7 +742,7 @@ export default function WhyTechTorchAndCtaSections() {
           }
 
           .cta-section {
-            padding: 42px 20px;
+            padding: 42px 24px;
           }
 
           .cta-container {
@@ -871,7 +863,7 @@ export default function WhyTechTorchAndCtaSections() {
         @media (max-width: 340px) {
 
           .why-container {
-            padding: 36px 14px;
+            padding: 36px 16px;
           }
 
           .why-heading {
@@ -883,7 +875,7 @@ export default function WhyTechTorchAndCtaSections() {
           }
 
           .cta-section {
-            padding: 32px 14px;
+            padding: 32px 16px;
           }
 
           .cta-container {
@@ -929,11 +921,9 @@ export default function WhyTechTorchAndCtaSections() {
           {/* BADGE */}
 
           <span className="why-badge">
-
             <span className="why-badge-dot" />
 
             WHY TECHTORCH
-
           </span>
 
 
@@ -1040,7 +1030,7 @@ export default function WhyTechTorchAndCtaSections() {
             </h2>
 
 
-            {/* CTA SUBHEADING */}
+            {/* CTA DESCRIPTION */}
 
             <p className="cta-description">
               Modern insurance operations require technology that can
