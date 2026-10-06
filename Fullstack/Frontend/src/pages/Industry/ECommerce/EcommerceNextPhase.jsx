@@ -375,7 +375,7 @@ export default function BuildOnlineBusinessCtaSection() {
       {/* ================= BACKGROUND IMAGE ================= */}
       <div className="build-online-bg">
         <img
-          src="/build-online-business.jpg"
+          src="/ecommerce3.png"
           alt="Building online business with technology"
         />
       </div>

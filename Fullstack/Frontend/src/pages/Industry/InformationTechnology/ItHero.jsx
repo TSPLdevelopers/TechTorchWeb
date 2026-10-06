@@ -709,7 +709,7 @@ export default function ItHeroSection() {
             <div className="it-hero-image-wrapper">
 
               <img
-                src="/ITHero.png"
+                src="/it.png"
                 alt="Information technology team reviewing business architecture"
                 className="it-hero-image"
               />

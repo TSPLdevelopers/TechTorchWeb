@@ -31,12 +31,9 @@ export default function EnergyHeroSection() {
           overflow: hidden;
         }
 
+
         /* =================================================
            MAIN CONTAINER
-           Desktop  : 100px
-           Tablet   : 40px
-           Mobile   : 24px
-           Small    : 16px
         ================================================= */
 
         .energy-hero-container {
@@ -51,6 +48,7 @@ export default function EnergyHeroSection() {
           gap: 70px;
           align-items: center;
         }
+
 
         /* =================================================
            LEFT CONTENT
@@ -119,6 +117,7 @@ export default function EnergyHeroSection() {
           margin-bottom: 28px;
         }
 
+
         /* =================================================
            BUTTONS
         ================================================= */
@@ -140,7 +139,8 @@ export default function EnergyHeroSection() {
 
           padding: 11px 20px;
 
-          border-radius: 999px;
+          /* UPDATED: less rounded */
+          border-radius: 8px;
 
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
@@ -185,6 +185,7 @@ export default function EnergyHeroSection() {
           transform: translateY(0);
         }
 
+
         /* =================================================
            IMAGE AREA
         ================================================= */
@@ -192,7 +193,6 @@ export default function EnergyHeroSection() {
         .energy-hero-visual {
           position: relative;
           min-width: 0;
-
           padding-bottom: 25px;
         }
 
@@ -254,6 +254,7 @@ export default function EnergyHeroSection() {
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
         }
+
 
         /* =================================================
            FLOATING CARD
@@ -323,6 +324,7 @@ export default function EnergyHeroSection() {
           line-height: 1.4;
         }
 
+
         /* =================================================
            LARGE LAPTOP
         ================================================= */
@@ -331,7 +333,6 @@ export default function EnergyHeroSection() {
           .energy-hero-container {
             padding-left: 60px;
             padding-right: 60px;
-
             gap: 48px;
           }
 
@@ -344,9 +345,9 @@ export default function EnergyHeroSection() {
           }
         }
 
+
         /* =================================================
            TABLET
-           Exact spacing: 40px
         ================================================= */
 
         @media (max-width: 1000px) {
@@ -377,6 +378,7 @@ export default function EnergyHeroSection() {
             right: 18px;
           }
         }
+
 
         /* =================================================
            TABLET / STACKED
@@ -415,9 +417,9 @@ export default function EnergyHeroSection() {
           }
         }
 
+
         /* =================================================
            MOBILE
-           Exact spacing: 24px
         ================================================= */
 
         @media (max-width: 600px) {
@@ -429,7 +431,6 @@ export default function EnergyHeroSection() {
           .energy-hero-badge {
             margin-bottom: 17px;
             padding: 6px 10px;
-
             font-size: 9px;
           }
 
@@ -464,6 +465,9 @@ export default function EnergyHeroSection() {
             min-height: 45px;
 
             padding: 12px 18px;
+
+            /* same reduced radius on mobile */
+            border-radius: 8px;
           }
 
           /* Image */
@@ -485,8 +489,6 @@ export default function EnergyHeroSection() {
             font-size: 8px;
           }
 
-          /* Floating card */
-
           .energy-hero-floating-card {
             left: 15px;
             right: 15px;
@@ -505,9 +507,9 @@ export default function EnergyHeroSection() {
           }
         }
 
+
         /* =================================================
            SMALL MOBILE
-           Exact spacing: 16px
         ================================================= */
 
         @media (max-width: 480px) {
@@ -547,6 +549,7 @@ export default function EnergyHeroSection() {
           }
         }
 
+
         /* =================================================
            VERY SMALL MOBILE
         ================================================= */
@@ -582,6 +585,7 @@ export default function EnergyHeroSection() {
           }
         }
 
+
         /* =================================================
            REDUCED MOTION
         ================================================= */
@@ -597,13 +601,11 @@ export default function EnergyHeroSection() {
         }
       `}</style>
 
+
       <section className="energy-hero-section">
         <div className="energy-hero-container">
 
-          {/* =================================================
-              LEFT CONTENT
-          ================================================= */}
-
+          {/* LEFT CONTENT */}
           <div className="energy-hero-content">
 
             <span className="energy-hero-badge">
@@ -630,8 +632,20 @@ export default function EnergyHeroSection() {
               their operations.
             </p>
 
+
+            {/* UPDATED BUTTON ORDER */}
             <div className="energy-hero-actions">
 
+              {/* LEFT */}
+              <button
+                type="button"
+                className="energy-hero-button energy-hero-button-secondary"
+              >
+                Talk to Our Experts
+                <ArrowRight size={16} />
+              </button>
+
+              {/* RIGHT */}
               <button
                 type="button"
                 className="energy-hero-button energy-hero-button-primary"
@@ -641,27 +655,17 @@ export default function EnergyHeroSection() {
                 <ArrowRight size={16} />
               </button>
 
-              <button
-                type="button"
-                className="energy-hero-button energy-hero-button-secondary"
-              >
-                Talk to Our Experts
-                <ArrowRight size={16} />
-              </button>
-
             </div>
           </div>
 
-          {/* =================================================
-              RIGHT IMAGE
-          ================================================= */}
 
+          {/* RIGHT IMAGE */}
           <div className="energy-hero-visual">
 
             <div className="energy-hero-image-wrapper">
 
               <img
-                src="/EnergyHero.png"
+                src="/energy2.png"
                 alt="Energy operations control room"
                 className="energy-hero-image"
               />
@@ -674,10 +678,8 @@ export default function EnergyHeroSection() {
 
             </div>
 
-            {/* =================================================
-                FLOATING CAPTION CARD
-            ================================================= */}
 
+            {/* FLOATING CAPTION CARD */}
             <div className="energy-hero-floating-card">
 
               <span className="energy-hero-floating-icon">

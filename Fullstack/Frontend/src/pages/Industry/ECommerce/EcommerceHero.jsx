@@ -629,7 +629,7 @@ export default function EcommerceHeroSection() {
         <div className="ecommerce-hero-image-area">
           <div className="ecommerce-hero-image-container">
             <img
-              src="/ecommerce-hero.png"
+              src="/ecommerce1.png"
               alt="E-commerce team working together"
               className="ecommerce-hero-image"
             />

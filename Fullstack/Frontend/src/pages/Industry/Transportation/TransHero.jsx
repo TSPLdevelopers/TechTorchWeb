@@ -569,7 +569,7 @@ export default function TransportationHeroSection() {
         <div className="transportation-hero-visual">
 
           <img
-            src="/transportation-hero.png"
+            src="/transportationhero.png"
             alt="Connected transportation technology"
             className="transportation-hero-image"
           />
