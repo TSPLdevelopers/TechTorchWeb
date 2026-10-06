@@ -34,16 +34,27 @@ export default function ApproachAndImageCtaSections() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
+        /* =================================================
+           BASE
+        ================================================= */
+
         .approach-page {
           width: 100%;
           color: ${INK};
           font-family: "Inter", Arial, sans-serif;
           overflow: hidden;
+          box-sizing: border-box;
         }
 
-        /* =========================
-           APPROACH SECTION
-        ========================= */
+        .approach-page *,
+        .approach-page *::before,
+        .approach-page *::after {
+          box-sizing: border-box;
+        }
+
+        /* =================================================
+           SECTION 1 — OUR APPROACH
+        ================================================= */
 
         .approach-section {
           width: 100%;
@@ -51,24 +62,35 @@ export default function ApproachAndImageCtaSections() {
         }
 
         .approach-container {
-          max-width: 1280px;
+          width: 100%;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 72px 40px;
+
+          /*
+            HERO SPACING SYSTEM
+            Desktop: 100px
+          */
+          padding: 72px 100px;
         }
 
         .approach-eyebrow {
           margin: 0 0 12px;
+
           color: ${WINE};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
+          line-height: 1.4;
           letter-spacing: 0.12em;
           text-transform: uppercase;
         }
 
         .approach-heading {
           margin: 0 0 34px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 38px;
           line-height: 1.2;
@@ -76,33 +98,47 @@ export default function ApproachAndImageCtaSections() {
           letter-spacing: -0.03em;
         }
 
+        /* =================================================
+           APPROACH CARDS
+        ================================================= */
+
         .approach-steps {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 18px;
+          width: 100%;
         }
 
         .approach-card {
-          background: #ffffff;
-          border-radius: 16px;
-          padding: 26px 22px 24px;
           min-height: 255px;
+
           display: flex;
           flex-direction: column;
+
+          padding: 26px 22px 24px;
+
+          background: #ffffff;
+          border-radius: 16px;
+
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
           transition:
             transform 0.3s ease,
             box-shadow 0.3s ease;
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         }
 
         .approach-card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 12px 30px rgba(27, 27, 42, 0.08);
+
+          box-shadow:
+            0 12px 30px rgba(27, 27, 42, 0.08);
         }
 
         .approach-number {
           margin: 0 0 22px;
+
           color: #e3d3d9;
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 36px;
           line-height: 1;
@@ -111,7 +147,9 @@ export default function ApproachAndImageCtaSections() {
 
         .approach-card-title {
           margin: 0 0 10px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 17px;
           line-height: 1.35;
@@ -120,7 +158,9 @@ export default function ApproachAndImageCtaSections() {
 
         .approach-card-body {
           margin: 0;
+
           color: ${MUTED};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
           line-height: 1.7;
@@ -129,25 +169,28 @@ export default function ApproachAndImageCtaSections() {
         .approach-line {
           width: 28px;
           height: 2px;
+
           margin-top: auto;
-          padding-top: 0;
+
           background: ${WINE};
         }
 
-        /* =========================
-           CTA SECTION
-        ========================= */
+        /* =================================================
+           SECTION 2 — CTA
+        ================================================= */
 
         .energy-cta {
           position: relative;
           width: 100%;
           overflow: hidden;
+
           background: #1c2230;
         }
 
         .energy-cta-bg {
           position: absolute;
           inset: 0;
+
           background:
             linear-gradient(
               135deg,
@@ -160,31 +203,47 @@ export default function ApproachAndImageCtaSections() {
         .energy-cta-overlay {
           position: absolute;
           inset: 0;
+
           background: rgba(30, 10, 25, 0.55);
         }
 
         .energy-cta-container {
           position: relative;
           z-index: 2;
-          max-width: 900px;
+
+          width: 100%;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 100px 40px;
+
+          /*
+            Same Hero horizontal spacing
+            Desktop: 100px
+          */
+          padding: 100px 100px;
+
           text-align: center;
         }
 
         .cta-eyebrow {
           margin: 0 0 20px;
+
           color: #e3c3cf;
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 700;
+          line-height: 1.4;
           letter-spacing: 0.2em;
           text-transform: uppercase;
         }
 
         .cta-heading {
+          max-width: 950px;
+
           margin: 0 auto 26px;
+
           color: #ffffff;
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 44px;
           line-height: 1.2;
@@ -194,7 +253,9 @@ export default function ApproachAndImageCtaSections() {
 
         .cta-description {
           max-width: 720px;
+
           margin: 0 auto 34px;
+
           display: flex;
           flex-direction: column;
           gap: 12px;
@@ -202,32 +263,46 @@ export default function ApproachAndImageCtaSections() {
 
         .cta-description p {
           margin: 0;
+
           color: #e3c3cf;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 15px;
           line-height: 1.75;
         }
 
+        /* =================================================
+           CTA BUTTONS
+        ================================================= */
+
         .cta-buttons {
           display: flex;
           flex-wrap: wrap;
+
           justify-content: center;
           align-items: center;
+
           gap: 12px;
         }
 
         .cta-button {
           min-height: 46px;
+
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 9px;
+
           padding: 12px 22px;
+
           border-radius: 999px;
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
           font-weight: 600;
+
           cursor: pointer;
+
           transition:
             transform 0.25s ease,
             background 0.25s ease,
@@ -240,6 +315,7 @@ export default function ApproachAndImageCtaSections() {
 
         .cta-primary {
           color: ${WINE};
+
           background: #ffffff;
           border: 1px solid #ffffff;
         }
@@ -250,6 +326,7 @@ export default function ApproachAndImageCtaSections() {
 
         .cta-secondary {
           color: #ffffff;
+
           background: transparent;
           border: 1px solid rgba(255, 255, 255, 0.3);
         }
@@ -259,39 +336,49 @@ export default function ApproachAndImageCtaSections() {
           background: rgba(255, 255, 255, 0.06);
         }
 
-        /* =========================
+        /* =================================================
            TABLET
-        ========================= */
+           40px LEFT / RIGHT
+        ================================================= */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1100px) {
           .approach-container {
-            padding: 60px 30px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .approach-steps {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
 
           .approach-card {
             min-height: 235px;
           }
 
+          .energy-cta-container {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 85px;
+            padding-bottom: 85px;
+          }
+
           .cta-heading {
             font-size: 38px;
           }
-
-          .energy-cta-container {
-            padding: 85px 30px;
-          }
         }
 
-        /* =========================
+        /* =================================================
            MOBILE
-        ========================= */
+           24px LEFT / RIGHT
+        ================================================= */
 
         @media (max-width: 700px) {
           .approach-container {
-            padding: 50px 20px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .approach-eyebrow {
@@ -329,8 +416,14 @@ export default function ApproachAndImageCtaSections() {
             line-height: 1.65;
           }
 
+          /* CTA */
+
           .energy-cta-container {
-            padding: 70px 20px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .cta-eyebrow {
@@ -363,15 +456,24 @@ export default function ApproachAndImageCtaSections() {
             max-width: 320px;
             min-height: 48px;
           }
+
+          .desktop-break {
+            display: none;
+          }
         }
 
-        /* =========================
+        /* =================================================
            SMALL MOBILE
-        ========================= */
+           16px LEFT / RIGHT
+        ================================================= */
 
-        @media (max-width: 450px) {
+        @media (max-width: 480px) {
           .approach-container {
-            padding: 42px 16px;
+            padding-top: 42px;
+            padding-bottom: 42px;
+
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .approach-heading {
@@ -395,8 +497,14 @@ export default function ApproachAndImageCtaSections() {
             font-size: 12px;
           }
 
+          /* CTA */
+
           .energy-cta-container {
-            padding: 58px 16px;
+            padding-top: 58px;
+            padding-bottom: 58px;
+
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .cta-heading {
@@ -413,15 +521,11 @@ export default function ApproachAndImageCtaSections() {
           }
         }
 
-        /* =========================
+        /* =================================================
            VERY SMALL DEVICES
-        ========================= */
+        ================================================= */
 
         @media (max-width: 340px) {
-          .approach-container {
-            padding: 36px 14px;
-          }
-
           .approach-heading {
             font-size: 23px;
           }
@@ -435,9 +539,9 @@ export default function ApproachAndImageCtaSections() {
           }
         }
 
-        /* =========================
+        /* =================================================
            REDUCED MOTION
-        ========================= */
+        ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
           .approach-card,
@@ -448,12 +552,17 @@ export default function ApproachAndImageCtaSections() {
       `}</style>
 
       <div className="approach-page">
-        {/* =========================
+
+        {/* =================================================
             SECTION 1: OUR APPROACH
-        ========================= */}
+        ================================================= */}
+
         <section className="approach-section">
           <div className="approach-container">
-            <p className="approach-eyebrow">OUR APPROACH</p>
+
+            <p className="approach-eyebrow">
+              OUR APPROACH
+            </p>
 
             <h2 className="approach-heading">
               From Requirement to Support
@@ -461,29 +570,45 @@ export default function ApproachAndImageCtaSections() {
 
             <div className="approach-steps">
               {steps.map(({ num, title, body }) => (
-                <div className="approach-card" key={num}>
-                  <p className="approach-number">{num}</p>
+                <div
+                  className="approach-card"
+                  key={num}
+                >
+                  <p className="approach-number">
+                    {num}
+                  </p>
 
-                  <h3 className="approach-card-title">{title}</h3>
+                  <h3 className="approach-card-title">
+                    {title}
+                  </h3>
 
-                  <p className="approach-card-body">{body}</p>
+                  <p className="approach-card-body">
+                    {body}
+                  </p>
 
                   <div className="approach-line" />
                 </div>
               ))}
             </div>
+
           </div>
         </section>
 
-        {/* =========================
+        {/* =================================================
             SECTION 2: CTA
-        ========================= */}
+        ================================================= */}
+
         <section className="energy-cta">
+
           <div className="energy-cta-bg" />
+
           <div className="energy-cta-overlay" />
 
           <div className="energy-cta-container">
-            <p className="cta-eyebrow">GET IN TOUCH</p>
+
+            <p className="cta-eyebrow">
+              GET IN TOUCH
+            </p>
 
             <h2 className="cta-heading">
               Let's Build Technology Around
@@ -492,32 +617,45 @@ export default function ApproachAndImageCtaSections() {
             </h2>
 
             <div className="cta-description">
+
               <p>
-                Discuss your Energy business and technology requirements with
-                the TechTorch team.
+                Discuss your Energy business and technology
+                requirements with the TechTorch team.
               </p>
 
               <p>
-                Whether you need ERP, operations management, software
-                development, cloud infrastructure, cybersecurity or other
-                technology services, our team can discuss your requirements
-                and the appropriate approach.
+                Whether you need ERP, operations management,
+                software development, cloud infrastructure,
+                cybersecurity or other technology services,
+                our team can discuss your requirements and
+                the appropriate approach.
               </p>
+
             </div>
 
             <div className="cta-buttons">
-              <button className="cta-button cta-primary">
+
+              <button
+                type="button"
+                className="cta-button cta-primary"
+              >
                 Get in Touch
                 <ArrowRight size={15} />
               </button>
 
-              <button className="cta-button cta-secondary">
+              <button
+                type="button"
+                className="cta-button cta-secondary"
+              >
                 Talk to Our Experts
                 <ArrowRight size={15} />
               </button>
+
             </div>
+
           </div>
         </section>
+
       </div>
     </>
   );

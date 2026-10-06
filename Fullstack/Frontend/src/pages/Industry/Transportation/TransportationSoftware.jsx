@@ -67,13 +67,28 @@ export default function SoftwareCapabilitiesGridSection() {
           font-family: "Inter", sans-serif;
         }
 
+        .software-capabilities-section *,
+        .software-capabilities-section *::before,
+        .software-capabilities-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           MAIN CONTAINER
+           
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .software-capabilities-container {
           width: 100%;
-          max-width: 1240px;
+          max-width: 1440px;
 
           margin: 0 auto;
 
-          padding: 88px 32px;
+          padding: 88px 100px;
         }
 
         /* =========================================
@@ -172,6 +187,7 @@ export default function SoftwareCapabilitiesGridSection() {
           overflow: hidden;
 
           opacity: 0;
+
           transform:
             translateY(45px)
             scale(0.94);
@@ -208,7 +224,9 @@ export default function SoftwareCapabilitiesGridSection() {
           box-shadow:
             0 14px 35px rgba(0, 0, 0, 0.15);
 
-          transform: translateY(-5px) scale(1.01);
+          transform:
+            translateY(-5px)
+            scale(1.01);
         }
 
         /* =========================================
@@ -263,7 +281,7 @@ export default function SoftwareCapabilitiesGridSection() {
 
         /* =========================================
            CARD TITLE
-           INTER
+           PLUS JAKARTA SANS
         ========================================= */
 
         .software-capability-title {
@@ -271,10 +289,25 @@ export default function SoftwareCapabilitiesGridSection() {
 
           color: #ffffff;
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 13px;
           font-weight: 600;
           line-height: 1.5;
+        }
+
+        /* =========================================
+           LARGE TABLET
+           100px → 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .software-capabilities-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 82px;
+            padding-bottom: 82px;
+          }
         }
 
         /* =========================================
@@ -283,7 +316,11 @@ export default function SoftwareCapabilitiesGridSection() {
 
         @media (max-width: 1050px) {
           .software-capabilities-container {
-            padding: 76px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 76px;
+            padding-bottom: 76px;
           }
 
           .software-capabilities-grid {
@@ -301,7 +338,11 @@ export default function SoftwareCapabilitiesGridSection() {
 
         @media (max-width: 800px) {
           .software-capabilities-container {
-            padding: 68px 26px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 68px;
+            padding-bottom: 68px;
           }
 
           .software-capabilities-heading {
@@ -320,11 +361,16 @@ export default function SoftwareCapabilitiesGridSection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
           .software-capabilities-container {
-            padding: 58px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 58px;
+            padding-bottom: 58px;
           }
 
           .software-capabilities-badge {
@@ -376,11 +422,16 @@ export default function SoftwareCapabilitiesGridSection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .software-capabilities-container {
-            padding: 50px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 50px;
+            padding-bottom: 50px;
           }
 
           .software-capabilities-heading {

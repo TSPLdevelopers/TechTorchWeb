@@ -30,6 +30,12 @@ export default function TransportationImageCtaSection() {
           font-family: "Inter", sans-serif;
         }
 
+        .transportation-cta-section *,
+        .transportation-cta-section *::before,
+        .transportation-cta-section *::after {
+          box-sizing: border-box;
+        }
+
         /* =========================================
            BACKGROUND IMAGE
         ========================================= */
@@ -75,7 +81,12 @@ export default function TransportationImageCtaSection() {
         }
 
         /* =========================================
-           CONTENT
+           CONTENT CONTAINER
+
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
         ========================================= */
 
         .transportation-cta-container {
@@ -83,11 +94,11 @@ export default function TransportationImageCtaSection() {
           z-index: 2;
 
           width: 100%;
-          max-width: 900px;
+          max-width: 1440px;
 
           margin: 0 auto;
 
-          padding: 105px 32px;
+          padding: 105px 100px;
 
           display: flex;
           flex-direction: column;
@@ -114,6 +125,7 @@ export default function TransportationImageCtaSection() {
           border-radius: 999px;
 
           background: rgba(255, 255, 255, 0.10);
+
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
 
@@ -158,7 +170,7 @@ export default function TransportationImageCtaSection() {
         }
 
         /* =========================================
-           SUBHEADING / DESCRIPTION
+           SUBHEADING
            PLUS JAKARTA SANS
         ========================================= */
 
@@ -176,7 +188,7 @@ export default function TransportationImageCtaSection() {
         }
 
         /* =========================================
-           BUTTON
+           CTA BUTTON
            INTER
         ========================================= */
 
@@ -234,6 +246,21 @@ export default function TransportationImageCtaSection() {
 
         /* =========================================
            LARGE TABLET
+           100px → 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .transportation-cta-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 95px;
+            padding-bottom: 95px;
+          }
+        }
+
+        /* =========================================
+           TABLET
         ========================================= */
 
         @media (max-width: 1050px) {
@@ -242,7 +269,11 @@ export default function TransportationImageCtaSection() {
           }
 
           .transportation-cta-container {
-            padding: 90px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 90px;
+            padding-bottom: 90px;
           }
 
           .transportation-cta-heading {
@@ -257,7 +288,7 @@ export default function TransportationImageCtaSection() {
         }
 
         /* =========================================
-           TABLET
+           SMALL TABLET
         ========================================= */
 
         @media (max-width: 850px) {
@@ -270,7 +301,11 @@ export default function TransportationImageCtaSection() {
           }
 
           .transportation-cta-container {
-            padding: 82px 25px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 82px;
+            padding-bottom: 82px;
           }
 
           .transportation-cta-badge {
@@ -279,6 +314,7 @@ export default function TransportationImageCtaSection() {
 
           .transportation-cta-heading {
             max-width: 650px;
+
             font-size: 38px;
             line-height: 1.2;
           }
@@ -295,6 +331,7 @@ export default function TransportationImageCtaSection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
@@ -317,7 +354,11 @@ export default function TransportationImageCtaSection() {
           }
 
           .transportation-cta-container {
-            padding: 70px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
           .transportation-cta-badge {
@@ -372,6 +413,7 @@ export default function TransportationImageCtaSection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
@@ -380,7 +422,11 @@ export default function TransportationImageCtaSection() {
           }
 
           .transportation-cta-container {
-            padding: 62px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 62px;
+            padding-bottom: 62px;
           }
 
           .transportation-cta-badge {
@@ -400,7 +446,9 @@ export default function TransportationImageCtaSection() {
 
           .transportation-cta-button {
             min-height: 43px;
+
             padding: 0 17px;
+
             font-size: 8.5px;
           }
         }

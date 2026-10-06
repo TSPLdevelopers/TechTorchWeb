@@ -41,14 +41,11 @@ export default function SupplyChainProcurementSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Clear previous animation timers
           timers.forEach((timer) => clearTimeout(timer));
           timers = [];
 
-          // Reset cards
           setVisibleCards([]);
 
-          // Open cards one by one
           cards.forEach((_, index) => {
             const timer = setTimeout(() => {
               setVisibleCards((prev) => {
@@ -60,7 +57,6 @@ export default function SupplyChainProcurementSection() {
             timers.push(timer);
           });
         } else {
-          // Reset when section leaves viewport
           timers.forEach((timer) => clearTimeout(timer));
           timers = [];
 
@@ -81,10 +77,7 @@ export default function SupplyChainProcurementSection() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="supply-chain-section"
-    >
+    <section ref={sectionRef} className="supply-chain-section">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
@@ -100,15 +93,23 @@ export default function SupplyChainProcurementSection() {
           color: ${INK};
 
           font-family: "Inter", sans-serif;
+
+          box-sizing: border-box;
+        }
+
+        .supply-chain-section *,
+        .supply-chain-section *::before,
+        .supply-chain-section *::after {
+          box-sizing: border-box;
         }
 
         .supply-chain-container {
           width: 100%;
-          max-width: 1240px;
+          max-width: 1440px;
 
           margin: 0 auto;
 
-          padding: 88px 32px;
+          padding: 88px 100px;
 
           display: grid;
           grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
@@ -178,7 +179,9 @@ export default function SupplyChainProcurementSection() {
           transform: scale(1.045);
         }
 
-        /* Image overlay */
+        /* =========================================
+           IMAGE OVERLAY
+        ========================================= */
 
         .supply-chain-image-overlay {
           position: absolute;
@@ -227,7 +230,7 @@ export default function SupplyChainProcurementSection() {
         }
 
         /* =========================================
-           LABEL
+           SECTION LABEL
            INTER
         ========================================= */
 
@@ -263,7 +266,7 @@ export default function SupplyChainProcurementSection() {
         }
 
         /* =========================================
-           SUBHEADING / DESCRIPTION
+           SUBHEADING
            PLUS JAKARTA SANS
         ========================================= */
 
@@ -432,9 +435,29 @@ export default function SupplyChainProcurementSection() {
            TABLET
         ========================================= */
 
+        @media (max-width: 1200px) {
+          .supply-chain-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 82px;
+            padding-bottom: 82px;
+
+            gap: 55px;
+          }
+        }
+
+        /* =========================================
+           SMALL TABLET
+        ========================================= */
+
         @media (max-width: 1050px) {
           .supply-chain-container {
-            padding: 76px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 76px;
+            padding-bottom: 76px;
 
             gap: 48px;
           }
@@ -453,7 +476,7 @@ export default function SupplyChainProcurementSection() {
         }
 
         /* =========================================
-           SMALL TABLET
+           MOBILE / TABLET
         ========================================= */
 
         @media (max-width: 850px) {
@@ -462,7 +485,11 @@ export default function SupplyChainProcurementSection() {
 
             gap: 42px;
 
-            padding: 70px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
           .supply-chain-image-card {
@@ -476,7 +503,9 @@ export default function SupplyChainProcurementSection() {
           .supply-chain-content {
             order: 2;
 
+            width: 100%;
             max-width: 760px;
+
             margin: 0 auto;
           }
 
@@ -499,7 +528,11 @@ export default function SupplyChainProcurementSection() {
 
         @media (max-width: 600px) {
           .supply-chain-container {
-            padding: 58px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 58px;
+            padding-bottom: 58px;
 
             gap: 34px;
           }
@@ -578,7 +611,11 @@ export default function SupplyChainProcurementSection() {
 
         @media (max-width: 400px) {
           .supply-chain-container {
-            padding: 50px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 50px;
+            padding-bottom: 50px;
           }
 
           .supply-chain-image-wrapper {

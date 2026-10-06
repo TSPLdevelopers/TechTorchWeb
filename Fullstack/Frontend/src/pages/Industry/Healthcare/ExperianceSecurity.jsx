@@ -77,6 +77,11 @@ export default function PatientExperienceAndSecuritySections() {
            MAIN WRAPPER
         ===================================================== */
 
+        .patient-security-page,
+        .patient-security-page * {
+          box-sizing: border-box;
+        }
+
         .patient-security-page {
           width: 100%;
           overflow: hidden;
@@ -87,16 +92,15 @@ export default function PatientExperienceAndSecuritySections() {
 
         /* =====================================================
            COMMON CONTAINER
+           SAME HERO SPACING SYSTEM
         ===================================================== */
 
         .patient-security-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
           margin: 0 auto;
 
-          padding: 72px 40px;
-
-          box-sizing: border-box;
+          padding: 78px 100px;
         }
 
 
@@ -108,7 +112,6 @@ export default function PatientExperienceAndSecuritySections() {
           width: 100%;
           background: #f6f7fa;
         }
-
 
         .patient-experience-content {
           width: 100%;
@@ -136,23 +139,16 @@ export default function PatientExperienceAndSecuritySections() {
           margin: 0 0 12px;
 
           font-family: "Inter", sans-serif;
-
           font-size: 11px;
-
           line-height: 1.4;
-
           font-weight: 700;
-
           letter-spacing: 0.08em;
-
           text-transform: uppercase;
         }
-
 
         .patient-label {
           color: ${WINE};
         }
-
 
         .security-label {
           color: #f3d9e2;
@@ -168,32 +164,29 @@ export default function PatientExperienceAndSecuritySections() {
           margin: 0 0 16px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 34px;
-
           line-height: 1.2;
-
           font-weight: 700;
-
           letter-spacing: -0.7px;
         }
-
 
         .patient-heading {
           color: ${INK};
         }
 
-
         .security-heading {
           color: #ffffff;
-
           max-width: 650px;
+        }
+
+        .security-heading-break {
+          display: block;
         }
 
 
         /* =====================================================
-           SUBHEADINGS / DESCRIPTIONS
-           PLUS JAKARTA SANS
+           DESCRIPTIONS
+           INTER
         ===================================================== */
 
         .section-description {
@@ -201,35 +194,25 @@ export default function PatientExperienceAndSecuritySections() {
 
           max-width: 720px;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
-
+          font-family: "Inter", sans-serif;
           font-size: 13px;
-
           line-height: 1.75;
-
-          font-weight: 500;
+          font-weight: 400;
         }
-
 
         .patient-description {
           color: ${MUTED};
-
           margin-bottom: 42px;
         }
-
 
         .security-description-wrapper {
           max-width: 720px;
-
           margin-bottom: 42px;
 
           display: flex;
-
           flex-direction: column;
-
           gap: 10px;
         }
-
 
         .security-description {
           color: #e3c3cf;
@@ -263,8 +246,6 @@ export default function PatientExperienceAndSecuritySections() {
 
           padding: 22px;
 
-          box-sizing: border-box;
-
           box-shadow:
             0 1px 4px rgba(0, 0, 0, 0.05);
 
@@ -272,7 +253,6 @@ export default function PatientExperienceAndSecuritySections() {
             transform 0.25s ease,
             box-shadow 0.25s ease;
         }
-
 
         .patient-feature-card:hover {
           transform: translateY(-4px);
@@ -291,8 +271,6 @@ export default function PatientExperienceAndSecuritySections() {
 
           padding: 22px;
 
-          box-sizing: border-box;
-
           border-radius: 14px;
 
           background: rgba(255, 255, 255, 0.08);
@@ -304,7 +282,6 @@ export default function PatientExperienceAndSecuritySections() {
             transform 0.25s ease,
             background 0.25s ease;
         }
-
 
         .security-feature-card:hover {
           transform: translateY(-4px);
@@ -333,17 +310,13 @@ export default function PatientExperienceAndSecuritySections() {
           flex-shrink: 0;
         }
 
-
         .patient-icon {
           background: #fbeef1;
-
           color: ${WINE};
         }
 
-
         .security-icon {
           background: rgba(255, 255, 255, 0.14);
-
           color: #ffffff;
         }
 
@@ -359,17 +332,13 @@ export default function PatientExperienceAndSecuritySections() {
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 14px;
-
           line-height: 1.4;
-
           font-weight: 700;
         }
-
 
         .patient-feature-title {
           color: ${INK};
         }
-
 
         .security-feature-title {
           color: #ffffff;
@@ -387,17 +356,13 @@ export default function PatientExperienceAndSecuritySections() {
           font-family: "Inter", sans-serif;
 
           font-size: 12px;
-
           line-height: 1.7;
-
           font-weight: 400;
         }
-
 
         .patient-feature-body {
           color: ${MUTED};
         }
-
 
         .security-feature-body {
           color: #d9b7c4;
@@ -405,28 +370,20 @@ export default function PatientExperienceAndSecuritySections() {
 
 
         /* =====================================================
-           LARGE TABLET
+           LARGE TABLET / LAPTOP
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
 
           .patient-security-container {
-            padding: 65px 32px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
-
-
-          .section-heading {
-            font-size: 32px;
-          }
-
 
           .feature-grid {
             grid-template-columns:
-              repeat(2, minmax(0, 1fr));
-
-            gap: 18px;
+              repeat(3, minmax(0, 1fr));
           }
-
         }
 
 
@@ -434,47 +391,69 @@ export default function PatientExperienceAndSecuritySections() {
            TABLET
         ===================================================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
 
           .patient-security-container {
-            padding: 58px 26px;
+            padding-top: 65px;
+            padding-bottom: 65px;
+
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
+          .section-heading {
+            font-size: 32px;
+          }
+
+          .feature-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+          }
+        }
+
+
+        /* =====================================================
+           SMALL TABLET
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+          .patient-security-container {
+            padding-top: 58px;
+            padding-bottom: 58px;
+
+            padding-left: 40px;
+            padding-right: 40px;
+          }
 
           .section-heading {
             font-size: 30px;
-
             line-height: 1.22;
           }
 
-
           .section-description {
             font-size: 12.5px;
-
             line-height: 1.72;
           }
-
 
           .patient-description {
             margin-bottom: 34px;
           }
 
-
           .security-description-wrapper {
             margin-bottom: 34px;
           }
-
 
           .feature-grid {
             gap: 16px;
           }
 
-
           .patient-feature-card,
           .security-feature-card {
             padding: 20px;
           }
-
         }
 
 
@@ -486,81 +465,60 @@ export default function PatientExperienceAndSecuritySections() {
 
           .patient-security-container {
             padding:
-              48px 20px 52px;
+              48px 24px 52px;
           }
-
 
           .section-label {
             font-size: 9px;
-
             margin-bottom: 10px;
           }
 
-
           .section-heading {
             font-size: 27px;
-
             line-height: 1.2;
-
             letter-spacing: -0.5px;
-
             margin-bottom: 14px;
           }
 
-
           .section-description {
             font-size: 11.5px;
-
             line-height: 1.72;
           }
-
 
           .patient-description {
             margin-bottom: 30px;
           }
 
-
           .security-description-wrapper {
             gap: 8px;
-
             margin-bottom: 30px;
           }
 
-
           .feature-grid {
             grid-template-columns: 1fr;
-
             gap: 14px;
           }
-
 
           .patient-feature-card,
           .security-feature-card {
             padding: 19px;
           }
 
-
           .feature-icon {
             width: 38px;
             height: 38px;
-
             margin-bottom: 14px;
           }
 
-
           .feature-title {
             font-size: 13px;
-
             margin-bottom: 7px;
           }
 
-
           .feature-body {
             font-size: 11px;
-
             line-height: 1.68;
           }
-
         }
 
 
@@ -568,61 +526,49 @@ export default function PatientExperienceAndSecuritySections() {
            SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
 
           .patient-security-container {
             padding:
               42px 16px 46px;
           }
 
-
           .section-heading {
             font-size: 24px;
-
             line-height: 1.2;
           }
 
-
           .section-description {
             font-size: 11px;
-
             line-height: 1.68;
           }
-
 
           .patient-description {
             margin-bottom: 27px;
           }
 
-
           .security-description-wrapper {
             margin-bottom: 27px;
           }
-
 
           .patient-feature-card,
           .security-feature-card {
             padding: 17px;
           }
 
-
           .feature-icon {
             width: 36px;
             height: 36px;
-
             margin-bottom: 13px;
           }
-
 
           .feature-title {
             font-size: 12.5px;
           }
 
-
           .feature-body {
             font-size: 10.5px;
           }
-
         }
 
 
@@ -634,24 +580,20 @@ export default function PatientExperienceAndSecuritySections() {
 
           .patient-security-container {
             padding:
-              38px 14px 42px;
+              38px 16px 42px;
           }
-
 
           .section-heading {
             font-size: 22px;
           }
 
-
           .section-description {
             font-size: 10.5px;
           }
 
-
           .feature-body {
             font-size: 10px;
           }
-
         }
 
 
@@ -670,7 +612,6 @@ export default function PatientExperienceAndSecuritySections() {
           .security-feature-card:hover {
             transform: none;
           }
-
         }
 
       `}</style>
@@ -701,7 +642,7 @@ export default function PatientExperienceAndSecuritySections() {
             </h2>
 
 
-            {/* Subheading - Plus Jakarta Sans */}
+            {/* Description - Inter */}
 
             <p className="section-description patient-description">
               Digital services can help healthcare providers extend
@@ -782,7 +723,7 @@ export default function PatientExperienceAndSecuritySections() {
           </h2>
 
 
-          {/* Subheadings - Plus Jakarta Sans */}
+          {/* Descriptions - Inter */}
 
           <div className="security-description-wrapper">
 

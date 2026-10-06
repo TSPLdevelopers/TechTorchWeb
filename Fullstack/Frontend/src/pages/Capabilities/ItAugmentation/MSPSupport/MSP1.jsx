@@ -1,20 +1,15 @@
 import React from "react";
 import {
   ArrowRight,
-  BarChart3,
-  CheckCircle2,
   Cloud,
   Code2,
   Headphones,
-  LifeBuoy,
   Network,
   ShieldCheck,
   Wrench,
   Activity,
   Server,
   Settings,
-  Zap,
-  LockKeyhole,
 } from "lucide-react";
 
 const MSPSupport = () => {
@@ -104,6 +99,9 @@ const MSPSupport = () => {
   return (
     <>
       <style>{`
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
 
         * {
           box-sizing: border-box;
@@ -117,8 +115,8 @@ const MSPSupport = () => {
           margin: 0;
           padding: 0;
           background: #f7f6f4;
-          font-family: Arial, Helvetica, sans-serif;
           color: #242426;
+          font-family: "Inter", Arial, Helvetica, sans-serif;
         }
 
         .msp-page {
@@ -127,12 +125,24 @@ const MSPSupport = () => {
           background: #f7f6f4;
         }
 
-        /* =====================================================
+        .msp-page h1,
+        .msp-page h2,
+        .msp-page h3 {
+          font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+        }
+
+        /* =========================================================
            COMMON
-        ===================================================== */
+           Desktop = 100px
+           Tablet  = 40px
+           Mobile  = 24px
+           Small   = 16px
+        ========================================================= */
 
         .msp-container {
-          width: min(1180px, calc(100% - 70px));
+          width: 100%;
+          padding-left: 100px;
+          padding-right: 100px;
           margin: 0 auto;
         }
 
@@ -140,11 +150,13 @@ const MSPSupport = () => {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          padding: 5px 10px;
+          padding: 6px 11px;
+          border: 1px solid #dcc5d1;
           border-radius: 20px;
           background: #f0e7ec;
           color: #72003e;
-          font-size: 10px;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 9px;
           font-weight: 800;
           letter-spacing: 0.8px;
           line-height: 1;
@@ -155,26 +167,29 @@ const MSPSupport = () => {
           content: "";
           width: 5px;
           height: 5px;
+          flex-shrink: 0;
           border-radius: 50%;
           background: #72003e;
         }
 
-        /* =====================================================
+        /* =========================================================
            HERO
-        ===================================================== */
+        ========================================================= */
 
         .msp-hero {
           width: 100%;
           background: #ffffff;
-          padding: 72px 0 82px;
+          padding: 80px 0 88px;
         }
 
         .msp-hero-inner {
-          width: min(1180px, calc(100% - 70px));
+          width: 100%;
+          padding-left: 100px;
+          padding-right: 100px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: minmax(0, 1.02fr) minmax(390px, 0.78fr);
-          gap: 55px;
+          grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.78fr);
+          gap: 65px;
           align-items: center;
         }
 
@@ -183,38 +198,37 @@ const MSPSupport = () => {
         }
 
         .msp-hero h1 {
-          margin: 22px 0 5px;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 36px;
-          line-height: 0.98;
-          letter-spacing: -3px;
-          font-weight: 500;
+          margin: 22px 0 8px;
           color: #222326;
+          font-size: clamp(42px, 4.2vw, 60px);
+          line-height: 1;
+          letter-spacing: -3px;
+          font-weight: 650;
         }
 
         .msp-hero-subtitle {
-          margin: 0 0 19px;
+          margin: 0 0 20px;
           color: #69003c;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 23px;
-          line-height: 2;
-          font-weight: 600;
-          letter-spacing: -0.5px;
+          font-size: clamp(21px, 2vw, 27px);
+          line-height: 1.25;
+          font-weight: 650;
+          letter-spacing: -0.7px;
         }
 
         .msp-hero-description {
-          max-width: 650px;
+          max-width: 690px;
           margin: 0;
           color: #343438;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
-          line-height: 1.58;
+          line-height: 1.7;
         }
 
         .msp-hero-description.secondary {
           margin-top: 14px;
           color: #71686d;
           font-size: 13px;
-          line-height: 1.55;
+          line-height: 1.65;
         }
 
         .msp-primary-btn {
@@ -222,15 +236,15 @@ const MSPSupport = () => {
           align-items: center;
           justify-content: center;
           gap: 9px;
-          margin-top: 25px;
-          padding: 12px 23px;
+          margin-top: 27px;
+          padding: 13px 24px;
           border: none;
           border-radius: 8px;
           background: #6d003d;
-           transform: translateY(15px);
           color: #ffffff;
-          font-size: 11px;
-          font-weight: 600;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 10px;
+          font-weight: 700;
           letter-spacing: 0.7px;
           text-transform: uppercase;
           cursor: pointer;
@@ -265,23 +279,28 @@ const MSPSupport = () => {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          padding: 6px 10px;
+          padding: 7px 11px;
           border-radius: 7px;
           background: #eeeeef;
           color: #424246;
-          font-size: 11px;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 10px;
           font-weight: 600;
-          letter-spacing: 0.35px;
+          letter-spacing: 0.25px;
         }
 
         .msp-hero-point::before {
           content: "";
           width: 5px;
           height: 5px;
+          flex-shrink: 0;
           border-radius: 50%;
           background: #72003e;
-          flex-shrink: 0;
         }
+
+        /* =========================================================
+           HERO IMAGE
+        ========================================================= */
 
         .msp-hero-image-area {
           position: relative;
@@ -291,9 +310,9 @@ const MSPSupport = () => {
         .msp-hero-image-wrapper {
           position: relative;
           width: 100%;
-          aspect-ratio: 1.18 / 1;
+          aspect-ratio: 1.12 / 1;
           overflow: hidden;
-          border-radius: 15px;
+          border-radius: 17px;
           background: #420026;
           box-shadow: 0 18px 35px rgba(42, 19, 30, 0.16);
         }
@@ -307,8 +326,8 @@ const MSPSupport = () => {
 
         .msp-health-badge {
           position: absolute;
-          top: 15px;
-          right: 15px;
+          top: 16px;
+          right: 16px;
           display: flex;
           align-items: center;
           gap: 7px;
@@ -316,7 +335,8 @@ const MSPSupport = () => {
           border-radius: 20px;
           background: rgba(255, 255, 255, 0.95);
           color: #36363a;
-          font-size: 11px;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 10px;
           font-weight: 700;
           box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
         }
@@ -361,16 +381,18 @@ const MSPSupport = () => {
         .msp-image-card-title {
           margin: 0;
           color: #2c2c30;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
-          line-height: 1.3;
+          line-height: 1.35;
           font-weight: 800;
         }
 
         .msp-image-card-text {
           margin: 3px 0 0;
           color: #827a7f;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
-          line-height: 1.3;
+          line-height: 1.35;
         }
 
         .msp-image-card-shield {
@@ -386,22 +408,22 @@ const MSPSupport = () => {
           color: #70003f;
         }
 
-        /* =====================================================
-           SECOND SECTION
-        ===================================================== */
+        /* =========================================================
+           OPERATIONAL RESILIENCE
+        ========================================================= */
 
         .msp-resilience {
           width: 100%;
-          padding: 105px 0 90px;
+          padding: 105px 100px 95px;
           background: #f8f7f2;
         }
 
         .msp-resilience-inner {
-          width: min(1180px, calc(100% - 70px));
+          width: 100%;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: minmax(350px, 0.8fr) minmax(0, 1.12fr);
-          gap: 65px;
+          grid-template-columns: minmax(380px, 0.8fr) minmax(0, 1.12fr);
+          gap: 75px;
           align-items: center;
         }
 
@@ -438,7 +460,8 @@ const MSPSupport = () => {
           border-radius: 9px;
           background: rgba(255, 255, 255, 0.96);
           color: #37373b;
-          font-size: 10px;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 9px;
           font-weight: 800;
           letter-spacing: 0.35px;
         }
@@ -453,25 +476,25 @@ const MSPSupport = () => {
 
         .msp-resilience-content h2 {
           margin: 19px 0 20px;
-          max-width: 650px;
+          max-width: 700px;
           color: #252529;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 30px;
+          font-size: clamp(32px, 3vw, 43px);
           line-height: 1.08;
-          letter-spacing: -1.8px;
-          font-weight: 550;
+          letter-spacing: -2px;
+          font-weight: 650;
         }
 
         .msp-body-text {
           margin: 0;
           color: #776c71;
-          font-size: 14px;
-          line-height: 1.65;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 13.5px;
+          line-height: 1.7;
         }
 
         .msp-highlight {
           position: relative;
-          margin: 21px 0;
+          margin: 22px 0;
           padding: 18px 22px;
           overflow: hidden;
           border-radius: 11px;
@@ -505,8 +528,9 @@ const MSPSupport = () => {
           z-index: 3;
           margin: 0;
           color: #29292d;
-          font-size: 14px;
-          line-height: 1.55;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 13.5px;
+          line-height: 1.6;
           font-weight: 600;
         }
 
@@ -515,7 +539,7 @@ const MSPSupport = () => {
         }
 
         .msp-bottom-highlight {
-          margin-top: 20px;
+          margin-top: 21px;
           padding: 17px 19px;
           border-radius: 10px;
           background: #e9eaeb;
@@ -524,53 +548,54 @@ const MSPSupport = () => {
         .msp-bottom-highlight p {
           margin: 0;
           color: #303035;
-          font-size: 13px;
-          line-height: 1.55;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12.5px;
+          line-height: 1.6;
           font-weight: 500;
         }
 
-        /* =====================================================
+        /* =========================================================
            SERVICES
-        ===================================================== */
+        ========================================================= */
 
         .msp-services {
           width: 100%;
-          padding: 78px 0 100px;
+          padding: 82px 0 105px;
           background: #ffffff;
         }
 
         .msp-services-header {
-          margin-bottom: 38px;
+          margin-bottom: 40px;
         }
 
         .msp-services-header h2 {
-          margin: 12px 0 8px;
+          margin: 13px 0 9px;
           color: #28282c;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 32px;
+          font-size: clamp(32px, 3vw, 43px);
           line-height: 1.1;
-          letter-spacing: -1.5px;
-          font-weight: 600;
+          letter-spacing: -1.8px;
+          font-weight: 650;
         }
 
         .msp-services-header p {
-          max-width: 720px;
+          max-width: 760px;
           margin: 0;
           color: #746b70;
-          font-size: 14px;
-          line-height: 1.55;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 13.5px;
+          line-height: 1.6;
         }
 
         .msp-services-grid {
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 17px;
+          gap: 18px;
         }
 
         .msp-service-card {
           position: relative;
           min-width: 0;
-          min-height: 320px;
+          min-height: 330px;
           padding: 24px 23px 18px;
           overflow: hidden;
           border: 1px solid #ebe5e8;
@@ -593,12 +618,17 @@ const MSPSupport = () => {
           border-radius: 50%;
           background: #f5f1f3;
           z-index: 0;
+          transition: transform 0.3s ease;
         }
 
         .msp-service-card:hover {
           transform: translateY(-5px);
           border-color: #d9bdcb;
           box-shadow: 0 12px 28px rgba(75, 15, 45, 0.08);
+        }
+
+        .msp-service-card:hover::after {
+          transform: scale(1.2);
         }
 
         .msp-service-top {
@@ -635,6 +665,7 @@ const MSPSupport = () => {
           border-radius: 50%;
           background: #efeaed;
           color: #72003e;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 700;
         }
@@ -644,9 +675,10 @@ const MSPSupport = () => {
           z-index: 2;
           margin-bottom: 7px;
           color: #72003e;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
           line-height: 1.2;
-          font-weight: 700;
+          font-weight: 800;
           letter-spacing: 0.45px;
         }
 
@@ -654,12 +686,11 @@ const MSPSupport = () => {
           position: relative;
           z-index: 2;
           margin: 0;
-          min-height: 42px;
+          min-height: 43px;
           color: #27272b;
-          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 17px;
-          line-height: 1.13;
-          letter-spacing: -0.4px;
+          line-height: 1.18;
+          letter-spacing: -0.45px;
           font-weight: 700;
         }
 
@@ -668,8 +699,9 @@ const MSPSupport = () => {
           z-index: 2;
           margin: 14px 0 0;
           color: #746b70;
-          font-size: 13px;
-          line-height: 1.62;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12.5px;
+          line-height: 1.65;
         }
 
         .msp-service-footer {
@@ -691,7 +723,8 @@ const MSPSupport = () => {
           align-items: center;
           gap: 5px;
           color: #72003e;
-          font-size: 10px;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 9px;
           font-weight: 700;
           white-space: nowrap;
         }
@@ -700,6 +733,7 @@ const MSPSupport = () => {
           content: "";
           width: 5px;
           height: 5px;
+          flex-shrink: 0;
           border-radius: 50%;
           background: #72003e;
         }
@@ -709,104 +743,49 @@ const MSPSupport = () => {
           border-radius: 4px;
           background: #ededee;
           color: #777177;
-          font-size: 9px;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 8.5px;
           font-weight: 700;
           white-space: nowrap;
         }
 
-        /* =====================================================
-           BOTTOM AREA
-        ===================================================== */
+        /* =========================================================
+           RESPONSIVE - LARGE TABLET
+        ========================================================= */
 
-        .msp-support-strip {
-          width: 100%;
-          padding: 65px 0;
-          background: #f8f7f2;
-        }
+        @media (max-width: 1200px) {
+          .msp-container,
+          .msp-hero-inner {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
 
-        .msp-support-inner {
-          width: min(1180px, calc(100% - 70px));
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 40px;
-        }
-
-        .msp-support-content h2 {
-          margin: 12px 0 8px;
-          color: #29292d;
-          font-size: 32px;
-          line-height: 1.15;
-          font-weight: 500;
-          letter-spacing: -1px;
-        }
-
-        .msp-support-content p {
-          max-width: 680px;
-          margin: 0;
-          color: #746c70;
-          font-size: 13px;
-          line-height: 1.6;
-        }
-
-        .msp-support-button {
-          flex-shrink: 0;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px 20px;
-          border: none;
-          border-radius: 7px;
-          background: #70003f;
-          color: white;
-          font-size: 10px;
-          font-weight: 800;
-          letter-spacing: 0.5px;
-          cursor: pointer;
-        }
-
-        .msp-support-button:hover {
-          background: #890551;
-        }
-
-        /* =====================================================
-           LARGE TABLET
-        ===================================================== */
-
-        @media (max-width: 1100px) {
-
-          .msp-hero-inner,
-          .msp-resilience-inner,
-          .msp-support-inner {
-            width: min(100% - 50px, 1050px);
+          .msp-resilience {
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .msp-hero-inner {
-            gap: 38px;
+            grid-template-columns: minmax(0, 1fr) minmax(360px, 0.8fr);
+            gap: 42px;
           }
 
           .msp-resilience-inner {
-            gap: 40px;
+            gap: 45px;
           }
 
           .msp-services-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
-
-          .msp-service-card {
-            min-height: 310px;
-          }
         }
 
-        /* =====================================================
+        /* =========================================================
            TABLET
-        ===================================================== */
+        ========================================================= */
 
-        @media (max-width: 850px) {
-
+        @media (max-width: 900px) {
           .msp-hero {
-            padding: 55px 0 65px;
+            padding: 62px 0 70px;
           }
 
           .msp-hero-inner {
@@ -815,79 +794,83 @@ const MSPSupport = () => {
           }
 
           .msp-hero-content {
-            max-width: 720px;
+            max-width: 760px;
           }
 
           .msp-hero-image-area {
-            max-width: 650px;
+            width: min(100%, 680px);
             margin: 0 auto;
           }
 
           .msp-resilience {
-            padding: 75px 0;
+            padding-top: 78px;
+            padding-bottom: 78px;
           }
 
           .msp-resilience-inner {
             grid-template-columns: 1fr;
-            gap: 42px;
+            gap: 45px;
           }
 
           .msp-resilience-image {
-            max-width: 650px;
+            width: min(100%, 680px);
             margin: 0 auto;
           }
 
           .msp-resilience-content {
-            max-width: 750px;
+            max-width: 780px;
           }
 
           .msp-services {
-            padding: 65px 0 75px;
-          }
-
-          .msp-support-inner {
-            align-items: flex-start;
-            flex-direction: column;
+            padding-top: 68px;
+            padding-bottom: 82px;
           }
         }
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+        /* =========================================================
+           MOBILE - 24px
+        ========================================================= */
 
-        @media (max-width: 600px) {
-
+        @media (max-width: 700px) {
           .msp-container,
-          .msp-hero-inner,
-          .msp-resilience-inner,
-          .msp-support-inner {
-            width: calc(100% - 30px);
+          .msp-hero-inner {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .msp-resilience {
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .msp-hero {
-            padding: 42px 0 50px;
+            padding-top: 45px;
+            padding-bottom: 55px;
           }
 
           .msp-section-label {
+            padding: 6px 9px;
             font-size: 8px;
-            padding: 5px 8px;
+            letter-spacing: 0.65px;
           }
 
           .msp-hero h1 {
-            margin-top: 17px;
+            margin-top: 18px;
             font-size: 42px;
             line-height: 1;
             letter-spacing: -2px;
           }
 
           .msp-hero-subtitle {
+            margin-bottom: 17px;
             font-size: 19px;
-            line-height: 1.25;
+            line-height: 1.3;
+            letter-spacing: -0.4px;
           }
 
           .msp-hero-description {
-            font-size: 13px;
-            line-height: 1.6;
+            font-size: 12.5px;
+            line-height: 1.65;
           }
 
           .msp-hero-description.secondary {
@@ -896,7 +879,8 @@ const MSPSupport = () => {
 
           .msp-primary-btn {
             width: 100%;
-            margin-top: 21px;
+            margin-top: 22px;
+            min-height: 43px;
           }
 
           .msp-hero-points {
@@ -905,7 +889,7 @@ const MSPSupport = () => {
 
           .msp-hero-point {
             font-size: 9px;
-            padding: 6px 8px;
+            padding: 6px 9px;
           }
 
           .msp-hero-image-wrapper {
@@ -917,7 +901,7 @@ const MSPSupport = () => {
             top: 11px;
             right: 11px;
             padding: 7px 10px;
-            font-size: 9px;
+            font-size: 8.5px;
           }
 
           .msp-hero-image-card {
@@ -947,11 +931,12 @@ const MSPSupport = () => {
           }
 
           .msp-resilience {
-            padding: 60px 0;
+            padding-top: 62px;
+            padding-bottom: 65px;
           }
 
           .msp-resilience-inner {
-            width: calc(100% - 30px);
+            gap: 38px;
           }
 
           .msp-resilience-image-frame {
@@ -967,14 +952,15 @@ const MSPSupport = () => {
           }
 
           .msp-resilience-content h2 {
-            margin: 16px 0;
-            font-size: 34px;
+            margin: 17px 0;
+            font-size: 33px;
+            line-height: 1.1;
             letter-spacing: -1.4px;
           }
 
           .msp-body-text {
-            font-size: 12.5px;
-            line-height: 1.62;
+            font-size: 12px;
+            line-height: 1.68;
           }
 
           .msp-highlight {
@@ -983,7 +969,7 @@ const MSPSupport = () => {
           }
 
           .msp-highlight p {
-            font-size: 13px;
+            font-size: 12.5px;
           }
 
           .msp-bottom-highlight {
@@ -995,20 +981,22 @@ const MSPSupport = () => {
           }
 
           .msp-services {
-            padding: 55px 0 65px;
+            padding-top: 58px;
+            padding-bottom: 70px;
           }
 
           .msp-services-header {
-            margin-bottom: 28px;
+            margin-bottom: 29px;
           }
 
           .msp-services-header h2 {
-            font-size: 32px;
+            font-size: 31px;
             letter-spacing: -1.2px;
           }
 
           .msp-services-header p {
             font-size: 12px;
+            line-height: 1.6;
           }
 
           .msp-services-grid {
@@ -1017,7 +1005,7 @@ const MSPSupport = () => {
           }
 
           .msp-service-card {
-            min-height: 295px;
+            min-height: 300px;
             padding: 21px 19px 18px;
           }
 
@@ -1027,48 +1015,51 @@ const MSPSupport = () => {
 
           .msp-service-description {
             font-size: 12px;
-            line-height: 1.6;
+            line-height: 1.62;
           }
 
           .msp-service-footer {
             left: 19px;
             right: 19px;
           }
-
-          .msp-support-strip {
-            padding: 50px 0;
-          }
-
-          .msp-support-inner {
-            width: calc(100% - 30px);
-          }
-
-          .msp-support-content h2 {
-            font-size: 29px;
-          }
-
-          .msp-support-content p {
-            font-size: 12px;
-          }
-
-          .msp-support-button {
-            width: 100%;
-            justify-content: center;
-          }
         }
 
-        /* =====================================================
-           SMALL MOBILE
-        ===================================================== */
+        /* =========================================================
+           SMALL MOBILE - 16px
+        ========================================================= */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
+          .msp-container,
+          .msp-hero-inner {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .msp-resilience {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .msp-hero {
+            padding-top: 38px;
+            padding-bottom: 48px;
+          }
 
           .msp-hero h1 {
-            font-size: 37px;
+            font-size: 36px;
+            letter-spacing: -1.7px;
           }
 
           .msp-hero-subtitle {
             font-size: 17px;
+          }
+
+          .msp-hero-description {
+            font-size: 12px;
+          }
+
+          .msp-hero-description.secondary {
+            font-size: 11.5px;
           }
 
           .msp-hero-points {
@@ -1080,23 +1071,98 @@ const MSPSupport = () => {
             width: fit-content;
           }
 
+          .msp-hero-image-wrapper {
+            aspect-ratio: 1 / 1;
+          }
+
+          .msp-health-badge {
+            font-size: 8px;
+          }
+
+          .msp-image-card-title {
+            font-size: 9px;
+          }
+
+          .msp-image-card-text {
+            font-size: 7.5px;
+          }
+
+          .msp-resilience {
+            padding-top: 52px;
+            padding-bottom: 58px;
+          }
+
           .msp-resilience-content h2 {
-            font-size: 30px;
+            font-size: 29px;
+            letter-spacing: -1.1px;
+          }
+
+          .msp-body-text {
+            font-size: 11.5px;
+          }
+
+          .msp-highlight p {
+            font-size: 11.5px;
+          }
+
+          .msp-services {
+            padding-top: 50px;
+            padding-bottom: 60px;
           }
 
           .msp-services-header h2 {
-            font-size: 29px;
+            font-size: 28px;
+          }
+
+          .msp-services-header p {
+            font-size: 11.5px;
           }
 
           .msp-service-card {
             min-height: 305px;
+            padding-left: 17px;
+            padding-right: 17px;
           }
 
           .msp-service-description {
             font-size: 11.5px;
           }
+
+          .msp-service-footer {
+            left: 17px;
+            right: 17px;
+          }
         }
 
+        /* =========================================================
+           EXTRA SMALL
+        ========================================================= */
+
+        @media (max-width: 360px) {
+          .msp-hero h1 {
+            font-size: 32px;
+          }
+
+          .msp-hero-subtitle {
+            font-size: 16px;
+          }
+
+          .msp-resilience-content h2 {
+            font-size: 27px;
+          }
+
+          .msp-services-header h2 {
+            font-size: 26px;
+          }
+
+          .msp-service-card {
+            min-height: 315px;
+          }
+
+          .msp-service-description {
+            font-size: 11px;
+          }
+        }
       `}</style>
 
       <main className="msp-page">
@@ -1106,11 +1172,9 @@ const MSPSupport = () => {
         ===================================================== */}
 
         <section className="msp-hero">
-
           <div className="msp-hero-inner">
 
             <div className="msp-hero-content">
-
               <div className="msp-section-label">
                 IT Augmentation • Managed Services
               </div>
@@ -1140,10 +1204,9 @@ const MSPSupport = () => {
                 <ArrowRight size={15} />
               </button>
 
-              <div className="msp-hero-line"></div>
+              <div className="msp-hero-line" />
 
               <div className="msp-hero-points">
-
                 <div className="msp-hero-point">
                   Proactive Maintenance
                 </div>
@@ -1155,13 +1218,12 @@ const MSPSupport = () => {
                 <div className="msp-hero-point">
                   Enterprise SLA Support
                 </div>
-
               </div>
-
             </div>
 
-            <div className="msp-hero-image-area">
+            {/* HERO IMAGE */}
 
+            <div className="msp-hero-image-area">
               <div className="msp-hero-image-wrapper">
 
                 <img
@@ -1170,7 +1232,7 @@ const MSPSupport = () => {
                 />
 
                 <div className="msp-health-badge">
-                  <span className="msp-health-dot"></span>
+                  <span className="msp-health-dot" />
                   99.98% Telemetry Health
                 </div>
 
@@ -1181,7 +1243,6 @@ const MSPSupport = () => {
                   </div>
 
                   <div className="msp-image-card-content">
-
                     <p className="msp-image-card-title">
                       IT Operations & Infrastructure Reliability
                     </p>
@@ -1189,7 +1250,6 @@ const MSPSupport = () => {
                     <p className="msp-image-card-text">
                       Real-time Telemetry & Rapid Incident Triage
                     </p>
-
                   </div>
 
                   <div className="msp-image-card-shield">
@@ -1197,33 +1257,26 @@ const MSPSupport = () => {
                   </div>
 
                 </div>
-
               </div>
-
             </div>
 
           </div>
-
         </section>
-
 
         {/* =====================================================
             OPERATIONAL RESILIENCE
         ===================================================== */}
 
         <section className="msp-resilience">
-
           <div className="msp-resilience-inner">
 
             <div className="msp-resilience-image">
 
               <div className="msp-resilience-image-frame">
-
                 <img
                   src="/MSPSupport2.png"
                   alt="IT support team collaboration"
                 />
-
               </div>
 
               <div className="msp-embedded-badge">
@@ -1232,7 +1285,6 @@ const MSPSupport = () => {
               </div>
 
             </div>
-
 
             <div className="msp-resilience-content">
 
@@ -1254,13 +1306,11 @@ const MSPSupport = () => {
               </p>
 
               <div className="msp-highlight">
-
                 <p>
                   TechTorch MSP Support delivers rigorous, proactive
                   infrastructure governance tailored to high-availability
                   enterprise environments.
                 </p>
-
               </div>
 
               <p className="msp-body-text">
@@ -1281,7 +1331,6 @@ const MSPSupport = () => {
               </p>
 
               <div className="msp-bottom-highlight">
-
                 <p>
                   Whether your organization needs assistance with
                   infrastructure, software, cloud environments, system
@@ -1289,15 +1338,12 @@ const MSPSupport = () => {
                   Support services provide a dependable foundation for
                   everyday IT operations.
                 </p>
-
               </div>
 
             </div>
 
           </div>
-
         </section>
-
 
         {/* =====================================================
             SERVICES
@@ -1325,11 +1371,9 @@ const MSPSupport = () => {
 
             </div>
 
-
             <div className="msp-services-grid">
 
               {services.map((service) => (
-
                 <article
                   className="msp-service-card"
                   key={service.number}
@@ -1372,7 +1416,6 @@ const MSPSupport = () => {
                   </div>
 
                 </article>
-
               ))}
 
             </div>
@@ -1380,9 +1423,6 @@ const MSPSupport = () => {
           </div>
 
         </section>
-
-
-        
 
       </main>
     </>

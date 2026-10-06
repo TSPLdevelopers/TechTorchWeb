@@ -72,242 +72,209 @@ export default function CustomArchitectureGridSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full overflow-hidden"
-      style={{
-        background: WINE,
-        fontFamily: "Inter, sans-serif",
-      }}
+      className="custom-architecture-section"
     >
-      {/* MAIN CONTAINER */}
-      <div
-        className="
-          w-full
-          max-w-[1400px]
-          mx-auto
-          px-4
-          sm:px-6
-          md:px-10
-          lg:px-[100px]
-          py-12
-          sm:py-14
-          md:py-16
-          lg:py-20
-        "
-      >
-        {/* LABEL */}
-        <p
-          className="text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] mb-3"
-          style={{
-            color: "#f3d9e2",
-            fontFamily: "Inter, sans-serif",
-          }}
-        >
-          CUSTOM ARCHITECTURE
-        </p>
-
-        {/* HEADING */}
-        <h2
-          className="
-            text-2xl
-            sm:text-3xl
-            md:text-[2rem]
-            lg:text-[2.25rem]
-            leading-tight
-            font-bold
-            tracking-tight
-            text-white
-            mb-4
-          "
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
-        >
-          Extend Your E-Commerce Technology
-        </h2>
-
-        {/* SUBHEADING */}
-        <p
-          className="
-            text-xs
-            sm:text-sm
-            md:text-[15px]
-            leading-relaxed
-            max-w-2xl
-            mb-8
-            sm:mb-10
-            md:mb-12
-          "
-          style={{
-            color: "#e3c3cf",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-          }}
-        >
-          When a business requires a custom application or integration,
-          TechTorch provides software engineering capabilities across web
-          applications, mobile applications, APIs, system integration and
-          software development.
-        </p>
-
-        {/* CARDS */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-5
-            sm:gap-6
-            lg:gap-7
-          "
-        >
-          {cards.map(({ icon: Icon, title, body }, index) => (
-            <div
-              key={title}
-              className={`
-                custom-card
-                group
-                relative
-                w-full
-                min-w-0
-                rounded-xl
-                p-5
-                sm:p-6
-                ${isVisible ? "custom-card-visible" : "custom-card-hidden"}
-              `}
-              style={{
-                transitionDelay: isVisible ? `${index * 160}ms` : "0ms",
-              }}
-            >
-              {/* ICON */}
-              <span className="card-icon">
-                <Icon size={17} strokeWidth={1.8} />
-              </span>
-
-              {/* TITLE */}
-              <h3
-                className="
-                  mt-4
-                  text-sm
-                  sm:text-[15px]
-                  font-semibold
-                  leading-snug
-                "
-                style={{
-                  color: "#ffffff",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                {title}
-              </h3>
-
-              {/* DESCRIPTION */}
-              <p
-                className="
-                  mt-2
-                  text-xs
-                  sm:text-[13px]
-                  leading-[1.7]
-                "
-                style={{
-                  color: "#d9b7c4",
-                  fontFamily: "Inter, sans-serif",
-                }}
-              >
-                {body}
-              </p>
-
-              {/* BOTTOM LINE */}
-              <div className="card-bottom-line" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* CUSTOM CSS */}
       <style>{`
-        /* CARD ENTRY ANIMATION */
-        .custom-card {
-          opacity: 0;
-          transform: translateY(45px) scale(0.88);
-          filter: blur(5px);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.12);
+        /* =========================================
+           SECTION
+        ========================================= */
 
-          transition:
-            opacity 0.7s ease,
-            transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-            filter 0.7s ease,
-            background 0.35s ease,
-            border-color 0.35s ease,
-            box-shadow 0.35s ease;
+        .custom-architecture-section {
+          width: 100%;
+          overflow: hidden;
+          background: ${WINE};
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
         }
 
-        .custom-card-visible {
+        /* =========================================
+           MAIN WRAPPER
+        ========================================= */
+
+        .custom-architecture-wrapper {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding: 80px 100px;
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           LABEL
+        ========================================= */
+
+        .custom-architecture-label {
+          margin: 0 0 14px;
+          color: #f3d9e2;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: 0.18em;
+        }
+
+        /* =========================================
+           HEADING
+        ========================================= */
+
+        .custom-architecture-heading {
+          margin: 0 0 16px;
+          color: #ffffff;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+        }
+
+        /* =========================================
+           SUBHEADING
+        ========================================= */
+
+        .custom-architecture-subheading {
+          max-width: 850px;
+          margin: 0 0 48px;
+          color: #e3c3cf;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 1.75;
+        }
+
+        /* =========================================
+           CARDS GRID
+        ========================================= */
+
+        .custom-architecture-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .custom-architecture-card {
+          position: relative;
+          width: 100%;
+          min-width: 0;
+          min-height: 220px;
+          padding: 24px;
+          box-sizing: border-box;
+          overflow: hidden;
+
+          display: flex;
+          flex-direction: column;
+
+          border-radius: 16px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          background: rgba(255, 255, 255, 0.08);
+
+          opacity: 0;
+          transform: translateY(35px) scale(0.96);
+          filter: blur(3px);
+
+          transition:
+            opacity 700ms ease,
+            transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+            filter 700ms ease,
+            background 350ms ease,
+            border-color 350ms ease,
+            box-shadow 350ms ease;
+        }
+
+        .custom-architecture-card.visible {
           opacity: 1;
           transform: translateY(0) scale(1);
           filter: blur(0);
         }
 
-        /* CARD HOVER */
-        .custom-card-visible:hover {
-          transform: translateY(-8px) scale(1.025);
+        .custom-architecture-card.visible:hover {
+          transform: translateY(-8px) scale(1.02);
           background: #fbeef1;
           border-color: rgba(122, 31, 61, 0.25);
 
           box-shadow:
-            0 18px 35px rgba(122, 31, 61, 0.18),
-            0 5px 12px rgba(0, 0, 0, 0.05);
+            0 18px 35px rgba(45, 0, 20, 0.18),
+            0 5px 12px rgba(0, 0, 0, 0.06);
         }
 
-        /* ICON - DOES NOT MOVE */
-        .card-icon {
-          width: 36px;
-          height: 36px;
+        /* =========================================
+           ICON
+        ========================================= */
+
+        .custom-architecture-icon {
+          width: 40px;
+          height: 40px;
+          flex-shrink: 0;
 
           display: flex;
           align-items: center;
           justify-content: center;
 
-          border-radius: 8px;
-
+          border-radius: 9px;
           background: rgba(255, 255, 255, 0.14);
           color: #ffffff;
 
-          transform: none !important;
-
           transition:
-            background 0.3s ease,
-            color 0.3s ease;
+            background 300ms ease,
+            color 300ms ease;
         }
 
-        .custom-card:hover .card-icon {
-          transform: none !important;
+        .custom-architecture-card:hover
+          .custom-architecture-icon {
           background: #ffffff;
-          color: #7a1f3d;
-          box-shadow: none;
+          color: ${WINE};
         }
 
-        /* TITLE */
-        .custom-card h3 {
-          transition: color 0.3s ease;
+        /* =========================================
+           TITLE
+        ========================================= */
+
+        .custom-architecture-card-title {
+          margin: 20px 0 9px;
+          color: #ffffff;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 17px;
+          font-weight: 700;
+          line-height: 1.35;
+
+          transition: color 300ms ease;
         }
 
-        .custom-card:hover h3 {
-          color: #7a1f3d !important;
+        .custom-architecture-card:hover
+          .custom-architecture-card-title {
+          color: ${WINE};
         }
 
-        /* DESCRIPTION */
-        .custom-card p {
-          transition: color 0.3s ease;
+        /* =========================================
+           BODY
+        ========================================= */
+
+        .custom-architecture-card-body {
+          margin: 0;
+          color: #d9b7c4;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.7;
+
+          transition: color 300ms ease;
         }
 
-        .custom-card:hover p {
-          color: #5b5a63 !important;
+        .custom-architecture-card:hover
+          .custom-architecture-card-body {
+          color: #5b5a63;
         }
 
-        /* BOTTOM WINE LINE */
-        .card-bottom-line {
+        /* =========================================
+           BOTTOM WINE LINE
+        ========================================= */
+
+        .custom-architecture-bottom-line {
           position: absolute;
           left: 0;
           bottom: 0;
@@ -315,62 +282,256 @@ export default function CustomArchitectureGridSection() {
           width: 100%;
           height: 3px;
 
-          background: #7a1f3d;
+          background: ${WINE};
 
           transform: scaleX(0);
           transform-origin: left;
 
           transition:
-            transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .custom-card-visible:hover .card-bottom-line {
+        .custom-architecture-card.visible:hover
+          .custom-architecture-bottom-line {
           transform: scaleX(1);
         }
 
-        /* MOBILE / TOUCH DEVICES */
-        @media (hover: none) {
-          .custom-card-visible:hover {
-            transform: translateY(0) scale(1);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: none;
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .custom-architecture-wrapper {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
-          .custom-card-visible:hover .card-bottom-line {
-            transform: scaleX(0);
+          .custom-architecture-heading {
+            font-size: 34px;
           }
 
-          .custom-card:hover h3 {
-            color: #ffffff !important;
+          .custom-architecture-subheading {
+            margin-bottom: 40px;
           }
 
-          .custom-card:hover p {
-            color: #d9b7c4 !important;
+          .custom-architecture-grid {
+            gap: 18px;
           }
 
-          .custom-card:hover .card-icon {
-            background: rgba(255, 255, 255, 0.14);
-            color: #ffffff;
+          .custom-architecture-card {
+            min-height: 215px;
+            padding: 22px;
           }
         }
 
-        /* REDUCED MOTION */
+        /* =========================================
+           MOBILE / SMALL TABLET
+        ========================================= */
+
+        @media (max-width: 700px) {
+          .custom-architecture-wrapper {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 56px;
+            padding-bottom: 56px;
+          }
+
+          .custom-architecture-label {
+            margin-bottom: 12px;
+            font-size: 9px;
+          }
+
+          .custom-architecture-heading {
+            margin-bottom: 14px;
+            font-size: 28px;
+            line-height: 1.22;
+          }
+
+          .custom-architecture-subheading {
+            margin-bottom: 30px;
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .custom-architecture-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+          }
+
+          .custom-architecture-card {
+            min-height: 215px;
+            padding: 20px;
+            border-radius: 14px;
+          }
+
+          .custom-architecture-icon {
+            width: 38px;
+            height: 38px;
+          }
+
+          .custom-architecture-card-title {
+            margin-top: 17px;
+            font-size: 15px;
+          }
+
+          .custom-architecture-card-body {
+            font-size: 12px;
+            line-height: 1.65;
+          }
+
+          /* Disable hover movement on touch */
+          @media (hover: none) {
+            .custom-architecture-card.visible:hover {
+              transform: translateY(0) scale(1);
+              background: rgba(255, 255, 255, 0.08);
+              border-color: rgba(255, 255, 255, 0.12);
+              box-shadow: none;
+            }
+
+            .custom-architecture-card:hover
+              .custom-architecture-icon {
+              background: rgba(255, 255, 255, 0.14);
+              color: #ffffff;
+            }
+
+            .custom-architecture-card:hover
+              .custom-architecture-card-title {
+              color: #ffffff;
+            }
+
+            .custom-architecture-card:hover
+              .custom-architecture-card-body {
+              color: #d9b7c4;
+            }
+
+            .custom-architecture-card.visible:hover
+              .custom-architecture-bottom-line {
+              transform: scaleX(0);
+            }
+          }
+        }
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 480px) {
+          .custom-architecture-wrapper {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+
+          .custom-architecture-heading {
+            font-size: 24px;
+          }
+
+          .custom-architecture-subheading {
+            font-size: 12.5px;
+            line-height: 1.65;
+          }
+
+          .custom-architecture-grid {
+            grid-template-columns: 1fr;
+            gap: 13px;
+          }
+
+          .custom-architecture-card {
+            min-height: 190px;
+            padding: 19px;
+          }
+
+          .custom-architecture-card-title {
+            font-size: 15px;
+          }
+
+          .custom-architecture-card-body {
+            font-size: 12px;
+          }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
         @media (prefers-reduced-motion: reduce) {
-          .custom-card {
+          .custom-architecture-card {
             opacity: 1;
             transform: none;
             filter: none;
             transition: none !important;
           }
 
-          .card-icon,
-          .card-bottom-line,
-          .custom-card h3,
-          .custom-card p {
+          .custom-architecture-icon,
+          .custom-architecture-card-title,
+          .custom-architecture-card-body,
+          .custom-architecture-bottom-line {
             transition: none !important;
           }
         }
       `}</style>
+
+      <div className="custom-architecture-wrapper">
+        {/* LABEL */}
+        <p className="custom-architecture-label">
+          CUSTOM ARCHITECTURE
+        </p>
+
+        {/* HEADING */}
+        <h2 className="custom-architecture-heading">
+          Extend Your E-Commerce Technology
+        </h2>
+
+        {/* SUBHEADING */}
+        <p className="custom-architecture-subheading">
+          When a business requires a custom application or integration,
+          TechTorch provides software engineering capabilities across web
+          applications, mobile applications, APIs, system integration and
+          software development.
+        </p>
+
+        {/* CARDS */}
+        <div className="custom-architecture-grid">
+          {cards.map(({ icon: Icon, title, body }, index) => (
+            <article
+              key={title}
+              className={`custom-architecture-card ${
+                isVisible ? "visible" : ""
+              }`}
+              style={{
+                transitionDelay: isVisible
+                  ? `${index * 150}ms`
+                  : "0ms",
+              }}
+            >
+              {/* ICON */}
+              <span className="custom-architecture-icon">
+                <Icon
+                  size={18}
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
+              </span>
+
+              {/* TITLE */}
+              <h3 className="custom-architecture-card-title">
+                {title}
+              </h3>
+
+              {/* DESCRIPTION */}
+              <p className="custom-architecture-card-body">
+                {body}
+              </p>
+
+              {/* BOTTOM LINE */}
+              <div className="custom-architecture-bottom-line" />
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

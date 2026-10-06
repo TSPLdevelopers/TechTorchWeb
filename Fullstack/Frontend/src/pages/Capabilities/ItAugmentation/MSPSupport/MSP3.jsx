@@ -2,17 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Check,
-  Users,
-  Cloud,
-  Activity,
-  ShieldCheck,
   ArrowRight,
   Headphones,
+  ShieldCheck,
   Network,
 } from "lucide-react";
 
 const MSPSupportSections = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const scalabilityPoints = [
     {
       title: "Flexible Team & User Onboarding",
@@ -34,8 +32,10 @@ const MSPSupportSections = () => {
 
   return (
     <div className="msp-page">
-
       <style>{`
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
 
         * {
           box-sizing: border-box;
@@ -44,12 +44,31 @@ const MSPSupportSections = () => {
         .msp-page {
           width: 100%;
           overflow: hidden;
-          font-family: Arial, Helvetica, sans-serif;
+
           color: #25252a;
+
+          font-family: "Inter", Arial, Helvetica, sans-serif;
         }
 
+        .msp-page h1,
+        .msp-page h2,
+        .msp-page h3,
+        .msp-page h4,
+        .msp-page h5,
+        .msp-page h6 {
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        }
+
+        /*
+          UNIVERSAL SPACING
+          Desktop  = 100px
+          Tablet   = 40px
+          Mobile   = 24px
+          Small    = 16px
+        */
+
         .msp-wrapper {
-          width: min(1180px, calc(100% - 70px));
+          width: min(1600px, calc(100% - 200px));
           margin: 0 auto;
         }
 
@@ -69,11 +88,12 @@ const MSPSupportSections = () => {
           background: #f0e6eb;
           color: #70003f;
 
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
-          font-family: "Plus Jakarta Sans", sans-serif;
           line-height: 1;
-          font-weight: 700;
+          font-weight: 800;
           letter-spacing: 0.8px;
+
           text-transform: uppercase;
         }
 
@@ -90,15 +110,14 @@ const MSPSupportSections = () => {
           background: #70003f;
         }
 
-
         /* =========================================================
-           SECTION 1
-           SCALABILITY & GROWTH
+           SECTION 1 — SCALABILITY
         ========================================================= */
 
         .msp-scalability {
           width: 100%;
-          padding: 72px 0 78px;
+
+          padding: 88px 0 94px;
 
           background: #faf9f6;
         }
@@ -108,10 +127,10 @@ const MSPSupportSections = () => {
 
           width: 100%;
 
-          padding: 49px 49px 48px;
+          padding: 52px;
 
           border: 1px solid #c98cab;
-          border-radius: 18px;
+          border-radius: 19px;
 
           background: #faf9f6;
 
@@ -120,9 +139,12 @@ const MSPSupportSections = () => {
 
         .msp-scale-layout {
           display: grid;
-          grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
 
-          gap: 58px;
+          grid-template-columns:
+            minmax(0, 1.15fr)
+            minmax(390px, 0.85fr);
+
+          gap: 72px;
 
           align-items: start;
         }
@@ -132,62 +154,64 @@ const MSPSupportSections = () => {
         }
 
         .msp-scale-content h2 {
-          max-width: 570px;
+          max-width: 720px;
 
-          margin: 20px 0 10px;
+          margin: 21px 0 12px;
 
           color: #25252a;
-          font-family: "Plus Jakarta Sans",sans-serif;
-          font-size: 34px;
+
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: clamp(38px, 3.4vw, 52px);
           line-height: 1.06;
-          letter-spacing: -1.7px;
-          font-weight: 500;
+          letter-spacing: -2.5px;
+          font-weight: 600;
         }
 
         .msp-scale-subtitle {
-          max-width: 610px;
+          max-width: 700px;
 
-          margin: 0 0 22px;
+          margin: 0 0 23px;
 
           color: #70003f;
 
+          font-family: "Inter", Arial, sans-serif;
           font-size: 15px;
-          line-height: 1.4;
-          font-weight: 500;
+          line-height: 1.45;
+          font-weight: 600;
         }
 
         .msp-scale-text {
-          max-width: 610px;
+          max-width: 720px;
 
           margin: 0;
 
           color: #74696e;
 
+          font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
-          line-height: 1.62;
+          line-height: 1.68;
         }
 
         .msp-scale-text + .msp-scale-text {
-          margin-top: 16px;
+          margin-top: 17px;
         }
 
-
         /* =========================================================
-           SCALABILITY RIGHT CARD
+           SCALE ASPECTS
         ========================================================= */
 
         .msp-scale-aspects {
           width: 100%;
 
-          padding: 27px 25px 24px;
+          padding: 29px 27px 25px;
 
           border: 1px solid #ece5e8;
-          border-radius: 13px;
+          border-radius: 14px;
 
-          background: #fff;
+          background: #ffffff;
 
           box-shadow:
-            0 3px 12px rgba(40, 20, 30, 0.035);
+            0 4px 15px rgba(40, 20, 30, 0.035);
         }
 
         .msp-scale-aspects-header {
@@ -205,26 +229,32 @@ const MSPSupportSections = () => {
         .msp-scale-aspects-title {
           color: #70003f;
 
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
-          font-weight: 700;
+          font-weight: 800;
           letter-spacing: 0.8px;
+
           text-transform: uppercase;
         }
 
         .msp-scale-aspects-badge {
           color: #81777c;
 
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 700;
+
+          white-space: nowrap;
         }
 
         .msp-scale-point {
           display: grid;
-          grid-template-columns: 26px minmax(0, 1fr);
 
-          gap: 10px;
+          grid-template-columns: 27px minmax(0, 1fr);
 
-          padding: 16px 0;
+          gap: 11px;
+
+          padding: 17px 0;
 
           border-bottom: 1px solid #f0ecee;
         }
@@ -235,32 +265,33 @@ const MSPSupportSections = () => {
         }
 
         .msp-scale-check {
-          width: 25px;
-          height: 25px;
+          width: 26px;
+          height: 26px;
 
           display: flex;
           align-items: center;
           justify-content: center;
 
-          border-radius: 6px;
+          border-radius: 7px;
 
           background: #f0e7ec;
           color: #70003f;
         }
 
         .msp-scale-check svg {
-          width: 12px;
-          height: 12px;
+          width: 13px;
+          height: 13px;
         }
 
         .msp-scale-point h3 {
-          margin: 0 0 5px;
+          margin: 0 0 6px;
 
           color: #303035;
-          font-family: "Plus Jakarta Sans",sans-serif;
+
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 14px;
-          line-height: 1.3;
-          font-weight: 600;
+          line-height: 1.35;
+          font-weight: 700;
         }
 
         .msp-scale-point p {
@@ -268,19 +299,21 @@ const MSPSupportSections = () => {
 
           color: #776d72;
 
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
-          line-height: 1.52;
+          line-height: 1.55;
         }
 
-
         /* =========================================================
-           SECTION 2
-           HOLISTIC ECOSYSTEM
+           SECTION 2 — HOLISTIC ECOSYSTEM
         ========================================================= */
 
         .msp-ecosystem {
           width: 100%;
-          padding: 66px 0 69px;
+
+          padding: 80px 0 84px;
+
+          color: #ffffff;
 
           background:
             radial-gradient(
@@ -294,8 +327,6 @@ const MSPSupportSections = () => {
               #790041 45%,
               #57002f 100%
             );
-
-          color: #fff;
         }
 
         .msp-ecosystem-layout {
@@ -303,9 +334,9 @@ const MSPSupportSections = () => {
 
           grid-template-columns:
             minmax(0, 1.25fr)
-            minmax(280px, 0.75fr);
+            minmax(330px, 0.75fr);
 
-          gap: 55px;
+          gap: 75px;
 
           align-items: center;
         }
@@ -315,41 +346,43 @@ const MSPSupportSections = () => {
         }
 
         .msp-ecosystem .msp-section-label {
-          background: rgba(255,255,255,0.1);
-          color: #fff;
-          border: 1px solid rgba(255,255,255,0.1);
+          background: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .msp-ecosystem .msp-section-label::before {
-          background: #fff;
+          background: #ffffff;
         }
 
         .msp-ecosystem h2 {
-          margin: 16px 0 14px;
+          margin: 18px 0 15px;
 
-          color: #fff;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 34px;
-          line-height: 1.08;
-          letter-spacing: -1.5px;
-          font-weight: 500;
+          color: #ffffff;
+
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: clamp(36px, 3.2vw, 50px);
+          line-height: 1.07;
+          letter-spacing: -2.2px;
+          font-weight: 600;
         }
 
         .msp-ecosystem-main-text {
-          max-width: 690px;
+          max-width: 780px;
 
           margin: 0;
 
-          color: rgba(255,255,255,0.91);
-          font-family: "Inter", sans-serif;
+          color: rgba(255, 255, 255, 0.91);
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
-          line-height: 1.62;
+          line-height: 1.68;
         }
 
         .msp-ecosystem-main-text + .msp-ecosystem-main-text {
-          margin-top: 15px;
+          margin-top: 16px;
         }
-
 
         /* =========================================================
            ECOSYSTEM CARDS
@@ -359,41 +392,45 @@ const MSPSupportSections = () => {
           display: flex;
           flex-direction: column;
 
-          gap: 12px;
+          gap: 13px;
 
           min-width: 0;
         }
 
         .msp-ecosystem-card {
-          padding: 15px 17px;
+          padding: 17px 18px;
 
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 11px;
 
-          background: rgba(255,255,255,0.09);
+          background: rgba(255, 255, 255, 0.09);
 
-          transition: 0.25s ease;
+          transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease;
         }
 
         .msp-ecosystem-card:hover {
-          transform: translateY(-2px);
+          transform: translateY(-3px);
 
-          background: rgba(255,255,255,0.13);
+          background: rgba(255, 255, 255, 0.13);
 
-          border-color: rgba(255,255,255,0.17);
+          border-color: rgba(255, 255, 255, 0.17);
         }
 
         .msp-ecosystem-card-top {
           display: flex;
           align-items: center;
-          gap: 8px;
 
-          margin-bottom: 7px;
+          gap: 9px;
+
+          margin-bottom: 8px;
         }
 
         .msp-ecosystem-icon {
-          width: 19px;
-          height: 19px;
+          width: 21px;
+          height: 21px;
 
           display: flex;
           align-items: center;
@@ -401,101 +438,102 @@ const MSPSupportSections = () => {
 
           flex-shrink: 0;
 
-          color: #fff;
+          color: #ffffff;
         }
 
         .msp-ecosystem-icon svg {
-          width: 14px;
-          height: 14px;
+          width: 15px;
+          height: 15px;
         }
 
         .msp-ecosystem-card h3 {
           margin: 0;
 
-          color: #fff;
+          color: #ffffff;
 
-          font-size: 12px;
-          line-height: 1.2;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 13px;
+          line-height: 1.25;
           font-weight: 700;
         }
 
         .msp-ecosystem-card p {
           margin: 0;
 
-          color: rgba(255,255,255,0.67);
+          color: rgba(255, 255, 255, 0.68);
 
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
-          line-height: 1.5;
+          line-height: 1.55;
         }
 
-
         /* =========================================================
-           SECTION 3
-           OPERATIONAL EXCELLENCE
+           SECTION 3 — OPERATIONAL EXCELLENCE
         ========================================================= */
 
         .msp-operational {
           width: 100%;
-          padding: 78px 0 85px;
+
+          padding: 94px 0 105px;
 
           background: #f5f6f7;
         }
 
         .msp-operational-header {
-          max-width: 760px;
+          max-width: 850px;
 
-          margin: 0 auto 40px;
+          margin: 0 auto 43px;
 
           text-align: center;
         }
 
         .msp-operational-header h2 {
-          margin: 16px 0 10px;
+          margin: 18px 0 11px;
 
           color: #29292d;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 34px;
-          line-height: 1.1;
-          letter-spacing: -1.5px;
-          font-weight: 500;
+
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: clamp(34px, 3vw, 48px);
+          line-height: 1.08;
+          letter-spacing: -2px;
+          font-weight: 600;
         }
 
         .msp-operational-header p {
-          max-width: 700px;
+          max-width: 800px;
 
           margin: 0 auto;
 
           color: #746a70;
-          font-family: "Inter", sans-serif;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
-          line-height: 1.65;
+          line-height: 1.68;
         }
 
-
         /* =========================================================
-           CTA WHITE CARD
+           CTA CARD
         ========================================================= */
 
         .msp-operational-cta {
           position: relative;
 
-          width: min(930px, 100%);
+          width: min(1050px, 100%);
 
-          min-height: 273px;
+          min-height: 290px;
 
           margin: 0 auto;
 
-          padding: 47px 40px 44px;
+          padding: 50px 45px 46px;
 
           border: 1px solid #ebe5e8;
           border-top: 3px solid #70003f;
-
           border-radius: 15px;
 
-          background: #fff;
+          background: #ffffff;
 
           box-shadow:
-            0 7px 24px rgba(35, 20, 30, 0.055);
+            0 8px 27px rgba(35, 20, 30, 0.055);
 
           text-align: center;
 
@@ -507,11 +545,11 @@ const MSPSupportSections = () => {
 
           position: absolute;
 
-          width: 230px;
-          height: 230px;
+          width: 250px;
+          height: 250px;
 
-          right: -72px;
-          top: -95px;
+          right: -78px;
+          top: -105px;
 
           border-radius: 50%;
 
@@ -522,6 +560,7 @@ const MSPSupportSections = () => {
 
         .msp-operational-cta-content {
           position: relative;
+
           z-index: 1;
         }
 
@@ -530,90 +569,108 @@ const MSPSupportSections = () => {
         }
 
         .msp-operational-cta h3 {
-          max-width: 520px;
+          max-width: 620px;
 
-          margin: 16px auto 10px;
+          margin: 17px auto 11px;
 
           color: #29292d;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 28px;
+
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 30px;
           line-height: 1.1;
-          letter-spacing: -1px;
-          font-weight: 500;
+          letter-spacing: -1.2px;
+          font-weight: 600;
         }
 
         .msp-operational-cta p {
-          max-width: 620px;
+          max-width: 700px;
 
           margin: 0 auto;
 
           color: #766c71;
 
+          font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
-          line-height: 1.55;
+          line-height: 1.6;
         }
+
+        /* =========================================================
+           CTA BUTTONS
+        ========================================================= */
 
         .msp-cta-buttons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-            gap: 9px;
-            margin-top: 24px;
+          gap: 10px;
+
+          margin-top: 25px;
         }
+
         .msp-primary-btn,
         .msp-secondary-btn {
-         height: 38px;
-        min-height: 38px;
+          height: 40px;
+          min-height: 40px;
 
-        display: inline-flex;
-         align-items: center;
-        justify-content: center;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
 
-        gap: 7px;
-        padding: 0 18px;
+          gap: 7px;
 
-        margin: 0;
-        vertical-align: middle;
+          padding: 0 19px;
 
-        border-radius: 7px;
-        font-family: "Plus Jakarta Sans", sans-serif;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 0.4px;
+          border-radius: 7px;
 
-        cursor: pointer;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.35px;
 
-        transition: 0.25s ease;
+          cursor: pointer;
+
+          transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            border-color 0.25s ease,
+            color 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
         .msp-primary-btn {
           border: 1px solid #70003f;
 
           background: #70003f;
-          color: #fff;
+          color: #ffffff;
         }
 
         .msp-primary-btn:hover {
+          transform: translateY(-2px);
+
           background: #8a0751;
           border-color: #8a0751;
 
-          transform: translateY(-2px);
+          box-shadow:
+            0 7px 18px rgba(112, 0, 63, 0.16);
         }
 
         .msp-secondary-btn {
           border: 1px solid #e1dadd;
 
-          background: #fff;
+          background: #ffffff;
           color: #5e555a;
         }
 
         .msp-secondary-btn:hover {
+          transform: translateY(-2px);
+
           border-color: #b989a2;
 
           color: #70003f;
 
-          transform: translateY(-2px);
+          box-shadow:
+            0 6px 15px rgba(60, 20, 40, 0.05);
         }
 
         .msp-primary-btn svg,
@@ -622,161 +679,160 @@ const MSPSupportSections = () => {
           height: 13px;
         }
 
-
         /* =========================================================
-           LARGE TABLET
+           LARGE TABLET — 100px -> 40px
         ========================================================= */
 
-        @media (max-width: 1050px) {
-
+        @media (max-width: 1200px) {
           .msp-wrapper {
-            width: calc(100% - 50px);
+            width: calc(100% - 80px);
           }
 
           .msp-scale-layout {
             grid-template-columns:
               minmax(0, 1fr)
-              minmax(310px, 0.8fr);
+              minmax(320px, 0.82fr);
 
-            gap: 35px;
+            gap: 42px;
           }
 
           .msp-ecosystem-layout {
             grid-template-columns:
               minmax(0, 1fr)
-              minmax(260px, 0.7fr);
+              minmax(290px, 0.72fr);
 
-            gap: 35px;
+            gap: 45px;
           }
-
         }
-
 
         /* =========================================================
            TABLET
         ========================================================= */
 
-        @media (max-width: 850px) {
-
+        @media (max-width: 900px) {
           .msp-wrapper {
-            width: calc(100% - 42px);
+            width: calc(100% - 80px);
           }
 
           /* SCALE */
 
           .msp-scalability {
-            padding: 55px 0 60px;
+            padding: 70px 0 76px;
           }
 
           .msp-scale-card {
-            padding: 38px 32px;
+            padding: 42px 35px;
           }
 
           .msp-scale-layout {
             grid-template-columns: 1fr;
-            gap: 35px;
+
+            gap: 38px;
           }
 
           .msp-scale-content h2 {
-            max-width: 700px;
+            max-width: 750px;
           }
 
-          .msp-scale-subtitle {
-            max-width: 700px;
+          .msp-scale-subtitle,
+          .msp-scale-text {
+            max-width: 760px;
           }
 
           /* ECOSYSTEM */
 
           .msp-ecosystem {
-            padding: 58px 0 62px;
+            padding: 68px 0 73px;
           }
 
           .msp-ecosystem-layout {
             grid-template-columns: 1fr;
-            gap: 32px;
+
+            gap: 35px;
           }
 
           .msp-ecosystem-content {
-            max-width: 720px;
+            max-width: 780px;
           }
 
           .msp-ecosystem-cards {
             width: 100%;
-            max-width: 650px;
+            max-width: 700px;
           }
 
           /* OPERATIONAL */
 
           .msp-operational {
-            padding: 65px 0 70px;
+            padding: 76px 0 82px;
           }
 
+          .msp-operational-cta {
+            max-width: 850px;
+          }
         }
 
-
         /* =========================================================
-           MOBILE
+           MOBILE — 24px
         ========================================================= */
 
-        @media (max-width: 600px) {
-
+        @media (max-width: 700px) {
           .msp-wrapper {
-            width: calc(100% - 28px);
+            width: calc(100% - 48px);
           }
 
           .msp-section-label {
             padding: 6px 9px;
+
             font-size: 7.5px;
           }
-
 
           /* =====================================================
              SCALABILITY
           ===================================================== */
 
           .msp-scalability {
-            padding: 43px 0 48px;
+            padding: 58px 0 64px;
           }
 
           .msp-scale-card {
-            padding: 29px 20px 30px;
+            padding: 31px 22px 32px;
 
             border-radius: 14px;
           }
 
           .msp-scale-layout {
-            gap: 29px;
+            gap: 30px;
           }
 
           .msp-scale-content h2 {
-            margin: 16px 0 10px;
+            margin: 17px 0 11px;
 
-            font-size: 30px;
+            font-size: 31px;
             line-height: 1.08;
-            letter-spacing: -1px;
+
+            letter-spacing: -1.2px;
           }
 
           .msp-scale-subtitle {
-            margin-bottom: 19px;
+            margin-bottom: 20px;
 
             font-size: 13px;
-            line-height: 1.45;
+            line-height: 1.5;
           }
 
           .msp-scale-text {
             font-size: 11px;
-            line-height: 1.62;
+            line-height: 1.65;
           }
 
           .msp-scale-text + .msp-scale-text {
             margin-top: 13px;
           }
 
-
           /* SCALE ASPECTS */
 
           .msp-scale-aspects {
-            padding: 20px 16px;
+            padding: 21px 16px;
 
             border-radius: 11px;
           }
@@ -784,7 +840,7 @@ const MSPSupportSections = () => {
           .msp-scale-aspects-header {
             align-items: flex-start;
 
-            padding-bottom: 13px;
+            padding-bottom: 14px;
           }
 
           .msp-scale-aspects-title {
@@ -814,33 +870,34 @@ const MSPSupportSections = () => {
           }
 
           .msp-scale-point h3 {
+            margin-bottom: 5px;
+
             font-size: 12px;
             line-height: 1.35;
           }
 
           .msp-scale-point p {
             font-size: 9.5px;
-            line-height: 1.52;
+            line-height: 1.55;
           }
-
 
           /* =====================================================
              ECOSYSTEM
           ===================================================== */
 
           .msp-ecosystem {
-            padding: 48px 0 52px;
+            padding: 52px 0 58px;
           }
 
           .msp-ecosystem-layout {
-            gap: 27px;
+            gap: 29px;
           }
 
           .msp-ecosystem h2 {
-            margin: 14px 0 12px;
+            margin: 15px 0 12px;
 
-            font-size: 30px;
-            letter-spacing: -1px;
+            font-size: 31px;
+            letter-spacing: -1.2px;
           }
 
           .msp-ecosystem-main-text {
@@ -857,7 +914,7 @@ const MSPSupportSections = () => {
           }
 
           .msp-ecosystem-card {
-            padding: 13px 14px;
+            padding: 14px 15px;
           }
 
           .msp-ecosystem-card-top {
@@ -870,27 +927,26 @@ const MSPSupportSections = () => {
 
           .msp-ecosystem-card p {
             font-size: 8.5px;
-            line-height: 1.5;
+            line-height: 1.55;
           }
-
 
           /* =====================================================
              OPERATIONAL
           ===================================================== */
 
           .msp-operational {
-            padding: 55px 0 60px;
+            padding: 60px 0 66px;
           }
 
           .msp-operational-header {
-            margin-bottom: 29px;
+            margin-bottom: 31px;
           }
 
           .msp-operational-header h2 {
-            margin: 14px 0 10px;
+            margin: 15px 0 10px;
 
-            font-size: 30px;
-            letter-spacing: -1px;
+            font-size: 31px;
+            letter-spacing: -1.2px;
           }
 
           .msp-operational-header p {
@@ -898,20 +954,19 @@ const MSPSupportSections = () => {
             line-height: 1.65;
           }
 
-
           /* CTA */
 
           .msp-operational-cta {
-            min-height: 260px;
+            min-height: 265px;
 
-            padding: 37px 19px 34px;
+            padding: 38px 20px 35px;
 
             border-radius: 13px;
           }
 
           .msp-operational-cta::after {
-            width: 180px;
-            height: 180px;
+            width: 185px;
+            height: 185px;
 
             right: -65px;
             top: -70px;
@@ -921,11 +976,12 @@ const MSPSupportSections = () => {
             margin-top: 14px;
 
             font-size: 26px;
+            line-height: 1.12;
           }
 
           .msp-operational-cta p {
             font-size: 10px;
-            line-height: 1.6;
+            line-height: 1.62;
           }
 
           .msp-cta-buttons {
@@ -942,30 +998,32 @@ const MSPSupportSections = () => {
           .msp-secondary-btn {
             width: 100%;
 
-            min-height: 38px;
+            min-height: 40px;
 
             font-size: 8px;
           }
-
         }
 
-
         /* =========================================================
-           SMALL MOBILE
+           SMALL MOBILE — 16px
         ========================================================= */
 
-        @media (max-width: 380px) {
-
+        @media (max-width: 480px) {
           .msp-wrapper {
-            width: calc(100% - 22px);
+            width: calc(100% - 32px);
+          }
+
+          .msp-scalability {
+            padding: 50px 0 56px;
           }
 
           .msp-scale-card {
-            padding: 25px 16px;
+            padding: 27px 17px 28px;
           }
 
           .msp-scale-content h2 {
-            font-size: 27px;
+            font-size: 28px;
+            letter-spacing: -1px;
           }
 
           .msp-scale-subtitle {
@@ -977,7 +1035,7 @@ const MSPSupportSections = () => {
           }
 
           .msp-scale-aspects {
-            padding: 17px 13px;
+            padding: 18px 13px;
           }
 
           .msp-scale-point h3 {
@@ -988,45 +1046,64 @@ const MSPSupportSections = () => {
             font-size: 9px;
           }
 
+          .msp-ecosystem {
+            padding: 48px 0 53px;
+          }
+
           .msp-ecosystem h2 {
-            font-size: 27px;
+            font-size: 28px;
+          }
+
+          .msp-ecosystem-main-text {
+            font-size: 10px;
+          }
+
+          .msp-ecosystem-card h3 {
+            font-size: 10.5px;
+          }
+
+          .msp-ecosystem-card p {
+            font-size: 8px;
+          }
+
+          .msp-operational {
+            padding: 53px 0 59px;
           }
 
           .msp-operational-header h2 {
-            font-size: 27px;
+            font-size: 28px;
+          }
+
+          .msp-operational-header p {
+            font-size: 10px;
           }
 
           .msp-operational-cta {
-            padding-left: 15px;
-            padding-right: 15px;
+            padding: 34px 16px 31px;
           }
 
           .msp-operational-cta h3 {
             font-size: 24px;
           }
 
+          .msp-operational-cta p {
+            font-size: 9.5px;
+          }
         }
-
       `}</style>
 
-
       {/* =========================================================
-          SECTION 1
-          SCALABILITY & GROWTH
+          SECTION 1 — SCALABILITY & GROWTH
       ========================================================= */}
 
       <section className="msp-scalability">
-
         <div className="msp-wrapper">
-
           <div className="msp-scale-card">
-
             <div className="msp-scale-layout">
 
-              {/* LEFT */}
+              {/* LEFT CONTENT */}
 
               <div className="msp-scale-content">
-
                 <div className="msp-section-label">
                   Scalability & Growth
                 </div>
@@ -1068,16 +1145,12 @@ const MSPSupportSections = () => {
                   remain stable through every phase of organizational
                   growth.
                 </p>
-
               </div>
-
 
               {/* RIGHT */}
 
               <div className="msp-scale-aspects">
-
                 <div className="msp-scale-aspects-header">
-
                   <span className="msp-scale-aspects-title">
                     Key Scalability Aspects
                   </span>
@@ -1085,23 +1158,18 @@ const MSPSupportSections = () => {
                   <span className="msp-scale-aspects-badge">
                     Adaptable Framework
                   </span>
-
                 </div>
 
-
                 {scalabilityPoints.map((item, index) => (
-
                   <div
                     className="msp-scale-point"
                     key={index}
                   >
-
                     <div className="msp-scale-check">
                       <Check />
                     </div>
 
                     <div>
-
                       <h3>
                         {item.title}
                       </h3>
@@ -1109,39 +1177,27 @@ const MSPSupportSections = () => {
                       <p>
                         {item.text}
                       </p>
-
                     </div>
-
                   </div>
-
                 ))}
-
               </div>
 
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-
       {/* =========================================================
-          SECTION 2
-          HOLISTIC ECOSYSTEM
+          SECTION 2 — HOLISTIC ECOSYSTEM
       ========================================================= */}
 
       <section className="msp-ecosystem">
-
         <div className="msp-wrapper">
-
           <div className="msp-ecosystem-layout">
 
             {/* LEFT CONTENT */}
 
             <div className="msp-ecosystem-content">
-
               <div className="msp-section-label">
                 Holistic Ecosystem
               </div>
@@ -1164,18 +1220,14 @@ const MSPSupportSections = () => {
                 address different technology requirements through a
                 coordinated technical partner.
               </p>
-
             </div>
-
 
             {/* RIGHT CARDS */}
 
             <div className="msp-ecosystem-cards">
 
               <div className="msp-ecosystem-card">
-
                 <div className="msp-ecosystem-card-top">
-
                   <div className="msp-ecosystem-icon">
                     <Network />
                   </div>
@@ -1183,21 +1235,16 @@ const MSPSupportSections = () => {
                   <h3>
                     Single Accountability
                   </h3>
-
                 </div>
 
                 <p>
                   One strategic partner bridging everyday operational
                   ticketing with long-term digital engineering.
                 </p>
-
               </div>
 
-
               <div className="msp-ecosystem-card">
-
                 <div className="msp-ecosystem-card-top">
-
                   <div className="msp-ecosystem-icon">
                     <ShieldCheck />
                   </div>
@@ -1205,38 +1252,29 @@ const MSPSupportSections = () => {
                   <h3>
                     Cybersecurity Alignment
                   </h3>
-
                 </div>
 
                 <p>
                   Consistent patching, access governance, and
                   zero-trust hygiene woven into daily maintenance.
                 </p>
-
               </div>
 
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-
       {/* =========================================================
-          SECTION 3
-          OPERATIONAL EXCELLENCE
+          SECTION 3 — OPERATIONAL EXCELLENCE
       ========================================================= */}
 
       <section className="msp-operational">
-
         <div className="msp-wrapper">
 
           {/* HEADER */}
 
           <div className="msp-operational-header">
-
             <div className="msp-section-label">
               Operational Excellence
             </div>
@@ -1253,14 +1291,11 @@ const MSPSupportSections = () => {
               issues are resolved efficiently, and your technical
               infrastructure stays aligned with corporate velocity.
             </p>
-
           </div>
-
 
           {/* CTA CARD */}
 
           <div className="msp-operational-cta">
-
             <div className="msp-operational-cta-content">
 
               <div className="msp-section-label">
@@ -1281,28 +1316,30 @@ const MSPSupportSections = () => {
 
               <div className="msp-cta-buttons">
 
-                <button className="msp-primary-btn"
-                onClick={() => navigate("/connect-msp")}
+                <button
+                  type="button"
+                  className="msp-primary-btn"
+                  onClick={() => navigate("/connect-msp")}
                 >
                   Connect With TechTorch
                   <ArrowRight />
                 </button>
 
-                <button className="msp-secondary-btn">
+                <button
+                  type="button"
+                  className="msp-secondary-btn"
+                  onClick={() => navigate("/connect-msp")}
+                >
                   <Headphones />
                   Talk to IT Specialist
                 </button>
 
               </div>
-
             </div>
-
           </div>
 
         </div>
-
       </section>
-
     </div>
   );
 };

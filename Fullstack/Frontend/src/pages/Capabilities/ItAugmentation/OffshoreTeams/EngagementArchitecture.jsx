@@ -160,665 +160,1385 @@ const approach = [
 
 export default function OffshoreTeamSections() {
   return (
-    <main className="w-full overflow-hidden font-['Inter']">
+    <>
+      <style>{`
+        /* =========================================================
+           BASE
+        ========================================================= */
 
-      {/* ======================================================
-          SECTION 1 — ENGAGEMENT ARCHITECTURE
-      ====================================================== */}
+        .offshore-page {
+          --brand: #8B0046;
+          --dark-maroon: #6d0038;
+          --heading: #172033;
+          --body: #69768b;
 
-      <section
-        className="w-full"
-        style={{ backgroundColor: "#6d0038" }}
-      >
-        <div
-          className="
-            mx-auto
-            w-full
-            max-w-[1180px]
-            px-5
-            py-12
-            sm:px-8
-            sm:py-14
-            md:py-16
-            lg:px-10
-            lg:py-[70px]
-          "
-        >
+          width: 100%;
+          overflow: hidden;
 
-          {/* Header */}
-          <div className="max-w-[760px]">
+          background: #ffffff;
 
-            <div className="mb-4 inline-flex items-center rounded-[5px] border border-white/20 bg-white/10 px-3 py-1.5">
-              <span className="text-[9px] font-bold uppercase tracking-[0.13em] text-white/90 sm:text-[10px]">
-                ENGAGEMENT ARCHITECTURE
-              </span>
-            </div>
+          font-family: "Inter", sans-serif;
+        }
 
-            <h2 className="text-[29px] font-semibold leading-[1.08] tracking-[-0.035em] text-white sm:text-[34px] md:text-[38px]">
-              Flexible Team Models
-            </h2>
+        .offshore-page h1,
+        .offshore-page h2,
+        .offshore-page h3,
+        .offshore-page h4 {
+          font-family: "Plus Jakarta Sans", sans-serif;
+        }
 
-            <p className="mt-4 max-w-[850px] text-[13px] font-medium leading-[1.6] text-white sm:text-[14px]">
-              <span className="font-semibold">
-                Choose a Development Model That Works for You:
-              </span>{" "}
-              Different projects require different levels of technical
-              involvement. Our team models can be structured according to your
-              project scope and development requirements.
-            </p>
+        /* =========================================================
+           UNIVERSAL SPACING
 
-          </div>
+           Desktop     100px
+           Tablet       40px
+           Mobile       24px
+           Small mobile 16px
+        ========================================================= */
 
-          {/* Cards */}
-          <div
-            className="
-              mt-8
-              grid
-              grid-cols-1
-              gap-4
-              sm:mt-10
-              sm:grid-cols-2
-              lg:grid-cols-4
-            "
-          >
+        .offshore-container {
+          width: 100%;
+          max-width: 1600px;
 
-            {teamModels.map((item) => (
-              <div
-                key={item.number}
-                className="
-                  group
-                  relative
-                  flex
-                  min-h-[290px]
-                  flex-col
-                  overflow-hidden
-                  rounded-[12px]
-                  border
-                  border-white/[0.18]
-                  bg-[linear-gradient(135deg,rgba(255,255,255,0.13)_0%,rgba(255,255,255,0.08)_45%,rgba(255,255,255,0.05)_100%)]
-                  px-5
-                  py-5
-                  transition-all
-                  duration-300
-                  ease-out
-                  hover:-translate-y-2
-                  hover:border-white
-                  hover:bg-white
-                  hover:shadow-[0_16px_32px_rgba(30,0,20,0.24)]
-                "
-              >
+          margin: 0 auto;
 
-                {/* Glass Glow */}
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -right-[45px]
-                    -top-[45px]
-                    h-[130px]
-                    w-[130px]
-                    rounded-full
-                    bg-white/[0.10]
-                    blur-[28px]
-                    transition-opacity
-                    duration-300
-                    group-hover:opacity-0
-                  "
-                />
+          padding-left: 100px;
+          padding-right: 100px;
 
-                {/* Number */}
-                <div
-                  className="
-                    relative
-                    z-10
-                    flex
-                    h-[32px]
-                    w-[32px]
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-[8px]
-                    border
-                    border-white/20
-                    bg-white/[0.13]
-                    text-[11px]
-                    font-bold
-                    text-white
-                    transition-all
-                    duration-300
-                    group-hover:border-[#e5bfd0]
-                    group-hover:bg-[#fff5f8]
-                    group-hover:text-[#8B0046]
-                  "
-                >
-                  {item.number}
-                </div>
+          box-sizing: border-box;
+        }
 
-                {/* Content */}
-                <div className="relative z-10 mt-5">
+        .offshore-inner {
+          width: 100%;
+          max-width: 1380px;
 
-                  <h3
-                    className="
-                      max-w-[190px]
-                      text-[16px]
-                      font-semibold
-                      leading-[1.25]
-                      text-white
-                      transition-colors
-                      duration-300
-                      group-hover:text-[#8B0046]
-                    "
-                  >
-                    {item.title}
-                  </h3>
+          margin: 0 auto;
+        }
 
-                  <p
-                    className="
-                      mt-3
-                      text-[12px]
-                      leading-[1.6]
-                      text-white/75
-                      transition-colors
-                      duration-300
-                      group-hover:text-black
-                    "
-                  >
-                    {item.description}
-                  </p>
+        /* =========================================================
+           COMMON SECTION
+        ========================================================= */
 
-                </div>
+        .offshore-section {
+          width: 100%;
+        }
 
-                {/* Bottom */}
-                <div className="relative z-10 mt-auto pt-5">
+        .offshore-section-inner {
+          padding-top: 70px;
+          padding-bottom: 70px;
+        }
 
-                  {/* Bottom Line */}
-                  <div
-                    className="
-                      mb-3
-                      h-px
-                      w-full
-                      bg-white/15
-                      transition-colors
-                      duration-300
-                      group-hover:bg-[#8B0046]
-                    "
-                  />
+        /* =========================================================
+           EYEBROW
+        ========================================================= */
 
-                  <div className="flex items-end justify-between gap-2">
+        .offshore-eyebrow {
+          display: inline-flex;
+          align-items: center;
 
-                    <span
-                      className="
-                        text-[9px]
-                        font-semibold
-                        uppercase
-                        tracking-[0.06em]
-                        text-white/75
-                        transition-colors
-                        duration-300
-                        group-hover:text-[#8B0046]
-                      "
-                    >
-                      {item.label}
-                    </span>
+          width: fit-content;
 
-                    <span
-                      className="
-                        h-[5px]
-                        w-[5px]
-                        shrink-0
-                        rounded-full
-                        bg-[#20d89a]
-                        transition-all
-                        duration-300
-                        group-hover:bg-[#8B0046]
-                      "
-                    />
+          padding: 7px 12px;
 
-                  </div>
+          border-radius: 5px;
 
-                </div>
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+        }
+
+        .offshore-eyebrow-dark {
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        .offshore-eyebrow-light {
+          padding: 0;
+          color: var(--brand);
+        }
+
+        /* =========================================================
+           SECTION 1
+        ========================================================= */
+
+        .engagement-section {
+          background: var(--dark-maroon);
+          color: #ffffff;
+        }
+
+        .engagement-header {
+          max-width: 850px;
+        }
+
+        .engagement-title {
+          margin: 16px 0 0;
+
+          color: #ffffff;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(30px, 3vw, 40px);
+          font-weight: 600;
+          line-height: 1.08;
+          letter-spacing: -0.035em;
+        }
+
+        .engagement-description {
+          max-width: 850px;
+
+          margin: 16px 0 0;
+
+          color: rgba(255, 255, 255, 0.92);
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.65;
+        }
+
+        .engagement-description strong {
+          font-weight: 700;
+        }
+
+        /* =========================================================
+           TEAM MODEL GRID
+        ========================================================= */
+
+        .team-model-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 16px;
+
+          margin-top: 34px;
+        }
+
+        .team-model-card {
+          position: relative;
+
+          min-height: 290px;
+
+          display: flex;
+          flex-direction: column;
+
+          overflow: hidden;
+
+          padding: 20px;
+
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          border-radius: 12px;
+
+          background:
+            linear-gradient(
+              135deg,
+              rgba(255, 255, 255, 0.13) 0%,
+              rgba(255, 255, 255, 0.08) 45%,
+              rgba(255, 255, 255, 0.05) 100%
+            );
+
+          cursor: default;
+
+          transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            background 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .team-model-card:hover {
+          transform: translateY(-7px);
+
+          border-color: #ffffff;
+
+          background: #ffffff;
+
+          box-shadow: 0 16px 32px rgba(30, 0, 20, 0.24);
+        }
+
+        .team-model-glow {
+          position: absolute;
+
+          right: -45px;
+          top: -45px;
+
+          width: 130px;
+          height: 130px;
+
+          border-radius: 50%;
+
+          background: rgba(255, 255, 255, 0.1);
+
+          filter: blur(28px);
+
+          pointer-events: none;
+
+          transition: opacity 0.3s ease;
+        }
+
+        .team-model-card:hover .team-model-glow {
+          opacity: 0;
+        }
+
+        .team-model-number {
+          position: relative;
+          z-index: 2;
+
+          width: 32px;
+          height: 32px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 8px;
+
+          background: rgba(255, 255, 255, 0.13);
+
+          color: #ffffff;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+
+          transition:
+            border-color 0.3s ease,
+            background 0.3s ease,
+            color 0.3s ease;
+        }
+
+        .team-model-card:hover .team-model-number {
+          border-color: #e5bfd0;
+          background: #fff5f8;
+          color: var(--brand);
+        }
+
+        .team-model-content {
+          position: relative;
+          z-index: 2;
+
+          margin-top: 20px;
+        }
+
+        .team-model-title {
+          max-width: 210px;
+
+          margin: 0;
+
+          color: #ffffff;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 1.28;
+
+          transition: color 0.3s ease;
+        }
+
+        .team-model-card:hover .team-model-title {
+          color: var(--brand);
+        }
+
+        .team-model-description {
+          margin: 12px 0 0;
+
+          color: rgba(255, 255, 255, 0.75);
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.6;
+
+          transition: color 0.3s ease;
+        }
+
+        .team-model-card:hover .team-model-description {
+          color: #222222;
+        }
+
+        .team-model-bottom {
+          position: relative;
+          z-index: 2;
+
+          margin-top: auto;
+          padding-top: 20px;
+        }
+
+        .team-model-line {
+          width: 100%;
+          height: 1px;
+
+          margin-bottom: 12px;
+
+          background: rgba(255, 255, 255, 0.15);
+
+          transition: background 0.3s ease;
+        }
+
+        .team-model-card:hover .team-model-line {
+          background: var(--brand);
+        }
+
+        .team-model-meta {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 8px;
+        }
+
+        .team-model-label {
+          color: rgba(255, 255, 255, 0.75);
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+
+          transition: color 0.3s ease;
+        }
+
+        .team-model-card:hover .team-model-label {
+          color: var(--brand);
+        }
+
+        .team-model-dot {
+          width: 5px;
+          height: 5px;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+
+          background: #20d89a;
+
+          transition: background 0.3s ease;
+        }
+
+        .team-model-card:hover .team-model-dot {
+          background: var(--brand);
+        }
+
+        /* =========================================================
+           SECTION 2 — TECHNOLOGY
+        ========================================================= */
+
+        .technology-section {
+          background: #f8fafc;
+        }
+
+        .technology-header {
+          max-width: 850px;
+        }
+
+        .technology-title {
+          margin: 12px 0 0;
+
+          color: var(--heading);
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(30px, 3vw, 38px);
+          font-weight: 600;
+          line-height: 1.1;
+          letter-spacing: -0.035em;
+        }
+
+        .technology-description {
+          max-width: 850px;
+
+          margin: 13px 0 0;
+
+          color: #536075;
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.65;
+        }
+
+        .technology-description strong {
+          font-weight: 700;
+        }
+
+        .technology-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+
+          margin-top: 34px;
+        }
+
+        .technology-card {
+          min-height: 125px;
+
+          padding: 20px;
+
+          border: 1px solid #e2e7ed;
+          border-radius: 10px;
+
+          background: #ffffff;
+
+          transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .technology-card:hover {
+          transform: translateY(-3px);
+
+          border-color: #e2bfd0;
+
+          box-shadow: 0 8px 22px rgba(60, 20, 40, 0.06);
+        }
+
+        .technology-card:last-child {
+          grid-column: 1 / -1;
+        }
+
+        .technology-content {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .technology-dot {
+          width: 7px;
+          height: 7px;
+
+          flex-shrink: 0;
+
+          margin-top: 6px;
+
+          border-radius: 50%;
+
+          background: var(--brand);
+        }
+
+        .technology-card-title {
+          margin: 0;
+
+          color: #1d293d;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+          line-height: 1.3;
+        }
+
+        .technology-card-description {
+          margin: 8px 0 0;
+
+          color: #69768b;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+
+        /* =========================================================
+           SECTION 3 — BENEFITS
+        ========================================================= */
+
+        .benefits-section {
+          background: var(--dark-maroon);
+          color: #ffffff;
+        }
+
+        .benefits-header {
+          max-width: 850px;
+        }
+
+        .benefits-title {
+          max-width: 760px;
+
+          margin: 16px 0 0;
+
+          color: #ffffff;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(30px, 3.2vw, 42px);
+          font-weight: 600;
+          line-height: 1.02;
+          letter-spacing: -0.04em;
+        }
+
+        .benefits-title span {
+          display: block;
+        }
+
+        .benefits-description {
+          max-width: 850px;
+
+          margin: 20px 0 0;
+
+          color: rgba(255, 255, 255, 0.92);
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.65;
+        }
+
+        .benefits-description strong {
+          font-weight: 700;
+        }
+
+        .benefits-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+
+          margin-top: 34px;
+        }
+
+        .benefit-card {
+          position: relative;
+
+          min-height: 150px;
+
+          overflow: hidden;
+
+          padding: 20px;
+
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          border-radius: 12px;
+
+          background:
+            linear-gradient(
+              135deg,
+              rgba(255, 255, 255, 0.13) 0%,
+              rgba(255, 255, 255, 0.08) 45%,
+              rgba(255, 255, 255, 0.05) 100%
+            );
+
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .benefit-card:nth-child(4) {
+          grid-column: span 1;
+        }
+
+        .benefit-card:nth-child(5) {
+          grid-column: span 2;
+        }
+
+        .benefit-card:hover {
+          transform: translateY(-7px);
+
+          box-shadow: 0 16px 32px rgba(30, 0, 20, 0.24);
+        }
+
+        .benefit-glow {
+          position: absolute;
+
+          right: -45px;
+          top: -45px;
+
+          width: 130px;
+          height: 130px;
+
+          border-radius: 50%;
+
+          background: rgba(255, 255, 255, 0.1);
+
+          filter: blur(28px);
+
+          pointer-events: none;
+        }
+
+        .benefit-content {
+          position: relative;
+          z-index: 2;
+
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .benefit-check {
+          width: 20px;
+          height: 20px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          margin-top: 1px;
+
+          border-radius: 50%;
+
+          background: #ffffff;
+        }
+
+        .benefit-check svg {
+          width: 12px;
+          height: 12px;
+
+          color: var(--brand);
+        }
+
+        .benefit-title {
+          margin: 0;
+
+          color: #ffffff;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+          line-height: 1.3;
+        }
+
+        .benefit-description {
+          margin: 10px 0 0;
+
+          color: rgba(255, 255, 255, 0.75);
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.6;
+        }
+
+        /* =========================================================
+           SECTION 4 — APPROACH
+        ========================================================= */
+
+        .approach-section {
+          background: #ffffff;
+        }
+
+        .approach-header {
+          text-align: center;
+        }
+
+        .approach-title {
+          margin: 12px 0 0;
+
+          color: var(--heading);
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(30px, 3vw, 38px);
+          font-weight: 600;
+          line-height: 1.1;
+          letter-spacing: -0.04em;
+        }
+
+        .approach-subtitle {
+          margin: 12px 0 0;
+
+          color: #69768b;
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        .approach-process {
+          position: relative;
+
+          margin-top: 38px;
+        }
+
+        .approach-line {
+          position: absolute;
+
+          left: 9%;
+          right: 9%;
+          top: 26px;
+
+          height: 2px;
+
+          background: #d4a6bc;
+
+          pointer-events: none;
+        }
+
+        .approach-grid {
+          position: relative;
+          z-index: 2;
+
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        .approach-card {
+          position: relative;
+
+          min-height: 235px;
+
+          display: flex;
+          flex-direction: column;
+
+          padding: 16px 20px;
+
+          border: 1px solid #e5e9ee;
+          border-radius: 14px;
+
+          background: #ffffff;
+
+          box-shadow: 0 2px 8px rgba(20, 30, 45, 0.025);
+
+          transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .approach-card:hover {
+          transform: translateY(-5px);
+
+          border-color: #e2bfd0;
+
+          box-shadow: 0 12px 28px rgba(70, 20, 45, 0.08);
+        }
+
+        .approach-top-line {
+          position: absolute;
+
+          left: 20px;
+          right: 20px;
+          top: 20px;
+
+          height: 3px;
+
+          border-radius: 999px;
+
+          background: #d4a6bc;
+
+          transition: background 0.3s ease;
+        }
+
+        .approach-card:hover .approach-top-line {
+          background: var(--brand);
+        }
+
+        .approach-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+
+          margin-top: 28px;
+        }
+
+        .approach-number {
+          width: 36px;
+          height: 36px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          border: 1px solid #e9ccda;
+          border-radius: 10px;
+
+          background: #fff7fa;
+
+          color: var(--brand);
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+        }
+
+        .approach-label {
+          color: #9aabc0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0.05em;
+          text-align: right;
+        }
+
+        .approach-content {
+          margin-top: 18px;
+        }
+
+        .approach-card-title {
+          margin: 0;
+
+          color: var(--heading);
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1.2;
+          letter-spacing: -0.02em;
+        }
+
+        .approach-card-description {
+          margin: 10px 0 0;
+
+          color: #6a7689;
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1.6;
+        }
+
+        /* =========================================================
+           LARGE TABLET / SMALL LAPTOP
+           <= 1200px
+        ========================================================= */
+
+        @media (max-width: 1200px) {
+          .offshore-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .team-model-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .technology-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .technology-card:last-child {
+            grid-column: span 2;
+          }
+
+          .benefits-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .benefit-card:nth-child(4),
+          .benefit-card:nth-child(5) {
+            grid-column: span 1;
+          }
+
+          .approach-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+
+          .approach-line {
+            display: none;
+          }
+        }
+
+        /* =========================================================
+           TABLET
+           <= 900px
+        ========================================================= */
+
+        @media (max-width: 900px) {
+          .offshore-section-inner {
+            padding-top: 58px;
+            padding-bottom: 58px;
+          }
+
+          .engagement-title,
+          .technology-title,
+          .approach-title {
+            font-size: 32px;
+          }
+
+          .benefits-title {
+            font-size: 35px;
+          }
+
+          .team-model-grid,
+          .technology-grid,
+          .benefits-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .technology-card:last-child {
+            grid-column: span 2;
+          }
+
+          .approach-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .approach-card {
+            min-height: 220px;
+          }
+        }
+
+        /* =========================================================
+           MOBILE
+           <= 700px
+        ========================================================= */
+
+        @media (max-width: 700px) {
+          .offshore-container {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .offshore-section-inner {
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+
+          .engagement-title,
+          .technology-title,
+          .approach-title {
+            font-size: 29px;
+          }
+
+          .benefits-title {
+            font-size: 31px;
+          }
+
+          .engagement-description,
+          .technology-description,
+          .benefits-description {
+            font-size: 13px;
+          }
+
+          .team-model-grid,
+          .technology-grid,
+          .benefits-grid,
+          .approach-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .team-model-grid,
+          .technology-grid,
+          .benefits-grid {
+            margin-top: 28px;
+          }
+
+          .technology-card:last-child {
+            grid-column: auto;
+          }
+
+          .benefit-card:nth-child(4),
+          .benefit-card:nth-child(5) {
+            grid-column: auto;
+          }
+
+          .approach-process {
+            margin-top: 30px;
+          }
+
+          .approach-card {
+            min-height: 210px;
+          }
+
+          .approach-label {
+            font-size: 9px;
+          }
+        }
+
+        /* =========================================================
+           SMALL MOBILE
+           <= 480px
+        ========================================================= */
+
+        @media (max-width: 480px) {
+          .offshore-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .offshore-section-inner {
+            padding-top: 42px;
+            padding-bottom: 42px;
+          }
+
+          .offshore-eyebrow {
+            font-size: 8px;
+            padding: 6px 10px;
+          }
+
+          .offshore-eyebrow-light {
+            padding: 0;
+          }
+
+          .engagement-title,
+          .technology-title,
+          .approach-title {
+            font-size: 27px;
+          }
+
+          .benefits-title {
+            font-size: 29px;
+          }
+
+          .engagement-description,
+          .technology-description,
+          .benefits-description {
+            font-size: 12px;
+          }
+
+          .team-model-card,
+          .technology-card,
+          .benefit-card,
+          .approach-card {
+            padding: 18px;
+          }
+
+          .team-model-card {
+            min-height: 265px;
+          }
+
+          .team-model-title {
+            font-size: 15px;
+          }
+
+          .team-model-description {
+            font-size: 11px;
+          }
+
+          .technology-card-title {
+            font-size: 14px;
+          }
+
+          .technology-card-description {
+            font-size: 11px;
+          }
+
+          .benefit-title {
+            font-size: 14px;
+          }
+
+          .benefit-description {
+            font-size: 11px;
+          }
+
+          .approach-card-title {
+            font-size: 17px;
+          }
+
+          .approach-card-description {
+            font-size: 12px;
+          }
+        }
+
+        /* =========================================================
+           VERY SMALL MOBILE
+           <= 360px
+        ========================================================= */
+
+        @media (max-width: 360px) {
+          .offshore-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .engagement-title,
+          .technology-title,
+          .approach-title {
+            font-size: 25px;
+          }
+
+          .benefits-title {
+            font-size: 27px;
+          }
+
+          .team-model-card {
+            min-height: 250px;
+          }
+        }
+      `}</style>
+
+      <main className="offshore-page">
+
+        {/* ======================================================
+            SECTION 1 — ENGAGEMENT ARCHITECTURE
+        ====================================================== */}
+
+        <section className="offshore-section engagement-section">
+          <div className="offshore-container">
+            <div className="offshore-inner offshore-section-inner">
+
+              <div className="engagement-header">
+
+                <span className="offshore-eyebrow offshore-eyebrow-dark">
+                  Engagement Architecture
+                </span>
+
+                <h2 className="engagement-title">
+                  Flexible Team Models
+                </h2>
+
+                <p className="engagement-description">
+                  <strong>
+                    Choose a Development Model That Works for You:
+                  </strong>{" "}
+                  Different projects require different levels of technical
+                  involvement. Our team models can be structured according to
+                  your project scope and development requirements.
+                </p>
 
               </div>
-            ))}
 
-          </div>
-        </div>
-      </section>
+              <div className="team-model-grid">
 
-
-      {/* ======================================================
-          SECTION 2 — TECHNOLOGY EXPERTISE
-      ====================================================== */}
-
-      <section className="w-full bg-[#f8fafc]">
-
-        <div
-          className="
-            mx-auto
-            w-full
-            max-w-[1180px]
-            px-5
-            py-12
-            sm:px-8
-            sm:py-14
-            md:py-16
-            lg:px-10
-            lg:py-[70px]
-          "
-        >
-
-          <div className="max-w-[850px]">
-
-            <span
-              className="text-[10px] font-bold uppercase tracking-[0.13em]"
-              style={{ color: BRAND }}
-            >
-              TECHNICAL FOUNDATION
-            </span>
-
-            <h2 className="mt-3 text-[29px] font-semibold leading-[1.1] tracking-[-0.035em] text-[#172033] sm:text-[34px]">
-              Technology Expertise
-            </h2>
-
-            <p className="mt-3 text-[13px] font-medium leading-[1.6] text-[#536075] sm:text-[14px]">
-              <span className="font-semibold">
-                Technical Skills for Modern Development:
-              </span>{" "}
-              Our development capabilities can support different stages of the
-              software lifecycle, including:
-            </p>
-
-          </div>
-
-          <div
-            className="
-              mt-8
-              grid
-              grid-cols-1
-              gap-4
-              sm:grid-cols-2
-              lg:grid-cols-3
-            "
-          >
-
-            {technology.map((item, index) => (
-              <div
-                key={index}
-                className={`group rounded-[10px] border border-[#e2e7ed] bg-white px-5 py-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#e2bfd0] hover:shadow-[0_8px_22px_rgba(60,20,40,0.06)] ${
-                  index === 6 ? "lg:col-span-3" : ""
-                }`}
-              >
-
-                <div className="flex items-start gap-3">
-
-                  <span
-                    className="mt-[6px] h-[7px] w-[7px] shrink-0 rounded-full"
-                    style={{ backgroundColor: BRAND }}
-                  />
-
-                  <div>
-
-                    <h3 className="text-[14px] font-semibold leading-[1.3] text-[#1d293d] sm:text-[15px]">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-2 text-[11px] leading-[1.5] text-[#69768b] sm:text-[12px]">
-                      {item.description}
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </div>
-            ))}
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* ======================================================
-          SECTION 3 — STRATEGIC VALUE
-      ====================================================== */}
-
-      <section
-        className="w-full"
-        style={{ backgroundColor: "#6d0038" }}
-      >
-
-        <div
-          className="
-            mx-auto
-            w-full
-            max-w-[1180px]
-            px-5
-            py-12
-            sm:px-8
-            sm:py-14
-            md:py-16
-            lg:px-10
-            lg:py-[70px]
-          "
-        >
-
-          <div className="max-w-[820px]">
-
-            <div className="mb-4 inline-flex rounded-[5px] border border-white/20 bg-white/10 px-3 py-1.5">
-              <span className="text-[9px] font-bold uppercase tracking-[0.13em] text-white/90">
-                STRATEGIC VALUE
-              </span>
-            </div>
-
-            <h2 className="max-w-[700px] text-[32px] font-semibold leading-[0.98] tracking-[-0.04em] text-white sm:text-[39px]">
-              Why Work With an Offshore
-              <span className="block">
-                Development Team?
-              </span>
-            </h2>
-
-            <p className="mt-5 max-w-[820px] text-[13px] font-medium leading-[1.6] text-white sm:text-[14px]">
-              <span className="font-bold">
-                Extend Your Team Without Limiting Your Growth:
-              </span>{" "}
-              An offshore development team can give businesses additional
-              technical capacity when internal resources are not enough for
-              current or upcoming requirements.
-            </p>
-
-          </div>
-
-          <div
-            className="
-              mt-8
-              grid
-              grid-cols-1
-              gap-4
-              sm:mt-10
-              sm:grid-cols-2
-              lg:grid-cols-3
-            "
-          >
-
-            {benefits.map((item, index) => (
-              <div
-                key={item.title}
-                className={`group relative overflow-hidden rounded-[12px] border border-white/[0.18] px-5 py-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_32px_rgba(30,0,20,0.24)] ${
-                  index === 3
-                    ? "lg:col-span-1"
-                    : index === 4
-                    ? "lg:col-span-2"
-                    : ""
-                }`}
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.05) 100%)",
-                }}
-              >
-
-                <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -right-[45px]
-                    -top-[45px]
-                    h-[130px]
-                    w-[130px]
-                    rounded-full
-                    bg-white/[0.10]
-                    blur-[28px]
-                  "
-                />
-
-                <div className="relative z-10 flex items-start gap-3">
-
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-white">
-
-                    <Check
-                      className="h-[12px] w-[12px]"
-                      style={{ color: BRAND }}
-                    />
-
-                  </div>
-
-                  <div>
-
-                    <h3 className="text-[14px] font-semibold leading-[1.3] text-white sm:text-[15px]">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-3 text-[11px] leading-[1.6] text-white/75 sm:text-[12px]">
-                      {item.description}
-                    </p>
-
-                  </div>
-
-                </div>
-
-              </div>
-            ))}
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* ======================================================
-          SECTION 4 — OUR APPROACH
-      ====================================================== */}
-
-      <section className="w-full bg-white">
-
-        <div
-          className="
-            mx-auto
-            w-full
-            max-w-[1180px]
-            px-5
-            py-16
-            sm:py-20
-            md:py-24
-            lg:py-[80px]    
-          "
-        >
-
-          {/* Header */}
-          <div className="text-center">
-
-            <span
-              className="text-[10px] font-bold uppercase tracking-[0.13em]"
-              style={{ color: BRAND }}
-            >
-              EXECUTION METHODOLOGY
-            </span>
-
-            <h2
-              className="
-                mt-3
-                text-[29px]
-                font-semibold
-                leading-[1.1]
-                tracking-[-0.04em]
-                text-[#172033]
-                sm:text-[34px]
-                md:text-[36px]
-              "
-            >
-              Our Approach
-            </h2>
-
-            <p
-              className="
-                mt-3
-                text-[13px]
-                text-[#69768b]
-                sm:text-[14px]
-                md:text-[15px]
-              "
-            >
-              A Clear Process for Building Your Development Team
-            </p>
-
-          </div>
-
-
-          {/* Process */}
-          <div className="relative mt-8 sm:mt-10">
-
-            {/* Connecting Line — Desktop */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-[9%]
-                right-[9%]
-                top-[26px]
-                hidden
-                h-[2px]
-                bg-[#d4a6bc]
-                lg:block
-              "
-            />
-
-            {/* Cards */}
-            <div
-              className="
-                grid
-                grid-cols-1
-                gap-4
-                sm:grid-cols-2
-                lg:grid-cols-5
-                lg:gap-4
-              "
-            >
-
-              {approach.map((item) => (
-                <div
-                  key={item.number}
-                  className="
-                    group
-                    relative
-                    z-10
-                    flex
-                    min-h-[235px]
-                    flex-col
-                    rounded-[14px]
-                    border
-                    border-[#e5e9ee]
-                    bg-white
-                    px-5
-                    py-4
-                    shadow-[0_2px_8px_rgba(20,30,45,0.025)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:border-[#e2bfd0]
-                    hover:shadow-[0_12px_28px_rgba(70,20,45,0.08)]
-                  "
-                >
-
-                  {/* Top Line */}
+                {teamModels.map((item) => (
                   <div
-                    className="
-                      absolute
-                      left-5
-                      right-5
-                      top-5
-                      h-[3px]
-                      rounded-full
-                      bg-[#d4a6bc]
-                      transition-colors
-                      duration-300
-                      group-hover:bg-[#8B0046]
-                    "
-                  />
-
-                  {/* Number + Label */}
-                  <div
-                    className="
-                      mt-7
-                      flex
-                      items-center
-                      justify-between
-                      gap-2
-                    "
+                    key={item.number}
+                    className="team-model-card"
                   >
 
-                    <div
-                      className="
-                        flex
-                        h-[36px]
-                        w-[36px]
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-[10px]
-                        border
-                        border-[#e9ccda]
-                        bg-[#fff7fa]
-                        text-[13px]
-                        font-bold
-                      "
-                      style={{ color: BRAND }}
-                    >
+                    <div className="team-model-glow" />
+
+                    <div className="team-model-number">
                       {item.number}
                     </div>
 
-                    <span
-                      className="
-                        text-right
-                        text-[9px]
-                        font-bold
-                        tracking-[0.05em]
-                        text-[#9aabc0]
-                        sm:text-[10px]
-                      "
-                    >
-                      {item.label}
-                    </span>
+                    <div className="team-model-content">
+
+                      <h3 className="team-model-title">
+                        {item.title}
+                      </h3>
+
+                      <p className="team-model-description">
+                        {item.description}
+                      </p>
+
+                    </div>
+
+                    <div className="team-model-bottom">
+
+                      <div className="team-model-line" />
+
+                      <div className="team-model-meta">
+
+                        <span className="team-model-label">
+                          {item.label}
+                        </span>
+
+                        <span className="team-model-dot" />
+
+                      </div>
+
+                    </div>
 
                   </div>
+                ))}
 
-
-                  {/* Content */}
-                  <div className="mt-4">
-
-                    <h3
-                      className="
-                        text-[17px]
-                        font-semibold
-                        leading-[1.2]
-                        tracking-[-0.02em]
-                        text-[#172033]
-                        sm:text-[18px]
-                      "
-                    >
-                      {item.title}
-                    </h3>
-
-                    <p
-                      className="
-                        mt-2.5
-                        text-[12px]
-                        leading-[1.6]
-                        text-[#6a7689]
-                        sm:text-[13px]
-                      "
-                    >
-                      {item.description}
-                    </p>
-
-                  </div>
-
-                </div>
-              ))}
+              </div>
 
             </div>
-
           </div>
-        </div>
-      </section>
+        </section>
 
-    </main>
+
+        {/* ======================================================
+            SECTION 2 — TECHNOLOGY EXPERTISE
+        ====================================================== */}
+
+        <section className="offshore-section technology-section">
+          <div className="offshore-container">
+            <div className="offshore-inner offshore-section-inner">
+
+              <div className="technology-header">
+
+                <span className="offshore-eyebrow offshore-eyebrow-light">
+                  Technical Foundation
+                </span>
+
+                <h2 className="technology-title">
+                  Technology Expertise
+                </h2>
+
+                <p className="technology-description">
+                  <strong>
+                    Technical Skills for Modern Development:
+                  </strong>{" "}
+                  Our development capabilities can support different stages of
+                  the software lifecycle, including:
+                </p>
+
+              </div>
+
+              <div className="technology-grid">
+
+                {technology.map((item, index) => (
+                  <div
+                    key={index}
+                    className="technology-card"
+                  >
+
+                    <div className="technology-content">
+
+                      <span className="technology-dot" />
+
+                      <div>
+                        <h3 className="technology-card-title">
+                          {item.title}
+                        </h3>
+
+                        <p className="technology-card-description">
+                          {item.description}
+                        </p>
+                      </div>
+
+                    </div>
+
+                  </div>
+                ))}
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+
+        {/* ======================================================
+            SECTION 3 — STRATEGIC VALUE
+        ====================================================== */}
+
+        <section className="offshore-section benefits-section">
+          <div className="offshore-container">
+            <div className="offshore-inner offshore-section-inner">
+
+              <div className="benefits-header">
+
+                <span className="offshore-eyebrow offshore-eyebrow-dark">
+                  Strategic Value
+                </span>
+
+                <h2 className="benefits-title">
+                  Why Work With an Offshore
+                  <span>
+                    Development Team?
+                  </span>
+                </h2>
+
+                <p className="benefits-description">
+                  <strong>
+                    Extend Your Team Without Limiting Your Growth:
+                  </strong>{" "}
+                  An offshore development team can give businesses additional
+                  technical capacity when internal resources are not enough for
+                  current or upcoming requirements.
+                </p>
+
+              </div>
+
+              <div className="benefits-grid">
+
+                {benefits.map((item) => (
+                  <div
+                    key={item.title}
+                    className="benefit-card"
+                  >
+
+                    <div className="benefit-glow" />
+
+                    <div className="benefit-content">
+
+                      <div className="benefit-check">
+                        <Check />
+                      </div>
+
+                      <div>
+                        <h3 className="benefit-title">
+                          {item.title}
+                        </h3>
+
+                        <p className="benefit-description">
+                          {item.description}
+                        </p>
+                      </div>
+
+                    </div>
+
+                  </div>
+                ))}
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+
+        {/* ======================================================
+            SECTION 4 — OUR APPROACH
+        ====================================================== */}
+
+        <section className="offshore-section approach-section">
+          <div className="offshore-container">
+            <div className="offshore-inner offshore-section-inner">
+
+              <div className="approach-header">
+
+                <span className="offshore-eyebrow offshore-eyebrow-light">
+                  Execution Methodology
+                </span>
+
+                <h2 className="approach-title">
+                  Our Approach
+                </h2>
+
+                <p className="approach-subtitle">
+                  A Clear Process for Building Your Development Team
+                </p>
+
+              </div>
+
+              <div className="approach-process">
+
+                {/* Desktop Connecting Line */}
+                <div className="approach-line" />
+
+                <div className="approach-grid">
+
+                  {approach.map((item) => (
+                    <div
+                      key={item.number}
+                      className="approach-card"
+                    >
+
+                      <div className="approach-top-line" />
+
+                      <div className="approach-card-top">
+
+                        <div className="approach-number">
+                          {item.number}
+                        </div>
+
+                        <span className="approach-label">
+                          {item.label}
+                        </span>
+
+                      </div>
+
+                      <div className="approach-content">
+
+                        <h3 className="approach-card-title">
+                          {item.title}
+                        </h3>
+
+                        <p className="approach-card-description">
+                          {item.description}
+                        </p>
+
+                      </div>
+
+                    </div>
+                  ))}
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </>
   );
 }

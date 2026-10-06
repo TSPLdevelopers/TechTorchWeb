@@ -19,6 +19,12 @@ export default function TelecomHeroSection() {
             font-family: "Inter", sans-serif;
           }
 
+          .telecom-hero *,
+          .telecom-hero *::before,
+          .telecom-hero *::after {
+            box-sizing: border-box;
+          }
+
           .telecom-heading,
           .telecom-subheading {
             font-family: "Plus Jakarta Sans", sans-serif;
@@ -53,8 +59,26 @@ export default function TelecomHeroSection() {
             background: #fbeef1;
           }
 
-          @media (max-width: 1100px) {
+          /* =========================================
+             DESKTOP
+          ========================================= */
+
+          .telecom-container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+
+          /* =========================================
+             LARGE TABLET / SMALL DESKTOP
+          ========================================= */
+
+          @media (max-width: 1200px) {
             .telecom-container {
+              padding-left: 40px;
+              padding-right: 40px;
               gap: 40px;
             }
 
@@ -67,9 +91,15 @@ export default function TelecomHeroSection() {
             }
           }
 
+          /* =========================================
+             TABLET
+          ========================================= */
+
           @media (max-width: 900px) {
             .telecom-container {
               grid-template-columns: 1fr;
+              padding-left: 40px;
+              padding-right: 40px;
               padding-top: 55px;
               padding-bottom: 80px;
               gap: 60px;
@@ -90,9 +120,16 @@ export default function TelecomHeroSection() {
             }
           }
 
+          /* =========================================
+             MOBILE
+          ========================================= */
+
           @media (max-width: 640px) {
             .telecom-container {
-              padding: 42px 20px 75px;
+              padding-left: 24px;
+              padding-right: 24px;
+              padding-top: 42px;
+              padding-bottom: 75px;
               gap: 52px;
             }
 
@@ -137,6 +174,10 @@ export default function TelecomHeroSection() {
             }
           }
 
+          /* =========================================
+             SMALL MOBILE
+          ========================================= */
+
           @media (max-width: 480px) {
             .telecom-container {
               padding-left: 16px;
@@ -178,6 +219,30 @@ export default function TelecomHeroSection() {
               line-height: 1.4 !important;
             }
           }
+
+          /* =========================================
+             EXTRA SMALL MOBILE
+          ========================================= */
+
+          @media (max-width: 380px) {
+            .telecom-container {
+              padding-left: 16px;
+              padding-right: 16px;
+            }
+
+            .telecom-heading {
+              font-size: 1.5rem !important;
+            }
+
+            .telecom-image {
+              height: 230px !important;
+            }
+
+            .telecom-card {
+              left: 5px !important;
+              right: 5px !important;
+            }
+          }
         `}
       </style>
 
@@ -188,19 +253,20 @@ export default function TelecomHeroSection() {
         <div
           className="
             telecom-container
-            max-w-6xl
-            mx-auto
-            px-6
-            py-16
             grid
             md:grid-cols-2
             gap-14
             items-center
           "
+          style={{
+            paddingTop: "64px",
+            paddingBottom: "80px",
+          }}
         >
-          {/* =========================
+          {/* =========================================
               LEFT CONTENT
-          ========================== */}
+          ========================================= */}
+
           <div className="telecom-content">
             {/* Badge */}
             <span
@@ -347,9 +413,10 @@ export default function TelecomHeroSection() {
             </div>
           </div>
 
-          {/* =========================
+          {/* =========================================
               RIGHT IMAGE
-          ========================== */}
+          ========================================= */}
+
           <div className="telecom-image-wrapper relative">
             <div
               className="
@@ -373,9 +440,10 @@ export default function TelecomHeroSection() {
               />
             </div>
 
-            {/* =========================
+            {/* =========================================
                 FLOATING CARD
-            ========================== */}
+            ========================================= */}
+
             <div
               className="
                 telecom-card

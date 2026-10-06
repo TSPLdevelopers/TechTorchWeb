@@ -81,13 +81,7 @@ export default function EducationSection() {
       }}
     >
       <style>{`
-
-        /* =====================================================
-           GOOGLE FONTS
-        ===================================================== */
-
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
-
 
         /* =====================================================
            MAIN SECTION
@@ -99,19 +93,22 @@ export default function EducationSection() {
           font-family: "Inter", sans-serif;
         }
 
-
         /* =====================================================
            CONTAINER
+
+           Desktop  : 100px
+           Tablet   : 40px
+           Mobile   : 24px
+           Small    : 16px
         ===================================================== */
 
         .education-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
           margin: 0 auto;
           padding: 80px 100px;
           box-sizing: border-box;
         }
-
 
         /* =====================================================
            GRID
@@ -127,7 +124,6 @@ export default function EducationSection() {
         .education-grid + .education-grid {
           margin-top: 120px;
         }
-
 
         /* =====================================================
            EYEBROW
@@ -149,7 +145,6 @@ export default function EducationSection() {
           color: ${WINE};
         }
 
-
         /* =====================================================
            MAIN HEADING
            PLUS JAKARTA SANS
@@ -166,7 +161,6 @@ export default function EducationSection() {
 
           color: ${INK};
         }
-
 
         /* =====================================================
            SECOND HEADING
@@ -185,7 +179,6 @@ export default function EducationSection() {
           color: ${INK};
         }
 
-
         /* =====================================================
            SUBHEADING
            PLUS JAKARTA SANS
@@ -202,9 +195,8 @@ export default function EducationSection() {
           color: ${WINE};
         }
 
-
         /* =====================================================
-           BODY TEXT
+           BODY
            INTER
         ===================================================== */
 
@@ -222,7 +214,6 @@ export default function EducationSection() {
         .education-body + .education-body {
           margin-top: 20px;
         }
-
 
         /* =====================================================
            BUTTONS
@@ -255,7 +246,10 @@ export default function EducationSection() {
           font-weight: 600;
 
           cursor: pointer;
-          transition: all 0.25s ease;
+          transition:
+            background 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease;
         }
 
         .education-primary-button {
@@ -279,7 +273,6 @@ export default function EducationSection() {
           border-color: ${WINE};
           background: #fffafb;
         }
-
 
         /* =====================================================
            IMAGE AREA
@@ -317,10 +310,8 @@ export default function EducationSection() {
           transform: scale(1.025);
         }
 
-
         /* =====================================================
            FLOATING STAT CARD
-           INTER
         ===================================================== */
 
         .education-stat-card {
@@ -375,10 +366,8 @@ export default function EducationSection() {
           font-weight: 700;
         }
 
-
         /* =====================================================
            ROLE CARD
-           INTER
         ===================================================== */
 
         .education-role-card {
@@ -427,10 +416,8 @@ export default function EducationSection() {
           color: ${WINE};
         }
 
-
         /* =====================================================
            INFO BOX
-           INTER
         ===================================================== */
 
         .education-info-box {
@@ -449,41 +436,61 @@ export default function EducationSection() {
           font-weight: 400;
         }
 
-
         /* =====================================================
-           LARGE TABLET
+           LARGE DESKTOP
         ===================================================== */
 
-        @media (max-width: 1200px) {
-
+        @media (min-width: 1440px) {
           .education-container {
-            padding: 72px 60px;
+            padding-left: 100px;
+            padding-right: 100px;
           }
 
           .education-grid {
-            gap: 48px;
+            gap: 72px;
           }
 
           .education-main-heading {
-            font-size: 40px;
+            font-size: 46px;
           }
 
           .education-secondary-heading {
-            font-size: 34px;
-          }
-
-          .education-image-wrapper {
-            height: 360px;
+            font-size: 40px;
           }
         }
 
+        /* =====================================================
+           DESKTOP / LAPTOP
+        ===================================================== */
+
+        @media (min-width: 1025px) and (max-width: 1439px) {
+          .education-container {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+
+          .education-grid {
+            gap: 56px;
+          }
+
+          .education-main-heading {
+            font-size: 42px;
+          }
+
+          .education-secondary-heading {
+            font-size: 36px;
+          }
+
+          .education-image-wrapper {
+            height: 370px;
+          }
+        }
 
         /* =====================================================
            TABLET
         ===================================================== */
 
-        @media (max-width: 1024px) {
-
+        @media (min-width: 768px) and (max-width: 1024px) {
           .education-container {
             padding: 64px 40px;
           }
@@ -498,6 +505,7 @@ export default function EducationSection() {
 
           .education-main-heading {
             font-size: 36px;
+            line-height: 1.15;
           }
 
           .education-secondary-heading {
@@ -510,24 +518,30 @@ export default function EducationSection() {
 
           .education-body {
             font-size: 14px;
+            line-height: 1.7;
           }
 
           .education-image-wrapper {
             height: 330px;
+            border-radius: 20px;
           }
 
           .education-stat-card {
             right: 20px;
+            bottom: -20px;
+          }
+
+          .education-role-card {
+            top: 18px;
+            left: 18px;
           }
         }
-
 
         /* =====================================================
            MOBILE
         ===================================================== */
 
         @media (max-width: 767px) {
-
           .education-container {
             padding: 56px 24px;
           }
@@ -538,27 +552,14 @@ export default function EducationSection() {
           }
 
           .education-grid + .education-grid {
-            margin-top: 80px;
+            margin-top: 82px;
           }
-
-
-          /* Second section image first */
-          .education-grid-reverse .education-image-area {
-            order: 1;
-          }
-
-          .education-grid-reverse .education-content {
-            order: 2;
-          }
-
 
           .education-eyebrow {
             margin-bottom: 14px;
             font-size: 11px;
           }
 
-
-          /* Plus Jakarta Sans */
           .education-main-heading {
             font-size: 32px;
             line-height: 1.15;
@@ -579,13 +580,10 @@ export default function EducationSection() {
             margin-bottom: 14px;
           }
 
-
-          /* Inter */
           .education-body {
             font-size: 14px;
             line-height: 1.7;
           }
-
 
           .education-buttons {
             margin-top: 26px;
@@ -598,12 +596,10 @@ export default function EducationSection() {
             font-size: 13px;
           }
 
-
           .education-image-wrapper {
             height: 320px;
             border-radius: 20px;
           }
-
 
           .education-stat-card {
             right: 16px;
@@ -612,7 +608,6 @@ export default function EducationSection() {
             width: 225px;
             padding: 12px 14px;
           }
-
 
           .education-role-card {
             top: 16px;
@@ -625,7 +620,6 @@ export default function EducationSection() {
             font-size: 11px;
           }
 
-
           .education-info-box {
             margin-top: 24px;
             padding: 14px 16px;
@@ -634,13 +628,11 @@ export default function EducationSection() {
           }
         }
 
-
         /* =====================================================
            SMALL MOBILE
         ===================================================== */
 
         @media (max-width: 480px) {
-
           .education-container {
             padding: 48px 16px;
           }
@@ -650,11 +642,14 @@ export default function EducationSection() {
           }
 
           .education-grid + .education-grid {
-            margin-top: 68px;
+            margin-top: 70px;
           }
 
+          .education-eyebrow {
+            font-size: 10px;
+            letter-spacing: 0.045em;
+          }
 
-          /* Plus Jakarta Sans */
           .education-main-heading {
             font-size: 28px;
             line-height: 1.17;
@@ -669,13 +664,10 @@ export default function EducationSection() {
             font-size: 14px;
           }
 
-
-          /* Inter */
           .education-body {
             font-size: 13.5px;
             line-height: 1.7;
           }
-
 
           .education-buttons {
             width: 100%;
@@ -688,12 +680,10 @@ export default function EducationSection() {
             width: 100%;
           }
 
-
           .education-image-wrapper {
             height: 270px;
             border-radius: 18px;
           }
-
 
           .education-stat-card {
             right: 10px;
@@ -719,7 +709,6 @@ export default function EducationSection() {
             font-size: 9.5px;
           }
 
-
           .education-role-card {
             top: 12px;
             left: 12px;
@@ -743,23 +732,20 @@ export default function EducationSection() {
             height: 13px;
           }
 
-
           .education-info-box {
             padding: 13px 14px;
             font-size: 12.5px;
           }
         }
 
-
         /* =====================================================
            VERY SMALL MOBILE
         ===================================================== */
 
         @media (max-width: 360px) {
-
           .education-container {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .education-main-heading {
@@ -785,25 +771,18 @@ export default function EducationSection() {
           }
         }
 
-
         /* =====================================================
            REDUCED MOTION
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
-
-          .education-image {
-            transition: none;
-          }
-
+          .education-image,
           .education-primary-button,
           .education-secondary-button {
             transition: none;
           }
         }
-
       `}</style>
-
 
       <div className="education-container">
 
@@ -813,26 +792,21 @@ export default function EducationSection() {
 
         <div className="education-grid">
 
-          {/* LEFT CONTENT */}
-
           <div className="education-content">
 
             <Eyebrow>
               EDUCATION
             </Eyebrow>
 
-            {/* PLUS JAKARTA SANS */}
             <h1 className="education-main-heading">
               Technology That Helps Education Move Forward
             </h1>
 
-            {/* PLUS JAKARTA SANS */}
             <p className="education-subheading">
               Helping institutions create simpler, smarter and more connected
               ways of working.
             </p>
 
-            {/* INTER */}
             <p className="education-body">
               Education is built around people — students, educators,
               administrators and families. The technology supporting them
@@ -862,17 +836,12 @@ export default function EducationSection() {
 
           </div>
 
-
-          {/* RIGHT IMAGE */}
-
           <div className="education-image-area">
 
             <EducationImage
               src={IMAGE_1_URL}
               alt="Education technology team reviewing dashboard"
             />
-
-            {/* FLOATING STAT */}
 
             <div className="education-stat-card">
 
@@ -888,7 +857,6 @@ export default function EducationSection() {
                 </p>
 
                 <p className="education-stat-text">
-
                   <strong>
                     99.4% User Adoption
                   </strong>
@@ -896,7 +864,6 @@ export default function EducationSection() {
                   <br />
 
                   Across 40+ Higher-Ed Campuses
-
                 </p>
 
               </div>
@@ -907,14 +874,11 @@ export default function EducationSection() {
 
         </div>
 
-
         {/* =====================================================
             SECTION 2
         ===================================================== */}
 
         <div className="education-grid education-grid-reverse">
-
-          {/* LEFT IMAGE */}
 
           <div className="education-image-area">
 
@@ -923,17 +887,13 @@ export default function EducationSection() {
               alt="Students collaborating at a table"
             />
 
-            {/* FLOATING ROLE LIST */}
-
             <div className="education-role-card">
 
               {roleCards.map(({ label, icon: Icon }) => (
-
                 <div
                   key={label}
                   className="education-role-item"
                 >
-
                   <span className="education-role-icon">
                     <Icon size={14} />
                   </span>
@@ -941,17 +901,12 @@ export default function EducationSection() {
                   <span>
                     {label}
                   </span>
-
                 </div>
-
               ))}
 
             </div>
 
           </div>
-
-
-          {/* RIGHT CONTENT */}
 
           <div className="education-content">
 
@@ -959,12 +914,10 @@ export default function EducationSection() {
               BRINGING EVERY PART OF YOUR INSTITUTION CLOSER TOGETHER
             </Eyebrow>
 
-            {/* PLUS JAKARTA SANS */}
             <h2 className="education-secondary-heading">
               One institution. Many activities. One connected approach.
             </h2>
 
-            {/* INTER */}
             <p className="education-body">
               An educational institution has many moving parts. Students need
               access to information. Teachers manage academic
@@ -972,13 +925,11 @@ export default function EducationSection() {
               Management needs visibility. Parents want timely communication.
             </p>
 
-            {/* INTER */}
             <p className="education-body">
               When these activities depend on disconnected systems, even
               simple tasks can become difficult to manage.
             </p>
 
-            {/* INTER */}
             <div className="education-info-box">
               TechTorch brings a connected approach to education technology,
               helping institutions organize important processes and

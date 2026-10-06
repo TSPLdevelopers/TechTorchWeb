@@ -62,18 +62,24 @@ export default function CtaBannerSection() {
 
 
         /* =====================================================
-           CONTAINER
+           COMMON CONTAINER
+           DESKTOP
+           Hero spacing system:
+           100px left/right
         ===================================================== */
 
         .cta-banner-container {
           position: relative;
 
           width: 100%;
-          max-width: 1152px;
+          max-width: 1600px;
 
           margin: 0 auto;
 
-          padding: 64px 24px;
+          padding-top: 72px;
+          padding-right: 100px;
+          padding-bottom: 72px;
+          padding-left: 100px;
 
           box-sizing: border-box;
         }
@@ -111,15 +117,15 @@ export default function CtaBannerSection() {
         ===================================================== */
 
         .cta-banner-heading {
-          max-width: 680px;
+          max-width: 780px;
 
           margin: 0 0 20px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 36px;
+          font-size: 40px;
 
-          line-height: 1.18;
+          line-height: 1.16;
 
           font-weight: 700;
 
@@ -135,13 +141,13 @@ export default function CtaBannerSection() {
         ===================================================== */
 
         .cta-banner-subheading {
-          max-width: 680px;
+          max-width: 780px;
 
           margin: 0 0 32px;
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 16px;
+          font-size: 17px;
 
           line-height: 1.7;
 
@@ -205,7 +211,8 @@ export default function CtaBannerSection() {
           transition:
             background 0.25s ease,
             transform 0.25s ease,
-            border-color 0.25s ease;
+            border-color 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
 
@@ -215,6 +222,19 @@ export default function CtaBannerSection() {
           border-color: #651831;
 
           transform: translateY(-2px);
+
+          box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+
+
+        .cta-primary-button:hover svg {
+          transform: translateX(3px);
+        }
+
+
+        .cta-primary-button svg {
+          transition: transform 0.25s ease;
         }
 
 
@@ -255,7 +275,8 @@ export default function CtaBannerSection() {
           transition:
             background 0.25s ease,
             border-color 0.25s ease,
-            transform 0.25s ease;
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
 
@@ -265,81 +286,100 @@ export default function CtaBannerSection() {
           border-color: rgba(255, 255, 255, 0.55);
 
           transform: translateY(-2px);
-        }
 
-
-        /* =====================================================
-           LARGE DESKTOP
-        ===================================================== */
-
-        @media (min-width: 1280px) {
-
-          .cta-banner-container {
-            max-width: 1180px;
-
-            padding-top: 72px;
-            padding-bottom: 72px;
-          }
-
-          .cta-banner-heading {
-            font-size: 40px;
-
-            max-width: 720px;
-          }
-
-          .cta-banner-subheading {
-            font-size: 17px;
-
-            max-width: 720px;
-          }
-
+          box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.12);
         }
 
 
         /* =====================================================
            TABLET / LAPTOP
+           40px left/right
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (min-width: 768px) and (max-width: 1199px) {
 
           .cta-banner-container {
-            padding-left: 32px;
-            padding-right: 32px;
+            padding-top: 64px;
+            padding-right: 40px;
+            padding-bottom: 64px;
+            padding-left: 40px;
           }
 
           .cta-banner-heading {
-            max-width: 650px;
+            max-width: 700px;
 
-            font-size: 34px;
+            font-size: 36px;
+
+            line-height: 1.18;
           }
 
           .cta-banner-subheading {
-            max-width: 650px;
+            max-width: 700px;
 
-            font-size: 15.5px;
+            font-size: 16px;
+
+            line-height: 1.7;
           }
 
         }
 
 
         /* =====================================================
-           TABLET
+           TABLET / SMALL LAPTOP
+        ===================================================== */
+
+        @media (min-width: 768px) and (max-width: 900px) {
+
+          .cta-banner-container {
+            padding-top: 58px;
+            padding-bottom: 58px;
+          }
+
+          .cta-banner-heading {
+            font-size: 34px;
+          }
+
+          .cta-banner-subheading {
+            font-size: 15px;
+          }
+
+          .cta-primary-button,
+          .cta-secondary-button {
+            min-height: 44px;
+
+            padding: 0 18px;
+
+            font-size: 13px;
+          }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+           24px left/right
         ===================================================== */
 
         @media (max-width: 767px) {
 
           .cta-banner-container {
-            padding: 52px 20px;
+            padding-top: 52px;
+            padding-right: 24px;
+            padding-bottom: 52px;
+            padding-left: 24px;
           }
 
           .cta-banner-eyebrow {
             margin-bottom: 16px;
 
             font-size: 11px;
+
+            line-height: 1.5;
           }
 
           .cta-banner-heading {
-            max-width: 600px;
+            max-width: 650px;
 
             margin-bottom: 16px;
 
@@ -351,7 +391,7 @@ export default function CtaBannerSection() {
           }
 
           .cta-banner-subheading {
-            max-width: 600px;
+            max-width: 650px;
 
             margin-bottom: 26px;
 
@@ -377,13 +417,17 @@ export default function CtaBannerSection() {
 
 
         /* =====================================================
-           MOBILE
+           SMALL MOBILE
+           16px left/right
         ===================================================== */
 
         @media (max-width: 480px) {
 
           .cta-banner-container {
-            padding: 44px 16px;
+            padding-top: 44px;
+            padding-right: 16px;
+            padding-bottom: 44px;
+            padding-left: 16px;
           }
 
           .cta-banner-eyebrow {
@@ -392,6 +436,8 @@ export default function CtaBannerSection() {
             margin-bottom: 13px;
 
             font-size: 10px;
+
+            line-height: 1.5;
 
             letter-spacing: 0.045em;
           }
@@ -445,13 +491,17 @@ export default function CtaBannerSection() {
 
 
         /* =====================================================
-           SMALL MOBILE
+           VERY SMALL MOBILE
+           16px left/right
         ===================================================== */
 
         @media (max-width: 360px) {
 
           .cta-banner-container {
-            padding: 38px 14px;
+            padding-top: 38px;
+            padding-right: 16px;
+            padding-bottom: 38px;
+            padding-left: 16px;
           }
 
           .cta-banner-heading {
@@ -479,11 +529,13 @@ export default function CtaBannerSection() {
         @media (prefers-reduced-motion: reduce) {
 
           .cta-primary-button,
-          .cta-secondary-button {
+          .cta-secondary-button,
+          .cta-primary-button svg {
             transition: none;
           }
 
         }
+
       `}</style>
 
 
@@ -500,7 +552,9 @@ export default function CtaBannerSection() {
 
       <div className="cta-banner-container">
 
-        {/* EYEBROW - INTER */}
+        {/* =====================================================
+            EYEBROW
+        ===================================================== */}
 
         <div className="cta-banner-eyebrow">
           <ChevronRight
@@ -514,14 +568,20 @@ export default function CtaBannerSection() {
         </div>
 
 
-        {/* HEADING - PLUS JAKARTA SANS */}
+        {/* =====================================================
+            HEADING
+            PLUS JAKARTA SANS
+        ===================================================== */}
 
         <h2 className="cta-banner-heading">
           Have an Education Technology Challenge?
         </h2>
 
 
-        {/* SUBHEADING - PLUS JAKARTA SANS */}
+        {/* =====================================================
+            SUBHEADING
+            PLUS JAKARTA SANS
+        ===================================================== */}
 
         <p className="cta-banner-subheading">
           Whether you are modernizing legacy student systems, unifying
@@ -530,7 +590,9 @@ export default function CtaBannerSection() {
         </p>
 
 
-        {/* BUTTONS - INTER */}
+        {/* =====================================================
+            BUTTONS
+        ===================================================== */}
 
         <div className="cta-banner-buttons">
 

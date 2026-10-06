@@ -38,6 +38,10 @@ export default function ApproachStepsCenteredSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
+        /* =====================================================
+           MAIN SECTION
+        ===================================================== */
+
         .approach-section {
           width: 100%;
           background: #f4f1ec;
@@ -48,12 +52,15 @@ export default function ApproachStepsCenteredSection() {
 
         .approach-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 72px 40px;
+          padding: 80px 100px;
+          box-sizing: border-box;
         }
 
-        /* HEADER */
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         .approach-header {
           width: 100%;
@@ -66,11 +73,15 @@ export default function ApproachStepsCenteredSection() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
+
           padding: 7px 13px;
           margin-bottom: 18px;
+
           border-radius: 999px;
+
           background: #fbeef1;
           color: ${WINE};
+
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 700;
@@ -80,100 +91,169 @@ export default function ApproachStepsCenteredSection() {
         .approach-badge-dot {
           width: 6px;
           height: 6px;
+
           border-radius: 50%;
           background: ${WINE};
+
           flex-shrink: 0;
         }
 
+        /* =====================================================
+           MAIN HEADING
+        ===================================================== */
+
         .approach-heading {
           margin: 0 0 14px;
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: clamp(28px, 3vw, 38px);
           line-height: 1.25;
           font-weight: 700;
+
           letter-spacing: -0.03em;
+
           color: ${INK};
         }
+
+        /* =====================================================
+           SUBHEADING
+        ===================================================== */
 
         .approach-subheading {
           margin: 0 auto;
           max-width: 620px;
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 14px;
           line-height: 1.8;
           font-weight: 500;
+
           color: ${MUTED};
         }
 
-        /* STEPS */
+        /* =====================================================
+           STEPS
+        ===================================================== */
 
         .approach-steps {
           display: grid;
-          grid-template-columns: repeat(5, minmax(0, 1fr));
+
+          grid-template-columns:
+            repeat(5, minmax(0, 1fr));
+
           gap: 18px;
+
+          width: 100%;
         }
+
+        /* =====================================================
+           CARD
+        ===================================================== */
 
         .approach-card {
           min-width: 0;
+
           background: #ffffff;
+
           border-radius: 16px;
+
           padding: 22px 20px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.045);
+
+          box-shadow:
+            0 2px 8px rgba(0, 0, 0, 0.045);
+
           border: 1px solid rgba(27, 27, 42, 0.035);
+
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease;
+
+          box-sizing: border-box;
         }
 
         .approach-card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 14px 30px rgba(27, 27, 42, 0.09);
+
+          box-shadow:
+            0 14px 30px rgba(27, 27, 42, 0.09);
         }
+
+        /* =====================================================
+           NUMBER
+        ===================================================== */
 
         .approach-number {
           display: inline-flex;
+
           align-items: center;
           justify-content: center;
+
           min-width: 34px;
           height: 26px;
+
           padding: 0 8px;
           margin-bottom: 17px;
+
           border-radius: 7px;
+
           background: #fbeef1;
           color: ${WINE};
+
           font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 700;
+
           letter-spacing: 0.04em;
+
+          box-sizing: border-box;
         }
+
+        /* =====================================================
+           CARD TITLE
+        ===================================================== */
 
         .approach-card-title {
           margin: 0 0 9px;
+
           font-family: "Plus Jakarta Sans", sans-serif;
+
           font-size: 15px;
           line-height: 1.4;
           font-weight: 700;
+
           color: ${INK};
         }
 
+        /* =====================================================
+           CARD BODY
+        ===================================================== */
+
         .approach-card-body {
           margin: 0;
+
           font-family: "Inter", sans-serif;
+
           font-size: 12px;
           line-height: 1.7;
           font-weight: 400;
+
           color: ${MUTED};
         }
 
-        /* LARGE TABLET */
+        /* =====================================================
+           LARGE TABLET
+        ===================================================== */
 
         @media (max-width: 1100px) {
+
           .approach-container {
-            padding: 64px 32px;
+            padding: 64px 40px;
           }
 
           .approach-steps {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(3, minmax(0, 1fr));
+
             gap: 18px;
           }
 
@@ -182,11 +262,14 @@ export default function ApproachStepsCenteredSection() {
           }
         }
 
-        /* TABLET */
+        /* =====================================================
+           TABLET
+        ===================================================== */
 
         @media (max-width: 800px) {
+
           .approach-container {
-            padding: 58px 28px;
+            padding: 58px 40px;
           }
 
           .approach-header {
@@ -203,7 +286,9 @@ export default function ApproachStepsCenteredSection() {
           }
 
           .approach-steps {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
             gap: 16px;
           }
 
@@ -212,11 +297,14 @@ export default function ApproachStepsCenteredSection() {
           }
         }
 
-        /* MOBILE */
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 600px) {
+
           .approach-container {
-            padding: 50px 20px;
+            padding: 50px 24px;
           }
 
           .approach-header {
@@ -225,14 +313,18 @@ export default function ApproachStepsCenteredSection() {
 
           .approach-badge {
             font-size: 10px;
+
             padding: 6px 11px;
             margin-bottom: 16px;
           }
 
           .approach-heading {
             font-size: 27px;
+
             line-height: 1.25;
+
             letter-spacing: -0.02em;
+
             margin-bottom: 12px;
           }
 
@@ -243,11 +335,13 @@ export default function ApproachStepsCenteredSection() {
 
           .approach-steps {
             grid-template-columns: 1fr;
+
             gap: 14px;
           }
 
           .approach-card {
             padding: 20px;
+
             border-radius: 14px;
           }
 
@@ -261,13 +355,17 @@ export default function ApproachStepsCenteredSection() {
 
           .approach-card-body {
             font-size: 12px;
+
             line-height: 1.7;
           }
         }
 
-        /* SMALL MOBILE */
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
 
         @media (max-width: 400px) {
+
           .approach-container {
             padding: 44px 16px;
           }
@@ -293,11 +391,14 @@ export default function ApproachStepsCenteredSection() {
           }
         }
 
-        /* VERY SMALL MOBILE */
+        /* =====================================================
+           VERY SMALL MOBILE
+        ===================================================== */
 
         @media (max-width: 340px) {
+
           .approach-container {
-            padding: 40px 14px;
+            padding: 40px 16px;
           }
 
           .approach-heading {
@@ -313,9 +414,12 @@ export default function ApproachStepsCenteredSection() {
           }
         }
 
-        /* REDUCED MOTION */
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
+
           .approach-card {
             transition: none;
           }
@@ -326,9 +430,12 @@ export default function ApproachStepsCenteredSection() {
         <div className="approach-container">
 
           {/* HEADER */}
+
           <div className="approach-header">
+
             <span className="approach-badge">
               <span className="approach-badge-dot" />
+
               OUR APPROACH
             </span>
 
@@ -341,12 +448,21 @@ export default function ApproachStepsCenteredSection() {
               requirements and continues through development, implementation
               and ongoing support.
             </p>
+
           </div>
 
+
           {/* STEPS */}
+
           <div className="approach-steps">
+
             {steps.map(({ num, title, body }) => (
-              <div className="approach-card" key={num}>
+
+              <div
+                className="approach-card"
+                key={num}
+              >
+
                 <span className="approach-number">
                   {num}
                 </span>
@@ -358,8 +474,11 @@ export default function ApproachStepsCenteredSection() {
                 <p className="approach-card-body">
                   {body}
                 </p>
+
               </div>
+
             ))}
+
           </div>
 
         </div>

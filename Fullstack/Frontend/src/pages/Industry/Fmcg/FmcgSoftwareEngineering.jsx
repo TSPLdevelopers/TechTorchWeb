@@ -43,7 +43,8 @@ export default function TechServicesSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-        * {
+        .tech-services-section,
+        .tech-services-section * {
           box-sizing: border-box;
         }
 
@@ -55,13 +56,22 @@ export default function TechServicesSection() {
           overflow: hidden;
         }
 
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
         .tech-services-container {
-          width: min(1200px, 100%);
+          width: 100%;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 72px 40px;
+
+          /* HERO STANDARD SPACING */
+          padding: 78px 100px;
         }
 
-        /* ================= BADGE ================= */
+        /* =========================
+           BADGE
+        ========================= */
 
         .tech-services-badge {
           display: inline-flex;
@@ -72,8 +82,8 @@ export default function TechServicesSection() {
           margin-bottom: 20px;
 
           border-radius: 999px;
-          background: rgba(255, 255, 255, 0.1);
 
+          background: rgba(255, 255, 255, 0.1);
           color: #f5eef1;
 
           font-family: "Inter", Arial, sans-serif;
@@ -84,36 +94,46 @@ export default function TechServicesSection() {
           text-transform: uppercase;
         }
 
-        /* ================= HEADING ================= */
+        /* =========================
+           HEADING
+           PLUS JAKARTA SANS
+        ========================= */
 
         .tech-services-heading {
-          max-width: 760px;
+          max-width: 820px;
+
           margin: 0 0 18px;
 
           color: #ffffff;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 44px;
           line-height: 1.15;
           font-weight: 800;
           letter-spacing: -1.2px;
         }
 
-        /* ================= SUBHEADING ================= */
+        /* =========================
+           SUBHEADING
+           PLUS JAKARTA SANS
+        ========================= */
 
         .tech-services-subheading {
-          max-width: 680px;
+          max-width: 760px;
+
           margin: 0 0 44px;
 
           color: rgba(255, 255, 255, 0.72);
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 15px;
           line-height: 1.7;
           font-weight: 500;
         }
 
-        /* ================= SERVICES GRID ================= */
+        /* =========================
+           SERVICES GRID
+        ========================= */
 
         .tech-services-grid {
           display: grid;
@@ -121,13 +141,17 @@ export default function TechServicesSection() {
           gap: 18px;
         }
 
-        /* ================= CARD ================= */
+        /* =========================
+           CARD
+        ========================= */
 
         .tech-service-card {
           min-width: 0;
+
           padding: 23px;
 
           background: #4c1536;
+
           border: 1px solid rgba(255, 255, 255, 0.06);
           border-radius: 14px;
 
@@ -140,13 +164,21 @@ export default function TechServicesSection() {
 
         .tech-service-card:hover {
           transform: translateY(-5px);
+
           background: #52183c;
+
           border-color: rgba(255, 255, 255, 0.12);
+
           box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
         }
 
+        /* =========================
+           NUMBER
+        ========================= */
+
         .tech-service-number {
           display: block;
+
           margin-bottom: 14px;
 
           color: rgba(255, 255, 255, 0.42);
@@ -158,17 +190,27 @@ export default function TechServicesSection() {
           letter-spacing: 0.7px;
         }
 
+        /* =========================
+           CARD TITLE
+           PLUS JAKARTA SANS
+        ========================= */
+
         .tech-service-title {
           margin: 0 0 10px;
 
           color: #ffffff;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 16px;
           line-height: 1.35;
           font-weight: 700;
           letter-spacing: -0.2px;
         }
+
+        /* =========================
+           CARD DESCRIPTION
+           INTER
+        ========================= */
 
         .tech-service-description {
           margin: 0;
@@ -181,11 +223,14 @@ export default function TechServicesSection() {
           font-weight: 400;
         }
 
-        /* ================= 1050px ================= */
+        /* =========================
+           LARGE TABLET / LAPTOP
+        ========================= */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1200px) {
           .tech-services-container {
-            padding: 62px 32px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .tech-services-heading {
@@ -193,7 +238,7 @@ export default function TechServicesSection() {
           }
 
           .tech-services-grid {
-            gap: 15px;
+            gap: 16px;
           }
 
           .tech-service-card {
@@ -201,22 +246,28 @@ export default function TechServicesSection() {
           }
         }
 
-        /* ================= 800px ================= */
+        /* =========================
+           TABLET
+        ========================= */
 
         @media (max-width: 800px) {
           .tech-services-container {
-            padding: 54px 24px;
+            padding-top: 60px;
+            padding-bottom: 60px;
           }
 
           .tech-services-heading {
-            max-width: 650px;
+            max-width: 700px;
+
             font-size: 35px;
             line-height: 1.2;
           }
 
           .tech-services-subheading {
-            max-width: 620px;
+            max-width: 650px;
+
             margin-bottom: 34px;
+
             font-size: 14px;
           }
 
@@ -239,21 +290,29 @@ export default function TechServicesSection() {
           }
         }
 
-        /* ================= 600px ================= */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 600px) {
           .tech-services-container {
-            padding: 46px 17px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 46px;
+            padding-bottom: 46px;
           }
 
           .tech-services-badge {
             padding: 6px 11px;
             margin-bottom: 16px;
+
             font-size: 9px;
           }
 
           .tech-services-heading {
             margin-bottom: 14px;
+
             font-size: 29px;
             line-height: 1.22;
             letter-spacing: -0.7px;
@@ -261,6 +320,7 @@ export default function TechServicesSection() {
 
           .tech-services-subheading {
             margin-bottom: 28px;
+
             font-size: 13px;
             line-height: 1.65;
           }
@@ -289,13 +349,23 @@ export default function TechServicesSection() {
             font-size: 12px;
             line-height: 1.6;
           }
+
+          .desktop-break {
+            display: none;
+          }
         }
 
-        /* ================= 400px ================= */
+        /* =========================
+           SMALL MOBILE
+        ========================= */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           .tech-services-container {
-            padding: 40px 14px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
 
           .tech-services-heading {
@@ -320,11 +390,17 @@ export default function TechServicesSection() {
           }
         }
 
-        /* ================= 340px ================= */
+        /* =========================
+           VERY SMALL MOBILE
+        ========================= */
 
         @media (max-width: 340px) {
           .tech-services-container {
-            padding: 34px 12px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 34px;
+            padding-bottom: 34px;
           }
 
           .tech-services-heading {
@@ -344,7 +420,9 @@ export default function TechServicesSection() {
           }
         }
 
-        /* ================= REDUCED MOTION ================= */
+        /* =========================
+           REDUCED MOTION
+        ========================= */
 
         @media (prefers-reduced-motion: reduce) {
           .tech-service-card {
@@ -360,26 +438,38 @@ export default function TechServicesSection() {
       <section className="tech-services-section">
         <div className="tech-services-container">
 
-          {/* Badge */}
+          {/* =========================
+              BADGE
+          ========================= */}
+
           <span className="tech-services-badge">
             Software &amp; Engineering
           </span>
 
-          {/* Main Heading */}
+          {/* =========================
+              MAIN HEADING
+          ========================= */}
+
           <h2 className="tech-services-heading">
             Technology Designed Around
             <br className="desktop-break" />
             Your Requirements
           </h2>
 
-          {/* Subheading */}
+          {/* =========================
+              SUBHEADING
+          ========================= */}
+
           <p className="tech-services-subheading">
             When your business requires custom applications or improvements to
             existing systems, TechTorch provides software development and
             engineering services.
           </p>
 
-          {/* Services */}
+          {/* =========================
+              SERVICES
+          ========================= */}
+
           <div className="tech-services-grid">
             {services.map((service, index) => (
               <article

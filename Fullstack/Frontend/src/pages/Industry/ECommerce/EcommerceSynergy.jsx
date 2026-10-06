@@ -67,72 +67,551 @@ export default function EnterpriseSynergySection() {
   return (
     <section
       ref={sectionRef}
-      style={{
-        background: "#f7f5f2",
-        color: INK,
-      }}
-      className="w-full overflow-hidden"
+      className="enterprise-synergy-section"
     >
-      <div
-        className="
-          w-full
-          max-w-[1320px]
-          mx-auto
-          px-4
-          sm:px-6
-          md:px-10
-          lg:px-[100px]
-          py-12
-          sm:py-14
-          md:py-16
-          lg:py-20
-        "
-      >
+      <style>{`
+        /* =========================================
+           FONTS
+        ========================================= */
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+
+        /* =========================================
+           SECTION
+        ========================================= */
+
+        .enterprise-synergy-section {
+          width: 100%;
+          overflow: hidden;
+
+          background: #f7f5f2;
+          color: ${INK};
+
+          font-family: "Inter", sans-serif;
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+           
+           Desktop  : 100px
+           Tablet   : 40px
+           Mobile   : 24px
+           Small    : 16px
+        ========================================= */
+
+        .enterprise-synergy-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+
+          padding: 80px 100px;
+
+          box-sizing: border-box;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .enterprise-synergy-header {
+          width: 100%;
+          max-width: 850px;
+
+          margin: 0 auto 48px;
+
+          text-align: center;
+        }
+
+
+        /* =========================================
+           LABEL
+        ========================================= */
+
+        .enterprise-synergy-label {
+          margin: 0 0 12px;
+
+          color: ${WINE};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          line-height: 1.4;
+
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+
+        /* =========================================
+           HEADING
+        ========================================= */
+
+        .enterprise-synergy-heading {
+          margin: 0 0 16px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 32px;
+          font-weight: 700;
+          line-height: 1.25;
+
+          letter-spacing: -0.025em;
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================= */
+
+        .enterprise-synergy-description {
+          max-width: 820px;
+
+          margin: 0 auto;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.8;
+        }
+
+
+        /* =========================================
+           CARDS GRID
+        ========================================= */
+
+        .enterprise-synergy-grid {
+          width: 100%;
+
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+
+          gap: 24px;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .enterprise-synergy-card {
+          position: relative;
+
+          width: 100%;
+          min-height: 225px;
+
+          display: flex;
+          flex-direction: column;
+
+          padding: 24px;
+
+          box-sizing: border-box;
+
+          background: #ffffff;
+
+          border: 1px solid transparent;
+          border-radius: 14px;
+
+          overflow: hidden;
+
+          opacity: 0;
+          transform: translateY(40px) scale(0.96);
+
+          box-shadow: none;
+
+          transition:
+            opacity 650ms ease,
+            transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 350ms ease,
+            border-color 350ms ease;
+        }
+
+
+        /* =========================================
+           CARD VISIBLE STATE
+        ========================================= */
+
+        .enterprise-synergy-card.is-visible {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+
+          box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+
+        /* =========================================
+           CARD HOVER
+        ========================================= */
+
+        .enterprise-synergy-card.is-visible:hover {
+          transform: translateY(-7px) scale(1.015);
+
+          border-color: rgba(122, 31, 61, 0.14);
+
+          box-shadow:
+            0 18px 38px rgba(122, 31, 61, 0.12);
+        }
+
+
+        /* =========================================
+           ICON
+        ========================================= */
+
+        .enterprise-synergy-icon {
+          width: 42px;
+          height: 42px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          margin-bottom: 18px;
+
+          flex-shrink: 0;
+
+          border-radius: 9px;
+
+          background: #fbeef1;
+          color: ${WINE};
+
+          transition:
+            background 300ms ease,
+            color 300ms ease;
+        }
+
+
+        .enterprise-synergy-card:hover
+        .enterprise-synergy-icon {
+          background: ${WINE};
+          color: #ffffff;
+        }
+
+
+        /* =========================================
+           CARD TITLE
+        ========================================= */
+
+        .enterprise-synergy-card-title {
+          margin: 0 0 8px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+
+        /* =========================================
+           CARD BODY
+        ========================================= */
+
+        .enterprise-synergy-card-body {
+          margin: 0 0 22px;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.7;
+        }
+
+
+        /* =========================================
+           CARD FOOTER
+        ========================================= */
+
+        .enterprise-synergy-card-footer {
+          margin-top: auto;
+
+          display: flex;
+          align-items: center;
+          gap: 7px;
+        }
+
+
+        .enterprise-synergy-card-footer-text {
+          color: ${WINE};
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+
+          line-height: 1.3;
+
+          letter-spacing: 0.07em;
+        }
+
+
+        .enterprise-synergy-refresh {
+          color: ${WINE};
+
+          transition: transform 500ms ease;
+        }
+
+
+        .enterprise-synergy-card:hover
+        .enterprise-synergy-refresh {
+          transform: rotate(180deg);
+        }
+
+
+        /* =========================================
+           BOTTOM HOVER LINE
+        ========================================= */
+
+        .enterprise-synergy-card-line {
+          position: absolute;
+
+          left: 0;
+          bottom: 0;
+
+          width: 100%;
+          height: 3px;
+
+          background: ${WINE};
+
+          transform: scaleX(0);
+          transform-origin: left center;
+
+          transition: transform 450ms ease;
+        }
+
+
+        .enterprise-synergy-card:hover
+        .enterprise-synergy-card-line {
+          transform: scaleX(1);
+        }
+
+
+        /* =========================================
+           LARGE TABLET
+        ========================================= */
+
+        @media (max-width: 1200px) {
+
+          .enterprise-synergy-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 72px;
+            padding-bottom: 72px;
+          }
+
+          .enterprise-synergy-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+          }
+
+          .enterprise-synergy-header {
+            margin-bottom: 40px;
+          }
+
+          .enterprise-synergy-heading {
+            font-size: 30px;
+          }
+        }
+
+
+        /* =========================================
+           TABLET / MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
+
+          .enterprise-synergy-container {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .enterprise-synergy-header {
+            margin-bottom: 34px;
+          }
+
+          .enterprise-synergy-label {
+            font-size: 10px;
+          }
+
+          .enterprise-synergy-heading {
+            font-size: 27px;
+            line-height: 1.28;
+          }
+
+          .enterprise-synergy-description {
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .enterprise-synergy-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .enterprise-synergy-card {
+            min-height: 205px;
+            padding: 22px;
+          }
+
+          .enterprise-synergy-card.is-visible:hover {
+            transform: translateY(-4px) scale(1.01);
+          }
+        }
+
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 480px) {
+
+          .enterprise-synergy-container {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
+          }
+
+          .enterprise-synergy-header {
+            margin-bottom: 28px;
+          }
+
+          .enterprise-synergy-label {
+            margin-bottom: 10px;
+
+            font-size: 9px;
+          }
+
+          .enterprise-synergy-heading {
+            margin-bottom: 13px;
+
+            font-size: 24px;
+            line-height: 1.3;
+          }
+
+          .enterprise-synergy-description {
+            font-size: 12.5px;
+            line-height: 1.7;
+          }
+
+          .enterprise-synergy-card {
+            min-height: 195px;
+            padding: 20px;
+
+            border-radius: 12px;
+          }
+
+          .enterprise-synergy-icon {
+            width: 40px;
+            height: 40px;
+
+            margin-bottom: 16px;
+          }
+
+          .enterprise-synergy-card-title {
+            font-size: 14px;
+          }
+
+          .enterprise-synergy-card-body {
+            font-size: 12.5px;
+          }
+        }
+
+
+        /* =========================================
+           VERY SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 360px) {
+
+          .enterprise-synergy-heading {
+            font-size: 22px;
+          }
+
+          .enterprise-synergy-description {
+            font-size: 12px;
+          }
+
+          .enterprise-synergy-card {
+            padding: 18px;
+          }
+        }
+
+
+        /* =========================================
+           TOUCH DEVICES
+        ========================================= */
+
+        @media (hover: none) {
+
+          .enterprise-synergy-card.is-visible:hover {
+            transform: translateY(0) scale(1);
+            border-color: transparent;
+
+            box-shadow:
+              0 2px 6px rgba(0, 0, 0, 0.04);
+          }
+
+          .enterprise-synergy-card:hover
+          .enterprise-synergy-icon {
+            background: #fbeef1;
+            color: ${WINE};
+          }
+
+          .enterprise-synergy-card:hover
+          .enterprise-synergy-refresh {
+            transform: none;
+          }
+
+          .enterprise-synergy-card:hover
+          .enterprise-synergy-card-line {
+            transform: scaleX(0);
+          }
+        }
+
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+          .enterprise-synergy-card,
+          .enterprise-synergy-icon,
+          .enterprise-synergy-refresh,
+          .enterprise-synergy-card-line {
+            transition: none !important;
+          }
+        }
+      `}</style>
+
+      <div className="enterprise-synergy-container">
+
         {/* ================= HEADER ================= */}
-        <div className="text-center max-w-2xl mx-auto mb-9 sm:mb-10 md:mb-12">
-          {/* Sub Heading */}
-          <p
-            className="
-              text-[10px]
-              sm:text-[11px]
-              md:text-xs
-              font-semibold
-              tracking-[0.08em]
-              mb-3
-              font-['Plus_Jakarta_Sans']
-            "
-            style={{ color: WINE }}
-          >
-            ENTERPRISE SYNERGY
+
+        <div className="enterprise-synergy-header">
+
+          <p className="enterprise-synergy-label">
+            Enterprise Synergy
           </p>
 
-          {/* Main Heading */}
-          <h2
-            className="
-              font-['Plus_Jakarta_Sans']
-              text-2xl
-              sm:text-[1.65rem]
-              md:text-[1.8rem]
-              lg:text-[2rem]
-              leading-[1.25]
-              font-bold
-              tracking-tight
-              mb-4
-            "
-          >
+          <h2 className="enterprise-synergy-heading">
             Connect E-Commerce With Your Business
           </h2>
 
-          {/* Description */}
-          <p
-            className="
-              text-sm
-              sm:text-[14px]
-              leading-7
-              font-['Inter']
-            "
-            style={{ color: MUTED }}
-          >
+          <p className="enterprise-synergy-description">
             E-commerce can work alongside other business functions such as
             inventory, finance, CRM and supply chain management. TechTorch's
             wider Digital Solutions portfolio includes ERP, Supply Chain
@@ -140,168 +619,81 @@ export default function EnterpriseSynergySection() {
             Portals and Project Management, providing a broader technology
             environment around online business requirements.
           </p>
+
         </div>
+
 
         {/* ================= CARDS ================= */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-4
-            gap-4
-            sm:gap-5
-            lg:gap-6
-          "
-        >
-          {cards.map(({ icon: Icon, title, body, footer }, index) => (
-            <div
-              key={title}
-              className={`
-                group
-                relative
-                w-full
-                min-h-[220px]
-                bg-white
-                rounded-xl
-                p-5
-                sm:p-6
-                flex
-                flex-col
-                border
-                border-transparent
-                transition-all
-                duration-500
-                ease-out
-                ${
-                  isVisible
-                    ? "opacity-100 translate-y-0 scale-100"
-                    : "opacity-0 translate-y-12 scale-90"
-                }
-                hover:-translate-y-2
-                hover:scale-[1.02]
-                hover:shadow-[0_18px_35px_rgba(122,31,61,0.12)]
-                hover:border-[#7A1F3D]/15
-              `}
-              style={{
-                boxShadow: isVisible
-                  ? "0 1px 3px rgba(0,0,0,0.05)"
-                  : "none",
-                transitionDelay: isVisible
-                  ? `${index * 180}ms`
-                  : "0ms",
-              }}
-            >
-              {/* Icon */}
-              <span
-                className="
-                  w-9
-                  h-9
-                  sm:w-10
-                  sm:h-10
-                  flex
-                  items-center
-                  justify-center
-                  rounded-lg
-                  mb-4
-                  shrink-0
-                "
+
+        <div className="enterprise-synergy-grid">
+
+          {cards.map(
+            ({ icon: Icon, title, body, footer }, index) => (
+              <div
+                key={title}
+                className={`
+                  enterprise-synergy-card
+                  ${isVisible ? "is-visible" : ""}
+                `}
                 style={{
-                  background: "#fbeef1",
-                  color: WINE,
+                  transitionDelay: isVisible
+                    ? `${index * 160}ms`
+                    : "0ms",
                 }}
               >
-                <Icon size={16} strokeWidth={1.8} />
-              </span>
 
-              {/* Card Heading */}
-              <h3
-                className="
-                  text-sm
-                  sm:text-[14px]
-                  font-semibold
-                  mb-1.5
-                  leading-snug
-                  font-['Plus_Jakarta_Sans']
-                "
-              >
-                {title}
-              </h3>
+                {/* Icon */}
 
-              {/* Card Body */}
-              <p
-                className="
-                  text-xs
-                  sm:text-[13px]
-                  leading-relaxed
-                  mb-6
-                  font-['Inter']
-                "
-                style={{ color: MUTED }}
-              >
-                {body}
-              </p>
-
-              {/* Footer */}
-              <div className="mt-auto flex items-center gap-1.5">
-                <span
-                  className="
-                    text-[9px]
-                    sm:text-[10px]
-                    font-semibold
-                    tracking-wide
-                    font-['Inter']
-                  "
-                  style={{ color: WINE }}
-                >
-                  {footer}
+                <span className="enterprise-synergy-icon">
+                  <Icon
+                    size={17}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
-                <RefreshCw
-                  size={11}
-                  strokeWidth={2}
-                  style={{ color: WINE }}
-                />
+
+                {/* Title */}
+
+                <h3 className="enterprise-synergy-card-title">
+                  {title}
+                </h3>
+
+
+                {/* Body */}
+
+                <p className="enterprise-synergy-card-body">
+                  {body}
+                </p>
+
+
+                {/* Footer */}
+
+                <div className="enterprise-synergy-card-footer">
+
+                  <span className="enterprise-synergy-card-footer-text">
+                    {footer}
+                  </span>
+
+                  <RefreshCw
+                    size={11}
+                    strokeWidth={2}
+                    className="enterprise-synergy-refresh"
+                  />
+
+                </div>
+
+
+                {/* Bottom Line */}
+
+                <span className="enterprise-synergy-card-line" />
+
               </div>
+            )
+          )}
 
-              {/* Bottom Hover Line */}
-              <span
-                className="
-                  absolute
-                  bottom-0
-                  left-0
-                  h-[3px]
-                  w-full
-                  origin-left
-                  scale-x-0
-                  transition-transform
-                  duration-500
-                  group-hover:scale-x-100
-                "
-                style={{ background: WINE }}
-              />
-            </div>
-          ))}
         </div>
+
       </div>
-
-      {/* Reduced Motion */}
-      <style>{`
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
-
-        @media (hover: none) {
-          .group:hover {
-            transform: none;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-          }
-        }
-      `}</style>
     </section>
   );
 }

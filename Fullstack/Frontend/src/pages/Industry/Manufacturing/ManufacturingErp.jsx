@@ -43,28 +43,38 @@ export default function ErpForManufacturingSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
+        /* =====================================================
+           MAIN SECTION
+        ===================================================== */
+
         .erp-manufacturing-section {
           width: 100%;
           background: #f2f2f5;
-          padding: 40px;
+          padding: 40px 100px;
           font-family: "Inter", sans-serif;
           overflow: hidden;
+          box-sizing: border-box;
         }
 
         .erp-manufacturing-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 42px;
+          padding: 48px;
           border-radius: 28px;
           background: ${WINE};
+          box-sizing: border-box;
         }
 
-        /* HEADER */
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         .erp-manufacturing-label {
           margin: 0 0 12px;
+
           color: #f3d9e2;
+
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 700;
@@ -74,99 +84,146 @@ export default function ErpForManufacturingSection() {
 
         .erp-manufacturing-heading {
           margin: 0 0 14px;
+
           color: #ffffff;
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: clamp(28px, 3vw, 38px);
           font-weight: 700;
           line-height: 1.25;
+
           letter-spacing: -0.03em;
         }
 
         .erp-manufacturing-subheading {
           max-width: 720px;
+
           margin: 0 0 34px;
+
           color: #e3c3cf;
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 14px;
           font-weight: 500;
           line-height: 1.8;
         }
 
-        /* CARDS */
+        /* =====================================================
+           CARDS
+        ===================================================== */
 
         .erp-manufacturing-grid {
           display: grid;
-          grid-template-columns: repeat(5, minmax(0, 1fr));
+
+          grid-template-columns:
+            repeat(5, minmax(0, 1fr));
+
           gap: 16px;
+
+          width: 100%;
         }
 
         .erp-manufacturing-card {
           min-width: 0;
+
           padding: 21px 18px;
+
           border-radius: 15px;
+
           background: rgba(255, 255, 255, 0.08);
+
           border: 1px solid rgba(255, 255, 255, 0.12);
+
           transition:
             transform 0.25s ease,
             background 0.25s ease,
             border-color 0.25s ease;
+
+          box-sizing: border-box;
         }
 
         .erp-manufacturing-card:hover {
           transform: translateY(-5px);
+
           background: rgba(255, 255, 255, 0.12);
+
           border-color: rgba(255, 255, 255, 0.2);
         }
 
+        /* =====================================================
+           ICON
+        ===================================================== */
+
         .erp-manufacturing-icon {
           display: block;
+
           margin-bottom: 16px;
+
           color: #ffffff;
         }
 
+        /* =====================================================
+           CARD TITLE
+        ===================================================== */
+
         .erp-manufacturing-card-title {
           margin: 0 0 8px;
+
           color: #ffffff;
-          font-family: "Inter", sans-serif;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4;
         }
 
+        /* =====================================================
+           CARD BODY
+        ===================================================== */
+
         .erp-manufacturing-card-body {
           margin: 0;
+
           color: #d9b7c4;
+
           font-family: "Inter", sans-serif;
           font-size: 12px;
           font-weight: 400;
           line-height: 1.7;
         }
 
-        /* LARGE TABLET */
+        /* =====================================================
+           LARGE TABLET
+        ===================================================== */
 
         @media (max-width: 1100px) {
+
           .erp-manufacturing-section {
-            padding: 32px;
+            padding: 32px 40px;
           }
 
           .erp-manufacturing-container {
-            padding: 36px;
+            padding: 40px;
           }
 
           .erp-manufacturing-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(3, minmax(0, 1fr));
           }
         }
 
-        /* TABLET */
+        /* =====================================================
+           TABLET
+        ===================================================== */
 
         @media (max-width: 800px) {
+
           .erp-manufacturing-section {
-            padding: 28px;
+            padding: 28px 40px;
           }
 
           .erp-manufacturing-container {
-            padding: 32px;
+            padding: 34px;
             border-radius: 24px;
           }
 
@@ -181,7 +238,9 @@ export default function ErpForManufacturingSection() {
           }
 
           .erp-manufacturing-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
             gap: 14px;
           }
 
@@ -190,11 +249,14 @@ export default function ErpForManufacturingSection() {
           }
         }
 
-        /* MOBILE */
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 600px) {
+
           .erp-manufacturing-section {
-            padding: 22px 18px;
+            padding: 24px;
           }
 
           .erp-manufacturing-container {
@@ -242,11 +304,14 @@ export default function ErpForManufacturingSection() {
           }
         }
 
-        /* SMALL MOBILE */
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
 
         @media (max-width: 400px) {
+
           .erp-manufacturing-section {
-            padding: 18px 14px;
+            padding: 22px 16px;
           }
 
           .erp-manufacturing-container {
@@ -275,9 +340,16 @@ export default function ErpForManufacturingSection() {
           }
         }
 
-        /* VERY SMALL MOBILE */
+        /* =====================================================
+           VERY SMALL MOBILE
+        ===================================================== */
 
         @media (max-width: 340px) {
+
+          .erp-manufacturing-section {
+            padding: 20px 16px;
+          }
+
           .erp-manufacturing-container {
             padding: 22px 14px;
           }
@@ -291,7 +363,12 @@ export default function ErpForManufacturingSection() {
           }
         }
 
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
         @media (prefers-reduced-motion: reduce) {
+
           .erp-manufacturing-card {
             transition: none;
           }
@@ -299,10 +376,13 @@ export default function ErpForManufacturingSection() {
       `}</style>
 
       <section className="erp-manufacturing-section">
+
         <div className="erp-manufacturing-container">
 
           {/* HEADER */}
+
           <div>
+
             <p className="erp-manufacturing-label">
               ERP FOR MANUFACTURING
             </p>
@@ -317,15 +397,21 @@ export default function ErpForManufacturingSection() {
               more organized environment for managing business information and
               processes.
             </p>
+
           </div>
 
+
           {/* CARDS */}
+
           <div className="erp-manufacturing-grid">
+
             {cards.map(({ icon: Icon, title, body }) => (
+
               <div
                 key={title}
                 className="erp-manufacturing-card"
               >
+
                 <Icon
                   size={18}
                   strokeWidth={1.8}
@@ -339,11 +425,15 @@ export default function ErpForManufacturingSection() {
                 <p className="erp-manufacturing-card-body">
                   {body}
                 </p>
+
               </div>
+
             ))}
+
           </div>
 
         </div>
+
       </section>
     </>
   );
