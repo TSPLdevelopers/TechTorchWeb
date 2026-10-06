@@ -616,11 +616,7 @@ export default function EcommerceHeroSection() {
             >
               Get In Touch
 
-              <Download
-                size={15}
-                strokeWidth={1.8}
-                className="ecommerce-button-icon"
-              />
+              
             </button>
           </div>
         </div>

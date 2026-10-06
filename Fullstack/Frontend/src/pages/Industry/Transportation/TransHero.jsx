@@ -555,7 +555,6 @@ export default function TransportationHeroSection() {
               }
             >
               GET IN TOUCH
-              <Mail size={14} />
             </button>
 
           </div>

@@ -159,7 +159,9 @@ export default function CreateTechnologyCtaSection() {
           margin-bottom: 30px;
 
           border: none;
-          border-radius: 999px;
+
+          /* UPDATED: 999px -> 6px */
+          border-radius: 6px;
 
           background: #ffffff;
           color: ${WINE};
@@ -315,6 +317,8 @@ export default function CreateTechnologyCtaSection() {
             margin-bottom: 26px;
 
             font-size: 12px;
+
+            border-radius: 6px;
           }
 
           .create-tech-trust-list {
@@ -362,6 +366,8 @@ export default function CreateTechnologyCtaSection() {
             padding: 12px 20px;
 
             font-size: 11.5px;
+
+            border-radius: 6px;
           }
 
           .create-tech-trust-list {
@@ -402,6 +408,8 @@ export default function CreateTechnologyCtaSection() {
             padding: 11px 18px;
 
             font-size: 11px;
+
+            border-radius: 6px;
           }
 
           .create-tech-trust-list {

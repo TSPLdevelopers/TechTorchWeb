@@ -662,7 +662,7 @@ export default function ApproachAndBuildCtaSections() {
                     gap-2
                     px-5
                     py-3
-                    rounded-full
+                    rounded-[6px]
                     bg-white
                     text-sm
                     font-medium
@@ -673,7 +673,6 @@ export default function ApproachAndBuildCtaSections() {
                   }}
                 >
                   Get in Touch
-
                   <ArrowRight size={15} />
                 </button>
 

@@ -49,14 +49,9 @@ export default function WhyTechTorchAndReadySections() {
   return (
     <div className="why-techtorch-page">
       <style>{`
-        /* =====================================================
-           FONTS
-        ===================================================== */
-
         @import url(
           'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
         );
-
 
         /* =====================================================
            BOX SIZING
@@ -66,7 +61,6 @@ export default function WhyTechTorchAndReadySections() {
         .why-techtorch-page * {
           box-sizing: border-box;
         }
-
 
         /* =====================================================
            MAIN
@@ -81,14 +75,8 @@ export default function WhyTechTorchAndReadySections() {
           font-family: "Inter", sans-serif;
         }
 
-
         /* =====================================================
            COMMON CONTAINER
-
-           Desktop  : 100px
-           Tablet   : 40px
-           Mobile   : 24px
-           Small    : 16px
         ===================================================== */
 
         .why-techtorch-container {
@@ -101,7 +89,6 @@ export default function WhyTechTorchAndReadySections() {
           padding-right: 100px;
         }
 
-
         /* =====================================================
            SECTION 1
         ===================================================== */
@@ -111,23 +98,18 @@ export default function WhyTechTorchAndReadySections() {
           background: #ffffff;
         }
 
-
         .why-section-container {
           padding-top: 72px;
           padding-bottom: 76px;
         }
 
-
         /* =====================================================
            BADGE
-           INTER
         ===================================================== */
 
         .why-badge {
           display: inline-flex;
-
           align-items: center;
-
           gap: 7px;
 
           margin-bottom: 17px;
@@ -144,12 +126,10 @@ export default function WhyTechTorchAndReadySections() {
 
           font-size: 9px;
           line-height: 1.3;
-
           font-weight: 700;
 
           letter-spacing: 0.05em;
         }
-
 
         .why-badge-dot {
           width: 6px;
@@ -162,10 +142,8 @@ export default function WhyTechTorchAndReadySections() {
           background: ${WINE};
         }
 
-
         /* =====================================================
            MAIN HEADING
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .why-main-heading {
@@ -174,9 +152,7 @@ export default function WhyTechTorchAndReadySections() {
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 32px;
-
           line-height: 1.2;
-
           font-weight: 700;
 
           letter-spacing: -0.75px;
@@ -184,11 +160,9 @@ export default function WhyTechTorchAndReadySections() {
           color: ${INK};
         }
 
-
         .why-main-heading span {
           color: ${WINE};
         }
-
 
         /* =====================================================
            REASONS GRID
@@ -203,14 +177,12 @@ export default function WhyTechTorchAndReadySections() {
           gap: 18px;
         }
 
-
         /* =====================================================
            REASON CARD
         ===================================================== */
 
         .why-reason-card {
           min-width: 0;
-
           min-height: 185px;
 
           padding: 20px;
@@ -218,7 +190,6 @@ export default function WhyTechTorchAndReadySections() {
           background: #ffffff;
 
           border: 1px solid #ece9e4;
-
           border-radius: 14px;
 
           transition:
@@ -226,7 +197,6 @@ export default function WhyTechTorchAndReadySections() {
             box-shadow 0.25s ease,
             border-color 0.25s ease;
         }
-
 
         .why-reason-card:hover {
           transform: translateY(-4px);
@@ -238,7 +208,6 @@ export default function WhyTechTorchAndReadySections() {
             rgba(0, 0, 0, 0.07);
         }
 
-
         /* =====================================================
            ICON
         ===================================================== */
@@ -248,7 +217,6 @@ export default function WhyTechTorchAndReadySections() {
           height: 38px;
 
           display: flex;
-
           align-items: center;
           justify-content: center;
 
@@ -261,10 +229,8 @@ export default function WhyTechTorchAndReadySections() {
           color: ${WINE};
         }
 
-
         /* =====================================================
            CARD HEADING
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .why-reason-title {
@@ -273,18 +239,14 @@ export default function WhyTechTorchAndReadySections() {
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 13px;
-
           line-height: 1.4;
-
           font-weight: 700;
 
           color: ${INK};
         }
 
-
         /* =====================================================
            CARD BODY
-           INTER
         ===================================================== */
 
         .why-reason-body {
@@ -293,16 +255,13 @@ export default function WhyTechTorchAndReadySections() {
           font-family: "Inter", sans-serif;
 
           font-size: 10px;
-
           line-height: 1.65;
 
           color: ${MUTED};
         }
 
-
         /* =====================================================
            CARD TAG
-           INTER
         ===================================================== */
 
         .why-reason-tag {
@@ -321,16 +280,13 @@ export default function WhyTechTorchAndReadySections() {
           font-family: "Inter", sans-serif;
 
           font-size: 7.5px;
-
           line-height: 1.3;
-
           font-weight: 700;
 
           letter-spacing: 0.04em;
 
           word-break: break-word;
         }
-
 
         /* =====================================================
            CTA SECTION
@@ -353,7 +309,6 @@ export default function WhyTechTorchAndReadySections() {
             );
         }
 
-
         .ready-background {
           position: absolute;
 
@@ -370,7 +325,6 @@ export default function WhyTechTorchAndReadySections() {
               transparent 60%
             );
         }
-
 
         /* =====================================================
            CTA CONTAINER
@@ -393,7 +347,6 @@ export default function WhyTechTorchAndReadySections() {
           padding-bottom: 70px;
         }
 
-
         /* =====================================================
            CTA CONTENT
         ===================================================== */
@@ -402,10 +355,8 @@ export default function WhyTechTorchAndReadySections() {
           min-width: 0;
         }
 
-
         /* =====================================================
            CTA BADGE
-           INTER
         ===================================================== */
 
         .ready-badge {
@@ -428,14 +379,11 @@ export default function WhyTechTorchAndReadySections() {
           font-family: "Inter", sans-serif;
 
           font-size: 9px;
-
           line-height: 1.3;
-
           font-weight: 700;
 
           letter-spacing: 0.05em;
         }
-
 
         .ready-badge-dot {
           width: 6px;
@@ -448,10 +396,8 @@ export default function WhyTechTorchAndReadySections() {
           background: #ffffff;
         }
 
-
         /* =====================================================
            CTA HEADING
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .ready-heading {
@@ -462,9 +408,7 @@ export default function WhyTechTorchAndReadySections() {
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 32px;
-
           line-height: 1.25;
-
           font-weight: 700;
 
           letter-spacing: -0.75px;
@@ -472,10 +416,8 @@ export default function WhyTechTorchAndReadySections() {
           color: #ffffff;
         }
 
-
         /* =====================================================
            CTA DESCRIPTION
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .ready-description {
@@ -486,18 +428,14 @@ export default function WhyTechTorchAndReadySections() {
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 12px;
-
           line-height: 1.72;
-
           font-weight: 500;
 
           color: #d9c3cf;
         }
 
-
         /* =====================================================
            CTA BUTTONS
-           INTER
         ===================================================== */
 
         .ready-buttons {
@@ -510,7 +448,6 @@ export default function WhyTechTorchAndReadySections() {
 
           gap: 10px;
         }
-
 
         .ready-primary-button,
         .ready-secondary-button {
@@ -525,12 +462,12 @@ export default function WhyTechTorchAndReadySections() {
 
           padding: 0 20px;
 
-          border-radius: 999px;
+          /* UPDATED BUTTON RADIUS */
+          border-radius: 6px;
 
           font-family: "Inter", sans-serif;
 
           font-size: 10px;
-
           font-weight: 700;
 
           letter-spacing: 0.03em;
@@ -544,7 +481,6 @@ export default function WhyTechTorchAndReadySections() {
             box-shadow 0.25s ease;
         }
 
-
         /* =====================================================
            PRIMARY CTA
         ===================================================== */
@@ -557,7 +493,6 @@ export default function WhyTechTorchAndReadySections() {
           color: ${WINE};
         }
 
-
         .ready-primary-button:hover {
           transform: translateY(-2px);
 
@@ -565,7 +500,6 @@ export default function WhyTechTorchAndReadySections() {
             0 8px 20px
             rgba(255, 255, 255, 0.12);
         }
-
 
         /* =====================================================
            SECONDARY CTA
@@ -579,7 +513,6 @@ export default function WhyTechTorchAndReadySections() {
           color: #ffffff;
         }
 
-
         .ready-secondary-button:hover {
           border-color: rgba(255, 255, 255, 0.65);
 
@@ -588,65 +521,51 @@ export default function WhyTechTorchAndReadySections() {
           transform: translateY(-2px);
         }
 
-
         /* =====================================================
            LARGE DESKTOP / LAPTOP
         ===================================================== */
 
         @media (max-width: 1200px) {
-
           .why-techtorch-container {
             padding-left: 40px;
             padding-right: 40px;
           }
 
-
           .why-reasons-grid {
             gap: 15px;
           }
-
 
           .why-reason-card {
             padding: 18px;
           }
 
-
           .ready-container {
             gap: 50px;
           }
 
-
           .ready-heading {
             font-size: 29px;
           }
-
         }
-
 
         /* =====================================================
            TABLET
         ===================================================== */
 
         @media (max-width: 900px) {
-
           .why-techtorch-container {
             padding-left: 40px;
             padding-right: 40px;
           }
-
-
-          /* Why Section */
 
           .why-section-container {
             padding-top: 56px;
             padding-bottom: 60px;
           }
 
-
           .why-main-heading {
             font-size: 28px;
           }
-
 
           .why-reasons-grid {
             grid-template-columns:
@@ -655,15 +574,11 @@ export default function WhyTechTorchAndReadySections() {
             gap: 15px;
           }
 
-
           .why-reason-card {
             min-height: 165px;
 
             padding: 18px;
           }
-
-
-          /* CTA */
 
           .ready-container {
             grid-template-columns: 1fr;
@@ -674,11 +589,9 @@ export default function WhyTechTorchAndReadySections() {
             padding-bottom: 60px;
           }
 
-
           .ready-heading {
             font-size: 28px;
           }
-
 
           .ready-description {
             max-width: 720px;
@@ -686,35 +599,25 @@ export default function WhyTechTorchAndReadySections() {
             font-size: 11.5px;
           }
 
-
           .ready-buttons {
             justify-content: flex-start;
           }
-
         }
-
 
         /* =====================================================
            MOBILE
         ===================================================== */
 
         @media (max-width: 600px) {
-
           .why-techtorch-container {
             padding-left: 24px;
             padding-right: 24px;
           }
 
-
-          /* =================================================
-             WHY SECTION
-          ================================================= */
-
           .why-section-container {
             padding-top: 44px;
             padding-bottom: 48px;
           }
-
 
           .why-badge {
             margin-bottom: 14px;
@@ -724,23 +627,19 @@ export default function WhyTechTorchAndReadySections() {
             font-size: 8px;
           }
 
-
           .why-badge-dot {
             width: 5px;
             height: 5px;
           }
 
-
           .why-main-heading {
             margin-bottom: 24px;
 
             font-size: 24px;
-
             line-height: 1.22;
 
             letter-spacing: -0.5px;
           }
-
 
           .why-reasons-grid {
             grid-template-columns: 1fr;
@@ -748,13 +647,11 @@ export default function WhyTechTorchAndReadySections() {
             gap: 12px;
           }
 
-
           .why-reason-card {
             min-height: auto;
 
             padding: 16px;
           }
-
 
           .why-reason-icon {
             width: 34px;
@@ -763,29 +660,22 @@ export default function WhyTechTorchAndReadySections() {
             margin-bottom: 13px;
           }
 
-
           .why-reason-title {
             font-size: 12px;
           }
-
 
           .why-reason-body {
             margin-bottom: 13px;
 
             font-size: 10px;
-
             line-height: 1.62;
           }
-
 
           .why-reason-tag {
             font-size: 7.5px;
           }
 
-
-          /* =================================================
-             CTA
-          ================================================= */
+          /* CTA */
 
           .ready-container {
             padding-top: 46px;
@@ -793,7 +683,6 @@ export default function WhyTechTorchAndReadySections() {
 
             gap: 28px;
           }
-
 
           .ready-badge {
             margin-bottom: 15px;
@@ -803,23 +692,19 @@ export default function WhyTechTorchAndReadySections() {
             font-size: 8px;
           }
 
-
           .ready-badge-dot {
             width: 5px;
             height: 5px;
           }
 
-
           .ready-heading {
             margin-bottom: 14px;
 
             font-size: 24px;
-
             line-height: 1.25;
 
             letter-spacing: -0.45px;
           }
-
 
           .ready-description {
             font-size: 11px;
@@ -827,19 +712,16 @@ export default function WhyTechTorchAndReadySections() {
             line-height: 1.7;
           }
 
-
           .ready-buttons {
             width: 100%;
 
             flex-direction: column;
 
             align-items: stretch;
-
             justify-content: stretch;
 
             gap: 9px;
           }
-
 
           .ready-primary-button,
           .ready-secondary-button {
@@ -850,175 +732,139 @@ export default function WhyTechTorchAndReadySections() {
             padding: 0 16px;
 
             font-size: 9px;
+
+            /* SAME 6PX RADIUS ON MOBILE */
+            border-radius: 6px;
           }
-
         }
-
 
         /* =====================================================
            SMALL MOBILE
         ===================================================== */
 
         @media (max-width: 480px) {
-
           .why-techtorch-container {
             padding-left: 16px;
             padding-right: 16px;
           }
-
 
           .why-section-container {
             padding-top: 40px;
             padding-bottom: 44px;
           }
 
-
           .why-main-heading {
             font-size: 22px;
           }
-
 
           .why-reason-card {
             padding: 15px;
           }
 
-
           .why-reason-title {
             font-size: 11.5px;
           }
 
-
           .why-reason-body {
             font-size: 9.5px;
           }
-
 
           .ready-container {
             padding-top: 42px;
             padding-bottom: 44px;
           }
 
-
           .ready-heading {
             font-size: 22px;
           }
-
 
           .ready-description {
             font-size: 10.5px;
           }
 
+          .ready-primary-button,
+          .ready-secondary-button {
+            border-radius: 6px;
+          }
         }
-
 
         /* =====================================================
            VERY SMALL MOBILE
-           Keep 16px horizontal spacing
         ===================================================== */
 
         @media (max-width: 340px) {
-
           .why-techtorch-container {
             padding-left: 16px;
             padding-right: 16px;
           }
 
-
           .why-main-heading {
             font-size: 20px;
           }
-
 
           .why-reason-title {
             font-size: 11px;
           }
 
-
           .why-reason-body {
             font-size: 9px;
           }
-
 
           .ready-heading {
             font-size: 20px;
           }
 
-
           .ready-description {
             font-size: 9.5px;
           }
-
 
           .ready-primary-button,
           .ready-secondary-button {
             min-height: 40px;
 
             font-size: 8.5px;
+
+            border-radius: 6px;
           }
-
         }
-
 
         /* =====================================================
            ACCESSIBILITY
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
-
           .why-reason-card,
           .ready-primary-button,
           .ready-secondary-button {
             transition: none;
           }
 
-
           .why-reason-card:hover,
           .ready-primary-button:hover,
           .ready-secondary-button:hover {
             transform: none;
           }
-
         }
-
       `}</style>
-
 
       {/* =====================================================
           SECTION 1 — WHY TECHTORCH
       ===================================================== */}
 
       <section className="why-section">
-
         <div className="why-techtorch-container why-section-container">
 
-          {/* Badge */}
-
           <span className="why-badge">
-
             <span className="why-badge-dot" />
-
             WHY TECHTORCH
-
           </span>
 
-
-          {/* Heading */}
-
           <h2 className="why-main-heading">
-
             Technology Built Around the Way{" "}
-
-            <span>
-              You Work
-            </span>
-
+            <span>You Work</span>
           </h2>
 
-
-          {/* Reasons */}
-
           <div className="why-reasons-grid">
-
             {reasons.map(
               ({
                 icon: Icon,
@@ -1026,110 +872,76 @@ export default function WhyTechTorchAndReadySections() {
                 body,
                 tag,
               }) => (
-
                 <div
                   key={title}
                   className="why-reason-card"
                 >
-
                   <span className="why-reason-icon">
-
                     <Icon
                       size={17}
                       strokeWidth={1.8}
                     />
-
                   </span>
-
 
                   <h3 className="why-reason-title">
                     {title}
                   </h3>
 
-
                   <p className="why-reason-body">
                     {body}
                   </p>
 
-
                   <span className="why-reason-tag">
                     {tag}
                   </span>
-
                 </div>
-
               )
             )}
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           SECTION 2 — NEXT STEPS CTA
       ===================================================== */}
 
       <section className="ready-section">
-
         <div
           className="ready-background"
           aria-hidden="true"
         />
 
-
         <div className="why-techtorch-container ready-container">
 
-          {/* CTA CONTENT */}
-
           <div className="ready-content">
-
             <span className="ready-badge">
-
               <span className="ready-badge-dot" />
-
               NEXT STEPS
-
             </span>
 
-
             <h2 className="ready-heading">
-
               Ready to Modernize Your Financial
               Technology Infrastructure?
-
             </h2>
 
-
             <p className="ready-description">
-
               Discover how TechTorch's unified ERP, TorchX Accounts
               platform, and bespoke engineering capabilities accelerate
               growth, safeguard compliance, and streamline financial
               operations.
-
             </p>
-
           </div>
-
 
           {/* CTA BUTTONS */}
 
           <div className="ready-buttons">
-
             <button
               type="button"
               className="ready-primary-button"
             >
-
               Talk to Our Experts
-
               <ArrowRight size={15} />
-
             </button>
-
 
             <button
               type="button"
@@ -1137,13 +949,10 @@ export default function WhyTechTorchAndReadySections() {
             >
               Get in Touch
             </button>
-
           </div>
 
         </div>
-
       </section>
-
     </div>
   );
 }

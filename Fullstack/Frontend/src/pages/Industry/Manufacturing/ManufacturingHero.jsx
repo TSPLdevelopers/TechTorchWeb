@@ -112,16 +112,22 @@ export default function ManufacturingHeroSection() {
         .manufacturing-hero-secondary {
           border: none;
           cursor: pointer;
-          border-radius: 999px;
+
+          /* UPDATED */
+          border-radius: 6px;
+
           padding: 13px 21px;
           min-height: 46px;
+
           font-family: "Inter", sans-serif;
           font-size: 13px;
           font-weight: 600;
+
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 8px;
+
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease,
@@ -267,7 +273,6 @@ export default function ManufacturingHeroSection() {
 
         /* =====================================================
            LARGE TABLET
-           40px horizontal spacing
         ===================================================== */
 
         @media (max-width: 1200px) {
@@ -292,7 +297,6 @@ export default function ManufacturingHeroSection() {
 
         /* =====================================================
            TABLET
-           40px horizontal spacing
         ===================================================== */
 
         @media (max-width: 900px) {
@@ -328,7 +332,6 @@ export default function ManufacturingHeroSection() {
 
         /* =====================================================
            MOBILE
-           24px horizontal spacing
         ===================================================== */
 
         @media (max-width: 600px) {
@@ -366,6 +369,9 @@ export default function ManufacturingHeroSection() {
           .manufacturing-hero-secondary {
             width: 100%;
             padding: 13px 18px;
+
+            /* SAME RADIUS ON MOBILE */
+            border-radius: 6px;
           }
 
           .manufacturing-hero-image-wrapper {
@@ -393,7 +399,6 @@ export default function ManufacturingHeroSection() {
 
         /* =====================================================
            SMALL MOBILE
-           16px horizontal spacing
         ===================================================== */
 
         @media (max-width: 400px) {
@@ -408,6 +413,11 @@ export default function ManufacturingHeroSection() {
 
           .manufacturing-hero-description {
             font-size: 13px;
+          }
+
+          .manufacturing-hero-primary,
+          .manufacturing-hero-secondary {
+            border-radius: 6px;
           }
 
           .manufacturing-hero-image-wrapper {
@@ -431,6 +441,11 @@ export default function ManufacturingHeroSection() {
 
           .manufacturing-hero-description {
             font-size: 12.5px;
+          }
+
+          .manufacturing-hero-primary,
+          .manufacturing-hero-secondary {
+            border-radius: 6px;
           }
 
           .manufacturing-hero-image-wrapper {
@@ -479,6 +494,7 @@ export default function ManufacturingHeroSection() {
             </p>
 
             <div className="manufacturing-hero-actions">
+
               <button className="manufacturing-hero-primary">
                 Talk to Our Experts
                 <ArrowRight size={16} />
@@ -490,6 +506,7 @@ export default function ManufacturingHeroSection() {
               >
                 Get in Touch
               </button>
+
             </div>
           </div>
 
@@ -510,6 +527,7 @@ export default function ManufacturingHeroSection() {
 
             {/* BOTTOM STATUS CARD */}
             <div className="manufacturing-hero-status">
+
               <div className="manufacturing-hero-status-content">
                 <span className="manufacturing-hero-status-dot" />
 
@@ -523,9 +541,10 @@ export default function ManufacturingHeroSection() {
                 size={17}
                 className="manufacturing-hero-status-icon"
               />
-            </div>
 
+            </div>
           </div>
+
         </div>
       </section>
     </>
