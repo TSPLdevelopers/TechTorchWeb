@@ -106,22 +106,63 @@ export default function ApproachAndBuildCtaSections() {
         {`
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-          .approach-section {
-            font-family: "Inter", sans-serif;
+          * {
+            box-sizing: border-box;
           }
 
-          .approach-heading,
-          .approach-subheading {
-            font-family: "Plus Jakarta Sans", sans-serif;
+          .approach-section {
+            width: 100%;
+            font-family: "Inter", Arial, sans-serif;
+            overflow: hidden;
           }
+
+          /* =========================================
+             TYPOGRAPHY
+          ========================================= */
+
+          .approach-heading,
+          .approach-subheading,
+          .approach-card-title,
+          .approach-cta-heading {
+            font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          }
+
+          .approach-description,
+          .approach-card-body,
+          .approach-cta-description,
+          .approach-cta-actions,
+          .approach-card-footer {
+            font-family: "Inter", Arial, sans-serif;
+          }
+
+          /* =========================================
+             MAIN CONTAINER
+             Desktop: 100px
+             Tablet: 40px
+             Mobile: 24px
+             Small Mobile: 16px
+          ========================================= */
+
+          .approach-container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 80px 100px;
+          }
+
+          /* =========================================
+             APPROACH CARD ANIMATION
+          ========================================= */
 
           .approach-card {
             opacity: 0;
             transform: translateY(45px);
+
             transition:
               opacity 0.7s ease,
               transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.3s ease;
+
             will-change: opacity, transform;
           }
 
@@ -138,6 +179,10 @@ export default function ApproachAndBuildCtaSections() {
             transform: scale(1.12);
           }
 
+          /* =========================================
+             CTA BUTTON
+          ========================================= */
+
           .cta-button {
             transition:
               transform 0.3s ease,
@@ -149,10 +194,31 @@ export default function ApproachAndBuildCtaSections() {
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
           }
 
+          /* =========================================
+             LARGE TABLET
+          ========================================= */
+
+          @media (max-width: 1200px) {
+            .approach-container {
+              padding: 70px 40px;
+            }
+
+            .approach-heading {
+              font-size: 1.95rem;
+            }
+
+            .approach-cards {
+              gap: 16px !important;
+            }
+          }
+
+          /* =========================================
+             TABLET
+          ========================================= */
+
           @media (max-width: 900px) {
             .approach-container {
-              padding-top: 55px !important;
-              padding-bottom: 70px !important;
+              padding: 60px 40px;
             }
 
             .approach-heading {
@@ -160,38 +226,51 @@ export default function ApproachAndBuildCtaSections() {
             }
 
             .approach-cards {
-              grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+              grid-template-columns: repeat(
+                2,
+                minmax(0, 1fr)
+              ) !important;
+
+              gap: 16px !important;
+            }
+
+            .approach-card {
+              padding: 21px !important;
             }
 
             .approach-cta {
-              padding: 42px 32px !important;
+              padding: 44px 34px !important;
             }
           }
 
-          @media (max-width: 640px) {
+          /* =========================================
+             MOBILE
+          ========================================= */
+
+          @media (max-width: 700px) {
             .approach-container {
-              padding: 45px 20px 65px !important;
+              padding: 45px 24px 60px !important;
             }
 
             .approach-heading {
               font-size: 1.65rem !important;
-              line-height: 1.25 !important;
+              line-height: 1.28 !important;
             }
 
             .approach-description {
               font-size: 13px !important;
               line-height: 1.7 !important;
-              margin-bottom: 30px !important;
+              margin-bottom: 32px !important;
             }
 
             .approach-cards {
               grid-template-columns: 1fr !important;
-              gap: 12px !important;
-              margin-bottom: 45px !important;
+              gap: 13px !important;
+              margin-bottom: 44px !important;
             }
 
             .approach-card {
-              padding: 18px !important;
+              padding: 19px !important;
             }
 
             .approach-card-body {
@@ -199,7 +278,7 @@ export default function ApproachAndBuildCtaSections() {
             }
 
             .approach-cta {
-              padding: 34px 22px !important;
+              padding: 36px 24px !important;
               border-radius: 22px !important;
             }
 
@@ -219,24 +298,75 @@ export default function ApproachAndBuildCtaSections() {
             }
           }
 
-          @media (max-width: 400px) {
+          /* =========================================
+             SMALL MOBILE
+          ========================================= */
+
+          @media (max-width: 480px) {
             .approach-container {
-              padding-left: 16px !important;
-              padding-right: 16px !important;
+              padding: 36px 16px 52px !important;
             }
 
             .approach-heading {
               font-size: 1.5rem !important;
             }
 
+            .approach-description {
+              font-size: 12.5px !important;
+            }
+
+            .approach-card {
+              padding: 18px !important;
+            }
+
             .approach-cta {
-              padding: 30px 18px !important;
+              padding: 31px 19px !important;
+              border-radius: 20px !important;
             }
 
             .approach-cta-heading {
               font-size: 1.4rem !important;
             }
+
+            .approach-cta-description {
+              font-size: 12.5px !important;
+            }
+
+            .approach-card-footer {
+              font-size: 8.5px !important;
+            }
           }
+
+          /* =========================================
+             VERY SMALL MOBILE
+          ========================================= */
+
+          @media (max-width: 360px) {
+            .approach-container {
+              padding-left: 16px !important;
+              padding-right: 16px !important;
+            }
+
+            .approach-heading {
+              font-size: 1.4rem !important;
+            }
+
+            .approach-cta {
+              padding: 28px 17px !important;
+            }
+
+            .approach-cta-heading {
+              font-size: 1.3rem !important;
+            }
+
+            .approach-cta-description {
+              font-size: 12px !important;
+            }
+          }
+
+          /* =========================================
+             REDUCED MOTION
+          ========================================= */
 
           @media (prefers-reduced-motion: reduce) {
             .approach-card {
@@ -248,6 +378,10 @@ export default function ApproachAndBuildCtaSections() {
             .approach-card:hover {
               transform: none !important;
             }
+
+            .cta-button {
+              transition: none !important;
+            }
           }
         `}
       </style>
@@ -257,15 +391,8 @@ export default function ApproachAndBuildCtaSections() {
         className="approach-section w-full bg-white"
         style={{ color: INK }}
       >
-        <div
-          className="
-            approach-container
-            max-w-4xl
-            mx-auto
-            px-6
-            py-16
-          "
-        >
+        <div className="approach-container">
+
           {/* =====================================
               SECTION 1 — OUR APPROACH
           ====================================== */}
@@ -277,7 +404,10 @@ export default function ApproachAndBuildCtaSections() {
               tracking-wide
               mb-3
             "
-            style={{ color: WINE }}
+            style={{
+              color: WINE,
+              fontFamily: "Inter, Arial, sans-serif",
+            }}
           >
             OUR APPROACH
           </p>
@@ -340,6 +470,7 @@ export default function ApproachAndBuildCtaSections() {
                   }}
                 >
                   {/* Number + Icon */}
+
                   <div className="flex items-center justify-between mb-5">
                     <span
                       className="
@@ -348,6 +479,7 @@ export default function ApproachAndBuildCtaSections() {
                       "
                       style={{
                         color: WINE,
+                        fontFamily: "Plus Jakarta Sans, Arial, sans-serif",
                       }}
                     >
                       {num}
@@ -364,9 +496,10 @@ export default function ApproachAndBuildCtaSections() {
                   </div>
 
                   {/* Card Heading */}
+
                   <h3
                     className="
-                      approach-subheading
+                      approach-card-title
                       text-sm
                       font-semibold
                       mb-1.5
@@ -376,6 +509,7 @@ export default function ApproachAndBuildCtaSections() {
                   </h3>
 
                   {/* Card Body */}
+
                   <p
                     className="
                       approach-card-body
@@ -391,8 +525,10 @@ export default function ApproachAndBuildCtaSections() {
                   </p>
 
                   {/* Footer */}
+
                   <p
                     className="
+                      approach-card-footer
                       mt-auto
                       text-[9px]
                       font-semibold
@@ -428,6 +564,7 @@ export default function ApproachAndBuildCtaSections() {
             }}
           >
             {/* Background Glow */}
+
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -437,8 +574,11 @@ export default function ApproachAndBuildCtaSections() {
             />
 
             {/* CTA Content */}
-            <div className="relative max-w-md">
+
+            <div className="relative max-w-xl">
+
               {/* Badge */}
+
               <span
                 className="
                   inline-flex
@@ -455,13 +595,16 @@ export default function ApproachAndBuildCtaSections() {
                 style={{
                   background: "rgba(255,255,255,0.12)",
                   color: "#f3d9e2",
+                  fontFamily: "Inter, Arial, sans-serif",
                 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-white" />
+
                 GET IN TOUCH
               </span>
 
               {/* CTA Heading */}
+
               <h2
                 className="
                   approach-heading
@@ -481,6 +624,7 @@ export default function ApproachAndBuildCtaSections() {
               </h2>
 
               {/* CTA Description */}
+
               <p
                 className="
                   approach-cta-description
@@ -497,6 +641,7 @@ export default function ApproachAndBuildCtaSections() {
               </p>
 
               {/* CTA Actions */}
+
               <div
                 className="
                   approach-cta-actions
@@ -507,6 +652,7 @@ export default function ApproachAndBuildCtaSections() {
                 "
               >
                 {/* Button */}
+
                 <button
                   type="button"
                   className="
@@ -523,6 +669,7 @@ export default function ApproachAndBuildCtaSections() {
                   "
                   style={{
                     color: WINE,
+                    fontFamily: "Inter, Arial, sans-serif",
                   }}
                 >
                   Get in Touch
@@ -531,6 +678,7 @@ export default function ApproachAndBuildCtaSections() {
                 </button>
 
                 {/* Security Text */}
+
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck
                     size={13}
@@ -543,6 +691,7 @@ export default function ApproachAndBuildCtaSections() {
                     className="text-xs"
                     style={{
                       color: "#e3c3cf",
+                      fontFamily: "Inter, Arial, sans-serif",
                     }}
                   >
                     Confidential Consultation &amp; Scoping
@@ -551,6 +700,7 @@ export default function ApproachAndBuildCtaSections() {
               </div>
             </div>
           </div>
+
         </div>
       </section>
     </>

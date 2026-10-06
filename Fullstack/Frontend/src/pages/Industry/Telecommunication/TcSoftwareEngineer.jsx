@@ -44,12 +44,26 @@ export default function SoftwareEngineeringMatrixSection() {
           font-family: "Inter", sans-serif;
         }
 
+        .software-engineering-section *,
+        .software-engineering-section *::before,
+        .software-engineering-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .software-engineering-container {
           width: 100%;
-          max-width: 1180px;
+          max-width: 1440px;
           margin: 0 auto;
 
-          padding: 90px 32px;
+          padding: 90px 100px;
 
           display: grid;
           grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -97,9 +111,9 @@ export default function SoftwareEngineeringMatrixSection() {
 
           color: ${MUTED};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 1.8;
         }
 
@@ -137,7 +151,7 @@ export default function SoftwareEngineeringMatrixSection() {
 
           color: ${INK};
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 15px;
           font-weight: 700;
           line-height: 1.4;
@@ -217,11 +231,33 @@ export default function SoftwareEngineeringMatrixSection() {
 
         /* =========================================
            LARGE TABLET
+           100px → 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .software-engineering-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 80px;
+            padding-bottom: 80px;
+
+            gap: 50px;
+          }
+        }
+
+        /* =========================================
+           TABLET
         ========================================= */
 
         @media (max-width: 1050px) {
           .software-engineering-container {
-            padding: 80px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 75px;
+            padding-bottom: 75px;
+
             gap: 45px;
           }
 
@@ -235,15 +271,20 @@ export default function SoftwareEngineeringMatrixSection() {
         }
 
         /* =========================================
-           TABLET
+           SINGLE COLUMN TABLET
         ========================================= */
 
         @media (max-width: 850px) {
           .software-engineering-container {
             grid-template-columns: 1fr;
+
             gap: 42px;
 
-            padding: 75px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
           .software-engineering-copy {
@@ -267,16 +308,23 @@ export default function SoftwareEngineeringMatrixSection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
           .software-engineering-container {
-            padding: 60px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 60px;
+            padding-bottom: 60px;
+
             gap: 32px;
           }
 
           .software-engineering-label {
             margin-bottom: 11px;
+
             font-size: 10px;
             letter-spacing: 0.13em;
           }
@@ -309,6 +357,7 @@ export default function SoftwareEngineeringMatrixSection() {
 
           .engineering-matrix-description {
             margin-bottom: 20px;
+
             font-size: 11.5px;
             line-height: 1.7;
           }
@@ -329,11 +378,16 @@ export default function SoftwareEngineeringMatrixSection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .software-engineering-container {
-            padding: 52px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
           }
 
           .software-engineering-heading {
@@ -375,7 +429,10 @@ export default function SoftwareEngineeringMatrixSection() {
 
       <div className="software-engineering-container">
 
-        {/* LEFT: COPY */}
+        {/* =========================================
+            LEFT: COPY
+        ========================================= */}
+
         <div className="software-engineering-copy">
           <p className="software-engineering-label">
             Software &amp; Engineering
@@ -393,7 +450,10 @@ export default function SoftwareEngineeringMatrixSection() {
           </p>
         </div>
 
-        {/* RIGHT: MATRIX PANEL */}
+        {/* =========================================
+            RIGHT: MATRIX PANEL
+        ========================================= */}
+
         <div className="engineering-matrix-panel">
 
           <div className="engineering-matrix-header">

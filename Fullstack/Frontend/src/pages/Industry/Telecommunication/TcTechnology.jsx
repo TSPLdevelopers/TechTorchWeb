@@ -36,12 +36,26 @@ export default function TelecomTechnologySection() {
           font-family: "Inter", sans-serif;
         }
 
+        .telecom-technology-section *,
+        .telecom-technology-section *::before,
+        .telecom-technology-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           MAIN CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .telecom-technology-container {
           width: 100%;
-          max-width: 1180px;
+          max-width: 1440px;
           margin: 0 auto;
 
-          padding: 90px 32px;
+          padding: 90px 100px;
 
           display: grid;
           grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -89,14 +103,14 @@ export default function TelecomTechnologySection() {
 
           color: ${MUTED};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13.5px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 1.8;
         }
 
         /* =========================================
-           RIGHT PANEL
+           RIGHT FRAMEWORK PANEL
         ========================================= */
 
         .telecom-framework-panel {
@@ -156,9 +170,9 @@ export default function TelecomTechnologySection() {
 
           color: ${MUTED};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 11.5px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 1.75;
         }
 
@@ -244,7 +258,7 @@ export default function TelecomTechnologySection() {
 
           color: ${INK};
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 11.5px;
           font-weight: 700;
           line-height: 1.4;
@@ -263,11 +277,33 @@ export default function TelecomTechnologySection() {
 
         /* =========================================
            LARGE TABLET
+           100px → 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .telecom-technology-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 80px;
+            padding-bottom: 80px;
+
+            gap: 50px;
+          }
+        }
+
+        /* =========================================
+           TABLET
         ========================================= */
 
         @media (max-width: 1050px) {
           .telecom-technology-container {
-            padding: 80px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 75px;
+            padding-bottom: 75px;
+
             gap: 45px;
           }
 
@@ -281,15 +317,20 @@ export default function TelecomTechnologySection() {
         }
 
         /* =========================================
-           TABLET
+           SINGLE COLUMN TABLET
         ========================================= */
 
         @media (max-width: 850px) {
           .telecom-technology-container {
             grid-template-columns: 1fr;
+
             gap: 40px;
 
-            padding: 75px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
           .telecom-technology-heading {
@@ -308,16 +349,23 @@ export default function TelecomTechnologySection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
           .telecom-technology-container {
-            padding: 60px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 60px;
+            padding-bottom: 60px;
+
             gap: 30px;
           }
 
           .telecom-technology-label {
             margin-bottom: 11px;
+
             font-size: 10px;
             letter-spacing: 0.12em;
           }
@@ -357,6 +405,7 @@ export default function TelecomTechnologySection() {
 
           .telecom-framework-description {
             margin-bottom: 20px;
+
             font-size: 11px;
             line-height: 1.7;
           }
@@ -387,11 +436,16 @@ export default function TelecomTechnologySection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .telecom-technology-container {
-            padding: 52px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
           }
 
           .telecom-technology-heading {
@@ -420,11 +474,25 @@ export default function TelecomTechnologySection() {
         }
 
         /* =========================================
+           DESKTOP BREAK
+        ========================================= */
+
+        .desktop-break {
+          display: block;
+        }
+
+        @media (max-width: 850px) {
+          .desktop-break {
+            display: none;
+          }
+        }
+
+        /* =========================================
            REDUCED MOTION
         ========================================= */
 
         @media (prefers-reduced-motion: reduce) {
-          * {
+          .telecom-technology-section * {
             scroll-behavior: auto !important;
           }
         }
@@ -522,7 +590,9 @@ export default function TelecomTechnologySection() {
 
           </div>
 
-          {/* ARCHITECTURAL COHESION */}
+          {/* =====================================
+              ARCHITECTURAL COHESION
+          ===================================== */}
 
           <div className="telecom-cohesion-note">
 
