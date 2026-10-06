@@ -43,12 +43,15 @@ export default function EvolveWithInstitutionSection() {
     >
       <div
         className="
-          max-w-7xl
+          w-full
+          max-w-[1600px]
           mx-auto
+
           px-4
           sm:px-6
           md:px-10
           lg:px-[100px]
+
           py-14
           sm:py-16
           md:py-20
@@ -58,10 +61,11 @@ export default function EvolveWithInstitutionSection() {
         {/* Header */}
         <div
           className="
-            text-center
             w-full
-            max-w-3xl
+            max-w-[850px]
             mx-auto
+            text-center
+
             mb-10
             sm:mb-12
             md:mb-14
@@ -74,27 +78,41 @@ export default function EvolveWithInstitutionSection() {
               items-center
               justify-center
               gap-1.5
-              text-[10px]
-              sm:text-xs
-              font-semibold
-              tracking-wide
+
               px-3
+              sm:px-3.5
               py-1.5
-              rounded-full
+
               mb-5
               sm:mb-6
+
+              rounded-full
+
+              text-[9px]
+              sm:text-[10px]
+              md:text-xs
+
+              font-semibold
+              tracking-wide
               font-['Inter']
+
+              whitespace-nowrap
             "
             style={{
               background: "rgba(255,255,255,0.1)",
               color: "#f3d9e2",
             }}
           >
-            <ChevronRight size={12} strokeWidth={3} />
+            <ChevronRight
+              size={12}
+              className="sm:w-[13px] sm:h-[13px]"
+              strokeWidth={3}
+            />
+
             READY FOR THE NEXT STAGE OF GROWTH
           </span>
 
-          {/* Heading - Plus Jakarta Sans */}
+          {/* Heading */}
           <h2
             className="
               font-['Plus_Jakarta_Sans']
@@ -102,10 +120,12 @@ export default function EvolveWithInstitutionSection() {
               font-semibold
               tracking-tight
               leading-[1.15]
+
               text-2xl
               sm:text-3xl
               md:text-[2.2rem]
               lg:text-[2.4rem]
+
               mb-4
               sm:mb-5
             "
@@ -113,17 +133,21 @@ export default function EvolveWithInstitutionSection() {
             Technology that can evolve with your institution.
           </h2>
 
-          {/* Subheading / Description - Plus Jakarta Sans */}
+          {/* Description */}
           <p
             className="
               font-['Plus_Jakarta_Sans']
+
               text-[13px]
               sm:text-[14px]
               md:text-[15px]
+
               leading-[1.7]
               sm:leading-relaxed
-              px-1
-              sm:px-2
+
+              px-0
+              sm:px-1
+              md:px-2
             "
             style={{ color: "#e3c3cf" }}
           >
@@ -143,20 +167,35 @@ export default function EvolveWithInstitutionSection() {
             grid-cols-1
             sm:grid-cols-2
             lg:grid-cols-4
+
             gap-4
             sm:gap-5
+            lg:gap-5
+            xl:gap-6
           "
         >
           {features.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
               className="
+                group
+                w-full
+                min-w-0
+
                 rounded-xl
+                sm:rounded-[14px]
+
                 p-5
-                sm:p-6
+                sm:p-5
+                md:p-6
+                lg:p-6
+
                 border
+
                 transition-all
                 duration-300
+                ease-out
+
                 hover:-translate-y-1
               "
               style={{
@@ -167,17 +206,25 @@ export default function EvolveWithInstitutionSection() {
               {/* Icon */}
               <span
                 className="
+                  flex
+                  items-center
+                  justify-center
+
                   w-10
                   h-10
                   sm:w-11
                   sm:h-11
-                  flex
-                  items-center
-                  justify-center
+
                   rounded-lg
                   bg-white
+
                   mb-4
                   sm:mb-5
+
+                  transition-transform
+                  duration-300
+
+                  group-hover:scale-105
                 "
                 style={{ color: WINE_DARK }}
               >
@@ -188,14 +235,16 @@ export default function EvolveWithInstitutionSection() {
                 />
               </span>
 
-              {/* Card Heading - Inter */}
+              {/* Card Heading */}
               <h3
                 className="
                   font-['Inter']
                   text-[14px]
                   sm:text-[15px]
+
                   font-semibold
                   text-white
+
                   mb-2
                   leading-snug
                 "
@@ -203,13 +252,16 @@ export default function EvolveWithInstitutionSection() {
                 {title}
               </h3>
 
-              {/* Card Body - Inter */}
+              {/* Card Body */}
               <p
                 className="
                   font-['Inter']
+
                   text-[13px]
                   sm:text-sm
+
                   leading-[1.65]
+                  break-words
                 "
                 style={{ color: "#d9b7c4" }}
               >
@@ -219,6 +271,44 @@ export default function EvolveWithInstitutionSection() {
           ))}
         </div>
       </div>
+
+      {/* Small Mobile: 16px horizontal spacing */}
+      <style>{`
+        @media (max-width: 639px) {
+          section > div {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          section > div {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
+
+        @media (min-width: 640px) and (max-width: 767px) {
+          section > div {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+          section > div {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          section > div {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

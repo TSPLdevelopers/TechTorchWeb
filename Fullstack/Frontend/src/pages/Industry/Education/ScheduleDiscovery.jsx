@@ -38,10 +38,6 @@ export default function ScheduleDiscovery() {
       if (invalidField) {
         invalidField.focus();
         form.reportValidity();
-
-        setTimeout(() => {
-          invalidField.blur();
-        }, 43000);
       }
 
       return;
@@ -60,549 +56,908 @@ export default function ScheduleDiscovery() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
+        /* =====================================================
+           FONTS
+        ===================================================== */
+
+        @import url(
+          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
+        );
+
+
+        /* =====================================================
+           PAGE
+           DESKTOP = 100px LEFT / RIGHT
+        ===================================================== */
 
         .discovery-page {
           min-height: 100vh;
           width: 100%;
+
           background: #F6F7F8;
-          padding: 40px 100px;
+
+          padding-top: 48px;
+          padding-right: 100px;
+          padding-bottom: 64px;
+          padding-left: 100px;
+
+          box-sizing: border-box;
+
           font-family: "Inter", sans-serif;
+
           overflow-x: hidden;
         }
 
+
         .discovery-wrapper {
           width: 100%;
-          max-width: 900px;
+          max-width: 1100px;
+
           margin: 0 auto;
         }
 
-        /* ================================
+
+        /* =====================================================
            PAGE HEADER
-        ================================= */
+        ===================================================== */
 
         .discovery-header {
           width: 100%;
-          text-align: center;
+
           margin: 0 auto;
+
+          text-align: center;
         }
+
 
         .discovery-eyebrow {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+
           gap: 8px;
+
           border: 1px solid #E4D4DC;
+
           background: #F8F1F4;
+
           padding: 6px 14px;
+
           border-radius: 999px;
+
           color: #730042;
+
           font-family: "Inter", sans-serif;
+
           font-size: 10px;
+
           font-weight: 600;
+
           letter-spacing: 0.12em;
+
           text-transform: uppercase;
+
           line-height: 1.4;
         }
+
 
         .discovery-eyebrow-dot {
           width: 7px;
           height: 7px;
+
           flex-shrink: 0;
+
           border-radius: 50%;
+
           background: #730042;
         }
 
-        /*
-          MAIN HEADING
-          Plus Jakarta Sans
-        */
+
+        /* =====================================================
+           MAIN HEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
+
         .discovery-heading {
-          margin: 16px auto 0;
-          max-width: 800px;
+          margin: 18px auto 0;
+
+          max-width: 850px;
+
           color: #171719;
+
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 36px;
-          font-weight: 600;
+
+          font-size: 40px;
+
+          font-weight: 700;
+
           line-height: 1.12;
-          letter-spacing: -0.04em;
+
+          letter-spacing: -0.045em;
         }
 
-        /*
-          SUBHEADING
-          Plus Jakarta Sans
-        */
+
+        /* =====================================================
+           SUBHEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
+
         .discovery-subheading {
-          margin: 10px auto 0;
-          max-width: 700px;
+          margin: 12px auto 0;
+
+          max-width: 760px;
+
           color: #65595E;
+
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 14px;
+
+          font-size: 15px;
+
           font-weight: 500;
-          line-height: 1.6;
+
+          line-height: 1.65;
         }
 
-        /* ================================
+
+        /* =====================================================
            FORM
-        ================================= */
+        ===================================================== */
 
         .discovery-form {
           width: 100%;
-          margin-top: 28px;
-          padding: 36px 40px;
+
+          margin-top: 32px;
+
+          padding: 40px;
+
+          box-sizing: border-box;
+
           background: #ffffff;
+
           border: 1px solid #DDE2E6;
-          border-radius: 10px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+          border-radius: 12px;
+
+          box-shadow:
+            0 2px 8px rgba(0, 0, 0, 0.03);
         }
 
-        /* ================================
+
+        /* =====================================================
            SECTION HEADER
-        ================================= */
+        ===================================================== */
 
         .form-section-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
+
           gap: 12px;
-          padding-bottom: 10px;
+
+          padding-bottom: 11px;
+
           border-bottom: 1px solid #E2E5E7;
         }
+
 
         .form-section-left {
           display: flex;
           align-items: center;
+
           gap: 10px;
+
           min-width: 0;
         }
 
+
         .form-section-number {
-          width: 28px;
-          height: 28px;
+          width: 29px;
+          height: 29px;
+
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 50%;
+
           background: #FFDDE7;
+
           color: #730042;
+
           font-family: "Inter", sans-serif;
+
           font-size: 11px;
+
           font-weight: 700;
         }
 
-        /*
-          SECTION HEADING
-          Plus Jakarta Sans
-        */
+
+        /* =====================================================
+           SECTION TITLE
+           PLUS JAKARTA SANS
+        ===================================================== */
+
         .form-section-title {
           margin: 0;
+
           color: #202022;
+
           font-family: "Plus Jakarta Sans", sans-serif;
+
           font-size: 16px;
+
           font-weight: 600;
+
           line-height: 1.4;
         }
 
+
         .form-section-right {
           flex-shrink: 0;
+
           color: #64575D;
+
           font-family: "Inter", sans-serif;
+
           font-size: 11px;
+
           font-weight: 600;
+
           text-align: right;
         }
 
-        /* ================================
+
+        /* =====================================================
            FIELD
-        ================================= */
+        ===================================================== */
 
         .form-field {
           margin-top: 20px;
         }
 
+
         .form-label {
           display: block;
+
           color: #29292B;
+
           font-family: "Inter", sans-serif;
+
           font-size: 12px;
+
           font-weight: 600;
+
           line-height: 1.4;
+
           text-transform: uppercase;
+
           letter-spacing: 0.01em;
         }
+
 
         .form-label span {
           color: #730042;
         }
 
+
+        /* =====================================================
+           INPUTS
+        ===================================================== */
+
         .form-input,
         .form-textarea {
           width: 100%;
+
+          box-sizing: border-box;
+
           border: 1px solid #E2E5E8;
+
           background: #ECEFF1;
+
           color: #29292B;
+
           font-family: "Inter", sans-serif;
+
           font-size: 12px;
+
           outline: none;
-          transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+          transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.2s ease;
         }
+
 
         .form-input {
           height: 40px;
+
           margin-top: 10px;
+
           padding: 0 14px;
+
           border-radius: 7px;
         }
 
+
         .form-textarea {
           height: 105px;
+
           margin-top: 10px;
+
           padding: 12px 16px;
+
           border-radius: 8px;
+
           resize: none;
+
           line-height: 1.7;
         }
+
 
         .form-input::placeholder,
         .form-textarea::placeholder {
           color: #A28F96;
         }
 
+
         .form-input:focus,
         .form-textarea:focus {
           border-color: #730042;
-          box-shadow: 0 0 0 1px #E8D6DF;
+
+          background: #F4F5F6;
+
+          box-shadow:
+            0 0 0 3px rgba(115, 0, 66, 0.08);
         }
 
-        /* ================================
+
+        /* =====================================================
            CHOICE GRID
-        ================================= */
+        ===================================================== */
 
         .choice-grid {
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
+
+          grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
           gap: 8px;
+
           margin-top: 10px;
         }
+
 
         .timeline-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+
+          grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
           gap: 8px;
+
           margin-top: 10px;
         }
 
+
         .choice-button {
           min-height: 48px;
+
           width: 100%;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           padding: 8px 10px;
+
           border-radius: 7px;
+
           border: 1px solid #E2E5E8;
+
           background: #ECEFF1;
+
           color: #29292B;
+
           font-family: "Inter", sans-serif;
+
           font-size: 11px;
+
           font-weight: 600;
+
           line-height: 1.5;
+
           text-align: center;
+
           cursor: pointer;
+
           transition:
             border-color 0.15s ease,
             background 0.15s ease,
-            color 0.15s ease;
+            color 0.15s ease,
+            transform 0.15s ease;
         }
+
 
         .choice-button:hover {
           border-color: #730042;
+
           background: #F5E5ED;
+
+          color: #730042;
         }
+
+
+        .choice-button:active {
+          transform: scale(0.99);
+        }
+
 
         .choice-button.selected {
           border-color: #730042;
+
           background: #F5E5ED;
+
           color: #730042;
-          box-shadow: inset 0 0 0 1px #730042;
+
+          box-shadow:
+            inset 0 0 0 1px #730042;
         }
 
-        /* ================================
+
+        /* =====================================================
            INTEREST SECTION
-        ================================= */
+        ===================================================== */
 
         .interest-section {
-          margin-top: 28px;
+          margin-top: 30px;
         }
+
 
         .interest-grid {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 8px;
+
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+          gap: 9px;
+
           margin-top: 12px;
         }
 
+
         .interest-card {
           width: 100%;
-          min-height: 57px;
+
+          min-height: 59px;
+
           display: flex;
           align-items: flex-start;
+
           gap: 12px;
-          padding: 10px 12px;
+
+          padding: 11px 12px;
+
+          box-sizing: border-box;
+
           border: 1px solid #E2E5E8;
+
           border-radius: 9px;
+
           background: #ECEFF1;
+
           color: #29292B;
+
           font-family: "Inter", sans-serif;
+
           text-align: left;
+
           cursor: pointer;
+
           transition:
             border-color 0.15s ease,
             background 0.15s ease;
         }
 
+
         .interest-card:hover {
           border-color: #D3D6D9;
+
           background: #E9EBED;
         }
+
 
         .interest-checkbox {
           width: 14px;
           height: 14px;
+
           flex-shrink: 0;
+
           margin-top: 2px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 2px;
+
           background: #ffffff;
+
+          border: 1px solid #D9DDE0;
+
+          box-sizing: border-box;
         }
+
 
         .interest-checkbox.selected {
           background: #730042;
+
+          border-color: #730042;
         }
+
+
+        .interest-checkbox svg {
+          width: 10px;
+          height: 10px;
+
+          color: #ffffff;
+        }
+
 
         .interest-content {
           min-width: 0;
         }
 
+
         .interest-title {
           display: block;
+
           color: #262527;
+
           font-family: "Inter", sans-serif;
+
           font-size: 12px;
+
           font-weight: 700;
+
           line-height: 1.4;
         }
 
+
         .interest-description {
           display: block;
+
           margin-top: 2px;
+
           color: #65595E;
+
           font-family: "Inter", sans-serif;
+
           font-size: 10px;
+
           font-weight: 400;
+
           line-height: 1.5;
         }
 
-        /* ================================
+
+        /* =====================================================
            CONTACT SECTION
-        ================================= */
+        ===================================================== */
 
         .contact-section {
-          margin-top: 28px;
+          margin-top: 30px;
         }
+
 
         .contact-grid {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
           gap: 16px;
+
           margin-top: 16px;
         }
 
-        /* ================================
+
+        /* =====================================================
            CONSENT
-        ================================= */
+        ===================================================== */
 
         .consent-section {
-          margin-top: 20px;
-          padding-top: 16px;
+          margin-top: 22px;
+
+          padding-top: 17px;
+
           border-top: 1px solid #E4E6E8;
         }
+
 
         .consent-label {
           display: flex;
           align-items: flex-start;
+
           gap: 12px;
+
           cursor: pointer;
         }
+
 
         .consent-checkbox {
           width: 14px;
           height: 14px;
+
           flex-shrink: 0;
+
           margin-top: 4px;
+
           accent-color: #730042;
         }
 
+
         .consent-text {
           color: #65595E;
+
           font-family: "Inter", sans-serif;
+
           font-size: 12px;
+
           line-height: 1.7;
         }
 
-        /* ================================
+
+        /* =====================================================
            SUBMIT
-        ================================= */
+        ===================================================== */
 
         .submit-button {
           width: 100%;
-          height: 46px;
-          margin-top: 20px;
+
+          height: 48px;
+
+          margin-top: 21px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           gap: 12px;
+
           padding: 0 20px;
+
           border: none;
+
           border-radius: 9px;
+
           background: #730042;
+
           color: #ffffff;
+
           font-family: "Inter", sans-serif;
+
           font-size: 12px;
+
           font-weight: 600;
+
           letter-spacing: 0.01em;
+
           text-transform: uppercase;
+
           cursor: pointer;
-          box-shadow: 0 3px 8px rgba(115, 0, 66, 0.18);
+
+          box-shadow:
+            0 3px 8px rgba(115, 0, 66, 0.18);
+
           transition:
             background 0.2s ease,
-            box-shadow 0.2s ease;
+            box-shadow 0.2s ease,
+            transform 0.2s ease;
         }
+
 
         .submit-button:hover {
           background: #620038;
-          box-shadow: 0 5px 12px rgba(115, 0, 66, 0.22);
+
+          box-shadow:
+            0 6px 14px rgba(115, 0, 66, 0.22);
+
+          transform: translateY(-1px);
         }
+
 
         .submit-arrow {
           transition: transform 0.2s ease;
         }
 
+
         .submit-button:hover .submit-arrow {
           transform: translateX(4px);
         }
 
-        /* ================================
+
+        /* =====================================================
            TRUST INDICATORS
-        ================================= */
+        ===================================================== */
 
         .trust-indicators {
           margin-top: 16px;
+
           display: flex;
           flex-wrap: wrap;
+
           align-items: center;
           justify-content: center;
+
           gap: 8px 20px;
+
           color: #564D51;
+
           font-family: "Inter", sans-serif;
+
           font-size: 9px;
+
           font-weight: 500;
         }
+
 
         .trust-item {
           display: flex;
           align-items: center;
+
           gap: 6px;
         }
+
 
         .trust-icon {
           color: #22824D;
         }
 
+
         .trust-dot {
           color: #C8A5B7;
         }
 
-        /* ================================
-           LARGE TABLET
-        ================================= */
 
-        @media (max-width: 1100px) {
+        /* =====================================================
+           LARGE DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1400px) {
+
           .discovery-page {
-            padding: 40px 60px;
+            padding-top: 56px;
+            padding-bottom: 72px;
+          }
+
+          .discovery-wrapper {
+            max-width: 1150px;
           }
 
           .discovery-heading {
-            font-size: 34px;
+            font-size: 42px;
+          }
+
+          .discovery-subheading {
+            font-size: 16px;
           }
 
           .discovery-form {
-            padding: 32px;
+            padding: 44px;
           }
+
         }
 
-        /* ================================
-           TABLET
-        ================================= */
 
-        @media (max-width: 900px) {
+        /* =====================================================
+           TABLET / LAPTOP
+           40px LEFT / RIGHT
+        ===================================================== */
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+
           .discovery-page {
-            padding: 36px 40px;
+            padding-top: 42px;
+            padding-right: 40px;
+            padding-bottom: 60px;
+            padding-left: 40px;
+          }
+
+          .discovery-wrapper {
+            max-width: 1000px;
           }
 
           .discovery-heading {
-            font-size: 32px;
+            font-size: 36px;
           }
 
           .discovery-form {
-            margin-top: 24px;
-            padding: 30px;
+            padding: 34px;
+          }
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 900px) and (min-width: 768px) {
+
+          .discovery-heading {
+            font-size: 33px;
+          }
+
+          .discovery-subheading {
+            font-size: 14px;
+          }
+
+          .discovery-form {
+            margin-top: 26px;
           }
 
           .choice-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
           }
 
           .interest-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
           }
+
         }
 
-        /* ================================
-           MOBILE
-        ================================= */
 
-        @media (max-width: 640px) {
+        /* =====================================================
+           MOBILE
+           24px LEFT / RIGHT
+        ===================================================== */
+
+        @media (max-width: 767px) {
+
           .discovery-page {
-            padding: 28px 20px 40px;
+            padding-top: 30px;
+            padding-right: 24px;
+            padding-bottom: 44px;
+            padding-left: 24px;
           }
 
           .discovery-eyebrow {
             max-width: 100%;
+
             padding: 6px 11px;
+
             font-size: 9px;
+
             letter-spacing: 0.08em;
           }
 
           .discovery-heading {
-            margin-top: 14px;
-            font-size: 28px;
-            line-height: 1.16;
+            margin-top: 15px;
+
+            font-size: 29px;
+
+            line-height: 1.17;
           }
 
           .discovery-subheading {
             margin-top: 9px;
+
             font-size: 13px;
+
             line-height: 1.65;
           }
 
           .discovery-form {
-            margin-top: 22px;
-            padding: 24px 18px;
-            border-radius: 9px;
+            margin-top: 23px;
+
+            padding: 26px 20px;
+
+            border-radius: 10px;
           }
 
           .form-section-header {
@@ -626,12 +981,15 @@ export default function ScheduleDiscovery() {
           }
 
           .choice-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
           }
 
           .choice-button {
             min-height: 46px;
+
             font-size: 10px;
+
             padding: 7px 8px;
           }
 
@@ -641,6 +999,7 @@ export default function ScheduleDiscovery() {
 
           .contact-grid {
             grid-template-columns: 1fr;
+
             gap: 14px;
           }
 
@@ -650,30 +1009,44 @@ export default function ScheduleDiscovery() {
 
           .consent-text {
             font-size: 11px;
+
             line-height: 1.65;
           }
 
           .trust-indicators {
             gap: 8px 14px;
+
             font-size: 8px;
           }
+
         }
 
-        /* ================================
-           SMALL MOBILE
-        ================================= */
 
-        @media (max-width: 400px) {
+        /* =====================================================
+           SMALL MOBILE
+           16px LEFT / RIGHT
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
           .discovery-page {
-            padding: 24px 14px 32px;
+            padding-top: 25px;
+            padding-right: 16px;
+            padding-bottom: 36px;
+            padding-left: 16px;
           }
 
           .discovery-eyebrow {
             font-size: 8px;
+
+            letter-spacing: 0.07em;
           }
 
           .discovery-heading {
-            font-size: 24px;
+            font-size: 25px;
+
+            line-height: 1.2;
+
             letter-spacing: -0.035em;
           }
 
@@ -682,7 +1055,11 @@ export default function ScheduleDiscovery() {
           }
 
           .discovery-form {
-            padding: 20px 14px;
+            margin-top: 20px;
+
+            padding: 21px 15px;
+
+            border-radius: 9px;
           }
 
           .form-section-left {
@@ -692,6 +1069,7 @@ export default function ScheduleDiscovery() {
           .form-section-number {
             width: 26px;
             height: 26px;
+
             font-size: 10px;
           }
 
@@ -705,10 +1083,13 @@ export default function ScheduleDiscovery() {
 
           .choice-button {
             min-height: 44px;
+
             font-size: 9px;
           }
 
           .interest-card {
+            min-height: 55px;
+
             padding: 9px 10px;
           }
 
@@ -721,25 +1102,72 @@ export default function ScheduleDiscovery() {
           }
 
           .submit-button {
-            height: 44px;
+            height: 45px;
+
             font-size: 10px;
           }
 
           .trust-indicators {
             flex-direction: column;
+
             gap: 7px;
           }
 
           .trust-dot {
             display: none;
           }
+
         }
 
-        /* ================================
+
+        /* =====================================================
+           VERY SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 360px) {
+
+          .discovery-page {
+            padding-right: 16px;
+            padding-left: 16px;
+          }
+
+          .discovery-heading {
+            font-size: 23px;
+          }
+
+          .discovery-subheading {
+            font-size: 11.5px;
+          }
+
+          .discovery-form {
+            padding: 19px 13px;
+          }
+
+          .form-section-title {
+            font-size: 13px;
+          }
+
+          .choice-button {
+            font-size: 8.5px;
+          }
+
+          .interest-title {
+            font-size: 10.5px;
+          }
+
+          .interest-description {
+            font-size: 8.5px;
+          }
+
+        }
+
+
+        /* =====================================================
            REDUCED MOTION
-        ================================= */
+        ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
+
           .form-input,
           .form-textarea,
           .choice-button,
@@ -748,15 +1176,28 @@ export default function ScheduleDiscovery() {
           .submit-arrow {
             transition: none;
           }
+
+          .submit-button:hover {
+            transform: none;
+          }
+
         }
+
       `}</style>
 
+
+      {/* =====================================================
+          PAGE
+      ===================================================== */}
+
       <main className="discovery-page">
-        {/* ============================
-            PAGE HEADER
-        ============================= */}
 
         <div className="discovery-wrapper">
+
+          {/* =================================================
+              HEADER
+          ================================================= */}
+
           <div className="discovery-header">
 
             <div className="discovery-eyebrow">
@@ -767,37 +1208,48 @@ export default function ScheduleDiscovery() {
               </span>
             </div>
 
-            {/* Plus Jakarta Sans */}
+
+            {/* PLUS JAKARTA SANS */}
+
             <h1 className="discovery-heading">
               Schedule Education Discovery Session
             </h1>
 
-            {/* Plus Jakarta Sans */}
+
+            {/* PLUS JAKARTA SANS */}
+
             <p className="discovery-subheading">
               Connect with our education technology architects to evaluate
               your institution's digital ecosystem and roadmap.
             </p>
+
           </div>
 
 
-          {/* ============================
-              MAIN FORM
-          ============================= */}
+          {/* =================================================
+              FORM
+          ================================================= */}
 
           <form
             onSubmit={handleSubmit}
             className="discovery-form"
           >
 
-            {/* SECTION 01 */}
+            {/* =================================================
+                SECTION 01
+            ================================================= */}
+
             <FormSectionHeader
               number="01"
               title="Institution Details"
               rightText="PROFILE & SCALE"
             />
 
+
             {/* Institution Name */}
+
             <div className="form-field">
+
               <label className="form-label">
                 Institution Name <span>*</span>
               </label>
@@ -808,16 +1260,20 @@ export default function ScheduleDiscovery() {
                 required
                 className="form-input"
               />
+
             </div>
 
 
             {/* Institution Type */}
+
             <div className="form-field">
+
               <label className="form-label">
                 Institution Type <span>*</span>
               </label>
 
               <div className="choice-grid">
+
                 {[
                   "Higher Ed / University",
                   "College / Institute",
@@ -832,17 +1288,22 @@ export default function ScheduleDiscovery() {
                     {item}
                   </ChoiceButton>
                 ))}
+
               </div>
+
             </div>
 
 
             {/* Student Count */}
+
             <div className="form-field">
+
               <label className="form-label">
                 Current Student Count / Scale <span>*</span>
               </label>
 
               <div className="choice-grid">
+
                 {[
                   "Under 2,000",
                   "2,000 - 10,000",
@@ -857,17 +1318,24 @@ export default function ScheduleDiscovery() {
                     {item}
                   </ChoiceButton>
                 ))}
+
               </div>
+
             </div>
 
 
-            {/* SECTION 02 */}
+            {/* =================================================
+                SECTION 02
+            ================================================= */}
+
             <div className="interest-section">
+
               <FormSectionHeader
                 number="02"
                 title="Areas of Interest / Scope"
                 rightText="SELECT PRIORITIES"
               />
+
 
               <div className="interest-grid">
 
@@ -914,21 +1382,29 @@ export default function ScheduleDiscovery() {
                 />
 
               </div>
+
             </div>
 
 
-            {/* SECTION 03 */}
+            {/* =================================================
+                SECTION 03
+            ================================================= */}
+
             <div className="contact-section">
+
               <FormSectionHeader
                 number="03"
                 title="Contact Person Details"
                 rightText="STAKEHOLDER PROFILE"
               />
 
+
               <div className="contact-grid">
 
                 {/* Full Name */}
+
                 <div>
+
                   <label className="form-label">
                     Full Name <span>*</span>
                   </label>
@@ -939,11 +1415,14 @@ export default function ScheduleDiscovery() {
                     required
                     className="form-input"
                   />
+
                 </div>
 
 
                 {/* Email */}
+
                 <div>
+
                   <label className="form-label">
                     Official / Institutional Email <span>*</span>
                   </label>
@@ -954,11 +1433,14 @@ export default function ScheduleDiscovery() {
                     required
                     className="form-input"
                   />
+
                 </div>
 
 
                 {/* Designation */}
+
                 <div>
+
                   <label className="form-label">
                     Designation / Role <span>*</span>
                   </label>
@@ -969,11 +1451,14 @@ export default function ScheduleDiscovery() {
                     required
                     className="form-input"
                   />
+
                 </div>
 
 
                 {/* Phone */}
+
                 <div>
+
                   <label className="form-label">
                     Phone / WhatsApp Number
                   </label>
@@ -983,18 +1468,22 @@ export default function ScheduleDiscovery() {
                     placeholder="+1 (555) 382-9011"
                     className="form-input"
                   />
+
                 </div>
 
               </div>
 
 
               {/* Expected Timeline */}
+
               <div className="form-field">
+
                 <label className="form-label">
                   Expected Timeline <span>*</span>
                 </label>
 
                 <div className="timeline-grid">
+
                   {[
                     "Immediate / Within 1 Month",
                     "1 - 3 Months",
@@ -1008,12 +1497,16 @@ export default function ScheduleDiscovery() {
                       {item}
                     </ChoiceButton>
                   ))}
+
                 </div>
+
               </div>
 
 
               {/* Additional Notes */}
+
               <div className="form-field">
+
                 <label className="form-label">
                   Additional Notes / Challenges (Optional)
                 </label>
@@ -1023,12 +1516,18 @@ export default function ScheduleDiscovery() {
                   placeholder="Share any key friction points, current tech stack challenges, or specific deployment goals..."
                   className="form-textarea"
                 />
+
               </div>
+
             </div>
 
 
-            {/* CONSENT */}
+            {/* =================================================
+                CONSENT
+            ================================================= */}
+
             <div className="consent-section">
+
               <label className="consent-label">
 
                 <input
@@ -1044,15 +1543,21 @@ export default function ScheduleDiscovery() {
                 </span>
 
               </label>
+
             </div>
 
 
-            {/* SUBMIT */}
+            {/* =================================================
+                SUBMIT
+            ================================================= */}
+
             <button
               type="submit"
               className="submit-button"
             >
-              Submit Consultation Request
+              <span>
+                Submit Consultation Request
+              </span>
 
               <ArrowRight
                 size={17}
@@ -1061,41 +1566,63 @@ export default function ScheduleDiscovery() {
             </button>
 
 
-            {/* TRUST INDICATORS */}
+            {/* =================================================
+                TRUST INDICATORS
+            ================================================= */}
+
             <div className="trust-indicators">
 
               <span className="trust-item">
+
                 <ShieldCheck
                   size={12}
                   className="trust-icon"
                 />
+
                 Strict NDA Protected
+
               </span>
 
-              <span className="trust-dot">•</span>
+
+              <span className="trust-dot">
+                •
+              </span>
+
 
               <span className="trust-item">
+
                 <Zap
                   size={12}
                   className="trust-icon"
                 />
+
                 24h Architect Response
+
               </span>
 
-              <span className="trust-dot">•</span>
+
+              <span className="trust-dot">
+                •
+              </span>
+
 
               <span className="trust-item">
+
                 <CircleCheck
                   size={12}
                   className="trust-icon"
                 />
+
                 Zero Obligation Evaluation
+
               </span>
 
             </div>
 
           </form>
+
         </div>
+
       </main>
     </>
   );
@@ -1120,14 +1647,17 @@ function FormSectionHeader({
           {number}
         </div>
 
-        {/* Plus Jakarta Sans */}
+        {/* PLUS JAKARTA SANS */}
+
         <h2 className="form-section-title">
           {title}
         </h2>
 
       </div>
 
-      {/* Inter */}
+
+      {/* INTER */}
+
       <span className="form-section-right">
         {rightText}
       </span>
@@ -1175,6 +1705,7 @@ function InterestCard({
       type="button"
       onClick={onClick}
       className="interest-card"
+      aria-pressed={selected}
     >
 
       <span
@@ -1182,11 +1713,14 @@ function InterestCard({
           selected ? "selected" : ""
         }`}
       >
+
         {selected && (
           <svg
             viewBox="0 0 20 20"
-            className="h-2.5 w-2.5 text-white"
+            width="10"
+            height="10"
             fill="currentColor"
+            aria-hidden="true"
           >
             <path
               fillRule="evenodd"
@@ -1195,16 +1729,21 @@ function InterestCard({
             />
           </svg>
         )}
+
       </span>
+
 
       <span className="interest-content">
 
-        {/* Inter */}
+        {/* INTER */}
+
         <span className="interest-title">
           {title}
         </span>
 
-        {/* Inter */}
+
+        {/* INTER */}
+
         <span className="interest-description">
           {description}
         </span>

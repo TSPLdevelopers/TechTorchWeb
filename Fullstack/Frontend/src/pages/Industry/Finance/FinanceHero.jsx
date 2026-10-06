@@ -22,6 +22,16 @@ export default function FinancialHeroSection() {
 
 
         /* =====================================================
+           BOX SIZING
+        ===================================================== */
+
+        .financial-hero,
+        .financial-hero * {
+          box-sizing: border-box;
+        }
+
+
+        /* =====================================================
            MAIN SECTION
         ===================================================== */
 
@@ -35,20 +45,26 @@ export default function FinancialHeroSection() {
 
 
         /* =====================================================
-           CONTAINER
+           MAIN CONTAINER
+           HERO SPACING STANDARD
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
         ===================================================== */
 
         .financial-hero-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 70px 40px;
 
-          box-sizing: border-box;
+          padding: 78px 100px;
 
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-          gap: 55px;
+
+          gap: 70px;
+
           align-items: center;
         }
 
@@ -83,6 +99,7 @@ export default function FinancialHeroSection() {
           font-size: 10px;
           line-height: 1.3;
           font-weight: 700;
+
           letter-spacing: 0.06em;
         }
 
@@ -90,6 +107,7 @@ export default function FinancialHeroSection() {
         .financial-badge-dot {
           width: 6px;
           height: 6px;
+
           flex-shrink: 0;
 
           border-radius: 50%;
@@ -106,10 +124,11 @@ export default function FinancialHeroSection() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 42px;
+          font-size: 44px;
           line-height: 1.1;
           font-weight: 700;
-          letter-spacing: -1.2px;
+
+          letter-spacing: -1.3px;
 
           color: ${INK};
         }
@@ -121,12 +140,11 @@ export default function FinancialHeroSection() {
 
 
         /* =====================================================
-           SUBHEADING / DESCRIPTION
-           PLUS JAKARTA SANS
+           DESCRIPTION - PLUS JAKARTA SANS
         ===================================================== */
 
         .financial-description {
-          max-width: 580px;
+          max-width: 650px;
 
           margin: 0 0 14px;
 
@@ -153,6 +171,7 @@ export default function FinancialHeroSection() {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
+
           gap: 10px;
         }
 
@@ -162,6 +181,7 @@ export default function FinancialHeroSection() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+
           gap: 8px;
 
           min-height: 43px;
@@ -170,8 +190,10 @@ export default function FinancialHeroSection() {
           border-radius: 999px;
 
           font-family: "Inter", sans-serif;
+
           font-size: 10px;
           font-weight: 700;
+
           letter-spacing: 0.04em;
 
           cursor: pointer;
@@ -190,6 +212,7 @@ export default function FinancialHeroSection() {
 
         .financial-primary-button {
           border: 1px solid ${WINE};
+
           background: ${WINE};
           color: #ffffff;
         }
@@ -212,6 +235,7 @@ export default function FinancialHeroSection() {
 
         .financial-secondary-button {
           border: 1px solid #ead4db;
+
           background: #ffffff;
           color: ${WINE};
         }
@@ -233,6 +257,7 @@ export default function FinancialHeroSection() {
 
         .financial-image-wrapper {
           position: relative;
+
           width: 100%;
           min-width: 0;
         }
@@ -240,6 +265,7 @@ export default function FinancialHeroSection() {
 
         .financial-image-glow {
           position: absolute;
+
           inset: -15px;
 
           border-radius: 30px;
@@ -247,6 +273,7 @@ export default function FinancialHeroSection() {
           background: ${WINE};
 
           filter: blur(30px);
+
           opacity: 0.16;
 
           pointer-events: none;
@@ -259,7 +286,7 @@ export default function FinancialHeroSection() {
           display: block;
 
           width: 100%;
-          height: 410px;
+          height: 430px;
 
           object-fit: cover;
           object-position: center;
@@ -277,13 +304,14 @@ export default function FinancialHeroSection() {
         @media (max-width: 1200px) {
 
           .financial-hero-container {
-            max-width: 1120px;
-            gap: 45px;
-            padding: 65px 32px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            gap: 55px;
           }
 
           .financial-heading {
-            font-size: 39px;
+            font-size: 40px;
           }
 
           .financial-description {
@@ -291,7 +319,7 @@ export default function FinancialHeroSection() {
           }
 
           .financial-image {
-            height: 390px;
+            height: 400px;
           }
         }
 
@@ -303,15 +331,18 @@ export default function FinancialHeroSection() {
         @media (max-width: 1000px) {
 
           .financial-hero-container {
-            grid-template-columns: 1fr 0.95fr;
-            gap: 35px;
+            padding-left: 40px;
+            padding-right: 40px;
 
-            padding: 55px 28px;
+            grid-template-columns: 1fr 0.95fr;
+
+            gap: 40px;
           }
 
           .financial-heading {
-            font-size: 35px;
-            letter-spacing: -0.9px;
+            font-size: 36px;
+
+            letter-spacing: -1px;
           }
 
           .financial-description {
@@ -320,12 +351,14 @@ export default function FinancialHeroSection() {
           }
 
           .financial-image {
-            height: 350px;
+            height: 360px;
+
             border-radius: 20px;
           }
 
           .financial-image-glow {
             inset: -10px;
+
             filter: blur(25px);
           }
         }
@@ -343,28 +376,29 @@ export default function FinancialHeroSection() {
             gap: 45px;
 
             padding:
-              55px 28px 60px;
+              60px 40px 65px;
           }
 
           .financial-hero-content {
-            max-width: 720px;
+            max-width: 760px;
           }
 
           .financial-heading {
-            font-size: 37px;
+            font-size: 38px;
           }
 
           .financial-description {
-            max-width: 700px;
+            max-width: 760px;
           }
 
           .financial-image-wrapper {
             width: 100%;
-            max-width: 720px;
+            max-width: 760px;
           }
 
           .financial-image {
             height: 390px;
+
             border-radius: 22px;
           }
         }
@@ -378,7 +412,7 @@ export default function FinancialHeroSection() {
 
           .financial-hero-container {
             padding:
-              45px 20px 50px;
+              45px 24px 50px;
 
             gap: 35px;
           }
@@ -392,6 +426,7 @@ export default function FinancialHeroSection() {
             padding: 6px 10px;
 
             font-size: 8.5px;
+
             letter-spacing: 0.05em;
           }
 
@@ -408,18 +443,20 @@ export default function FinancialHeroSection() {
             margin-bottom: 17px;
 
             font-size: 30px;
+
             line-height: 1.15;
 
             letter-spacing: -0.7px;
           }
 
 
-          /* Subheading */
+          /* Description */
 
           .financial-description {
             margin-bottom: 11px;
 
             font-size: 12.5px;
+
             line-height: 1.72;
 
             font-weight: 500;
@@ -487,6 +524,7 @@ export default function FinancialHeroSection() {
 
           .financial-heading {
             font-size: 28px;
+
             line-height: 1.16;
 
             letter-spacing: -0.6px;
@@ -495,6 +533,7 @@ export default function FinancialHeroSection() {
 
           .financial-description {
             font-size: 12px;
+
             line-height: 1.7;
           }
 
@@ -532,13 +571,14 @@ export default function FinancialHeroSection() {
 
         /* =====================================================
            VERY SMALL MOBILE
+           Keep 16px horizontal spacing standard
         ===================================================== */
 
         @media (max-width: 380px) {
 
           .financial-hero-container {
             padding:
-              36px 14px 40px;
+              36px 16px 40px;
 
             gap: 28px;
           }
@@ -551,18 +591,21 @@ export default function FinancialHeroSection() {
 
           .financial-heading {
             font-size: 25px;
+
             line-height: 1.17;
           }
 
 
           .financial-description {
             font-size: 11.5px;
+
             line-height: 1.68;
           }
 
 
           .financial-image {
             height: 240px;
+
             border-radius: 15px;
           }
 
@@ -575,10 +618,17 @@ export default function FinancialHeroSection() {
 
 
         /* =====================================================
-           VERY VERY SMALL MOBILE
+           EXTRA SMALL MOBILE
+           Keep 16px horizontal spacing standard
         ===================================================== */
 
         @media (max-width: 340px) {
+
+          .financial-hero-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
 
           .financial-heading {
             font-size: 23px;
@@ -624,7 +674,7 @@ export default function FinancialHeroSection() {
 
         <div className="financial-hero-content">
 
-          {/* Badge - Inter */}
+          {/* Badge */}
 
           <span className="financial-badge">
             <span className="financial-badge-dot" />
@@ -632,10 +682,9 @@ export default function FinancialHeroSection() {
           </span>
 
 
-          {/* Main Heading - Plus Jakarta Sans */}
+          {/* Main Heading */}
 
           <h1 className="financial-heading">
-
             Modern Technology Solutions for a
             <br />
 
@@ -645,11 +694,10 @@ export default function FinancialHeroSection() {
             <span className="financial-heading-highlight">
               Financial Enterprise
             </span>
-
           </h1>
 
 
-          {/* Subheading - Plus Jakarta Sans */}
+          {/* Description */}
 
           <p className="financial-description">
             Financial institutions and forward-looking finance departments
@@ -667,7 +715,7 @@ export default function FinancialHeroSection() {
           </p>
 
 
-          {/* Buttons - Inter */}
+          {/* Buttons */}
 
           <div className="financial-buttons">
 

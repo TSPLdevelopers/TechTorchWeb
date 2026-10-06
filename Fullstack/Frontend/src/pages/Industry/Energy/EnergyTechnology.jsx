@@ -34,6 +34,15 @@ export default function EnergyTechnologySection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
+        /* =================================================
+           SECTION
+        ================================================= */
+
+        .energy-tech-section,
+        .energy-tech-section * {
+          box-sizing: border-box;
+        }
+
         .energy-tech-section {
           width: 100%;
           background: #f7f5f2;
@@ -42,24 +51,43 @@ export default function EnergyTechnologySection() {
           overflow: hidden;
         }
 
+        /* =================================================
+           CONTAINER
+           Desktop  : 100px
+           Tablet   : 40px
+           Mobile   : 24px
+           Small    : 16px
+        ================================================= */
+
         .energy-tech-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 72px 40px;
+
+          padding: 78px 100px;
+
           display: grid;
-          grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-          gap: 60px;
+          grid-template-columns:
+            minmax(0, 1.1fr)
+            minmax(320px, 0.9fr);
+
+          gap: 70px;
           align-items: center;
         }
 
-        /* =========================
+        /* =================================================
            LEFT CONTENT
-        ========================= */
+        ================================================= */
+
+        .energy-tech-content {
+          min-width: 0;
+        }
 
         .energy-tech-eyebrow {
           margin: 0 0 13px;
+
           color: ${WINE};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
@@ -69,8 +97,12 @@ export default function EnergyTechnologySection() {
         }
 
         .energy-tech-heading {
+          max-width: 800px;
+
           margin: 0 0 27px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 40px;
           line-height: 1.2;
@@ -79,6 +111,8 @@ export default function EnergyTechnologySection() {
         }
 
         .energy-tech-copy {
+          max-width: 900px;
+
           display: flex;
           flex-direction: column;
           gap: 16px;
@@ -86,29 +120,37 @@ export default function EnergyTechnologySection() {
 
         .energy-tech-description {
           margin: 0;
+
           color: ${MUTED};
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.8;
-          font-weight: 500;
+          font-weight: 400;
         }
 
-        /* =========================
+        /* =================================================
            RIGHT PANEL
-        ========================= */
+        ================================================= */
 
         .energy-tech-panel {
           width: 100%;
-          background: #ffffff;
-          border-radius: 20px;
+
           padding: 30px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+          background: #ffffff;
+
+          border-radius: 20px;
+
+          box-shadow:
+            0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .energy-tech-panel-header {
           display: flex;
           align-items: center;
           gap: 13px;
+
           margin-bottom: 28px;
         }
 
@@ -116,17 +158,22 @@ export default function EnergyTechnologySection() {
           width: 42px;
           height: 42px;
           min-width: 42px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 10px;
+
           background: #fbeef1;
           color: ${WINE};
         }
 
         .energy-tech-panel-title {
           margin: 0 0 4px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 16px;
           line-height: 1.35;
@@ -135,15 +182,17 @@ export default function EnergyTechnologySection() {
 
         .energy-tech-panel-subtitle {
           margin: 0;
+
           color: ${MUTED};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           line-height: 1.5;
         }
 
-        /* =========================
+        /* =================================================
            PILLARS
-        ========================= */
+        ================================================= */
 
         .energy-tech-pillars {
           display: flex;
@@ -159,13 +208,17 @@ export default function EnergyTechnologySection() {
 
         .energy-tech-pillar-icon {
           flex-shrink: 0;
+
           margin-top: 3px;
+
           color: ${WINE};
         }
 
         .energy-tech-pillar-title {
           margin: 0 0 5px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.4;
@@ -174,21 +227,49 @@ export default function EnergyTechnologySection() {
 
         .energy-tech-pillar-body {
           margin: 0;
+
           color: ${MUTED};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.65;
         }
 
-        /* =========================
-           LARGE TABLET
-        ========================= */
+        /* =================================================
+           LARGE LAPTOP
+        ================================================= */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
           .energy-tech-container {
-            padding: 62px 30px;
-            grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
-            gap: 42px;
+            padding-left: 60px;
+            padding-right: 60px;
+
+            gap: 50px;
+          }
+
+          .energy-tech-heading {
+            font-size: 38px;
+          }
+
+          .energy-tech-panel {
+            padding: 28px;
+          }
+        }
+
+        /* =================================================
+           TABLET
+           Exact spacing: 40px
+        ================================================= */
+
+        @media (max-width: 1000px) {
+          .energy-tech-container {
+            padding: 62px 40px;
+
+            grid-template-columns:
+              minmax(0, 1fr)
+              minmax(280px, 0.85fr);
+
+            gap: 38px;
           }
 
           .energy-tech-heading {
@@ -197,66 +278,72 @@ export default function EnergyTechnologySection() {
 
           .energy-tech-description {
             font-size: 13.5px;
+            line-height: 1.75;
           }
 
           .energy-tech-panel {
-            padding: 26px;
+            padding: 25px;
           }
         }
 
-        /* =========================
-           TABLET
-        ========================= */
+        /* =================================================
+           STACKED TABLET
+        ================================================= */
 
         @media (max-width: 850px) {
           .energy-tech-container {
-            padding: 55px 24px;
+            padding: 55px 40px;
+
             grid-template-columns: 1fr;
-            gap: 35px;
+            gap: 36px;
           }
 
           .energy-tech-heading {
+            max-width: 750px;
             font-size: 34px;
-            max-width: 700px;
           }
 
           .energy-tech-copy {
-            max-width: 850px;
+            max-width: 900px;
           }
 
           .energy-tech-panel {
-            max-width: 850px;
+            width: 100%;
+            max-width: 900px;
           }
         }
 
-        /* =========================
+        /* =================================================
            MOBILE
-        ========================= */
+           Exact spacing: 24px
+        ================================================= */
 
         @media (max-width: 600px) {
           .energy-tech-container {
-            padding: 48px 20px;
+            padding: 48px 24px;
             gap: 28px;
           }
 
           .energy-tech-eyebrow {
-            font-size: 10px;
             margin-bottom: 10px;
+            font-size: 10px;
           }
 
           .energy-tech-heading {
+            margin-bottom: 21px;
+
             font-size: 28px;
             line-height: 1.25;
-            margin-bottom: 21px;
+            letter-spacing: -0.025em;
+          }
+
+          .energy-tech-copy {
+            gap: 14px;
           }
 
           .energy-tech-description {
             font-size: 13px;
             line-height: 1.7;
-          }
-
-          .energy-tech-copy {
-            gap: 14px;
           }
 
           .energy-tech-panel {
@@ -292,21 +379,24 @@ export default function EnergyTechnologySection() {
           }
         }
 
-        /* =========================
+        /* =================================================
            SMALL MOBILE
-        ========================= */
+           Exact spacing: 16px
+        ================================================= */
 
-        @media (max-width: 420px) {
+        @media (max-width: 480px) {
           .energy-tech-container {
             padding: 42px 16px;
           }
 
           .energy-tech-heading {
             font-size: 25px;
+            line-height: 1.27;
           }
 
           .energy-tech-description {
             font-size: 12px;
+            line-height: 1.65;
           }
 
           .energy-tech-panel {
@@ -340,13 +430,13 @@ export default function EnergyTechnologySection() {
           }
         }
 
-        /* =========================
+        /* =================================================
            VERY SMALL DEVICES
-        ========================= */
+        ================================================= */
 
         @media (max-width: 340px) {
           .energy-tech-container {
-            padding: 36px 14px;
+            padding: 36px 16px;
           }
 
           .energy-tech-heading {
@@ -361,18 +451,36 @@ export default function EnergyTechnologySection() {
             padding: 18px 15px;
           }
 
+          .energy-tech-panel-title {
+            font-size: 13px;
+          }
+
           .energy-tech-pillar-body {
             font-size: 10.5px;
           }
         }
 
-        /* =========================
+        /* =================================================
+           DESKTOP BREAK
+        ================================================= */
+
+        .desktop-break {
+          display: block;
+        }
+
+        @media (max-width: 850px) {
+          .desktop-break {
+            display: none;
+          }
+        }
+
+        /* =================================================
            REDUCED MOTION
-        ========================= */
+        ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
-          * {
-            scroll-behavior: auto !important;
+          .energy-tech-section {
+            scroll-behavior: auto;
           }
         }
       `}</style>
@@ -380,8 +488,12 @@ export default function EnergyTechnologySection() {
       <section className="energy-tech-section">
         <div className="energy-tech-container">
 
-          {/* LEFT CONTENT */}
+          {/* =================================================
+              LEFT CONTENT
+          ================================================= */}
+
           <div className="energy-tech-content">
+
             <p className="energy-tech-eyebrow">
               ENERGY TECHNOLOGY
             </p>
@@ -393,6 +505,7 @@ export default function EnergyTechnologySection() {
             </h2>
 
             <div className="energy-tech-copy">
+
               <p className="energy-tech-description">
                 Modern energy businesses work across multiple departments,
                 applications and business processes. A connected technology
@@ -419,15 +532,23 @@ export default function EnergyTechnologySection() {
                 improving business processes or supporting the technology
                 infrastructure required for day-to-day operations.
               </p>
+
             </div>
           </div>
 
-          {/* RIGHT PANEL */}
+          {/* =================================================
+              RIGHT PANEL
+          ================================================= */}
+
           <div className="energy-tech-panel">
 
             <div className="energy-tech-panel-header">
+
               <span className="energy-tech-panel-icon">
-                <LayoutGrid size={18} strokeWidth={1.8} />
+                <LayoutGrid
+                  size={18}
+                  strokeWidth={1.8}
+                />
               </span>
 
               <div>
@@ -439,9 +560,11 @@ export default function EnergyTechnologySection() {
                   Technology Integration Principles
                 </p>
               </div>
+
             </div>
 
             <div className="energy-tech-pillars">
+
               {pillars.map(({ icon: Icon, title, body }) => (
                 <div
                   key={title}
@@ -464,9 +587,11 @@ export default function EnergyTechnologySection() {
                   </div>
                 </div>
               ))}
+
             </div>
 
           </div>
+
         </div>
       </section>
     </>

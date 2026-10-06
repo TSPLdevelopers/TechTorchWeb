@@ -52,24 +52,35 @@ export default function TechnologyServicesGridSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
+        /* =================================================
+           SECTION
+        ================================================= */
+
         .technology-services-section {
           width: 100%;
           background: #f7f5f2;
           color: ${INK};
           font-family: "Inter", Arial, sans-serif;
           overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .technology-services-section *,
+        .technology-services-section *::before,
+        .technology-services-section *::after {
+          box-sizing: border-box;
         }
 
         .technology-services-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 72px 40px;
+          padding: 78px 100px;
         }
 
-        /* =========================
+        /* =================================================
            SECTION HEADER
-        ========================= */
+        ================================================= */
 
         .technology-services-eyebrow {
           margin: 0 0 12px;
@@ -90,11 +101,12 @@ export default function TechnologyServicesGridSection() {
           line-height: 1.2;
           font-weight: 700;
           letter-spacing: -0.03em;
+          max-width: 850px;
         }
 
-        /* =========================
+        /* =================================================
            SERVICES GRID
-        ========================= */
+        ================================================= */
 
         .technology-services-grid {
           display: grid;
@@ -103,9 +115,9 @@ export default function TechnologyServicesGridSection() {
           margin-bottom: 20px;
         }
 
-        /* =========================
+        /* =================================================
            SERVICE CARD
-        ========================= */
+        ================================================= */
 
         .technology-service-card {
           min-height: 215px;
@@ -115,6 +127,7 @@ export default function TechnologyServicesGridSection() {
           background: #ffffff;
           border-radius: 16px;
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
           transition:
             transform 0.3s ease,
             box-shadow 0.3s ease;
@@ -124,6 +137,10 @@ export default function TechnologyServicesGridSection() {
           transform: translateY(-5px);
           box-shadow: 0 14px 30px rgba(27, 27, 42, 0.09);
         }
+
+        /* =================================================
+           SERVICE ICON
+        ================================================= */
 
         .technology-service-icon {
           width: 42px;
@@ -138,6 +155,10 @@ export default function TechnologyServicesGridSection() {
           flex-shrink: 0;
         }
 
+        /* =================================================
+           SERVICE TITLE
+        ================================================= */
+
         .technology-service-title {
           margin: 0 0 9px;
           color: ${INK};
@@ -147,6 +168,10 @@ export default function TechnologyServicesGridSection() {
           font-weight: 700;
         }
 
+        /* =================================================
+           SERVICE BODY
+        ================================================= */
+
         .technology-service-body {
           margin: 0;
           color: ${MUTED};
@@ -155,9 +180,9 @@ export default function TechnologyServicesGridSection() {
           line-height: 1.7;
         }
 
-        /* =========================
+        /* =================================================
            BPO CARD
-        ========================= */
+        ================================================= */
 
         .technology-bpo-card {
           width: 100%;
@@ -169,6 +194,7 @@ export default function TechnologyServicesGridSection() {
           border-top: 4px solid ${WINE};
           border-radius: 0 0 16px 16px;
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
           transition:
             transform 0.3s ease,
             box-shadow 0.3s ease;
@@ -189,6 +215,7 @@ export default function TechnologyServicesGridSection() {
           border-radius: 10px;
           background: #fbeef1;
           color: ${WINE};
+          flex-shrink: 0;
         }
 
         .technology-bpo-title {
@@ -208,13 +235,31 @@ export default function TechnologyServicesGridSection() {
           line-height: 1.65;
         }
 
-        /* =========================
-           LARGE TABLET
-        ========================= */
+        /* =================================================
+           LAPTOP
+        ================================================= */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1200px) {
           .technology-services-container {
-            padding: 62px 30px;
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .technology-services-heading {
+            font-size: 36px;
+          }
+        }
+
+        /* =================================================
+           TABLET
+        ================================================= */
+
+        @media (max-width: 900px) {
+          .technology-services-container {
+            padding-top: 65px;
+            padding-bottom: 65px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .technology-services-heading {
@@ -232,13 +277,16 @@ export default function TechnologyServicesGridSection() {
           }
         }
 
-        /* =========================
-           TABLET
-        ========================= */
+        /* =================================================
+           MOBILE
+        ================================================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 600px) {
           .technology-services-container {
-            padding: 52px 20px;
+            padding-top: 52px;
+            padding-bottom: 52px;
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .technology-services-eyebrow {
@@ -284,13 +332,16 @@ export default function TechnologyServicesGridSection() {
           }
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* =================================================
+           SMALL MOBILE
+        ================================================= */
 
-        @media (max-width: 450px) {
+        @media (max-width: 480px) {
           .technology-services-container {
-            padding: 44px 16px;
+            padding-top: 44px;
+            padding-bottom: 44px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .technology-services-heading {
@@ -337,13 +388,16 @@ export default function TechnologyServicesGridSection() {
           }
         }
 
-        /* =========================
+        /* =================================================
            VERY SMALL DEVICES
-        ========================= */
+        ================================================= */
 
         @media (max-width: 340px) {
           .technology-services-container {
-            padding: 38px 14px;
+            padding-top: 38px;
+            padding-bottom: 38px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .technology-services-heading {
@@ -375,9 +429,9 @@ export default function TechnologyServicesGridSection() {
           }
         }
 
-        /* =========================
+        /* =================================================
            REDUCED MOTION
-        ========================= */
+        ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
           .technology-service-card,
@@ -399,7 +453,7 @@ export default function TechnologyServicesGridSection() {
             Support Across Your Technology Environment
           </h2>
 
-          {/* Services */}
+          {/* Services Grid */}
           <div className="technology-services-grid">
             {cards.map(({ icon: Icon, title, body }) => (
               <div
@@ -407,7 +461,10 @@ export default function TechnologyServicesGridSection() {
                 className="technology-service-card"
               >
                 <span className="technology-service-icon">
-                  <Icon size={18} strokeWidth={1.8} />
+                  <Icon
+                    size={18}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
                 <h3 className="technology-service-title">
@@ -424,7 +481,10 @@ export default function TechnologyServicesGridSection() {
           {/* Full Width BPO */}
           <div className="technology-bpo-card">
             <span className="technology-bpo-icon">
-              <Share2 size={18} strokeWidth={1.8} />
+              <Share2
+                size={18}
+                strokeWidth={1.8}
+              />
             </span>
 
             <div>

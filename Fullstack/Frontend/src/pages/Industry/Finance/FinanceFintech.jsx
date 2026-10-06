@@ -68,42 +68,58 @@ export default function FintechEngineeringAndApproachSections() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
+        /* =================================================
+           MAIN WRAPPER
+        ================================================= */
+
         .fintech-sections {
           width: 100%;
           overflow: hidden;
           color: ${INK};
-          font-family: "Inter", sans-serif;
+          font-family: "Inter", Arial, sans-serif;
+          box-sizing: border-box;
         }
 
-        /* ================================
+        .fintech-sections *,
+        .fintech-sections *::before,
+        .fintech-sections *::after {
+          box-sizing: border-box;
+        }
+
+        /* =================================================
            COMMON CONTAINER
-        ================================= */
+        ================================================= */
 
         .fintech-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 100px;
+          padding-right: 100px;
         }
 
-        /* ================================
+        /* =================================================
            SECTION 1
-        ================================= */
+        ================================================= */
 
         .fintech-engineering {
+          width: 100%;
           background: ${WINE};
         }
 
         .fintech-engineering-container {
-          padding-top: 64px;
-          padding-bottom: 64px;
+          padding-top: 78px;
+          padding-bottom: 78px;
 
           display: grid;
           grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-          gap: 48px;
+          gap: 60px;
           align-items: start;
         }
+
+        /* =================================================
+           BADGES
+        ================================================= */
 
         .section-badge {
           display: inline-flex;
@@ -115,7 +131,7 @@ export default function FintechEngineeringAndApproachSections() {
 
           border-radius: 999px;
 
-          font-family: "Inter", sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.04em;
@@ -138,33 +154,37 @@ export default function FintechEngineeringAndApproachSections() {
           background: #ffffff;
         }
 
-        /* Main heading - Plus Jakarta Sans */
+        /* =================================================
+           ENGINEERING CONTENT
+        ================================================= */
+
         .engineering-heading {
           margin: 0 0 24px;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 34px;
+          color: #ffffff;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 38px;
           line-height: 1.25;
           font-weight: 700;
           letter-spacing: -0.025em;
-          color: #ffffff;
+          max-width: 760px;
         }
 
         .engineering-copy {
           display: flex;
           flex-direction: column;
           gap: 16px;
+          max-width: 780px;
         }
 
-        /* Subheading/body copy - Plus Jakarta Sans */
         .engineering-description {
           margin: 0;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          color: #e3c3cf;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 15px;
           line-height: 1.75;
           font-weight: 500;
-          color: #e3c3cf;
         }
 
         .engineering-description.highlight {
@@ -172,9 +192,9 @@ export default function FintechEngineeringAndApproachSections() {
           font-weight: 600;
         }
 
-        /* ================================
+        /* =================================================
            CAPABILITY CARDS
-        ================================= */
+        ================================================= */
 
         .capabilities-grid {
           display: grid;
@@ -184,7 +204,7 @@ export default function FintechEngineeringAndApproachSections() {
 
         .capability-card {
           min-width: 0;
-          padding: 20px;
+          padding: 22px;
 
           border-radius: 12px;
 
@@ -204,8 +224,8 @@ export default function FintechEngineeringAndApproachSections() {
         }
 
         .capability-icon {
-          width: 36px;
-          height: 36px;
+          width: 38px;
+          height: 38px;
 
           display: flex;
           align-items: center;
@@ -219,46 +239,49 @@ export default function FintechEngineeringAndApproachSections() {
           color: #ffffff;
         }
 
-        /* Card heading - Plus Jakarta Sans */
         .capability-title {
           margin: 0 0 6px;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          color: #ffffff;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.4;
           font-weight: 700;
-          color: #ffffff;
         }
 
-        /* Card body - Inter */
         .capability-body {
           margin: 0;
 
-          font-family: "Inter", sans-serif;
+          color: #d9b7c4;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.7;
           font-weight: 400;
-          color: #d9b7c4;
         }
 
-        /* ================================
+        /* =================================================
            SECTION 2
-        ================================= */
+        ================================================= */
 
         .approach-section {
+          width: 100%;
           background: #f4f1ec;
         }
 
         .approach-container {
-          padding-top: 64px;
-          padding-bottom: 64px;
+          padding-top: 78px;
+          padding-bottom: 78px;
         }
+
+        /* =================================================
+           APPROACH HEADER
+        ================================================= */
 
         .approach-header {
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
-          gap: 48px;
+          gap: 60px;
           align-items: start;
 
           margin-bottom: 40px;
@@ -273,37 +296,36 @@ export default function FintechEngineeringAndApproachSections() {
           background: ${WINE};
         }
 
-        /* Main heading - Plus Jakarta Sans */
         .approach-heading {
           margin: 0;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 30px;
+          color: ${INK};
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 34px;
           line-height: 1.3;
           font-weight: 700;
           letter-spacing: -0.025em;
-          color: ${INK};
         }
 
         .approach-heading span {
           color: ${WINE};
         }
 
-        /* Subheading - Plus Jakarta Sans */
         .approach-description {
           margin: 0;
           padding-top: 4px;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          color: ${MUTED};
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 15px;
           line-height: 1.75;
           font-weight: 500;
-          color: ${MUTED};
+          max-width: 700px;
         }
 
-        /* ================================
+        /* =================================================
            STEPS
-        ================================= */
+        ================================================= */
 
         .steps-grid {
           display: grid;
@@ -313,8 +335,7 @@ export default function FintechEngineeringAndApproachSections() {
 
         .step-card {
           min-width: 0;
-
-          padding: 20px;
+          padding: 22px;
 
           background: #ffffff;
           border-radius: 12px;
@@ -352,57 +373,55 @@ export default function FintechEngineeringAndApproachSections() {
           background: ${WINE};
           color: #ffffff;
 
-          font-family: "Inter", sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 600;
         }
 
-        /* Step heading - Plus Jakarta Sans */
         .step-title {
           margin: 0 0 6px;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          color: ${INK};
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.4;
           font-weight: 700;
-          color: ${INK};
         }
 
-        /* Step body - Inter */
         .step-body {
           margin: 0;
 
-          font-family: "Inter", sans-serif;
+          color: ${MUTED};
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.7;
           font-weight: 400;
-          color: ${MUTED};
         }
 
-        /* ================================
-           LARGE TABLET
-        ================================= */
+        /* =================================================
+           LAPTOP
+        ================================================= */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
           .fintech-container {
-            padding-left: 32px;
-            padding-right: 32px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .fintech-engineering-container {
-            gap: 36px;
+            gap: 42px;
           }
 
           .engineering-heading {
-            font-size: 30px;
+            font-size: 34px;
           }
 
           .approach-header {
-            gap: 32px;
+            gap: 42px;
           }
 
           .approach-heading {
-            font-size: 28px;
+            font-size: 31px;
           }
 
           .steps-grid {
@@ -410,31 +429,31 @@ export default function FintechEngineeringAndApproachSections() {
           }
         }
 
-        /* ================================
+        /* =================================================
            TABLET
-        ================================= */
+        ================================================= */
 
         @media (max-width: 900px) {
           .fintech-container {
-            padding-left: 28px;
-            padding-right: 28px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .fintech-engineering-container {
             grid-template-columns: 1fr;
             gap: 36px;
 
-            padding-top: 56px;
-            padding-bottom: 56px;
+            padding-top: 62px;
+            padding-bottom: 62px;
           }
 
           .engineering-heading {
-            max-width: 720px;
-            font-size: 30px;
+            max-width: 760px;
+            font-size: 32px;
           }
 
           .engineering-copy {
-            max-width: 760px;
+            max-width: 800px;
           }
 
           .capabilities-grid {
@@ -442,20 +461,23 @@ export default function FintechEngineeringAndApproachSections() {
           }
 
           .approach-container {
-            padding-top: 56px;
-            padding-bottom: 56px;
+            padding-top: 62px;
+            padding-bottom: 62px;
           }
 
           .approach-header {
             grid-template-columns: 1fr;
             gap: 18px;
-
-            margin-bottom: 32px;
+            margin-bottom: 34px;
           }
 
           .approach-description {
             padding-top: 0;
-            max-width: 760px;
+            max-width: 800px;
+          }
+
+          .approach-heading {
+            font-size: 30px;
           }
 
           .steps-grid {
@@ -463,20 +485,19 @@ export default function FintechEngineeringAndApproachSections() {
           }
         }
 
-        /* ================================
+        /* =================================================
            MOBILE
-        ================================= */
+        ================================================= */
 
         @media (max-width: 600px) {
           .fintech-container {
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .fintech-engineering-container {
-            padding-top: 48px;
-            padding-bottom: 48px;
-
+            padding-top: 52px;
+            padding-bottom: 52px;
             gap: 30px;
           }
 
@@ -487,8 +508,7 @@ export default function FintechEngineeringAndApproachSections() {
 
           .engineering-heading {
             margin-bottom: 20px;
-
-            font-size: 25px;
+            font-size: 26px;
             line-height: 1.3;
           }
 
@@ -507,7 +527,7 @@ export default function FintechEngineeringAndApproachSections() {
           }
 
           .capability-card {
-            padding: 18px;
+            padding: 19px;
           }
 
           .capability-title {
@@ -520,8 +540,8 @@ export default function FintechEngineeringAndApproachSections() {
           }
 
           .approach-container {
-            padding-top: 48px;
-            padding-bottom: 48px;
+            padding-top: 52px;
+            padding-bottom: 52px;
           }
 
           .approach-header {
@@ -530,7 +550,7 @@ export default function FintechEngineeringAndApproachSections() {
           }
 
           .approach-heading {
-            font-size: 24px;
+            font-size: 25px;
             line-height: 1.35;
           }
 
@@ -545,7 +565,7 @@ export default function FintechEngineeringAndApproachSections() {
           }
 
           .step-card {
-            padding: 18px;
+            padding: 19px;
           }
 
           .step-title {
@@ -557,11 +577,11 @@ export default function FintechEngineeringAndApproachSections() {
           }
         }
 
-        /* ================================
+        /* =================================================
            SMALL MOBILE
-        ================================= */
+        ================================================= */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           .fintech-container {
             padding-left: 16px;
             padding-right: 16px;
@@ -569,12 +589,12 @@ export default function FintechEngineeringAndApproachSections() {
 
           .fintech-engineering-container,
           .approach-container {
-            padding-top: 40px;
-            padding-bottom: 40px;
+            padding-top: 44px;
+            padding-bottom: 44px;
           }
 
           .engineering-heading {
-            font-size: 22px;
+            font-size: 23px;
           }
 
           .engineering-description {
@@ -582,7 +602,7 @@ export default function FintechEngineeringAndApproachSections() {
           }
 
           .approach-heading {
-            font-size: 21px;
+            font-size: 22px;
           }
 
           .approach-description {
@@ -591,12 +611,12 @@ export default function FintechEngineeringAndApproachSections() {
 
           .capability-card,
           .step-card {
-            padding: 16px;
+            padding: 17px;
           }
 
           .capability-icon {
-            width: 34px;
-            height: 34px;
+            width: 35px;
+            height: 35px;
             margin-bottom: 14px;
           }
 
@@ -607,22 +627,28 @@ export default function FintechEngineeringAndApproachSections() {
           }
         }
 
-        /* ================================
+        /* =================================================
            VERY SMALL MOBILE
-        ================================= */
+        ================================================= */
 
         @media (max-width: 340px) {
           .fintech-container {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .fintech-engineering-container,
+          .approach-container {
+            padding-top: 38px;
+            padding-bottom: 38px;
           }
 
           .engineering-heading {
-            font-size: 20px;
+            font-size: 21px;
           }
 
           .approach-heading {
-            font-size: 19px;
+            font-size: 20px;
           }
 
           .engineering-description,
@@ -636,9 +662,9 @@ export default function FintechEngineeringAndApproachSections() {
           }
         }
 
-        /* ================================
+        /* =================================================
            REDUCED MOTION
-        ================================= */
+        ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
           .capability-card,
@@ -700,10 +726,15 @@ export default function FintechEngineeringAndApproachSections() {
             {/* Capability Cards */}
             <div className="capabilities-grid">
               {capabilities.map(({ icon: Icon, title, body }) => (
-                <div key={title} className="capability-card">
-
+                <div
+                  key={title}
+                  className="capability-card"
+                >
                   <span className="capability-icon">
-                    <Icon size={16} strokeWidth={1.8} />
+                    <Icon
+                      size={16}
+                      strokeWidth={1.8}
+                    />
                   </span>
 
                   <h3 className="capability-title">
@@ -713,7 +744,6 @@ export default function FintechEngineeringAndApproachSections() {
                   <p className="capability-body">
                     {body}
                   </p>
-
                 </div>
               ))}
             </div>
@@ -757,8 +787,10 @@ export default function FintechEngineeringAndApproachSections() {
             {/* Steps */}
             <div className="steps-grid">
               {steps.map(({ num, title, body }) => (
-                <div key={num} className="step-card">
-
+                <div
+                  key={num}
+                  className="step-card"
+                >
                   <div className="step-top">
                     <span className="step-number">
                       {num}
@@ -777,7 +809,6 @@ export default function FintechEngineeringAndApproachSections() {
                   <p className="step-body">
                     {body}
                   </p>
-
                 </div>
               ))}
             </div>

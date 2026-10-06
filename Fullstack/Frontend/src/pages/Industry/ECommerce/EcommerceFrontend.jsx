@@ -46,7 +46,7 @@ export default function ShoppingExperienceSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect();
+          observer.unobserve(section);
         }
       },
       {
@@ -62,265 +62,554 @@ export default function ShoppingExperienceSection() {
   return (
     <section
       ref={sectionRef}
-      style={{
-        background: "#f5f6f8",
-        color: INK,
-      }}
-      className="w-full overflow-hidden font-['Inter']"
+      className="shopping-experience-section"
     >
-      <div
-        className="
-          w-full
-          max-w-[1320px]
-          mx-auto
-          px-4 sm:px-6 md:px-10 lg:px-[100px]
-          py-12 sm:py-14 md:py-16 lg:py-20
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          gap-10
-          sm:gap-12
-          md:gap-14
-          lg:gap-16
-          items-start
-        "
-      >
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        /* =========================================
+           SECTION
+        ========================================= */
+
+        .shopping-experience-section {
+          width: 100%;
+          overflow: hidden;
+          background: #f5f6f8;
+          color: ${INK};
+          font-family: "Inter", sans-serif;
+        }
+
+        /* =========================================
+           MAIN WRAPPER
+        ========================================= */
+
+        .shopping-experience-wrapper {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding: 80px 100px;
+          box-sizing: border-box;
+
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: 64px;
+          align-items: start;
+        }
+
+        /* =========================================
+           IMAGE AREA
+        ========================================= */
+
+        .shopping-image-wrapper {
+          position: relative;
+          width: 100%;
+          min-width: 0;
+        }
+
+        .shopping-image-container {
+          position: relative;
+          width: 100%;
+          height: 370px;
+          overflow: hidden;
+          border-radius: 18px;
+          background: #e5e5e5;
+        }
+
+        .shopping-main-image {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+
+          transition: transform 700ms
+            cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .shopping-image-container:hover .shopping-main-image {
+          transform: scale(1.03);
+        }
+
+        .shopping-image-overlay {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.18),
+            transparent 50%
+          );
+        }
+
+        /* =========================================
+           FLOATING CAPTION
+        ========================================= */
+
+        .shopping-floating-caption {
+          position: absolute;
+          left: 16px;
+          right: 16px;
+          bottom: 16px;
+          padding: 15px 16px;
+          box-sizing: border-box;
+
+          background: rgba(255, 255, 255, 0.97);
+          border-radius: 10px;
+
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .shopping-caption-label {
+          display: inline-block;
+          margin: 0 0 7px;
+          padding: 5px 8px;
+          border-radius: 5px;
+
+          background: #fbeef1;
+          color: ${WINE};
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: 0.05em;
+        }
+
+        .shopping-caption-title {
+          margin: 0;
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        /* =========================================
+           RIGHT CONTENT
+        ========================================= */
+
+        .shopping-content {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .shopping-section-label {
+          margin: 0 0 14px;
+
+          color: ${WINE};
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: 0.08em;
+        }
+
+        .shopping-heading {
+          max-width: 650px;
+          margin: 0 0 17px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 36px;
+          font-weight: 700;
+          line-height: 1.25;
+          letter-spacing: -0.025em;
+        }
+
+        .shopping-description {
+          max-width: 720px;
+          margin: 0 0 28px;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.8;
+        }
+
+        /* =========================================
+           FEATURE LIST
+        ========================================= */
+
+        .shopping-features {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        /* =========================================
+           FEATURE CARD
+        ========================================= */
+
+        .shopping-feature-card {
+          width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+
+          padding: 18px;
+
+          background: #ffffff;
+          border: 1px solid transparent;
+          border-radius: 10px;
+
+          opacity: 0;
+          transform: translateY(28px);
+
+          transition:
+            opacity 600ms ease,
+            transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 300ms ease,
+            box-shadow 300ms ease;
+        }
+
+        .shopping-feature-card.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .shopping-feature-card.visible:hover {
+          transform: translateY(-6px);
+          border-color: rgba(122, 31, 61, 0.15);
+          box-shadow: 0 12px 28px rgba(122, 31, 61, 0.10);
+        }
+
+        /* =========================================
+           FEATURE ICON
+        ========================================= */
+
+        .shopping-feature-icon {
+          width: 38px;
+          height: 38px;
+          flex-shrink: 0;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 9px;
+
+          background: #fbeef1;
+          color: ${WINE};
+        }
+
+        /* =========================================
+           FEATURE TEXT
+        ========================================= */
+
+        .shopping-feature-content {
+          min-width: 0;
+        }
+
+        .shopping-feature-title {
+          margin: 0 0 5px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .shopping-feature-body {
+          margin: 0;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.7;
+        }
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .shopping-experience-wrapper {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+            gap: 48px;
+          }
+
+          .shopping-heading {
+            font-size: 33px;
+          }
+
+          .shopping-image-container {
+            height: 340px;
+          }
+        }
+
+        /* =========================================
+           SMALL TABLET
+        ========================================= */
+
+        @media (max-width: 900px) {
+          .shopping-experience-wrapper {
+            grid-template-columns: 1fr;
+            gap: 38px;
+          }
+
+          .shopping-image-container {
+            height: 360px;
+          }
+
+          .shopping-heading {
+            max-width: 750px;
+          }
+
+          .shopping-description {
+            max-width: 800px;
+          }
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
+          .shopping-experience-wrapper {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 56px;
+            padding-bottom: 56px;
+            gap: 30px;
+          }
+
+          .shopping-image-container {
+            height: 300px;
+            border-radius: 15px;
+          }
+
+          .shopping-floating-caption {
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            padding: 13px 14px;
+          }
+
+          .shopping-caption-label {
+            margin-bottom: 6px;
+            font-size: 8.5px;
+          }
+
+          .shopping-caption-title {
+            font-size: 12px;
+          }
+
+          .shopping-section-label {
+            margin-bottom: 12px;
+            font-size: 9px;
+          }
+
+          .shopping-heading {
+            margin-bottom: 14px;
+            font-size: 28px;
+            line-height: 1.22;
+          }
+
+          .shopping-description {
+            margin-bottom: 24px;
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .shopping-features {
+            gap: 13px;
+          }
+
+          .shopping-feature-card {
+            padding: 16px;
+            gap: 12px;
+            border-radius: 9px;
+          }
+
+          .shopping-feature-icon {
+            width: 36px;
+            height: 36px;
+          }
+
+          .shopping-feature-title {
+            font-size: 14px;
+          }
+
+          .shopping-feature-body {
+            font-size: 12px;
+            line-height: 1.65;
+          }
+        }
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 480px) {
+          .shopping-experience-wrapper {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 48px;
+            padding-bottom: 48px;
+            gap: 26px;
+          }
+
+          .shopping-image-container {
+            height: 250px;
+            border-radius: 13px;
+          }
+
+          .shopping-floating-caption {
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            padding: 11px 12px;
+          }
+
+          .shopping-caption-title {
+            font-size: 11px;
+          }
+
+          .shopping-heading {
+            font-size: 24px;
+          }
+
+          .shopping-description {
+            font-size: 12.5px;
+            line-height: 1.65;
+          }
+
+          .shopping-feature-card {
+            padding: 15px;
+          }
+
+          .shopping-feature-icon {
+            width: 34px;
+            height: 34px;
+          }
+
+          .shopping-feature-title {
+            font-size: 13px;
+          }
+
+          .shopping-feature-body {
+            font-size: 11.5px;
+          }
+        }
+
+        /* =========================================
+           TOUCH DEVICES
+        ========================================= */
+
+        @media (hover: none) {
+          .shopping-image-container:hover .shopping-main-image {
+            transform: none;
+          }
+
+          .shopping-feature-card.visible:hover {
+            transform: translateY(0);
+            border-color: transparent;
+            box-shadow: none;
+          }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          .shopping-main-image,
+          .shopping-feature-card {
+            transition: none !important;
+          }
+
+          .shopping-feature-card {
+            opacity: 1;
+            transform: none;
+          }
+        }
+      `}</style>
+
+      <div className="shopping-experience-wrapper">
         {/* ================= LEFT IMAGE ================= */}
-        <div className="relative w-full">
-          <div
-            className="
-              relative
-              w-full
-              h-[240px]
-              sm:h-[280px]
-              md:h-[330px]
-              lg:h-[370px]
-              rounded-2xl
-              overflow-hidden
-              bg-gray-200
-            "
-          >
+        <div className="shopping-image-wrapper">
+          <div className="shopping-image-container">
             <img
               src="/shopping-experience.jpg"
               alt="Warehouse staff verifying dispatch inventory"
-              className="
-                w-full
-                h-full
-                object-cover
-                transition-transform
-                duration-700
-                hover:scale-[1.03]
-              "
+              className="shopping-main-image"
             />
 
-            {/* Soft overlay */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.18), transparent 50%)",
-              }}
-            />
+            <div className="shopping-image-overlay" />
           </div>
 
-          {/* ================= FLOATING CAPTION ================= */}
-          <div
-            className="
-              absolute
-              bottom-3
-              sm:bottom-4
-              left-3
-              sm:left-4
-              right-3
-              sm:right-4
-              bg-white
-              rounded-lg
-              px-3
-              sm:px-4
-              py-3
-            "
-            style={{
-              boxShadow: "0 6px 20px rgba(0,0,0,0.08)",
-            }}
-          >
-            <p
-              className="
-                text-[9px]
-                sm:text-[10px]
-                font-semibold
-                tracking-wide
-                mb-1.5
-                inline-block
-                px-2
-                py-1
-                rounded
-                font-['Inter']
-              "
-              style={{
-                color: WINE,
-                background: "#fbeef1",
-              }}
-            >
+          {/* Floating Caption */}
+          <div className="shopping-floating-caption">
+            <p className="shopping-caption-label">
               FULFILLMENT INTEGRATION
             </p>
 
-            <p
-              className="
-                text-xs
-                sm:text-sm
-                font-semibold
-                leading-snug
-                font-['Plus_Jakarta_Sans']
-              "
-            >
+            <p className="shopping-caption-title">
               Real-time inventory verification at dispatch
             </p>
           </div>
         </div>
 
         {/* ================= RIGHT CONTENT ================= */}
-        <div className="w-full">
-          {/* Sub Heading */}
-          <p
-            className="
-              text-[10px]
-              sm:text-[11px]
-              md:text-xs
-              font-semibold
-              tracking-[0.08em]
-              mb-3
-              font-['Plus_Jakarta_Sans']
-            "
-            style={{ color: WINE }}
-          >
+        <div className="shopping-content">
+          <p className="shopping-section-label">
             FRONT-END PRECISION
           </p>
 
-          {/* Main Heading */}
-          <h2
-            className="
-              font-['Plus_Jakarta_Sans']
-              text-2xl
-              sm:text-[1.65rem]
-              md:text-[1.75rem]
-              lg:text-[1.9rem]
-              leading-[1.25]
-              font-bold
-              tracking-tight
-              mb-4
-              max-w-xl
-            "
-          >
+          <h2 className="shopping-heading">
             Create a Better Online Shopping Experience
           </h2>
 
-          {/* Description */}
-          <p
-            className="
-              text-sm
-              sm:text-[14px]
-              leading-7
-              mb-7
-              font-['Inter']
-              max-w-2xl
-            "
-            style={{ color: MUTED }}
-          >
+          <p className="shopping-description">
             A well-structured digital storefront helps customers find
             products, understand information and interact with your
             business across different devices.
           </p>
 
-          {/* ================= FEATURE CARDS ================= */}
-          <div
-            className="
-              flex
-              flex-col
-              gap-4
-              sm:gap-5
-            "
-          >
+          {/* Feature Cards */}
+          <div className="shopping-features">
             {features.map(({ icon: Icon, title, body }, index) => (
               <div
                 key={title}
-                className={`
-                  group
-                  w-full
-                  bg-white
-                  rounded-lg
-                  p-4
-                  sm:p-5
-                  flex
-                  items-start
-                  gap-3.5
-                  border
-                  border-transparent
-                  transition-all
-                  duration-500
-                  ease-out
-                  ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-8"
-                  }
-                  hover:-translate-y-1.5
-                  hover:border-[#7A1F3D]/15
-                  hover:shadow-[0_12px_28px_rgba(122,31,61,0.10)]
-                `}
+                className={`shopping-feature-card ${
+                  isVisible ? "visible" : ""
+                }`}
                 style={{
                   transitionDelay: isVisible
-                    ? `${index * 180}ms`
+                    ? `${index * 160}ms`
                     : "0ms",
                 }}
               >
                 {/* Icon */}
-                <span
-                  className="
-                    w-8
-                    h-8
-                    sm:w-9
-                    sm:h-9
-                    flex
-                    items-center
-                    justify-center
-                    rounded-lg
-                    shrink-0
-                  "
-                  style={{
-                    background: "#fbeef1",
-                    color: WINE,
-                  }}
-                >
+                <span className="shopping-feature-icon">
                   <Icon
-                    size={16}
+                    size={17}
                     strokeWidth={1.8}
+                    aria-hidden="true"
                   />
                 </span>
 
                 {/* Text */}
-                <div className="min-w-0">
-                  <h3
-                    className="
-                      text-sm
-                      sm:text-[14px]
-                      font-semibold
-                      mb-1
-                      leading-snug
-                      font-['Plus_Jakarta_Sans']
-                    "
-                  >
+                <div className="shopping-feature-content">
+                  <h3 className="shopping-feature-title">
                     {title}
                   </h3>
 
-                  <p
-                    className="
-                      text-xs
-                      sm:text-[13px]
-                      leading-[1.7]
-                      font-['Inter']
-                    "
-                    style={{ color: MUTED }}
-                  >
+                  <p className="shopping-feature-body">
                     {body}
                   </p>
                 </div>

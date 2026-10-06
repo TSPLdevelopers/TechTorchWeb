@@ -93,6 +93,10 @@ const DiscussITRequirements = () => {
   return (
     <div className="discuss-page">
       <style>{`
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
         * {
           box-sizing: border-box;
         }
@@ -102,12 +106,28 @@ const DiscussITRequirements = () => {
           min-height: 100vh;
           background: #f7f8fa;
           color: #20232a;
-          font-family: Arial, Helvetica, sans-serif;
+          font-family: "Inter", Arial, Helvetica, sans-serif;
           overflow-x: hidden;
         }
 
+        .discuss-page h1,
+        .discuss-page h2,
+        .discuss-page h3 {
+          font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+        }
+
+        /* =========================================================
+           UNIVERSAL CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================================= */
+
         .discuss-container {
-          width: min(1170px, calc(100% - 70px));
+          width: 100%;
+          padding-left: 100px;
+          padding-right: 100px;
           margin: 0 auto;
         }
 
@@ -116,8 +136,15 @@ const DiscussITRequirements = () => {
         ========================================================= */
 
         .discuss-header {
+          width: 100%;
           text-align: center;
-          padding: 55px 20px 35px;
+          padding: 65px 100px 38px;
+        }
+
+        .discuss-header-inner {
+          width: 100%;
+          max-width: 900px;
+          margin: 0 auto;
         }
 
         .discuss-label {
@@ -125,11 +152,12 @@ const DiscussITRequirements = () => {
           align-items: center;
           justify-content: center;
           gap: 7px;
-          padding: 6px 13px;
+          padding: 7px 14px;
           border-radius: 20px;
           border: 1px solid #d7bccb;
           background: #f0e8ed;
           color: #70003f;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1;
           font-weight: 800;
@@ -147,21 +175,22 @@ const DiscussITRequirements = () => {
         }
 
         .discuss-header h1 {
-          max-width: 760px;
-          margin: 18px auto 11px;
+          max-width: 850px;
+          margin: 20px auto 13px;
           color: #202124;
-          font-size: clamp(38px, 4.1vw, 54px);
+          font-size: clamp(38px, 4.2vw, 56px);
           line-height: 1.08;
-          letter-spacing: -1.9px;
-          font-weight: 600;
+          letter-spacing: -2px;
+          font-weight: 700;
         }
 
         .discuss-header p {
-          max-width: 735px;
+          max-width: 760px;
           margin: 0 auto;
           color: #3f506b;
-          font-size: 17px;
-          line-height: 1.55;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.65;
           font-weight: 400;
         }
 
@@ -170,11 +199,12 @@ const DiscussITRequirements = () => {
         ========================================================= */
 
         .discussion-layout {
+          width: 100%;
           display: grid;
-          grid-template-columns: minmax(0, 1.35fr) minmax(370px, 0.95fr);
+          grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.95fr);
           gap: 28px;
           align-items: start;
-          padding-bottom: 20px;
+          padding-bottom: 24px;
         }
 
         /* =========================================================
@@ -182,7 +212,8 @@ const DiscussITRequirements = () => {
         ========================================================= */
 
         .areas-card {
-          padding: 29px 28px 25px;
+          width: 100%;
+          padding: 30px 30px 25px;
           background: #ffffff;
           border: 1px solid #dce2e9;
           border-radius: 15px;
@@ -196,6 +227,7 @@ const DiscussITRequirements = () => {
           border-radius: 5px;
           background: #f0e7ed;
           color: #70003f;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1;
           font-weight: 800;
@@ -203,46 +235,56 @@ const DiscussITRequirements = () => {
           text-transform: uppercase;
         }
 
-        .areas-card h2 {
-          margin: 9px 0 4px;
+        .areas-card h2,
+        .consultation-card h2 {
+          margin: 10px 0 5px;
           color: #24262b;
-          font-size: 20px;
-          line-height: 1.25;
-          font-weight: 500;
+          font-size: 21px;
+          line-height: 1.3;
+          font-weight: 650;
+          letter-spacing: -0.3px;
         }
 
         .areas-subtitle {
           margin: 0;
           color: #676767;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
-          line-height: 1.45;
+          line-height: 1.5;
           font-weight: 600;
-          letter-spacing: 0.2px;
+          letter-spacing: 0.15px;
         }
+
+        /* =========================================================
+           AREAS GRID
+        ========================================================= */
 
         .areas-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 10px 11px;
-          margin-top: 18px;
+          gap: 11px;
+          margin-top: 19px;
         }
 
         .area-option {
           position: relative;
-          min-height: 128px;
-          padding: 13px 13px 12px;
+          min-height: 132px;
+          padding: 14px;
           border: 1px solid #d8e0e9;
           border-radius: 10px;
-          background: #fff;
+          background: #ffffff;
           cursor: pointer;
-          transition: border-color 0.2s ease, box-shadow 0.2s ease,
-            transform 0.2s ease;
+          transition:
+            border-color 0.22s ease,
+            box-shadow 0.22s ease,
+            transform 0.22s ease,
+            background 0.22s ease;
         }
 
         .area-option:hover {
           border-color: #b9829e;
-          box-shadow: 0 3px 10px rgba(112, 0, 63, 0.06);
-          transform: translateY(-1px);
+          box-shadow: 0 5px 15px rgba(112, 0, 63, 0.07);
+          transform: translateY(-2px);
         }
 
         .area-option.selected {
@@ -262,6 +304,7 @@ const DiscussITRequirements = () => {
           min-height: 24px;
           padding: 4px 8px;
           border-radius: 4px;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
           line-height: 1;
           font-weight: 800;
@@ -293,10 +336,11 @@ const DiscussITRequirements = () => {
           margin-top: 1px;
           border: 1px solid #a5a8ac;
           border-radius: 2px;
-          background: #fff;
+          background: #ffffff;
           display: flex;
           align-items: center;
           justify-content: center;
+          transition: 0.2s ease;
         }
 
         .custom-checkbox.checked {
@@ -306,76 +350,79 @@ const DiscussITRequirements = () => {
 
         .custom-checkbox.checked::after {
           content: "✓";
-          color: #fff;
+          color: #ffffff;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1;
           font-weight: 800;
         }
 
         .area-option h3 {
-          margin: 9px 0 5px;
+          margin: 10px 0 5px;
           padding-right: 5px;
           color: #1e2738;
           font-size: 13px;
-          line-height: 1.3;
+          line-height: 1.35;
           font-weight: 700;
+          letter-spacing: -0.15px;
         }
 
         .area-option p {
           margin: 0;
           color: #53637b;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11.5px;
-          line-height: 1.5;
+          line-height: 1.52;
         }
 
         .areas-footer {
-          margin-top: 15px;
-          padding-top: 11px;
+          margin-top: 16px;
+          padding-top: 12px;
           border-top: 1px solid #e2e6eb;
-          color: #777;
+          color: #777777;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
-          line-height: 1.35;
-          letter-spacing: 0.4px;
+          line-height: 1.4;
+          letter-spacing: 0.35px;
         }
 
         /* =========================================================
-           CONSULTATION FORM
+           CONSULTATION CARD
         ========================================================= */
 
         .consultation-card {
-          padding: 26px 27px 25px;
-          background: #fff;
+          width: 100%;
+          padding: 27px 28px 26px;
+          background: #ffffff;
           border: 1px solid #dce2e9;
           border-radius: 15px;
           box-shadow: 0 3px 7px rgba(30, 40, 55, 0.06);
         }
 
-        .consultation-card h2 {
-          margin: 9px 0 5px;
-          color: #24262b;
-          font-size: 20px;
-          line-height: 1.25;
+        .consultation-intro {
+          margin: 0 0 17px;
+          color: #666666;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 12px;
+          line-height: 1.5;
           font-weight: 500;
         }
 
-        .consultation-intro {
-          margin: 0 0 16px;
-          color: #666;
-          font-size: 12px;
-          line-height: 1.4;
-          font-weight: 600;
-        }
+        /* =========================================================
+           FORM
+        ========================================================= */
 
         .form-group {
-          margin-bottom: 11px;
+          margin-bottom: 12px;
         }
 
         .form-label {
           display: block;
-          margin-bottom: 5px;
+          margin-bottom: 6px;
           color: #303238;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
-          line-height: 1.2;
+          line-height: 1.25;
           font-weight: 700;
           letter-spacing: 0.15px;
         }
@@ -391,7 +438,7 @@ const DiscussITRequirements = () => {
           width: 14px;
           height: 14px;
           transform: translateY(-50%);
-          color: #777;
+          color: #777777;
           pointer-events: none;
         }
 
@@ -404,13 +451,16 @@ const DiscussITRequirements = () => {
           background: #f8fafc;
           color: #303238;
           outline: none;
-          font-family: inherit;
-          transition: border-color 0.2s ease, box-shadow 0.2s ease;
+          font-family: "Inter", Arial, sans-serif;
+          transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.2s ease;
         }
 
         .form-input,
         .form-select {
-          height: 38px;
+          height: 40px;
           padding: 0 11px;
           font-size: 12px;
         }
@@ -420,11 +470,11 @@ const DiscussITRequirements = () => {
         }
 
         .form-textarea {
-          min-height: 78px;
+          min-height: 82px;
           padding: 10px;
           resize: vertical;
           font-size: 12px;
-          line-height: 1.4;
+          line-height: 1.45;
         }
 
         .form-input::placeholder,
@@ -436,37 +486,45 @@ const DiscussITRequirements = () => {
         .form-select:focus,
         .form-textarea:focus {
           border-color: #b8879f;
-          box-shadow: 0 0 0 2px rgba(112, 0, 63, 0.06);
+          background: #ffffff;
+          box-shadow: 0 0 0 3px rgba(112, 0, 63, 0.06);
         }
 
         .two-column {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 10px;
         }
 
         .form-select {
           appearance: none;
+          -webkit-appearance: none;
           background-image:
-            linear-gradient(45deg, transparent 50%, #888 50%),
-            linear-gradient(135deg, #888 50%, transparent 50%);
+            linear-gradient(45deg, transparent 50%, #888888 50%),
+            linear-gradient(135deg, #888888 50%, transparent 50%);
           background-position:
-            calc(100% - 14px) 16px,
-            calc(100% - 10px) 16px;
+            calc(100% - 14px) 17px,
+            calc(100% - 10px) 17px;
           background-size: 4px 4px, 4px 4px;
           background-repeat: no-repeat;
           padding-right: 27px;
+          cursor: pointer;
         }
+
+        /* =========================================================
+           BOTTOM INFO
+        ========================================================= */
 
         .form-bottom-info {
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap: 15px;
-          margin: 4px 0 13px;
-          color: #666;
+          margin: 5px 0 14px;
+          color: #666666;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9.5px;
-          letter-spacing: 0.4px;
+          letter-spacing: 0.35px;
         }
 
         .form-bottom-info span {
@@ -488,44 +546,47 @@ const DiscussITRequirements = () => {
           color: #6e3455;
         }
 
+        /* =========================================================
+           SUBMIT
+        ========================================================= */
+
         .consultation-submit {
           width: 100%;
-          height: 39px;
+          height: 41px;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 7px;
+          gap: 8px;
           border: 0;
           border-radius: 6px;
           background: #820044;
-          color: #fff;
-          font-family: inherit;
+          color: #ffffff;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.8px;
           cursor: pointer;
-          transition: 0.25s ease;
+          transition:
+            background 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
         .consultation-submit:hover {
           background: #6f003c;
           transform: translateY(-1px);
-          box-shadow: 0 5px 12px rgba(112, 0, 63, 0.16);
-        }
-
-        .consultation-submit svg {
-          width: 15px;
-          height: 15px;
+          box-shadow: 0 6px 14px rgba(112, 0, 63, 0.16);
         }
 
         .consultation-note {
           margin: 14px auto 0;
-          max-width: 280px;
+          max-width: 290px;
           text-align: center;
-          color: #777;
+          color: #777777;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9.5px;
-          line-height: 1.35;
-          letter-spacing: 0.7px;
+          line-height: 1.4;
+          letter-spacing: 0.65px;
           font-weight: 600;
         }
 
@@ -534,13 +595,10 @@ const DiscussITRequirements = () => {
         ========================================================= */
 
         .expect-card {
-          width: calc(
-            (100% - 28px) * 1.35 /
-            (1.35 + 0.95)
-          );
-          margin-top: 0;
-          padding: 25px 27px 23px;
-          background: #fff;
+          width: 100%;
+          margin-bottom: 35px;
+          padding: 26px 28px 24px;
+          background: #ffffff;
           border: 1px solid #dce2e9;
           border-radius: 15px;
           box-shadow: 0 2px 5px rgba(30, 40, 55, 0.035);
@@ -551,7 +609,7 @@ const DiscussITRequirements = () => {
           align-items: flex-start;
           justify-content: space-between;
           gap: 20px;
-          margin-bottom: 19px;
+          margin-bottom: 20px;
         }
 
         .expect-heading {
@@ -561,8 +619,8 @@ const DiscussITRequirements = () => {
         }
 
         .expect-icon {
-          width: 23px;
-          height: 23px;
+          width: 24px;
+          height: 24px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -582,6 +640,7 @@ const DiscussITRequirements = () => {
         .expect-title-label {
           margin: 0 0 4px;
           color: #70003f;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
           line-height: 1;
           font-weight: 800;
@@ -592,6 +651,7 @@ const DiscussITRequirements = () => {
         .expect-description {
           margin: 0;
           color: #65758e;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           line-height: 1.5;
         }
@@ -601,10 +661,11 @@ const DiscussITRequirements = () => {
           align-items: center;
           gap: 7px;
           min-width: 141px;
-          padding: 5px 10px;
+          padding: 6px 10px;
           border: 1px solid #dce3ea;
           border-radius: 20px;
           color: #596a7f;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
           line-height: 1.15;
         }
@@ -625,18 +686,28 @@ const DiscussITRequirements = () => {
         }
 
         .expect-item {
-          min-height: 230px;
-          padding: 12px 13px;
+          min-height: 225px;
+          padding: 13px;
           border: 1px solid #dce3ea;
           border-radius: 10px;
           background: #fbfcfd;
+          transition:
+            transform 0.22s ease,
+            box-shadow 0.22s ease,
+            border-color 0.22s ease;
+        }
+
+        .expect-item:hover {
+          transform: translateY(-2px);
+          border-color: #d2bac8;
+          box-shadow: 0 5px 15px rgba(40, 45, 60, 0.05);
         }
 
         .expect-item-top {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 9px;
+          margin-bottom: 10px;
         }
 
         .expect-item-icon {
@@ -658,6 +729,7 @@ const DiscussITRequirements = () => {
 
         .expect-number {
           color: #91a0b4;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
           font-weight: 700;
         }
@@ -666,42 +738,50 @@ const DiscussITRequirements = () => {
           margin: 0 0 8px;
           color: #1f2939;
           font-size: 12px;
-          line-height: 1.3;
+          line-height: 1.35;
           font-weight: 700;
         }
 
         .expect-item p {
           margin: 0;
           color: #53647b;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           line-height: 1.55;
         }
 
         /* =========================================================
            TABLET
+           40px horizontal spacing
         ========================================================= */
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1200px) {
           .discuss-container {
-            width: calc(100% - 46px);
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .discuss-header {
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .discussion-layout {
-            grid-template-columns: minmax(0, 1.15fr) minmax(330px, 0.85fr);
-            gap: 20px;
+            grid-template-columns:
+              minmax(0, 1.15fr)
+              minmax(330px, 0.85fr);
+            gap: 22px;
           }
 
           .areas-card,
           .consultation-card {
-            padding-left: 21px;
-            padding-right: 21px;
+            padding-left: 23px;
+            padding-right: 23px;
           }
 
           .expect-card {
-            width: calc(
-              (100% - 20px) * 1.15 /
-              (1.15 + 0.85)
-            );
+            padding-left: 23px;
+            padding-right: 23px;
           }
         }
 
@@ -709,17 +789,15 @@ const DiscussITRequirements = () => {
            TABLET / SMALL LAPTOP
         ========================================================= */
 
-        @media (max-width: 820px) {
-          .discuss-container {
-            width: calc(100% - 38px);
-          }
-
+        @media (max-width: 900px) {
           .discuss-header {
-            padding-top: 45px;
+            padding-top: 52px;
+            padding-bottom: 34px;
           }
 
           .discuss-header h1 {
-            font-size: 40px;
+            font-size: 42px;
+            letter-spacing: -1.4px;
           }
 
           .discuss-header p {
@@ -728,46 +806,55 @@ const DiscussITRequirements = () => {
 
           .discussion-layout {
             grid-template-columns: 1fr;
-          }
-
-          .expect-card {
-            width: 100%;
+            gap: 20px;
           }
 
           .areas-grid {
-            gap: 11px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .expect-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
           }
         }
 
         /* =========================================================
            MOBILE
+           24px horizontal spacing
         ========================================================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
           .discuss-container {
-            width: calc(100% - 26px);
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .discuss-header {
-            padding: 34px 8px 26px;
+            padding:
+              42px
+              24px
+              28px;
           }
 
           .discuss-label {
-            padding: 6px 10px;
+            max-width: 100%;
+            padding: 6px 11px;
             font-size: 8px;
             letter-spacing: 0.65px;
+            white-space: normal;
+            line-height: 1.35;
           }
 
           .discuss-header h1 {
-            margin-top: 15px;
-            font-size: 31px;
-            line-height: 1.1;
+            margin-top: 17px;
+            font-size: 32px;
+            line-height: 1.12;
             letter-spacing: -1px;
           }
 
           .discuss-header p {
             font-size: 13px;
-            line-height: 1.55;
+            line-height: 1.6;
           }
 
           .areas-card,
@@ -777,20 +864,16 @@ const DiscussITRequirements = () => {
           }
 
           .areas-card {
-            padding: 21px 16px 18px;
+            padding: 22px 17px 19px;
           }
 
           .consultation-card {
-            padding: 21px 16px;
-          }
-
-          .step-label {
-            font-size: 8px;
+            padding: 22px 17px;
           }
 
           .areas-card h2,
           .consultation-card h2 {
-            font-size: 18px;
+            font-size: 19px;
           }
 
           .areas-subtitle,
@@ -805,7 +888,7 @@ const DiscussITRequirements = () => {
 
           .area-option {
             min-height: auto;
-            padding: 12px;
+            padding: 13px;
           }
 
           .area-option h3 {
@@ -826,7 +909,7 @@ const DiscussITRequirements = () => {
           }
 
           .expect-card {
-            padding: 21px 16px;
+            padding: 22px 17px;
           }
 
           .expect-header {
@@ -850,35 +933,102 @@ const DiscussITRequirements = () => {
 
         /* =========================================================
            SMALL MOBILE
+           16px horizontal spacing
         ========================================================= */
 
-        @media (max-width: 380px) {
+        @media (max-width: 480px) {
           .discuss-container {
-            width: calc(100% - 20px);
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .discuss-header {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 34px;
           }
 
           .discuss-header h1 {
-            font-size: 27px;
+            font-size: 28px;
+            letter-spacing: -0.8px;
+          }
+
+          .discuss-header p {
+            font-size: 12.5px;
+          }
+
+          .areas-card,
+          .consultation-card,
+          .expect-card {
+            padding-left: 14px;
+            padding-right: 14px;
+          }
+
+          .step-label {
+            font-size: 8px;
+          }
+
+          .areas-card h2,
+          .consultation-card h2 {
+            font-size: 18px;
+          }
+
+          .form-input,
+          .form-select {
+            font-size: 11.5px;
+          }
+
+          .form-textarea {
+            font-size: 11.5px;
+          }
+
+          .form-bottom-info {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 7px;
+          }
+
+          .consultation-submit {
+            height: 42px;
+            font-size: 10px;
+          }
+
+          .expect-description {
+            font-size: 10.5px;
+          }
+        }
+
+        /* =========================================================
+           EXTRA SMALL
+        ========================================================= */
+
+        @media (max-width: 360px) {
+          .discuss-header h1 {
+            font-size: 25px;
           }
 
           .discuss-header p {
             font-size: 12px;
           }
 
-          .areas-card,
-          .consultation-card,
-          .expect-card {
-            padding-left: 13px;
-            padding-right: 13px;
+          .area-option h3 {
+            font-size: 12px;
           }
 
-          .form-input,
-          .form-select {
-            font-size: 11px;
+          .area-option p {
+            font-size: 10.5px;
           }
 
-          .form-textarea {
-            font-size: 11px;
+          .form-label {
+            font-size: 10.5px;
+          }
+
+          .expect-item h3 {
+            font-size: 11.5px;
+          }
+
+          .expect-item p {
+            font-size: 10.5px;
           }
         }
       `}</style>
@@ -888,21 +1038,23 @@ const DiscussITRequirements = () => {
       ========================================================= */}
 
       <section className="discuss-header">
-        <div className="discuss-label">
-          TECHTORCH MSP SUPPORT • IT CONSULTATION
+        <div className="discuss-header-inner">
+          <div className="discuss-label">
+            TECHTORCH MSP SUPPORT • IT CONSULTATION
+          </div>
+
+          <h1>
+            Discuss Your IT Requirements &<br />
+            Business Priorities
+          </h1>
+
+          <p>
+            Connect with the TechTorch team to discuss your technology
+            environment, operational requirements, and current IT challenges.
+            We’ll understand your needs and help identify the right technology
+            approach for your business.
+          </p>
         </div>
-
-        <h1>
-          Discuss Your IT Requirements &<br />
-          Business Priorities
-        </h1>
-
-        <p>
-          Connect with the TechTorch team to discuss your technology
-          environment, operational requirements, and current IT challenges.
-          We’ll understand your needs and help identify the right technology
-          approach for your business.
-        </p>
       </section>
 
       {/* =========================================================
@@ -983,6 +1135,7 @@ const DiscussITRequirements = () => {
               connect with you to discuss the next steps.
             </p>
 
+            {/* FULL NAME */}
             <div className="form-group">
               <label className="form-label">Full Name</label>
 
@@ -997,6 +1150,7 @@ const DiscussITRequirements = () => {
               </div>
             </div>
 
+            {/* EMAIL */}
             <div className="form-group">
               <label className="form-label">
                 Business Email Address
@@ -1013,9 +1167,12 @@ const DiscussITRequirements = () => {
               </div>
             </div>
 
+            {/* COMPANY + SIZE */}
             <div className="two-column">
               <div className="form-group">
-                <label className="form-label">Company Name</label>
+                <label className="form-label">
+                  Company Name
+                </label>
 
                 <div className="input-wrap">
                   <Building2 />
@@ -1042,9 +1199,12 @@ const DiscussITRequirements = () => {
               </div>
             </div>
 
+            {/* PHONE + TIMELINE */}
             <div className="two-column">
               <div className="form-group">
-                <label className="form-label">Phone Number</label>
+                <label className="form-label">
+                  Phone Number
+                </label>
 
                 <div className="input-wrap">
                   <Phone />
@@ -1071,6 +1231,7 @@ const DiscussITRequirements = () => {
               </div>
             </div>
 
+            {/* DISCUSSION */}
             <div className="form-group">
               <label className="form-label">
                 What Would You Like to Discuss?
@@ -1082,6 +1243,7 @@ const DiscussITRequirements = () => {
               />
             </div>
 
+            {/* INFO */}
             <div className="form-bottom-info">
               <span className="secure">
                 <LockKeyhole />
@@ -1094,6 +1256,7 @@ const DiscussITRequirements = () => {
               </span>
             </div>
 
+            {/* SUBMIT */}
             <button className="consultation-submit">
               REQUEST A CONSULTATION
               <span>→</span>
@@ -1138,6 +1301,8 @@ const DiscussITRequirements = () => {
           </div>
 
           <div className="expect-grid">
+
+            {/* ITEM 01 */}
             <div className="expect-item">
               <div className="expect-item-top">
                 <div className="expect-item-icon">
@@ -1155,6 +1320,7 @@ const DiscussITRequirements = () => {
               </p>
             </div>
 
+            {/* ITEM 02 */}
             <div className="expect-item">
               <div className="expect-item-top">
                 <div className="expect-item-icon">
@@ -1172,6 +1338,7 @@ const DiscussITRequirements = () => {
               </p>
             </div>
 
+            {/* ITEM 03 */}
             <div className="expect-item">
               <div className="expect-item-top">
                 <div className="expect-item-icon">
@@ -1189,6 +1356,7 @@ const DiscussITRequirements = () => {
                 and related technology services.
               </p>
             </div>
+
           </div>
         </div>
       </div>

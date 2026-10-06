@@ -74,13 +74,9 @@ const timelines = [
 
 export default function DevelopmentConsultation() {
   const [requirement, setRequirement] = useState("");
-
   const [teamType, setTeamType] = useState("");
-
   const [selectedExpertise, setSelectedExpertise] = useState([]);
-
   const [teamSize, setTeamSize] = useState("");
-
   const [timeline, setTimeline] = useState("");
 
   const [formData, setFormData] = useState({
@@ -133,752 +129,1523 @@ export default function DevelopmentConsultation() {
   };
 
   return (
-    <main className="w-full overflow-hidden bg-white">
+    <>
+      <style>{`
+        /* =========================================================
+           FONTS
+        ========================================================= */
 
-      {/* =====================================================
-          DEVELOPMENT TEAM HERO
-      ===================================================== */}
-      <section className="w-full bg-[#f8fafc] px-4 py-6 sm:px-6 sm:py-8 md:px-8 lg:px-10 lg:py-10">
-        <div
-          className="
-            mx-auto
-            grid
-            w-full
-            max-w-[1180px]
-            overflow-hidden
-            rounded-[16px]
-            border
-            border-[#e3e7eb]
-            bg-white
-            shadow-[0_2px_8px_rgba(20,30,45,0.04)]
-            lg:grid-cols-[1.05fr_0.75fr]
-          "
-        >
+        .development-consultation-page {
+          --brand: #8B0046;
+          --brand-dark: #78003d;
+          --heading: #15151A;
+          --body: #6b6268;
+          --border: #e3e7eb;
+          --soft-bg: #f4f6f8;
+          --soft-pink: #fff8fb;
 
-          {/* =================================================
-              LEFT CONTENT
-          ================================================= */}
-          <div
-            className="
-              flex
-              flex-col
-              justify-center
-              px-6
-              py-8
-              sm:px-8
-              sm:py-10
-              md:px-10
-              md:py-12
-              lg:px-[52px]
-              lg:py-[50px]
-            "
-          >
+          width: 100%;
+          overflow: hidden;
+          background: #ffffff;
 
-            {/* Badge */}
-            <div
-              className="
-                mb-6
-                inline-flex
-                w-fit
-                items-center
-                gap-2
-                rounded-full
-                border
-                border-[#ead5df]
-                bg-[#fff8fb]
-                px-3
-                py-1.5
-              "
-            >
-              <span
-                className="h-[6px] w-[6px] rounded-full"
-                style={{ backgroundColor: BRAND }}
-              />
+          font-family: "Inter", sans-serif;
+        }
 
-              <span
-                className="
-                  font-['Inter']
-                  text-[9px]
-                  font-bold
-                  uppercase
-                  tracking-[0.08em]
-                "
-                style={{ color: BRAND }}
-              >
-                DEVELOPMENT TEAM SOLUTIONS
-              </span>
-            </div>
+        .development-consultation-page h1,
+        .development-consultation-page h2,
+        .development-consultation-page h3,
+        .development-consultation-page h4 {
+          font-family: "Plus Jakarta Sans", sans-serif;
+        }
 
-            {/* Heading */}
-            <h1
-              className="
-                max-w-[620px]
-                font-['Plus_Jakarta_Sans']
-                text-[32px]
-                font-semibold
-                leading-[1.05]
-                tracking-[-0.04em]
-                text-[#15151A]
-                sm:text-[38px]
-                md:text-[42px]
-                lg:text-[46px]
-              "
-            >
-              Build Your Development
-              <br />
-              Team
-            </h1>
+        /* =========================================================
+           UNIVERSAL HORIZONTAL SPACING
+           
+           Desktop  : 100px
+           Tablet   : 40px
+           Mobile   : 24px
+           Small    : 16px
+        ========================================================= */
 
-            {/* Description */}
-            <p
-              className="
-                mt-5
-                max-w-[620px]
-                font-['Inter']
-                text-[13px]
-                leading-[1.7]
-                text-[#6b6268]
-                sm:text-[14px]
-                md:text-[15px]
-              "
-            >
-              The Right Technical Expertise for the Work Ahead. Whether you
-              need additional developers, a dedicated engineering team, or
-              specialized technical expertise, TechTorch helps you structure
-              development capabilities around your project, technology
-              requirements, and business objectives.
-            </p>
+        .dc-container {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding-left: 100px;
+          padding-right: 100px;
+          box-sizing: border-box;
+        }
 
-            {/* Buttons */}
-            <div
-              className="
-                mt-7
-                flex
-                w-full
-                flex-col
-                gap-3
-                sm:w-auto
-                sm:flex-row
-              "
-            >
-              <button
-                type="button"
-                onClick={scrollToForm}
-                className="
-                  inline-flex
-                  min-h-[50px]
-                  w-full
-                  items-center
-                  justify-center
-                  gap-2
-                  rounded-[9px]
-                  bg-[#8B0046]
-                  px-6
-                  font-['Inter']
-                  text-[12px]
-                  font-semibold
-                  text-white
-                  shadow-[0_8px_18px_rgba(139,0,70,0.18)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-[1px]
-                  hover:bg-[#78003d]
-                  sm:w-auto
-                "
-              >
-                Build Your Team
+        /* =========================================================
+           HERO
+        ========================================================= */
 
-                <ArrowRight className="h-4 w-4" />
-              </button>
+        .dc-hero-section {
+          width: 100%;
+          background: #f8fafc;
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
 
-              <button
-                type="button"
-                onClick={scrollToForm}
-                className="
-                  inline-flex
-                  min-h-[50px]
-                  w-full
-                  items-center
-                  justify-center
-                  rounded-[9px]
-                  border
-                  border-[#e1e6eb]
-                  bg-white
-                  px-6
-                  font-['Inter']
-                  text-[12px]
-                  font-semibold
-                  text-[#30343b]
-                  shadow-[0_2px_6px_rgba(20,30,45,0.03)]
-                  transition-all
-                  duration-300
-                  hover:border-[#d3a8bc]
-                  hover:bg-[#fff8fb]
-                  sm:w-auto
-                "
-              >
-                Discuss Your Requirements
-              </button>
-            </div>
+        .dc-hero-card {
+          width: 100%;
+          max-width: 1380px;
+          margin: 0 auto;
 
-            {/* Bottom Benefits */}
-            <div
-              className="
-                mt-7
-                flex
-                flex-wrap
-                items-center
-                gap-x-6
-                gap-y-3
-                border-t
-                border-[#e7eaee]
-                pt-5
-              "
-            >
-              <div className="flex items-center gap-2">
-                <Check
-                  className="h-[15px] w-[15px]"
-                  style={{ color: BRAND }}
-                />
+          display: grid;
+          grid-template-columns: 1.05fr 0.75fr;
 
-                <span
-                  className="
-                    font-['Inter']
-                    text-[10px]
-                    font-medium
-                    text-[#71686d]
-                    sm:text-[11px]
-                  "
-                >
-                  Confidential Project Discussions
-                </span>
-              </div>
+          overflow: hidden;
 
-              <div className="flex items-center gap-2">
-                <Check
-                  className="h-[15px] w-[15px]"
-                  style={{ color: BRAND }}
-                />
+          border: 1px solid #e3e7eb;
+          border-radius: 16px;
+          background: #ffffff;
 
-                <span
-                  className="
-                    font-['Inter']
-                    text-[10px]
-                    font-medium
-                    text-[#71686d]
-                    sm:text-[11px]
-                  "
-                >
-                  Flexible Development Models
-                </span>
-              </div>
-            </div>
-          </div>
+          box-shadow: 0 2px 8px rgba(20, 30, 45, 0.04);
+        }
 
-          {/* =================================================
-              RIGHT IMAGE
-          ================================================= */}
-          <div
-            className="
-              relative
-              min-h-[300px]
-              w-full
-              sm:min-h-[380px]
-              lg:min-h-full
-            "
-          >
-            <img
-              src="/DevelopmentTeam.png"
-              alt="Development Team"
-              className="
-                absolute
-                inset-0
-                h-full
-                w-full
-                object-cover
-                object-center
-              "
-            />
-          </div>
-        </div>
-      </section>
+        .dc-hero-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
 
+          padding: 55px 60px;
+        }
 
-      {/* =====================================================
-          DEVELOPMENT CONSULTATION FORM
-      ===================================================== */}
-      <section
-        id="development-consultation-form"
-        className="
-          w-full
-          bg-white
-          px-4
-          py-10
-          sm:px-6
-          sm:py-14
-          md:px-8
-          lg:px-10
-          lg:py-16
-        "
-      >
-        <div className="mx-auto w-full max-w-[960px]">
+        .dc-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
 
-          {/* =================================================
-              HEADER
-          ================================================= */}
-          <div className="mb-8 sm:mb-10">
+          width: fit-content;
 
-            <div
-              className="
-                mb-3
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                border
-                border-[#ead5df]
-                bg-[#fff8fb]
-                px-3
-                py-1.5
-              "
-            >
-              <span
-                className="h-[6px] w-[6px] rounded-full"
-                style={{ backgroundColor: BRAND }}
-              />
+          margin-bottom: 24px;
 
-              <span
-                className="
-                  font-['Inter']
-                  text-[8px]
-                  font-bold
-                  uppercase
-                  tracking-[0.08em]
-                  sm:text-[9px]
-                "
-                style={{ color: BRAND }}
-              >
-                DEVELOPMENT CONSULTATION & SCOPING
-              </span>
-            </div>
+          padding: 7px 12px;
 
-            <h2
-              className="
-                font-['Plus_Jakarta_Sans']
-                text-[25px]
-                font-semibold
-                leading-[1.15]
-                tracking-[-0.035em]
-                text-[#17191f]
-                sm:text-[29px]
-                md:text-[32px]
-              "
-            >
-              Let's Build the Right Team for Your Project
-            </h2>
+          border: 1px solid #ead5df;
+          border-radius: 999px;
 
-            <p
-              className="
-                mt-2
-                max-w-[720px]
-                font-['Inter']
-                text-[11px]
-                leading-[1.6]
-                text-[#6a6267]
-                sm:text-[12px]
-                md:text-[13px]
-              "
-            >
-              Share a few details about your project and development
-              requirements. We'll use them to understand the skills, team
-              structure, and level of support that may be relevant to your
-              needs.
-            </p>
-          </div>
+          background: #fff8fb;
+        }
 
+        .dc-badge-dot {
+          width: 6px;
+          height: 6px;
 
-          <form onSubmit={handleSubmit}>
+          flex-shrink: 0;
 
-            {/* =================================================
-                01 — REQUIREMENT
-            ================================================= */}
-            <FormSection
-              number="01"
-              title="What do you need help with?"
-              rightText="Select your requirement"
-            >
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                {requirements.map((item) => (
-                  <SelectionButton
-                    key={item}
-                    selected={requirement === item}
-                    onClick={() => setRequirement(item)}
-                    text={item}
-                  />
-                ))}
-              </div>
-            </FormSection>
+          border-radius: 50%;
+          background: var(--brand);
+        }
 
+        .dc-badge-text {
+          color: var(--brand);
 
-            {/* =================================================
-                02 — TEAM TYPE
-            ================================================= */}
-            <FormSection
-              number="02"
-              title="What type of team are you looking for?"
-              rightText="Choose the model that best describes your requirement"
-            >
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-5">
-                {teamTypes.map((item) => (
-                  <TeamCard
-                    key={item.title}
-                    {...item}
-                    selected={teamType === item.title}
-                    onClick={() => setTeamType(item.title)}
-                  />
-                ))}
-              </div>
-            </FormSection>
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
 
+        .dc-hero-title {
+          max-width: 620px;
+          margin: 0;
 
-            {/* =================================================
-                03 — EXPERTISE
-            ================================================= */}
-            <FormSection
-              number="03"
-              title="What technical expertise do you need?"
-              rightText="Select one or more"
-            >
-              <div className="flex flex-wrap gap-2">
-                {expertise.map((item) => {
-                  const selected = selectedExpertise.includes(item);
+          color: var(--heading);
 
-                  return (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={() => toggleExpertise(item)}
-                      className={`
-                        rounded-[7px]
-                        border
-                        px-3
-                        py-2
-                        font-['Inter']
-                        text-[11px]
-                        font-medium
-                        transition-all
-                        duration-200
-                        sm:text-[11px]
-                        ${
-                          selected
-                            ? "border-[#8B0046] bg-[#8B0046] text-white"
-                            : "border-[#e4e8ed] bg-[#f4f6f8] text-[#39404a] hover:border-[#d3a8bc]"
-                        }
-                      `}
-                    >
-                      {item}
-                    </button>
-                  );
-                })}
-              </div>
-            </FormSection>
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(34px, 3.2vw, 48px);
+          font-weight: 600;
+          line-height: 1.06;
+          letter-spacing: -0.04em;
+        }
 
+        .dc-hero-description {
+          max-width: 650px;
 
-            {/* =================================================
-                04 — PROJECT DETAILS
-            ================================================= */}
-            <FormSection
-              number="04"
-              title="Tell us about your project"
-              rightText="Project Details"
-            >
-              <textarea
-                name="project"
-                value={formData.project}
-                onChange={handleInputChange}
-                rows={4}
-                placeholder="Briefly describe your project, current technology environment, or the type of development support you are looking for..."
-                className="
-                  w-full
-                  resize-none
-                  rounded-[8px]
-                  border
-                  border-[#e3e7eb]
-                  bg-[#f5f6f8]
-                  px-3
-                  py-3
-                  font-['Inter']
-                  text-[11px]
-                  text-[#303641]
-                  outline-none
-                  transition-all
-                  placeholder:text-[#aeb6c1]
-                  focus:border-[#c58ba7]
-                  focus:bg-white
-                  sm:text-[12px]
-                "
-              />
-            </FormSection>
+          margin: 20px 0 0;
 
+          color: var(--body);
 
-            {/* =================================================
-                05 — TEAM SIZE
-            ================================================= */}
-            <FormSection
-              number="05"
-              title="How large is the team you are considering?"
-              rightText="Estimated engineers"
-            >
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-5">
-                {teamSizes.map((item) => {
-                  const selected = teamSize === item;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.7;
+        }
 
-                  return (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={() => setTeamSize(item)}
-                      className={`
-                        flex
-                        min-h-[62px]
-                        flex-col
-                        items-center
-                        justify-center
-                        rounded-[9px]
-                        border
-                        px-3
-                        py-3
-                        font-['Inter']
-                        transition-all
-                        duration-200
-                        ${
-                          selected
-                            ? "border-[#9d6281] bg-[#fbf7f9] text-[#702346]"
-                            : "border-[#e4e8ed] bg-[#f4f6f8] text-[#343b45] hover:border-[#d3a8bc]"
-                        }
-                      `}
-                    >
-                      <span className="text-[12px] font-bold">
-                        {item}
-                      </span>
+        .dc-hero-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
 
-                      <span
-                        className="
-                          mt-1
-                          text-[8px]
-                          font-medium
-                          tracking-[0.04em]
-                          text-[#766b71]
-                        "
-                      >
-                        {item === "Not Sure"
-                          ? "Flexible sizing"
-                          : "Professionals"}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </FormSection>
+          margin-top: 28px;
+        }
 
+        .dc-primary-button,
+        .dc-secondary-button {
+          min-height: 50px;
 
-            {/* =================================================
-                06 — TIMELINE
-            ================================================= */}
-            <FormSection
-              number="06"
-              title="When do you need the team?"
-              rightText="Target timeline"
-            >
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-5">
-                {timelines.map((item) => {
-                  const selected = timeline === item;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
 
-                  return (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={() => setTimeline(item)}
-                      className={`
-                        min-h-[42px]
-                        rounded-[8px]
-                        border
-                        px-3
-                        py-2
-                        font-['Inter']
-                        text-[10px]
-                        font-semibold
-                        transition-all
-                        duration-200
-                        sm:text-[11px]
-                        ${
-                          selected
-                            ? "border-[#9d6281] bg-[#fbf7f9] text-[#702346]"
-                            : "border-[#e4e8ed] bg-[#f4f6f8] text-[#343b45] hover:border-[#d3a8bc]"
-                        }
-                      `}
-                    >
-                      {item}
-                    </button>
-                  );
-                })}
-              </div>
-            </FormSection>
+          padding: 0 24px;
 
+          border-radius: 9px;
 
-            {/* =================================================
-                CONTACT SECTION
-            ================================================= */}
-            <div
-              className="
-                mt-7
-                border-t
-                border-[#e5e8ec]
-                pt-6
-                sm:mt-8
-                sm:pt-7
-              "
-            >
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 600;
 
-              <h2
-                className="
-                  font-['Plus_Jakarta_Sans']
-                  text-[19px]
-                  font-semibold
-                  tracking-[-0.025em]
-                  text-[#17191f]
-                  sm:text-[21px]
-                "
-              >
-                Let's Discuss Your Requirements
-              </h2>
+          cursor: pointer;
 
-              <p
-                className="
-                  mt-1
-                  max-w-[700px]
-                  font-['Inter']
-                  text-[10px]
-                  leading-[1.6]
-                  text-[#6a6267]
-                  sm:text-[11px]
-                  md:text-[12px]
-                "
-              >
-                Provide your contact info so our technical leads can review
-                your scoping specifications and respond with recommended team
-                configurations.
-              </p>
+          transition:
+            transform 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+        }
 
+        .dc-primary-button {
+          border: 1px solid var(--brand);
+          background: var(--brand);
+          color: #ffffff;
 
-              {/* Contact Inputs */}
-              <div
-                className="
-                  mt-5
-                  grid
-                  grid-cols-1
-                  gap-x-4
-                  gap-y-4
-                  sm:grid-cols-2
-                "
-              >
+          box-shadow: 0 8px 18px rgba(139, 0, 70, 0.18);
+        }
 
-                <InputField
-                  label="Name *"
-                  name="name"
-                  placeholder="Enter your full name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                />
+        .dc-primary-button:hover {
+          transform: translateY(-1px);
+          background: var(--brand-dark);
+          border-color: var(--brand-dark);
 
-                <InputField
-                  label="Business Email *"
-                  name="email"
-                  type="email"
-                  placeholder="Enter your business email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
+          box-shadow: 0 12px 24px rgba(139, 0, 70, 0.22);
+        }
 
-                <InputField
-                  label="Company Name"
-                  name="company"
-                  placeholder="Enter your company name"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                />
+        .dc-secondary-button {
+          border: 1px solid #e1e6eb;
+          background: #ffffff;
+          color: #30343b;
 
-                <InputField
-                  label="Phone Number"
-                  name="phone"
-                  type="tel"
-                  placeholder="Enter your phone number"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                />
+          box-shadow: 0 2px 6px rgba(20, 30, 45, 0.03);
+        }
 
-              </div>
+        .dc-secondary-button:hover {
+          transform: translateY(-1px);
+          border-color: #d3a8bc;
+          background: #fff8fb;
+        }
 
+        .dc-benefits {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 12px 28px;
 
-              {/* Submit */}
-              <div className="mt-7 flex flex-col items-center">
+          margin-top: 28px;
+          padding-top: 20px;
 
-                <button
-                  type="submit"
-                  className="
-                    inline-flex
-                    min-h-[44px]
-                    w-full
-                    max-w-[305px]
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-[8px]
-                    bg-[#8B0046]
-                    px-5
-                    py-3
-                    font-['Inter']
-                    text-[10px]
-                    font-bold
-                    uppercase
-                    tracking-[0.02em]
-                    text-white
-                    shadow-[0_8px_18px_rgba(139,0,70,0.18)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-[1px]
-                    hover:bg-[#78003d]
-                    hover:shadow-[0_12px_24px_rgba(139,0,70,0.25)]
-                    sm:text-[11px]
-                  "
-                >
-                  Submit Development Requirements
+          border-top: 1px solid #e7eaee;
+        }
 
-                  <ArrowRight className="h-4 w-4" />
-                </button>
+        .dc-benefit {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
 
-                <p
-                  className="
-                    mt-2
-                    max-w-[320px]
-                    text-center
-                    font-['Inter']
-                    text-[8px]
-                    leading-[1.5]
-                    text-[#8a8086]
-                    sm:text-[9px]
-                  "
-                >
-                  Your information will be used to understand your
-                  requirements and help our team respond appropriately.
+        .dc-benefit svg {
+          width: 15px;
+          height: 15px;
+          flex-shrink: 0;
+          color: var(--brand);
+        }
+
+        .dc-benefit span {
+          color: #71686d;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+        }
+
+        .dc-hero-image {
+          position: relative;
+          width: 100%;
+          min-height: 430px;
+          overflow: hidden;
+        }
+
+        .dc-hero-image img {
+          position: absolute;
+          inset: 0;
+
+          width: 100%;
+          height: 100%;
+
+          object-fit: cover;
+          object-position: center;
+        }
+
+        /* =========================================================
+           FORM SECTION
+        ========================================================= */
+
+        .dc-form-section {
+          width: 100%;
+          padding-top: 70px;
+          padding-bottom: 80px;
+          background: #ffffff;
+        }
+
+        .dc-form-container {
+          width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+
+        .dc-form-header {
+          margin-bottom: 38px;
+        }
+
+        .dc-form-title {
+          margin: 0;
+
+          color: #17191f;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: clamp(26px, 2.3vw, 34px);
+          font-weight: 600;
+          line-height: 1.15;
+          letter-spacing: -0.035em;
+        }
+
+        .dc-form-description {
+          max-width: 720px;
+
+          margin: 10px 0 0;
+
+          color: #6a6267;
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1.6;
+        }
+
+        /* =========================================================
+           FORM BLOCK
+        ========================================================= */
+
+        .dc-form-block {
+          margin-bottom: 30px;
+        }
+
+        .dc-form-block-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+
+          margin-bottom: 12px;
+        }
+
+        .dc-form-block-title {
+          margin: 0;
+
+          color: #252930;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .dc-form-number {
+          margin-right: 8px;
+          color: var(--brand);
+        }
+
+        .dc-form-right-text {
+          flex-shrink: 0;
+
+          color: #8a8086;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+        }
+
+        /* =========================================================
+           REQUIREMENTS
+        ========================================================= */
+
+        .dc-requirements-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 8px;
+        }
+
+        .dc-selection-button {
+          min-height: 46px;
+
+          display: flex;
+          align-items: center;
+          gap: 9px;
+
+          padding: 9px 12px;
+
+          border: 1px solid #e4e8ed;
+          border-radius: 8px;
+
+          background: #f4f6f8;
+
+          color: #363c45;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          text-align: left;
+
+          cursor: pointer;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .dc-selection-button:hover {
+          border-color: #d3a8bc;
+          transform: translateY(-1px);
+        }
+
+        .dc-selection-button.selected {
+          border-color: #9d6281;
+          background: #fbf7f9;
+          color: #30272d;
+        }
+
+        .dc-radio {
+          width: 12px;
+          height: 12px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          border: 1px solid #aeb5bd;
+          border-radius: 50%;
+        }
+
+        .dc-selection-button.selected .dc-radio {
+          border-color: var(--brand);
+        }
+
+        .dc-radio-inner {
+          width: 5px;
+          height: 5px;
+
+          border-radius: 50%;
+          background: var(--brand);
+        }
+
+        /* =========================================================
+           TEAM TYPE
+        ========================================================= */
+
+        .dc-team-grid {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 8px;
+        }
+
+        .dc-team-card {
+          position: relative;
+
+          min-height: 100px;
+
+          padding: 14px;
+
+          border: 1px solid #e4e8ed;
+          border-radius: 9px;
+
+          background: #f4f6f8;
+
+          text-align: left;
+
+          cursor: pointer;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .dc-team-card:hover {
+          border-color: #d3a8bc;
+          transform: translateY(-1px);
+        }
+
+        .dc-team-card.selected {
+          border-color: #9d6281;
+          background: #fbf7f9;
+        }
+
+        .dc-team-radio {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+
+          width: 12px;
+          height: 12px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border: 1px solid #aeb5bd;
+          border-radius: 50%;
+        }
+
+        .dc-team-card.selected .dc-team-radio {
+          border-color: var(--brand);
+        }
+
+        .dc-team-radio-inner {
+          width: 5px;
+          height: 5px;
+
+          border-radius: 50%;
+          background: var(--brand);
+        }
+
+        .dc-team-content {
+          padding-right: 18px;
+        }
+
+        .dc-team-title {
+          margin: 0;
+
+          color: #333840;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+        }
+
+        .dc-team-description {
+          margin: 8px 0 0;
+
+          color: #71686d;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          line-height: 1.45;
+        }
+
+        /* =========================================================
+           EXPERTISE
+        ========================================================= */
+
+        .dc-expertise-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .dc-expertise-button {
+          padding: 9px 12px;
+
+          border: 1px solid #e4e8ed;
+          border-radius: 7px;
+
+          background: #f4f6f8;
+          color: #39404a;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+
+          cursor: pointer;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            color 0.2s ease;
+        }
+
+        .dc-expertise-button:hover {
+          border-color: #d3a8bc;
+        }
+
+        .dc-expertise-button.selected {
+          border-color: var(--brand);
+          background: var(--brand);
+          color: #ffffff;
+        }
+
+        /* =========================================================
+           TEXTAREA
+        ========================================================= */
+
+        .dc-textarea {
+          width: 100%;
+
+          min-height: 110px;
+
+          display: block;
+
+          resize: vertical;
+
+          padding: 13px;
+
+          border: 1px solid #e3e7eb;
+          border-radius: 8px;
+
+          background: #f5f6f8;
+          color: #303641;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.5;
+
+          outline: none;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
+        }
+
+        .dc-textarea::placeholder {
+          color: #aeb6c1;
+        }
+
+        .dc-textarea:focus {
+          border-color: #c58ba7;
+          background: #ffffff;
+        }
+
+        /* =========================================================
+           TEAM SIZE
+        ========================================================= */
+
+        .dc-team-size-grid {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 8px;
+        }
+
+        .dc-team-size-button {
+          min-height: 64px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          padding: 10px;
+
+          border: 1px solid #e4e8ed;
+          border-radius: 9px;
+
+          background: #f4f6f8;
+          color: #343b45;
+
+          font-family: "Inter", sans-serif;
+
+          cursor: pointer;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .dc-team-size-button:hover {
+          border-color: #d3a8bc;
+          transform: translateY(-1px);
+        }
+
+        .dc-team-size-button.selected {
+          border-color: #9d6281;
+          background: #fbf7f9;
+          color: #702346;
+        }
+
+        .dc-team-size-number {
+          font-size: 12px;
+          font-weight: 700;
+        }
+
+        .dc-team-size-label {
+          margin-top: 4px;
+
+          color: #766b71;
+
+          font-size: 8px;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+        }
+
+        /* =========================================================
+           TIMELINE
+        ========================================================= */
+
+        .dc-timeline-grid {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 8px;
+        }
+
+        .dc-timeline-button {
+          min-height: 44px;
+
+          padding: 9px 12px;
+
+          border: 1px solid #e4e8ed;
+          border-radius: 8px;
+
+          background: #f4f6f8;
+          color: #343b45;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 600;
+
+          cursor: pointer;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .dc-timeline-button:hover {
+          border-color: #d3a8bc;
+          transform: translateY(-1px);
+        }
+
+        .dc-timeline-button.selected {
+          border-color: #9d6281;
+          background: #fbf7f9;
+          color: #702346;
+        }
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .dc-contact {
+          margin-top: 34px;
+          padding-top: 28px;
+
+          border-top: 1px solid #e5e8ec;
+        }
+
+        .dc-contact-title {
+          margin: 0;
+
+          color: #17191f;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 21px;
+          font-weight: 600;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+        }
+
+        .dc-contact-description {
+          max-width: 700px;
+
+          margin: 7px 0 0;
+
+          color: #6a6267;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.6;
+        }
+
+        .dc-input-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 18px 20px;
+
+          margin-top: 22px;
+        }
+
+        .dc-input-label {
+          display: block;
+
+          margin-bottom: 6px;
+
+          color: #34383e;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+        }
+
+        .dc-input {
+          width: 100%;
+          height: 43px;
+
+          padding: 0 12px;
+
+          border: 1px solid #e3e7eb;
+          border-radius: 8px;
+
+          background: #f5f6f8;
+          color: #303641;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+
+          outline: none;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
+        }
+
+        .dc-input::placeholder {
+          color: #aeb6c1;
+        }
+
+        .dc-input:focus {
+          border-color: #c58ba7;
+          background: #ffffff;
+        }
+
+        .dc-submit-area {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          margin-top: 30px;
+        }
+
+        .dc-submit-button {
+          width: 100%;
+          max-width: 320px;
+          min-height: 46px;
+
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+
+          padding: 11px 20px;
+
+          border: 1px solid var(--brand);
+          border-radius: 8px;
+
+          background: var(--brand);
+          color: #ffffff;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+
+          cursor: pointer;
+
+          box-shadow: 0 8px 18px rgba(139, 0, 70, 0.18);
+
+          transition:
+            transform 0.3s ease,
+            background 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .dc-submit-button:hover {
+          transform: translateY(-1px);
+
+          background: var(--brand-dark);
+          border-color: var(--brand-dark);
+
+          box-shadow: 0 12px 24px rgba(139, 0, 70, 0.25);
+        }
+
+        .dc-submit-note {
+          max-width: 320px;
+
+          margin: 8px 0 0;
+
+          color: #8a8086;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          line-height: 1.5;
+          text-align: center;
+        }
+
+        /* =========================================================
+           TABLET
+           <= 1200px
+        ========================================================= */
+
+        @media (max-width: 1200px) {
+          .dc-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .dc-hero-section,
+          .dc-form-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .dc-hero-content {
+            padding: 45px 42px;
+          }
+
+          .dc-hero-title {
+            font-size: 40px;
+          }
+
+          .dc-team-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+
+          .dc-team-size-grid,
+          .dc-timeline-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+
+        /* =========================================================
+           TABLET / SMALL LAPTOP
+           <= 900px
+        ========================================================= */
+
+        @media (max-width: 900px) {
+          .dc-hero-section {
+            padding-top: 32px;
+            padding-bottom: 32px;
+          }
+
+          .dc-hero-card {
+            grid-template-columns: 1fr;
+          }
+
+          .dc-hero-content {
+            padding: 42px 40px;
+          }
+
+          .dc-hero-image {
+            min-height: 360px;
+          }
+
+          .dc-form-section {
+            padding-top: 55px;
+            padding-bottom: 65px;
+          }
+
+          .dc-requirements-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .dc-team-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .dc-team-size-grid,
+          .dc-timeline-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+
+        /* =========================================================
+           MOBILE
+           <= 700px
+        ========================================================= */
+
+        @media (max-width: 700px) {
+          .dc-container {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .dc-hero-section,
+          .dc-form-section {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .dc-hero-section {
+            padding-top: 24px;
+            padding-bottom: 24px;
+          }
+
+          .dc-hero-card {
+            border-radius: 14px;
+          }
+
+          .dc-hero-content {
+            padding: 34px 28px;
+          }
+
+          .dc-badge {
+            margin-bottom: 20px;
+          }
+
+          .dc-hero-title {
+            font-size: 34px;
+            line-height: 1.08;
+          }
+
+          .dc-hero-description {
+            margin-top: 17px;
+            font-size: 13px;
+          }
+
+          .dc-hero-buttons {
+            flex-direction: column;
+            margin-top: 24px;
+          }
+
+          .dc-primary-button,
+          .dc-secondary-button {
+            width: 100%;
+          }
+
+          .dc-benefits {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 24px;
+          }
+
+          .dc-hero-image {
+            min-height: 300px;
+          }
+
+          .dc-form-section {
+            padding-top: 48px;
+            padding-bottom: 55px;
+          }
+
+          .dc-form-header {
+            margin-bottom: 32px;
+          }
+
+          .dc-form-description {
+            font-size: 12px;
+          }
+
+          .dc-form-block-header {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 4px;
+          }
+
+          .dc-requirements-grid,
+          .dc-team-grid,
+          .dc-team-size-grid,
+          .dc-timeline-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .dc-team-card {
+            min-height: 88px;
+          }
+
+          .dc-team-size-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .dc-timeline-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .dc-input-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .dc-contact {
+            margin-top: 28px;
+            padding-top: 24px;
+          }
+
+          .dc-contact-title {
+            font-size: 19px;
+          }
+        }
+
+        /* =========================================================
+           SMALL MOBILE
+           <= 480px
+        ========================================================= */
+
+        @media (max-width: 480px) {
+          .dc-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .dc-hero-section,
+          .dc-form-section {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .dc-hero-section {
+            padding-top: 16px;
+            padding-bottom: 16px;
+          }
+
+          .dc-hero-content {
+            padding: 28px 20px;
+          }
+
+          .dc-badge {
+            padding: 6px 10px;
+          }
+
+          .dc-badge-text {
+            font-size: 8px;
+          }
+
+          .dc-hero-title {
+            font-size: 30px;
+          }
+
+          .dc-hero-description {
+            font-size: 12px;
+            line-height: 1.65;
+          }
+
+          .dc-primary-button,
+          .dc-secondary-button {
+            min-height: 48px;
+            padding-left: 18px;
+            padding-right: 18px;
+
+            font-size: 11px;
+          }
+
+          .dc-hero-image {
+            min-height: 250px;
+          }
+
+          .dc-form-section {
+            padding-top: 40px;
+            padding-bottom: 48px;
+          }
+
+          .dc-form-title {
+            font-size: 25px;
+          }
+
+          .dc-form-description {
+            font-size: 11px;
+          }
+
+          .dc-form-block-title {
+            font-size: 12px;
+          }
+
+          .dc-selection-button {
+            font-size: 10px;
+          }
+
+          .dc-expertise-button {
+            width: 100%;
+            text-align: left;
+          }
+
+          .dc-team-size-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .dc-input {
+            height: 42px;
+          }
+
+          .dc-submit-button {
+            max-width: 100%;
+          }
+        }
+
+        /* =========================================================
+           VERY SMALL MOBILE
+           <= 360px
+        ========================================================= */
+
+        @media (max-width: 360px) {
+          .dc-container,
+          .dc-hero-section,
+          .dc-form-section {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .dc-hero-content {
+            padding: 25px 17px;
+          }
+
+          .dc-hero-title {
+            font-size: 27px;
+          }
+
+          .dc-hero-image {
+            min-height: 220px;
+          }
+
+          .dc-team-size-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
+      <main className="development-consultation-page">
+
+        {/* =====================================================
+            DEVELOPMENT TEAM HERO
+        ===================================================== */}
+        <section className="dc-hero-section">
+          <div className="dc-container">
+            <div className="dc-hero-card">
+
+              {/* LEFT CONTENT */}
+              <div className="dc-hero-content">
+
+                <div className="dc-badge">
+                  <span className="dc-badge-dot" />
+
+                  <span className="dc-badge-text">
+                    Development Team Solutions
+                  </span>
+                </div>
+
+                <h1 className="dc-hero-title">
+                  Build Your Development
+                  <br />
+                  Team
+                </h1>
+
+                <p className="dc-hero-description">
+                  The Right Technical Expertise for the Work Ahead. Whether you
+                  need additional developers, a dedicated engineering team, or
+                  specialized technical expertise, TechTorch helps you structure
+                  development capabilities around your project, technology
+                  requirements, and business objectives.
                 </p>
 
+                <div className="dc-hero-buttons">
+                  <button
+                    type="button"
+                    onClick={scrollToForm}
+                    className="dc-primary-button"
+                  >
+                    Build Your Team
+                    <ArrowRight size={16} />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={scrollToForm}
+                    className="dc-secondary-button"
+                  >
+                    Discuss Your Requirements
+                  </button>
+                </div>
+
+                <div className="dc-benefits">
+                  <div className="dc-benefit">
+                    <Check />
+                    <span>Confidential Project Discussions</span>
+                  </div>
+
+                  <div className="dc-benefit">
+                    <Check />
+                    <span>Flexible Development Models</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT IMAGE */}
+              <div className="dc-hero-image">
+                <img
+                  src="/DevelopmentTeam.png"
+                  alt="Development Team"
+                />
               </div>
             </div>
-          </form>
-        </div>
-      </section>
-    </main>
+          </div>
+        </section>
+
+        {/* =====================================================
+            DEVELOPMENT CONSULTATION FORM
+        ===================================================== */}
+        <section
+          id="development-consultation-form"
+          className="dc-form-section"
+        >
+          <div className="dc-container">
+            <div className="dc-form-container">
+
+              {/* HEADER */}
+              <div className="dc-form-header">
+                <div className="dc-badge">
+                  <span className="dc-badge-dot" />
+
+                  <span className="dc-badge-text">
+                    Development Consultation & Scoping
+                  </span>
+                </div>
+
+                <h2 className="dc-form-title">
+                  Let's Build the Right Team for Your Project
+                </h2>
+
+                <p className="dc-form-description">
+                  Share a few details about your project and development
+                  requirements. We'll use them to understand the skills, team
+                  structure, and level of support that may be relevant to your
+                  needs.
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit}>
+
+                {/* =================================================
+                    01 — REQUIREMENT
+                ================================================= */}
+                <FormSection
+                  number="01"
+                  title="What do you need help with?"
+                  rightText="Select your requirement"
+                >
+                  <div className="dc-requirements-grid">
+                    {requirements.map((item) => (
+                      <SelectionButton
+                        key={item}
+                        selected={requirement === item}
+                        onClick={() => setRequirement(item)}
+                        text={item}
+                      />
+                    ))}
+                  </div>
+                </FormSection>
+
+                {/* =================================================
+                    02 — TEAM TYPE
+                ================================================= */}
+                <FormSection
+                  number="02"
+                  title="What type of team are you looking for?"
+                  rightText="Choose the model that best describes your requirement"
+                >
+                  <div className="dc-team-grid">
+                    {teamTypes.map((item) => (
+                      <TeamCard
+                        key={item.title}
+                        {...item}
+                        selected={teamType === item.title}
+                        onClick={() => setTeamType(item.title)}
+                      />
+                    ))}
+                  </div>
+                </FormSection>
+
+                {/* =================================================
+                    03 — EXPERTISE
+                ================================================= */}
+                <FormSection
+                  number="03"
+                  title="What technical expertise do you need?"
+                  rightText="Select one or more"
+                >
+                  <div className="dc-expertise-list">
+                    {expertise.map((item) => {
+                      const selected =
+                        selectedExpertise.includes(item);
+
+                      return (
+                        <button
+                          key={item}
+                          type="button"
+                          onClick={() => toggleExpertise(item)}
+                          className={`dc-expertise-button ${
+                            selected ? "selected" : ""
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </FormSection>
+
+                {/* =================================================
+                    04 — PROJECT DETAILS
+                ================================================= */}
+                <FormSection
+                  number="04"
+                  title="Tell us about your project"
+                  rightText="Project Details"
+                >
+                  <textarea
+                    name="project"
+                    value={formData.project}
+                    onChange={handleInputChange}
+                    rows={4}
+                    placeholder="Briefly describe your project, current technology environment, or the type of development support you are looking for..."
+                    className="dc-textarea"
+                  />
+                </FormSection>
+
+                {/* =================================================
+                    05 — TEAM SIZE
+                ================================================= */}
+                <FormSection
+                  number="05"
+                  title="How large is the team you are considering?"
+                  rightText="Estimated engineers"
+                >
+                  <div className="dc-team-size-grid">
+                    {teamSizes.map((item) => {
+                      const selected = teamSize === item;
+
+                      return (
+                        <button
+                          key={item}
+                          type="button"
+                          onClick={() => setTeamSize(item)}
+                          className={`dc-team-size-button ${
+                            selected ? "selected" : ""
+                          }`}
+                        >
+                          <span className="dc-team-size-number">
+                            {item}
+                          </span>
+
+                          <span className="dc-team-size-label">
+                            {item === "Not Sure"
+                              ? "Flexible sizing"
+                              : "Professionals"}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </FormSection>
+
+                {/* =================================================
+                    06 — TIMELINE
+                ================================================= */}
+                <FormSection
+                  number="06"
+                  title="When do you need the team?"
+                  rightText="Target timeline"
+                >
+                  <div className="dc-timeline-grid">
+                    {timelines.map((item) => {
+                      const selected = timeline === item;
+
+                      return (
+                        <button
+                          key={item}
+                          type="button"
+                          onClick={() => setTimeline(item)}
+                          className={`dc-timeline-button ${
+                            selected ? "selected" : ""
+                          }`}
+                        >
+                          {item}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </FormSection>
+
+                {/* =================================================
+                    CONTACT SECTION
+                ================================================= */}
+                <div className="dc-contact">
+
+                  <h2 className="dc-contact-title">
+                    Let's Discuss Your Requirements
+                  </h2>
+
+                  <p className="dc-contact-description">
+                    Provide your contact info so our technical leads can review
+                    your scoping specifications and respond with recommended
+                    team configurations.
+                  </p>
+
+                  <div className="dc-input-grid">
+
+                    <InputField
+                      label="Name *"
+                      name="name"
+                      placeholder="Enter your full name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                    />
+
+                    <InputField
+                      label="Business Email *"
+                      name="email"
+                      type="email"
+                      placeholder="Enter your business email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                    />
+
+                    <InputField
+                      label="Company Name"
+                      name="company"
+                      placeholder="Enter your company name"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                    />
+
+                    <InputField
+                      label="Phone Number"
+                      name="phone"
+                      type="tel"
+                      placeholder="Enter your phone number"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                    />
+
+                  </div>
+
+                  {/* SUBMIT */}
+                  <div className="dc-submit-area">
+
+                    <button
+                      type="submit"
+                      className="dc-submit-button"
+                    >
+                      Submit Development Requirements
+                      <ArrowRight size={16} />
+                    </button>
+
+                    <p className="dc-submit-note">
+                      Your information will be used to understand your
+                      requirements and help our team respond appropriately.
+                    </p>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 
@@ -894,50 +1661,19 @@ function FormSection({
   children,
 }) {
   return (
-    <div className="mb-6 sm:mb-7">
+    <div className="dc-form-block">
 
-      <div
-        className="
-          mb-3
-          flex
-          flex-col
-          gap-1
-          sm:flex-row
-          sm:items-center
-          sm:justify-between
-          sm:gap-4
-        "
-      >
+      <div className="dc-form-block-header">
 
-        <h3
-          className="
-            font-['Inter']
-            text-[12px]
-            font-bold
-            text-[#252930]
-            sm:text-[13px]
-          "
-        >
-          <span
-            className="mr-2 font-bold"
-            style={{ color: BRAND }}
-          >
+        <h3 className="dc-form-block-title">
+          <span className="dc-form-number">
             {number} —
           </span>
 
           {title}
         </h3>
 
-        <span
-          className="
-            font-['Inter']
-            text-[8px]
-            font-semibold
-            tracking-[0.04em]
-            text-[#8a8086]
-            sm:text-[9px]
-          "
-        >
+        <span className="dc-form-right-text">
           {rightText}
         </span>
       </div>
@@ -961,50 +1697,12 @@ function SelectionButton({
     <button
       type="button"
       onClick={onClick}
-      className={`
-        flex
-        min-h-[43px]
-        items-center
-        gap-2
-        rounded-[8px]
-        border
-        px-3
-        py-2.5
-        text-left
-        font-['Inter']
-        text-[10px]
-        font-medium
-        transition-all
-        duration-200
-        sm:text-[11px]
-        ${
-          selected
-            ? "border-[#9d6281] bg-[#fbf7f9] text-[#30272d]"
-            : "border-[#e4e8ed] bg-[#f4f6f8] text-[#363c45] hover:border-[#d3a8bc]"
-        }
-      `}
+      className={`dc-selection-button ${
+        selected ? "selected" : ""
+      }`}
     >
-
-      <span
-        className={`
-          flex
-          h-3
-          w-3
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          border
-          ${
-            selected
-              ? "border-[#8B0046]"
-              : "border-[#aeb5bd]"
-          }
-        `}
-      >
-        {selected && (
-          <span className="h-[5px] w-[5px] rounded-full bg-[#8B0046]" />
-        )}
+      <span className="dc-radio">
+        {selected && <span className="dc-radio-inner" />}
       </span>
 
       <span>{text}</span>
@@ -1027,72 +1725,23 @@ function TeamCard({
     <button
       type="button"
       onClick={onClick}
-      className={`
-        relative
-        min-h-[92px]
-        rounded-[9px]
-        border
-        p-3
-        text-left
-        transition-all
-        duration-200
-        ${
-          selected
-            ? "border-[#9d6281] bg-[#fbf7f9]"
-            : "border-[#e4e8ed] bg-[#f4f6f8] hover:border-[#d3a8bc]"
-        }
-      `}
+      className={`dc-team-card ${
+        selected ? "selected" : ""
+      }`}
     >
-
-      {/* Radio */}
-      <span
-        className={`
-          absolute
-          right-3
-          top-3
-          flex
-          h-3
-          w-3
-          items-center
-          justify-center
-          rounded-full
-          border
-          ${
-            selected
-              ? "border-[#8B0046]"
-              : "border-[#aeb5bd]"
-          }
-        `}
-      >
+      <span className="dc-team-radio">
         {selected && (
-          <span className="h-[5px] w-[5px] rounded-full bg-[#8B0046]" />
+          <span className="dc-team-radio-inner" />
         )}
       </span>
 
-      <div className="pr-4">
+      <div className="dc-team-content">
 
-        <h4
-          className="
-            font-['Inter']
-            text-[10px]
-            font-bold
-            text-[#333840]
-            sm:text-[11px]
-          "
-        >
+        <h4 className="dc-team-title">
           {title}
         </h4>
 
-        <p
-          className="
-            mt-2
-            font-['Inter']
-            text-[8px]
-            leading-[1.45]
-            text-[#71686d]
-            sm:text-[9px]
-          "
-        >
+        <p className="dc-team-description">
           {description}
         </p>
 
@@ -1115,19 +1764,8 @@ function InputField({
   onChange,
 }) {
   return (
-    <label className="block">
-
-      <span
-        className="
-          mb-1.5
-          block
-          font-['Inter']
-          text-[9px]
-          font-bold
-          text-[#34383e]
-          sm:text-[10px]
-        "
-      >
+    <label>
+      <span className="dc-input-label">
         {label}
       </span>
 
@@ -1137,25 +1775,7 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="
-          h-[40px]
-          w-full
-          rounded-[8px]
-          border
-          border-[#e3e7eb]
-          bg-[#f5f6f8]
-          px-3
-          font-['Inter']
-          text-[10px]
-          text-[#303641]
-          outline-none
-          transition-all
-          placeholder:text-[#aeb6c1]
-          focus:border-[#c58ba7]
-          focus:bg-white
-          sm:h-[42px]
-          sm:text-[11px]
-        "
+        className="dc-input"
       />
     </label>
   );

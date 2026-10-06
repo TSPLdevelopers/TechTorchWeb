@@ -48,6 +48,10 @@ const ConnectWithTechTorch = () => {
   return (
     <>
       <style>{`
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
         * {
           box-sizing: border-box;
         }
@@ -55,25 +59,33 @@ const ConnectWithTechTorch = () => {
         .msp-connect-page {
           width: 100%;
           min-height: 100vh;
+          padding: 80px 100px 90px;
           background: #f6f8ff;
           color: #182238;
-          font-family: Arial, Helvetica, sans-serif;
-          padding: 70px 24px 80px;
+          font-family: "Inter", Arial, Helvetica, sans-serif;
+          overflow: hidden;
         }
 
         .msp-connect-wrapper {
           width: 100%;
-          max-width: 1030px;
+          max-width: 1600px;
           margin: 0 auto;
         }
 
-        /* =========================
-           TOP CONTENT
-        ========================= */
+        .msp-connect-page h1,
+        .msp-connect-page h2,
+        .msp-connect-page h3 {
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
 
         .msp-connect-header {
+          width: 100%;
           text-align: center;
-          margin-bottom: 38px;
+          margin: 0 auto 42px;
         }
 
         .msp-connect-pill {
@@ -81,14 +93,17 @@ const ConnectWithTechTorch = () => {
           align-items: center;
           justify-content: center;
           gap: 9px;
+          max-width: 100%;
           padding: 8px 17px;
           border: 1px solid #d8aac5;
           border-radius: 999px;
           background: #f7eaf2;
           color: #65003c;
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.7px;
+          line-height: 1.4;
           text-transform: uppercase;
         }
 
@@ -102,45 +117,50 @@ const ConnectWithTechTorch = () => {
         }
 
         .msp-connect-header h1 {
-          margin: 24px auto 12px;
-          max-width: 800px;
-          font-size: 44px;
-          line-height: 1.08;
-          font-weight: 700;
-          letter-spacing: -1.4px;
+          margin: 25px auto 14px;
+          max-width: 900px;
           color: #172035;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 46px;
+          font-weight: 700;
+          line-height: 1.08;
+          letter-spacing: -1.5px;
         }
 
         .msp-connect-header > p {
-          max-width: 720px;
+          width: 100%;
+          max-width: 760px;
           margin: 0 auto;
           color: #50617d;
-          font-size: 17px;
-          line-height: 1.55;
+          font-family: "Inter", sans-serif;
+          font-size: 16px;
+          line-height: 1.65;
         }
 
-        /* =========================
+        /* =========================================================
            HEADER BENEFITS
-        ========================= */
+        ========================================================= */
 
         .msp-connect-benefits {
           display: flex;
           align-items: center;
           justify-content: center;
           flex-wrap: wrap;
-          gap: 9px;
-          margin-top: 23px;
+          gap: 10px;
+          margin-top: 24px;
         }
 
         .msp-benefit {
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 7px;
-          padding: 8px 13px;
+          padding: 9px 14px;
           border: 1px solid #e0e5ef;
           border-radius: 999px;
           background: #ffffff;
           color: #4e5c73;
+          font-family: "Inter", sans-serif;
           font-size: 12px;
           line-height: 1;
           white-space: nowrap;
@@ -152,18 +172,20 @@ const ConnectWithTechTorch = () => {
           height: 14px;
           color: #85004a;
           stroke-width: 2;
+          flex-shrink: 0;
         }
 
-        /* =========================
+        /* =========================================================
            FORM CARD
-        ========================= */
+        ========================================================= */
 
         .msp-form-card {
           width: 100%;
-          background: #ffffff;
+          margin: 0 auto;
+          padding: 48px 55px 52px;
           border: 1px solid #e0e5ee;
           border-radius: 18px;
-          padding: 42px 50px 48px;
+          background: #ffffff;
           box-shadow:
             0 18px 40px rgba(34, 48, 76, 0.08),
             0 3px 8px rgba(34, 48, 76, 0.04);
@@ -173,34 +195,41 @@ const ConnectWithTechTorch = () => {
           width: 100%;
         }
 
-        /* =========================
+        /* =========================================================
            FORM GRID
-        ========================= */
+        ========================================================= */
 
         .msp-form-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          column-gap: 22px;
-          row-gap: 24px;
+          column-gap: 24px;
+          row-gap: 25px;
         }
 
         .msp-field {
           width: 100%;
+          min-width: 0;
         }
 
         .msp-field.full {
           grid-column: 1 / -1;
         }
 
+        /* =========================================================
+           LABEL
+        ========================================================= */
+
         .msp-label {
           display: flex;
           align-items: center;
           gap: 7px;
+          min-height: 20px;
           margin-bottom: 9px;
           color: #29354c;
-          font-size: 14px;
-          line-height: 1.3;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
           font-weight: 700;
+          line-height: 1.35;
         }
 
         .msp-label svg {
@@ -214,7 +243,12 @@ const ConnectWithTechTorch = () => {
         .msp-required {
           color: #810047;
           font-size: 15px;
+          line-height: 1;
         }
+
+        /* =========================================================
+           INPUT / SELECT / TEXTAREA
+        ========================================================= */
 
         .msp-input,
         .msp-select,
@@ -224,8 +258,8 @@ const ConnectWithTechTorch = () => {
           border-radius: 8px;
           background: #f8fafc;
           color: #1d293d;
-          font-family: inherit;
-          font-size: 14px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
           outline: none;
           transition:
             border-color 0.2s ease,
@@ -234,7 +268,7 @@ const ConnectWithTechTorch = () => {
         }
 
         .msp-input {
-          height: 50px;
+          height: 51px;
           padding: 0 15px;
         }
 
@@ -252,16 +286,17 @@ const ConnectWithTechTorch = () => {
           box-shadow: 0 0 0 3px rgba(128, 0, 72, 0.08);
         }
 
-        /* =========================
+        /* =========================================================
            SELECT
-        ========================= */
+        ========================================================= */
 
         .msp-select-wrapper {
           position: relative;
+          width: 100%;
         }
 
         .msp-select {
-          height: 50px;
+          height: 51px;
           appearance: none;
           -webkit-appearance: none;
           padding: 0 42px 0 15px;
@@ -270,32 +305,32 @@ const ConnectWithTechTorch = () => {
 
         .msp-select-wrapper > svg {
           position: absolute;
-          right: 14px;
           top: 50%;
-          transform: translateY(-50%);
+          right: 14px;
           width: 16px;
           height: 16px;
           color: #8da0ba;
           pointer-events: none;
+          transform: translateY(-50%);
         }
 
-        /* =========================
+        /* =========================================================
            BRIEFING MODE
-        ========================= */
+        ========================================================= */
 
         .msp-briefing {
-          margin-top: 26px;
+          margin-top: 28px;
         }
 
         .msp-briefing-options {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 12px;
+          gap: 13px;
         }
 
         .msp-radio-card {
           position: relative;
-          min-height: 62px;
+          min-height: 66px;
           display: flex;
           align-items: center;
           gap: 10px;
@@ -304,19 +339,25 @@ const ConnectWithTechTorch = () => {
           border-radius: 8px;
           background: #f8fafc;
           cursor: pointer;
-          transition: border-color 0.2s ease;
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            transform 0.2s ease;
         }
 
         .msp-radio-card:hover {
           border-color: #c9a1b9;
+          background: #fffafd;
+          transform: translateY(-1px);
         }
 
         .msp-radio-card input {
           width: 16px;
           height: 16px;
           margin: 0;
-          accent-color: #0877ff;
+          accent-color: #810047;
           flex-shrink: 0;
+          cursor: pointer;
         }
 
         .msp-radio-content {
@@ -327,50 +368,53 @@ const ConnectWithTechTorch = () => {
 
         .msp-radio-title {
           color: #28354b;
+          font-family: "Inter", sans-serif;
           font-size: 12px;
-          line-height: 1.3;
           font-weight: 700;
+          line-height: 1.3;
         }
 
         .msp-radio-subtitle {
           margin-top: 3px;
           color: #7d8da6;
+          font-family: "Inter", sans-serif;
           font-size: 11px;
           line-height: 1.3;
         }
 
-        /* =========================
+        /* =========================================================
            TEXTAREA
-        ========================= */
+        ========================================================= */
 
         .msp-textarea-field {
-          margin-top: 25px;
+          margin-top: 26px;
         }
 
         .msp-optional {
           margin-left: auto;
           color: #9aabc3;
-          font-size: 12px;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
           font-weight: 500;
         }
 
         .msp-textarea {
-          min-height: 112px;
-          resize: vertical;
+          min-height: 120px;
           padding: 14px 15px;
+          resize: vertical;
           line-height: 1.55;
         }
 
-        /* =========================
+        /* =========================================================
            NDA
-        ========================= */
+        ========================================================= */
 
         .msp-nda {
           display: flex;
           align-items: flex-start;
           gap: 12px;
           margin-top: 28px;
-          padding: 14px 15px;
+          padding: 15px;
           border: 1px solid #dbe2ed;
           border-radius: 8px;
           background: #f8fafc;
@@ -387,26 +431,28 @@ const ConnectWithTechTorch = () => {
 
         .msp-nda label {
           color: #4b5a72;
+          font-family: "Inter", sans-serif;
           font-size: 12px;
-          line-height: 1.45;
           font-weight: 600;
+          line-height: 1.5;
           cursor: pointer;
         }
 
-        /* =========================
+        /* =========================================================
            SECURITY STRIP
-        ========================= */
+        ========================================================= */
 
         .msp-security-strip {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           align-items: center;
-          margin-top: 17px;
-          min-height: 42px;
+          width: 100%;
+          min-height: 45px;
+          margin-top: 18px;
+          overflow: hidden;
           border: 1px solid #dbe2ed;
           border-radius: 8px;
           background: #f8fafc;
-          overflow: hidden;
         }
 
         .msp-security-item {
@@ -414,8 +460,10 @@ const ConnectWithTechTorch = () => {
           align-items: center;
           justify-content: center;
           gap: 7px;
-          padding: 9px 12px;
+          min-width: 0;
+          padding: 10px 12px;
           color: #56647a;
+          font-family: "Inter", sans-serif;
           font-size: 11px;
           line-height: 1.3;
           text-align: center;
@@ -432,27 +480,27 @@ const ConnectWithTechTorch = () => {
           flex-shrink: 0;
         }
 
-        /* =========================
-           SUBMIT BUTTON
-        ========================= */
+        /* =========================================================
+           SUBMIT
+        ========================================================= */
 
         .msp-submit {
           width: 100%;
-          height: 51px;
-          margin-top: 24px;
-          border: none;
-          border-radius: 8px;
-          background: #85004a;
-          color: #ffffff;
-          font-family: inherit;
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: 0.5px;
-          cursor: pointer;
+          height: 52px;
+          margin-top: 25px;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 12px;
+          border: none;
+          border-radius: 8px;
+          background: #85004a;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          cursor: pointer;
           box-shadow: 0 5px 10px rgba(113, 0, 62, 0.14);
           transition:
             background 0.2s ease,
@@ -473,66 +521,113 @@ const ConnectWithTechTorch = () => {
 
         .msp-form-footer {
           margin-top: 21px;
-          text-align: center;
           color: #60708a;
+          font-family: "Inter", sans-serif;
           font-size: 11px;
           letter-spacing: 0.2px;
+          line-height: 1.5;
+          text-align: center;
         }
 
-        /* =========================
+        /* =========================================================
            TABLET
-        ========================= */
+           40px LEFT / RIGHT
+        ========================================================= */
+
+        @media (max-width: 1199px) {
+          .msp-connect-page {
+            padding: 70px 40px 80px;
+          }
+
+          .msp-connect-wrapper {
+            max-width: 1400px;
+          }
+
+          .msp-connect-header h1 {
+            font-size: 42px;
+          }
+
+          .msp-form-card {
+            padding: 42px 42px 46px;
+          }
+        }
+
+        /* =========================================================
+           TABLET / SMALL LAPTOP
+        ========================================================= */
 
         @media (max-width: 900px) {
           .msp-connect-page {
-            padding: 55px 20px 65px;
+            padding-top: 60px;
+            padding-bottom: 70px;
+          }
+
+          .msp-connect-header {
+            margin-bottom: 34px;
           }
 
           .msp-connect-header h1 {
             font-size: 38px;
+            letter-spacing: -1.1px;
           }
 
           .msp-connect-header > p {
-            font-size: 16px;
+            max-width: 700px;
+            font-size: 15px;
           }
 
           .msp-form-card {
-            padding: 36px 32px 40px;
+            padding: 36px 30px 40px;
+          }
+
+          .msp-form-grid {
+            column-gap: 18px;
+            row-gap: 22px;
+          }
+
+          .msp-briefing-options {
+            grid-template-columns: 1fr;
+          }
+
+          .msp-radio-card {
+            min-height: 60px;
           }
         }
 
-        /* =========================
+        /* =========================================================
            MOBILE
-        ========================= */
+           24px LEFT / RIGHT
+        ========================================================= */
 
         @media (max-width: 700px) {
           .msp-connect-page {
-            padding: 42px 14px 50px;
+            padding: 48px 24px 55px;
           }
 
           .msp-connect-header {
-            margin-bottom: 30px;
+            margin-bottom: 28px;
           }
 
           .msp-connect-pill {
-            max-width: 100%;
-            padding: 7px 13px;
-            font-size: 10px;
-            letter-spacing: 0.5px;
+            padding: 7px 12px;
+            font-size: 9px;
+            letter-spacing: 0.45px;
+            line-height: 1.4;
             white-space: normal;
             text-align: center;
           }
 
           .msp-connect-header h1 {
             margin-top: 19px;
-            font-size: 32px;
+            margin-bottom: 12px;
+            font-size: 31px;
             line-height: 1.12;
             letter-spacing: -0.8px;
           }
 
           .msp-connect-header > p {
-            font-size: 14px;
-            line-height: 1.55;
+            font-size: 13px;
+            line-height: 1.6;
           }
 
           .msp-connect-benefits {
@@ -541,8 +636,8 @@ const ConnectWithTechTorch = () => {
           }
 
           .msp-benefit {
-            font-size: 10px;
             padding: 7px 10px;
+            font-size: 10px;
           }
 
           .msp-benefit svg {
@@ -551,8 +646,8 @@ const ConnectWithTechTorch = () => {
           }
 
           .msp-form-card {
+            padding: 28px 20px 31px;
             border-radius: 14px;
-            padding: 27px 18px 30px;
           }
 
           .msp-form-grid {
@@ -565,13 +660,13 @@ const ConnectWithTechTorch = () => {
           }
 
           .msp-label {
-            font-size: 13px;
+            font-size: 12px;
           }
 
           .msp-input,
           .msp-select {
             height: 48px;
-            font-size: 13px;
+            font-size: 12px;
           }
 
           .msp-briefing {
@@ -593,11 +688,16 @@ const ConnectWithTechTorch = () => {
 
           .msp-textarea {
             min-height: 125px;
-            font-size: 13px;
+            font-size: 12px;
           }
 
           .msp-nda {
             margin-top: 22px;
+            padding: 13px;
+          }
+
+          .msp-nda label {
+            font-size: 11px;
           }
 
           .msp-security-strip {
@@ -606,8 +706,8 @@ const ConnectWithTechTorch = () => {
 
           .msp-security-item {
             justify-content: flex-start;
-            text-align: left;
             padding: 10px 13px;
+            text-align: left;
           }
 
           .msp-security-item:not(:last-child) {
@@ -617,26 +717,31 @@ const ConnectWithTechTorch = () => {
 
           .msp-submit {
             height: 50px;
-            font-size: 12px;
+            font-size: 11px;
+          }
+
+          .msp-form-footer {
+            font-size: 10px;
           }
         }
 
-        /* =========================
+        /* =========================================================
            SMALL MOBILE
-        ========================= */
+           16px LEFT / RIGHT
+        ========================================================= */
 
-        @media (max-width: 420px) {
+        @media (max-width: 480px) {
           .msp-connect-page {
-            padding-left: 10px;
-            padding-right: 10px;
+            padding: 40px 16px 48px;
           }
 
           .msp-connect-header h1 {
-            font-size: 28px;
+            font-size: 27px;
+            letter-spacing: -0.65px;
           }
 
           .msp-connect-header > p {
-            font-size: 13px;
+            font-size: 12px;
           }
 
           .msp-connect-benefits {
@@ -646,21 +751,24 @@ const ConnectWithTechTorch = () => {
 
           .msp-benefit {
             justify-content: center;
+            width: 100%;
             white-space: normal;
             text-align: center;
           }
 
           .msp-form-card {
-            padding: 24px 14px 27px;
+            padding: 24px 15px 27px;
+            border-radius: 12px;
           }
 
           .msp-label {
-            font-size: 12px;
+            font-size: 11px;
           }
 
           .msp-input,
           .msp-select {
-            font-size: 12px;
+            height: 47px;
+            font-size: 11px;
           }
 
           .msp-radio-title {
@@ -671,8 +779,25 @@ const ConnectWithTechTorch = () => {
             font-size: 10px;
           }
 
-          .msp-nda label {
+          .msp-textarea {
             font-size: 11px;
+          }
+
+          .msp-nda label {
+            font-size: 10.5px;
+          }
+
+          .msp-security-item {
+            font-size: 10px;
+          }
+
+          .msp-submit {
+            font-size: 10px;
+            letter-spacing: 0.3px;
+          }
+
+          .msp-form-footer {
+            font-size: 9.5px;
           }
         }
       `}</style>
@@ -680,11 +805,12 @@ const ConnectWithTechTorch = () => {
       <section className="msp-connect-page">
         <div className="msp-connect-wrapper">
 
-          {/* =========================
+          {/* =====================================================
               HEADER
-          ========================= */}
+          ===================================================== */}
 
           <div className="msp-connect-header">
+
             <span className="msp-connect-pill">
               TECHTORCH MSP SUPPORT • OPERATIONAL ONBOARDING
             </span>
@@ -698,6 +824,7 @@ const ConnectWithTechTorch = () => {
             </p>
 
             <div className="msp-connect-benefits">
+
               <span className="msp-benefit">
                 <Shield />
                 Guaranteed SLA Alignment
@@ -712,15 +839,19 @@ const ConnectWithTechTorch = () => {
                 <BadgeCheck />
                 Direct Systems Architect Review
               </span>
+
             </div>
           </div>
 
-          {/* =========================
+          {/* =====================================================
               FORM
-          ========================= */}
+          ===================================================== */}
 
           <div className="msp-form-card">
-            <form className="msp-form" onSubmit={handleSubmit}>
+            <form
+              className="msp-form"
+              onSubmit={handleSubmit}
+            >
 
               <div className="msp-form-grid">
 
@@ -819,15 +950,19 @@ const ConnectWithTechTorch = () => {
                       <option value="" disabled>
                         Select Primary Focus Area
                       </option>
+
                       <option value="Infrastructure Support">
                         Infrastructure Support
                       </option>
+
                       <option value="Software Support">
                         Software Support
                       </option>
+
                       <option value="Cloud Support">
                         Cloud Support
                       </option>
+
                       <option value="Security Support">
                         Security Support
                       </option>
@@ -856,12 +991,15 @@ const ConnectWithTechTorch = () => {
                       <option value="" disabled>
                         Select Support Model
                       </option>
+
                       <option value="Business Hours">
                         Business Hours
                       </option>
+
                       <option value="Extended Coverage">
                         Extended Coverage
                       </option>
+
                       <option value="24/7 Coverage">
                         24/7 Coverage
                       </option>
@@ -890,12 +1028,15 @@ const ConnectWithTechTorch = () => {
                       <option value="" disabled>
                         Select Infrastructure Model
                       </option>
+
                       <option value="On-Premises">
                         On-Premises
                       </option>
+
                       <option value="Cloud">
                         Cloud
                       </option>
+
                       <option value="Hybrid">
                         Hybrid
                       </option>
@@ -924,15 +1065,19 @@ const ConnectWithTechTorch = () => {
                       <option value="" disabled>
                         Select Endpoint Volume
                       </option>
+
                       <option value="1 - 50 Users">
                         1 - 50 Users
                       </option>
+
                       <option value="51 - 200 Users">
                         51 - 200 Users
                       </option>
+
                       <option value="201 - 500 Users">
                         201 - 500 Users
                       </option>
+
                       <option value="500+ Users">
                         500+ Users
                       </option>
@@ -944,11 +1089,12 @@ const ConnectWithTechTorch = () => {
 
               </div>
 
-              {/* =========================
+              {/* =====================================================
                   PREFERRED MODE
-              ========================= */}
+              ===================================================== */}
 
               <div className="msp-field full msp-briefing">
+
                 <label className="msp-label">
                   <Video />
                   Preferred Mode of Initial Briefing
@@ -962,7 +1108,8 @@ const ConnectWithTechTorch = () => {
                       name="briefingMode"
                       value="30-Min Video Call"
                       checked={
-                        formData.briefingMode === "30-Min Video Call"
+                        formData.briefingMode ===
+                        "30-Min Video Call"
                       }
                       onChange={handleChange}
                     />
@@ -1027,11 +1174,12 @@ const ConnectWithTechTorch = () => {
                 </div>
               </div>
 
-              {/* =========================
+              {/* =====================================================
                   PAIN POINTS
-              ========================= */}
+              ===================================================== */}
 
               <div className="msp-field full msp-textarea-field">
+
                 <label className="msp-label">
                   <ListChecks />
                   Current IT Support Pain Points & Primary Objectives
@@ -1048,13 +1196,15 @@ const ConnectWithTechTorch = () => {
                   onChange={handleChange}
                   placeholder="Outline your immediate IT challenges (e.g. ticket backlogs, monitoring gaps, cloud maintenance, patching compliance, after-hours coverage, target onboarding timeline)..."
                 />
+
               </div>
 
-              {/* =========================
+              {/* =====================================================
                   NDA
-              ========================= */}
+              ===================================================== */}
 
               <div className="msp-nda">
+
                 <input
                   id="msp-nda"
                   type="checkbox"
@@ -1068,11 +1218,12 @@ const ConnectWithTechTorch = () => {
                   executed prior to sharing topology or architecture
                   logs.
                 </label>
+
               </div>
 
-              {/* =========================
+              {/* =====================================================
                   SECURITY STRIP
-              ========================= */}
+              ===================================================== */}
 
               <div className="msp-security-strip">
 
@@ -1093,9 +1244,9 @@ const ConnectWithTechTorch = () => {
 
               </div>
 
-              {/* =========================
+              {/* =====================================================
                   SUBMIT
-              ========================= */}
+              ===================================================== */}
 
               <button
                 type="submit"

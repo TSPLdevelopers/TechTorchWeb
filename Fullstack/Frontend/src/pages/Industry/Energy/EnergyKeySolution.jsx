@@ -52,6 +52,15 @@ export default function KeySolutionsExploreGridSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
+        /* =================================================
+           SECTION
+        ================================================= */
+
+        .key-solutions-section,
+        .key-solutions-section * {
+          box-sizing: border-box;
+        }
+
         .key-solutions-section {
           width: 100%;
           background: #ffffff;
@@ -60,61 +69,88 @@ export default function KeySolutionsExploreGridSection() {
           overflow: hidden;
         }
 
+        /* =================================================
+           CONTAINER
+           Desktop  : 100px
+           Tablet   : 40px
+           Mobile   : 24px
+           Small    : 16px
+        ================================================= */
+
         .key-solutions-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 72px 40px;
+
+          padding: 78px 100px;
         }
 
-        /* =========================
+        /* =================================================
            HEADER
-        ========================= */
+        ================================================= */
 
         .key-solutions-eyebrow {
           margin: 0 0 12px;
+
           color: ${WINE};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.12em;
+          line-height: 1.4;
           text-transform: uppercase;
         }
 
         .key-solutions-heading {
-          margin: 0 0 38px;
+          max-width: 900px;
+
+          margin: 0 0 42px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 38px;
+          font-size: 40px;
           line-height: 1.2;
           font-weight: 700;
           letter-spacing: -0.03em;
         }
 
-        /* =========================
+        /* =================================================
            GRID
-        ========================= */
+        ================================================= */
 
         .key-solutions-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 20px;
+
+          grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+          gap: 22px;
         }
 
-        /* =========================
+        /* =================================================
            CARD
-        ========================= */
+        ================================================= */
 
         .key-solution-card {
           position: relative;
+
           display: flex;
           flex-direction: column;
+
           min-height: 275px;
-          padding: 24px;
+
+          padding: 26px;
+
           background: #f7f7fa;
+
           border-top: 4px solid ${WINE};
           border-radius: 0 0 16px 16px;
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+
+          box-shadow:
+            0 1px 4px rgba(0, 0, 0, 0.04);
+
           transition:
             transform 0.3s ease,
             box-shadow 0.3s ease,
@@ -123,51 +159,87 @@ export default function KeySolutionsExploreGridSection() {
 
         .key-solution-card:hover {
           transform: translateY(-5px);
+
           background: #ffffff;
-          box-shadow: 0 14px 32px rgba(27, 27, 42, 0.09);
+
+          box-shadow:
+            0 14px 32px rgba(27, 27, 42, 0.09);
         }
+
+        /* =================================================
+           ICON
+        ================================================= */
 
         .key-solution-icon {
           width: 42px;
           height: 42px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           margin-bottom: 18px;
+
           border-radius: 10px;
+
           background: #fbeef1;
           color: ${WINE};
+
           flex-shrink: 0;
         }
 
+        /* =================================================
+           TITLE
+        ================================================= */
+
         .key-solution-title {
           margin: 0 0 10px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 17px;
           line-height: 1.35;
           font-weight: 700;
         }
 
+        /* =================================================
+           BODY
+        ================================================= */
+
         .key-solution-body {
           margin: 0 0 22px;
+
           color: ${MUTED};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
+          font-weight: 400;
           line-height: 1.7;
         }
 
+        /* =================================================
+           LINK
+        ================================================= */
+
         .key-solution-link {
           margin-top: auto;
+
           display: inline-flex;
           align-items: center;
           gap: 6px;
+
           width: fit-content;
+
           color: ${WINE};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 600;
+          line-height: 1.4;
+
           text-decoration: none;
+
           transition: gap 0.25s ease;
         }
 
@@ -175,48 +247,73 @@ export default function KeySolutionsExploreGridSection() {
           gap: 9px;
         }
 
-        /* =========================
-           LARGE TABLET
-        ========================= */
+        /* =================================================
+           LARGE LAPTOP
+        ================================================= */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1200px) {
           .key-solutions-container {
-            padding: 62px 30px;
+            padding-left: 60px;
+            padding-right: 60px;
+          }
+
+          .key-solutions-grid {
+            gap: 20px;
+          }
+
+          .key-solutions-heading {
+            font-size: 37px;
+          }
+        }
+
+        /* =================================================
+           TABLET
+           Exact spacing: 40px
+        ================================================= */
+
+        @media (max-width: 1000px) {
+          .key-solutions-container {
+            padding: 62px 40px;
           }
 
           .key-solutions-heading {
             font-size: 34px;
-            margin-bottom: 32px;
+            margin-bottom: 34px;
           }
 
           .key-solutions-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
             gap: 18px;
           }
 
           .key-solution-card {
-            min-height: 250px;
+            min-height: 255px;
+            padding: 24px;
           }
         }
 
-        /* =========================
-           TABLET
-        ========================= */
+        /* =================================================
+           MOBILE
+           Exact spacing: 24px
+        ================================================= */
 
         @media (max-width: 700px) {
           .key-solutions-container {
-            padding: 52px 20px;
+            padding: 52px 24px;
           }
 
           .key-solutions-eyebrow {
-            font-size: 11px;
             margin-bottom: 10px;
+            font-size: 11px;
           }
 
           .key-solutions-heading {
+            margin-bottom: 28px;
+
             font-size: 30px;
             line-height: 1.25;
-            margin-bottom: 28px;
           }
 
           .key-solutions-grid {
@@ -227,12 +324,14 @@ export default function KeySolutionsExploreGridSection() {
           .key-solution-card {
             min-height: auto;
             padding: 22px 20px;
+
             border-radius: 0 0 14px 14px;
           }
 
           .key-solution-icon {
             width: 40px;
             height: 40px;
+
             margin-bottom: 16px;
           }
 
@@ -246,17 +345,19 @@ export default function KeySolutionsExploreGridSection() {
           }
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
+        /* =================================================
+           SMALL MOBILE
+           Exact spacing: 16px
+        ================================================= */
 
-        @media (max-width: 450px) {
+        @media (max-width: 480px) {
           .key-solutions-container {
             padding: 44px 16px;
           }
 
           .key-solutions-heading {
             font-size: 26px;
+            line-height: 1.25;
             margin-bottom: 24px;
           }
 
@@ -267,6 +368,7 @@ export default function KeySolutionsExploreGridSection() {
           .key-solution-icon {
             width: 38px;
             height: 38px;
+
             margin-bottom: 14px;
           }
 
@@ -286,13 +388,13 @@ export default function KeySolutionsExploreGridSection() {
           }
         }
 
-        /* =========================
+        /* =================================================
            VERY SMALL MOBILE
-        ========================= */
+        ================================================= */
 
         @media (max-width: 340px) {
           .key-solutions-container {
-            padding: 38px 14px;
+            padding: 38px 16px;
           }
 
           .key-solutions-heading {
@@ -310,16 +412,24 @@ export default function KeySolutionsExploreGridSection() {
           .key-solution-body {
             font-size: 11.5px;
           }
+
+          .key-solution-link {
+            font-size: 11px;
+          }
         }
 
-        /* =========================
+        /* =================================================
            REDUCED MOTION
-        ========================= */
+        ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
           .key-solution-card,
           .key-solution-link {
             transition: none;
+          }
+
+          .key-solution-card:hover {
+            transform: none;
           }
         }
       `}</style>
@@ -327,7 +437,10 @@ export default function KeySolutionsExploreGridSection() {
       <section className="key-solutions-section">
         <div className="key-solutions-container">
 
-          {/* Header */}
+          {/* =================================================
+              HEADER
+          ================================================= */}
+
           <p className="key-solutions-eyebrow">
             KEY SOLUTIONS
           </p>
@@ -336,7 +449,10 @@ export default function KeySolutionsExploreGridSection() {
             Technology for Core Business Functions
           </h2>
 
-          {/* Cards */}
+          {/* =================================================
+              CARDS
+          ================================================= */}
+
           <div className="key-solutions-grid">
             {cards.map(({ icon: Icon, title, body }) => (
               <div
@@ -344,7 +460,10 @@ export default function KeySolutionsExploreGridSection() {
                 className="key-solution-card"
               >
                 <span className="key-solution-icon">
-                  <Icon size={18} strokeWidth={1.8} />
+                  <Icon
+                    size={18}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
                 <h3 className="key-solution-title">
