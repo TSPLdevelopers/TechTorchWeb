@@ -185,10 +185,10 @@ export default function InformationTechnologyGetInTouch() {
           color: var(--it-dark);
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 42px;
+          font-size: 38px;
           line-height: 1.15;
           letter-spacing: -1.3px;
-          font-weight: 800;
+          font-weight: 600;
         }
 
         .it-hero-content h1 span {
@@ -206,7 +206,7 @@ export default function InformationTechnologyGetInTouch() {
 
           color: #696969;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 14px;
           line-height: 1.75;
           font-weight: 500;
@@ -263,9 +263,9 @@ export default function InformationTechnologyGetInTouch() {
           color: #222;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.4;
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .it-consultation-card p {
@@ -274,7 +274,7 @@ export default function InformationTechnologyGetInTouch() {
           color: #777;
 
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11.5px;
+          font-size: 13px;
           line-height: 1.5;
         }
 
@@ -304,7 +304,7 @@ export default function InformationTechnologyGetInTouch() {
           border-radius: 8px;
 
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
 
           cursor: pointer;
@@ -527,7 +527,7 @@ export default function InformationTechnologyGetInTouch() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 26px;
-          font-weight: 800;
+          font-weight: 600;
           line-height: 1.25;
           letter-spacing: -0.6px;
         }
@@ -539,7 +539,7 @@ export default function InformationTechnologyGetInTouch() {
 
           color: #777;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.7;
           font-weight: 500;
@@ -571,9 +571,9 @@ export default function InformationTechnologyGetInTouch() {
 
           color: #222;
 
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
-          font-weight: 600;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 500;
         }
 
         .it-field label span {
@@ -615,7 +615,7 @@ export default function InformationTechnologyGetInTouch() {
 
           resize: vertical;
 
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -659,7 +659,7 @@ export default function InformationTechnologyGetInTouch() {
           color: #333;
 
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 500;
 
           cursor: pointer;
@@ -688,7 +688,7 @@ export default function InformationTechnologyGetInTouch() {
           color: #777;
 
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11.5px;
+          font-size: 12px;
           line-height: 1.5;
 
           cursor: pointer;
@@ -727,8 +727,8 @@ export default function InformationTechnologyGetInTouch() {
           color: #fff;
 
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
-          font-weight: 700;
+          font-size: 13px;
+          font-weight: 600;
 
           cursor: pointer;
 
@@ -750,7 +750,7 @@ export default function InformationTechnologyGetInTouch() {
           color: #777;
 
           font-family: "Inter", Arial, sans-serif;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.5;
         }
 
