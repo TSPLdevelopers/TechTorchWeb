@@ -616,11 +616,7 @@ export default function EcommerceHeroSection() {
             >
               Get In Touch
 
-              <Download
-                size={15}
-                strokeWidth={1.8}
-                className="ecommerce-button-icon"
-              />
+              
             </button>
           </div>
         </div>
@@ -629,7 +625,7 @@ export default function EcommerceHeroSection() {
         <div className="ecommerce-hero-image-area">
           <div className="ecommerce-hero-image-container">
             <img
-              src="/ecommerce-hero.png"
+              src="/ecommerce1.png"
               alt="E-commerce team working together"
               className="ecommerce-hero-image"
             />

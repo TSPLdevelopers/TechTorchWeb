@@ -25,12 +25,14 @@ export default function ItHeroSection() {
         .it-hero-section {
           width: 100%;
           overflow: hidden;
+
           background: linear-gradient(
             135deg,
             #fbeef1 0%,
             #f7f5f2 40%,
             #ffffff 100%
           );
+
           color: ${INK};
           font-family: "Inter", Arial, sans-serif;
         }
@@ -146,7 +148,8 @@ export default function ItHeroSection() {
           min-height: 44px;
           padding: 0 19px;
 
-          border-radius: 999px;
+          /* UPDATED FROM 999px TO 6px */
+          border-radius: 6px;
 
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
@@ -362,7 +365,6 @@ export default function ItHeroSection() {
 
         /* =========================================================
            TABLET / MEDIUM DESKTOP
-           40px horizontal spacing
         ========================================================= */
 
         @media (max-width: 1199px) {
@@ -392,7 +394,6 @@ export default function ItHeroSection() {
 
         /* =========================================================
            TABLET
-           40px horizontal spacing
         ========================================================= */
 
         @media (max-width: 900px) {
@@ -425,7 +426,6 @@ export default function ItHeroSection() {
           .it-hero-visual {
             width: 100%;
             max-width: 760px;
-
             margin: 0 auto;
           }
 
@@ -436,7 +436,6 @@ export default function ItHeroSection() {
 
         /* =========================================================
            MOBILE
-           24px horizontal spacing
         ========================================================= */
 
         @media (max-width: 767px) {
@@ -453,7 +452,6 @@ export default function ItHeroSection() {
           .it-hero-badge {
             margin-bottom: 17px;
             padding: 6px 11px;
-
             font-size: 9px;
           }
 
@@ -491,6 +489,9 @@ export default function ItHeroSection() {
           .it-hero-button {
             width: 100%;
             min-height: 45px;
+
+            /* SAME RADIUS ON MOBILE */
+            border-radius: 6px;
           }
 
           .it-hero-visual {
@@ -505,7 +506,6 @@ export default function ItHeroSection() {
           .it-hero-image-label {
             left: 13px;
             bottom: 13px;
-
             font-size: 8px;
           }
 
@@ -542,7 +542,6 @@ export default function ItHeroSection() {
 
         /* =========================================================
            SMALL MOBILE
-           16px horizontal spacing
         ========================================================= */
 
         @media (max-width: 480px) {
@@ -561,6 +560,10 @@ export default function ItHeroSection() {
 
           .it-hero-description {
             font-size: 11.5px;
+          }
+
+          .it-hero-button {
+            border-radius: 6px;
           }
 
           .it-hero-image-wrapper {
@@ -584,7 +587,6 @@ export default function ItHeroSection() {
 
         /* =========================================================
            EXTRA SMALL MOBILE
-           Keep 16px horizontal spacing
         ========================================================= */
 
         @media (max-width: 360px) {
@@ -602,6 +604,10 @@ export default function ItHeroSection() {
 
           .it-hero-description {
             font-size: 11px;
+          }
+
+          .it-hero-button {
+            border-radius: 6px;
           }
 
           .it-hero-image-wrapper {
@@ -709,7 +715,7 @@ export default function ItHeroSection() {
             <div className="it-hero-image-wrapper">
 
               <img
-                src="/ITHero.png"
+                src="/it.png"
                 alt="Information technology team reviewing business architecture"
                 className="it-hero-image"
               />

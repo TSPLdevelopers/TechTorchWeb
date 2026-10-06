@@ -190,21 +190,33 @@ export default function WhyTechTorchAndBuildCtaSections() {
           font-weight: 400;
         }
 
+        /* =====================================================
+           CTA BUTTON
+        ===================================================== */
+
         .build-cta-button {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 8px;
+
           min-height: 50px;
           padding: 0 26px;
+
           border: none;
-          border-radius: 999px;
+
+          /* UPDATED: 999px -> 6px */
+          border-radius: 6px;
+
           background: #ffffff;
           color: ${WINE};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
           font-weight: 600;
+
           cursor: pointer;
+
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease;
@@ -221,7 +233,6 @@ export default function WhyTechTorchAndBuildCtaSections() {
 
         /* =====================================================
            LARGE TABLET
-           40px horizontal spacing
         ===================================================== */
 
         @media (max-width: 1100px) {
@@ -245,7 +256,6 @@ export default function WhyTechTorchAndBuildCtaSections() {
 
         /* =====================================================
            TABLET
-           40px horizontal spacing
         ===================================================== */
 
         @media (max-width: 800px) {
@@ -286,7 +296,6 @@ export default function WhyTechTorchAndBuildCtaSections() {
 
         /* =====================================================
            MOBILE
-           24px horizontal spacing
         ===================================================== */
 
         @media (max-width: 600px) {
@@ -355,6 +364,9 @@ export default function WhyTechTorchAndBuildCtaSections() {
             min-height: 48px;
             padding: 0 20px;
             font-size: 12.5px;
+
+            /* SAME RADIUS ON MOBILE */
+            border-radius: 6px;
           }
 
           .desktop-break {
@@ -364,7 +376,6 @@ export default function WhyTechTorchAndBuildCtaSections() {
 
         /* =====================================================
            SMALL MOBILE
-           16px horizontal spacing
         ===================================================== */
 
         @media (max-width: 400px) {
@@ -400,11 +411,14 @@ export default function WhyTechTorchAndBuildCtaSections() {
           .build-cta-description {
             font-size: 12px;
           }
+
+          .build-cta-button {
+            border-radius: 6px;
+          }
         }
 
         /* =====================================================
            VERY SMALL MOBILE
-           16px horizontal spacing
         ===================================================== */
 
         @media (max-width: 340px) {
@@ -435,6 +449,10 @@ export default function WhyTechTorchAndBuildCtaSections() {
           .build-cta-description {
             font-size: 11.5px;
           }
+
+          .build-cta-button {
+            border-radius: 6px;
+          }
         }
 
         /* =====================================================
@@ -456,10 +474,7 @@ export default function WhyTechTorchAndBuildCtaSections() {
 
       <div className="why-techtorch-container">
 
-        {/* =========================
-            WHY TECHTORCH
-        ========================= */}
-
+        {/* WHY TECHTORCH */}
         <div className="why-techtorch-header">
           <p className="why-techtorch-label">
             WHY TECHTORCH
@@ -472,10 +487,7 @@ export default function WhyTechTorchAndBuildCtaSections() {
           </h2>
         </div>
 
-        {/* =========================
-            REASONS GRID
-        ========================= */}
-
+        {/* REASONS GRID */}
         <div className="why-techtorch-grid">
           {reasons.map(({ icon: Icon, title, body }) => (
             <div
@@ -500,10 +512,7 @@ export default function WhyTechTorchAndBuildCtaSections() {
           ))}
         </div>
 
-        {/* =========================
-            BUILD CTA
-        ========================= */}
-
+        {/* BUILD CTA */}
         <div className="build-cta">
           <h2 className="build-cta-heading">
             Build a More Connected

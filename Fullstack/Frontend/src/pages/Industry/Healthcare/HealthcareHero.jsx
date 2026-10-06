@@ -33,14 +33,9 @@ export default function HealthcareHeroSection() {
   return (
     <section className="healthcare-hero-section">
       <style>{`
-        /* =====================================================
-           FONTS
-        ===================================================== */
-
         @import url(
           'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
         );
-
 
         /* =====================================================
            SCOPED BOX SIZING
@@ -51,39 +46,28 @@ export default function HealthcareHeroSection() {
           box-sizing: border-box;
         }
 
-
         /* =====================================================
            MAIN SECTION
         ===================================================== */
 
         .healthcare-hero-section {
           width: 100%;
-
           background: #ffffff;
-
           color: ${INK};
-
           font-family: "Inter", sans-serif;
-
           overflow: hidden;
         }
 
-
         /* =====================================================
            MAIN CONTAINER
-           DESKTOP = 100px LEFT / RIGHT
         ===================================================== */
 
         .healthcare-hero-container {
           width: 100%;
-
           max-width: 1600px;
-
           margin: 0 auto;
-
           padding: 78px 100px;
         }
-
 
         /* =====================================================
            MAIN GRID
@@ -91,16 +75,13 @@ export default function HealthcareHeroSection() {
 
         .healthcare-hero-grid {
           display: grid;
-
           grid-template-columns:
             minmax(0, 1fr)
             minmax(0, 1fr);
 
           gap: 64px;
-
           align-items: center;
         }
-
 
         /* =====================================================
            LEFT CONTENT
@@ -108,76 +89,55 @@ export default function HealthcareHeroSection() {
 
         .healthcare-hero-content {
           min-width: 0;
-
           max-width: 680px;
         }
 
-
         /* =====================================================
            BADGE
-           INTER
         ===================================================== */
 
         .healthcare-hero-badge {
           display: inline-flex;
-
           align-items: center;
-
           gap: 7px;
 
           margin-bottom: 20px;
-
           padding: 7px 12px;
 
           border-radius: 999px;
 
           background: #fbeef1;
-
           color: ${WINE};
 
           font-family: "Inter", sans-serif;
-
           font-size: 9px;
-
           line-height: 1.3;
-
           font-weight: 700;
-
           letter-spacing: 0.05em;
         }
 
-
         .healthcare-hero-badge-dot {
           width: 6px;
-
           height: 6px;
 
           flex-shrink: 0;
 
           border-radius: 50%;
-
           background: ${WINE};
         }
 
-
         /* =====================================================
            MAIN HEADING
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .healthcare-hero-heading {
           margin: 0 0 22px;
-
           max-width: 680px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 44px;
-
           line-height: 1.13;
-
           font-weight: 700;
 
           letter-spacing: -1.2px;
@@ -185,10 +145,8 @@ export default function HealthcareHeroSection() {
           color: ${INK};
         }
 
-
         /* =====================================================
            DESCRIPTION
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .healthcare-hero-description {
@@ -196,35 +154,26 @@ export default function HealthcareHeroSection() {
 
           margin: 0 0 14px;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 13px;
-
           line-height: 1.75;
-
           font-weight: 500;
 
           color: ${MUTED};
         }
 
-
         .healthcare-hero-description-last {
           margin-bottom: 28px;
         }
 
-
         /* =====================================================
            BUTTONS
-           INTER
         ===================================================== */
 
         .healthcare-hero-actions {
           display: flex;
-
           align-items: center;
-
           flex-wrap: wrap;
 
           gap: 10px;
@@ -232,32 +181,26 @@ export default function HealthcareHeroSection() {
           margin-bottom: 28px;
         }
 
-
         .healthcare-primary-btn {
           display: inline-flex;
-
           align-items: center;
-
           justify-content: center;
 
           gap: 8px;
 
           min-height: 46px;
-
           padding: 0 21px;
 
           border: none;
 
-          border-radius: 999px;
+          /* UPDATED */
+          border-radius: 6px;
 
           background: ${WINE};
-
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
-
           font-size: 12px;
-
           font-weight: 600;
 
           cursor: pointer;
@@ -267,37 +210,29 @@ export default function HealthcareHeroSection() {
             background 0.2s ease;
         }
 
-
         .healthcare-primary-btn:hover {
           background: #5c1730;
-
           transform: translateY(-1px);
         }
 
-
         .healthcare-secondary-btn {
           display: inline-flex;
-
           align-items: center;
-
           justify-content: center;
 
           min-height: 46px;
-
           padding: 0 21px;
 
           border: 1px solid #d8d5d0;
 
-          border-radius: 999px;
+          /* UPDATED */
+          border-radius: 6px;
 
           background: #ffffff;
-
           color: ${INK};
 
           font-family: "Inter", sans-serif;
-
           font-size: 12px;
-
           font-weight: 600;
 
           cursor: pointer;
@@ -308,42 +243,31 @@ export default function HealthcareHeroSection() {
             background 0.2s ease;
         }
 
-
         .healthcare-secondary-btn:hover {
           border-color: ${WINE};
-
           color: ${WINE};
-
           background: #fffafb;
         }
 
-
         /* =====================================================
            TRUST AREA
-           INTER
         ===================================================== */
 
         .healthcare-trust-area {
           padding-top: 17px;
-
           border-top: 1px solid #ece9e4;
         }
 
-
         .healthcare-trust-list {
           display: flex;
-
           align-items: center;
-
           flex-wrap: wrap;
 
           gap: 14px 24px;
         }
 
-
         .healthcare-trust-item {
           display: flex;
-
           align-items: center;
 
           gap: 7px;
@@ -351,24 +275,19 @@ export default function HealthcareHeroSection() {
           min-width: 0;
         }
 
-
         .healthcare-trust-item svg {
           flex-shrink: 0;
-
           color: ${WINE};
         }
-
 
         .healthcare-trust-item span {
           font-family: "Inter", sans-serif;
 
           font-size: 10px;
-
           line-height: 1.4;
 
           color: ${MUTED};
         }
-
 
         /* =====================================================
            RIGHT IMAGE AREA
@@ -378,12 +297,10 @@ export default function HealthcareHeroSection() {
           position: relative;
 
           width: 100%;
-
           min-width: 0;
 
           padding-bottom: 30px;
         }
-
 
         /* =====================================================
            HERO IMAGE
@@ -393,13 +310,11 @@ export default function HealthcareHeroSection() {
           position: relative;
 
           width: 100%;
-
           height: 460px;
 
           display: block;
 
           object-fit: cover;
-
           object-position: center;
 
           border-radius: 20px;
@@ -413,14 +328,12 @@ export default function HealthcareHeroSection() {
           overflow: hidden;
         }
 
-
         /* =====================================================
            IMAGE OVERLAY
         ===================================================== */
 
         .healthcare-image-overlay {
           position: absolute;
-
           inset: 0;
 
           border-radius: 20px;
@@ -436,7 +349,6 @@ export default function HealthcareHeroSection() {
             );
         }
 
-
         /* =====================================================
            FLOATING STATUS CARD
         ===================================================== */
@@ -445,13 +357,10 @@ export default function HealthcareHeroSection() {
           position: absolute;
 
           left: 22px;
-
           right: 22px;
-
           bottom: 0;
 
           display: flex;
-
           align-items: center;
 
           gap: 12px;
@@ -469,16 +378,12 @@ export default function HealthcareHeroSection() {
           z-index: 3;
         }
 
-
         .healthcare-status-icon {
           width: 38px;
-
           height: 38px;
 
           display: flex;
-
           align-items: center;
-
           justify-content: center;
 
           flex-shrink: 0;
@@ -486,17 +391,13 @@ export default function HealthcareHeroSection() {
           border-radius: 10px;
 
           background: #fbeef1;
-
           color: ${WINE};
         }
 
-
         .healthcare-status-content {
           flex: 1;
-
           min-width: 0;
         }
-
 
         .healthcare-status-label {
           margin: 0 0 3px;
@@ -504,9 +405,7 @@ export default function HealthcareHeroSection() {
           font-family: "Inter", sans-serif;
 
           font-size: 9px;
-
           line-height: 1.3;
-
           font-weight: 700;
 
           letter-spacing: 0.05em;
@@ -514,43 +413,28 @@ export default function HealthcareHeroSection() {
           color: ${WINE};
         }
 
-
-        /* =====================================================
-           STATUS TITLE
-           PLUS JAKARTA SANS
-        ===================================================== */
-
         .healthcare-status-title {
           margin: 0;
 
-          font-family:
-            "Plus Jakarta Sans",
-            sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 12px;
-
           line-height: 1.4;
-
           font-weight: 700;
 
           color: ${INK};
 
           white-space: nowrap;
-
           overflow: hidden;
-
           text-overflow: ellipsis;
         }
 
-
         /* =====================================================
            ACTIVE SYNC
-           INTER
         ===================================================== */
 
         .healthcare-active-sync {
           display: inline-flex;
-
           align-items: center;
 
           gap: 5px;
@@ -562,22 +446,17 @@ export default function HealthcareHeroSection() {
           border-radius: 999px;
 
           background: #e5f7ec;
-
           color: #1a9455;
 
           font-family: "Inter", sans-serif;
 
           font-size: 9px;
-
           line-height: 1.3;
-
           font-weight: 600;
         }
 
-
         .healthcare-active-dot {
           width: 6px;
-
           height: 6px;
 
           border-radius: 50%;
@@ -585,147 +464,108 @@ export default function HealthcareHeroSection() {
           background: #1a9455;
         }
 
-
         /* =====================================================
            LARGE DESKTOP / LAPTOP
-           100px -> 40px
         ===================================================== */
 
         @media (max-width: 1200px) {
-
           .healthcare-hero-container {
             padding: 72px 40px;
           }
-
 
           .healthcare-hero-grid {
             gap: 48px;
           }
 
-
           .healthcare-hero-heading {
             font-size: 40px;
           }
 
-
           .healthcare-hero-image {
             height: 420px;
           }
-
         }
-
 
         /* =====================================================
            TABLET
         ===================================================== */
 
         @media (max-width: 950px) {
-
           .healthcare-hero-container {
             padding: 60px 40px;
           }
 
-
           .healthcare-hero-grid {
             grid-template-columns: 1fr;
-
             gap: 48px;
           }
 
-
           .healthcare-hero-content {
             max-width: 800px;
-
             width: 100%;
-
             margin: 0 auto;
           }
 
-
           .healthcare-hero-heading {
             max-width: 760px;
-
             font-size: 38px;
           }
-
 
           .healthcare-hero-description {
             max-width: 760px;
           }
 
-
           .healthcare-image-wrapper {
             width: 100%;
-
             max-width: 900px;
-
             margin: 0 auto;
           }
-
 
           .healthcare-hero-image {
             height: 430px;
           }
-
         }
-
 
         /* =====================================================
            SMALL TABLET
         ===================================================== */
 
         @media (max-width: 700px) {
-
           .healthcare-hero-container {
-            padding:
-              52px 24px
-              58px;
+            padding: 52px 24px 58px;
           }
-
 
           .healthcare-hero-heading {
             font-size: 33px;
-
             letter-spacing: -0.8px;
           }
 
-
           .healthcare-hero-description {
             font-size: 12px;
-
             line-height: 1.75;
           }
-
 
           .healthcare-trust-list {
             gap: 11px 18px;
           }
 
-
           .healthcare-hero-image {
             height: 350px;
           }
-
         }
-
 
         /* =====================================================
            MOBILE
         ===================================================== */
 
         @media (max-width: 600px) {
-
           .healthcare-hero-container {
-            padding:
-              46px 24px
-              52px;
+            padding: 46px 24px 52px;
           }
-
 
           .healthcare-hero-grid {
             gap: 40px;
           }
-
 
           .healthcare-hero-badge {
             margin-bottom: 16px;
@@ -733,46 +573,32 @@ export default function HealthcareHeroSection() {
             padding: 6px 10px;
 
             font-size: 8px;
-
             letter-spacing: 0.035em;
           }
 
-
           .healthcare-hero-badge-dot {
             width: 5px;
-
             height: 5px;
           }
-
-
-          /* MAIN HEADING */
 
           .healthcare-hero-heading {
             margin-bottom: 18px;
 
             font-size: 29px;
-
             line-height: 1.18;
-
             letter-spacing: -0.6px;
           }
-
-
-          /* DESCRIPTION */
 
           .healthcare-hero-description {
             margin-bottom: 12px;
 
             font-size: 11.5px;
-
             line-height: 1.75;
           }
-
 
           .healthcare-hero-description-last {
             margin-bottom: 23px;
           }
-
 
           /* BUTTONS */
 
@@ -784,18 +610,18 @@ export default function HealthcareHeroSection() {
             margin-bottom: 24px;
           }
 
-
           .healthcare-primary-btn,
           .healthcare-secondary-btn {
             min-height: 44px;
 
             padding-left: 17px;
-
             padding-right: 17px;
 
             font-size: 10.5px;
-          }
 
+            /* SAME BUTTON RADIUS */
+            border-radius: 6px;
+          }
 
           /* TRUST */
 
@@ -803,20 +629,16 @@ export default function HealthcareHeroSection() {
             padding-top: 15px;
           }
 
-
           .healthcare-trust-list {
             display: grid;
-
             grid-template-columns: 1fr;
 
             gap: 10px;
           }
 
-
           .healthcare-trust-item span {
             font-size: 9.5px;
           }
-
 
           /* IMAGE */
 
@@ -824,24 +646,20 @@ export default function HealthcareHeroSection() {
             padding-bottom: 27px;
           }
 
-
           .healthcare-hero-image {
             height: 310px;
 
             border-radius: 16px;
           }
 
-
           .healthcare-image-overlay {
             border-radius: 16px;
           }
-
 
           /* STATUS CARD */
 
           .healthcare-status-card {
             left: 12px;
-
             right: 12px;
 
             gap: 9px;
@@ -851,233 +669,175 @@ export default function HealthcareHeroSection() {
             border-radius: 11px;
           }
 
-
           .healthcare-status-icon {
             width: 32px;
-
             height: 32px;
 
             border-radius: 8px;
           }
 
-
           .healthcare-status-icon svg {
             width: 15px;
-
             height: 15px;
           }
-
 
           .healthcare-status-label {
             font-size: 7px;
           }
 
-
           .healthcare-status-title {
             font-size: 10px;
           }
 
-
           .healthcare-active-sync {
             padding: 4px 7px;
-
             font-size: 8px;
           }
 
-
           .healthcare-active-dot {
             width: 5px;
-
             height: 5px;
           }
-
         }
-
 
         /* =====================================================
            SMALL MOBILE
-           16px LEFT / RIGHT
         ===================================================== */
 
         @media (max-width: 480px) {
-
           .healthcare-hero-container {
-            padding:
-              40px 16px
-              48px;
+            padding: 40px 16px 48px;
           }
-
 
           .healthcare-hero-heading {
             font-size: 27px;
-
             line-height: 1.2;
           }
 
-
           .healthcare-hero-description {
             font-size: 11px;
-
             line-height: 1.7;
           }
 
-
           .healthcare-hero-actions {
             flex-direction: column;
-
             width: 100%;
           }
-
 
           .healthcare-primary-btn,
           .healthcare-secondary-btn {
             width: 100%;
-
             min-height: 43px;
-          }
 
+            border-radius: 6px;
+          }
 
           .healthcare-hero-image {
             height: 275px;
-
             border-radius: 14px;
           }
-
 
           .healthcare-image-overlay {
             border-radius: 14px;
           }
 
-
           .healthcare-status-card {
             left: 8px;
-
             right: 8px;
 
             padding: 9px;
-
             gap: 8px;
           }
 
-
           .healthcare-status-icon {
             width: 29px;
-
             height: 29px;
           }
-
 
           .healthcare-status-title {
             font-size: 9px;
           }
 
-
           .healthcare-active-sync {
             display: none;
           }
-
         }
-
 
         /* =====================================================
            VERY SMALL MOBILE
         ===================================================== */
 
         @media (max-width: 340px) {
-
           .healthcare-hero-container {
-            padding:
-              38px 16px
-              42px;
+            padding: 38px 16px 42px;
           }
-
 
           .healthcare-hero-heading {
             font-size: 24px;
           }
 
-
           .healthcare-hero-description {
             font-size: 10px;
           }
 
+          .healthcare-primary-btn,
+          .healthcare-secondary-btn {
+            border-radius: 6px;
+          }
 
           .healthcare-hero-image {
             height: 245px;
           }
 
-
           .healthcare-status-title {
             font-size: 8.5px;
           }
-
         }
-
 
         /* =====================================================
            REDUCED MOTION
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
-
           .healthcare-primary-btn,
           .healthcare-secondary-btn {
             transition: none;
           }
 
-
           .healthcare-primary-btn:hover {
             transform: none;
           }
-
         }
-
       `}</style>
-
 
       {/* =====================================================
           MAIN CONTAINER
       ===================================================== */}
 
       <div className="healthcare-hero-container">
-
         <div className="healthcare-hero-grid">
 
-          {/* =================================================
-              LEFT CONTENT
-          ================================================= */}
-
+          {/* LEFT CONTENT */}
           <div className="healthcare-hero-content">
 
-            {/* BADGE - INTER */}
-
+            {/* BADGE */}
             <span className="healthcare-hero-badge">
-
               <span className="healthcare-hero-badge-dot" />
-
               HEALTHCARE &amp; LIFE SCIENCES • CONNECTED CARE PLATFORMS
-
             </span>
 
-
-            {/* MAIN HEADING - PLUS JAKARTA SANS */}
-
+            {/* MAIN HEADING */}
             <h1 className="healthcare-hero-heading">
               Technology for More Connected Healthcare Operations
             </h1>
 
-
-            {/* DESCRIPTION - PLUS JAKARTA SANS */}
-
+            {/* DESCRIPTION */}
             <p className="healthcare-hero-description">
               Healthcare organizations manage patients, people, resources,
               information and daily operations across multiple functions.
               The right technology can help bring these activities together
               in a more organized and connected environment.
             </p>
-
-
-            {/* DESCRIPTION - PLUS JAKARTA SANS */}
 
             <p
               className="
@@ -1091,20 +851,15 @@ export default function HealthcareHeroSection() {
               providers.
             </p>
 
-
-            {/* BUTTONS - INTER */}
-
+            {/* BUTTONS */}
             <div className="healthcare-hero-actions">
-
               <button
                 type="button"
                 className="healthcare-primary-btn"
               >
                 Talk to Our Healthcare Experts
-
                 <ArrowRight size={15} />
               </button>
-
 
               <button
                 type="button"
@@ -1115,49 +870,31 @@ export default function HealthcareHeroSection() {
               >
                 Get in Touch
               </button>
-
             </div>
 
-
-            {/* TRUST ITEMS - INTER */}
-
+            {/* TRUST ITEMS */}
             <div className="healthcare-trust-area">
-
               <div className="healthcare-trust-list">
+                {trustItems.map(({ icon: Icon, label }) => (
+                  <div
+                    key={label}
+                    className="healthcare-trust-item"
+                  >
+                    <Icon
+                      size={14}
+                      strokeWidth={1.8}
+                    />
 
-                {trustItems.map(
-                  ({ icon: Icon, label }) => (
-                    <div
-                      key={label}
-                      className="healthcare-trust-item"
-                    >
-
-                      <Icon
-                        size={14}
-                        strokeWidth={1.8}
-                      />
-
-                      <span>
-                        {label}
-                      </span>
-
-                    </div>
-                  )
-                )}
-
+                    <span>{label}</span>
+                  </div>
+                ))}
               </div>
-
             </div>
 
           </div>
 
-
-          {/* =================================================
-              RIGHT IMAGE
-          ================================================= */}
-
+          {/* RIGHT IMAGE */}
           <div className="healthcare-image-wrapper">
-
             <img
               src={HERO_IMAGE}
               alt="Healthcare team reviewing diagnostic monitors"
@@ -1166,57 +903,34 @@ export default function HealthcareHeroSection() {
 
             <div className="healthcare-image-overlay" />
 
-
-            {/* =================================================
-                FLOATING STATUS CARD
-            ================================================= */}
-
+            {/* FLOATING STATUS CARD */}
             <div className="healthcare-status-card">
-
               <span className="healthcare-status-icon">
-
                 <Activity
                   size={17}
                   strokeWidth={1.8}
                 />
-
               </span>
 
-
               <div className="healthcare-status-content">
-
                 <p className="healthcare-status-label">
                   TORCHX HEALTHCARE SUITE
                 </p>
 
-
-                {/* STATUS TITLE - PLUS JAKARTA SANS */}
-
                 <p className="healthcare-status-title">
                   Centralized Hospital Telemetry Node
                 </p>
-
               </div>
 
-
-              {/* ACTIVE SYNC - INTER */}
-
               <span className="healthcare-active-sync">
-
                 <span className="healthcare-active-dot" />
-
                 Active Sync
-
               </span>
-
             </div>
 
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }

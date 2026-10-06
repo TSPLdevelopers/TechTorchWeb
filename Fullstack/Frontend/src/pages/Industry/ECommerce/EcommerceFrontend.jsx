@@ -544,7 +544,7 @@ export default function ShoppingExperienceSection() {
         <div className="shopping-image-wrapper">
           <div className="shopping-image-container">
             <img
-              src="/shopping-experience.jpg"
+              src="/ecommerce2.png"
               alt="Warehouse staff verifying dispatch inventory"
               className="shopping-main-image"
             />

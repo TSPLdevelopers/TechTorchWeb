@@ -45,11 +45,6 @@ export default function HealthcareCtaBarSection() {
 
         /* =====================================================
            CONTAINER
-           
-           Desktop : 100px
-           Tablet  : 40px
-           Mobile  : 24px
-           Small   : 16px
         ===================================================== */
 
         .healthcare-cta-container {
@@ -78,7 +73,6 @@ export default function HealthcareCtaBarSection() {
 
         /* =====================================================
            BADGE
-           INTER
         ===================================================== */
 
         .healthcare-cta-badge {
@@ -103,7 +97,6 @@ export default function HealthcareCtaBarSection() {
 
         /* =====================================================
            HEADING
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .healthcare-cta-heading {
@@ -122,7 +115,6 @@ export default function HealthcareCtaBarSection() {
 
         /* =====================================================
            DESCRIPTION
-           INTER
         ===================================================== */
 
         .healthcare-cta-description {
@@ -165,7 +157,8 @@ export default function HealthcareCtaBarSection() {
 
           padding: 11px 19px;
 
-          border-radius: 999px;
+          /* UPDATED BUTTON RADIUS */
+          border-radius: 6px;
 
           font-family: "Inter", sans-serif;
           font-size: 12px;
@@ -413,6 +406,9 @@ export default function HealthcareCtaBarSection() {
             padding: 11px 16px;
 
             font-size: 11px;
+
+            /* SAME RADIUS ON MOBILE */
+            border-radius: 6px;
           }
 
           .healthcare-cta-trust {
@@ -459,6 +455,8 @@ export default function HealthcareCtaBarSection() {
             min-height: 43px;
 
             font-size: 10.5px;
+
+            border-radius: 6px;
           }
 
           .healthcare-cta-trust-text {
@@ -490,6 +488,8 @@ export default function HealthcareCtaBarSection() {
           .healthcare-cta-primary,
           .healthcare-cta-secondary {
             font-size: 10px;
+
+            border-radius: 6px;
           }
 
           .healthcare-cta-trust-text {
@@ -524,11 +524,9 @@ export default function HealthcareCtaBarSection() {
       ===================================================== */}
 
       <div className="healthcare-cta-container">
-
         <div className="healthcare-cta-main">
 
           <div className="healthcare-cta-content">
-
             <span className="healthcare-cta-badge">
               HEALTHCARE TRANSFORMATION DESK
             </span>
@@ -544,13 +542,9 @@ export default function HealthcareCtaBarSection() {
               together with technology designed around the way your
               organization works.
             </p>
-
           </div>
 
-          {/* =================================================
-              BUTTONS
-          ================================================= */}
-
+          {/* BUTTONS */}
           <div className="healthcare-cta-buttons">
 
             <button className="healthcare-cta-primary">
@@ -563,15 +557,11 @@ export default function HealthcareCtaBarSection() {
             </button>
 
           </div>
-
         </div>
 
-        {/* =================================================
-            TRUST ITEMS
-        ================================================= */}
+        {/* TRUST ITEMS */}
 
         <div className="healthcare-cta-trust">
-
           <div className="healthcare-cta-trust-list">
 
             {trustItems.map(({ icon: Icon, label }) => (
@@ -592,7 +582,6 @@ export default function HealthcareCtaBarSection() {
             ))}
 
           </div>
-
         </div>
 
       </div>

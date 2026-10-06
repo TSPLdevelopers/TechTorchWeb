@@ -371,7 +371,7 @@ export default function TelecomHeroSection() {
                   gap-2
                   px-5
                   py-3
-                  rounded-full
+                  rounded-[6px]
                   text-white
                   text-sm
                   font-medium
@@ -397,7 +397,7 @@ export default function TelecomHeroSection() {
                   gap-2
                   px-5
                   py-3
-                  rounded-full
+                  rounded-[6px]
                   text-sm
                   font-medium
                   border
@@ -408,7 +408,7 @@ export default function TelecomHeroSection() {
                 }}
               >
                 Talk to Our Experts
-                <Headphones size={16} />
+                
               </button>
             </div>
           </div>
@@ -429,7 +429,7 @@ export default function TelecomHeroSection() {
               "
             >
               <img
-                src="/Telecommunication.png"
+                src="/telecommunication.png"
                 alt="Telecommunications technology solutions"
                 className="
                   w-full

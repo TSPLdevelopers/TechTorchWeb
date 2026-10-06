@@ -554,7 +554,7 @@ export default function ConnectedTransportationSection() {
           <div className="connected-transportation-image-wrapper">
 
             <img
-              src="/connected-transportation.png"
+              src="/transportation2.png"
               alt="Connected transportation operations"
               className="connected-transportation-image"
             />
