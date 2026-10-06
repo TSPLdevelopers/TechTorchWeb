@@ -13,6 +13,18 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
+// =================================================
+// COLORS
+// =================================================
+
+const MAROON_DARK = "#4a0a30";
+const MAROON = "#7a0f47";
+const MAROON_LIGHT = "#8a1450";
+
+// =================================================
+// INDUSTRIES
+// =================================================
+
 const industries = [
   {
     icon: Landmark,
@@ -76,291 +88,812 @@ const industries = [
   },
 ];
 
+// =================================================
+// COMPONENT
+// =================================================
+
 export default function AIEcosystemIntegration() {
   return (
-    <section
-      className="
-        relative
-        flex
-        min-h-[650px]
-        w-full
-        justify-center
-        overflow-hidden
-        sm:min-h-[700px]
-        md:min-h-[760px]
-      "
-      style={{
-        background:
-          "radial-gradient(120% 140% at 10% 100%, #4a0a30 0%, #7a0f47 45%, #8a1450 100%)",
-      }}
-    >
-      {/* =====================================================
+    <section className="ai-ecosystem-section">
+
+      {/* =================================================
           DIAGONAL STRIPE OVERLAY
-          Very light / subtle like reference
-      ====================================================== */}
+      ================================================= */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          opacity-[0.035]
-          sm:opacity-[0.04]
-        "
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(45deg, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0.9) 1px, transparent 1px, transparent 30px)",
-        }}
-      />
+      <div className="ai-ecosystem-stripes" />
 
-      {/* Additional soft layer */}
+      {/* =================================================
+          SOFT GRADIENT OVERLAY
+      ================================================= */}
 
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          opacity-[0.025]
-        "
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
-        }}
-      />
+      <div className="ai-ecosystem-soft-layer" />
 
-      {/* =====================================================
+      {/* =================================================
           MAIN CONTAINER
-      ====================================================== */}
 
-      <div
-        className="
-          relative
-          z-10
-          w-full
-          max-w-6xl
-          px-4
-          py-10
-          sm:px-6
-          sm:py-12
-          md:px-8
-          md:py-16
-          lg:px-10
-          lg:py-20
-        "
-      >
-        {/* =====================================================
+          Desktop: 100px
+          Tablet: 40px
+          Mobile: 24px
+          Small Mobile: 16px
+      ================================================= */}
+
+      <div className="ai-ecosystem-container">
+
+        {/* =================================================
             EYEBROW
-        ====================================================== */}
+        ================================================= */}
 
-        <div
-          className="
-            mb-5
-            inline-flex
-            items-center
-            gap-2
-            rounded-full
-            border
-            border-white/15
-            bg-white/5
-            px-3
-            py-1.5
-            sm:mb-6
-            sm:px-4
-            sm:py-1.5
-          "
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
+        <div className="ai-ecosystem-eyebrow">
+          <span className="ai-ecosystem-dot" />
 
-          <span
-            className="
-              font-['Inter']
-              text-[8px]
-              font-medium
-              uppercase
-              tracking-[0.12em]
-              text-rose-100/90
-              sm:text-[9px]
-              md:text-[10px]
-            "
-          >
+          <span className="ai-ecosystem-eyebrow-text">
             Ecosystem Integration
           </span>
         </div>
 
-        {/* =====================================================
+        {/* =================================================
             HEADING
-        ====================================================== */}
+        ================================================= */}
 
-        <h1
-          className="
-            mb-4
-            max-w-3xl
-            font-['Plus_Jakarta_Sans']
-            text-[27px]
-            font-bold
-            leading-[1.15]
-            tracking-[-0.025em]
-            text-white
-            sm:mb-5
-            sm:text-[34px]
-            md:text-[40px]
-            lg:text-[44px]
-          "
-        >
+        <h1 className="ai-ecosystem-heading">
           Artificial Intelligence Within Your Business Technology Environment
         </h1>
 
-        {/* =====================================================
-            SUB HEADING / BODY
-        ====================================================== */}
+        {/* =================================================
+            DESCRIPTION
+        ================================================= */}
 
-        <p
-          className="
-            mb-7
-            max-w-3xl
-            font-['Inter']
-            text-[11.5px]
-            leading-[1.65]
-            text-rose-100/70
-            sm:mb-9
-            sm:text-[13px]
-            md:mb-10
-            md:text-[14px]
-          "
-        >
+        <p className="ai-ecosystem-description">
           How TechTorch embeds sovereign artificial intelligence seamlessly
           into industry-specific digital architectures, ensuring
           high-compliance execution, data isolation, and immediate domain
           value.
         </p>
 
-        {/* =====================================================
+        {/* =================================================
             INDUSTRY GRID
-        ====================================================== */}
+        ================================================= */}
 
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-3
-            sm:grid-cols-2
-            sm:gap-4
-          "
-        >
-          {industries.map(({ icon: Icon, title, description }) => (
-            <div
-              key={title}
-              className="
-                group
-                flex
-                min-h-[78px]
-                items-start
-                gap-3
-                rounded-xl
-                border
-                border-white/10
-                bg-white/[0.055]
-                px-3
-                py-3
-                transition-all
-                duration-300
-                hover:bg-white/[0.08]
-                hover:border-white/15
-                sm:min-h-[84px]
-                sm:gap-4
-                sm:px-4
-                sm:py-3.5
-                md:px-5
-                md:py-4
-              "
-            >
-              {/* Icon */}
-
+        <div className="ai-ecosystem-grid">
+          {industries.map(
+            ({ icon: Icon, title, description }) => (
               <div
-                className="
-                  flex
-                  h-8
-                  w-8
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-lg
-                  border
-                  border-white/10
-                  bg-white/[0.08]
-                  transition-transform
-                  duration-300
-                  group-hover:scale-105
-                  sm:h-9
-                  sm:w-9
-                "
+                key={title}
+                className="ai-ecosystem-card"
               >
-                <Icon
-                  className="
-                    h-3.5
-                    w-3.5
-                    text-white/90
-                    sm:h-4
-                    sm:w-4
-                  "
-                />
+
+                {/* =================================================
+                    ICON
+                ================================================= */}
+
+                <div className="ai-ecosystem-icon-wrapper">
+                  <Icon className="ai-ecosystem-icon" />
+                </div>
+
+                {/* =================================================
+                    CONTENT
+                ================================================= */}
+
+                <div className="ai-ecosystem-card-content">
+
+                  <h3 className="ai-ecosystem-card-title">
+                    {title}
+                  </h3>
+
+                  <p className="ai-ecosystem-card-description">
+                    {description}
+                  </p>
+                </div>
+
+                {/* =================================================
+                    ARROW
+                ================================================= */}
+
+                <ArrowUpRight className="ai-ecosystem-arrow" />
               </div>
-
-              {/* Content */}
-
-              <div className="min-w-0 flex-1">
-                <h3
-                  className="
-                    mb-1
-                    font-['Plus_Jakarta_Sans']
-                    text-[11.5px]
-                    font-semibold
-                    leading-snug
-                    text-white
-                    sm:text-[13px]
-                    md:text-[14px]
-                  "
-                >
-                  {title}
-                </h3>
-
-                <p
-                  className="
-                    font-['Inter']
-                    text-[9.5px]
-                    leading-[1.55]
-                    text-rose-100/55
-                    sm:text-[10.5px]
-                    md:text-[11px]
-                    lg:text-[11.5px]
-                  "
-                >
-                  {description}
-                </p>
-              </div>
-
-              {/* Arrow */}
-
-              <ArrowUpRight
-                className="
-                  mt-0.5
-                  h-3
-                  w-3
-                  shrink-0
-                  text-rose-100/35
-                  transition-all
-                  duration-300
-                  group-hover:translate-x-0.5
-                  group-hover:-translate-y-0.5
-                  group-hover:text-white/70
-                  sm:h-3.5
-                  sm:w-3.5
-                "
-              />
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
+
+      {/* =================================================
+          RESPONSIVE CSS
+      ================================================= */}
+
+      <style>{`
+
+        /* =================================================
+           MAIN SECTION
+        ================================================= */
+
+        .ai-ecosystem-section {
+          position: relative;
+
+          width: 100%;
+          min-height: 650px;
+
+          display: flex;
+          justify-content: center;
+
+          overflow: hidden;
+
+          background:
+            radial-gradient(
+              120% 140% at 10% 100%,
+              ${MAROON_DARK} 0%,
+              ${MAROON} 45%,
+              ${MAROON_LIGHT} 100%
+            );
+        }
+
+        /* =================================================
+           DIAGONAL STRIPES
+        ================================================= */
+
+        .ai-ecosystem-stripes {
+          position: absolute;
+          inset: 0;
+
+          pointer-events: none;
+
+          opacity: 0.035;
+
+          background-image:
+            repeating-linear-gradient(
+              45deg,
+              rgba(255, 255, 255, 0.9) 0px,
+              rgba(255, 255, 255, 0.9) 1px,
+              transparent 1px,
+              transparent 30px
+            );
+        }
+
+        /* =================================================
+           SOFT LAYER
+        ================================================= */
+
+        .ai-ecosystem-soft-layer {
+          position: absolute;
+          inset: 0;
+
+          pointer-events: none;
+
+          opacity: 0.025;
+
+          background-image:
+            linear-gradient(
+              135deg,
+              transparent 0%,
+              rgba(255, 255, 255, 0.15) 50%,
+              transparent 100%
+            );
+        }
+
+        /* =================================================
+           MAIN CONTAINER
+
+           Desktop
+           100px left/right
+        ================================================= */
+
+        .ai-ecosystem-container {
+          position: relative;
+          z-index: 10;
+
+          width: 100%;
+          box-sizing: border-box;
+
+          padding-left: 100px;
+          padding-right: 100px;
+
+          padding-top: 72px;
+          padding-bottom: 72px;
+        }
+
+        /* =================================================
+           EYEBROW
+        ================================================= */
+
+        .ai-ecosystem-eyebrow {
+          display: inline-flex;
+          align-items: center;
+
+          gap: 8px;
+
+          margin-bottom: 20px;
+
+          padding: 7px 13px;
+
+          border: 1px solid rgba(255, 255, 255, 0.15);
+
+          border-radius: 999px;
+
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .ai-ecosystem-dot {
+          width: 6px;
+          height: 6px;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+
+          background: #fda4af;
+        }
+
+        .ai-ecosystem-eyebrow-text {
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+          font-weight: 500;
+
+          line-height: 1.3;
+
+          letter-spacing: 0.12em;
+
+          text-transform: uppercase;
+
+          color: rgba(255, 241, 242, 0.9);
+        }
+
+        /* =================================================
+           MAIN HEADING
+        ================================================= */
+
+        .ai-ecosystem-heading {
+          max-width: 900px;
+
+          margin: 0 0 16px 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 44px;
+          font-weight: 700;
+
+          line-height: 1.15;
+
+          letter-spacing: -0.025em;
+
+          color: #ffffff;
+        }
+
+        /* =================================================
+           DESCRIPTION
+        ================================================= */
+
+        .ai-ecosystem-description {
+          max-width: 850px;
+
+          margin: 0 0 42px 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 14px;
+          font-weight: 400;
+
+          line-height: 1.7;
+
+          color: rgba(255, 241, 242, 0.7);
+        }
+
+        /* =================================================
+           INDUSTRY GRID
+        ================================================= */
+
+        .ai-ecosystem-grid {
+          width: 100%;
+
+          display: grid;
+
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+          gap: 14px 18px;
+        }
+
+        /* =================================================
+           INDUSTRY CARD
+        ================================================= */
+
+        .ai-ecosystem-card {
+          min-width: 0;
+
+          min-height: 86px;
+
+          display: flex;
+          align-items: flex-start;
+
+          gap: 15px;
+
+          box-sizing: border-box;
+
+          padding: 15px 17px;
+
+          border: 1px solid rgba(255, 255, 255, 0.1);
+
+          border-radius: 12px;
+
+          background: rgba(255, 255, 255, 0.055);
+
+          transition:
+            background 0.3s ease,
+            border-color 0.3s ease,
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .ai-ecosystem-card:hover {
+          transform: translateY(-2px);
+
+          border-color: rgba(255, 255, 255, 0.18);
+
+          background: rgba(255, 255, 255, 0.09);
+
+          box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* =================================================
+           ICON WRAPPER
+        ================================================= */
+
+        .ai-ecosystem-icon-wrapper {
+          width: 38px;
+          height: 38px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          box-sizing: border-box;
+
+          border: 1px solid rgba(255, 255, 255, 0.1);
+
+          border-radius: 8px;
+
+          background: rgba(255, 255, 255, 0.08);
+
+          transition:
+            transform 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease;
+        }
+
+        .ai-ecosystem-card:hover
+        .ai-ecosystem-icon-wrapper {
+          transform: scale(1.07);
+
+          border-color: rgba(255, 255, 255, 0.2);
+
+          background: rgba(255, 255, 255, 0.12);
+        }
+
+        .ai-ecosystem-icon {
+          width: 17px;
+          height: 17px;
+
+          color: rgba(255, 255, 255, 0.9);
+
+          transition: transform 0.3s ease;
+        }
+
+        .ai-ecosystem-card:hover
+        .ai-ecosystem-icon {
+          transform: scale(1.12);
+        }
+
+        /* =================================================
+           CARD CONTENT
+        ================================================= */
+
+        .ai-ecosystem-card-content {
+          min-width: 0;
+
+          flex: 1;
+        }
+
+        /* =================================================
+           CARD TITLE
+        ================================================= */
+
+        .ai-ecosystem-card-title {
+          margin: 0 0 4px 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 14px;
+          font-weight: 600;
+
+          line-height: 1.4;
+
+          color: #ffffff;
+        }
+
+        /* =================================================
+           CARD DESCRIPTION
+        ================================================= */
+
+        .ai-ecosystem-card-description {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11.5px;
+          font-weight: 400;
+
+          line-height: 1.55;
+
+          color: rgba(255, 241, 242, 0.55);
+        }
+
+        /* =================================================
+           ARROW
+        ================================================= */
+
+        .ai-ecosystem-arrow {
+          width: 14px;
+          height: 14px;
+
+          flex-shrink: 0;
+
+          margin-top: 2px;
+
+          color: rgba(255, 241, 242, 0.35);
+
+          transition:
+            transform 0.3s ease,
+            color 0.3s ease;
+        }
+
+        .ai-ecosystem-card:hover
+        .ai-ecosystem-arrow {
+          transform:
+            translateX(2px)
+            translateY(-2px);
+
+          color: rgba(255, 255, 255, 0.75);
+        }
+
+        /* =================================================
+           LARGE TABLET
+           <= 1200px
+
+           Horizontal spacing = 40px
+        ================================================= */
+
+        @media (max-width: 1200px) {
+
+          .ai-ecosystem-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 62px;
+            padding-bottom: 62px;
+          }
+
+          .ai-ecosystem-heading {
+            max-width: 800px;
+
+            font-size: 40px;
+          }
+
+          .ai-ecosystem-description {
+            max-width: 760px;
+
+            margin-bottom: 38px;
+
+            font-size: 13.5px;
+          }
+
+          .ai-ecosystem-grid {
+            gap: 13px 16px;
+          }
+        }
+
+        /* =================================================
+           TABLET
+           <= 900px
+
+           Horizontal spacing = 40px
+        ================================================= */
+
+        @media (max-width: 900px) {
+
+          .ai-ecosystem-section {
+            min-height: auto;
+          }
+
+          .ai-ecosystem-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 54px;
+            padding-bottom: 54px;
+          }
+
+          .ai-ecosystem-eyebrow {
+            margin-bottom: 17px;
+          }
+
+          .ai-ecosystem-heading {
+            max-width: 720px;
+
+            font-size: 34px;
+
+            line-height: 1.18;
+          }
+
+          .ai-ecosystem-description {
+            max-width: 700px;
+
+            margin-bottom: 34px;
+
+            font-size: 13px;
+          }
+
+          .ai-ecosystem-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 12px 14px;
+          }
+
+          .ai-ecosystem-card {
+            min-height: 84px;
+
+            gap: 12px;
+
+            padding: 13px 14px;
+          }
+
+          .ai-ecosystem-icon-wrapper {
+            width: 36px;
+            height: 36px;
+          }
+
+          .ai-ecosystem-icon {
+            width: 16px;
+            height: 16px;
+          }
+
+          .ai-ecosystem-card-title {
+            font-size: 13px;
+          }
+
+          .ai-ecosystem-card-description {
+            font-size: 10.5px;
+          }
+        }
+
+        /* =================================================
+           MOBILE
+           <= 700px
+
+           Horizontal spacing = 24px
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+          .ai-ecosystem-container {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 46px;
+            padding-bottom: 46px;
+          }
+
+          .ai-ecosystem-eyebrow {
+            gap: 7px;
+
+            margin-bottom: 15px;
+
+            padding: 6px 11px;
+          }
+
+          .ai-ecosystem-dot {
+            width: 5px;
+            height: 5px;
+          }
+
+          .ai-ecosystem-eyebrow-text {
+            font-size: 9px;
+
+            letter-spacing: 0.1em;
+          }
+
+          .ai-ecosystem-heading {
+            max-width: 100%;
+
+            margin-bottom: 13px;
+
+            font-size: 29px;
+
+            line-height: 1.2;
+          }
+
+          .ai-ecosystem-description {
+            max-width: 100%;
+
+            margin-bottom: 30px;
+
+            font-size: 12px;
+
+            line-height: 1.65;
+          }
+
+          .ai-ecosystem-grid {
+            grid-template-columns: 1fr;
+
+            gap: 12px;
+          }
+
+          .ai-ecosystem-card {
+            min-height: auto;
+
+            gap: 12px;
+
+            padding: 13px;
+          }
+
+          .ai-ecosystem-icon-wrapper {
+            width: 36px;
+            height: 36px;
+          }
+
+          .ai-ecosystem-card-title {
+            font-size: 13px;
+          }
+
+          .ai-ecosystem-card-description {
+            font-size: 10.5px;
+
+            line-height: 1.55;
+          }
+
+          .ai-ecosystem-arrow {
+            width: 13px;
+            height: 13px;
+          }
+        }
+
+        /* =================================================
+           SMALL MOBILE
+           <= 480px
+
+           Horizontal spacing = 16px
+        ================================================= */
+
+        @media (max-width: 480px) {
+
+          .ai-ecosystem-container {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 38px;
+            padding-bottom: 38px;
+          }
+
+          .ai-ecosystem-eyebrow {
+            margin-bottom: 13px;
+
+            padding: 5px 9px;
+          }
+
+          .ai-ecosystem-eyebrow-text {
+            font-size: 8px;
+
+            letter-spacing: 0.09em;
+          }
+
+          .ai-ecosystem-heading {
+            margin-bottom: 11px;
+
+            font-size: 25px;
+
+            line-height: 1.2;
+          }
+
+          .ai-ecosystem-description {
+            margin-bottom: 25px;
+
+            font-size: 11.5px;
+
+            line-height: 1.65;
+          }
+
+          .ai-ecosystem-grid {
+            gap: 10px;
+          }
+
+          .ai-ecosystem-card {
+            gap: 10px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+          }
+
+          .ai-ecosystem-icon-wrapper {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 7px;
+          }
+
+          .ai-ecosystem-icon {
+            width: 15px;
+            height: 15px;
+          }
+
+          .ai-ecosystem-card-title {
+            margin-bottom: 3px;
+
+            font-size: 12px;
+          }
+
+          .ai-ecosystem-card-description {
+            font-size: 10px;
+
+            line-height: 1.55;
+          }
+
+          .ai-ecosystem-arrow {
+            width: 12px;
+            height: 12px;
+
+            margin-top: 1px;
+          }
+        }
+
+        /* =================================================
+           EXTRA SMALL
+           <= 360px
+
+           Horizontal spacing = 16px
+        ================================================= */
+
+        @media (max-width: 360px) {
+
+          .ai-ecosystem-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .ai-ecosystem-heading {
+            font-size: 23px;
+          }
+
+          .ai-ecosystem-description {
+            font-size: 10.8px;
+          }
+
+          .ai-ecosystem-card {
+            padding: 11px;
+          }
+
+          .ai-ecosystem-icon-wrapper {
+            width: 32px;
+            height: 32px;
+          }
+
+          .ai-ecosystem-icon {
+            width: 14px;
+            height: 14px;
+          }
+
+          .ai-ecosystem-card-title {
+            font-size: 11.5px;
+          }
+
+          .ai-ecosystem-card-description {
+            font-size: 9.5px;
+          }
+        }
+
+      `}</style>
     </section>
   );
 }

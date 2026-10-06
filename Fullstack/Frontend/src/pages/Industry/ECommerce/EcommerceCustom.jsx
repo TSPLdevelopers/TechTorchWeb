@@ -78,10 +78,23 @@ export default function CustomArchitectureGridSection() {
         fontFamily: "Inter, sans-serif",
       }}
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-[100px] py-12 sm:py-14 md:py-16 lg:py-20">
-
-        {/* ================= LABEL ================= */}
-
+      {/* MAIN CONTAINER */}
+      <div
+        className="
+          w-full
+          max-w-[1400px]
+          mx-auto
+          px-4
+          sm:px-6
+          md:px-10
+          lg:px-[100px]
+          py-12
+          sm:py-14
+          md:py-16
+          lg:py-20
+        "
+      >
+        {/* LABEL */}
         <p
           className="text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] mb-3"
           style={{
@@ -92,8 +105,7 @@ export default function CustomArchitectureGridSection() {
           CUSTOM ARCHITECTURE
         </p>
 
-        {/* ================= HEADING ================= */}
-
+        {/* HEADING */}
         <h2
           className="
             text-2xl
@@ -113,8 +125,7 @@ export default function CustomArchitectureGridSection() {
           Extend Your E-Commerce Technology
         </h2>
 
-        {/* ================= SUBHEADING ================= */}
-
+        {/* SUBHEADING */}
         <p
           className="
             text-xs
@@ -137,16 +148,16 @@ export default function CustomArchitectureGridSection() {
           software development.
         </p>
 
-        {/* ================= CARDS ================= */}
-
+        {/* CARDS */}
         <div
           className="
             grid
             grid-cols-1
             sm:grid-cols-2
             lg:grid-cols-3
-            gap-4
-            sm:gap-5
+            gap-5
+            sm:gap-6
+            lg:gap-7
           "
         >
           {cards.map(({ icon: Icon, title, body }, index) => (
@@ -161,26 +172,18 @@ export default function CustomArchitectureGridSection() {
                 rounded-xl
                 p-5
                 sm:p-6
-                ${
-                  isVisible
-                    ? "custom-card-visible"
-                    : "custom-card-hidden"
-                }
+                ${isVisible ? "custom-card-visible" : "custom-card-hidden"}
               `}
               style={{
-                transitionDelay: isVisible
-                  ? `${index * 160}ms`
-                  : "0ms",
+                transitionDelay: isVisible ? `${index * 160}ms` : "0ms",
               }}
             >
-              {/* ================= ICON ================= */}
-
+              {/* ICON */}
               <span className="card-icon">
                 <Icon size={17} strokeWidth={1.8} />
               </span>
 
-              {/* ================= TITLE ================= */}
-
+              {/* TITLE */}
               <h3
                 className="
                   mt-4
@@ -197,8 +200,7 @@ export default function CustomArchitectureGridSection() {
                 {title}
               </h3>
 
-              {/* ================= DESCRIPTION ================= */}
-
+              {/* DESCRIPTION */}
               <p
                 className="
                   mt-2
@@ -214,21 +216,16 @@ export default function CustomArchitectureGridSection() {
                 {body}
               </p>
 
-              {/* ================= BOTTOM LINE ================= */}
-
+              {/* BOTTOM LINE */}
               <div className="card-bottom-line" />
             </div>
           ))}
         </div>
       </div>
 
-      {/* ================= CUSTOM CSS ================= */}
-
+      {/* CUSTOM CSS */}
       <style>{`
-        /* ==========================================
-           CARD ENTRY ANIMATION
-        ========================================== */
-
+        /* CARD ENTRY ANIMATION */
         .custom-card {
           opacity: 0;
           transform: translateY(45px) scale(0.88);
@@ -252,17 +249,10 @@ export default function CustomArchitectureGridSection() {
           filter: blur(0);
         }
 
-
-        /* ==========================================
-           HOVER
-           EXACT CARD POP-UP STYLE
-        ========================================== */
-
+        /* CARD HOVER */
         .custom-card-visible:hover {
           transform: translateY(-8px) scale(1.025);
-
           background: #fbeef1;
-
           border-color: rgba(122, 31, 61, 0.25);
 
           box-shadow:
@@ -270,12 +260,7 @@ export default function CustomArchitectureGridSection() {
             0 5px 12px rgba(0, 0, 0, 0.05);
         }
 
-
-        /* ==========================================
-           ICON
-           ICON DOES NOT MOVE
-        ========================================== */
-
+        /* ICON - DOES NOT MOVE */
         .card-icon {
           width: 36px;
           height: 36px;
@@ -290,6 +275,7 @@ export default function CustomArchitectureGridSection() {
           color: #ffffff;
 
           transform: none !important;
+
           transition:
             background 0.3s ease,
             color 0.3s ease;
@@ -297,18 +283,12 @@ export default function CustomArchitectureGridSection() {
 
         .custom-card:hover .card-icon {
           transform: none !important;
-
           background: #ffffff;
           color: #7a1f3d;
-
           box-shadow: none;
         }
 
-
-        /* ==========================================
-           TITLE
-        ========================================== */
-
+        /* TITLE */
         .custom-card h3 {
           transition: color 0.3s ease;
         }
@@ -317,11 +297,7 @@ export default function CustomArchitectureGridSection() {
           color: #7a1f3d !important;
         }
 
-
-        /* ==========================================
-           DESCRIPTION
-        ========================================== */
-
+        /* DESCRIPTION */
         .custom-card p {
           transition: color 0.3s ease;
         }
@@ -330,14 +306,9 @@ export default function CustomArchitectureGridSection() {
           color: #5b5a63 !important;
         }
 
-
-        /* ==========================================
-           BOTTOM WINE LINE
-        ========================================== */
-
+        /* BOTTOM WINE LINE */
         .card-bottom-line {
           position: absolute;
-
           left: 0;
           bottom: 0;
 
@@ -357,17 +328,11 @@ export default function CustomArchitectureGridSection() {
           transform: scaleX(1);
         }
 
-
-        /* ==========================================
-           MOBILE / TOUCH DEVICES
-        ========================================== */
-
+        /* MOBILE / TOUCH DEVICES */
         @media (hover: none) {
           .custom-card-visible:hover {
             transform: translateY(0) scale(1);
-
             background: rgba(255, 255, 255, 0.08);
-
             box-shadow: none;
           }
 
@@ -389,11 +354,7 @@ export default function CustomArchitectureGridSection() {
           }
         }
 
-
-        /* ==========================================
-           REDUCED MOTION
-        ========================================== */
-
+        /* REDUCED MOTION */
         @media (prefers-reduced-motion: reduce) {
           .custom-card {
             opacity: 1;

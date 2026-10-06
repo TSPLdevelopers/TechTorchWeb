@@ -17,7 +17,7 @@ const services = [
     title: "IT Consultancy",
     description: "Technology guidance based on business requirements.",
     image:
-      "https://images.unsplash.com/photo-1758518726324-62bef7c815b0?auto=format&fit=crop&w=800&q=80",
+      "/fmcgtech1.png",
   },
   {
     number: "02",
@@ -26,7 +26,7 @@ const services = [
     description:
       "AI services designed to help businesses use AI capabilities without building and maintaining their own infrastructure.",
     image:
-      "https://images.pexels.com/photos/12899191/pexels-photo-12899191.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/fmcgtech2.png",
   },
   {
     number: "03",
@@ -35,7 +35,7 @@ const services = [
     description:
       "Cloud infrastructure services for business technology environments.",
     image:
-      "https://images.pexels.com/photos/17489153/pexels-photo-17489153/free-photo-of-light-on-computer.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/fmcgtech3.png",
     dark: true,
   },
   {
@@ -45,7 +45,7 @@ const services = [
     description:
       "Cybersecurity services focused on protecting digital assets and technology environments.",
     image:
-      "https://images.pexels.com/photos/5380607/pexels-photo-5380607.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/Diversemodern engineeringteam.png",
     dark: true,
   },
   {
@@ -55,7 +55,7 @@ const services = [
     description:
       "Engineering services covering software, systems and product development.",
     image:
-      "https://images.pexels.com/photos/12899153/pexels-photo-12899153.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/benchhiring.png",
   },
   {
     number: "06",
@@ -63,7 +63,7 @@ const services = [
     title: "Business Process Outsourcing",
     description: "BPO services designed to support business operations.",
     image:
-      "https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&w=800&q=80",
+      "/DeploymentMethodology.png",
   },
   {
     number: "07",
@@ -72,7 +72,7 @@ const services = [
     description:
       "Development and ongoing support for business software.",
     image:
-      "https://images.pexels.com/photos/3184356/pexels-photo-3184356.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/fmcgtech7.png",
   },
   {
     number: "08",
@@ -81,7 +81,7 @@ const services = [
     description:
       "Technology resources and flexible workforce solutions.",
     image:
-      "https://images.pexels.com/photos/3184663/pexels-photo-3184663.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "/fmcgtech8.png",
   },
 ];
 

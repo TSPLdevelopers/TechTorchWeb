@@ -11,6 +11,10 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+// =================================================
+// STEPS
+// =================================================
+
 const STEPS = [
   {
     number: "01",
@@ -49,17 +53,38 @@ const STEPS = [
   },
 ];
 
+// =================================================
+// CTA PILLS
+// =================================================
+
 const PILLS = [
-  { icon: Clock, label: "24h Rapid Response" },
-  { icon: ShieldCheck, label: "Direct Senior Architect Advisory" },
-  { icon: Lock, label: "Enterprise NDA & Security First" },
+  {
+    icon: Clock,
+    label: "24h Rapid Response",
+  },
+  {
+    icon: ShieldCheck,
+    label: "Direct Senior Architect Advisory",
+  },
+  {
+    icon: Lock,
+    label: "Enterprise NDA & Security First",
+  },
 ];
+
+// =================================================
+// COMPONENT
+// =================================================
 
 export default function ApproachAndCtaSection() {
   const timelineRef = useRef(null);
   const timersRef = useRef([]);
 
   const [activeSteps, setActiveSteps] = useState([]);
+
+  // =================================================
+  // TIMELINE ANIMATION
+  // =================================================
 
   useEffect(() => {
     const section = timelineRef.current;
@@ -72,14 +97,13 @@ export default function ApproachAndCtaSection() {
       });
 
       timersRef.current = [];
+
       setActiveSteps([]);
     };
 
     const startAnimation = () => {
-      // Clear any previous animation
       clearAnimation();
 
-      // Start steps one by one
       STEPS.forEach((_, index) => {
         const timer = setTimeout(() => {
           setActiveSteps((prev) => {
@@ -100,11 +124,8 @@ export default function ApproachAndCtaSection() {
         const entry = entries[0];
 
         if (entry.isIntersecting) {
-          // Section viewport mein aaya
           startAnimation();
         } else {
-          // Section viewport se bahar gaya
-          // Animation reset ho jayegi
           clearAnimation();
         }
       },
@@ -121,245 +142,114 @@ export default function ApproachAndCtaSection() {
     };
   }, []);
 
-  return (
-    <section className="w-full bg-[#faf9fb]">
+  // =================================================
+  // JSX
+  // =================================================
 
-      {/* =====================================================
+  return (
+    <section className="approach-section">
+
+      {/* =================================================
           TIMELINE SECTION
-      ====================================================== */}
+      ================================================= */}
 
       <div
         ref={timelineRef}
-        className="
-          mx-auto
-          w-full
-          max-w-6xl
-          px-4
-          pt-10
-          pb-12
-          sm:px-6
-          sm:pt-14
-          sm:pb-14
-          md:px-8
-          md:pt-16
-          md:pb-16
-          lg:px-10
-          lg:pt-20
-          lg:pb-16
-        "
+        className="approach-timeline"
       >
-        {/* ================= HEADER ================= */}
+        {/* =================================================
+            HEADER
+        ================================================= */}
 
-        <div
-          className="
-            mx-auto
-            mb-9
-            w-full
-            max-w-2xl
-            text-center
-            sm:mb-11
-            md:mb-12
-          "
-        >
-          {/* Label */}
+        <div className="approach-header">
 
-          <div
-            className="
-              mb-3
-              flex
-              items-center
-              justify-center
-              gap-2.5
-              sm:mb-4
-              sm:gap-3
-            "
-          >
-            <span
-              className="h-px w-6 sm:w-8 md:w-10"
-              style={{ backgroundColor: "#730024" }}
-            />
+          {/* LABEL */}
 
-            <span
-              className="
-                font-['Inter']
-                text-[9px]
-                font-bold
-                uppercase
-                tracking-[0.14em]
-                sm:text-[10px]
-                md:text-[11px]
-              "
-              style={{ color: "#730024" }}
-            >
+          <div className="approach-label">
+            <span className="approach-label-line" />
+
+            <span className="approach-label-text">
               From Requirement to Reality
             </span>
 
-            <span
-              className="h-px w-6 sm:w-8 md:w-10"
-              style={{ backgroundColor: "#730024" }}
-            />
+            <span className="approach-label-line" />
           </div>
 
-          {/* Heading */}
+          {/* HEADING */}
 
-          <h2
-            className="
-              font-['Plus_Jakarta_Sans']
-              text-[23px]
-              font-bold
-              leading-[1.2]
-              tracking-[-0.02em]
-              text-slate-900
-              sm:text-[28px]
-              md:text-[30px]
-              lg:text-[32px]
-            "
-          >
+          <h2 className="approach-heading">
             Our Approach
           </h2>
         </div>
 
-        {/* ================= STEPS ================= */}
+        {/* =================================================
+            STEPS
+        ================================================= */}
 
-        <div
-          className="
-            relative
-            grid
-            grid-cols-1
-            gap-7
-            sm:grid-cols-2
-            sm:gap-x-5
-            sm:gap-y-10
-            lg:grid-cols-5
-            lg:gap-4
-          "
-        >
-          {/* Desktop Connecting Line */}
+        <div className="approach-steps">
 
-          <div
-            className="
-              absolute
-              left-[10%]
-              right-[10%]
-              top-6
-              hidden
-              h-px
-              bg-slate-200
-              lg:block
-            "
-          />
+          {/* DESKTOP CONNECTING LINE */}
+
+          <div className="approach-connecting-line" />
 
           {STEPS.map(
-            ({ number, label, icon: Icon, description }, index) => {
+            (
+              {
+                number,
+                label,
+                icon: Icon,
+                description,
+              },
+              index
+            ) => {
               const isActive = activeSteps.includes(index);
 
               return (
                 <div
                   key={number}
-                  className="
-                    relative
-                    flex
-                    flex-col
-                    items-center
-                    px-2
-                    text-center
-                  "
+                  className="approach-step"
                 >
-                  {/* ================= ICON ================= */}
+                  {/* =================================================
+                      ICON
+                  ================================================= */}
 
                   <div
-                    className={`
-                      relative
-                      z-10
-                      mb-4
-                      flex
-                      h-12
-                      w-12
-                      items-center
-                      justify-center
-                      rounded-full
-                      transition-all
-                      duration-500
-                      ease-out
-                      ${
-                        isActive
-                          ? "scale-110 shadow-[0_0_0_6px_rgba(115,0,36,0.10)]"
-                          : "scale-100"
-                      }
-                    `}
-                    style={
-                      isActive
-                        ? {
-                            backgroundColor: "#730024",
-                            border: "1.5px solid #730024",
-                          }
-                        : {
-                            backgroundColor: "#faf9fb",
-                            border: "1.5px solid #d9b8c6",
-                          }
-                    }
+                    className={`approach-icon ${
+                      isActive ? "approach-icon-active" : ""
+                    }`}
                   >
                     <Icon
                       size={18}
                       strokeWidth={2}
-                      className="transition-all duration-500"
-                      style={{
-                        color: isActive ? "#ffffff" : "#730024",
-                      }}
+                      className="approach-icon-svg"
                     />
 
-                    {/* Pulse only while active */}
+                    {/* ACTIVE PULSE */}
 
                     {isActive && (
-                      <span
-                        className="
-                          pointer-events-none
-                          absolute
-                          inset-0
-                          rounded-full
-                          border
-                          border-[#730024]
-                          animate-ping
-                          opacity-20
-                        "
-                      />
+                      <span className="approach-icon-pulse" />
                     )}
                   </div>
 
-                  {/* ================= STEP TITLE ================= */}
+                  {/* =================================================
+                      STEP TITLE
+                  ================================================= */}
 
                   <p
-                    className="
-                      mb-2
-                      font-['Inter']
-                      text-[10px]
-                      font-bold
-                      tracking-[0.06em]
-                      transition-colors
-                      duration-500
-                      sm:text-[11px]
-                      md:text-[12px]
-                    "
-                    style={{
-                      color: isActive ? "#730024" : "#0f172a",
-                    }}
+                    className={`approach-step-title ${
+                      isActive
+                        ? "approach-step-title-active"
+                        : ""
+                    }`}
                   >
                     {number} — {label}
                   </p>
 
-                  {/* ================= DESCRIPTION ================= */}
+                  {/* =================================================
+                      DESCRIPTION
+                  ================================================= */}
 
-                  <p
-                    className="
-                      max-w-[190px]
-                      font-['Inter']
-                      text-[11.5px]
-                      leading-[1.65]
-                      text-slate-500
-                      sm:text-[12px]
-                      md:text-[12.5px]
-                    "
-                  >
+                  <p className="approach-step-description">
                     {description}
                   </p>
                 </div>
@@ -369,218 +259,1063 @@ export default function ApproachAndCtaSection() {
         </div>
       </div>
 
-      {/* =====================================================
+      {/* =================================================
           CTA SECTION
-      ====================================================== */}
+      ================================================= */}
 
-      <div
-        className="
-          px-4
-          pb-12
-          sm:px-6
-          sm:pb-16
-          md:px-8
-          md:pb-20
-        "
-      >
-        <div
-          className="
-            mx-auto
-            w-full
-            max-w-6xl
-            rounded-[22px]
-            px-5
-            py-10
-            text-center
-            sm:rounded-[26px]
-            sm:px-8
-            sm:py-12
-            md:rounded-[28px]
-            md:px-10
-            md:py-16
-          "
-          style={{
-            background:
-              "radial-gradient(120% 140% at 50% 0%, #730024 0%, #3a0e20 70%)",
-          }}
-        >
-          {/* CTA Label */}
+      <div className="approach-cta-wrapper">
 
-          <div className="mb-5 flex justify-center sm:mb-6">
-            <span
-              className="
-                inline-flex
-                max-w-full
-                items-center
-                gap-2
-                rounded-full
-                border
-                border-white/15
-                bg-white/5
-                px-3
-                py-1.5
-                font-['Inter']
-                text-[8px]
-                font-semibold
-                uppercase
-                tracking-[0.12em]
-                text-white/80
-                sm:px-3.5
-                sm:text-[9px]
-                md:text-[10px]
-              "
-            >
-              <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-white/60" />
+        <div className="approach-cta">
+
+          {/* =================================================
+              CTA LABEL
+          ================================================= */}
+
+          <div className="approach-cta-label-wrapper">
+            <span className="approach-cta-label">
+              <span className="approach-cta-dot" />
 
               Tailored Architecture & Delivery Advisory
             </span>
           </div>
 
-          {/* CTA Heading */}
+          {/* =================================================
+              CTA HEADING
+          ================================================= */}
 
-          <h2
-            className="
-              mx-auto
-              mb-4
-              max-w-3xl
-              font-['Plus_Jakarta_Sans']
-              text-[23px]
-              font-bold
-              leading-[1.2]
-              tracking-[-0.02em]
-              text-white
-              sm:mb-5
-              sm:text-[29px]
-              md:text-[34px]
-              lg:text-[38px]
-            "
-          >
+          <h2 className="approach-cta-heading">
             Ready to Move Your Business Forward?
           </h2>
 
-          {/* CTA Sub Heading */}
+          {/* =================================================
+              CTA DESCRIPTION
+          ================================================= */}
 
-          <p
-            className="
-              mx-auto
-              mb-7
-              max-w-2xl
-              font-['Plus_Jakarta_Sans']
-              text-[11.5px]
-              leading-[1.7]
-              text-white/60
-              sm:mb-8
-              sm:text-[13px]
-              md:text-[14px]
-              lg:text-[15px]
-            "
-          >
+          <p className="approach-cta-description">
             Let's build the right digital solution for your business.
             Connect with our principal enterprise architects to explore
             tailored systems, legacy migrations, and high-impact digital
             transformation roadmaps.
           </p>
 
-          {/* CTA Button */}
+          {/* =================================================
+              CTA BUTTON
+          ================================================= */}
 
-          <div className="mb-7 flex justify-center sm:mb-8">
+          <div className="approach-cta-button-wrapper">
             <button
-              className="
-                inline-flex
-                w-full
-                max-w-[260px]
-                items-center
-                justify-center
-                gap-2
-                rounded-lg
-                px-5
-                py-3
-                font-['Inter']
-                text-[12px]
-                font-semibold
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:opacity-90
-                sm:w-auto
-                sm:max-w-none
-                sm:px-6
-                sm:py-3.5
-                sm:text-[13px]
-              "
-              style={{
-                backgroundColor: "#ffffff",
-                color: "#730024",
-              }}
+              type="button"
+              className="approach-cta-button"
             >
-              Talk to Our Experts
-              <ArrowRight size={15} />
+              <span>Talk to Our Experts</span>
+
+              <ArrowRight
+                size={16}
+                strokeWidth={2}
+              />
             </button>
           </div>
 
-          {/* Divider */}
+          {/* =================================================
+              DIVIDER
+          ================================================= */}
 
-          <div
-            className="
-              mx-auto
-              mb-5
-              h-px
-              w-full
-              max-w-2xl
-              bg-white/10
-              sm:mb-6
-            "
-          />
+          <div className="approach-cta-divider" />
 
-          {/* Pills */}
+          {/* =================================================
+              PILLS
+          ================================================= */}
 
-          <div
-            className="
-              flex
-              flex-wrap
-              items-center
-              justify-center
-              gap-2
-              sm:gap-3
-            "
-          >
+          <div className="approach-pills">
             {PILLS.map(({ icon: Icon, label }) => (
               <span
                 key={label}
-                className="
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-1.5
-                  rounded-full
-                  border
-                  border-white/10
-                  bg-white/5
-                  px-3
-                  py-1.5
-                  font-['Inter']
-                  text-[9px]
-                  font-medium
-                  leading-tight
-                  text-white/70
-                  sm:gap-2
-                  sm:px-3.5
-                  sm:py-2
-                  sm:text-[10px]
-                  md:text-[11.5px]
-                "
+                className="approach-pill"
               >
                 <Icon
-                  size={11}
-                  className="flex-shrink-0 text-white/50 sm:h-3 sm:w-3"
+                  size={12}
+                  strokeWidth={1.8}
                 />
 
-                {label}
+                <span>{label}</span>
               </span>
             ))}
           </div>
         </div>
       </div>
+
+      {/* =================================================
+          STYLES
+      ================================================= */}
+
+      <style>{`
+        /* =================================================
+           GLOBAL SECTION
+        ================================================= */
+
+        .approach-section {
+          width: 100%;
+          overflow: hidden;
+
+          background: #faf9fb;
+
+          box-sizing: border-box;
+        }
+
+        /* =================================================
+           TIMELINE CONTAINER
+        ================================================= */
+
+        .approach-timeline {
+          position: relative;
+
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+
+          box-sizing: border-box;
+
+          padding-top: 72px;
+          padding-bottom: 68px;
+
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .approach-header {
+          width: 100%;
+          max-width: 720px;
+
+          margin: 0 auto 48px;
+
+          text-align: center;
+        }
+
+        .approach-label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 12px;
+
+          margin-bottom: 15px;
+        }
+
+        .approach-label-line {
+          width: 40px;
+          height: 1px;
+
+          flex-shrink: 0;
+
+          background: #730024;
+        }
+
+        .approach-label-text {
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+          font-weight: 700;
+
+          line-height: 1.2;
+
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+
+          color: #730024;
+
+          white-space: nowrap;
+        }
+
+        .approach-heading {
+          margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 32px;
+          font-weight: 700;
+
+          line-height: 1.2;
+
+          letter-spacing: -0.025em;
+
+          color: #0f172a;
+        }
+
+        /* =================================================
+           STEPS GRID
+        ================================================= */
+
+        .approach-steps {
+          position: relative;
+
+          display: grid;
+
+          grid-template-columns:
+            repeat(5, minmax(0, 1fr));
+
+          gap: 20px;
+
+          width: 100%;
+        }
+
+        /* =================================================
+           CONNECTING LINE
+        ================================================= */
+
+        .approach-connecting-line {
+          position: absolute;
+
+          left: 10%;
+          right: 10%;
+
+          top: 24px;
+
+          height: 1px;
+
+          background: #e2dce0;
+
+          z-index: 0;
+        }
+
+        /* =================================================
+           STEP
+        ================================================= */
+
+        .approach-step {
+          position: relative;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          min-width: 0;
+
+          padding-left: 8px;
+          padding-right: 8px;
+
+          text-align: center;
+
+          box-sizing: border-box;
+        }
+
+        /* =================================================
+           ICON
+        ================================================= */
+
+        .approach-icon {
+          position: relative;
+
+          z-index: 2;
+
+          width: 48px;
+          height: 48px;
+
+          margin-bottom: 17px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+
+          background: #faf9fb;
+
+          border: 1.5px solid #d9b8c6;
+
+          color: #730024;
+
+          box-sizing: border-box;
+
+          transition:
+            transform 0.5s ease,
+            background-color 0.5s ease,
+            border-color 0.5s ease,
+            box-shadow 0.5s ease;
+        }
+
+        .approach-icon-active {
+          background: #730024;
+
+          border-color: #730024;
+
+          color: #ffffff;
+
+          transform: scale(1.1);
+
+          box-shadow:
+            0 0 0 6px rgba(115, 0, 36, 0.10);
+        }
+
+        .approach-icon-svg {
+          position: relative;
+          z-index: 2;
+
+          transition:
+            color 0.5s ease,
+            transform 0.5s ease;
+        }
+
+        .approach-icon-pulse {
+          position: absolute;
+
+          inset: 0;
+
+          border-radius: 50%;
+
+          border: 1px solid #730024;
+
+          pointer-events: none;
+
+          animation: approachPulse 1.8s ease-out infinite;
+
+          opacity: 0.2;
+        }
+
+        @keyframes approachPulse {
+          0% {
+            transform: scale(1);
+            opacity: 0.2;
+          }
+
+          70% {
+            transform: scale(1.35);
+            opacity: 0;
+          }
+
+          100% {
+            transform: scale(1.35);
+            opacity: 0;
+          }
+        }
+
+        /* =================================================
+           STEP TITLE
+        ================================================= */
+
+        .approach-step-title {
+          margin: 0 0 9px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+          font-weight: 700;
+
+          line-height: 1.4;
+
+          letter-spacing: 0.06em;
+
+          color: #0f172a;
+
+          transition:
+            color 0.5s ease,
+            transform 0.5s ease;
+        }
+
+        .approach-step-title-active {
+          color: #730024;
+
+          transform: translateY(-1px);
+        }
+
+        /* =================================================
+           STEP DESCRIPTION
+        ================================================= */
+
+        .approach-step-description {
+          width: 100%;
+          max-width: 210px;
+
+          margin: 0 auto;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12px;
+          font-weight: 400;
+
+          line-height: 1.65;
+
+          color: #64748b;
+        }
+
+        /* =================================================
+           CTA WRAPPER
+        ================================================= */
+
+        .approach-cta-wrapper {
+          width: 100%;
+
+          box-sizing: border-box;
+
+          padding-bottom: 80px;
+
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+
+        /* =================================================
+           CTA CARD
+        ================================================= */
+
+        .approach-cta {
+          position: relative;
+
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+
+          box-sizing: border-box;
+
+          overflow: hidden;
+
+          padding-top: 58px;
+          padding-bottom: 54px;
+
+          padding-left: 60px;
+          padding-right: 60px;
+
+          border-radius: 28px;
+
+          text-align: center;
+
+          background:
+            radial-gradient(
+              120% 140% at 50% 0%,
+              #730024 0%,
+              #3a0e20 70%
+            );
+        }
+
+        /* =================================================
+           CTA LABEL
+        ================================================= */
+
+        .approach-cta-label-wrapper {
+          display: flex;
+          justify-content: center;
+
+          margin-bottom: 20px;
+        }
+
+        .approach-cta-label {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 8px;
+
+          max-width: 100%;
+
+          box-sizing: border-box;
+
+          padding: 7px 14px;
+
+          border: 1px solid rgba(255, 255, 255, 0.15);
+
+          border-radius: 999px;
+
+          background: rgba(255, 255, 255, 0.05);
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+          font-weight: 600;
+
+          line-height: 1.3;
+
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        .approach-cta-dot {
+          width: 6px;
+          height: 6px;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+
+          background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* =================================================
+           CTA HEADING
+        ================================================= */
+
+        .approach-cta-heading {
+          width: 100%;
+          max-width: 900px;
+
+          margin: 0 auto 16px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 38px;
+          font-weight: 700;
+
+          line-height: 1.2;
+
+          letter-spacing: -0.025em;
+
+          color: #ffffff;
+        }
+
+        /* =================================================
+           CTA DESCRIPTION
+        ================================================= */
+
+        .approach-cta-description {
+          width: 100%;
+          max-width: 720px;
+
+          margin: 0 auto 28px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 14px;
+          font-weight: 400;
+
+          line-height: 1.75;
+
+          color: rgba(255, 255, 255, 0.62);
+        }
+
+        /* =================================================
+           CTA BUTTON
+        ================================================= */
+
+        .approach-cta-button-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          margin-bottom: 30px;
+        }
+
+        .approach-cta-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 9px;
+
+          min-height: 46px;
+
+          padding: 0 24px;
+
+          border: none;
+          border-radius: 8px;
+
+          background: #ffffff;
+
+          color: #730024;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 13px;
+          font-weight: 600;
+
+          cursor: pointer;
+
+          transition:
+            transform 0.3s ease,
+            opacity 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .approach-cta-button:hover {
+          transform: translateY(-2px);
+
+          opacity: 0.95;
+
+          box-shadow:
+            0 10px 25px rgba(0, 0, 0, 0.16);
+        }
+
+        .approach-cta-button:active {
+          transform: translateY(0);
+        }
+
+        /* =================================================
+           DIVIDER
+        ================================================= */
+
+        .approach-cta-divider {
+          width: 100%;
+          max-width: 720px;
+
+          height: 1px;
+
+          margin: 0 auto 20px;
+
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* =================================================
+           PILLS
+        ================================================= */
+
+        .approach-pills {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-wrap: wrap;
+
+          gap: 10px;
+        }
+
+        .approach-pill {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 7px;
+
+          padding: 7px 13px;
+
+          border: 1px solid rgba(255, 255, 255, 0.1);
+
+          border-radius: 999px;
+
+          background: rgba(255, 255, 255, 0.05);
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10.5px;
+          font-weight: 500;
+
+          line-height: 1.3;
+
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .approach-pill svg {
+          flex-shrink: 0;
+
+          color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* =================================================
+           TABLET - 1200px
+        ================================================= */
+
+        @media (max-width: 1200px) {
+          .approach-timeline {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 64px;
+            padding-bottom: 60px;
+          }
+
+          .approach-cta-wrapper {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-bottom: 65px;
+          }
+
+          .approach-cta {
+            padding-left: 45px;
+            padding-right: 45px;
+          }
+
+          .approach-step-description {
+            max-width: 190px;
+          }
+        }
+
+        /* =================================================
+           TABLET - 900px
+        ================================================= */
+
+        @media (max-width: 900px) {
+          .approach-timeline {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 58px;
+            padding-bottom: 55px;
+          }
+
+          .approach-header {
+            margin-bottom: 42px;
+          }
+
+          .approach-heading {
+            font-size: 30px;
+          }
+
+          .approach-steps {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            column-gap: 35px;
+            row-gap: 42px;
+          }
+
+          .approach-connecting-line {
+            display: none;
+          }
+
+          .approach-step-description {
+            max-width: 270px;
+          }
+
+          .approach-cta-wrapper {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-bottom: 60px;
+          }
+
+          .approach-cta {
+            padding-top: 52px;
+            padding-bottom: 48px;
+
+            padding-left: 40px;
+            padding-right: 40px;
+
+            border-radius: 25px;
+          }
+
+          .approach-cta-heading {
+            font-size: 33px;
+          }
+
+          .approach-cta-description {
+            font-size: 13px;
+          }
+        }
+
+        /* =================================================
+           MOBILE - 700px
+        ================================================= */
+
+        @media (max-width: 700px) {
+          .approach-timeline {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 50px;
+            padding-bottom: 48px;
+          }
+
+          .approach-header {
+            margin-bottom: 35px;
+          }
+
+          .approach-label {
+            gap: 8px;
+
+            margin-bottom: 12px;
+          }
+
+          .approach-label-line {
+            width: 24px;
+          }
+
+          .approach-label-text {
+            font-size: 9px;
+            letter-spacing: 0.11em;
+          }
+
+          .approach-heading {
+            font-size: 26px;
+          }
+
+          .approach-steps {
+            grid-template-columns: 1fr;
+
+            gap: 32px;
+          }
+
+          .approach-step {
+            padding-left: 0;
+            padding-right: 0;
+          }
+
+          .approach-icon {
+            width: 46px;
+            height: 46px;
+
+            margin-bottom: 14px;
+          }
+
+          .approach-step-title {
+            font-size: 11px;
+
+            margin-bottom: 8px;
+          }
+
+          .approach-step-description {
+            max-width: 420px;
+
+            font-size: 12px;
+            line-height: 1.65;
+          }
+
+          /* CTA */
+
+          .approach-cta-wrapper {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-bottom: 50px;
+          }
+
+          .approach-cta {
+            padding-top: 44px;
+            padding-bottom: 40px;
+
+            padding-left: 24px;
+            padding-right: 24px;
+
+            border-radius: 22px;
+          }
+
+          .approach-cta-label {
+            font-size: 8.5px;
+
+            padding: 6px 11px;
+
+            letter-spacing: 0.09em;
+          }
+
+          .approach-cta-heading {
+            font-size: 27px;
+
+            margin-bottom: 14px;
+          }
+
+          .approach-cta-description {
+            max-width: 580px;
+
+            margin-bottom: 24px;
+
+            font-size: 12px;
+            line-height: 1.7;
+          }
+
+          .approach-cta-button-wrapper {
+            margin-bottom: 26px;
+          }
+
+          .approach-cta-button {
+            min-height: 44px;
+
+            padding: 0 21px;
+
+            font-size: 12px;
+          }
+
+          .approach-pills {
+            gap: 7px;
+          }
+
+          .approach-pill {
+            padding: 6px 10px;
+
+            font-size: 9px;
+          }
+        }
+
+        /* =================================================
+           SMALL MOBILE - 480px
+        ================================================= */
+
+        @media (max-width: 480px) {
+          .approach-timeline {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 43px;
+            padding-bottom: 42px;
+          }
+
+          .approach-header {
+            margin-bottom: 31px;
+          }
+
+          .approach-label {
+            gap: 6px;
+          }
+
+          .approach-label-line {
+            width: 16px;
+          }
+
+          .approach-label-text {
+            font-size: 8px;
+            letter-spacing: 0.08em;
+          }
+
+          .approach-heading {
+            font-size: 23px;
+          }
+
+          .approach-steps {
+            gap: 29px;
+          }
+
+          .approach-icon {
+            width: 44px;
+            height: 44px;
+
+            margin-bottom: 13px;
+          }
+
+          .approach-step-title {
+            font-size: 10px;
+          }
+
+          .approach-step-description {
+            max-width: 330px;
+
+            font-size: 11.5px;
+          }
+
+          /* CTA */
+
+          .approach-cta-wrapper {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-bottom: 42px;
+          }
+
+          .approach-cta {
+            padding-top: 38px;
+            padding-bottom: 34px;
+
+            padding-left: 18px;
+            padding-right: 18px;
+
+            border-radius: 19px;
+          }
+
+          .approach-cta-label-wrapper {
+            margin-bottom: 17px;
+          }
+
+          .approach-cta-label {
+            max-width: 100%;
+
+            padding: 6px 9px;
+
+            font-size: 7.5px;
+
+            letter-spacing: 0.07em;
+
+            white-space: normal;
+          }
+
+          .approach-cta-dot {
+            width: 5px;
+            height: 5px;
+          }
+
+          .approach-cta-heading {
+            font-size: 23px;
+
+            line-height: 1.25;
+          }
+
+          .approach-cta-description {
+            margin-bottom: 22px;
+
+            font-size: 11.5px;
+            line-height: 1.65;
+          }
+
+          .approach-cta-button-wrapper {
+            margin-bottom: 23px;
+          }
+
+          .approach-cta-button {
+            width: 100%;
+            max-width: 230px;
+
+            min-height: 42px;
+
+            padding: 0 18px;
+
+            font-size: 11.5px;
+          }
+
+          .approach-cta-divider {
+            margin-bottom: 17px;
+          }
+
+          .approach-pills {
+            gap: 6px;
+          }
+
+          .approach-pill {
+            width: 100%;
+
+            max-width: 100%;
+
+            padding: 7px 9px;
+
+            font-size: 8.5px;
+          }
+        }
+
+        /* =================================================
+           VERY SMALL MOBILE - 360px
+        ================================================= */
+
+        @media (max-width: 360px) {
+          .approach-timeline {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .approach-heading {
+            font-size: 22px;
+          }
+
+          .approach-label-text {
+            font-size: 7.5px;
+          }
+
+          .approach-step-description {
+            font-size: 11px;
+          }
+
+          .approach-cta-wrapper {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .approach-cta {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
+
+          .approach-cta-heading {
+            font-size: 21px;
+          }
+
+          .approach-cta-description {
+            font-size: 11px;
+          }
+
+          .approach-pill {
+            font-size: 8px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

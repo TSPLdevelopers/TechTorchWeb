@@ -82,13 +82,51 @@ export default function ImplementationToSupportSection() {
         fontFamily: "Inter, sans-serif",
       }}
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-[100px] py-12 sm:py-14 md:py-16 lg:py-20">
+      <div
+        className="
+          w-full
+          px-4
+          sm:px-6
+          md:px-10
+          lg:px-[100px]
+          py-12
+          sm:py-14
+          md:py-16
+          lg:py-20
+        "
+      >
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 sm:gap-6 mb-8 sm:mb-10 md:mb-12">
+        <div
+          className="
+            flex
+            flex-col
+            lg:flex-row
+            lg:items-end
+            lg:justify-between
+            gap-5
+            sm:gap-6
+            mb-8
+            sm:mb-10
+            md:mb-12
+          "
+        >
           <div className="max-w-2xl">
             {/* Label */}
             <span
-              className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-semibold tracking-wide px-3 py-1.5 rounded-full mb-3 sm:mb-4"
+              className="
+                inline-flex
+                items-center
+                gap-1.5
+                text-[9px]
+                sm:text-[10px]
+                font-semibold
+                tracking-wide
+                px-3
+                py-1.5
+                rounded-full
+                mb-3
+                sm:mb-4
+              "
               style={{
                 background: "#fbeef1",
                 color: WINE,
@@ -103,7 +141,15 @@ export default function ImplementationToSupportSection() {
 
             {/* Heading */}
             <h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] leading-tight font-bold tracking-tight"
+              className="
+                text-2xl
+                sm:text-3xl
+                md:text-4xl
+                lg:text-[38px]
+                leading-tight
+                font-bold
+                tracking-tight
+              "
               style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
               }}
@@ -114,7 +160,14 @@ export default function ImplementationToSupportSection() {
 
           {/* Subtitle */}
           <p
-            className="text-xs sm:text-sm md:text-[15px] leading-relaxed max-w-md lg:max-w-sm"
+            className="
+              text-xs
+              sm:text-sm
+              md:text-[15px]
+              leading-relaxed
+              max-w-md
+              lg:max-w-sm
+            "
             style={{
               color: MUTED,
               fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -126,7 +179,16 @@ export default function ImplementationToSupportSection() {
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-4
+            gap-4
+            sm:gap-5
+          "
+        >
           {steps.map(
             ({ num, icon: Icon, phase, title, body, footer }, index) => (
               <div
@@ -164,7 +226,18 @@ export default function ImplementationToSupportSection() {
                 <div className="flex items-center justify-between mb-5">
                   {/* Number */}
                   <span
-                    className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg text-xs font-bold transition-colors duration-300"
+                    className="
+                      w-9
+                      h-9
+                      sm:w-10
+                      sm:h-10
+                      flex
+                      items-center
+                      justify-center
+                      rounded-lg
+                      text-xs
+                      font-bold
+                    "
                     style={{
                       background: "#fbeef1",
                       color: WINE,
@@ -178,13 +251,18 @@ export default function ImplementationToSupportSection() {
                     size={17}
                     strokeWidth={1.8}
                     style={{ color: WINE }}
-                    className="transition-transform duration-300"
                   />
                 </div>
 
                 {/* Phase */}
                 <p
-                  className="text-[8px] sm:text-[9px] font-semibold tracking-[0.08em] mb-2"
+                  className="
+                    text-[8px]
+                    sm:text-[9px]
+                    font-semibold
+                    tracking-[0.08em]
+                    mb-2
+                  "
                   style={{
                     color: "#a9a6b0",
                     fontFamily: "Inter, sans-serif",
@@ -195,7 +273,12 @@ export default function ImplementationToSupportSection() {
 
                 {/* Title */}
                 <h3
-                  className="text-sm sm:text-base font-semibold mb-2"
+                  className="
+                    text-sm
+                    sm:text-base
+                    font-semibold
+                    mb-2
+                  "
                   style={{
                     color: INK,
                     fontFamily: "Inter, sans-serif",
@@ -206,7 +289,12 @@ export default function ImplementationToSupportSection() {
 
                 {/* Body */}
                 <p
-                  className="text-xs sm:text-[13px] leading-relaxed mb-6"
+                  className="
+                    text-xs
+                    sm:text-[13px]
+                    leading-relaxed
+                    mb-6
+                  "
                   style={{
                     color: MUTED,
                     fontFamily: "Inter, sans-serif",
@@ -217,13 +305,23 @@ export default function ImplementationToSupportSection() {
 
                 {/* Footer */}
                 <div
-                  className="mt-auto flex items-center justify-between pt-3 border-t"
+                  className="
+                    mt-auto
+                    flex
+                    items-center
+                    justify-between
+                    pt-3
+                    border-t
+                  "
                   style={{
                     borderColor: "#ece9e4",
                   }}
                 >
                   <span
-                    className="text-[11px] sm:text-xs"
+                    className="
+                      text-[11px]
+                      sm:text-xs
+                    "
                     style={{
                       color: MUTED,
                       fontFamily: "Inter, sans-serif",

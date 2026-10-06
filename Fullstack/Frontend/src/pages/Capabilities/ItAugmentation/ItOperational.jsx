@@ -39,421 +39,1080 @@ const steps = [
 
 export default function IntegratedResourcing() {
   return (
-    <section className="w-full bg-[#f7f5f2]">
-      {/* =====================================================
-          TOP SECTION
-      ===================================================== */}
+    <>
+      <section className="integrated-resourcing-section">
 
-      <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-10 lg:py-20">
-        {/* Header */}
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-10 md:mb-12">
-          {/* Eyebrow */}
-          <div className="mb-4 flex justify-center sm:mb-5">
-            <div
-              className="
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                px-3
-                py-1.5
-                font-['Inter']
-                text-[8px]
-                font-bold
-                uppercase
-                tracking-[0.1em]
-                sm:px-3.5
-                sm:py-2
-                sm:text-[9px]
-                md:text-[10px]
-              "
-              style={{
-                backgroundColor: "#f9e8ef",
-                color: BRAND_COLOR,
-              }}
-            >
-              <span
-                className="h-1.5 w-1.5 rounded-full"
-                style={{ backgroundColor: BRAND_COLOR }}
-              />
+        {/* =====================================================
+            TOP CONTENT
+        ===================================================== */}
 
-              Operational Excellence & Resourcing Architecture
+        <div className="integrated-resourcing-container">
+
+          {/* =================================================
+              HEADER
+          ================================================= */}
+
+          <div className="integrated-resourcing-header">
+            <div className="integrated-resourcing-eyebrow-wrap">
+              <div className="integrated-resourcing-eyebrow">
+                <span className="integrated-resourcing-eyebrow-dot" />
+
+                Operational Excellence & Resourcing Architecture
+              </div>
             </div>
+
+            <h1 className="integrated-resourcing-heading">
+              Integrated Resourcing Across Every Critical Dimension
+            </h1>
+
+            <p className="integrated-resourcing-subheading">
+              Our services include{" "}
+              <span>
+                contract staffing, contract-to-hire, dedicated development
+                teams, remote engineers, project-based hiring, resource
+                replacement, bench hiring, vendor partnership, MSP support,
+                and offshore development teams.
+              </span>
+            </p>
           </div>
 
-          {/* Main Heading */}
-          <h1
-            className="
-              mb-4
-              font-['Plus_Jakarta_Sans']
-              text-[25px]
-              font-bold
-              leading-[1.2]
-              tracking-[-0.025em]
-              text-[#1c1c1c]
-              sm:text-[30px]
-              md:text-[34px]
-              lg:text-[38px]
-            "
-          >
-            Integrated Resourcing Across Every Critical Dimension
-          </h1>
+          {/* =================================================
+              STEP CARDS
+          ================================================= */}
 
-          {/* Subheading */}
-          <p
-            className="
-              mx-auto
-              max-w-3xl
-              font-['Plus_Jakarta_Sans']
-              text-[11px]
-              font-medium
-              leading-[1.7]
-              text-neutral-500
-              sm:text-[12px]
-              md:text-[13px]
-              lg:text-[14px]
-            "
-          >
-            Our services include{" "}
-            <span className="font-semibold text-neutral-700">
-              contract staffing, contract-to-hire, dedicated development
-              teams, remote engineers, project-based hiring, resource
-              replacement, bench hiring, vendor partnership, MSP support,
-            </span>{" "}
-            and offshore development teams.
-          </p>
+          <div className="integrated-resourcing-grid">
+            {steps.map((step) => (
+              <div
+                key={step.number}
+                className={`integrated-resourcing-card ${
+                  step.featured
+                    ? "integrated-resourcing-card-featured"
+                    : ""
+                }`}
+              >
+                {/* Featured Badge */}
+
+                {step.badge && (
+                  <span className="integrated-resourcing-badge">
+                    {step.badge}
+                  </span>
+                )}
+
+                {/* Card Header */}
+
+                <div className="integrated-resourcing-card-header">
+                  <span
+                    className={`integrated-resourcing-number ${
+                      step.featured
+                        ? "integrated-resourcing-number-active"
+                        : ""
+                    }`}
+                  >
+                    {step.number}
+                  </span>
+
+                  <span className="integrated-resourcing-phase">
+                    {step.phase}
+                  </span>
+                </div>
+
+                {/* Title */}
+
+                <h3 className="integrated-resourcing-card-title">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+
+                <p className="integrated-resourcing-card-description">
+                  {step.description}
+                </p>
+
+                {/* Meta */}
+
+                <div className="integrated-resourcing-meta">
+                  <span className="integrated-resourcing-meta-label">
+                    {step.metaLabel}
+                  </span>
+
+                  <span className="integrated-resourcing-meta-value">
+                    {step.metaValue}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* =====================================================
-            CARD GRID
+            BOTTOM CTA
         ===================================================== */}
 
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-4
-            text-left
-            sm:grid-cols-2
-            sm:gap-5
-            lg:grid-cols-3
-            lg:gap-6
-          "
-        >
-          {steps.map((step) => (
-            <div
-              key={step.number}
-              className={`
-                relative
-                flex
-                min-h-[260px]
-                flex-col
-                rounded-xl
-                bg-white
-                p-5
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-lg
-                sm:min-h-[275px]
-                sm:p-6
-                ${
-                  step.featured
-                    ? "border-2 shadow-[0_8px_25px_rgba(115,0,36,0.10)]"
-                    : "border border-neutral-200"
-                }
-              `}
-              style={
-                step.featured
-                  ? {
-                      borderColor: BRAND_COLOR,
-                    }
-                  : undefined
-              }
-            >
-              {/* Featured Badge */}
-              {step.badge && (
-                <span
-                  className="
-                    absolute
-                    -top-3
-                    right-4
-                    rounded-full
-                    px-2.5
-                    py-1
-                    font-['Inter']
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.08em]
-                    text-white
-                    sm:right-5
-                    sm:text-[9px]
-                  "
-                  style={{
-                    backgroundColor: BRAND_COLOR,
-                  }}
-                >
-                  {step.badge}
-                </span>
-              )}
+        <div className="integrated-resourcing-cta">
 
-              {/* Card Header */}
-              <div className="mb-5 flex items-center justify-between gap-3">
-                {/* Number */}
-                <span
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-lg
-                    font-['Inter']
-                    text-[10px]
-                    font-bold
-                    text-white
-                    sm:h-9
-                    sm:w-9
-                    sm:text-[11px]
-                  "
-                  style={{
-                    backgroundColor: step.featured
-                      ? BRAND_COLOR
-                      : "#f9e8ef",
-                    color: step.featured ? "#ffffff" : BRAND_COLOR,
-                  }}
-                >
-                  {step.number}
-                </span>
+          {/* Background Overlay */}
 
-                {/* Phase */}
-                <span
-                  className="
-                    text-right
-                    font-['Inter']
-                    text-[8px]
-                    font-medium
-                    text-neutral-400
-                    sm:text-[9px]
-                    md:text-[10px]
-                  "
-                >
-                  {step.phase}
-                </span>
-              </div>
+          <div className="integrated-resourcing-cta-overlay" />
 
-              {/* Title */}
-              <h3
-                className="
-                  mb-3
-                  font-['Plus_Jakarta_Sans']
-                  text-[14px]
-                  font-bold
-                  leading-[1.4]
-                  text-[#1c1c1c]
-                  sm:text-[15px]
-                  md:text-[16px]
-                "
-              >
-                {step.title}
-              </h3>
+          {/* CTA Content */}
 
-              {/* Description */}
-              <p
-                className="
-                  mb-6
-                  flex-1
-                  font-['Inter']
-                  text-[11px]
-                  leading-[1.75]
-                  text-neutral-500
-                  sm:text-[12px]
-                  md:text-[12.5px]
-                "
-              >
-                {step.description}
-              </p>
+          <div className="integrated-resourcing-cta-content">
 
-              {/* Meta */}
-              <div
-                className="
-                  flex
-                  items-center
-                  justify-between
-                  gap-3
-                  border-t
-                  border-neutral-100
-                  pt-3
-                "
-              >
-                <span
-                  className="
-                    font-['Inter']
-                    text-[9px]
-                    font-medium
-                    text-neutral-400
-                    sm:text-[10px]
-                  "
-                >
-                  {step.metaLabel}
-                </span>
+            {/* Label */}
 
-                <span
-                  className="
-                    text-right
-                    font-['Inter']
-                    text-[10px]
-                    font-semibold
-                    sm:text-[11px]
-                  "
-                  style={{
-                    color: BRAND_COLOR,
-                  }}
-                >
-                  {step.metaValue}
-                </span>
-              </div>
+            <div className="integrated-resourcing-cta-label-wrap">
+              <span className="integrated-resourcing-cta-label">
+                Flexible Technology Support
+              </span>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* =====================================================
-          BOTTOM CTA
-      ===================================================== */}
+            {/* Heading */}
 
-      <div
-        className="
-          relative
-          flex
-          min-h-[360px]
-          w-full
-          items-center
-          justify-center
-          bg-cover
-          bg-center
-          sm:min-h-[400px]
-          md:min-h-[440px]
-        "
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, rgba(20,10,15,0.55) 0%, rgba(20,10,15,0.78) 100%), url('/Professionalmodern.png')",
-        }}
-      >
-        {/* CTA Content */}
-        <div
-          className="
-            mx-auto
-            w-full
-            max-w-3xl
-            px-5
-            py-16
-            text-center
-            sm:px-6
-            sm:py-20
-            md:px-8
-            md:py-24
-          "
-        >
-          {/* Small Label */}
-          <div className="mb-4 flex justify-center">
-            <span
-              className="
-                rounded-full
-                border
-                border-white/20
-                bg-white/10
-                px-3
-                py-1.5
-                font-['Inter']
-                text-[8px]
-                font-semibold
-                uppercase
-                tracking-[0.1em]
-                text-white/80
-                backdrop-blur-sm
-                sm:text-[9px]
-              "
-            >
-              Flexible Technology Support
-            </span>
+            <h2 className="integrated-resourcing-cta-heading">
+              Flexible Technology Support When You Need It
+            </h2>
+
+            {/* Description */}
+
+            <p className="integrated-resourcing-cta-description">
+              Technology requirements can change quickly. Our IT augmentation
+              services give businesses the flexibility to strengthen their
+              teams, access additional expertise, and support their technology
+              initiatives according to their changing needs.
+            </p>
+
+            {/* Button */}
+
+            <button className="integrated-resourcing-cta-button">
+              <span>Talk to Our Experts</span>
+
+              <ArrowRight className="integrated-resourcing-cta-arrow" />
+            </button>
           </div>
-
-          {/* CTA Heading */}
-          <h2
-            className="
-              mb-4
-              font-['Plus_Jakarta_Sans']
-              text-[25px]
-              font-bold
-              leading-[1.2]
-              tracking-[-0.02em]
-              text-white
-              sm:mb-5
-              sm:text-[30px]
-              md:text-[36px]
-              lg:text-[40px]
-            "
-          >
-            Flexible Technology Support When You Need It
-          </h2>
-
-          {/* CTA Description */}
-          <p
-            className="
-              mx-auto
-              mb-7
-              max-w-2xl
-              font-['Inter']
-              text-[11px]
-              leading-[1.75]
-              text-white/75
-              sm:mb-8
-              sm:text-[12px]
-              md:text-[13px]
-              lg:text-[14px]
-            "
-          >
-            Technology requirements can change quickly. Our IT augmentation
-            services give businesses the flexibility to strengthen their
-            teams, access additional expertise, and support their technology
-            initiatives according to their changing needs.
-          </p>
-
-          {/* CTA Button */}
-          <button
-            className="
-              inline-flex
-              items-center
-              justify-center
-              gap-2
-              rounded-full
-              px-5
-              py-2.5
-              font-['Inter']
-              text-[11px]
-              font-semibold
-              text-white
-              transition-all
-              duration-300
-              hover:opacity-90
-              sm:px-6
-              sm:py-3
-              sm:text-[12px]
-              md:text-[13px]
-            "
-            style={{
-              backgroundColor: BRAND_COLOR,
-            }}
-          >
-            Talk to Our Experts
-
-            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-          </button>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* =========================================================
+          STYLES
+      ========================================================= */}
+
+      <style>{`
+        /* =====================================================
+           MAIN SECTION
+        ===================================================== */
+
+        .integrated-resourcing-section {
+          width: 100%;
+          overflow: hidden;
+
+          background: #f7f5f2;
+        }
+
+        /* =====================================================
+           TOP CONTAINER
+           Desktop: 100px
+        ===================================================== */
+
+        .integrated-resourcing-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .integrated-resourcing-header {
+          width: 100%;
+          max-width: 950px;
+
+          margin: 0 auto 48px;
+
+          text-align: center;
+        }
+
+        /* =====================================================
+           EYEBROW
+        ===================================================== */
+
+        .integrated-resourcing-eyebrow-wrap {
+          display: flex;
+          justify-content: center;
+
+          margin-bottom: 17px;
+        }
+
+        .integrated-resourcing-eyebrow {
+          display: inline-flex;
+          align-items: center;
+
+          gap: 8px;
+
+          padding: 6px 12px;
+
+          border-radius: 999px;
+
+          background: #f9e8ef;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+
+          color: ${BRAND_COLOR};
+        }
+
+        .integrated-resourcing-eyebrow-dot {
+          width: 6px;
+          height: 6px;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+
+          background: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           MAIN HEADING
+        ===================================================== */
+
+        .integrated-resourcing-heading {
+          margin: 0 0 15px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+
+          color: #1c1c1c;
+        }
+
+        /* =====================================================
+           SUBHEADING
+        ===================================================== */
+
+        .integrated-resourcing-subheading {
+          max-width: 900px;
+
+          margin: 0 auto;
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: #737373;
+        }
+
+        .integrated-resourcing-subheading span {
+          font-weight: 600;
+
+          color: #525252;
+        }
+
+        /* =====================================================
+           CARD GRID
+        ===================================================== */
+
+        .integrated-resourcing-grid {
+          display: grid;
+
+          grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+          gap: 24px;
+
+          width: 100%;
+        }
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .integrated-resourcing-card {
+          position: relative;
+
+          display: flex;
+          flex-direction: column;
+
+          min-width: 0;
+          min-height: 275px;
+
+          padding: 27px;
+
+          border: 1px solid #e3e1df;
+          border-radius: 14px;
+
+          background: #ffffff;
+
+          box-shadow:
+            0 4px 18px rgba(0, 0, 0, 0.025);
+
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+        }
+
+        .integrated-resourcing-card:hover {
+          transform: translateY(-5px);
+
+          box-shadow:
+            0 14px 32px rgba(0, 0, 0, 0.07);
+        }
+
+        /* =====================================================
+           FEATURED CARD
+        ===================================================== */
+
+        .integrated-resourcing-card-featured {
+          border: 2px solid ${BRAND_COLOR};
+
+          box-shadow:
+            0 10px 30px rgba(115, 0, 36, 0.1);
+        }
+
+        .integrated-resourcing-card-featured:hover {
+          box-shadow:
+            0 18px 38px rgba(115, 0, 36, 0.14);
+        }
+
+        /* =====================================================
+           FEATURED BADGE
+        ===================================================== */
+
+        .integrated-resourcing-badge {
+          position: absolute;
+
+          top: -11px;
+          right: 20px;
+
+          padding: 5px 10px;
+
+          border-radius: 999px;
+
+          background: ${BRAND_COLOR};
+
+          font-family: "Inter", sans-serif;
+          font-size: 8px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+
+          color: #ffffff;
+        }
+
+        /* =====================================================
+           CARD HEADER
+        ===================================================== */
+
+        .integrated-resourcing-card-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 12px;
+
+          margin-bottom: 24px;
+        }
+
+        /* =====================================================
+           NUMBER
+        ===================================================== */
+
+        .integrated-resourcing-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 37px;
+          height: 37px;
+
+          flex-shrink: 0;
+
+          border-radius: 9px;
+
+          background: #f9e8ef;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+
+          color: ${BRAND_COLOR};
+        }
+
+        .integrated-resourcing-number-active {
+          background: ${BRAND_COLOR};
+
+          color: #ffffff;
+        }
+
+        /* =====================================================
+           PHASE
+        ===================================================== */
+
+        .integrated-resourcing-phase {
+          text-align: right;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 500;
+          line-height: 1.4;
+
+          color: #a3a3a3;
+        }
+
+        /* =====================================================
+           CARD TITLE
+        ===================================================== */
+
+        .integrated-resourcing-card-title {
+          margin: 0 0 10px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 1.4;
+
+          color: #1c1c1c;
+        }
+
+        /* =====================================================
+           CARD DESCRIPTION
+        ===================================================== */
+
+        .integrated-resourcing-card-description {
+          flex: 1;
+
+          margin: 0 0 24px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12.5px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           CARD META
+        ===================================================== */
+
+        .integrated-resourcing-meta {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 15px;
+
+          padding-top: 13px;
+
+          border-top: 1px solid #eeeeee;
+        }
+
+        .integrated-resourcing-meta-label {
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 500;
+          line-height: 1.4;
+
+          color: #a3a3a3;
+        }
+
+        .integrated-resourcing-meta-value {
+          text-align: right;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          font-weight: 600;
+          line-height: 1.4;
+
+          color: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           BOTTOM CTA
+        ===================================================== */
+
+        .integrated-resourcing-cta {
+          position: relative;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 100%;
+
+          min-height: 440px;
+
+          overflow: hidden;
+
+          background-image: url("/Professionalmodern.png");
+          background-size: cover;
+          background-position: center;
+        }
+
+        /* =====================================================
+           CTA OVERLAY
+        ===================================================== */
+
+        .integrated-resourcing-cta-overlay {
+          position: absolute;
+
+          inset: 0;
+
+          background:
+            linear-gradient(
+              180deg,
+              rgba(20, 10, 15, 0.55) 0%,
+              rgba(20, 10, 15, 0.8) 100%
+            );
+        }
+
+        /* =====================================================
+           CTA CONTENT
+        ===================================================== */
+
+        .integrated-resourcing-cta-content {
+          position: relative;
+          z-index: 1;
+
+          width: 100%;
+          max-width: 900px;
+
+          margin: 0 auto;
+
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 85px;
+          padding-bottom: 85px;
+
+          text-align: center;
+        }
+
+        /* =====================================================
+           CTA LABEL
+        ===================================================== */
+
+        .integrated-resourcing-cta-label-wrap {
+          display: flex;
+          justify-content: center;
+
+          margin-bottom: 18px;
+        }
+
+        .integrated-resourcing-cta-label {
+          display: inline-flex;
+
+          padding: 6px 12px;
+
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 999px;
+
+          background: rgba(255, 255, 255, 0.1);
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+
+          color: rgba(255, 255, 255, 0.8);
+
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* =====================================================
+           CTA HEADING
+        ===================================================== */
+
+        .integrated-resourcing-cta-heading {
+          margin: 0 0 17px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.02em;
+
+          color: #ffffff;
+        }
+
+        /* =====================================================
+           CTA DESCRIPTION
+        ===================================================== */
+
+        .integrated-resourcing-cta-description {
+          max-width: 760px;
+
+          margin: 0 auto 30px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: rgba(255, 255, 255, 0.75);
+        }
+
+        /* =====================================================
+           CTA BUTTON
+        ===================================================== */
+
+        .integrated-resourcing-cta-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 8px;
+
+          padding: 12px 21px;
+
+          border: none;
+          border-radius: 999px;
+
+          background: ${BRAND_COLOR};
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 600;
+          line-height: 1.4;
+
+          color: #ffffff;
+
+          cursor: pointer;
+
+          transition:
+            transform 0.3s ease,
+            opacity 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .integrated-resourcing-cta-button:hover {
+          transform: translateY(-2px);
+
+          opacity: 0.92;
+
+          box-shadow:
+            0 10px 25px rgba(115, 0, 36, 0.35);
+        }
+
+        .integrated-resourcing-cta-arrow {
+          width: 15px;
+          height: 15px;
+
+          transition: transform 0.3s ease;
+        }
+
+        .integrated-resourcing-cta-button:hover
+          .integrated-resourcing-cta-arrow {
+          transform: translateX(3px);
+        }
+
+        /* =====================================================
+           TABLET — 1200px
+           40px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+          .integrated-resourcing-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
+          }
+
+          .integrated-resourcing-heading {
+            font-size: 34px;
+          }
+
+          .integrated-resourcing-subheading {
+            font-size: 13px;
+          }
+
+          .integrated-resourcing-grid {
+            gap: 20px;
+          }
+
+          .integrated-resourcing-card {
+            min-height: 260px;
+
+            padding: 23px;
+          }
+
+          .integrated-resourcing-card-title {
+            font-size: 15px;
+          }
+
+          .integrated-resourcing-card-description {
+            font-size: 12px;
+          }
+
+          .integrated-resourcing-cta-content {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .integrated-resourcing-cta-heading {
+            font-size: 36px;
+          }
+        }
+
+        /* =====================================================
+           TABLET — 900px
+        ===================================================== */
+
+        @media (max-width: 900px) {
+          .integrated-resourcing-container {
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .integrated-resourcing-header {
+            margin-bottom: 38px;
+          }
+
+          .integrated-resourcing-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+          }
+
+          .integrated-resourcing-cta {
+            min-height: 400px;
+          }
+
+          .integrated-resourcing-cta-content {
+            padding-top: 70px;
+            padding-bottom: 70px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE — 700px
+           24px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 700px) {
+          .integrated-resourcing-container {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
+          }
+
+          .integrated-resourcing-header {
+            margin-bottom: 30px;
+          }
+
+          .integrated-resourcing-eyebrow-wrap {
+            margin-bottom: 14px;
+          }
+
+          .integrated-resourcing-eyebrow {
+            padding: 5px 9px;
+
+            font-size: 8px;
+          }
+
+          .integrated-resourcing-eyebrow-dot {
+            width: 5px;
+            height: 5px;
+          }
+
+          .integrated-resourcing-heading {
+            margin-bottom: 12px;
+
+            font-size: 28px;
+            line-height: 1.22;
+          }
+
+          .integrated-resourcing-subheading {
+            font-size: 11px;
+            line-height: 1.7;
+          }
+
+          .integrated-resourcing-grid {
+            grid-template-columns: 1fr;
+
+            gap: 15px;
+          }
+
+          .integrated-resourcing-card {
+            min-height: 220px;
+
+            padding: 21px;
+          }
+
+          .integrated-resourcing-card-header {
+            margin-bottom: 20px;
+          }
+
+          .integrated-resourcing-number {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 8px;
+
+            font-size: 10px;
+          }
+
+          .integrated-resourcing-phase {
+            font-size: 8px;
+          }
+
+          .integrated-resourcing-card-title {
+            margin-bottom: 8px;
+
+            font-size: 14px;
+          }
+
+          .integrated-resourcing-card-description {
+            margin-bottom: 20px;
+
+            font-size: 10.5px;
+          }
+
+          .integrated-resourcing-meta-label {
+            font-size: 8.5px;
+          }
+
+          .integrated-resourcing-meta-value {
+            font-size: 9.5px;
+          }
+
+          .integrated-resourcing-badge {
+            right: 17px;
+
+            font-size: 7px;
+          }
+
+          /* CTA */
+
+          .integrated-resourcing-cta {
+            min-height: 350px;
+
+            background-position: center;
+          }
+
+          .integrated-resourcing-cta-content {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .integrated-resourcing-cta-label-wrap {
+            margin-bottom: 14px;
+          }
+
+          .integrated-resourcing-cta-label {
+            padding: 5px 10px;
+
+            font-size: 8px;
+          }
+
+          .integrated-resourcing-cta-heading {
+            margin-bottom: 13px;
+
+            font-size: 28px;
+            line-height: 1.22;
+          }
+
+          .integrated-resourcing-cta-description {
+            margin-bottom: 24px;
+
+            font-size: 11px;
+            line-height: 1.7;
+          }
+
+          .integrated-resourcing-cta-button {
+            padding: 11px 18px;
+
+            font-size: 10px;
+          }
+
+          .integrated-resourcing-cta-arrow {
+            width: 14px;
+            height: 14px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE — 480px
+           16px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 480px) {
+          .integrated-resourcing-container {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 45px;
+            padding-bottom: 45px;
+          }
+
+          .integrated-resourcing-header {
+            margin-bottom: 25px;
+          }
+
+          .integrated-resourcing-eyebrow {
+            font-size: 7px;
+          }
+
+          .integrated-resourcing-heading {
+            font-size: 24px;
+          }
+
+          .integrated-resourcing-subheading {
+            font-size: 10px;
+          }
+
+          .integrated-resourcing-grid {
+            gap: 13px;
+          }
+
+          .integrated-resourcing-card {
+            min-height: 205px;
+
+            padding: 18px;
+          }
+
+          .integrated-resourcing-card-header {
+            margin-bottom: 18px;
+          }
+
+          .integrated-resourcing-number {
+            width: 32px;
+            height: 32px;
+
+            font-size: 9px;
+          }
+
+          .integrated-resourcing-phase {
+            font-size: 7.5px;
+          }
+
+          .integrated-resourcing-card-title {
+            font-size: 13px;
+          }
+
+          .integrated-resourcing-card-description {
+            font-size: 10px;
+          }
+
+          .integrated-resourcing-meta-label {
+            font-size: 8px;
+          }
+
+          .integrated-resourcing-meta-value {
+            font-size: 9px;
+          }
+
+          .integrated-resourcing-badge {
+            top: -9px;
+            right: 15px;
+
+            padding: 4px 8px;
+
+            font-size: 6.5px;
+          }
+
+          /* CTA */
+
+          .integrated-resourcing-cta {
+            min-height: 315px;
+          }
+
+          .integrated-resourcing-cta-content {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 50px;
+            padding-bottom: 50px;
+          }
+
+          .integrated-resourcing-cta-label {
+            font-size: 7px;
+          }
+
+          .integrated-resourcing-cta-heading {
+            font-size: 24px;
+          }
+
+          .integrated-resourcing-cta-description {
+            font-size: 10px;
+          }
+
+          .integrated-resourcing-cta-button {
+            padding: 10px 16px;
+
+            font-size: 9.5px;
+          }
+        }
+
+        /* =====================================================
+           VERY SMALL MOBILE — 360px
+        ===================================================== */
+
+        @media (max-width: 360px) {
+          .integrated-resourcing-container {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
+          }
+
+          .integrated-resourcing-heading {
+            font-size: 22px;
+          }
+
+          .integrated-resourcing-subheading {
+            font-size: 9.5px;
+          }
+
+          .integrated-resourcing-card {
+            padding: 17px;
+          }
+
+          .integrated-resourcing-card-title {
+            font-size: 12.5px;
+          }
+
+          .integrated-resourcing-card-description {
+            font-size: 9.5px;
+          }
+
+          .integrated-resourcing-cta {
+            min-height: 295px;
+          }
+
+          .integrated-resourcing-cta-heading {
+            font-size: 22px;
+          }
+
+          .integrated-resourcing-cta-description {
+            font-size: 9.5px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

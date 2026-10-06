@@ -396,7 +396,7 @@ export default function SupplyChainConnectSection() {
           {/* LEFT: IMAGE */}
           <div className="supply-chain-image-wrapper">
             <img
-              src="/supplychainconnect.png"
+              src="/fmcgconnected.png"
               alt="Warehouse team reviewing supply chain inventory"
               className="supply-chain-image"
             />

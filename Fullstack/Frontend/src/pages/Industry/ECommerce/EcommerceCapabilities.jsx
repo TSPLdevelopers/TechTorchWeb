@@ -41,7 +41,16 @@ function Card({ num, icon: Icon, title, body, index, isVisible }) {
       <div className="flex items-center justify-between mb-4 sm:mb-5">
         {/* Icon */}
         <span
-          className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg"
+          className="
+            w-9
+            h-9
+            sm:w-10
+            sm:h-10
+            flex
+            items-center
+            justify-center
+            rounded-lg
+          "
           style={{
             background: "#fbeef1",
             color: WINE,
@@ -52,7 +61,11 @@ function Card({ num, icon: Icon, title, body, index, isVisible }) {
 
         {/* Number */}
         <span
-          className="text-base sm:text-lg font-bold"
+          className="
+            text-base
+            sm:text-lg
+            font-bold
+          "
           style={{
             color: "#e3d3d9",
             fontFamily: "Inter, sans-serif",
@@ -64,7 +77,12 @@ function Card({ num, icon: Icon, title, body, index, isVisible }) {
 
       {/* Title */}
       <h3
-        className="text-sm sm:text-[15px] font-semibold mb-2"
+        className="
+          text-sm
+          sm:text-[15px]
+          font-semibold
+          mb-2
+        "
         style={{
           color: INK,
           fontFamily: "Inter, sans-serif",
@@ -75,7 +93,11 @@ function Card({ num, icon: Icon, title, body, index, isVisible }) {
 
       {/* Description */}
       <p
-        className="text-xs sm:text-[13px] leading-relaxed"
+        className="
+          text-xs
+          sm:text-[13px]
+          leading-relaxed
+        "
         style={{
           color: MUTED,
           fontFamily: "Inter, sans-serif",
@@ -122,11 +144,29 @@ export default function EcommerceCapabilitiesSection() {
         fontFamily: "Inter, sans-serif",
       }}
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-[100px] py-12 sm:py-14 md:py-16 lg:py-20">
-
+      {/* Main Container */}
+      <div
+        className="
+          w-full
+          px-4
+          sm:px-6
+          md:px-10
+          lg:px-[100px]
+          py-12
+          sm:py-14
+          md:py-16
+          lg:py-20
+        "
+      >
         {/* Section Label */}
         <p
-          className="text-[10px] sm:text-xs font-semibold tracking-[0.08em] mb-3"
+          className="
+            text-[10px]
+            sm:text-xs
+            font-semibold
+            tracking-[0.08em]
+            mb-3
+          "
           style={{
             color: WINE,
             fontFamily: "Inter, sans-serif",
@@ -137,7 +177,18 @@ export default function EcommerceCapabilitiesSection() {
 
         {/* Heading */}
         <h2
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] leading-tight font-bold tracking-tight mb-8 sm:mb-10 md:mb-12"
+          className="
+            text-2xl
+            sm:text-3xl
+            md:text-4xl
+            lg:text-[38px]
+            leading-tight
+            font-bold
+            tracking-tight
+            mb-8
+            sm:mb-10
+            md:mb-12
+          "
           style={{
             color: INK,
             fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -147,7 +198,17 @@ export default function EcommerceCapabilitiesSection() {
         </h2>
 
         {/* First Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-4 sm:mb-5">
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            gap-4
+            sm:gap-5
+            mb-4
+            sm:mb-5
+          "
+        >
           <Card
             num="01"
             icon={Monitor}
@@ -168,7 +229,16 @@ export default function EcommerceCapabilitiesSection() {
         </div>
 
         {/* Second Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            gap-4
+            sm:gap-5
+          "
+        >
           <Card
             num="03"
             icon={CreditCard}
@@ -196,7 +266,6 @@ export default function EcommerceCapabilitiesSection() {
             isVisible={isVisible}
           />
         </div>
-
       </div>
     </section>
   );

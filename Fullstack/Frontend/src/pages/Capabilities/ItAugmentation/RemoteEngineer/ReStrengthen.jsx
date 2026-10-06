@@ -3,33 +3,297 @@ import { Layers, ArrowRight } from "lucide-react";
 
 export default function StrengthenTeamCTA() {
   return (
-    <div className="w-full min-h-[380px] sm:min-h-[420px] lg:min-h-[480px] bg-neutral-50 flex items-center justify-center px-4 sm:px-6 py-8 sm:py-10 font-inter">
-      <div className="w-full max-w-5xl rounded-xl sm:rounded-2xl bg-[#730024]/5 border border-[#730024]/10 px-4 sm:px-8 lg:px-12 py-10 sm:py-14 lg:py-16 text-center">
+    <section className="strengthen-team-section">
+      <style>{`
+        /* =====================================================
+           MAIN SECTION
+        ===================================================== */
 
-        {/* Icon Badge */}
-        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#730024] flex items-center justify-center mx-auto mb-5 sm:mb-6">
-          <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+        .strengthen-team-section {
+          width: 100%;
+          min-height: 480px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          background: #f9f9f9;
+          padding: 64px 100px;
+          font-family: "Inter", sans-serif;
+        }
+
+        .strengthen-team-container {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* =====================================================
+           CTA CARD
+        ===================================================== */
+
+        .strengthen-team-card {
+          width: 100%;
+          max-width: 1100px;
+          box-sizing: border-box;
+          padding: 64px 60px;
+          text-align: center;
+          border: 1px solid rgba(115, 0, 36, 0.10);
+          border-radius: 18px;
+          background: rgba(115, 0, 36, 0.045);
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+        }
+
+        .strengthen-team-card:hover {
+          transform: translateY(-2px);
+          border-color: rgba(115, 0, 36, 0.16);
+          box-shadow: 0 14px 35px rgba(115, 0, 36, 0.06);
+        }
+
+        /* =====================================================
+           ICON BADGE
+        ===================================================== */
+
+        .strengthen-team-icon {
+          width: 46px;
+          height: 46px;
+          margin: 0 auto 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          background: #730024;
+          box-shadow: 0 7px 18px rgba(115, 0, 36, 0.12);
+        }
+
+        .strengthen-team-icon svg {
+          width: 20px;
+          height: 20px;
+          color: #ffffff;
+          stroke-width: 1.8;
+        }
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        .strengthen-team-heading {
+          max-width: 760px;
+          margin: 0 auto 17px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 34px;
+          line-height: 1.25;
+          font-weight: 600;
+          letter-spacing: -0.025em;
+        }
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .strengthen-team-description {
+          max-width: 650px;
+          margin: 0 auto 34px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          line-height: 1.75;
+          font-weight: 400;
+        }
+
+        /* =====================================================
+           CTA BUTTON
+        ===================================================== */
+
+        .strengthen-team-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 14px 27px;
+          border: 0;
+          border-radius: 6px;
+          background: #730024;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1;
+          font-weight: 600;
+          cursor: pointer;
+          transition:
+            background 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+        }
+
+        .strengthen-team-button:hover {
+          background: #5c001d;
+          transform: translateY(-1px);
+          box-shadow: 0 8px 20px rgba(115, 0, 36, 0.16);
+        }
+
+        .strengthen-team-button svg {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+        }
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+          .strengthen-team-section {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 56px;
+            padding-bottom: 56px;
+          }
+
+          .strengthen-team-card {
+            max-width: 1000px;
+            padding: 58px 50px;
+          }
+
+          .strengthen-team-heading {
+            font-size: 32px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+          .strengthen-team-section {
+            min-height: auto;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 44px;
+            padding-bottom: 44px;
+          }
+
+          .strengthen-team-card {
+            padding: 45px 25px;
+            border-radius: 15px;
+          }
+
+          .strengthen-team-icon {
+            width: 43px;
+            height: 43px;
+            margin-bottom: 20px;
+          }
+
+          .strengthen-team-icon svg {
+            width: 18px;
+            height: 18px;
+          }
+
+          .strengthen-team-heading {
+            font-size: 27px;
+            line-height: 1.25;
+            margin-bottom: 15px;
+          }
+
+          .strengthen-team-description {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 27px;
+          }
+
+          .strengthen-team-button {
+            padding: 13px 22px;
+            font-size: 12.5px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+          .strengthen-team-section {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 36px;
+            padding-bottom: 36px;
+          }
+
+          .strengthen-team-card {
+            padding: 38px 18px;
+            border-radius: 13px;
+          }
+
+          .strengthen-team-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 18px;
+            border-radius: 9px;
+          }
+
+          .strengthen-team-icon svg {
+            width: 17px;
+            height: 17px;
+          }
+
+          .strengthen-team-heading {
+            font-size: 23px;
+            line-height: 1.3;
+          }
+
+          .strengthen-team-description {
+            font-size: 11.5px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+          }
+
+          .strengthen-team-button {
+            width: auto;
+            padding: 12px 18px;
+            font-size: 11.5px;
+          }
+
+          .strengthen-team-button svg {
+            width: 14px;
+            height: 14px;
+          }
+        }
+      `}</style>
+
+      <div className="strengthen-team-container">
+        <div className="strengthen-team-card">
+
+          {/* Icon Badge */}
+          <div className="strengthen-team-icon">
+            <Layers />
+          </div>
+
+          {/* Headline */}
+          <h1 className="strengthen-team-heading">
+            Strengthen Your Technology Team with TechTorch
+          </h1>
+
+          {/* Body Copy */}
+          <p className="strengthen-team-description">
+            Bring the right technical expertise to your projects with flexible
+            IT augmentation and skilled technology professionals aligned with
+            your business requirements.
+          </p>
+
+          {/* CTA */}
+          <button className="strengthen-team-button">
+            Talk to Our Experts
+            <ArrowRight />
+          </button>
+
         </div>
-
-        {/* Headline */}
-        <h1 className="font-jakarta text-[#1c1c1c] font-semibold text-2xl sm:text-3xl lg:text-[2.1rem] leading-tight sm:leading-snug mb-4 max-w-2xl mx-auto">
-          Strengthen Your Technology Team with TechTorch
-        </h1>
-
-        {/* Body Copy */}
-        <p className="font-inter text-neutral-500 text-[13.5px] sm:text-[14px] lg:text-[15px] leading-relaxed max-w-xl mx-auto mb-7 sm:mb-9">
-          Bring the right technical expertise to your projects with flexible
-          IT augmentation and skilled technology professionals aligned with
-          your business requirements.
-        </p>
-
-        {/* CTA */}
-        <button className="inline-flex items-center justify-center gap-2 rounded-md bg-[#730024] text-white font-inter font-semibold text-[13px] sm:text-sm px-5 sm:px-6 lg:px-7 py-3 sm:py-3.5 hover:bg-[#5c001d] transition-colors duration-300">
-          Talk to Our Experts
-          <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-        </button>
-
       </div>
-    </div>
+    </section>
   );
 }

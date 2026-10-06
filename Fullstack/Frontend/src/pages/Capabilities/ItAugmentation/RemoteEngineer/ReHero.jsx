@@ -8,6 +8,10 @@ import {
   UsersRound,
 } from "lucide-react";
 
+/* =========================================================
+   DATA
+========================================================= */
+
 const capabilities = [
   "Software Engineering",
   "Web & Mobile Development",
@@ -36,36 +40,763 @@ const features = [
   },
 ];
 
+/* =========================================================
+   COMPONENT
+========================================================= */
+
 export default function RemoteEngineersHero() {
   return (
-    <div className="w-full min-h-screen bg-[#f8f8f9] flex justify-center font-inter">
-      <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
+    <div className="remote-engineers-page">
+      <style>{`
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
 
-        {/* ================= TOP GRID ================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_400px] gap-8 sm:gap-10 lg:gap-12 items-start mb-8 sm:mb-10 lg:mb-12">
+        .remote-engineers-page {
+          width: 100%;
+          min-height: 100vh;
+          background: #f8f8f9;
+          color: #1c1c1c;
+          font-family: "Inter", sans-serif;
+          overflow: hidden;
+        }
 
-          {/* ================= LEFT COLUMN ================= */}
-          <div className="flex flex-col justify-center h-full">
+        .remote-container {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 64px;
+          padding-bottom: 64px;
+          box-sizing: border-box;
+        }
+
+        /* =====================================================
+           HERO GRID
+        ===================================================== */
+
+        .remote-hero-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 400px;
+          gap: 52px;
+          align-items: center;
+          margin-bottom: 48px;
+        }
+
+        .remote-hero-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-width: 0;
+        }
+
+        /* =====================================================
+           EYEBROW
+        ===================================================== */
+
+        .remote-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          width: fit-content;
+          margin-bottom: 23px;
+          padding: 7px 13px;
+          border-radius: 999px;
+          background: rgba(115, 0, 36, 0.05);
+        }
+
+        .remote-eyebrow svg {
+          width: 12px;
+          height: 12px;
+          color: #730024;
+          flex-shrink: 0;
+        }
+
+        .remote-eyebrow span {
+          color: #730024;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+        }
+
+        /* =====================================================
+           HERO HEADING
+        ===================================================== */
+
+        .remote-heading {
+          max-width: 850px;
+          margin: 0 0 21px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 40px;
+          line-height: 1.15;
+          font-weight: 600;
+          letter-spacing: -0.025em;
+        }
+
+        .remote-heading-highlight {
+          color: #730024;
+        }
+
+        /* =====================================================
+           HERO DESCRIPTION
+        ===================================================== */
+
+        .remote-description {
+          max-width: 680px;
+          margin: 0 0 30px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.75;
+        }
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .remote-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: fit-content;
+          padding: 13px 23px;
+          border: 0;
+          border-radius: 6px;
+          background: #730024;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1;
+          font-weight: 600;
+          cursor: pointer;
+          transition:
+            background 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+        }
+
+        .remote-cta:hover {
+          background: #5c001d;
+          transform: translateY(-1px);
+          box-shadow: 0 7px 18px rgba(115, 0, 36, 0.15);
+        }
+
+        .remote-cta svg {
+          width: 15px;
+          height: 15px;
+          flex-shrink: 0;
+        }
+
+        /* =====================================================
+           RIGHT ENGINEERING CARD
+        ===================================================== */
+
+        .remote-engineering-card {
+          width: 100%;
+          max-width: 400px;
+          margin-left: auto;
+          overflow: hidden;
+          border: 1px solid #e3e3e3;
+          border-radius: 13px;
+          background: #ffffff;
+          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.035);
+        }
+
+        .remote-card-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+          padding: 17px 18px;
+        }
+
+        .remote-card-brand {
+          display: flex;
+          align-items: center;
+          gap: 11px;
+          min-width: 0;
+        }
+
+        .remote-card-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          background: rgba(115, 0, 36, 0.05);
+          flex-shrink: 0;
+        }
+
+        .remote-card-icon svg {
+          width: 16px;
+          height: 16px;
+          color: #730024;
+        }
+
+        .remote-card-title-wrap {
+          min-width: 0;
+        }
+
+        .remote-card-title {
+          margin: 0 0 3px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 12px;
+          line-height: 1.25;
+          font-weight: 700;
+          letter-spacing: 0.035em;
+        }
+
+        .remote-card-subtitle {
+          margin: 0;
+          color: #9a9a9a;
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          line-height: 1.45;
+        }
+
+        .remote-active {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          width: fit-content;
+          padding: 7px 9px;
+          border-radius: 7px;
+          background: #ecfdf3;
+          color: #059669;
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          line-height: 1.15;
+          font-weight: 700;
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+
+        .remote-active-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #10b981;
+          flex-shrink: 0;
+        }
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .remote-image {
+          position: relative;
+          height: 250px;
+          margin: 0 12px;
+          overflow: hidden;
+          border-radius: 9px;
+        }
+
+        .remote-image-bg {
+          position: absolute;
+          inset: 0;
+          background-image: url("/dd.png");
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          transition: transform 0.5s ease;
+        }
+
+        .remote-engineering-card:hover .remote-image-bg {
+          transform: scale(1.025);
+        }
+
+        .remote-image-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.62),
+            rgba(0, 0, 0, 0.04) 68%,
+            transparent
+          );
+        }
+
+        .remote-image-info {
+          position: absolute;
+          right: 12px;
+          bottom: 11px;
+          left: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          line-height: 1.3;
+          font-weight: 500;
+        }
+
+        .remote-image-info span {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .remote-image-info svg {
+          width: 14px;
+          height: 14px;
+          flex-shrink: 0;
+        }
+
+        /* =====================================================
+           CAPABILITIES
+        ===================================================== */
+
+        .remote-capabilities {
+          padding: 17px 18px 19px;
+        }
+
+        .remote-capabilities-label {
+          margin-bottom: 12px;
+          color: #730024;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: 0.065em;
+        }
+
+        .remote-capabilities-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 9px;
+        }
+
+        .remote-capability {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          min-width: 0;
+          padding: 9px 10px;
+          border: 1px solid #e6e6e6;
+          border-radius: 8px;
+          background: #fafafa;
+        }
+
+        .remote-capability-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #730024;
+          flex-shrink: 0;
+        }
+
+        .remote-capability span:last-child {
+          color: #555555;
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
+          line-height: 1.35;
+          font-weight: 500;
+        }
+
+        /* =====================================================
+           FEATURE CARDS
+        ===================================================== */
+
+        .remote-features {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        .remote-feature-card {
+          position: relative;
+          min-width: 0;
+          overflow: hidden;
+          padding: 25px;
+          border: 1px solid #e3e3e3;
+          border-radius: 13px;
+          background: #ffffff;
+          transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .remote-feature-card:hover {
+          transform: translateY(-3px);
+          border-color: rgba(115, 0, 36, 0.18);
+          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.045);
+        }
+
+        .remote-ghost {
+          position: absolute;
+          right: 17px;
+          bottom: 3px;
+          z-index: 0;
+          color: #f0f0f0;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 55px;
+          line-height: 1;
+          font-weight: 700;
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .remote-feature-top {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 15px;
+          margin-bottom: 20px;
+        }
+
+        .remote-feature-tag {
+          padding: 6px 10px;
+          border-radius: 4px;
+          background: rgba(115, 0, 36, 0.05);
+          color: #730024;
+          font-family: "Inter", sans-serif;
+          font-size: 9.5px;
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+        }
+
+        .remote-feature-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 34px;
+          height: 34px;
+          border-radius: 8px;
+          background: rgba(115, 0, 36, 0.05);
+          flex-shrink: 0;
+        }
+
+        .remote-feature-icon svg {
+          width: 16px;
+          height: 16px;
+          color: #730024;
+        }
+
+        .remote-feature-title {
+          position: relative;
+          z-index: 1;
+          margin: 0 0 9px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 17px;
+          line-height: 1.4;
+          font-weight: 600;
+        }
+
+        .remote-feature-description {
+          position: relative;
+          z-index: 1;
+          max-width: 680px;
+          margin: 0 0 17px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1.7;
+        }
+
+        .remote-feature-pill {
+          position: relative;
+          z-index: 1;
+          display: inline-block;
+          max-width: 100%;
+          padding: 6px 11px;
+          border: 1px solid #e4e4e4;
+          border-radius: 4px;
+          background: #fafafa;
+          color: #666666;
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          line-height: 1.35;
+          font-weight: 500;
+        }
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+          .remote-container {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 52px;
+            padding-bottom: 52px;
+          }
+
+          .remote-hero-grid {
+            grid-template-columns: minmax(0, 1fr) 370px;
+            gap: 38px;
+          }
+
+          .remote-heading {
+            font-size: 35px;
+          }
+
+          .remote-image {
+            height: 235px;
+          }
+        }
+
+        /* =====================================================
+           SMALL TABLET
+        ===================================================== */
+
+        @media (max-width: 900px) {
+          .remote-hero-grid {
+            grid-template-columns: 1fr;
+            gap: 34px;
+            align-items: start;
+          }
+
+          .remote-engineering-card {
+            max-width: 560px;
+            margin-left: 0;
+          }
+
+          .remote-heading {
+            max-width: 760px;
+          }
+
+          .remote-description {
+            max-width: 700px;
+          }
+
+          .remote-features {
+            gap: 16px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+          .remote-container {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 38px;
+            padding-bottom: 42px;
+          }
+
+          .remote-hero-grid {
+            gap: 28px;
+            margin-bottom: 32px;
+          }
+
+          .remote-eyebrow {
+            margin-bottom: 18px;
+            padding: 6px 11px;
+          }
+
+          .remote-eyebrow span {
+            font-size: 9px;
+          }
+
+          .remote-heading {
+            font-size: 29px;
+            line-height: 1.18;
+            margin-bottom: 18px;
+          }
+
+          .remote-description {
+            font-size: 12.5px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+          }
+
+          .remote-cta {
+            padding: 12px 20px;
+            font-size: 12px;
+          }
+
+          .remote-engineering-card {
+            max-width: 100%;
+          }
+
+          .remote-card-header {
+            padding: 15px;
+          }
+
+          .remote-card-title {
+            font-size: 11px;
+          }
+
+          .remote-card-subtitle {
+            font-size: 10px;
+          }
+
+          .remote-image {
+            height: 225px;
+          }
+
+          .remote-capabilities {
+            padding: 15px;
+          }
+
+          .remote-capabilities-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .remote-features {
+            grid-template-columns: 1fr;
+            gap: 13px;
+          }
+
+          .remote-feature-card {
+            padding: 20px;
+          }
+
+          .remote-feature-title {
+            font-size: 15px;
+          }
+
+          .remote-feature-description {
+            font-size: 12px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+          .remote-container {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 30px;
+            padding-bottom: 34px;
+          }
+
+          .remote-eyebrow {
+            max-width: 100%;
+          }
+
+          .remote-eyebrow span {
+            font-size: 8px;
+            letter-spacing: 0.04em;
+          }
+
+          .remote-heading {
+            font-size: 25px;
+          }
+
+          .remote-description {
+            font-size: 11.5px;
+          }
+
+          .remote-cta {
+            width: auto;
+            padding: 11px 17px;
+            font-size: 11.5px;
+          }
+
+          .remote-card-header {
+            align-items: flex-start;
+            padding: 14px;
+          }
+
+          .remote-card-brand {
+            align-items: flex-start;
+          }
+
+          .remote-active {
+            font-size: 8px;
+            padding: 6px 7px;
+          }
+
+          .remote-image {
+            height: 205px;
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+
+          .remote-image-info {
+            font-size: 9.5px;
+          }
+
+          .remote-capabilities-label {
+            font-size: 9px;
+          }
+
+          .remote-capability span:last-child {
+            font-size: 11px;
+          }
+
+          .remote-feature-card {
+            padding: 17px;
+          }
+
+          .remote-feature-top {
+            margin-bottom: 16px;
+          }
+
+          .remote-feature-tag {
+            font-size: 8.5px;
+          }
+
+          .remote-feature-title {
+            font-size: 13.5px;
+          }
+
+          .remote-feature-description {
+            font-size: 11px;
+          }
+
+          .remote-feature-pill {
+            font-size: 9px;
+          }
+
+          .remote-ghost {
+            font-size: 45px;
+          }
+        }
+      `}</style>
+
+      <div className="remote-container">
+
+        {/* =====================================================
+            TOP GRID
+        ===================================================== */}
+
+        <div className="remote-hero-grid">
+
+          {/* =================================================
+              LEFT CONTENT
+          ================================================= */}
+
+          <div className="remote-hero-content">
 
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-1.5 rounded-full bg-[#730024]/5 px-3 py-1.5 mb-5 sm:mb-6 w-fit">
-              <Zap className="w-3 h-3 text-[#730024]" />
+            <div className="remote-eyebrow">
+              <Zap />
 
-              <span className="font-inter text-[9.5px] sm:text-[10px] tracking-wide text-[#730024] font-bold">
+              <span>
                 IT AUGMENTATION • REMOTE ENGINEERS
               </span>
             </div>
 
-            {/* Headline */}
-            <h1 className="font-jakarta font-semibold text-2xl sm:text-3xl lg:text-[2.4rem] leading-[1.15] mb-5 text-[#1c1c1c] max-w-2xl">
+            {/* Heading */}
+            <h1 className="remote-heading">
               Extend Your Engineering Team with{" "}
-              <span className="text-[#730024]">
+              <span className="remote-heading-highlight">
                 Skilled Remote Engineers
               </span>
             </h1>
 
-            {/* Body Copy */}
-            <p className="font-inter text-neutral-500 text-[13.5px] sm:text-[14px] lg:text-[14.5px] leading-relaxed max-w-md mb-7 sm:mb-8">
+            {/* Description */}
+            <p className="remote-description">
               Access skilled technology professionals who can work alongside
               your existing team and support your software development,
               engineering, and technology requirements with a flexible
@@ -73,60 +804,57 @@ export default function RemoteEngineersHero() {
             </p>
 
             {/* CTA */}
-            <button className="inline-flex items-center justify-center gap-2 rounded-md bg-[#730024] text-white font-inter font-semibold text-[13px] sm:text-sm px-5 sm:px-6 py-3 sm:py-3.5 w-fit hover:bg-[#5c001d] transition-colors duration-300">
+            <button className="remote-cta">
               Talk to Our Experts
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+
+              <ArrowRight />
             </button>
           </div>
 
-          {/* ================= RIGHT CARD ================= */}
-          <div className="w-full max-w-[400px] mx-auto lg:mx-0 lg:ml-auto rounded-xl bg-white border border-neutral-200 shadow-sm overflow-hidden">
+          {/* =================================================
+              RIGHT CARD
+          ================================================= */}
+
+          <div className="remote-engineering-card">
 
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-5 py-4">
+            <div className="remote-card-header">
 
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#730024]/5 flex items-center justify-center shrink-0">
-                  <Users className="w-4 h-4 text-[#730024]" />
+              <div className="remote-card-brand">
+
+                <div className="remote-card-icon">
+                  <Users />
                 </div>
 
-                <div className="min-w-0">
-                  <div className="font-jakarta text-[11.5px] sm:text-[12px] font-bold tracking-wide text-[#1c1c1c]">
+                <div className="remote-card-title-wrap">
+                  <div className="remote-card-title">
                     REMOTE ENGINEERING SUPPORT
                   </div>
 
-                  <div className="font-inter text-[10px] sm:text-[11px] text-neutral-400 leading-snug">
+                  <p className="remote-card-subtitle">
                     Flexible technical expertise aligned with your project
                     requirements
-                  </div>
+                  </p>
                 </div>
               </div>
 
-              <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-600 text-[9px] sm:text-[10px] font-bold px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg whitespace-nowrap leading-tight w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+              <span className="remote-active">
+                <span className="remote-active-dot" />
                 ACTIVE
-                <br />
-                AUGMENTATION
               </span>
             </div>
 
             {/* Image */}
-            <div className="relative h-60 sm:h-64 lg:h-[250px] mx-3 rounded-lg overflow-hidden">
+            <div className="remote-image">
 
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    "url('dd.png')",
-                }}
-              />
+              <div className="remote-image-bg" />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="remote-image-overlay" />
 
-              <div className="absolute bottom-3 left-3 right-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 text-white text-[10px] sm:text-[11px] font-medium">
+              <div className="remote-image-info">
 
-                <span className="flex items-center gap-1.5">
-                  <Check className="w-3.5 h-3.5 shrink-0" />
+                <span>
+                  <Check />
                   Skilled Remote Talent
                 </span>
 
@@ -137,23 +865,21 @@ export default function RemoteEngineersHero() {
             </div>
 
             {/* Capabilities */}
-            <div className="px-4 sm:px-5 pt-4 pb-5">
+            <div className="remote-capabilities">
 
-              <div className="font-inter text-[9px] sm:text-[10px] tracking-wide text-[#730024] font-bold mb-3">
+              <div className="remote-capabilities-label">
                 CORE CAPABILITIES & SPECIALIZATIONS
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div className="remote-capabilities-grid">
                 {capabilities.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2.5"
+                    className="remote-capability"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#730024] shrink-0" />
+                    <span className="remote-capability-dot" />
 
-                    <span className="font-inter text-[11.5px] sm:text-[12px] text-neutral-700 font-medium">
-                      {item}
-                    </span>
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
@@ -161,8 +887,11 @@ export default function RemoteEngineersHero() {
           </div>
         </div>
 
-        {/* ================= BOTTOM FEATURE CARDS ================= */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        {/* =====================================================
+            BOTTOM FEATURE CARDS
+        ===================================================== */}
+
+        <div className="remote-features">
 
           {features.map((item) => {
             const Icon = item.icon;
@@ -170,45 +899,43 @@ export default function RemoteEngineersHero() {
             return (
               <div
                 key={item.ghost}
-                className="relative overflow-hidden rounded-xl bg-white border border-neutral-200 p-5 sm:p-6"
+                className="remote-feature-card"
               >
 
                 {/* Ghost Number */}
-                <span className="absolute bottom-2 right-4 text-[48px] sm:text-[52px] font-bold text-neutral-100 leading-none select-none pointer-events-none">
+                <span className="remote-ghost">
                   {item.ghost}
                 </span>
 
                 {/* Top Row */}
-                <div className="relative flex items-center justify-between gap-4 mb-5">
+                <div className="remote-feature-top">
 
-                  <span className="font-inter text-[9px] sm:text-[10px] tracking-wide text-[#730024] font-bold bg-[#730024]/5 px-2.5 py-1.5 rounded">
+                  <span className="remote-feature-tag">
                     {item.tag}
                   </span>
 
-                  <div className="w-8 h-8 rounded-lg bg-[#730024]/5 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4 text-[#730024]" />
+                  <div className="remote-feature-icon">
+                    <Icon />
                   </div>
                 </div>
 
                 {/* Heading */}
-                <h3 className="relative font-jakarta text-[#1c1c1c] font-semibold text-[15px] sm:text-[17px] leading-snug mb-2">
+                <h3 className="remote-feature-title">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="relative font-inter text-neutral-500 text-[12.5px] sm:text-[13px] leading-relaxed mb-4 max-w-xl">
+                <p className="remote-feature-description">
                   {item.description}
                 </p>
 
                 {/* Pill */}
-                <span className="relative inline-block font-inter text-[10px] sm:text-[10.5px] text-neutral-600 font-medium border border-neutral-200 bg-neutral-50 px-3 py-1.5 rounded">
+                <span className="remote-feature-pill">
                   {item.pill}
                 </span>
-
               </div>
             );
           })}
-
         </div>
       </div>
     </div>

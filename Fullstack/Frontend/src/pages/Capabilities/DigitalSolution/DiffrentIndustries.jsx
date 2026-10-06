@@ -73,336 +73,628 @@ const INDUSTRIES = [
 
 export default function IndustriesSection() {
   return (
-    <section
-      className="
-        w-full
-        bg-white
-        px-4
-        py-10
-        sm:px-6
-        sm:py-12
-        md:px-8
-        md:py-16
-        lg:px-10
-        lg:py-18
-      "
-    >
-      <div className="mx-auto w-full max-w-6xl">
+    <>
+      <section className="industries-section">
+        <div className="industries-container">
+          {/* =====================================================
+              HEADER
+          ====================================================== */}
 
-        {/* =====================================================
-            HEADER
-        ====================================================== */}
+          <div className="industries-header">
+            {/* Label */}
 
-        <div
-          className="
-            mx-auto
-            mb-8
-            w-full
-            max-w-2xl
-            text-center
-            sm:mb-10
-            md:mb-12
-          "
-        >
-          {/* Label */}
+            <div className="industries-label-wrap">
+              <span className="industries-label-line" />
 
-          <div
-            className="
-              mb-3
-              flex
-              items-center
-              justify-center
-              gap-2.5
-              sm:mb-4
-              sm:gap-3
-            "
-          >
-            <span
-              className="h-px w-6 sm:w-8 md:w-10"
-              style={{ backgroundColor: "#9d174d" }}
-            />
+              <span className="industries-label">
+                Built for Different Industries
+              </span>
 
-            <span
-              className="
-                font-['Inter']
-                text-[9px]
-                font-bold
-                uppercase
-                tracking-[0.13em]
-                sm:text-[10px]
-                md:text-[12px]
-              "
-              style={{ color: "#9d174d" }}
-            >
-              Built for Different Industries
-            </span>
+              <span className="industries-label-line" />
+            </div>
 
-            <span
-              className="h-px w-6 sm:w-8 md:w-10"
-              style={{ backgroundColor: "#9d174d" }}
-            />
+            {/* Main Heading */}
+
+            <h2 className="industries-heading">
+              Technology That Understands Your Industry
+            </h2>
+
+            {/* Sub Heading */}
+
+            <p className="industries-subheading">
+              Different industries face fundamentally distinct operational
+              mechanics. Rather than rigid one-size-fits-all software, we
+              tailor architecture around the specific compliance, regulatory,
+              transaction velocity, and human workflows defining each
+              enterprise sector.
+            </p>
           </div>
 
-          {/* Main Heading */}
+          {/* =====================================================
+              INDUSTRY CARDS
+          ====================================================== */}
 
-          <h2
-            className="
-              mb-3
-              font-['Plus_Jakarta_Sans']
-              text-[22px]
-              font-bold
-              leading-[1.2]
-              tracking-[-0.02em]
-              text-slate-900
-              sm:mb-4
-              sm:text-[27px]
-              md:text-[30px]
-              lg:text-[32px]
-            "
-          >
-            Technology That Understands Your Industry
-          </h2>
+          <div className="industries-grid">
+            {INDUSTRIES.map(
+              ({
+                icon: Icon,
+                tag,
+                title,
+                description,
+                focus,
+                image,
+                alt,
+              }) => (
+                <article className="industry-card" key={title}>
+                  {/* ================= IMAGE ================= */}
 
-          {/* Sub Heading */}
+                  <div className="industry-image-wrapper">
+                    <img
+                      src={image}
+                      alt={alt}
+                      className="industry-image"
+                    />
+                  </div>
 
-          <p
-            className="
-              px-1
-              font-['Inter']
-              text-[11.5px]
-              leading-[1.65]
-              text-slate-500
-              sm:px-0
-              sm:text-[13px]
-              md:text-[14px]
-              lg:text-[15px]
-            "
-          >
-            Different industries face fundamentally distinct operational
-            mechanics. Rather than rigid one-size-fits-all software, we
-            tailor architecture around the specific compliance, regulatory,
-            transaction velocity, and human workflows defining each
-            enterprise sector.
-          </p>
-        </div>
+                  {/* ================= CARD CONTENT ================= */}
 
-        {/* =====================================================
-            INDUSTRY CARDS
-        ====================================================== */}
+                  <div className="industry-content">
+                    {/* Icon + Tag */}
 
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-4
-            sm:grid-cols-2
-            sm:gap-5
-            lg:grid-cols-3
-            lg:gap-5
-          "
-        >
-          {INDUSTRIES.map(
-            ({
-              icon: Icon,
-              tag,
-              title,
-              description,
-              focus,
-              image,
-              alt,
-            }) => (
-              <div
-                key={title}
-                className="
-                  flex
-                  h-full
-                  flex-col
-                  overflow-hidden
-                  rounded-xl
-                  border
-                  border-slate-100
-                  bg-white
-                  shadow-sm
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:shadow-md
-                "
-              >
-                {/* ================= IMAGE ================= */}
+                    <div className="industry-top">
+                      {/* Icon */}
 
-                <div className="w-full overflow-hidden">
-                  <img
-                    src={image}
-                    alt={alt}
-                    className="
-                      block
-                      aspect-[16/9]
-                      w-full
-                      object-cover
-                      transition-transform
-                      duration-500
-                      hover:scale-[1.02]
-                    "
-                  />
-                </div>
+                      <div className="industry-icon">
+                        <Icon
+                          size={17}
+                          strokeWidth={2}
+                          aria-hidden="true"
+                        />
+                      </div>
 
-                {/* ================= CARD CONTENT ================= */}
+                      {/* Tag */}
 
-                <div
-                  className="
-                    flex
-                    flex-1
-                    flex-col
-                    p-4
-                    sm:p-5
-                  "
-                >
-                  {/* Icon + Tag */}
-
-                  <div
-                    className="
-                      mb-3
-                      flex
-                      items-center
-                      justify-between
-                      gap-2
-                      sm:mb-4
-                    "
-                  >
-                    {/* Icon */}
-
-                    <div
-                      className="
-                        flex
-                        h-8
-                        w-8
-                        flex-shrink-0
-                        items-center
-                        justify-center
-                        rounded-lg
-                        border
-                        border-slate-200
-                        sm:h-9
-                        sm:w-9
-                      "
-                    >
-                      <Icon
-                        size={15}
-                        className="text-slate-700 sm:h-4 sm:w-4"
-                        strokeWidth={2}
-                      />
+                      <span className="industry-tag">{tag}</span>
                     </div>
 
-                    {/* Tag */}
+                    {/* Title */}
 
-                    <span
-                      className="
-                        max-w-[75%]
-                        truncate
-                        rounded-full
-                        px-2
-                        py-1
-                        font-['Inter']
-                        text-[8px]
-                        font-bold
-                        tracking-[0.04em]
-                        sm:px-2.5
-                        sm:text-[9px]
-                        md:text-[10px]
-                      "
-                      style={{
-                        backgroundColor: "#fdeef4",
-                        color: "#9d174d",
-                      }}
-                    >
-                      {tag}
-                    </span>
+                    <h3 className="industry-title">{title}</h3>
+
+                    {/* Description */}
+
+                    <p className="industry-description">{description}</p>
+
+                    {/* Core Focus */}
+
+                    <div className="industry-focus">
+                      <span className="industry-focus-label">
+                        Core Focus
+                      </span>
+
+                      <span className="industry-focus-value">
+                        {focus}
+                      </span>
+                    </div>
                   </div>
-
-                  {/* Title */}
-
-                  <h3
-                    className="
-                      mb-1.5
-                      font-['Plus_Jakarta_Sans']
-                      text-[14px]
-                      font-bold
-                      leading-[1.3]
-                      text-slate-900
-                      sm:mb-2
-                      sm:text-[15px]
-                      md:text-[15.5px]
-                    "
-                  >
-                    {title}
-                  </h3>
-
-                  {/* Description */}
-
-                  <p
-                    className="
-                      mb-4
-                      flex-1
-                      font-['Inter']
-                      text-[11.5px]
-                      leading-[1.65]
-                      text-slate-500
-                      sm:text-[12px]
-                      md:text-[13px]
-                    "
-                  >
-                    {description}
-                  </p>
-
-                  {/* ================= CORE FOCUS ================= */}
-
-                  <div
-                    className="
-                      flex
-                      items-center
-                      justify-between
-                      gap-2
-                      border-t
-                      border-slate-100
-                      pt-3
-                    "
-                  >
-                    <span
-                      className="
-                        flex-shrink-0
-                        font-['Inter']
-                        text-[9px]
-                        text-slate-400
-                        sm:text-[10px]
-                        md:text-[11.5px]
-                      "
-                    >
-                      Core Focus
-                    </span>
-
-                    <span
-                      className="
-                        text-right
-                        font-['Inter']
-                        text-[10px]
-                        font-semibold
-                        leading-tight
-                        text-slate-700
-                        sm:text-[11px]
-                        md:text-[12px]
-                      "
-                    >
-                      {focus}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )
-          )}
+                </article>
+              )
+            )}
+          </div>
         </div>
+      </section>
 
-      </div>
-    </section>
+      <style>{`
+        /* =========================================================
+           INDUSTRIES SECTION
+        ========================================================= */
+
+        .industries-section {
+          width: 100%;
+          background: #ffffff;
+          padding: 80px 100px;
+          box-sizing: border-box;
+        }
+
+        .industries-container {
+          width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .industries-header {
+          width: 100%;
+          max-width: 820px;
+          margin: 0 auto 48px;
+          text-align: center;
+        }
+
+        .industries-label-wrap {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+
+        .industries-label-line {
+          width: 40px;
+          height: 1px;
+          flex-shrink: 0;
+          background: #9d174d;
+        }
+
+        .industries-label {
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+          color: #9d174d;
+        }
+
+        .industries-heading {
+          margin: 0 0 14px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 32px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+          color: #0f172a;
+        }
+
+        .industries-subheading {
+          max-width: 760px;
+          margin: 0 auto;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.7;
+          color: #64748b;
+        }
+
+        /* =========================================================
+           GRID
+        ========================================================= */
+
+        .industries-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 24px;
+        }
+
+        /* =========================================================
+           CARD
+        ========================================================= */
+
+        .industry-card {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border: 1px solid #e8e8ec;
+          border-radius: 14px;
+          background: #ffffff;
+          box-shadow: 0 4px 16px rgba(15, 23, 42, 0.045);
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+        }
+
+        .industry-card:hover {
+          transform: translateY(-5px);
+          border-color: #ead8e1;
+          box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09);
+        }
+
+        /* =========================================================
+           IMAGE
+        ========================================================= */
+
+        .industry-image-wrapper {
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          overflow: hidden;
+          background: #f5f5f5;
+        }
+
+        .industry-image {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.55s ease;
+        }
+
+        .industry-card:hover .industry-image {
+          transform: scale(1.035);
+        }
+
+        /* =========================================================
+           CONTENT
+        ========================================================= */
+
+        .industry-content {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          padding: 22px;
+          box-sizing: border-box;
+        }
+
+        /* =========================================================
+           TOP
+        ========================================================= */
+
+        .industry-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 18px;
+        }
+
+        .industry-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 38px;
+          height: 38px;
+          flex-shrink: 0;
+          border: 1px solid #e5e7eb;
+          border-radius: 9px;
+          background: #ffffff;
+          color: #334155;
+        }
+
+        .industry-tag {
+          max-width: calc(100% - 52px);
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          padding: 6px 10px;
+          border-radius: 999px;
+          background: #fdeef4;
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: 0.045em;
+          color: #9d174d;
+        }
+
+        /* =========================================================
+           TITLE
+        ========================================================= */
+
+        .industry-title {
+          margin: 0 0 9px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 1.35;
+          letter-spacing: -0.015em;
+          color: #0f172a;
+        }
+
+        /* =========================================================
+           DESCRIPTION
+        ========================================================= */
+
+        .industry-description {
+          flex: 1;
+          margin: 0 0 20px;
+          font-family: "Inter", sans-serif;
+          font-size: 12.5px;
+          font-weight: 400;
+          line-height: 1.7;
+          color: #64748b;
+        }
+
+        /* =========================================================
+           CORE FOCUS
+        ========================================================= */
+
+        .industry-focus {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+          padding-top: 14px;
+          border-top: 1px solid #edf0f2;
+        }
+
+        .industry-focus-label {
+          flex-shrink: 0;
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          font-weight: 400;
+          line-height: 1.3;
+          color: #94a3b8;
+        }
+
+        .industry-focus-value {
+          text-align: right;
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
+          font-weight: 600;
+          line-height: 1.35;
+          color: #334155;
+        }
+
+        /* =========================================================
+           TABLET - 1200px
+           Horizontal spacing: 40px
+        ========================================================= */
+
+        @media (max-width: 1200px) {
+          .industries-section {
+            padding: 70px 40px;
+          }
+
+          .industries-grid {
+            gap: 20px;
+          }
+
+          .industry-content {
+            padding: 20px;
+          }
+        }
+
+        /* =========================================================
+           TABLET - 900px
+           2 COLUMNS
+        ========================================================= */
+
+        @media (max-width: 900px) {
+          .industries-section {
+            padding: 60px 40px;
+          }
+
+          .industries-header {
+            margin-bottom: 40px;
+          }
+
+          .industries-heading {
+            font-size: 29px;
+          }
+
+          .industries-subheading {
+            font-size: 13.5px;
+          }
+
+          .industries-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+          }
+
+          .industry-content {
+            padding: 20px;
+          }
+
+          .industry-title {
+            font-size: 15.5px;
+          }
+
+          .industry-description {
+            font-size: 12px;
+          }
+        }
+
+        /* =========================================================
+           MOBILE - 700px
+           Horizontal spacing: 24px
+        ========================================================= */
+
+        @media (max-width: 700px) {
+          .industries-section {
+            padding: 50px 24px;
+          }
+
+          .industries-header {
+            margin-bottom: 32px;
+          }
+
+          .industries-label-wrap {
+            gap: 9px;
+            margin-bottom: 13px;
+          }
+
+          .industries-label-line {
+            width: 28px;
+          }
+
+          .industries-label {
+            font-size: 9px;
+            letter-spacing: 0.1em;
+          }
+
+          .industries-heading {
+            margin-bottom: 11px;
+            font-size: 25px;
+            line-height: 1.25;
+          }
+
+          .industries-subheading {
+            font-size: 12.5px;
+            line-height: 1.65;
+          }
+
+          .industries-grid {
+            grid-template-columns: 1fr;
+            gap: 18px;
+          }
+
+          .industry-image-wrapper {
+            aspect-ratio: 16 / 9;
+          }
+
+          .industry-content {
+            padding: 18px;
+          }
+
+          .industry-top {
+            margin-bottom: 15px;
+          }
+
+          .industry-icon {
+            width: 36px;
+            height: 36px;
+          }
+
+          .industry-tag {
+            font-size: 8.5px;
+            padding: 6px 9px;
+          }
+
+          .industry-title {
+            font-size: 15px;
+          }
+
+          .industry-description {
+            margin-bottom: 18px;
+            font-size: 12px;
+            line-height: 1.65;
+          }
+
+          .industry-focus {
+            padding-top: 12px;
+          }
+
+          .industry-focus-label {
+            font-size: 10px;
+          }
+
+          .industry-focus-value {
+            font-size: 10.5px;
+          }
+        }
+
+        /* =========================================================
+           SMALL MOBILE - 480px
+           Horizontal spacing: 16px
+        ========================================================= */
+
+        @media (max-width: 480px) {
+          .industries-section {
+            padding: 42px 16px;
+          }
+
+          .industries-header {
+            margin-bottom: 28px;
+          }
+
+          .industries-label-wrap {
+            gap: 7px;
+          }
+
+          .industries-label-line {
+            width: 20px;
+          }
+
+          .industries-label {
+            font-size: 8px;
+            letter-spacing: 0.08em;
+          }
+
+          .industries-heading {
+            font-size: 22px;
+            line-height: 1.25;
+          }
+
+          .industries-subheading {
+            font-size: 11.5px;
+            line-height: 1.65;
+          }
+
+          .industries-grid {
+            gap: 16px;
+          }
+
+          .industry-content {
+            padding: 16px;
+          }
+
+          .industry-top {
+            gap: 8px;
+            margin-bottom: 14px;
+          }
+
+          .industry-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+          }
+
+          .industry-tag {
+            max-width: 72%;
+            padding: 5px 8px;
+            font-size: 7.5px;
+          }
+
+          .industry-title {
+            margin-bottom: 8px;
+            font-size: 14px;
+          }
+
+          .industry-description {
+            margin-bottom: 16px;
+            font-size: 11.5px;
+            line-height: 1.65;
+          }
+
+          .industry-focus {
+            gap: 8px;
+            padding-top: 11px;
+          }
+
+          .industry-focus-label {
+            font-size: 9px;
+          }
+
+          .industry-focus-value {
+            font-size: 9.5px;
+          }
+        }
+
+        /* =========================================================
+           VERY SMALL DEVICES
+        ========================================================= */
+
+        @media (max-width: 360px) {
+          .industries-section {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .industries-heading {
+            font-size: 20px;
+          }
+
+          .industries-subheading {
+            font-size: 11px;
+          }
+
+          .industry-content {
+            padding: 14px;
+          }
+
+          .industry-tag {
+            font-size: 7px;
+          }
+
+          .industry-description {
+            font-size: 11px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

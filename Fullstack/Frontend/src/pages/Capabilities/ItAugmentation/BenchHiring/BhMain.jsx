@@ -22,6 +22,12 @@ import {
 } from "lucide-react";
 
 /* =========================================================
+   BRAND
+========================================================= */
+
+const BRAND_COLOR = "#730024";
+
+/* =========================================================
    DATA
 ========================================================= */
 
@@ -227,1492 +233,1842 @@ const finalTags = [
 
 export default function BenchHiringPage() {
   return (
-    <div className="w-full bg-[#f8f9fa] font-inter text-[#1c1c1c] overflow-hidden">
+    <>
+      <div className="bench-page">
 
-      {/* =====================================================
-          HERO
-      ===================================================== */}
+        {/* =====================================================
+            HERO
+        ===================================================== */}
 
-      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-8 sm:pb-10">
-        <div className="w-full max-w-6xl">
+        <section className="bench-hero">
+          <div className="bench-container bench-hero-container">
+            <div className="bench-hero-grid">
 
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_410px] gap-8 lg:gap-12 items-center">
+              {/* LEFT */}
+              <div className="bench-hero-content">
 
-            {/* LEFT */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div className="bench-hero-badge">
+                  <Zap className="bench-hero-badge-icon" />
 
-              {/* Badge */}
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-[#730042]/5 border border-[#730042]/10 px-3 py-1.5 mb-5 sm:mb-6">
-                <Zap className="w-3 h-3 text-[#730042]" />
+                  <span>
+                    IT AUGMENTATION • BENCH HIRING
+                  </span>
+                </div>
 
-                <span className="font-inter text-[8px] sm:text-[9px] tracking-wide text-[#730042] font-bold">
-                  IT AUGMENTATION • BENCH HIRING
-                </span>
+                <h1 className="bench-hero-heading">
+                  Build Your Technology Team with the Right Resources
+                </h1>
+
+                <p className="bench-hero-subheading">
+                  Access skilled technology professionals to support your
+                  projects, strengthen your existing teams, and respond to
+                  changing business and technology requirements.
+                </p>
+
+                <button type="button" className="bench-primary-button">
+                  Talk to Our Experts
+                  <ArrowRight />
+                </button>
+
+                <div className="bench-hero-tags">
+                  {heroTags.map((tag) => (
+                    <span key={tag} className="bench-tag">
+                      <span className="bench-tag-dot" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              {/* Heading */}
-              <h1 className="
-                font-jakarta
-                font-semibold
-                text-[30px]
-                sm:text-[36px]
-                md:text-[40px]
-                lg:text-[42px]
-                leading-[1.12]
-                mb-4
-                sm:mb-5
-                text-[#161620]
-                max-w-xl
-              ">
-                Build Your Technology Team with the Right Resources
-              </h1>
+              {/* RIGHT IMAGE */}
+              <div className="bench-hero-image-card">
+                <div className="bench-hero-image">
+                  <div className="bench-hero-image-overlay" />
 
-              {/* Subheading */}
-              <p className="
-                font-jakarta
-                font-medium
-                text-neutral-500
-                text-[12px]
-                sm:text-[13px]
-                md:text-[13.5px]
-                lg:text-[14px]
-                leading-[1.55]
-                max-w-xl
-                mb-5
-                sm:mb-6
-              ">
-                Access skilled technology professionals to support your
-                projects, strengthen your existing teams, and respond to
-                changing business and technology requirements.
+                  <div className="bench-hero-image-footer">
+                    <span>
+                      <span className="bench-status-dot" />
+                      Enterprise Ready Bench
+                    </span>
+
+                    <span>Verified Technical Talent</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            STRATEGIC RESOURCING
+        ===================================================== */}
+
+        <section className="bench-content-section">
+          <div className="bench-container">
+
+            <div className="bench-centered-content">
+
+              <div className="bench-section-label">
+                <span />
+                STRATEGIC RESOURCING
+              </div>
+
+              <h2 className="bench-section-heading">
+                Flexible Technology Resources for Growing Business Needs
+              </h2>
+
+              <div className="bench-prose">
+                <p>
+                  Technology projects do not always require the same level of
+                  expertise or team capacity. As business priorities change,
+                  organizations may need additional technical resources to
+                  support ongoing projects, new initiatives, or specific
+                  technology requirements.
+                </p>
+
+                <p>
+                  TechTorch provides Resource and Staffing solutions that help
+                  businesses access skilled professionals and flexible
+                  workforce support. Our approach focuses on understanding
+                  your project requirements and aligning the right technical
+                  capabilities with your existing teams and working
+                  environment.
+                </p>
+
+                <p>
+                  From software development and application engineering to
+                  system integration, testing, modernization, and technical
+                  support, the right resources can help businesses manage
+                  changing workloads while keeping their technology
+                  initiatives moving forward.
+                </p>
+              </div>
+            </div>
+
+            {/* Pull Quote */}
+            <blockquote className="bench-pull-quote">
+              <p>
+                "The right people, the right technical capabilities, and the
+                right support for your business requirements."
               </p>
 
-              {/* Button */}
-              <button
-                type="button"
-                className="
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  rounded-md
-                  bg-[#730042]
-                  text-white
-                  font-inter
-                  font-semibold
-                  text-[10px]
-                  sm:text-[11px]
-                  px-5
-                  sm:px-6
-                  py-2.5
-                  sm:py-3
-                  w-fit
-                  hover:bg-[#5c0035]
-                  transition-colors
-                  mb-5
-                "
-              >
+              <span>
+                — TECHTORCH RESOURCING FRAMEWORK
+              </span>
+            </blockquote>
+
+            <div className="bench-centered-content bench-secondary-content">
+
+              <h3 className="bench-secondary-heading">
+                Technology Expertise That Supports Your Projects
+              </h3>
+
+              <div className="bench-prose">
+                <p>
+                  TechTorch's software engineering capabilities cover a broad
+                  range of technology requirements, including custom software
+                  development, web and mobile application development,
+                  enterprise software solutions, API development and system
+                  integration, quality assurance and testing, software
+                  modernization, and ongoing maintenance and support.
+                </p>
+
+                <p>
+                  This allows businesses to align technical resources with
+                  the nature of their projects, existing technology
+                  environment, and operational requirements.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            STRUCTURED APPROACH
+        ===================================================== */}
+
+        <section className="bench-section">
+          <div className="bench-container">
+
+            <div className="bench-section-eyebrow">
+              BENCH HIRING SUPPORT
+            </div>
+
+            <h2 className="bench-section-title">
+              Structured Approach to Engineering Continuity
+            </h2>
+
+            <div className="bench-approach-grid">
+              {approachCards.map((card) => {
+                const Icon = card.icon;
+
+                return (
+                  <div key={card.number} className="bench-card">
+
+                    <div className="bench-card-top">
+                      <div className="bench-icon-box">
+                        <Icon />
+                      </div>
+
+                      <span className="bench-card-number">
+                        {card.number}
+                      </span>
+                    </div>
+
+                    <h3>{card.title}</h3>
+
+                    <p>{card.description}</p>
+
+                    <div className="bench-card-tags">
+                      {card.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+
+                  </div>
+                );
+              })}
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            TECHNOLOGY CAPABILITIES
+        ===================================================== */}
+
+        <section className="bench-section">
+          <div className="bench-container">
+
+            <div className="bench-section-eyebrow">
+              TECHNOLOGY CAPABILITIES
+            </div>
+
+            <h2 className="bench-section-title">
+              Support Across Your Technology Requirements
+            </h2>
+
+            <p className="bench-section-description">
+              Bench hiring can support a range of technology activities
+              depending on the requirements of your project.
+            </p>
+
+            <div className="bench-capability-grid">
+              {capabilities.map((cap) => {
+                const Icon = cap.icon;
+
+                return (
+                  <div key={cap.number} className="bench-card">
+
+                    <div className="bench-card-top">
+                      <div className="bench-icon-box">
+                        <Icon />
+                      </div>
+
+                      <span className="bench-capability-number">
+                        CAPABILITY {cap.number}
+                      </span>
+                    </div>
+
+                    <h3>{cap.title}</h3>
+
+                    <p>{cap.description}</p>
+
+                    <span className="bench-capability-tag">
+                      {cap.tag}
+                    </span>
+
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Capability 07 */}
+            <div className="bench-maintenance-card">
+
+              <div className="bench-maintenance-left">
+
+                <div className="bench-icon-box">
+                  <RefreshCw />
+                </div>
+
+                <div>
+                  <div className="bench-maintenance-label">
+                    CAPABILITY 07
+                  </div>
+
+                  <h3>Ongoing Maintenance & Support</h3>
+
+                  <p>
+                    Provide continued technical assistance, updates,
+                    improvements, and support throughout the software
+                    lifecycle.
+                  </p>
+                </div>
+
+              </div>
+
+              <div className="bench-maintenance-right">
+                <span>SLA & Continuous Health</span>
+
+                <strong>
+                  Specialized Support →
+                </strong>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            DELIVERY WORKFLOW
+        ===================================================== */}
+
+        <section className="bench-section">
+          <div className="bench-container">
+
+            <div className="bench-workflow-header">
+
+              <div className="bench-section-label">
+                <span />
+                DELIVERY WORKFLOW • 4-PHASE DEPLOYMENT
+              </div>
+
+              <div className="bench-sla-label">
+                <span />
+                SLA-GOVERNED EXECUTION
+              </div>
+
+            </div>
+
+            <h2 className="bench-section-title">
+              From Requirement to Resource Alignment
+            </h2>
+
+            <p className="bench-section-description">
+              A systematic four-stage methodology engineered to maintain
+              project velocity, smooth onboarding, and uninterrupted
+              operational continuity.
+            </p>
+
+            {/* Tracker */}
+            <div className="bench-phase-tracker">
+
+              <div className="bench-phase-line" />
+
+              {phases.map((phase) => (
+                <div key={phase.dot} className="bench-phase-point">
+
+                  <div className="bench-phase-number">
+                    {phase.dot}
+                  </div>
+
+                  <span>{phase.label}</span>
+
+                </div>
+              ))}
+
+            </div>
+
+            {/* Phase Cards */}
+            <div className="bench-phase-grid">
+
+              {phases.map((phase) => {
+                const Icon = phase.icon;
+
+                return (
+                  <div key={phase.tag} className="bench-phase-card">
+
+                    <div className="bench-phase-card-top">
+
+                      <div className="bench-icon-box">
+                        <Icon />
+                      </div>
+
+                      <span>{phase.tag}</span>
+
+                    </div>
+
+                    <h3>{phase.title}</h3>
+
+                    <p>{phase.description}</p>
+
+                    <div className="bench-activities-label">
+                      KEY ACTIVITIES
+                    </div>
+
+                    <ul>
+                      {phase.keyActivities.map((activity) => (
+                        <li key={activity}>
+                          <span />
+                          {activity}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="bench-phase-footer">
+                      <strong>{phase.footLabel}</strong>
+                      <span>{phase.footRight}</span>
+                    </div>
+
+                  </div>
+                );
+              })}
+
+            </div>
+
+            {/* Guarantee */}
+            <div className="bench-guarantee">
+
+              <div className="bench-guarantee-content">
+                <CheckCheck />
+
+                <p>
+                  <strong>
+                    Enterprise Deployment Guarantee:
+                  </strong>{" "}
+                  Dedicated account management, structured weekly velocity
+                  checkpoints, and zero operational disruption throughout
+                  every engagement.
+                </p>
+              </div>
+
+              <span>ZERO DISRUPTION</span>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            WHY TECHTORCH
+        ===================================================== */}
+
+        <section className="bench-why-section">
+          <div className="bench-container">
+
+            <div className="bench-why-box">
+
+              <span className="bench-why-label">
+                <span />
+                WHY TECHTORCH
+              </span>
+
+              <h2>
+                Technology Support Built Around Your Requirements
+              </h2>
+
+              <p>
+                Flexible resourcing engineered to integrate seamlessly with
+                your teams, methodologies, and enterprise goals.
+              </p>
+
+              <div className="bench-why-grid">
+
+                {whyCards.map((card) => {
+                  const Icon = card.icon;
+
+                  return (
+                    <div key={card.title} className="bench-why-card">
+
+                      <div className="bench-why-icon">
+                        <Icon />
+                      </div>
+
+                      <h3>{card.title}</h3>
+
+                      <p>{card.description}</p>
+
+                    </div>
+                  );
+                })}
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* =====================================================
+            FINAL CTA
+        ===================================================== */}
+
+        <section className="bench-final-section">
+          <div className="bench-container">
+
+            <div className="bench-final-card">
+
+              <div className="bench-final-label">
+                <span />
+                STRENGTHEN YOUR TEAM
+              </div>
+
+              <h2>
+                Strengthen Your Technology Team with the Right Resources
+              </h2>
+
+              <p>
+                Whether you need additional technical capacity for an
+                ongoing project or support for a new technology initiative,
+                TechTorch can help you explore resource and staffing
+                solutions aligned with your requirements.
+              </p>
+
+              <button type="button" className="bench-primary-button">
                 Talk to Our Experts
-                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                <ArrowRight />
               </button>
 
-              {/* Tags */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 max-w-xl">
-                {heroTags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="
-                      inline-flex
-                      items-center
-                      gap-1
-                      font-inter
-                      text-[7.5px]
-                      sm:text-[8px]
-                      font-medium
-                      text-neutral-600
-                      bg-white
-                      border
-                      border-neutral-200
-                      px-2
-                      sm:px-2.5
-                      py-1
-                      rounded-[3px]
-                    "
-                  >
-                    <span className="w-1 h-1 rounded-full bg-[#730042]" />
+              <div className="bench-final-tags">
+                {finalTags.map((tag) => (
+                  <span key={tag}>
+                    <CheckCircle2 />
                     {tag}
                   </span>
                 ))}
               </div>
-            </div>
 
-            {/* RIGHT IMAGE */}
-            <div
-              className="
-                w-full
-                max-w-[410px]
-                mx-auto
-                rounded-xl
-                bg-white
-                border
-                border-neutral-200
-                shadow-sm
-                overflow-hidden
-              "
-            >
-              <div className="relative h-[210px] sm:h-[250px] lg:h-[270px]">
-
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: "url('/benchhiring.png')",
-                  }}
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-2 text-white font-inter text-[7px] sm:text-[8px] font-medium">
-
-                  <span className="flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    Enterprise Ready Bench
-                  </span>
-
-                  <span>
-                    Verified Technical Talent
-                  </span>
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          STRATEGIC RESOURCING
-      ===================================================== */}
-
-      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
-        <div className="w-full max-w-6xl">
-
-          <div className="flex flex-col items-center text-center">
-
-            {/* Label */}
-            <div className="
-              inline-flex
-              items-center
-              gap-1.5
-              font-inter
-              text-[8px]
-              sm:text-[9px]
-              tracking-wide
-              text-[#730042]
-              font-bold
-              bg-[#730042]/5
-              border
-              border-[#730042]/10
-              px-2.5
-              py-1.5
-              rounded-full
-              mb-4
-            ">
-              <span className="w-1 h-1 rounded-full bg-[#730042]" />
-              STRATEGIC RESOURCING
-            </div>
-
-            {/* Heading */}
-            <h2 className="
-              font-jakarta
-              text-[#161620]
-              font-semibold
-              text-[24px]
-              sm:text-[27px]
-              md:text-[29px]
-              lg:text-[31px]
-              leading-[1.2]
-              mb-5
-              max-w-2xl
-            ">
-              Flexible Technology Resources for Growing Business Needs
-            </h2>
-
-            {/* Paragraphs */}
-            <div className="
-              w-full
-              max-w-3xl
-              space-y-4
-              font-inter
-              text-[9.5px]
-              sm:text-[10.5px]
-              lg:text-[11.5px]
-              leading-[1.65]
-              text-neutral-600
-            ">
-
-              <p>
-                Technology projects do not always require the same level of
-                expertise or team capacity. As business priorities change,
-                organizations may need additional technical resources to
-                support ongoing projects, new initiatives, or specific
-                technology requirements.
-              </p>
-
-              <p>
-                TechTorch provides Resource and Staffing solutions that help
-                businesses access skilled professionals and flexible workforce
-                support. Our approach focuses on understanding your project
-                requirements and aligning the right technical capabilities
-                with your existing teams and working environment.
-              </p>
-
-              <p>
-                From software development and application engineering to
-                system integration, testing, modernization, and technical
-                support, the right resources can help businesses manage
-                changing workloads while keeping their technology initiatives
-                moving forward.
-              </p>
-
-            </div>
-          </div>
-
-
-          {/* PULL QUOTE */}
-          <blockquote className="
-            w-full
-            max-w-3xl
-            mx-auto
-            border-l-2
-            border-[#730042]
-            bg-[#730042]/5
-            pl-4
-            sm:pl-5
-            pr-4
-            sm:pr-5
-            py-4
-            my-7
-            text-left
-          ">
-            <p className="
-              font-inter
-              text-[9.5px]
-              sm:text-[10.5px]
-              lg:text-[11.5px]
-              italic
-              text-neutral-700
-              leading-[1.55]
-              mb-1.5
-            ">
-              "The right people, the right technical capabilities, and the
-              right support for your business requirements."
-            </p>
-
-            <span className="
-              font-inter
-              text-[7px]
-              sm:text-[8px]
-              font-semibold
-              tracking-wide
-              text-[#730042]
-            ">
-              — TECHTORCH RESOURCING FRAMEWORK
-            </span>
-          </blockquote>
-
-
-          {/* SECONDARY HEADING */}
-          <div className="flex flex-col items-center text-center">
-
-            <h3 className="
-              font-jakarta
-              text-[#161620]
-              font-semibold
-              text-[17px]
-              sm:text-[19px]
-              md:text-[20px]
-              lg:text-[21px]
-              mb-3
-            ">
-              Technology Expertise That Supports Your Projects
-            </h3>
-
-            <div className="
-              w-full
-              max-w-3xl
-              space-y-4
-              font-inter
-              text-[9.5px]
-              sm:text-[10.5px]
-              lg:text-[11.5px]
-              leading-[1.65]
-              text-neutral-600
-            ">
-
-              <p>
-                TechTorch's software engineering capabilities cover a broad
-                range of technology requirements, including custom software
-                development, web and mobile application development,
-                enterprise software solutions, API development and system
-                integration, quality assurance and testing, software
-                modernization, and ongoing maintenance and support.
-              </p>
-
-              <p>
-                This allows businesses to align technical resources with the
-                nature of their projects, existing technology environment,
-                and operational requirements.
-              </p>
-
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          STRUCTURED APPROACH
-      ===================================================== */}
-
-      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-        <div className="w-full max-w-6xl">
-
-          <div className="
-            font-inter
-            text-[8px]
-            sm:text-[9px]
-            tracking-wide
-            text-[#730042]
-            font-bold
-            mb-2.5
-          ">
-            BENCH HIRING SUPPORT
-          </div>
-
-          <h2 className="
-            font-jakarta
-            text-[#161620]
-            font-semibold
-            text-[23px]
-            sm:text-[26px]
-            md:text-[28px]
-            lg:text-[30px]
-            leading-[1.2]
-            mb-6
-            max-w-xl
-          ">
-            Structured Approach to Engineering Continuity
-          </h2>
-
-
-          <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-3
-            sm:gap-4
-          ">
-
-            {approachCards.map((card) => {
-              const Icon = card.icon;
-
-              return (
-                <div
-                  key={card.number}
-                  className="
-                    w-full
-                    min-w-0
-                    rounded-lg
-                    bg-white
-                    border
-                    border-neutral-200
-                    p-4
-                    sm:p-5
-                    transition-all
-                    duration-300
-                    hover:border-[#730042]/20
-                    hover:shadow-[0_5px_18px_rgba(115,0,66,0.05)]
-                  "
-                >
-
-                  <div className="flex items-center justify-between mb-4">
-
-                    <div className="
-                      w-7
-                      h-7
-                      sm:w-8
-                      sm:h-8
-                      rounded-md
-                      bg-[#730042]/5
-                      flex
-                      items-center
-                      justify-center
-                      shrink-0
-                    ">
-                      <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#730042]" />
-                    </div>
-
-                    <span className="
-                      font-inter
-                      text-[8px]
-                      sm:text-[9px]
-                      font-bold
-                      text-neutral-300
-                    ">
-                      {card.number}
-                    </span>
-
-                  </div>
-
-                  <h3 className="
-                    font-jakarta
-                    text-[#161620]
-                    font-semibold
-                    text-[12px]
-                    sm:text-[13px]
-                    lg:text-[14px]
-                    mb-2
-                    leading-[1.35]
-                  ">
-                    {card.title}
-                  </h3>
-
-                  <p className="
-                    font-inter
-                    text-neutral-500
-                    text-[9.5px]
-                    sm:text-[10px]
-                    lg:text-[10.5px]
-                    leading-[1.6]
-                    mb-4
-                  ">
-                    {card.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1">
-
-                    {card.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="
-                          font-inter
-                          text-[7.5px]
-                          sm:text-[8px]
-                          font-medium
-                          text-neutral-600
-                          bg-neutral-100
-                          px-1.5
-                          py-1
-                          rounded-[3px]
-                        "
-                      >
-                        {tag}
-                      </span>
-                    ))}
-
-                  </div>
-
-                </div>
-              );
-            })}
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          TECHNOLOGY CAPABILITIES
-      ===================================================== */}
-
-      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-        <div className="w-full max-w-6xl">
-
-          <div className="
-            font-inter
-            text-[8px]
-            sm:text-[9px]
-            tracking-wide
-            text-[#730042]
-            font-bold
-            mb-2.5
-          ">
-            TECHNOLOGY CAPABILITIES
-          </div>
-
-          <h2 className="
-            font-jakarta
-            text-[#161620]
-            font-semibold
-            text-[23px]
-            sm:text-[26px]
-            md:text-[28px]
-            lg:text-[30px]
-            leading-[1.2]
-            mb-2
-            max-w-xl
-          ">
-            Support Across Your Technology Requirements
-          </h2>
-
-          <p className="
-            font-inter
-            text-neutral-500
-            text-[9.5px]
-            sm:text-[10.5px]
-            lg:text-[11.5px]
-            leading-relaxed
-            mb-6
-            max-w-xl
-          ">
-            Bench hiring can support a range of technology activities
-            depending on the requirements of your project.
-          </p>
-
-
-          {/* Capability Cards */}
-          <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-3
-            sm:gap-4
-            mb-4
-          ">
-
-            {capabilities.map((cap) => {
-              const Icon = cap.icon;
-
-              return (
-                <div
-                  key={cap.number}
-                  className="
-                    w-full
-                    min-w-0
-                    rounded-lg
-                    bg-white
-                    border
-                    border-neutral-200
-                    p-4
-                    sm:p-5
-                  "
-                >
-
-                  <div className="flex items-center justify-between mb-3">
-
-                    <div className="
-                      w-7
-                      h-7
-                      sm:w-8
-                      sm:h-8
-                      rounded-md
-                      bg-[#730042]/5
-                      flex
-                      items-center
-                      justify-center
-                    ">
-                      <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#730042]" />
-                    </div>
-
-                    <span className="
-                      font-inter
-                      text-[7px]
-                      sm:text-[7.5px]
-                      tracking-wide
-                      font-semibold
-                      text-neutral-300
-                    ">
-                      CAPABILITY {cap.number}
-                    </span>
-
-                  </div>
-
-
-                  <h3 className="
-                    font-jakarta
-                    text-[#161620]
-                    font-semibold
-                    text-[11px]
-                    sm:text-[12px]
-                    lg:text-[13px]
-                    mb-2
-                    leading-[1.35]
-                  ">
-                    {cap.title}
-                  </h3>
-
-                  <p className="
-                    font-inter
-                    text-neutral-500
-                    text-[9px]
-                    sm:text-[9.5px]
-                    lg:text-[10px]
-                    leading-[1.6]
-                    mb-3
-                  ">
-                    {cap.description}
-                  </p>
-
-                  <span className="
-                    inline-flex
-                    font-inter
-                    text-[7.5px]
-                    sm:text-[8px]
-                    font-medium
-                    text-neutral-600
-                    bg-neutral-100
-                    px-1.5
-                    py-1
-                    rounded-[3px]
-                  ">
-                    {cap.tag}
-                  </span>
-
-                </div>
-              );
-            })}
-
-          </div>
-
-
-          {/* Capability 07 */}
-          <div className="
-            w-full
-            rounded-lg
-            bg-white
-            border
-            border-neutral-200
-            p-4
-            sm:p-5
-            flex
-            flex-col
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
-            gap-4
-          ">
-
-            <div className="flex items-start sm:items-center gap-3">
-
-              <div className="
-                w-7
-                h-7
-                sm:w-8
-                sm:h-8
-                rounded-md
-                bg-[#730042]/5
-                flex
-                items-center
-                justify-center
-                shrink-0
-              ">
-                <RefreshCw className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#730042]" />
+              <div className="bench-final-bottom">
+                Enterprise Grade Governance & Rapid SLA Deployment
               </div>
 
-              <div>
-
-                <div className="
-                  font-inter
-                  text-[7px]
-                  sm:text-[7.5px]
-                  tracking-wide
-                  text-[#730042]
-                  font-bold
-                  mb-1
-                ">
-                  CAPABILITY 07
-                </div>
-
-                <h3 className="
-                  font-jakarta
-                  text-[#161620]
-                  font-semibold
-                  text-[11px]
-                  sm:text-[12px]
-                  lg:text-[13px]
-                  mb-1
-                ">
-                  Ongoing Maintenance & Support
-                </h3>
-
-                <p className="
-                  font-inter
-                  text-neutral-500
-                  text-[9px]
-                  sm:text-[9.5px]
-                  lg:text-[10px]
-                  leading-relaxed
-                  max-w-xl
-                ">
-                  Provide continued technical assistance, updates,
-                  improvements, and support throughout the software lifecycle.
-                </p>
-
-              </div>
-            </div>
-
-
-            <div className="
-              flex
-              items-center
-              gap-2
-              shrink-0
-              flex-wrap
-            ">
-
-              <span className="
-                font-inter
-                text-[7.5px]
-                sm:text-[8px]
-                font-medium
-                text-neutral-600
-                bg-neutral-100
-                px-1.5
-                py-1
-                rounded-[3px]
-                whitespace-nowrap
-              ">
-                SLA & Continuous Health
-              </span>
-
-              <span className="
-                font-inter
-                text-[7.5px]
-                sm:text-[8px]
-                font-semibold
-                text-[#730042]
-                whitespace-nowrap
-              ">
-                Specialized Support →
-              </span>
-
             </div>
 
           </div>
-
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          DELIVERY WORKFLOW
-      ===================================================== */}
-
-      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-        <div className="w-full max-w-6xl">
-
-          <div className="
-            flex
-            flex-col
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
-            gap-3
-            mb-3
-          ">
-
-            <div className="
-              inline-flex
-              items-center
-              gap-1.5
-              font-inter
-              text-[7px]
-              sm:text-[8px]
-              tracking-wide
-              text-[#730042]
-              font-bold
-              bg-[#730042]/5
-              border
-              border-[#730042]/10
-              px-2.5
-              py-1.5
-              rounded-full
-              w-fit
-            ">
-              <span className="w-1 h-1 rounded-full bg-[#730042]" />
-              DELIVERY WORKFLOW • 4-PHASE DEPLOYMENT
-            </div>
-
-            <span className="
-              inline-flex
-              items-center
-              gap-1.5
-              font-inter
-              text-[7px]
-              sm:text-[8px]
-              font-semibold
-              text-neutral-500
-              bg-neutral-100
-              px-2.5
-              py-1.5
-              rounded-full
-              w-fit
-            ">
-              <span className="w-1 h-1 rounded-full bg-[#730042]" />
-              SLA-GOVERNED EXECUTION
-            </span>
-
-          </div>
-
-
-          <h2 className="
-            font-jakarta
-            text-[#161620]
-            font-semibold
-            text-[23px]
-            sm:text-[26px]
-            md:text-[28px]
-            lg:text-[30px]
-            leading-[1.2]
-            mb-2
-            max-w-xl
-          ">
-            From Requirement to Resource Alignment
-          </h2>
-
-          <p className="
-            font-inter
-            text-neutral-500
-            text-[9.5px]
-            sm:text-[10.5px]
-            lg:text-[11.5px]
-            leading-relaxed
-            mb-6
-            max-w-xl
-          ">
-            A systematic four-stage methodology engineered to maintain
-            project velocity, smooth onboarding, and uninterrupted
-            operational continuity.
-          </p>
-
-
-          {/* Step Tracker */}
-          <div className="relative grid grid-cols-4 items-start mb-7">
-
-            <div className="
-              absolute
-              top-3
-              left-[8%]
-              right-[8%]
-              h-px
-              bg-[#730042]/20
-            " />
-
-            {phases.map((p) => (
-              <div
-                key={p.dot}
-                className="
-                  flex
-                  flex-col
-                  items-center
-                  relative
-                  z-10
-                "
-              >
-
-                <div className="
-                  w-6
-                  h-6
-                  rounded-full
-                  bg-[#730042]
-                  text-white
-                  font-inter
-                  text-[8px]
-                  font-bold
-                  flex
-                  items-center
-                  justify-center
-                  mb-1.5
-                ">
-                  {p.dot}
-                </div>
-
-                <span className="
-                  font-inter
-                  text-[7.5px]
-                  sm:text-[8.5px]
-                  font-medium
-                  text-neutral-600
-                  text-center
-                ">
-                  {p.label}
-                </span>
-
-              </div>
-            ))}
-
-          </div>
-
-
-          {/* Phase Cards */}
-          <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-4
-            gap-3
-            mb-4
-          ">
-
-            {phases.map((p) => {
-              const Icon = p.icon;
-
-              return (
-                <div
-                  key={p.tag}
-                  className="
-                    w-full
-                    min-w-0
-                    rounded-lg
-                    bg-white
-                    border
-                    border-neutral-200
-                    p-4
-                    sm:p-4
-                  "
-                >
-
-                  <div className="flex items-center justify-between mb-3">
-
-                    <div className="
-                      w-7
-                      h-7
-                      rounded-md
-                      bg-[#730042]/5
-                      flex
-                      items-center
-                      justify-center
-                    ">
-                      <Icon className="w-3 h-3 text-[#730042]" />
-                    </div>
-
-                    <span className="
-                      font-inter
-                      text-[7px]
-                      sm:text-[7.5px]
-                      font-semibold
-                      text-neutral-400
-                    ">
-                      {p.tag}
-                    </span>
-
-                  </div>
-
-
-                  <h3 className="
-                    font-jakarta
-                    text-[#161620]
-                    font-semibold
-                    text-[11px]
-                    sm:text-[12px]
-                    mb-2
-                    leading-[1.35]
-                  ">
-                    {p.title}
-                  </h3>
-
-                  <p className="
-                    font-inter
-                    text-neutral-500
-                    text-[9px]
-                    sm:text-[9.5px]
-                    lg:text-[10px]
-                    leading-[1.6]
-                    mb-3
-                  ">
-                    {p.description}
-                  </p>
-
-
-                  <div className="
-                    font-inter
-                    text-[7px]
-                    tracking-wide
-                    text-neutral-400
-                    font-semibold
-                    mb-1.5
-                  ">
-                    KEY ACTIVITIES
-                  </div>
-
-
-                  <ul className="space-y-1 mb-3">
-
-                    {p.keyActivities.map((activity) => (
-                      <li
-                        key={activity}
-                        className="
-                          font-inter
-                          text-[8px]
-                          sm:text-[8.5px]
-                          text-neutral-500
-                          flex
-                          items-start
-                          gap-1.5
-                        "
-                      >
-                        <span className="
-                          w-1
-                          h-1
-                          rounded-full
-                          bg-[#730042]
-                          shrink-0
-                          mt-1
-                        " />
-
-                        {activity}
-                      </li>
-                    ))}
-
-                  </ul>
-
-
-                  <div className="
-                    border-t
-                    border-neutral-100
-                    pt-2.5
-                    flex
-                    items-center
-                    justify-between
-                    gap-2
-                  ">
-
-                    <span className="
-                      font-inter
-                      text-[7.5px]
-                      sm:text-[8px]
-                      font-semibold
-                      text-[#730042]
-                    ">
-                      {p.footLabel}
-                    </span>
-
-                    <span className="
-                      font-inter
-                      text-[7.5px]
-                      sm:text-[8px]
-                      text-neutral-400
-                      font-medium
-                    ">
-                      {p.footRight}
-                    </span>
-
-                  </div>
-
-                </div>
-              );
-            })}
-
-          </div>
-
-
-          {/* Enterprise Guarantee */}
-          <div className="
-            rounded-lg
-            bg-white
-            border
-            border-neutral-200
-            px-4
-            sm:px-5
-            py-3
-            flex
-            flex-col
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
-            gap-3
-          ">
-
-            <div className="flex items-start sm:items-center gap-2.5">
-
-              <CheckCheck className="
-                w-3.5
-                h-3.5
-                text-[#730042]
-                shrink-0
-                mt-0.5
-                sm:mt-0
-              " />
-
-              <p className="
-                font-inter
-                text-[8px]
-                sm:text-[8.5px]
-                text-neutral-600
-                leading-[1.5]
-              ">
-
-                <span className="font-semibold text-[#161620]">
-                  Enterprise Deployment Guarantee:
-                </span>{" "}
-                Dedicated account management, structured weekly velocity
-                checkpoints, and zero operational disruption throughout every
-                engagement.
-
-              </p>
-
-            </div>
-
-            <span className="
-              font-inter
-              text-[7px]
-              sm:text-[7.5px]
-              font-bold
-              text-[#730042]
-              whitespace-nowrap
-            ">
-              ZERO DISRUPTION
-            </span>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          WHY TECHTORCH
-      ===================================================== */}
-
-      <section className="w-full flex justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
-
-        <div
-          className="
-            w-full
-            max-w-6xl
-            rounded-xl
-            sm:rounded-2xl
-            px-5
-            sm:px-7
-            lg:px-10
-            py-7
-            sm:py-9
-            lg:py-10
-          "
-          style={{
-            backgroundColor: "#730042",
-          }}
-        >
-
-          {/* Label */}
-          <span className="
-            inline-flex
-            items-center
-            gap-1.5
-            font-inter
-            text-[7px]
-            sm:text-[8px]
-            tracking-wide
-            font-bold
-            text-white/90
-            bg-white/10
-            border
-            border-white/10
-            px-2.5
-            py-1.5
-            rounded-full
-            mb-4
-          ">
-            <span className="w-1 h-1 rounded-full bg-white/80" />
-            WHY TECHTORCH
-          </span>
-
-
-          {/* Heading */}
-          <h2 className="
-            font-jakarta
-            text-white
-            font-semibold
-            text-[23px]
-            sm:text-[27px]
-            md:text-[29px]
-            lg:text-[31px]
-            leading-[1.15]
-            mb-2.5
-            max-w-xl
-          ">
-            Technology Support Built Around Your Requirements
-          </h2>
-
-
-          {/* Subheading */}
-          <p className="
-            font-jakarta
-            font-medium
-            text-white/75
-            text-[9px]
-            sm:text-[10px]
-            md:text-[10.5px]
-            lg:text-[11px]
-            leading-relaxed
-            max-w-2xl
-            mb-6
-          ">
-            Flexible resourcing engineered to integrate seamlessly with your
-            teams, methodologies, and enterprise goals.
-          </p>
-
-
-          {/* Cards */}
-          <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-4
-            gap-3
-          ">
-
-            {whyCards.map((card) => {
-              const Icon = card.icon;
-
-              return (
-                <div
-                  key={card.title}
-                  className="
-                    rounded-lg
-                    bg-[#811A55]
-                    border
-                    border-white/20
-                    p-4
-                    min-h-[150px]
-                    sm:min-h-[160px]
-                    lg:min-h-[175px]
-                    flex
-                    flex-col
-                    transition-all
-                    duration-300
-                    hover:bg-[#8B215D]
-                  "
-                >
-
-                  {/* Icon */}
-                  <div className="
-                    w-7
-                    h-7
-                    rounded-md
-                    bg-white/15
-                    border
-                    border-white/10
-                    flex
-                    items-center
-                    justify-center
-                    mb-4
-                  ">
-                    <Icon className="w-3.5 h-3.5 text-white" />
-                  </div>
-
-
-                  {/* Heading */}
-                  <h3 className="
-                    font-jakarta
-                    text-white
-                    font-semibold
-                    text-[10px]
-                    sm:text-[11px]
-                    lg:text-[11.5px]
-                    mb-1.5
-                    leading-[1.35]
-                  ">
-                    {card.title}
-                  </h3>
-
-
-                  {/* Text */}
-                  <p className="
-                    font-inter
-                    text-white/70
-                    text-[8px]
-                    sm:text-[8.5px]
-                    lg:text-[9px]
-                    leading-[1.55]
-                  ">
-                    {card.description}
-                  </p>
-
-                </div>
-              );
-            })}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          FINAL CTA
-      ===================================================== */}
-
-      <section className="
-        w-full
-        flex
-        justify-center
-        px-4
-        sm:px-6
-        lg:px-8
-        py-10
-        sm:py-14
-        lg:py-16
-      ">
-
-        <div className="
-          w-full
-          max-w-3xl
-          rounded-xl
-          sm:rounded-2xl
-          bg-[#730042]/[0.035]
-          border
-          border-[#730042]/10
-          px-5
-          sm:px-8
-          lg:px-10
-          py-9
-          sm:py-12
-          lg:py-14
-          text-center
-        ">
-
-          {/* Label */}
-          <div className="
-            inline-flex
-            items-center
-            gap-1.5
-            font-inter
-            text-[7px]
-            sm:text-[8px]
-            tracking-wide
-            text-[#730042]
-            font-bold
-            bg-white
-            border
-            border-[#730042]/10
-            px-2.5
-            py-1.5
-            rounded-full
-            mb-4
-          ">
-            <span className="w-1 h-1 rounded-full bg-[#730042]" />
-            STRENGTHEN YOUR TEAM
-          </div>
-
-
-          {/* Heading */}
-          <h2 className="
-            font-jakarta
-            text-[#161620]
-            font-semibold
-            text-[23px]
-            sm:text-[27px]
-            md:text-[29px]
-            lg:text-[31px]
-            leading-[1.2]
-            mb-3
-          ">
-            Strengthen Your Technology Team with the Right Resources
-          </h2>
-
-
-          {/* Paragraph */}
-          <p className="
-            font-inter
-            text-neutral-500
-            text-[10px]
-            sm:text-[10.5px]
-            lg:text-[11.5px]
-            leading-[1.65]
-            max-w-xl
-            mx-auto
-            mb-6
-          ">
-            Whether you need additional technical capacity for an ongoing
-            project or support for a new technology initiative, TechTorch can
-            help you explore resource and staffing solutions aligned with
-            your requirements.
-          </p>
-
-
-          {/* Button */}
-          <button
-            type="button"
-            className="
-              inline-flex
-              items-center
-              justify-center
-              gap-2
-              rounded-md
-              bg-[#730042]
-              text-white
-              font-inter
-              font-semibold
-              text-[8px]
-              sm:text-[9px]
-              px-5
-              sm:px-6
-              py-2.5
-              sm:py-3
-              hover:bg-[#5c0035]
-              transition-colors
-              mb-6
-            "
-          >
-            Talk to Our Experts
-            <ArrowRight className="w-3 h-3" />
-          </button>
-
-
-          {/* Tags */}
-          <div className="
-            flex
-            flex-wrap
-            items-center
-            justify-center
-            gap-3
-            sm:gap-5
-            mb-4
-          ">
-
-            {finalTags.map((tag) => (
-              <span
-                key={tag}
-                className="
-                  inline-flex
-                  items-center
-                  gap-1
-                  font-inter
-                  text-[7.5px]
-                  sm:text-[8.5px]
-                  font-medium
-                  text-neutral-600
-                "
-              >
-                <CheckCircle2 className="w-2.5 h-2.5 text-[#730042]" />
-                {tag}
-              </span>
-            ))}
-
-          </div>
-
-
-          {/* Bottom text */}
-          <div className="
-            font-inter
-            text-[7px]
-            sm:text-[7.5px]
-            text-neutral-400
-            font-medium
-          ">
-            Enterprise Grade Governance & Rapid SLA Deployment
-          </div>
-
-        </div>
-
-      </section>
-
-    </div>
+        </section>
+
+      </div>
+
+      {/* =========================================================
+          STYLES
+      ========================================================= */}
+
+      <style>{`
+
+        /* =====================================================
+           BASE
+        ===================================================== */
+
+        .bench-page {
+          width: 100%;
+          overflow: hidden;
+          background: #f8f9fa;
+          color: #1c1c1c;
+          font-family: Inter, sans-serif;
+        }
+
+        .bench-container {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+
+        .bench-page h1,
+        .bench-page h2,
+        .bench-page h3 {
+          font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        button {
+          font-family: Inter, sans-serif;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .bench-hero {
+          width: 100%;
+          padding-top: 64px;
+          padding-bottom: 56px;
+          background: #f8f9fa;
+        }
+
+        .bench-hero-container {
+          display: flex;
+          align-items: center;
+        }
+
+        .bench-hero-grid {
+          width: 100%;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(340px, 430px);
+          align-items: center;
+          gap: 70px;
+        }
+
+        .bench-hero-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .bench-hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          margin-bottom: 22px;
+          padding: 8px 13px;
+          border-radius: 999px;
+          background: rgba(115, 0, 36, 0.05);
+          border: 1px solid rgba(115, 0, 36, 0.1);
+          color: ${BRAND_COLOR};
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+        }
+
+        .bench-hero-badge-icon {
+          width: 13px;
+          height: 13px;
+        }
+
+        .bench-hero-heading {
+          max-width: 720px;
+          margin: 0 0 18px;
+          color: #161620;
+          font-size: clamp(34px, 3.4vw, 50px);
+          line-height: 1.12;
+          font-weight: 700;
+          letter-spacing: -0.035em;
+        }
+
+        .bench-hero-subheading {
+          max-width: 650px;
+          margin: 0 0 25px;
+          color: #737373;
+          font-size: 14px;
+          line-height: 1.7;
+          font-weight: 500;
+        }
+
+        .bench-primary-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+          width: fit-content;
+          border: 0;
+          border-radius: 7px;
+          padding: 12px 20px;
+          background: ${BRAND_COLOR};
+          color: #ffffff;
+          font-size: 12px;
+          font-weight: 600;
+          cursor: pointer;
+          transition:
+            transform 0.3s ease,
+            background 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .bench-primary-button:hover {
+          transform: translateY(-2px);
+          background: #5c0035;
+          box-shadow: 0 10px 24px rgba(115, 0, 36, 0.18);
+        }
+
+        .bench-primary-button svg {
+          width: 15px;
+          height: 15px;
+        }
+
+        .bench-hero-tags {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .bench-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: 6px 9px;
+          border: 1px solid #e5e5e5;
+          border-radius: 4px;
+          background: #ffffff;
+          color: #5f5f5f;
+          font-size: 9px;
+          font-weight: 500;
+        }
+
+        .bench-tag-dot {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: ${BRAND_COLOR};
+        }
+
+        .bench-hero-image-card {
+          width: 100%;
+          max-width: 430px;
+          margin: 0 auto;
+          overflow: hidden;
+          border: 1px solid #e5e5e5;
+          border-radius: 16px;
+          background: #ffffff;
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .bench-hero-image {
+          position: relative;
+          width: 100%;
+          height: 340px;
+          background-image: url("/benchhiring.png");
+          background-size: cover;
+          background-position: center;
+        }
+
+        .bench-hero-image-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(0, 0, 0, 0.68) 100%
+          );
+        }
+
+        .bench-hero-image-footer {
+          position: absolute;
+          left: 18px;
+          right: 18px;
+          bottom: 17px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          color: #ffffff;
+          font-size: 9px;
+          font-weight: 500;
+        }
+
+        .bench-hero-image-footer span:first-child {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .bench-status-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #34d399;
+        }
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .bench-content-section {
+          width: 100%;
+          padding-top: 65px;
+          padding-bottom: 70px;
+          background: #ffffff;
+        }
+
+        .bench-centered-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .bench-section-label,
+        .bench-section-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          color: ${BRAND_COLOR};
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .bench-section-label {
+          padding: 7px 11px;
+          border-radius: 999px;
+          background: rgba(115, 0, 36, 0.05);
+          border: 1px solid rgba(115, 0, 36, 0.1);
+        }
+
+        .bench-section-label span,
+        .bench-final-label span {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: ${BRAND_COLOR};
+        }
+
+        .bench-section-heading {
+          max-width: 760px;
+          margin: 17px 0 25px;
+          color: #161620;
+          font-size: clamp(28px, 3vw, 39px);
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: -0.025em;
+        }
+
+        .bench-prose {
+          width: 100%;
+          max-width: 780px;
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+          color: #626262;
+          font-size: 13px;
+          line-height: 1.8;
+        }
+
+        .bench-prose p {
+          margin: 0;
+        }
+
+        .bench-pull-quote {
+          width: 100%;
+          max-width: 780px;
+          margin: 38px auto;
+          padding: 19px 22px;
+          border-left: 3px solid ${BRAND_COLOR};
+          background: rgba(115, 0, 36, 0.05);
+          text-align: left;
+        }
+
+        .bench-pull-quote p {
+          margin: 0 0 9px;
+          color: #454545;
+          font-size: 12px;
+          line-height: 1.7;
+          font-style: italic;
+        }
+
+        .bench-pull-quote span {
+          color: ${BRAND_COLOR};
+          font-size: 8px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .bench-secondary-content {
+          margin-top: 5px;
+        }
+
+        .bench-secondary-heading {
+          margin: 0 0 15px;
+          color: #161620;
+          font-size: 22px;
+          line-height: 1.3;
+          font-weight: 700;
+        }
+
+        /* =====================================================
+           GENERAL SECTION
+        ===================================================== */
+
+        .bench-section {
+          width: 100%;
+          padding-top: 65px;
+          padding-bottom: 65px;
+          background: #f8f9fa;
+        }
+
+        .bench-section-title {
+          max-width: 700px;
+          margin: 13px 0 11px;
+          color: #161620;
+          font-size: clamp(26px, 2.8vw, 37px);
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: -0.025em;
+        }
+
+        .bench-section-description {
+          max-width: 650px;
+          margin: 0 0 28px;
+          color: #747474;
+          font-size: 12px;
+          line-height: 1.7;
+        }
+
+        /* =====================================================
+           CARDS
+        ===================================================== */
+
+        .bench-approach-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 18px;
+        }
+
+        .bench-capability-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 18px;
+          margin-bottom: 18px;
+        }
+
+        .bench-card {
+          position: relative;
+          min-width: 0;
+          padding: 23px;
+          border: 1px solid #e5e5e5;
+          border-radius: 11px;
+          background: #ffffff;
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+        }
+
+        .bench-card:hover {
+          transform: translateY(-4px);
+          border-color: rgba(115, 0, 36, 0.2);
+          box-shadow: 0 14px 32px rgba(115, 0, 36, 0.07);
+        }
+
+        .bench-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 19px;
+        }
+
+        .bench-icon-box {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 34px;
+          height: 34px;
+          flex-shrink: 0;
+          border-radius: 8px;
+          background: rgba(115, 0, 36, 0.06);
+          color: ${BRAND_COLOR};
+        }
+
+        .bench-icon-box svg {
+          width: 16px;
+          height: 16px;
+        }
+
+        .bench-card-number,
+        .bench-capability-number {
+          color: #d2d2d2;
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+        }
+
+        .bench-card h3 {
+          margin: 0 0 9px;
+          color: #161620;
+          font-size: 15px;
+          line-height: 1.35;
+          font-weight: 700;
+        }
+
+        .bench-card p {
+          margin: 0 0 17px;
+          color: #707070;
+          font-size: 11px;
+          line-height: 1.65;
+        }
+
+        .bench-card-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+        }
+
+        .bench-card-tags span,
+        .bench-capability-tag {
+          display: inline-flex;
+          width: fit-content;
+          padding: 5px 7px;
+          border-radius: 4px;
+          background: #f1f1f1;
+          color: #606060;
+          font-size: 8px;
+          font-weight: 500;
+        }
+
+        .bench-capability-tag {
+          margin-top: 2px;
+        }
+
+        /* =====================================================
+           MAINTENANCE
+        ===================================================== */
+
+        .bench-maintenance-card {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 25px;
+          padding: 20px 23px;
+          border: 1px solid #e5e5e5;
+          border-radius: 11px;
+          background: #ffffff;
+        }
+
+        .bench-maintenance-left {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          min-width: 0;
+        }
+
+        .bench-maintenance-label {
+          margin-bottom: 5px;
+          color: ${BRAND_COLOR};
+          font-size: 8px;
+          font-weight: 700;
+          letter-spacing: 0.07em;
+        }
+
+        .bench-maintenance-left h3 {
+          margin: 0 0 5px;
+          color: #161620;
+          font-size: 14px;
+          font-weight: 700;
+        }
+
+        .bench-maintenance-left p {
+          max-width: 700px;
+          margin: 0;
+          color: #707070;
+          font-size: 10px;
+          line-height: 1.6;
+        }
+
+        .bench-maintenance-right {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex-shrink: 0;
+        }
+
+        .bench-maintenance-right span {
+          padding: 5px 7px;
+          border-radius: 4px;
+          background: #f1f1f1;
+          color: #606060;
+          font-size: 8px;
+          white-space: nowrap;
+        }
+
+        .bench-maintenance-right strong {
+          color: ${BRAND_COLOR};
+          font-size: 9px;
+          white-space: nowrap;
+        }
+
+        /* =====================================================
+           WORKFLOW
+        ===================================================== */
+
+        .bench-workflow-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+          margin-bottom: 5px;
+        }
+
+        .bench-sla-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 7px 11px;
+          border-radius: 999px;
+          background: #eeeeee;
+          color: #646464;
+          font-size: 8px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+        }
+
+        .bench-sla-label span {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: ${BRAND_COLOR};
+        }
+
+        .bench-phase-tracker {
+          position: relative;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          margin: 38px 0 32px;
+        }
+
+        .bench-phase-line {
+          position: absolute;
+          top: 13px;
+          left: 8%;
+          right: 8%;
+          height: 1px;
+          background: rgba(115, 0, 36, 0.2);
+        }
+
+        .bench-phase-point {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .bench-phase-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 27px;
+          height: 27px;
+          border-radius: 50%;
+          background: ${BRAND_COLOR};
+          color: #ffffff;
+          font-size: 9px;
+          font-weight: 700;
+        }
+
+        .bench-phase-point span {
+          color: #626262;
+          font-size: 9px;
+          font-weight: 500;
+        }
+
+        .bench-phase-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 15px;
+          margin-bottom: 17px;
+        }
+
+        .bench-phase-card {
+          min-width: 0;
+          padding: 19px;
+          border: 1px solid #e5e5e5;
+          border-radius: 11px;
+          background: #ffffff;
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .bench-phase-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 13px 30px rgba(115, 0, 36, 0.06);
+        }
+
+        .bench-phase-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          margin-bottom: 16px;
+        }
+
+        .bench-phase-card-top > span {
+          color: #999999;
+          font-size: 7px;
+          font-weight: 700;
+        }
+
+        .bench-phase-card h3 {
+          margin: 0 0 9px;
+          color: #161620;
+          font-size: 13px;
+          line-height: 1.35;
+          font-weight: 700;
+        }
+
+        .bench-phase-card > p {
+          margin: 0 0 15px;
+          color: #707070;
+          font-size: 10px;
+          line-height: 1.65;
+        }
+
+        .bench-activities-label {
+          margin-bottom: 8px;
+          color: #999999;
+          font-size: 7px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .bench-phase-card ul {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          margin: 0 0 15px;
+          padding: 0;
+          list-style: none;
+        }
+
+        .bench-phase-card li {
+          display: flex;
+          align-items: flex-start;
+          gap: 7px;
+          color: #686868;
+          font-size: 8px;
+          line-height: 1.45;
+        }
+
+        .bench-phase-card li span {
+          width: 4px;
+          height: 4px;
+          flex-shrink: 0;
+          margin-top: 4px;
+          border-radius: 50%;
+          background: ${BRAND_COLOR};
+        }
+
+        .bench-phase-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          padding-top: 11px;
+          border-top: 1px solid #eeeeee;
+        }
+
+        .bench-phase-footer strong {
+          color: ${BRAND_COLOR};
+          font-size: 8px;
+        }
+
+        .bench-phase-footer span {
+          color: #999999;
+          font-size: 8px;
+        }
+
+        .bench-guarantee {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+          padding: 14px 18px;
+          border: 1px solid #e5e5e5;
+          border-radius: 10px;
+          background: #ffffff;
+        }
+
+        .bench-guarantee-content {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .bench-guarantee-content svg {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+          color: ${BRAND_COLOR};
+        }
+
+        .bench-guarantee p {
+          margin: 0;
+          color: #626262;
+          font-size: 8.5px;
+          line-height: 1.55;
+        }
+
+        .bench-guarantee p strong {
+          color: #161620;
+        }
+
+        .bench-guarantee > span {
+          color: ${BRAND_COLOR};
+          font-size: 7.5px;
+          font-weight: 700;
+          white-space: nowrap;
+        }
+
+        /* =====================================================
+           WHY TECHTORCH
+        ===================================================== */
+
+        .bench-why-section {
+          width: 100%;
+          padding-top: 45px;
+          padding-bottom: 45px;
+          background: #f8f9fa;
+        }
+
+        .bench-why-box {
+          padding: 42px;
+          border-radius: 17px;
+          background: ${BRAND_COLOR};
+        }
+
+        .bench-why-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          margin-bottom: 15px;
+          padding: 7px 11px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 8px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .bench-why-label span {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.8);
+        }
+
+        .bench-why-box > h2 {
+          max-width: 700px;
+          margin: 0 0 10px;
+          color: #ffffff;
+          font-size: clamp(28px, 3vw, 39px);
+          line-height: 1.18;
+          font-weight: 700;
+          letter-spacing: -0.025em;
+        }
+
+        .bench-why-box > p {
+          max-width: 700px;
+          margin: 0 0 28px;
+          color: rgba(255, 255, 255, 0.72);
+          font-size: 11px;
+          line-height: 1.65;
+        }
+
+        .bench-why-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 14px;
+        }
+
+        .bench-why-card {
+          min-height: 175px;
+          padding: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 10px;
+          background: #811a55;
+          transition:
+            transform 0.3s ease,
+            background 0.3s ease;
+        }
+
+        .bench-why-card:hover {
+          transform: translateY(-4px);
+          background: #8b215d;
+        }
+
+        .bench-why-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          margin-bottom: 17px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 7px;
+          background: rgba(255, 255, 255, 0.15);
+          color: #ffffff;
+        }
+
+        .bench-why-icon svg {
+          width: 15px;
+          height: 15px;
+        }
+
+        .bench-why-card h3 {
+          margin: 0 0 7px;
+          color: #ffffff;
+          font-size: 11px;
+          line-height: 1.4;
+          font-weight: 700;
+        }
+
+        .bench-why-card p {
+          margin: 0;
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 9px;
+          line-height: 1.55;
+        }
+
+        /* =====================================================
+           FINAL CTA
+        ===================================================== */
+
+        .bench-final-section {
+          width: 100%;
+          padding-top: 65px;
+          padding-bottom: 75px;
+          background: #f8f9fa;
+        }
+
+        .bench-final-card {
+          max-width: 950px;
+          margin: 0 auto;
+          padding: 55px 60px;
+          border: 1px solid rgba(115, 0, 36, 0.1);
+          border-radius: 17px;
+          background: rgba(115, 0, 36, 0.035);
+          text-align: center;
+        }
+
+        .bench-final-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          margin-bottom: 16px;
+          padding: 7px 11px;
+          border: 1px solid rgba(115, 0, 36, 0.1);
+          border-radius: 999px;
+          background: #ffffff;
+          color: ${BRAND_COLOR};
+          font-size: 8px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .bench-final-card h2 {
+          max-width: 800px;
+          margin: 0 auto 13px;
+          color: #161620;
+          font-size: clamp(28px, 3vw, 39px);
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: -0.025em;
+        }
+
+        .bench-final-card > p {
+          max-width: 700px;
+          margin: 0 auto 25px;
+          color: #707070;
+          font-size: 12px;
+          line-height: 1.7;
+        }
+
+        .bench-final-card .bench-primary-button {
+          margin-bottom: 25px;
+        }
+
+        .bench-final-tags {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+          margin-bottom: 17px;
+        }
+
+        .bench-final-tags span {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          color: #606060;
+          font-size: 9px;
+          font-weight: 500;
+        }
+
+        .bench-final-tags svg {
+          width: 12px;
+          height: 12px;
+          color: ${BRAND_COLOR};
+        }
+
+        .bench-final-bottom {
+          color: #aaaaaa;
+          font-size: 8px;
+          font-weight: 500;
+        }
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+          .bench-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .bench-hero {
+            padding-top: 55px;
+          }
+
+          .bench-hero-grid {
+            gap: 45px;
+            grid-template-columns: minmax(0, 1fr) 390px;
+          }
+
+          .bench-hero-image {
+            height: 315px;
+          }
+
+          .bench-why-box {
+            padding: 35px;
+          }
+        }
+
+        /* =====================================================
+           TABLET / SMALL LAPTOP
+        ===================================================== */
+
+        @media (max-width: 900px) {
+          .bench-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .bench-hero-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+
+          .bench-hero-content {
+            align-items: center;
+            text-align: center;
+          }
+
+          .bench-hero-heading {
+            max-width: 750px;
+          }
+
+          .bench-hero-subheading {
+            max-width: 650px;
+          }
+
+          .bench-hero-tags {
+            justify-content: center;
+          }
+
+          .bench-hero-image-card {
+            max-width: 600px;
+          }
+
+          .bench-hero-image {
+            height: 350px;
+          }
+
+          .bench-approach-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .bench-capability-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .bench-phase-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .bench-why-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .bench-maintenance-card {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .bench-maintenance-right {
+            padding-left: 48px;
+          }
+
+          .bench-final-card {
+            padding: 48px 40px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+          .bench-container {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .bench-hero {
+            padding-top: 42px;
+            padding-bottom: 42px;
+          }
+
+          .bench-hero-grid {
+            gap: 32px;
+          }
+
+          .bench-hero-heading {
+            font-size: 32px;
+          }
+
+          .bench-hero-subheading {
+            font-size: 12px;
+          }
+
+          .bench-hero-image {
+            height: 290px;
+          }
+
+          .bench-content-section,
+          .bench-section {
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+
+          .bench-section-heading,
+          .bench-section-title {
+            font-size: 28px;
+          }
+
+          .bench-prose {
+            font-size: 12px;
+          }
+
+          .bench-approach-grid,
+          .bench-capability-grid,
+          .bench-phase-grid,
+          .bench-why-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .bench-phase-tracker {
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin: 28px 0;
+          }
+
+          .bench-phase-line {
+            top: 13px;
+            bottom: 13px;
+            left: 13px;
+            right: auto;
+            width: 1px;
+            height: auto;
+          }
+
+          .bench-phase-point {
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 12px;
+          }
+
+          .bench-phase-point span {
+            text-align: left;
+          }
+
+          .bench-why-box {
+            padding: 28px 24px;
+          }
+
+          .bench-final-card {
+            padding: 40px 24px;
+          }
+
+          .bench-maintenance-right {
+            padding-left: 0;
+            flex-wrap: wrap;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+          .bench-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .bench-hero {
+            padding-top: 35px;
+            padding-bottom: 35px;
+          }
+
+          .bench-hero-badge {
+            font-size: 8px;
+            padding: 7px 10px;
+          }
+
+          .bench-hero-heading {
+            font-size: 27px;
+          }
+
+          .bench-hero-subheading {
+            font-size: 11px;
+          }
+
+          .bench-primary-button {
+            width: 100%;
+            max-width: 250px;
+            padding: 11px 18px;
+            font-size: 11px;
+          }
+
+          .bench-hero-tags {
+            gap: 5px;
+          }
+
+          .bench-tag {
+            font-size: 8px;
+            padding: 5px 7px;
+          }
+
+          .bench-hero-image {
+            height: 240px;
+          }
+
+          .bench-hero-image-footer {
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            font-size: 7px;
+          }
+
+          .bench-content-section,
+          .bench-section {
+            padding-top: 40px;
+            padding-bottom: 40px;
+          }
+
+          .bench-section-heading,
+          .bench-section-title {
+            font-size: 24px;
+          }
+
+          .bench-prose {
+            font-size: 11px;
+          }
+
+          .bench-pull-quote {
+            padding: 16px 15px;
+            margin: 28px auto;
+          }
+
+          .bench-pull-quote p {
+            font-size: 10.5px;
+          }
+
+          .bench-card {
+            padding: 18px;
+          }
+
+          .bench-maintenance-card {
+            padding: 18px;
+          }
+
+          .bench-maintenance-left {
+            align-items: flex-start;
+          }
+
+          .bench-maintenance-right {
+            gap: 8px;
+          }
+
+          .bench-workflow-header {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .bench-sla-label {
+            font-size: 7px;
+          }
+
+          .bench-phase-card {
+            padding: 17px;
+          }
+
+          .bench-guarantee {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .bench-guarantee-content {
+            align-items: flex-start;
+          }
+
+          .bench-guarantee > span {
+            padding-left: 26px;
+          }
+
+          .bench-why-box {
+            padding: 25px 18px;
+            border-radius: 13px;
+          }
+
+          .bench-why-box > h2 {
+            font-size: 25px;
+          }
+
+          .bench-final-section {
+            padding-top: 40px;
+            padding-bottom: 50px;
+          }
+
+          .bench-final-card {
+            padding: 32px 18px;
+            border-radius: 13px;
+          }
+
+          .bench-final-card h2 {
+            font-size: 25px;
+          }
+
+          .bench-final-card > p {
+            font-size: 10.5px;
+          }
+
+          .bench-final-tags {
+            flex-direction: column;
+            gap: 10px;
+          }
+        }
+
+        /* =====================================================
+           EXTRA SMALL
+        ===================================================== */
+
+        @media (max-width: 360px) {
+          .bench-hero-heading {
+            font-size: 24px;
+          }
+
+          .bench-section-heading,
+          .bench-section-title {
+            font-size: 22px;
+          }
+
+          .bench-card h3 {
+            font-size: 13px;
+          }
+
+          .bench-card p {
+            font-size: 10px;
+          }
+
+          .bench-why-box > h2,
+          .bench-final-card h2 {
+            font-size: 22px;
+          }
+        }
+
+      `}</style>
+    </>
   );
 }

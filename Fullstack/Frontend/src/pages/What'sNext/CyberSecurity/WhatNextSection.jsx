@@ -42,21 +42,14 @@ export default function WhatsNextSection() {
         py-10
         sm:px-6
         sm:py-12
-        md:px-8
+        md:px-10
         md:py-14
-        lg:px-10
+        lg:px-[100px]
         lg:py-16
-        xl:px-12
         xl:py-20
       "
     >
-      <div
-        className="
-          mx-auto
-          w-full
-          max-w-7xl
-        "
-      >
+      <div className="mx-auto w-full max-w-[1320px]">
         {/* ================= SECTION HEADER ================= */}
 
         <span
@@ -101,6 +94,7 @@ export default function WhatsNextSection() {
             mt-7
             grid
             grid-cols-1
+            justify-items-center
             gap-4
             sm:mt-9
             sm:grid-cols-2
@@ -119,6 +113,7 @@ export default function WhatsNextSection() {
                 group
                 flex
                 w-full
+                max-w-[290px]
                 min-w-0
                 flex-col
                 justify-between
@@ -132,8 +127,11 @@ export default function WhatsNextSection() {
                 hover:-translate-y-1
                 hover:border-fuchsia-900/30
                 hover:shadow-md
+                sm:max-w-[300px]
                 sm:p-6
+                lg:max-w-[285px]
                 lg:p-5
+                xl:max-w-[300px]
                 xl:p-6
               "
             >
