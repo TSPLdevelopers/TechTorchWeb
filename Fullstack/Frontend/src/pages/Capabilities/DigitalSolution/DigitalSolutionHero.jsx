@@ -138,7 +138,6 @@ export default function DigitalSolutionsHero() {
               {STATS.map((stat) => (
                 <div className="digital-stat-card" key={stat.label}>
                   <p className="digital-stat-value">{stat.value}</p>
-
                   <p className="digital-stat-label">{stat.label}</p>
                 </div>
               ))}
@@ -158,6 +157,7 @@ export default function DigitalSolutionsHero() {
           overflow: hidden;
           box-sizing: border-box;
           padding: 70px 100px;
+
           background:
             radial-gradient(
               100% 90% at 50% 15%,
@@ -192,6 +192,7 @@ export default function DigitalSolutionsHero() {
           left: 0;
           height: 35%;
           pointer-events: none;
+
           background:
             linear-gradient(
               to top,
@@ -319,16 +320,22 @@ export default function DigitalSolutionsHero() {
           align-items: center;
           justify-content: center;
           gap: 9px;
+
           padding: 12px 24px;
+
           border: 0;
           border-radius: 6px;
-          background: #730024;
+
+          background: #730042;
+
           font-family: "Inter", sans-serif;
           font-size: 12px;
           font-weight: 600;
           line-height: 1.2;
+
           color: #ffffff;
           cursor: pointer;
+
           transition:
             opacity 0.3s ease,
             transform 0.3s ease,
@@ -337,7 +344,7 @@ export default function DigitalSolutionsHero() {
 
         .digital-cta:hover {
           opacity: 0.92;
-          background: #85002d;
+          background: #730042;
           transform: translateY(-1px);
         }
 
@@ -403,7 +410,6 @@ export default function DigitalSolutionsHero() {
 
         /* =========================================================
            TABLET - 1200px
-           Horizontal spacing: 40px
         ========================================================= */
 
         @media (max-width: 1200px) {
@@ -418,7 +424,6 @@ export default function DigitalSolutionsHero() {
 
         /* =========================================================
            TABLET - 900px
-           Horizontal spacing: 40px
         ========================================================= */
 
         @media (max-width: 900px) {
@@ -449,7 +454,6 @@ export default function DigitalSolutionsHero() {
 
         /* =========================================================
            MOBILE - 700px
-           Horizontal spacing: 24px
         ========================================================= */
 
         @media (max-width: 700px) {
@@ -525,7 +529,6 @@ export default function DigitalSolutionsHero() {
 
         /* =========================================================
            SMALL MOBILE - 480px
-           Horizontal spacing: 16px
         ========================================================= */
 
         @media (max-width: 480px) {

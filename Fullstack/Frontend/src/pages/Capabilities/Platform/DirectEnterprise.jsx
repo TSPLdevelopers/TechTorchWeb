@@ -454,7 +454,7 @@ export default function FinalCtaSection() {
 
           border-radius: 9px;
 
-          background: #7a1750;
+          background: #730042;
           color: #ffffff;
         }
 
