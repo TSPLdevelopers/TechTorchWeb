@@ -115,19 +115,21 @@ export default function ScheduleDiscovery() {
   animation: successDialogIn 0.25s ease-out;
 }
 
-        .success-dialog-icon {
-          width: 34px;
-          height: 34px;
-          flex-shrink: 0;
+       .success-dialog-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-          border-radius: 50%;
-          background: #730042;
-          color: #ffffff;
-        }
+  border-radius: 50%;
+  background: #ffffff;
+  color: #22824D;
+
+  border: none;
+}
 
         .success-dialog-content {
           min-width: 0;
@@ -910,7 +912,7 @@ export default function ScheduleDiscovery() {
     }}
   >
     <div className="success-dialog-icon">
-      <CircleCheck size={19} />
+      <CircleCheck size={21} />
     </div>
 
     <div className="success-dialog-content">
