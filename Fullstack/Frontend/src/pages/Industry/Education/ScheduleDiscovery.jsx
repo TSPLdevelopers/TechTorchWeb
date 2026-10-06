@@ -11,6 +11,8 @@ export default function ScheduleDiscovery() {
   const [studentScale, setStudentScale] = useState("");
   const [timeline, setTimeline] = useState("");
 
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const [areas, setAreas] = useState({
     sis: false,
     admissions: false,
@@ -54,7 +56,13 @@ export default function ScheduleDiscovery() {
       areas,
     });
 
-    alert("Consultation request submitted.");
+    // Show success dialog
+    setShowSuccess(true);
+
+    // Automatically hide after 3 seconds
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
 
   return (
@@ -75,6 +83,120 @@ export default function ScheduleDiscovery() {
           width: 100%;
           max-width: 900px;
           margin: 0 auto;
+        }
+
+        /* ================================
+           SUCCESS DIALOG
+        ================================= */
+
+       .success-dialog {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  width: min(420px, calc(100% - 32px));
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 16px 20px;
+
+  background: #ffffff;
+  border: 1px solid #E5D3DC;
+  border-radius: 10px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+  font-family: "Inter", sans-serif;
+
+  animation: successDialogIn 0.25s ease-out;
+}
+
+       .success-dialog-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #ffffff;
+  color: #22824D;
+
+  border: none;
+}
+
+        .success-dialog-content {
+          min-width: 0;
+        }
+
+        .success-dialog-title {
+          margin: 0;
+
+          color: #202022;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .success-dialog-text {
+          margin: 2px 0 0;
+
+          color: #65595E;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+          .success-dialog-ok {
+  width: 34px;
+  height: 34px;
+
+  margin-left: auto;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #730042;
+  color: #ffffff;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.success-dialog-ok:hover {
+  background: #620038;
+  transform: scale(1.05);
+}
+
+        @keyframes successDialogIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -12px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
         }
 
         /* ================================
@@ -117,6 +239,7 @@ export default function ScheduleDiscovery() {
           MAIN HEADING
           Plus Jakarta Sans
         */
+
         .discovery-heading {
           margin: 16px auto 0;
           max-width: 800px;
@@ -132,6 +255,7 @@ export default function ScheduleDiscovery() {
           SUBHEADING
           Plus Jakarta Sans
         */
+
         .discovery-subheading {
           margin: 10px auto 0;
           max-width: 700px;
@@ -195,6 +319,7 @@ export default function ScheduleDiscovery() {
           SECTION HEADING
           Plus Jakarta Sans
         */
+
         .form-section-title {
           margin: 0;
           color: #202022;
@@ -305,8 +430,8 @@ export default function ScheduleDiscovery() {
           background: #ECEFF1;
           color: #29292B;
           font-family: "Inter", sans-serif;
-          font-size: 11px;
-          font-weight: 600;
+          font-size: 12px;
+          font-weight: 500;
           line-height: 1.5;
           text-align: center;
           cursor: pointer;
@@ -391,8 +516,8 @@ export default function ScheduleDiscovery() {
           display: block;
           color: #262527;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
-          font-weight: 700;
+          font-size: 13px;
+          font-weight: 600;
           line-height: 1.4;
         }
 
@@ -401,7 +526,7 @@ export default function ScheduleDiscovery() {
           margin-top: 2px;
           color: #65595E;
           font-family: "Inter", sans-serif;
-          font-size: 10px;
+          font-size: 11px;
           font-weight: 400;
           line-height: 1.5;
         }
@@ -580,6 +705,20 @@ export default function ScheduleDiscovery() {
             padding: 28px 20px 40px;
           }
 
+          .success-dialog {
+            top: 16px;
+            width: calc(100% - 28px);
+            padding: 14px 16px;
+          }
+
+          .success-dialog-title {
+            font-size: 13px;
+          }
+
+          .success-dialog-text {
+            font-size: 11px;
+          }
+
           .discovery-eyebrow {
             max-width: 100%;
             padding: 6px 11px;
@@ -745,13 +884,58 @@ export default function ScheduleDiscovery() {
           .choice-button,
           .interest-card,
           .submit-button,
-          .submit-arrow {
+          .submit-arrow,
+          .success-dialog {
             transition: none;
+            animation: none;
           }
         }
       `}</style>
 
       <main className="discovery-page">
+
+        {/* ================================
+            SUCCESS DIALOG
+        ================================= */}
+
+       {showSuccess && (
+  <div
+    className="success-dialog"
+    role="alert"
+    aria-live="polite"
+    tabIndex={-1}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        setShowSuccess(false);
+      }
+    }}
+  >
+    <div className="success-dialog-icon">
+      <CircleCheck size={21} />
+    </div>
+
+    <div className="success-dialog-content">
+      <p className="success-dialog-title">
+        Request Submitted
+      </p>
+
+      <p className="success-dialog-text">
+        Your consultation request has been submitted successfully.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      className="success-dialog-ok"
+      onClick={() => setShowSuccess(false)}
+      autoFocus
+      aria-label="Close"
+    >
+      OK
+    </button>
+  </div>
+)}
         {/* ============================
             PAGE HEADER
         ============================= */}
@@ -790,6 +974,7 @@ export default function ScheduleDiscovery() {
           >
 
             {/* SECTION 01 */}
+
             <FormSectionHeader
               number="01"
               title="Institution Details"
@@ -797,6 +982,7 @@ export default function ScheduleDiscovery() {
             />
 
             {/* Institution Name */}
+
             <div className="form-field">
               <label className="form-label">
                 Institution Name <span>*</span>
@@ -812,6 +998,7 @@ export default function ScheduleDiscovery() {
 
 
             {/* Institution Type */}
+
             <div className="form-field">
               <label className="form-label">
                 Institution Type <span>*</span>
@@ -837,6 +1024,7 @@ export default function ScheduleDiscovery() {
 
 
             {/* Student Count */}
+
             <div className="form-field">
               <label className="form-label">
                 Current Student Count / Scale <span>*</span>
@@ -862,7 +1050,9 @@ export default function ScheduleDiscovery() {
 
 
             {/* SECTION 02 */}
+
             <div className="interest-section">
+
               <FormSectionHeader
                 number="02"
                 title="Areas of Interest / Scope"
@@ -918,7 +1108,9 @@ export default function ScheduleDiscovery() {
 
 
             {/* SECTION 03 */}
+
             <div className="contact-section">
+
               <FormSectionHeader
                 number="03"
                 title="Contact Person Details"
@@ -928,6 +1120,7 @@ export default function ScheduleDiscovery() {
               <div className="contact-grid">
 
                 {/* Full Name */}
+
                 <div>
                   <label className="form-label">
                     Full Name <span>*</span>
@@ -943,6 +1136,7 @@ export default function ScheduleDiscovery() {
 
 
                 {/* Email */}
+
                 <div>
                   <label className="form-label">
                     Official / Institutional Email <span>*</span>
@@ -958,6 +1152,7 @@ export default function ScheduleDiscovery() {
 
 
                 {/* Designation */}
+
                 <div>
                   <label className="form-label">
                     Designation / Role <span>*</span>
@@ -973,6 +1168,7 @@ export default function ScheduleDiscovery() {
 
 
                 {/* Phone */}
+
                 <div>
                   <label className="form-label">
                     Phone / WhatsApp Number
@@ -989,6 +1185,7 @@ export default function ScheduleDiscovery() {
 
 
               {/* Expected Timeline */}
+
               <div className="form-field">
                 <label className="form-label">
                   Expected Timeline <span>*</span>
@@ -1013,6 +1210,7 @@ export default function ScheduleDiscovery() {
 
 
               {/* Additional Notes */}
+
               <div className="form-field">
                 <label className="form-label">
                   Additional Notes / Challenges (Optional)
@@ -1028,6 +1226,7 @@ export default function ScheduleDiscovery() {
 
 
             {/* CONSENT */}
+
             <div className="consent-section">
               <label className="consent-label">
 
@@ -1048,6 +1247,7 @@ export default function ScheduleDiscovery() {
 
 
             {/* SUBMIT */}
+
             <button
               type="submit"
               className="submit-button"
@@ -1062,6 +1262,7 @@ export default function ScheduleDiscovery() {
 
 
             {/* TRUST INDICATORS */}
+
             <div className="trust-indicators">
 
               <span className="trust-item">

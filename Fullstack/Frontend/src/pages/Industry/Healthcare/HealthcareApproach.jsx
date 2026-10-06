@@ -84,6 +84,11 @@ export default function ApproachAndWhyTechTorchSections() {
            MAIN WRAPPER
         ===================================================== */
 
+        .approach-why-page,
+        .approach-why-page * {
+          box-sizing: border-box;
+        }
+
         .approach-why-page {
           width: 100%;
           overflow: hidden;
@@ -96,17 +101,16 @@ export default function ApproachAndWhyTechTorchSections() {
 
         /* =====================================================
            COMMON CONTAINER
+           SAME HERO SPACING SYSTEM
         ===================================================== */
 
         .approach-why-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
 
           margin: 0 auto;
 
-          padding: 72px 40px;
-
-          box-sizing: border-box;
+          padding: 78px 100px;
         }
 
 
@@ -116,7 +120,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
         .approach-section {
           width: 100%;
-
           background: #ffffff;
         }
 
@@ -127,7 +130,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
         .why-section {
           width: 100%;
-
           background: #f6f7fa;
         }
 
@@ -143,13 +145,10 @@ export default function ApproachAndWhyTechTorchSections() {
           font-family: "Inter", sans-serif;
 
           font-size: 11px;
-
           line-height: 1.4;
-
           font-weight: 700;
 
           letter-spacing: 0.08em;
-
           text-transform: uppercase;
 
           color: ${WINE};
@@ -167,14 +166,17 @@ export default function ApproachAndWhyTechTorchSections() {
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 34px;
-
           line-height: 1.22;
-
           font-weight: 700;
 
           letter-spacing: -0.7px;
 
           color: ${INK};
+        }
+
+
+        .desktop-break {
+          display: block;
         }
 
 
@@ -209,8 +211,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
           background: #ffffff;
 
-          box-sizing: border-box;
-
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease;
@@ -244,15 +244,12 @@ export default function ApproachAndWhyTechTorchSections() {
           border-radius: 50%;
 
           background: ${WINE};
-
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
 
           font-size: 11px;
-
           line-height: 1;
-
           font-weight: 600;
         }
 
@@ -268,9 +265,7 @@ export default function ApproachAndWhyTechTorchSections() {
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 14px;
-
           line-height: 1.4;
-
           font-weight: 700;
 
           color: ${INK};
@@ -288,9 +283,7 @@ export default function ApproachAndWhyTechTorchSections() {
           font-family: "Inter", sans-serif;
 
           font-size: 12px;
-
           line-height: 1.7;
-
           font-weight: 400;
 
           color: ${MUTED};
@@ -306,8 +299,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
           padding: 15px 20px;
 
-          box-sizing: border-box;
-
           border-radius: 9px;
 
           background: #f4f1ec;
@@ -320,9 +311,7 @@ export default function ApproachAndWhyTechTorchSections() {
           font-family: "Inter", sans-serif;
 
           font-size: 11px;
-
           line-height: 1.65;
-
           font-weight: 400;
 
           color: ${MUTED};
@@ -355,8 +344,6 @@ export default function ApproachAndWhyTechTorchSections() {
           border-radius: 14px;
 
           background: #ffffff;
-
-          box-sizing: border-box;
 
           box-shadow:
             0 1px 4px rgba(0, 0, 0, 0.05);
@@ -399,20 +386,15 @@ export default function ApproachAndWhyTechTorchSections() {
 
 
         /* =====================================================
-           LARGE TABLET
+           LAPTOP
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
 
           .approach-why-container {
-            padding: 65px 32px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
-
-
-          .main-heading {
-            font-size: 32px;
-          }
-
 
           .steps-grid,
           .reasons-grid {
@@ -421,7 +403,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
             gap: 16px;
           }
-
         }
 
 
@@ -429,21 +410,19 @@ export default function ApproachAndWhyTechTorchSections() {
            TABLET
         ===================================================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
 
           .approach-why-container {
-            padding: 58px 26px;
-          }
+            padding-top: 65px;
+            padding-bottom: 65px;
 
+            padding-left: 40px;
+            padding-right: 40px;
+          }
 
           .main-heading {
-            font-size: 30px;
-
-            line-height: 1.22;
-
-            margin-bottom: 28px;
+            font-size: 32px;
           }
-
 
           .steps-grid,
           .reasons-grid {
@@ -453,24 +432,43 @@ export default function ApproachAndWhyTechTorchSections() {
             gap: 16px;
           }
 
-
           .step-card,
           .reason-card {
             padding: 20px;
           }
 
-
           .card-title {
             font-size: 13px;
           }
 
-
           .card-body {
             font-size: 11px;
-
             line-height: 1.68;
           }
+        }
 
+
+        /* =====================================================
+           SMALL TABLET
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+          .approach-why-container {
+            padding-top: 58px;
+            padding-bottom: 58px;
+
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .main-heading {
+            font-size: 30px;
+
+            line-height: 1.22;
+
+            margin-bottom: 28px;
+          }
         }
 
 
@@ -482,16 +480,14 @@ export default function ApproachAndWhyTechTorchSections() {
 
           .approach-why-container {
             padding:
-              48px 20px 52px;
+              48px 24px 52px;
           }
-
 
           .section-label {
             margin-bottom: 10px;
 
             font-size: 9px;
           }
-
 
           .main-heading {
             font-size: 27px;
@@ -503,6 +499,9 @@ export default function ApproachAndWhyTechTorchSections() {
             margin-bottom: 26px;
           }
 
+          .desktop-break {
+            display: none;
+          }
 
           .steps-grid,
           .reasons-grid {
@@ -511,12 +510,10 @@ export default function ApproachAndWhyTechTorchSections() {
             gap: 14px;
           }
 
-
           .step-card,
           .reason-card {
             padding: 19px;
           }
-
 
           .step-number {
             width: 32px;
@@ -527,7 +524,6 @@ export default function ApproachAndWhyTechTorchSections() {
             font-size: 10px;
           }
 
-
           .reason-icon {
             width: 38px;
             height: 38px;
@@ -535,13 +531,11 @@ export default function ApproachAndWhyTechTorchSections() {
             margin-bottom: 14px;
           }
 
-
           .card-title {
             font-size: 13px;
 
             margin-bottom: 7px;
           }
-
 
           .card-body {
             font-size: 11px;
@@ -549,18 +543,15 @@ export default function ApproachAndWhyTechTorchSections() {
             line-height: 1.68;
           }
 
-
           .approach-info {
             padding: 14px 17px;
           }
-
 
           .approach-info-text {
             font-size: 10.5px;
 
             line-height: 1.65;
           }
-
         }
 
 
@@ -568,13 +559,12 @@ export default function ApproachAndWhyTechTorchSections() {
            SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
 
           .approach-why-container {
             padding:
               42px 16px 46px;
           }
-
 
           .main-heading {
             font-size: 24px;
@@ -582,17 +572,14 @@ export default function ApproachAndWhyTechTorchSections() {
             line-height: 1.2;
           }
 
-
           .step-card,
           .reason-card {
             padding: 17px;
           }
 
-
           .card-title {
             font-size: 12.5px;
           }
-
 
           .card-body {
             font-size: 10.5px;
@@ -600,11 +587,9 @@ export default function ApproachAndWhyTechTorchSections() {
             line-height: 1.65;
           }
 
-
           .approach-info-text {
             font-size: 10px;
           }
-
         }
 
 
@@ -616,24 +601,20 @@ export default function ApproachAndWhyTechTorchSections() {
 
           .approach-why-container {
             padding:
-              38px 14px 42px;
+              38px 16px 42px;
           }
-
 
           .main-heading {
             font-size: 22px;
           }
 
-
           .card-body {
             font-size: 10px;
           }
 
-
           .approach-info-text {
             font-size: 9.5px;
           }
-
         }
 
 
@@ -648,12 +629,10 @@ export default function ApproachAndWhyTechTorchSections() {
             transition: none;
           }
 
-
           .step-card:hover,
           .reason-card:hover {
             transform: none;
           }
-
         }
 
       `}</style>
@@ -770,7 +749,7 @@ export default function ApproachAndWhyTechTorchSections() {
                 className="reason-card"
               >
 
-                {/* Icon - Inter/UI */}
+                {/* Icon */}
 
                 <span className="reason-icon">
                   <Icon

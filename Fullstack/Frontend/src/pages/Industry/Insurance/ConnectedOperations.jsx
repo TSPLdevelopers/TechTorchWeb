@@ -89,7 +89,7 @@ export default function ConnectedOperationsSection() {
 
         .connected-operations-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1440px;
           margin: 0 auto;
           padding: 80px 100px;
           box-sizing: border-box;
@@ -278,17 +278,17 @@ export default function ConnectedOperationsSection() {
         }
 
         /* =====================================================
-           SUBHEADING / DESCRIPTION
-           PLUS JAKARTA SANS
+           DESCRIPTION
+           INTER
         ===================================================== */
 
         .connected-description {
           margin: 0 0 13px;
           max-width: 600px;
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 14px;
           line-height: 1.75;
-          font-weight: 500;
+          font-weight: 400;
           color: ${MUTED};
         }
 
@@ -343,32 +343,29 @@ export default function ConnectedOperationsSection() {
         }
 
         /* =====================================================
-           LARGE TABLET
+           TABLET / MEDIUM
         ===================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1199px) {
           .connected-operations-container {
-            padding: 70px 60px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .connected-operations-grid {
-            gap: 45px;
+            gap: 50px;
           }
 
           .connected-image {
-            height: 360px;
+            height: 370px;
           }
 
           .connected-heading {
-            font-size: 34px;
+            font-size: 35px;
           }
 
           .connected-description {
             font-size: 13.5px;
-          }
-
-          .quick-list-card {
-            right: 0;
           }
         }
 
@@ -378,7 +375,8 @@ export default function ConnectedOperationsSection() {
 
         @media (max-width: 900px) {
           .connected-operations-container {
-            padding: 64px 40px;
+            padding-top: 64px;
+            padding-bottom: 64px;
           }
 
           .connected-operations-grid {
@@ -420,9 +418,12 @@ export default function ConnectedOperationsSection() {
            MOBILE
         ===================================================== */
 
-        @media (max-width: 640px) {
+        @media (max-width: 767px) {
           .connected-operations-container {
-            padding: 55px 24px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 55px;
+            padding-bottom: 55px;
           }
 
           .connected-operations-grid {
@@ -489,7 +490,6 @@ export default function ConnectedOperationsSection() {
             font-size: 8px;
           }
 
-          /* Plus Jakarta Sans */
           .connected-heading {
             margin-bottom: 15px;
             font-size: 29px;
@@ -497,7 +497,6 @@ export default function ConnectedOperationsSection() {
             letter-spacing: -0.5px;
           }
 
-          /* Plus Jakarta Sans */
           .connected-description {
             font-size: 12.5px;
             line-height: 1.75;
@@ -531,9 +530,12 @@ export default function ConnectedOperationsSection() {
            SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           .connected-operations-container {
-            padding: 48px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 48px;
+            padding-bottom: 48px;
           }
 
           .connected-image-area {
@@ -669,22 +671,20 @@ export default function ConnectedOperationsSection() {
 
           </div>
 
-
           {/* =================================================
               RIGHT — CONTENT
           ================================================= */}
 
           <div className="connected-content">
 
-            {/* BADGE — Inter */}
+            {/* BADGE */}
 
             <span className="connected-badge">
               <span className="connected-badge-dot" />
               CONNECTED OPERATIONS
             </span>
 
-
-            {/* HEADING — Plus Jakarta Sans */}
+            {/* HEADING */}
 
             <h2 className="connected-heading">
               Bring Business Processes Into
@@ -695,8 +695,7 @@ export default function ConnectedOperationsSection() {
               </span>
             </h2>
 
-
-            {/* SUBHEADING — Plus Jakarta Sans */}
+            {/* DESCRIPTION */}
 
             <p className="connected-description">
               Insurance operations involve multiple teams, systems and
@@ -711,8 +710,7 @@ export default function ConnectedOperationsSection() {
               across business functions.
             </p>
 
-
-            {/* FEATURES — Inter */}
+            {/* FEATURES */}
 
             <div className="features-grid">
               {features.map(

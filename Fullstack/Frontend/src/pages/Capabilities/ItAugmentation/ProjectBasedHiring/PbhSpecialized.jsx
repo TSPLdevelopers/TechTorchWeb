@@ -12,6 +12,10 @@ import {
   Target,
 } from "lucide-react";
 
+// =====================================================
+// DOMAIN DATA
+// =====================================================
+
 const domains = [
   {
     icon: Code2,
@@ -89,84 +93,33 @@ const features = [
   },
 ];
 
+// =====================================================
+// COMPONENT
+// =====================================================
+
 export default function SpecializedDomainsPage() {
   return (
-    <section className="w-full min-h-screen bg-white font-inter">
-      <div
-        className="
-          w-full
-          max-w-7xl
-          mx-auto
-          px-4
-          sm:px-6
-          lg:px-8
-          py-10
-          sm:py-12
-          lg:py-16
-        "
-      >
+    <section className="specialized-domains-section">
+      <div className="specialized-domains-container">
+
         {/* =====================================================
             HEADER
         ====================================================== */}
-        <div
-          className="
-            w-full
-            text-center
-            mb-8
-            sm:mb-10
-            lg:mb-12
-          "
-        >
+
+        <div className="specialized-header">
+
           {/* Small Label */}
-          <div
-            className="
-              font-inter
-              text-[8px]
-              sm:text-[9px]
-              lg:text-[10px]
-              tracking-[0.12em]
-              text-[#730024]
-              font-semibold
-              mb-3
-            "
-          >
+          <div className="specialized-label">
             SPECIALIZED DOMAINS
           </div>
 
           {/* Main Heading */}
-          <h1
-            className="
-              font-jakarta
-              text-[#1c1c1c]
-              font-semibold
-              text-2xl
-              sm:text-3xl
-              md:text-[34px]
-              lg:text-[38px]
-              leading-[1.15]
-              tracking-[-0.025em]
-              mb-3
-              px-2
-            "
-          >
+          <h1 className="specialized-heading">
             Supporting Your Complete Technology Journey
           </h1>
 
           {/* Sub Heading */}
-          <p
-            className="
-              font-jakarta
-              text-neutral-500
-              font-medium
-              text-[11.5px]
-              sm:text-[12.5px]
-              lg:text-[13.5px]
-              leading-[1.7]
-              max-w-2xl
-              mx-auto
-              px-2
-            "
-          >
+          <p className="specialized-subheading">
             Our software engineering capabilities cover a broad range of
             technology requirements, allowing businesses to access support
             based on their specific project needs.
@@ -176,111 +129,37 @@ export default function SpecializedDomainsPage() {
         {/* =====================================================
             DOMAIN CARDS
         ====================================================== */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-4
-            sm:gap-5
-            lg:gap-5
-            mb-5
-          "
-        >
-          {domains.map((d) => {
-            const Icon = d.icon;
+
+        <div className="domain-grid">
+          {domains.map((domain) => {
+            const Icon = domain.icon;
 
             return (
               <div
-                key={d.label}
-                className="
-                  w-full
-                  min-w-0
-                  bg-white
-                  border
-                  border-neutral-200
-                  rounded-xl
-                  p-4
-                  sm:p-5
-                  lg:p-5
-                  transition-all
-                  duration-300
-                  hover:border-[#730024]/30
-                  hover:shadow-[0_6px_20px_rgba(115,0,36,0.06)]
-                "
+                key={domain.label}
+                className="domain-card"
               >
                 {/* Icon */}
-                <div
-                  className="
-                    w-9
-                    h-9
-                    sm:w-10
-                    sm:h-10
-                    rounded-lg
-                    bg-[#730024]/[0.06]
-                    flex
-                    items-center
-                    justify-center
-                    mb-4
-                  "
-                >
+                <div className="domain-icon">
                   <Icon
-                    className="
-                      w-4
-                      h-4
-                      sm:w-[18px]
-                      sm:h-[18px]
-                      text-[#730024]
-                    "
+                    className="domain-icon-svg"
                     strokeWidth={1.8}
                   />
                 </div>
 
                 {/* Label */}
-                <div
-                  className="
-                    font-inter
-                    text-[8.5px]
-                    sm:text-[9px]
-                    tracking-[0.06em]
-                    text-neutral-400
-                    font-semibold
-                    mb-2
-                  "
-                >
-                  {d.label}
+                <div className="domain-label">
+                  {domain.label}
                 </div>
 
                 {/* Heading */}
-                <h3
-                  className="
-                    font-jakarta
-                    text-[#1c1c1c]
-                    font-semibold
-                    text-[13px]
-                    sm:text-[13.5px]
-                    lg:text-[14px]
-                    leading-[1.4]
-                    mb-2
-                  "
-                >
-                  {d.title}
+                <h3 className="domain-title">
+                  {domain.title}
                 </h3>
 
                 {/* Description */}
-                <p
-                  className="
-                    font-inter
-                    text-neutral-500
-                    font-normal
-                    text-[11px]
-                    sm:text-[11.5px]
-                    lg:text-[12px]
-                    leading-[1.65]
-                  "
-                >
-                  {d.description}
+                <p className="domain-description">
+                  {domain.description}
                 </p>
               </div>
             );
@@ -290,95 +169,29 @@ export default function SpecializedDomainsPage() {
         {/* =====================================================
             MAINTENANCE CARD
         ====================================================== */}
-        <div
-          className="
-            w-full
-            bg-white
-            border
-            border-neutral-200
-            rounded-xl
-            p-4
-            sm:p-5
-            lg:p-5
-            mb-8
-            sm:mb-10
-            transition-all
-            duration-300
-            hover:border-[#730024]/30
-            hover:shadow-[0_6px_20px_rgba(115,0,36,0.06)]
-          "
-        >
+
+        <div className="maintenance-card">
+
           {/* Icon */}
-          <div
-            className="
-              w-9
-              h-9
-              sm:w-10
-              sm:h-10
-              rounded-lg
-              bg-[#730024]/[0.06]
-              flex
-              items-center
-              justify-center
-              mb-4
-            "
-          >
+          <div className="domain-icon">
             <RefreshCw
-              className="
-                w-4
-                h-4
-                sm:w-[18px]
-                sm:h-[18px]
-                text-[#730024]
-              "
+              className="domain-icon-svg"
               strokeWidth={1.8}
             />
           </div>
 
           {/* Label */}
-          <div
-            className="
-              font-inter
-              text-[8.5px]
-              sm:text-[9px]
-              tracking-[0.06em]
-              text-neutral-400
-              font-semibold
-              mb-2
-            "
-          >
+          <div className="domain-label">
             {maintenance.label}
           </div>
 
           {/* Heading */}
-          <h3
-            className="
-              font-jakarta
-              text-[#1c1c1c]
-              font-semibold
-              text-[13px]
-              sm:text-[13.5px]
-              lg:text-[14px]
-              leading-[1.4]
-              mb-2
-            "
-          >
+          <h3 className="domain-title">
             {maintenance.title}
           </h3>
 
           {/* Description */}
-          <p
-            className="
-              font-inter
-              text-neutral-500
-              font-normal
-              text-[11px]
-              sm:text-[11.5px]
-              lg:text-[12px]
-              leading-[1.65]
-              max-w-4xl
-            "
-          >
+          <p className="maintenance-description">
             {maintenance.description}
           </p>
         </div>
@@ -387,140 +200,787 @@ export default function SpecializedDomainsPage() {
             BOTTOM FEATURE CARDS
             TEAM / PROCESS / IMPACT
         ====================================================== */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-4
-            sm:gap-5
-            lg:gap-5
-          "
-        >
-          {features.map((f) => {
-            const Icon = f.icon;
+
+        <div className="feature-grid">
+          {features.map((feature) => {
+            const Icon = feature.icon;
 
             return (
               <div
-                key={f.tag}
-                className="
-                  w-full
-                  min-w-0
-                  min-h-[165px]
-                  sm:min-h-[170px]
-                  lg:min-h-[165px]
-                  bg-white
-                  border
-                  border-[#730024]/20
-                  rounded-[8px]
-                  px-4
-                  py-4
-                  sm:px-5
-                  sm:py-4
-                  lg:px-5
-                  lg:py-4
-                  transition-all
-                  duration-300
-                  hover:border-[#730024]/40
-                  hover:shadow-[0_5px_16px_rgba(115,0,36,0.06)]
-                "
+                key={feature.tag}
+                className="feature-card"
               >
-                {/* ================= TOP ROW ================= */}
-                <div
-                  className="
-                    flex
-                    items-center
-                    justify-between
-                    gap-3
-                    mb-3
-                  "
-                >
+                {/* Top Row */}
+                <div className="feature-top-row">
+
                   {/* Icon */}
-                  <div
-                    className="
-                      w-9
-                      h-9
-                      sm:w-10
-                      sm:h-10
-                      rounded-lg
-                      bg-[#730024]/[0.06]
-                      border
-                      border-[#730024]/10
-                      flex
-                      items-center
-                      justify-center
-                      shrink-0
-                    "
-                  >
+                  <div className="feature-icon">
                     <Icon
-                      className="
-                        w-4
-                        h-4
-                        sm:w-[18px]
-                        sm:h-[18px]
-                        text-[#730024]
-                      "
+                      className="feature-icon-svg"
                       strokeWidth={1.8}
                     />
                   </div>
 
                   {/* Tag */}
-                  <span
-                    className="
-                      font-inter
-                      text-[8px]
-                      sm:text-[8.5px]
-                      lg:text-[9px]
-                      font-semibold
-                      text-neutral-500
-                      bg-neutral-100
-                      px-2
-                      py-1
-                      rounded-[4px]
-                      leading-none
-                      whitespace-nowrap
-                    "
-                  >
-                    {f.tag}
+                  <span className="feature-tag">
+                    {feature.tag}
                   </span>
                 </div>
 
-                {/* ================= HEADING ================= */}
-                <h3
-                  className="
-                    font-jakarta
-                    text-[#1c1c1c]
-                    font-semibold
-                    text-[13px]
-                    sm:text-[13.5px]
-                    lg:text-[14px]
-                    leading-[1.4]
-                    mb-2
-                  "
-                >
-                  {f.title}
+                {/* Heading */}
+                <h3 className="feature-title">
+                  {feature.title}
                 </h3>
 
-                {/* ================= DESCRIPTION ================= */}
-                <p
-                  className="
-                    font-inter
-                    text-neutral-500
-                    font-normal
-                    text-[11px]
-                    sm:text-[11.5px]
-                    lg:text-[12px]
-                    leading-[1.65]
-                  "
-                >
-                  {f.description}
+                {/* Description */}
+                <p className="feature-description">
+                  {feature.description}
                 </p>
               </div>
             );
           })}
         </div>
       </div>
+
+      {/* =====================================================
+          STYLES
+      ====================================================== */}
+
+      <style>{`
+        /* =====================================================
+           FONTS & BASE
+        ====================================================== */
+
+        .specialized-domains-section {
+          width: 100%;
+          min-height: 100vh;
+
+          background: #ffffff;
+
+          font-family: "Inter", sans-serif;
+
+          box-sizing: border-box;
+        }
+
+        .specialized-domains-section *,
+        .specialized-domains-section *::before,
+        .specialized-domains-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =====================================================
+           MAIN CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ====================================================== */
+
+        .specialized-domains-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+
+          padding-left: 100px;
+          padding-right: 100px;
+
+          padding-top: 50px;
+          padding-bottom: 50px;
+        }
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .specialized-header {
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          text-align: center;
+
+          margin-bottom: 42px;
+        }
+
+        .specialized-label {
+          margin-bottom: 12px;
+
+          color: #730024;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+          line-height: 1.4;
+
+          font-weight: 600;
+
+          letter-spacing: 0.12em;
+        }
+
+        .specialized-heading {
+          width: 100%;
+          max-width: 850px;
+
+          margin: 0 0 13px;
+
+          color: #1c1c1c;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 38px;
+          line-height: 1.15;
+
+          font-weight: 600;
+
+          letter-spacing: -0.025em;
+        }
+
+        .specialized-subheading {
+          width: 100%;
+          max-width: 700px;
+
+          margin: 0;
+
+          color: #737373;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 13.5px;
+          line-height: 1.7;
+
+          font-weight: 400;
+        }
+
+        /* =====================================================
+           DOMAIN GRID
+        ====================================================== */
+
+        .domain-grid {
+          width: 100%;
+
+          display: grid;
+
+          grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+          gap: 18px;
+
+          margin-bottom: 18px;
+        }
+
+        /* =====================================================
+           DOMAIN CARD
+        ====================================================== */
+
+        .domain-card {
+          width: 100%;
+          min-width: 0;
+
+          padding: 20px;
+
+          background: #ffffff;
+
+          border: 1px solid #e5e5e5;
+
+          border-radius: 14px;
+
+          transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+        }
+
+        .domain-card:hover {
+          border-color: rgba(115, 0, 36, 0.3);
+
+          box-shadow:
+            0 8px 24px rgba(115, 0, 36, 0.06);
+
+          transform: translateY(-3px);
+        }
+
+        /* =====================================================
+           DOMAIN ICON
+        ====================================================== */
+
+        .domain-icon {
+          width: 40px;
+          height: 40px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 9px;
+
+          background: rgba(115, 0, 36, 0.06);
+
+          margin-bottom: 16px;
+        }
+
+        .domain-icon-svg {
+          width: 18px;
+          height: 18px;
+
+          color: #730024;
+
+          flex-shrink: 0;
+        }
+
+        /* =====================================================
+           DOMAIN TEXT
+        ====================================================== */
+
+        .domain-label {
+          margin-bottom: 7px;
+
+          color: #a3a3a3;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 9px;
+          line-height: 1.4;
+
+          font-weight: 600;
+
+          letter-spacing: 0.06em;
+        }
+
+        .domain-title {
+          margin: 0 0 9px;
+
+          color: #1c1c1c;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 14px;
+          line-height: 1.4;
+
+          font-weight: 600;
+        }
+
+        .domain-description {
+          margin: 0;
+
+          color: #737373;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12px;
+          line-height: 1.65;
+
+          font-weight: 400;
+        }
+
+        /* =====================================================
+           MAINTENANCE CARD
+        ====================================================== */
+
+        .maintenance-card {
+          width: 100%;
+
+          padding: 20px;
+
+          margin-bottom: 42px;
+
+          background: #ffffff;
+
+          border: 1px solid #e5e5e5;
+
+          border-radius: 14px;
+
+          transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+        }
+
+        .maintenance-card:hover {
+          border-color: rgba(115, 0, 36, 0.3);
+
+          box-shadow:
+            0 8px 24px rgba(115, 0, 36, 0.06);
+
+          transform: translateY(-2px);
+        }
+
+        .maintenance-description {
+          width: 100%;
+          max-width: 900px;
+
+          margin: 0;
+
+          color: #737373;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12px;
+          line-height: 1.65;
+
+          font-weight: 400;
+        }
+
+        /* =====================================================
+           FEATURE GRID
+        ====================================================== */
+
+        .feature-grid {
+          width: 100%;
+
+          display: grid;
+
+          grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+          gap: 18px;
+        }
+
+        /* =====================================================
+           FEATURE CARD
+        ====================================================== */
+
+        .feature-card {
+          width: 100%;
+          min-width: 0;
+
+          min-height: 175px;
+
+          padding: 19px;
+
+          background: #ffffff;
+
+          border: 1px solid rgba(115, 0, 36, 0.2);
+
+          border-radius: 10px;
+
+          transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+          border-color: rgba(115, 0, 36, 0.4);
+
+          box-shadow:
+            0 7px 20px rgba(115, 0, 36, 0.06);
+
+          transform: translateY(-3px);
+        }
+
+        /* =====================================================
+           FEATURE TOP ROW
+        ====================================================== */
+
+        .feature-top-row {
+          width: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 12px;
+
+          margin-bottom: 14px;
+        }
+
+        .feature-icon {
+          width: 40px;
+          height: 40px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 9px;
+
+          background: rgba(115, 0, 36, 0.06);
+
+          border: 1px solid rgba(115, 0, 36, 0.1);
+
+          flex-shrink: 0;
+        }
+
+        .feature-icon-svg {
+          width: 18px;
+          height: 18px;
+
+          color: #730024;
+        }
+
+        .feature-tag {
+          display: inline-flex;
+          align-items: center;
+
+          padding: 5px 8px;
+
+          border-radius: 4px;
+
+          background: #f5f5f5;
+
+          color: #737373;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 9px;
+          line-height: 1;
+
+          font-weight: 600;
+
+          white-space: nowrap;
+        }
+
+        /* =====================================================
+           FEATURE TEXT
+        ====================================================== */
+
+        .feature-title {
+          margin: 0 0 8px;
+
+          color: #1c1c1c;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 14px;
+          line-height: 1.4;
+
+          font-weight: 600;
+        }
+
+        .feature-description {
+          margin: 0;
+
+          color: #737373;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12px;
+          line-height: 1.65;
+
+          font-weight: 400;
+        }
+
+        /* =====================================================
+           LARGE TABLET
+        ====================================================== */
+
+        @media (max-width: 1200px) {
+          .specialized-domains-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 45px;
+            padding-bottom: 45px;
+          }
+
+          .specialized-heading {
+            font-size: 35px;
+          }
+
+          .domain-grid,
+          .feature-grid {
+            gap: 16px;
+          }
+
+          .domain-card,
+          .maintenance-card,
+          .feature-card {
+            padding: 18px;
+          }
+        }
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 900px) {
+          .specialized-domains-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .specialized-header {
+            margin-bottom: 34px;
+          }
+
+          .specialized-heading {
+            font-size: 31px;
+          }
+
+          .specialized-subheading {
+            font-size: 12.5px;
+          }
+
+          .domain-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 14px;
+          }
+
+          .feature-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 14px;
+          }
+
+          .feature-card:last-child {
+            grid-column: 1 / -1;
+          }
+
+          .maintenance-card {
+            margin-bottom: 34px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 700px) {
+          .specialized-domains-container {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 36px;
+            padding-bottom: 36px;
+          }
+
+          .specialized-header {
+            margin-bottom: 28px;
+          }
+
+          .specialized-label {
+            font-size: 9px;
+
+            margin-bottom: 10px;
+          }
+
+          .specialized-heading {
+            font-size: 26px;
+
+            line-height: 1.2;
+
+            max-width: 600px;
+
+            margin-bottom: 11px;
+          }
+
+          .specialized-subheading {
+            font-size: 11.5px;
+
+            line-height: 1.65;
+          }
+
+          .domain-grid {
+            grid-template-columns: 1fr;
+
+            gap: 12px;
+
+            margin-bottom: 12px;
+          }
+
+          .domain-card {
+            padding: 18px;
+
+            border-radius: 12px;
+          }
+
+          .domain-icon {
+            width: 38px;
+            height: 38px;
+
+            margin-bottom: 14px;
+          }
+
+          .domain-title {
+            font-size: 13.5px;
+          }
+
+          .domain-description {
+            font-size: 11.5px;
+          }
+
+          .maintenance-card {
+            padding: 18px;
+
+            margin-bottom: 28px;
+
+            border-radius: 12px;
+          }
+
+          .maintenance-description {
+            font-size: 11.5px;
+          }
+
+          .feature-grid {
+            grid-template-columns: 1fr;
+
+            gap: 12px;
+          }
+
+          .feature-card {
+            min-height: auto;
+
+            padding: 18px;
+
+            border-radius: 9px;
+          }
+
+          .feature-card:last-child {
+            grid-column: auto;
+          }
+
+          .feature-title {
+            font-size: 13.5px;
+          }
+
+          .feature-description {
+            font-size: 11.5px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+        ====================================================== */
+
+        @media (max-width: 480px) {
+          .specialized-domains-container {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 30px;
+            padding-bottom: 30px;
+          }
+
+          .specialized-header {
+            margin-bottom: 25px;
+          }
+
+          .specialized-label {
+            font-size: 8px;
+
+            letter-spacing: 0.11em;
+          }
+
+          .specialized-heading {
+            font-size: 22px;
+
+            line-height: 1.25;
+          }
+
+          .specialized-subheading {
+            font-size: 10.5px;
+
+            line-height: 1.65;
+          }
+
+          .domain-card,
+          .maintenance-card {
+            padding: 16px;
+
+            border-radius: 11px;
+          }
+
+          .domain-icon {
+            width: 36px;
+            height: 36px;
+
+            margin-bottom: 13px;
+          }
+
+          .domain-icon-svg {
+            width: 17px;
+            height: 17px;
+          }
+
+          .domain-label {
+            font-size: 8px;
+          }
+
+          .domain-title {
+            font-size: 12.5px;
+
+            margin-bottom: 7px;
+          }
+
+          .domain-description,
+          .maintenance-description {
+            font-size: 10.5px;
+
+            line-height: 1.65;
+          }
+
+          .maintenance-card {
+            margin-bottom: 25px;
+          }
+
+          .feature-card {
+            padding: 16px;
+          }
+
+          .feature-top-row {
+            margin-bottom: 12px;
+          }
+
+          .feature-icon {
+            width: 36px;
+            height: 36px;
+          }
+
+          .feature-icon-svg {
+            width: 17px;
+            height: 17px;
+          }
+
+          .feature-tag {
+            font-size: 8px;
+
+            padding: 5px 7px;
+          }
+
+          .feature-title {
+            font-size: 12.5px;
+
+            margin-bottom: 7px;
+          }
+
+          .feature-description {
+            font-size: 10.5px;
+
+            line-height: 1.65;
+          }
+        }
+
+        /* =====================================================
+           VERY SMALL DEVICES
+        ====================================================== */
+
+        @media (max-width: 360px) {
+          .specialized-heading {
+            font-size: 20px;
+          }
+
+          .specialized-subheading {
+            font-size: 10px;
+          }
+
+          .domain-title,
+          .feature-title {
+            font-size: 12px;
+          }
+
+          .domain-description,
+          .maintenance-description,
+          .feature-description {
+            font-size: 10px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

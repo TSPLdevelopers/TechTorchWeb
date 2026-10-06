@@ -75,11 +75,26 @@ export default function TechnologyServicesWineGridSection() {
           font-family: "Inter", sans-serif;
         }
 
+        .technology-services-section *,
+        .technology-services-section *::before,
+        .technology-services-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .technology-services-container {
           width: 100%;
-          max-width: 1180px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 90px 32px;
+
+          padding: 90px 100px;
         }
 
         /* =========================================
@@ -117,9 +132,9 @@ export default function TechnologyServicesWineGridSection() {
 
           color: #d9b7c4;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 15px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 1.7;
         }
 
@@ -213,7 +228,7 @@ export default function TechnologyServicesWineGridSection() {
 
           color: #ffffff;
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 16px;
           font-weight: 700;
           line-height: 1.4;
@@ -253,12 +268,35 @@ export default function TechnologyServicesWineGridSection() {
         }
 
         /* =========================================
-           1050px
+           LARGE TABLET
+           100px → 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .technology-services-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 80px;
+            padding-bottom: 80px;
+          }
+
+          .technology-services-grid {
+            gap: 20px;
+          }
+        }
+
+        /* =========================================
+           TABLET
         ========================================= */
 
         @media (max-width: 1050px) {
           .technology-services-container {
-            padding: 80px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 75px;
+            padding-bottom: 75px;
           }
 
           .technology-services-grid {
@@ -272,12 +310,16 @@ export default function TechnologyServicesWineGridSection() {
         }
 
         /* =========================================
-           768px
+           768px TABLET
         ========================================= */
 
         @media (max-width: 768px) {
           .technology-services-container {
-            padding: 70px 24px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
           .technology-services-heading {
@@ -306,12 +348,17 @@ export default function TechnologyServicesWineGridSection() {
         }
 
         /* =========================================
-           600px - MOBILE
+           MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
           .technology-services-container {
-            padding: 60px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 60px;
+            padding-bottom: 60px;
           }
 
           .technology-services-label {
@@ -368,12 +415,17 @@ export default function TechnologyServicesWineGridSection() {
         }
 
         /* =========================================
-           400px - SMALL MOBILE
+           SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .technology-services-container {
-            padding: 52px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
           }
 
           .technology-services-heading {
@@ -407,7 +459,10 @@ export default function TechnologyServicesWineGridSection() {
 
       <div className="technology-services-container">
 
-        {/* HEADER */}
+        {/* =========================================
+            HEADER
+        ========================================= */}
+
         <p className="technology-services-label">
           Our Technology Services
         </p>
@@ -421,7 +476,10 @@ export default function TechnologyServicesWineGridSection() {
           technology requirements.
         </p>
 
-        {/* CARDS */}
+        {/* =========================================
+            CARDS
+        ========================================= */}
+
         <div className="technology-services-grid">
           {cards.map(({ icon: Icon, cap, title, body }) => (
             <div

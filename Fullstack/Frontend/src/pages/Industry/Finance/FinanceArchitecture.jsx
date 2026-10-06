@@ -68,33 +68,50 @@ const cards = [
 export default function CoreArchitectureGridSection() {
   return (
     <>
-      {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        /* =================================================
+           SECTION
+        ================================================= */
 
         .core-architecture-section {
           width: 100%;
           background: #f7f7fa;
           color: ${INK};
-          font-family: "Inter", sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .core-architecture-section *,
+        .core-architecture-section *::before,
+        .core-architecture-section *::after {
+          box-sizing: border-box;
         }
 
         .core-architecture-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 64px 24px;
+          padding: 78px 100px;
         }
 
-        /* Header */
+        /* =================================================
+           HEADER
+        ================================================= */
+
         .core-architecture-header {
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-          gap: 48px;
+          gap: 56px;
           align-items: start;
           margin-bottom: 40px;
         }
+
+        /* =================================================
+           BADGE
+        ================================================= */
 
         .core-architecture-badge {
           display: inline-flex;
@@ -105,7 +122,7 @@ export default function CoreArchitectureGridSection() {
           border-radius: 999px;
           background: #fbeef1;
           color: ${WINE};
-          font-family: "Inter", sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.04em;
@@ -120,45 +137,60 @@ export default function CoreArchitectureGridSection() {
           background: ${WINE};
         }
 
-        /* Heading - Plus Jakarta Sans */
+        /* =================================================
+           HEADING
+        ================================================= */
+
         .core-architecture-heading {
           margin: 0;
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 30px;
+          color: ${INK};
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 36px;
           line-height: 1.25;
           font-weight: 700;
           letter-spacing: -0.025em;
-          color: ${INK};
         }
 
         .core-architecture-heading span {
           color: ${WINE};
         }
 
-        /* Subheading - Plus Jakarta Sans */
+        /* =================================================
+           SUBHEADING
+        ================================================= */
+
         .core-architecture-subheading {
           margin: 0;
           padding-top: 4px;
-          font-family: "Plus Jakarta Sans", sans-serif;
+          color: ${MUTED};
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 15px;
           line-height: 1.75;
           font-weight: 500;
-          color: ${MUTED};
+          max-width: 680px;
         }
 
-        /* Cards Grid */
+        /* =================================================
+           CARDS GRID
+        ================================================= */
+
         .core-architecture-grid {
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 20px;
         }
 
+        /* =================================================
+           CARD
+        ================================================= */
+
         .core-architecture-card {
           min-width: 0;
-          padding: 20px;
+          padding: 22px;
           background: #ffffff;
           border-radius: 12px;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
           transition:
             transform 0.3s ease,
             box-shadow 0.3s ease;
@@ -169,9 +201,13 @@ export default function CoreArchitectureGridSection() {
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
         }
 
+        /* =================================================
+           CARD ICON
+        ================================================= */
+
         .core-architecture-icon {
-          width: 36px;
-          height: 36px;
+          width: 38px;
+          height: 38px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -181,25 +217,35 @@ export default function CoreArchitectureGridSection() {
           color: ${WINE};
         }
 
-        /* Card heading - Plus Jakarta Sans */
+        /* =================================================
+           CARD TITLE
+        ================================================= */
+
         .core-architecture-card-title {
           margin: 0 0 8px;
-          font-family: "Plus Jakarta Sans", sans-serif;
+          color: ${INK};
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.4;
           font-weight: 700;
-          color: ${INK};
         }
 
-        /* Card body - Inter */
+        /* =================================================
+           CARD BODY
+        ================================================= */
+
         .core-architecture-card-body {
           margin: 0 0 16px;
-          font-family: "Inter", sans-serif;
+          color: ${MUTED};
+          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.7;
           font-weight: 400;
-          color: ${MUTED};
         }
+
+        /* =================================================
+           TAGS
+        ================================================= */
 
         .core-architecture-tags {
           display: flex;
@@ -214,51 +260,60 @@ export default function CoreArchitectureGridSection() {
           border-radius: 6px;
           background: #f2f1f5;
           color: ${MUTED};
-          font-family: "Inter", sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1.4;
           font-weight: 500;
         }
 
-        /* --------------------------------
-           Large Tablet
-        -------------------------------- */
-        @media (max-width: 1100px) {
+        /* =================================================
+           LAPTOP
+        ================================================= */
+
+        @media (max-width: 1200px) {
           .core-architecture-container {
-            padding: 56px 32px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .core-architecture-header {
-            gap: 32px;
+            gap: 40px;
+          }
+
+          .core-architecture-heading {
+            font-size: 33px;
           }
 
           .core-architecture-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-          }
-
-          .core-architecture-heading {
-            font-size: 28px;
           }
         }
 
-        /* --------------------------------
-           Tablet
-        -------------------------------- */
+        /* =================================================
+           TABLET
+        ================================================= */
+
         @media (max-width: 900px) {
           .core-architecture-container {
-            padding: 52px 28px;
+            padding-top: 62px;
+            padding-bottom: 62px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .core-architecture-header {
             grid-template-columns: 1fr;
             gap: 18px;
-            margin-bottom: 32px;
+            margin-bottom: 34px;
+          }
+
+          .core-architecture-heading {
+            font-size: 30px;
           }
 
           .core-architecture-subheading {
             padding-top: 0;
-            max-width: 720px;
+            max-width: 760px;
           }
 
           .core-architecture-grid {
@@ -267,16 +322,20 @@ export default function CoreArchitectureGridSection() {
           }
 
           .core-architecture-card {
-            padding: 18px;
+            padding: 20px;
           }
         }
 
-        /* --------------------------------
-           Mobile
-        -------------------------------- */
+        /* =================================================
+           MOBILE
+        ================================================= */
+
         @media (max-width: 600px) {
           .core-architecture-container {
-            padding: 48px 20px;
+            padding-top: 52px;
+            padding-bottom: 52px;
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .core-architecture-header {
@@ -290,7 +349,7 @@ export default function CoreArchitectureGridSection() {
           }
 
           .core-architecture-heading {
-            font-size: 25px;
+            font-size: 26px;
             line-height: 1.3;
           }
 
@@ -305,7 +364,8 @@ export default function CoreArchitectureGridSection() {
           }
 
           .core-architecture-card {
-            padding: 18px;
+            padding: 19px;
+            border-radius: 12px;
           }
 
           .core-architecture-card-title {
@@ -316,18 +376,26 @@ export default function CoreArchitectureGridSection() {
             font-size: 12px;
             line-height: 1.65;
           }
+
+          .core-architecture-tag {
+            font-size: 10px;
+          }
         }
 
-        /* --------------------------------
-           Small Mobile
-        -------------------------------- */
-        @media (max-width: 400px) {
+        /* =================================================
+           SMALL MOBILE
+        ================================================= */
+
+        @media (max-width: 480px) {
           .core-architecture-container {
-            padding: 40px 16px;
+            padding-top: 44px;
+            padding-bottom: 44px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .core-architecture-heading {
-            font-size: 22px;
+            font-size: 23px;
           }
 
           .core-architecture-subheading {
@@ -335,14 +403,17 @@ export default function CoreArchitectureGridSection() {
           }
 
           .core-architecture-card {
-            padding: 16px;
-            border-radius: 10px;
+            padding: 17px;
           }
 
           .core-architecture-icon {
-            width: 34px;
-            height: 34px;
+            width: 35px;
+            height: 35px;
             margin-bottom: 14px;
+          }
+
+          .core-architecture-card-body {
+            font-size: 12px;
           }
 
           .core-architecture-tag {
@@ -351,25 +422,43 @@ export default function CoreArchitectureGridSection() {
           }
         }
 
-        /* --------------------------------
-           Very Small Mobile
-        -------------------------------- */
+        /* =================================================
+           VERY SMALL DEVICES
+        ================================================= */
+
         @media (max-width: 340px) {
           .core-architecture-container {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-top: 38px;
+            padding-bottom: 38px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .core-architecture-heading {
-            font-size: 20px;
+            font-size: 21px;
+          }
+
+          .core-architecture-subheading {
+            font-size: 12px;
+          }
+
+          .core-architecture-card {
+            padding: 16px;
           }
 
           .core-architecture-card-body {
             font-size: 11px;
           }
+
+          .core-architecture-tag {
+            font-size: 8.5px;
+          }
         }
 
-        /* Reduced Motion */
+        /* =================================================
+           REDUCED MOTION
+        ================================================= */
+
         @media (prefers-reduced-motion: reduce) {
           .core-architecture-card {
             transition: none;
@@ -415,7 +504,10 @@ export default function CoreArchitectureGridSection() {
                 className="core-architecture-card"
               >
                 <span className="core-architecture-icon">
-                  <Icon size={16} strokeWidth={1.8} />
+                  <Icon
+                    size={16}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
                 <h3 className="core-architecture-card-title">

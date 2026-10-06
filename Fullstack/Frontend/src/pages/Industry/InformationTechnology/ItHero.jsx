@@ -18,6 +18,10 @@ export default function ItHeroSection() {
           box-sizing: border-box;
         }
 
+        /* =========================================================
+           IT HERO
+        ========================================================= */
+
         .it-hero-section {
           width: 100%;
           overflow: hidden;
@@ -31,17 +35,33 @@ export default function ItHeroSection() {
           font-family: "Inter", Arial, sans-serif;
         }
 
+        /*
+          Horizontal spacing standard:
+          Desktop  : 100px
+          Tablet   : 40px
+          Mobile   : 24px
+          Small    : 16px
+        */
+
         .it-hero-container {
-          width: min(1200px, 100%);
+          width: 100%;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 78px 40px;
+
+          padding-top: 78px;
+          padding-bottom: 78px;
+          padding-left: 100px;
+          padding-right: 100px;
+
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
           gap: 64px;
           align-items: center;
         }
 
-        /* ================= LEFT CONTENT ================= */
+        /* =========================================================
+           LEFT CONTENT
+        ========================================================= */
 
         .it-hero-content {
           min-width: 0;
@@ -72,6 +92,7 @@ export default function ItHeroSection() {
           width: 6px;
           height: 6px;
           flex-shrink: 0;
+
           border-radius: 50%;
           background: ${WINE};
         }
@@ -95,7 +116,7 @@ export default function ItHeroSection() {
 
           color: ${MUTED};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.75;
           font-weight: 500;
@@ -105,7 +126,9 @@ export default function ItHeroSection() {
           margin-bottom: 30px;
         }
 
-        /* ================= BUTTONS ================= */
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
 
         .it-hero-actions {
           display: flex;
@@ -131,10 +154,13 @@ export default function ItHeroSection() {
           font-weight: 600;
 
           cursor: pointer;
+
           transition:
             transform 0.22s ease,
             box-shadow 0.22s ease,
-            background 0.22s ease;
+            background 0.22s ease,
+            border-color 0.22s ease,
+            color 0.22s ease;
         }
 
         .it-hero-primary {
@@ -160,7 +186,9 @@ export default function ItHeroSection() {
           color: ${WINE};
         }
 
-        /* ================= IMAGE AREA ================= */
+        /* =========================================================
+           IMAGE AREA
+        ========================================================= */
 
         .it-hero-visual {
           position: relative;
@@ -170,8 +198,10 @@ export default function ItHeroSection() {
 
         .it-hero-image-wrapper {
           position: relative;
+
           width: 100%;
           height: 440px;
+
           overflow: hidden;
 
           border-radius: 22px;
@@ -183,8 +213,10 @@ export default function ItHeroSection() {
 
         .it-hero-image {
           display: block;
+
           width: 100%;
           height: 100%;
+
           object-fit: cover;
 
           transition: transform 0.5s ease;
@@ -208,6 +240,7 @@ export default function ItHeroSection() {
 
         .it-hero-image-label {
           position: absolute;
+
           left: 18px;
           bottom: 18px;
 
@@ -229,10 +262,13 @@ export default function ItHeroSection() {
           text-transform: uppercase;
         }
 
-        /* ================= FLOATING CARD ================= */
+        /* =========================================================
+           FLOATING CARD
+        ========================================================= */
 
         .it-status-card {
           position: absolute;
+
           left: 18px;
           right: 18px;
           bottom: 0;
@@ -242,6 +278,7 @@ export default function ItHeroSection() {
           gap: 11px;
 
           min-width: 0;
+
           padding: 12px 14px;
 
           border: 1px solid rgba(0, 0, 0, 0.04);
@@ -260,6 +297,7 @@ export default function ItHeroSection() {
 
           width: 37px;
           height: 37px;
+
           flex-shrink: 0;
 
           border-radius: 9px;
@@ -298,6 +336,7 @@ export default function ItHeroSection() {
           display: inline-flex;
           align-items: center;
           gap: 5px;
+
           flex-shrink: 0;
 
           padding: 6px 9px;
@@ -316,15 +355,24 @@ export default function ItHeroSection() {
         .it-status-badge-dot {
           width: 5px;
           height: 5px;
+
           border-radius: 50%;
           background: #1a9455;
         }
 
-        /* ================= 1100px ================= */
+        /* =========================================================
+           TABLET / MEDIUM DESKTOP
+           40px horizontal spacing
+        ========================================================= */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1199px) {
           .it-hero-container {
-            padding: 65px 32px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 65px;
+            padding-bottom: 65px;
+
             gap: 42px;
           }
 
@@ -342,16 +390,26 @@ export default function ItHeroSection() {
           }
         }
 
-        /* ================= 900px ================= */
+        /* =========================================================
+           TABLET
+           40px horizontal spacing
+        ========================================================= */
 
         @media (max-width: 900px) {
           .it-hero-container {
             grid-template-columns: 1fr;
+
             gap: 45px;
-            padding: 58px 28px 70px;
+
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 58px;
+            padding-bottom: 70px;
           }
 
           .it-hero-content {
+            width: 100%;
             max-width: 760px;
           }
 
@@ -367,6 +425,7 @@ export default function ItHeroSection() {
           .it-hero-visual {
             width: 100%;
             max-width: 760px;
+
             margin: 0 auto;
           }
 
@@ -375,17 +434,26 @@ export default function ItHeroSection() {
           }
         }
 
-        /* ================= 650px ================= */
+        /* =========================================================
+           MOBILE
+           24px horizontal spacing
+        ========================================================= */
 
-        @media (max-width: 650px) {
+        @media (max-width: 767px) {
           .it-hero-container {
-            padding: 48px 18px 60px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 48px;
+            padding-bottom: 60px;
+
             gap: 35px;
           }
 
           .it-hero-badge {
             margin-bottom: 17px;
             padding: 6px 11px;
+
             font-size: 9px;
           }
 
@@ -396,6 +464,7 @@ export default function ItHeroSection() {
 
           .it-hero-heading {
             margin-bottom: 17px;
+
             font-size: 30px;
             line-height: 1.22;
             letter-spacing: -0.7px;
@@ -403,6 +472,7 @@ export default function ItHeroSection() {
 
           .it-hero-description {
             margin-bottom: 12px;
+
             font-size: 12.5px;
             line-height: 1.7;
           }
@@ -413,6 +483,7 @@ export default function ItHeroSection() {
 
           .it-hero-actions {
             width: 100%;
+
             flex-direction: column;
             align-items: stretch;
           }
@@ -434,6 +505,7 @@ export default function ItHeroSection() {
           .it-hero-image-label {
             left: 13px;
             bottom: 13px;
+
             font-size: 8px;
           }
 
@@ -443,12 +515,14 @@ export default function ItHeroSection() {
 
             gap: 8px;
             padding: 10px;
+
             border-radius: 11px;
           }
 
           .it-status-icon {
             width: 34px;
             height: 34px;
+
             border-radius: 8px;
           }
 
@@ -466,11 +540,18 @@ export default function ItHeroSection() {
           }
         }
 
-        /* ================= 450px ================= */
+        /* =========================================================
+           SMALL MOBILE
+           16px horizontal spacing
+        ========================================================= */
 
-        @media (max-width: 450px) {
+        @media (max-width: 480px) {
           .it-hero-container {
-            padding: 42px 14px 52px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 42px;
+            padding-bottom: 52px;
           }
 
           .it-hero-heading {
@@ -501,11 +582,18 @@ export default function ItHeroSection() {
           }
         }
 
-        /* ================= 360px ================= */
+        /* =========================================================
+           EXTRA SMALL MOBILE
+           Keep 16px horizontal spacing
+        ========================================================= */
 
         @media (max-width: 360px) {
           .it-hero-container {
-            padding: 36px 11px 45px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 36px;
+            padding-bottom: 45px;
           }
 
           .it-hero-heading {
@@ -538,7 +626,9 @@ export default function ItHeroSection() {
           }
         }
 
-        /* ================= REDUCED MOTION ================= */
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
 
         @media (prefers-reduced-motion: reduce) {
           .it-hero-button,
@@ -588,7 +678,8 @@ export default function ItHeroSection() {
               environment.
             </p>
 
-            {/* Buttons */}
+            {/* ================= BUTTONS ================= */}
+
             <div className="it-hero-actions">
 
               <button
@@ -631,7 +722,8 @@ export default function ItHeroSection() {
 
             </div>
 
-            {/* Floating Status Card */}
+            {/* ================= FLOATING STATUS CARD ================= */}
+
             <div className="it-status-card">
 
               <span className="it-status-icon">

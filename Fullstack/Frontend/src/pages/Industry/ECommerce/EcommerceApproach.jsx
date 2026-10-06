@@ -75,167 +75,484 @@ export default function ImplementationToSupportSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full overflow-hidden"
-      style={{
-        background: "#f7f5f2",
-        color: INK,
-        fontFamily: "Inter, sans-serif",
-      }}
+      className="implementation-section"
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-[100px] py-12 sm:py-14 md:py-16 lg:py-20">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        .implementation-section {
+          width: 100%;
+          overflow: hidden;
+          background: #f7f5f2;
+          color: ${INK};
+          font-family: "Inter", sans-serif;
+        }
+
+        /* =========================================
+           MAIN WRAPPER
+        ========================================= */
+
+        .implementation-wrapper {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 80px;
+          padding-bottom: 80px;
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .implementation-header {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 32px;
+          margin-bottom: 48px;
+        }
+
+        .implementation-header-content {
+          max-width: 760px;
+        }
+
+        .implementation-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 7px 13px;
+          margin-bottom: 16px;
+          border-radius: 999px;
+          background: #fbeef1;
+          color: ${WINE};
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          line-height: 1;
+        }
+
+        .implementation-label-dot {
+          width: 6px;
+          height: 6px;
+          flex-shrink: 0;
+          border-radius: 50%;
+          background: ${WINE};
+        }
+
+        .implementation-heading {
+          margin: 0;
+          color: ${INK};
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+        }
+
+        .implementation-subtitle {
+          max-width: 430px;
+          margin: 0;
+          color: ${MUTED};
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 1.7;
+        }
+
+        /* =========================================
+           STEPS GRID
+        ========================================= */
+
+        .implementation-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .implementation-card {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          min-height: 280px;
+          padding: 24px;
+          box-sizing: border-box;
+          background: #ffffff;
+          border-radius: 16px;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
+          opacity: 0;
+          transform: translateY(32px);
+
+          transition:
+            opacity 700ms ease,
+            transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 350ms ease;
+        }
+
+        .implementation-card.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .implementation-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 18px 40px rgba(122, 31, 61, 0.12);
+        }
+
+        /* =========================================
+           TOP ROW
+        ========================================= */
+
+        .implementation-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 22px;
+        }
+
+        .implementation-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          flex-shrink: 0;
+          border-radius: 9px;
+          background: #fbeef1;
+          color: ${WINE};
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+        }
+
+        .implementation-icon {
+          color: ${WINE};
+        }
+
+        /* =========================================
+           CARD CONTENT
+        ========================================= */
+
+        .implementation-phase {
+          margin: 0 0 9px;
+          color: #a9a6b0;
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: 0.08em;
+        }
+
+        .implementation-card-title {
+          margin: 0 0 9px;
+          color: ${INK};
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 17px;
+          font-weight: 700;
+          line-height: 1.35;
+        }
+
+        .implementation-card-body {
+          margin: 0 0 24px;
+          color: ${MUTED};
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.7;
+        }
+
+        /* =========================================
+           CARD FOOTER
+        ========================================= */
+
+        .implementation-card-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-top: auto;
+          padding-top: 13px;
+          border-top: 1px solid #ece9e4;
+        }
+
+        .implementation-footer-text {
+          color: ${MUTED};
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          line-height: 1.4;
+        }
+
+        .implementation-arrow {
+          flex-shrink: 0;
+          color: ${WINE};
+          transition: transform 300ms ease;
+        }
+
+        .implementation-card:hover .implementation-arrow {
+          transform: translateX(4px);
+        }
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .implementation-wrapper {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+          }
+
+          .implementation-header {
+            margin-bottom: 40px;
+          }
+
+          .implementation-heading {
+            font-size: 34px;
+          }
+
+          .implementation-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+          }
+
+          .implementation-card {
+            min-height: 270px;
+          }
+        }
+
+        /* =========================================
+           SMALL TABLET / LARGE MOBILE
+        ========================================= */
+
+        @media (max-width: 900px) {
+          .implementation-header {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 18px;
+          }
+
+          .implementation-header-content {
+            max-width: 100%;
+          }
+
+          .implementation-subtitle {
+            max-width: 650px;
+          }
+
+          .implementation-heading {
+            font-size: 32px;
+          }
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
+          .implementation-wrapper {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 56px;
+            padding-bottom: 56px;
+          }
+
+          .implementation-header {
+            gap: 16px;
+            margin-bottom: 30px;
+          }
+
+          .implementation-label {
+            padding: 7px 12px;
+            margin-bottom: 13px;
+            font-size: 9px;
+          }
+
+          .implementation-heading {
+            font-size: 28px;
+            line-height: 1.22;
+          }
+
+          .implementation-subtitle {
+            font-size: 13px;
+            line-height: 1.65;
+          }
+
+          .implementation-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+          }
+
+          .implementation-card {
+            min-height: 250px;
+            padding: 21px;
+            border-radius: 14px;
+          }
+
+          .implementation-card-top {
+            margin-bottom: 20px;
+          }
+
+          .implementation-number {
+            width: 38px;
+            height: 38px;
+            font-size: 11px;
+          }
+
+          .implementation-phase {
+            font-size: 8.5px;
+          }
+
+          .implementation-card-title {
+            font-size: 16px;
+          }
+
+          .implementation-card-body {
+            font-size: 12.5px;
+            line-height: 1.65;
+          }
+        }
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 480px) {
+          .implementation-wrapper {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+
+          .implementation-heading {
+            font-size: 24px;
+          }
+
+          .implementation-subtitle {
+            font-size: 12.5px;
+          }
+
+          .implementation-grid {
+            gap: 13px;
+          }
+
+          .implementation-card {
+            min-height: 235px;
+            padding: 19px;
+          }
+
+          .implementation-card-title {
+            font-size: 15px;
+          }
+
+          .implementation-card-body {
+            font-size: 12px;
+          }
+
+          .implementation-footer-text {
+            font-size: 10.5px;
+          }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          .implementation-card {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+
+          .implementation-card:hover {
+            transform: none;
+          }
+
+          .implementation-arrow {
+            transition: none;
+          }
+        }
+      `}</style>
+
+      <div className="implementation-wrapper">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 sm:gap-6 mb-8 sm:mb-10 md:mb-12">
-          <div className="max-w-2xl">
-            {/* Label */}
-            <span
-              className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-semibold tracking-wide px-3 py-1.5 rounded-full mb-3 sm:mb-4"
-              style={{
-                background: "#fbeef1",
-                color: WINE,
-              }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ background: WINE }}
-              />
+        <div className="implementation-header">
+          <div className="implementation-header-content">
+            <span className="implementation-label">
+              <span className="implementation-label-dot" />
               OUR APPROACH
             </span>
 
-            {/* Heading */}
-            <h2
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[38px] leading-tight font-bold tracking-tight"
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-              }}
-            >
+            <h2 className="implementation-heading">
               From Implementation to Ongoing Support
             </h2>
           </div>
 
-          {/* Subtitle */}
-          <p
-            className="text-xs sm:text-sm md:text-[15px] leading-relaxed max-w-md lg:max-w-sm"
-            style={{
-              color: MUTED,
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-            }}
-          >
+          <p className="implementation-subtitle">
             A structured, disciplined delivery lifecycle built to minimize
             disruption and maximize long-term operational velocity.
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="implementation-grid">
           {steps.map(
             ({ num, icon: Icon, phase, title, body, footer }, index) => (
               <div
                 key={num}
-                className={`
-                  group
-                  bg-white
-                  rounded-xl
-                  sm:rounded-2xl
-                  p-5
-                  sm:p-6
-                  flex
-                  flex-col
-                  min-h-[260px]
-                  sm:min-h-[280px]
-                  transition-all
-                  duration-700
-                  ease-out
-                  hover:-translate-y-2
-                  hover:shadow-[0_18px_40px_rgba(122,31,61,0.12)]
-                  ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-10"
-                  }
-                `}
+                className={`implementation-card ${
+                  isVisible ? "is-visible" : ""
+                }`}
                 style={{
-                  boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
                   transitionDelay: isVisible
-                    ? `${index * 180}ms`
+                    ? `${index * 150}ms`
                     : "0ms",
                 }}
               >
                 {/* Top Row */}
-                <div className="flex items-center justify-between mb-5">
-                  {/* Number */}
-                  <span
-                    className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg text-xs font-bold transition-colors duration-300"
-                    style={{
-                      background: "#fbeef1",
-                      color: WINE,
-                    }}
-                  >
-                    {num}
-                  </span>
+                <div className="implementation-card-top">
+                  <span className="implementation-number">{num}</span>
 
-                  {/* Icon */}
                   <Icon
-                    size={17}
+                    className="implementation-icon"
+                    size={18}
                     strokeWidth={1.8}
-                    style={{ color: WINE }}
-                    className="transition-transform duration-300"
+                    aria-hidden="true"
                   />
                 </div>
 
                 {/* Phase */}
-                <p
-                  className="text-[8px] sm:text-[9px] font-semibold tracking-[0.08em] mb-2"
-                  style={{
-                    color: "#a9a6b0",
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                >
-                  {phase}
-                </p>
+                <p className="implementation-phase">{phase}</p>
 
                 {/* Title */}
-                <h3
-                  className="text-sm sm:text-base font-semibold mb-2"
-                  style={{
-                    color: INK,
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                >
-                  {title}
-                </h3>
+                <h3 className="implementation-card-title">{title}</h3>
 
                 {/* Body */}
-                <p
-                  className="text-xs sm:text-[13px] leading-relaxed mb-6"
-                  style={{
-                    color: MUTED,
-                    fontFamily: "Inter, sans-serif",
-                  }}
-                >
-                  {body}
-                </p>
+                <p className="implementation-card-body">{body}</p>
 
                 {/* Footer */}
-                <div
-                  className="mt-auto flex items-center justify-between pt-3 border-t"
-                  style={{
-                    borderColor: "#ece9e4",
-                  }}
-                >
-                  <span
-                    className="text-[11px] sm:text-xs"
-                    style={{
-                      color: MUTED,
-                      fontFamily: "Inter, sans-serif",
-                    }}
-                  >
+                <div className="implementation-card-footer">
+                  <span className="implementation-footer-text">
                     {footer}
                   </span>
 
                   <ArrowRight
-                    size={13}
+                    className="implementation-arrow"
+                    size={14}
                     strokeWidth={1.8}
-                    style={{ color: WINE }}
+                    aria-hidden="true"
                   />
                 </div>
               </div>

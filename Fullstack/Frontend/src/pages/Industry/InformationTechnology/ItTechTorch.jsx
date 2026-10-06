@@ -44,9 +44,9 @@ export default function WhyTechTorchChecklistSection() {
 
         .why-techtorch-container {
           width: 100%;
-          max-width: 1180px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 72px 40px;
+          padding: 72px 100px;
           display: grid;
           grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
           gap: 70px;
@@ -141,16 +141,17 @@ export default function WhyTechTorchChecklistSection() {
           line-height: 1.65;
         }
 
-        /* ================= LARGE TABLET ================= */
+        /* ================= TABLET / MEDIUM ================= */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1199px) {
           .why-techtorch-container {
-            padding: 60px 32px;
-            gap: 45px;
+            padding-left: 40px;
+            padding-right: 40px;
+            gap: 50px;
           }
 
           .why-techtorch-heading {
-            font-size: 32px;
+            font-size: 33px;
           }
         }
 
@@ -160,7 +161,8 @@ export default function WhyTechTorchChecklistSection() {
           .why-techtorch-container {
             grid-template-columns: 1fr;
             gap: 35px;
-            padding: 55px 28px;
+            padding-top: 55px;
+            padding-bottom: 55px;
           }
 
           .why-techtorch-heading {
@@ -174,9 +176,12 @@ export default function WhyTechTorchChecklistSection() {
 
         /* ================= MOBILE ================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 767px) {
           .why-techtorch-container {
-            padding: 48px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 48px;
+            padding-bottom: 48px;
             gap: 28px;
           }
 
@@ -218,9 +223,12 @@ export default function WhyTechTorchChecklistSection() {
 
         /* ================= SMALL MOBILE ================= */
 
-        @media (max-width: 420px) {
+        @media (max-width: 480px) {
           .why-techtorch-container {
-            padding: 42px 15px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 42px;
+            padding-bottom: 42px;
           }
 
           .why-techtorch-heading {
@@ -250,7 +258,10 @@ export default function WhyTechTorchChecklistSection() {
 
         @media (max-width: 340px) {
           .why-techtorch-container {
-            padding: 35px 12px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 35px;
+            padding-bottom: 35px;
           }
 
           .why-techtorch-heading {
@@ -287,7 +298,7 @@ export default function WhyTechTorchChecklistSection() {
       <section className="why-techtorch-section">
         <div className="why-techtorch-container">
 
-          {/* Left: Heading */}
+          {/* LEFT: HEADING */}
           <div>
             <p className="why-techtorch-eyebrow">
               WHY TECHTORCH
@@ -300,7 +311,7 @@ export default function WhyTechTorchChecklistSection() {
             </h2>
           </div>
 
-          {/* Right: Checklist */}
+          {/* RIGHT: CHECKLIST */}
           <div className="why-techtorch-list">
             {items.map(({ title, body }) => (
               <div

@@ -62,17 +62,17 @@ export default function HowWeWork() {
             <h2
               className="
                 text-[24px]
-                font-['Inter']
-                font-semibold
+                font-['Plus_Jakarta_Sans']
+                font-medium
                 leading-[1.05]
                 tracking-[-1px]
                 text-[#111]
 
-                sm:text-[27px]
-                md:text-[29px]
+                sm:text-[30px]
+                md:text-[32px]
 
                 lg:text-[34px]
-                xl:text-[36px]
+                xl:text-[34px]
               "
             >
               A Clear Approach to
@@ -87,8 +87,8 @@ export default function HowWeWork() {
                 mt-5
                 max-w-[600px]
                 text-[14px]
+                text-['Inter']
                 leading-[1.55]
-                text-[#333]
                 sm:text-[15px]
                 md:text-[14px]
                 lg:text-[15px]
@@ -111,8 +111,8 @@ export default function HowWeWork() {
               className="
                 mt-5
                 text-[16px]
+                text-['Inter']
                 font-semibold
-                text-[#222]
 
                 sm:text-[17px]
                 md:text-[17px]
@@ -158,14 +158,14 @@ export default function HowWeWork() {
                 <span
                   className="
                     text-[16px]
+                    text-['Inter']
                     font-medium
-                    text-[#222]
 
                     sm:text-[17px]
 
                     md:text-[17px]
 
-                    lg:text-[18px]
+                    lg:text-[17px]
                   "
                 >
                   Understand
@@ -206,13 +206,13 @@ export default function HowWeWork() {
                   className="
                     text-[16px]
                     font-medium
-                    text-[#222]
+                    text-['Inter']
 
                     sm:text-[17px]
 
                     md:text-[17px]
 
-                    lg:text-[18px]
+                    lg:text-[17px]
                   "
                 >
                   Build
@@ -253,13 +253,13 @@ export default function HowWeWork() {
                   className="
                     text-[16px]
                     font-medium
-                    text-[#222]
+                    text-['Inter']
 
                     sm:text-[17px]
 
                     md:text-[17px]
 
-                    lg:text-[18px]
+                    lg:text-[17px]
                   "
                 >
                   Grow

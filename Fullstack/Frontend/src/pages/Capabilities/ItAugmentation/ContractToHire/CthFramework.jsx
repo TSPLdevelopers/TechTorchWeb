@@ -3,126 +3,164 @@ import { BookOpen, ShieldCheck, FileText } from "lucide-react";
 
 export default function SmarterHiringApproach() {
   return (
-    <div className="w-full min-h-screen bg-white flex justify-center font-inter">
-      <div className="w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
+    <section className="smarter-hiring-section">
+      <div className="smarter-hiring-container">
 
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(260px,1fr)_minmax(0,2.2fr)] gap-8 sm:gap-10 lg:gap-12">
+        {/* =====================================================
+            MAIN GRID
+        ===================================================== */}
 
-          {/* ================= SIDEBAR ================= */}
-          <div className="space-y-5">
+        <div className="smarter-hiring-grid">
 
-            {/* Executive Briefing Card */}
-            <div className="rounded-xl border border-neutral-200 p-5 sm:p-6 bg-white">
+          {/* ===================================================
+              SIDEBAR
+          =================================================== */}
 
-              <div className="flex items-center gap-2 mb-4">
-                <BookOpen className="w-3.5 h-3.5 text-[#730024]" />
+          <aside className="smarter-hiring-sidebar">
 
-                <span className="text-[10px] tracking-wide text-[#730024] font-bold">
+            {/* =================================================
+                EXECUTIVE BRIEFING CARD
+            ================================================= */}
+
+            <div className="smarter-hiring-briefing">
+
+              <div className="smarter-hiring-card-eyebrow">
+                <BookOpen />
+
+                <span>
                   EXECUTIVE BRIEFING
                 </span>
               </div>
 
-              <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[16px] sm:text-[17px] leading-snug mb-2">
+              <h3 className="smarter-hiring-sidebar-title">
                 The True Cost of a Mis-Hire
               </h3>
 
-              <p className="font-inter text-neutral-500 text-[12.5px] sm:text-[13px] leading-relaxed mb-6">
+              <p className="smarter-hiring-sidebar-description">
                 Why forward-thinking CTOs and Heads of Talent structure
                 permanent engineering recruitment through contract-to-hire
                 validation.
               </p>
 
-              <div className="space-y-5">
+              {/* =================================================
+                  METRICS
+              ================================================= */}
 
-                {/* Traditional Bad Hire Cost */}
-                <div>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1.5">
-                    <span className="text-[12px] text-neutral-500">
+              <div className="smarter-hiring-metrics">
+
+                {/* Traditional Bad Hire */}
+                <div className="smarter-hiring-metric">
+
+                  <div className="smarter-hiring-metric-header">
+                    <span>
                       Traditional Bad Hire Cost
                     </span>
 
-                    <span className="text-[12px] font-semibold text-[#1c1c1c]">
+                    <strong>
                       3x Annual Salary
-                    </span>
+                    </strong>
                   </div>
 
-                  <div className="h-1 w-full rounded-full bg-neutral-100 overflow-hidden">
-                    <div className="h-full w-[85%] bg-[#730024] rounded-full" />
+                  <div className="smarter-hiring-progress">
+                    <div
+                      className="smarter-hiring-progress-fill"
+                      style={{ width: "85%" }}
+                    />
                   </div>
+
                 </div>
 
-                {/* TechTorch Severance Exposure */}
-                <div>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1.5">
-                    <span className="text-[12px] text-neutral-500">
+                {/* TechTorch Severance */}
+                <div className="smarter-hiring-metric">
+
+                  <div className="smarter-hiring-metric-header">
+                    <span>
                       TechTorch Severance Exposure
                     </span>
 
-                    <span className="text-[12px] font-semibold text-[#730024]">
+                    <strong className="highlight">
                       0% Liability
-                    </span>
+                    </strong>
                   </div>
 
-                  <div className="h-1 w-full rounded-full bg-neutral-100 overflow-hidden">
-                    <div className="h-full w-[4%] bg-[#730024] rounded-full" />
+                  <div className="smarter-hiring-progress">
+                    <div
+                      className="smarter-hiring-progress-fill"
+                      style={{ width: "4%" }}
+                    />
                   </div>
+
                 </div>
 
-                {/* Candidate Swap Guarantee */}
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                  <span className="text-[12px] text-neutral-500">
+                {/* Candidate Swap */}
+                <div className="smarter-hiring-metric-simple">
+
+                  <span>
                     Candidate Swap Guarantee
                   </span>
 
-                  <span className="text-[12px] font-semibold text-[#1c1c1c]">
+                  <strong>
                     &lt; 48 Hours
-                  </span>
+                  </strong>
+
                 </div>
 
               </div>
             </div>
 
-            {/* Seamless Transition Protocol */}
-            <div className="rounded-xl bg-[#730024]/5 border border-[#730024]/10 p-5 sm:p-6">
+            {/* =================================================
+                TRANSITION PROTOCOL
+            ================================================= */}
 
-              <div className="flex items-center gap-2 mb-3">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#730024]" />
+            <div className="smarter-hiring-protocol">
 
-                <h3 className="font-jakarta text-[12px] sm:text-[13px] font-semibold text-[#730024]">
+              <div className="smarter-hiring-protocol-header">
+
+                <ShieldCheck />
+
+                <h3>
                   Seamless Transition Protocol
                 </h3>
+
               </div>
 
-              <p className="font-inter text-neutral-600 text-[12.5px] sm:text-[13px] leading-relaxed">
+              <p>
                 All intellectual property assignments, proprietary code
                 agreements, and SOC 2 / HIPAA compliance protocols transition
                 seamlessly without contractual downtime or legal disruption.
               </p>
 
             </div>
-          </div>
 
-          {/* ================= MAIN CONTENT ================= */}
-          <div className="min-w-0">
+          </aside>
 
-            {/* Eyebrow / Sub Heading */}
-            <div className="flex items-center gap-2 mb-4">
+          {/* ===================================================
+              MAIN CONTENT
+          =================================================== */}
 
-              <span className="w-4 sm:w-5 h-px bg-[#730024]" />
+          <main className="smarter-hiring-main">
 
-              <span className="font-jakarta text-[10px] sm:text-[11px] tracking-wide text-[#730024] font-semibold">
+            {/* Eyebrow */}
+            <div className="smarter-hiring-eyebrow">
+
+              <span />
+
+              <span>
                 Contract-to-Hire Framework
               </span>
 
             </div>
 
             {/* Main Heading */}
-            <h1 className="font-jakarta text-[#1c1c1c] font-semibold text-2xl sm:text-3xl lg:text-[2rem] leading-snug mb-5 sm:mb-6">
+            <h1 className="smarter-hiring-heading">
               A Smarter Approach to Technology Hiring
             </h1>
 
-            {/* Body */}
-            <div className="font-inter space-y-5 text-[14px] sm:text-[15px] leading-relaxed text-neutral-600 mb-7 sm:mb-8">
+            {/* =================================================
+                INTRODUCTION
+            ================================================= */}
+
+            <div className="smarter-hiring-body">
 
               <p>
                 Finding the right technology talent is about more than
@@ -143,26 +181,34 @@ export default function SmarterHiringApproach() {
 
             </div>
 
-            {/* Pull Quote */}
-            <blockquote className="border-l-[3px] border-[#730024] bg-[#730024]/5 pl-4 sm:pl-6 pr-4 sm:pr-6 py-5 sm:py-6 mb-7 sm:mb-8">
+            {/* =================================================
+                PULL QUOTE
+            ================================================= */}
 
-              <p className="font-jakarta text-[17px] sm:text-[19px] font-semibold text-[#1c1c1c] leading-snug mb-3">
+            <blockquote className="smarter-hiring-quote">
+
+              <p>
                 "Evaluate the fit. Experience the capability. Build with
                 confidence."
               </p>
 
-              <div className="flex items-center gap-2">
-                <FileText className="w-3.5 h-3.5 text-[#730024]" />
+              <div className="smarter-hiring-quote-label">
 
-                <span className="font-inter text-[10px] sm:text-[11px] font-semibold tracking-wide text-[#730024]">
+                <FileText />
+
+                <span>
                   TECHTORCH TALENT ADVISORY PRINCIPLE
                 </span>
+
               </div>
 
             </blockquote>
 
-            {/* Body Continued */}
-            <div className="font-inter space-y-5 text-[14px] sm:text-[15px] leading-relaxed text-neutral-600">
+            {/* =================================================
+                CONTINUED CONTENT
+            ================================================= */}
+
+            <div className="smarter-hiring-body">
 
               <p>
                 This approach helps businesses gain a clearer understanding
@@ -181,9 +227,694 @@ export default function SmarterHiringApproach() {
 
             </div>
 
-          </div>
+          </main>
         </div>
       </div>
-    </div>
+
+      {/* =========================================================
+          STYLES
+      ========================================================= */}
+
+      <style>{`
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .smarter-hiring-section {
+          width: 100%;
+          min-height: auto;
+
+          background: #ffffff;
+
+          font-family: "Inter", sans-serif;
+
+          overflow: hidden;
+        }
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .smarter-hiring-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+
+          padding-left: 100px;
+          padding-right: 100px;
+
+          padding-top: 64px;
+          padding-bottom: 64px;
+        }
+
+        /* =====================================================
+           MAIN GRID
+        ===================================================== */
+
+        .smarter-hiring-grid {
+          width: 100%;
+
+          display: grid;
+
+          grid-template-columns:
+            minmax(260px, 330px)
+            minmax(0, 1fr);
+
+          gap: 64px;
+
+          align-items: start;
+        }
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .smarter-hiring-sidebar {
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+
+          gap: 20px;
+        }
+
+        /* =====================================================
+           BRIEFING CARD
+        ===================================================== */
+
+        .smarter-hiring-briefing {
+          width: 100%;
+
+          padding: 22px;
+
+          background: #ffffff;
+
+          border: 1px solid #e5e5e5;
+
+          border-radius: 12px;
+        }
+
+        .smarter-hiring-card-eyebrow {
+          display: flex;
+          align-items: center;
+
+          gap: 8px;
+
+          margin-bottom: 15px;
+        }
+
+        .smarter-hiring-card-eyebrow svg {
+          width: 15px;
+          height: 15px;
+
+          flex-shrink: 0;
+
+          color: #730024;
+        }
+
+        .smarter-hiring-card-eyebrow span {
+          font-family: "Inter", sans-serif;
+
+          font-size: 9px;
+          font-weight: 700;
+
+          letter-spacing: 0.06em;
+
+          color: #730024;
+        }
+
+        .smarter-hiring-sidebar-title {
+          margin: 0 0 9px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 17px;
+          font-weight: 600;
+
+          line-height: 1.35;
+
+          color: #1c1c1c;
+        }
+
+        .smarter-hiring-sidebar-description {
+          margin: 0 0 22px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12px;
+          font-weight: 400;
+
+          line-height: 1.7;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           METRICS
+        ===================================================== */
+
+        .smarter-hiring-metrics {
+          display: flex;
+          flex-direction: column;
+
+          gap: 20px;
+        }
+
+        .smarter-hiring-metric {
+          width: 100%;
+        }
+
+        .smarter-hiring-metric-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 10px;
+
+          margin-bottom: 8px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10.5px;
+        }
+
+        .smarter-hiring-metric-header span {
+          color: #737373;
+        }
+
+        .smarter-hiring-metric-header strong {
+          color: #1c1c1c;
+
+          font-weight: 600;
+
+          white-space: nowrap;
+        }
+
+        .smarter-hiring-metric-header strong.highlight {
+          color: #730024;
+        }
+
+        .smarter-hiring-progress {
+          width: 100%;
+          height: 4px;
+
+          overflow: hidden;
+
+          border-radius: 999px;
+
+          background: #f0f0f0;
+        }
+
+        .smarter-hiring-progress-fill {
+          height: 100%;
+
+          border-radius: inherit;
+
+          background: #730024;
+        }
+
+        .smarter-hiring-metric-simple {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 10px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10.5px;
+        }
+
+        .smarter-hiring-metric-simple span {
+          color: #737373;
+        }
+
+        .smarter-hiring-metric-simple strong {
+          color: #1c1c1c;
+
+          font-weight: 600;
+
+          white-space: nowrap;
+        }
+
+        /* =====================================================
+           PROTOCOL
+        ===================================================== */
+
+        .smarter-hiring-protocol {
+          width: 100%;
+
+          padding: 20px 22px;
+
+          background: rgba(115, 0, 36, 0.05);
+
+          border: 1px solid rgba(115, 0, 36, 0.1);
+
+          border-radius: 12px;
+        }
+
+        .smarter-hiring-protocol-header {
+          display: flex;
+          align-items: center;
+
+          gap: 8px;
+
+          margin-bottom: 10px;
+        }
+
+        .smarter-hiring-protocol-header svg {
+          width: 15px;
+          height: 15px;
+
+          flex-shrink: 0;
+
+          color: #730024;
+        }
+
+        .smarter-hiring-protocol-header h3 {
+          margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 12px;
+          font-weight: 600;
+
+          line-height: 1.4;
+
+          color: #730024;
+        }
+
+        .smarter-hiring-protocol p {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11.5px;
+          font-weight: 400;
+
+          line-height: 1.7;
+
+          color: #666666;
+        }
+
+        /* =====================================================
+           MAIN CONTENT
+        ===================================================== */
+
+        .smarter-hiring-main {
+          width: 100%;
+          min-width: 0;
+
+          max-width: 900px;
+        }
+
+        /* =====================================================
+           EYEBROW
+        ===================================================== */
+
+        .smarter-hiring-eyebrow {
+          display: flex;
+          align-items: center;
+
+          gap: 9px;
+
+          margin-bottom: 17px;
+        }
+
+        .smarter-hiring-eyebrow > span:first-child {
+          width: 20px;
+          height: 1px;
+
+          flex-shrink: 0;
+
+          background: #730024;
+        }
+
+        .smarter-hiring-eyebrow > span:last-child {
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 10px;
+          font-weight: 600;
+
+          letter-spacing: 0.04em;
+
+          color: #730024;
+        }
+
+        /* =====================================================
+           MAIN HEADING
+        ===================================================== */
+
+        .smarter-hiring-heading {
+          margin: 0 0 24px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: clamp(30px, 3vw, 43px);
+
+          font-weight: 600;
+
+          line-height: 1.2;
+
+          letter-spacing: -0.025em;
+
+          color: #1c1c1c;
+        }
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        .smarter-hiring-body {
+          display: flex;
+          flex-direction: column;
+
+          gap: 19px;
+
+          margin-bottom: 28px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 14px;
+          font-weight: 400;
+
+          line-height: 1.8;
+
+          color: #666666;
+        }
+
+        .smarter-hiring-body p {
+          margin: 0;
+        }
+
+        /* =====================================================
+           PULL QUOTE
+        ===================================================== */
+
+        .smarter-hiring-quote {
+          margin: 0 0 29px;
+
+          padding: 23px 25px;
+
+          border-left: 3px solid #730024;
+
+          background: rgba(115, 0, 36, 0.05);
+        }
+
+        .smarter-hiring-quote p {
+          margin: 0 0 14px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 19px;
+          font-weight: 600;
+
+          line-height: 1.45;
+
+          color: #1c1c1c;
+        }
+
+        .smarter-hiring-quote-label {
+          display: flex;
+          align-items: center;
+
+          gap: 8px;
+        }
+
+        .smarter-hiring-quote-label svg {
+          width: 14px;
+          height: 14px;
+
+          flex-shrink: 0;
+
+          color: #730024;
+        }
+
+        .smarter-hiring-quote-label span {
+          font-family: "Inter", sans-serif;
+
+          font-size: 9.5px;
+          font-weight: 600;
+
+          letter-spacing: 0.06em;
+
+          color: #730024;
+        }
+
+        /* =====================================================
+           LARGE TABLET
+           1200px
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+
+          .smarter-hiring-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .smarter-hiring-grid {
+            gap: 45px;
+          }
+
+          .smarter-hiring-main {
+            max-width: 100%;
+          }
+
+          .smarter-hiring-heading {
+            font-size: 38px;
+          }
+        }
+
+        /* =====================================================
+           TABLET
+           900px
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+          .smarter-hiring-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
+          }
+
+          .smarter-hiring-grid {
+            grid-template-columns: 1fr;
+
+            gap: 38px;
+          }
+
+          .smarter-hiring-sidebar {
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 16px;
+          }
+
+          .smarter-hiring-heading {
+            font-size: 36px;
+          }
+
+          .smarter-hiring-body {
+            font-size: 13.5px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+           700px
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+          .smarter-hiring-container {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 44px;
+            padding-bottom: 44px;
+          }
+
+          .smarter-hiring-grid {
+            gap: 32px;
+          }
+
+          .smarter-hiring-sidebar {
+            display: flex;
+            flex-direction: column;
+
+            gap: 16px;
+          }
+
+          .smarter-hiring-briefing {
+            padding: 19px;
+          }
+
+          .smarter-hiring-protocol {
+            padding: 18px 19px;
+          }
+
+          .smarter-hiring-heading {
+            font-size: 32px;
+
+            line-height: 1.22;
+          }
+
+          .smarter-hiring-body {
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            gap: 17px;
+          }
+
+          .smarter-hiring-quote {
+            padding: 20px 20px;
+
+            margin-bottom: 25px;
+          }
+
+          .smarter-hiring-quote p {
+            font-size: 17px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+           480px
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
+          .smarter-hiring-container {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 36px;
+            padding-bottom: 36px;
+          }
+
+          .smarter-hiring-card-eyebrow span {
+            font-size: 8px;
+          }
+
+          .smarter-hiring-sidebar-title {
+            font-size: 15px;
+          }
+
+          .smarter-hiring-sidebar-description {
+            font-size: 11px;
+
+            margin-bottom: 19px;
+          }
+
+          .smarter-hiring-metrics {
+            gap: 17px;
+          }
+
+          .smarter-hiring-metric-header,
+          .smarter-hiring-metric-simple {
+            font-size: 9.5px;
+          }
+
+          .smarter-hiring-protocol-header h3 {
+            font-size: 11px;
+          }
+
+          .smarter-hiring-protocol p {
+            font-size: 10.5px;
+          }
+
+          .smarter-hiring-eyebrow {
+            gap: 7px;
+
+            margin-bottom: 14px;
+          }
+
+          .smarter-hiring-eyebrow > span:first-child {
+            width: 16px;
+          }
+
+          .smarter-hiring-eyebrow > span:last-child {
+            font-size: 8.5px;
+          }
+
+          .smarter-hiring-heading {
+            font-size: 28px;
+
+            letter-spacing: -0.02em;
+
+            margin-bottom: 19px;
+          }
+
+          .smarter-hiring-body {
+            font-size: 11.5px;
+
+            line-height: 1.7;
+
+            gap: 15px;
+
+            margin-bottom: 23px;
+          }
+
+          .smarter-hiring-quote {
+            padding: 18px 17px;
+
+            margin-bottom: 23px;
+          }
+
+          .smarter-hiring-quote p {
+            font-size: 15px;
+
+            line-height: 1.45;
+
+            margin-bottom: 11px;
+          }
+
+          .smarter-hiring-quote-label {
+            gap: 6px;
+          }
+
+          .smarter-hiring-quote-label svg {
+            width: 12px;
+            height: 12px;
+          }
+
+          .smarter-hiring-quote-label span {
+            font-size: 7.5px;
+          }
+        }
+
+        /* =====================================================
+           EXTRA SMALL
+           360px
+        ===================================================== */
+
+        @media (max-width: 360px) {
+
+          .smarter-hiring-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .smarter-hiring-heading {
+            font-size: 25px;
+          }
+
+          .smarter-hiring-body {
+            font-size: 11px;
+          }
+
+          .smarter-hiring-quote p {
+            font-size: 14px;
+          }
+        }
+      `}</style>
+    </section>
   );
 }

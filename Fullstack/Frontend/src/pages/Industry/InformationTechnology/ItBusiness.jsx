@@ -17,7 +17,12 @@ export default function BusinessToTechnologySection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-        * {
+        /* =================================================
+           BUSINESS TO TECHNOLOGY SECTION
+        ================================================= */
+
+        .business-tech-section,
+        .business-tech-section * {
           box-sizing: border-box;
         }
 
@@ -29,20 +34,30 @@ export default function BusinessToTechnologySection() {
           overflow: hidden;
         }
 
+        /* =================================================
+           MAIN CONTAINER
+           Same Hero spacing system
+        ================================================= */
+
         .business-tech-container {
-          width: min(1200px, 100%);
+          width: 100%;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 72px 40px;
+          padding: 78px 100px;
+
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 64px;
           align-items: center;
         }
 
-        /* ================= LEFT CONTENT ================= */
+        /* =================================================
+           LEFT CONTENT
+        ================================================= */
 
         .business-tech-eyebrow {
           margin: 0 0 12px;
+
           color: ${WINE};
           font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
@@ -54,22 +69,14 @@ export default function BusinessToTechnologySection() {
 
         .business-tech-heading {
           margin: 0 0 22px;
-          max-width: 620px;
-          color: ${INK};
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 38px;
-          line-height: 1.22;
-          font-weight: 800;
-          letter-spacing: -0.8px;
-        }
+          max-width: 680px;
 
-        .business-tech-description {
-          margin: 0;
-          color: ${MUTED};
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 14.5px;
-          line-height: 1.75;
-          font-weight: 500;
+          color: ${INK};
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 40px;
+          line-height: 1.2;
+          font-weight: 800;
+          letter-spacing: -0.9px;
         }
 
         .business-tech-description-wrapper {
@@ -77,16 +84,31 @@ export default function BusinessToTechnologySection() {
           flex-direction: column;
           gap: 16px;
           margin-bottom: 26px;
+          max-width: 700px;
         }
 
-        /* ================= CAPABILITY BOX ================= */
+        .business-tech-description {
+          margin: 0;
+
+          color: ${MUTED};
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 14.5px;
+          line-height: 1.75;
+          font-weight: 500;
+        }
+
+        /* =================================================
+           CAPABILITY BOX
+        ================================================= */
 
         .business-tech-capability {
+          width: 100%;
+          max-width: 700px;
+
           display: flex;
           align-items: flex-start;
           gap: 12px;
 
-          width: 100%;
           padding: 19px 20px;
 
           background: #ffffff;
@@ -100,11 +122,13 @@ export default function BusinessToTechnologySection() {
           height: 20px;
           flex-shrink: 0;
           margin-top: 2px;
+
           color: ${WINE};
         }
 
         .business-tech-capability-text {
           margin: 0;
+
           color: ${INK};
           font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
@@ -112,11 +136,15 @@ export default function BusinessToTechnologySection() {
           font-weight: 500;
         }
 
-        /* ================= RIGHT DIAGRAM ================= */
+        /* =================================================
+           RIGHT DIAGRAM
+        ================================================= */
 
         .business-tech-diagram {
           width: 100%;
-          padding: 34px 28px;
+
+          padding: 36px 30px;
+
           background: #ffffff;
           border-radius: 20px;
 
@@ -132,7 +160,8 @@ export default function BusinessToTechnologySection() {
 
         .business-tech-flow-card {
           width: 100%;
-          max-width: 330px;
+          max-width: 360px;
+
           padding: 20px;
 
           text-align: center;
@@ -158,9 +187,14 @@ export default function BusinessToTechnologySection() {
           box-shadow: 0 8px 22px rgba(122, 31, 61, 0.25);
         }
 
+        /* =================================================
+           FLOW ICON
+        ================================================= */
+
         .business-tech-flow-icon {
           width: 38px;
           height: 38px;
+
           margin: 0 auto 12px;
 
           display: flex;
@@ -180,6 +214,10 @@ export default function BusinessToTechnologySection() {
           color: #ffffff;
         }
 
+        /* =================================================
+           FLOW LABEL
+        ================================================= */
+
         .business-tech-flow-label {
           margin: 0 0 5px;
 
@@ -198,10 +236,14 @@ export default function BusinessToTechnologySection() {
           color: #f0d0dc;
         }
 
+        /* =================================================
+           FLOW TITLE
+        ================================================= */
+
         .business-tech-flow-title {
           margin: 0;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 15px;
           line-height: 1.4;
           font-weight: 700;
@@ -215,22 +257,29 @@ export default function BusinessToTechnologySection() {
           color: #ffffff;
         }
 
+        /* =================================================
+           ARROW
+        ================================================= */
+
         .business-tech-arrow {
           margin: 8px 0;
           color: ${WINE};
           flex-shrink: 0;
         }
 
-        /* ================= TABLET ================= */
+        /* =================================================
+           LARGE TABLET / SMALL LAPTOP
+        ================================================= */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1200px) {
           .business-tech-container {
-            padding: 62px 32px;
-            gap: 42px;
+            padding-left: 40px;
+            padding-right: 40px;
+            gap: 48px;
           }
 
           .business-tech-heading {
-            font-size: 34px;
+            font-size: 36px;
           }
 
           .business-tech-description {
@@ -238,44 +287,62 @@ export default function BusinessToTechnologySection() {
           }
 
           .business-tech-diagram {
-            padding: 30px 22px;
+            padding: 32px 24px;
           }
         }
 
-        /* ================= TABLET / SMALL LAPTOP ================= */
+        /* =================================================
+           TABLET
+        ================================================= */
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
           .business-tech-container {
             grid-template-columns: 1fr;
-            gap: 42px;
-            padding: 56px 28px;
+            gap: 48px;
+
+            padding-top: 68px;
+            padding-bottom: 68px;
+
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .business-tech-heading {
-            max-width: 700px;
-            font-size: 32px;
+            max-width: 760px;
+            font-size: 34px;
           }
 
-          .business-tech-description {
-            max-width: 760px;
+          .business-tech-description-wrapper {
+            max-width: 820px;
+          }
+
+          .business-tech-capability {
+            max-width: 820px;
           }
 
           .business-tech-diagram {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
           }
 
           .business-tech-flow-card {
-            max-width: 380px;
+            max-width: 420px;
           }
         }
 
-        /* ================= MOBILE ================= */
+        /* =================================================
+           MOBILE
+        ================================================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
           .business-tech-container {
-            padding: 46px 18px;
-            gap: 32px;
+            padding-top: 56px;
+            padding-bottom: 56px;
+
+            padding-left: 24px;
+            padding-right: 24px;
+
+            gap: 36px;
           }
 
           .business-tech-eyebrow {
@@ -286,14 +353,14 @@ export default function BusinessToTechnologySection() {
 
           .business-tech-heading {
             margin-bottom: 18px;
-            font-size: 28px;
-            line-height: 1.25;
-            letter-spacing: -0.5px;
+            font-size: 30px;
+            line-height: 1.24;
+            letter-spacing: -0.6px;
           }
 
           .business-tech-description-wrapper {
-            gap: 13px;
-            margin-bottom: 21px;
+            gap: 14px;
+            margin-bottom: 22px;
           }
 
           .business-tech-description {
@@ -302,7 +369,7 @@ export default function BusinessToTechnologySection() {
           }
 
           .business-tech-capability {
-            padding: 16px;
+            padding: 17px;
             gap: 10px;
             border-radius: 11px;
           }
@@ -313,8 +380,8 @@ export default function BusinessToTechnologySection() {
           }
 
           .business-tech-diagram {
-            padding: 25px 15px;
-            border-radius: 16px;
+            padding: 28px 18px;
+            border-radius: 17px;
           }
 
           .business-tech-flow-card {
@@ -342,25 +409,39 @@ export default function BusinessToTechnologySection() {
           }
         }
 
-        /* ================= SMALL MOBILE ================= */
+        /* =================================================
+           SMALL MOBILE
+        ================================================= */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           .business-tech-container {
-            padding: 40px 14px;
-            gap: 28px;
+            padding-top: 48px;
+            padding-bottom: 48px;
+
+            padding-left: 16px;
+            padding-right: 16px;
+
+            gap: 30px;
           }
 
           .business-tech-heading {
-            font-size: 25px;
-            line-height: 1.27;
+            font-size: 27px;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+          }
+
+          .business-tech-description-wrapper {
+            gap: 12px;
+            margin-bottom: 20px;
           }
 
           .business-tech-description {
-            font-size: 12px;
+            font-size: 12.5px;
+            line-height: 1.7;
           }
 
           .business-tech-capability {
-            padding: 14px;
+            padding: 15px;
           }
 
           .business-tech-capability-text {
@@ -368,15 +449,16 @@ export default function BusinessToTechnologySection() {
           }
 
           .business-tech-diagram {
-            padding: 22px 12px;
+            padding: 24px 14px;
+            border-radius: 15px;
           }
 
           .business-tech-flow-card {
-            padding: 16px 12px;
+            padding: 17px 12px;
           }
 
           .business-tech-flow-title {
-            font-size: 13px;
+            font-size: 13.5px;
           }
 
           .business-tech-flow-label {
@@ -384,15 +466,21 @@ export default function BusinessToTechnologySection() {
           }
         }
 
-        /* ================= VERY SMALL ================= */
+        /* =================================================
+           VERY SMALL MOBILE
+        ================================================= */
 
         @media (max-width: 340px) {
           .business-tech-container {
-            padding: 34px 11px;
+            padding-top: 40px;
+            padding-bottom: 40px;
+
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .business-tech-heading {
-            font-size: 23px;
+            font-size: 24px;
           }
 
           .business-tech-description {
@@ -408,7 +496,9 @@ export default function BusinessToTechnologySection() {
           }
         }
 
-        /* ================= REDUCED MOTION ================= */
+        /* =================================================
+           REDUCED MOTION
+        ================================================= */
 
         @media (prefers-reduced-motion: reduce) {
           .business-tech-flow-card {
@@ -424,7 +514,10 @@ export default function BusinessToTechnologySection() {
       <section className="business-tech-section">
         <div className="business-tech-container">
 
-          {/* LEFT: CONTENT */}
+          {/* =================================================
+              LEFT: CONTENT
+          ================================================= */}
+
           <div>
             <p className="business-tech-eyebrow">
               Technology That Works For Your Business
@@ -465,7 +558,10 @@ export default function BusinessToTechnologySection() {
             </div>
           </div>
 
-          {/* RIGHT: FLOW DIAGRAM */}
+          {/* =================================================
+              RIGHT: FLOW DIAGRAM
+          ================================================= */}
+
           <div className="business-tech-diagram">
             <div className="business-tech-flow">
 

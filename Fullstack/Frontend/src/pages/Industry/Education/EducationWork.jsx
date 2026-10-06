@@ -61,221 +61,474 @@ const solutions = [
 export default function SolutionsGridSection() {
   return (
     <>
-      {/* Google Fonts */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
+        /* =====================================================
+           FONTS
+        ===================================================== */
+
+        @import url(
+          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
+        );
+
+
+        /* =====================================================
+           MAIN SECTION
+        ===================================================== */
 
         .solutions-section {
           width: 100%;
+          overflow: hidden;
+
           background: #f3f1ec;
           color: ${INK};
+
           font-family: "Inter", sans-serif;
-          overflow: hidden;
         }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+           
+           DESKTOP:
+           100px left/right
+        ===================================================== */
 
         .solutions-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1600px;
+
           margin: 0 auto;
-          padding: 80px 100px;
+
+          padding-top: 80px;
+          padding-right: 100px;
+          padding-bottom: 80px;
+          padding-left: 100px;
+
+          box-sizing: border-box;
+
           display: grid;
-          grid-template-columns: minmax(280px, 1fr) minmax(0, 1.4fr);
-          gap: 56px;
+
+          grid-template-columns:
+            minmax(300px, 0.85fr)
+            minmax(0, 1.45fr);
+
+          gap: 64px;
+
           align-items: start;
         }
 
-        /* Left Content */
+
+        /* =====================================================
+           LEFT CONTENT
+        ===================================================== */
+
         .solutions-copy {
           width: 100%;
+          min-width: 0;
         }
+
+
+        /* =====================================================
+           EYEBROW
+           INTER
+        ===================================================== */
 
         .solutions-eyebrow {
           display: flex;
           align-items: center;
+
           gap: 4px;
+
+          margin-bottom: 16px;
+
           color: ${WINE};
+
           font-family: "Inter", sans-serif;
+
           font-size: 12px;
           font-weight: 600;
+
           letter-spacing: 0.04em;
+
           line-height: 1.4;
-          margin-bottom: 16px;
         }
+
+
+        /* =====================================================
+           HEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
 
         .solutions-heading {
+          max-width: 560px;
+
           margin: 0 0 20px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 36px;
-          font-weight: 600;
-          line-height: 1.18;
-          letter-spacing: -0.025em;
-          max-width: 520px;
+
+          font-size: 38px;
+
+          font-weight: 700;
+
+          line-height: 1.17;
+
+          letter-spacing: -0.65px;
         }
+
+
+        /* =====================================================
+           SUBHEADING
+           PLUS JAKARTA SANS
+        ===================================================== */
 
         .solutions-subheading {
+          max-width: 580px;
+
           margin: 0 0 30px;
+
           color: ${MUTED};
+
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 15px;
+
+          font-size: 16px;
+
           font-weight: 500;
+
           line-height: 1.75;
-          max-width: 520px;
         }
 
+
+        /* =====================================================
+           LABEL
+           INTER
+        ===================================================== */
+
         .solutions-label {
+          max-width: 500px;
+
           margin: 0;
+
           color: #8a8378;
+
           font-family: "Inter", sans-serif;
+
           font-size: 11px;
+
           font-weight: 600;
+
           line-height: 1.5;
+
           letter-spacing: 0.06em;
         }
 
-        /* Cards */
+
+        /* =====================================================
+           CARDS GRID
+        ===================================================== */
+
         .solutions-grid {
           width: 100%;
+          min-width: 0;
+
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
           gap: 20px;
         }
 
+
+        /* =====================================================
+           SOLUTION CARD
+        ===================================================== */
+
         .solution-card {
           min-width: 0;
-          background: #ffffff;
-          border-radius: 16px;
+
           padding: 24px;
+
           display: flex;
           flex-direction: column;
+
           gap: 16px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+          background: #ffffff;
+
+          border: 1px solid rgba(0, 0, 0, 0.035);
+
+          border-radius: 16px;
+
+          box-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.06);
+
           transition:
             transform 0.3s ease,
-            box-shadow 0.3s ease;
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
         }
+
 
         .solution-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+          border-color: rgba(122, 31, 61, 0.12);
+
+          box-shadow:
+            0 12px 28px rgba(0, 0, 0, 0.08);
         }
+
+
+        /* =====================================================
+           ICON
+        ===================================================== */
 
         .solution-icon {
           width: 44px;
           height: 44px;
+
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 12px;
+
           background: #fbeef1;
+
           color: ${WINE};
         }
+
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
 
         .solution-content {
           min-width: 0;
         }
 
+
+        /* =====================================================
+           CARD TITLE
+           INTER
+        ===================================================== */
+
         .solution-title {
           margin: 0 0 7px;
+
           color: ${INK};
+
           font-family: "Inter", sans-serif;
+
           font-size: 15px;
+
           font-weight: 600;
+
           line-height: 1.4;
         }
 
+
+        /* =====================================================
+           CARD BODY
+           INTER
+        ===================================================== */
+
         .solution-body {
           margin: 0;
+
           color: ${MUTED};
+
           font-family: "Inter", sans-serif;
+
           font-size: 14px;
+
           font-weight: 400;
+
           line-height: 1.65;
         }
 
-        /* Large Tablet / Laptop */
-        @media (max-width: 1100px) {
+
+        /* =====================================================
+           LARGE DESKTOP
+        ===================================================== */
+
+        @media (min-width: 1400px) {
+
           .solutions-container {
-            padding: 70px 60px;
-            grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.3fr);
-            gap: 40px;
+            padding-top: 88px;
+            padding-bottom: 88px;
+
+            gap: 76px;
           }
 
           .solutions-heading {
-            font-size: 32px;
+            font-size: 40px;
+          }
+
+          .solutions-subheading {
+            font-size: 16.5px;
+          }
+
+          .solutions-grid {
+            gap: 22px;
+          }
+
+          .solution-card {
+            padding: 26px;
+          }
+
+        }
+
+
+        /* =====================================================
+           TABLET / LAPTOP
+           40px left/right
+        ===================================================== */
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+
+          .solutions-container {
+            padding-top: 70px;
+            padding-right: 40px;
+            padding-bottom: 70px;
+            padding-left: 40px;
+
+            grid-template-columns:
+              minmax(270px, 0.85fr)
+              minmax(0, 1.35fr);
+
+            gap: 42px;
+          }
+
+          .solutions-heading {
+            font-size: 33px;
+          }
+
+          .solutions-subheading {
+            font-size: 15px;
+          }
+
+          .solutions-grid {
+            gap: 16px;
           }
 
           .solution-card {
             padding: 21px;
           }
 
-          .solutions-grid {
-            gap: 16px;
-          }
         }
 
-        /* Tablet */
-        @media (max-width: 900px) {
+
+        /* =====================================================
+           TABLET
+           STACK LEFT + GRID
+        ===================================================== */
+
+        @media (max-width: 900px) and (min-width: 768px) {
+
           .solutions-container {
-            padding: 64px 40px;
             grid-template-columns: 1fr;
-            gap: 40px;
+
+            gap: 42px;
           }
 
           .solutions-heading,
           .solutions-subheading {
-            max-width: 700px;
+            max-width: 760px;
           }
 
           .solutions-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
             gap: 18px;
           }
+
+          .solution-card {
+            padding: 22px;
+          }
+
         }
 
-        /* Mobile */
-        @media (max-width: 640px) {
+
+        /* =====================================================
+           MOBILE
+           24px left/right
+        ===================================================== */
+
+        @media (max-width: 767px) {
+
           .solutions-container {
-            padding: 56px 24px;
+            padding-top: 56px;
+            padding-right: 24px;
+            padding-bottom: 56px;
+            padding-left: 24px;
+
+            grid-template-columns: 1fr;
+
             gap: 32px;
           }
 
           .solutions-eyebrow {
-            font-size: 11px;
+            gap: 3px;
+
             margin-bottom: 13px;
+
+            font-size: 11px;
+
+            line-height: 1.5;
           }
 
           .solutions-heading {
-            font-size: 28px;
-            line-height: 1.2;
+            max-width: 680px;
+
             margin-bottom: 16px;
+
+            font-size: 29px;
+
+            line-height: 1.2;
+
+            letter-spacing: -0.5px;
           }
 
           .solutions-subheading {
-            font-size: 14px;
-            line-height: 1.7;
+            max-width: 680px;
+
             margin-bottom: 24px;
+
+            font-size: 14px;
+
+            line-height: 1.7;
           }
 
           .solutions-label {
             font-size: 10px;
+
+            line-height: 1.55;
           }
 
           .solutions-grid {
             grid-template-columns: 1fr;
+
             gap: 14px;
           }
 
           .solution-card {
             padding: 20px;
-            border-radius: 14px;
+
             gap: 14px;
+
+            border-radius: 14px;
           }
 
           .solution-icon {
             width: 42px;
             height: 42px;
+
             border-radius: 11px;
           }
 
@@ -285,35 +538,122 @@ export default function SolutionsGridSection() {
 
           .solution-body {
             font-size: 13px;
+
             line-height: 1.65;
           }
+
         }
 
-        /* Small Mobile */
-        @media (max-width: 400px) {
+
+        /* =====================================================
+           SMALL MOBILE
+           16px left/right
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
           .solutions-container {
-            padding: 48px 16px;
+            padding-top: 48px;
+            padding-right: 16px;
+            padding-bottom: 48px;
+            padding-left: 16px;
+
+            gap: 28px;
           }
 
           .solutions-heading {
-            font-size: 25px;
+            font-size: 26px;
+
+            line-height: 1.21;
+
+            letter-spacing: -0.4px;
           }
 
           .solutions-subheading {
             font-size: 13px;
+
+            line-height: 1.7;
+          }
+
+          .solutions-label {
+            font-size: 9.5px;
+          }
+
+          .solutions-grid {
+            gap: 11px;
           }
 
           .solution-card {
-            padding: 18px;
+            padding: 17px;
+
+            border-radius: 13px;
+
+            gap: 13px;
+          }
+
+          .solution-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 10px;
+          }
+
+          .solution-title {
+            margin-bottom: 6px;
+
+            font-size: 14px;
           }
 
           .solution-body {
-            font-size: 13px;
+            font-size: 12.5px;
+
+            line-height: 1.65;
           }
+
         }
 
-        /* Reduced Motion */
+
+        /* =====================================================
+           VERY SMALL MOBILE
+           16px left/right
+        ===================================================== */
+
+        @media (max-width: 360px) {
+
+          .solutions-container {
+            padding-top: 42px;
+            padding-right: 16px;
+            padding-bottom: 42px;
+            padding-left: 16px;
+          }
+
+          .solutions-heading {
+            font-size: 24px;
+
+            line-height: 1.22;
+          }
+
+          .solutions-subheading {
+            font-size: 12.5px;
+          }
+
+          .solution-card {
+            padding: 16px;
+          }
+
+          .solution-body {
+            font-size: 12px;
+          }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
         @media (prefers-reduced-motion: reduce) {
+
           .solution-card {
             transition: none;
           }
@@ -321,55 +661,99 @@ export default function SolutionsGridSection() {
           .solution-card:hover {
             transform: none;
           }
+
         }
+
       `}</style>
+
 
       <section className="solutions-section">
         <div className="solutions-container">
 
-          {/* LEFT CONTENT */}
+          {/* =================================================
+              LEFT CONTENT
+          ================================================= */}
+
           <div className="solutions-copy">
+
             <div className="solutions-eyebrow">
-              <ChevronRight size={14} strokeWidth={3} />
-              <span>BUILT AROUND THE WAY EDUCATION WORKS</span>
+              <ChevronRight
+                size={14}
+                strokeWidth={3}
+              />
+
+              <span>
+                BUILT AROUND THE WAY EDUCATION WORKS
+              </span>
             </div>
 
-            {/* Plus Jakarta Sans */}
+
+            {/* PLUS JAKARTA SANS */}
+
             <h2 className="solutions-heading">
               Technology that supports real institutional needs.
             </h2>
 
-            {/* Plus Jakarta Sans */}
+
+            {/* PLUS JAKARTA SANS */}
+
             <p className="solutions-subheading">
-              We believe education technology should adapt to the organization
-              using it. Instead of treating every institution the same, our
-              approach considers its existing processes, people, systems and
-              future requirements.
+              We believe education technology should adapt to the
+              organization using it. Instead of treating every institution
+              the same, our approach considers its existing processes,
+              people, systems and future requirements.
             </p>
 
-            {/* Inter */}
+
+            {/* INTER */}
+
             <p className="solutions-label">
               OUR SOLUTIONS CAN SUPPORT KEY AREAS SUCH AS:
             </p>
+
           </div>
 
-          {/* RIGHT CARD GRID */}
+
+          {/* =================================================
+              RIGHT CARD GRID
+          ================================================= */}
+
           <div className="solutions-grid">
+
             {solutions.map(({ icon: Icon, title, body }) => (
-              <div className="solution-card" key={title}>
+              <div
+                className="solution-card"
+                key={title}
+              >
+
                 <span className="solution-icon">
-                  <Icon size={20} strokeWidth={1.8} />
+                  <Icon
+                    size={20}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
-                <div className="solution-content">
-                  {/* Inter */}
-                  <h3 className="solution-title">{title}</h3>
 
-                  {/* Inter */}
-                  <p className="solution-body">{body}</p>
+                <div className="solution-content">
+
+                  {/* INTER */}
+
+                  <h3 className="solution-title">
+                    {title}
+                  </h3>
+
+
+                  {/* INTER */}
+
+                  <p className="solution-body">
+                    {body}
+                  </p>
+
                 </div>
+
               </div>
             ))}
+
           </div>
 
         </div>

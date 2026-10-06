@@ -34,26 +34,54 @@ export default function InfrastructureEvolutionSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
+        * {
+          box-sizing: border-box;
+        }
+
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
         .infrastructure-section {
           width: 100%;
+          overflow: hidden;
+
           background: #ffffff;
           color: ${INK};
+
           font-family: "Inter", Arial, sans-serif;
-          overflow: hidden;
         }
+
+        /*
+          GLOBAL HORIZONTAL SPACING
+
+          Desktop      : 100px
+          Tablet       : 40px
+          Mobile       : 24px
+          Small Mobile : 16px
+        */
 
         .infrastructure-container {
           width: 100%;
-          max-width: 1000px;
+          max-width: 1600px;
+
           margin: 0 auto;
-          padding: 64px 40px;
+
+          padding-top: 64px;
+          padding-bottom: 64px;
+          padding-left: 100px;
+          padding-right: 100px;
         }
 
-        /* ================= EYEBROW ================= */
+        /* =========================================================
+           EYEBROW
+        ========================================================= */
 
         .infrastructure-eyebrow {
           margin: 0 0 12px;
+
           color: ${WINE};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 700;
@@ -61,11 +89,15 @@ export default function InfrastructureEvolutionSection() {
           line-height: 1.4;
         }
 
-        /* ================= HEADING ================= */
+        /* =========================================================
+           HEADING
+        ========================================================= */
 
         .infrastructure-heading {
           margin: 0 0 18px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 32px;
           font-weight: 700;
@@ -73,34 +105,56 @@ export default function InfrastructureEvolutionSection() {
           letter-spacing: -0.8px;
         }
 
-        /* ================= SUBHEADING ================= */
+        .desktop-break {
+          display: block;
+        }
+
+        /* =========================================================
+           DESCRIPTION
+        ========================================================= */
 
         .infrastructure-description {
-          max-width: 850px;
+          max-width: 900px;
+
           margin: 0 0 42px;
+
           color: ${MUTED};
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 1.75;
         }
 
-        /* ================= FEATURE GRID ================= */
+        /* =========================================================
+           FEATURE GRID
+        ========================================================= */
 
         .infrastructure-grid {
           width: 100%;
+
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+
           overflow: hidden;
+
           border: 1px solid #ece9e4;
           border-radius: 18px;
+
           background: #ece9e4;
         }
 
+        /* =========================================================
+           FEATURE CARD
+        ========================================================= */
+
         .infrastructure-card {
           min-width: 0;
+
           padding: 28px;
+
           background: #f7f7fa;
+
           transition:
             transform 0.25s ease,
             background 0.25s ease,
@@ -119,52 +173,102 @@ export default function InfrastructureEvolutionSection() {
 
         .infrastructure-card:hover {
           background: #ffffff;
+
           transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+          box-shadow:
+            0 10px 25px rgba(0, 0, 0, 0.05);
         }
 
-        /* ================= ICON ================= */
+        /* =========================================================
+           ICON
+        ========================================================= */
 
         .infrastructure-icon {
           width: 40px;
           height: 40px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           margin-bottom: 17px;
+
           border-radius: 10px;
+
           background: #fbeef1;
           color: ${WINE};
         }
 
-        /* ================= CARD HEADING ================= */
+        /* =========================================================
+           CARD TITLE
+        ========================================================= */
 
         .infrastructure-card-title {
           margin: 0 0 7px;
+
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 15px;
           font-weight: 700;
           line-height: 1.4;
         }
 
-        /* ================= CARD BODY ================= */
+        /* =========================================================
+           CARD BODY
+        ========================================================= */
 
         .infrastructure-card-body {
           margin: 0;
+
           color: ${MUTED};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           font-weight: 400;
           line-height: 1.65;
         }
 
-        /* ================= TABLET ================= */
+        /* =========================================================
+           TABLET
+           40px horizontal spacing
+        ========================================================= */
+
+        @media (max-width: 1199px) {
+          .infrastructure-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 58px;
+            padding-bottom: 58px;
+          }
+
+          .infrastructure-heading {
+            font-size: 30px;
+          }
+
+          .infrastructure-description {
+            max-width: 850px;
+          }
+
+          .infrastructure-card {
+            padding: 25px;
+          }
+        }
+
+        /* =========================================================
+           TABLET / NARROW TABLET
+           40px horizontal spacing
+        ========================================================= */
 
         @media (max-width: 900px) {
           .infrastructure-container {
-            max-width: 100%;
-            padding: 55px 30px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 55px;
+            padding-bottom: 55px;
           }
 
           .infrastructure-heading {
@@ -181,11 +285,18 @@ export default function InfrastructureEvolutionSection() {
           }
         }
 
-        /* ================= MOBILE ================= */
+        /* =========================================================
+           MOBILE
+           24px horizontal spacing
+        ========================================================= */
 
-        @media (max-width: 650px) {
+        @media (max-width: 767px) {
           .infrastructure-container {
-            padding: 48px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 48px;
+            padding-bottom: 48px;
           }
 
           .infrastructure-eyebrow {
@@ -200,9 +311,16 @@ export default function InfrastructureEvolutionSection() {
             margin-bottom: 15px;
           }
 
+          .desktop-break {
+            display: none;
+          }
+
           .infrastructure-description {
+            max-width: none;
+
             font-size: 13px;
             line-height: 1.7;
+
             margin-bottom: 30px;
           }
 
@@ -213,6 +331,7 @@ export default function InfrastructureEvolutionSection() {
 
           .infrastructure-card {
             padding: 22px 20px;
+
             border-right: none !important;
             border-bottom: 1px solid #ece9e4 !important;
           }
@@ -224,6 +343,7 @@ export default function InfrastructureEvolutionSection() {
           .infrastructure-icon {
             width: 38px;
             height: 38px;
+
             margin-bottom: 14px;
           }
 
@@ -236,11 +356,18 @@ export default function InfrastructureEvolutionSection() {
           }
         }
 
-        /* ================= SMALL MOBILE ================= */
+        /* =========================================================
+           SMALL MOBILE
+           16px horizontal spacing
+        ========================================================= */
 
-        @media (max-width: 420px) {
+        @media (max-width: 480px) {
           .infrastructure-container {
-            padding: 40px 15px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
 
           .infrastructure-heading {
@@ -267,11 +394,18 @@ export default function InfrastructureEvolutionSection() {
           }
         }
 
-        /* ================= VERY SMALL MOBILE ================= */
+        /* =========================================================
+           VERY SMALL MOBILE
+           Keep 16px horizontal spacing
+        ========================================================= */
 
         @media (max-width: 340px) {
           .infrastructure-container {
-            padding: 35px 12px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 35px;
+            padding-bottom: 35px;
           }
 
           .infrastructure-heading {
@@ -287,7 +421,9 @@ export default function InfrastructureEvolutionSection() {
           }
         }
 
-        /* ================= REDUCED MOTION ================= */
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
 
         @media (prefers-reduced-motion: reduce) {
           .infrastructure-card {
@@ -303,19 +439,22 @@ export default function InfrastructureEvolutionSection() {
       <section className="infrastructure-section">
         <div className="infrastructure-container">
 
-          {/* Eyebrow */}
+          {/* ================= EYEBROW ================= */}
+
           <p className="infrastructure-eyebrow">
             INFRASTRUCTURE &amp; EVOLUTION
           </p>
 
-          {/* Main Heading */}
+          {/* ================= MAIN HEADING ================= */}
+
           <h2 className="infrastructure-heading">
             Build, Connect and Improve Your Digital
             <br className="desktop-break" />
             Infrastructure
           </h2>
 
-          {/* Subheading / Description */}
+          {/* ================= DESCRIPTION ================= */}
+
           <p className="infrastructure-description">
             Technology requirements continue to evolve as businesses grow.
             Modernization can involve improving existing applications,
@@ -326,7 +465,8 @@ export default function InfrastructureEvolutionSection() {
             technology requirements.
           </p>
 
-          {/* Feature Grid */}
+          {/* ================= FEATURE GRID ================= */}
+
           <div className="infrastructure-grid">
             {features.map(({ icon: Icon, title, body }) => (
               <div

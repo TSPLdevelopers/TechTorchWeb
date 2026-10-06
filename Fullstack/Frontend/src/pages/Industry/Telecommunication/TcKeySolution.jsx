@@ -44,7 +44,6 @@ export default function KeySolutionsGridSection() {
             }, index * 140);
           });
         } else {
-          // Reset so animation plays again when section re-enters viewport
           setVisibleCards([]);
         }
       },
@@ -87,11 +86,25 @@ export default function KeySolutionsGridSection() {
           overflow: hidden;
         }
 
+        .key-solutions-section *,
+        .key-solutions-section *::before,
+        .key-solutions-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .key-solutions-container {
           width: 100%;
-          max-width: 1180px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 90px 32px;
+          padding: 90px 100px;
         }
 
         /* =========================================
@@ -108,6 +121,7 @@ export default function KeySolutionsGridSection() {
         .key-solutions-label {
           margin: 0 0 14px;
           color: var(--wine);
+
           font-family: "Inter", sans-serif;
           font-size: 12px;
           font-weight: 700;
@@ -118,6 +132,7 @@ export default function KeySolutionsGridSection() {
         .key-solutions-heading {
           margin: 0 0 16px;
           color: var(--ink);
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: clamp(28px, 3vw, 40px);
           line-height: 1.22;
@@ -129,10 +144,11 @@ export default function KeySolutionsGridSection() {
           max-width: 620px;
           margin: 0 auto;
           color: var(--muted);
-          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-family: "Inter", sans-serif;
           font-size: 15px;
           line-height: 1.75;
-          font-weight: 500;
+          font-weight: 400;
         }
 
         /* =========================================
@@ -153,6 +169,7 @@ export default function KeySolutionsGridSection() {
           position: relative;
           min-height: 225px;
           padding: 26px;
+
           background: #ffffff;
           border: 1px solid #ece9e4;
           border-radius: 18px;
@@ -257,7 +274,7 @@ export default function KeySolutionsGridSection() {
           margin: 0 0 9px;
           color: var(--ink);
 
-          font-family: "Inter", sans-serif;
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 16px;
           line-height: 1.4;
           font-weight: 700;
@@ -275,12 +292,33 @@ export default function KeySolutionsGridSection() {
         }
 
         /* =========================================
+           LARGE TABLET
+           100px → 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .key-solutions-container {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 75px;
+            padding-bottom: 75px;
+          }
+
+          .key-solutions-grid {
+            gap: 18px;
+          }
+        }
+
+        /* =========================================
            TABLET
         ========================================= */
 
         @media (max-width: 1000px) {
           .key-solutions-container {
-            padding: 75px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
           .key-solutions-grid {
@@ -295,11 +333,15 @@ export default function KeySolutionsGridSection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 650px) {
           .key-solutions-container {
-            padding: 65px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 65px;
+            padding-bottom: 65px;
           }
 
           .key-solutions-header {
@@ -352,11 +394,15 @@ export default function KeySolutionsGridSection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .key-solutions-container {
-            padding: 55px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 55px;
+            padding-bottom: 55px;
           }
 
           .key-solutions-heading {
@@ -391,18 +437,28 @@ export default function KeySolutionsGridSection() {
       `}</style>
 
       <div className="key-solutions-container">
-        {/* HEADER */}
+        {/* =========================================
+            HEADER
+        ========================================= */}
+
         <div className="key-solutions-header">
-          <p className="key-solutions-label">Key Solutions</p>
+          <p className="key-solutions-label">
+            Key Solutions
+          </p>
 
           <h2 className="key-solutions-heading">
             Technology Solutions for Telecommunications
           </h2>
 
-          <p className="key-solutions-description">{desc}</p>
+          <p className="key-solutions-description">
+            {desc}
+          </p>
         </div>
 
-        {/* CARDS */}
+        {/* =========================================
+            CARDS
+        ========================================= */}
+
         <div className="key-solutions-grid">
           {cards.map(({ icon: Icon, sys, title }, index) => (
             <div
@@ -413,15 +469,24 @@ export default function KeySolutionsGridSection() {
             >
               <div className="solution-card-top">
                 <span className="solution-icon">
-                  <Icon size={20} strokeWidth={1.8} />
+                  <Icon
+                    size={20}
+                    strokeWidth={1.8}
+                  />
                 </span>
 
-                <span className="solution-system">{sys}</span>
+                <span className="solution-system">
+                  {sys}
+                </span>
               </div>
 
-              <h3 className="solution-title">{title}</h3>
+              <h3 className="solution-title">
+                {title}
+              </h3>
 
-              <p className="solution-description">{desc}</p>
+              <p className="solution-description">
+                {desc}
+              </p>
             </div>
           ))}
         </div>

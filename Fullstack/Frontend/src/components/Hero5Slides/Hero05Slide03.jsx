@@ -1,6 +1,6 @@
 import React from "react";
 
-const MAROON = "#7a1338";
+const MAROON = "#730042";
 
 export default function ConnectedExperienceSection() {
   return (

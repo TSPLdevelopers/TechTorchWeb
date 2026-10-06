@@ -71,7 +71,8 @@ export default function OurSolutionsGridSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-        * {
+        .solutions-section,
+        .solutions-section * {
           box-sizing: border-box;
         }
 
@@ -83,17 +84,28 @@ export default function OurSolutionsGridSection() {
           overflow: hidden;
         }
 
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
         .solutions-container {
-          width: min(1200px, 100%);
+          width: 100%;
+          max-width: 1600px;
           margin: 0 auto;
-          padding: 72px 40px;
+
+          /* HERO STANDARD SPACING */
+          padding: 78px 100px;
         }
 
-        /* ================= HEADER ================= */
+        /* =========================
+           HEADER
+        ========================= */
 
         .solutions-eyebrow {
           margin: 0 0 12px;
+
           color: ${WINE};
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.2;
@@ -103,17 +115,22 @@ export default function OurSolutionsGridSection() {
         }
 
         .solutions-heading {
-          max-width: 700px;
+          max-width: 760px;
+
           margin: 0 0 42px;
+
           color: ${INK};
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 38px;
+
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+          font-size: 40px;
           line-height: 1.2;
           font-weight: 700;
           letter-spacing: -1px;
         }
 
-        /* ================= GRID ================= */
+        /* =========================
+           GRID
+        ========================= */
 
         .solutions-grid {
           display: grid;
@@ -121,13 +138,18 @@ export default function OurSolutionsGridSection() {
           gap: 20px;
         }
 
-        /* ================= CARD ================= */
+        /* =========================
+           CARD
+        ========================= */
 
         .solution-card {
           min-width: 0;
+
           padding: 22px;
+
           border: 1px solid #ece9e4;
           border-radius: 16px;
+
           background: #ffffff;
 
           transition:
@@ -138,16 +160,21 @@ export default function OurSolutionsGridSection() {
 
         .solution-card:hover {
           transform: translateY(-5px);
+
           border-color: rgba(122, 31, 61, 0.18);
+
           box-shadow: 0 12px 30px rgba(27, 27, 42, 0.07);
         }
 
-        /* ================= CARD TOP ================= */
+        /* =========================
+           CARD TOP
+        ========================= */
 
         .solution-card-top {
           display: flex;
           align-items: center;
           justify-content: space-between;
+
           gap: 12px;
           margin-bottom: 20px;
         }
@@ -162,6 +189,7 @@ export default function OurSolutionsGridSection() {
           padding: 0 8px;
 
           border-radius: 7px;
+
           background: #fbeef1;
           color: ${WINE};
 
@@ -182,17 +210,21 @@ export default function OurSolutionsGridSection() {
           flex-shrink: 0;
 
           border-radius: 10px;
+
           background: #fbeef1;
           color: ${WINE};
         }
 
-        /* ================= CARD CONTENT ================= */
+        /* =========================
+           CARD CONTENT
+        ========================= */
 
         .solution-title {
           margin: 0 0 10px;
+
           color: ${INK};
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 16px;
           line-height: 1.35;
           font-weight: 700;
@@ -201,6 +233,7 @@ export default function OurSolutionsGridSection() {
 
         .solution-body {
           margin: 0;
+
           color: ${MUTED};
 
           font-family: "Inter", Arial, sans-serif;
@@ -209,11 +242,14 @@ export default function OurSolutionsGridSection() {
           font-weight: 400;
         }
 
-        /* ================= TABLET ================= */
+        /* =========================
+           TABLET / LAPTOP
+        ========================= */
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1200px) {
           .solutions-container {
-            padding: 60px 30px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .solutions-grid {
@@ -222,8 +258,8 @@ export default function OurSolutionsGridSection() {
           }
 
           .solutions-heading {
-            font-size: 35px;
-            margin-bottom: 36px;
+            font-size: 37px;
+            margin-bottom: 38px;
           }
 
           .solution-card {
@@ -231,11 +267,14 @@ export default function OurSolutionsGridSection() {
           }
         }
 
-        /* ================= SMALL TABLET ================= */
+        /* =========================
+           TABLET
+        ========================= */
 
         @media (max-width: 800px) {
           .solutions-container {
-            padding: 52px 24px;
+            padding-top: 60px;
+            padding-bottom: 60px;
           }
 
           .solutions-grid {
@@ -244,9 +283,10 @@ export default function OurSolutionsGridSection() {
           }
 
           .solutions-heading {
-            max-width: 600px;
+            max-width: 650px;
+
             font-size: 32px;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
           }
 
           .solution-card {
@@ -263,21 +303,29 @@ export default function OurSolutionsGridSection() {
           }
         }
 
-        /* ================= MOBILE ================= */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 600px) {
           .solutions-container {
-            padding: 44px 16px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 48px;
+            padding-bottom: 48px;
           }
 
           .solutions-eyebrow {
             margin-bottom: 10px;
+
             font-size: 10px;
             letter-spacing: 0.8px;
           }
 
           .solutions-heading {
-            margin-bottom: 26px;
+            margin-bottom: 27px;
+
             font-size: 28px;
             line-height: 1.25;
             letter-spacing: -0.6px;
@@ -300,12 +348,14 @@ export default function OurSolutionsGridSection() {
           .solution-number {
             min-width: 30px;
             height: 24px;
+
             font-size: 9px;
           }
 
           .solution-icon {
             width: 37px;
             height: 37px;
+
             border-radius: 9px;
           }
 
@@ -320,11 +370,17 @@ export default function OurSolutionsGridSection() {
           }
         }
 
-        /* ================= SMALL MOBILE ================= */
+        /* =========================
+           SMALL MOBILE
+        ========================= */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           .solutions-container {
-            padding: 38px 13px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
 
           .solutions-heading {
@@ -350,11 +406,17 @@ export default function OurSolutionsGridSection() {
           }
         }
 
-        /* ================= VERY SMALL MOBILE ================= */
+        /* =========================
+           VERY SMALL MOBILE
+        ========================= */
 
         @media (max-width: 340px) {
           .solutions-container {
-            padding: 34px 11px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 34px;
+            padding-bottom: 34px;
           }
 
           .solutions-heading {
@@ -379,7 +441,9 @@ export default function OurSolutionsGridSection() {
           }
         }
 
-        /* ================= REDUCED MOTION ================= */
+        /* =========================
+           REDUCED MOTION
+        ========================= */
 
         @media (prefers-reduced-motion: reduce) {
           .solution-card {
@@ -395,7 +459,10 @@ export default function OurSolutionsGridSection() {
       <section className="solutions-section">
         <div className="solutions-container">
 
-          {/* Header */}
+          {/* =========================
+              HEADER
+          ========================= */}
+
           <div>
             <p className="solutions-eyebrow">
               Our Solutions
@@ -406,7 +473,10 @@ export default function OurSolutionsGridSection() {
             </h2>
           </div>
 
-          {/* Solutions Grid */}
+          {/* =========================
+              SOLUTIONS GRID
+          ========================= */}
+
           <div className="solutions-grid">
             {cards.map(({ num, icon: Icon, title, body }) => (
               <article
@@ -414,6 +484,7 @@ export default function OurSolutionsGridSection() {
                 className="solution-card"
               >
                 <div className="solution-card-top">
+
                   <span className="solution-number">
                     {num}
                   </span>
@@ -424,6 +495,7 @@ export default function OurSolutionsGridSection() {
                       strokeWidth={1.8}
                     />
                   </span>
+
                 </div>
 
                 <h3 className="solution-title">

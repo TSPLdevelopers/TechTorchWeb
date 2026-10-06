@@ -26,52 +26,23 @@ const steps = [
 
 export default function TechTorchApproach() {
   return (
-    <section className="w-full bg-white">
-      {/* =====================================================
-          TOP ACCENT BAR
-      ====================================================== */}
+    <>
+      <section className="tech-approach">
+        {/* =====================================================
+            TOP ACCENT BAR
+        ====================================================== */}
 
-      <div
-        className="h-1 w-full"
-        style={{ backgroundColor: "#730024" }}
-      />
+        <div className="tech-approach-accent" />
 
-      <div className="flex justify-center">
-        <div
-          className="
-            w-full
-            max-w-6xl
-            px-4
-            py-10
-            sm:px-6
-            sm:py-12
-            md:px-8
-            md:py-16
-            lg:px-10
-            lg:py-20
-          "
-        >
+        <div className="tech-approach-container">
           {/* =================================================
               EYEBROW
           ================================================== */}
 
-          <div className="mb-3 flex items-center gap-2 sm:mb-4">
-            <span
-              className="h-px w-6 sm:w-8"
-              style={{ backgroundColor: "#730024" }}
-            />
+          <div className="tech-approach-eyebrow">
+            <span className="tech-approach-eyebrow-line" />
 
-            <span
-              className="
-                font-['Inter']
-                text-[9px]
-                font-semibold
-                tracking-[0.08em]
-                sm:text-[10px]
-                md:text-[11px]
-              "
-              style={{ color: "#730024" }}
-            >
+            <span className="tech-approach-eyebrow-text">
               Operational Principles
             </span>
           </div>
@@ -80,22 +51,7 @@ export default function TechTorchApproach() {
               MAIN HEADING
           ================================================== */}
 
-          <h1
-            className="
-              mb-8
-              font-['Plus_Jakarta_Sans']
-              text-[25px]
-              font-bold
-              leading-[1.2]
-              tracking-[-0.025em]
-              text-[#1c1c1c]
-              sm:mb-10
-              sm:text-[30px]
-              md:mb-12
-              md:text-[35px]
-              lg:text-[38px]
-            "
-          >
+          <h1 className="tech-approach-title">
             The TechTorch Approach
           </h1>
 
@@ -103,88 +59,26 @@ export default function TechTorchApproach() {
               CARD GRID
           ================================================== */}
 
-          <div
-            className="
-              grid
-              grid-cols-1
-              gap-4
-              sm:grid-cols-2
-              sm:gap-5
-              lg:grid-cols-3
-              lg:gap-6
-            "
-          >
+          <div className="tech-approach-grid">
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="
-                  flex
-                  h-full
-                  flex-col
-                  rounded-xl
-                  border
-                  border-neutral-200
-                  bg-neutral-50
-                  p-5
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:shadow-md
-                  sm:p-6
-                "
+                className="tech-approach-card"
               >
                 {/* =================================================
                     CARD TOP
                 ================================================== */}
 
-                <div
-                  className="
-                    mb-5
-                    flex
-                    items-center
-                    justify-between
-                    gap-3
-                    sm:mb-6
-                  "
-                >
+                <div className="tech-approach-card-top">
                   {/* Step Tag */}
 
-                  <span
-                    className="
-                      font-['Inter']
-                      text-[9px]
-                      font-bold
-                      tracking-[0.08em]
-                      sm:text-[10px]
-                    "
-                    style={{ color: "#730024" }}
-                  >
+                  <span className="tech-approach-tag">
                     {step.tag.toUpperCase()}
                   </span>
 
                   {/* Number */}
 
-                  <span
-                    className="
-                      flex
-                      h-6
-                      w-6
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      font-['Inter']
-                      text-[10px]
-                      font-bold
-                      sm:h-7
-                      sm:w-7
-                      sm:text-[11px]
-                    "
-                    style={{
-                      backgroundColor: "#f9e8ef",
-                      color: "#730024",
-                    }}
-                  >
+                  <span className="tech-approach-number">
                     {step.number}
                   </span>
                 </div>
@@ -193,18 +87,7 @@ export default function TechTorchApproach() {
                     CARD HEADING
                 ================================================== */}
 
-                <h3
-                  className="
-                    mb-3
-                    font-['Plus_Jakarta_Sans']
-                    text-[15px]
-                    font-bold
-                    leading-[1.4]
-                    text-[#1c1c1c]
-                    sm:text-[16px]
-                    md:text-[17px]
-                  "
-                >
+                <h3 className="tech-approach-card-title">
                   {step.title}
                 </h3>
 
@@ -212,18 +95,7 @@ export default function TechTorchApproach() {
                     CARD DESCRIPTION
                 ================================================== */}
 
-                <p
-                  className="
-                    mb-6
-                    flex-1
-                    font-['Inter']
-                    text-[11.5px]
-                    leading-[1.7]
-                    text-neutral-500
-                    sm:text-[12px]
-                    md:text-[13px]
-                  "
-                >
+                <p className="tech-approach-card-description">
                   {step.description}
                 </p>
 
@@ -231,18 +103,415 @@ export default function TechTorchApproach() {
                     BOTTOM ACCENT
                 ================================================== */}
 
-                <div
-                  className="h-px w-full"
-                  style={{
-                    background:
-                      "linear-gradient(to right, #730024, transparent)",
-                  }}
-                />
+                <div className="tech-approach-bottom-line" />
               </div>
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* =====================================================
+          STYLES
+      ====================================================== */}
+
+      <style>{`
+        /* =====================================================
+           FONTS
+        ====================================================== */
+
+        .tech-approach {
+          width: 100%;
+          background: #ffffff;
+          overflow: hidden;
+        }
+
+        .tech-approach,
+        .tech-approach * {
+          box-sizing: border-box;
+        }
+
+        /* =====================================================
+           TOP ACCENT
+        ====================================================== */
+
+        .tech-approach-accent {
+          width: 100%;
+          height: 4px;
+          background: #730024;
+        }
+
+        /* =====================================================
+           MAIN CONTAINER
+           
+           Desktop  : 100px
+           Tablet   : 40px
+           Mobile   : 24px
+           Small    : 16px
+        ====================================================== */
+
+        .tech-approach-container {
+          width: 100%;
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+
+        /* =====================================================
+           EYEBROW
+        ====================================================== */
+
+        .tech-approach-eyebrow {
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          margin-bottom: 16px;
+        }
+
+        .tech-approach-eyebrow-line {
+          width: 32px;
+          height: 1px;
+          flex-shrink: 0;
+          background: #730024;
+        }
+
+        .tech-approach-eyebrow-text {
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 600;
+          line-height: 1.4;
+          letter-spacing: 0.08em;
+          color: #730024;
+        }
+
+        /* =====================================================
+           MAIN HEADING
+        ====================================================== */
+
+        .tech-approach-title {
+          margin: 0 0 48px 0;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+          color: #1c1c1c;
+        }
+
+        /* =====================================================
+           CARD GRID
+        ====================================================== */
+
+        .tech-approach-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 24px;
+          width: 100%;
+        }
+
+        /* =====================================================
+           CARD
+        ====================================================== */
+
+        .tech-approach-card {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          min-height: 390px;
+          padding: 26px;
+          border: 1px solid #e5e5e5;
+          border-radius: 14px;
+          background: #fafafa;
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+        }
+
+        .tech-approach-card:hover {
+          transform: translateY(-5px);
+          border-color: #ead4dd;
+          box-shadow: 0 14px 35px rgba(115, 0, 36, 0.08);
+        }
+
+        /* =====================================================
+           CARD TOP
+        ====================================================== */
+
+        .tech-approach-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+          margin-bottom: 28px;
+        }
+
+        /* =====================================================
+           TAG
+        ====================================================== */
+
+        .tech-approach-tag {
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: 0.08em;
+          color: #730024;
+        }
+
+        /* =====================================================
+           NUMBER
+        ====================================================== */
+
+        .tech-approach-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          flex-shrink: 0;
+          border-radius: 50%;
+          background: #f9e8ef;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+          color: #730024;
+        }
+
+        /* =====================================================
+           CARD TITLE
+        ====================================================== */
+
+        .tech-approach-card-title {
+          margin: 0 0 14px 0;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: -0.015em;
+          color: #1c1c1c;
+        }
+
+        /* =====================================================
+           DESCRIPTION
+        ====================================================== */
+
+        .tech-approach-card-description {
+          flex: 1;
+          margin: 0 0 28px 0;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.75;
+          color: #666666;
+        }
+
+        /* =====================================================
+           BOTTOM ACCENT
+        ====================================================== */
+
+        .tech-approach-bottom-line {
+          width: 100%;
+          height: 1px;
+          flex-shrink: 0;
+          background: linear-gradient(
+            to right,
+            #730024,
+            rgba(115, 0, 36, 0)
+          );
+        }
+
+        /* =====================================================
+           LARGE TABLET
+        ====================================================== */
+
+        @media (max-width: 1200px) {
+          .tech-approach-container {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+          }
+
+          .tech-approach-title {
+            font-size: 35px;
+            margin-bottom: 42px;
+          }
+
+          .tech-approach-grid {
+            gap: 20px;
+          }
+
+          .tech-approach-card {
+            padding: 24px;
+            min-height: 380px;
+          }
+
+          .tech-approach-card-title {
+            font-size: 17px;
+          }
+
+          .tech-approach-card-description {
+            font-size: 12.5px;
+          }
+        }
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 900px) {
+          .tech-approach-container {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .tech-approach-title {
+            font-size: 32px;
+            margin-bottom: 36px;
+          }
+
+          .tech-approach-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+          }
+
+          .tech-approach-card {
+            min-height: 370px;
+            padding: 22px;
+          }
+
+          .tech-approach-card-top {
+            margin-bottom: 24px;
+          }
+
+          .tech-approach-card-title {
+            font-size: 16px;
+          }
+
+          .tech-approach-card-description {
+            font-size: 12px;
+            line-height: 1.7;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 700px) {
+          .tech-approach-accent {
+            height: 3px;
+          }
+
+          .tech-approach-container {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+
+          .tech-approach-eyebrow {
+            margin-bottom: 12px;
+          }
+
+          .tech-approach-eyebrow-line {
+            width: 26px;
+          }
+
+          .tech-approach-eyebrow-text {
+            font-size: 9px;
+          }
+
+          .tech-approach-title {
+            margin-bottom: 30px;
+            font-size: 28px;
+            line-height: 1.22;
+          }
+
+          .tech-approach-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .tech-approach-card {
+            min-height: auto;
+            padding: 22px;
+            border-radius: 12px;
+          }
+
+          .tech-approach-card-top {
+            margin-bottom: 22px;
+          }
+
+          .tech-approach-tag {
+            font-size: 9px;
+          }
+
+          .tech-approach-number {
+            width: 28px;
+            height: 28px;
+            font-size: 10px;
+          }
+
+          .tech-approach-card-title {
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.4;
+          }
+
+          .tech-approach-card-description {
+            margin-bottom: 24px;
+            font-size: 12px;
+            line-height: 1.7;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+        ====================================================== */
+
+        @media (max-width: 480px) {
+          .tech-approach-container {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 42px;
+            padding-bottom: 42px;
+          }
+
+          .tech-approach-title {
+            margin-bottom: 26px;
+            font-size: 25px;
+          }
+
+          .tech-approach-grid {
+            gap: 14px;
+          }
+
+          .tech-approach-card {
+            padding: 19px;
+          }
+
+          .tech-approach-card-top {
+            margin-bottom: 20px;
+          }
+
+          .tech-approach-card-title {
+            font-size: 15px;
+          }
+
+          .tech-approach-card-description {
+            font-size: 11.5px;
+            line-height: 1.7;
+          }
+
+          .tech-approach-bottom-line {
+            margin-top: 2px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

@@ -28,240 +28,539 @@ const features = [
 
 export default function AIServiceHero() {
   return (
-    <section
-      className="
-        flex
-        min-h-[580px]
-        w-full
-        items-center
-        sm:min-h-[600px]
-        md:min-h-[620px]
-        lg:min-h-[640px]
-      "
-      style={{
-        background:
-          "radial-gradient(120% 140% at 15% 10%, #5c0f38 0%, #3a0a26 45%, #24061a 100%)",
-      }}
-    >
-      <div
-        className="
-          mx-auto
-          w-full
-          max-w-6xl
-          px-4
-          py-10
-          sm:px-6
-          sm:py-12
-          md:px-8
-          md:py-14
-          lg:px-10
-          lg:py-16
-        "
-      >
-        {/* ================= EYEBROW ================= */}
+    <>
+      <section className="ai-service-hero">
+        <div className="ai-service-hero-container">
 
-        <div
-          className="
-            mb-5
-            inline-flex
-            items-center
-            gap-2
-            rounded-full
-            border
-            border-white/15
-            bg-white/5
-            px-3
-            py-1.5
-            sm:mb-6
-            sm:px-4
-            sm:py-1.5
-          "
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
+          {/* ================= EYEBROW ================= */}
 
-          <span
-            className="
-              font-['Inter']
-              text-[9px]
-              font-medium
-              tracking-wide
-              text-rose-100/90
-              sm:text-[10px]
-              md:text-[11px]
-            "
-          >
-            Artificial Intelligence as a Service
-          </span>
-        </div>
+          <div className="ai-service-eyebrow">
+            <span className="ai-service-eyebrow-dot" />
 
-        {/* ================= HEADLINE ================= */}
+            <span className="ai-service-eyebrow-text">
+              Artificial Intelligence as a Service
+            </span>
+          </div>
 
-        <h1
-          className="
-            mb-4
-            max-w-3xl
-            font-['Plus_Jakarta_Sans']
-            text-[28px]
-            font-bold
-            leading-[1.15]
-            tracking-[-0.025em]
-            text-white
-            sm:mb-5
-            sm:text-[36px]
-            md:text-[44px]
-            lg:text-[48px]
-          "
-        >
-          Artificial Intelligence as a Service for Modern Businesses
-        </h1>
+          {/* ================= HEADLINE ================= */}
 
-        {/* ================= BODY COPY ================= */}
+          <h1 className="ai-service-title">
+            Artificial Intelligence as a Service for Modern Businesses
+          </h1>
 
-        <div
-          className="
-            mb-6
-            max-w-2xl
-            space-y-3
-            sm:mb-7
-            sm:space-y-4
-            md:max-w-2xl
-          "
-        >
-          <p
-            className="
-              font-['Inter']
-              text-[12px]
-              leading-[1.65]
-              text-rose-100/70
-              sm:text-[13px]
-              md:text-[14px]
-              lg:text-[15px]
-            "
-          >
-            At TechTorch Solutions, we provide Artificial Intelligence as a
-            Service that enables businesses to harness the power of AI without
-            the complexity of building and maintaining their own
-            infrastructure.
-          </p>
+          {/* ================= BODY COPY ================= */}
 
-          <p
-            className="
-              font-['Inter']
-              text-[12px]
-              leading-[1.65]
-              text-rose-100/55
-              sm:text-[13px]
-              md:text-[14px]
-              lg:text-[15px]
-            "
-          >
-            Our approach is focused on making advanced technology more
-            accessible to businesses while helping them move towards a more
-            efficient, technology-driven and future-ready environment.
-          </p>
-        </div>
+          <div className="ai-service-description">
+            <p>
+              At TechTorch Solutions, we provide Artificial Intelligence as a
+              Service that enables businesses to harness the power of AI
+              without the complexity of building and maintaining their own
+              infrastructure.
+            </p>
 
-        {/* ================= CTA ================= */}
+            <p>
+              Our approach is focused on making advanced technology more
+              accessible to businesses while helping them move towards a more
+              efficient, technology-driven and future-ready environment.
+            </p>
+          </div>
 
-        <button
-          className="
-            mb-8
-            inline-flex
-            items-center
-            justify-center
-            gap-2
-            rounded-full
-            bg-white
-            px-5
-            py-2.5
-            font-['Inter']
-            text-[11px]
-            font-semibold
-            text-[#3a0a26]
-            transition-all
-            duration-300
-            hover:bg-rose-50
-            hover:-translate-y-0.5
-            sm:mb-10
-            sm:px-6
-            sm:py-3
-            sm:text-[12px]
-            md:text-[13px]
-          "
-        >
-          Talk to Our Experts
+          {/* ================= CTA ================= */}
 
-          <ArrowRight
-            className="h-3.5 w-3.5 sm:h-4 sm:w-4"
-          />
-        </button>
+          <button className="ai-service-cta">
+            <span>Talk to Our Experts</span>
 
-        {/* ================= DIVIDER ================= */}
+            <ArrowRight className="ai-service-cta-icon" />
+          </button>
 
-        <div className="mb-5 border-t border-white/10 sm:mb-6" />
+          {/* ================= DIVIDER ================= */}
 
-        {/* ================= FEATURE STRIP ================= */}
+          <div className="ai-service-divider" />
 
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-2.5
-            sm:grid-cols-2
-            sm:gap-3
-            md:grid-cols-4
-            md:gap-4
-          "
-        >
-          {features.map(({ icon: Icon, title }) => (
-            <div
-              key={title}
-              className="
-                flex
-                items-center
-                gap-3
-                rounded-xl
-                border
-                border-white/10
-                bg-white/[0.03]
-                px-3
-                py-3
-                transition-all
-                duration-300
-                hover:bg-white/[0.06]
-                sm:px-4
-                sm:py-3.5
-                md:items-start
-                md:py-4
-              "
-            >
-              <Icon
-                className="
-                  mt-0.5
-                  h-4
-                  w-4
-                  shrink-0
-                  text-rose-100/80
-                "
-              />
+          {/* ================= FEATURE STRIP ================= */}
 
-              <span
-                className="
-                  font-['Inter']
-                  text-[11px]
-                  font-medium
-                  leading-snug
-                  text-white/85
-                  sm:text-[12px]
-                  md:text-[13px]
-                "
+          <div className="ai-service-features">
+            {features.map(({ icon: Icon, title }) => (
+              <div
+                key={title}
+                className="ai-service-feature"
               >
-                {title}
-              </span>
-            </div>
-          ))}
+                <Icon className="ai-service-feature-icon" />
+
+                <span className="ai-service-feature-title">
+                  {title}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* =====================================================
+          STYLES
+      ====================================================== */}
+
+      <style>{`
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .ai-service-hero {
+          width: 100%;
+          min-height: 640px;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+
+          background:
+            radial-gradient(
+              120% 140% at 15% 10%,
+              #5c0f38 0%,
+              #3a0a26 45%,
+              #24061a 100%
+            );
+        }
+
+        .ai-service-hero-container {
+          width: 100%;
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+
+        /* =====================================================
+           EYEBROW
+        ====================================================== */
+
+        .ai-service-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+
+          margin-bottom: 24px;
+          padding: 7px 15px;
+
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 999px;
+
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .ai-service-eyebrow-dot {
+          width: 6px;
+          height: 6px;
+          flex-shrink: 0;
+
+          border-radius: 50%;
+          background: #fda4af;
+        }
+
+        .ai-service-eyebrow-text {
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          line-height: 1.4;
+          letter-spacing: 0.02em;
+          color: rgba(255, 241, 242, 0.9);
+        }
+
+        /* =====================================================
+           MAIN TITLE
+        ====================================================== */
+
+        .ai-service-title {
+          width: 100%;
+          max-width: 850px;
+
+          margin: 0 0 20px 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 48px;
+          font-weight: 700;
+          line-height: 1.15;
+          letter-spacing: -0.025em;
+
+          color: #ffffff;
+        }
+
+        /* =====================================================
+           DESCRIPTION
+        ====================================================== */
+
+        .ai-service-description {
+          width: 100%;
+          max-width: 760px;
+
+          display: flex;
+          flex-direction: column;
+          gap: 13px;
+
+          margin-bottom: 28px;
+        }
+
+        .ai-service-description p {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 1.7;
+
+          color: rgba(255, 241, 242, 0.7);
+        }
+
+        .ai-service-description p:last-child {
+          color: rgba(255, 241, 242, 0.55);
+        }
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .ai-service-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+
+          margin-bottom: 42px;
+          padding: 12px 24px;
+
+          border: none;
+          border-radius: 999px;
+
+          background: #ffffff;
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+
+          color: #3a0a26;
+
+          cursor: pointer;
+
+          transition:
+            transform 0.3s ease,
+            background-color 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .ai-service-cta:hover {
+          transform: translateY(-2px);
+          background: #fff1f2;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .ai-service-cta-icon {
+          width: 16px;
+          height: 16px;
+          transition: transform 0.3s ease;
+        }
+
+        .ai-service-cta:hover .ai-service-cta-icon {
+          transform: translateX(3px);
+        }
+
+        /* =====================================================
+           DIVIDER
+        ====================================================== */
+
+        .ai-service-divider {
+          width: 100%;
+          height: 1px;
+
+          margin-bottom: 22px;
+
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* =====================================================
+           FEATURES
+        ====================================================== */
+
+        .ai-service-features {
+          width: 100%;
+
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+
+          gap: 16px;
+        }
+
+        .ai-service-feature {
+          min-width: 0;
+
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+
+          padding: 16px;
+
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+
+          background: rgba(255, 255, 255, 0.03);
+
+          transition:
+            background-color 0.3s ease,
+            border-color 0.3s ease,
+            transform 0.3s ease;
+        }
+
+        .ai-service-feature:hover {
+          transform: translateY(-2px);
+          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .ai-service-feature-icon {
+          width: 17px;
+          height: 17px;
+
+          flex-shrink: 0;
+          margin-top: 1px;
+
+          stroke-width: 1.8;
+
+          color: rgba(255, 228, 230, 0.8);
+        }
+
+        .ai-service-feature-title {
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1.45;
+
+          color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* =====================================================
+           LARGE TABLET
+           Horizontal spacing: 40px
+        ====================================================== */
+
+        @media (max-width: 1200px) {
+          .ai-service-hero {
+            min-height: 600px;
+          }
+
+          .ai-service-hero-container {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+          }
+
+          .ai-service-title {
+            max-width: 760px;
+            font-size: 44px;
+          }
+
+          .ai-service-description {
+            max-width: 700px;
+          }
+
+          .ai-service-features {
+            gap: 12px;
+          }
+
+          .ai-service-feature {
+            padding: 14px;
+          }
+
+          .ai-service-feature-title {
+            font-size: 12px;
+          }
+        }
+
+        /* =====================================================
+           TABLET
+        ====================================================== */
+
+        @media (max-width: 900px) {
+          .ai-service-hero {
+            min-height: auto;
+          }
+
+          .ai-service-hero-container {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .ai-service-eyebrow {
+            margin-bottom: 20px;
+          }
+
+          .ai-service-title {
+            max-width: 700px;
+            font-size: 38px;
+          }
+
+          .ai-service-description {
+            max-width: 680px;
+            margin-bottom: 26px;
+          }
+
+          .ai-service-description p {
+            font-size: 14px;
+          }
+
+          .ai-service-cta {
+            margin-bottom: 34px;
+          }
+
+          .ai-service-features {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+          }
+
+          .ai-service-feature {
+            padding: 15px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+           Horizontal spacing: 24px
+        ====================================================== */
+
+        @media (max-width: 700px) {
+          .ai-service-hero-container {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+          }
+
+          .ai-service-eyebrow {
+            margin-bottom: 18px;
+            padding: 6px 12px;
+            gap: 7px;
+          }
+
+          .ai-service-eyebrow-dot {
+            width: 5px;
+            height: 5px;
+          }
+
+          .ai-service-eyebrow-text {
+            font-size: 9px;
+          }
+
+          .ai-service-title {
+            max-width: 100%;
+            margin-bottom: 18px;
+
+            font-size: 30px;
+            line-height: 1.18;
+          }
+
+          .ai-service-description {
+            gap: 11px;
+            margin-bottom: 24px;
+          }
+
+          .ai-service-description p {
+            font-size: 12.5px;
+            line-height: 1.7;
+          }
+
+          .ai-service-cta {
+            margin-bottom: 32px;
+            padding: 11px 20px;
+            font-size: 11px;
+          }
+
+          .ai-service-cta-icon {
+            width: 14px;
+            height: 14px;
+          }
+
+          .ai-service-divider {
+            margin-bottom: 18px;
+          }
+
+          .ai-service-features {
+            grid-template-columns: 1fr;
+            gap: 10px;
+          }
+
+          .ai-service-feature {
+            align-items: center;
+            padding: 13px;
+          }
+
+          .ai-service-feature-icon {
+            width: 16px;
+            height: 16px;
+          }
+
+          .ai-service-feature-title {
+            font-size: 11.5px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+           Horizontal spacing: 16px
+        ====================================================== */
+
+        @media (max-width: 480px) {
+          .ai-service-hero-container {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 42px;
+            padding-bottom: 42px;
+          }
+
+          .ai-service-eyebrow {
+            margin-bottom: 16px;
+            padding: 5px 10px;
+          }
+
+          .ai-service-eyebrow-text {
+            font-size: 8.5px;
+          }
+
+          .ai-service-title {
+            font-size: 26px;
+            line-height: 1.2;
+          }
+
+          .ai-service-description {
+            gap: 10px;
+            margin-bottom: 22px;
+          }
+
+          .ai-service-description p {
+            font-size: 11.5px;
+            line-height: 1.7;
+          }
+
+          .ai-service-cta {
+            width: auto;
+            margin-bottom: 28px;
+            padding: 10px 17px;
+            font-size: 10.5px;
+          }
+
+          .ai-service-divider {
+            margin-bottom: 16px;
+          }
+
+          .ai-service-feature {
+            padding: 12px;
+            border-radius: 10px;
+          }
+
+          .ai-service-feature-title {
+            font-size: 11px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

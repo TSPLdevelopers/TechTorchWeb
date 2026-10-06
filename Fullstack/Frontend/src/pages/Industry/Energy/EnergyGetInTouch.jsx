@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import {
   ArrowRight,
-  ArrowUpRight,
   Cloud,
   Code2,
-  Database,
-  Globe2,
-  LockKeyhole,
   Mail,
   Network,
   Phone,
   ShieldCheck,
   Sparkles,
-  Users,
   Workflow,
   X,
+  LockKeyhole,
 } from "lucide-react";
 
 const BEETROOT = "#730042";
@@ -113,11 +109,13 @@ export default function EnergyGetInTouch() {
   return (
     <div className="energy-page">
       <style>{`
-        * {
-          box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-        :root {
+        /* =================================================
+           BASE
+        ================================================= */
+
+        .energy-page {
           --energy-beetroot: #730042;
           --energy-dark: #202733;
           --energy-text: #596273;
@@ -125,44 +123,76 @@ export default function EnergyGetInTouch() {
           --energy-border: #dfe4eb;
           --energy-soft: #f5f6f8;
           --energy-page: #f8f7f8;
-        }
 
-        .energy-page {
           width: 100%;
           min-height: 100vh;
+
           background: var(--energy-page);
           color: var(--energy-dark);
-          font-family: Arial, Helvetica, sans-serif;
-          padding: 48px 32px 70px;
+
+          font-family: "Inter", Arial, sans-serif;
+
+          /*
+            HERO SPACING SYSTEM
+            Desktop: 100px
+          */
+          padding: 56px 100px 80px;
+
+          box-sizing: border-box;
         }
+
+        .energy-page *,
+        .energy-page *::before,
+        .energy-page *::after {
+          box-sizing: border-box;
+        }
+
+        /* =================================================
+           MAIN CONTAINER
+        ================================================= */
 
         .energy-container {
           width: 100%;
-          max-width: 1240px;
+          max-width: 1600px;
           margin: 0 auto;
         }
 
-        /* ================= ALERT ================= */
+        /* =================================================
+           ALERT
+        ================================================= */
 
         .energy-alert {
           position: fixed;
           top: 24px;
           left: 50%;
+
           transform: translateX(-50%);
+
           z-index: 9999;
+
           min-width: 300px;
           max-width: calc(100% - 30px);
+
           padding: 13px 18px;
+
           display: flex;
           align-items: center;
           justify-content: space-between;
+
           gap: 16px;
+
           border-radius: 8px;
+
           background: var(--energy-beetroot);
           color: #fff;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+          box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.18);
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
           font-weight: 600;
+
           animation: energyAlertIn 0.25s ease;
         }
 
@@ -180,9 +210,14 @@ export default function EnergyGetInTouch() {
           border: none;
           background: transparent;
           color: #fff;
+
           padding: 0;
+
           cursor: pointer;
+
           display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         @keyframes energyAlertIn {
@@ -197,7 +232,9 @@ export default function EnergyGetInTouch() {
           }
         }
 
-        /* ================= HERO ================= */
+        /* =================================================
+           HERO
+        ================================================= */
 
         .energy-hero {
           margin-bottom: 45px;
@@ -207,25 +244,39 @@ export default function EnergyGetInTouch() {
           display: inline-flex;
           align-items: center;
           gap: 7px;
+
           margin-bottom: 13px;
+
           color: var(--energy-beetroot);
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 700;
+
           letter-spacing: 1px;
+          line-height: 1.4;
+
           text-transform: uppercase;
         }
 
         .energy-eyebrow-dot {
           width: 6px;
           height: 6px;
+
+          flex-shrink: 0;
+
           border-radius: 50%;
+
           background: var(--energy-beetroot);
         }
 
         .energy-hero h1 {
-          max-width: 680px;
+          max-width: 760px;
+
           margin: 0;
+
           color: var(--energy-beetroot);
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 40px;
           line-height: 1.08;
@@ -234,13 +285,20 @@ export default function EnergyGetInTouch() {
         }
 
         .energy-hero-description {
-          max-width: 720px;
-          margin: 18px 0 18px;
+          max-width: 760px;
+
+          margin: 18px 0;
+
           color: #656b75;
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.6;
         }
+
+        /* =================================================
+           HERO PILLS
+        ================================================= */
 
         .energy-pills {
           display: flex;
@@ -252,69 +310,102 @@ export default function EnergyGetInTouch() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
+
           padding: 6px 11px;
+
           border-radius: 6px;
+
           background: #ececef;
           color: #313641;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 600;
+
           white-space: nowrap;
         }
 
         .energy-pill svg {
           color: var(--energy-beetroot);
+          flex-shrink: 0;
         }
 
-        /* ================= MAIN GRID ================= */
+        /* =================================================
+           MAIN GRID
+        ================================================= */
 
         .energy-main-grid {
           display: grid;
-          grid-template-columns: minmax(0, 1.42fr) minmax(330px, 0.88fr);
+
+          grid-template-columns:
+            minmax(0, 1.42fr)
+            minmax(340px, 0.88fr);
+
           gap: 34px;
+
           align-items: start;
         }
 
-        /* ================= FORM CARD ================= */
+        /* =================================================
+           FORM CARD
+        ================================================= */
 
         .energy-form-card {
           width: 100%;
-          padding: 31px;
+
+          padding: 34px;
+
           background: #fff;
+
           border: 1px solid var(--energy-border);
-          border-radius: 9px;
-          box-shadow: 0 3px 15px rgba(20, 30, 50, 0.035);
+          border-radius: 10px;
+
+          box-shadow:
+            0 3px 15px rgba(20, 30, 50, 0.035);
         }
 
         .energy-form-heading {
           padding-bottom: 16px;
-          border-bottom: 1px solid #e5e7eb;
           margin-bottom: 19px;
+
+          border-bottom: 1px solid #e5e7eb;
         }
 
         .energy-form-heading h2 {
           margin: 0 0 5px;
+
           color: #262d38;
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 16px;
+          font-size: 17px;
           line-height: 1.25;
           font-weight: 700;
         }
 
         .energy-form-heading p {
-          max-width: 650px;
+          max-width: 680px;
+
           margin: 0;
+
           color: #6f7681;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
-          line-height: 1.4;
-          font-weight: 600;
+          line-height: 1.5;
+          font-weight: 500;
         }
 
-        /* ================= FORM GRID ================= */
+        /* =================================================
+           FORM GRID
+        ================================================= */
 
         .energy-fields-grid {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 14px 14px;
+
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+          gap: 14px;
         }
 
         .energy-field {
@@ -328,8 +419,12 @@ export default function EnergyGetInTouch() {
         .energy-field label,
         .energy-section-label {
           display: block;
+
           margin-bottom: 6px;
+
           color: #323945;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1.2;
           font-weight: 700;
@@ -339,31 +434,47 @@ export default function EnergyGetInTouch() {
           color: var(--energy-beetroot);
         }
 
+        /* =================================================
+           INPUTS
+        ================================================= */
+
         .energy-input,
         .energy-select,
         .energy-textarea {
           width: 100%;
+
           border: 1px solid #dfe4ea;
           border-radius: 6px;
+
           background: #f7f8f9;
           color: #343a45;
+
           font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
+
           outline: none;
-          transition: 0.2s ease;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
         }
 
         .energy-input,
         .energy-select {
-          height: 38px;
+          height: 40px;
+
           padding: 0 11px;
         }
 
         .energy-textarea {
-          min-height: 96px;
+          min-height: 105px;
+
           padding: 11px;
+
           resize: vertical;
-          line-height: 1.45;
+
+          line-height: 1.5;
         }
 
         .energy-input::placeholder,
@@ -375,9 +486,16 @@ export default function EnergyGetInTouch() {
         .energy-select:focus,
         .energy-textarea:focus {
           border-color: #b76a94;
+
           background: #fff;
-          box-shadow: 0 0 0 2px rgba(115, 0, 66, 0.05);
+
+          box-shadow:
+            0 0 0 2px rgba(115, 0, 66, 0.05);
         }
+
+        /* =================================================
+           SELECT
+        ================================================= */
 
         .energy-select-wrapper {
           position: relative;
@@ -386,23 +504,34 @@ export default function EnergyGetInTouch() {
         .energy-select {
           appearance: none;
           cursor: pointer;
+
           padding-right: 32px;
         }
 
         .energy-select-arrow {
           position: absolute;
+
           right: 11px;
           top: 50%;
+
           transform: translateY(-50%);
+
           pointer-events: none;
+
           color: #626a76;
         }
 
-        /* ================= TECHNOLOGY AREAS ================= */
+        /* =================================================
+           SECTIONS
+        ================================================= */
 
         .energy-section {
-          margin-top: 19px;
+          margin-top: 21px;
         }
+
+        /* =================================================
+           TECHNOLOGY AREAS
+        ================================================= */
 
         .energy-options {
           display: flex;
@@ -411,20 +540,31 @@ export default function EnergyGetInTouch() {
         }
 
         .energy-option {
-          min-height: 26px;
+          min-height: 28px;
+
           padding: 5px 9px;
+
           display: inline-flex;
           align-items: center;
           justify-content: center;
+
           border: 1px solid #dfe4e9;
           border-radius: 6px;
+
           background: #f1f3f5;
           color: #39404a;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9.5px;
           line-height: 1.15;
           font-weight: 600;
+
           cursor: pointer;
-          transition: 0.2s ease;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            color 0.2s ease;
         }
 
         .energy-option:hover {
@@ -437,29 +577,45 @@ export default function EnergyGetInTouch() {
           color: #fff;
         }
 
-        /* ================= PROJECT STAGE ================= */
+        /* =================================================
+           PROJECT STAGE
+        ================================================= */
 
         .energy-stage-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+
+          grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
           gap: 7px;
         }
 
         .energy-stage {
-          min-height: 43px;
+          min-height: 44px;
+
           padding: 7px 9px;
+
           display: flex;
           align-items: center;
+
           gap: 8px;
+
           border: 1px solid #dfe4e9;
           border-radius: 6px;
+
           background: #f1f3f5;
           color: #414751;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9.5px;
           line-height: 1.2;
           font-weight: 600;
+
           cursor: pointer;
-          transition: 0.2s ease;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
         }
 
         .energy-stage:hover {
@@ -474,10 +630,14 @@ export default function EnergyGetInTouch() {
         .energy-radio {
           width: 11px;
           height: 11px;
+
           flex-shrink: 0;
+
           border: 1px solid #9da4ae;
           border-radius: 50%;
+
           background: #fff;
+
           display: flex;
           align-items: center;
           justify-content: center;
@@ -489,84 +649,126 @@ export default function EnergyGetInTouch() {
 
         .energy-stage.active .energy-radio::after {
           content: "";
+
           width: 5px;
           height: 5px;
+
           border-radius: 50%;
+
           background: var(--energy-beetroot);
         }
 
-        /* ================= CONTACT ================= */
+        /* =================================================
+           CONTACT
+        ================================================= */
 
         .energy-contact-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+
+          grid-template-columns:
+            1fr 1fr;
+
           gap: 15px;
+
           align-items: end;
         }
 
         .energy-contact-methods {
           display: flex;
           align-items: center;
+
           gap: 15px;
-          min-height: 38px;
+
+          min-height: 40px;
         }
 
         .energy-contact-option {
           display: flex;
           align-items: center;
+
           gap: 6px;
+
           color: #424852;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 500;
+
           cursor: pointer;
         }
 
         .energy-contact-option input {
           width: 12px;
           height: 12px;
+
           margin: 0;
+
           accent-color: var(--energy-beetroot);
         }
 
-        /* ================= CONSENT ================= */
+        /* =================================================
+           CONSENT
+        ================================================= */
 
         .energy-consent {
           margin-top: 20px;
+
           display: flex;
           align-items: flex-start;
+
           gap: 9px;
+
           color: #4b525d;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1.45;
+
           cursor: pointer;
         }
 
         .energy-consent input {
           width: 12px;
           height: 12px;
+
           margin: 1px 0 0;
+
           flex-shrink: 0;
+
           accent-color: var(--energy-beetroot);
         }
 
-        /* ================= SUBMIT ================= */
+        /* =================================================
+           SUBMIT
+        ================================================= */
 
         .energy-submit {
           width: 100%;
-          height: 40px;
+          height: 42px;
+
           margin-top: 20px;
+
           border: none;
           border-radius: 6px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           gap: 8px;
+
           background: var(--energy-beetroot);
           color: #fff;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 700;
+
           cursor: pointer;
-          transition: 0.2s ease;
+
+          transition:
+            background 0.2s ease,
+            transform 0.2s ease;
         }
 
         .energy-submit:hover {
@@ -577,115 +779,173 @@ export default function EnergyGetInTouch() {
           transform: translateY(1px);
         }
 
+        /* =================================================
+           PRIVACY
+        ================================================= */
+
         .energy-privacy {
           margin-top: 13px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           gap: 7px;
+
           color: #7a8089;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 8px;
           line-height: 1.4;
+
           text-align: center;
         }
 
         .energy-privacy svg {
           color: var(--energy-beetroot);
+
           flex-shrink: 0;
         }
 
-        /* ================= RIGHT SIDE ================= */
+        /* =================================================
+           RIGHT SIDE
+        ================================================= */
 
         .energy-side {
           width: 100%;
         }
 
+        /* =================================================
+           IMAGE CARD
+        ================================================= */
+
         .energy-image-card {
           overflow: hidden;
+
           border: 1px solid var(--energy-border);
-          border-radius: 9px;
+          border-radius: 10px;
+
           background: #fff;
-          box-shadow: 0 3px 15px rgba(20, 30, 50, 0.035);
+
+          box-shadow:
+            0 3px 15px rgba(20, 30, 50, 0.035);
         }
 
         .energy-image-media {
           position: relative;
+
           width: 100%;
+
           background: #eaf1f7;
         }
 
         .energy-image {
           display: block;
+
           width: 100%;
           height: auto;
+
           aspect-ratio: 1.78 / 1;
+
           object-fit: contain;
         }
 
         .energy-image-label {
           position: absolute;
+
           left: 4%;
           bottom: 7%;
+
           min-height: 34px;
+
           padding: 0 13px;
+
           display: flex;
           align-items: center;
+
           gap: 7px;
+
           border-radius: 5px;
+
           background: var(--energy-beetroot);
           color: #fff;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           font-weight: 700;
+
           letter-spacing: 0.2px;
+
           white-space: nowrap;
+
           z-index: 2;
         }
 
         .energy-label-dot {
           width: 7px;
           height: 7px;
+
           flex-shrink: 0;
+
           border-radius: 50%;
+
           background: #fff;
         }
 
         .energy-image-content {
-          padding: 17px 18px 19px;
+          padding: 19px;
         }
 
         .energy-image-content h2 {
           margin: 0 0 7px;
+
           color: #252c36;
+
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 16px;
-          line-height: 1.25;
+          line-height: 1.3;
           font-weight: 700;
         }
 
         .energy-image-content p {
           margin: 0;
+
           color: #69717d;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           line-height: 1.5;
         }
 
-        /* ================= EXPECT CARD ================= */
+        /* =================================================
+           EXPECT CARD
+        ================================================= */
 
         .energy-expect-card {
           margin-top: 15px;
-          padding: 20px 19px;
+
+          padding: 21px 19px;
+
           border: 1px solid var(--energy-border);
-          border-radius: 9px;
+          border-radius: 10px;
+
           background: #fff;
-          box-shadow: 0 3px 15px rgba(20, 30, 50, 0.035);
+
+          box-shadow:
+            0 3px 15px rgba(20, 30, 50, 0.035);
         }
 
         .energy-expect-title {
           display: flex;
           align-items: center;
+
           gap: 8px;
+
           margin-bottom: 19px;
+
           color: var(--energy-beetroot);
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.3;
           font-weight: 700;
@@ -693,8 +953,12 @@ export default function EnergyGetInTouch() {
 
         .energy-expect-item {
           display: grid;
-          grid-template-columns: 31px minmax(0, 1fr);
+
+          grid-template-columns:
+            31px minmax(0, 1fr);
+
           gap: 9px;
+
           margin-bottom: 20px;
         }
 
@@ -705,19 +969,27 @@ export default function EnergyGetInTouch() {
         .energy-step-number {
           width: 25px;
           height: 25px;
+
           border-radius: 50%;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           background: #ffdbe9;
           color: var(--energy-beetroot);
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
           font-weight: 800;
         }
 
         .energy-expect-item h3 {
           margin: 1px 0 5px;
+
           color: #252b34;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 13px;
           line-height: 1.3;
           font-weight: 700;
@@ -725,46 +997,70 @@ export default function EnergyGetInTouch() {
 
         .energy-expect-item p {
           margin: 0;
+
           color: #707782;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1.45;
         }
 
-        /* ================= CONTACT CARD ================= */
+        /* =================================================
+           HELP CARD
+        ================================================= */
 
         .energy-help-card {
           margin-top: 15px;
+
           padding: 17px;
+
           display: flex;
           align-items: flex-start;
+
           gap: 11px;
+
           border-radius: 8px;
+
           background: #eef0f2;
         }
 
         .energy-help-icon {
           width: 26px;
           height: 26px;
+
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 6px;
+
           background: var(--energy-beetroot);
           color: #fff;
         }
 
+        .energy-help-content {
+          min-width: 0;
+        }
+
         .energy-help-content h3 {
           margin: 0 0 5px;
+
           color: #282e37;
+
+          font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 13px;
-          line-height: 1.25;
+          line-height: 1.3;
           font-weight: 700;
         }
 
         .energy-help-content p {
           margin: 0 0 6px;
+
           color: #727983;
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1.45;
         }
@@ -772,54 +1068,33 @@ export default function EnergyGetInTouch() {
         .energy-email {
           display: flex;
           align-items: center;
+
           gap: 5px;
+
           color: var(--energy-beetroot);
+
+          font-family: "Inter", Arial, sans-serif;
           font-size: 9px;
           font-weight: 700;
         }
 
-        /* ================= LARGE LAPTOP / SURFACE ================= */
+        /* =================================================
+           TABLET
+           40px LEFT / RIGHT
+        ================================================= */
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1100px) {
           .energy-page {
-            padding-left: 45px;
-            padding-right: 45px;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .energy-main-grid {
-            grid-template-columns: minmax(0, 1.35fr) minmax(310px, 0.85fr);
-            gap: 26px;
-          }
-        }
+            grid-template-columns:
+              minmax(0, 1.35fr)
+              minmax(300px, 0.85fr);
 
-        /* ================= IPAD PRO 13 / SURFACE PRO 10 / IPAD MINI ================= */
-
-        @media (min-width: 700px) and (max-width: 1199px) {
-          .energy-page {
-            padding: 40px 38px 60px;
-          }
-
-          .energy-main-grid {
-            grid-template-columns: minmax(0, 1.42fr) minmax(250px, 0.88fr);
-            gap: 24px;
-          }
-
-          .energy-side {
-            display: block;
-          }
-
-          .energy-image-card,
-          .energy-expect-card,
-          .energy-help-card {
-            width: 100%;
-          }
-
-          .energy-expect-card {
-            margin-top: 15px;
-          }
-
-          .energy-help-card {
-            margin-top: 15px;
+            gap: 25px;
           }
 
           .energy-form-card {
@@ -827,60 +1102,73 @@ export default function EnergyGetInTouch() {
           }
         }
 
-        /* ================= IPAD MINI ================= */
+        /* =================================================
+           SMALL TABLET
+        ================================================= */
 
-        @media (min-width: 700px) and (max-width: 820px) {
-          .energy-page {
-            padding: 32px 24px 50px;
-          }
-
+        @media (max-width: 900px) {
           .energy-main-grid {
-            grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.85fr);
-            gap: 18px;
-          }
-
-          .energy-form-card {
-            padding: 22px;
-          }
-
-          .energy-fields-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-
-          .energy-stage-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: 1fr;
           }
 
           .energy-side {
-            display: block;
+            display: grid;
+
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 15px;
+          }
+
+          .energy-image-card {
+            grid-column: 1 / -1;
+          }
+
+          .energy-expect-card,
+          .energy-help-card {
+            margin-top: 0;
           }
         }
 
-        /* ================= MOBILE ================= */
+        /* =================================================
+           MOBILE
+           24px LEFT / RIGHT
+        ================================================= */
 
-        @media (max-width: 699px) {
+        @media (max-width: 700px) {
           .energy-page {
-            padding: 25px 15px 40px;
+            padding-top: 40px;
+            padding-bottom: 55px;
+
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .energy-hero {
-            margin-bottom: 28px;
+            margin-bottom: 30px;
           }
 
           .energy-eyebrow {
-            font-size: 8px;
-            letter-spacing: 0.7px;
+            font-size: 9px;
+            letter-spacing: 0.8px;
           }
 
           .energy-hero h1 {
-            font-size: 30px;
-            line-height: 1.08;
-            letter-spacing: -1px;
+            max-width: 100%;
+
+            font-size: 31px;
+            line-height: 1.12;
+
+            letter-spacing: -1.1px;
           }
 
           .energy-hero-description {
+            max-width: 100%;
+
+            margin-top: 16px;
+
             font-size: 12px;
-            line-height: 1.55;
+            line-height: 1.6;
           }
 
           .energy-pills {
@@ -888,12 +1176,18 @@ export default function EnergyGetInTouch() {
           }
 
           .energy-pill {
+            padding: 6px 8px;
+
             font-size: 8.5px;
-            padding: 5px 8px;
+          }
+
+          .energy-main-grid {
+            grid-template-columns: 1fr;
+            gap: 22px;
           }
 
           .energy-form-card {
-            padding: 22px 17px;
+            padding: 23px 19px;
           }
 
           .energy-fields-grid {
@@ -918,6 +1212,17 @@ export default function EnergyGetInTouch() {
             min-height: auto;
           }
 
+          .energy-side {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          .energy-expect-card,
+          .energy-help-card {
+            margin-top: 0;
+          }
+
           .energy-image {
             aspect-ratio: 1.6 / 1;
           }
@@ -925,16 +1230,25 @@ export default function EnergyGetInTouch() {
           .energy-image-label {
             left: 3%;
             bottom: 6%;
-            min-height: 24px;
+
+            min-height: 28px;
+
             padding: 0 8px;
+
             gap: 4px;
-            font-size: 6px;
-            border-radius: 3px;
+
+            font-size: 7px;
+
+            border-radius: 4px;
           }
 
           .energy-label-dot {
-            width: 4px;
-            height: 4px;
+            width: 5px;
+            height: 5px;
+          }
+
+          .energy-image-content {
+            padding: 17px;
           }
 
           .energy-image-content h2 {
@@ -946,7 +1260,8 @@ export default function EnergyGetInTouch() {
           }
 
           .energy-expect-item {
-            grid-template-columns: 27px minmax(0, 1fr);
+            grid-template-columns:
+              27px minmax(0, 1fr);
           }
 
           .energy-step-number {
@@ -960,52 +1275,138 @@ export default function EnergyGetInTouch() {
 
           .energy-alert {
             top: 14px;
+
             min-width: 0;
+
             width: calc(100% - 30px);
           }
         }
 
-        /* ================= SMALL MOBILE ================= */
+        /* =================================================
+           SMALL MOBILE
+           16px LEFT / RIGHT
+        ================================================= */
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           .energy-page {
-            padding-left: 12px;
-            padding-right: 12px;
+            padding-top: 32px;
+            padding-bottom: 45px;
+
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .energy-hero h1 {
             font-size: 27px;
+            letter-spacing: -0.8px;
+          }
+
+          .energy-hero-description {
+            font-size: 11.5px;
           }
 
           .energy-form-card {
-            padding: 19px 14px;
+            padding: 19px 15px;
           }
 
           .energy-form-heading h2 {
             font-size: 15px;
           }
 
+          .energy-form-heading p {
+            font-size: 10px;
+          }
+
+          .energy-input,
+          .energy-select {
+            height: 38px;
+          }
+
           .energy-option {
             font-size: 9px;
           }
 
+          .energy-stage {
+            min-height: 42px;
+          }
+
           .energy-submit {
+            height: 40px;
             font-size: 10px;
           }
 
           .energy-privacy {
             font-size: 7.5px;
           }
+
+          .energy-image-label {
+            font-size: 6.5px;
+          }
+
+          .energy-help-content h3 {
+            font-size: 12px;
+          }
+        }
+
+        /* =================================================
+           VERY SMALL DEVICES
+        ================================================= */
+
+        @media (max-width: 340px) {
+          .energy-page {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .energy-hero h1 {
+            font-size: 24px;
+          }
+
+          .energy-form-card {
+            padding: 17px 13px;
+          }
+
+          .energy-pill {
+            font-size: 8px;
+          }
+
+          .energy-image-label {
+            font-size: 6px;
+          }
+        }
+
+        /* =================================================
+           REDUCED MOTION
+        ================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          .energy-option,
+          .energy-stage,
+          .energy-input,
+          .energy-select,
+          .energy-textarea,
+          .energy-submit {
+            transition: none;
+          }
+
+          .energy-alert {
+            animation: none;
+          }
         }
       `}</style>
 
-      {/* ================= SUCCESS ALERT ================= */}
+      {/* =================================================
+          SUCCESS ALERT
+      ================================================= */}
 
       {showAlert && (
         <div className="energy-alert" role="alert">
           <div className="energy-alert-left">
             <ShieldCheck size={16} />
-            <span>Inquiry submitted successfully!</span>
+
+            <span>
+              Inquiry submitted successfully!
+            </span>
           </div>
 
           <button
@@ -1021,7 +1422,9 @@ export default function EnergyGetInTouch() {
 
       <main className="energy-container">
 
-        {/* ================= HERO ================= */}
+        {/* =================================================
+            HERO
+        ================================================= */}
 
         <section className="energy-hero">
 
@@ -1068,21 +1471,29 @@ export default function EnergyGetInTouch() {
 
         </section>
 
-        {/* ================= MAIN ================= */}
+        {/* =================================================
+            MAIN GRID
+        ================================================= */}
 
         <div className="energy-main-grid">
 
-          {/* ================= FORM ================= */}
+          {/* =================================================
+              FORM
+          ================================================= */}
 
           <section className="energy-form-card">
 
             <div className="energy-form-heading">
-              <h2>Consultation Intake Form</h2>
+
+              <h2>
+                Consultation Intake Form
+              </h2>
 
               <p>
                 Tell us about your business or technology requirements and
                 our team will review your enquiry.
               </p>
+
             </div>
 
             <form onSubmit={handleSubmit}>
@@ -1093,7 +1504,8 @@ export default function EnergyGetInTouch() {
 
                 <div className="energy-field">
                   <label>
-                    Full Name <span className="energy-required">*</span>
+                    Full Name{" "}
+                    <span className="energy-required">*</span>
                   </label>
 
                   <input
@@ -1142,7 +1554,9 @@ export default function EnergyGetInTouch() {
                 </div>
 
                 <div className="energy-field">
-                  <label>Phone Number</label>
+                  <label>
+                    Phone Number
+                  </label>
 
                   <input
                     className="energy-input"
@@ -1155,12 +1569,14 @@ export default function EnergyGetInTouch() {
                 </div>
 
                 <div className="energy-field full">
+
                   <label>
                     Primary Business Area{" "}
                     <span className="energy-required">*</span>
                   </label>
 
                   <div className="energy-select-wrapper">
+
                     <select
                       className="energy-select"
                       name="businessArea"
@@ -1168,10 +1584,15 @@ export default function EnergyGetInTouch() {
                       onChange={handleInputChange}
                       required
                     >
-                      <option value="">Select your business area</option>
+                      <option value="">
+                        Select your business area
+                      </option>
 
                       {BUSINESS_AREAS.map((area) => (
-                        <option key={area} value={area}>
+                        <option
+                          key={area}
+                          value={area}
+                        >
                           {area}
                         </option>
                       ))}
@@ -1180,15 +1601,21 @@ export default function EnergyGetInTouch() {
                     <div className="energy-select-arrow">
                       <ArrowRight
                         size={13}
-                        style={{ transform: "rotate(90deg)" }}
+                        style={{
+                          transform: "rotate(90deg)",
+                        }}
                       />
                     </div>
+
                   </div>
+
                 </div>
 
               </div>
 
-              {/* TECHNOLOGY AREAS */}
+              {/* =================================================
+                  TECHNOLOGY AREAS
+              ================================================= */}
 
               <div className="energy-section">
 
@@ -1200,7 +1627,8 @@ export default function EnergyGetInTouch() {
                 <div className="energy-options">
 
                   {TECHNOLOGY_AREAS.map((technology) => {
-                    const active = selectedTechnology.includes(technology);
+                    const active =
+                      selectedTechnology.includes(technology);
 
                     return (
                       <button
@@ -1209,7 +1637,9 @@ export default function EnergyGetInTouch() {
                         className={`energy-option ${
                           active ? "active" : ""
                         }`}
-                        onClick={() => toggleTechnology(technology)}
+                        onClick={() =>
+                          toggleTechnology(technology)
+                        }
                       >
                         {technology}
                       </button>
@@ -1220,7 +1650,9 @@ export default function EnergyGetInTouch() {
 
               </div>
 
-              {/* PROJECT STAGE */}
+              {/* =================================================
+                  PROJECT STAGE
+              ================================================= */}
 
               <div className="energy-section">
 
@@ -1231,7 +1663,8 @@ export default function EnergyGetInTouch() {
                 <div className="energy-stage-grid">
 
                   {PROJECT_STAGES.map((stage) => {
-                    const active = selectedStage === stage;
+                    const active =
+                      selectedStage === stage;
 
                     return (
                       <button
@@ -1241,11 +1674,16 @@ export default function EnergyGetInTouch() {
                           active ? "active" : ""
                         }`}
                         onClick={() =>
-                          setSelectedStage(active ? "" : stage)
+                          setSelectedStage(
+                            active ? "" : stage
+                          )
                         }
                       >
                         <span className="energy-radio" />
-                        <span>{stage}</span>
+
+                        <span>
+                          {stage}
+                        </span>
                       </button>
                     );
                   })}
@@ -1254,7 +1692,9 @@ export default function EnergyGetInTouch() {
 
               </div>
 
-              {/* REQUIREMENT */}
+              {/* =================================================
+                  REQUIREMENT
+              ================================================= */}
 
               <div className="energy-section">
 
@@ -1274,13 +1714,16 @@ export default function EnergyGetInTouch() {
 
               </div>
 
-              {/* CONTACT METHOD */}
+              {/* =================================================
+                  CONTACT METHOD
+              ================================================= */}
 
               <div className="energy-section">
 
                 <div className="energy-contact-grid">
 
                   <div>
+
                     <label className="energy-section-label">
                       Preferred Contact Method
                     </label>
@@ -1288,37 +1731,55 @@ export default function EnergyGetInTouch() {
                     <div className="energy-contact-methods">
 
                       <label className="energy-contact-option">
+
                         <input
                           type="radio"
                           name="contactMethod"
                           value="Email"
-                          checked={contactMethod === "Email"}
+                          checked={
+                            contactMethod === "Email"
+                          }
                           onChange={(e) =>
-                            setContactMethod(e.target.value)
+                            setContactMethod(
+                              e.target.value
+                            )
                           }
                         />
+
                         <Mail size={11} />
+
                         Email
+
                       </label>
 
                       <label className="energy-contact-option">
+
                         <input
                           type="radio"
                           name="contactMethod"
                           value="Phone"
-                          checked={contactMethod === "Phone"}
+                          checked={
+                            contactMethod === "Phone"
+                          }
                           onChange={(e) =>
-                            setContactMethod(e.target.value)
+                            setContactMethod(
+                              e.target.value
+                            )
                           }
                         />
+
                         <Phone size={11} />
+
                         Phone
+
                       </label>
 
                     </div>
+
                   </div>
 
                   <div>
+
                     <label className="energy-section-label">
                       Preferred Contact Time (Optional)
                     </label>
@@ -1336,27 +1797,37 @@ export default function EnergyGetInTouch() {
                         </option>
 
                         {CONTACT_TIMES.map((time) => (
-                          <option key={time} value={time}>
+                          <option
+                            key={time}
+                            value={time}
+                          >
                             {time}
                           </option>
                         ))}
                       </select>
 
                       <div className="energy-select-arrow">
+
                         <ArrowRight
                           size={13}
-                          style={{ transform: "rotate(90deg)" }}
+                          style={{
+                            transform: "rotate(90deg)",
+                          }}
                         />
+
                       </div>
 
                     </div>
+
                   </div>
 
                 </div>
 
               </div>
 
-              {/* CONSENT */}
+              {/* =================================================
+                  CONSENT
+              ================================================= */}
 
               <label className="energy-consent">
 
@@ -1368,33 +1839,46 @@ export default function EnergyGetInTouch() {
                 />
 
                 <span>
-                  I agree to be contacted by TechTorch regarding my enquiry
-                  and technology requirements.
+                  I agree to be contacted by TechTorch regarding
+                  my enquiry and technology requirements.
                 </span>
 
               </label>
 
-              {/* SUBMIT */}
+              {/* =================================================
+                  SUBMIT
+              ================================================= */}
 
-              <button type="submit" className="energy-submit">
+              <button
+                type="submit"
+                className="energy-submit"
+              >
                 SUBMIT ENQUIRY
+
                 <ArrowRight size={14} />
               </button>
 
+              {/* PRIVACY */}
+
               <div className="energy-privacy">
+
                 <LockKeyhole size={11} />
 
                 <span>
-                  Your information will be used to respond to your enquiry.
-                  Please review our Privacy Policy for more information.
+                  Your information will be used to respond to
+                  your enquiry. Please review our Privacy Policy
+                  for more information.
                 </span>
+
               </div>
 
             </form>
 
           </section>
 
-          {/* ================= RIGHT SIDE ================= */}
+          {/* =================================================
+              RIGHT SIDE
+          ================================================= */}
 
           <aside className="energy-side">
 
@@ -1403,6 +1887,7 @@ export default function EnergyGetInTouch() {
             <div className="energy-image-card">
 
               <div className="energy-image-media">
+
                 <img
                   className="energy-image"
                   src="/EnergyGetInTouch.png"
@@ -1410,32 +1895,44 @@ export default function EnergyGetInTouch() {
                 />
 
                 <div className="energy-image-label">
+
                   <span className="energy-label-dot" />
+
                   ENERGY TECHNOLOGY CONSULTATION
+
                 </div>
+
               </div>
 
               <div className="energy-image-content">
 
-                <h2>Discuss Your Technology Requirements</h2>
+                <h2>
+                  Discuss Your Technology Requirements
+                </h2>
 
                 <p>
                   Connect with the TechTorch team to discuss ERP,
-                  operations, software development, cloud infrastructure,
-                  cybersecurity and digital technology requirements.
+                  operations, software development, cloud
+                  infrastructure, cybersecurity and digital
+                  technology requirements.
                 </p>
 
               </div>
 
             </div>
 
-            {/* EXPECT CARD */}
+            {/* =================================================
+                EXPECT CARD
+            ================================================= */}
 
             <div className="energy-expect-card">
 
               <div className="energy-expect-title">
+
                 <Network size={16} />
+
                 What to Expect From Your Consultation
+
               </div>
 
               <div className="energy-expect-item">
@@ -1445,12 +1942,17 @@ export default function EnergyGetInTouch() {
                 </div>
 
                 <div>
-                  <h3>Understand Your Requirement</h3>
+
+                  <h3>
+                    Understand Your Requirement
+                  </h3>
 
                   <p>
-                    We review your business objectives, existing
-                    environment and technology requirements.
+                    We review your business objectives,
+                    existing environment and technology
+                    requirements.
                   </p>
+
                 </div>
 
               </div>
@@ -1462,12 +1964,17 @@ export default function EnergyGetInTouch() {
                 </div>
 
                 <div>
-                  <h3>Discuss Relevant Solutions</h3>
+
+                  <h3>
+                    Discuss Relevant Solutions
+                  </h3>
 
                   <p>
-                    Our team discusses relevant technology capabilities
-                    and possible approaches based on your requirements.
+                    Our team discusses relevant technology
+                    capabilities and possible approaches
+                    based on your requirements.
                   </p>
+
                 </div>
 
               </div>
@@ -1479,20 +1986,26 @@ export default function EnergyGetInTouch() {
                 </div>
 
                 <div>
-                  <h3>Define the Next Steps</h3>
+
+                  <h3>
+                    Define the Next Steps
+                  </h3>
 
                   <p>
-                    Based on the discussion, we identify the appropriate
-                    approach and next steps for your project or business
-                    requirement.
+                    Based on the discussion, we identify the
+                    appropriate approach and next steps for
+                    your project or business requirement.
                   </p>
+
                 </div>
 
               </div>
 
             </div>
 
-            {/* HELP CARD */}
+            {/* =================================================
+                HELP CARD
+            ================================================= */}
 
             <div className="energy-help-card">
 
@@ -1507,13 +2020,16 @@ export default function EnergyGetInTouch() {
                 </h3>
 
                 <p>
-                  Connect with the TechTorch team to discuss your business
-                  or technology requirements.
+                  Connect with the TechTorch team to discuss
+                  your business or technology requirements.
                 </p>
 
                 <div className="energy-email">
+
                   <Mail size={10} />
+
                   contact@techtorch.solutions
+
                 </div>
 
               </div>

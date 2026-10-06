@@ -63,18 +63,29 @@ export default function SoftwareEngineeringGridSection() {
           overflow: hidden;
         }
 
+        /* =========================================
+           MAIN CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .software-engineering-container {
           width: 100%;
-          max-width: 1200px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 72px 40px;
+          padding: 76px 100px;
         }
 
-        /* Header */
+        /* =========================================
+           HEADER
+        ========================================= */
+
         .software-engineering-header {
           width: 100%;
-          max-width: 720px;
-          margin: 0 auto 48px;
+          max-width: 760px;
+          margin: 0 auto 50px;
           text-align: center;
         }
 
@@ -87,20 +98,18 @@ export default function SoftwareEngineeringGridSection() {
           letter-spacing: 0.08em;
         }
 
-        /* Main heading - Plus Jakarta Sans */
         .software-engineering-heading {
           margin: 0 0 16px;
           color: ${INK};
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 34px;
+          font-size: 35px;
           font-weight: 700;
           line-height: 1.3;
           letter-spacing: -0.025em;
         }
 
-        /* Subheading - Plus Jakarta Sans */
         .software-engineering-subheading {
-          max-width: 650px;
+          max-width: 680px;
           margin: 0 auto;
           color: ${MUTED};
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
@@ -109,20 +118,24 @@ export default function SoftwareEngineeringGridSection() {
           line-height: 1.8;
         }
 
-        /* Cards grid */
+        /* =========================================
+           CARDS GRID
+        ========================================= */
+
         .software-engineering-grid {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 20px;
+          gap: 22px;
         }
 
         .software-engineering-card {
           min-width: 0;
-          padding: 24px;
+          padding: 26px;
           background: #ffffff;
           border: 1px solid transparent;
           border-radius: 16px;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease,
@@ -135,19 +148,29 @@ export default function SoftwareEngineeringGridSection() {
           box-shadow: 0 12px 28px rgba(122, 31, 61, 0.08);
         }
 
+        /* =========================================
+           ICON
+        ========================================= */
+
         .software-engineering-icon {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 40px;
-          height: 40px;
+
+          width: 42px;
+          height: 42px;
+
           margin-bottom: 18px;
+
           border-radius: 10px;
           background: #fbeef1;
           color: ${WINE};
         }
 
-        /* Card headings - Plus Jakarta Sans */
+        /* =========================================
+           CARD TITLE
+        ========================================= */
+
         .software-engineering-card-title {
           margin: 0 0 10px;
           color: ${INK};
@@ -157,52 +180,61 @@ export default function SoftwareEngineeringGridSection() {
           line-height: 1.45;
         }
 
-        /* Card descriptions - Inter */
+        /* =========================================
+           CARD BODY
+        ========================================= */
+
         .software-engineering-card-body {
           margin: 0;
           color: ${MUTED};
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-size: 12.5px;
           font-weight: 400;
           line-height: 1.75;
         }
 
-        /* Large tablet */
-        @media (max-width: 1024px) {
+        /* =========================================
+           LARGE TABLET
+        ========================================= */
+
+        @media (max-width: 1200px) {
           .software-engineering-container {
-            padding: 64px 32px;
+            padding: 68px 40px;
           }
 
           .software-engineering-grid {
-            gap: 16px;
+            gap: 18px;
           }
 
           .software-engineering-card {
-            padding: 21px;
+            padding: 23px;
           }
 
           .software-engineering-heading {
-            font-size: 31px;
+            font-size: 32px;
           }
         }
 
-        /* Tablet */
-        @media (max-width: 768px) {
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 900px) {
           .software-engineering-container {
-            padding: 54px 24px;
+            padding: 58px 40px;
           }
 
           .software-engineering-header {
-            margin-bottom: 36px;
+            margin-bottom: 40px;
           }
 
           .software-engineering-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
+            gap: 17px;
           }
 
           .software-engineering-heading {
-            font-size: 29px;
+            font-size: 30px;
           }
 
           .software-engineering-subheading {
@@ -210,28 +242,31 @@ export default function SoftwareEngineeringGridSection() {
           }
 
           .software-engineering-card {
-            padding: 20px;
+            padding: 21px;
           }
         }
 
-        /* Mobile */
-        @media (max-width: 600px) {
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
           .software-engineering-container {
-            padding: 42px 16px;
+            padding: 44px 24px;
           }
 
           .software-engineering-header {
-            margin-bottom: 30px;
+            margin-bottom: 32px;
           }
 
           .software-engineering-label {
-            font-size: 10px;
             margin-bottom: 10px;
+            font-size: 10px;
           }
 
           .software-engineering-heading {
-            font-size: 25px;
-            line-height: 1.3;
+            font-size: 26px;
+            line-height: 1.32;
             letter-spacing: -0.02em;
           }
 
@@ -242,7 +277,7 @@ export default function SoftwareEngineeringGridSection() {
 
           .software-engineering-grid {
             grid-template-columns: 1fr;
-            gap: 13px;
+            gap: 14px;
           }
 
           .software-engineering-card {
@@ -251,8 +286,8 @@ export default function SoftwareEngineeringGridSection() {
           }
 
           .software-engineering-icon {
-            width: 37px;
-            height: 37px;
+            width: 38px;
+            height: 38px;
             margin-bottom: 15px;
           }
 
@@ -266,22 +301,33 @@ export default function SoftwareEngineeringGridSection() {
           }
         }
 
-        /* Small mobile */
-        @media (max-width: 400px) {
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 480px) {
           .software-engineering-container {
-            padding: 34px 12px;
+            padding: 36px 16px;
+          }
+
+          .software-engineering-header {
+            margin-bottom: 28px;
           }
 
           .software-engineering-heading {
-            font-size: 22px;
+            font-size: 23px;
           }
 
           .software-engineering-subheading {
             font-size: 12.5px;
           }
 
+          .software-engineering-grid {
+            gap: 12px;
+          }
+
           .software-engineering-card {
-            padding: 17px;
+            padding: 18px;
           }
 
           .software-engineering-card-title {
@@ -293,14 +339,17 @@ export default function SoftwareEngineeringGridSection() {
           }
         }
 
-        /* Very small mobile */
-        @media (max-width: 340px) {
+        /* =========================================
+           VERY SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 360px) {
           .software-engineering-container {
-            padding: 28px 10px;
+            padding: 30px 16px;
           }
 
           .software-engineering-heading {
-            font-size: 20px;
+            font-size: 21px;
           }
 
           .software-engineering-subheading {
@@ -308,11 +357,22 @@ export default function SoftwareEngineeringGridSection() {
           }
 
           .software-engineering-card {
-            padding: 15px;
+            padding: 16px;
+          }
+
+          .software-engineering-card-title {
+            font-size: 13px;
+          }
+
+          .software-engineering-card-body {
+            font-size: 11px;
           }
         }
 
-        /* Accessibility */
+        /* =========================================
+           ACCESSIBILITY
+        ========================================= */
+
         @media (prefers-reduced-motion: reduce) {
           .software-engineering-card {
             transition: none;
@@ -325,6 +385,7 @@ export default function SoftwareEngineeringGridSection() {
       `}</style>
 
       <div className="software-engineering-container">
+
         {/* Header */}
         <div className="software-engineering-header">
           <p className="software-engineering-label">
@@ -351,7 +412,10 @@ export default function SoftwareEngineeringGridSection() {
               className="software-engineering-card"
             >
               <span className="software-engineering-icon">
-                <Icon size={17} strokeWidth={1.8} />
+                <Icon
+                  size={17}
+                  strokeWidth={1.8}
+                />
               </span>
 
               <h3 className="software-engineering-card-title">
@@ -364,6 +428,7 @@ export default function SoftwareEngineeringGridSection() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

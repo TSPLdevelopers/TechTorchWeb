@@ -34,9 +34,18 @@ const metrics = [
 ];
 
 const stats = [
-  { label: "THROUGHPUT", value: "Real-Time" },
-  { label: "GRANULARITY", value: "Normalized" },
-  { label: "AUDITING", value: "Automated" },
+  {
+    label: "THROUGHPUT",
+    value: "Real-Time",
+  },
+  {
+    label: "GRANULARITY",
+    value: "Normalized",
+  },
+  {
+    label: "AUDITING",
+    value: "Automated",
+  },
 ];
 
 export default function IntelligenceVisibilitySection() {
@@ -68,437 +77,370 @@ export default function IntelligenceVisibilitySection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-white overflow-hidden"
-      style={{ color: INK }}
+      className="intelligence-section"
     >
-      <div
-        className="
-          max-w-6xl
-          mx-auto
-          px-4
-          sm:px-6
-          md:px-10
-          lg:px-[100px]
-          py-12
-          sm:py-14
-          md:py-16
-          lg:py-20
-          grid
-          grid-cols-1
-          lg:grid-cols-2
-          gap-8
-          sm:gap-10
-          lg:gap-14
-          items-start
-        "
-      >
-        {/* ================================================= */}
-        {/* LEFT CONTENT */}
-        {/* ================================================= */}
-
-        <div className="w-full">
-          {/* Section Label */}
-          <p
-            className="
-              text-[10px]
-              sm:text-[11px]
-              md:text-xs
-              font-semibold
-              tracking-[0.08em]
-              mb-3
-              font-['Plus_Jakarta_Sans']
-            "
-            style={{ color: WINE }}
-          >
-            INTELLIGENCE &amp; VISIBILITY
-          </p>
-
-          {/* Heading */}
-          <h2
-            className="
-              font-['Plus_Jakarta_Sans']
-              text-2xl
-              sm:text-[1.65rem]
-              md:text-[1.8rem]
-              lg:text-[2rem]
-              leading-[1.2]
-              font-bold
-              tracking-tight
-              mb-4
-              max-w-xl
-            "
-          >
-            Understand Your E-Commerce Business
-          </h2>
-
-          {/* Description */}
-          <p
-            className="
-              text-sm
-              sm:text-[14px]
-              md:text-sm
-              leading-7
-              mb-6
-              font-['Inter']
-              max-w-xl
-            "
-            style={{ color: MUTED }}
-          >
-            Online business generates useful information across sales,
-            customers and website activity. Analytics and reporting can
-            help teams understand this information and support business
-            decisions.
-          </p>
-
-          {/* ================================================= */}
-          {/* METRIC CARDS */}
-          {/* ================================================= */}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {metrics.map(({ icon: Icon, title, body }, index) => (
-              <div
-                key={title}
-                className={`
-                  group
-                  rounded-xl
-                  p-4
-                  sm:p-5
-                  border
-                  border-transparent
-                  transition-all
-                  duration-500
-                  ease-out
-                  ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-10"
-                  }
-                  hover:-translate-y-2
-                  hover:shadow-[0_15px_30px_rgba(122,31,61,0.10)]
-                  hover:border-[#7A1F3D]/15
-                `}
-                style={{
-                  background: "#f6f7fa",
-                  transitionDelay: isVisible
-                    ? `${index * 180}ms`
-                    : "0ms",
-                }}
-              >
-                {/* Icon */}
-                <div
-                  className="
-                    w-9
-                    h-9
-                    sm:w-10
-                    sm:h-10
-                    flex
-                    items-center
-                    justify-center
-                    rounded-lg
-                    mb-3
-                    transition-colors
-                    duration-300
-                  "
-                  style={{
-                    background: "#fbeef1",
-                    color: WINE,
-                  }}
-                >
-                  <Icon size={17} strokeWidth={1.8} />
-                </div>
-
-                {/* Card Heading */}
-                <h3
-                  className="
-                    text-sm
-                    sm:text-[14px]
-                    font-semibold
-                    mb-1.5
-                    leading-snug
-                    font-['Plus_Jakarta_Sans']
-                  "
-                >
-                  {title}
-                </h3>
-
-                {/* Card Text */}
-                <p
-                  className="
-                    text-xs
-                    sm:text-[13px]
-                    leading-relaxed
-                    font-['Inter']
-                  "
-                  style={{ color: MUTED }}
-                >
-                  {body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ================================================= */}
-        {/* RIGHT DATA PANEL */}
-        {/* ================================================= */}
-
-        <div
-          className={`
-            w-full
-            bg-white
-            rounded-2xl
-            p-4
-            sm:p-5
-            md:p-6
-            border
-            transition-all
-            duration-700
-            ease-out
-            ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
-            }
-          `}
-          style={{
-            borderColor: "#ece9e4",
-            boxShadow: "0 10px 35px rgba(0,0,0,0.04)",
-            transitionDelay: "550ms",
-          }}
-        >
-          {/* Panel Header */}
-          <div className="flex items-start justify-between gap-3 mb-1">
-            <h3
-              className="
-                text-sm
-                sm:text-[15px]
-                font-semibold
-                font-['Plus_Jakarta_Sans']
-              "
-            >
-              Data Signal Distribution
-            </h3>
-
-            <span
-              className="
-                inline-flex
-                items-center
-                gap-1
-                text-[9px]
-                sm:text-[10px]
-                font-semibold
-                px-2
-                sm:px-2.5
-                py-1
-                rounded-full
-                border
-                shrink-0
-                font-['Inter']
-              "
-              style={{
-                borderColor: "#ece9e4",
-                color: MUTED,
-              }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ background: "#1a9455" }}
-              />
-
-              Continuous
-            </span>
-          </div>
-
-          {/* Panel Subtitle */}
-          <p
-            className="
-              text-[11px]
-              sm:text-xs
-              mb-5
-              sm:mb-6
-              font-['Inter']
-            "
-            style={{ color: MUTED }}
-          >
-            Structured operational telemetry
-          </p>
-
-          {/* ================================================= */}
-          {/* CHART */}
-          {/* ================================================= */}
-
-          <div
-            className="
-              rounded-xl
-              mb-5
-              sm:mb-6
-              overflow-hidden
-            "
-            style={{
-              background: "#f6f7fa",
-            }}
-          >
-            <svg
-              viewBox="0 0 300 100"
-              className="w-full h-28 sm:h-32"
-              preserveAspectRatio="none"
-            >
-              {/* Soft chart area */}
-              <defs>
-                <linearGradient
-                  id="chartGradient"
-                  x1="0"
-                  y1="0"
-                  x2="0"
-                  y2="1"
-                >
-                  <stop
-                    offset="0%"
-                    stopColor={WINE}
-                    stopOpacity="0.18"
-                  />
-                  <stop
-                    offset="100%"
-                    stopColor={WINE}
-                    stopOpacity="0"
-                  />
-                </linearGradient>
-              </defs>
-
-              <path
-                d="
-                  M 10 72
-                  L 60 55
-                  L 100 61
-                  L 140 45
-                  L 180 51
-                  L 220 35
-                  L 260 28
-                  L 290 18
-                  L 290 100
-                  L 10 100
-                  Z
-                "
-                fill="url(#chartGradient)"
-              />
-
-              {/* Main Line */}
-              <polyline
-                points="
-                  10,72
-                  60,55
-                  100,61
-                  140,45
-                  180,51
-                  220,35
-                  260,28
-                  290,18
-                "
-                fill="none"
-                stroke={WINE}
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={isVisible ? "chart-line" : ""}
-              />
-
-              {/* Data Points */}
-              {[
-                [10, 72],
-                [60, 55],
-                [100, 61],
-                [140, 45],
-                [180, 51],
-                [220, 35],
-                [260, 28],
-                [290, 18],
-              ].map(([x, y], index) => (
-                <circle
-                  key={index}
-                  cx={x}
-                  cy={y}
-                  r="3"
-                  fill={WINE}
-                  className={
-                    isVisible ? "chart-point-visible" : "chart-point"
-                  }
-                  style={{
-                    animationDelay: `${700 + index * 100}ms`,
-                  }}
-                />
-              ))}
-            </svg>
-          </div>
-
-          {/* ================================================= */}
-          {/* STATS */}
-          {/* ================================================= */}
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
-            {stats.map(({ label, value }, index) => (
-              <div
-                key={label}
-                className={`
-                  bg-white
-                  rounded-lg
-                  p-3
-                  sm:p-3.5
-                  border
-                  transition-all
-                  duration-500
-                  hover:-translate-y-1
-                  hover:shadow-md
-                  ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-5"
-                  }
-                `}
-                style={{
-                  borderColor: "#ece9e4",
-                  transitionDelay: isVisible
-                    ? `${800 + index * 150}ms`
-                    : "0ms",
-                }}
-              >
-                <p
-                  className="
-                    text-[8px]
-                    sm:text-[9px]
-                    font-semibold
-                    tracking-wide
-                    mb-1
-                    font-['Inter']
-                  "
-                  style={{ color: "#a9a6b0" }}
-                >
-                  {label}
-                </p>
-
-                <p
-                  className="
-                    text-sm
-                    sm:text-[14px]
-                    font-semibold
-                    font-['Plus_Jakarta_Sans']
-                  "
-                >
-                  {value}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ================================================= */}
-      {/* ANIMATION STYLES */}
-      {/* ================================================= */}
-
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        /* =========================================
+           SECTION
+        ========================================= */
+
+        .intelligence-section {
+          width: 100%;
+          overflow: hidden;
+          background: #ffffff;
+          color: ${INK};
+          font-family: "Inter", sans-serif;
+        }
+
+        /* =========================================
+           MAIN WRAPPER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
+        .intelligence-wrapper {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding: 80px 100px;
+          box-sizing: border-box;
+
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: 64px;
+          align-items: start;
+        }
+
+        /* =========================================
+           LEFT CONTENT
+        ========================================= */
+
+        .intelligence-content {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .intelligence-label {
+          margin: 0 0 14px;
+
+          color: ${WINE};
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 1.4;
+          letter-spacing: 0.08em;
+        }
+
+        .intelligence-heading {
+          max-width: 650px;
+          margin: 0 0 17px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 36px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+        }
+
+        .intelligence-description {
+          max-width: 650px;
+          margin: 0 0 28px;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.8;
+        }
+
+        /* =========================================
+           METRIC GRID
+        ========================================= */
+
+        .metrics-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        /* =========================================
+           METRIC CARD
+        ========================================= */
+
+        .metric-card {
+          width: 100%;
+          min-height: 150px;
+          box-sizing: border-box;
+
+          padding: 20px;
+
+          background: #f6f7fa;
+          border: 1px solid transparent;
+          border-radius: 12px;
+
+          opacity: 0;
+          transform: translateY(30px);
+
+          transition:
+            opacity 600ms ease,
+            transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 300ms ease,
+            border-color 300ms ease;
+        }
+
+        .metric-card.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .metric-card.visible:hover {
+          transform: translateY(-7px);
+          border-color: rgba(122, 31, 61, 0.15);
+          box-shadow: 0 15px 30px rgba(122, 31, 61, 0.10);
+        }
+
+        /* =========================================
+           METRIC ICON
+        ========================================= */
+
+        .metric-icon {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          margin-bottom: 13px;
+
+          border-radius: 9px;
+          background: #fbeef1;
+          color: ${WINE};
+
+          transition:
+            background 300ms ease,
+            color 300ms ease;
+        }
+
+        .metric-card:hover .metric-icon {
+          background: ${WINE};
+          color: #ffffff;
+        }
+
+        /* =========================================
+           METRIC TEXT
+        ========================================= */
+
+        .metric-title {
+          margin: 0 0 6px;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .metric-body {
+          margin: 0;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.65;
+        }
+
+        /* =========================================
+           RIGHT DATA PANEL
+        ========================================= */
+
+        .data-panel {
+          width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+
+          padding: 24px;
+
+          background: #ffffff;
+          border: 1px solid #ece9e4;
+          border-radius: 18px;
+
+          box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+
+          opacity: 0;
+          transform: translateX(40px);
+
+          transition:
+            opacity 700ms ease,
+            transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .data-panel.visible {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        /* =========================================
+           PANEL HEADER
+        ========================================= */
+
+        .panel-header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 4px;
+        }
+
+        .panel-title {
+          margin: 0;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .panel-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+
+          flex-shrink: 0;
+
+          padding: 5px 9px;
+
+          border: 1px solid #ece9e4;
+          border-radius: 999px;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 1.2;
+        }
+
+        .panel-status-dot {
+          width: 6px;
+          height: 6px;
+          flex-shrink: 0;
+
+          border-radius: 50%;
+          background: #1a9455;
+        }
+
+        .panel-subtitle {
+          margin: 0 0 22px;
+
+          color: ${MUTED};
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        /* =========================================
+           CHART
+        ========================================= */
+
+        .chart-container {
+          width: 100%;
+          margin-bottom: 22px;
+
+          overflow: hidden;
+          border-radius: 12px;
+
+          background: #f6f7fa;
+        }
+
+        .chart-container svg {
+          display: block;
+          width: 100%;
+          height: 128px;
+        }
+
+        /* =========================================
+           STATS
+        ========================================= */
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 12px;
+        }
+
+        .stat-card {
+          min-width: 0;
+          padding: 14px;
+
+          background: #ffffff;
+          border: 1px solid #ece9e4;
+          border-radius: 9px;
+
+          opacity: 0;
+          transform: translateY(20px);
+
+          transition:
+            opacity 500ms ease,
+            transform 500ms ease,
+            box-shadow 300ms ease;
+        }
+
+        .stat-card.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .stat-card.visible:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .stat-label {
+          margin: 0 0 5px;
+
+          color: #a9a6b0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0.06em;
+        }
+
+        .stat-value {
+          margin: 0;
+
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        /* =========================================
+           CHART ANIMATION
+        ========================================= */
+
         .chart-line {
           stroke-dasharray: 500;
           stroke-dashoffset: 500;
+
           animation: drawChart 1.8s ease-out forwards;
         }
 
@@ -508,7 +450,9 @@ export default function IntelligenceVisibilitySection() {
 
         .chart-point-visible {
           opacity: 0;
-          animation: showPoint 0.35s ease-out forwards;
+
+          animation:
+            showPoint 0.35s ease-out forwards;
         }
 
         @keyframes drawChart {
@@ -531,7 +475,260 @@ export default function IntelligenceVisibilitySection() {
           }
         }
 
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .intelligence-wrapper {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 70px;
+            padding-bottom: 70px;
+            gap: 48px;
+          }
+
+          .intelligence-heading {
+            font-size: 33px;
+          }
+        }
+
+        /* =========================================
+           SMALL TABLET
+        ========================================= */
+
+        @media (max-width: 900px) {
+          .intelligence-wrapper {
+            grid-template-columns: 1fr;
+            gap: 38px;
+          }
+
+          .intelligence-heading {
+            max-width: 800px;
+          }
+
+          .intelligence-description {
+            max-width: 800px;
+          }
+
+          .data-panel {
+            transform: translateY(30px);
+          }
+
+          .data-panel.visible {
+            transform: translateY(0);
+          }
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
+          .intelligence-wrapper {
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 56px;
+            padding-bottom: 56px;
+            gap: 30px;
+          }
+
+          .intelligence-label {
+            margin-bottom: 12px;
+            font-size: 9px;
+          }
+
+          .intelligence-heading {
+            margin-bottom: 14px;
+            font-size: 28px;
+            line-height: 1.22;
+          }
+
+          .intelligence-description {
+            margin-bottom: 24px;
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .metrics-grid {
+            grid-template-columns: 1fr;
+            gap: 13px;
+          }
+
+          .metric-card {
+            min-height: auto;
+            padding: 17px;
+          }
+
+          .metric-icon {
+            width: 37px;
+            height: 37px;
+            margin-bottom: 11px;
+          }
+
+          .metric-title {
+            font-size: 13px;
+          }
+
+          .metric-body {
+            font-size: 12px;
+          }
+
+          .data-panel {
+            padding: 18px;
+            border-radius: 15px;
+          }
+
+          .panel-title {
+            font-size: 14px;
+          }
+
+          .panel-subtitle {
+            margin-bottom: 18px;
+            font-size: 11px;
+          }
+
+          .chart-container {
+            margin-bottom: 18px;
+          }
+
+          .chart-container svg {
+            height: 112px;
+          }
+
+          .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 9px;
+          }
+
+          .stat-card {
+            padding: 12px;
+          }
+
+          .stat-label {
+            font-size: 8px;
+          }
+
+          .stat-value {
+            font-size: 13px;
+          }
+        }
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 480px) {
+          .intelligence-wrapper {
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 48px;
+            padding-bottom: 48px;
+            gap: 26px;
+          }
+
+          .intelligence-heading {
+            font-size: 24px;
+            line-height: 1.24;
+          }
+
+          .intelligence-description {
+            font-size: 12.5px;
+            line-height: 1.65;
+          }
+
+          .metric-card {
+            padding: 15px;
+          }
+
+          .metric-title {
+            font-size: 12.5px;
+          }
+
+          .metric-body {
+            font-size: 11.5px;
+          }
+
+          .data-panel {
+            padding: 15px;
+          }
+
+          .panel-header {
+            gap: 8px;
+          }
+
+          .panel-title {
+            font-size: 12.5px;
+          }
+
+          .panel-status {
+            font-size: 8px;
+            padding: 4px 7px;
+          }
+
+          .panel-subtitle {
+            font-size: 10px;
+          }
+
+          .chart-container svg {
+            height: 100px;
+          }
+        }
+
+        /* =========================================
+           VERY SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 360px) {
+          .intelligence-heading {
+            font-size: 22px;
+          }
+
+          .panel-status {
+            display: none;
+          }
+        }
+
+        /* =========================================
+           TOUCH DEVICES
+        ========================================= */
+
+        @media (hover: none) {
+          .metric-card.visible:hover {
+            transform: translateY(0);
+            box-shadow: none;
+          }
+
+          .stat-card.visible:hover {
+            transform: translateY(0);
+            box-shadow: none;
+          }
+
+          .metric-card:hover .metric-icon {
+            background: #fbeef1;
+            color: ${WINE};
+          }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================= */
+
         @media (prefers-reduced-motion: reduce) {
+          .metric-card,
+          .data-panel,
+          .stat-card {
+            transition: none !important;
+            animation: none !important;
+          }
+
+          .metric-card,
+          .data-panel,
+          .stat-card {
+            opacity: 1;
+            transform: none;
+          }
+
           .chart-line {
             animation: none;
             stroke-dashoffset: 0;
@@ -543,6 +740,214 @@ export default function IntelligenceVisibilitySection() {
           }
         }
       `}</style>
+
+      <div className="intelligence-wrapper">
+        {/* =========================================
+            LEFT CONTENT
+        ========================================= */}
+
+        <div className="intelligence-content">
+          <p className="intelligence-label">
+            INTELLIGENCE & VISIBILITY
+          </p>
+
+          <h2 className="intelligence-heading">
+            Understand Your E-Commerce Business
+          </h2>
+
+          <p className="intelligence-description">
+            Online business generates useful information across sales,
+            customers and website activity. Analytics and reporting can
+            help teams understand this information and support business
+            decisions.
+          </p>
+
+          {/* Metric Cards */}
+          <div className="metrics-grid">
+            {metrics.map(
+              ({ icon: Icon, title, body }, index) => (
+                <div
+                  key={title}
+                  className={`metric-card ${
+                    isVisible ? "visible" : ""
+                  }`}
+                  style={{
+                    transitionDelay: isVisible
+                      ? `${index * 180}ms`
+                      : "0ms",
+                  }}
+                >
+                  <div className="metric-icon">
+                    <Icon
+                      size={17}
+                      strokeWidth={1.8}
+                      aria-hidden="true"
+                    />
+                  </div>
+
+                  <h3 className="metric-title">
+                    {title}
+                  </h3>
+
+                  <p className="metric-body">
+                    {body}
+                  </p>
+                </div>
+              )
+            )}
+          </div>
+        </div>
+
+        {/* =========================================
+            RIGHT DATA PANEL
+        ========================================= */}
+
+        <div
+          className={`data-panel ${
+            isVisible ? "visible" : ""
+          }`}
+        >
+          {/* Panel Header */}
+          <div className="panel-header">
+            <h3 className="panel-title">
+              Data Signal Distribution
+            </h3>
+
+            <span className="panel-status">
+              <span className="panel-status-dot" />
+              Continuous
+            </span>
+          </div>
+
+          <p className="panel-subtitle">
+            Structured operational telemetry
+          </p>
+
+          {/* Chart */}
+          <div className="chart-container">
+            <svg
+              viewBox="0 0 300 100"
+              preserveAspectRatio="none"
+              aria-label="Data signal distribution chart"
+            >
+              <defs>
+                <linearGradient
+                  id="chartGradient"
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop
+                    offset="0%"
+                    stopColor={WINE}
+                    stopOpacity="0.18"
+                  />
+
+                  <stop
+                    offset="100%"
+                    stopColor={WINE}
+                    stopOpacity="0"
+                  />
+                </linearGradient>
+              </defs>
+
+              {/* Area */}
+              <path
+                d="
+                  M 10 72
+                  L 60 55
+                  L 100 61
+                  L 140 45
+                  L 180 51
+                  L 220 35
+                  L 260 28
+                  L 290 18
+                  L 290 100
+                  L 10 100
+                  Z
+                "
+                fill="url(#chartGradient)"
+              />
+
+              {/* Line */}
+              <polyline
+                points="
+                  10,72
+                  60,55
+                  100,61
+                  140,45
+                  180,51
+                  220,35
+                  260,28
+                  290,18
+                "
+                fill="none"
+                stroke={WINE}
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={
+                  isVisible ? "chart-line" : ""
+                }
+              />
+
+              {/* Points */}
+              {[
+                [10, 72],
+                [60, 55],
+                [100, 61],
+                [140, 45],
+                [180, 51],
+                [220, 35],
+                [260, 28],
+                [290, 18],
+              ].map(([x, y], index) => (
+                <circle
+                  key={index}
+                  cx={x}
+                  cy={y}
+                  r="3"
+                  fill={WINE}
+                  className={
+                    isVisible
+                      ? "chart-point-visible"
+                      : "chart-point"
+                  }
+                  style={{
+                    animationDelay: `${700 + index * 100}ms`,
+                  }}
+                />
+              ))}
+            </svg>
+          </div>
+
+          {/* Stats */}
+          <div className="stats-grid">
+            {stats.map(({ label, value }, index) => (
+              <div
+                key={label}
+                className={`stat-card ${
+                  isVisible ? "visible" : ""
+                }`}
+                style={{
+                  transitionDelay: isVisible
+                    ? `${800 + index * 150}ms`
+                    : "0ms",
+                }}
+              >
+                <p className="stat-label">
+                  {label}
+                </p>
+
+                <p className="stat-value">
+                  {value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

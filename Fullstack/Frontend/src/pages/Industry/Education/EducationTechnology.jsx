@@ -73,20 +73,11 @@ function Eyebrow({ children }) {
 
 export default function PeopleAndWorkSections() {
   return (
-    <div
-      className="people-work-section"
-      style={{ color: INK }}
-    >
+    <div className="people-work-section">
       <style>{`
-
-        /* =====================================================
-           GOOGLE FONTS
-        ===================================================== */
-
         @import url(
           'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
         );
-
 
         /* =====================================================
            MAIN
@@ -96,23 +87,27 @@ export default function PeopleAndWorkSections() {
           width: 100%;
           overflow: hidden;
           background: #ffffff;
+          color: ${INK};
           font-family: "Inter", sans-serif;
         }
 
-
         /* =====================================================
            COMMON CONTAINER
+           
+           Desktop  -> 100px
+           Tablet   -> 40px
+           Mobile   -> 24px
+           Small    -> 16px
         ===================================================== */
 
         .people-work-container {
           width: 100%;
-          max-width: 1152px;
+          max-width: 1600px;
           margin: 0 auto;
-          padding-left: 24px;
-          padding-right: 24px;
+          padding-left: 100px;
+          padding-right: 100px;
           box-sizing: border-box;
         }
-
 
         /* =====================================================
            SECTION 1
@@ -125,7 +120,6 @@ export default function PeopleAndWorkSections() {
           padding-bottom: 80px;
         }
 
-
         /* =====================================================
            EYEBROW
            INTER
@@ -135,6 +129,7 @@ export default function PeopleAndWorkSections() {
           display: flex;
           align-items: center;
           gap: 4px;
+          width: fit-content;
           margin-bottom: 16px;
 
           font-family: "Inter", sans-serif;
@@ -145,7 +140,6 @@ export default function PeopleAndWorkSections() {
 
           color: ${WINE};
         }
-
 
         /* =====================================================
            MAIN HEADING
@@ -165,7 +159,6 @@ export default function PeopleAndWorkSections() {
           color: ${INK};
         }
 
-
         /* =====================================================
            MAIN SUBHEADING
            PLUS JAKARTA SANS
@@ -183,7 +176,6 @@ export default function PeopleAndWorkSections() {
           color: ${MUTED};
         }
 
-
         /* =====================================================
            PERSONA GRID
         ===================================================== */
@@ -194,7 +186,6 @@ export default function PeopleAndWorkSections() {
           gap: 16px;
           margin-top: 40px;
         }
-
 
         /* =====================================================
            PERSONA CARD
@@ -214,7 +205,6 @@ export default function PeopleAndWorkSections() {
             border-color 0.25s ease;
         }
 
-
         .persona-card:hover {
           transform: translateY(-4px);
           border-color: #e2d4d9;
@@ -222,7 +212,6 @@ export default function PeopleAndWorkSections() {
           box-shadow:
             0 12px 28px rgba(0, 0, 0, 0.07);
         }
-
 
         /* =====================================================
            ICON
@@ -240,18 +229,15 @@ export default function PeopleAndWorkSections() {
           flex-shrink: 0;
         }
 
-
         .persona-icon-filled {
           border-radius: 50%;
           background: ${WINE};
           color: #ffffff;
         }
 
-
         .persona-icon-normal {
           border-radius: 8px;
         }
-
 
         /* =====================================================
            CARD HEADING
@@ -269,7 +255,6 @@ export default function PeopleAndWorkSections() {
           color: ${INK};
         }
 
-
         /* =====================================================
            CARD BODY
            INTER
@@ -286,7 +271,6 @@ export default function PeopleAndWorkSections() {
           color: ${MUTED};
         }
 
-
         /* =====================================================
            SECTION 2
         ===================================================== */
@@ -295,10 +279,9 @@ export default function PeopleAndWorkSections() {
           width: 100%;
           background: #f3f1ec;
 
-          padding-top: 64px;
-          padding-bottom: 64px;
+          padding-top: 72px;
+          padding-bottom: 72px;
         }
-
 
         .manual-work-grid {
           display: grid;
@@ -306,12 +289,11 @@ export default function PeopleAndWorkSections() {
           grid-template-columns:
             minmax(0, 0.9fr)
             minmax(0, 1.3fr)
-            minmax(0, 0.8fr);
+            minmax(260px, 0.8fr);
 
           gap: 32px;
           align-items: start;
         }
-
 
         /* =====================================================
            IMAGE
@@ -325,12 +307,10 @@ export default function PeopleAndWorkSections() {
           background: #e9e4e0;
         }
 
-
         .education-work-image {
+          display: block;
           width: 100%;
           height: 288px;
-
-          display: block;
 
           object-fit: cover;
           object-position: center;
@@ -338,12 +318,10 @@ export default function PeopleAndWorkSections() {
           transition: transform 0.4s ease;
         }
 
-
         .education-work-image-wrapper:hover
         .education-work-image {
           transform: scale(1.025);
         }
-
 
         /* =====================================================
            SECTION 2 HEADING
@@ -362,7 +340,6 @@ export default function PeopleAndWorkSections() {
           color: ${INK};
         }
 
-
         /* =====================================================
            SECTION 2 BODY
            INTER
@@ -379,11 +356,9 @@ export default function PeopleAndWorkSections() {
           color: ${MUTED};
         }
 
-
         .manual-work-body + .manual-work-body {
           margin-top: 20px;
         }
-
 
         /* =====================================================
            MEANS CARD
@@ -397,7 +372,6 @@ export default function PeopleAndWorkSections() {
 
           box-sizing: border-box;
         }
-
 
         /* =====================================================
            MEANS TITLE
@@ -416,7 +390,6 @@ export default function PeopleAndWorkSections() {
           color: #8a8378;
         }
 
-
         /* =====================================================
            LIST
            INTER
@@ -433,7 +406,6 @@ export default function PeopleAndWorkSections() {
           list-style: none;
         }
 
-
         .means-item {
           display: flex;
           align-items: flex-start;
@@ -447,22 +419,20 @@ export default function PeopleAndWorkSections() {
           color: ${INK};
         }
 
-
         .means-check {
           flex-shrink: 0;
           margin-top: 2px;
           color: ${WINE};
         }
 
-
         /* =====================================================
            LARGE DESKTOP
         ===================================================== */
 
-        @media (min-width: 1280px) {
-
+        @media (min-width: 1440px) {
           .people-work-container {
-            max-width: 1180px;
+            padding-left: 100px;
+            padding-right: 100px;
           }
 
           .people-work-heading {
@@ -477,46 +447,83 @@ export default function PeopleAndWorkSections() {
             font-size: 32px;
           }
 
+          .persona-grid {
+            gap: 20px;
+          }
+
+          .manual-work-grid {
+            gap: 40px;
+          }
         }
 
-
         /* =====================================================
-           TABLET / LARGE LAPTOP
+           TABLET / SMALL LAPTOP
+           768px - 1199px
         ===================================================== */
 
-        @media (max-width: 1100px) {
-
+        @media (min-width: 768px) and (max-width: 1199px) {
           .people-work-container {
-            padding-left: 32px;
-            padding-right: 32px;
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .personas-section {
+            padding-top: 64px;
+            padding-bottom: 64px;
+          }
+
+          .manual-work-section {
+            padding-top: 56px;
+            padding-bottom: 56px;
+          }
+
+          .people-work-heading {
+            font-size: 36px;
+          }
+
+          .people-work-subheading {
+            font-size: 16px;
           }
 
           .persona-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 36px;
           }
 
           .manual-work-grid {
             grid-template-columns:
               minmax(0, 1fr)
               minmax(0, 1.25fr);
+            gap: 28px;
           }
 
           .means-card {
             grid-column: 1 / -1;
           }
 
+          .education-work-image {
+            height: 320px;
+          }
+
+          .manual-work-heading {
+            font-size: 30px;
+          }
+
+          .manual-work-body {
+            font-size: 14px;
+          }
         }
 
-
         /* =====================================================
-           TABLET
+           MOBILE
+           481px - 767px
         ===================================================== */
 
         @media (max-width: 767px) {
-
           .people-work-container {
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .personas-section {
@@ -580,16 +587,14 @@ export default function PeopleAndWorkSections() {
             grid-column: auto;
             padding: 18px;
           }
-
         }
 
-
         /* =====================================================
-           MOBILE
+           SMALL MOBILE
+           <= 480px
         ===================================================== */
 
         @media (max-width: 480px) {
-
           .people-work-container {
             padding-left: 16px;
             padding-right: 16px;
@@ -616,7 +621,6 @@ export default function PeopleAndWorkSections() {
 
           .people-work-heading {
             max-width: 100%;
-
             font-size: 27px;
             line-height: 1.2;
             letter-spacing: -0.4px;
@@ -624,9 +628,7 @@ export default function PeopleAndWorkSections() {
 
           .people-work-subheading {
             max-width: 100%;
-
             margin-top: 12px;
-
             font-size: 14px;
             line-height: 1.65;
           }
@@ -640,18 +642,14 @@ export default function PeopleAndWorkSections() {
           .persona-card {
             display: grid;
             grid-template-columns: auto 1fr;
-
             column-gap: 12px;
-
             padding: 15px;
           }
 
           .persona-icon {
             grid-row: 1 / span 2;
-
             width: 40px;
             height: 40px;
-
             margin-bottom: 0;
           }
 
@@ -695,19 +693,17 @@ export default function PeopleAndWorkSections() {
             gap: 7px;
             font-size: 12px;
           }
-
         }
-
 
         /* =====================================================
            VERY SMALL MOBILE
+           <= 360px
         ===================================================== */
 
         @media (max-width: 360px) {
-
           .people-work-container {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .people-work-heading {
@@ -730,25 +726,19 @@ export default function PeopleAndWorkSections() {
           .persona-card {
             padding: 13px;
           }
-
         }
-
 
         /* =====================================================
            REDUCED MOTION
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
-
           .persona-card,
           .education-work-image {
             transition: none;
           }
-
         }
-
       `}</style>
-
 
       {/* =====================================================
           SECTION 1
@@ -756,27 +746,20 @@ export default function PeopleAndWorkSections() {
 
       <section className="personas-section">
         <div className="people-work-container">
-
           <Eyebrow>
             TECHNOLOGY FOR THE PEOPLE BEHIND EDUCATION
           </Eyebrow>
 
-          {/* HEADING - PLUS JAKARTA SANS */}
           <h2 className="people-work-heading">
             Better experiences start with understanding every user.
           </h2>
 
-          {/* SUBHEADING - PLUS JAKARTA SANS */}
           <p className="people-work-subheading">
             An education platform is only useful when it works well for the
             people using it.
           </p>
 
-
-          {/* PERSONA CARDS */}
-
           <div className="persona-grid">
-
             {personas.map(
               ({
                 icon: Icon,
@@ -786,38 +769,20 @@ export default function PeopleAndWorkSections() {
                 iconBg,
                 iconColor,
               }) => (
-                <div
-                  key={title}
-                  className="persona-card"
-                >
-
+                <div key={title} className="persona-card">
                   {variant === "filled" ? (
-                    <span
-                      className="
-                        persona-icon
-                        persona-icon-filled
-                      "
-                    >
-                      <Icon
-                        size={18}
-                        strokeWidth={1.8}
-                      />
+                    <span className="persona-icon persona-icon-filled">
+                      <Icon size={18} strokeWidth={1.8} />
                     </span>
                   ) : (
                     <span
-                      className="
-                        persona-icon
-                        persona-icon-normal
-                      "
+                      className="persona-icon persona-icon-normal"
                       style={{
                         background: iconBg,
                         color: iconColor,
                       }}
                     >
-                      <Icon
-                        size={18}
-                        strokeWidth={1.8}
-                      />
+                      <Icon size={18} strokeWidth={1.8} />
                     </span>
                   )}
 
@@ -828,58 +793,40 @@ export default function PeopleAndWorkSections() {
                   <p className="persona-body">
                     {body}
                   </p>
-
                 </div>
               )
             )}
-
           </div>
-
         </div>
       </section>
-
 
       {/* =====================================================
           SECTION 2
       ===================================================== */}
 
       <section className="manual-work-section">
-
-        <div
-          className="
-            people-work-container
-            manual-work-grid
-          "
-        >
+        <div className="people-work-container manual-work-grid">
 
           {/* IMAGE */}
 
           <div className="education-work-image-wrapper">
-
             <img
               src={EDUCATION_WORK_IMAGE}
               alt="Two colleagues reviewing records"
               className="education-work-image"
             />
-
           </div>
-
 
           {/* COPY */}
 
           <div>
-
             <Eyebrow>
               LESS MANUAL WORK, MORE MEANINGFUL WORK
             </Eyebrow>
 
-            {/* HEADING - PLUS JAKARTA SANS */}
-
             <h2 className="manual-work-heading">
               Give your teams more time for what matters.
             </h2>
-
-            {/* BODY - INTER */}
 
             <p className="manual-work-body">
               Manual processes often become part of an institution simply
@@ -892,46 +839,31 @@ export default function PeopleAndWorkSections() {
               TechTorch helps identify where technology can remove
               unnecessary steps and create simpler workflows.
             </p>
-
           </div>
-
 
           {/* THIS CAN MEAN */}
 
           <div className="means-card">
-
             <p className="means-title">
               THIS CAN MEAN:
             </p>
 
             <ul className="means-list">
-
               {meansList.map((item) => (
-                <li
-                  key={item}
-                  className="means-item"
-                >
-
+                <li key={item} className="means-item">
                   <Check
                     size={15}
                     className="means-check"
                   />
 
-                  <span>
-                    {item}
-                  </span>
-
+                  <span>{item}</span>
                 </li>
               ))}
-
             </ul>
-
           </div>
 
         </div>
-
       </section>
-
     </div>
   );
 }

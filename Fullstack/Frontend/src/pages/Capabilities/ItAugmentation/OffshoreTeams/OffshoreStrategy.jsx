@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const BRAND = "#8B0046";
@@ -64,692 +64,1192 @@ const capabilities = [
 ];
 
 export default function OffshoreDevelopmentTeams() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
-    <main className="w-full overflow-hidden bg-white text-[#172033]">
+    <main className="offshore-page">
+      <style>{`
+        /* =========================================================
+           BASE
+        ========================================================= */
+
+        .offshore-page {
+          width: 100%;
+          overflow: hidden;
+          background: #ffffff;
+          color: #172033;
+          font-family: "Inter", sans-serif;
+        }
+
+        .offshore-page *,
+        .offshore-page *::before,
+        .offshore-page *::after {
+          box-sizing: border-box;
+        }
+
+        .offshore-page h1,
+        .offshore-page h2,
+        .offshore-page h3,
+        .offshore-page h4,
+        .offshore-page h5,
+        .offshore-page h6 {
+          font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        /* =========================================================
+           UNIVERSAL HORIZONTAL SPACING
+
+           Desktop  : 100px
+           Tablet   : 40px
+           Mobile   : 24px
+           Small    : 16px
+        ========================================================= */
+
+        .offshore-container {
+          width: 100%;
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .offshore-hero {
+          width: 100%;
+          border-bottom: 1px solid #edf0f4;
+          background: #ffffff;
+        }
+
+        .offshore-hero-inner {
+          width: 100%;
+          padding-top: 64px;
+          padding-bottom: 64px;
+        }
+
+        .offshore-hero-grid {
+          width: 100%;
+          display: grid;
+          grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+          align-items: center;
+          gap: 70px;
+        }
+
+        .offshore-hero-content {
+          width: 100%;
+          max-width: 700px;
+        }
+
+        /* Badge */
+
+        .offshore-badge {
+          margin-bottom: 25px;
+          display: inline-flex;
+          max-width: 100%;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 8px;
+          padding: 9px 14px;
+          border: 1px solid #ead5df;
+          border-radius: 999px;
+          background: #fff8fb;
+        }
+
+        .offshore-badge-dot {
+          width: 7px;
+          height: 7px;
+          flex: 0 0 7px;
+          border-radius: 50%;
+          background: ${BRAND};
+        }
+
+        .offshore-badge-text {
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: ${BRAND};
+        }
+
+        /* Hero Heading */
+
+        .offshore-hero-title {
+          margin: 0;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 46px;
+          line-height: 1.06;
+          font-weight: 600;
+          letter-spacing: -0.045em;
+          color: #111a2e;
+        }
+
+        .offshore-hero-title span {
+          color: ${BRAND};
+        }
+
+        .offshore-hero-subtitle {
+          max-width: 680px;
+          margin: 20px 0 0;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 21px;
+          line-height: 1.35;
+          font-weight: 600;
+          letter-spacing: -0.025em;
+          color: #344158;
+        }
+
+        .offshore-hero-description {
+          max-width: 680px;
+          margin: 17px 0 0;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          line-height: 1.7;
+          font-weight: 400;
+          color: #647187;
+        }
+
+        /* Hero CTA */
+
+        .offshore-hero-button {
+          margin-top: 27px;
+          min-height: 50px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+          padding: 0 22px;
+          border: 1px solid ${BRAND};
+          border-radius: 10px;
+          background: ${BRAND};
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          box-shadow: 0 10px 20px rgba(139, 0, 70, 0.18);
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            background 0.3s ease;
+        }
+
+        .offshore-hero-button:hover {
+          transform: translateY(-2px);
+          background: #76003b;
+          box-shadow: 0 14px 25px rgba(139, 0, 70, 0.25);
+        }
+
+        .offshore-hero-button svg {
+          width: 16px;
+          height: 16px;
+          transition: transform 0.3s ease;
+        }
+
+        .offshore-hero-button:hover svg {
+          transform: translateX(3px);
+        }
+
+        /* Bottom Pills */
+
+        .offshore-hero-pills {
+          margin-top: 25px;
+          display: inline-flex;
+          max-width: 100%;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 0;
+          padding: 10px 15px;
+          border: 1px solid #e2e8ef;
+          border-radius: 11px;
+          background: #f6f8fa;
+        }
+
+        .offshore-pill {
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          line-height: 1.4;
+          font-weight: 500;
+          color: #536075;
+        }
+
+        .offshore-pill-divider {
+          margin: 0 10px;
+          color: #c6ccd5;
+        }
+
+        /* Hero Image */
+
+        .offshore-hero-visual {
+          position: relative;
+          width: 100%;
+          max-width: 540px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .offshore-image-card {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+          border: 1px solid #e8ebef;
+          border-radius: 18px;
+          background: #f4f5f6;
+          box-shadow: 0 18px 40px rgba(20, 30, 45, 0.12);
+        }
+
+        .offshore-image-card img {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
+
+        .offshore-image-overlay {
+          position: absolute;
+          left: 18px;
+          right: 18px;
+          bottom: 18px;
+          padding: 12px 14px;
+          border-radius: 13px;
+          background: rgba(255, 255, 255, 0.95);
+          box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+        }
+
+        .offshore-image-overlay-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+        }
+
+        .offshore-image-info {
+          min-width: 0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .offshore-image-status {
+          width: 20px;
+          height: 20px;
+          flex: 0 0 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #d9f8eb;
+        }
+
+        .offshore-image-status::after {
+          content: "";
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #1dc98b;
+        }
+
+        .offshore-image-copy {
+          min-width: 0;
+        }
+
+        .offshore-image-label {
+          margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          line-height: 1.3;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: ${BRAND};
+        }
+
+        .offshore-image-title {
+          margin: 2px 0 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.3;
+          font-weight: 600;
+          color: #39455a;
+        }
+
+        .offshore-image-tier {
+          flex-shrink: 0;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          line-height: 1.3;
+          font-weight: 500;
+          color: #68758a;
+        }
+
+        /* =========================================================
+           STRATEGIC PERSPECTIVE
+        ========================================================= */
+
+        .offshore-strategy {
+          width: 100%;
+          background: #ffffff;
+        }
+
+        .offshore-strategy-inner {
+          width: 100%;
+          max-width: 1100px;
+          margin: 0 auto;
+          padding-top: 82px;
+          padding-bottom: 82px;
+        }
+
+        .offshore-section-header {
+          text-align: center;
+        }
+
+        .offshore-section-label {
+          margin: 0;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+          color: ${BRAND};
+        }
+
+        .offshore-section-title {
+          margin: 12px auto 0;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 32px;
+          line-height: 1.15;
+          font-weight: 600;
+          letter-spacing: -0.035em;
+          color: #172033;
+        }
+
+        .offshore-strategy-content {
+          margin-top: 29px;
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+        }
+
+        .offshore-strategy-content p {
+          margin: 0;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          line-height: 1.7;
+          font-weight: 400;
+          color: #647187;
+        }
+
+        /* Quote */
+
+        .offshore-quote {
+          position: relative;
+          margin-top: 29px;
+          padding: 24px 28px;
+          overflow: hidden;
+          border-radius: 13px;
+          background: #f7f9fb;
+        }
+
+        .offshore-quote::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 3px;
+          height: 100%;
+          background: ${BRAND};
+        }
+
+        .offshore-quote p {
+          margin: 0;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          line-height: 1.55;
+          font-weight: 600;
+          font-style: italic;
+          color: #263249;
+        }
+
+        .offshore-strategy-final {
+          margin-top: 29px;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          line-height: 1.7;
+          color: #647187;
+        }
+
+        /* =========================================================
+           CAPABILITIES
+        ========================================================= */
+
+        .offshore-capabilities {
+          width: 100%;
+          background: #f8fafc;
+        }
+
+        .offshore-capabilities-inner {
+          width: 100%;
+          padding-top: 82px;
+          padding-bottom: 82px;
+        }
+
+        .offshore-capabilities-subtitle {
+          max-width: 680px;
+          margin: 9px auto 0;
+          text-align: center;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.55;
+          color: #69768b;
+        }
+
+        .offshore-capabilities-grid {
+          margin-top: 42px;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        /* Capability Card */
+
+        .offshore-capability-card {
+          position: relative;
+          min-height: 250px;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          padding: 22px;
+          border: 1px solid #e3e8ee;
+          border-radius: 14px;
+          background: #ffffff;
+          box-shadow: 0 2px 8px rgba(20, 30, 45, 0.025);
+          transition:
+            transform 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+        }
+
+        .offshore-capability-card:hover {
+          transform: translateY(-5px);
+          border-color: #f1c8d9;
+          box-shadow: 0 14px 32px rgba(80, 20, 50, 0.09);
+        }
+
+        .offshore-capability-circle {
+          position: absolute;
+          top: -32px;
+          right: -32px;
+          width: 78px;
+          height: 78px;
+          border-radius: 50%;
+          background: #fcecf3;
+          transition:
+            width 0.5s ease,
+            height 0.5s ease,
+            top 0.5s ease,
+            right 0.5s ease;
+        }
+
+        .offshore-capability-card:hover .offshore-capability-circle {
+          top: -100%;
+          right: -100%;
+          width: 220%;
+          height: 220%;
+        }
+
+        .offshore-capability-number {
+          position: relative;
+          z-index: 2;
+          width: 28px;
+          height: 28px;
+          flex: 0 0 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #ecd4df;
+          border-radius: 6px;
+          background: #fff8fb;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          color: ${BRAND};
+        }
+
+        .offshore-capability-content {
+          position: relative;
+          z-index: 2;
+          margin-top: 18px;
+        }
+
+        .offshore-capability-title {
+          margin: 0;
+          max-width: 230px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 16px;
+          line-height: 1.3;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          color: #1d293d;
+        }
+
+        .offshore-capability-description {
+          margin: 11px 0 0;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.6;
+          color: #6a7689;
+        }
+
+        .offshore-capability-bottom {
+          position: relative;
+          z-index: 2;
+          margin-top: auto;
+          padding-top: 19px;
+        }
+
+        .offshore-capability-line {
+          width: 100%;
+          height: 1px;
+          margin-bottom: 12px;
+          background: #edf0f3;
+        }
+
+        .offshore-capability-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+        }
+
+        .offshore-capability-label {
+          min-width: 0;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          line-height: 1.35;
+          font-weight: 700;
+          color: ${BRAND};
+        }
+
+        .offshore-capability-arrow {
+          width: 15px;
+          height: 15px;
+          flex: 0 0 15px;
+          color: #aeb7c5;
+          transition: transform 0.3s ease;
+        }
+
+        .offshore-capability-card:hover .offshore-capability-arrow {
+          transform: translateX(4px);
+        }
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 1199px) {
+          .offshore-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .offshore-hero-inner {
+            padding-top: 55px;
+            padding-bottom: 55px;
+          }
+
+          .offshore-hero-grid {
+            grid-template-columns: minmax(0, 1fr) minmax(330px, 0.8fr);
+            gap: 45px;
+          }
+
+          .offshore-hero-title {
+            font-size: 40px;
+          }
+
+          .offshore-hero-subtitle {
+            font-size: 19px;
+          }
+
+          .offshore-hero-description {
+            font-size: 14px;
+          }
+
+          .offshore-strategy-inner,
+          .offshore-capabilities-inner {
+            padding-top: 65px;
+            padding-bottom: 65px;
+          }
+
+          .offshore-section-title {
+            font-size: 29px;
+          }
+
+          .offshore-capabilities-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+          .offshore-container {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .offshore-hero-inner {
+            padding-top: 48px;
+            padding-bottom: 52px;
+          }
+
+          .offshore-hero-grid {
+            grid-template-columns: 1fr;
+            gap: 38px;
+          }
+
+          .offshore-hero-content {
+            max-width: none;
+          }
+
+          .offshore-badge {
+            margin-bottom: 20px;
+            padding: 8px 12px;
+          }
+
+          .offshore-badge-text {
+            font-size: 9px;
+          }
+
+          .offshore-hero-title {
+            font-size: 32px;
+            line-height: 1.08;
+          }
+
+          .offshore-hero-subtitle {
+            margin-top: 16px;
+            font-size: 18px;
+            line-height: 1.4;
+          }
+
+          .offshore-hero-description {
+            margin-top: 14px;
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .offshore-hero-button {
+            width: 100%;
+            max-width: 360px;
+            margin-top: 23px;
+          }
+
+          .offshore-hero-pills {
+            width: 100%;
+            margin-top: 20px;
+            justify-content: center;
+            text-align: center;
+          }
+
+          .offshore-pill {
+            font-size: 10px;
+          }
+
+          .offshore-hero-visual {
+            max-width: 560px;
+          }
+
+          .offshore-image-overlay {
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            padding: 10px 11px;
+          }
+
+          .offshore-image-overlay-row {
+            gap: 8px;
+          }
+
+          .offshore-image-info {
+            gap: 8px;
+          }
+
+          .offshore-image-status {
+            width: 18px;
+            height: 18px;
+            flex-basis: 18px;
+          }
+
+          .offshore-image-status::after {
+            width: 8px;
+            height: 8px;
+          }
+
+          .offshore-image-label {
+            font-size: 8px;
+          }
+
+          .offshore-image-title {
+            font-size: 10px;
+          }
+
+          .offshore-image-tier {
+            display: none;
+          }
+
+          .offshore-strategy-inner,
+          .offshore-capabilities-inner {
+            padding-top: 58px;
+            padding-bottom: 58px;
+          }
+
+          .offshore-section-label {
+            font-size: 10px;
+          }
+
+          .offshore-section-title {
+            margin-top: 10px;
+            font-size: 27px;
+            line-height: 1.15;
+          }
+
+          .offshore-strategy-content {
+            margin-top: 23px;
+            gap: 15px;
+          }
+
+          .offshore-strategy-content p,
+          .offshore-strategy-final {
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .offshore-quote {
+            margin-top: 24px;
+            padding: 20px 21px;
+          }
+
+          .offshore-quote p {
+            font-size: 13px;
+            line-height: 1.6;
+          }
+
+          .offshore-strategy-final {
+            margin-top: 23px;
+          }
+
+          .offshore-capabilities-subtitle {
+            margin-top: 8px;
+            font-size: 12px;
+          }
+
+          .offshore-capabilities-grid {
+            margin-top: 30px;
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+
+          .offshore-capability-card {
+            min-height: 225px;
+            padding: 20px;
+          }
+
+          .offshore-capability-title {
+            font-size: 15px;
+          }
+
+          .offshore-capability-description {
+            font-size: 12px;
+          }
+        }
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 480px) {
+          .offshore-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .offshore-hero-inner {
+            padding-top: 42px;
+            padding-bottom: 46px;
+          }
+
+          .offshore-hero-grid {
+            gap: 32px;
+          }
+
+          .offshore-badge {
+            max-width: 100%;
+          }
+
+          .offshore-badge-text {
+            font-size: 8px;
+            letter-spacing: 0.06em;
+          }
+
+          .offshore-hero-title {
+            font-size: 28px;
+          }
+
+          .offshore-hero-subtitle {
+            font-size: 16px;
+          }
+
+          .offshore-hero-description {
+            font-size: 12px;
+          }
+
+          .offshore-hero-button {
+            min-height: 48px;
+            font-size: 12px;
+            padding: 0 17px;
+          }
+
+          .offshore-hero-pills {
+            padding: 9px 10px;
+            line-height: 1.7;
+          }
+
+          .offshore-pill {
+            font-size: 9px;
+          }
+
+          .offshore-pill-divider {
+            margin: 0 6px;
+          }
+
+          .offshore-image-overlay {
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            padding: 8px 9px;
+          }
+
+          .offshore-image-label {
+            font-size: 7px;
+          }
+
+          .offshore-image-title {
+            font-size: 9px;
+          }
+
+          .offshore-strategy-inner,
+          .offshore-capabilities-inner {
+            padding-top: 48px;
+            padding-bottom: 48px;
+          }
+
+          .offshore-section-title {
+            font-size: 24px;
+          }
+
+          .offshore-strategy-content p,
+          .offshore-strategy-final {
+            font-size: 12px;
+          }
+
+          .offshore-quote {
+            padding: 18px 18px;
+          }
+
+          .offshore-quote p {
+            font-size: 12px;
+          }
+
+          .offshore-capabilities-subtitle {
+            font-size: 11px;
+          }
+
+          .offshore-capabilities-grid {
+            margin-top: 25px;
+            gap: 12px;
+          }
+
+          .offshore-capability-card {
+            min-height: 215px;
+            padding: 18px;
+          }
+
+          .offshore-capability-title {
+            font-size: 14px;
+          }
+
+          .offshore-capability-description {
+            font-size: 11px;
+          }
+
+          .offshore-capability-label {
+            font-size: 9px;
+          }
+        }
+      `}</style>
 
       {/* =====================================================
           HERO SECTION
       ===================================================== */}
-      <section className="w-full border-b border-[#edf0f4] bg-white">
-        <div
-          className="
-            mx-auto
-            max-w-[1180px]
-            px-4
-            py-8
-            sm:px-6
-            sm:py-10
-            md:px-8
-            md:py-12
-            lg:px-10
-            lg:py-[52px]
-          "
-        >
-          <div
-            className="
-              grid
-              items-center
-              gap-10
-              lg:grid-cols-[1.05fr_0.95fr]
-              lg:gap-14
-            "
-          >
-            {/* LEFT CONTENT */}
-            <div className="w-full max-w-[650px]">
+      <section className="offshore-hero">
+        <div className="offshore-container">
+          <div className="offshore-hero-inner">
+            <div className="offshore-hero-grid">
 
-              {/* Badge */}
-              <div
-                className="
-                  mb-6
-                  inline-flex
-                  max-w-full
-                  flex-wrap
-                  items-center
-                  gap-2
-                  rounded-full
-                  border
-                  px-3
-                  py-2
-                  sm:mb-7
-                  sm:px-4
-                "
-                style={{
-                  borderColor: "#ead5df",
-                  backgroundColor: "#fff8fb",
-                }}
-              >
-                <span
-                  className="h-[7px] w-[7px] shrink-0 rounded-full"
-                  style={{ backgroundColor: BRAND }}
-                />
+              {/* LEFT CONTENT */}
+              <div className="offshore-hero-content">
 
-                <span
-                  className="
-                    font-['Plus Jakarta Sans']
-                    text-[9px]
-                    font-bold
-                    uppercase
-                    tracking-[0.08em]
-                    sm:text-[10px]
-                  "
-                  style={{ color: BRAND }}
+                {/* Badge */}
+                <div className="offshore-badge">
+                  <span className="offshore-badge-dot" />
+
+                  <span className="offshore-badge-text">
+                    IT AUGMENTATION • OFFSHORE ENGINEERING
+                  </span>
+                </div>
+
+                {/* Heading */}
+                <h1 className="offshore-hero-title">
+                  Offshore Development <span>Teams</span>
+                </h1>
+
+                {/* Sub Heading */}
+                <h2 className="offshore-hero-subtitle">
+                  Extend Your Development Capabilities With the Right
+                  Technical Team
+                </h2>
+
+                {/* Description */}
+                <p className="offshore-hero-description">
+                  Build a dedicated development team that works around your
+                  projects, technology requirements, and business goals.
+                  TechTorch helps businesses strengthen their engineering
+                  capabilities with experienced professionals across software
+                  development, engineering, cloud, and technology support.
+                </p>
+
+                {/* CTA */}
+                <button
+                  type="button"
+                  onClick={() => navigate("/development-team")}
+                  className="offshore-hero-button"
                 >
-                  IT AUGMENTATION • OFFSHORE ENGINEERING
-                </span>
+                  Build Your Development Team
+                  <ArrowRight />
+                </button>
+
+                {/* Bottom Pills */}
+                <div className="offshore-hero-pills">
+                  <span className="offshore-pill">
+                    Global Delivery Centers
+                  </span>
+
+                  <span className="offshore-pill-divider">•</span>
+
+                  <span className="offshore-pill">
+                    SLA-Governed Pods
+                  </span>
+
+                  <span className="offshore-pill-divider">•</span>
+
+                  <span className="offshore-pill">
+                    Direct Engineering Alignment
+                  </span>
+                </div>
               </div>
 
-              {/* Heading */}
-              <h1
-                className="
-                  font-['Plus Jakarta Sans']
-                  text-[30px]
-                  font-semibold
-                  leading-[1.05]
-                  tracking-[-0.04em]
-                  text-[#111a2e]
-                  sm:text-[34px]
-                  md:text-[38px]
-                  lg:whitespace-nowrap
-                  lg:text-[42px]
-                "
-              >
-                Offshore Development{" "}
-                <span style={{ color: BRAND }}>Teams</span>
-              </h1>
+              {/* RIGHT IMAGE */}
+              <div className="offshore-hero-visual">
+                <div className="offshore-image-card">
+                  <img
+                    src="/OffshoreStrategy.png"
+                    alt="Offshore development team"
+                  />
 
-              {/* Sub Heading */}
-              <h2
-                className="
-                  mt-5
-                  max-w-[620px]
-                  font-['Inter']
-                  text-[19px]
-                  font-semibold
-                  leading-[1.3]
-                  tracking-[-0.02em]
-                  text-[#344158]
-                  sm:mt-6
-                  sm:text-[20px]
-                  md:text-[21px]
-                "
-              >
-                Extend Your Development Capabilities With the Right
-                Technical Team
-              </h2>
+                  {/* Image Bottom Overlay */}
+                  <div className="offshore-image-overlay">
+                    <div className="offshore-image-overlay-row">
 
-              {/* Description */}
-              <p
-                className="
-                  mt-4
-                  max-w-[640px]
-                  font-['Inter']
-                  text-[13px]
-                  leading-[1.7]
-                  text-[#647187]
-                  sm:mt-5
-                  sm:text-[14px]
-                  md:text-[15px]
-                "
-              >
-                Build a dedicated development team that works around your
-                projects, technology requirements, and business goals.
-                TechTorch helps businesses strengthen their engineering
-                capabilities with experienced professionals across software
-                development, engineering, cloud, and technology support.
-              </p>
+                      <div className="offshore-image-info">
+                        <span className="offshore-image-status" />
 
-              {/* CTA */}
-              <button
-                type="button"
-                onClick={() => navigate("/development-team")}
-                className="
-                  mt-6
-                  inline-flex
-                  w-full
-                  max-w-[360px]
-                  items-center
-                  justify-center
-                  gap-2
-                  rounded-[11px]
-                  px-4
-                  py-3
-                  font-['Inter']
-                  text-[13px]
-                  font-medium
-                  text-white
-                  shadow-[0_10px_20px_rgba(139,0,70,0.18)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-0.5
-                  hover:shadow-[0_14px_25px_rgba(139,0,70,0.25)]
-                  sm:mt-7
-                  sm:w-auto
-                "
-                style={{ backgroundColor: BRAND }}
-              >
-                Build Your Development Team
-                <ArrowRight className="h-[16px] w-[16px]" />
-              </button>
+                        <div className="offshore-image-copy">
+                          <p className="offshore-image-label">
+                            Global Delivery Architecture
+                          </p>
 
-              {/* Bottom Pills */}
-              <div
-                className="
-                  mt-6
-                  flex
-                  w-full
-                  max-w-full
-                  flex-wrap
-                  items-center
-                  justify-center
-                  gap-y-1
-                  rounded-[12px]
-                  border
-                  border-[#e2e8ef]
-                  bg-[#f6f8fa]
-                  px-3
-                  py-2.5
-                  sm:mt-7
-                  sm:inline-flex
-                  sm:w-auto
-                  sm:justify-start
-                  sm:px-4
-                "
-              >
-                <span className="font-['Inter'] text-[11px] font-medium text-[#536075] sm:text-[12px]">
-                  Global Delivery Centers
-                </span>
+                          <p className="offshore-image-title">
+                            Scalable Dedicated Engineering Pods
+                          </p>
+                        </div>
+                      </div>
 
-                <span className="mx-2 text-[#c6ccd5] sm:mx-3">•</span>
-
-                <span className="font-['Inter'] text-[11px] font-medium text-[#536075] sm:text-[12px]">
-                  SLA-Governed Pods
-                </span>
-
-                <span className="mx-2 text-[#c6ccd5] sm:mx-3">•</span>
-
-                <span className="font-['Inter'] text-[11px] font-medium text-[#536075] sm:text-[12px]">
-                  Direct Engineering Alignment
-                </span>
-              </div>
-            </div>
-
-            {/* RIGHT IMAGE */}
-            <div className="relative mx-auto w-full max-w-[500px] lg:max-w-[480px]">
-
-              <div
-                className="
-                  relative
-                  overflow-hidden
-                  rounded-[17px]
-                  border
-                  border-[#e8ebef]
-                  bg-[#f4f5f6]
-                  shadow-[0_18px_40px_rgba(20,30,45,0.12)]
-                "
-              >
-                <img
-                  src="/OffshoreStrategy.png"
-                  alt="Offshore development team"
-                  className="block h-auto w-full object-contain"
-                />
-
-                {/* Image Bottom Overlay */}
-                <div
-                  className="
-                    absolute
-                    bottom-3
-                    left-3
-                    right-3
-                    rounded-[14px]
-                    bg-white/95
-                    px-3
-                    py-3
-                    shadow-[0_7px_20px_rgba(0,0,0,0.12)]
-                    backdrop-blur-sm
-                    sm:bottom-5
-                    sm:left-5
-                    sm:right-5
-                    sm:px-4
-                  "
-                >
-                  <div className="flex items-center justify-between gap-3">
-
-                    <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#d9f8eb]">
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#1dc98b]" />
+                      <span className="offshore-image-tier">
+                        Tier-1 Capability
                       </span>
 
-                      <div className="min-w-0">
-                        <p
-                          className="
-                            truncate
-                            font-['Inter']
-                            text-[9px]
-                            font-bold
-                            uppercase
-                            tracking-[0.05em]
-                            sm:text-[10px]
-                          "
-                          style={{ color: BRAND }}
-                        >
-                          Global Delivery Architecture
-                        </p>
-
-                        <p
-                          className="
-                            truncate
-                            font-['Inter']
-                            text-[10px]
-                            font-semibold
-                            text-[#39455a]
-                            sm:text-[12px]
-                          "
-                        >
-                          Scalable Dedicated Engineering Pods
-                        </p>
-                      </div>
                     </div>
-
-                    <span
-                      className="
-                        hidden
-                        shrink-0
-                        font-['Inter']
-                        text-[11px]
-                        font-medium
-                        text-[#68758a]
-                        sm:block
-                      "
-                    >
-                      Tier-1 Capability
-                    </span>
-
                   </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </section>
-
 
       {/* =====================================================
           STRATEGIC PERSPECTIVE
       ===================================================== */}
-      <section className="w-full bg-white">
-        <div
-          className="
-            mx-auto
-            max-w-[900px]
-            px-4
-            py-14
-            sm:px-6
-            sm:py-18
-            md:px-8
-            md:py-20
-            lg:py-[82px]
-          "
-        >
-          {/* Section Label */}
-          <div className="text-center">
-            <span
-              className="
-                font-['Inter']
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.13em]
-                sm:text-[11px]
-              "
-              style={{ color: BRAND }}
-            >
-              STRATEGIC PERSPECTIVE
-            </span>
+      <section className="offshore-strategy">
+        <div className="offshore-container">
+          <div className="offshore-strategy-inner">
 
-            <h2
-              className="
-                mt-3
-                font-['Inter']
-                text-[25px]
-                font-semibold
-                leading-[1.15]
-                tracking-[-0.035em]
-                text-[#172033]
-                sm:text-[30px]
-              "
-            >
-              Build a Development Team That Fits Your Business
-            </h2>
+            <div className="offshore-section-header">
+              <p className="offshore-section-label">
+                STRATEGIC PERSPECTIVE
+              </p>
+
+              <h2 className="offshore-section-title">
+                Build a Development Team That Fits Your Business
+              </h2>
+            </div>
+
+            <div className="offshore-strategy-content">
+              <p>
+                Finding the right technical skills at the right time can be
+                challenging, especially when development requirements continue
+                to grow. Instead of expanding an internal team for every new
+                project, businesses can use an offshore development model to
+                add the expertise and capacity they need.
+              </p>
+
+              <p>
+                TechTorch helps businesses build development teams around
+                their specific requirements. Whether you are developing a new
+                application, extending an existing product, modernizing
+                legacy software, or looking for additional engineering
+                capacity, we can help you establish a team suited to your
+                project.
+              </p>
+
+              <p>
+                Our teams can work alongside your existing employees or
+                operate as a dedicated development function, depending on your
+                business model and project needs.
+              </p>
+
+              <p>
+                The focus is not simply on providing technical resources. It
+                is about bringing together the right capabilities, establishing
+                a clear working model, and creating a team that can contribute
+                effectively to your development goals.
+              </p>
+            </div>
+
+            {/* Quote */}
+            <div className="offshore-quote">
+              <p>
+                “Development Support Built Around Your Requirements: Every
+                project has different priorities, technologies, timelines, and
+                technical challenges. A development team should therefore be
+                structured around the actual requirements of the project.”
+              </p>
+            </div>
+
+            {/* Final Paragraph */}
+            <p className="offshore-strategy-final">
+              TechTorch provides flexible team models that can support
+              different development needs—from adding individual specialists
+              to building a dedicated team for an ongoing product or
+              application. Our broader technology capabilities across
+              software engineering, software development and support, cloud
+              infrastructure, cybersecurity, and IT consulting allow us to
+              support projects from different technical perspectives.
+            </p>
+
           </div>
-
-          {/* Content */}
-          <div
-            className="
-              mt-6
-              space-y-5
-              font-['Inter']
-              text-[13px]
-              leading-[1.65]
-              text-[#647187]
-              sm:mt-7
-              sm:text-[15px]
-            "
-          >
-            <p>
-              Finding the right technical skills at the right time can be
-              challenging, especially when development requirements continue
-              to grow. Instead of expanding an internal team for every new
-              project, businesses can use an offshore development model to
-              add the expertise and capacity they need.
-            </p>
-
-            <p>
-              TechTorch helps businesses build development teams around their
-              specific requirements. Whether you are developing a new
-              application, extending an existing product, modernizing legacy
-              software, or looking for additional engineering capacity, we
-              can help you establish a team suited to your project.
-            </p>
-
-            <p>
-              Our teams can work alongside your existing employees or operate
-              as a dedicated development function, depending on your business
-              model and project needs.
-            </p>
-
-            <p>
-              The focus is not simply on providing technical resources. It is
-              about bringing together the right capabilities, establishing a
-              clear working model, and creating a team that can contribute
-              effectively to your development goals.
-            </p>
-          </div>
-
-          {/* Quote Box */}
-          <div
-            className="
-              relative
-              mt-7
-              overflow-hidden
-              rounded-[13px]
-              bg-[#f7f9fb]
-              px-5
-              py-5
-              sm:mt-8
-              sm:px-7
-              sm:py-7
-            "
-          >
-            <div
-              className="absolute left-0 top-0 h-full w-[3px]"
-              style={{ backgroundColor: BRAND }}
-            />
-
-            <p
-              className="
-                font-['Inter']
-                text-[14px]
-                font-semibold
-                italic
-                leading-[1.5]
-                text-[#263249]
-                sm:text-[15px]
-              "
-            >
-              “Development Support Built Around Your Requirements: Every
-              project has different priorities, technologies, timelines, and
-              technical challenges. A development team should therefore be
-              structured around the actual requirements of the project.”
-            </p>
-          </div>
-
-          {/* Final Paragraph */}
-          <p
-            className="
-              mt-7
-              font-['Inter']
-              text-[13px]
-              leading-[1.65]
-              text-[#647187]
-              sm:mt-8
-              sm:text-[15px]
-            "
-          >
-            TechTorch provides flexible team models that can support different
-            development needs—from adding individual specialists to building
-            a dedicated team for an ongoing product or application. Our
-            broader technology capabilities across software engineering,
-            software development and support, cloud infrastructure,
-            cybersecurity, and IT consulting allow us to support projects
-            from different technical perspectives.
-          </p>
         </div>
       </section>
-
 
       {/* =====================================================
           DEVELOPMENT CAPABILITIES
       ===================================================== */}
-      <section className="w-full bg-[#f8fafc]">
-        <div
-          className="
-            mx-auto
-            max-w-[1180px]
-            px-4
-            py-14
-            sm:px-6
-            sm:py-18
-            md:px-8
-            md:py-20
-            lg:px-10
-            lg:py-[82px]
-          "
-        >
-          {/* Heading */}
-          <div className="text-center">
-            <span
-              className="
-                font-['Inter']
-                text-[9px]
-                font-bold
-                uppercase
-                tracking-[0.13em]
-                sm:text-[10px]
-              "
-              style={{ color: BRAND }}
-            >
-              SERVICE CAPABILITIES
-            </span>
+      <section className="offshore-capabilities">
+        <div className="offshore-container">
+          <div className="offshore-capabilities-inner">
 
-            <h2
-              className="
-                mt-3
-                font-['Plus Jakarta Sans']
-                text-[26px]
-                font-semibold
-                leading-[1.15]
-                tracking-[-0.035em]
-                text-[#172033]
-                sm:text-[32px]
-              "
-            >
-              Our Development Capabilities
-            </h2>
+            {/* Heading */}
+            <div className="offshore-section-header">
+              <p className="offshore-section-label">
+                SERVICE CAPABILITIES
+              </p>
 
-            <p
-              className="
-                mx-auto
-                mt-2
-                max-w-[650px]
-                font-['Inter']
-                text-[12px]
-                leading-[1.5]
-                text-[#69768b]
-                sm:text-[14px]
-              "
-            >
-              Comprehensive software engineering expertise to support your
-              technology initiatives.
-            </p>
-          </div>
+              <h2 className="offshore-section-title">
+                Our Development Capabilities
+              </h2>
 
-          {/* Cards */}
-          <div
-            className="
-              mt-9
-              grid
-              grid-cols-1
-              gap-4
-              sm:mt-11
-              sm:grid-cols-2
-              sm:gap-5
-              lg:grid-cols-4
-            "
-          >
-            {capabilities.map((item) => (
-              <div
-                key={item.number}
-                className="
-                  group
-                  relative
-                  flex
-                  min-h-[240px]
-                  flex-col
-                  overflow-hidden
-                  rounded-[14px]
-                  border
-                  border-[#e3e8ee]
-                  bg-white
-                  px-5
-                  py-5
-                  shadow-[0_2px_8px_rgba(20,30,45,0.025)]
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-[#f1c8d9]
-                  hover:shadow-[0_12px_30px_rgba(80,20,50,0.08)]
-                "
-              >
-                {/* Top Right Circle */}
+              <p className="offshore-capabilities-subtitle">
+                Comprehensive software engineering expertise to support your
+                technology initiatives.
+              </p>
+            </div>
+
+            {/* Cards */}
+            <div className="offshore-capabilities-grid">
+              {capabilities.map((item) => (
                 <div
-                  className="
-                    pointer-events-none
-                    absolute
-                    -right-9
-                    -top-9
-                    h-[78px]
-                    w-[78px]
-                    rounded-full
-                    bg-[#fcecf3]
-                    transition-all
-                    duration-500
-                    ease-out
-                    group-hover:-right-[50%]
-                    group-hover:-top-[50%]
-                    group-hover:h-[200%]
-                    group-hover:w-[200%]
-                  "
-                />
-
-                {/* Number */}
-                <div
-                  className="
-                    relative
-                    z-10
-                    flex
-                    h-[26px]
-                    w-[26px]
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-[6px]
-                    border
-                    font-['Inter']
-                    text-[10px]
-                    font-bold
-                  "
-                  style={{
-                    color: BRAND,
-                    borderColor: "#ecd4df",
-                    backgroundColor: "#fff8fb",
-                  }}
+                  key={item.number}
+                  className="offshore-capability-card"
                 >
-                  {item.number}
-                </div>
+                  <div className="offshore-capability-circle" />
 
-                {/* Content */}
-                <div className="relative z-10 mt-4">
-                  <h3
-                    className="
-                      max-w-[210px]
-                      font-['Inter']
-                      text-[15px]
-                      font-semibold
-                      leading-[1.25]
-                      tracking-[-0.015em]
-                      text-[#1d293d]
-                    "
-                  >
-                    {item.title}
-                  </h3>
+                  {/* Number */}
+                  <div className="offshore-capability-number">
+                    {item.number}
+                  </div>
 
-                  <p
-                    className="
-                      mt-2.5
-                      font-['Inter']
-                      text-[12px]
-                      leading-[1.55]
-                      text-[#6a7689]
-                    "
-                  >
-                    {item.description}
-                  </p>
-                </div>
+                  {/* Content */}
+                  <div className="offshore-capability-content">
+                    <h3 className="offshore-capability-title">
+                      {item.title}
+                    </h3>
 
-                {/* Bottom */}
-                <div className="relative z-10 mt-auto pt-5">
-                  <div className="mb-3 h-px w-full bg-[#edf0f3]" />
+                    <p className="offshore-capability-description">
+                      {item.description}
+                    </p>
+                  </div>
 
-                  <div className="flex items-center justify-between gap-2">
-                    <span
-                      className="
-                        min-w-0
-                        font-['Inter']
-                        text-[9px]
-                        font-bold
-                        leading-[1.3]
-                        sm:text-[10.5px]
-                      "
-                      style={{ color: BRAND }}
-                    >
-                      {item.label}
-                    </span>
+                  {/* Bottom */}
+                  <div className="offshore-capability-bottom">
+                    <div className="offshore-capability-line" />
 
-                    <ArrowRight
-                      className="
-                        h-3.5
-                        w-3.5
-                        shrink-0
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
-                      style={{ color: "#aeb7c5" }}
-                    />
+                    <div className="offshore-capability-footer">
+                      <span className="offshore-capability-label">
+                        {item.label}
+                      </span>
+
+                      <ArrowRight className="offshore-capability-arrow" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
-
-      {/* =====================================================
-          END
-      ===================================================== */}
     </main>
   );
 }

@@ -21,19 +21,37 @@ export default function TransportationHeroSection() {
         .transportation-hero-section {
           width: 100%;
           overflow: hidden;
+
           background: #ffffff;
           color: ${INK};
+
           font-family: "Inter", sans-serif;
         }
 
+        .transportation-hero-section *,
+        .transportation-hero-section *::before,
+        .transportation-hero-section *::after {
+          box-sizing: border-box;
+        }
+
+        /* =========================================
+           MAIN CONTAINER
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ========================================= */
+
         .transportation-hero-container {
           width: 100%;
-          max-width: 1240px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 88px 32px;
+
+          padding: 88px 100px;
 
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+
           gap: 65px;
           align-items: center;
         }
@@ -54,6 +72,7 @@ export default function TransportationHeroSection() {
           margin: 0 0 20px;
 
           color: ${WINE};
+
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 700;
@@ -65,6 +84,7 @@ export default function TransportationHeroSection() {
           width: 6px;
           height: 6px;
           flex-shrink: 0;
+
           border-radius: 50%;
           background: ${WINE};
         }
@@ -78,6 +98,7 @@ export default function TransportationHeroSection() {
           margin: 0 0 25px;
 
           color: ${INK};
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: clamp(32px, 4vw, 48px);
           font-weight: 700;
@@ -86,7 +107,7 @@ export default function TransportationHeroSection() {
         }
 
         /* =========================================
-           SUBHEADING / DESCRIPTION
+           DESCRIPTION
         ========================================= */
 
         .transportation-hero-description {
@@ -94,9 +115,10 @@ export default function TransportationHeroSection() {
           margin: 0 0 15px;
 
           color: ${MUTED};
-          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-family: "Inter", sans-serif;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: 400;
           line-height: 1.8;
         }
 
@@ -152,20 +174,26 @@ export default function TransportationHeroSection() {
 
         .transportation-primary-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 22px rgba(122, 31, 61, 0.2);
+
+          box-shadow:
+            0 8px 22px rgba(122, 31, 61, 0.2);
         }
 
         .transportation-secondary-btn {
           border: 1px solid #d8d5d0;
+
           background: #ffffff;
           color: ${INK};
         }
 
         .transportation-secondary-btn:hover {
           transform: translateY(-2px);
+
           border-color: ${WINE};
           color: ${WINE};
-          box-shadow: 0 6px 18px rgba(30, 20, 25, 0.07);
+
+          box-shadow:
+            0 6px 18px rgba(30, 20, 25, 0.07);
         }
 
         /* =========================================
@@ -275,12 +303,34 @@ export default function TransportationHeroSection() {
         }
 
         /* =========================================
+           LARGE TABLET
+           Desktop 100px → Tablet 40px
+        ========================================= */
+
+        @media (max-width: 1200px) {
+          .transportation-hero-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 80px;
+            padding-bottom: 80px;
+
+            gap: 55px;
+          }
+        }
+
+        /* =========================================
            TABLET
         ========================================= */
 
         @media (max-width: 1050px) {
           .transportation-hero-container {
-            padding: 75px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 75px;
+            padding-bottom: 75px;
+
             gap: 45px;
           }
 
@@ -301,9 +351,14 @@ export default function TransportationHeroSection() {
         @media (max-width: 850px) {
           .transportation-hero-container {
             grid-template-columns: 1fr;
+
             gap: 42px;
 
-            padding: 70px 28px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
           }
 
           .transportation-hero-heading {
@@ -323,16 +378,23 @@ export default function TransportationHeroSection() {
 
         /* =========================================
            MOBILE
+           40px → 24px
         ========================================= */
 
         @media (max-width: 600px) {
           .transportation-hero-container {
-            padding: 55px 20px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 55px;
+            padding-bottom: 55px;
+
             gap: 34px;
           }
 
           .transportation-hero-label {
             margin-bottom: 15px;
+
             font-size: 10px;
             letter-spacing: 0.12em;
           }
@@ -363,6 +425,7 @@ export default function TransportationHeroSection() {
 
           .transportation-hero-actions {
             width: 100%;
+
             flex-direction: column;
             align-items: stretch;
           }
@@ -370,6 +433,7 @@ export default function TransportationHeroSection() {
           .transportation-primary-btn,
           .transportation-secondary-btn {
             width: 100%;
+
             min-height: 46px;
             padding: 12px 16px;
           }
@@ -396,11 +460,16 @@ export default function TransportationHeroSection() {
 
         /* =========================================
            SMALL MOBILE
+           24px → 16px
         ========================================= */
 
         @media (max-width: 400px) {
           .transportation-hero-container {
-            padding: 48px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 48px;
+            padding-bottom: 48px;
           }
 
           .transportation-hero-heading {
