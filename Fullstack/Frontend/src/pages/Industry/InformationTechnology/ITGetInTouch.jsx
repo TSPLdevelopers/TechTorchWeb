@@ -6,6 +6,7 @@ import {
   Cpu,
   ArrowLeftRight,
   ListChecks,
+  CircleCheck,
 } from "lucide-react";
 
 const BEETROOT = "#730042";
@@ -60,6 +61,8 @@ const ENGAGEMENT_STEPS = [
 export default function InformationTechnologyGetInTouch() {
   const navigate = useNavigate();
 
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -83,12 +86,30 @@ export default function InformationTechnologyGetInTouch() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.consent) {
-      alert("Please agree to be contacted regarding your enquiry.");
+    const form = e.currentTarget;
+
+    if (!form.checkValidity()) {
+      const invalidField = form.querySelector(":invalid");
+
+      if (invalidField) {
+        invalidField.focus();
+        form.reportValidity();
+
+        setTimeout(() => {
+          invalidField.blur();
+        }, 4000);
+      }
+
       return;
     }
 
     console.log("Technology enquiry:", formData);
+
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
 
   const scrollToForm = () => {
@@ -99,11 +120,130 @@ export default function InformationTechnologyGetInTouch() {
 
   return (
     <>
+      {showSuccess && (
+        <div className="it-success-dialog" role="alert">
+          <div className="it-success-dialog-icon">
+            <CircleCheck size={32} strokeWidth={2.2} />
+          </div>
+
+          <div className="it-success-dialog-content">
+            <p className="it-success-dialog-title">
+              Request Submitted
+            </p>
+            <p className="it-success-dialog-text">
+              Thank you! Our team will review your enquiry and get in touch with you.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            className="it-success-dialog-ok"
+            onClick={() => setShowSuccess(false)}
+            aria-label="Close success message"
+          >
+            OK
+          </button>
+        </div>
+      )}
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
         * {
           box-sizing: border-box;
+        }
+
+        /* ================================
+           SUCCESS DIALOG
+        ================================= */
+
+        .it-success-dialog {
+          position: fixed;
+          top: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          width: min(420px, calc(100% - 32px));
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 16px 20px;
+          background: #ffffff;
+          border: 1px solid #E5D3DC;
+          border-radius: 10px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+          font-family: "Inter", sans-serif;
+          animation: itSuccessDialogIn 0.25s ease-out;
+        }
+
+        .it-success-dialog-icon {
+          width: 44px;
+          height: 44px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #ffffff;
+          color: #22824D;
+        }
+
+        .it-success-dialog-content {
+          min-width: 0;
+        }
+
+        .it-success-dialog-title {
+          margin: 0;
+          color: #202022;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .it-success-dialog-text {
+          margin: 2px 0 0;
+          color: #65595E;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .it-success-dialog-ok {
+          width: 34px;
+          height: 34px;
+          margin-left: auto;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: none;
+          border-radius: 50%;
+          background: #730042;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .it-success-dialog-ok:hover {
+          background: #620038;
+          transform: scale(1.05);
+        }
+
+        @keyframes itSuccessDialogIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -12px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
         }
 
         :root {
@@ -527,7 +667,7 @@ export default function InformationTechnologyGetInTouch() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 26px;
-          font-weight: 600;
+          font-weight: 500;
           line-height: 1.25;
           letter-spacing: -0.6px;
         }
@@ -782,8 +922,8 @@ export default function InformationTechnologyGetInTouch() {
           color: #181818;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 30px;
-          font-weight: 800;
+          font-size: 28px;
+          font-weight: 600;
           line-height: 1.25;
           letter-spacing: -0.7px;
         }
@@ -793,7 +933,7 @@ export default function InformationTechnologyGetInTouch() {
 
           color: #777;
 
-          font-family: "Plus Jakarta Sans", sans-serif;
+          font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.65;
           font-weight: 500;
@@ -860,7 +1000,7 @@ export default function InformationTechnologyGetInTouch() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 16px;
-          font-weight: 700;
+          font-weight: 600;
           line-height: 1.4;
         }
 
@@ -870,7 +1010,7 @@ export default function InformationTechnologyGetInTouch() {
           color: #777;
 
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.7;
         }
 
@@ -908,7 +1048,7 @@ export default function InformationTechnologyGetInTouch() {
 
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 25px;
-          font-weight: 800;
+          font-weight: 600;
           line-height: 1.3;
           letter-spacing: -0.4px;
         }
@@ -920,8 +1060,8 @@ export default function InformationTechnologyGetInTouch() {
 
           color: rgba(255, 255, 255, 0.88);
 
-          font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 12.5px;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
           line-height: 1.7;
           font-weight: 500;
         }
@@ -945,8 +1085,8 @@ export default function InformationTechnologyGetInTouch() {
           background: #fff;
           color: var(--it-beetroot);
 
-          font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-family: "Inter",sans-serif;
+          font-size: 13px;
           font-weight: 700;
 
           cursor: pointer;
@@ -1032,6 +1172,30 @@ export default function InformationTechnologyGetInTouch() {
         ========================================= */
 
         @media (max-width: 650px) {
+          .it-success-dialog {
+            top: 16px;
+            width: calc(100% - 28px);
+            padding: 14px 16px;
+          }
+
+          .it-success-dialog-title {
+            font-size: 13px;
+          }
+
+          .it-success-dialog-text {
+            font-size: 11px;
+          }
+
+          .it-success-dialog-icon {
+            width: 40px;
+            height: 40px;
+          }
+
+          .it-success-dialog-icon svg {
+            width: 28px;
+            height: 28px;
+          }
+
           .it-hero {
             padding: 48px 18px 55px;
           }
