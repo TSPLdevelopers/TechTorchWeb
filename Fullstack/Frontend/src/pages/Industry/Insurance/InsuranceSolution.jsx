@@ -91,15 +91,9 @@ export default function InsuranceSolutionsGridSection() {
   return (
     <section className="insurance-solutions-section">
       <style>{`
-
-        /* =====================================================
-           FONTS
-        ===================================================== */
-
         @import url(
           'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
         );
-
 
         /* =====================================================
            MAIN SECTION
@@ -107,26 +101,36 @@ export default function InsuranceSolutionsGridSection() {
 
         .insurance-solutions-section {
           width: 100%;
+
           background: #f5f2ec;
           color: ${INK};
+
           font-family: "Inter", sans-serif;
+
           overflow: hidden;
+
+          box-sizing: border-box;
         }
 
+        .insurance-solutions-section *,
+        .insurance-solutions-section *::before,
+        .insurance-solutions-section *::after {
+          box-sizing: border-box;
+        }
 
         /* =====================================================
            CONTAINER
-           DESKTOP — 100px HORIZONTAL SPACING
+           DESKTOP — 100px
         ===================================================== */
 
         .insurance-solutions-container {
           width: 100%;
-          max-width: 1280px;
-          margin: 0 auto;
-          padding: 80px 100px;
-          box-sizing: border-box;
-        }
+          max-width: 1440px;
 
+          margin: 0 auto;
+
+          padding: 80px 100px;
+        }
 
         /* =====================================================
            HEADER
@@ -146,19 +150,19 @@ export default function InsuranceSolutionsGridSection() {
           margin-bottom: 56px;
         }
 
-
         .insurance-solutions-header-left {
           min-width: 0;
-          max-width: 580px;
-        }
 
+          max-width: 620px;
+        }
 
         .insurance-solutions-header-right {
           min-width: 0;
-          max-width: 570px;
+
+          max-width: 620px;
+
           padding-top: 8px;
         }
-
 
         /* =====================================================
            BADGE
@@ -185,14 +189,11 @@ export default function InsuranceSolutionsGridSection() {
           font-family: "Inter", sans-serif;
 
           font-size: 9px;
-
           line-height: 1.3;
-
           font-weight: 700;
 
           letter-spacing: 0.06em;
         }
-
 
         .insurance-solutions-badge-dot {
           width: 6px;
@@ -205,30 +206,26 @@ export default function InsuranceSolutionsGridSection() {
           background: ${WINE};
         }
 
-
         /* =====================================================
            MAIN HEADING
            PLUS JAKARTA SANS
         ===================================================== */
 
         .insurance-solutions-heading {
+          max-width: 620px;
+
           margin: 0;
 
-          max-width: 580px;
+          color: ${INK};
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
-          font-size: 38px;
-
+          font-size: 40px;
           line-height: 1.16;
-
           font-weight: 700;
 
           letter-spacing: -0.8px;
-
-          color: ${INK};
         }
-
 
         /* =====================================================
            SUBHEADING
@@ -236,45 +233,44 @@ export default function InsuranceSolutionsGridSection() {
         ===================================================== */
 
         .insurance-solutions-subheading {
+          max-width: 620px;
+
           margin: 0;
+
+          color: ${MUTED};
 
           font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 14px;
-
           line-height: 1.75;
-
           font-weight: 500;
-
-          color: ${MUTED};
         }
-
 
         /* =====================================================
            CARDS GRID
         ===================================================== */
 
         .insurance-solutions-grid {
+          width: 100%;
+
           display: grid;
 
           grid-template-columns:
             repeat(3, minmax(0, 1fr));
 
           gap: 18px;
-
-          width: 100%;
         }
-
 
         /* =====================================================
            CARD
-           INTER
         ===================================================== */
 
         .insurance-solution-card {
+          position: relative;
+
           min-width: 0;
 
-          padding: 23px;
+          padding: 24px;
 
           background: #ffffff;
 
@@ -282,17 +278,16 @@ export default function InsuranceSolutionsGridSection() {
 
           border-radius: 13px;
 
-          box-sizing: border-box;
-
           box-shadow:
             0 1px 3px rgba(0, 0, 0, 0.05);
+
+          overflow: hidden;
 
           transition:
             transform 0.25s ease,
             box-shadow 0.25s ease,
             border-color 0.25s ease;
         }
-
 
         .insurance-solution-card:hover {
           transform: translateY(-4px);
@@ -302,7 +297,6 @@ export default function InsuranceSolutionsGridSection() {
           box-shadow:
             0 12px 28px rgba(27, 27, 42, 0.08);
         }
-
 
         /* =====================================================
            CARD ICON
@@ -316,7 +310,6 @@ export default function InsuranceSolutionsGridSection() {
           display: flex;
 
           align-items: center;
-
           justify-content: center;
 
           margin-bottom: 17px;
@@ -328,26 +321,22 @@ export default function InsuranceSolutionsGridSection() {
           color: ${WINE};
         }
 
-
         /* =====================================================
            CARD TITLE
-           INTER
+           PLUS JAKARTA SANS
         ===================================================== */
 
         .insurance-solution-title {
           margin: 0 0 9px;
 
-          font-family: "Inter", sans-serif;
+          color: ${INK};
+
+          font-family: "Plus Jakarta Sans", sans-serif;
 
           font-size: 14px;
-
           line-height: 1.45;
-
           font-weight: 700;
-
-          color: ${INK};
         }
-
 
         /* =====================================================
            CARD BODY
@@ -357,17 +346,14 @@ export default function InsuranceSolutionsGridSection() {
         .insurance-solution-body {
           margin: 0 0 17px;
 
+          color: ${MUTED};
+
           font-family: "Inter", sans-serif;
 
           font-size: 11.5px;
-
           line-height: 1.7;
-
           font-weight: 400;
-
-          color: ${MUTED};
         }
-
 
         /* =====================================================
            BULLETS
@@ -382,12 +368,10 @@ export default function InsuranceSolutionsGridSection() {
           gap: 7px;
 
           margin: 0;
-
           padding: 0;
 
           list-style: none;
         }
-
 
         .insurance-solution-list-item {
           display: flex;
@@ -396,17 +380,14 @@ export default function InsuranceSolutionsGridSection() {
 
           gap: 8px;
 
+          color: ${INK};
+
           font-family: "Inter", sans-serif;
 
           font-size: 11px;
-
           line-height: 1.5;
-
           font-weight: 500;
-
-          color: ${INK};
         }
-
 
         .insurance-solution-list-dot {
           width: 5px;
@@ -421,25 +402,27 @@ export default function InsuranceSolutionsGridSection() {
           background: ${WINE};
         }
 
-
         /* =====================================================
-           LARGE TABLET — 40px HORIZONTAL SPACING
+           LARGE TABLET — 40px
         ===================================================== */
 
-        @media (max-width: 1199px) {
-
+        @media (max-width: 1200px) {
           .insurance-solutions-container {
-            padding: 64px 40px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 72px;
+            padding-bottom: 72px;
           }
 
           .insurance-solutions-header {
-            gap: 48px;
+            gap: 50px;
 
-            margin-bottom: 48px;
+            margin-bottom: 50px;
           }
 
           .insurance-solutions-heading {
-            font-size: 34px;
+            font-size: 36px;
           }
 
           .insurance-solutions-subheading {
@@ -447,24 +430,25 @@ export default function InsuranceSolutionsGridSection() {
           }
 
           .insurance-solution-card {
-            padding: 20px;
+            padding: 21px;
           }
 
           .insurance-solutions-grid {
             gap: 16px;
           }
-
         }
 
-
         /* =====================================================
-           TABLET — 40px HORIZONTAL SPACING
+           TABLET — 40px
         ===================================================== */
 
         @media (max-width: 900px) {
-
           .insurance-solutions-container {
-            padding: 58px 40px;
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 62px;
+            padding-bottom: 62px;
           }
 
           .insurance-solutions-header {
@@ -472,12 +456,12 @@ export default function InsuranceSolutionsGridSection() {
 
             gap: 18px;
 
-            margin-bottom: 38px;
+            margin-bottom: 40px;
           }
 
           .insurance-solutions-header-left,
           .insurance-solutions-header-right {
-            max-width: 720px;
+            max-width: 760px;
           }
 
           .insurance-solutions-header-right {
@@ -500,18 +484,19 @@ export default function InsuranceSolutionsGridSection() {
 
             gap: 16px;
           }
-
         }
 
-
         /* =====================================================
-           MOBILE — 24px HORIZONTAL SPACING
+           MOBILE — 24px
         ===================================================== */
 
         @media (max-width: 600px) {
-
           .insurance-solutions-container {
-            padding: 48px 24px;
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 50px;
+            padding-bottom: 50px;
           }
 
           .insurance-solutions-header {
@@ -587,18 +572,19 @@ export default function InsuranceSolutionsGridSection() {
           .insurance-solution-list-item {
             font-size: 10.5px;
           }
-
         }
 
-
         /* =====================================================
-           SMALL MOBILE — 16px HORIZONTAL SPACING
+           SMALL MOBILE — 16px
         ===================================================== */
 
         @media (max-width: 400px) {
-
           .insurance-solutions-container {
-            padding: 42px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 42px;
+            padding-bottom: 42px;
           }
 
           .insurance-solutions-heading {
@@ -628,18 +614,19 @@ export default function InsuranceSolutionsGridSection() {
           .insurance-solution-list-item {
             font-size: 10.2px;
           }
-
         }
 
-
         /* =====================================================
-           VERY SMALL MOBILE — 16px HORIZONTAL SPACING
+           VERY SMALL MOBILE — 16px
         ===================================================== */
 
         @media (max-width: 340px) {
-
           .insurance-solutions-container {
-            padding: 36px 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 36px;
+            padding-bottom: 36px;
           }
 
           .insurance-solutions-heading {
@@ -661,24 +648,18 @@ export default function InsuranceSolutionsGridSection() {
           .insurance-solution-list-item {
             font-size: 10px;
           }
-
         }
-
 
         /* =====================================================
            REDUCED MOTION
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
-
           .insurance-solution-card {
             transition: none;
           }
-
         }
-
       `}</style>
-
 
       {/* =====================================================
           MAIN CONTAINER
@@ -697,11 +678,9 @@ export default function InsuranceSolutionsGridSection() {
           <div className="insurance-solutions-header-left">
 
             <span className="insurance-solutions-badge">
-
               <span className="insurance-solutions-badge-dot" />
 
               INSURANCE SOLUTIONS
-
             </span>
 
             <h2 className="insurance-solutions-heading">
@@ -709,7 +688,6 @@ export default function InsuranceSolutionsGridSection() {
             </h2>
 
           </div>
-
 
           {/* RIGHT */}
 
@@ -726,7 +704,6 @@ export default function InsuranceSolutionsGridSection() {
 
         </div>
 
-
         {/* =================================================
             SOLUTIONS CARDS
         ================================================= */}
@@ -740,7 +717,6 @@ export default function InsuranceSolutionsGridSection() {
               body,
               bullets,
             }) => (
-
               <div
                 key={title}
                 className="insurance-solution-card"
@@ -749,14 +725,11 @@ export default function InsuranceSolutionsGridSection() {
                 {/* ICON */}
 
                 <span className="insurance-solution-icon">
-
                   <Icon
                     size={18}
                     strokeWidth={1.8}
                   />
-
                 </span>
-
 
                 {/* TITLE */}
 
@@ -764,46 +737,38 @@ export default function InsuranceSolutionsGridSection() {
                   {title}
                 </h3>
 
-
                 {/* BODY */}
 
                 <p className="insurance-solution-body">
                   {body}
                 </p>
 
-
                 {/* BULLETS */}
 
                 <ul className="insurance-solution-list">
 
                   {bullets.map((bullet) => (
-
                     <li
                       key={bullet}
                       className="insurance-solution-list-item"
                     >
-
                       <span className="insurance-solution-list-dot" />
 
                       <span>
                         {bullet}
                       </span>
-
                     </li>
-
                   ))}
 
                 </ul>
 
               </div>
-
             )
           )}
 
         </div>
 
       </div>
-
     </section>
   );
 }

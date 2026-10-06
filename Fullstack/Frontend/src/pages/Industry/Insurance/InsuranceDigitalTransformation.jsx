@@ -65,13 +65,14 @@ export default function ModernizeTechnologySection() {
 
         /* =====================================================
            CONTAINER
+           DESKTOP — 100px HORIZONTAL SPACING
         ===================================================== */
 
         .modernize-technology-container {
           width: 100%;
-          max-width: 1280px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 72px 100px;
+          padding: 80px 100px;
           box-sizing: border-box;
         }
 
@@ -82,8 +83,11 @@ export default function ModernizeTechnologySection() {
 
         .modernize-technology-grid {
           display: grid;
-          grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-          gap: 64px;
+          grid-template-columns:
+            minmax(0, 0.95fr)
+            minmax(0, 1.05fr);
+
+          gap: 70px;
           align-items: center;
         }
 
@@ -158,7 +162,7 @@ export default function ModernizeTechnologySection() {
 
 
         /* =====================================================
-           SUBHEADING / DESCRIPTION
+           DESCRIPTION
            PLUS JAKARTA SANS
         ===================================================== */
 
@@ -238,9 +242,10 @@ export default function ModernizeTechnologySection() {
         .modernize-features-grid {
           display: grid;
 
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
 
-          gap: 17px;
+          gap: 18px;
 
           min-width: 0;
         }
@@ -254,7 +259,7 @@ export default function ModernizeTechnologySection() {
         .modernize-feature-card {
           min-width: 0;
 
-          padding: 22px;
+          padding: 23px;
 
           border-radius: 13px;
 
@@ -282,7 +287,6 @@ export default function ModernizeTechnologySection() {
 
         /* =====================================================
            FEATURE ICON
-           INTER
         ===================================================== */
 
         .modernize-feature-icon {
@@ -343,18 +347,18 @@ export default function ModernizeTechnologySection() {
            TABLET — 40px HORIZONTAL SPACING
         ===================================================== */
 
-        @media (max-width: 1199px) {
+        @media (max-width: 1200px) {
 
           .modernize-technology-container {
-            padding: 60px 40px;
+            padding: 72px 40px;
           }
 
           .modernize-technology-grid {
-            gap: 48px;
+            gap: 52px;
           }
 
           .modernize-heading {
-            font-size: 34px;
+            font-size: 35px;
           }
 
           .modernize-description {
@@ -362,60 +366,58 @@ export default function ModernizeTechnologySection() {
           }
 
           .modernize-feature-card {
-            padding: 20px;
+            padding: 21px;
           }
-
         }
 
 
         /* =====================================================
-           TABLET STACK
+           TABLET STACK — 40px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 900px) {
 
           .modernize-technology-container {
-            padding: 55px 40px;
+            padding: 64px 40px;
           }
 
           .modernize-technology-grid {
             grid-template-columns: 1fr;
-            gap: 42px;
+            gap: 44px;
           }
 
           .modernize-content {
-            max-width: 720px;
+            max-width: 760px;
           }
 
           .modernize-heading {
-            max-width: 700px;
+            max-width: 720px;
             font-size: 34px;
           }
 
           .modernize-description {
-            max-width: 700px;
+            max-width: 720px;
           }
 
           .modernize-features-grid {
-            max-width: 720px;
             width: 100%;
+            max-width: 760px;
           }
-
         }
 
 
         /* =====================================================
-           SMALL TABLET
+           SMALL TABLET — 40px HORIZONTAL SPACING
         ===================================================== */
 
         @media (max-width: 767px) {
 
           .modernize-technology-container {
-            padding: 50px 24px;
+            padding: 56px 40px;
           }
 
           .modernize-technology-grid {
-            gap: 36px;
+            gap: 38px;
           }
 
           .modernize-heading {
@@ -427,9 +429,8 @@ export default function ModernizeTechnologySection() {
           }
 
           .modernize-feature-card {
-            padding: 19px;
+            padding: 20px;
           }
-
         }
 
 
@@ -440,7 +441,7 @@ export default function ModernizeTechnologySection() {
         @media (max-width: 600px) {
 
           .modernize-technology-container {
-            padding: 48px 24px;
+            padding: 50px 24px;
           }
 
           .modernize-technology-grid {
@@ -508,7 +509,6 @@ export default function ModernizeTechnologySection() {
             font-size: 11.5px;
             line-height: 1.65;
           }
-
         }
 
 
@@ -519,7 +519,7 @@ export default function ModernizeTechnologySection() {
         @media (max-width: 480px) {
 
           .modernize-technology-container {
-            padding: 42px 16px;
+            padding: 44px 16px;
           }
 
           .modernize-heading {
@@ -549,7 +549,6 @@ export default function ModernizeTechnologySection() {
           .modernize-feature-body {
             font-size: 11px;
           }
-
         }
 
 
@@ -560,7 +559,7 @@ export default function ModernizeTechnologySection() {
         @media (max-width: 340px) {
 
           .modernize-technology-container {
-            padding: 36px 16px;
+            padding: 38px 16px;
           }
 
           .modernize-heading {
@@ -578,7 +577,6 @@ export default function ModernizeTechnologySection() {
           .modernize-feature-body {
             font-size: 10.5px;
           }
-
         }
 
 
@@ -592,11 +590,20 @@ export default function ModernizeTechnologySection() {
           .modernize-feature-card {
             transition: none;
           }
+        }
 
+
+        /* =====================================================
+           BOX SIZING SAFETY
+        ===================================================== */
+
+        .modernize-technology-section *,
+        .modernize-technology-section *::before,
+        .modernize-technology-section *::after {
+          box-sizing: border-box;
         }
 
       `}</style>
-
 
       {/* =====================================================
           MAIN CONTAINER
@@ -605,7 +612,6 @@ export default function ModernizeTechnologySection() {
       <div className="modernize-technology-container">
 
         <div className="modernize-technology-grid">
-
 
           {/* =================================================
               LEFT CONTENT
@@ -628,7 +634,7 @@ export default function ModernizeTechnologySection() {
             </h2>
 
 
-            {/* SUBHEADING / DESCRIPTION */}
+            {/* DESCRIPTION */}
 
             <p className="modernize-description">
               Digital transformation should address real business
