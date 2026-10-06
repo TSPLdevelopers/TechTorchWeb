@@ -90,403 +90,945 @@ const cards = [
 
 export default function ITAugmentationServices() {
   return (
-    <section className="w-full bg-[#f7f5f2]">
-      <div
-        className="
-          mx-auto
-          w-full
-          max-w-6xl
-          px-4
-          py-10
-          sm:px-6
-          sm:py-12
-          md:px-8
-          md:py-16
-          lg:px-10
-          lg:py-20
-        "
-      >
-        {/* =====================================================
-            HEADER
-        ===================================================== */}
+    <>
+      <section className="it-augmentation-section">
+        <div className="it-augmentation-container">
 
-        <div className="mb-8 max-w-3xl sm:mb-10 md:mb-12">
-          {/* Eyebrow */}
-          <span
-            className="
-              mb-3
-              inline-flex
-              rounded-md
-              px-2.5
-              py-1
-              font-['Inter']
-              text-[8px]
-              font-bold
-              uppercase
-              tracking-[0.1em]
-              sm:mb-4
-              sm:text-[9px]
-              md:text-[10px]
-            "
-            style={{
-              backgroundColor: "#f9e8ef",
-              color: BRAND_COLOR,
-            }}
-          >
-            Flexible Engagement Capabilities
-          </span>
+          {/* =================================================
+              HEADER
+          ================================================= */}
 
-          {/* Heading */}
-          <h1
-            className="
-              mb-3
-              font-['Plus_Jakarta_Sans']
-              text-[25px]
-              font-bold
-              leading-[1.2]
-              tracking-[-0.025em]
-              text-[#1c1c1c]
-              sm:text-[30px]
-              md:text-[34px]
-              lg:text-[38px]
-            "
-          >
-            Our IT Augmentation Services
-          </h1>
+          <div className="it-augmentation-header">
+            <span className="it-augmentation-eyebrow">
+              Flexible Engagement Capabilities
+            </span>
 
-          {/* Subheading */}
-          <p
-            className="
-              max-w-2xl
-              font-['Plus_Jakarta_Sans']
-              text-[11px]
-              font-medium
-              leading-[1.7]
-              text-neutral-500
-              sm:text-[12px]
-              md:text-[13px]
-              lg:text-[14px]
-            "
-          >
-            With a flexible approach to technology resourcing, businesses can
-            respond to changing workloads, strengthen project teams, and bring
-            additional technical capabilities into their existing working
-            environment.
-          </p>
-        </div>
+            <h1 className="it-augmentation-heading">
+              Our IT Augmentation Services
+            </h1>
 
-        {/* =====================================================
-            SERVICE CARDS
-        ===================================================== */}
+            <p className="it-augmentation-subheading">
+              With a flexible approach to technology resourcing, businesses can
+              respond to changing workloads, strengthen project teams, and bring
+              additional technical capabilities into their existing working
+              environment.
+            </p>
+          </div>
 
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-4
-            sm:grid-cols-2
-            sm:gap-5
-            lg:grid-cols-3
-            lg:gap-6
-          "
-        >
-          {cards.map((card) => (
-            <Link
-              key={card.number}
-              to={card.path}
-              className="
-                group
-                relative
-                flex
-                min-h-[220px]
-                flex-col
-                overflow-hidden
-                rounded-xl
-                border
-                border-neutral-200
-                bg-white
-                p-5
-                shadow-[0_3px_15px_rgba(0,0,0,0.03)]
-                transition-all
-                duration-300
-                hover:-translate-y-1
-                hover:shadow-[0_10px_28px_rgba(115,0,36,0.09)]
-                sm:min-h-[235px]
-                sm:p-6
-              "
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              {/* Top accent */}
-              <div
-                className="
-                  absolute
-                  left-0
-                  top-0
-                  h-1
-                  w-full
-                  opacity-0
-                  transition-opacity
-                  duration-300
-                  group-hover:opacity-100
-                "
-                style={{
-                  backgroundColor: BRAND_COLOR,
-                }}
-              />
+          {/* =================================================
+              SERVICE CARDS
+          ================================================= */}
 
-              {/* Card Top */}
-              <div className="mb-5 flex items-center justify-between gap-3">
-                {/* Number */}
-                <span
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-lg
-                    font-['Inter']
-                    text-[10px]
-                    font-bold
-                    text-white
-                    sm:h-9
-                    sm:w-9
-                    sm:text-[11px]
-                  "
-                  style={{
-                    backgroundColor: BRAND_COLOR,
-                  }}
-                >
-                  {card.number}
+          <div className="it-augmentation-grid">
+            {cards.map((card) => (
+              <Link
+                key={card.number}
+                to={card.path}
+                className="it-service-card"
+              >
+                {/* Top Accent */}
+
+                <div className="it-service-card-accent" />
+
+                {/* Card Top */}
+
+                <div className="it-service-card-top">
+                  <span className="it-service-number">
+                    {card.number}
+                  </span>
+
+                  <span className="it-service-tag">
+                    {card.tag}
+                  </span>
+                </div>
+
+                {/* Content */}
+
+                <div className="it-service-card-content">
+                  <h3 className="it-service-title">
+                    {card.title}
+                  </h3>
+
+                  <p className="it-service-description">
+                    {card.description}
+                  </p>
+                </div>
+
+                {/* Bottom Link */}
+
+                <div className="it-service-card-bottom">
+                  <span className="it-service-link">
+                    {card.linkLabel}
+
+                    <ArrowRight className="it-service-arrow" />
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* =================================================
+              OFFSHORE DEVELOPMENT TEAMS
+          ================================================= */}
+
+          <div className="it-offshore-card">
+            <div className="it-offshore-content">
+
+              {/* Left Content */}
+
+              <div className="it-offshore-left">
+                <span className="it-offshore-number">
+                  10
                 </span>
 
-                {/* Tag */}
-                <span
-                  className="
-                    rounded-full
-                    border
-                    px-2.5
-                    py-1
-                    font-['Inter']
-                    text-[8px]
-                    font-semibold
-                    tracking-[0.04em]
-                    sm:text-[9px]
-                  "
-                  style={{
-                    borderColor: "#ead5df",
-                    backgroundColor: "#fcf5f8",
-                    color: BRAND_COLOR,
-                  }}
-                >
-                  {card.tag}
-                </span>
+                <div className="it-offshore-copy">
+                  <span className="it-offshore-tag">
+                    Global Scale
+                  </span>
+
+                  <h3 className="it-offshore-title">
+                    Offshore Development Teams
+                  </h3>
+
+                  <p className="it-offshore-description">
+                    Extended development capabilities through offshore
+                    technology teams.
+                  </p>
+                </div>
               </div>
 
-              {/* Title */}
-              <h3
-                className="
-                  mb-2.5
-                  font-['Plus_Jakarta_Sans']
-                  text-[14px]
-                  font-bold
-                  leading-[1.4]
-                  text-[#1c1c1c]
-                  sm:text-[15px]
-                "
+              {/* Link */}
+
+              <a
+                href="/offshore-teams"
+                className="it-offshore-link"
               >
-                {card.title}
-              </h3>
+                <span>Global Delivery Centers</span>
 
-              {/* Description */}
-              <p
-                className="
-                  mb-5
-                  flex-1
-                  font-['Inter']
-                  text-[11px]
-                  leading-[1.7]
-                  text-neutral-500
-                  sm:text-[12px]
-                  md:text-[12.5px]
-                "
-              >
-                {card.description}
-              </p>
-
-              {/* Bottom Link */}
-              <div className="border-t border-neutral-100 pt-3">
-                <span
-                  className="
-                    inline-flex
-                    items-center
-                    gap-1
-                    font-['Inter']
-                    text-[10px]
-                    font-semibold
-                    transition-all
-                    duration-300
-                    group-hover:gap-2
-                    sm:text-[11px]
-                  "
-                  style={{
-                    color: BRAND_COLOR,
-                  }}
-                >
-                  {card.linkLabel}
-
-                  <ArrowRight className="h-3 w-3" />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* =====================================================
-            OFFSHORE DEVELOPMENT TEAMS
-        ===================================================== */}
-
-        <div
-          className="
-            mt-4
-            overflow-hidden
-            rounded-xl
-            border
-            border-neutral-200
-            bg-white
-            shadow-[0_3px_15px_rgba(0,0,0,0.03)]
-            sm:mt-5
-          "
-        >
-          <div
-            className="
-              flex
-              flex-col
-              gap-4
-              px-5
-              py-5
-              sm:px-6
-              sm:py-6
-              md:flex-row
-              md:items-center
-              md:justify-between
-              md:gap-6
-            "
-          >
-            {/* Left */}
-            <div className="flex items-start gap-3 sm:items-center sm:gap-4">
-              {/* Number */}
-              <span
-                className="
-                  flex
-                  h-8
-                  w-8
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-lg
-                  font-['Inter']
-                  text-[10px]
-                  font-bold
-                  text-white
-                  sm:h-9
-                  sm:w-9
-                  sm:text-[11px]
-                "
-                style={{
-                  backgroundColor: BRAND_COLOR,
-                }}
-              >
-                10
-              </span>
-
-              <div>
-                {/* Tag */}
-                <span
-                  className="
-                    mb-1
-                    block
-                    font-['Inter']
-                    text-[8px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.08em]
-                    sm:text-[9px]
-                  "
-                  style={{
-                    color: BRAND_COLOR,
-                  }}
-                >
-                  Global Scale
-                </span>
-
-                {/* Title */}
-                <h3
-                  className="
-                    font-['Plus_Jakarta_Sans']
-                    text-[13px]
-                    font-bold
-                    leading-snug
-                    text-[#1c1c1c]
-                    sm:text-[14px]
-                    md:text-[15px]
-                  "
-                >
-                  Offshore Development Teams
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="
-                    mt-1.5
-                    max-w-2xl
-                    font-['Inter']
-                    text-[10.5px]
-                    leading-[1.6]
-                    text-neutral-500
-                    sm:text-[11px]
-                    md:text-[12px]
-                  "
-                >
-                  Extended development capabilities through offshore
-                  technology teams.
-                </p>
-              </div>
+                <ArrowRight className="it-offshore-arrow" />
+              </a>
             </div>
-
-            {/* Link */}
-            <a
-              href="/offshore-teams"
-              className="
-                ml-11
-                inline-flex
-                items-center
-                gap-1
-                whitespace-nowrap
-                font-['Inter']
-                text-[10px]
-                font-semibold
-                transition-all
-                duration-300
-                hover:gap-2
-                sm:text-[11px]
-                md:ml-0
-              "
-              style={{
-                color: BRAND_COLOR,
-              }}
-            >
-              Global Delivery Centers
-
-              <ArrowRight className="h-3 w-3" />
-            </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* =========================================================
+          STYLES
+      ========================================================= */}
+
+      <style>{`
+        /* =====================================================
+           MAIN SECTION
+        ===================================================== */
+
+        .it-augmentation-section {
+          width: 100%;
+          overflow: hidden;
+
+          background: #f7f5f2;
+
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .it-augmentation-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .it-augmentation-header {
+          width: 100%;
+          max-width: 850px;
+
+          margin-bottom: 45px;
+        }
+
+        /* =====================================================
+           EYEBROW
+        ===================================================== */
+
+        .it-augmentation-eyebrow {
+          display: inline-flex;
+          align-items: center;
+
+          margin-bottom: 16px;
+
+          padding: 6px 11px;
+
+          border-radius: 6px;
+
+          background: #f9e8ef;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+
+          color: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        .it-augmentation-heading {
+          margin: 0 0 15px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+
+          color: #1c1c1c;
+        }
+
+        /* =====================================================
+           SUBHEADING
+        ===================================================== */
+
+        .it-augmentation-subheading {
+          max-width: 780px;
+
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           SERVICE GRID
+        ===================================================== */
+
+        .it-augmentation-grid {
+          display: grid;
+
+          grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+          gap: 24px;
+
+          width: 100%;
+        }
+
+        /* =====================================================
+           SERVICE CARD
+        ===================================================== */
+
+        .it-service-card {
+          position: relative;
+
+          display: flex;
+          flex-direction: column;
+
+          min-width: 0;
+          min-height: 245px;
+
+          overflow: hidden;
+
+          padding: 25px;
+
+          border: 1px solid #e5e2df;
+          border-radius: 13px;
+
+          background: #ffffff;
+
+          text-decoration: none;
+          color: inherit;
+
+          box-shadow:
+            0 3px 15px rgba(0, 0, 0, 0.025);
+
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+        }
+
+        .it-service-card:hover {
+          transform: translateY(-5px);
+
+          border-color: #ead4de;
+
+          box-shadow:
+            0 14px 35px rgba(115, 0, 36, 0.09);
+        }
+
+        /* =====================================================
+           TOP ACCENT
+        ===================================================== */
+
+        .it-service-card-accent {
+          position: absolute;
+
+          top: 0;
+          left: 0;
+
+          width: 100%;
+          height: 3px;
+
+          background: ${BRAND_COLOR};
+
+          opacity: 0;
+
+          transition: opacity 0.3s ease;
+        }
+
+        .it-service-card:hover
+          .it-service-card-accent {
+          opacity: 1;
+        }
+
+        /* =====================================================
+           CARD TOP
+        ===================================================== */
+
+        .it-service-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 12px;
+
+          margin-bottom: 24px;
+        }
+
+        /* =====================================================
+           NUMBER
+        ===================================================== */
+
+        .it-service-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 37px;
+          height: 37px;
+
+          flex-shrink: 0;
+
+          border-radius: 9px;
+
+          background: ${BRAND_COLOR};
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+
+          color: #ffffff;
+        }
+
+        /* =====================================================
+           TAG
+        ===================================================== */
+
+        .it-service-tag {
+          display: inline-flex;
+          align-items: center;
+
+          padding: 5px 9px;
+
+          border: 1px solid #ead5df;
+          border-radius: 999px;
+
+          background: #fcf5f8;
+
+          font-family: "Inter", sans-serif;
+          font-size: 8.5px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.04em;
+
+          color: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
+
+        .it-service-card-content {
+          flex: 1;
+        }
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
+        .it-service-title {
+          margin: 0 0 9px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 1.4;
+
+          color: #1c1c1c;
+        }
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .it-service-description {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.7;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           CARD BOTTOM
+        ===================================================== */
+
+        .it-service-card-bottom {
+          margin-top: 22px;
+
+          padding-top: 13px;
+
+          border-top: 1px solid #eeeeee;
+        }
+
+        .it-service-link {
+          display: inline-flex;
+          align-items: center;
+
+          gap: 5px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          font-weight: 600;
+          line-height: 1.4;
+
+          color: ${BRAND_COLOR};
+
+          transition: gap 0.3s ease;
+        }
+
+        .it-service-card:hover
+          .it-service-link {
+          gap: 9px;
+        }
+
+        .it-service-arrow {
+          width: 13px;
+          height: 13px;
+
+          flex-shrink: 0;
+        }
+
+        /* =====================================================
+           OFFSHORE CARD
+        ===================================================== */
+
+        .it-offshore-card {
+          width: 100%;
+
+          margin-top: 24px;
+
+          overflow: hidden;
+
+          border: 1px solid #e5e2df;
+          border-radius: 13px;
+
+          background: #ffffff;
+
+          box-shadow:
+            0 3px 15px rgba(0, 0, 0, 0.025);
+        }
+
+        .it-offshore-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 35px;
+
+          padding: 25px;
+        }
+
+        /* =====================================================
+           OFFSHORE LEFT
+        ===================================================== */
+
+        .it-offshore-left {
+          display: flex;
+          align-items: center;
+
+          min-width: 0;
+
+          gap: 15px;
+        }
+
+        .it-offshore-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 37px;
+          height: 37px;
+
+          flex-shrink: 0;
+
+          border-radius: 9px;
+
+          background: ${BRAND_COLOR};
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+
+          color: #ffffff;
+        }
+
+        .it-offshore-copy {
+          min-width: 0;
+        }
+
+        /* =====================================================
+           OFFSHORE TAG
+        ===================================================== */
+
+        .it-offshore-tag {
+          display: block;
+
+          margin-bottom: 4px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+
+          color: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           OFFSHORE TITLE
+        ===================================================== */
+
+        .it-offshore-title {
+          margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 1.4;
+
+          color: #1c1c1c;
+        }
+
+        /* =====================================================
+           OFFSHORE DESCRIPTION
+        ===================================================== */
+
+        .it-offshore-description {
+          max-width: 700px;
+
+          margin: 5px 0 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.6;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           OFFSHORE LINK
+        ===================================================== */
+
+        .it-offshore-link {
+          display: inline-flex;
+          align-items: center;
+
+          flex-shrink: 0;
+
+          gap: 5px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 600;
+          line-height: 1.4;
+
+          color: ${BRAND_COLOR};
+
+          text-decoration: none;
+
+          transition: gap 0.3s ease;
+        }
+
+        .it-offshore-link:hover {
+          gap: 9px;
+        }
+
+        .it-offshore-arrow {
+          width: 13px;
+          height: 13px;
+        }
+
+        /* =====================================================
+           TABLET — 1200px
+           40px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+          .it-augmentation-section {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
+          }
+
+          .it-augmentation-heading {
+            font-size: 34px;
+          }
+
+          .it-augmentation-subheading {
+            font-size: 13px;
+          }
+
+          .it-augmentation-grid {
+            gap: 20px;
+          }
+
+          .it-service-card {
+            min-height: 235px;
+
+            padding: 22px;
+          }
+
+          .it-service-title {
+            font-size: 14px;
+          }
+
+          .it-service-description {
+            font-size: 11.5px;
+          }
+        }
+
+        /* =====================================================
+           TABLET — 900px
+        ===================================================== */
+
+        @media (max-width: 900px) {
+          .it-augmentation-section {
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .it-augmentation-header {
+            margin-bottom: 35px;
+          }
+
+          .it-augmentation-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+          }
+
+          .it-offshore-content {
+            align-items: flex-start;
+          }
+
+          .it-offshore-link {
+            margin-top: 4px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE — 700px
+           24px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 700px) {
+          .it-augmentation-section {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
+          }
+
+          .it-augmentation-header {
+            margin-bottom: 30px;
+          }
+
+          .it-augmentation-eyebrow {
+            margin-bottom: 13px;
+
+            padding: 5px 9px;
+
+            font-size: 8px;
+          }
+
+          .it-augmentation-heading {
+            margin-bottom: 12px;
+
+            font-size: 28px;
+          }
+
+          .it-augmentation-subheading {
+            font-size: 11px;
+            line-height: 1.7;
+          }
+
+          .it-augmentation-grid {
+            grid-template-columns: 1fr;
+
+            gap: 15px;
+          }
+
+          .it-service-card {
+            min-height: 215px;
+
+            padding: 20px;
+          }
+
+          .it-service-card-top {
+            margin-bottom: 20px;
+          }
+
+          .it-service-number {
+            width: 34px;
+            height: 34px;
+
+            font-size: 10px;
+          }
+
+          .it-service-tag {
+            font-size: 8px;
+          }
+
+          .it-service-title {
+            font-size: 14px;
+          }
+
+          .it-service-description {
+            font-size: 10.5px;
+          }
+
+          .it-service-card-bottom {
+            margin-top: 18px;
+          }
+
+          .it-service-link {
+            font-size: 10px;
+          }
+
+          .it-offshore-card {
+            margin-top: 15px;
+          }
+
+          .it-offshore-content {
+            flex-direction: column;
+            align-items: flex-start;
+
+            gap: 20px;
+
+            padding: 20px;
+          }
+
+          .it-offshore-left {
+            align-items: flex-start;
+
+            gap: 12px;
+          }
+
+          .it-offshore-number {
+            width: 34px;
+            height: 34px;
+
+            font-size: 10px;
+          }
+
+          .it-offshore-tag {
+            font-size: 8px;
+          }
+
+          .it-offshore-title {
+            font-size: 14px;
+          }
+
+          .it-offshore-description {
+            font-size: 10.5px;
+          }
+
+          .it-offshore-link {
+            margin-left: 46px;
+
+            font-size: 10px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE — 480px
+           16px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 480px) {
+          .it-augmentation-section {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 45px;
+            padding-bottom: 45px;
+          }
+
+          .it-augmentation-header {
+            margin-bottom: 25px;
+          }
+
+          .it-augmentation-eyebrow {
+            margin-bottom: 11px;
+
+            font-size: 7px;
+          }
+
+          .it-augmentation-heading {
+            font-size: 24px;
+          }
+
+          .it-augmentation-subheading {
+            font-size: 10px;
+          }
+
+          .it-augmentation-grid {
+            gap: 13px;
+          }
+
+          .it-service-card {
+            min-height: 205px;
+
+            padding: 18px;
+          }
+
+          .it-service-card-top {
+            margin-bottom: 18px;
+          }
+
+          .it-service-number {
+            width: 32px;
+            height: 32px;
+
+            border-radius: 8px;
+
+            font-size: 9px;
+          }
+
+          .it-service-tag {
+            padding: 4px 8px;
+
+            font-size: 7.5px;
+          }
+
+          .it-service-title {
+            font-size: 13px;
+          }
+
+          .it-service-description {
+            font-size: 10px;
+          }
+
+          .it-service-link {
+            font-size: 9.5px;
+          }
+
+          .it-offshore-content {
+            padding: 18px;
+          }
+
+          .it-offshore-number {
+            width: 32px;
+            height: 32px;
+
+            border-radius: 8px;
+          }
+
+          .it-offshore-title {
+            font-size: 13px;
+          }
+
+          .it-offshore-description {
+            font-size: 9.5px;
+          }
+
+          .it-offshore-link {
+            margin-left: 44px;
+
+            font-size: 9.5px;
+          }
+        }
+
+        /* =====================================================
+           VERY SMALL MOBILE — 360px
+        ===================================================== */
+
+        @media (max-width: 360px) {
+          .it-augmentation-section {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
+          }
+
+          .it-augmentation-heading {
+            font-size: 22px;
+          }
+
+          .it-augmentation-subheading {
+            font-size: 9.5px;
+          }
+
+          .it-service-card {
+            padding: 17px;
+          }
+
+          .it-service-title {
+            font-size: 12.5px;
+          }
+
+          .it-service-description {
+            font-size: 9.5px;
+          }
+
+          .it-offshore-content {
+            padding: 17px;
+          }
+
+          .it-offshore-left {
+            gap: 10px;
+          }
+
+          .it-offshore-link {
+            margin-left: 42px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

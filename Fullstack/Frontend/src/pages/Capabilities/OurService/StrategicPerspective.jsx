@@ -1,5 +1,7 @@
 import React from "react";
 
+const BRAND_COLOR = "#730024";
+
 const sections = [
   {
     title: "Strategic Guidance & Intelligent Modernization",
@@ -27,347 +29,914 @@ const philosophyPoints = [
 
 export default function TechTorchContent() {
   return (
-    <section className="w-full bg-white">
-      <div
-        className="
-          mx-auto flex w-full max-w-7xl
-          items-center justify-center
-          px-4 py-10
-          sm:px-6 sm:py-12
-          md:px-8 md:py-16
-          lg:px-10 lg:py-20
-        "
-      >
-        <div
-          className="
-            grid w-full
-            grid-cols-1
-            gap-8
-            sm:gap-10
-            lg:grid-cols-[minmax(0,1fr)_320px]
-            lg:gap-12
-            xl:grid-cols-[minmax(0,1fr)_350px]
-            xl:gap-14
-          "
-        >
-          {/* ================= LEFT COLUMN ================= */}
-          <div className="min-w-0">
-            {/* Label */}
-            <span
-              className="
-                mb-4 inline-block
-                rounded
-                px-3 py-1
-                font-['Inter']
-                text-[9px]
-                font-semibold
-                tracking-[0.08em]
-                sm:mb-5
-                sm:text-[10px]
-              "
-              style={{
-                backgroundColor: "#fbe4ef",
-                color: "#730024",
-              }}
-            >
-              Strategic Perspective
-            </span>
+    <>
+      <section className="techtorch-content-section">
+        <div className="techtorch-content-container">
+          <div className="techtorch-content-grid">
 
-            {/* Main Heading */}
-            <h2
-              className="
-                mb-4
-                max-w-3xl
-                font-['Plus_Jakarta_Sans']
-                text-[25px]
-                font-bold
-                leading-[1.2]
-                tracking-[-0.025em]
-                text-neutral-900
-                sm:mb-5
-                sm:text-[30px]
-                md:text-[34px]
-                lg:text-[38px]
-              "
-            >
-              Technology That Helps Your Business Move Forward
-            </h2>
+            {/* =================================================
+                LEFT COLUMN
+            ================================================= */}
 
-            {/* Subheading / Intro */}
-            <p
-              className="
-                mb-6
-                max-w-2xl
-                font-['Inter']
-                text-[12px]
-                leading-[1.7]
-                text-neutral-500
-                sm:mb-7
-                sm:text-[13px]
-                md:text-[14px]
-              "
-            >
-              Technology should make your business simpler, more efficient and
-              better prepared for the future. At TechTorch, we work with
-              businesses to understand their technology challenges and deliver
-              solutions that fit the way they actually work.
-            </p>
+            <div className="techtorch-content-left">
+              {/* Label */}
 
-            {/* Divider */}
-            <div className="mb-7 h-px w-full bg-neutral-200 sm:mb-8" />
-
-            {/* Content Sections */}
-            <div className="space-y-6 sm:space-y-7 md:space-y-8">
-              {sections.map((s) => (
-                <div
-                  key={s.title}
-                  className="
-                    flex
-                    gap-3
-                    sm:gap-4
-                  "
-                >
-                  {/* Bullet */}
-                  <span
-                    className="
-                      mt-2
-                      h-1.5 w-1.5
-                      shrink-0
-                      rounded-full
-                      sm:mt-2.5
-                    "
-                    style={{ backgroundColor: "#730024" }}
-                  />
-
-                  <div className="min-w-0">
-                    {/* Section Heading */}
-                    <h3
-                      className="
-                        mb-1.5
-                        font-['Plus_Jakarta_Sans']
-                        text-[14px]
-                        font-bold
-                        leading-[1.4]
-                        text-neutral-900
-                        sm:text-[15px]
-                        md:text-[16px]
-                      "
-                    >
-                      {s.title}
-                    </h3>
-
-                    {/* Section Body */}
-                    <p
-                      className="
-                        font-['Inter']
-                        text-[11.5px]
-                        leading-[1.7]
-                        text-neutral-500
-                        sm:text-[12px]
-                        md:text-[13px]
-                        lg:text-[14px]
-                      "
-                    >
-                      {s.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Highlight */}
-            <div
-              className="
-                mt-7
-                border-l-2
-                pl-3.5
-                sm:mt-8
-                sm:pl-4
-              "
-              style={{ borderColor: "#730024" }}
-            >
-              <p
-                className="
-                  font-['Inter']
-                  text-[11.5px]
-                  leading-[1.7]
-                  text-neutral-600
-                  sm:text-[12px]
-                  md:text-[13px]
-                  lg:text-[14px]
-                "
-              >
-                Whether a business is starting a new digital initiative,
-                modernizing existing legacy platforms, strengthening zero-trust
-                security, moving to the cloud, or scaling engineering
-                bandwidth, TechTorch brings the disciplined execution needed to
-                bridge strategy and practical reality.
-              </p>
-            </div>
-          </div>
-
-          {/* ================= RIGHT COLUMN ================= */}
-          <div
-            className="
-              flex
-              flex-col
-              gap-4
-              sm:gap-5
-              lg:pt-10
-          "
-          >
-            {/* Core Philosophy Card */}
-            <div
-              className="
-                rounded-xl
-                p-5
-                text-white
-                sm:p-6
-                md:p-7
-              "
-              style={{
-                background:
-                  "linear-gradient(160deg, #7a0f45 0%, #4a0a2c 100%)",
-              }}
-            >
-              {/* Card Label */}
-              <span
-                className="
-                  mb-3
-                  block
-                  font-['Inter']
-                  text-[9px]
-                  font-semibold
-                  tracking-[0.08em]
-                  text-white/70
-                  sm:mb-4
-                  sm:text-[10px]
-                "
-              >
-                Our Core Philosophy
+              <span className="techtorch-content-label">
+                Strategic Perspective
               </span>
 
-              {/* Card Heading */}
-              <p
-                className="
-                  mb-4
-                  font-['Plus_Jakarta_Sans']
-                  text-[16px]
-                  font-bold
-                  leading-[1.45]
-                  sm:mb-5
-                  sm:text-[18px]
-                "
-              >
-                "Understand the business problem first, identify the right
-                technology approach, and deliver long-term value."
+              {/* Main Heading */}
+
+              <h2 className="techtorch-content-heading">
+                Technology That Helps Your Business Move Forward
+              </h2>
+
+              {/* Intro */}
+
+              <p className="techtorch-content-intro">
+                Technology should make your business simpler, more efficient
+                and better prepared for the future. At TechTorch, we work with
+                businesses to understand their technology challenges and
+                deliver solutions that fit the way they actually work.
               </p>
 
-              {/* Card Description */}
-              <p
-                className="
-                  mb-5
-                  font-['Inter']
-                  text-[10.5px]
-                  leading-[1.7]
-                  text-white/70
-                  sm:text-[11px]
-                  md:text-[12px]
-                "
-              >
-                As a vendor-agnostic firm, our approach remains the same
-                regardless of the technology involved. We do not lose focused
-                engineering, sustainable operational leverage that grows
-                seamlessly alongside your organization.
-              </p>
+              {/* Divider */}
 
-              {/* Philosophy Points */}
-              <div className="space-y-2.5">
-                {philosophyPoints.map((p) => (
+              <div className="techtorch-content-divider" />
+
+              {/* Content Sections */}
+
+              <div className="techtorch-content-sections">
+                {sections.map((section) => (
                   <div
-                    key={p}
-                    className="flex items-center gap-2"
+                    key={section.title}
+                    className="techtorch-content-item"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="
-                        h-3.5 w-3.5
-                        shrink-0
-                        text-white/80
-                      "
-                    >
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
+                    {/* Bullet */}
 
-                    <span
-                      className="
-                        font-['Inter']
-                        text-[10.5px]
-                        leading-relaxed
-                        text-white/85
-                        sm:text-[11px]
-                        md:text-[12px]
-                      "
-                    >
-                      {p}
-                    </span>
+                    <span className="techtorch-content-bullet" />
+
+                    <div className="techtorch-content-item-body">
+                      <h3 className="techtorch-content-item-title">
+                        {section.title}
+                      </h3>
+
+                      <p className="techtorch-content-item-text">
+                        {section.body}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
+
+              {/* Bottom Highlight */}
+
+              <div className="techtorch-content-highlight">
+                <p>
+                  Whether a business is starting a new digital initiative,
+                  modernizing existing legacy platforms, strengthening
+                  zero-trust security, moving to the cloud, or scaling
+                  engineering bandwidth, TechTorch brings the disciplined
+                  execution needed to bridge strategy and practical reality.
+                </p>
+              </div>
             </div>
 
-            {/* Transformation Card */}
-            <div
-              className="
-                rounded-xl
-                border
-                border-neutral-200
-                bg-neutral-50
-                p-5
-                sm:p-6
-              "
-            >
-              <span
-                className="
-                  mb-2.5
-                  block
-                  font-['Inter']
-                  text-[9px]
-                  font-semibold
-                  tracking-[0.08em]
-                  text-neutral-500
-                  sm:mb-3
-                  sm:text-[10px]
-                "
-              >
-                Ready For Every Transformation Stage
-              </span>
+            {/* =================================================
+                RIGHT COLUMN
+            ================================================= */}
 
-              <p
-                className="
-                  font-['Inter']
-                  text-[10.5px]
-                  leading-[1.7]
-                  text-neutral-500
-                  sm:text-[11px]
-                  md:text-[12px]
-                "
-              >
-                Whether a business is starting a new digital initiative,
-                modernizing existing systems, strengthening security, moving to
-                cloud or expanding its technology use, TechTorch brings the
-                experience and capability needed to move from ideas and
-                challenges to practical solutions.
-              </p>
-            </div>
+            <aside className="techtorch-content-right">
+
+              {/* =================================================
+                  CORE PHILOSOPHY CARD
+              ================================================= */}
+
+              <div className="techtorch-philosophy-card">
+                {/* Label */}
+
+                <span className="techtorch-philosophy-label">
+                  Our Core Philosophy
+                </span>
+
+                {/* Heading */}
+
+                <p className="techtorch-philosophy-heading">
+                  "Understand the business problem first, identify the right
+                  technology approach, and deliver long-term value."
+                </p>
+
+                {/* Description */}
+
+                <p className="techtorch-philosophy-description">
+                  As a vendor-agnostic firm, our approach remains the same
+                  regardless of the technology involved. We do not lose focused
+                  engineering, sustainable operational leverage that grows
+                  seamlessly alongside your organization.
+                </p>
+
+                {/* Points */}
+
+                <div className="techtorch-philosophy-points">
+                  {philosophyPoints.map((point) => (
+                    <div
+                      key={point}
+                      className="techtorch-philosophy-point"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* =================================================
+                  TRANSFORMATION CARD
+              ================================================= */}
+
+              <div className="techtorch-transformation-card">
+                <span className="techtorch-transformation-label">
+                  Ready For Every Transformation Stage
+                </span>
+
+                <p className="techtorch-transformation-text">
+                  Whether a business is starting a new digital initiative,
+                  modernizing existing systems, strengthening security, moving
+                  to cloud or expanding its technology use, TechTorch brings
+                  the experience and capability needed to move from ideas and
+                  challenges to practical solutions.
+                </p>
+              </div>
+            </aside>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* =========================================================
+          STYLES
+      ========================================================= */}
+
+      <style>{`
+        /* =====================================================
+           MAIN SECTION
+        ===================================================== */
+
+        .techtorch-content-section {
+          width: 100%;
+          overflow: hidden;
+
+          background: #ffffff;
+
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 80px;
+          padding-bottom: 80px;
+        }
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .techtorch-content-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+        }
+
+        /* =====================================================
+           GRID
+        ===================================================== */
+
+        .techtorch-content-grid {
+          display: grid;
+
+          grid-template-columns:
+            minmax(0, 1fr)
+            350px;
+
+          align-items: start;
+
+          gap: 70px;
+
+          width: 100%;
+        }
+
+        /* =====================================================
+           LEFT COLUMN
+        ===================================================== */
+
+        .techtorch-content-left {
+          min-width: 0;
+        }
+
+        /* =====================================================
+           LABEL
+        ===================================================== */
+
+        .techtorch-content-label {
+          display: inline-block;
+
+          margin-bottom: 16px;
+
+          padding: 6px 11px;
+
+          border-radius: 5px;
+
+          background: #fbe4ef;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+
+          color: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           MAIN HEADING
+        ===================================================== */
+
+        .techtorch-content-heading {
+          max-width: 850px;
+
+          margin: 0 0 16px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+
+          color: #171717;
+        }
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .techtorch-content-intro {
+          max-width: 820px;
+
+          margin: 0 0 26px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           DIVIDER
+        ===================================================== */
+
+        .techtorch-content-divider {
+          width: 100%;
+          height: 1px;
+
+          margin-bottom: 30px;
+
+          background: #e5e5e5;
+        }
+
+        /* =====================================================
+           CONTENT SECTIONS
+        ===================================================== */
+
+        .techtorch-content-sections {
+          display: flex;
+          flex-direction: column;
+
+          gap: 28px;
+        }
+
+        .techtorch-content-item {
+          display: flex;
+          align-items: flex-start;
+
+          gap: 14px;
+        }
+
+        /* =====================================================
+           BULLET
+        ===================================================== */
+
+        .techtorch-content-bullet {
+          width: 6px;
+          height: 6px;
+          flex-shrink: 0;
+
+          margin-top: 8px;
+
+          border-radius: 50%;
+
+          background: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           ITEM BODY
+        ===================================================== */
+
+        .techtorch-content-item-body {
+          min-width: 0;
+        }
+
+        /* =====================================================
+           ITEM TITLE
+        ===================================================== */
+
+        .techtorch-content-item-title {
+          margin: 0 0 7px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 1.4;
+
+          color: #171717;
+        }
+
+        /* =====================================================
+           ITEM TEXT
+        ===================================================== */
+
+        .techtorch-content-item-text {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           BOTTOM HIGHLIGHT
+        ===================================================== */
+
+        .techtorch-content-highlight {
+          margin-top: 30px;
+
+          padding-left: 17px;
+
+          border-left: 2px solid ${BRAND_COLOR};
+        }
+
+        .techtorch-content-highlight p {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: #525252;
+        }
+
+        /* =====================================================
+           RIGHT COLUMN
+        ===================================================== */
+
+        .techtorch-content-right {
+          display: flex;
+          flex-direction: column;
+
+          gap: 18px;
+
+          min-width: 0;
+
+          padding-top: 46px;
+        }
+
+        /* =====================================================
+           PHILOSOPHY CARD
+        ===================================================== */
+
+        .techtorch-philosophy-card {
+          position: relative;
+
+          overflow: hidden;
+
+          padding: 27px;
+
+          border-radius: 14px;
+
+          background:
+            linear-gradient(
+              160deg,
+              #7a0f45 0%,
+              #4a0a2c 100%
+            );
+
+          box-shadow:
+            0 12px 30px rgba(74, 10, 44, 0.12);
+        }
+
+        /* Subtle decorative glow */
+
+        .techtorch-philosophy-card::before {
+          content: "";
+
+          position: absolute;
+
+          width: 180px;
+          height: 180px;
+
+          top: -90px;
+          right: -70px;
+
+          border-radius: 50%;
+
+          background: rgba(255, 255, 255, 0.06);
+
+          pointer-events: none;
+        }
+
+        /* =====================================================
+           PHILOSOPHY LABEL
+        ===================================================== */
+
+        .techtorch-philosophy-label {
+          position: relative;
+          z-index: 1;
+
+          display: block;
+
+          margin-bottom: 15px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+
+          color: rgba(255, 255, 255, 0.68);
+        }
+
+        /* =====================================================
+           PHILOSOPHY HEADING
+        ===================================================== */
+
+        .techtorch-philosophy-heading {
+          position: relative;
+          z-index: 1;
+
+          margin: 0 0 18px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.5;
+
+          color: #ffffff;
+        }
+
+        /* =====================================================
+           PHILOSOPHY DESCRIPTION
+        ===================================================== */
+
+        .techtorch-philosophy-description {
+          position: relative;
+          z-index: 1;
+
+          margin: 0 0 20px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* =====================================================
+           PHILOSOPHY POINTS
+        ===================================================== */
+
+        .techtorch-philosophy-points {
+          position: relative;
+          z-index: 1;
+
+          display: flex;
+          flex-direction: column;
+
+          gap: 11px;
+        }
+
+        .techtorch-philosophy-point {
+          display: flex;
+          align-items: center;
+
+          gap: 9px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          line-height: 1.5;
+
+          color: rgba(255, 255, 255, 0.88);
+        }
+
+        .techtorch-philosophy-point svg {
+          width: 14px;
+          height: 14px;
+          flex-shrink: 0;
+
+          color: rgba(255, 255, 255, 0.82);
+        }
+
+        /* =====================================================
+           TRANSFORMATION CARD
+        ===================================================== */
+
+        .techtorch-transformation-card {
+          padding: 23px;
+
+          border: 1px solid #e5e5e5;
+          border-radius: 14px;
+
+          background: #fafafa;
+        }
+
+        /* =====================================================
+           TRANSFORMATION LABEL
+        ===================================================== */
+
+        .techtorch-transformation-label {
+          display: block;
+
+          margin-bottom: 11px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 1.4;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           TRANSFORMATION TEXT
+        ===================================================== */
+
+        .techtorch-transformation-text {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 400;
+          line-height: 1.75;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           TABLET — 1200px
+           40px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+          .techtorch-content-section {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 70px;
+            padding-bottom: 70px;
+          }
+
+          .techtorch-content-grid {
+            grid-template-columns:
+              minmax(0, 1fr)
+              320px;
+
+            gap: 45px;
+          }
+
+          .techtorch-content-heading {
+            font-size: 34px;
+          }
+
+          .techtorch-content-intro {
+            font-size: 13px;
+          }
+
+          .techtorch-content-item-text {
+            font-size: 12px;
+          }
+
+          .techtorch-content-right {
+            padding-top: 42px;
+          }
+        }
+
+        /* =====================================================
+           TABLET — 900px
+        ===================================================== */
+
+        @media (max-width: 900px) {
+          .techtorch-content-section {
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .techtorch-content-grid {
+            grid-template-columns: 1fr;
+
+            gap: 35px;
+          }
+
+          .techtorch-content-heading {
+            max-width: 760px;
+
+            font-size: 32px;
+          }
+
+          .techtorch-content-right {
+            display: grid;
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+
+            padding-top: 0;
+          }
+
+          .techtorch-philosophy-card {
+            padding: 24px;
+          }
+
+          .techtorch-transformation-card {
+            padding: 24px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE — 700px
+           24px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 700px) {
+          .techtorch-content-section {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
+          }
+
+          .techtorch-content-grid {
+            gap: 30px;
+          }
+
+          .techtorch-content-label {
+            margin-bottom: 13px;
+
+            font-size: 8px;
+          }
+
+          .techtorch-content-heading {
+            margin-bottom: 13px;
+
+            font-size: 28px;
+            line-height: 1.22;
+          }
+
+          .techtorch-content-intro {
+            margin-bottom: 22px;
+
+            font-size: 11.5px;
+            line-height: 1.7;
+          }
+
+          .techtorch-content-divider {
+            margin-bottom: 24px;
+          }
+
+          .techtorch-content-sections {
+            gap: 23px;
+          }
+
+          .techtorch-content-item {
+            gap: 11px;
+          }
+
+          .techtorch-content-item-title {
+            margin-bottom: 6px;
+
+            font-size: 14px;
+          }
+
+          .techtorch-content-item-text {
+            font-size: 11px;
+            line-height: 1.7;
+          }
+
+          .techtorch-content-highlight {
+            margin-top: 24px;
+
+            padding-left: 14px;
+          }
+
+          .techtorch-content-highlight p {
+            font-size: 11px;
+          }
+
+          .techtorch-content-right {
+            display: flex;
+            flex-direction: column;
+
+            gap: 14px;
+          }
+
+          .techtorch-philosophy-card {
+            padding: 21px;
+          }
+
+          .techtorch-philosophy-label {
+            margin-bottom: 12px;
+
+            font-size: 8px;
+          }
+
+          .techtorch-philosophy-heading {
+            margin-bottom: 15px;
+
+            font-size: 16px;
+          }
+
+          .techtorch-philosophy-description {
+            margin-bottom: 17px;
+
+            font-size: 10px;
+          }
+
+          .techtorch-philosophy-point {
+            font-size: 10px;
+          }
+
+          .techtorch-transformation-card {
+            padding: 20px;
+          }
+
+          .techtorch-transformation-label {
+            font-size: 8px;
+          }
+
+          .techtorch-transformation-text {
+            font-size: 10px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE — 480px
+           16px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 480px) {
+          .techtorch-content-section {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 45px;
+            padding-bottom: 45px;
+          }
+
+          .techtorch-content-grid {
+            gap: 26px;
+          }
+
+          .techtorch-content-label {
+            margin-bottom: 11px;
+
+            padding: 5px 9px;
+
+            font-size: 7px;
+          }
+
+          .techtorch-content-heading {
+            font-size: 24px;
+          }
+
+          .techtorch-content-intro {
+            font-size: 10.5px;
+          }
+
+          .techtorch-content-sections {
+            gap: 21px;
+          }
+
+          .techtorch-content-item {
+            gap: 9px;
+          }
+
+          .techtorch-content-bullet {
+            width: 5px;
+            height: 5px;
+
+            margin-top: 7px;
+          }
+
+          .techtorch-content-item-title {
+            font-size: 13px;
+          }
+
+          .techtorch-content-item-text {
+            font-size: 10px;
+          }
+
+          .techtorch-content-highlight {
+            padding-left: 12px;
+          }
+
+          .techtorch-content-highlight p {
+            font-size: 10px;
+          }
+
+          .techtorch-philosophy-card {
+            padding: 19px;
+          }
+
+          .techtorch-philosophy-heading {
+            font-size: 15px;
+          }
+
+          .techtorch-philosophy-description {
+            font-size: 9.5px;
+          }
+
+          .techtorch-philosophy-point {
+            font-size: 9.5px;
+          }
+
+          .techtorch-transformation-card {
+            padding: 18px;
+          }
+
+          .techtorch-transformation-text {
+            font-size: 9.5px;
+          }
+        }
+
+        /* =====================================================
+           VERY SMALL MOBILE — 360px
+        ===================================================== */
+
+        @media (max-width: 360px) {
+          .techtorch-content-section {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 40px;
+            padding-bottom: 40px;
+          }
+
+          .techtorch-content-heading {
+            font-size: 22px;
+          }
+
+          .techtorch-content-intro {
+            font-size: 10px;
+          }
+
+          .techtorch-content-item-title {
+            font-size: 12.5px;
+          }
+
+          .techtorch-content-item-text {
+            font-size: 9.5px;
+          }
+
+          .techtorch-philosophy-card {
+            padding: 17px;
+          }
+
+          .techtorch-philosophy-heading {
+            font-size: 14px;
+          }
+
+          .techtorch-transformation-card {
+            padding: 17px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import {
   ArrowRight,
   Code2,
@@ -17,8 +15,6 @@ import {
 } from "lucide-react";
 
 export default function BecomePartner() {
-  const navigate = useNavigate();
-
   const [selectedScopes, setSelectedScopes] = useState([]);
   const [collaboration, setCollaboration] = useState("");
 
@@ -47,7 +43,7 @@ export default function BecomePartner() {
         "System Integration",
         "Technical Support",
       ],
-      icon: <Code2 size={18} />,
+      icon: <Code2 />,
     },
     {
       track: "TRACK 02",
@@ -60,7 +56,7 @@ export default function BecomePartner() {
         "Cloud Infrastructure",
         "API & System Integration",
       ],
-      icon: <Network size={18} />,
+      icon: <Network />,
     },
     {
       track: "TRACK 03",
@@ -73,7 +69,7 @@ export default function BecomePartner() {
         "Project Support",
         "Technical Staffing",
       ],
-      icon: <Users size={18} />,
+      icon: <Users />,
     },
     {
       track: "TRACK 04",
@@ -86,7 +82,7 @@ export default function BecomePartner() {
         "Software Services",
         "Technology Support",
       ],
-      icon: <BriefcaseBusiness size={18} />,
+      icon: <BriefcaseBusiness />,
     },
   ];
 
@@ -125,19 +121,25 @@ export default function BecomePartner() {
     );
   };
 
+  const scrollToApplication = () => {
+    document
+      .getElementById("partner-application")
+      ?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="bp-page">
 
-      {/* =========================
+      {/* =========================================================
           HERO
-      ========================= */}
+      ========================================================= */}
 
       <section className="bp-hero">
 
         <div className="bp-hero-content">
 
           <div className="bp-pill">
-            <span></span>
+            <span />
             TECHTORCH ALLIANCE PROGRAM
           </div>
 
@@ -156,36 +158,35 @@ export default function BecomePartner() {
           <button
             type="button"
             className="bp-primary-btn"
-            onClick={() =>
-              document
-                .getElementById("partner-application")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={scrollToApplication}
           >
             Talk to an Expert
-            <ArrowRight size={16} />
+            <ArrowRight />
           </button>
 
           <div className="bp-hero-tags">
 
             <div>
-              <Sparkles size={14} />
+              <Sparkles />
               Technology Collaboration
             </div>
 
             <div>
-              <Handshake size={14} />
+              <Handshake />
               Shared Capabilities
             </div>
 
             <div>
-              <ArrowRight size={14} />
+              <ArrowRight />
               Business Opportunities
             </div>
 
           </div>
 
         </div>
+
+
+        {/* HERO IMAGE */}
 
         <div className="bp-hero-image-container">
 
@@ -200,20 +201,18 @@ export default function BecomePartner() {
             <div className="bp-image-overlay-card">
 
               <div className="bp-overlay-icon">
-                <Handshake size={21} />
+                <Handshake />
               </div>
 
               <div className="bp-overlay-content">
                 <strong>Technology Partnership</strong>
+
                 <span>
                   Explore Collaboration Opportunities
                 </span>
               </div>
 
-              <ArrowRight
-                size={21}
-                className="bp-overlay-arrow"
-              />
+              <ArrowRight className="bp-overlay-arrow" />
 
             </div>
 
@@ -224,9 +223,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =========================
+      {/* =========================================================
           OPPORTUNITIES
-      ========================= */}
+      ========================================================= */}
 
       <section className="bp-opportunities">
 
@@ -299,9 +298,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =========================
+      {/* =========================================================
           PARTNER APPLICATION
-      ========================= */}
+      ========================================================= */}
 
       <section
         className="bp-application"
@@ -323,6 +322,8 @@ export default function BecomePartner() {
           areas for discussion.
         </p>
 
+
+        {/* ORGANIZATION + CONTACT */}
 
         <div className="bp-form-columns">
 
@@ -376,7 +377,6 @@ export default function BecomePartner() {
                   <option>501-1000 employees</option>
                   <option>1000+ employees</option>
                 </select>
-
               </div>
 
             </div>
@@ -458,7 +458,6 @@ export default function BecomePartner() {
                 selectedScopes.includes(scope);
 
               return (
-
                 <button
                   type="button"
                   key={scope}
@@ -469,15 +468,12 @@ export default function BecomePartner() {
                 >
 
                   <span className="bp-checkbox">
-                    {isSelected && (
-                      <Check size={8} />
-                    )}
+                    {isSelected && <Check />}
                   </span>
 
                   {scope}
 
                 </button>
-
               );
 
             })}
@@ -517,7 +513,6 @@ export default function BecomePartner() {
                 collaboration === item.id;
 
               return (
-
                 <button
                   type="button"
                   key={item.id}
@@ -538,9 +533,7 @@ export default function BecomePartner() {
                     </strong>
 
                     <span className="bp-radio">
-                      {selected && (
-                        <span></span>
-                      )}
+                      {selected && <span />}
                     </span>
 
                   </div>
@@ -550,7 +543,6 @@ export default function BecomePartner() {
                   </p>
 
                 </button>
-
               );
 
             })}
@@ -622,7 +614,7 @@ export default function BecomePartner() {
             }}
           >
             Submit Partnership Request
-            <ArrowRight size={13} />
+            <ArrowRight />
           </button>
 
         </div>
@@ -630,9 +622,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =========================
+      {/* =========================================================
           PROCESS
-      ========================= */}
+      ========================================================= */}
 
       <section className="bp-process">
 
@@ -691,13 +683,9 @@ export default function BecomePartner() {
                 {item.number}
               </div>
 
-              <h3>
-                {item.title}
-              </h3>
+              <h3>{item.title}</h3>
 
-              <p>
-                {item.text}
-              </p>
+              <p>{item.text}</p>
 
               <div className="bp-process-label">
                 • {item.label}
@@ -712,9 +700,9 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =========================
+      {/* =========================================================
           CAPABILITIES
-      ========================= */}
+      ========================================================= */}
 
       <section className="bp-capabilities">
 
@@ -731,25 +719,25 @@ export default function BecomePartner() {
         <div className="bp-cap-grid">
 
           <CapabilityCard
-            icon={<Cpu size={18} />}
+            icon={<Cpu />}
             title="Broad Technology Services"
             text="TechTorch works across software engineering, IT consultancy, AI, cloud infrastructure, cybersecurity, software development and support, resource and staffing, and other technology services."
           />
 
           <CapabilityCard
-            icon={<Boxes size={18} />}
+            icon={<Boxes />}
             title="Digital Solution Capabilities"
             text="Our technology portfolio includes business-focused solutions covering areas such as ERP, operations, supply chain, financial management, CRM, e-commerce, project management, and more."
           />
 
           <CapabilityCard
-            icon={<Code2 size={18} />}
+            icon={<Code2 />}
             title="Software Engineering Expertise"
             text="Our software engineering capabilities include custom software development, web and mobile applications, enterprise solutions, API development and integration, testing, modernization, and ongoing support."
           />
 
           <CapabilityCard
-            icon={<Settings2 size={18} />}
+            icon={<Settings2 />}
             title="Flexible Collaboration"
             text="Partnership discussions can be shaped around the specific technology requirements, capabilities, and objectives of the organizations involved."
           />
@@ -759,14 +747,14 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =========================
+      {/* =========================================================
           FINAL CTA
-      ========================= */}
+      ========================================================= */}
 
       <section className="bp-final-cta">
 
         <div className="bp-pill">
-          <span></span>
+          <span />
           START A PARTNERSHIP CONVERSATION
         </div>
 
@@ -786,32 +774,28 @@ export default function BecomePartner() {
         <button
           type="button"
           className="bp-primary-btn"
-          onClick={() =>
-            document
-              .getElementById("partner-application")
-              ?.scrollIntoView({ behavior: "smooth" })
-          }
+          onClick={scrollToApplication}
         >
           Talk to an Expert
-          <ArrowRight size={16} />
+          <ArrowRight />
         </button>
 
-        <div className="bp-cta-divider"></div>
+        <div className="bp-cta-divider" />
 
         <div className="bp-cta-points">
 
           <span>
-            <ShieldCheck size={15} />
+            <ShieldCheck />
             Partnership Discussion
           </span>
 
           <span>
-            <ShieldCheck size={15} />
+            <ShieldCheck />
             Flexible Collaboration
           </span>
 
           <span>
-            <ShieldCheck size={15} />
+            <ShieldCheck />
             Technology-Focused Support
           </span>
 
@@ -820,11 +804,15 @@ export default function BecomePartner() {
       </section>
 
 
-      {/* =========================
-          ALL CSS
-      ========================= */}
+      {/* =========================================================
+          STYLES
+      ========================================================= */}
 
       <style>{`
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
 
         * {
           box-sizing: border-box;
@@ -834,8 +822,10 @@ export default function BecomePartner() {
           width: 100%;
           min-height: 100vh;
           overflow-x: hidden;
+
           background: #f8f9fa;
           color: #181a1e;
+
           font-family: "Inter", Arial, sans-serif;
         }
 
@@ -854,255 +844,425 @@ export default function BecomePartner() {
         }
 
 
-        /* =========================
-           COMMON
-        ========================= */
+        /* =====================================================
+           COMMON CONTAINER
+           DESKTOP = 100px
+        ===================================================== */
+
+        .bp-hero,
+        .bp-opportunities,
+        .bp-application,
+        .bp-process,
+        .bp-capabilities,
+        .bp-final-cta {
+          width: 100%;
+          max-width: 1600px;
+
+          margin-left: auto;
+          margin-right: auto;
+
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+
+
+        /* =====================================================
+           LABEL
+        ===================================================== */
 
         .bp-section-label {
           color: #701040;
+
           font-size: 11px;
-          font-weight: 850;
+          font-weight: 800;
+
           letter-spacing: .8px;
         }
 
+
+        /* =====================================================
+           PILL
+        ===================================================== */
+
         .bp-pill {
           width: fit-content;
+
           display: inline-flex;
           align-items: center;
+
           gap: 7px;
+
           padding: 6px 12px;
+
           border-radius: 50px;
+
           background: #f5edf2;
+
           color: #85004c;
+
           font-size: 10px;
           font-weight: 800;
+
           letter-spacing: .5px;
         }
 
-        .bp-pill span {
+        .bp-pill > span {
           width: 6px;
           height: 6px;
+
           flex-shrink: 0;
+
           border-radius: 50%;
+
           background: #85004c;
         }
 
 
-        /* =========================
-           BUTTON
-        ========================= */
+        /* =====================================================
+           PRIMARY BUTTON
+        ===================================================== */
 
         .bp-primary-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+
           gap: 8px;
+
           padding: 13px 19px;
+
           border: none;
           border-radius: 7px;
+
           background: #90004f;
-          color: white;
+          color: #ffffff;
+
           font-size: 13px;
           font-weight: 700;
+
           cursor: pointer;
-          transition: all .2s ease;
+
+          transition:
+            background .25s ease,
+            transform .25s ease,
+            box-shadow .25s ease;
+        }
+
+        .bp-primary-btn svg {
+          width: 16px;
+          height: 16px;
         }
 
         .bp-primary-btn:hover {
           background: #70003d;
+
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(144,0,79,.18);
+
+          box-shadow:
+            0 8px 20px rgba(144,0,79,.18);
         }
 
 
-        /* =========================
+        /* =====================================================
            HERO
-        ========================= */
+        ===================================================== */
 
         .bp-hero {
-          width: min(1200px, calc(100% - 40px));
-          margin: 0 auto;
-          min-height: 410px;
-          padding: 42px 0 65px;
+          min-height: 500px;
+
+          padding-top: 55px;
+          padding-bottom: 70px;
+
           display: grid;
-          grid-template-columns: 1.15fr .85fr;
+
+          grid-template-columns:
+            minmax(0, 1.05fr)
+            minmax(420px, .95fr);
+
           align-items: center;
-          gap: 48px;
+
+          gap: 70px;
+        }
+
+        .bp-hero-content {
+          min-width: 0;
         }
 
         .bp-hero-content h1 {
           margin: 18px 0 16px;
+
           color: #202327;
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 36px;
-          line-height: 1.12;
-          letter-spacing: -1.6px;
+
+          font-family:
+            "Plus Jakarta Sans",
+            "Inter",
+            Arial,
+            sans-serif;
+
+          font-size: clamp(36px, 4vw, 54px);
+
+          line-height: 1.1;
+
+          letter-spacing: -1.8px;
+
           font-weight: 650;
         }
 
         .bp-hero-content > p {
-          max-width: 570px;
-          margin-bottom: 22px;
+          max-width: 610px;
+
+          margin-bottom: 24px;
+
           color: #454b54;
+
           font-size: 15px;
-          line-height: 1.55;
+
+          line-height: 1.65;
         }
+
+
+        /* =====================================================
+           HERO TAGS
+        ===================================================== */
 
         .bp-hero-tags {
           display: flex;
           align-items: center;
           flex-wrap: wrap;
+
           gap: 9px;
-          margin-top: 20px;
+
+          margin-top: 22px;
         }
 
         .bp-hero-tags div {
           display: flex;
           align-items: center;
+
           gap: 6px;
+
           padding: 8px 11px;
+
           border: 1px solid #e2e5e8;
+
           border-radius: 6px;
-          background: white;
+
+          background: #ffffff;
+
           color: #64696e;
-          font-size: 13px;
+
+          font-size: 12px;
         }
 
         .bp-hero-tags svg {
+          width: 14px;
+          height: 14px;
+
           color: #90004f;
         }
 
+
+        /* =====================================================
+           HERO IMAGE
+        ===================================================== */
+
         .bp-hero-image-container {
           width: 100%;
+          min-width: 0;
         }
 
         .bp-hero-image-wrapper {
           position: relative;
+
           width: 100%;
         }
 
         .bp-hero-image {
           display: block;
+
           width: 100%;
+
           aspect-ratio: 1.32 / 1;
+
           object-fit: cover;
-          border-radius: 13px;
-          box-shadow: 0 13px 28px rgba(0,0,0,.12);
+
+          border-radius: 15px;
+
+          box-shadow:
+            0 15px 32px rgba(0,0,0,.12);
         }
 
 
-        /* =========================
-           HERO OVERLAY
-        ========================= */
+        /* =====================================================
+           IMAGE OVERLAY
+        ===================================================== */
 
         .bp-image-overlay-card {
           position: absolute;
+
           left: 5%;
           right: 5%;
           bottom: 4%;
-          min-height: 70px;
+
+          min-height: 72px;
+
           display: flex;
           align-items: center;
+
           gap: 14px;
+
           padding: 12px 18px;
+
           border: 1px solid rgba(255,255,255,.7);
+
           border-radius: 15px;
+
           background: rgba(255,255,255,.96);
-          box-shadow: 0 8px 25px rgba(0,0,0,.14);
+
+          box-shadow:
+            0 8px 25px rgba(0,0,0,.14);
         }
 
         .bp-overlay-icon {
           width: 44px;
           height: 44px;
+
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border-radius: 11px;
+
           background: #fff1f7;
+
           color: #8d0050;
+        }
+
+        .bp-overlay-icon svg {
+          width: 21px;
+          height: 21px;
         }
 
         .bp-overlay-content {
           min-width: 0;
+
           flex: 1;
+
           display: flex;
           flex-direction: column;
+
           gap: 3px;
         }
 
         .bp-overlay-content strong {
           color: #25282d;
+
           font-size: 14px;
+
           line-height: 1.25;
+
           font-weight: 750;
         }
 
         .bp-overlay-content span {
           color: #777b80;
+
           font-size: 11px;
+
           line-height: 1.3;
         }
 
         .bp-overlay-arrow {
+          width: 21px;
+          height: 21px;
+
           flex-shrink: 0;
+
           color: #555b61;
         }
 
 
-        /* =========================
+        /* =====================================================
            OPPORTUNITIES
-        ========================= */
+        ===================================================== */
 
         .bp-opportunities {
-          width: min(1200px, calc(100% - 40px));
-          margin: 0 auto;
-          padding: 15px 0 70px;
+          padding-top: 15px;
+          padding-bottom: 80px;
         }
 
         .bp-heading-row {
           display: grid;
-          grid-template-columns: 1.35fr .65fr;
-          gap: 65px;
+
+          grid-template-columns:
+            minmax(0, 1.35fr)
+            minmax(280px, .65fr);
+
+          gap: 70px;
+
           align-items: end;
-          margin-bottom: 25px;
+
+          margin-bottom: 28px;
         }
 
         .bp-heading-row h2,
         .bp-process h2 {
           margin: 8px 0 0;
+
           color: #22262c;
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 25px;
-          line-height: 1.1;
-          letter-spacing: -.8px;
+
+          font-family:
+            "Plus Jakarta Sans",
+            "Inter",
+            Arial,
+            sans-serif;
+
+          font-size: 28px;
+
+          line-height: 1.15;
+
+          letter-spacing: -.9px;
+
           font-weight: 600;
         }
 
         .bp-heading-row p {
           margin: 0;
+
           color: #565d66;
+
           font-size: 14px;
-          line-height: 1.55;
+
+          line-height: 1.65;
         }
+
+
+        /* =====================================================
+           TRACK GRID
+        ===================================================== */
 
         .bp-track-grid {
           display: grid;
-          grid-template-columns: repeat(4,1fr);
-          gap: 14px;
+
+          grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
+          gap: 16px;
         }
 
-
-        /* =========================
-           TRACK CARDS
-        ========================= */
-
         .bp-track-card {
-          min-height: 300px;
-          padding: 20px 17px;
+          min-height: 320px;
+
+          padding: 22px 19px;
+
           border: 1px solid #e0e4e8;
+
           border-radius: 10px;
-          background: white;
+
+          background: #ffffff;
+
           transition:
             border-color .25s ease,
             box-shadow .25s ease,
@@ -1110,9 +1270,12 @@ export default function BecomePartner() {
         }
 
         .bp-track-card:hover {
-          transform: translateY(-3px);
+          transform: translateY(-4px);
+
           border-color: #8d0050;
-          box-shadow: 0 10px 25px rgba(0,0,0,.07);
+
+          box-shadow:
+            0 12px 28px rgba(0,0,0,.07);
         }
 
         .bp-track-top {
@@ -1123,163 +1286,212 @@ export default function BecomePartner() {
 
         .bp-track-top > span {
           color: #8c0050;
+
           font-size: 10px;
           font-weight: 800;
+
           letter-spacing: .5px;
         }
 
         .bp-track-icon {
-          width: 32px;
-          height: 32px;
+          width: 34px;
+          height: 34px;
+
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 7px;
+
+          border-radius: 8px;
+
           background: #f7edf3;
+
           color: #8d0050;
+
           transition:
-            width .25s ease,
-            height .25s ease,
             transform .25s ease,
             background .25s ease;
         }
 
+        .bp-track-icon svg {
+          width: 18px;
+          height: 18px;
+        }
+
         .bp-track-card:hover .bp-track-icon {
-          width: 37px;
-          height: 37px;
-          transform: scale(1.05);
+          transform: scale(1.08);
+
           background: #f5e7ee;
         }
 
-        .bp-track-icon svg {
-          width: 19px;
-          height: 19px;
-          transition:
-            width .25s ease,
-            height .25s ease;
-        }
-
-        .bp-track-card:hover .bp-track-icon svg {
-          width: 22px;
-          height: 22px;
-        }
-
         .bp-track-card h3 {
-          max-width: 200px;
+          max-width: 230px;
+
           margin: 20px 0 10px;
+
           color: #25282d;
-          font-size: 13px;
+
+          font-size: 14px;
+
           line-height: 1.4;
+
           font-weight: 700;
         }
 
         .bp-track-card > p {
-          min-height: 83px;
-          margin-bottom: 14px;
+          min-height: 90px;
+
+          margin-bottom: 15px;
+
           color: #60666f;
+
           font-size: 12px;
-          line-height: 1.5;
+
+          line-height: 1.55;
         }
 
         .bp-possible {
           padding-top: 11px;
+
           border-top: 1px solid #eceef0;
+
           color: #383d45;
+
           font-size: 10px;
+
           font-weight: 850;
+
           line-height: 1.4;
         }
 
-        .bp-track-card ul,
-        .bp-track-areas {
+        .bp-track-card ul {
           margin: 8px 0 0;
+
           padding-left: 19px;
+
           list-style-type: disc;
         }
 
-        .bp-track-card li,
-        .bp-track-areas li {
-          color: #60666F;
-          font-size: 12px;
-          line-height: 1.5;
+        .bp-track-card li {
           padding-left: 2px;
+
+          color: #60666f;
+
+          font-size: 12px;
+
+          line-height: 1.55;
         }
 
-        .bp-track-card li::marker,
-        .bp-track-areas li::marker {
+        .bp-track-card li::marker {
           color: #8d0050;
-          font-size: 14px;
         }
 
 
-        /* =========================
+        /* =====================================================
            APPLICATION
-        ========================= */
+        ===================================================== */
 
         .bp-application {
-          width: min(1200px, calc(100% - 40px));
-          margin: 0 auto 70px;
-          padding: 35px 38px;
+          margin-bottom: 80px;
+
+          padding-top: 42px;
+          padding-bottom: 42px;
+
           border: 1px solid #e0e4e7;
+
           border-radius: 14px;
-          background: white;
+
+          background: #ffffff;
         }
 
         .bp-application h2 {
-          margin: 7px 0 5px;
+          margin: 7px 0 6px;
+
           color: #22262c;
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 30px;
+
+          font-family:
+            "Plus Jakarta Sans",
+            "Inter",
+            Arial,
+            sans-serif;
+
+          font-size: 32px;
+
           line-height: 1.15;
+
           letter-spacing: -1px;
+
           font-weight: 600;
         }
 
         .bp-application-intro {
-          margin-bottom: 28px;
+          margin-bottom: 30px;
+
           color: #565d66;
+
           font-size: 12px;
-          line-height: 1.55;
+
+          line-height: 1.6;
         }
 
         .bp-form-columns {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 45px;
+
+          grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+          gap: 50px;
         }
 
         .bp-form-title {
           display: flex;
           align-items: center;
+
           gap: 8px;
-          margin-bottom: 14px;
+
+          margin-bottom: 15px;
+
           color: #34383d;
+
           font-size: 11px;
+
           font-weight: 850;
+
+          letter-spacing: .25px;
         }
 
         .bp-form-title > span {
-          width: 20px;
-          height: 20px;
+          width: 21px;
+          height: 21px;
+
+          flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
-          flex-shrink: 0;
+
           border-radius: 50%;
+
           background: #8d0050;
-          color: white;
+
+          color: #ffffff;
+
           font-size: 9px;
         }
 
         .bp-field {
-          margin-bottom: 13px;
+          margin-bottom: 14px;
         }
 
         .bp-field label {
           display: block;
+
           color: #383d45;
-          font-size: 11px;
+
+          font-size: 10px;
+
           font-weight: 850;
+
           letter-spacing: .25px;
         }
 
@@ -1287,15 +1499,28 @@ export default function BecomePartner() {
         .bp-field select,
         .bp-field textarea {
           width: 100%;
+
           margin-top: 6px;
-          padding: 10px 11px;
+
+          padding: 11px 12px;
+
           border: 1px solid #cbd0d5;
+
           border-radius: 6px;
+
           background: #f5f6f7;
+
           color: #292d31;
+
           outline: none;
-          font-size: 12.5px;
+
+          font-size: 12px;
+
           line-height: 1.4;
+
+          transition:
+            border-color .2s ease,
+            box-shadow .2s ease;
         }
 
         .bp-field input::placeholder,
@@ -1307,116 +1532,159 @@ export default function BecomePartner() {
         .bp-field select:focus,
         .bp-field textarea:focus {
           border-color: #8d0050;
-          box-shadow: 0 0 0 2px rgba(141,0,80,.07);
+
+          box-shadow:
+            0 0 0 2px rgba(141,0,80,.07);
         }
 
         .bp-small-row {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
+
+          grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+          gap: 11px;
         }
 
         .bp-form-section {
-          margin-top: 25px;
+          margin-top: 27px;
         }
 
         .bp-helper {
-          margin: -5px 0 10px;
+          margin: -5px 0 11px;
+
           color: #777d84;
+
           font-size: 10px;
+
           line-height: 1.5;
         }
 
 
-        /* =========================
+        /* =====================================================
            SCOPE
-        ========================= */
+        ===================================================== */
 
         .bp-scope-grid {
           display: grid;
-          grid-template-columns: repeat(5,1fr);
+
+          grid-template-columns:
+            repeat(5, minmax(0, 1fr));
+
           gap: 8px;
-          margin-bottom: 12px;
+
+          margin-bottom: 13px;
         }
 
         .bp-scope-option {
-          min-height: 37px;
+          min-height: 39px;
+
           display: flex;
           align-items: center;
+
           gap: 7px;
+
           padding: 8px 10px;
-          border: none;
+
+          border: 1px solid transparent;
+
           border-radius: 5px;
+
           background: #eef0f2;
+
           color: #555a5f;
+
           text-align: left;
+
           font-size: 10.5px;
+
           font-weight: 600;
+
           cursor: pointer;
+
           transition:
-            border-color .2s ease,
-            color .2s ease;
+            background .2s ease,
+            border-color .2s ease;
         }
 
         .bp-scope-option:hover {
-          background: #eef0f2;
-          color: #555a5f;
+          border-color: #d7c0cc;
         }
 
         .bp-scope-option:focus,
-        .bp-scope-option:focus-visible,
-        .bp-scope-option:active {
-          background: #eef0f2;
-          color: #555a5f;
+        .bp-scope-option:focus-visible {
           outline: none;
-          box-shadow: none;
         }
 
         .bp-scope-option.active {
-          background: #eef0f2;
-          color: #555a5f;
+          border-color: #d3b2c3;
+
+          background: #f8edf3;
         }
 
         .bp-checkbox {
-          width: 11px;
-          height: 11px;
+          width: 12px;
+          height: 12px;
+
           flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border: 1px solid #aeb3b8;
+
           border-radius: 2px;
-          background: white;
-          color: white;
-          transition: .2s ease;
+
+          background: #ffffff;
+
+          color: #ffffff;
+        }
+
+        .bp-checkbox svg {
+          width: 8px;
+          height: 8px;
         }
 
         .bp-scope-option.active .bp-checkbox {
           border-color: #8d0050;
+
           background: #8d0050;
-          color: white;
         }
 
 
-        /* =========================
+        /* =====================================================
            COLLABORATION
-        ========================= */
+        ===================================================== */
 
         .bp-collaboration-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
           gap: 10px;
         }
 
         .bp-collaboration-card {
           width: 100%;
-          padding: 13px 14px;
+
+          padding: 14px;
+
           border: 1px solid transparent;
+
           border-radius: 7px;
+
           background: #eef0f2;
+
           text-align: left;
+
           cursor: pointer;
-          transition: .2s ease;
+
+          transition:
+            border-color .2s ease,
+            background .2s ease;
         }
 
         .bp-collaboration-card:hover {
@@ -1425,6 +1693,7 @@ export default function BecomePartner() {
 
         .bp-collaboration-card.selected {
           border-color: #8d0050;
+
           background: #f8edf3;
         }
 
@@ -1432,79 +1701,104 @@ export default function BecomePartner() {
           display: flex;
           align-items: center;
           justify-content: space-between;
+
+          gap: 12px;
         }
 
         .bp-collab-top strong {
           color: #3e4247;
+
           font-size: 12px;
         }
 
         .bp-collaboration-card p {
           margin: 5px 0 0;
+
           color: #777b80;
+
           font-size: 11px;
-          line-height: 1.5;
+
+          line-height: 1.55;
         }
 
         .bp-radio {
           width: 13px;
           height: 13px;
+
+          flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           border: 1px solid #aeb3b8;
+
           border-radius: 50%;
-          background: white;
+
+          background: #ffffff;
         }
 
         .bp-radio > span {
           width: 7px;
           height: 7px;
+
           border-radius: 50%;
+
           background: #8d0050;
         }
 
 
-        /* =========================
+        /* =====================================================
            TEXTAREA
-        ========================= */
+        ===================================================== */
 
         .bp-field textarea {
-          min-height: 75px;
+          min-height: 80px;
+
           resize: vertical;
+
           line-height: 1.5;
         }
 
 
-        /* =========================
+        /* =====================================================
            FORM BOTTOM
-        ========================= */
+        ===================================================== */
 
         .bp-form-bottom {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 20px;
-          padding-top: 16px;
-          margin-top: 5px;
+
+          gap: 25px;
+
+          padding-top: 18px;
+
+          margin-top: 7px;
+
           border-top: 1px solid #eceef0;
         }
 
         .bp-privacy {
           display: flex;
           align-items: flex-start;
+
           gap: 7px;
         }
 
         .bp-privacy > span {
           color: #8d0050;
+
           font-size: 10px;
         }
 
         .bp-privacy p {
           margin: 0;
+
           color: #777d84;
-          font-size: 11px;
+
+          font-size: 10.5px;
+
           line-height: 1.5;
         }
 
@@ -1512,170 +1806,266 @@ export default function BecomePartner() {
           display: flex;
           align-items: center;
           justify-content: center;
+
           gap: 6px;
-          padding: 11px 17px;
+
+          padding: 12px 18px;
+
           border: none;
+
           border-radius: 6px;
+
           background: #90004f;
-          color: white;
+
+          color: #ffffff;
+
           font-size: 10px;
+
           font-weight: 700;
+
           white-space: nowrap;
+
           cursor: pointer;
-          transition: .2s ease;
+
+          transition:
+            background .2s ease,
+            transform .2s ease;
+        }
+
+        .bp-submit-btn svg {
+          width: 13px;
+          height: 13px;
         }
 
         .bp-submit-btn:hover {
           background: #70003d;
+
+          transform: translateY(-1px);
         }
 
 
-        /* =========================
+        /* =====================================================
            PROCESS
-        ========================= */
+        ===================================================== */
 
         .bp-process {
-          width: min(1200px, calc(100% - 40px));
-          margin: 0 auto;
-          padding-bottom: 70px;
+          padding-bottom: 80px;
         }
 
         .bp-process-intro {
-          margin: 7px 0 23px;
+          margin: 7px 0 25px;
+
           color: #777c81;
+
           font-size: 11px;
+
           line-height: 1.5;
         }
 
         .bp-process-grid {
           display: grid;
-          grid-template-columns: repeat(4,1fr);
-          gap: 13px;
+
+          grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
+          gap: 14px;
         }
 
         .bp-process-card {
-          min-height: 185px;
-          padding: 17px;
+          min-height: 195px;
+
+          padding: 18px;
+
           border: 1px solid #e0e4e8;
+
           border-radius: 10px;
-          background: white;
+
+          background: #ffffff;
         }
 
         .bp-process-number {
-          width: 29px;
-          height: 29px;
+          width: 30px;
+          height: 30px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           margin-bottom: 18px;
+
           border-radius: 7px;
+
           background: #f7edf3;
+
           color: #8d0050;
+
           font-size: 10px;
+
           font-weight: 800;
         }
 
         .bp-process-card h3 {
           margin-bottom: 8px;
+
           color: #282c31;
+
           font-size: 15px;
+
           line-height: 1.35;
+
           font-weight: 700;
         }
 
         .bp-process-card p {
           color: #777b80;
+
           font-size: 12px;
+
           line-height: 1.55;
         }
 
         .bp-process-label {
           margin-top: 18px;
+
           color: #8d0050;
-          font-size: 11px;
+
+          font-size: 10px;
+
           font-weight: 800;
         }
 
 
-        /* =========================
+        /* =====================================================
            CAPABILITIES
-        ========================= */
+        ===================================================== */
 
         .bp-capabilities {
-          width: min(1200px, calc(100% - 40px));
-          margin: 0 auto 70px;
-          padding: 35px;
+          margin-bottom: 80px;
+
+          padding-top: 40px;
+          padding-bottom: 40px;
+
           border-radius: 14px;
+
           background: #830047;
-          color: white;
+
+          color: #ffffff;
         }
 
         .bp-cap-label {
           color: #f2bfd8;
+
           font-size: 10px;
+
           font-weight: 800;
+
           letter-spacing: .6px;
         }
 
         .bp-capabilities > h2 {
-          margin: 8px 0 25px;
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 30px;
-          line-height: 1.1;
+          margin: 8px 0 27px;
+
+          font-family:
+            "Plus Jakarta Sans",
+            "Inter",
+            Arial,
+            sans-serif;
+
+          font-size: 32px;
+
+          line-height: 1.15;
+
           letter-spacing: -1px;
+
           font-weight: 600;
         }
 
         .bp-cap-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 12px;
+
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+          gap: 13px;
         }
 
         .bp-cap-card {
-          min-height: 155px;
-          padding: 17px;
+          min-height: 160px;
+
+          padding: 18px;
+
           border-radius: 9px;
+
           background: rgba(255,255,255,.11);
+
+          transition:
+            background .25s ease,
+            transform .25s ease;
+        }
+
+        .bp-cap-card:hover {
+          background: rgba(255,255,255,.15);
+
+          transform: translateY(-2px);
         }
 
         .bp-cap-icon {
-          width: 30px;
-          height: 30px;
+          width: 31px;
+          height: 31px;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
           margin-bottom: 11px;
-          border-radius: 5px;
+
+          border-radius: 6px;
+
           background: rgba(255,255,255,.14);
+        }
+
+        .bp-cap-icon svg {
+          width: 18px;
+          height: 18px;
         }
 
         .bp-cap-card h3 {
           margin-bottom: 7px;
+
           font-size: 15px;
+
           line-height: 1.35;
+
           font-weight: 700;
         }
 
         .bp-cap-card p {
           margin: 0;
+
           color: #f3dce8;
+
           font-size: 12px;
-          line-height: 1.55;
+
+          line-height: 1.6;
         }
 
 
-        /* =========================
+        /* =====================================================
            FINAL CTA
-        ========================= */
+        ===================================================== */
 
         .bp-final-cta {
-          width: min(1200px, calc(100% - 40px));
-          margin: 0 auto 55px;
-          padding: 60px 25px;
+          margin-bottom: 60px;
+
+          padding-top: 65px;
+          padding-bottom: 65px;
+
           border: 1px solid #e0e4e8;
+
           border-radius: 14px;
-          background: white;
+
+          background: #ffffff;
+
           text-align: center;
         }
 
@@ -1685,26 +2075,43 @@ export default function BecomePartner() {
 
         .bp-final-cta h2 {
           margin: 18px 0 20px;
+
           color: #202327;
-          font-family: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-          font-size: 36px;
+
+          font-family:
+            "Plus Jakarta Sans",
+            "Inter",
+            Arial,
+            sans-serif;
+
+          font-size: clamp(32px, 3.5vw, 48px);
+
           line-height: 1.1;
+
           letter-spacing: -1.6px;
+
           font-weight: 650;
         }
 
         .bp-final-cta > p {
-          max-width: 700px;
-          margin: 0 auto 25px;
+          max-width: 720px;
+
+          margin: 0 auto 27px;
+
           color: #71767b;
+
           font-size: 14px;
-          line-height: 1.55;
+
+          line-height: 1.65;
         }
 
         .bp-cta-divider {
-          width: min(800px,90%);
+          width: min(800px, 90%);
+
           height: 1px;
-          margin: 34px auto 21px;
+
+          margin: 36px auto 22px;
+
           background: #eceef0;
         }
 
@@ -1712,93 +2119,127 @@ export default function BecomePartner() {
           display: flex;
           justify-content: center;
           align-items: center;
+
           flex-wrap: wrap;
+
           gap: 38px;
         }
 
         .bp-cta-points span {
           display: flex;
           align-items: center;
+
           gap: 6px;
+
           color: #686d72;
+
           font-size: 13px;
         }
 
         .bp-cta-points svg {
+          width: 15px;
+          height: 15px;
+
           color: #8d0050;
         }
 
 
-        /* =========================
+        /* =====================================================
            TABLET
-        ========================= */
+           1200px
+        ===================================================== */
 
-        @media (max-width: 950px) {
+        @media (max-width: 1200px) {
+
+          .bp-hero,
+          .bp-opportunities,
+          .bp-application,
+          .bp-process,
+          .bp-capabilities,
+          .bp-final-cta {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
 
           .bp-hero {
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
+            gap: 45px;
           }
 
           .bp-heading-row {
-            gap: 35px;
+            gap: 40px;
           }
 
           .bp-track-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
           }
 
           .bp-scope-grid {
-            grid-template-columns: repeat(3,1fr);
+            grid-template-columns:
+              repeat(3, minmax(0, 1fr));
           }
 
           .bp-process-grid {
-            grid-template-columns: 1fr 1fr;
-          }
-
-          .bp-hero-tags div {
-            font-size: 12.5px;
-          }
-
-          .bp-track-card li,
-          .bp-track-areas li {
-            font-size: 12px;
-          }
-
-          .bp-process-card h3 {
-            font-size: 15px;
-          }
-
-          .bp-process-card p {
-            font-size: 12px;
-          }
-
-          .bp-process-label {
-            font-size: 11px;
-          }
-
-          .bp-cap-card h3 {
-            font-size: 15px;
-          }
-
-          .bp-cap-card p {
-            font-size: 12px;
-          }
-
-          .bp-cta-points span {
-            font-size: 13px;
-          }
-
-          .bp-privacy p {
-            font-size: 11px;
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
           }
 
         }
 
 
-        /* =========================
+        /* =====================================================
+           TABLET / SMALL DESKTOP
+           900px
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+          .bp-hero {
+            grid-template-columns:
+              minmax(0, 1fr)
+              minmax(320px, .9fr);
+
+            gap: 30px;
+
+            padding-top: 45px;
+            padding-bottom: 60px;
+          }
+
+          .bp-hero-content h1 {
+            font-size: 40px;
+          }
+
+          .bp-heading-row {
+            grid-template-columns: 1fr;
+
+            gap: 14px;
+          }
+
+          .bp-form-columns {
+            gap: 30px;
+          }
+
+          .bp-scope-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+          }
+
+          .bp-form-bottom {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .bp-submit-btn {
+            align-self: flex-start;
+          }
+
+        }
+
+
+        /* =====================================================
            MOBILE
-        ========================= */
+           700px
+        ===================================================== */
 
         @media (max-width: 700px) {
 
@@ -1808,189 +2249,75 @@ export default function BecomePartner() {
           .bp-process,
           .bp-capabilities,
           .bp-final-cta {
-            width: calc(100% - 28px);
+            padding-left: 24px;
+            padding-right: 24px;
           }
+
+
+          /* HERO */
 
           .bp-hero {
             grid-template-columns: 1fr;
-            gap: 30px;
-            padding: 30px 0 50px;
+
+            gap: 32px;
+
+            padding-top: 35px;
+            padding-bottom: 50px;
           }
 
           .bp-hero-content h1 {
-            font-size: 30px;
+            margin-top: 16px;
+
+            font-size: 32px;
+
+            line-height: 1.15;
+
             letter-spacing: -1.2px;
           }
 
           .bp-hero-content > p {
             font-size: 13px;
-          }
 
-          .bp-heading-row {
-            grid-template-columns: 1fr;
-            gap: 14px;
-          }
-
-          .bp-heading-row h2,
-          .bp-process h2 {
-            font-size: 25px;
-          }
-
-          .bp-heading-row p {
-            font-size: 12px;
-          }
-
-          .bp-track-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .bp-track-card h3 {
-            font-size: 13px;
-          }
-
-          .bp-track-card > p {
-            font-size: 11px;
-          }
-
-          .bp-track-card li,
-          .bp-track-areas li {
-            font-size: 12px;
             line-height: 1.65;
           }
 
-          .bp-application {
-            padding: 28px 18px;
-          }
+          .bp-hero-tags {
+            align-items: flex-start;
 
-          .bp-application h2 {
-            font-size: 27px;
-          }
-
-          .bp-application-intro {
-            font-size: 11px;
-          }
-
-          .bp-form-columns {
-            grid-template-columns: 1fr;
-            gap: 8px;
-          }
-
-          .bp-small-row {
-            grid-template-columns: 1fr;
-            gap: 0;
-          }
-
-          .bp-scope-grid {
-            grid-template-columns: 1fr 1fr;
-          }
-
-          .bp-collaboration-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .bp-field label {
-            font-size: 10px;
-          }
-
-          .bp-field input,
-          .bp-field select,
-          .bp-field textarea {
-            font-size: 12px;
-          }
-
-          .bp-form-bottom {
             flex-direction: column;
-            align-items: stretch;
+
+            gap: 7px;
           }
 
-          .bp-submit-btn {
-            width: 100%;
-          }
-
-          .bp-process-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .bp-process-card h3 {
-            font-size: 15px;
-          }
-
-          .bp-process-card p {
-            font-size: 12px;
-            line-height: 1.6;
-          }
-
-          .bp-process-label {
+          .bp-hero-tags div {
             font-size: 11px;
           }
 
-          .bp-capabilities {
-            padding: 28px 18px;
-          }
-
-          .bp-capabilities > h2 {
-            font-size: 27px;
-          }
-
-          .bp-cap-grid {
-            grid-template-columns: 1fr;
-          }
-
-          .bp-cap-card {
-            min-height: auto;
-          }
-
-          .bp-cap-card h3 {
-            font-size: 15px;
-          }
-
-          .bp-cap-card p {
-            font-size: 12px;
-            line-height: 1.6;
-          }
-
-          .bp-final-cta {
-            padding: 48px 18px;
-          }
-
-          .bp-final-cta h2 {
-            font-size: 30px;
-            letter-spacing: -1px;
-          }
-
-          .bp-final-cta > p {
-            font-size: 12px;
-          }
-
-          .bp-cta-points {
-            flex-direction: column;
-            gap: 13px;
-          }
-
-          .bp-cta-points span {
-            font-size: 13px;
-          }
-
-          .bp-privacy p {
-            font-size: 11px;
+          .bp-hero-image {
+            aspect-ratio: 1.3 / 1;
           }
 
 
-          /* HERO OVERLAY */
+          /* IMAGE OVERLAY */
 
           .bp-image-overlay-card {
             left: 4%;
             right: 4%;
             bottom: 4%;
+
             min-height: 62px;
+
             gap: 10px;
+
             padding: 9px 12px;
+
             border-radius: 12px;
           }
 
           .bp-overlay-icon {
             width: 37px;
             height: 37px;
+
             border-radius: 9px;
           }
 
@@ -2012,47 +2339,218 @@ export default function BecomePartner() {
             height: 17px;
           }
 
+
+          /* OPPORTUNITIES */
+
+          .bp-opportunities {
+            padding-top: 10px;
+            padding-bottom: 60px;
+          }
+
+          .bp-heading-row h2,
+          .bp-process h2 {
+            font-size: 25px;
+          }
+
+          .bp-heading-row p {
+            font-size: 12px;
+          }
+
+          .bp-track-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .bp-track-card {
+            min-height: auto;
+
+            padding: 20px 18px;
+          }
+
+          .bp-track-card > p {
+            min-height: auto;
+
+            font-size: 11.5px;
+          }
+
+
+          /* APPLICATION */
+
+          .bp-application {
+            margin-bottom: 60px;
+
+            padding-top: 30px;
+            padding-bottom: 30px;
+          }
+
+          .bp-application h2 {
+            font-size: 28px;
+          }
+
+          .bp-application-intro {
+            font-size: 11px;
+          }
+
+          .bp-form-columns {
+            grid-template-columns: 1fr;
+
+            gap: 8px;
+          }
+
+          .bp-small-row {
+            grid-template-columns: 1fr;
+
+            gap: 0;
+          }
+
+          .bp-scope-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+          }
+
+          .bp-collaboration-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .bp-form-bottom {
+            flex-direction: column;
+
+            align-items: stretch;
+          }
+
+          .bp-submit-btn {
+            width: 100%;
+          }
+
+
+          /* PROCESS */
+
+          .bp-process {
+            padding-bottom: 60px;
+          }
+
+          .bp-process-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .bp-process-card {
+            min-height: auto;
+          }
+
+
+          /* CAPABILITIES */
+
+          .bp-capabilities {
+            margin-bottom: 60px;
+
+            padding-top: 30px;
+            padding-bottom: 30px;
+          }
+
+          .bp-capabilities > h2 {
+            font-size: 28px;
+          }
+
+          .bp-cap-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .bp-cap-card {
+            min-height: auto;
+          }
+
+
+          /* FINAL CTA */
+
+          .bp-final-cta {
+            margin-bottom: 40px;
+
+            padding-top: 50px;
+            padding-bottom: 50px;
+          }
+
+          .bp-final-cta h2 {
+            font-size: 31px;
+
+            letter-spacing: -1px;
+          }
+
+          .bp-final-cta > p {
+            font-size: 12px;
+
+            line-height: 1.65;
+          }
+
+          .bp-cta-points {
+            flex-direction: column;
+
+            gap: 13px;
+          }
+
         }
 
 
-        /* =========================
+        /* =====================================================
            SMALL MOBILE
-        ========================= */
+           480px
+        ===================================================== */
 
-        @media (max-width: 420px) {
+        @media (max-width: 480px) {
+
+          .bp-hero,
+          .bp-opportunities,
+          .bp-application,
+          .bp-process,
+          .bp-capabilities,
+          .bp-final-cta {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+
+          /* HERO */
+
+          .bp-hero {
+            padding-top: 28px;
+            padding-bottom: 42px;
+          }
+
+          .bp-pill {
+            padding: 5px 10px;
+
+            font-size: 8.5px;
+          }
 
           .bp-hero-content h1 {
             font-size: 28px;
+
+            letter-spacing: -1px;
           }
 
           .bp-hero-content > p {
             font-size: 12px;
           }
 
-          .bp-scope-grid {
-            grid-template-columns: 1fr;
+          .bp-primary-btn {
+            padding: 12px 17px;
+
+            font-size: 12px;
           }
 
-          .bp-hero-tags {
-            flex-direction: column;
-            align-items: flex-start;
-          }
+          .bp-hero-tags div {
+            padding: 7px 10px;
 
-          .bp-capabilities > h2 {
-            font-size: 24px;
-          }
-
-          .bp-final-cta h2 {
-            font-size: 27px;
+            font-size: 10.5px;
           }
 
 
-          /* HERO OVERLAY - SMALL MOBILE */
+          /* IMAGE */
 
           .bp-image-overlay-card {
             min-height: 56px;
-            padding: 8px 10px;
+
             gap: 8px;
+
+            padding: 8px 10px;
           }
 
           .bp-overlay-icon {
@@ -2060,17 +2558,147 @@ export default function BecomePartner() {
             height: 33px;
           }
 
+          .bp-overlay-icon svg {
+            width: 17px;
+            height: 17px;
+          }
+
           .bp-overlay-content strong {
-            font-size: 11px;
+            font-size: 10.5px;
           }
 
           .bp-overlay-content span {
-            font-size: 9px;
+            font-size: 8.5px;
           }
 
           .bp-overlay-arrow {
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
+          }
+
+
+          /* OPPORTUNITIES */
+
+          .bp-heading-row h2,
+          .bp-process h2 {
+            font-size: 23px;
+          }
+
+          .bp-track-card h3 {
+            font-size: 13px;
+          }
+
+          .bp-track-card > p {
+            font-size: 11px;
+          }
+
+          .bp-track-card li {
+            font-size: 11px;
+          }
+
+
+          /* APPLICATION */
+
+          .bp-application {
+            padding-top: 25px;
+            padding-bottom: 25px;
+          }
+
+          .bp-application h2 {
+            font-size: 25px;
+          }
+
+          .bp-scope-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .bp-scope-option {
+            min-height: 38px;
+
+            font-size: 10.5px;
+          }
+
+          .bp-collab-top strong {
+            font-size: 11px;
+          }
+
+          .bp-collaboration-card p {
+            font-size: 10px;
+          }
+
+
+          /* CAPABILITIES */
+
+          .bp-capabilities {
+            padding-top: 25px;
+            padding-bottom: 25px;
+          }
+
+          .bp-capabilities > h2 {
+            font-size: 24px;
+          }
+
+          .bp-cap-card h3 {
+            font-size: 14px;
+          }
+
+          .bp-cap-card p {
+            font-size: 11px;
+          }
+
+
+          /* CTA */
+
+          .bp-final-cta {
+            padding-top: 42px;
+            padding-bottom: 42px;
+          }
+
+          .bp-final-cta h2 {
+            font-size: 27px;
+          }
+
+          .bp-final-cta > p {
+            font-size: 11px;
+          }
+
+          .bp-cta-points span {
+            font-size: 11px;
+          }
+
+        }
+
+
+        /* =====================================================
+           EXTRA SMALL
+           360px
+        ===================================================== */
+
+        @media (max-width: 360px) {
+
+          .bp-hero-content h1 {
+            font-size: 25px;
+          }
+
+          .bp-hero-content > p {
+            font-size: 11.5px;
+          }
+
+          .bp-heading-row h2,
+          .bp-process h2 {
+            font-size: 21px;
+          }
+
+          .bp-application h2 {
+            font-size: 23px;
+          }
+
+          .bp-capabilities > h2 {
+            font-size: 22px;
+          }
+
+          .bp-final-cta h2 {
+            font-size: 24px;
           }
 
         }
@@ -2082,14 +2710,12 @@ export default function BecomePartner() {
 }
 
 
-/* =========================
+/* =========================================================
    CAPABILITY CARD
-========================= */
+========================================================= */
 
 function CapabilityCard({ icon, title, text }) {
-
   return (
-
     <div className="bp-cap-card">
 
       <div className="bp-cap-icon">
@@ -2105,6 +2731,5 @@ function CapabilityCard({ icon, title, text }) {
       </p>
 
     </div>
-
   );
 }

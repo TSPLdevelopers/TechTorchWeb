@@ -12,6 +12,16 @@ import {
   CircleCheck,
 } from "lucide-react";
 
+// =================================================
+// COLORS
+// =================================================
+
+const MAROON = "#730024";
+
+// =================================================
+// CARDS
+// =================================================
+
 const cards = [
   {
     icon: MessageSquareText,
@@ -81,98 +91,42 @@ const cards = [
   },
 ];
 
+// =================================================
+// COMPONENT
+// =================================================
+
 export default function TechTorchEcosystem() {
   return (
-    <section className="w-full bg-white">
-      <div
-        className="
-          mx-auto
-          w-full
-          max-w-7xl
-          px-4
-          py-10
-          sm:px-6
-          sm:py-12
-          md:px-8
-          md:py-16
-          lg:px-10
-          lg:py-20
-        "
-      >
-        {/* =====================================================
-            HEADER
-        ====================================================== */}
+    <section className="ecosystem-section">
+      <div className="ecosystem-container">
 
-        <div
-          className="
-            mb-8
-            flex
-            flex-col
-            items-start
-            justify-between
-            gap-5
-            sm:mb-10
-            md:flex-row
-            md:items-end
-            md:gap-6
-          "
-        >
-          <div className="w-full">
+        {/* =================================================
+            HEADER
+        ================================================= */}
+
+        <div className="ecosystem-header">
+
+          <div className="ecosystem-header-content">
+
             {/* Eyebrow */}
 
-            <div className="mb-3 flex items-center gap-2 sm:mb-4">
-              <span
-                className="h-px w-6 sm:w-8"
-                style={{ backgroundColor: "#730024" }}
-              />
+            <div className="ecosystem-eyebrow">
+              <span className="ecosystem-eyebrow-line"></span>
 
-              <span
-                className="
-                  font-['Inter']
-                  text-[9px]
-                  font-semibold
-                  tracking-[0.08em]
-                  sm:text-[10px]
-                  md:text-[11px]
-                "
-                style={{ color: "#730024" }}
-              >
+              <span className="ecosystem-eyebrow-text">
                 TechTorch Ecosystem
               </span>
             </div>
 
             {/* Heading */}
 
-            <h1
-              className="
-                mb-2
-                font-['Plus_Jakarta_Sans']
-                text-[24px]
-                font-bold
-                leading-[1.2]
-                tracking-[-0.02em]
-                text-[#1c1c1c]
-                sm:text-[29px]
-                md:text-[34px]
-                lg:text-[38px]
-              "
-            >
+            <h1 className="ecosystem-heading">
               TechTorch Technology Services
             </h1>
 
             {/* Subheading */}
 
-            <p
-              className="
-                max-w-2xl
-                font-['Plus_Jakarta_Sans']
-                text-[11.5px]
-                leading-[1.6]
-                text-neutral-500
-                sm:text-[13px]
-                md:text-[14px]
-              "
-            >
+            <p className="ecosystem-subheading">
               Artificial Intelligence is one part of the wider technology
               capabilities offered by TechTorch Solutions.
             </p>
@@ -180,40 +134,17 @@ export default function TechTorchEcosystem() {
 
           {/* Practice Count */}
 
-          <span
-            className="
-              whitespace-nowrap
-              rounded-full
-              bg-neutral-100
-              px-3
-              py-1.5
-              font-['Inter']
-              text-[9px]
-              font-medium
-              text-neutral-500
-              sm:text-[10px]
-              md:text-[11px]
-            "
-          >
+          <span className="ecosystem-count">
             8 Integrated Practices
           </span>
         </div>
 
-        {/* =====================================================
+        {/* =================================================
             CARD GRID
-        ====================================================== */}
+        ================================================= */}
 
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-4
-            sm:grid-cols-2
-            sm:gap-5
-            lg:grid-cols-4
-            lg:gap-6
-          "
-        >
+        <div className="ecosystem-grid">
+
           {cards.map((card) => {
             const Icon = card.icon;
             const LinkIcon = card.linkIcon || ArrowRight;
@@ -221,85 +152,25 @@ export default function TechTorchEcosystem() {
             return (
               <div
                 key={card.title}
-                className="
-                  group
-                  relative
-                  flex
-                  h-full
-                  flex-col
-                  rounded-xl
-                  border
-                  border-neutral-200
-                  bg-white
-                  p-5
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:shadow-lg
-                  sm:p-6
-                "
+                className="ecosystem-card"
               >
+
                 {/* =================================================
                     TOP ROW
-                ================================================== */}
+                ================================================= */}
 
-                <div className="mb-5 flex items-start justify-between gap-3">
+                <div className="ecosystem-card-top">
+
                   {/* Icon */}
 
-                  <div
-                    className="
-                      flex
-                      h-9
-                      w-9
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-lg
-                      border
-                      border-neutral-200
-                      bg-neutral-50
-                      transition-all
-                      duration-500
-                      ease-out
-                      group-hover:scale-110
-                      group-hover:border-[#730024]
-                      group-hover:bg-[#fdf1f6]
-                    "
-                  >
-                    <Icon
-                      className="
-                        h-4
-                        w-4
-                        transition-transform
-                        duration-500
-                        ease-out
-                        group-hover:scale-125
-                      "
-                      style={{
-                        color: "#730024",
-                      }}
-                    />
+                  <div className="ecosystem-icon-wrapper">
+                    <Icon className="ecosystem-icon" />
                   </div>
 
                   {/* Badge */}
 
                   {card.badge && (
-                    <span
-                      className="
-                        rounded-full
-                        px-2
-                        py-1
-                        font-['Inter']
-                        text-[8px]
-                        font-semibold
-                        tracking-[0.06em]
-                        sm:text-[9px]
-                      "
-                      style={{
-                        backgroundColor: "#fdf1f6",
-                        color: "#730024",
-                      }}
-                    >
+                    <span className="ecosystem-badge">
                       {card.badge}
                     </span>
                   )}
@@ -307,79 +178,32 @@ export default function TechTorchEcosystem() {
 
                 {/* =================================================
                     CARD HEADING
-                ================================================== */}
+                ================================================= */}
 
-                <h3
-                  className="
-                    mb-2
-                    font-['Plus_Jakarta_Sans']
-                    text-[13.5px]
-                    font-bold
-                    leading-[1.4]
-                    text-[#1c1c1c]
-                    sm:text-[14px]
-                    md:text-[15px]
-                  "
-                >
+                <h3 className="ecosystem-card-title">
                   {card.title}
                 </h3>
 
                 {/* =================================================
                     CARD DESCRIPTION
-                ================================================== */}
+                ================================================= */}
 
-                <p
-                  className="
-                    mb-5
-                    flex-1
-                    font-['Inter']
-                    text-[11.5px]
-                    leading-[1.7]
-                    text-neutral-500
-                    sm:text-[12px]
-                    md:text-[12.5px]
-                  "
-                >
+                <p className="ecosystem-card-description">
                   {card.description}
                 </p>
 
                 {/* =================================================
                     CARD LINK
-                ================================================== */}
+                ================================================= */}
 
-                <div className="border-t border-neutral-200 pt-3">
+                <div className="ecosystem-card-footer">
                   <a
                     href="#"
-                    className="
-                      inline-flex
-                      items-center
-                      gap-1
-                      font-['Inter']
-                      text-[10px]
-                      font-semibold
-                      transition-all
-                      duration-300
-                      hover:gap-2
-                      sm:text-[11px]
-                      md:text-[11.5px]
-                    "
-                    style={{
-                      color: "#730024",
-                    }}
+                    className="ecosystem-card-link"
                   >
-                    {card.linkLabel}
+                    <span>{card.linkLabel}</span>
 
-                    <LinkIcon
-                      className="
-                        h-3
-                        w-3
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-0.5
-                        sm:h-3.5
-                        sm:w-3.5
-                      "
-                    />
+                    <LinkIcon className="ecosystem-link-icon" />
                   </a>
                 </div>
               </div>
@@ -387,6 +211,715 @@ export default function TechTorchEcosystem() {
           })}
         </div>
       </div>
+
+      {/* =================================================
+          RESPONSIVE CSS
+      ================================================= */}
+
+      <style>{`
+
+        /* =================================================
+           SECTION
+        ================================================= */
+
+        .ecosystem-section {
+          width: 100%;
+          overflow: hidden;
+          background: #ffffff;
+        }
+
+        /* =================================================
+           MAIN CONTAINER
+
+           Desktop: 100px
+           Tablet: 40px
+           Mobile: 24px
+           Small Mobile: 16px
+        ================================================= */
+
+        .ecosystem-container {
+          width: 100%;
+          box-sizing: border-box;
+
+          padding-left: 100px;
+          padding-right: 100px;
+
+          padding-top: 70px;
+          padding-bottom: 70px;
+        }
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .ecosystem-header {
+          width: 100%;
+
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+
+          gap: 30px;
+
+          margin-bottom: 42px;
+        }
+
+        .ecosystem-header-content {
+          min-width: 0;
+          flex: 1;
+        }
+
+        /* =================================================
+           EYEBROW
+        ================================================= */
+
+        .ecosystem-eyebrow {
+          display: flex;
+          align-items: center;
+
+          gap: 8px;
+
+          margin-bottom: 14px;
+        }
+
+        .ecosystem-eyebrow-line {
+          width: 32px;
+          height: 1px;
+
+          flex-shrink: 0;
+
+          background: ${MAROON};
+        }
+
+        .ecosystem-eyebrow-text {
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+          font-weight: 600;
+
+          line-height: 1.4;
+
+          letter-spacing: 0.08em;
+
+          color: ${MAROON};
+        }
+
+        /* =================================================
+           HEADING
+        ================================================= */
+
+        .ecosystem-heading {
+          max-width: 850px;
+
+          margin: 0 0 8px 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 38px;
+          font-weight: 700;
+
+          line-height: 1.2;
+
+          letter-spacing: -0.02em;
+
+          color: #1c1c1c;
+        }
+
+        /* =================================================
+           SUBHEADING
+        ================================================= */
+
+        .ecosystem-subheading {
+          max-width: 700px;
+
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 14px;
+          font-weight: 400;
+
+          line-height: 1.65;
+
+          color: #737373;
+        }
+
+        /* =================================================
+           PRACTICE COUNT
+        ================================================= */
+
+        .ecosystem-count {
+          flex-shrink: 0;
+
+          white-space: nowrap;
+
+          padding: 7px 13px;
+
+          border-radius: 999px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+          font-weight: 500;
+
+          line-height: 1.3;
+
+          color: #737373;
+
+          background: #f5f5f5;
+        }
+
+        /* =================================================
+           CARD GRID
+        ================================================= */
+
+        .ecosystem-grid {
+          width: 100%;
+
+          display: grid;
+
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+
+          gap: 24px;
+        }
+
+        /* =================================================
+           CARD
+        ================================================= */
+
+        .ecosystem-card {
+          min-width: 0;
+          min-height: 285px;
+
+          display: flex;
+          flex-direction: column;
+
+          box-sizing: border-box;
+
+          padding: 24px;
+
+          border: 1px solid #e5e5e5;
+
+          border-radius: 12px;
+
+          background: #ffffff;
+
+          transition:
+            transform 0.35s ease,
+            box-shadow 0.35s ease,
+            border-color 0.35s ease;
+        }
+
+        .ecosystem-card:hover {
+          transform: translateY(-5px);
+
+          border-color: rgba(115, 0, 36, 0.16);
+
+          box-shadow:
+            0 12px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        /* =================================================
+           CARD TOP
+        ================================================= */
+
+        .ecosystem-card-top {
+          width: 100%;
+
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+
+          gap: 10px;
+
+          margin-bottom: 21px;
+        }
+
+        /* =================================================
+           ICON
+        ================================================= */
+
+        .ecosystem-icon-wrapper {
+          width: 38px;
+          height: 38px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          box-sizing: border-box;
+
+          border: 1px solid #e5e5e5;
+
+          border-radius: 8px;
+
+          background: #fafafa;
+
+          transition:
+            transform 0.35s ease,
+            border-color 0.35s ease,
+            background 0.35s ease;
+        }
+
+        .ecosystem-card:hover .ecosystem-icon-wrapper {
+          transform: scale(1.08);
+
+          border-color: ${MAROON};
+
+          background: #fdf1f6;
+        }
+
+        .ecosystem-icon {
+          width: 17px;
+          height: 17px;
+
+          color: ${MAROON};
+
+          transition: transform 0.35s ease;
+        }
+
+        .ecosystem-card:hover .ecosystem-icon {
+          transform: scale(1.18);
+        }
+
+        /* =================================================
+           BADGE
+        ================================================= */
+
+        .ecosystem-badge {
+          flex-shrink: 0;
+
+          padding: 5px 9px;
+
+          border-radius: 999px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 8px;
+          font-weight: 600;
+
+          line-height: 1.2;
+
+          letter-spacing: 0.06em;
+
+          white-space: nowrap;
+
+          color: ${MAROON};
+
+          background: #fdf1f6;
+        }
+
+        /* =================================================
+           CARD TITLE
+        ================================================= */
+
+        .ecosystem-card-title {
+          margin: 0 0 9px 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 14px;
+          font-weight: 700;
+
+          line-height: 1.4;
+
+          color: #1c1c1c;
+        }
+
+        /* =================================================
+           CARD DESCRIPTION
+        ================================================= */
+
+        .ecosystem-card-description {
+          flex: 1;
+
+          margin: 0 0 20px 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12.5px;
+          font-weight: 400;
+
+          line-height: 1.7;
+
+          color: #737373;
+        }
+
+        /* =================================================
+           CARD FOOTER
+        ================================================= */
+
+        .ecosystem-card-footer {
+          width: 100%;
+
+          padding-top: 13px;
+
+          border-top: 1px solid #eeeeee;
+        }
+
+        /* =================================================
+           CARD LINK
+        ================================================= */
+
+        .ecosystem-card-link {
+          display: inline-flex;
+          align-items: center;
+
+          gap: 5px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+          font-weight: 600;
+
+          line-height: 1.4;
+
+          text-decoration: none;
+
+          color: ${MAROON};
+
+          transition: gap 0.3s ease;
+        }
+
+        .ecosystem-card-link:hover {
+          gap: 9px;
+        }
+
+        .ecosystem-link-icon {
+          width: 13px;
+          height: 13px;
+
+          flex-shrink: 0;
+
+          transition: transform 0.3s ease;
+        }
+
+        .ecosystem-card:hover .ecosystem-link-icon {
+          transform: translateX(2px);
+        }
+
+        /* =================================================
+           LARGE TABLET
+           <= 1200px
+        ================================================= */
+
+        @media (max-width: 1200px) {
+
+          .ecosystem-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .ecosystem-heading {
+            font-size: 35px;
+          }
+
+          .ecosystem-grid {
+            gap: 20px;
+          }
+
+          .ecosystem-card {
+            padding: 21px;
+          }
+        }
+
+        /* =================================================
+           TABLET
+           <= 900px
+        ================================================= */
+
+        @media (max-width: 900px) {
+
+          .ecosystem-container {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
+          }
+
+          .ecosystem-header {
+            align-items: flex-start;
+
+            gap: 18px;
+
+            margin-bottom: 32px;
+          }
+
+          .ecosystem-heading {
+            font-size: 32px;
+          }
+
+          .ecosystem-subheading {
+            font-size: 13px;
+          }
+
+          .ecosystem-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+          }
+
+          .ecosystem-card {
+            min-height: 275px;
+
+            padding: 20px;
+          }
+
+          .ecosystem-card-title {
+            font-size: 14px;
+          }
+
+          .ecosystem-card-description {
+            font-size: 12px;
+          }
+        }
+
+        /* =================================================
+           MOBILE
+           <= 700px
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+          .ecosystem-container {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 44px;
+            padding-bottom: 44px;
+          }
+
+          .ecosystem-header {
+            flex-direction: column;
+            align-items: flex-start;
+
+            gap: 16px;
+
+            margin-bottom: 28px;
+          }
+
+          .ecosystem-eyebrow {
+            gap: 7px;
+
+            margin-bottom: 11px;
+          }
+
+          .ecosystem-eyebrow-line {
+            width: 26px;
+          }
+
+          .ecosystem-eyebrow-text {
+            font-size: 10px;
+          }
+
+          .ecosystem-heading {
+            max-width: 100%;
+
+            margin-bottom: 8px;
+
+            font-size: 28px;
+
+            line-height: 1.22;
+          }
+
+          .ecosystem-subheading {
+            max-width: 100%;
+
+            font-size: 12px;
+
+            line-height: 1.65;
+          }
+
+          .ecosystem-count {
+            font-size: 9px;
+
+            padding: 6px 11px;
+          }
+
+          .ecosystem-grid {
+            grid-template-columns: 1fr;
+
+            gap: 15px;
+          }
+
+          .ecosystem-card {
+            min-height: auto;
+
+            padding: 20px;
+          }
+
+          .ecosystem-card-top {
+            margin-bottom: 18px;
+          }
+
+          .ecosystem-card-title {
+            font-size: 14px;
+          }
+
+          .ecosystem-card-description {
+            font-size: 12px;
+
+            line-height: 1.65;
+          }
+
+          .ecosystem-card-link {
+            font-size: 11px;
+          }
+        }
+
+        /* =================================================
+           SMALL MOBILE
+           <= 480px
+        ================================================= */
+
+        @media (max-width: 480px) {
+
+          .ecosystem-container {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 36px;
+            padding-bottom: 36px;
+          }
+
+          .ecosystem-header {
+            margin-bottom: 24px;
+          }
+
+          .ecosystem-eyebrow {
+            margin-bottom: 9px;
+          }
+
+          .ecosystem-eyebrow-line {
+            width: 22px;
+          }
+
+          .ecosystem-eyebrow-text {
+            font-size: 9px;
+
+            letter-spacing: 0.07em;
+          }
+
+          .ecosystem-heading {
+            font-size: 25px;
+
+            line-height: 1.2;
+          }
+
+          .ecosystem-subheading {
+            font-size: 11.5px;
+
+            line-height: 1.65;
+          }
+
+          .ecosystem-count {
+            padding: 5px 10px;
+
+            font-size: 8.5px;
+          }
+
+          .ecosystem-grid {
+            gap: 13px;
+          }
+
+          .ecosystem-card {
+            padding: 17px;
+
+            border-radius: 10px;
+          }
+
+          .ecosystem-card-top {
+            margin-bottom: 16px;
+          }
+
+          .ecosystem-icon-wrapper {
+            width: 36px;
+            height: 36px;
+          }
+
+          .ecosystem-icon {
+            width: 16px;
+            height: 16px;
+          }
+
+          .ecosystem-badge {
+            padding: 4px 8px;
+
+            font-size: 7px;
+          }
+
+          .ecosystem-card-title {
+            margin-bottom: 8px;
+
+            font-size: 13px;
+          }
+
+          .ecosystem-card-description {
+            margin-bottom: 16px;
+
+            font-size: 11.5px;
+
+            line-height: 1.65;
+          }
+
+          .ecosystem-card-footer {
+            padding-top: 11px;
+          }
+
+          .ecosystem-card-link {
+            font-size: 10.5px;
+          }
+
+          .ecosystem-link-icon {
+            width: 12px;
+            height: 12px;
+          }
+        }
+
+        /* =================================================
+           EXTRA SMALL
+           <= 360px
+        ================================================= */
+
+        @media (max-width: 360px) {
+
+          .ecosystem-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .ecosystem-heading {
+            font-size: 23px;
+          }
+
+          .ecosystem-subheading {
+            font-size: 11px;
+          }
+
+          .ecosystem-card {
+            padding: 16px;
+          }
+
+          .ecosystem-card-title {
+            font-size: 12.5px;
+          }
+
+          .ecosystem-card-description {
+            font-size: 11px;
+          }
+
+          .ecosystem-badge {
+            font-size: 6.5px;
+          }
+        }
+
+      `}</style>
     </section>
   );
 }

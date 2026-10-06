@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import {
   ArrowRight,
   Code2,
@@ -16,7 +17,9 @@ import {
   Check,
 } from "lucide-react";
 
-/* ---------- Data ---------- */
+/* =========================================================
+   DATA
+========================================================= */
 
 const heroTags = [
   "Technology Expertise",
@@ -211,487 +214,1996 @@ const finalTags = [
   "Dedicated Partner Manager",
 ];
 
-/* ---------- Component ---------- */
+/* =========================================================
+   COMPONENT
+========================================================= */
 
 export default function VendorPartnershipPage() {
   const navigate = useNavigate();
 
-  return (
-    <div className="w-full bg-[#f8f7f5] font-inter">
-      {/* ============ HERO ============ */}
-      <div className="flex justify-center px-4 sm:px-6 pt-10 sm:pt-16 pb-8 sm:pb-10">
-        <div className="w-full max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start mb-8">
-            {/* Left */}
-            <div className="flex flex-col justify-center h-full">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-3 py-1.5 mb-5 sm:mb-6 w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-rose-800" />
+  const goToPartner = () => {
+    navigate("/become-partner");
+  };
 
-                <span className="text-[9px] sm:text-[10px] tracking-wide text-rose-800 font-bold font-inter">
-                  STRATEGIC RESOURCING • VENDOR PARTNERSHIP
-                </span>
+  return (
+    <div className="vendor-page">
+
+      {/* =====================================================
+          HERO
+      ===================================================== */}
+
+      <section className="vendor-hero-section">
+        <div className="vendor-container">
+
+          <div className="vendor-hero-grid">
+
+            {/* LEFT CONTENT */}
+            <div className="vendor-hero-content">
+
+              <div className="vendor-pill">
+                <span />
+                STRATEGIC RESOURCING • VENDOR PARTNERSHIP
               </div>
 
-              <h1 className="font-jakarta font-semibold text-[30px] sm:text-4xl lg:text-[2.5rem] leading-[1.15] mb-5 text-[#1c1c1c]">
+              <h1>
                 Building Stronger Opportunities Through{" "}
-                <span className="text-rose-900">
-                  Technology Partnership
-                </span>
+                <span>Technology Partnership</span>
               </h1>
 
-              <p className="font-inter text-neutral-500 text-[14px] sm:text-[14.5px] leading-relaxed max-w-md mb-7">
+              <p className="vendor-hero-description">
                 Partner with TechTorch to bring together technology
-                expertise, digital capabilities, and business requirements to
-                create practical solutions for customers and organizations.
+                expertise, digital capabilities, and business requirements
+                to create practical solutions for customers and
+                organizations.
               </p>
 
               <button
-                onClick={() => navigate("/become-partner")}
-                className="inline-flex items-center gap-2 rounded-lg bg-rose-900 text-white font-semibold text-[13px] sm:text-sm px-6 py-3.5 w-fit hover:bg-rose-950 transition-colors mb-6 font-inter"
+                type="button"
+                onClick={goToPartner}
+                className="vendor-primary-btn"
               >
                 Become a Partner
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight size={16} />
               </button>
 
-              <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <div className="vendor-hero-tags">
                 {heroTags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-medium text-neutral-500 font-inter"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-800" />
+                  <span key={tag}>
+                    <i />
                     {tag}
                   </span>
                 ))}
               </div>
+
             </div>
 
-            {/* Right - image card */}
-            <div className="rounded-xl bg-white border border-neutral-200 shadow-sm overflow-hidden">
-              <div className="relative h-52 sm:h-60 lg:h-64">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: "url('vendor.png')",
-                  }}
+
+            {/* RIGHT IMAGE */}
+            <div className="vendor-image-card">
+
+              <div className="vendor-image-wrap">
+                <img
+                  src="/vendor.png"
+                  alt="Vendor Partnership"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                <div className="vendor-image-gradient" />
               </div>
 
-              <div className="px-4 py-3.5">
-                <div className="text-[9px] tracking-wide text-rose-800 font-bold mb-1 font-inter">
+              <div className="vendor-image-info">
+
+                <div className="vendor-image-label">
                   ALLIANCE NETWORK
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <span className="text-[12px] sm:text-[12.5px] font-semibold text-[#1c1c1c] font-inter">
+                <div className="vendor-image-bottom">
+
+                  <span className="vendor-image-title">
                     Enterprise Ready Partnerships
                   </span>
 
-                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-600 font-inter">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                  <span className="vendor-verified">
+                    <i />
                     Verified Capabilities
                   </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* ============ STRATEGIC PERSPECTIVE ============ */}
-      <div className="flex justify-center px-4 sm:px-6 py-8 sm:py-10">
-        <div className="w-full max-w-6xl">
-          <div className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] tracking-wide text-rose-800 font-bold bg-rose-50 px-3 py-1.5 rounded-full mb-5 font-inter">
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-800" />
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          STRATEGIC PERSPECTIVE
+      ===================================================== */}
+
+      <section className="vendor-strategic-section">
+        <div className="vendor-container">
+
+          <div className="vendor-section-pill">
+            <span />
             STRATEGIC PERSPECTIVE
           </div>
 
-          <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-xl sm:text-2xl leading-snug mb-6 max-w-xl">
+          <h2 className="vendor-section-heading vendor-strategic-heading">
             Technology Partnerships That Create Business Value
           </h2>
 
-          <div className="space-y-4 font-inter text-[13px] sm:text-[14px] leading-relaxed text-neutral-600 max-w-3xl mb-6">
+          <div className="vendor-strategic-copy">
+
             <p>
-              Technology is most effective when different capabilities come
-              together with a clear understanding of business needs. A
-              strong partnership can combine expertise, resources,
+              Technology is most effective when different capabilities
+              come together with a clear understanding of business needs.
+              A strong partnership can combine expertise, resources,
               solutions, and industry knowledge to address customer
               requirements more effectively.
             </p>
 
             <p>
-              TechTorch works across IT consultancy, artificial intelligence,
-              cloud infrastructure, cybersecurity, software engineering,
-              software development and support, business process
-              outsourcing, resource and staffing, and web solutions. These
-              capabilities provide a broad foundation for collaboration with
-              organizations that are looking to strengthen their technology
-              offerings or support their customers with additional
-              expertise.
+              TechTorch works across IT consultancy, artificial
+              intelligence, cloud infrastructure, cybersecurity, software
+              engineering, software development and support, business
+              process outsourcing, resource and staffing, and web
+              solutions. These capabilities provide a broad foundation
+              for collaboration with organizations that are looking to
+              strengthen their technology offerings or support their
+              customers with additional expertise.
             </p>
+
           </div>
 
-          {/* Pull quote */}
-          <blockquote className="border-l-[3px] border-rose-800 bg-rose-50/60 pl-5 sm:pl-6 pr-5 sm:pr-6 py-5 mb-6 max-w-3xl">
-            <p className="font-inter text-[13.5px] sm:text-[14.5px] italic text-neutral-700 leading-relaxed mb-2">
-              "Our partnership approach is focused on understanding the needs
-              of each organization and identifying areas where our
+          <blockquote className="vendor-quote">
+
+            <p>
+              "Our partnership approach is focused on understanding the
+              needs of each organization and identifying areas where our
               technology capabilities can complement existing products,
               services, or project requirements."
             </p>
 
-            <span className="font-inter text-[10px] sm:text-[11px] font-semibold tracking-wide text-rose-800">
+            <span>
               — TECHTORCH PARTNERSHIP FRAMEWORK
             </span>
+
           </blockquote>
 
-          <p className="font-inter text-neutral-600 text-[13px] sm:text-[14px] leading-relaxed max-w-3xl mb-10">
+          <p className="vendor-strategic-bottom">
             From software development and system integration to digital
             business solutions and technical resources, TechTorch can
-            support different technology requirements through a flexible and
-            collaborative approach.
+            support different technology requirements through a flexible
+            and collaborative approach.
           </p>
 
-          {/* Collaborative impact card */}
-          <div className="rounded-2xl bg-white border border-neutral-200 overflow-hidden grid grid-cols-1 sm:grid-cols-[1.3fr_1fr]">
-            <div className="p-6 sm:p-8">
-              <div className="font-inter text-[9px] sm:text-[9.5px] tracking-wide text-rose-800 font-bold mb-3">
+
+          {/* IMPACT CARD */}
+
+          <div className="vendor-impact-card">
+
+            <div className="vendor-impact-content">
+
+              <div className="vendor-mini-label">
                 COLLABORATIVE IMPACT
               </div>
 
-              <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[16px] sm:text-[18px] mb-3">
+              <h3>
                 Seamless Integration with Your Enterprise Ecosystem
               </h3>
 
-              <p className="font-inter text-neutral-500 text-[12px] sm:text-[13px] leading-relaxed">
+              <p>
                 Whether you are an independent software vendor, systems
                 integrator, or digital agency, our shared delivery models
                 align with your business milestones and governance
                 frameworks.
               </p>
+
             </div>
 
-            <div
-              className="h-56 sm:h-64 lg:h-full min-h-[220px] w-full bg-cover bg-center"
-              style={{
-                backgroundImage: "url('BecomePartner.png')",
-              }}
-            />
+            <div className="vendor-impact-image">
+              <img
+                src="/BecomePartner.png"
+                alt="Enterprise Collaboration"
+              />
+            </div>
+
           </div>
+
         </div>
-      </div>
+      </section>
 
-      {/* ============ COLLABORATION MATRIX ============ */}
-      <div className="w-full bg-white flex justify-center px-4 sm:px-6 py-10 sm:py-14">
-        <div className="w-full max-w-6xl text-center">
-          <div className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] tracking-wide text-rose-800 font-bold bg-rose-50 px-3 py-1.5 rounded-full mb-4 font-inter">
-            COLLABORATION MATRIX
+
+      {/* =====================================================
+          COLLABORATION MATRIX
+      ===================================================== */}
+
+      <section className="vendor-white-section">
+        <div className="vendor-container">
+
+          <div className="vendor-centered-heading">
+
+            <div className="vendor-section-pill">
+              COLLABORATION MATRIX
+            </div>
+
+            <h2 className="vendor-section-heading">
+              Partnership Opportunities
+            </h2>
+
+            <p>
+              Explore Areas Where We Can Work Together
+            </p>
+
           </div>
 
-          <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-xl sm:text-2xl mb-2">
-            Partnership Opportunities
-          </h2>
 
-          <p className="font-inter text-neutral-500 text-[12.5px] sm:text-[13.5px] mb-10">
-            Explore Areas Where We Can Work Together
-          </p>
+          <div className="vendor-opportunity-grid">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
             {opportunities.map((op) => {
+
               const Icon = op.icon;
 
               return (
                 <div
                   key={op.title}
-                  className="rounded-xl border border-neutral-200 p-5 sm:p-6"
+                  className="vendor-opportunity-card"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center mb-4">
-                    <Icon className="w-4 h-4 text-rose-800" />
+
+                  <div className="vendor-opportunity-icon">
+                    <Icon />
                   </div>
 
-                  <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[14px] sm:text-[14.5px] mb-2">
-                    {op.title}
-                  </h3>
+                  <h3>{op.title}</h3>
 
-                  <p className="font-inter text-neutral-500 text-[12px] sm:text-[12.5px] leading-relaxed mb-5">
-                    {op.description}
-                  </p>
+                  <p>{op.description}</p>
 
-                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                  <div className="vendor-card-tags">
                     {op.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-inter text-[10px] sm:text-[10.5px] font-semibold text-rose-800"
-                      >
+                      <span key={tag}>
                         {tag}
                       </span>
                     ))}
                   </div>
+
                 </div>
               );
             })}
-          </div>
-        </div>
-      </div>
 
-      {/* ============ ENGAGEMENT METHODOLOGY ============ */}
-      <div className="flex justify-center px-4 sm:px-6 py-10 sm:py-14">
-        <div className="w-full max-w-6xl">
-          <div className="font-inter text-[9px] sm:text-[10px] tracking-wide text-rose-800 font-bold mb-3">
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          ENGAGEMENT METHODOLOGY
+      ===================================================== */}
+
+      <section className="vendor-methodology-section">
+        <div className="vendor-container">
+
+          <div className="vendor-mini-label">
             ENGAGEMENT METHODOLOGY
           </div>
 
-          <div className="flex items-start justify-between flex-wrap gap-3 mb-2">
-            <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-xl sm:text-2xl">
+          <div className="vendor-methodology-heading-row">
+
+            <h2 className="vendor-section-heading">
               Our Partnership Approach
             </h2>
 
-            <span className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-semibold text-neutral-500 bg-white border border-neutral-200 px-3 py-1.5 rounded-full font-inter">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span className="vendor-governance-badge">
+              <i />
               End-to-End Governance & SLA Milestones
             </span>
+
           </div>
 
-          <p className="font-inter text-neutral-500 text-[12.5px] sm:text-[13.5px] leading-relaxed mb-8 max-w-xl">
+          <p className="vendor-methodology-intro">
             A structured, four-phase engagement roadmap designed to align
             capabilities, de-risk joint delivery, and generate mutual
             enterprise value.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {phases.map((p) => (
+
+          <div className="vendor-phase-grid">
+
+            {phases.map((phase) => (
               <div
-                key={p.number}
-                className={
-                  p.active
-                    ? "rounded-xl bg-white border-2 border-rose-800 p-5"
-                    : "rounded-xl bg-white border border-neutral-200 p-5"
-                }
+                key={phase.number}
+                className={`vendor-phase-card ${
+                  phase.active ? "active" : ""
+                }`}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-inter text-[20px] sm:text-[22px] font-bold text-neutral-200">
-                    {p.number}
+
+                <div className="vendor-phase-top">
+
+                  <span className="vendor-phase-number">
+                    {phase.number}
                   </span>
 
-                  <span
-                    className={
-                      p.active
-                        ? "font-inter text-[9px] sm:text-[9.5px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full"
-                        : "font-inter text-[9px] sm:text-[9.5px] font-semibold text-neutral-400"
-                    }
-                  >
-                    {p.phaseTag}
+                  <span className="vendor-phase-tag">
+                    {phase.phaseTag}
                   </span>
+
                 </div>
 
-                <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[14px] sm:text-[15px] mb-0.5">
-                  {p.title}
-                </h3>
+                <h3>{phase.title}</h3>
 
-                <div className="font-inter text-[8.5px] sm:text-[9px] tracking-wide text-neutral-400 font-semibold mb-3">
-                  {p.subtitle}
+                <div className="vendor-phase-subtitle">
+                  {phase.subtitle}
                 </div>
 
-                <p className="font-inter text-neutral-500 text-[11.5px] sm:text-[12px] leading-relaxed mb-4">
-                  {p.description}
+                <p>
+                  {phase.description}
                 </p>
 
-                <div className="font-inter text-[8.5px] sm:text-[9px] tracking-wide text-neutral-400 font-semibold mb-1.5">
+                <div className="vendor-deliverable-label">
                   KEY DELIVERABLES
                 </div>
 
-                <ul className="space-y-1 mb-4">
-                  {p.deliverables.map((d) => (
-                    <li
-                      key={d}
-                      className="font-inter text-[10.5px] sm:text-[11px] text-neutral-500 flex items-start gap-1.5"
-                    >
-                      <span className="w-1 h-1 rounded-full bg-rose-800 shrink-0 mt-1.5" />
-                      {d}
+                <ul>
+                  {phase.deliverables.map((item) => (
+                    <li key={item}>
+                      <i />
+                      {item}
                     </li>
                   ))}
                 </ul>
 
-                <div className="border-t border-neutral-100 pt-3">
-                  <div className="font-inter text-[9.5px] sm:text-[10px] text-neutral-400 mb-0.5">
-                    {p.milestoneLabel}
-                  </div>
+                <div className="vendor-milestone">
 
-                  <span className="inline-flex items-center gap-1 font-inter text-[11px] sm:text-[11.5px] font-semibold text-rose-800">
-                    {p.active && <Check className="w-3 h-3" />}
-                    {p.milestoneValue}
+                  <span>
+                    {phase.milestoneLabel}
                   </span>
+
+                  <strong>
+                    {phase.active && (
+                      <Check />
+                    )}
+                    {phase.milestoneValue}
+                  </strong>
+
                 </div>
+
               </div>
             ))}
-          </div>
-        </div>
-      </div>
 
-      {/* ============ ENTERPRISE PORTFOLIO ============ */}
-      <div className="flex justify-center px-4 sm:px-6 py-10 sm:py-14">
-        <div className="w-full max-w-6xl">
-          <div className="font-inter text-[9px] sm:text-[10px] tracking-wide text-rose-800 font-bold mb-3">
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =====================================================
+          ENTERPRISE PORTFOLIO
+      ===================================================== */}
+
+      <section className="vendor-portfolio-section">
+        <div className="vendor-container">
+
+          <div className="vendor-mini-label">
             ENTERPRISE PORTFOLIO
           </div>
 
-          <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-xl sm:text-2xl mb-2">
+          <h2 className="vendor-section-heading">
             Technology Capabilities
           </h2>
 
-          <p className="font-inter text-neutral-500 text-[12.5px] sm:text-[13.5px] leading-relaxed mb-8">
+          <p className="vendor-portfolio-intro">
             Supporting Different Business & Technology Needs
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <div className="vendor-capability-grid">
+
             {techCapabilities.map((cap) => (
               <div
                 key={cap.title}
-                className="rounded-xl bg-white border border-neutral-200 p-5 sm:p-6"
+                className="vendor-capability-card"
               >
-                <div className="flex items-center gap-1.5 font-inter text-[9px] sm:text-[9.5px] tracking-wide text-neutral-400 font-semibold mb-4">
-                  {cap.category}
 
-                  <span className="w-1 h-1 rounded-full bg-rose-800" />
+                <div className="vendor-capability-category">
+                  {cap.category}
+                  <i />
                 </div>
 
-                <h3 className="font-jakarta text-[#1c1c1c] font-semibold text-[14px] sm:text-[15px] mb-2">
-                  {cap.title}
-                </h3>
+                <h3>{cap.title}</h3>
 
-                <p className="font-inter text-neutral-500 text-[12px] sm:text-[12.5px] leading-relaxed mb-5">
-                  {cap.description}
-                </p>
+                <p>{cap.description}</p>
 
-                <div className="flex flex-wrap gap-1.5">
+                <div className="vendor-capability-tags">
                   {cap.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-inter text-[10px] sm:text-[10.5px] font-medium text-neutral-600 bg-neutral-100 px-2.5 py-1 rounded-full"
-                    >
+                    <span key={tag}>
                       {tag}
                     </span>
                   ))}
                 </div>
+
               </div>
             ))}
+
           </div>
+
         </div>
-      </div>
+      </section>
 
-      {/* ============ WHY PARTNER (dark) ============ */}
-      <div
-        className="w-full px-4 sm:px-6 py-12 sm:py-16 flex justify-center"
-        style={{
-          background:
-            "radial-gradient(120% 140% at 90% 0%, #7a0f47 0%, #3a0a26 60%)",
-        }}
-      >
-        <div className="w-full max-w-6xl">
-          <span className="inline-flex items-center gap-1.5 text-[8.5px] sm:text-[9px] tracking-wide font-bold text-rose-100 bg-white/10 px-3 py-1 rounded-full mb-5 font-inter">
-            <span className="w-1 h-1 rounded-full bg-rose-300" />
+
+      {/* =====================================================
+          WHY PARTNER
+      ===================================================== */}
+
+      <section className="vendor-why-section">
+
+        <div className="vendor-container">
+
+          <div className="vendor-dark-pill">
+            <span />
             STRATEGIC PARTNERSHIP VALUE
-          </span>
+          </div>
 
-          <h2 className="font-jakarta text-white font-semibold text-2xl sm:text-3xl leading-snug mb-3 max-w-lg">
+          <h2 className="vendor-dark-heading">
             Why Partner With TechTorch?
           </h2>
 
-          <p className="font-inter text-rose-100/70 text-[12.5px] sm:text-[13.5px] max-w-xl mb-8">
+          <p className="vendor-dark-intro">
             Technology Capabilities That Support Collaboration
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+          <div className="vendor-why-grid">
+
             {whyCards.map((card) => {
+
               const Icon = card.icon;
 
               return (
                 <div
                   key={card.title}
-                  className="rounded-xl bg-white/[0.08] border border-white/10 p-5"
+                  className="vendor-why-card"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mb-4">
-                    <Icon className="w-4 h-4 text-rose-100" />
+
+                  <div className="vendor-why-icon">
+                    <Icon />
                   </div>
 
-                  <h3 className="font-jakarta text-white font-semibold text-[13px] sm:text-[13.5px] mb-2 leading-snug">
-                    {card.title}
-                  </h3>
+                  <h3>{card.title}</h3>
 
-                  <p className="font-inter text-rose-100/60 text-[11.5px] sm:text-[12px] leading-relaxed mb-4">
-                    {card.description}
-                  </p>
+                  <p>{card.description}</p>
 
-                  <span className="font-inter text-[9px] sm:text-[9.5px] tracking-wide font-bold text-rose-200">
+                  <span>
                     {card.tag}
                   </span>
+
                 </div>
               );
-            })}
-          </div>
-        </div>
-      </div>
 
-      {/* ============ FINAL CTA ============ */}
-      <div className="flex justify-center px-4 sm:px-6 py-12 sm:py-16">
-        <div className="w-full max-w-3xl rounded-2xl bg-rose-50/60 border border-rose-100 px-5 sm:px-8 py-10 sm:py-14 text-center">
-          <div className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] tracking-wide text-rose-800 font-bold bg-white px-3 py-1.5 rounded-full mb-5 font-inter">
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-800" />
+            })}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          FINAL CTA
+      ===================================================== */}
+
+      <section className="vendor-final-section">
+        <div className="vendor-final-card">
+
+          <div className="vendor-section-pill">
+            <span />
             START A CONVERSATION
           </div>
 
-          <h2 className="font-jakarta text-[#1c1c1c] font-semibold text-2xl sm:text-3xl leading-snug mb-4">
+          <h2>
             Let's Build the Right Partnership Together
           </h2>
 
-          <p className="font-inter text-neutral-500 text-[13px] sm:text-[14px] leading-relaxed max-w-xl mx-auto mb-2">
+          <p>
             If your organization is looking to complement its technology
             capabilities, expand its solution offerings, or explore new
             areas of collaboration, let's start a conversation.
           </p>
 
-          <p className="font-inter text-neutral-500 text-[13px] sm:text-[14px] leading-relaxed max-w-xl mx-auto mb-8">
-            Share your business requirements and partnership objectives with
-            TechTorch, and explore where our capabilities can work together.
+          <p>
+            Share your business requirements and partnership objectives
+            with TechTorch, and explore where our capabilities can work
+            together.
           </p>
 
-          <button className="inline-flex items-center gap-2 rounded-lg bg-rose-900 text-white font-semibold text-[13px] sm:text-sm px-6 py-3.5 hover:bg-rose-950 transition-colors mb-8 font-inter">
+          <button
+            type="button"
+            onClick={goToPartner}
+            className="vendor-primary-btn"
+          >
             Talk to Expert
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight size={16} />
           </button>
 
-          {/* Response card */}
-          <div className="inline-flex items-center gap-3 bg-white border border-neutral-200 rounded-xl px-4 sm:px-5 py-3 mb-6">
-            <div className="w-7 h-7 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+
+          {/* RESPONSE */}
+
+          <div className="vendor-response-card">
+
+            <div className="vendor-response-icon">
+              <MessageCircle />
             </div>
 
-            <div className="text-left">
-              <div className="font-inter text-[9px] sm:text-[9.5px] tracking-wide text-neutral-400 font-semibold">
-                RESPONSE
-              </div>
+            <div>
+              <span>RESPONSE</span>
 
-              <div className="font-inter text-[12px] sm:text-[12.5px] font-semibold text-[#1c1c1c]">
+              <strong>
                 Business-Focused Support
-              </div>
+              </strong>
             </div>
+
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+
+          {/* FINAL POINTS */}
+
+          <div className="vendor-final-tags">
+
             {finalTags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center gap-1.5 font-inter text-[11px] sm:text-[11.5px] font-medium text-neutral-500"
-              >
-                <Check className="w-3.5 h-3.5 text-rose-800" />
+              <span key={tag}>
+                <Check />
                 {tag}
               </span>
             ))}
+
           </div>
+
         </div>
-      </div>
+      </section>
+
+
+      {/* =====================================================
+          CSS
+      ===================================================== */}
+
+      <style>{`
+
+        /* =====================================================
+           FONTS / RESET
+        ===================================================== */
+
+        .vendor-page {
+          width: 100%;
+          min-height: 100vh;
+          overflow-x: hidden;
+          background: #f8f7f5;
+          color: #1c1c1c;
+          font-family: "Inter", Arial, sans-serif;
+        }
+
+        .vendor-page *,
+        .vendor-page *::before,
+        .vendor-page *::after {
+          box-sizing: border-box;
+        }
+
+        .vendor-page h1,
+        .vendor-page h2,
+        .vendor-page h3,
+        .vendor-page p {
+          margin-top: 0;
+        }
+
+        .vendor-page h1,
+        .vendor-page h2,
+        .vendor-page h3 {
+          font-family:
+            "Plus Jakarta Sans",
+            "Inter",
+            Arial,
+            sans-serif;
+        }
+
+        .vendor-page button {
+          font-family: "Inter", Arial, sans-serif;
+        }
+
+
+        /* =====================================================
+           UNIVERSAL CONTAINER
+        ===================================================== */
+
+        .vendor-container {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding-left: 100px;
+          padding-right: 100px;
+        }
+
+
+        /* =====================================================
+           COMMON
+        ===================================================== */
+
+        .vendor-section-pill {
+          width: fit-content;
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 6px 12px;
+          border-radius: 50px;
+          background: #f5edf2;
+          color: #85004c;
+          font-family: "Inter", Arial, sans-serif;
+          font-size: 10px;
+          line-height: 1;
+          font-weight: 800;
+          letter-spacing: .55px;
+        }
+
+        .vendor-section-pill span,
+        .vendor-pill span {
+          width: 6px;
+          height: 6px;
+          flex-shrink: 0;
+          border-radius: 50%;
+          background: #85004c;
+        }
+
+        .vendor-mini-label {
+          color: #701040;
+          font-size: 10px;
+          line-height: 1;
+          font-weight: 800;
+          letter-spacing: .75px;
+        }
+
+        .vendor-section-heading {
+          color: #1c1c1c;
+          font-size: 27px;
+          line-height: 1.15;
+          letter-spacing: -.9px;
+          font-weight: 600;
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .vendor-primary-btn {
+          width: fit-content;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 13px 20px;
+          border: 0;
+          border-radius: 7px;
+          background: #730024;
+          color: white;
+          font-size: 13px;
+          font-weight: 700;
+          cursor: pointer;
+          transition:
+            transform .25s ease,
+            background .25s ease,
+            box-shadow .25s ease;
+        }
+
+        .vendor-primary-btn:hover {
+          background: #5c001d;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 22px rgba(115,0,36,.18);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .vendor-hero-section {
+          padding-top: 55px;
+          padding-bottom: 70px;
+        }
+
+        .vendor-hero-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr);
+          align-items: center;
+          gap: 65px;
+        }
+
+        .vendor-hero-content {
+          min-width: 0;
+        }
+
+        .vendor-pill {
+          width: fit-content;
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 6px 12px;
+          border-radius: 50px;
+          background: #f5edf2;
+          color: #85004c;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: .55px;
+        }
+
+        .vendor-hero-content h1 {
+          max-width: 760px;
+          margin: 19px 0 17px;
+          color: #1c1c1c;
+          font-size: 43px;
+          line-height: 1.12;
+          letter-spacing: -1.8px;
+          font-weight: 650;
+        }
+
+        .vendor-hero-content h1 span {
+          color: #730024;
+        }
+
+        .vendor-hero-description {
+          max-width: 650px;
+          margin-bottom: 25px;
+          color: #5d6269;
+          font-size: 15px;
+          line-height: 1.65;
+        }
+
+        .vendor-hero-tags {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 18px;
+          margin-top: 21px;
+        }
+
+        .vendor-hero-tags span {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          color: #656a70;
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        .vendor-hero-tags i {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #730024;
+        }
+
+
+        /* =====================================================
+           HERO IMAGE
+        ===================================================== */
+
+        .vendor-image-card {
+          width: 100%;
+          overflow: hidden;
+          border: 1px solid #e1e3e5;
+          border-radius: 15px;
+          background: white;
+          box-shadow: 0 12px 32px rgba(0,0,0,.07);
+        }
+
+        .vendor-image-wrap {
+          position: relative;
+          width: 100%;
+          height: 365px;
+          overflow: hidden;
+        }
+
+        .vendor-image-wrap img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .vendor-image-gradient {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(
+              to top,
+              rgba(0,0,0,.7),
+              rgba(0,0,0,.08) 55%,
+              transparent
+            );
+          pointer-events: none;
+        }
+
+        .vendor-image-info {
+          padding: 15px 18px 17px;
+        }
+
+        .vendor-image-label {
+          margin-bottom: 7px;
+          color: #85004c;
+          font-size: 9px;
+          font-weight: 800;
+          letter-spacing: .7px;
+        }
+
+        .vendor-image-bottom {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 15px;
+        }
+
+        .vendor-image-title {
+          color: #1c1c1c;
+          font-size: 13px;
+          font-weight: 650;
+        }
+
+        .vendor-verified {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: #059669;
+          font-size: 10px;
+          font-weight: 700;
+          white-space: nowrap;
+        }
+
+        .vendor-verified i {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #10b981;
+        }
+
+
+        /* =====================================================
+           STRATEGIC
+        ===================================================== */
+
+        .vendor-strategic-section {
+          padding-top: 35px;
+          padding-bottom: 80px;
+        }
+
+        .vendor-strategic-heading {
+          max-width: 650px;
+          margin: 17px 0 25px;
+        }
+
+        .vendor-strategic-copy {
+          max-width: 850px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          margin-bottom: 25px;
+        }
+
+        .vendor-strategic-copy p,
+        .vendor-strategic-bottom {
+          color: #5e646b;
+          font-size: 14px;
+          line-height: 1.7;
+        }
+
+        .vendor-quote {
+          max-width: 900px;
+          margin: 0 0 25px;
+          padding: 22px 25px;
+          border-left: 3px solid #730024;
+          background: rgba(245,237,242,.72);
+        }
+
+        .vendor-quote p {
+          margin-bottom: 10px;
+          color: #42474d;
+          font-size: 14px;
+          line-height: 1.7;
+          font-style: italic;
+        }
+
+        .vendor-quote span {
+          color: #85004c;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: .65px;
+        }
+
+        .vendor-strategic-bottom {
+          max-width: 850px;
+          margin-bottom: 42px;
+        }
+
+
+        /* =====================================================
+           IMPACT CARD
+        ===================================================== */
+
+        .vendor-impact-card {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1.2fr .8fr;
+          overflow: hidden;
+          border: 1px solid #e0e3e6;
+          border-radius: 16px;
+          background: white;
+        }
+
+        .vendor-impact-content {
+          padding: 38px 40px;
+        }
+
+        .vendor-impact-content .vendor-mini-label {
+          margin-bottom: 13px;
+        }
+
+        .vendor-impact-content h3 {
+          max-width: 650px;
+          margin-bottom: 13px;
+          color: #1c1c1c;
+          font-size: 20px;
+          line-height: 1.3;
+          font-weight: 650;
+        }
+
+        .vendor-impact-content p {
+          max-width: 650px;
+          margin: 0;
+          color: #666b71;
+          font-size: 13px;
+          line-height: 1.7;
+        }
+
+        .vendor-impact-image {
+          min-height: 270px;
+          overflow: hidden;
+        }
+
+        .vendor-impact-image img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+        }
+
+
+        /* =====================================================
+           WHITE SECTION
+        ===================================================== */
+
+        .vendor-white-section {
+          padding-top: 80px;
+          padding-bottom: 85px;
+          background: white;
+        }
+
+        .vendor-centered-heading {
+          margin-bottom: 40px;
+          text-align: center;
+        }
+
+        .vendor-centered-heading .vendor-section-pill {
+          margin-bottom: 14px;
+        }
+
+        .vendor-centered-heading h2 {
+          margin: 0 0 8px;
+        }
+
+        .vendor-centered-heading p {
+          margin: 0;
+          color: #73787e;
+          font-size: 13px;
+        }
+
+
+        /* =====================================================
+           OPPORTUNITIES
+        ===================================================== */
+
+        .vendor-opportunity-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+        }
+
+        .vendor-opportunity-card {
+          min-height: 250px;
+          padding: 25px;
+          border: 1px solid #e1e4e7;
+          border-radius: 12px;
+          background: white;
+          transition:
+            transform .25s ease,
+            border-color .25s ease,
+            box-shadow .25s ease;
+        }
+
+        .vendor-opportunity-card:hover {
+          transform: translateY(-4px);
+          border-color: #d5aabd;
+          box-shadow: 0 14px 28px rgba(0,0,0,.06);
+        }
+
+        .vendor-opportunity-icon {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 17px;
+          border-radius: 9px;
+          background: #f7edf3;
+          color: #730024;
+        }
+
+        .vendor-opportunity-icon svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        .vendor-opportunity-card h3 {
+          margin-bottom: 10px;
+          color: #1c1c1c;
+          font-size: 15px;
+          line-height: 1.35;
+          font-weight: 650;
+        }
+
+        .vendor-opportunity-card p {
+          min-height: 82px;
+          margin-bottom: 18px;
+          color: #666c72;
+          font-size: 12.5px;
+          line-height: 1.65;
+        }
+
+        .vendor-card-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 7px 15px;
+        }
+
+        .vendor-card-tags span {
+          color: #730024;
+          font-size: 10px;
+          font-weight: 700;
+        }
+
+
+        /* =====================================================
+           METHODOLOGY
+        ===================================================== */
+
+        .vendor-methodology-section {
+          padding-top: 85px;
+          padding-bottom: 85px;
+        }
+
+        .vendor-methodology-heading-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 25px;
+          margin-top: 13px;
+        }
+
+        .vendor-methodology-heading-row h2 {
+          margin: 0;
+        }
+
+        .vendor-governance-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 8px 12px;
+          border: 1px solid #e2e4e6;
+          border-radius: 50px;
+          background: white;
+          color: #646a70;
+          font-size: 10px;
+          font-weight: 650;
+          white-space: nowrap;
+        }
+
+        .vendor-governance-badge i {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #10b981;
+        }
+
+        .vendor-methodology-intro {
+          max-width: 700px;
+          margin: 12px 0 32px;
+          color: #71767c;
+          font-size: 13px;
+          line-height: 1.65;
+        }
+
+
+        /* =====================================================
+           PHASES
+        ===================================================== */
+
+        .vendor-phase-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 15px;
+        }
+
+        .vendor-phase-card {
+          min-height: 370px;
+          padding: 22px;
+          border: 1px solid #e0e3e6;
+          border-radius: 12px;
+          background: white;
+        }
+
+        .vendor-phase-card.active {
+          border: 2px solid #730024;
+        }
+
+        .vendor-phase-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 23px;
+        }
+
+        .vendor-phase-number {
+          color: #e2e4e6;
+          font-size: 23px;
+          line-height: 1;
+          font-weight: 750;
+        }
+
+        .vendor-phase-tag {
+          color: #9a9fa4;
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: .55px;
+        }
+
+        .vendor-phase-card.active .vendor-phase-tag {
+          padding: 5px 8px;
+          border-radius: 50px;
+          background: #ecfdf5;
+          color: #059669;
+        }
+
+        .vendor-phase-card h3 {
+          margin-bottom: 5px;
+          color: #1c1c1c;
+          font-size: 16px;
+          font-weight: 650;
+        }
+
+        .vendor-phase-subtitle {
+          margin-bottom: 13px;
+          color: #a0a4a8;
+          font-size: 8.5px;
+          font-weight: 700;
+          letter-spacing: .55px;
+        }
+
+        .vendor-phase-card > p {
+          min-height: 93px;
+          margin-bottom: 19px;
+          color: #6d7278;
+          font-size: 11.5px;
+          line-height: 1.65;
+        }
+
+        .vendor-deliverable-label {
+          margin-bottom: 9px;
+          color: #9da1a5;
+          font-size: 8.5px;
+          font-weight: 700;
+          letter-spacing: .55px;
+        }
+
+        .vendor-phase-card ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+
+        .vendor-phase-card li {
+          display: flex;
+          align-items: flex-start;
+          gap: 7px;
+          margin-bottom: 6px;
+          color: #686e74;
+          font-size: 10.5px;
+          line-height: 1.45;
+        }
+
+        .vendor-phase-card li i {
+          width: 4px;
+          height: 4px;
+          flex-shrink: 0;
+          margin-top: 5px;
+          border-radius: 50%;
+          background: #730024;
+        }
+
+        .vendor-milestone {
+          margin-top: 20px;
+          padding-top: 13px;
+          border-top: 1px solid #eceef0;
+        }
+
+        .vendor-milestone > span {
+          display: block;
+          margin-bottom: 4px;
+          color: #9b9fa3;
+          font-size: 9px;
+        }
+
+        .vendor-milestone strong {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          color: #730024;
+          font-size: 11px;
+        }
+
+        .vendor-milestone svg {
+          width: 12px;
+          height: 12px;
+        }
+
+
+        /* =====================================================
+           PORTFOLIO
+        ===================================================== */
+
+        .vendor-portfolio-section {
+          padding-top: 85px;
+          padding-bottom: 90px;
+          background: #f8f7f5;
+        }
+
+        .vendor-portfolio-section > .vendor-container > h2 {
+          margin: 13px 0 7px;
+        }
+
+        .vendor-portfolio-intro {
+          margin-bottom: 30px;
+          color: #71767c;
+          font-size: 13px;
+        }
+
+        .vendor-capability-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 17px;
+        }
+
+        .vendor-capability-card {
+          min-height: 225px;
+          padding: 24px;
+          border: 1px solid #e0e3e6;
+          border-radius: 12px;
+          background: white;
+          transition:
+            transform .25s ease,
+            box-shadow .25s ease;
+        }
+
+        .vendor-capability-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 25px rgba(0,0,0,.05);
+        }
+
+        .vendor-capability-category {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          margin-bottom: 17px;
+          color: #999ea3;
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: .6px;
+        }
+
+        .vendor-capability-category i {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: #730024;
+        }
+
+        .vendor-capability-card h3 {
+          margin-bottom: 10px;
+          color: #1c1c1c;
+          font-size: 15px;
+          font-weight: 650;
+        }
+
+        .vendor-capability-card p {
+          min-height: 67px;
+          margin-bottom: 18px;
+          color: #6b7076;
+          font-size: 12px;
+          line-height: 1.65;
+        }
+
+        .vendor-capability-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .vendor-capability-tags span {
+          padding: 5px 9px;
+          border-radius: 50px;
+          background: #f0f1f2;
+          color: #666c71;
+          font-size: 9.5px;
+          font-weight: 600;
+        }
+
+
+        /* =====================================================
+           WHY PARTNER
+        ===================================================== */
+
+        .vendor-why-section {
+          padding-top: 85px;
+          padding-bottom: 90px;
+          background:
+            radial-gradient(
+              120% 140% at 90% 0%,
+              #7a0f47 0%,
+              #3a0a26 60%
+            );
+        }
+
+        .vendor-dark-pill {
+          width: fit-content;
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 6px 12px;
+          border-radius: 50px;
+          background: rgba(255,255,255,.1);
+          color: #fce7f3;
+          font-size: 9px;
+          font-weight: 800;
+          letter-spacing: .6px;
+        }
+
+        .vendor-dark-pill span {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #f9a8d4;
+        }
+
+        .vendor-dark-heading {
+          max-width: 700px;
+          margin: 17px 0 8px;
+          color: white;
+          font-size: 34px;
+          line-height: 1.15;
+          letter-spacing: -1px;
+          font-weight: 600;
+        }
+
+        .vendor-dark-intro {
+          margin-bottom: 32px;
+          color: rgba(253,226,240,.68);
+          font-size: 13px;
+        }
+
+        .vendor-why-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 15px;
+        }
+
+        .vendor-why-card {
+          min-height: 245px;
+          padding: 23px;
+          border: 1px solid rgba(255,255,255,.1);
+          border-radius: 12px;
+          background: rgba(255,255,255,.08);
+        }
+
+        .vendor-why-icon {
+          width: 34px;
+          height: 34px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 17px;
+          border-radius: 8px;
+          background: rgba(255,255,255,.1);
+        }
+
+        .vendor-why-icon svg {
+          width: 17px;
+          height: 17px;
+          color: #fce7f3;
+        }
+
+        .vendor-why-card h3 {
+          margin-bottom: 9px;
+          color: white;
+          font-size: 14px;
+          line-height: 1.4;
+          font-weight: 650;
+        }
+
+        .vendor-why-card p {
+          min-height: 85px;
+          margin-bottom: 15px;
+          color: rgba(253,226,240,.62);
+          font-size: 11.5px;
+          line-height: 1.65;
+        }
+
+        .vendor-why-card > span {
+          color: #fbcfe8;
+          font-size: 9px;
+          font-weight: 800;
+          letter-spacing: .55px;
+        }
+
+
+        /* =====================================================
+           FINAL CTA
+        ===================================================== */
+
+        .vendor-final-section {
+          padding: 90px 100px;
+          display: flex;
+          justify-content: center;
+          background: #f8f7f5;
+        }
+
+        .vendor-final-card {
+          width: 100%;
+          max-width: 1050px;
+          padding: 65px 60px;
+          border: 1px solid #f0dce6;
+          border-radius: 18px;
+          background: rgba(255,240,246,.62);
+          text-align: center;
+        }
+
+        .vendor-final-card .vendor-section-pill {
+          margin-bottom: 20px;
+        }
+
+        .vendor-final-card h2 {
+          max-width: 760px;
+          margin: 0 auto 17px;
+          color: #1c1c1c;
+          font-size: 36px;
+          line-height: 1.15;
+          letter-spacing: -1.2px;
+          font-weight: 650;
+        }
+
+        .vendor-final-card > p {
+          max-width: 720px;
+          margin: 0 auto 9px;
+          color: #6c7177;
+          font-size: 13.5px;
+          line-height: 1.7;
+        }
+
+        .vendor-final-card .vendor-primary-btn {
+          margin-top: 18px;
+          margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           RESPONSE
+        ===================================================== */
+
+        .vendor-response-card {
+          width: fit-content;
+          display: inline-flex;
+          align-items: center;
+          gap: 11px;
+          margin-bottom: 27px;
+          padding: 10px 15px;
+          border: 1px solid #e1e3e5;
+          border-radius: 11px;
+          background: white;
+          text-align: left;
+        }
+
+        .vendor-response-icon {
+          width: 29px;
+          height: 29px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #ecfdf5;
+        }
+
+        .vendor-response-icon svg {
+          width: 14px;
+          height: 14px;
+          color: #059669;
+        }
+
+        .vendor-response-card span {
+          display: block;
+          margin-bottom: 2px;
+          color: #a0a4a8;
+          font-size: 9px;
+          font-weight: 650;
+          letter-spacing: .5px;
+        }
+
+        .vendor-response-card strong {
+          display: block;
+          color: #1c1c1c;
+          font-size: 12px;
+          font-weight: 650;
+        }
+
+
+        /* =====================================================
+           FINAL TAGS
+        ===================================================== */
+
+        .vendor-final-tags {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 18px 28px;
+        }
+
+        .vendor-final-tags span {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: #666c72;
+          font-size: 11px;
+          font-weight: 550;
+        }
+
+        .vendor-final-tags svg {
+          width: 14px;
+          height: 14px;
+          color: #730024;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+
+          .vendor-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .vendor-hero-grid {
+            gap: 40px;
+          }
+
+          .vendor-hero-content h1 {
+            font-size: 38px;
+          }
+
+          .vendor-image-wrap {
+            height: 320px;
+          }
+
+          .vendor-opportunity-grid,
+          .vendor-capability-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .vendor-phase-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .vendor-why-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          .vendor-final-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+
+        /* =====================================================
+           TABLET / SMALL LAPTOP
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+          .vendor-hero-section {
+            padding-top: 40px;
+            padding-bottom: 60px;
+          }
+
+          .vendor-hero-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .vendor-hero-content {
+            max-width: 800px;
+          }
+
+          .vendor-image-card {
+            max-width: 750px;
+          }
+
+          .vendor-image-wrap {
+            height: 350px;
+          }
+
+          .vendor-impact-card {
+            grid-template-columns: 1fr;
+          }
+
+          .vendor-impact-image {
+            min-height: 300px;
+          }
+
+          .vendor-methodology-heading-row {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .vendor-governance-badge {
+            white-space: normal;
+          }
+
+          .vendor-final-card {
+            padding: 55px 40px;
+          }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+          .vendor-container {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .vendor-hero-section {
+            padding-top: 32px;
+            padding-bottom: 50px;
+          }
+
+          .vendor-hero-content h1 {
+            font-size: 31px;
+            line-height: 1.15;
+            letter-spacing: -1.2px;
+          }
+
+          .vendor-hero-description {
+            font-size: 13px;
+            line-height: 1.65;
+          }
+
+          .vendor-hero-tags {
+            gap: 10px 16px;
+          }
+
+          .vendor-hero-tags span {
+            font-size: 11px;
+          }
+
+          .vendor-image-wrap {
+            height: 270px;
+          }
+
+          .vendor-image-bottom {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 7px;
+          }
+
+          .vendor-section-heading {
+            font-size: 24px;
+          }
+
+          .vendor-strategic-section {
+            padding-top: 30px;
+            padding-bottom: 60px;
+          }
+
+          .vendor-strategic-copy p,
+          .vendor-strategic-bottom {
+            font-size: 13px;
+          }
+
+          .vendor-quote {
+            padding: 18px 18px;
+          }
+
+          .vendor-quote p {
+            font-size: 13px;
+          }
+
+          .vendor-impact-content {
+            padding: 28px 24px;
+          }
+
+          .vendor-impact-content h3 {
+            font-size: 18px;
+          }
+
+          .vendor-impact-image {
+            min-height: 230px;
+          }
+
+          .vendor-white-section,
+          .vendor-methodology-section,
+          .vendor-portfolio-section {
+            padding-top: 60px;
+            padding-bottom: 65px;
+          }
+
+          .vendor-centered-heading {
+            margin-bottom: 30px;
+          }
+
+          .vendor-opportunity-grid,
+          .vendor-capability-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+
+          .vendor-opportunity-card {
+            min-height: auto;
+            padding: 21px;
+          }
+
+          .vendor-opportunity-card p {
+            min-height: auto;
+          }
+
+          .vendor-phase-grid {
+            grid-template-columns: 1fr;
+            gap: 13px;
+          }
+
+          .vendor-phase-card {
+            min-height: auto;
+          }
+
+          .vendor-phase-card > p {
+            min-height: auto;
+          }
+
+          .vendor-capability-card {
+            min-height: auto;
+          }
+
+          .vendor-capability-card p {
+            min-height: auto;
+          }
+
+          .vendor-why-section {
+            padding-top: 60px;
+            padding-bottom: 65px;
+          }
+
+          .vendor-dark-heading {
+            font-size: 30px;
+          }
+
+          .vendor-why-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .vendor-why-card {
+            min-height: auto;
+          }
+
+          .vendor-why-card p {
+            min-height: auto;
+          }
+
+          .vendor-final-section {
+            padding: 60px 24px;
+          }
+
+          .vendor-final-card {
+            padding: 45px 22px;
+            border-radius: 15px;
+          }
+
+          .vendor-final-card h2 {
+            font-size: 29px;
+            letter-spacing: -.8px;
+          }
+
+          .vendor-final-card > p {
+            font-size: 12.5px;
+          }
+
+          .vendor-final-tags {
+            flex-direction: column;
+            gap: 12px;
+          }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
+          .vendor-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .vendor-hero-section {
+            padding-top: 25px;
+            padding-bottom: 42px;
+          }
+
+          .vendor-pill {
+            font-size: 8.5px;
+            padding: 6px 10px;
+          }
+
+          .vendor-hero-content h1 {
+            font-size: 27px;
+            letter-spacing: -1px;
+          }
+
+          .vendor-hero-description {
+            font-size: 12px;
+          }
+
+          .vendor-primary-btn {
+            width: 100%;
+            padding: 12px 17px;
+            font-size: 12px;
+          }
+
+          .vendor-hero-tags {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .vendor-image-wrap {
+            height: 225px;
+          }
+
+          .vendor-image-info {
+            padding: 13px 14px;
+          }
+
+          .vendor-image-title {
+            font-size: 11.5px;
+          }
+
+          .vendor-verified {
+            font-size: 9px;
+          }
+
+          .vendor-section-heading {
+            font-size: 22px;
+          }
+
+          .vendor-section-pill {
+            font-size: 8.5px;
+          }
+
+          .vendor-strategic-copy p,
+          .vendor-strategic-bottom {
+            font-size: 12px;
+          }
+
+          .vendor-quote p {
+            font-size: 12px;
+          }
+
+          .vendor-impact-content {
+            padding: 24px 18px;
+          }
+
+          .vendor-impact-content h3 {
+            font-size: 17px;
+          }
+
+          .vendor-impact-content p {
+            font-size: 12px;
+          }
+
+          .vendor-impact-image {
+            min-height: 200px;
+          }
+
+          .vendor-opportunity-card {
+            padding: 19px;
+          }
+
+          .vendor-opportunity-card h3 {
+            font-size: 14px;
+          }
+
+          .vendor-opportunity-card p {
+            font-size: 11.5px;
+          }
+
+          .vendor-phase-card {
+            padding: 19px;
+          }
+
+          .vendor-methodology-intro,
+          .vendor-portfolio-intro {
+            font-size: 12px;
+          }
+
+          .vendor-capability-card {
+            padding: 20px;
+          }
+
+          .vendor-dark-heading {
+            font-size: 27px;
+          }
+
+          .vendor-dark-intro {
+            font-size: 12px;
+          }
+
+          .vendor-final-section {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .vendor-final-card {
+            padding: 38px 17px;
+          }
+
+          .vendor-final-card h2 {
+            font-size: 25px;
+          }
+
+          .vendor-final-card > p {
+            font-size: 12px;
+          }
+
+          .vendor-response-card {
+            width: 100%;
+            justify-content: flex-start;
+          }
+
+        }
+
+      `}</style>
     </div>
   );
 }

@@ -510,7 +510,7 @@ export default function ApproachSection() {
         <div className="approach-cta">
 
           <img
-            src="https://images.pexels.com/photos/5380607/pexels-photo-5380607.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="/Diversemodern engineeringteam.png"
             alt="FMCG business technology and operations"
             className="approach-cta-image"
           />

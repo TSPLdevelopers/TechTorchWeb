@@ -202,124 +202,1285 @@ const whyCards = [
 
 export default function ResourceReplacementPage() {
   return (
-    <div className="w-full min-h-screen bg-[#f8f7f5] font-inter overflow-hidden">
+    <div className="resource-replacement-page">
+      <style>{`
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        .resource-replacement-page {
+          width: 100%;
+          min-height: 100vh;
+          background: #f8f7f5;
+          color: #1c1c1c;
+          font-family: "Inter", sans-serif;
+          overflow: hidden;
+        }
+
+        .rr-container {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding-left: 100px;
+          padding-right: 100px;
+          box-sizing: border-box;
+        }
+
+        .rr-jakarta {
+          font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        .rr-inter {
+          font-family: "Inter", sans-serif;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .rr-hero {
+          padding-top: 64px;
+          padding-bottom: 48px;
+        }
+
+        .rr-hero-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+          gap: 64px;
+          align-items: center;
+          margin-bottom: 42px;
+        }
+
+        .rr-hero-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .rr-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          width: fit-content;
+          background: #fff0f4;
+          color: #7a1338;
+          border-radius: 999px;
+          padding: 7px 12px;
+          margin-bottom: 22px;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .rr-eyebrow-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #7a1338;
+          flex-shrink: 0;
+        }
+
+        .rr-hero-title {
+          max-width: 700px;
+          margin: 0 0 20px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 42px;
+          line-height: 1.13;
+          font-weight: 600;
+          letter-spacing: -0.025em;
+          color: #1c1c1c;
+        }
+
+        .rr-hero-description {
+          max-width: 570px;
+          margin: 0 0 26px;
+          font-family: "Inter", sans-serif;
+          font-size: 14.5px;
+          line-height: 1.7;
+          color: #737373;
+        }
+
+        .rr-primary-button {
+          width: fit-content;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          border: 0;
+          border-radius: 7px;
+          background: #7a1338;
+          color: #ffffff;
+          padding: 13px 24px;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          transition:
+            background 0.25s ease,
+            transform 0.25s ease;
+          margin-bottom: 24px;
+        }
+
+        .rr-primary-button:hover {
+          background: #5c0e2b;
+          transform: translateY(-1px);
+        }
+
+        .rr-primary-button svg {
+          width: 16px;
+          height: 16px;
+        }
+
+        .rr-hero-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 9px;
+        }
+
+        .rr-hero-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          background: #ffffff;
+          border: 1px solid #e5e5e5;
+          border-radius: 999px;
+          padding: 7px 12px;
+          color: #666666;
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
+          font-weight: 500;
+        }
+
+        .rr-hero-tag-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #7a1338;
+        }
+
+        /* =====================================================
+           HERO IMAGE
+        ===================================================== */
+
+        .rr-image-card {
+          width: 100%;
+          overflow: hidden;
+          border: 1px solid #e4e4e4;
+          border-radius: 14px;
+          background: #ffffff;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .rr-image {
+          position: relative;
+          width: 100%;
+          height: 310px;
+          overflow: hidden;
+        }
+
+        .rr-image-background {
+          position: absolute;
+          inset: 0;
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .rr-image-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.6),
+            transparent 65%
+          );
+        }
+
+        .rr-image-badge {
+          position: absolute;
+          top: 16px;
+          left: 16px;
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          background: rgba(0, 0, 0, 0.4);
+          backdrop-filter: blur(8px);
+          color: #ffffff;
+          border-radius: 999px;
+          padding: 6px 10px;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+        }
+
+        .rr-image-badge-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #34d399;
+        }
+
+        .rr-image-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+          padding: 14px 16px;
+        }
+
+        .rr-image-footer-left {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          color: #666666;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+        }
+
+        .rr-image-footer-left svg {
+          width: 14px;
+          height: 14px;
+          color: #7a1338;
+          flex-shrink: 0;
+        }
+
+        .rr-image-footer-right {
+          color: #999999;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+        }
+
+        /* =====================================================
+           PILLARS
+        ===================================================== */
+
+        .rr-pillars {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        .rr-pillar {
+          padding: 24px;
+          border: 1px solid #e4e4e4;
+          border-radius: 14px;
+          background: #ffffff;
+        }
+
+        .rr-pillar-badge {
+          margin-bottom: 10px;
+          color: #7a1338;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .rr-pillar-title {
+          margin: 0 0 9px;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 16px;
+          line-height: 1.35;
+          font-weight: 600;
+        }
+
+        .rr-pillar-description {
+          margin: 0 0 16px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1.7;
+        }
+
+        .rr-pillar-link {
+          padding-top: 13px;
+          border-top: 1px solid #eeeeee;
+          color: #7a1338;
+          font-family: "Inter", sans-serif;
+          font-size: 11.5px;
+          font-weight: 600;
+        }
+
+        /* =====================================================
+           SECTION COMMON
+        ===================================================== */
+
+        .rr-section {
+          width: 100%;
+        }
+
+        .rr-section-container {
+          padding-top: 42px;
+          padding-bottom: 42px;
+        }
+
+        .rr-section-label {
+          margin-bottom: 10px;
+          color: #7a1338;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .rr-section-title {
+          max-width: 700px;
+          margin: 0 0 24px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 26px;
+          line-height: 1.3;
+          font-weight: 600;
+          letter-spacing: -0.015em;
+        }
+
+        .rr-section-description {
+          max-width: 700px;
+          margin: 0 0 30px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 13.5px;
+          line-height: 1.7;
+        }
+
+        /* =====================================================
+           STRATEGIC RESOURCING
+        ===================================================== */
+
+        .rr-strategic-card {
+          padding: 48px;
+          border: 1px solid #e5e5e5;
+          border-radius: 16px;
+          background: #ffffff;
+        }
+
+        .rr-copy {
+          max-width: 820px;
+          color: #5f5f5f;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.75;
+        }
+
+        .rr-copy p {
+          margin: 0 0 16px;
+        }
+
+        .rr-copy p:last-child {
+          margin-bottom: 0;
+        }
+
+        .rr-quote {
+          max-width: 820px;
+          margin: 28px 0 30px;
+          padding: 20px 24px;
+          border-left: 3px solid #7a1338;
+          background: rgba(255, 240, 244, 0.6);
+        }
+
+        .rr-quote-text {
+          margin: 0 0 8px;
+          color: #555555;
+          font-family: "Inter", sans-serif;
+          font-size: 15px;
+          line-height: 1.65;
+          font-style: italic;
+        }
+
+        .rr-quote-author {
+          color: #7a1338;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.07em;
+        }
+
+        .rr-subtitle {
+          margin: 0 0 12px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 18px;
+          line-height: 1.35;
+          font-weight: 600;
+        }
+
+        /* =====================================================
+           APPROACH CARDS
+        ===================================================== */
+
+        .rr-approach-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 20px;
+        }
+
+        .rr-card {
+          padding: 24px;
+          border: 1px solid #e4e4e4;
+          border-radius: 14px;
+          background: #ffffff;
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+        }
+
+        .rr-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+        }
+
+        .rr-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 20px;
+        }
+
+        .rr-icon-box {
+          width: 38px;
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 9px;
+          background: #fff0f4;
+          flex-shrink: 0;
+        }
+
+        .rr-icon-box svg {
+          width: 17px;
+          height: 17px;
+          color: #7a1338;
+        }
+
+        .rr-card-number {
+          color: #d8d8d8;
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 700;
+        }
+
+        .rr-card-title {
+          margin: 0 0 9px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
+          line-height: 1.4;
+          font-weight: 600;
+        }
+
+        .rr-card-description {
+          margin: 0 0 18px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 12.5px;
+          line-height: 1.7;
+        }
+
+        .rr-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .rr-tag {
+          padding: 5px 9px;
+          border-radius: 999px;
+          background: #f3f3f3;
+          color: #626262;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 500;
+        }
+
+        /* =====================================================
+           CAPABILITIES
+        ===================================================== */
+
+        .rr-capability-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 20px;
+          margin-bottom: 20px;
+        }
+
+        .rr-capability-card {
+          min-height: 245px;
+          padding: 22px;
+          border: 1px solid #e4e4e4;
+          border-radius: 14px;
+          background: #ffffff;
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+        }
+
+        .rr-capability-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+        }
+
+        .rr-capability-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 14px;
+        }
+
+        .rr-capability-number {
+          color: #d2d2d2;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+        }
+
+        .rr-capability-label {
+          margin-bottom: 7px;
+          color: #7a1338;
+          font-family: "Inter", sans-serif;
+          font-size: 9.5px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+
+        .rr-capability-title {
+          margin: 0 0 9px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
+          line-height: 1.4;
+          font-weight: 600;
+        }
+
+        .rr-capability-description {
+          margin: 0 0 16px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.65;
+        }
+
+        .rr-special-card {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          padding: 22px;
+          border: 1px solid #e4e4e4;
+          border-radius: 14px;
+          background: #ffffff;
+        }
+
+        .rr-special-content {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          min-width: 0;
+        }
+
+        .rr-special-text {
+          min-width: 0;
+        }
+
+        .rr-special-label {
+          margin-bottom: 5px;
+          color: #7a1338;
+          font-family: "Inter", sans-serif;
+          font-size: 9.5px;
+          font-weight: 700;
+          letter-spacing: 0.07em;
+        }
+
+        .rr-special-title {
+          margin: 0 0 4px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        .rr-special-description {
+          max-width: 700px;
+          margin: 0;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.65;
+        }
+
+        .rr-special-actions {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 12px;
+          flex-shrink: 0;
+        }
+
+        .rr-special-link {
+          color: #7a1338;
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+
+        /* =====================================================
+           DELIVERY WORKFLOW
+        ===================================================== */
+
+        .rr-workflow-box {
+          padding: 28px;
+          border: 1px solid #e4e4e4;
+          border-radius: 14px;
+          background: #ffffff;
+        }
+
+        .rr-workflow-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 28px;
+        }
+
+        .rr-workflow-item {
+          position: relative;
+        }
+
+        .rr-workflow-item:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          top: 18px;
+          right: -16px;
+          width: 1px;
+          height: 42px;
+          background: #eeeeee;
+        }
+
+        .rr-workflow-top {
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          margin-bottom: 14px;
+        }
+
+        .rr-workflow-icon {
+          width: 38px;
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 9px;
+          background: #fff0f4;
+          flex-shrink: 0;
+        }
+
+        .rr-workflow-icon svg {
+          width: 17px;
+          height: 17px;
+          color: #7a1338;
+        }
+
+        .rr-workflow-icon.active {
+          background: #7a1338;
+        }
+
+        .rr-workflow-icon.active svg {
+          color: #ffffff;
+        }
+
+        .rr-workflow-number {
+          color: #999999;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+        }
+
+        .rr-workflow-number.active {
+          padding: 2px 7px;
+          border-radius: 999px;
+          background: #7a1338;
+          color: #ffffff;
+        }
+
+        .rr-workflow-phase {
+          margin-bottom: 5px;
+          color: #999999;
+          font-family: "Inter", sans-serif;
+          font-size: 9.5px;
+          font-weight: 600;
+          letter-spacing: 0.07em;
+        }
+
+        .rr-workflow-title {
+          margin: 0 0 9px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14.5px;
+          font-weight: 600;
+        }
+
+        .rr-workflow-description {
+          margin: 0 0 9px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.65;
+        }
+
+        .rr-workflow-tag {
+          color: #7a1338;
+          font-family: "Inter", sans-serif;
+          font-size: 10.5px;
+          font-weight: 500;
+        }
+
+        /* =====================================================
+           WHY TECHTORCH
+        ===================================================== */
+
+        .rr-why-box {
+          padding: 48px;
+          border-radius: 16px;
+          background:
+            radial-gradient(
+              120% 140% at 90% 0%,
+              #7a0f47 0%,
+              #4a0a30 60%
+            );
+        }
+
+        .rr-why-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          margin-bottom: 20px;
+          padding: 6px 11px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.1);
+          color: #ffe5ef;
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 0.07em;
+        }
+
+        .rr-why-label-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #fda4af;
+        }
+
+        .rr-why-title {
+          max-width: 700px;
+          margin: 0 0 10px;
+          color: #ffffff;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 30px;
+          line-height: 1.25;
+          font-weight: 600;
+        }
+
+        .rr-why-description {
+          max-width: 650px;
+          margin: 0 0 28px;
+          color: rgba(255, 229, 239, 0.7);
+          font-family: "Inter", sans-serif;
+          font-size: 13.5px;
+          line-height: 1.6;
+        }
+
+        .rr-why-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        .rr-why-card {
+          padding: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.08);
+        }
+
+        .rr-why-card-title {
+          margin: 0 0 7px;
+          color: #ffffff;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
+          line-height: 1.4;
+          font-weight: 600;
+        }
+
+        .rr-why-card-description {
+          margin: 0;
+          color: rgba(255, 229, 239, 0.62);
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.65;
+        }
+
+        /* =====================================================
+           FINAL CTA
+        ===================================================== */
+
+        .rr-final {
+          padding-top: 58px;
+          padding-bottom: 72px;
+        }
+
+        .rr-final-inner {
+          max-width: 900px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .rr-final-title {
+          margin: 0 0 15px;
+          color: #1c1c1c;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 32px;
+          line-height: 1.25;
+          font-weight: 600;
+        }
+
+        .rr-final-description {
+          max-width: 700px;
+          margin: 0 auto 28px;
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.7;
+        }
+
+        .rr-final-button {
+          margin-bottom: 26px;
+        }
+
+        .rr-final-tags {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 22px;
+        }
+
+        .rr-final-tag {
+          color: #737373;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+          .rr-container {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .rr-hero {
+            padding-top: 52px;
+          }
+
+          .rr-hero-grid {
+            gap: 40px;
+          }
+
+          .rr-hero-title {
+            font-size: 38px;
+          }
+
+          .rr-image {
+            height: 280px;
+          }
+
+          .rr-strategic-card,
+          .rr-why-box {
+            padding: 38px;
+          }
+
+          .rr-section-container {
+            padding-top: 36px;
+            padding-bottom: 36px;
+          }
+        }
+
+        /* =====================================================
+           TABLET / SMALL LAPTOP
+        ===================================================== */
+
+        @media (max-width: 900px) {
+          .rr-hero-grid {
+            grid-template-columns: 1fr;
+            gap: 38px;
+          }
+
+          .rr-hero-title {
+            max-width: 760px;
+          }
+
+          .rr-hero-description {
+            max-width: 650px;
+          }
+
+          .rr-image {
+            height: 300px;
+          }
+
+          .rr-approach-grid,
+          .rr-capability-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .rr-workflow-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px 24px;
+          }
+
+          .rr-workflow-item:not(:last-child)::after {
+            display: none;
+          }
+
+          .rr-special-card {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          .rr-special-actions {
+            justify-content: flex-start;
+          }
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+          .rr-container {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+
+          .rr-hero {
+            padding-top: 38px;
+            padding-bottom: 34px;
+          }
+
+          .rr-hero-grid {
+            gap: 30px;
+            margin-bottom: 30px;
+          }
+
+          .rr-eyebrow {
+            font-size: 8.5px;
+            padding: 6px 10px;
+            margin-bottom: 17px;
+          }
+
+          .rr-hero-title {
+            font-size: 31px;
+            line-height: 1.16;
+            margin-bottom: 16px;
+          }
+
+          .rr-hero-description {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+          }
+
+          .rr-primary-button {
+            font-size: 12px;
+            padding: 11px 18px;
+            margin-bottom: 20px;
+          }
+
+          .rr-hero-tag {
+            font-size: 10px;
+            padding: 6px 9px;
+          }
+
+          .rr-image {
+            height: 245px;
+          }
+
+          .rr-image-footer {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 12px 14px;
+          }
+
+          .rr-pillars {
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+
+          .rr-pillar {
+            padding: 20px;
+          }
+
+          .rr-section-container {
+            padding-top: 30px;
+            padding-bottom: 30px;
+          }
+
+          .rr-strategic-card {
+            padding: 26px 20px;
+            border-radius: 14px;
+          }
+
+          .rr-section-title {
+            font-size: 23px;
+            margin-bottom: 20px;
+          }
+
+          .rr-copy {
+            font-size: 12.5px;
+          }
+
+          .rr-quote {
+            padding: 16px 18px;
+            margin: 22px 0 25px;
+          }
+
+          .rr-quote-text {
+            font-size: 13px;
+          }
+
+          .rr-subtitle {
+            font-size: 16px;
+          }
+
+          .rr-approach-grid,
+          .rr-capability-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+          }
+
+          .rr-card {
+            padding: 20px;
+          }
+
+          .rr-capability-card {
+            min-height: auto;
+            padding: 20px;
+          }
+
+          .rr-special-card {
+            padding: 18px;
+            gap: 18px;
+          }
+
+          .rr-special-content {
+            align-items: flex-start;
+          }
+
+          .rr-special-actions {
+            width: 100%;
+            justify-content: flex-start;
+          }
+
+          .rr-workflow-box {
+            padding: 20px;
+          }
+
+          .rr-workflow-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+          }
+
+          .rr-why-box {
+            padding: 28px 20px;
+            border-radius: 14px;
+          }
+
+          .rr-why-title {
+            font-size: 25px;
+          }
+
+          .rr-why-description {
+            font-size: 12px;
+          }
+
+          .rr-why-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+
+          .rr-why-card {
+            padding: 17px;
+          }
+
+          .rr-final {
+            padding-top: 40px;
+            padding-bottom: 52px;
+          }
+
+          .rr-final-title {
+            font-size: 25px;
+          }
+
+          .rr-final-description {
+            font-size: 12.5px;
+          }
+
+          .rr-final-tags {
+            gap: 12px 18px;
+          }
+
+          .rr-final-tag {
+            font-size: 10.5px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+          .rr-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .rr-hero {
+            padding-top: 30px;
+            padding-bottom: 28px;
+          }
+
+          .rr-hero-title {
+            font-size: 28px;
+          }
+
+          .rr-hero-description {
+            font-size: 12px;
+          }
+
+          .rr-primary-button {
+            width: 100%;
+            padding: 11px 16px;
+          }
+
+          .rr-hero-tags {
+            gap: 7px;
+          }
+
+          .rr-hero-tag {
+            font-size: 9.5px;
+          }
+
+          .rr-image {
+            height: 210px;
+          }
+
+          .rr-image-badge {
+            top: 10px;
+            left: 10px;
+            font-size: 8px;
+            padding: 5px 8px;
+          }
+
+          .rr-image-footer-left,
+          .rr-image-footer-right {
+            font-size: 9.5px;
+          }
+
+          .rr-pillar {
+            padding: 17px;
+          }
+
+          .rr-strategic-card {
+            padding: 21px 16px;
+          }
+
+          .rr-section-title {
+            font-size: 21px;
+          }
+
+          .rr-copy {
+            font-size: 11.5px;
+          }
+
+          .rr-quote {
+            padding: 14px 15px;
+          }
+
+          .rr-quote-text {
+            font-size: 12px;
+          }
+
+          .rr-card,
+          .rr-capability-card {
+            padding: 17px;
+          }
+
+          .rr-workflow-box {
+            padding: 17px;
+          }
+
+          .rr-why-box {
+            padding: 24px 16px;
+          }
+
+          .rr-why-title {
+            font-size: 22px;
+          }
+
+          .rr-final-title {
+            font-size: 22px;
+          }
+
+          .rr-final-description {
+            font-size: 11.5px;
+          }
+
+          .rr-final-button {
+            width: auto;
+          }
+        }
+      `}</style>
 
       {/* =====================================================
           HERO
       ===================================================== */}
 
-      <section className="w-full">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10 lg:pb-12">
+      <section className="rr-section rr-hero">
+        <div className="rr-container">
+          <div className="rr-hero-grid">
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center mb-8 sm:mb-10 lg:mb-12">
-
-            {/* LEFT CONTENT */}
-            <div className="flex flex-col justify-center">
-
-              {/* Label */}
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-2.5 sm:px-3 py-1 sm:py-1.5 mb-4 sm:mb-5 lg:mb-6 w-fit">
-                <Zap className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-rose-800 shrink-0" />
-
-                <span className="font-inter text-[8px] sm:text-[9px] lg:text-[10px] tracking-wide text-rose-800 font-bold">
-                  IT AUGMENTATION • RESOURCE REPLACEMENT
-                </span>
+            {/* LEFT */}
+            <div className="rr-hero-content">
+              <div className="rr-eyebrow">
+                <Zap size={11} />
+                <span>IT AUGMENTATION • RESOURCE REPLACEMENT</span>
               </div>
 
-              {/* Main Heading */}
-              <h1 className="
-                font-jakarta
-                font-semibold
-                text-[#1c1c1c]
-                text-[30px]
-                sm:text-[34px]
-                md:text-[38px]
-                lg:text-4xl
-                xl:text-[40px]
-                leading-[1.12]
-                sm:leading-[1.14]
-                lg:leading-[1.15]
-                mb-4
-                sm:mb-5
-                max-w-xl
-              ">
+              <h1 className="rr-hero-title">
                 Support Project Continuity with the Right Technology
                 Resources
               </h1>
 
-              {/* Description */}
-              <p className="
-                font-inter
-                text-neutral-500
-                text-[12px]
-                sm:text-[13px]
-                lg:text-[14.5px]
-                leading-[1.65]
-                max-w-md
-                mb-5
-                sm:mb-6
-                lg:mb-7
-              ">
+              <p className="rr-hero-description">
                 Replace technology resources when your project requirements
                 change, while keeping your teams supported with the skills
                 and expertise they need.
               </p>
 
-              {/* Button */}
-              <button className="
-                font-inter
-                inline-flex
-                items-center
-                justify-center
-                gap-2
-                rounded-md
-                bg-rose-900
-                text-white
-                font-semibold
-                text-[11px]
-                sm:text-[12px]
-                lg:text-sm
-                px-4
-                sm:px-5
-                lg:px-6
-                py-2.5
-                sm:py-3
-                lg:py-3.5
-                w-fit
-                hover:bg-rose-950
-                transition-colors
-                mb-5
-                sm:mb-6
-              ">
+              <button className="rr-primary-button">
                 Talk to Our Experts
-                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <ArrowRight />
               </button>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 sm:gap-2.5">
+              <div className="rr-hero-tags">
                 {heroTags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="
-                      font-inter
-                      inline-flex
-                      items-center
-                      gap-1.5
-                      text-[9px]
-                      sm:text-[10px]
-                      lg:text-[11.5px]
-                      font-medium
-                      text-neutral-600
-                      bg-white
-                      border
-                      border-neutral-200
-                      px-2.5
-                      sm:px-3
-                      py-1
-                      sm:py-1.5
-                      rounded-full
-                    "
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-800 shrink-0" />
+                  <span className="rr-hero-tag" key={tag}>
+                    <span className="rr-hero-tag-dot" />
                     {tag}
                   </span>
                 ))}
@@ -327,93 +1488,30 @@ export default function ResourceReplacementPage() {
             </div>
 
             {/* RIGHT IMAGE */}
-            <div className="
-              w-full
-              rounded-xl
-              bg-white
-              border
-              border-neutral-200
-              shadow-sm
-              overflow-hidden
-            ">
-              <div className="relative h-[210px] sm:h-[240px] md:h-[270px] lg:h-56 xl:h-[270px]">
-
+            <div className="rr-image-card">
+              <div className="rr-image">
                 <div
-                  className="absolute inset-0 bg-cover bg-center"
+                  className="rr-image-background"
                   style={{
-                    backgroundImage: "url('rrmain.png')",
+                    backgroundImage: "url('/rrmain.png')",
                   }}
                 />
 
-                <div className="
-                  absolute
-                  inset-0
-                  bg-gradient-to-t
-                  from-black/60
-                  via-transparent
-                  to-transparent
-                " />
+                <div className="rr-image-overlay" />
 
-                <span className="
-                  font-inter
-                  absolute
-                  top-3
-                  left-3
-                  inline-flex
-                  items-center
-                  gap-1.5
-                  bg-black/40
-                  backdrop-blur
-                  text-white
-                  text-[8px]
-                  sm:text-[9px]
-                  lg:text-[10px]
-                  font-semibold
-                  px-2
-                  sm:px-2.5
-                  py-1
-                  rounded-full
-                ">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span className="rr-image-badge">
+                  <span className="rr-image-badge-dot" />
                   Project Continuity Support
                 </span>
               </div>
 
-              <div className="
-                flex
-                flex-col
-                sm:flex-row
-                sm:items-center
-                sm:justify-between
-                gap-2
-                px-3
-                sm:px-4
-                py-3
-                sm:py-3.5
-              ">
-                <span className="
-                  font-inter
-                  flex
-                  items-center
-                  gap-1.5
-                  text-[9px]
-                  sm:text-[10px]
-                  lg:text-[11px]
-                  text-neutral-500
-                  font-medium
-                ">
-                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-rose-800 shrink-0" />
+              <div className="rr-image-footer">
+                <span className="rr-image-footer-left">
+                  <CheckCircle2 />
                   Seamless Transition & Knowledge Transfer
                 </span>
 
-                <span className="
-                  font-inter
-                  text-[9px]
-                  sm:text-[10px]
-                  lg:text-[11px]
-                  text-neutral-400
-                  font-medium
-                ">
+                <span className="rr-image-footer-right">
                   Enterprise Ready
                 </span>
               </div>
@@ -421,77 +1519,23 @@ export default function ResourceReplacementPage() {
           </div>
 
           {/* PILLARS */}
-          <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            gap-4
-            sm:gap-5
-          ">
-            {pillars.map((p) => (
-              <div
-                key={p.badge}
-                className="
-                  rounded-xl
-                  bg-white
-                  border
-                  border-neutral-200
-                  p-4
-                  sm:p-5
-                  lg:p-6
-                "
-              >
-                <div className="
-                  font-inter
-                  text-[8px]
-                  sm:text-[9px]
-                  lg:text-[10px]
-                  tracking-wide
-                  text-rose-800
-                  font-bold
-                  mb-2
-                  sm:mb-3
-                ">
-                  {p.badge}
+          <div className="rr-pillars">
+            {pillars.map((pillar) => (
+              <div className="rr-pillar" key={pillar.badge}>
+                <div className="rr-pillar-badge">
+                  {pillar.badge}
                 </div>
 
-                <h3 className="
-                  font-jakarta
-                  text-[#1c1c1c]
-                  font-semibold
-                  text-[14px]
-                  sm:text-[15px]
-                  lg:text-[16px]
-                  leading-snug
-                  mb-2
-                ">
-                  {p.title}
+                <h3 className="rr-pillar-title">
+                  {pillar.title}
                 </h3>
 
-                <p className="
-                  font-inter
-                  text-neutral-500
-                  text-[11px]
-                  sm:text-[12px]
-                  lg:text-[13px]
-                  leading-[1.65]
-                  mb-3
-                  sm:mb-4
-                ">
-                  {p.description}
+                <p className="rr-pillar-description">
+                  {pillar.description}
                 </p>
 
-                <div className="border-t border-neutral-100 pt-3">
-                  <span className="
-                    font-inter
-                    text-[9px]
-                    sm:text-[10px]
-                    lg:text-[11.5px]
-                    font-semibold
-                    text-rose-800
-                  ">
-                    {p.linkLabel}
-                  </span>
+                <div className="rr-pillar-link">
+                  {pillar.linkLabel}
                 </div>
               </div>
             ))}
@@ -499,71 +1543,23 @@ export default function ResourceReplacementPage() {
         </div>
       </section>
 
-
       {/* =====================================================
           STRATEGIC RESOURCING
       ===================================================== */}
 
-      <section className="w-full">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 lg:py-8">
+      <section className="rr-section">
+        <div className="rr-container rr-section-container">
+          <div className="rr-strategic-card">
 
-          <div className="
-            rounded-xl
-            sm:rounded-2xl
-            bg-white
-            border
-            border-neutral-200
-            px-5
-            sm:px-7
-            lg:px-10
-            py-7
-            sm:py-9
-            lg:py-12
-          ">
-
-            <div className="
-              font-inter
-              text-[8px]
-              sm:text-[9px]
-              lg:text-[10px]
-              tracking-wide
-              text-rose-800
-              font-bold
-              mb-2
-              sm:mb-3
-            ">
+            <div className="rr-section-label">
               STRATEGIC RESOURCING
             </div>
 
-            <h2 className="
-              font-jakarta
-              text-[#1c1c1c]
-              font-semibold
-              text-[21px]
-              sm:text-[24px]
-              lg:text-2xl
-              leading-[1.3]
-              mb-4
-              sm:mb-5
-              lg:mb-6
-              max-w-xl
-            ">
+            <h2 className="rr-section-title">
               Flexible Resource Replacement for Changing Technology Needs
             </h2>
 
-            <div className="
-              font-inter
-              space-y-3
-              sm:space-y-4
-              text-[11px]
-              sm:text-[12px]
-              lg:text-[14px]
-              leading-[1.7]
-              text-neutral-600
-              max-w-3xl
-              mb-5
-              sm:mb-6
-            ">
+            <div className="rr-copy">
               <p>
                 Technology projects depend on the right people, skills, and
                 technical expertise. When a resource becomes unavailable or
@@ -582,76 +1578,22 @@ export default function ResourceReplacementPage() {
               </p>
             </div>
 
-            {/* QUOTE */}
-            <blockquote className="
-              border-l-[3px]
-              border-rose-800
-              bg-rose-50/60
-              pl-4
-              sm:pl-5
-              lg:pl-6
-              pr-4
-              sm:pr-5
-              lg:pr-6
-              py-4
-              sm:py-5
-              mb-6
-              sm:mb-7
-              lg:mb-8
-              max-w-3xl
-            ">
-              <p className="
-                font-inter
-                text-[12px]
-                sm:text-[13px]
-                lg:text-[15px]
-                italic
-                text-neutral-700
-                leading-[1.6]
-                mb-2
-              ">
+            <blockquote className="rr-quote">
+              <p className="rr-quote-text">
                 "The focus is simple: understand the requirement, align the
                 right expertise, and support the project effectively."
               </p>
 
-              <span className="
-                font-inter
-                text-[8px]
-                sm:text-[9px]
-                lg:text-[11px]
-                font-semibold
-                tracking-wide
-                text-rose-800
-              ">
+              <span className="rr-quote-author">
                 — TECHTORCH RESOURCING FRAMEWORK
               </span>
             </blockquote>
 
-            <h3 className="
-              font-jakarta
-              text-[#1c1c1c]
-              font-semibold
-              text-[16px]
-              sm:text-[17px]
-              lg:text-lg
-              leading-snug
-              mb-2
-              sm:mb-3
-            ">
+            <h3 className="rr-subtitle">
               Supporting Your Team When Requirements Change
             </h3>
 
-            <div className="
-              font-inter
-              space-y-3
-              sm:space-y-4
-              text-[11px]
-              sm:text-[12px]
-              lg:text-[14px]
-              leading-[1.7]
-              text-neutral-600
-              max-w-3xl
-            ">
+            <div className="rr-copy">
               <p>
                 Resource replacement can be important when a project requires
                 a different skill set, additional technical support, or
@@ -670,143 +1612,48 @@ export default function ResourceReplacementPage() {
         </div>
       </section>
 
-
       {/* =====================================================
           STRUCTURED APPROACH
       ===================================================== */}
 
-      <section className="w-full">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9 lg:py-10">
+      <section className="rr-section">
+        <div className="rr-container rr-section-container">
 
-          <div className="
-            font-inter
-            text-[8px]
-            sm:text-[9px]
-            lg:text-[10px]
-            tracking-wide
-            text-rose-800
-            font-bold
-            mb-2
-            sm:mb-3
-          ">
+          <div className="rr-section-label">
             RESOURCE REPLACEMENT SUPPORT
           </div>
 
-          <h2 className="
-            font-jakarta
-            text-[#1c1c1c]
-            font-semibold
-            text-[21px]
-            sm:text-[24px]
-            lg:text-2xl
-            leading-snug
-            mb-5
-            sm:mb-7
-            lg:mb-8
-            max-w-xl
-          ">
+          <h2 className="rr-section-title">
             Structured Approach to Engineering Continuity
           </h2>
 
-          <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-4
-            sm:gap-5
-          ">
+          <div className="rr-approach-grid">
             {approachCards.map((card) => {
               const Icon = card.icon;
 
               return (
-                <div
-                  key={card.number}
-                  className="
-                    rounded-xl
-                    bg-white
-                    border
-                    border-neutral-200
-                    p-4
-                    sm:p-5
-                    lg:p-6
-                  "
-                >
-                  <div className="
-                    flex
-                    items-center
-                    justify-between
-                    mb-4
-                    sm:mb-5
-                  ">
-                    <div className="
-                      w-9
-                      h-9
-                      rounded-lg
-                      bg-rose-50
-                      flex
-                      items-center
-                      justify-center
-                    ">
-                      <Icon className="w-4 h-4 text-rose-800" />
+                <div className="rr-card" key={card.number}>
+                  <div className="rr-card-top">
+                    <div className="rr-icon-box">
+                      <Icon />
                     </div>
 
-                    <span className="
-                      font-inter
-                      text-[9px]
-                      sm:text-[10px]
-                      lg:text-[11px]
-                      font-bold
-                      text-neutral-300
-                    ">
+                    <span className="rr-card-number">
                       {card.number}
                     </span>
                   </div>
 
-                  <h3 className="
-                    font-jakarta
-                    text-[#1c1c1c]
-                    font-semibold
-                    text-[13px]
-                    sm:text-[14px]
-                    lg:text-[15px]
-                    leading-snug
-                    mb-2
-                  ">
+                  <h3 className="rr-card-title">
                     {card.title}
                   </h3>
 
-                  <p className="
-                    font-inter
-                    text-neutral-500
-                    text-[10.5px]
-                    sm:text-[11.5px]
-                    lg:text-[12.5px]
-                    leading-[1.65]
-                    mb-4
-                    sm:mb-5
-                  ">
+                  <p className="rr-card-description">
                     {card.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="rr-tags">
                     {card.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="
-                          font-inter
-                          text-[8.5px]
-                          sm:text-[9.5px]
-                          lg:text-[10.5px]
-                          font-medium
-                          text-neutral-600
-                          bg-neutral-100
-                          px-2
-                          sm:px-2.5
-                          py-1
-                          rounded-full
-                        "
-                      >
+                      <span className="rr-tag" key={tag}>
                         {tag}
                       </span>
                     ))}
@@ -818,282 +1665,94 @@ export default function ResourceReplacementPage() {
         </div>
       </section>
 
-
       {/* =====================================================
           TECHNOLOGY CAPABILITIES
       ===================================================== */}
 
-      <section className="w-full">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9 lg:py-10">
+      <section className="rr-section">
+        <div className="rr-container rr-section-container">
 
-          <div className="
-            font-inter
-            text-[8px]
-            sm:text-[9px]
-            lg:text-[10px]
-            tracking-wide
-            text-rose-800
-            font-bold
-            mb-2
-            sm:mb-3
-          ">
+          <div className="rr-section-label">
             TECHNOLOGY CAPABILITIES
           </div>
 
-          <h2 className="
-            font-jakarta
-            text-[#1c1c1c]
-            font-semibold
-            text-[21px]
-            sm:text-[24px]
-            lg:text-2xl
-            leading-snug
-            mb-2
-            max-w-xl
-          ">
+          <h2 className="rr-section-title">
             Support Across Your Technology Requirements
           </h2>
 
-          <p className="
-            font-inter
-            text-neutral-500
-            text-[11px]
-            sm:text-[12px]
-            lg:text-[13.5px]
-            leading-relaxed
-            mb-6
-            sm:mb-7
-            lg:mb-8
-            max-w-xl
-          ">
+          <p className="rr-section-description">
             Resource replacement can support a range of technology activities
             depending on the requirements of your project.
           </p>
 
-          {/* Capability Cards */}
-          <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            gap-4
-            sm:gap-5
-            mb-4
-            sm:mb-5
-          ">
-            {capabilities.map((cap) => {
-              const Icon = cap.icon;
+          <div className="rr-capability-grid">
+            {capabilities.map((capability) => {
+              const Icon = capability.icon;
 
               return (
                 <div
-                  key={cap.number}
-                  className="
-                    rounded-xl
-                    bg-white
-                    border
-                    border-neutral-200
-                    p-4
-                    sm:p-5
-                  "
+                  className="rr-capability-card"
+                  key={capability.number}
                 >
-                  <div className="
-                    flex
-                    items-center
-                    justify-between
-                    mb-3
-                    sm:mb-4
-                  ">
-                    <div className="
-                      w-9
-                      h-9
-                      rounded-lg
-                      bg-rose-50
-                      flex
-                      items-center
-                      justify-center
-                    ">
-                      <Icon className="w-4 h-4 text-rose-800" />
+                  <div className="rr-capability-top">
+                    <div className="rr-icon-box">
+                      <Icon />
                     </div>
 
-                    <span className="
-                      font-inter
-                      text-[8px]
-                      sm:text-[9px]
-                      lg:text-[10px]
-                      font-semibold
-                      text-neutral-300
-                    ">
-                      • {cap.number}
+                    <span className="rr-capability-number">
+                      • {capability.number}
                     </span>
                   </div>
 
-                  <div className="
-                    font-inter
-                    text-[8px]
-                    sm:text-[8.5px]
-                    lg:text-[9.5px]
-                    tracking-wide
-                    text-rose-800
-                    font-bold
-                    mb-1.5
-                    sm:mb-2
-                  ">
-                    CAPABILITY {cap.number}
+                  <div className="rr-capability-label">
+                    CAPABILITY {capability.number}
                   </div>
 
-                  <h3 className="
-                    font-jakarta
-                    text-[#1c1c1c]
-                    font-semibold
-                    text-[12.5px]
-                    sm:text-[13px]
-                    lg:text-[14px]
-                    leading-[1.4]
-                    mb-2
-                  ">
-                    {cap.title}
+                  <h3 className="rr-capability-title">
+                    {capability.title}
                   </h3>
 
-                  <p className="
-                    font-inter
-                    text-neutral-500
-                    text-[10px]
-                    sm:text-[11px]
-                    lg:text-[12px]
-                    leading-[1.65]
-                    mb-3
-                    sm:mb-4
-                  ">
-                    {cap.description}
+                  <p className="rr-capability-description">
+                    {capability.description}
                   </p>
 
-                  <span className="
-                    font-inter
-                    inline-block
-                    text-[8.5px]
-                    sm:text-[9.5px]
-                    lg:text-[10.5px]
-                    font-medium
-                    text-neutral-600
-                    bg-neutral-100
-                    px-2
-                    sm:px-2.5
-                    py-1
-                    rounded-full
-                  ">
-                    {cap.tag}
+                  <span className="rr-tag">
+                    {capability.tag}
                   </span>
                 </div>
               );
             })}
           </div>
 
-          {/* Capability 07 */}
-          <div className="
-            rounded-xl
-            bg-white
-            border
-            border-neutral-200
-            p-4
-            sm:p-5
-            flex
-            flex-col
-            md:flex-row
-            md:items-center
-            md:justify-between
-            gap-4
-            sm:gap-5
-          ">
-            <div className="flex items-start sm:items-center gap-3 sm:gap-4 min-w-0">
-
-              <div className="
-                w-9
-                h-9
-                rounded-lg
-                bg-rose-50
-                flex
-                items-center
-                justify-center
-                shrink-0
-              ">
-                <RefreshCw className="w-4 h-4 text-rose-800" />
+          {/* CAPABILITY 07 */}
+          <div className="rr-special-card">
+            <div className="rr-special-content">
+              <div className="rr-icon-box">
+                <RefreshCw />
               </div>
 
-              <div className="min-w-0">
-                <div className="
-                  font-inter
-                  text-[8px]
-                  sm:text-[8.5px]
-                  lg:text-[9.5px]
-                  tracking-wide
-                  text-rose-800
-                  font-bold
-                  mb-1
-                ">
+              <div className="rr-special-text">
+                <div className="rr-special-label">
                   CAPABILITY 07 • 07
                 </div>
 
-                <h3 className="
-                  font-jakarta
-                  text-[#1c1c1c]
-                  font-semibold
-                  text-[12.5px]
-                  sm:text-[13px]
-                  lg:text-[14px]
-                  mb-1
-                ">
+                <h3 className="rr-special-title">
                   Ongoing Maintenance & Support
                 </h3>
 
-                <p className="
-                  font-inter
-                  text-neutral-500
-                  text-[10px]
-                  sm:text-[11px]
-                  lg:text-[12px]
-                  leading-relaxed
-                  max-w-xl
-                ">
+                <p className="rr-special-description">
                   Maintain and improve existing software through technical
                   support, updates, maintenance, and ongoing enhancements.
                 </p>
               </div>
             </div>
 
-            <div className="
-              flex
-              flex-wrap
-              items-center
-              gap-2
-              sm:gap-3
-              shrink-0
-            ">
-              <span className="
-                font-inter
-                text-[8.5px]
-                sm:text-[9.5px]
-                lg:text-[10.5px]
-                font-medium
-                text-neutral-600
-                bg-neutral-100
-                px-2
-                sm:px-2.5
-                py-1
-                rounded-full
-                whitespace-nowrap
-              ">
+            <div className="rr-special-actions">
+              <span className="rr-tag">
                 SLA & Continuous Health
               </span>
 
-              <span className="
-                font-inter
-                text-[8.5px]
-                sm:text-[9.5px]
-                lg:text-[10.5px]
-                font-semibold
-                text-rose-800
-                whitespace-nowrap
-              ">
+              <span className="rr-special-link">
                 Specialized Support →
               </span>
             </div>
@@ -1101,164 +1760,73 @@ export default function ResourceReplacementPage() {
         </div>
       </section>
 
-
       {/* =====================================================
           DELIVERY WORKFLOW
       ===================================================== */}
 
-      <section className="w-full">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9 lg:py-10">
+      <section className="rr-section">
+        <div className="rr-container rr-section-container">
 
-          <div className="
-            font-inter
-            text-[8px]
-            sm:text-[9px]
-            lg:text-[10px]
-            tracking-wide
-            text-rose-800
-            font-bold
-            mb-2
-            sm:mb-3
-          ">
+          <div className="rr-section-label">
             DELIVERY WORKFLOW
           </div>
 
-          <h2 className="
-            font-jakarta
-            text-[#1c1c1c]
-            font-semibold
-            text-[21px]
-            sm:text-[24px]
-            lg:text-2xl
-            leading-snug
-            mb-2
-            max-w-xl
-          ">
+          <h2 className="rr-section-title">
             From Requirement to Resource Alignment
           </h2>
 
-          <p className="
-            font-inter
-            text-neutral-500
-            text-[11px]
-            sm:text-[12px]
-            lg:text-[13.5px]
-            leading-relaxed
-            mb-6
-            sm:mb-7
-            lg:mb-8
-            max-w-xl
-          ">
+          <p className="rr-section-description">
             A systematic four-stage methodology engineered to maintain
             project velocity, smooth onboarding, and uninterrupted
             operational continuity.
           </p>
 
-          <div className="
-            rounded-xl
-            bg-white
-            border
-            border-neutral-200
-            p-4
-            sm:p-5
-            lg:p-6
-          ">
-            <div className="
-              grid
-              grid-cols-1
-              sm:grid-cols-2
-              lg:grid-cols-4
-              gap-5
-              sm:gap-6
-            ">
-              {phases.map((p) => {
-                const Icon = p.icon;
+          <div className="rr-workflow-box">
+            <div className="rr-workflow-grid">
+              {phases.map((phase) => {
+                const Icon = phase.icon;
 
                 return (
-                  <div key={p.number} className="relative">
-
-                    <div className="
-                      flex
-                      items-center
-                      gap-2
-                      mb-3
-                      sm:mb-4
-                    ">
+                  <div
+                    className="rr-workflow-item"
+                    key={phase.number}
+                  >
+                    <div className="rr-workflow-top">
                       <div
                         className={
-                          p.active
-                            ? "w-9 h-9 rounded-lg bg-rose-900 flex items-center justify-center shrink-0"
-                            : "w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center shrink-0"
+                          phase.active
+                            ? "rr-workflow-icon active"
+                            : "rr-workflow-icon"
                         }
                       >
-                        <Icon
-                          className={
-                            p.active
-                              ? "w-4 h-4 text-white"
-                              : "w-4 h-4 text-rose-800"
-                          }
-                        />
+                        <Icon />
                       </div>
 
                       <span
                         className={
-                          p.active
-                            ? "font-inter text-[9px] sm:text-[10px] font-bold text-white bg-rose-900 px-2 py-0.5 rounded-full"
-                            : "font-inter text-[9px] sm:text-[10px] font-bold text-neutral-400"
+                          phase.active
+                            ? "rr-workflow-number active"
+                            : "rr-workflow-number"
                         }
                       >
-                        {p.number}
+                        {phase.number}
                       </span>
                     </div>
 
-                    <div className="
-                      font-inter
-                      text-[8px]
-                      sm:text-[8.5px]
-                      lg:text-[9.5px]
-                      tracking-wide
-                      text-neutral-400
-                      font-semibold
-                      mb-1
-                      sm:mb-1.5
-                    ">
-                      {p.phase}
+                    <div className="rr-workflow-phase">
+                      {phase.phase}
                     </div>
 
-                    <h3 className="
-                      font-jakarta
-                      text-[#1c1c1c]
-                      font-semibold
-                      text-[13px]
-                      sm:text-[13.5px]
-                      lg:text-[14.5px]
-                      mb-2
-                    ">
-                      {p.title}
+                    <h3 className="rr-workflow-title">
+                      {phase.title}
                     </h3>
 
-                    <p className="
-                      font-inter
-                      text-neutral-500
-                      text-[10px]
-                      sm:text-[11px]
-                      lg:text-[12px]
-                      leading-[1.65]
-                      mb-2
-                      sm:mb-3
-                    ">
-                      {p.description}
+                    <p className="rr-workflow-description">
+                      {phase.description}
                     </p>
 
-                    <span className="
-                      font-inter
-                      text-[8.5px]
-                      sm:text-[9.5px]
-                      lg:text-[10.5px]
-                      font-medium
-                      text-rose-800
-                    ">
-                      • {p.tag}
+                    <span className="rr-workflow-tag">
+                      • {phase.tag}
                     </span>
                   </div>
                 );
@@ -1268,125 +1836,37 @@ export default function ResourceReplacementPage() {
         </div>
       </section>
 
-
       {/* =====================================================
           WHY TECHTORCH
       ===================================================== */}
 
-      <section className="w-full">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9 lg:py-10">
+      <section className="rr-section">
+        <div className="rr-container rr-section-container">
 
-          <div
-            className="
-              w-full
-              rounded-xl
-              sm:rounded-2xl
-              px-5
-              sm:px-7
-              lg:px-10
-              py-8
-              sm:py-10
-              lg:py-12
-            "
-            style={{
-              background:
-                "radial-gradient(120% 140% at 90% 0%, #7a0f47 0%, #4a0a30 60%)",
-            }}
-          >
+          <div className="rr-why-box">
 
-            <span className="
-              font-inter
-              inline-flex
-              items-center
-              gap-1.5
-              text-[8px]
-              sm:text-[9px]
-              tracking-wide
-              font-bold
-              text-rose-100
-              bg-white/10
-              px-2.5
-              sm:px-3
-              py-1
-              rounded-full
-              mb-4
-              sm:mb-5
-            ">
-              <span className="w-1 h-1 rounded-full bg-rose-300" />
+            <span className="rr-why-label">
+              <span className="rr-why-label-dot" />
               WHY TECHTORCH
             </span>
 
-            <h2 className="
-              font-jakarta
-              text-white
-              font-semibold
-              text-[24px]
-              sm:text-[28px]
-              lg:text-3xl
-              leading-[1.25]
-              mb-2
-              sm:mb-3
-              max-w-lg
-            ">
+            <h2 className="rr-why-title">
               Technology Resources Aligned with Your Business Needs
             </h2>
 
-            <p className="
-              font-inter
-              text-rose-100/70
-              text-[10.5px]
-              sm:text-[12px]
-              lg:text-[13.5px]
-              leading-relaxed
-              max-w-xl
-              mb-6
-              sm:mb-8
-            ">
+            <p className="rr-why-description">
               Technical capabilities aligned with your project requirements
               and operational continuity.
             </p>
 
-            <div className="
-              grid
-              grid-cols-1
-              sm:grid-cols-2
-              gap-3
-              sm:gap-4
-            ">
+            <div className="rr-why-grid">
               {whyCards.map((card) => (
-                <div
-                  key={card.title}
-                  className="
-                    rounded-lg
-                    sm:rounded-xl
-                    bg-white/[0.08]
-                    border
-                    border-white/10
-                    p-4
-                    sm:p-5
-                  "
-                >
-                  <h3 className="
-                    font-jakarta
-                    text-white
-                    font-semibold
-                    text-[12px]
-                    sm:text-[13px]
-                    lg:text-[14px]
-                    mb-1.5
-                    sm:mb-2
-                  ">
+                <div className="rr-why-card" key={card.title}>
+                  <h3 className="rr-why-card-title">
                     {card.title}
                   </h3>
 
-                  <p className="
-                    font-inter
-                    text-rose-100/60
-                    text-[10px]
-                    sm:text-[11px]
-                    lg:text-[12.5px]
-                    leading-[1.65]
-                  ">
+                  <p className="rr-why-card-description">
                     {card.description}
                   </p>
                 </div>
@@ -1396,105 +1876,32 @@ export default function ResourceReplacementPage() {
         </div>
       </section>
 
-
       {/* =====================================================
           FINAL CTA
       ===================================================== */}
 
-      <section className="w-full">
-        <div className="
-          max-w-3xl
-          mx-auto
-          px-4
-          sm:px-6
-          lg:px-8
-          py-10
-          sm:py-12
-          lg:py-16
-        ">
+      <section className="rr-section rr-final">
+        <div className="rr-container">
+          <div className="rr-final-inner">
 
-          <div className="text-center">
-
-            <h2 className="
-              font-jakarta
-              text-[#1c1c1c]
-              font-semibold
-              text-[23px]
-              sm:text-[27px]
-              lg:text-3xl
-              leading-[1.25]
-              mb-3
-              sm:mb-4
-            ">
+            <h2 className="rr-final-title">
               Keep Your Technology Projects Moving Forward
             </h2>
 
-            <p className="
-              font-inter
-              text-neutral-500
-              text-[11px]
-              sm:text-[12px]
-              lg:text-[14px]
-              leading-[1.7]
-              max-w-xl
-              mx-auto
-              mb-5
-              sm:mb-7
-              lg:mb-8
-            ">
+            <p className="rr-final-description">
               When your resource requirements change, TechTorch can help you
               explore the right technical capabilities to support your team
               and technology initiatives.
             </p>
 
-            <button className="
-              font-inter
-              inline-flex
-              items-center
-              justify-center
-              gap-2
-              rounded-md
-              bg-rose-900
-              text-white
-              font-semibold
-              text-[11px]
-              sm:text-[12px]
-              lg:text-sm
-              px-5
-              sm:px-6
-              py-2.5
-              sm:py-3
-              lg:py-3.5
-              hover:bg-rose-950
-              transition-colors
-              mb-5
-              sm:mb-7
-            ">
+            <button className="rr-primary-button rr-final-button">
               Talk to Our Experts
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <ArrowRight />
             </button>
 
-            <div className="
-              flex
-              flex-wrap
-              items-center
-              justify-center
-              gap-2
-              sm:gap-4
-              lg:gap-6
-            ">
+            <div className="rr-final-tags">
               {heroTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="
-                    font-inter
-                    text-[8.5px]
-                    sm:text-[10px]
-                    lg:text-[12px]
-                    font-medium
-                    text-neutral-500
-                  "
-                >
+                <span className="rr-final-tag" key={tag}>
                   {tag}
                 </span>
               ))}
@@ -1503,7 +1910,6 @@ export default function ResourceReplacementPage() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

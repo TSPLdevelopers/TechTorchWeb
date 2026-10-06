@@ -83,13 +83,9 @@ const supportLevels = [
 
 export default function DevelopmentConsultation() {
   const [support, setSupport] = useState("");
-
   const [supportType, setSupportType] = useState("");
-
   const [selectedCapabilities, setSelectedCapabilities] = useState([]);
-
   const [projectStage, setProjectStage] = useState("");
-
   const [supportLevel, setSupportLevel] = useState("");
 
   const [formData, setFormData] = useState({
@@ -105,10 +101,10 @@ export default function DevelopmentConsultation() {
   ========================================================= */
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const toggleCapability = (item) => {
@@ -137,211 +133,83 @@ export default function DevelopmentConsultation() {
   };
 
   return (
-    <main className="w-full overflow-hidden bg-[#f8f9fa]">
+    <main className="development-consultation">
 
-    {/* =====================================================
-    FIRST SECTION — DEVELOPMENT CONSULTATION
-===================================================== */}
+      {/* =====================================================
+          HERO / DEVELOPMENT CONSULTATION
+      ====================================================== */}
 
-<section className="w-full bg-[#f8f9fa] px-3 py-4 sm:px-5 sm:py-6 md:px-7 md:py-8 lg:px-10 lg:py-10">
-  <div
-    className="
-      mx-auto
-      grid
-      w-full
-      max-w-[1180px]
-      overflow-hidden
-      rounded-[16px]
-      border
-      border-[#e3e7eb]
-      bg-white
-      lg:grid-cols-[1.15fr_0.85fr]
-    "
-  >
+      <section className="consultation-hero-section">
+        <div className="consultation-hero-container">
 
-    {/* ================= LEFT CONTENT ================= */}
-    <div
-      className="
-        flex
-        flex-col
-        justify-center
-        px-6
-        py-8
-        sm:px-8
-        sm:py-10
-        md:px-10
-        md:py-12
-        lg:px-[48px]
-        lg:py-[42px]
-      "
-    >
+          {/* ================= LEFT CONTENT ================= */}
 
-      {/* Badge */}
-      <div
-        className="
-          mb-5
-          flex
-          w-fit
-          items-center
-          gap-2
-          rounded-full
-          bg-[#f5f5f6]
-          px-3.5
-          py-1.5
-        "
-      >
-        <span
-          className="h-[7px] w-[7px] rounded-full"
-          style={{ backgroundColor: BRAND }}
-        />
+          <div className="consultation-hero-content">
 
-        <span
-          className="
-            font-['Plus_Jakarta_Sans']
-            text-[11px]
-            font-bold
-            uppercase
-            tracking-[0.05em]
-            text-[#343434]
-          "
-        >
-          DEVELOPMENT CONSULTATION
-        </span>
-      </div>
+            {/* Badge */}
+            <div className="consultation-badge">
+              <span className="consultation-badge-dot" />
 
-      {/* Heading */}
-      <h1
-        className="
-          max-w-[650px]
-          font-['Plus_Jakarta_Sans']
-          text-[30px]
-          font-semibold
-          leading-[1.08]
-          tracking-[-0.04em]
-          text-[#15151A]
-          sm:text-[36px]
-          md:text-[40px]
-          lg:text-[42px]
-        "
-      >
-        Discuss Your Development
-        <br />
-        Requirements
-      </h1>
+              <span>
+                DEVELOPMENT CONSULTATION
+              </span>
+            </div>
 
-      {/* Description */}
-      <p
-        className="
-          mt-5
-          max-w-[620px]
-          font-['Plus_Jakarta_Sans']
-          text-[13px]
-          leading-[1.7]
-          text-[#6b6268]
-          sm:text-[14px]
-          md:text-[15px]
-          lg:text-[15px]
-        "
-      >
-        Tell us about your project, development goals, and the technical
-        capabilities you are looking for. Share a few details so our team can
-        better understand your requirements and discuss a suitable development
-        approach with you.
-      </p>
+            {/* Heading */}
+            <h1 className="consultation-hero-heading">
+              Discuss Your Development
+              <br className="desktop-break" />
+              Requirements
+            </h1>
 
-    </div>
-
-
-    {/* ================= RIGHT IMAGE ================= */}
-    <div
-      className="
-        relative
-        flex
-        min-h-[230px]
-        items-center
-        justify-center
-        p-2
-        sm:min-h-[280px]
-        md:min-h-[320px]
-        lg:min-h-[360px]
-      "
-    >
-
-      {/* Image */}
-      <div className="relative h-full w-full overflow-hidden rounded-[12px]">
-
-        <img
-          src="/DevelopmentTeam.png"
-          alt="Development Consultation"
-          className="
-            absolute
-            inset-0
-            h-full
-            w-full
-            object-cover
-            object-center
-          "
-        />
-
-        {/* ================= IMAGE TEXT OVERLAY ================= */}
-        <div
-          className="
-            absolute
-            bottom-0
-            left-0
-            right-0
-            p-3
-            sm:p-4
-          "
-        >
-          <div
-            className="
-              rounded-[10px]
-              border
-              border-white/15
-              bg-black/65
-              px-3
-              py-2.5
-              backdrop-blur-[3px]
-              sm:px-4
-              sm:py-3
-            "
-          >
-            <p
-              className="
-                font-['Plus_Jakarta_Sans']
-                text-[10px]
-                font-medium
-                leading-[1.35]
-                text-white
-                sm:text-[11px]
-                md:text-[12px]
-              "
-            >
-              TechTorch Solutions Architecture — Technical
-              <br className="hidden sm:block" />
-              Consultation & Requirement Discovery
+            {/* Description */}
+            <p className="consultation-hero-description">
+              Tell us about your project, development goals, and the technical
+              capabilities you are looking for. Share a few details so our team
+              can better understand your requirements and discuss a suitable
+              development approach with you.
             </p>
+
           </div>
+
+          {/* ================= RIGHT IMAGE ================= */}
+
+          <div className="consultation-hero-image-wrapper">
+
+            <div className="consultation-hero-image">
+
+              <img
+                src="/DevelopmentTeam.png"
+                alt="Development Consultation"
+              />
+
+              {/* Image Overlay */}
+              <div className="consultation-image-overlay">
+                <div className="consultation-image-overlay-box">
+                  <p>
+                    TechTorch Solutions Architecture — Technical
+                    <br className="desktop-break" />
+                    Consultation & Requirement Discovery
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
+      </section>
 
       {/* =====================================================
           FORM
-      ===================================================== */}
+      ====================================================== */}
 
       <section
         id="development-form"
-        className="w-full px-3 pb-8 sm:px-5 sm:pb-10 md:px-7 md:pb-12 lg:px-10 lg:pb-16"
+        className="development-form-section"
       >
-        <div className="mx-auto w-full max-w-[1180px]">
+        <div className="development-form-container">
 
           <form onSubmit={handleSubmit}>
 
@@ -349,24 +217,7 @@ export default function DevelopmentConsultation() {
                 MAIN FORM CARD
             ================================================= */}
 
-            <div
-              className="
-                rounded-[14px]
-                border
-                border-[#e3e7eb]
-                bg-white
-                px-4
-                py-6
-                shadow-[0_2px_8px_rgba(20,30,45,0.025)]
-                sm:rounded-[16px]
-                sm:px-6
-                sm:py-8
-                md:px-8
-                md:py-9
-                lg:px-12
-                lg:py-11
-              "
-            >
+            <div className="main-form-card">
 
               {/* =================================================
                   01
@@ -377,8 +228,7 @@ export default function DevelopmentConsultation() {
                 title="What do you need development support for?"
                 subtitle="Select the area closest to your requirement."
               >
-
-                <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:gap-3 lg:grid-cols-4">
+                <div className="support-options-grid">
                   {supportOptions.map((item) => (
                     <ChoiceButton
                       key={item}
@@ -388,9 +238,7 @@ export default function DevelopmentConsultation() {
                     />
                   ))}
                 </div>
-
               </FormSection>
-
 
               {/* =================================================
                   02
@@ -401,8 +249,7 @@ export default function DevelopmentConsultation() {
                 title="What type of support are you looking for?"
                 subtitle="Choose the engagement structure best suited for your plans."
               >
-
-                <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:gap-3 lg:grid-cols-3">
+                <div className="support-types-grid">
                   {supportTypes.map((item) => (
                     <SupportTypeCard
                       key={item.title}
@@ -412,9 +259,7 @@ export default function DevelopmentConsultation() {
                     />
                   ))}
                 </div>
-
               </FormSection>
-
 
               {/* =================================================
                   03
@@ -425,8 +270,7 @@ export default function DevelopmentConsultation() {
                 title="Which technical capabilities are relevant?"
                 subtitle="Select one or more"
               >
-
-                <div className="flex flex-wrap gap-2">
+                <div className="capabilities-list">
                   {capabilities.map((item) => {
                     const selected =
                       selectedCapabilities.includes(item);
@@ -436,32 +280,16 @@ export default function DevelopmentConsultation() {
                         key={item}
                         type="button"
                         onClick={() => toggleCapability(item)}
-                        className={`
-                          rounded-[7px]
-                          border
-                          px-3
-                          py-2
-                          font-['Plus_Jakarta_Sans']
-                          text-[9px]
-                          font-semibold
-                          transition-all
-                          duration-200
-                          sm:text-[11px]
-                          ${
-                            selected
-                              ? "border-[#8B0046] bg-[#8B0046] text-white"
-                              : "border-[#e2e7ec] bg-white text-[#3c424a] hover:border-[#cfa6ba] hover:bg-[#fff9fb]"
-                          }
-                        `}
+                        className={`capability-button ${
+                          selected ? "selected" : ""
+                        }`}
                       >
                         {item}
                       </button>
                     );
                   })}
                 </div>
-
               </FormSection>
-
 
               {/* =================================================
                   04
@@ -472,17 +300,7 @@ export default function DevelopmentConsultation() {
                 title="Tell Us About Your Project"
                 subtitle="Project Details"
               >
-
-                <p
-                  className="
-                    mb-3
-                    font-['Plus_Jakarta_Sans']
-                    text-[10px]
-                    leading-[1.5]
-                    text-[#71686d]
-                    sm:text-[12px]
-                  "
-                >
+                <p className="project-help-text">
                   Describe your project, current application, technology
                   environment, or the type of development assistance you
                   require.
@@ -492,31 +310,11 @@ export default function DevelopmentConsultation() {
                   name="project"
                   value={formData.project}
                   onChange={handleChange}
-                  rows={4}
+                  rows={5}
                   placeholder="Briefly describe your project and the development support you are looking for..."
-                  className="
-                    min-h-[120px]
-                    w-full
-                    resize-none
-                    rounded-[9px]
-                    border
-                    border-[#e1e6eb]
-                    bg-[#fafbfc]
-                    px-3
-                    py-3
-                    font-['Plus_Jakarta_Sans']
-                    text-[10px]
-                    text-[#333840]
-                    outline-none
-                    placeholder:text-[#aeb5be]
-                    focus:border-[#c58ba7]
-                    focus:bg-white
-                    sm:text-[11px]
-                  "
+                  className="project-textarea"
                 />
-
               </FormSection>
-
 
               {/* =================================================
                   05
@@ -527,8 +325,7 @@ export default function DevelopmentConsultation() {
                 title="What stage is your project in?"
                 subtitle="Select the current state of progress."
               >
-
-                <div className="flex flex-wrap gap-2">
+                <div className="stage-options">
                   {projectStages.map((item) => {
                     const selected = projectStage === item;
 
@@ -537,32 +334,16 @@ export default function DevelopmentConsultation() {
                         key={item}
                         type="button"
                         onClick={() => setProjectStage(item)}
-                        className={`
-                          rounded-[7px]
-                          border
-                          px-3
-                          py-2
-                          font-['Plus_Jakarta_Sans']
-                          text-[9px]
-                          font-semibold
-                          transition-all
-                          duration-200
-                          sm:text-[11px]
-                          ${
-                            selected
-                              ? "border-[#8B0046] bg-[#fff7fa] text-[#8B0046]"
-                              : "border-[#e2e7ec] bg-white text-[#3c424a] hover:border-[#cfa6ba]"
-                          }
-                        `}
+                        className={`stage-button ${
+                          selected ? "selected" : ""
+                        }`}
                       >
                         {item}
                       </button>
                     );
                   })}
                 </div>
-
               </FormSection>
-
 
               {/* =================================================
                   06
@@ -573,8 +354,7 @@ export default function DevelopmentConsultation() {
                 title="What level of support are you considering?"
                 subtitle="Estimate team capacity or scale."
               >
-
-                <div className="flex flex-wrap gap-2">
+                <div className="support-level-options">
                   {supportLevels.map((item) => {
                     const selected = supportLevel === item;
 
@@ -583,119 +363,42 @@ export default function DevelopmentConsultation() {
                         key={item}
                         type="button"
                         onClick={() => setSupportLevel(item)}
-                        className={`
-                          rounded-[7px]
-                          border
-                          px-4
-                          py-2
-                          font-['Plus_Jakarta_Sans']
-                          text-[9px]
-                          font-medium
-                          transition-all
-                          duration-200
-                          sm:text-[11px]
-                          ${
-                            selected
-                              ? "border-[#8B0046] bg-[#fff7fa] text-[#8B0046]"
-                              : "border-[#e2e7ec] bg-white text-[#3c424a] hover:border-[#cfa6ba]"
-                          }
-                        `}
+                        className={`support-level-button ${
+                          selected ? "selected" : ""
+                        }`}
                       >
                         {item}
                       </button>
                     );
                   })}
                 </div>
-
               </FormSection>
 
             </div>
-
 
             {/* =================================================
                 CONTACT DETAILS
             ================================================= */}
 
-            <div
-              className="
-                mt-5
-                rounded-[14px]
-                border
-                border-[#e3e7eb]
-                bg-white
-                px-4
-                py-6
-                sm:mt-6
-                sm:rounded-[16px]
-                sm:px-6
-                sm:py-8
-                md:px-8
-                md:py-9
-                lg:px-12
-                lg:py-10
-              "
-            >
+            <div className="contact-card">
 
-              <span
-                className="
-                  font-['Plus_Jakarta_Sans']
-                  text-[9px]
-                  font-bold
-                  uppercase
-                  tracking-[0.08em]
-                "
-                style={{ color: BRAND }}
-              >
+              <span className="contact-label">
                 YOUR CONTACT DETAILS
               </span>
 
-              <h2
-                className="
-                  mt-2
-                  font-['Plus_Jakarta_Sans']
-                  text-[21px]
-                  font-semibold
-                  leading-[1.15]
-                  tracking-[-0.035em]
-                  text-[#15151A]
-                  sm:text-[24px]
-                  md:text-[26px]
-                  lg:text-[28px]
-                "
-              >
+              <h2 className="contact-heading">
                 Let’s Continue the Conversation
               </h2>
 
-              <p
-                className="
-                  mt-1
-                  max-w-[850px]
-                  font-['Inter']
-                  text-[10px]
-                  leading-[1.6]
-                  text-[#6d6469]
-                  sm:text-[11px]
-                  md:text-[12px]
-                "
-              >
+              <p className="contact-description">
                 Share your contact information so our team can review your
                 requirements and get in touch regarding your development
                 enquiry.
               </p>
 
-
               {/* INPUTS */}
 
-              <div
-                className="
-                  mt-6
-                  grid
-                  grid-cols-1
-                  gap-x-5
-                  gap-y-4
-                  sm:grid-cols-2
-                "
-              >
+              <div className="contact-input-grid">
 
                 <InputField
                   label="Full Name *"
@@ -733,49 +436,25 @@ export default function DevelopmentConsultation() {
 
               </div>
 
-
               {/* SUBMIT */}
 
-              <div className="mt-7">
+              <div className="submit-area">
 
                 <button
                   type="submit"
-                  className="
-                    inline-flex
-                    w-full
-                    min-h-[44px]
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-[7px]
-                    bg-[#780042]
-                    px-6
-                    font-['Plus_Jakarta_Sans']
-                    text-[10px]
-                    font-bold
-                    uppercase
-                    tracking-[0.02em]
-                    text-white
-                    transition-all
-                    duration-300
-                    hover:bg-[#8B0046]
-                    sm:w-auto
-                    sm:text-[11px]
-                  "
+                  className="submit-button"
                 >
-                  Submit Development Enquiry
-                  <ArrowRight className="h-4 w-4" />
+                  <span>
+                    Submit Development Enquiry
+                  </span>
+
+                  <ArrowRight
+                    className="submit-arrow"
+                    strokeWidth={2}
+                  />
                 </button>
 
-                <p
-                  className="
-                    mt-2
-                    font-['Inter']
-                    text-[8px]
-                    text-[#766d72]
-                    sm:text-[11px]
-                  "
-                >
+                <p className="privacy-note">
                   The information you provide will be used to understand your
                   enquiry and communicate with you regarding your requirements.
                 </p>
@@ -788,6 +467,1318 @@ export default function DevelopmentConsultation() {
         </div>
       </section>
 
+      {/* =====================================================
+          STYLES
+      ====================================================== */}
+
+      <style>{`
+
+        /* =====================================================
+           BASE
+        ====================================================== */
+
+        .development-consultation {
+          width: 100%;
+          min-height: 100vh;
+
+          background: #f8f9fa;
+
+          color: #15151a;
+
+          font-family: "Inter", sans-serif;
+
+          box-sizing: border-box;
+        }
+
+        .development-consultation *,
+        .development-consultation *::before,
+        .development-consultation *::after {
+          box-sizing: border-box;
+        }
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .consultation-hero-section {
+          width: 100%;
+
+          padding: 50px 100px;
+        }
+
+        .consultation-hero-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+
+          display: grid;
+
+          grid-template-columns:
+            minmax(0, 1.15fr)
+            minmax(0, 0.85fr);
+
+          min-height: 420px;
+
+          overflow: hidden;
+
+          border: 1px solid #e3e7eb;
+
+          border-radius: 18px;
+
+          background: #ffffff;
+        }
+
+        /* =====================================================
+           HERO CONTENT
+        ====================================================== */
+
+        .consultation-hero-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          padding: 52px;
+        }
+
+        .consultation-badge {
+          width: fit-content;
+
+          display: inline-flex;
+          align-items: center;
+
+          gap: 8px;
+
+          padding: 7px 14px;
+
+          margin-bottom: 20px;
+
+          border-radius: 999px;
+
+          background: #f5f5f6;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+          font-weight: 700;
+
+          line-height: 1.4;
+
+          letter-spacing: 0.05em;
+
+          color: #343434;
+        }
+
+        .consultation-badge-dot {
+          width: 7px;
+          height: 7px;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+
+          background: ${BRAND};
+        }
+
+        .consultation-hero-heading {
+          max-width: 700px;
+
+          margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 44px;
+
+          font-weight: 600;
+
+          line-height: 1.1;
+
+          letter-spacing: -0.04em;
+
+          color: #15151a;
+        }
+
+        .consultation-hero-description {
+          max-width: 650px;
+
+          margin: 22px 0 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 14px;
+
+          font-weight: 400;
+
+          line-height: 1.75;
+
+          color: #6b6268;
+        }
+
+        /* =====================================================
+           HERO IMAGE
+        ====================================================== */
+
+        .consultation-hero-image-wrapper {
+          min-height: 420px;
+
+          padding: 8px;
+        }
+
+        .consultation-hero-image {
+          position: relative;
+
+          width: 100%;
+          height: 100%;
+
+          min-height: 404px;
+
+          overflow: hidden;
+
+          border-radius: 12px;
+        }
+
+        .consultation-hero-image img {
+          position: absolute;
+
+          inset: 0;
+
+          width: 100%;
+          height: 100%;
+
+          object-fit: cover;
+
+          object-position: center;
+        }
+
+        .consultation-image-overlay {
+          position: absolute;
+
+          left: 0;
+          right: 0;
+          bottom: 0;
+
+          padding: 16px;
+        }
+
+        .consultation-image-overlay-box {
+          width: 100%;
+
+          padding: 13px 16px;
+
+          border: 1px solid rgba(255, 255, 255, 0.15);
+
+          border-radius: 10px;
+
+          background: rgba(0, 0, 0, 0.65);
+
+          backdrop-filter: blur(4px);
+        }
+
+        .consultation-image-overlay-box p {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+
+          font-weight: 500;
+
+          line-height: 1.45;
+
+          color: #ffffff;
+        }
+
+        /* =====================================================
+           FORM SECTION
+        ====================================================== */
+
+        .development-form-section {
+          width: 100%;
+
+          padding: 0 100px 60px;
+        }
+
+        .development-form-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+        }
+
+        /* =====================================================
+           FORM CARD
+        ====================================================== */
+
+        .main-form-card,
+        .contact-card {
+          width: 100%;
+
+          border: 1px solid #e3e7eb;
+
+          border-radius: 16px;
+
+          background: #ffffff;
+
+          box-shadow:
+            0 2px 8px rgba(20, 30, 45, 0.025);
+        }
+
+        .main-form-card {
+          padding: 48px;
+        }
+
+        /* =====================================================
+           FORM SECTION
+        ====================================================== */
+
+        .form-section {
+          padding-bottom: 34px;
+
+          margin-bottom: 34px;
+
+          border-bottom: 1px solid #edf0f3;
+        }
+
+        .form-section:last-child {
+          padding-bottom: 0;
+          margin-bottom: 0;
+
+          border-bottom: none;
+        }
+
+        .form-section-header {
+          display: flex;
+          align-items: flex-start;
+
+          gap: 12px;
+
+          margin-bottom: 18px;
+        }
+
+        .form-section-number {
+          width: 24px;
+          height: 24px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+
+          background: ${BRAND};
+
+          color: #ffffff;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 9px;
+
+          font-weight: 700;
+        }
+
+        .form-section-title {
+          margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 15px;
+
+          font-weight: 700;
+
+          line-height: 1.35;
+
+          color: #20242a;
+        }
+
+        .form-section-subtitle {
+          margin: 3px 0 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+
+          line-height: 1.5;
+
+          color: #776d72;
+        }
+
+        /* =====================================================
+           SUPPORT OPTIONS
+        ====================================================== */
+
+        .support-options-grid {
+          display: grid;
+
+          grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
+          gap: 12px;
+        }
+
+        .choice-button {
+          position: relative;
+
+          width: 100%;
+          min-height: 58px;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 12px;
+
+          padding: 11px 13px;
+
+          border: 1px solid #e2e7ec;
+
+          border-radius: 9px;
+
+          background: #ffffff;
+
+          text-align: left;
+
+          cursor: pointer;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+
+          font-weight: 500;
+
+          line-height: 1.4;
+
+          color: #363b42;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
+        }
+
+        .choice-button:hover {
+          border-color: #d4b1c1;
+
+          background: #fffafb;
+        }
+
+        .choice-button.selected {
+          border-color: #d3a3b9;
+
+          background: #fff9fb;
+        }
+
+        .choice-button-text {
+          max-width: calc(100% - 28px);
+        }
+
+        .choice-radio {
+          width: 15px;
+          height: 15px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-shrink: 0;
+
+          border: 1px solid #e2b8ca;
+
+          border-radius: 50%;
+        }
+
+        .choice-button.selected .choice-radio {
+          border-color: ${BRAND};
+        }
+
+        .choice-radio-inner {
+          width: 6px;
+          height: 6px;
+
+          border-radius: 50%;
+
+          background: ${BRAND};
+        }
+
+        /* =====================================================
+           SUPPORT TYPE
+        ====================================================== */
+
+        .support-types-grid {
+          display: grid;
+
+          grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+          gap: 12px;
+        }
+
+        .support-type-card {
+          position: relative;
+
+          width: 100%;
+
+          min-height: 125px;
+
+          padding: 17px;
+
+          border: 1px solid #e2e7ec;
+
+          border-radius: 10px;
+
+          background: #ffffff;
+
+          text-align: left;
+
+          cursor: pointer;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
+        }
+
+        .support-type-card:hover {
+          border-color: #d4b1c1;
+        }
+
+        .support-type-card.selected {
+          border-color: #d3a3b9;
+
+          background: #fff9fb;
+        }
+
+        .support-type-radio {
+          position: absolute;
+
+          top: 13px;
+          right: 13px;
+
+          width: 15px;
+          height: 15px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border: 1px solid #e2b8ca;
+
+          border-radius: 50%;
+        }
+
+        .support-type-card.selected .support-type-radio {
+          border-color: ${BRAND};
+        }
+
+        .support-type-radio-inner {
+          width: 6px;
+          height: 6px;
+
+          border-radius: 50%;
+
+          background: ${BRAND};
+        }
+
+        .support-type-title {
+          max-width: 92%;
+
+          padding-right: 20px;
+
+          margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 13px;
+
+          font-weight: 700;
+
+          line-height: 1.4;
+
+          color: #30343a;
+        }
+
+        .support-type-description {
+          max-width: 330px;
+
+          margin: 10px 0 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+
+          font-weight: 400;
+
+          line-height: 1.55;
+
+          color: #766d72;
+        }
+
+        /* =====================================================
+           CAPABILITIES
+        ====================================================== */
+
+        .capabilities-list,
+        .stage-options,
+        .support-level-options {
+          display: flex;
+          flex-wrap: wrap;
+
+          gap: 8px;
+        }
+
+        .capability-button,
+        .stage-button,
+        .support-level-button {
+          min-height: 36px;
+
+          padding: 8px 13px;
+
+          border: 1px solid #e2e7ec;
+
+          border-radius: 7px;
+
+          background: #ffffff;
+
+          color: #3c424a;
+
+          cursor: pointer;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+
+          font-weight: 500;
+
+          line-height: 1.3;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease,
+            color 0.2s ease;
+        }
+
+        .capability-button:hover,
+        .stage-button:hover,
+        .support-level-button:hover {
+          border-color: #cfa6ba;
+
+          background: #fff9fb;
+        }
+
+        .capability-button.selected {
+          border-color: ${BRAND};
+
+          background: ${BRAND};
+
+          color: #ffffff;
+        }
+
+        .stage-button.selected,
+        .support-level-button.selected {
+          border-color: ${BRAND};
+
+          background: #fff7fa;
+
+          color: ${BRAND};
+        }
+
+        /* =====================================================
+           PROJECT DETAILS
+        ====================================================== */
+
+        .project-help-text {
+          margin: 0 0 10px;
+
+          max-width: 850px;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 11px;
+
+          line-height: 1.6;
+
+          color: #71686d;
+        }
+
+        .project-textarea {
+          width: 100%;
+
+          min-height: 130px;
+
+          resize: vertical;
+
+          padding: 13px;
+
+          border: 1px solid #e1e6eb;
+
+          border-radius: 9px;
+
+          background: #fafbfc;
+
+          outline: none;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12px;
+
+          line-height: 1.6;
+
+          color: #333840;
+        }
+
+        .project-textarea::placeholder {
+          color: #aeb5be;
+        }
+
+        .project-textarea:focus {
+          border-color: #c58ba7;
+
+          background: #ffffff;
+        }
+
+        /* =====================================================
+           CONTACT CARD
+        ====================================================== */
+
+        .contact-card {
+          margin-top: 22px;
+
+          padding: 42px 48px;
+        }
+
+        .contact-label {
+          display: block;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+
+          font-weight: 700;
+
+          line-height: 1.4;
+
+          letter-spacing: 0.08em;
+
+          color: ${BRAND};
+        }
+
+        .contact-heading {
+          margin: 7px 0 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 28px;
+
+          font-weight: 600;
+
+          line-height: 1.2;
+
+          letter-spacing: -0.035em;
+
+          color: #15151a;
+        }
+
+        .contact-description {
+          max-width: 850px;
+
+          margin: 7px 0 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12px;
+
+          line-height: 1.65;
+
+          color: #6d6469;
+        }
+
+        /* =====================================================
+           INPUT GRID
+        ====================================================== */
+
+        .contact-input-grid {
+          display: grid;
+
+          grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+          gap: 18px 22px;
+
+          margin-top: 26px;
+        }
+
+        .input-field {
+          display: block;
+
+          width: 100%;
+        }
+
+        .input-label {
+          display: block;
+
+          margin-bottom: 7px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 12px;
+
+          font-weight: 700;
+
+          line-height: 1.4;
+
+          color: #34383e;
+        }
+
+        .input-control {
+          width: 100%;
+
+          height: 44px;
+
+          padding: 0 13px;
+
+          border: 1px solid #e1e6eb;
+
+          border-radius: 8px;
+
+          background: #fafbfc;
+
+          outline: none;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 12px;
+
+          font-weight: 400;
+
+          color: #303641;
+
+          transition:
+            border-color 0.2s ease,
+            background 0.2s ease;
+        }
+
+        .input-control::placeholder {
+          color: #aeb5be;
+        }
+
+        .input-control:focus {
+          border-color: #c58ba7;
+
+          background: #ffffff;
+        }
+
+        /* =====================================================
+           SUBMIT
+        ====================================================== */
+
+        .submit-area {
+          margin-top: 28px;
+        }
+
+        .submit-button {
+          min-height: 44px;
+
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 9px;
+
+          padding: 11px 22px;
+
+          border: none;
+
+          border-radius: 7px;
+
+          background: #780042;
+
+          color: #ffffff;
+
+          cursor: pointer;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+
+          font-size: 11px;
+
+          font-weight: 700;
+
+          line-height: 1.3;
+
+          transition:
+            background 0.3s ease,
+            transform 0.3s ease;
+        }
+
+        .submit-button:hover {
+          background: #8b0046;
+
+          transform: translateY(-2px);
+        }
+
+        .submit-arrow {
+          width: 16px;
+          height: 16px;
+        }
+
+        .privacy-note {
+          margin: 8px 0 0;
+
+          font-family: "Inter", sans-serif;
+
+          font-size: 10px;
+
+          line-height: 1.5;
+
+          color: #766d72;
+        }
+
+        /* =====================================================
+           1200px
+        ====================================================== */
+
+        @media (max-width: 1200px) {
+
+          .consultation-hero-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .development-form-section {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+
+          .consultation-hero-content {
+            padding: 42px;
+          }
+
+          .consultation-hero-heading {
+            font-size: 40px;
+          }
+
+          .main-form-card {
+            padding: 40px;
+          }
+
+          .contact-card {
+            padding: 38px 40px;
+          }
+
+          .support-options-grid {
+            grid-template-columns:
+              repeat(3, minmax(0, 1fr));
+          }
+        }
+
+        /* =====================================================
+           900px
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+          .consultation-hero-container {
+            grid-template-columns: 1fr;
+
+            min-height: auto;
+          }
+
+          .consultation-hero-content {
+            padding: 40px;
+          }
+
+          .consultation-hero-image-wrapper {
+            min-height: 350px;
+          }
+
+          .consultation-hero-image {
+            min-height: 334px;
+          }
+
+          .support-options-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+          }
+
+          .support-types-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+          }
+
+          .support-type-card:last-child {
+            grid-column: 1 / -1;
+          }
+
+          .main-form-card {
+            padding: 34px;
+          }
+
+          .contact-card {
+            padding: 34px;
+          }
+        }
+
+        /* =====================================================
+           700px
+        ====================================================== */
+
+        @media (max-width: 700px) {
+
+          .consultation-hero-section {
+            padding: 36px 24px;
+          }
+
+          .development-form-section {
+            padding: 0 24px 40px;
+          }
+
+          .consultation-hero-content {
+            padding: 34px 28px;
+          }
+
+          .consultation-badge {
+            margin-bottom: 17px;
+
+            padding: 6px 12px;
+
+            font-size: 9px;
+          }
+
+          .consultation-hero-heading {
+            font-size: 32px;
+
+            line-height: 1.12;
+          }
+
+          .consultation-hero-description {
+            margin-top: 17px;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+          }
+
+          .desktop-break {
+            display: none;
+          }
+
+          .consultation-hero-image-wrapper {
+            min-height: 300px;
+
+            padding: 7px;
+          }
+
+          .consultation-hero-image {
+            min-height: 286px;
+          }
+
+          .consultation-image-overlay {
+            padding: 12px;
+          }
+
+          .consultation-image-overlay-box {
+            padding: 11px 13px;
+          }
+
+          .consultation-image-overlay-box p {
+            font-size: 10px;
+          }
+
+          .main-form-card {
+            padding: 28px 24px;
+
+            border-radius: 14px;
+          }
+
+          .form-section {
+            padding-bottom: 28px;
+
+            margin-bottom: 28px;
+          }
+
+          .support-options-grid,
+          .support-types-grid {
+            grid-template-columns: 1fr;
+
+            gap: 10px;
+          }
+
+          .support-type-card:last-child {
+            grid-column: auto;
+          }
+
+          .choice-button {
+            min-height: 52px;
+          }
+
+          .support-type-card {
+            min-height: 112px;
+          }
+
+          .contact-card {
+            padding: 30px 24px;
+
+            border-radius: 14px;
+          }
+
+          .contact-heading {
+            font-size: 24px;
+          }
+
+          .contact-description {
+            font-size: 11px;
+          }
+
+          .contact-input-grid {
+            grid-template-columns: 1fr;
+
+            gap: 15px;
+          }
+
+          .submit-button {
+            width: 100%;
+          }
+        }
+
+        /* =====================================================
+           480px
+        ====================================================== */
+
+        @media (max-width: 480px) {
+
+          .consultation-hero-section {
+            padding: 30px 16px;
+          }
+
+          .development-form-section {
+            padding: 0 16px 30px;
+          }
+
+          .consultation-hero-container {
+            border-radius: 14px;
+          }
+
+          .consultation-hero-content {
+            padding: 28px 20px;
+          }
+
+          .consultation-badge {
+            gap: 6px;
+
+            padding: 5px 10px;
+
+            font-size: 8px;
+          }
+
+          .consultation-badge-dot {
+            width: 6px;
+            height: 6px;
+          }
+
+          .consultation-hero-heading {
+            font-size: 25px;
+
+            letter-spacing: -0.035em;
+          }
+
+          .consultation-hero-description {
+            font-size: 10.5px;
+
+            line-height: 1.65;
+          }
+
+          .consultation-hero-image-wrapper {
+            min-height: 245px;
+
+            padding: 6px;
+          }
+
+          .consultation-hero-image {
+            min-height: 233px;
+
+            border-radius: 10px;
+          }
+
+          .consultation-image-overlay {
+            padding: 9px;
+          }
+
+          .consultation-image-overlay-box {
+            padding: 9px 10px;
+          }
+
+          .consultation-image-overlay-box p {
+            font-size: 8.5px;
+          }
+
+          .main-form-card {
+            padding: 23px 16px;
+
+            border-radius: 12px;
+          }
+
+          .form-section {
+            padding-bottom: 24px;
+
+            margin-bottom: 24px;
+          }
+
+          .form-section-header {
+            gap: 9px;
+
+            margin-bottom: 14px;
+          }
+
+          .form-section-number {
+            width: 21px;
+            height: 21px;
+
+            font-size: 8px;
+          }
+
+          .form-section-title {
+            font-size: 12px;
+          }
+
+          .form-section-subtitle {
+            font-size: 9px;
+          }
+
+          .choice-button {
+            min-height: 48px;
+
+            padding: 9px 11px;
+
+            font-size: 9.5px;
+          }
+
+          .support-type-card {
+            min-height: 105px;
+
+            padding: 14px;
+          }
+
+          .support-type-title {
+            font-size: 11px;
+          }
+
+          .support-type-description {
+            margin-top: 8px;
+
+            font-size: 9.5px;
+          }
+
+          .capabilities-list,
+          .stage-options,
+          .support-level-options {
+            gap: 6px;
+          }
+
+          .capability-button,
+          .stage-button,
+          .support-level-button {
+            min-height: 33px;
+
+            padding: 7px 10px;
+
+            font-size: 9px;
+          }
+
+          .project-help-text {
+            font-size: 9.5px;
+          }
+
+          .project-textarea {
+            min-height: 115px;
+
+            padding: 11px;
+
+            font-size: 10px;
+          }
+
+          .contact-card {
+            margin-top: 16px;
+
+            padding: 26px 16px;
+
+            border-radius: 12px;
+          }
+
+          .contact-label {
+            font-size: 8px;
+          }
+
+          .contact-heading {
+            font-size: 21px;
+          }
+
+          .contact-description {
+            font-size: 9.5px;
+
+            line-height: 1.6;
+          }
+
+          .contact-input-grid {
+            margin-top: 21px;
+
+            gap: 13px;
+          }
+
+          .input-label {
+            font-size: 10px;
+          }
+
+          .input-control {
+            height: 41px;
+
+            padding: 0 11px;
+
+            font-size: 10px;
+          }
+
+          .submit-area {
+            margin-top: 23px;
+          }
+
+          .submit-button {
+            min-height: 42px;
+
+            padding: 10px 16px;
+
+            font-size: 9.5px;
+          }
+
+          .privacy-note {
+            font-size: 8px;
+          }
+        }
+
+        /* =====================================================
+           360px
+        ====================================================== */
+
+        @media (max-width: 360px) {
+
+          .consultation-hero-heading {
+            font-size: 23px;
+          }
+
+          .consultation-hero-description {
+            font-size: 10px;
+          }
+
+          .form-section-title {
+            font-size: 11.5px;
+          }
+
+          .contact-heading {
+            font-size: 19px;
+          }
+
+          .submit-button {
+            font-size: 9px;
+          }
+        }
+
+      `}</style>
     </main>
   );
 }
@@ -804,74 +1795,28 @@ function FormSection({
   children,
 }) {
   return (
-    <div
-      className="
-        border-b
-        border-[#edf0f3]
-        pb-7
-        mb-7
-        sm:pb-8
-        sm:mb-8
-      "
-    >
+    <div className="form-section">
 
-      <div className="mb-4">
+      <div className="form-section-header">
 
-        <div className="flex items-start gap-2.5 sm:gap-3">
+        <span className="form-section-number">
+          {number}
+        </span>
 
-          <span
-            className="
-              flex
-              h-[22px]
-              w-[22px]
-              shrink-0
-              items-center
-              justify-center
-              rounded-full
-              bg-[#8B0046]
-              font-['Plus_Jakarta_Sans']
-              text-[8px]
-              font-bold
-              text-white
-            "
-          >
-            {number}
-          </span>
+        <div>
+          <h3 className="form-section-title">
+            {title}
+          </h3>
 
-          <div className="min-w-0">
-
-            <h3
-              className="
-                font-['Plus_Jakarta_Sans']
-                text-[13px]
-                font-bold
-                leading-[1.3]
-                text-[#20242a]
-                sm:text-[14px]
-                md:text-[15px]
-              "
-            >
-              {title}
-            </h3>
-
-            <p
-              className="
-                mt-0.5
-                font-['Plus_Jakarta_Sans']
-                text-[9px]
-                leading-[1.5]
-                text-[#776d72]
-                sm:text-[10px]
-              "
-            >
-              {subtitle}
-            </p>
-
-          </div>
+          <p className="form-section-subtitle">
+            {subtitle}
+          </p>
         </div>
+
       </div>
 
       {children}
+
     </div>
   );
 }
@@ -890,59 +1835,17 @@ function ChoiceButton({
     <button
       type="button"
       onClick={onClick}
-      className={`
-        relative
-        flex
-        min-h-[52px]
-        w-full
-        items-center
-        justify-between
-        gap-2
-        rounded-[9px]
-        border
-        px-3
-        py-2.5
-        text-left
-        font-['Plus_Jakarta_Sans']
-        text-[10px]
-        font-medium
-        leading-[1.35]
-        transition-all
-        duration-200
-        sm:min-h-[54px]
-        sm:px-3.5
-        sm:text-[11px]
-        md:text-[12px]
-        ${
-          selected
-            ? "border-[#d3a3b9] bg-[#fff9fb] text-[#29252a]"
-            : "border-[#e2e7ec] bg-white text-[#363b42] hover:border-[#d4b1c1]"
-        }
-      `}
+      className={`choice-button ${
+        selected ? "selected" : ""
+      }`}
     >
-      <span className="max-w-[90%] leading-[1.35]">
+      <span className="choice-button-text">
         {text}
       </span>
 
-      <span
-        className={`
-          flex
-          h-[15px]
-          w-[15px]
-          shrink-0
-          items-center
-          justify-center
-          rounded-full
-          border
-          ${
-            selected
-              ? "border-[#8B0046]"
-              : "border-[#e2b8ca]"
-          }
-        `}
-      >
+      <span className="choice-radio">
         {selected && (
-          <span className="h-[6px] w-[6px] rounded-full bg-[#8B0046]" />
+          <span className="choice-radio-inner" />
         )}
       </span>
     </button>
@@ -964,91 +1867,30 @@ function SupportTypeCard({
     <button
       type="button"
       onClick={onClick}
-      className={`
-        relative
-        min-h-[112px]
-        w-full
-        rounded-[10px]
-        border
-        p-3.5
-        text-left
-        transition-all
-        duration-200
-        sm:min-h-[118px]
-        sm:p-4
-        md:min-h-[122px]
-        ${
-          selected
-            ? "border-[#d3a3b9] bg-[#fff9fb]"
-            : "border-[#e2e7ec] bg-white hover:border-[#d4b1c1]"
-        }
-      `}
+      className={`support-type-card ${
+        selected ? "selected" : ""
+      }`}
     >
-
-      {/* Radio */}
-      <span
-        className={`
-          absolute
-          right-3
-          top-3
-          flex
-          h-[15px]
-          w-[15px]
-          items-center
-          justify-center
-          rounded-full
-          border
-          ${
-            selected
-              ? "border-[#8B0046]"
-              : "border-[#e2b8ca]"
-          }
-        `}
-      >
+      <span className="support-type-radio">
         {selected && (
-          <span className="h-[6px] w-[6px] rounded-full bg-[#8B0046]" />
+          <span className="support-type-radio-inner" />
         )}
       </span>
 
-      <h4
-        className="
-          max-w-[92%]
-          pr-5
-          font-['Plus_Jakarta_Sans']
-          text-[12px]
-          font-bold
-          leading-[1.4]
-          text-[#30343a]
-          sm:text-[13px]
-          md:text-[14px]
-        "
-      >
+      <h4 className="support-type-title">
         {title}
       </h4>
 
-      <p
-        className="
-          mt-2.5
-          max-w-[310px]
-          pr-1
-          font-['Inter']
-          text-[10px]
-          leading-[1.5]
-          text-[#766d72]
-          sm:text-[11px]
-          md:text-[12px]
-        "
-      >
+      <p className="support-type-description">
         {description}
       </p>
-
     </button>
   );
 }
 
 
 /* =========================================================
-   INPUT
+   INPUT FIELD
 ========================================================= */
 
 function InputField({
@@ -1060,21 +1902,9 @@ function InputField({
   onChange,
 }) {
   return (
-    <label className="block">
+    <label className="input-field">
 
-      <span
-        className="
-          mb-1.5
-          block
-          font-['Plus_Jakarta_Sans']
-          text-[11px]
-          font-bold
-          leading-[1.4]
-          text-[#34383e]
-          sm:text-[12px]
-          md:text-[13px]
-        "
-      >
+      <span className="input-label">
         {label}
       </span>
 
@@ -1084,27 +1914,7 @@ function InputField({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="
-          h-[42px]
-          w-full
-          rounded-[8px]
-          border
-          border-[#e1e6eb]
-          bg-[#fafbfc]
-          px-3
-          font-['Plus_Jakarta_Sans']
-          text-[11px]
-          font-medium
-          text-[#303641]
-          outline-none
-          transition-all
-          placeholder:text-[#aeb5be]
-          focus:border-[#c58ba7]
-          focus:bg-white
-          sm:h-[44px]
-          sm:text-[12px]
-          md:text-[13px]
-        "
+        className="input-control"
       />
 
     </label>

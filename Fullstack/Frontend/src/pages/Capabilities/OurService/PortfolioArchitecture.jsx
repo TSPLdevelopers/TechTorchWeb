@@ -128,192 +128,68 @@ function ServiceCard({ service }) {
   const Icon = service.icon;
 
   return (
-    <div
-      className="
-        group
-        flex
-        h-full
-        flex-col
-        overflow-hidden
-        rounded-lg
-        border
-        border-neutral-200
-        border-l-[3px]
-        bg-white
-        shadow-sm
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:shadow-md
-      "
-      style={{
-        borderLeftColor: BRAND_COLOR,
-      }}
-    >
-      {/* Image */}
-      <div
-        className="
-          relative
-          h-[150px]
-          w-full
-          overflow-hidden
-          bg-neutral-200
-          sm:h-[165px]
-          md:h-[175px]
-        "
-      >
+    <div className="service-card">
+      {/* =================================================
+          IMAGE
+      ================================================= */}
+
+      <div className="service-card-image-wrap">
         <img
           src={service.image}
           alt={service.title}
-          className="
-            h-full
-            w-full
-            object-cover
-            transition-transform
-            duration-500
-            group-hover:scale-[1.03]
-          "
+          className="service-card-image"
         />
 
-        {/* Light overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-black/[0.03]" />
+        <div className="service-card-image-overlay" />
       </div>
 
-      {/* Content */}
-      <div
-        className="
-          flex
-          flex-1
-          flex-col
-          p-4
-          sm:p-5
-        "
-      >
+      {/* =================================================
+          CONTENT
+      ================================================= */}
+
+      <div className="service-card-content">
         {/* Icon + Tag */}
-        <div className="mb-3 flex items-center justify-between gap-2">
-          <span
-            className="
-              flex
-              h-7
-              w-7
-              shrink-0
-              items-center
-              justify-center
-              rounded-md
-              sm:h-8
-              sm:w-8
-            "
-            style={{
-              backgroundColor: "#fbe4ef",
-            }}
-          >
-            <Icon
-              className="h-3.5 w-3.5 sm:h-4 sm:w-4"
-              style={{
-                color: BRAND_COLOR,
-              }}
-            />
+
+        <div className="service-card-top">
+          <span className="service-card-icon">
+            <Icon size={17} strokeWidth={2} />
           </span>
 
-          <span
-            className="
-              font-['Inter']
-              text-[8px]
-              font-semibold
-              tracking-wide
-              text-neutral-400
-              sm:text-[9px]
-            "
-          >
+          <span className="service-card-tag">
             {service.tag}
           </span>
         </div>
 
         {/* Title */}
-        <h3
-          className="
-            mb-2
-            font-['Plus_Jakarta_Sans']
-            text-[13px]
-            font-bold
-            leading-snug
-            text-neutral-900
-            sm:text-[14px]
-            md:text-[15px]
-          "
-        >
+
+        <h3 className="service-card-title">
           {service.title}
         </h3>
 
         {/* Description */}
-        <p
-          className="
-            mb-3
-            font-['Inter']
-            text-[10px]
-            leading-[1.6]
-            text-neutral-500
-            sm:text-[11px]
-            md:text-[11.5px]
-          "
-        >
+
+        <p className="service-card-description">
           {service.desc}
         </p>
 
         {/* Points */}
-        <ul className="mb-4 space-y-1.5">
-          {service.points.map((point) => (
-            <li
-              key={point}
-              className="
-                flex
-                items-start
-                gap-1.5
-                font-['Inter']
-                text-[9px]
-                leading-[1.5]
-                text-neutral-600
-                sm:text-[10px]
-              "
-            >
-              <span
-                className="
-                  mt-[5px]
-                  h-[4px]
-                  w-[4px]
-                  shrink-0
-                  rounded-full
-                "
-                style={{
-                  backgroundColor: BRAND_COLOR,
-                }}
-              />
 
+        <ul className="service-card-points">
+          {service.points.map((point) => (
+            <li key={point}>
+              <span className="service-card-point-dot" />
               <span>{point}</span>
             </li>
           ))}
         </ul>
 
-        {/* Bottom CTA */}
-        <div className="mt-auto border-t border-neutral-100 pt-3">
-          <a
-            href="#"
-            className="
-              inline-flex
-              items-center
-              gap-1
-              font-['Inter']
-              text-[9px]
-              font-semibold
-              sm:text-[10px]
-            "
-            style={{
-              color: BRAND_COLOR,
-            }}
-          >
-            {service.cta}
+        {/* CTA */}
 
-            <ArrowRight className="h-3 w-3" />
+        <div className="service-card-cta-wrap">
+          <a href="#" className="service-card-cta">
+            <span>{service.cta}</span>
+
+            <ArrowRight size={13} strokeWidth={2} />
           </a>
         </div>
       </div>
@@ -327,284 +203,1005 @@ function ServiceCard({ service }) {
 
 export default function TechTorchServices() {
   return (
-    <section
-      className="
-        w-full
-        bg-[#f8f8f7]
-        px-4
-        py-10
-        sm:px-6
-        sm:py-12
-        md:px-8
-        md:py-16
-        lg:px-10
-        lg:py-20
-      "
-    >
-      <div className="mx-auto w-full max-w-6xl">
+    <>
+      <section className="techtorch-services-section">
+        <div className="techtorch-services-container">
+          {/* =================================================
+              HEADER
+          ================================================= */}
 
-        {/* =================================================
-            SECTION HEADER
-        ================================================= */}
+          <div className="techtorch-services-header">
+            {/* Label */}
 
-        <div
-          className="
-            mx-auto
-            mb-7
-            max-w-2xl
-            text-center
-            sm:mb-9
-            md:mb-10
-          "
-        >
-          {/* Small Label */}
-          <div className="mb-2 flex items-center justify-center gap-2 sm:mb-3">
-            <span
-              className="h-px w-5 sm:w-7"
-              style={{
-                backgroundColor: BRAND_COLOR,
-              }}
-            />
+            <div className="techtorch-services-label">
+              <span className="techtorch-services-label-line" />
 
-            <span
-              className="
-                font-['Inter']
-                text-[8px]
-                font-semibold
-                uppercase
-                tracking-[0.12em]
-                sm:text-[9px]
-                md:text-[10px]
-              "
-              style={{
-                color: BRAND_COLOR,
-              }}
-            >
-              Technology Services
-            </span>
+              <span>Technology Services</span>
 
-            <span
-              className="h-px w-5 sm:w-7"
-              style={{
-                backgroundColor: BRAND_COLOR,
-              }}
-            />
-          </div>
-
-          {/* Heading */}
-          <h2
-            className="
-              mb-2
-              font-['Plus_Jakarta_Sans']
-              text-[21px]
-              font-bold
-              leading-tight
-              tracking-[-0.02em]
-              text-neutral-900
-              sm:text-[25px]
-              md:text-[29px]
-              lg:text-[32px]
-            "
-          >
-            Our Core Technology Services
-          </h2>
-
-          {/* Subheading */}
-          <p
-            className="
-              mx-auto
-              max-w-xl
-              font-['Inter']
-              text-[9.5px]
-              leading-[1.6]
-              text-neutral-500
-              sm:text-[11px]
-              md:text-[12px]
-              lg:text-[13px]
-            "
-          >
-            Engineered to address mission-critical business requirements
-            with high precision, reliable execution and continuous support
-            across the entire technology lifecycle.
-          </p>
-        </div>
-
-        {/* =================================================
-            SERVICES GRID
-        ================================================= */}
-
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-4
-            sm:grid-cols-2
-            sm:gap-5
-            lg:gap-6
-          "
-        >
-          {services.map((service) => (
-            <ServiceCard
-              key={service.title}
-              service={service}
-            />
-          ))}
-        </div>
-
-        {/* =================================================
-            INTEGRATED CAPABILITIES
-            BELOW ALL SERVICE CARDS
-        ================================================= */}
-
-        <div
-          className="
-            mt-6
-            overflow-hidden
-            rounded-xl
-            border
-            border-neutral-200
-            bg-gradient-to-br
-            from-white
-            to-[#f5f2f3]
-            p-5
-            sm:mt-8
-            sm:p-6
-            md:p-7
-            lg:p-8
-          "
-        >
-          <div
-            className="
-              flex
-              flex-col
-              gap-5
-              md:flex-row
-              md:items-center
-              md:justify-between
-              md:gap-8
-            "
-          >
-            {/* Content */}
-            <div className="max-w-3xl">
-              {/* Label */}
-              <span
-                className="
-                  mb-2
-                  inline-block
-                  rounded
-                  px-2.5
-                  py-1
-                  font-['Inter']
-                  text-[8px]
-                  font-semibold
-                  uppercase
-                  tracking-wide
-                  sm:mb-3
-                  sm:text-[9px]
-                "
-                style={{
-                  backgroundColor: "#fbe4ef",
-                  color: BRAND_COLOR,
-                }}
-              >
-                Integrated Capabilities
-              </span>
-
-              {/* Heading */}
-              <h2
-                className="
-                  mb-2
-                  font-['Plus_Jakarta_Sans']
-                  text-[16px]
-                  font-bold
-                  leading-snug
-                  text-neutral-900
-                  sm:text-[19px]
-                  md:text-[21px]
-                  lg:text-[23px]
-                "
-              >
-                One Technology Partner. Multiple Business Needs.
-              </h2>
-
-              {/* Description */}
-              <p
-                className="
-                  mb-3
-                  font-['Inter']
-                  text-[9.5px]
-                  leading-[1.65]
-                  text-neutral-500
-                  sm:text-[10.5px]
-                  md:text-[11.5px]
-                  lg:text-[12px]
-                "
-              >
-                From strategy and development to security, infrastructure and
-                support, TechTorch brings the technology capabilities businesses
-                need under one roof. Whether you need to build something new,
-                improve an existing system, protect your digital environment or
-                scale your technology capabilities, our team is ready to help.
-              </p>
-
-              {/* Points */}
-              <div
-                className="
-                  flex
-                  flex-wrap
-                  gap-x-4
-                  gap-y-1.5
-                  font-['Inter']
-                  text-[8.5px]
-                  font-medium
-                  sm:text-[9px]
-                  md:text-[10px]
-                "
-                style={{
-                  color: BRAND_COLOR,
-                }}
-              >
-                <span>• Single SLA Governance</span>
-                <span>• Rapid Architecture Advisory</span>
-                <span>• Cross-Domain Teams</span>
-              </div>
+              <span className="techtorch-services-label-line" />
             </div>
 
-            {/* Button */}
-            <button
-              className="
-                inline-flex
-                w-fit
-                shrink-0
-                items-center
-                gap-1.5
-                rounded-md
-                px-4
-                py-2.5
-                font-['Inter']
-                text-[9px]
-                font-semibold
-                text-white
-                shadow-sm
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:opacity-90
-                sm:px-5
-                sm:py-3
-                sm:text-[10px]
-              "
-              style={{
-                backgroundColor: BRAND_COLOR,
-              }}
-            >
-              Talk to Our Experts
+            {/* Heading */}
 
-              <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-            </button>
+            <h2 className="techtorch-services-heading">
+              Our Core Technology Services
+            </h2>
+
+            {/* Description */}
+
+            <p className="techtorch-services-description">
+              Engineered to address mission-critical business requirements
+              with high precision, reliable execution and continuous support
+              across the entire technology lifecycle.
+            </p>
+          </div>
+
+          {/* =================================================
+              SERVICES GRID
+          ================================================= */}
+
+          <div className="techtorch-services-grid">
+            {services.map((service) => (
+              <ServiceCard
+                key={service.title}
+                service={service}
+              />
+            ))}
+          </div>
+
+          {/* =================================================
+              INTEGRATED CAPABILITIES
+          ================================================= */}
+
+          <div className="integrated-capabilities">
+            <div className="integrated-capabilities-inner">
+              {/* Content */}
+
+              <div className="integrated-capabilities-content">
+                <span className="integrated-capabilities-badge">
+                  Integrated Capabilities
+                </span>
+
+                <h2 className="integrated-capabilities-heading">
+                  One Technology Partner. Multiple Business Needs.
+                </h2>
+
+                <p className="integrated-capabilities-description">
+                  From strategy and development to security, infrastructure
+                  and support, TechTorch brings the technology capabilities
+                  businesses need under one roof. Whether you need to build
+                  something new, improve an existing system, protect your
+                  digital environment or scale your technology capabilities,
+                  our team is ready to help.
+                </p>
+
+                <div className="integrated-capabilities-points">
+                  <span>• Single SLA Governance</span>
+                  <span>• Rapid Architecture Advisory</span>
+                  <span>• Cross-Domain Teams</span>
+                </div>
+              </div>
+
+              {/* Button */}
+
+              <button className="integrated-capabilities-button">
+                <span>Talk to Our Experts</span>
+
+                <ArrowRight size={14} strokeWidth={2} />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* =========================================================
+          STYLES
+      ========================================================= */}
+
+      <style>{`
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .techtorch-services-section {
+          width: 100%;
+          overflow: hidden;
+
+          padding-left: 100px;
+          padding-right: 100px;
+          padding-top: 78px;
+          padding-bottom: 78px;
+
+          background: #f8f8f7;
+        }
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .techtorch-services-container {
+          width: 100%;
+          max-width: 1600px;
+
+          margin: 0 auto;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .techtorch-services-header {
+          width: 100%;
+          max-width: 760px;
+
+          margin: 0 auto 40px;
+
+          text-align: center;
+        }
+
+        /* =====================================================
+           LABEL
+        ===================================================== */
+
+        .techtorch-services-label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+
+          margin-bottom: 13px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+
+          color: ${BRAND_COLOR};
+        }
+
+        .techtorch-services-label-line {
+          width: 30px;
+          height: 1px;
+
+          background: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        .techtorch-services-heading {
+          margin: 0 0 12px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 34px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.025em;
+
+          color: #171717;
+        }
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .techtorch-services-description {
+          max-width: 700px;
+
+          margin: 0 auto;
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1.7;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           SERVICES GRID
+        ===================================================== */
+
+        .techtorch-services-grid {
+          display: grid;
+
+          grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
+          gap: 18px;
+
+          width: 100%;
+        }
+
+        /* =====================================================
+           SERVICE CARD
+        ===================================================== */
+
+        .service-card {
+          position: relative;
+
+          display: flex;
+          flex-direction: column;
+
+          min-width: 0;
+          height: 100%;
+
+          overflow: hidden;
+
+          border: 1px solid #e5e5e5;
+          border-left: 3px solid ${BRAND_COLOR};
+          border-radius: 12px;
+
+          background: #ffffff;
+
+          box-shadow:
+            0 5px 20px rgba(0, 0, 0, 0.035);
+
+          transition:
+            transform 0.35s ease,
+            box-shadow 0.35s ease,
+            border-color 0.35s ease;
+        }
+
+        .service-card:hover {
+          transform: translateY(-5px);
+
+          box-shadow:
+            0 14px 32px rgba(115, 0, 36, 0.1);
+        }
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .service-card-image-wrap {
+          position: relative;
+
+          width: 100%;
+          height: 160px;
+
+          overflow: hidden;
+
+          background: #e5e5e5;
+        }
+
+        .service-card-image {
+          display: block;
+
+          width: 100%;
+          height: 100%;
+
+          object-fit: cover;
+
+          transition:
+            transform 0.55s ease;
+        }
+
+        .service-card:hover .service-card-image {
+          transform: scale(1.035);
+        }
+
+        .service-card-image-overlay {
+          position: absolute;
+          inset: 0;
+
+          pointer-events: none;
+
+          background: rgba(0, 0, 0, 0.025);
+        }
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .service-card-content {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+
+          padding: 20px;
+        }
+
+        /* =====================================================
+           TOP ROW
+        ===================================================== */
+
+        .service-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+
+          margin-bottom: 14px;
+        }
+
+        /* =====================================================
+           ICON
+        ===================================================== */
+
+        .service-card-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 34px;
+          height: 34px;
+          flex-shrink: 0;
+
+          border-radius: 9px;
+
+          background: #fbe4ef;
+          color: ${BRAND_COLOR};
+
+          transition:
+            transform 0.3s ease,
+            background 0.3s ease;
+        }
+
+        .service-card:hover .service-card-icon {
+          transform: translateY(-2px);
+
+          background: #f6dbe7;
+        }
+
+        /* =====================================================
+           TAG
+        ===================================================== */
+
+        .service-card-tag {
+          min-width: 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 8px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.07em;
+
+          color: #a3a3a3;
+
+          text-align: right;
+        }
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
+        .service-card-title {
+          margin: 0 0 9px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 1.35;
+
+          color: #171717;
+        }
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .service-card-description {
+          margin: 0 0 14px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 400;
+          line-height: 1.65;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           POINTS
+        ===================================================== */
+
+        .service-card-points {
+          display: flex;
+          flex-direction: column;
+          gap: 7px;
+
+          margin: 0 0 18px;
+          padding: 0;
+
+          list-style: none;
+        }
+
+        .service-card-points li {
+          display: flex;
+          align-items: flex-start;
+
+          gap: 7px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9.5px;
+          font-weight: 400;
+          line-height: 1.5;
+
+          color: #525252;
+        }
+
+        .service-card-point-dot {
+          width: 4px;
+          height: 4px;
+          flex-shrink: 0;
+
+          margin-top: 5px;
+
+          border-radius: 50%;
+
+          background: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .service-card-cta-wrap {
+          margin-top: auto;
+
+          padding-top: 13px;
+
+          border-top: 1px solid #f0f0f0;
+        }
+
+        .service-card-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9.5px;
+          font-weight: 600;
+          line-height: 1.3;
+
+          color: ${BRAND_COLOR};
+
+          text-decoration: none;
+
+          transition:
+            gap 0.3s ease,
+            opacity 0.3s ease;
+        }
+
+        .service-card-cta:hover {
+          gap: 8px;
+          opacity: 0.8;
+        }
+
+        /* =====================================================
+           INTEGRATED CAPABILITIES
+        ===================================================== */
+
+        .integrated-capabilities {
+          width: 100%;
+
+          margin-top: 26px;
+
+          overflow: hidden;
+
+          border: 1px solid #e5e5e5;
+          border-radius: 14px;
+
+          background:
+            linear-gradient(
+              135deg,
+              #ffffff 0%,
+              #f7f4f5 100%
+            );
+
+          box-shadow:
+            0 5px 20px rgba(0, 0, 0, 0.025);
+        }
+
+        .integrated-capabilities-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 40px;
+
+          padding: 30px 32px;
+        }
+
+        /* =====================================================
+           INTEGRATED CONTENT
+        ===================================================== */
+
+        .integrated-capabilities-content {
+          max-width: 900px;
+        }
+
+        /* =====================================================
+           BADGE
+        ===================================================== */
+
+        .integrated-capabilities-badge {
+          display: inline-block;
+
+          margin-bottom: 9px;
+
+          padding: 5px 9px;
+
+          border-radius: 5px;
+
+          background: #fbe4ef;
+
+          font-family: "Inter", sans-serif;
+          font-size: 8px;
+          font-weight: 600;
+          line-height: 1.3;
+          letter-spacing: 0.07em;
+          text-transform: uppercase;
+
+          color: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        .integrated-capabilities-heading {
+          margin: 0 0 9px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 23px;
+          font-weight: 700;
+          line-height: 1.3;
+          letter-spacing: -0.015em;
+
+          color: #171717;
+        }
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .integrated-capabilities-description {
+          max-width: 850px;
+
+          margin: 0 0 12px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          font-weight: 400;
+          line-height: 1.65;
+
+          color: #737373;
+        }
+
+        /* =====================================================
+           POINTS
+        ===================================================== */
+
+        .integrated-capabilities-points {
+          display: flex;
+          flex-wrap: wrap;
+
+          gap: 7px 18px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 1.4;
+
+          color: ${BRAND_COLOR};
+        }
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .integrated-capabilities-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+
+          flex-shrink: 0;
+
+          padding: 12px 19px;
+
+          border: 0;
+          border-radius: 7px;
+
+          background: ${BRAND_COLOR};
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 1;
+
+          color: #ffffff;
+
+          cursor: pointer;
+
+          box-shadow:
+            0 7px 18px rgba(115, 0, 36, 0.16);
+
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            opacity 0.3s ease;
+        }
+
+        .integrated-capabilities-button:hover {
+          transform: translateY(-2px);
+
+          opacity: 0.92;
+
+          box-shadow:
+            0 10px 23px rgba(115, 0, 36, 0.22);
+        }
+
+        /* =====================================================
+           TABLET — 1200px
+           40px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+          .techtorch-services-section {
+            padding-left: 40px;
+            padding-right: 40px;
+
+            padding-top: 68px;
+            padding-bottom: 68px;
+          }
+
+          .techtorch-services-grid {
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+          }
+
+          .service-card-image-wrap {
+            height: 170px;
+          }
+
+          .integrated-capabilities-inner {
+            padding: 27px;
+          }
+        }
+
+        /* =====================================================
+           TABLET — 900px
+        ===================================================== */
+
+        @media (max-width: 900px) {
+          .techtorch-services-section {
+            padding-top: 60px;
+            padding-bottom: 60px;
+          }
+
+          .techtorch-services-header {
+            margin-bottom: 34px;
+          }
+
+          .techtorch-services-heading {
+            font-size: 30px;
+          }
+
+          .techtorch-services-description {
+            font-size: 12.5px;
+          }
+
+          .service-card-image-wrap {
+            height: 160px;
+          }
+
+          .service-card-content {
+            padding: 18px;
+          }
+
+          .service-card-title {
+            font-size: 14px;
+          }
+
+          .service-card-description {
+            font-size: 10.5px;
+          }
+
+          .service-card-points li {
+            font-size: 9px;
+          }
+
+          .integrated-capabilities-inner {
+            align-items: flex-start;
+
+            gap: 25px;
+
+            padding: 24px;
+          }
+
+          .integrated-capabilities-heading {
+            font-size: 21px;
+          }
+
+          .integrated-capabilities-description {
+            font-size: 10.5px;
+          }
+        }
+
+        /* =====================================================
+           MOBILE — 700px
+           24px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 700px) {
+          .techtorch-services-section {
+            padding-left: 24px;
+            padding-right: 24px;
+
+            padding-top: 52px;
+            padding-bottom: 52px;
+          }
+
+          .techtorch-services-header {
+            margin-bottom: 28px;
+          }
+
+          .techtorch-services-label {
+            gap: 8px;
+
+            margin-bottom: 10px;
+
+            font-size: 9px;
+          }
+
+          .techtorch-services-label-line {
+            width: 26px;
+          }
+
+          .techtorch-services-heading {
+            margin-bottom: 9px;
+
+            font-size: 27px;
+          }
+
+          .techtorch-services-description {
+            font-size: 12px;
+            line-height: 1.65;
+          }
+
+          .techtorch-services-grid {
+            grid-template-columns: 1fr;
+
+            gap: 14px;
+          }
+
+          .service-card-image-wrap {
+            height: 190px;
+          }
+
+          .service-card-content {
+            padding: 20px;
+          }
+
+          .service-card-top {
+            margin-bottom: 13px;
+          }
+
+          .service-card-title {
+            font-size: 16px;
+          }
+
+          .service-card-description {
+            font-size: 11.5px;
+          }
+
+          .service-card-points li {
+            font-size: 10px;
+          }
+
+          .integrated-capabilities {
+            margin-top: 18px;
+          }
+
+          .integrated-capabilities-inner {
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            gap: 20px;
+
+            padding: 22px;
+          }
+
+          .integrated-capabilities-heading {
+            font-size: 19px;
+          }
+
+          .integrated-capabilities-description {
+            font-size: 10.5px;
+          }
+
+          .integrated-capabilities-button {
+            width: fit-content;
+
+            padding: 11px 17px;
+
+            font-size: 9px;
+          }
+        }
+
+        /* =====================================================
+           SMALL MOBILE — 480px
+           16px horizontal spacing
+        ===================================================== */
+
+        @media (max-width: 480px) {
+          .techtorch-services-section {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            padding-top: 45px;
+            padding-bottom: 45px;
+          }
+
+          .techtorch-services-header {
+            margin-bottom: 24px;
+          }
+
+          .techtorch-services-label {
+            gap: 7px;
+
+            font-size: 8px;
+          }
+
+          .techtorch-services-label-line {
+            width: 23px;
+          }
+
+          .techtorch-services-heading {
+            font-size: 24px;
+          }
+
+          .techtorch-services-description {
+            font-size: 11px;
+          }
+
+          .techtorch-services-grid {
+            gap: 12px;
+          }
+
+          .service-card-image-wrap {
+            height: 175px;
+          }
+
+          .service-card-content {
+            padding: 17px;
+          }
+
+          .service-card-icon {
+            width: 32px;
+            height: 32px;
+          }
+
+          .service-card-icon svg {
+            width: 15px;
+            height: 15px;
+          }
+
+          .service-card-tag {
+            font-size: 7px;
+          }
+
+          .service-card-title {
+            margin-bottom: 8px;
+
+            font-size: 15px;
+          }
+
+          .service-card-description {
+            margin-bottom: 12px;
+
+            font-size: 10.5px;
+          }
+
+          .service-card-points {
+            gap: 6px;
+
+            margin-bottom: 16px;
+          }
+
+          .service-card-points li {
+            font-size: 9px;
+          }
+
+          .service-card-cta-wrap {
+            padding-top: 11px;
+          }
+
+          .service-card-cta {
+            font-size: 9px;
+          }
+
+          .integrated-capabilities {
+            margin-top: 16px;
+          }
+
+          .integrated-capabilities-inner {
+            padding: 18px;
+          }
+
+          .integrated-capabilities-badge {
+            margin-bottom: 8px;
+
+            font-size: 7px;
+          }
+
+          .integrated-capabilities-heading {
+            font-size: 17px;
+          }
+
+          .integrated-capabilities-description {
+            font-size: 9.5px;
+          }
+
+          .integrated-capabilities-points {
+            gap: 5px 12px;
+
+            font-size: 8px;
+          }
+
+          .integrated-capabilities-button {
+            padding: 10px 15px;
+
+            font-size: 8.5px;
+          }
+        }
+
+        /* =====================================================
+           VERY SMALL MOBILE — 360px
+        ===================================================== */
+
+        @media (max-width: 360px) {
+          .techtorch-services-section {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+
+          .techtorch-services-heading {
+            font-size: 22px;
+          }
+
+          .techtorch-services-description {
+            font-size: 10.5px;
+          }
+
+          .service-card-image-wrap {
+            height: 160px;
+          }
+
+          .service-card-content {
+            padding: 15px;
+          }
+
+          .service-card-title {
+            font-size: 14px;
+          }
+
+          .service-card-description {
+            font-size: 10px;
+          }
+
+          .service-card-points li {
+            font-size: 8.5px;
+          }
+
+          .integrated-capabilities-inner {
+            padding: 16px;
+          }
+
+          .integrated-capabilities-heading {
+            font-size: 16px;
+          }
+        }
+      `}</style>
+    </>
   );
 }
