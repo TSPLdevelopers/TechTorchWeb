@@ -37,7 +37,6 @@ export default function FinalCtaSection() {
 
             <span className="final-cta-badge">
               <span className="final-cta-badge-dot" />
-
               <span>Direct Enterprise Advisory</span>
             </span>
 
@@ -128,7 +127,6 @@ export default function FinalCtaSection() {
 
               <span className="final-cta-available">
                 <span className="final-cta-available-dot" />
-
                 <span>Available Now</span>
               </span>
             </div>
@@ -186,7 +184,6 @@ export default function FinalCtaSection() {
 
           display: grid;
           grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-
           align-items: center;
 
           width: 100%;
@@ -342,9 +339,9 @@ export default function FinalCtaSection() {
           padding: 13px 21px;
 
           border: none;
-          border-radius: 999px;
+          border-radius: 6px;
 
-          background: #730024;
+          background: #730042;
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
@@ -363,7 +360,7 @@ export default function FinalCtaSection() {
         .final-cta-button:hover {
           opacity: 0.94;
           transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(115, 0, 36, 0.3);
+          box-shadow: 0 12px 30px rgba(115, 0, 66, 0.3);
         }
 
         .final-cta-arrow {
@@ -457,7 +454,7 @@ export default function FinalCtaSection() {
 
           border-radius: 9px;
 
-          background: #730024;
+          background: #7a1750;
           color: #ffffff;
         }
 
@@ -540,7 +537,6 @@ export default function FinalCtaSection() {
 
         /* =====================================================
            TABLET — 1200px
-           Universal spacing: 40px
         ===================================================== */
 
         @media (max-width: 1200px) {
@@ -603,7 +599,6 @@ export default function FinalCtaSection() {
 
         /* =====================================================
            MOBILE — 700px
-           Universal spacing: 24px
         ===================================================== */
 
         @media (max-width: 700px) {
@@ -621,7 +616,6 @@ export default function FinalCtaSection() {
           .final-cta-badge {
             margin-bottom: 16px;
             padding: 6px 11px;
-
             font-size: 9px;
           }
 
@@ -633,7 +627,6 @@ export default function FinalCtaSection() {
 
           .final-cta-description {
             margin-bottom: 23px;
-
             font-size: 13px;
             line-height: 1.65;
           }
@@ -700,7 +693,6 @@ export default function FinalCtaSection() {
 
         /* =====================================================
            SMALL MOBILE — 480px
-           Universal spacing: 16px
         ===================================================== */
 
         @media (max-width: 480px) {
@@ -718,7 +710,6 @@ export default function FinalCtaSection() {
           .final-cta-badge {
             gap: 6px;
             margin-bottom: 14px;
-
             padding: 6px 10px;
             font-size: 8.5px;
           }
@@ -736,7 +727,6 @@ export default function FinalCtaSection() {
 
           .final-cta-description {
             margin-bottom: 20px;
-
             font-size: 12px;
             line-height: 1.65;
           }
@@ -749,7 +739,6 @@ export default function FinalCtaSection() {
           .final-cta-pill {
             gap: 5px;
             padding: 6px 9px;
-
             font-size: 9px;
           }
 
@@ -781,9 +770,7 @@ export default function FinalCtaSection() {
             left: 7px;
             right: 7px;
             bottom: 7px;
-
             gap: 7px;
-
             padding: 7px 8px;
             border-radius: 9px;
           }

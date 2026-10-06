@@ -264,7 +264,7 @@ export default function BusinessPlatformsHero() {
           padding: 12px 20px;
 
           border: none;
-          border-radius: 999px;
+          border-radius: 6px;
 
           background: #7a1750;
           color: #ffffff;
