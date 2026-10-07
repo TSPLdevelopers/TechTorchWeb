@@ -258,10 +258,10 @@ export default function BusinessPlatformsHero() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 9px;
+          gap: 10px;
 
           margin: 0 0 30px 0;
-          padding: 12px 20px;
+          padding: 14px 24px;
 
           border: none;
           border-radius: 6px;
@@ -270,30 +270,15 @@ export default function BusinessPlatformsHero() {
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 13.5px;
           font-weight: 600;
           line-height: 1;
 
           cursor: pointer;
-
-          transition:
-            transform 0.3s ease,
-            opacity 0.3s ease,
-            box-shadow 0.3s ease;
-        }
-
-        .business-platforms-cta:hover {
-          opacity: 0.92;
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(122, 23, 80, 0.18);
         }
 
         .business-platforms-cta svg {
-          transition: transform 0.3s ease;
-        }
-
-        .business-platforms-cta:hover svg {
-          transform: translateX(3px);
+          transition: none;
         }
 
         /* =========================================================
