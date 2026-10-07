@@ -71,11 +71,11 @@ function NavIndustries() {
       onMouseLeave={closeMenu}
     >
       <span
-        className={`relative inline-flex items-center h-full cursor-pointer
+        className={`relative font-inter inline-flex items-center h-full cursor-pointer
           text-[17px] transition-colors
-          ${isOpen ? "text-[#8a1538]" : "text-gray-900"}
+          ${isOpen ? "text-[#730042]" : "text-gray-900"}
           after:absolute after:left-0 after:bottom-0 after:h-[2px]
-          after:bg-[#8a1538] after:transition-all
+          after:bg-[#730042] after:transition-all
           ${isOpen ? "after:w-full" : "after:w-0"}`}
       >
         Industries
@@ -121,7 +121,7 @@ function NavIndustries() {
                     text-gray-800
                     font-inter
                     leading-[1.35]
-                    hover:text-[#8a1538]
+                    hover:text-[#970052]
                     transition-colors
                     duration-200"
                 >

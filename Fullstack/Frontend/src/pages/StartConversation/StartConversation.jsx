@@ -654,12 +654,7 @@ export default function GetInTouch() {
           </div>
 
 
-          <div className="question-illustration">
-            <img
-              src="/Question.png"
-              alt="Question illustration"
-            />
-          </div>
+        
 
         </div>
 
@@ -820,16 +815,10 @@ export default function GetInTouch() {
           {/* MAP */}
 
           <div className="map-wrapper">
-
-            <span>
-              GLOBAL PRESENCE
-            </span>
-
             <img
-              src="/GlobalPresence.png"
+              src="/GlobalPresenceMap.png"
               alt="Global presence map"
             />
-
           </div>
 
         </div>
@@ -923,8 +912,7 @@ export default function GetInTouch() {
         .contact-page h2,
         .contact-page h3,
         .contact-page h4,
-        .contact-page .eyebrow,
-        .contact-page button {
+        .contact-page .eyebrow {
           font-family: "Plus Jakarta Sans", sans-serif;
         }
 
@@ -934,7 +922,8 @@ export default function GetInTouch() {
         .contact-page textarea,
         .contact-page select,
         .contact-page span,
-        .contact-page small {
+        .contact-page small,
+        .contact-page button {
           font-family: "Inter", sans-serif;
         }
 
@@ -945,7 +934,7 @@ export default function GetInTouch() {
 
         .eyebrow {
           display: inline-block;
-          color: #8a0048;
+          color: #730042;
           font-size: 13px;
           line-height: 1.3;
           font-weight: 700;
@@ -987,7 +976,7 @@ export default function GetInTouch() {
           margin: 0 0 18px;
           color: #121826;
           word-spacing: 6px;
-          font-size: 40px;
+          font-size: 38px;
           line-height: 1.04;
           font-weight: 700;
           letter-spacing: -0.035em;
@@ -1055,11 +1044,11 @@ export default function GetInTouch() {
 
         .primary-button {
           min-height: 50px;
-          padding: 0 25px;
+          padding: 0 20px;
 
-          border-radius: 28px;
+          border-radius: 25px;
 
-          background: #8a0048;
+          background: #730042;
           color: #ffffff;
 
           font-size: 14px;
@@ -1079,7 +1068,7 @@ export default function GetInTouch() {
         .primary-button:hover,
         .submit-button:hover {
           transform: translateY(-2px);
-          background: #70003b;
+          background: #970052;
         }
 
 
@@ -1127,9 +1116,9 @@ export default function GetInTouch() {
           margin: 0 0 10px;
 
           color: #121826;
-          font-size: 31px;
+          font-size: 28px;
           line-height: 1.2;
-          font-weight: 700;
+          font-weight: 600;
           letter-spacing: -0.025em;
         }
 
@@ -1168,7 +1157,7 @@ export default function GetInTouch() {
           color: #1c2432;
           font-size: 17px;
           line-height: 1.3;
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .section-icon {
@@ -1182,7 +1171,7 @@ export default function GetInTouch() {
           border-radius: 50%;
 
           background: #fcecf4;
-          color: #8a0048;
+          color: #730042;
 
           font-size: 12px;
         }
@@ -1209,7 +1198,7 @@ export default function GetInTouch() {
           margin-bottom: 8px;
 
           color: #38404d;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.4;
           font-weight: 600;
         }
@@ -1233,7 +1222,7 @@ export default function GetInTouch() {
           border-radius: 12px;
 
           font-family: "Inter", sans-serif;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 400;
 
           transition:
@@ -1335,7 +1324,7 @@ export default function GetInTouch() {
         }
 
         .radio-option input:checked {
-          border-color: #8a0048;
+          border-color: #730042;
         }
 
         .radio-option input:checked::after {
@@ -1349,7 +1338,7 @@ export default function GetInTouch() {
           height: 7px;
 
           border-radius: 50%;
-          background: #8a0048;
+          background: #730042;
         }
 
 
@@ -1364,7 +1353,7 @@ export default function GetInTouch() {
 
           border-radius: 28px;
 
-          background: #8a0048;
+          background: #730042;
           color: #ffffff;
 
           font-size: 14px;
@@ -1374,10 +1363,10 @@ export default function GetInTouch() {
         .form-note {
           margin: 14px 0 0;
 
-          color: #b1b6bf;
+          color:#5d6572;
 
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.5;
         }
 
@@ -1388,7 +1377,7 @@ export default function GetInTouch() {
           border-radius: 8px;
 
           background: #f3e5ed;
-          color: #8a0048;
+          color: #730042;
 
           font-family: "Inter", sans-serif;
           font-size: 12px;
@@ -1414,9 +1403,9 @@ export default function GetInTouch() {
           margin: 0 0 12px;
 
           color: #161e2d;
-          font-size: 27px;
+          font-size: 28px;
           line-height: 1.2;
-          font-weight: 700;
+          font-weight: 600;
           letter-spacing: -0.025em;
         }
 
@@ -1468,7 +1457,7 @@ export default function GetInTouch() {
 
           border-radius: 50%;
 
-          background: #8a0048;
+          background: #730042;
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
@@ -1492,7 +1481,7 @@ export default function GetInTouch() {
           color: #89909b;
 
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.5;
         }
 
@@ -1529,7 +1518,7 @@ export default function GetInTouch() {
           border-radius: 9px;
 
           background: #faeaf2;
-          color: #8a0048;
+          color: #730042;
 
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 14px;
@@ -1554,7 +1543,7 @@ export default function GetInTouch() {
           color: #8a919c;
 
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.5;
         }
 
@@ -1574,7 +1563,7 @@ export default function GetInTouch() {
         }
 
         .outline-button:hover {
-          background: #8a0048;
+          background: #970052;
           color: #ffffff;
         }
 
@@ -1596,7 +1585,7 @@ export default function GetInTouch() {
         }
 
         .direct-item > strong {
-          color: #8a0048;
+          color: #730042;
           font-size: 14px;
           width: 16px;
         }
@@ -1611,7 +1600,7 @@ export default function GetInTouch() {
           color: #333b49;
 
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 700;
         }
 
@@ -1619,7 +1608,7 @@ export default function GetInTouch() {
           color: #818894;
 
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.45;
         }
 
@@ -1658,9 +1647,9 @@ export default function GetInTouch() {
 
           color: #ffffff;
 
-          font-size: 39px;
+          font-size: 36px;
           line-height: 1.08;
-          font-weight: 700;
+          font-weight: 600;
 
           letter-spacing: -0.03em;
         }
@@ -1685,7 +1674,7 @@ export default function GetInTouch() {
           border-radius: 25px;
 
           background: #ffffff;
-          color: #8a0048;
+          color: #730042;
 
           font-size: 13px;
           font-weight: 700;
@@ -1740,9 +1729,9 @@ export default function GetInTouch() {
 
           color: #121826;
 
-          font-size: 37px;
+          font-size: 36px;
           line-height: 1.15;
-          font-weight: 700;
+          font-weight: 600;
 
           letter-spacing: -0.03em;
         }
@@ -1773,8 +1762,8 @@ export default function GetInTouch() {
         }
 
         .contact-icon {
-          width: 48px;
-          height: 48px;
+          width: 45px;
+          height: 45px;
 
           flex: 0 0 48px;
 
@@ -1784,10 +1773,10 @@ export default function GetInTouch() {
 
           border-radius: 50%;
 
-          background: #8a0048;
+          background: #730042;
           color: #ffffff;
 
-          font-size: 17px;
+          font-size: 16px;
         }
 
         .contact-detail > div:last-child {
@@ -1800,7 +1789,7 @@ export default function GetInTouch() {
           color: #7f8793;
 
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 700;
 
           letter-spacing: 0.05em;
@@ -1811,11 +1800,11 @@ export default function GetInTouch() {
           color: #252c38;
 
           font-family: "Inter", sans-serif;
-          font-size: 14px;
+          font-size: 13px;
         }
 
         .contact-detail small {
-          font-size: 12px;
+          font-size: 13px;
           color: #737b87;
         }
 
@@ -1833,12 +1822,12 @@ export default function GetInTouch() {
           color: #222a37;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 14px;
+          font-size: 15px;
           font-weight: 700;
         }
 
         .offices-heading span {
-          color: #8a0048;
+          color: #730042;
         }
 
         .offices-grid {
@@ -1853,17 +1842,17 @@ export default function GetInTouch() {
           color: #222a37;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 14px;
+          font-size: 15px;
           font-weight: 700;
         }
 
         .office-column p {
           margin: 0;
 
-          color: #747d89;
+          color: #5D6572;
 
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -1873,14 +1862,14 @@ export default function GetInTouch() {
           flex-wrap: wrap;
           gap: 5px;
 
-          color: #626b78;
+          color: #5D6572;
 
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
         }
 
         .business-hours > span {
-          color: #8a0048;
+          color: #730042;
           margin-right: 4px;
         }
 
@@ -1895,44 +1884,26 @@ export default function GetInTouch() {
 
         .map-wrapper {
           width: 100%;
-
-          position: relative;
-
-          padding: 17px;
-
-          border-radius: 24px;
-
-          background: #f4f8fa;
-          border: 1px solid #e7ecef;
-
-          overflow: hidden;
-        }
-
-        .map-wrapper > span {
-          position: absolute;
-
-          top: 19px;
-          left: 22px;
-
-          z-index: 2;
-
-          color: #68717d;
-
-          font-family: "Inter", sans-serif;
-          font-size: 8px;
-          font-weight: 700;
-
-          letter-spacing: 0.05em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          border: none;
+          border-radius: 0;
+          padding: 0;
+          overflow: visible;
         }
 
         .map-wrapper img {
           display: block;
-
           width: 100%;
-          height: 290px;
-
+          height: auto;
+          max-width: 100%;
           object-fit: contain;
           object-position: center;
+          border: none;
+          border-radius: 0;
+          box-shadow: none;
         }
 
 
@@ -2014,7 +1985,7 @@ export default function GetInTouch() {
           color: #f2d4e2;
 
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           line-height: 1.5;
         }
 
@@ -2036,8 +2007,8 @@ export default function GetInTouch() {
           background: #ffffff;
           color: #8a0048;
 
-          font-size: 12px;
-          font-weight: 700;
+          font-size: 13px;
+          font-weight: 600;
         }
 
         .final-outline-button {
@@ -2051,7 +2022,7 @@ export default function GetInTouch() {
           background: transparent;
           color: #ffffff;
 
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
         }
 
@@ -2170,11 +2141,13 @@ export default function GetInTouch() {
           }
 
           .map-wrapper {
-            max-width: 650px;
+            width: 100%;
+            max-width: 100%;
           }
 
           .map-wrapper img {
-            height: 300px;
+            width: 100%;
+            height: auto;
           }
 
 

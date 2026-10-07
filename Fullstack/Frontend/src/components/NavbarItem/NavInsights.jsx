@@ -67,12 +67,12 @@ function NavInsights() {
       onMouseLeave={closeMenu}
     >
       <span
-        className="relative inline-flex items-center h-full cursor-pointer text-[17px] 
-        text-gray-900 hover:text-[#8a1538] 
+        className="relative font-inter inline-flex items-center h-full cursor-pointer text-[17px] 
+        text-gray-900 hover:text-[#730042] 
         transition-colors duration-200 
         after:absolute after:left-0 after:bottom-0 
         after:h-[2px] after:w-0 
-        after:bg-[#8a1538] 
+        after:bg-[#730042] 
         after:transition-all after:duration-200 
         hover:after:w-full"
       >
@@ -113,7 +113,7 @@ function NavInsights() {
                         text-gray-800
                         font-inter
                         leading-[1.35]
-                        hover:text-[#8a1538]
+                        hover:text-[#970052]
                         transition-colors
                         duration-200"
                 >
@@ -135,12 +135,12 @@ function NavInsights() {
               />
 
               <div className="absolute inset-0 p-4 flex flex-col justify-between text-white">
-                <span className="text-[16px] font-plus-jakarta">
+                <span className="text-[15px] font-plus-jakarta">
                   LATEST UPDATE
                 </span>
 
                 <div>
-                  <p className="text-[16px] font-inter  ">
+                  <p className="text-[15px] font-inter ">
                     TorchX Suite: Bringing
                     <br />
                     Business Operations
@@ -150,7 +150,7 @@ function NavInsights() {
 
                   <a
                     href="#"
-                    className="inline-block mt-[20px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
+                    className="inline-block mt-[20px] text-[15px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                   >
                     READ MORE →
                   </a>
@@ -167,13 +167,13 @@ function NavInsights() {
               />
 
               <div className="absolute inset-0 p-4 flex flex-col justify-between text-white">
-                <span className="text-[16px] font-plus-jakarta">
+                <span className="text-[15px] font-plus-jakarta">
                   UPCOMING EVENT
                 </span>
 
                 <a
                   href="#"
-                  className="text-[16px] font-inter text-white hover:text-gray-300 transition-colors"
+                  className="text-[15px] font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   VIEW EVENT →
                 </a>

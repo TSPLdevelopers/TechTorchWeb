@@ -1,6 +1,8 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/TechTorchLogo.png";
 import { NavMenuProvider, useNavMenu } from "./NavbarItem/NavMenuContext";
+
 import NavAboutUs from "./NavbarItem/NavAboutUs";
 import NavCapabilities from "./NavbarItem/NavCapabilities";
 import NavIndustries from "./NavbarItem/NavIndustries";
@@ -66,42 +68,88 @@ function MenuIcon({ open }) {
 }
 
 function NavbarInner() {
-  const { setActiveMenu, navHeight, setNavHeight } = useNavMenu();
+  const {
+    activeMenu,
+    setActiveMenu,
+    navHeight,
+    setNavHeight,
+  } = useNavMenu();
+
   const navRef = useRef(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  /*
+    IMPORTANT:
+    This timer gives enough time to move from one nav item
+    to the next without the mega menu disappearing.
+  */
+  const closeTimerRef = useRef(null);
+
+  const cancelClose = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const handleNavLeave = () => {
+    cancelClose();
+
+    closeTimerRef.current = setTimeout(() => {
+      setActiveMenu(null);
+      closeTimerRef.current = null;
+    }, 350);
+  };
+
+  const handleNavEnter = () => {
+    cancelClose();
+  };
 
   useLayoutEffect(() => {
     const measure = () => {
       if (navRef.current) {
-        setNavHeight(navRef.current.getBoundingClientRect().height);
+        setNavHeight(
+          navRef.current.getBoundingClientRect().height
+        );
       }
     };
 
     measure();
+
     window.addEventListener("resize", measure);
 
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      cancelClose();
+    };
   }, [setNavHeight]);
 
   return (
     <>
       <nav
         ref={navRef}
-        style={{ fontFamily: "Plus Jakarta Sans, 'Times New Roman', serif" }}
+        onMouseEnter={handleNavEnter}
+        onMouseLeave={handleNavLeave}
+        style={{
+          fontFamily: "Plus Jakarta Sans, 'Times New Roman', serif",
+        }}
         className="fixed top-0 left-0 w-full z-[1000] flex items-center justify-between px-4 sm:px-6 lg:px-10 py-2.5 lg:py-3 border-b border-gray-200 bg-white"
       >
         {/* Logo */}
-        <div className="flex items-center gap-2.5">
+        <Link
+          to="/"
+          className="flex items-center gap-2.5 cursor-pointer"
+          aria-label="TechTorch Solutions Home"
+        >
           <img
             src={logo}
             alt="TechTorch Solutions"
             className="h-12 sm:h-13 lg:h-13 w-auto"
           />
-        </div>
+        </Link>
 
         {/* Desktop Links */}
         <ul
-          onMouseLeave={() => setActiveMenu(null)}
           className="hidden lg:flex items-center gap-8 xl:gap-12 list-none ml-auto mr-6 xl:mr-10"
         >
           {navLinks.map((label) => {
@@ -149,7 +197,11 @@ function NavbarInner() {
               <li key={label}>
                 <a
                   href="#"
-                  className="text-[17px] text-gray-900 no-underline transition-colors duration-200 hover:text-[#8a1538]"
+                  className={`relative text-[17px] text-gray-900 no-underline transition-colors duration-300 ${
+                    activeMenu === label
+                      ? "text-[#730042]"
+                      : ""
+                  }`}
                 >
                   {label}
                 </a>
@@ -172,7 +224,9 @@ function NavbarInner() {
         {/* Mobile Menu Button */}
         <button
           type="button"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-label={
+            mobileOpen ? "Close menu" : "Open menu"
+          }
           onClick={() => setMobileOpen((v) => !v)}
           className="lg:hidden flex items-center justify-center bg-transparent border-none cursor-pointer p-1"
         >
