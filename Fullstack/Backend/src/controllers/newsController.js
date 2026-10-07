@@ -88,7 +88,7 @@ const createNews = async (req, res) => {
 // GET ALL NEWS
 const getAllNews = async (req, res) => {
   try {
-    const news = await News.find().sort({
+    const news = await News.find(req.admin ? {} : { status: "Published" }).sort({
       createdAt: -1,
     });
 
@@ -113,7 +113,7 @@ const getNewsById = async (req, res) => {
   try {
     const news = await News.findById(req.params.id);
 
-    if (!news) {
+    if (!news || (!req.admin && news.status !== "Published")) {
       return res.status(404).json({
         success: false,
         message: "News not found",

@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 const {
   createEnergy,
@@ -14,9 +15,9 @@ const {
 router.post("/", createEnergy);
 
 // Admin
-router.get("/", getEnergies);
-router.get("/:id", getEnergyById);
-router.patch("/:id/status", updateEnergyStatus);
-router.delete("/:id", deleteEnergy);
+router.get("/", authMiddleware, getEnergies);
+router.get("/:id", authMiddleware, getEnergyById);
+router.patch("/:id/status", authMiddleware, updateEnergyStatus);
+router.delete("/:id", authMiddleware, deleteEnergy);
 
 module.exports = router;

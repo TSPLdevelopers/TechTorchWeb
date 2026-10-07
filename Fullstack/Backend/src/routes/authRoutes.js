@@ -3,7 +3,9 @@ const express = require("express");
 const router = express.Router();
 
 const {
- registerAdmin,
+  registerAdmin,
+  registerCandidate,
+  getMe,
   loginAdmin,
   forgotPassword,
   verifyOTP,
@@ -20,8 +22,10 @@ const {
 } = require("../controllers/adminController");
 
 const authMiddleware = require("../middlewares/auth.middleware");
+const { anyAuth } = authMiddleware;
 
 router.post("/register", registerAdmin);
+router.post("/register-candidate", registerCandidate);
 
 router.post("/login", loginAdmin);
 
@@ -31,7 +35,8 @@ router.post("/verify-otp", verifyOTP);
 
 router.post("/reset-password", resetPassword);
 
-router.post("/logout", authMiddleware, logoutAdmin);
+router.post("/logout", logoutAdmin); // works for admins and candidates, even with an expired session
+router.get("/me", anyAuth, getMe);
 
 router.get("/profile", authMiddleware, getAdminProfile);
 

@@ -9,6 +9,7 @@ const {
 } = require("../controllers/institutionConsultationController");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 
 // Public website
@@ -16,20 +17,17 @@ router.post("/", createInstitutionConsultation);
 
 
 // Admin Dashboard
-router.get("/", getInstitutionConsultations);
+router.get("/", authMiddleware, getInstitutionConsultations);
 
-router.get(
-  "/:id",
+router.get("/:id", authMiddleware,
   getInstitutionConsultationById
 );
 
-router.patch(
-  "/:id/status",
+router.patch("/:id/status", authMiddleware,
   updateConsultationStatus
 );
 
-router.delete(
-  "/:id",
+router.delete("/:id", authMiddleware,
   deleteInstitutionConsultation
 );
 

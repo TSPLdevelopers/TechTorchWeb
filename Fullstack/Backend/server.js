@@ -14,6 +14,8 @@ const jobOpeningRoutes = require("./src/routes/jobOpeningRoutes");
 const eventRoutes = require("./src/routes/eventRoutes");
 const whitepaperRoutes = require("./src/routes/whitepaperRoutes");
 const latestUpdateRoutes = require("./src/routes/latestUpdateRoutes");
+const blogRoutes = require("./src/routes/blogRoutes");
+const interestRoutes = require("./src/routes/interestRoutes");
 
 const institutionConsultationRoutes = require(
   "./src/routes/institutionConsultationRoutes"
@@ -63,11 +65,6 @@ const dataDecisionRoutes = require(
   "./src/routes/dataDecisionRoutes"
 );
 const ourstoryRoutes = require("./src/routes/ourstoryRoutes");
-const startConversationRoutes = require("./src/routes/startConversationRoutes");
-const needsRoutes = require("./src/routes/needsRoutes");
-const exploreQuestionRoutes = require(
-  "./src/routes/exploreQuestionRoutes"
-);
 
 const app = express();
 
@@ -99,6 +96,8 @@ app.use("/api/job-openings", jobOpeningRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/whitepapers", whitepaperRoutes);
 app.use("/api/latest-updates", latestUpdateRoutes);
+app.use("/api/blogs", blogRoutes);
+app.use("/api/interests", interestRoutes);
 
 app.use(
   "/api/institution-consultations",
@@ -143,12 +142,6 @@ app.use(
 );
 
 app.use("/api/ourstory", ourstoryRoutes);
-
-app.use("/api/start-conversation", startConversationRoutes);
-
-app.use("/api/needs", needsRoutes);
-
-app.use("/api/explore-question", exploreQuestionRoutes);
 
 // 404
 app.use((req, res) => {
