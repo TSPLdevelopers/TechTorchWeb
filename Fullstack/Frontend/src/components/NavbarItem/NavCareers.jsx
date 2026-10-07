@@ -63,12 +63,30 @@ function NavCareers() {
     >
       {/* NAV LABEL */}
       <span
-        className={`relative font-inter inline-flex items-center h-full cursor-pointer text-[17px]
-          transition-colors duration-200
-          ${isOpen ? "text-[#730042]" : "text-gray-900"}
-          after:absolute after:left-0 after:bottom-0 after:h-[2px]
-          after:bg-[#730042] after:transition-all after:duration-200
-          ${isOpen ? "after:w-full" : "after:w-0"}`}
+        className="
+    relative inline-flex items-center h-full
+    font-inter cursor-pointer
+    text-[17px] text-gray-900
+    hover:text-[#730042]
+    transition-colors duration-300
+
+    after:content-['']
+    after:absolute
+    after:left-0
+    after:-bottom-[1px]
+    after:w-full
+    after:h-[1px]
+    after:bg-[#730042]
+
+    after:translate-y-[5px]
+    after:opacity-0
+    after:transition-all
+    after:duration-500
+    after:ease-out
+
+    hover:after:translate-y-0
+    hover:after:opacity-100
+  "
       >
         Careers
       </span>

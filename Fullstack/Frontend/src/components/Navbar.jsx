@@ -1,7 +1,14 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, {
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/TechTorchLogo.png";
-import { NavMenuProvider, useNavMenu } from "./NavbarItem/NavMenuContext";
+import {
+  NavMenuProvider,
+  useNavMenu,
+} from "./NavbarItem/NavMenuContext";
 
 import NavAboutUs from "./NavbarItem/NavAboutUs";
 import NavCapabilities from "./NavbarItem/NavCapabilities";
@@ -18,6 +25,10 @@ const navLinks = [
   "Contact Us",
 ];
 
+/* =========================================================
+   SEARCH ICON
+========================================================= */
+
 function SearchIcon() {
   return (
     <svg
@@ -31,10 +42,19 @@ function SearchIcon() {
       strokeLinejoin="round"
     >
       <circle cx="11" cy="11" r="7" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      <line
+        x1="21"
+        y1="21"
+        x2="16.65"
+        y2="16.65"
+      />
     </svg>
   );
 }
+
+/* =========================================================
+   MOBILE MENU ICON
+========================================================= */
 
 function MenuIcon({ open }) {
   return open ? (
@@ -67,6 +87,36 @@ function MenuIcon({ open }) {
   );
 }
 
+/* =========================================================
+   MOBILE ARROW
+========================================================= */
+
+function MobileArrow({ open }) {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`transition-transform duration-200 ${
+        open
+          ? "rotate-90 text-[#730042]"
+          : "text-gray-900"
+      }`}
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  );
+}
+
+/* =========================================================
+   NAVBAR INNER
+========================================================= */
+
 function NavbarInner() {
   const {
     activeMenu,
@@ -76,13 +126,19 @@ function NavbarInner() {
   } = useNavMenu();
 
   const navRef = useRef(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
-  /*
+  const [mobileOpen, setMobileOpen] =
+    useState(false);
+
+  const [mobileExpanded, setMobileExpanded] =
+    useState(null);
+
+  /* 
     IMPORTANT:
     This timer gives enough time to move from one nav item
     to the next without the mega menu disappearing.
   */
+
   const closeTimerRef = useRef(null);
 
   const cancelClose = () => {
@@ -124,6 +180,16 @@ function NavbarInner() {
     };
   }, [setNavHeight]);
 
+  /* =========================================================
+     MOBILE ACCORDION HANDLER
+  ========================================================= */
+
+  const handleMobileToggle = (label) => {
+    setMobileExpanded((current) =>
+      current === label ? null : label
+    );
+  };
+
   return (
     <>
       <nav
@@ -131,11 +197,16 @@ function NavbarInner() {
         onMouseEnter={handleNavEnter}
         onMouseLeave={handleNavLeave}
         style={{
-          fontFamily: "Plus Jakarta Sans, 'Times New Roman', serif",
+          fontFamily:
+            "Plus Jakarta Sans, 'Times New Roman', serif",
         }}
         className="fixed top-0 left-0 w-full z-[1000] flex items-center justify-between px-4 sm:px-6 lg:px-10 py-2.5 lg:py-3 border-b border-gray-200 bg-white"
       >
-        {/* Logo */}
+
+        {/* =====================================================
+            LOGO
+        ===================================================== */}
+
         <Link
           to="/"
           className="flex items-center gap-2.5 cursor-pointer"
@@ -148,11 +219,14 @@ function NavbarInner() {
           />
         </Link>
 
-        {/* Desktop Links */}
-        <ul
-          className="hidden lg:flex items-center gap-8 xl:gap-12 list-none ml-auto mr-6 xl:mr-10"
-        >
+        {/* =====================================================
+            DESKTOP LINKS
+        ===================================================== */}
+
+        <ul className="hidden lg:flex items-center gap-8 xl:gap-12 list-none ml-auto mr-6 xl:mr-10">
+
           {navLinks.map((label) => {
+
             if (label === "About Us") {
               return (
                 <li key={label}>
@@ -208,9 +282,13 @@ function NavbarInner() {
               </li>
             );
           })}
+
         </ul>
 
-        {/* Search */}
+        {/* =====================================================
+            SEARCH
+        ===================================================== */}
+
         <div className="hidden lg:flex items-center">
           <button
             type="button"
@@ -221,46 +299,115 @@ function NavbarInner() {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* =====================================================
+            MOBILE MENU BUTTON
+        ===================================================== */}
+
         <button
           type="button"
           aria-label={
-            mobileOpen ? "Close menu" : "Open menu"
+            mobileOpen
+              ? "Close menu"
+              : "Open menu"
           }
-          onClick={() => setMobileOpen((v) => !v)}
+          onClick={() => {
+            setMobileOpen((v) => !v);
+
+            if (mobileOpen) {
+              setMobileExpanded(null);
+            }
+          }}
           className="lg:hidden flex items-center justify-center bg-transparent border-none cursor-pointer p-1"
         >
           <MenuIcon open={mobileOpen} />
         </button>
 
-        {/* Mobile Menu */}
+        {/* =====================================================
+            MOBILE MENU
+        ===================================================== */}
+
         {mobileOpen && (
           <div
             style={{ top: navHeight }}
             className="lg:hidden fixed left-0 right-0 w-full bg-white shadow-2xl z-[999] max-h-[80vh] overflow-y-auto border-t border-gray-100"
           >
+
             <ul className="flex flex-col divide-y divide-gray-100">
-              {navLinks.map((label) => (
-                <li key={label}>
-                  <a
-                    href="#"
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-6 py-4 text-[17px] text-gray-900 hover:text-[#8a1538] hover:bg-gray-50 transition-colors"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
+
+              {navLinks.map((label) => {
+
+                const isExpanded =
+                  mobileExpanded === label;
+
+                if (label === "About Us") {
+                  return (
+                    <li key={label}>
+                      <NavAboutUs
+                        mobile
+                        isOpen={isExpanded}
+                        onToggle={() =>
+                          handleMobileToggle(label)
+                        }
+                      />
+                    </li>
+                  );
+                }
+
+                if (label === "Capabilities") {
+                  return (
+                    <li key={label}>
+                      <NavCapabilities
+                        mobile
+                        isOpen={isExpanded}
+                        onToggle={() =>
+                          handleMobileToggle(label)
+                        }
+                      />
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={label}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        handleMobileToggle(label)
+                      }
+                      className="w-full flex items-center justify-between px-6 py-4 bg-white border-none text-left text-[15px] font-semibold text-gray-900"
+                    >
+                      <span>{label}</span>
+
+                      {label !== "Contact Us" && (
+                        <MobileArrow
+                          open={isExpanded}
+                        />
+                      )}
+                    </button>
+                  </li>
+                );
+              })}
+
             </ul>
+
           </div>
         )}
+
       </nav>
 
-      {/* Spacer */}
+      {/* =========================================================
+          SPACER
+      ========================================================= */}
+
       <div style={{ height: navHeight }} />
+
     </>
   );
 }
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 export default function Navbar() {
   return (
