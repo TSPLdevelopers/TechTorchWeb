@@ -1,318 +1,15 @@
-import React, {
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
-
-import { Link, useLocation } from "react-router-dom";
-
+import React, { useLayoutEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ChevronDown, LogOut, UserRound } from "lucide-react";
+import { MOBILE_MENU, routeFor } from "./NavbarItem/navRoutes";
+import { useMe, useSignOut } from "../account/useAccount";
 import logo from "../assets/TechTorchLogo.png";
-
-import {
-  NavMenuProvider,
-  useNavMenu,
-} from "./NavbarItem/NavMenuContext";
-
+import { NavMenuProvider, useNavMenu } from "./NavbarItem/NavMenuContext";
 import NavAboutUs from "./NavbarItem/NavAboutUs";
 import NavCapabilities from "./NavbarItem/NavCapabilities";
 import NavIndustries from "./NavbarItem/NavIndustries";
 import NavInsights from "./NavbarItem/NavInsights";
 import NavCareers from "./NavbarItem/NavCareers";
-
-
-/* =========================================================
-   MAIN NAV LINKS
-========================================================= */
-
-const navLinks = [
-  "About Us",
-  "Capabilities",
-  "Industries",
-  "Insights",
-  "Careers",
-  "Contact Us",
-];
-
-
-/* =========================================================
-   BREADCRUMB ROUTES
-
-   Har breadcrumb item:
-   - label = jo screen par dikhega
-   - path  = click karne par kaha jayega
-========================================================= */
-
-const breadcrumbRoutes = {
-
-  /* =======================================================
-     ABOUT US
-  ======================================================= */
-
-  "/about-us": [
-    {
-      label: "About Us",
-      path: "/about-us",
-    },
-  ],
-
-
-  /* =======================================================
-     CAPABILITIES
-  ======================================================= */
-
-  "/capabilities": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-  ],
-
-  "/platform": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "Platform",
-      path: "/platform",
-    },
-  ],
-
-  "/digitalsolution": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "Digital Solution",
-      path: "/digitalsolution",
-    },
-  ],
-
-  "/OurService": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "Our Service",
-      path: "/OurService",
-    },
-  ],
-
-  "/business-process-outsourcing": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "Business Process Outsourcing",
-      path: "/business-process-outsourcing",
-    },
-  ],
-
-  "/ItAugmentation": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "IT Augmentation",
-      path: "/ItAugmentation",
-    },
-  ],
-
-  "/ArtificialIntelligent": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "Artificial Intelligence",
-      path: "/ArtificialIntelligent",
-    },
-  ],
-
-
-  /* =======================================================
-     IT AUGMENTATION - CHILD PAGES
-  ======================================================= */
-
-  "/ItAugmentation/bench-hiring": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "IT Augmentation",
-      path: "/ItAugmentation",
-    },
-    {
-      label: "Bench Hiring",
-      path: "/ItAugmentation/bench-hiring",
-    },
-  ],
-
-  "/ItAugmentation/it-staffing": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "IT Augmentation",
-      path: "/ItAugmentation",
-    },
-    {
-      label: "IT Staffing",
-      path: "/ItAugmentation/it-staffing",
-    },
-  ],
-
-  "/ItAugmentation/staff-augmentation": [
-    {
-      label: "Capabilities",
-      path: "/capabilities",
-    },
-    {
-      label: "IT Augmentation",
-      path: "/ItAugmentation",
-    },
-    {
-      label: "Staff Augmentation",
-      path: "/ItAugmentation/staff-augmentation",
-    },
-  ],
-
-
-  /* =======================================================
-     INDUSTRIES
-  ======================================================= */
-
-  "/industries": [
-    {
-      label: "Industries",
-      path: "/industries",
-    },
-  ],
-
-  "/industries/healthcare": [
-    {
-      label: "Industries",
-      path: "/industries",
-    },
-    {
-      label: "Healthcare",
-      path: "/industries/healthcare",
-    },
-  ],
-
-  "/industries/education": [
-    {
-      label: "Industries",
-      path: "/industries",
-    },
-    {
-      label: "Education",
-      path: "/industries/education",
-    },
-  ],
-
-  "/industries/finance": [
-    {
-      label: "Industries",
-      path: "/industries",
-    },
-    {
-      label: "Finance",
-      path: "/industries/finance",
-    },
-  ],
-
-  "/industries/manufacturing": [
-    {
-      label: "Industries",
-      path: "/industries",
-    },
-    {
-      label: "Manufacturing",
-      path: "/industries/manufacturing",
-    },
-  ],
-
-
-  /* =======================================================
-     INSIGHTS
-  ======================================================= */
-
-  "/insights": [
-    {
-      label: "Insights",
-      path: "/insights",
-    },
-  ],
-
-  "/insights/views": [
-    {
-      label: "Insights",
-      path: "/insights",
-    },
-    {
-      label: "Views",
-      path: "/insights/views",
-    },
-  ],
-
-  "/insights/articles": [
-    {
-      label: "Insights",
-      path: "/insights",
-    },
-    {
-      label: "Articles",
-      path: "/insights/articles",
-    },
-  ],
-
-  "/insights/blogs": [
-    {
-      label: "Insights",
-      path: "/insights",
-    },
-    {
-      label: "Blogs",
-      path: "/insights/blogs",
-    },
-  ],
-
-
-  /* =======================================================
-     CAREERS
-  ======================================================= */
-
-  "/careers": [
-    {
-      label: "Careers",
-      path: "/careers",
-    },
-  ],
-
-
-  /* =======================================================
-     CONTACT
-  ======================================================= */
-
-  "/contact-us": [
-    {
-      label: "Contact Us",
-      path: "/contact-us",
-    },
-  ],
-};
-
-
-/* =========================================================
-   SEARCH ICON
-========================================================= */
 
 function SearchIcon() {
   return (
@@ -326,57 +23,14 @@ function SearchIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <circle
-        cx="11"
-        cy="11"
-        r="7"
-      />
-
-      <line
-        x1="21"
-        y1="21"
-        x2="16.65"
-        y2="16.65"
-      />
+      <circle cx="11" cy="11" r="7" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
   );
 }
 
-
-/* =========================================================
-   MOBILE MENU ICON
-========================================================= */
-
 function MenuIcon({ open }) {
-  if (open) {
-    return (
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#222"
-        strokeWidth="2"
-        strokeLinecap="round"
-      >
-        <line
-          x1="18"
-          y1="6"
-          x2="6"
-          y2="18"
-        />
-
-        <line
-          x1="6"
-          y1="6"
-          x2="18"
-          y2="18"
-        />
-      </svg>
-    );
-  }
-
-  return (
+  return open ? (
     <svg
       width="24"
       height="24"
@@ -386,918 +40,226 @@ function MenuIcon({ open }) {
       strokeWidth="2"
       strokeLinecap="round"
     >
-      <line
-        x1="3"
-        y1="6"
-        x2="21"
-        y2="6"
-      />
-
-      <line
-        x1="3"
-        y1="12"
-        x2="21"
-        y2="12"
-      />
-
-      <line
-        x1="3"
-        y1="18"
-        x2="21"
-        y2="18"
-      />
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
-  );
-}
-
-
-/* =========================================================
-   CHEVRON
-========================================================= */
-
-function ChevronRightIcon() {
-  return (
+  ) : (
     <svg
-      width="15"
-      height="15"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
+      stroke="#222"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
     >
-      <polyline points="9 18 15 12 9 6" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
     </svg>
   );
 }
 
+function AccountButton({ onNavigate }) {
+  const navigate = useNavigate();
+  const { data: me } = useMe();
+  const signOut = useSignOut();
+  const [open, setOpen] = useState(false);
 
-/* =========================================================
-   BREADCRUMB COMPONENT
-========================================================= */
-
-function Breadcrumb({
-  breadcrumbRef,
-  navHeight,
-}) {
-  const location = useLocation();
-
-  const pathname = location.pathname;
-
-  /* Home page par secondary navbar nahi */
-  if (pathname === "/") {
-    return null;
-  }
-
-  /*
-    Exact route ke according breadcrumb nikalega.
-  */
-  const breadcrumbs =
-    breadcrumbRoutes[pathname] || [];
-
-
-  /*
-    Agar route map mein nahi hai,
-    to basic breadcrumb generate hoga.
-  */
-  let finalBreadcrumbs =
-    breadcrumbs;
-
-
-  if (finalBreadcrumbs.length === 0) {
-    const parts = pathname
-      .split("/")
-      .filter(Boolean);
-
-    finalBreadcrumbs = parts.map(
-      (part, index) => {
-        const path =
-          "/" +
-          parts
-            .slice(0, index + 1)
-            .join("/");
-
-        const label =
-          part
-            .replace(/-/g, " ")
-            .replace(
-              /\b\w/g,
-              (char) =>
-                char.toUpperCase()
-            );
-
-        return {
-          label,
-          path,
-        };
-      }
+  if (!me) {
+    return (
+      <Link
+        to="/signin"
+        onClick={onNavigate}
+        className="rounded-full bg-[#780042] px-5 py-2 text-[15px] font-medium text-white no-underline transition hover:opacity-90"
+      >
+        Sign in
+      </Link>
     );
   }
 
+  const dashboard = me.accountType === "admin" ? "/admin-dashboard" : "/candidate";
+  const logout = async () => {
+    setOpen(false);
+    try { await signOut.mutateAsync(); } catch { /* already signed out */ }
+    onNavigate?.();
+    navigate("/", { replace: true });
+  };
 
   return (
-    <div
-      ref={breadcrumbRef}
-      style={{
-        top: navHeight,
-      }}
-      className="
-        fixed
-        left-0
-
-        w-full
-
-        z-[990]
-
-        bg-[#F5F1E8]
-
-        border-b
-        border-gray-200
-      "
-    >
-      <div
-        className="
-          w-full
-
-          px-4
-          sm:px-6
-          md:px-10
-          lg:px-[100px]
-
-          py-3.5
-          sm:py-4
-          md:py-[17px]
-        "
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className="flex items-center gap-2 rounded-full border border-gray-300 px-3 py-1.5 text-[15px] text-gray-900 hover:bg-gray-50"
       >
-        <div
-          className="
-            flex
-            items-center
-            flex-wrap
-
-            gap-x-2
-            gap-y-1
-
-            text-sm
-            sm:text-[15px]
-            md:text-base
-
-            overflow-hidden
-          "
-        >
-
-          {/* =================================================
-              HOME
-          ================================================= */}
-
-          <Link
-            to="/"
-            className="
-              font-semibold
-
-              text-[#1B1B2A]
-
-              no-underline
-
-              whitespace-nowrap
-
-              transition-colors
-              duration-200
-
-              hover:text-[#730042]
-            "
-          >
-            Home
-          </Link>
-
-
-          {/* =================================================
-              BREADCRUMB ITEMS
-          ================================================= */}
-
-          {finalBreadcrumbs.map(
-            (item, index) => {
-
-              const isLast =
-                index ===
-                finalBreadcrumbs.length - 1;
-
-              return (
-                <React.Fragment
-                  key={`${item.path}-${index}`}
-                >
-
-                  {/* ARROW */}
-
-                  <span
-                    className="
-                      flex
-                      items-center
-
-                      flex-shrink-0
-
-                      text-gray-500
-                    "
-                  >
-                    <ChevronRightIcon />
-                  </span>
-
-
-                  {/* CLICKABLE BREADCRUMB */}
-
-                  <Link
-                    to={item.path}
-                    className={`
-                      font-semibold
-
-                      no-underline
-
-                      whitespace-nowrap
-
-                      transition-colors
-                      duration-200
-
-                      ${
-                        isLast
-                          ? "text-[#730042]"
-                          : "text-[#1B1B2A] hover:text-[#730042]"
-                      }
-                    `}
-                  >
-                    {item.label}
-                  </Link>
-
-                </React.Fragment>
-              );
-            }
-          )}
-
-        </div>
-      </div>
+        <UserRound size={17} />
+        <span className="max-w-[110px] truncate">{me.name?.split(" ")[0]}</span>
+        <ChevronDown size={15} />
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-[1001]" onClick={() => setOpen(false)} />
+          <div role="menu" className="absolute right-0 top-full z-[1002] mt-2 w-52 overflow-hidden rounded-xl border border-gray-200 bg-white py-1 shadow-xl">
+            <div className="border-b border-gray-100 px-4 py-2">
+              <p className="truncate text-sm font-medium text-gray-900">{me.name}</p>
+              <p className="truncate text-xs text-gray-500">{me.accountType === "admin" ? "Admin" : "Candidate"}</p>
+            </div>
+            <Link role="menuitem" to={dashboard} onClick={() => { setOpen(false); onNavigate?.(); }} className="block px-4 py-2.5 text-sm text-gray-800 no-underline hover:bg-gray-50">
+              {me.accountType === "admin" ? "Admin dashboard" : "My dashboard"}
+            </Link>
+            {me.accountType === "candidate" && (
+              <Link role="menuitem" to="/careers" onClick={() => { setOpen(false); onNavigate?.(); }} className="block px-4 py-2.5 text-sm text-gray-800 no-underline hover:bg-gray-50">
+                Browse jobs
+              </Link>
+            )}
+            <button role="menuitem" onClick={logout} className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-red-600 hover:bg-red-50">
+              <LogOut size={15} /> Sign out
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
 
-
-/* =========================================================
-   NAVBAR INNER
-========================================================= */
+function MobileMenu({ navHeight, close }) {
+  const [openKey, setOpenKey] = useState(null);
+  return (
+    <div
+      style={{ top: navHeight }}
+      className="lg:hidden fixed left-0 right-0 w-full bg-white shadow-2xl z-[999] max-h-[80vh] overflow-y-auto border-t border-gray-100"
+    >
+      <ul className="flex flex-col divide-y divide-gray-100">
+        {MOBILE_MENU.map((item) => (
+          <li key={item.label}>
+            {item.to ? (
+              <Link to={item.to} onClick={close} className="block px-6 py-4 text-[17px] text-gray-900 no-underline hover:bg-gray-50 hover:text-[#8a1538]">
+                {item.label}
+              </Link>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  aria-expanded={openKey === item.label}
+                  onClick={() => setOpenKey(openKey === item.label ? null : item.label)}
+                  className="flex w-full items-center justify-between px-6 py-4 text-left text-[17px] text-gray-900 hover:bg-gray-50"
+                >
+                  {item.label}
+                  <ChevronDown size={18} className={`transition-transform ${openKey === item.label ? "rotate-180" : ""}`} />
+                </button>
+                {openKey === item.label && (
+                  <ul className="bg-gray-50 pb-2">
+                    {item.children.map((c) => (
+                      <li key={c}>
+                        <Link to={routeFor(c)} onClick={close} className="block px-10 py-2.5 text-[15px] text-gray-700 no-underline hover:text-[#8a1538]">
+                          {c}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </>
+            )}
+          </li>
+        ))}
+        <li className="px-6 py-4"><AccountButton onNavigate={close} /></li>
+      </ul>
+    </div>
+  );
+}
 
 function NavbarInner() {
-  const {
-    setActiveMenu,
-    navHeight,
-    setNavHeight,
-  } = useNavMenu();
-
+  const { setActiveMenu, navHeight, setNavHeight } = useNavMenu();
   const navRef = useRef(null);
-
-  const breadcrumbRef =
-    useRef(null);
-
-  const [mobileOpen, setMobileOpen] =
-    useState(false);
-
-  const [breadcrumbHeight, setBreadcrumbHeight] =
-    useState(0);
-
-  const location = useLocation();
-
-
-  /* =======================================================
-     MAIN NAVBAR HEIGHT
-  ======================================================= */
+  const navigate = useNavigate();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useLayoutEffect(() => {
-    const measureNavbar = () => {
-      if (!navRef.current) {
-        return;
+    const measure = () => {
+      if (navRef.current) {
+        setNavHeight(navRef.current.getBoundingClientRect().height);
       }
-
-      const height =
-        navRef.current.getBoundingClientRect()
-          .height;
-
-      setNavHeight(height);
     };
 
-    measureNavbar();
+    measure();
+    window.addEventListener("resize", measure);
 
-    window.addEventListener(
-      "resize",
-      measureNavbar
-    );
-
-    return () => {
-      window.removeEventListener(
-        "resize",
-        measureNavbar
-      );
-    };
+    return () => window.removeEventListener("resize", measure);
   }, [setNavHeight]);
 
-
-  /* =======================================================
-     BREADCRUMB HEIGHT
-  ======================================================= */
-
-  useLayoutEffect(() => {
-    const measureBreadcrumb = () => {
-      if (!breadcrumbRef.current) {
-        setBreadcrumbHeight(0);
-        return;
-      }
-
-      const height =
-        breadcrumbRef.current.getBoundingClientRect()
-          .height;
-
-      setBreadcrumbHeight(height);
-    };
-
-    measureBreadcrumb();
-
-    window.addEventListener(
-      "resize",
-      measureBreadcrumb
-    );
-
-    return () => {
-      window.removeEventListener(
-        "resize",
-        measureBreadcrumb
-      );
-    };
-  }, [
-    location.pathname,
-    navHeight,
-  ]);
-
-
-  /* =======================================================
-     ROUTE CHANGE
-  ======================================================= */
-
-  useLayoutEffect(() => {
-    setMobileOpen(false);
+  // Menu links are plain <a href="/path">. Handle them with the router so the
+  // page changes instantly without a full reload (keeps the signed-in state too).
+  const handleNavClick = (e) => {
+    const a = e.target.closest?.("a[href^='/']");
+    if (!a || a.target === "_blank" || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    navigate(a.getAttribute("href"));
     setActiveMenu(null);
+    setMobileOpen(false);
+  };
 
-    /*
-      New page open hone par
-      page ko top par le jayenge.
-    */
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
-    });
-  }, [
-    location.pathname,
-    setActiveMenu,
-  ]);
-
-
-  const isHomePage =
-    location.pathname === "/";
-
+  const topLink = "text-[17px] text-gray-900 no-underline transition-colors duration-200 hover:text-[#8a1538]";
 
   return (
     <>
-      {/* ===================================================
-          MAIN NAVBAR
-
-          ALWAYS VISIBLE
-      =================================================== */}
-
       <nav
         ref={navRef}
-        style={{
-          fontFamily:
-            "Plus Jakarta Sans, 'Times New Roman', serif",
-        }}
-        className="
-          fixed
-
-          top-0
-          left-0
-
-          w-full
-
-          z-[1000]
-
-          flex
-          items-center
-          justify-between
-
-          px-4
-          sm:px-6
-          md:px-10
-          lg:px-[100px]
-
-          py-2.5
-          lg:py-3
-
-          border-b
-          border-gray-200
-
-          bg-white
-        "
+        onClick={handleNavClick}
+        style={{ fontFamily: "Plus Jakarta Sans, 'Times New Roman', serif" }}
+        className="fixed top-0 left-0 w-full z-[1000] flex items-center justify-between px-4 sm:px-6 lg:px-10 py-2.5 lg:py-3 border-b border-gray-200 bg-white"
       >
-
-        {/* =================================================
-            LOGO
-        ================================================= */}
-
-        <Link
-          to="/"
-          className="
-            flex
-            items-center
-
-            gap-2.5
-
-            cursor-pointer
-
-            flex-shrink-0
-          "
-          aria-label="TechTorch Solutions Home"
-        >
-          <img
-            src={logo}
-            alt="TechTorch Solutions"
-            className="
-              h-12
-              sm:h-13
-              lg:h-13
-
-              w-auto
-
-              object-contain
-            "
-          />
+        {/* Logo */}
+        <Link to="/" aria-label="TechTorch Solutions home" className="flex items-center gap-2.5">
+          <img src={logo} alt="TechTorch Solutions" className="h-12 sm:h-13 lg:h-13 w-auto" />
         </Link>
 
-
-        {/* =================================================
-            DESKTOP NAVIGATION
-        ================================================= */}
-
+        {/* Desktop Links */}
         <ul
-          onMouseLeave={() =>
-            setActiveMenu(null)
-          }
-          className="
-            hidden
-            lg:flex
-
-            items-center
-
-            gap-8
-            xl:gap-12
-
-            list-none
-
-            ml-auto
-
-            mr-6
-            xl:mr-10
-          "
+          onMouseLeave={() => setActiveMenu(null)}
+          className="hidden lg:flex items-center gap-8 xl:gap-12 list-none ml-auto mr-6 xl:mr-10"
         >
-
-          {navLinks.map(
-            (label) => {
-
-              /* ABOUT US */
-
-              if (
-                label === "About Us"
-              ) {
-                return (
-                  <li key={label}>
-                    <NavAboutUs />
-                  </li>
-                );
-              }
-
-
-              /* CAPABILITIES */
-
-              if (
-                label === "Capabilities"
-              ) {
-                return (
-                  <li key={label}>
-                    <NavCapabilities />
-                  </li>
-                );
-              }
-
-
-              /* INDUSTRIES */
-
-              if (
-                label === "Industries"
-              ) {
-                return (
-                  <li key={label}>
-                    <NavIndustries />
-                  </li>
-                );
-              }
-
-
-              /* INSIGHTS */
-
-              if (
-                label === "Insights"
-              ) {
-                return (
-                  <li key={label}>
-                    <NavInsights />
-                  </li>
-                );
-              }
-
-
-              /* CAREERS */
-
-              if (
-                label === "Careers"
-              ) {
-                return (
-                  <li key={label}>
-                    <NavCareers />
-                  </li>
-                );
-              }
-
-
-              /* CONTACT US */
-
-              return (
-                <li key={label}>
-                  <Link
-                    to="/contact-us"
-                    className="
-                      text-[17px]
-
-                      text-gray-900
-
-                      no-underline
-
-                      transition-colors
-                      duration-200
-
-                      hover:text-[#8a1538]
-                    "
-                  >
-                    {label}
-                  </Link>
-                </li>
-              );
-            }
-          )}
-
+          <li><NavAboutUs /></li>
+          <li><NavCapabilities /></li>
+          <li><NavIndustries /></li>
+          <li><NavInsights /></li>
+          <li><NavCareers /></li>
+          <li><Link to="/start-conversation" className={topLink}>Contact Us</Link></li>
         </ul>
 
-
-        {/* =================================================
-            SEARCH
-        ================================================= */}
-
-        <div
-          className="
-            hidden
-            lg:flex
-
-            items-center
-          "
-        >
+        {/* Search + account */}
+        <div className="hidden lg:flex items-center gap-4">
           <button
             type="button"
             aria-label="Search"
-            className="
-              flex
-              items-center
-              justify-center
-
-              bg-transparent
-
-              border-none
-
-              cursor-pointer
-
-              p-0
-            "
+            className="flex items-center justify-center bg-transparent border-none cursor-pointer p-0"
           >
             <SearchIcon />
           </button>
           <AccountButton />
         </div>
 
-
-        {/* =================================================
-            MOBILE MENU BUTTON
-        ================================================= */}
-
+        {/* Mobile Menu Button */}
         <button
           type="button"
-          aria-label={
-            mobileOpen
-              ? "Close menu"
-              : "Open menu"
-          }
-          onClick={() =>
-            setMobileOpen(
-              (value) => !value
-            )
-          }
-          className="
-            lg:hidden
-
-            flex
-            items-center
-            justify-center
-
-            bg-transparent
-
-            border-none
-
-            cursor-pointer
-
-            p-1
-          "
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((v) => !v)}
+          className="lg:hidden flex items-center justify-center bg-transparent border-none cursor-pointer p-1"
         >
-          <MenuIcon
-            open={mobileOpen}
-          />
+          <MenuIcon open={mobileOpen} />
         </button>
 
-
-        {/* =================================================
-            MOBILE MENU
-        ================================================= */}
-
-        {mobileOpen && (
-          <div
-            style={{
-              top: navHeight,
-            }}
-            className="
-              lg:hidden
-
-              absolute
-
-              left-0
-              right-0
-
-              w-full
-
-              bg-white
-
-              shadow-2xl
-
-              z-[999]
-
-              max-h-[80vh]
-
-              overflow-y-auto
-
-              border-t
-              border-gray-100
-            "
-          >
-            <ul
-              className="
-                flex
-                flex-col
-
-                divide-y
-                divide-gray-100
-              "
-            >
-
-              {/* ABOUT US */}
-
-              <li>
-                <Link
-                  to="/about-us"
-                  onClick={() =>
-                    setMobileOpen(false)
-                  }
-                  className="
-                    block
-
-                    px-6
-                    py-4
-
-                    text-[17px]
-
-                    text-gray-900
-
-                    hover:text-[#8a1538]
-                    hover:bg-gray-50
-
-                    transition-colors
-                  "
-                >
-                  About Us
-                </Link>
-              </li>
-
-
-              {/* CAPABILITIES */}
-
-              <li>
-                <Link
-                  to="/capabilities"
-                  onClick={() =>
-                    setMobileOpen(false)
-                  }
-                  className="
-                    block
-
-                    px-6
-                    py-4
-
-                    text-[17px]
-
-                    text-gray-900
-
-                    hover:text-[#8a1538]
-                    hover:bg-gray-50
-
-                    transition-colors
-                  "
-                >
-                  Capabilities
-                </Link>
-              </li>
-
-
-              {/* INDUSTRIES */}
-
-              <li>
-                <Link
-                  to="/industries"
-                  onClick={() =>
-                    setMobileOpen(false)
-                  }
-                  className="
-                    block
-
-                    px-6
-                    py-4
-
-                    text-[17px]
-
-                    text-gray-900
-
-                    hover:text-[#8a1538]
-                    hover:bg-gray-50
-
-                    transition-colors
-                  "
-                >
-                  Industries
-                </Link>
-              </li>
-
-
-              {/* INSIGHTS */}
-
-              <li>
-                <Link
-                  to="/insights"
-                  onClick={() =>
-                    setMobileOpen(false)
-                  }
-                  className="
-                    block
-
-                    px-6
-                    py-4
-
-                    text-[17px]
-
-                    text-gray-900
-
-                    hover:text-[#8a1538]
-                    hover:bg-gray-50
-
-                    transition-colors
-                  "
-                >
-                  Insights
-                </Link>
-              </li>
-
-
-              {/* CAREERS */}
-
-              <li>
-                <Link
-                  to="/careers"
-                  onClick={() =>
-                    setMobileOpen(false)
-                  }
-                  className="
-                    block
-
-                    px-6
-                    py-4
-
-                    text-[17px]
-
-                    text-gray-900
-
-                    hover:text-[#8a1538]
-                    hover:bg-gray-50
-
-                    transition-colors
-                  "
-                >
-                  Careers
-                </Link>
-              </li>
-
-
-              {/* CONTACT */}
-
-              <li>
-                <Link
-                  to="/contact-us"
-                  onClick={() =>
-                    setMobileOpen(false)
-                  }
-                  className="
-                    block
-
-                    px-6
-                    py-4
-
-                    text-[17px]
-
-                    text-gray-900
-
-                    hover:text-[#8a1538]
-                    hover:bg-gray-50
-
-                    transition-colors
-                  "
-                >
-                  Contact Us
-                </Link>
-              </li>
-
-            </ul>
-          </div>
-        )}
-
+        {mobileOpen && <MobileMenu navHeight={navHeight} close={() => setMobileOpen(false)} />}
       </nav>
 
-
-      {/* ===================================================
-          SECONDARY NAVBAR / BREADCRUMB
-
-          ALWAYS VISIBLE
-      =================================================== */}
-
-      {!isHomePage && (
-        <Breadcrumb
-          breadcrumbRef={
-            breadcrumbRef
-          }
-          navHeight={
-            navHeight
-          }
-        />
-      )}
-
-
-      {/* ===================================================
-          PAGE TOP SPACING
-
-          Main navbar + breadcrumb ke liye space.
-      =================================================== */}
-
-      <div
-        style={{
-          height:
-            navHeight +
-            (!isHomePage
-              ? breadcrumbHeight
-              : 0),
-        }}
-      />
+      {/* Spacer */}
+      <div style={{ height: navHeight }} />
     </>
   );
 }
-
-
-/* =========================================================
-   FINAL NAVBAR
-========================================================= */
 
 export default function Navbar() {
   return (
