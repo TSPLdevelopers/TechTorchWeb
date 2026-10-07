@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 
 const industries = [
@@ -115,7 +116,7 @@ function NavIndustries() {
               {industries.map((industry) => (
                 <a
                   key={industry}
-                  href="#"
+                  href={routeFor(industry)}
                   className="text-[15px]
                     md:text-[15px]
                     text-gray-800

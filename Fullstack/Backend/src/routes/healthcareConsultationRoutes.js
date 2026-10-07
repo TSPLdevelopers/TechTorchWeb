@@ -11,6 +11,7 @@ const {
 );
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 
 // Public website
@@ -18,20 +19,17 @@ router.post("/", createHealthcareConsultation);
 
 
 // Admin Dashboard
-router.get("/", getHealthcareConsultations);
+router.get("/", authMiddleware, getHealthcareConsultations);
 
-router.get(
-  "/:id",
+router.get("/:id", authMiddleware,
   getHealthcareConsultationById
 );
 
-router.patch(
-  "/:id/status",
+router.patch("/:id/status", authMiddleware,
   updateHealthcareConsultationStatus
 );
 
-router.delete(
-  "/:id",
+router.delete("/:id", authMiddleware,
   deleteHealthcareConsultation
 );
 

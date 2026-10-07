@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 const {
   createEcommerce,
@@ -14,20 +15,17 @@ const {
 router.post("/", createEcommerce);
 
 // Admin
-router.get("/", getEcommerces);
+router.get("/", authMiddleware, getEcommerces);
 
-router.get(
-  "/:id",
+router.get("/:id", authMiddleware,
   getEcommerceById
 );
 
-router.patch(
-  "/:id/status",
+router.patch("/:id/status", authMiddleware,
   updateEcommerceStatus
 );
 
-router.delete(
-  "/:id",
+router.delete("/:id", authMiddleware,
   deleteEcommerce
 );
 

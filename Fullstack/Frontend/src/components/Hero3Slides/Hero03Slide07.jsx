@@ -1,7 +1,7 @@
 import React from "react";
 
-import bgImage from "/bgslide07.png";
-import photoImage from "/hero03slide07.png";
+const bgImage = "/bgslide07.png";
+const photoImage = "/hero03slide07.png";
 
 export default function BusinessChallengeSection() {
   return (

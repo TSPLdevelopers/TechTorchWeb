@@ -40,6 +40,12 @@ const generalEnquirySchema = new mongoose.Schema(
         "Software & Integration",
         "Digital Transformation",
         "Technology Support",
+        // options offered on the Contact Us page
+        "Web Development",
+        "Software Development",
+        "Cloud Solutions",
+        "AI & Machine Learning",
+        "Technology Consulting",
       ],
     },
 
@@ -52,7 +58,7 @@ const generalEnquirySchema = new mongoose.Schema(
     preferredContactMethod: {
       type: String,
       required: [true, "Preferred contact method is required"],
-      enum: ["Email", "Phone"],
+      enum: ["Email", "Phone", "Phone Call", "Online Meeting"],
     },
 
     contactConsent: {
@@ -66,6 +72,9 @@ const generalEnquirySchema = new mongoose.Schema(
           "You must agree to be contacted regarding your enquiry",
       },
     },
+
+    projectStage: { type: String, trim: true, default: "" },
+    timeline: { type: String, trim: true, default: "" },
 
     status: {
       type: String,

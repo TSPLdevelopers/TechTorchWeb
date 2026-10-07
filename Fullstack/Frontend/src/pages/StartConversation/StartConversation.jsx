@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ContactAccountSection from "../../account/ContactAccountSection";
+import { enquiryApi } from "../../admin/api/endpoints";
 
 export default function GetInTouch() {
     const navigate = useNavigate();
@@ -16,6 +18,8 @@ export default function GetInTouch() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,14 +30,54 @@ export default function GetInTouch() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  // select value -> label the backend stores
+  const SERVICE_LABELS = {
+    "web-development": "Web Development",
+    "software-development": "Software Development",
+    cloud: "Cloud Solutions",
+    ai: "AI & Machine Learning",
+    consulting: "Technology Consulting",
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
-    setSubmitted(true);
+    setSubmitError("");
+    setSending(true);
 
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 3000);
+    try {
+      await enquiryApi.general({
+        fullName: formData.fullName.trim(),
+        businessEmail: formData.email.trim(),
+        phoneNumber: formData.phone.trim(),
+        companyOrganization: formData.company.trim(),
+        areaOfInterest: SERVICE_LABELS[formData.service] || formData.service,
+        requirement: formData.requirement.trim(),
+        projectStage: formData.stage,
+        timeline: formData.timeline,
+        preferredContactMethod: formData.contactMethod,
+        contactConsent: true, // the form note above the button states that submitting means agreeing
+      });
+
+      setSubmitted(true);
+      setFormData({
+        fullName: "",
+        email: "",
+        company: "",
+        phone: "",
+        service: "",
+        requirement: "",
+        stage: "",
+        timeline: "",
+        contactMethod: "Email",
+      });
+      setTimeout(() => setSubmitted(false), 6000);
+    } catch (err) {
+      setSubmitError(err.message || "Could not send your enquiry. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -89,6 +133,8 @@ export default function GetInTouch() {
         </div>
       </section>
 
+
+      <ContactAccountSection />
 
       {/* =====================================================
           CONTACT FORM SECTION
@@ -415,10 +461,17 @@ export default function GetInTouch() {
             <button
               type="submit"
               className="submit-button"
+              disabled={sending}
             >
-              Send Enquiry
+              {sending ? "Sending…" : "Send Enquiry"}
               <span>→</span>
             </button>
+
+            {submitError && (
+              <div className="success-message" role="alert" style={{ background: "#fdecea", color: "#b42318" }}>
+                {submitError}
+              </div>
+            )}
 
             <p className="form-note">
               By submitting this form, you agree to be contacted by

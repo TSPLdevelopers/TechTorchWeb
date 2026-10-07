@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Navbarcap from "../../assets/Navbarcap.png";
 
@@ -272,7 +273,7 @@ function NavCapabilities() {
                   {columns[0].items.map((title) => (
                     <a
                       key={title}
-                      href="#"
+                      href={routeFor(title)}
                       className="
                         text-[15px]
                         md:text-[15px]
@@ -344,7 +345,7 @@ function NavCapabilities() {
                       {section.items.map((title) => (
                         <a
                           key={title}
-                          href="#"
+                          href={routeFor(title)}
                           className="
                             text-[15px]
                             md:text-[15px]

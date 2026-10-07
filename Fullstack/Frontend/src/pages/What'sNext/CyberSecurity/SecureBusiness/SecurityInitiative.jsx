@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import initiativeImage from "/SecurityInitiative.png";
+const initiativeImage = "/SecurityInitiative.png";
 
 export default function Initiative() {
   const navigate = useNavigate();

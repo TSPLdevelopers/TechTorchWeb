@@ -92,26 +92,37 @@ const SIDEBAR_CSS = `
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/* LOGO                                                                       */
+/* -------------------------------------------------------------------------- */
+
 .ttsb-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 0 8px 20px;
   margin-bottom: 8px;
   border-bottom: 1px solid #f5f5f4;
+  min-height: 56px;
 }
 
 .ttsb-mark {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-weight: 700;
-  font-size: 14px;
+  overflow: hidden;
   flex-shrink: 0;
+  background: #780042;
+}
+
+.ttsb-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .ttsb-name {
@@ -126,7 +137,12 @@ const SIDEBAR_CSS = `
   color: #a8a29e;
   letter-spacing: .025em;
   line-height: 1.25;
+  margin-top: 2px;
 }
+
+/* -------------------------------------------------------------------------- */
+/* MOBILE CLOSE BUTTON                                                        */
+/* -------------------------------------------------------------------------- */
 
 .ttsb-close {
   margin-left: auto;
@@ -140,6 +156,7 @@ const SIDEBAR_CSS = `
   border-radius: 6px;
   color: #78716c;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .ttsb-close:hover {
@@ -152,6 +169,10 @@ const SIDEBAR_CSS = `
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/* SIDEBAR TITLE                                                              */
+/* -------------------------------------------------------------------------- */
+
 .ttsb-title {
   font-size: 10px;
   font-weight: 600;
@@ -160,6 +181,10 @@ const SIDEBAR_CSS = `
   padding: 0 12px;
   margin: 12px 0 8px;
 }
+
+/* -------------------------------------------------------------------------- */
+/* NAVIGATION                                                                 */
+/* -------------------------------------------------------------------------- */
 
 .ttsb-nav {
   display: flex;
@@ -182,7 +207,7 @@ const SIDEBAR_CSS = `
   text-align: left;
   color: #57534e;
   cursor: pointer;
-  transition: background-color .15s;
+  transition: background-color .15s ease;
 }
 
 .ttsb-item:hover {
@@ -220,10 +245,31 @@ const SIDEBAR_CSS = `
 }
 
 .ttsb-item.active .ttsb-badge {
-  background: rgba(255,255,255,.2);
+  background: rgba(255, 255, 255, .2);
   color: #fff;
 }
+
+/* -------------------------------------------------------------------------- */
+/* SCROLLBAR                                                                  */
+/* -------------------------------------------------------------------------- */
+
+.ttsb::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ttsb::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ttsb::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 999px;
+}
 `;
+
+/* -------------------------------------------------------------------------- */
+/* COMPONENT                                                                  */
+/* -------------------------------------------------------------------------- */
 
 export default function AdminSidebar({
   sidebarOpen,
@@ -266,20 +312,29 @@ export default function AdminSidebar({
       ]);
 
       setCounts({
-        news: Array.isArray(newsData) ? newsData.length : 0,
-        jobs: Array.isArray(jobsData) ? jobsData.length : 0,
-        events: Array.isArray(eventsData) ? eventsData.length : 0,
+        news: Array.isArray(newsData)
+          ? newsData.length
+          : 0,
+
+        jobs: Array.isArray(jobsData)
+          ? jobsData.length
+          : 0,
+
+        events: Array.isArray(eventsData)
+          ? eventsData.length
+          : 0,
+
         whitepapers: Array.isArray(whitepaperData)
           ? whitepaperData.length
           : 0,
       });
     } catch (error) {
-      console.error("Sidebar live count error:", error);
+      console.error(
+        "Sidebar live count error:",
+        error
+      );
 
-      /*
-       * API fail hone par previous count ko preserve karenge.
-       * Sidebar break nahi hoga.
-       */
+      // API fail hone par previous count preserve hoga.
     } finally {
       setCountsLoading(false);
     }
@@ -292,11 +347,6 @@ export default function AdminSidebar({
   useEffect(() => {
     loadCounts();
 
-    /*
-     * Agar kisi page se data update hone ke baad
-     * "ttad:data-updated" event fire hota hai,
-     * sidebar immediately refresh hoga.
-     */
     const handleDataUpdate = () => {
       loadCounts();
     };
@@ -306,10 +356,7 @@ export default function AdminSidebar({
       handleDataUpdate
     );
 
-    /*
-     * Backup refresh:
-     * Har 10 seconds latest database count check hoga.
-     */
+    // Har 10 seconds mein latest count refresh hoga.
     const interval = setInterval(() => {
       loadCounts();
     }, 10000);
@@ -348,7 +395,16 @@ export default function AdminSidebar({
   };
 
   /* ------------------------------------------------------------------------ */
-  /* RENDER                                                                   */
+  /* NAVIGATION                                                                */
+  /* ------------------------------------------------------------------------ */
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setSidebarOpen(false);
+  };
+
+  /* ------------------------------------------------------------------------ */
+  /* RENDER                                                                    */
   /* ------------------------------------------------------------------------ */
 
   return (
@@ -356,16 +412,24 @@ export default function AdminSidebar({
       <style>{SIDEBAR_CSS}</style>
 
       <aside
-        className={"ttsb" + (sidebarOpen ? " open" : "")}
+        className={
+          "ttsb" +
+          (sidebarOpen ? " open" : "")
+        }
         aria-label="Main navigation"
       >
-        {/* LOGO */}
+
+        {/* ================================================================ */}
+        {/* LOGO                                                              */}
+        {/* ================================================================ */}
+
         <div className="ttsb-logo">
-          <div
-            className="ttsb-mark"
-            style={{ backgroundColor: ACCENT }}
-          >
-            T
+
+          <div className="ttsb-mark">
+            <img
+              src="/Tech-Torch2.png"
+              alt="TechTorch"
+            />
           </div>
 
           <div>
@@ -379,21 +443,34 @@ export default function AdminSidebar({
           </div>
 
           {/* MOBILE CLOSE */}
+
           <button
             type="button"
             aria-label="Close menu"
             className="ttsb-close"
-            onClick={() => setSidebarOpen(false)}
+            onClick={() =>
+              setSidebarOpen(false)
+            }
           >
             <X size={18} />
           </button>
+
         </div>
+
+        {/* ================================================================ */}
+        {/* SIDEBAR TITLE                                                    */}
+        {/* ================================================================ */}
 
         <div className="ttsb-title">
           CORE ARCHITECTURE
         </div>
 
+        {/* ================================================================ */}
+        {/* NAVIGATION                                                       */}
+        {/* ================================================================ */}
+
         <nav className="ttsb-nav">
+
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
 
@@ -409,13 +486,17 @@ export default function AdminSidebar({
                 type="button"
                 className={
                   "ttsb-item" +
-                  (active ? " active" : "")
+                  (active
+                    ? " active"
+                    : "")
                 }
-                onClick={() => {
-                  navigate(item.path);
-                  setSidebarOpen(false);
-                }}
+                onClick={() =>
+                  handleNavigation(
+                    item.path
+                  )
+                }
               >
+
                 <Icon
                   size={17}
                   strokeWidth={2}
@@ -426,6 +507,7 @@ export default function AdminSidebar({
                 </span>
 
                 {/* LIVE BADGE */}
+
                 {item.key !== "dashboard" && (
                   <span className="ttsb-badge">
                     {countsLoading
@@ -433,10 +515,13 @@ export default function AdminSidebar({
                       : badgeCount}
                   </span>
                 )}
+
               </button>
             );
           })}
+
         </nav>
+
       </aside>
     </>
   );

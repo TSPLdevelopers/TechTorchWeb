@@ -992,6 +992,7 @@ function NavbarInner() {
           >
             <SearchIcon />
           </button>
+          <AccountButton />
         </div>
 
 

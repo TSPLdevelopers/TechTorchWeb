@@ -77,7 +77,7 @@ export default function DataDecisions() {
 
             {/* TALK TO EXPERTS */}
 
-            <Link to="/contact" className="data-decisions-secondary-btn">
+            <Link to="/start-conversation" className="data-decisions-secondary-btn">
               Talk to Our Experts
             </Link>
           </div>

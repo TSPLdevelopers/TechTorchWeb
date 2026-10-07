@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 const {
   createTransportation,
@@ -18,20 +19,17 @@ router.post("/", createTransportation);
 
 
 // Admin
-router.get("/", getTransportations);
+router.get("/", authMiddleware, getTransportations);
 
-router.get(
-  "/:id",
+router.get("/:id", authMiddleware,
   getTransportationById
 );
 
-router.patch(
-  "/:id/status",
+router.patch("/:id/status", authMiddleware,
   updateTransportationStatus
 );
 
-router.delete(
-  "/:id",
+router.delete("/:id", authMiddleware,
   deleteTransportation
 );
 
