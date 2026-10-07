@@ -28,10 +28,12 @@ const LEGAL_LINKS = [
 
 /* ================= SOCIAL ICON WRAPPER ================= */
 
-const SocialIcon = ({ children, label }) => (
+const SocialIcon = ({ children, label, href }) => (
   <a
-    href="#"
+    href={href}
     aria-label={label}
+    target="_blank"
+    rel="noopener noreferrer"
     className="
       group
       flex
@@ -48,6 +50,8 @@ const SocialIcon = ({ children, label }) => (
       duration-300
       hover:-translate-y-1
       hover:shadow-md
+      sm:h-12
+      sm:w-12
     "
   >
     {children}
@@ -198,7 +202,7 @@ export default function Footer() {
               />
             </div>
 
-            <h3 className="mb-4 text-l font-semibold leading-snug">
+            <h3 className="mb-4 text-[16px] font-semibold leading-snug">
               Technology. Expertise. Progress.
             </h3>
 
@@ -212,19 +216,31 @@ export default function Footer() {
 
             <div className="flex items-center gap-4">
 
-              <SocialIcon label="X (Twitter)">
+              <SocialIcon
+                label="X (Twitter)"
+                href="https://x.com/techtorch_sol"
+              >
                 <XIcon />
               </SocialIcon>
 
-              <SocialIcon label="LinkedIn">
+              <SocialIcon
+                label="LinkedIn"
+                href="https://www.linkedin.com/company/techtorch_sol/posts/?feedView=all"
+              >
                 <LinkedInIcon />
               </SocialIcon>
 
-              <SocialIcon label="Instagram">
+              <SocialIcon
+                label="Instagram"
+                href="https://www.instagram.com/techtorch_sol/?hl=en "
+              >
                 <InstagramIcon />
               </SocialIcon>
 
-              <SocialIcon label="YouTube">
+              <SocialIcon
+                label="YouTube"
+                href="https://www.youtube.com/@techtorch_sol"
+              >
                 <YouTubeIcon />
               </SocialIcon>
 
@@ -317,14 +333,16 @@ export default function Footer() {
             <div className="flex flex-col gap-1 text-[14px] text-white/80">
 
               <a
-                href="#"
+                href="https://www.techtorch.solutions"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="transition-colors hover:text-white"
               >
                 www.techtorch.solutions
               </a>
 
               <a
-                href="#"
+                href="tel:+915813500381"
                 className="transition-colors hover:text-white"
               >
                 +91 581 350 0381
@@ -338,6 +356,7 @@ export default function Footer() {
         {/* ================= DISCLAIMER ================= */}
 
         <div className="mt-14 border-t border-white/20 pt-6">
+
           <p className="max-w-4xl text-[13px] leading-relaxed text-white/70">
             Disclaimer: The information provided on this website is for
             general informational purposes only. TechTorch Solutions reserves
@@ -347,6 +366,7 @@ export default function Footer() {
             All trademarks, logos, and service marks displayed are the
             property of TechTorch Solutions or their respective owners.
           </p>
+
         </div>
 
         {/* ================= BOTTOM ================= */}
@@ -373,6 +393,7 @@ export default function Footer() {
           </p>
 
           <div className="flex flex-wrap gap-x-6 gap-y-2">
+
             {LEGAL_LINKS.map((link) => (
               <a
                 key={link}
@@ -387,6 +408,7 @@ export default function Footer() {
                 {link}
               </a>
             ))}
+
           </div>
 
         </div>
