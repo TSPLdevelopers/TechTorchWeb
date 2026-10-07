@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import megaMenuImage from "../../assets/image1.png";
 
@@ -91,7 +92,7 @@ function NavAboutUs() {
               {primaryLinks.map((title) => (
                 <a
                   key={title}
-                  href="#"
+                  href={routeFor(title)}
                   className=" text-[16px]
                           md:text-[18px]
                           font-semibold
@@ -107,7 +108,7 @@ function NavAboutUs() {
               {secondaryLinks.map((title) => (
                 <a
                   key={title}
-                  href="#"
+                  href={routeFor(title)}
                   className="text-[15px]
                         md:text-[15px]
                         text-gray-800
@@ -125,7 +126,7 @@ function NavAboutUs() {
                 {boldLinks.map((title) => (
                   <a
                     key={title}
-                    href="#"
+                    href={routeFor(title)}
                     className="text-[16px]
                           md:text-[18px]
                           font-semibold
@@ -159,7 +160,7 @@ function NavAboutUs() {
                 <div className="w-[255px] h-[2px] bg-white mt-2" />
               </div>
 
-            <a href="#" className="text-[16px] font-bold font-inter text-white mb-8">
+            <a href="/Philosophy" className="text-[16px] font-bold font-inter text-white mb-8">
               LEARN MORE
             </a>
             </div>

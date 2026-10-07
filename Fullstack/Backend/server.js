@@ -14,6 +14,8 @@ const jobOpeningRoutes = require("./src/routes/jobOpeningRoutes");
 const eventRoutes = require("./src/routes/eventRoutes");
 const whitepaperRoutes = require("./src/routes/whitepaperRoutes");
 const latestUpdateRoutes = require("./src/routes/latestUpdateRoutes");
+const blogRoutes = require("./src/routes/blogRoutes");
+const interestRoutes = require("./src/routes/interestRoutes");
 
 const institutionConsultationRoutes = require(
   "./src/routes/institutionConsultationRoutes"
@@ -94,6 +96,8 @@ app.use("/api/job-openings", jobOpeningRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/whitepapers", whitepaperRoutes);
 app.use("/api/latest-updates", latestUpdateRoutes);
+app.use("/api/blogs", blogRoutes);
+app.use("/api/interests", interestRoutes);
 
 app.use(
   "/api/institution-consultations",

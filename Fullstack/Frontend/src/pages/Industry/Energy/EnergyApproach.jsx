@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import ctaBackground from "/energy2.png";
+const ctaBackground = "/energy2.png";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";

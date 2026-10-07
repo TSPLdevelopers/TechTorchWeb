@@ -11,6 +11,7 @@ const {
 );
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 
 // Public website
@@ -18,20 +19,17 @@ router.post("/", createGeneralEnquiry);
 
 
 // Admin Dashboard
-router.get("/", getGeneralEnquiries);
+router.get("/", authMiddleware, getGeneralEnquiries);
 
-router.get(
-  "/:id",
+router.get("/:id", authMiddleware,
   getGeneralEnquiryById
 );
 
-router.patch(
-  "/:id/status",
+router.patch("/:id/status", authMiddleware,
   updateGeneralEnquiryStatus
 );
 
-router.delete(
-  "/:id",
+router.delete("/:id", authMiddleware,
   deleteGeneralEnquiry
 );
 

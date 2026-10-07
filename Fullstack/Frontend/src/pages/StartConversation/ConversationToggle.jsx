@@ -1186,7 +1186,7 @@ export default function StartConversation() {
               <button
                 type="button"
                 className="quick-button"
-                onClick={() => navigate("/ask-question")}
+                onClick={() => navigate("/explore-questions")}
               >
                 Ask a Question
                 <ArrowRight size={13} />

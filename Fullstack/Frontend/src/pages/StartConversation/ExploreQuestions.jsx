@@ -1638,7 +1638,7 @@ export default function AskQuestion() {
             <button
               type="button"
               className="question-button"
-              onClick={() => navigate("/ask-question")}
+              onClick={() => navigate("/explore-questions")}
             >
               ASK YOUR QUESTION
               <ArrowRight size={15} />

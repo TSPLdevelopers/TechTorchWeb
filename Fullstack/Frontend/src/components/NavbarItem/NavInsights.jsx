@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import image2 from "../../assets/image2.png";
 import image3 from "../../assets/image3.png";
@@ -107,7 +108,7 @@ function NavInsights() {
               {links.map((title) => (
                 <a
                   key={title}
-                  href="#"
+                  href={routeFor(title)}
                   className="text-[15px]
                         md:text-[15px]
                         text-gray-800
@@ -149,7 +150,7 @@ function NavInsights() {
                   </p>
 
                   <a
-                    href="#"
+                    href="/field-note"
                     className="inline-block mt-[20px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                   >
                     READ MORE →
@@ -172,7 +173,7 @@ function NavInsights() {
                 </span>
 
                 <a
-                  href="#"
+                  href="/think-ahead"
                   className="text-[16px] font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   VIEW EVENT →

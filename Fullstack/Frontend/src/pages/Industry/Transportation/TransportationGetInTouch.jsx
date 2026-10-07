@@ -307,11 +307,10 @@ export default function TransportationGetInTouch() {
 
           font-family:
             "Plus Jakarta Sans",
-            Arial,
-            Helvetica,
+           
             sans-serif;
 
-          font-size: clamp(34px, 4vw, 52px);
+         font-size: 36px;
 
           line-height: 1.04;
 
@@ -329,8 +328,6 @@ export default function TransportationGetInTouch() {
 
           font-family:
             "Inter",
-            Arial,
-            Helvetica,
             sans-serif;
 
           font-size: 14px;
@@ -373,10 +370,10 @@ export default function TransportationGetInTouch() {
 
           color: var(--transport-beetroot);
 
-          font-size: 10px;
+          font-size: 13px;
           line-height: 1.2;
 
-          font-weight: 800;
+          font-weight: 700;
 
           text-transform: uppercase;
         }
@@ -386,7 +383,7 @@ export default function TransportationGetInTouch() {
 
           color: #666b73;
 
-          font-size: 10px;
+          font-size: 13px;
           line-height: 1.42;
         }
 
@@ -511,7 +508,7 @@ export default function TransportationGetInTouch() {
 
           line-height: 1.4;
 
-          font-weight: 600;
+          font-weight: 500;
         }
 
         /* =====================================================
@@ -538,9 +535,9 @@ export default function TransportationGetInTouch() {
 
           color: var(--transport-beetroot);
 
-          font-size: 9px;
+          font-size: 10px;
 
-          font-weight: 800;
+          font-weight: 700;
 
           text-transform: uppercase;
         }
@@ -552,8 +549,6 @@ export default function TransportationGetInTouch() {
 
           font-family:
             "Plus Jakarta Sans",
-            Arial,
-            Helvetica,
             sans-serif;
 
           font-size: 25px;
@@ -570,7 +565,7 @@ export default function TransportationGetInTouch() {
 
           color: #6c7076;
 
-          font-size: 12px;
+          font-size: 14px;
 
           line-height: 1.55;
         }
@@ -655,7 +650,7 @@ export default function TransportationGetInTouch() {
         .transport-tech-card {
           position: relative;
 
-          min-height: 106px;
+          min-height: 100px;
 
           padding: 13px;
 
@@ -698,11 +693,11 @@ export default function TransportationGetInTouch() {
 
           color: #2f3237;
 
-          font-size: 11px;
+          font-size: 13px;
 
           line-height: 1.2;
 
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .transport-tech-card p {
@@ -710,7 +705,7 @@ export default function TransportationGetInTouch() {
 
           color: #777b82;
 
-          font-size: 9px;
+          font-size: 13px;
 
           line-height: 1.4;
         }

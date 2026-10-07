@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import image4 from "../../assets/image4.png";
 import image5 from "../../assets/image5.png";
@@ -104,7 +105,7 @@ function NavCareers() {
               {links.map((title) => (
                 <a
                   key={title}
-                  href="#"
+                  href={routeFor(title)}
                   className=" text-[15px]
                         md:text-[15px]
                         text-gray-800
@@ -151,7 +152,7 @@ function NavCareers() {
                 </div>
 
                 <a
-                  href="#"
+                  href="/careers"
                   className="mt-[10px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   READ MORE
@@ -187,7 +188,7 @@ function NavCareers() {
                 </div>
 
                 <a
-                  href="#"
+                  href="/careers"
                   className="mt-[10px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   READ MORE
