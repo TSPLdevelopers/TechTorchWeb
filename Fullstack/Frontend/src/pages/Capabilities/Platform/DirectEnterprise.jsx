@@ -105,13 +105,9 @@ export default function FinalCtaSection() {
             {/* ================= BOTTOM INFO BAR ================= */}
 
             <div className="final-cta-info-bar">
-              {/* Icon */}
-
               <div className="final-cta-info-icon">
                 <Building2 size={16} strokeWidth={2} />
               </div>
-
-              {/* Text */}
 
               <div className="final-cta-info-text">
                 <p className="final-cta-info-title">
@@ -122,8 +118,6 @@ export default function FinalCtaSection() {
                   Dedicated Enterprise Support
                 </p>
               </div>
-
-              {/* Available */}
 
               <span className="final-cta-available">
                 <span className="final-cta-available-dot" />
@@ -334,9 +328,9 @@ export default function FinalCtaSection() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 9px;
+          gap: 10px;
 
-          padding: 13px 21px;
+          padding: 15px 25px;
 
           border: none;
           border-radius: 6px;
@@ -345,7 +339,7 @@ export default function FinalCtaSection() {
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
           line-height: 1;
 
@@ -642,8 +636,8 @@ export default function FinalCtaSection() {
           }
 
           .final-cta-button {
-            padding: 12px 19px;
-            font-size: 12px;
+            padding: 13px 21px;
+            font-size: 12.5px;
           }
 
           .final-cta-image-card {
@@ -749,8 +743,8 @@ export default function FinalCtaSection() {
 
           .final-cta-button {
             gap: 7px;
-            padding: 11px 17px;
-            font-size: 11px;
+            padding: 12px 19px;
+            font-size: 11.5px;
           }
 
           .final-cta-button svg {

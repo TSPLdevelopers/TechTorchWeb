@@ -9,22 +9,21 @@ const {
 } = require("../controllers/insuranceIntakeController");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 // Public website
 router.post("/", createInsuranceIntake);
 
 // Admin APIs
-router.get("/", getInsuranceIntakes);
+router.get("/", authMiddleware, getInsuranceIntakes);
 
-router.get("/:id", getInsuranceIntakeById);
+router.get("/:id", authMiddleware, getInsuranceIntakeById);
 
-router.patch(
-  "/:id/status",
+router.patch("/:id/status", authMiddleware,
   updateInsuranceIntakeStatus
 );
 
-router.delete(
-  "/:id",
+router.delete("/:id", authMiddleware,
   deleteInsuranceIntake
 );
 

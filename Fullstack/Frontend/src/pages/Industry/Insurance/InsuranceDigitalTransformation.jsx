@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Lock,
   RefreshCw,
@@ -7,348 +7,349 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const WINE = "#7A1F3D";
-const MUTED = "#e3c3cf";
+const WINE = "#730042";
 
 const features = [
   {
     icon: Lock,
     title: "System Integration",
-    body:
-      "Connect applications and business systems to improve information flow across the organization.",
+    body: "Connect applications and business systems to improve information flow across the organization.",
   },
   {
     icon: RefreshCw,
     title: "Software Modernization",
-    body:
-      "Modernize existing applications and technology environments to support changing business needs.",
+    body: "Modernize existing applications and technology environments to support changing business needs.",
   },
   {
     icon: Cloud,
     title: "Cloud Infrastructure",
-    body:
-      "Build flexible infrastructure that supports scalability and evolving technology needs.",
+    body: "Build flexible infrastructure that supports scalability and evolving technology needs.",
   },
   {
     icon: ShieldCheck,
     title: "Cybersecurity",
-    body:
-      "Strengthen the protection of applications, systems and business information through security-focused solutions.",
+    body: "Strengthen the protection of applications, systems and business information through security-focused solutions.",
   },
 ];
 
 export default function ModernizeTechnologySection() {
+  const featuresRef = useRef(null);
+
+  useEffect(() => {
+    const grid = featuresRef.current;
+    if (!grid) return;
+
+    const cards = Array.from(
+      grid.querySelectorAll(".modernize-card-reveal")
+    );
+
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let observer;
+
+    const setupAnimation = () => {
+      observer?.disconnect();
+
+      if (
+        motionPreference.matches ||
+        !("IntersectionObserver" in window)
+      ) {
+        grid.classList.remove("reveal-enabled");
+        return;
+      }
+
+      cards.forEach((card) => card.classList.remove("is-visible"));
+      grid.classList.add("reveal-enabled");
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const enteringCards = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+              (a, b) =>
+                Number(a.target.dataset.index) -
+                Number(b.target.dataset.index)
+            );
+
+          enteringCards.forEach((entry, index) => {
+            entry.target.style.setProperty(
+              "--reveal-delay",
+              `${index * 200}ms`
+            );
+
+            entry.target.classList.add("is-visible");
+          });
+
+          // Reset off-screen cards to replay when they return.
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              entry.target.classList.remove("is-visible");
+              entry.target.style.setProperty("--reveal-delay", "0ms");
+            }
+          });
+        },
+        { threshold: 0 }
+      );
+
+      cards.forEach((card) => observer.observe(card));
+    };
+
+    setupAnimation();
+    motionPreference.addEventListener("change", setupAnimation);
+
+    return () => {
+      observer?.disconnect();
+      motionPreference.removeEventListener("change", setupAnimation);
+      grid.classList.remove("reveal-enabled");
+    };
+  }, []);
+
   return (
     <section className="modernize-technology-section">
       <style>{`
-        /* =====================================================
-           FONTS
-        ===================================================== */
-
-        @import url(
-          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
-        );
-
-
-        /* =====================================================
-           MAIN SECTION
-        ===================================================== */
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 
         .modernize-technology-section {
+          --modernize-wine: ${WINE};
+          --modernize-pink: #fce7f1;
+
           width: 100%;
-          background: ${WINE};
+          background: var(--modernize-wine);
           color: #ffffff;
           font-family: "Inter", sans-serif;
           overflow: hidden;
         }
 
-
-        /* =====================================================
-           CONTAINER
-           DESKTOP — 100px HORIZONTAL SPACING
-        ===================================================== */
+        .modernize-technology-section,
+        .modernize-technology-section *,
+        .modernize-technology-section *::before,
+        .modernize-technology-section *::after {
+          box-sizing: border-box;
+        }
 
         .modernize-technology-container {
           width: 100%;
           max-width: 1440px;
           margin: 0 auto;
           padding: 80px 100px;
-          box-sizing: border-box;
         }
-
-
-        /* =====================================================
-           MAIN GRID
-        ===================================================== */
 
         .modernize-technology-grid {
           display: grid;
           grid-template-columns:
             minmax(0, 0.95fr)
             minmax(0, 1.05fr);
-
           gap: 70px;
           align-items: center;
         }
-
-
-        /* =====================================================
-           LEFT CONTENT
-        ===================================================== */
 
         .modernize-content {
           min-width: 0;
           max-width: 570px;
         }
 
-
-        /* =====================================================
-           BADGE
-           INTER
-        ===================================================== */
-
         .modernize-badge {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-
           margin-bottom: 17px;
           padding: 6px 11px;
-
-          border-radius: 999px;
-
+          border-radius: 6px;
           background: rgba(255, 255, 255, 0.12);
           color: #f3d9e2;
-
-          font-family: "Inter", sans-serif;
           font-size: 9px;
           line-height: 1.3;
           font-weight: 700;
           letter-spacing: 0.06em;
         }
 
-
         .modernize-badge-dot {
           width: 6px;
           height: 6px;
-
           flex-shrink: 0;
-
           border-radius: 50%;
           background: #ffffff;
         }
 
-
-        /* =====================================================
-           MAIN HEADING
-           PLUS JAKARTA SANS
-        ===================================================== */
-
         .modernize-heading {
           margin: 0 0 18px;
-
           max-width: 570px;
-
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 38px;
           line-height: 1.16;
           font-weight: 700;
-
           letter-spacing: -0.8px;
-
           color: #ffffff;
         }
 
-
-        /* =====================================================
-           DESCRIPTION
-           PLUS JAKARTA SANS
-        ===================================================== */
-
         .modernize-description {
           margin: 0 0 13px;
-
           max-width: 570px;
-
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 14px;
           line-height: 1.72;
           font-weight: 500;
-
-          color: ${MUTED};
+          color: #e9c9db;
         }
-
 
         .modernize-description:last-of-type {
           margin-bottom: 26px;
         }
-
-
-        /* =====================================================
-           BUTTON
-           INTER
-        ===================================================== */
 
         .modernize-button {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 8px;
-
           min-height: 42px;
-
           padding: 0 20px;
-
           border: 1px solid #ffffff;
-          border-radius: 999px;
-
+          border-radius: 6px;
           background: #ffffff;
-          color: ${WINE};
-
+          color: var(--modernize-wine);
           font-family: "Inter", sans-serif;
-
           font-size: 10px;
           line-height: 1;
           font-weight: 700;
           letter-spacing: 0.05em;
-
           cursor: pointer;
-
           transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease;
+            transform 250ms ease,
+            box-shadow 250ms ease;
         }
-
 
         .modernize-button:hover {
           transform: translateY(-2px);
-
-          box-shadow:
-            0 8px 20px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
-
 
         .modernize-button:active {
           transform: translateY(0);
         }
 
-
-        /* =====================================================
-           FEATURES GRID
-        ===================================================== */
+        .modernize-button:focus-visible {
+          outline: 3px solid #f5bad9;
+          outline-offset: 4px;
+        }
 
         .modernize-features-grid {
           display: grid;
-
-          grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 18px;
-
           min-width: 0;
         }
 
+        /* Entrance wrapper keeps hover separate from the animation. */
+        .modernize-card-reveal {
+          display: flex;
+          min-width: 0;
+        }
 
-        /* =====================================================
-           FEATURE CARD
-           INTER
-        ===================================================== */
+        .modernize-features-grid.reveal-enabled
+        .modernize-card-reveal {
+          opacity: 0;
+          transform: translateY(36px) scale(0.96);
+        }
+
+        .modernize-features-grid.reveal-enabled
+        .modernize-card-reveal.is-visible {
+          animation: modernize-card-open
+            650ms
+            cubic-bezier(0.22, 1, 0.36, 1)
+            var(--reveal-delay, 0ms)
+            both;
+        }
+
+        @keyframes modernize-card-open {
+          from {
+            opacity: 0;
+            transform: translateY(36px) scale(0.96);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
 
         .modernize-feature-card {
+          width: 100%;
           min-width: 0;
-
           padding: 23px;
-
           border-radius: 13px;
-
           background: rgba(255, 255, 255, 0.08);
-
           border: 1px solid rgba(255, 255, 255, 0.12);
-
-          box-sizing: border-box;
-
           transition:
-            transform 0.25s ease,
-            background 0.25s ease,
-            border-color 0.25s ease;
+            transform 300ms ease,
+            background-color 300ms ease,
+            border-color 300ms ease,
+            box-shadow 300ms ease;
         }
-
-
-        .modernize-feature-card:hover {
-          transform: translateY(-3px);
-
-          background: rgba(255, 255, 255, 0.11);
-
-          border-color: rgba(255, 255, 255, 0.2);
-        }
-
-
-        /* =====================================================
-           FEATURE ICON
-        ===================================================== */
 
         .modernize-feature-icon {
           width: 38px;
           height: 38px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           margin-bottom: 15px;
-
           border-radius: 9px;
-
           background: rgba(255, 255, 255, 0.14);
-
           color: #ffffff;
+          transition:
+            background-color 300ms ease,
+            color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease;
         }
-
-
-        /* =====================================================
-           FEATURE TITLE
-           INTER
-        ===================================================== */
 
         .modernize-feature-title {
           margin: 0 0 7px;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 13px;
           line-height: 1.45;
           font-weight: 700;
-
           color: #ffffff;
+          transition: color 300ms ease;
         }
-
-
-        /* =====================================================
-           FEATURE BODY
-           INTER
-        ===================================================== */
 
         .modernize-feature-body {
           margin: 0;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 11px;
           line-height: 1.65;
           font-weight: 400;
-
-          color: #d9b7c4;
+          color: #e6bfd5;
+          transition: color 300ms ease;
         }
 
+        /* Light pink cards and highlighted icons on hover. */
+        @media (hover: hover) {
+          .modernize-feature-card:hover {
+            transform: translateY(-6px);
+            background: var(--modernize-pink);
+            border-color: #f3bbd6;
+            box-shadow: 0 16px 30px rgba(40, 0, 24, 0.22);
+          }
 
-        /* =====================================================
-           TABLET — 40px HORIZONTAL SPACING
-        ===================================================== */
+          .modernize-feature-card:hover .modernize-feature-icon {
+            background: var(--modernize-wine);
+            color: #ffffff;
+            transform: scale(1.1);
+            box-shadow:
+              0 0 0 4px rgba(115, 0, 66, 0.08),
+              0 7px 16px rgba(115, 0, 66, 0.2);
+          }
+
+          .modernize-feature-card:hover .modernize-feature-title {
+            color: var(--modernize-wine);
+          }
+
+          .modernize-feature-card:hover .modernize-feature-body {
+            color: #68344f;
+          }
+        }
 
         @media (max-width: 1200px) {
-
           .modernize-technology-container {
             padding: 72px 40px;
           }
@@ -370,13 +371,7 @@ export default function ModernizeTechnologySection() {
           }
         }
 
-
-        /* =====================================================
-           TABLET STACK — 40px HORIZONTAL SPACING
-        ===================================================== */
-
         @media (max-width: 900px) {
-
           .modernize-technology-container {
             padding: 64px 40px;
           }
@@ -405,13 +400,7 @@ export default function ModernizeTechnologySection() {
           }
         }
 
-
-        /* =====================================================
-           SMALL TABLET — 40px HORIZONTAL SPACING
-        ===================================================== */
-
         @media (max-width: 767px) {
-
           .modernize-technology-container {
             padding: 56px 40px;
           }
@@ -433,13 +422,7 @@ export default function ModernizeTechnologySection() {
           }
         }
 
-
-        /* =====================================================
-           MOBILE — 24px HORIZONTAL SPACING
-        ===================================================== */
-
         @media (max-width: 600px) {
-
           .modernize-technology-container {
             padding: 50px 24px;
           }
@@ -461,7 +444,6 @@ export default function ModernizeTechnologySection() {
 
           .modernize-heading {
             margin-bottom: 15px;
-
             font-size: 29px;
             line-height: 1.18;
             letter-spacing: -0.5px;
@@ -484,9 +466,8 @@ export default function ModernizeTechnologySection() {
           }
 
           .modernize-features-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 13px;
-            width: 100%;
           }
 
           .modernize-feature-card {
@@ -507,24 +488,16 @@ export default function ModernizeTechnologySection() {
 
           .modernize-feature-body {
             font-size: 11.5px;
-            line-height: 1.65;
           }
         }
 
-
-        /* =====================================================
-           SMALL MOBILE — 16px HORIZONTAL SPACING
-        ===================================================== */
-
         @media (max-width: 480px) {
-
           .modernize-technology-container {
             padding: 44px 16px;
           }
 
           .modernize-heading {
             font-size: 26px;
-            line-height: 1.18;
           }
 
           .modernize-description {
@@ -551,13 +524,7 @@ export default function ModernizeTechnologySection() {
           }
         }
 
-
-        /* =====================================================
-           VERY SMALL MOBILE — 16px HORIZONTAL SPACING
-        ===================================================== */
-
         @media (max-width: 340px) {
-
           .modernize-technology-container {
             padding: 38px 16px;
           }
@@ -579,62 +546,44 @@ export default function ModernizeTechnologySection() {
           }
         }
 
-
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
         @media (prefers-reduced-motion: reduce) {
+          .modernize-features-grid.reveal-enabled
+          .modernize-card-reveal,
+          .modernize-features-grid.reveal-enabled
+          .modernize-card-reveal.is-visible {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
 
           .modernize-button,
-          .modernize-feature-card {
+          .modernize-feature-card,
+          .modernize-feature-icon,
+          .modernize-feature-title,
+          .modernize-feature-body {
             transition: none;
           }
+
+          .modernize-button:hover,
+          .modernize-feature-card:hover,
+          .modernize-feature-card:hover .modernize-feature-icon {
+            transform: none;
+          }
         }
-
-
-        /* =====================================================
-           BOX SIZING SAFETY
-        ===================================================== */
-
-        .modernize-technology-section *,
-        .modernize-technology-section *::before,
-        .modernize-technology-section *::after {
-          box-sizing: border-box;
-        }
-
       `}</style>
 
-      {/* =====================================================
-          MAIN CONTAINER
-      ===================================================== */}
-
       <div className="modernize-technology-container">
-
         <div className="modernize-technology-grid">
-
-          {/* =================================================
-              LEFT CONTENT
-          ================================================= */}
-
+          {/* Left content */}
           <div className="modernize-content">
-
-            {/* BADGE */}
-
             <span className="modernize-badge">
               <span className="modernize-badge-dot" />
               DIGITAL TRANSFORMATION
             </span>
 
-
-            {/* MAIN HEADING */}
-
             <h2 className="modernize-heading">
               Modernize Technology Around Your Business
             </h2>
-
-
-            {/* DESCRIPTION */}
 
             <p className="modernize-description">
               Digital transformation should address real business
@@ -648,76 +597,41 @@ export default function ModernizeTechnologySection() {
               long-term requirements.
             </p>
 
-
-            {/* BUTTON */}
-
-            <button
-              type="button"
-              className="modernize-button"
-            >
+            <button type="button" className="modernize-button">
               EXPLORE OUR SOLUTIONS
-
-              <ArrowRight
-                size={14}
-                strokeWidth={1.8}
-              />
+              <ArrowRight size={14} strokeWidth={1.8} />
             </button>
-
           </div>
 
-
-          {/* =================================================
-              RIGHT FEATURES
-          ================================================= */}
-
-          <div className="modernize-features-grid">
-
-            {features.map(
-              ({
-                icon: Icon,
-                title,
-                body,
-              }) => (
-                <div
-                  key={title}
-                  className="modernize-feature-card"
-                >
-
-                  {/* ICON */}
-
+          {/* Right cards */}
+          <div
+            ref={featuresRef}
+            className="modernize-features-grid"
+          >
+            {features.map(({ icon: Icon, title, body }, index) => (
+              <div
+                key={title}
+                data-index={index}
+                className="modernize-card-reveal"
+              >
+                <article className="modernize-feature-card">
                   <span className="modernize-feature-icon">
-
-                    <Icon
-                      size={16}
-                      strokeWidth={1.8}
-                    />
-
+                    <Icon size={16} strokeWidth={1.8} />
                   </span>
-
-
-                  {/* FEATURE TITLE */}
 
                   <h3 className="modernize-feature-title">
                     {title}
                   </h3>
 
-
-                  {/* FEATURE BODY */}
-
                   <p className="modernize-feature-body">
                     {body}
                   </p>
-
-                </div>
-              )
-            )}
-
+                </article>
+              </div>
+            ))}
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }

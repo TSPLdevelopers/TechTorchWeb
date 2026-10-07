@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import image2 from "../../assets/image2.png";
 import image3 from "../../assets/image3.png";
@@ -67,30 +68,14 @@ function NavInsights() {
       onMouseLeave={closeMenu}
     >
       <span
-       className="
-    relative inline-flex items-center h-full
-    font-inter cursor-pointer
-    text-[17px] text-gray-900
-    hover:text-[#730042]
-    transition-colors duration-300
-
-    after:content-['']
-    after:absolute
-    after:left-0
-    after:-bottom-[1px]
-    after:w-full
-    after:h-[1px]
-    after:bg-[#730042]
-
-    after:translate-y-[5px]
-    after:opacity-0
-    after:transition-all
-    after:duration-500
-    after:ease-out
-
-    hover:after:translate-y-0
-    hover:after:opacity-100
-  "
+        className="relative inline-flex items-center h-full cursor-pointer text-[17px] 
+        text-gray-900 hover:text-[#8a1538] 
+        transition-colors duration-200 
+        after:absolute after:left-0 after:bottom-0 
+        after:h-[2px] after:w-0 
+        after:bg-[#8a1538] 
+        after:transition-all after:duration-200 
+        hover:after:w-full"
       >
         Insights
       </span>
@@ -123,13 +108,13 @@ function NavInsights() {
               {links.map((title) => (
                 <a
                   key={title}
-                  href="#"
+                  href={routeFor(title)}
                   className="text-[15px]
                         md:text-[15px]
                         text-gray-800
                         font-inter
                         leading-[1.35]
-                        hover:text-[#970052]
+                        hover:text-[#8a1538]
                         transition-colors
                         duration-200"
                 >
@@ -151,12 +136,12 @@ function NavInsights() {
               />
 
               <div className="absolute inset-0 p-4 flex flex-col justify-between text-white">
-                <span className="text-[15px] font-plus-jakarta">
+                <span className="text-[16px] font-plus-jakarta">
                   LATEST UPDATE
                 </span>
 
                 <div>
-                  <p className="text-[15px] font-inter ">
+                  <p className="text-[16px] font-inter  ">
                     TorchX Suite: Bringing
                     <br />
                     Business Operations
@@ -165,8 +150,8 @@ function NavInsights() {
                   </p>
 
                   <a
-                    href="#"
-                    className="inline-block mt-[20px] text-[15px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
+                    href="/field-note"
+                    className="inline-block mt-[20px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                   >
                     READ MORE →
                   </a>
@@ -183,13 +168,13 @@ function NavInsights() {
               />
 
               <div className="absolute inset-0 p-4 flex flex-col justify-between text-white">
-                <span className="text-[15px] font-plus-jakarta">
+                <span className="text-[16px] font-plus-jakarta">
                   UPCOMING EVENT
                 </span>
 
                 <a
-                  href="#"
-                  className="text-[15px] font-inter text-white hover:text-gray-300 transition-colors"
+                  href="/think-ahead"
+                  className="text-[16px] font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   VIEW EVENT →
                 </a>

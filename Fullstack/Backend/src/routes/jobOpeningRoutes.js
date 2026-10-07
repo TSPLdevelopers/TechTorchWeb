@@ -10,15 +10,16 @@ const {
 
 const router = express.Router();
 const authMiddleware = require("../middlewares/auth.middleware");
+const { optionalAuth } = authMiddleware;
 
 // Create Job
 router.post("/", authMiddleware, createJobOpening);
 
 // Get All Jobs
-router.get("/", getAllJobOpenings);
+router.get("/", optionalAuth, getAllJobOpenings);
 
 // Get Job By ID
-router.get("/:id", getJobOpeningById);
+router.get("/:id", optionalAuth, getJobOpeningById);
 
 // Update Job
 router.put("/:id", authMiddleware, updateJobOpening);

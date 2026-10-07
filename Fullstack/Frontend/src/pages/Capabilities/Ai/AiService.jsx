@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Network,
   ShieldCheck,
@@ -228,7 +229,7 @@ export default function AIServiceHero() {
           padding: 12px 24px;
 
           border: none;
-          border-radius: 999px;
+          border-radius: 6px;
 
           background: #ffffff;
 
@@ -243,12 +244,14 @@ export default function AIServiceHero() {
           transition:
             transform 0.3s ease,
             background-color 0.3s ease,
+            color 0.3s ease,
             box-shadow 0.3s ease;
         }
 
         .ai-service-cta:hover {
           transform: translateY(-2px);
-          background: #fff1f2;
+          background: #730042;
+          color: #ffffff;
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 

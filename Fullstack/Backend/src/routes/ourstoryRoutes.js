@@ -9,20 +9,21 @@ const {
 } = require("../controllers/ourstoryController");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 // Create inquiry
 router.post("/", createOurStory);
 
 // Get all inquiries
-router.get("/", getOurStories);
+router.get("/", authMiddleware, getOurStories);
 
 // Get single inquiry
-router.get("/:id", getOurStoryById);
+router.get("/:id", authMiddleware, getOurStoryById);
 
 // Update status
-router.patch("/:id/status", updateOurStoryStatus);
+router.patch("/:id/status", authMiddleware, updateOurStoryStatus);
 
 // Delete inquiry
-router.delete("/:id", deleteOurStory);
+router.delete("/:id", authMiddleware, deleteOurStory);
 
 module.exports = router;

@@ -23,7 +23,7 @@ const createJobOpening = async (req, res) => {
 // GET ALL JOBS
 const getAllJobOpenings = async (req, res) => {
   try {
-    const jobs = await JobOpening.find().sort({
+    const jobs = await JobOpening.find(req.admin ? {} : { status: { $ne: "Draft / Unlisted" } }).sort({
       createdAt: -1,
     });
 
@@ -45,6 +45,9 @@ const getAllJobOpenings = async (req, res) => {
 const getJobOpeningById = async (req, res) => {
   try {
     const job = await JobOpening.findById(req.params.id);
+    if (job && !req.admin && job.status === "Draft / Unlisted") {
+      return res.status(404).json({ success: false, message: "Job opening not found" });
+    }
 
     if (!job) {
       return res.status(404).json({

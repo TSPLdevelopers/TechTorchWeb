@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Users,
   FileText,
@@ -8,16 +8,13 @@ import {
   Cloud,
 } from "lucide-react";
 
-const WINE = "#7A1F3D";
-const INK = "#1B1B2A";
-const MUTED = "#5b5a63";
+const WINE = "#730042";
 
 const solutions = [
   {
     icon: Users,
     title: "Customer Relationship Management",
-    body:
-      "Manage customer information and interactions through a structured digital environment that supports consistent relationship management.",
+    body: "Manage customer information and interactions through a structured digital environment that supports consistent relationship management.",
     bullets: [
       "Customer Information",
       "Relationship Management",
@@ -28,8 +25,7 @@ const solutions = [
   {
     icon: FileText,
     title: "Financial Management",
-    body:
-      "Improve control and visibility across financial activities with connected systems for managing information, transactions and reporting.",
+    body: "Improve control and visibility across financial activities with connected systems for managing information, transactions and reporting.",
     bullets: [
       "Financial Operations",
       "Transaction Management",
@@ -40,8 +36,7 @@ const solutions = [
   {
     icon: CreditCard,
     title: "Payment Management",
-    body:
-      "Support payment-related operations with digital processes that provide better organization, visibility and control over transactions.",
+    body: "Support payment-related operations with digital processes that provide better organization, visibility and control over transactions.",
     bullets: [
       "Payment Processing",
       "Transaction Management",
@@ -52,8 +47,7 @@ const solutions = [
   {
     icon: Briefcase,
     title: "Enterprise Resource Planning",
-    body:
-      "Connect core business functions through an integrated technology environment that supports centralized information and coordinated operations.",
+    body: "Connect core business functions through an integrated technology environment that supports centralized information and coordinated operations.",
     bullets: [
       "Process Integration",
       "Centralized Data",
@@ -64,8 +58,7 @@ const solutions = [
   {
     icon: Code2,
     title: "Software Development",
-    body:
-      "Develop and modernize digital applications according to your organization's specific business and technology requirements.",
+    body: "Develop and modernize digital applications according to your organization's specific business and technology requirements.",
     bullets: [
       "Custom Software",
       "Web Applications",
@@ -76,8 +69,7 @@ const solutions = [
   {
     icon: Cloud,
     title: "Cloud & Cybersecurity",
-    body:
-      "Establish a reliable technology foundation with scalable infrastructure and security-focused solutions for your digital environment.",
+    body: "Establish a reliable technology foundation with scalable infrastructure and security-focused solutions for your digital environment.",
     bullets: [
       "Cloud Infrastructure",
       "Cybersecurity",
@@ -88,27 +80,99 @@ const solutions = [
 ];
 
 export default function InsuranceSolutionsGridSection() {
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cards = Array.from(
+      grid.querySelectorAll(".insurance-card-reveal")
+    );
+
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let observer;
+
+    function setupAnimation() {
+      observer?.disconnect();
+
+      if (
+        motionPreference.matches ||
+        !("IntersectionObserver" in window)
+      ) {
+        grid.classList.remove("reveal-enabled");
+        return;
+      }
+
+      cards.forEach((card) => {
+        card.classList.remove("is-visible");
+      });
+
+      grid.classList.add("reveal-enabled");
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          // Stagger cards entering together in their original order.
+          const enteringCards = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+              (a, b) =>
+                Number(a.target.dataset.index) -
+                Number(b.target.dataset.index)
+            );
+
+          enteringCards.forEach((entry, index) => {
+            entry.target.style.setProperty(
+              "--reveal-delay",
+              `${index * 160}ms`
+            );
+
+            entry.target.classList.add("is-visible");
+          });
+
+          // Reset off-screen cards so their animation can replay.
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              entry.target.classList.remove("is-visible");
+              entry.target.style.setProperty("--reveal-delay", "0ms");
+            }
+          });
+        },
+        { threshold: 0 }
+      );
+
+      cards.forEach((card) => observer.observe(card));
+    }
+
+    setupAnimation();
+    motionPreference.addEventListener("change", setupAnimation);
+
+    return () => {
+      observer?.disconnect();
+      motionPreference.removeEventListener("change", setupAnimation);
+      grid.classList.remove("reveal-enabled");
+    };
+  }, []);
+
   return (
     <section className="insurance-solutions-section">
       <style>{`
-        @import url(
-          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
-        );
-
-        /* =====================================================
-           MAIN SECTION
-        ===================================================== */
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 
         .insurance-solutions-section {
+          --wine: ${WINE};
+          --light-pink: #fce7f1;
+          --ink: #1b1b2a;
+          --muted: #5b5a63;
+
           width: 100%;
-
           background: #f5f2ec;
-          color: ${INK};
-
+          color: var(--ink);
           font-family: "Inter", sans-serif;
-
           overflow: hidden;
-
           box-sizing: border-box;
         }
 
@@ -118,272 +182,182 @@ export default function InsuranceSolutionsGridSection() {
           box-sizing: border-box;
         }
 
-        /* =====================================================
-           CONTAINER
-           DESKTOP — 100px
-        ===================================================== */
-
         .insurance-solutions-container {
           width: 100%;
           max-width: 1440px;
-
           margin: 0 auto;
-
           padding: 80px 100px;
         }
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
-
         .insurance-solutions-header {
           display: grid;
-
-          grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
-
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 72px;
-
           align-items: start;
-
           margin-bottom: 56px;
         }
 
-        .insurance-solutions-header-left {
+        .insurance-solutions-header-left,
+        .insurance-solutions-header-right {
           min-width: 0;
-
           max-width: 620px;
         }
 
         .insurance-solutions-header-right {
-          min-width: 0;
-
-          max-width: 620px;
-
           padding-top: 8px;
         }
 
-        /* =====================================================
-           BADGE
-           INTER
-        ===================================================== */
-
         .insurance-solutions-badge {
           display: inline-flex;
-
           align-items: center;
-
           gap: 7px;
-
           margin-bottom: 18px;
-
           padding: 6px 11px;
-
           border-radius: 999px;
-
-          background: #fbeef1;
-
-          color: ${WINE};
-
-          font-family: "Inter", sans-serif;
-
+          background: var(--light-pink);
+          color: var(--wine);
           font-size: 9px;
           line-height: 1.3;
           font-weight: 700;
-
           letter-spacing: 0.06em;
         }
 
         .insurance-solutions-badge-dot {
           width: 6px;
           height: 6px;
-
           flex-shrink: 0;
-
           border-radius: 50%;
-
-          background: ${WINE};
+          background: var(--wine);
         }
-
-        /* =====================================================
-           MAIN HEADING
-           PLUS JAKARTA SANS
-        ===================================================== */
 
         .insurance-solutions-heading {
           max-width: 620px;
-
           margin: 0;
-
-          color: ${INK};
-
+          color: var(--ink);
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 40px;
           line-height: 1.16;
           font-weight: 700;
-
           letter-spacing: -0.8px;
         }
 
-        /* =====================================================
-           SUBHEADING
-           PLUS JAKARTA SANS
-        ===================================================== */
-
         .insurance-solutions-subheading {
           max-width: 620px;
-
           margin: 0;
-
-          color: ${MUTED};
-
+          color: var(--muted);
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 14px;
           line-height: 1.75;
           font-weight: 500;
         }
 
-        /* =====================================================
-           CARDS GRID
-        ===================================================== */
-
         .insurance-solutions-grid {
           width: 100%;
-
           display: grid;
-
-          grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-
+          grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 18px;
         }
 
-        /* =====================================================
-           CARD
-        ===================================================== */
+        /* Separate entrance animation from card hover. */
+        .insurance-card-reveal {
+          display: flex;
+          min-width: 0;
+        }
+
+        .insurance-solutions-grid.reveal-enabled
+        .insurance-card-reveal {
+          opacity: 0;
+          transform: translateY(36px) scale(0.96);
+        }
+
+        .insurance-solutions-grid.reveal-enabled
+        .insurance-card-reveal.is-visible {
+          animation: insurance-card-open
+            650ms
+            cubic-bezier(0.22, 1, 0.36, 1)
+            var(--reveal-delay, 0ms)
+            both;
+        }
+
+        @keyframes insurance-card-open {
+          from {
+            opacity: 0;
+            transform: translateY(36px) scale(0.96);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
 
         .insurance-solution-card {
           position: relative;
-
+          display: flex;
+          flex-direction: column;
+          width: 100%;
           min-width: 0;
-
           padding: 24px;
-
           background: #ffffff;
-
           border: 1px solid rgba(27, 27, 42, 0.05);
-
           border-radius: 13px;
-
-          box-shadow:
-            0 1px 3px rgba(0, 0, 0, 0.05);
-
-          overflow: hidden;
-
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
           transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease,
-            border-color 0.25s ease;
+            background-color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease,
+            border-color 300ms ease;
         }
-
-        .insurance-solution-card:hover {
-          transform: translateY(-4px);
-
-          border-color: rgba(122, 31, 61, 0.1);
-
-          box-shadow:
-            0 12px 28px rgba(27, 27, 42, 0.08);
-        }
-
-        /* =====================================================
-           CARD ICON
-           INTER
-        ===================================================== */
 
         .insurance-solution-icon {
           width: 40px;
           height: 40px;
-
+          flex-shrink: 0;
           display: flex;
-
           align-items: center;
           justify-content: center;
-
           margin-bottom: 17px;
-
           border-radius: 9px;
-
-          background: #fbeef1;
-
-          color: ${WINE};
+          background: #fbeef5;
+          color: var(--wine);
+          transition:
+            background-color 300ms ease,
+            color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease;
         }
-
-        /* =====================================================
-           CARD TITLE
-           PLUS JAKARTA SANS
-        ===================================================== */
 
         .insurance-solution-title {
           margin: 0 0 9px;
-
-          color: ${INK};
-
+          color: var(--ink);
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 14px;
           line-height: 1.45;
           font-weight: 700;
+          transition: color 300ms ease;
         }
-
-        /* =====================================================
-           CARD BODY
-           INTER
-        ===================================================== */
 
         .insurance-solution-body {
           margin: 0 0 17px;
-
-          color: ${MUTED};
-
-          font-family: "Inter", sans-serif;
-
+          color: var(--muted);
           font-size: 11.5px;
           line-height: 1.7;
           font-weight: 400;
         }
 
-        /* =====================================================
-           BULLETS
-           INTER
-        ===================================================== */
-
         .insurance-solution-list {
           display: flex;
-
           flex-direction: column;
-
           gap: 7px;
-
-          margin: 0;
+          margin: auto 0 0;
           padding: 0;
-
           list-style: none;
         }
 
         .insurance-solution-list-item {
           display: flex;
-
           align-items: flex-start;
-
           gap: 8px;
-
-          color: ${INK};
-
-          font-family: "Inter", sans-serif;
-
+          color: var(--ink);
           font-size: 11px;
           line-height: 1.5;
           font-weight: 500;
@@ -392,32 +366,41 @@ export default function InsuranceSolutionsGridSection() {
         .insurance-solution-list-dot {
           width: 5px;
           height: 5px;
-
           flex-shrink: 0;
-
           margin-top: 5px;
-
           border-radius: 50%;
-
-          background: ${WINE};
+          background: var(--wine);
         }
 
-        /* =====================================================
-           LARGE TABLET — 40px
-        ===================================================== */
+        @media (hover: hover) {
+          .insurance-solution-card:hover {
+            background: var(--light-pink);
+            transform: translateY(-6px);
+            border-color: rgba(115, 0, 66, 0.2);
+            box-shadow: 0 14px 30px rgba(115, 0, 66, 0.12);
+          }
+
+          .insurance-solution-card:hover .insurance-solution-icon {
+            background: var(--wine);
+            color: #ffffff;
+            transform: scale(1.1);
+            box-shadow:
+              0 0 0 5px rgba(115, 0, 66, 0.07),
+              0 8px 18px rgba(115, 0, 66, 0.2);
+          }
+
+          .insurance-solution-card:hover .insurance-solution-title {
+            color: var(--wine);
+          }
+        }
 
         @media (max-width: 1200px) {
           .insurance-solutions-container {
-            padding-left: 40px;
-            padding-right: 40px;
-
-            padding-top: 72px;
-            padding-bottom: 72px;
+            padding: 72px 40px;
           }
 
           .insurance-solutions-header {
             gap: 50px;
-
             margin-bottom: 50px;
           }
 
@@ -438,24 +421,14 @@ export default function InsuranceSolutionsGridSection() {
           }
         }
 
-        /* =====================================================
-           TABLET — 40px
-        ===================================================== */
-
         @media (max-width: 900px) {
           .insurance-solutions-container {
-            padding-left: 40px;
-            padding-right: 40px;
-
-            padding-top: 62px;
-            padding-bottom: 62px;
+            padding: 62px 40px;
           }
 
           .insurance-solutions-header {
             grid-template-columns: 1fr;
-
             gap: 18px;
-
             margin-bottom: 40px;
           }
 
@@ -474,42 +447,27 @@ export default function InsuranceSolutionsGridSection() {
 
           .insurance-solutions-subheading {
             font-size: 13px;
-
             line-height: 1.7;
           }
 
           .insurance-solutions-grid {
-            grid-template-columns:
-              repeat(2, minmax(0, 1fr));
-
-            gap: 16px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
 
-        /* =====================================================
-           MOBILE — 24px
-        ===================================================== */
-
         @media (max-width: 600px) {
           .insurance-solutions-container {
-            padding-left: 24px;
-            padding-right: 24px;
-
-            padding-top: 50px;
-            padding-bottom: 50px;
+            padding: 50px 24px;
           }
 
           .insurance-solutions-header {
             gap: 16px;
-
             margin-bottom: 32px;
           }
 
           .insurance-solutions-badge {
             margin-bottom: 14px;
-
             padding: 5px 10px;
-
             font-size: 8px;
           }
 
@@ -520,48 +478,39 @@ export default function InsuranceSolutionsGridSection() {
 
           .insurance-solutions-heading {
             font-size: 29px;
-
             line-height: 1.18;
-
             letter-spacing: -0.5px;
           }
 
           .insurance-solutions-subheading {
             font-size: 12px;
-
             line-height: 1.7;
           }
 
           .insurance-solutions-grid {
-            grid-template-columns: 1fr;
-
+            grid-template-columns: minmax(0, 1fr);
             gap: 13px;
           }
 
           .insurance-solution-card {
             padding: 19px;
-
             border-radius: 12px;
           }
 
           .insurance-solution-icon {
             width: 37px;
             height: 37px;
-
             margin-bottom: 14px;
           }
 
           .insurance-solution-title {
             font-size: 13px;
-
             margin-bottom: 7px;
           }
 
           .insurance-solution-body {
             font-size: 11px;
-
             line-height: 1.68;
-
             margin-bottom: 15px;
           }
 
@@ -574,28 +523,17 @@ export default function InsuranceSolutionsGridSection() {
           }
         }
 
-        /* =====================================================
-           SMALL MOBILE — 16px
-        ===================================================== */
-
         @media (max-width: 400px) {
           .insurance-solutions-container {
-            padding-left: 16px;
-            padding-right: 16px;
-
-            padding-top: 42px;
-            padding-bottom: 42px;
+            padding: 42px 16px;
           }
 
           .insurance-solutions-heading {
             font-size: 26px;
-
-            line-height: 1.18;
           }
 
           .insurance-solutions-subheading {
             font-size: 11.5px;
-
             line-height: 1.68;
           }
 
@@ -616,17 +554,9 @@ export default function InsuranceSolutionsGridSection() {
           }
         }
 
-        /* =====================================================
-           VERY SMALL MOBILE — 16px
-        ===================================================== */
-
         @media (max-width: 340px) {
           .insurance-solutions-container {
-            padding-left: 16px;
-            padding-right: 16px;
-
-            padding-top: 36px;
-            padding-bottom: 36px;
+            padding: 36px 16px;
           }
 
           .insurance-solutions-heading {
@@ -650,124 +580,83 @@ export default function InsuranceSolutionsGridSection() {
           }
         }
 
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
         @media (prefers-reduced-motion: reduce) {
-          .insurance-solution-card {
+          .insurance-solutions-grid.reveal-enabled
+          .insurance-card-reveal,
+          .insurance-solutions-grid.reveal-enabled
+          .insurance-card-reveal.is-visible {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
+
+          .insurance-solution-card,
+          .insurance-solution-icon,
+          .insurance-solution-title {
             transition: none;
+          }
+
+          .insurance-solution-card:hover,
+          .insurance-solution-card:hover .insurance-solution-icon {
+            transform: none;
           }
         }
       `}</style>
 
-      {/* =====================================================
-          MAIN CONTAINER
-      ===================================================== */}
-
       <div className="insurance-solutions-container">
-
-        {/* =================================================
-            HEADER
-        ================================================= */}
-
         <div className="insurance-solutions-header">
-
-          {/* LEFT */}
-
           <div className="insurance-solutions-header-left">
-
             <span className="insurance-solutions-badge">
               <span className="insurance-solutions-badge-dot" />
-
               INSURANCE SOLUTIONS
             </span>
 
             <h2 className="insurance-solutions-heading">
               Connected Technology for Insurance Businesses
             </h2>
-
           </div>
 
-          {/* RIGHT */}
-
           <div className="insurance-solutions-header-right">
-
             <p className="insurance-solutions-subheading">
               Technology should support the way your organization operates.
               TechTorch helps bring essential business functions, information
               and digital systems together through solutions designed around
               specific operational requirements.
             </p>
-
           </div>
-
         </div>
 
-        {/* =================================================
-            SOLUTIONS CARDS
-        ================================================= */}
-
-        <div className="insurance-solutions-grid">
-
-          {solutions.map(
-            ({
-              icon: Icon,
-              title,
-              body,
-              bullets,
-            }) => (
-              <div
-                key={title}
-                className="insurance-solution-card"
-              >
-
-                {/* ICON */}
-
+        <div ref={gridRef} className="insurance-solutions-grid">
+          {solutions.map(({ icon: Icon, title, body, bullets }, index) => (
+            <div
+              key={title}
+              data-index={index}
+              className="insurance-card-reveal"
+            >
+              <article className="insurance-solution-card">
                 <span className="insurance-solution-icon">
-                  <Icon
-                    size={18}
-                    strokeWidth={1.8}
-                  />
+                  <Icon size={18} strokeWidth={1.8} />
                 </span>
 
-                {/* TITLE */}
+                <h3 className="insurance-solution-title">{title}</h3>
 
-                <h3 className="insurance-solution-title">
-                  {title}
-                </h3>
-
-                {/* BODY */}
-
-                <p className="insurance-solution-body">
-                  {body}
-                </p>
-
-                {/* BULLETS */}
+                <p className="insurance-solution-body">{body}</p>
 
                 <ul className="insurance-solution-list">
-
                   {bullets.map((bullet) => (
                     <li
                       key={bullet}
                       className="insurance-solution-list-item"
                     >
                       <span className="insurance-solution-list-dot" />
-
-                      <span>
-                        {bullet}
-                      </span>
+                      <span>{bullet}</span>
                     </li>
                   ))}
-
                 </ul>
-
-              </div>
-            )
-          )}
-
+              </article>
+            </div>
+          ))}
         </div>
-
       </div>
     </section>
   );

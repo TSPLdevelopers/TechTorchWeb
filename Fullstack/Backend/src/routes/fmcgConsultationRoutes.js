@@ -11,6 +11,7 @@ const {
 );
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 
 // Public website
@@ -18,20 +19,17 @@ router.post("/", createFmcgConsultation);
 
 
 // Admin Dashboard
-router.get("/", getFmcgConsultations);
+router.get("/", authMiddleware, getFmcgConsultations);
 
-router.get(
-  "/:id",
+router.get("/:id", authMiddleware,
   getFmcgConsultationById
 );
 
-router.patch(
-  "/:id/status",
+router.patch("/:id/status", authMiddleware,
   updateFmcgConsultationStatus
 );
 
-router.delete(
-  "/:id",
+router.delete("/:id", authMiddleware,
   deleteFmcgConsultation
 );
 

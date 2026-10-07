@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 
 const industries = [
@@ -71,30 +72,12 @@ function NavIndustries() {
       onMouseLeave={closeMenu}
     >
       <span
-       className="
-    relative inline-flex items-center h-full
-    font-inter cursor-pointer
-    text-[17px] text-gray-900
-    hover:text-[#730042]
-    transition-colors duration-300
-
-    after:content-['']
-    after:absolute
-    after:left-0
-    after:-bottom-[1px]
-    after:w-full
-    after:h-[1px]
-    after:bg-[#730042]
-
-    after:translate-y-[5px]
-    after:opacity-0
-    after:transition-all
-    after:duration-500
-    after:ease-out
-
-    hover:after:translate-y-0
-    hover:after:opacity-100
-  "
+        className={`relative inline-flex items-center h-full cursor-pointer
+          text-[17px] transition-colors
+          ${isOpen ? "text-[#8a1538]" : "text-gray-900"}
+          after:absolute after:left-0 after:bottom-0 after:h-[2px]
+          after:bg-[#8a1538] after:transition-all
+          ${isOpen ? "after:w-full" : "after:w-0"}`}
       >
         Industries
       </span>
@@ -133,13 +116,13 @@ function NavIndustries() {
               {industries.map((industry) => (
                 <a
                   key={industry}
-                  href="#"
+                  href={routeFor(industry)}
                   className="text-[15px]
                     md:text-[15px]
                     text-gray-800
                     font-inter
                     leading-[1.35]
-                    hover:text-[#970052]
+                    hover:text-[#8a1538]
                     transition-colors
                     duration-200"
                 >

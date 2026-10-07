@@ -19,6 +19,8 @@ const createGeneralEnquiry = async (req, res) => {
       requirement,
       preferredContactMethod,
       contactConsent,
+      projectStage,
+      timeline,
     } = req.body;
 
     // Required fields
@@ -53,6 +55,8 @@ const createGeneralEnquiry = async (req, res) => {
       requirement: requirement || "",
       preferredContactMethod,
       contactConsent,
+      projectStage: projectStage || "",
+      timeline: timeline || "",
     });
 
     return res.status(201).json({

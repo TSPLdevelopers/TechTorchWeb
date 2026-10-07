@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 const {
   createTechnologyEnquiry,
@@ -24,7 +25,7 @@ router.post("/", createTechnologyEnquiry);
 // GET /api/technology-enquiries
 // ======================================================
 
-router.get("/", getTechnologyEnquiries);
+router.get("/", authMiddleware, getTechnologyEnquiries);
 
 
 // ======================================================
@@ -32,7 +33,7 @@ router.get("/", getTechnologyEnquiries);
 // GET /api/technology-enquiries/:id
 // ======================================================
 
-router.get("/:id", getTechnologyEnquiryById);
+router.get("/:id", authMiddleware, getTechnologyEnquiryById);
 
 
 // ======================================================
@@ -40,7 +41,7 @@ router.get("/:id", getTechnologyEnquiryById);
 // PATCH /api/technology-enquiries/:id/status
 // ======================================================
 
-router.patch("/:id/status", updateTechnologyEnquiryStatus);
+router.patch("/:id/status", authMiddleware, updateTechnologyEnquiryStatus);
 
 
 // ======================================================
@@ -48,7 +49,7 @@ router.patch("/:id/status", updateTechnologyEnquiryStatus);
 // DELETE /api/technology-enquiries/:id
 // ======================================================
 
-router.delete("/:id", deleteTechnologyEnquiry);
+router.delete("/:id", authMiddleware, deleteTechnologyEnquiry);
 
 
 module.exports = router;

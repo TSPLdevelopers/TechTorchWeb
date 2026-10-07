@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import Navbarcap from "../../assets/Navbarcap.png";
 
@@ -45,11 +46,7 @@ const columns = [
 
 const CLOSE_DELAY = 150;
 
-function NavCapabilities({
-  mobile = false,
-  isOpen: mobileIsOpen = false,
-  onToggle,
-}) {
+function NavCapabilities() {
   const [isOpen, setIsOpen] = useState(false);
   const [navBottom, setNavBottom] = useState(0);
 
@@ -99,103 +96,6 @@ function NavCapabilities({
     return () => cancelClose();
   }, [cancelClose]);
 
-  /* =========================================================
-     MOBILE / MEDIUM DROPDOWN
-  ========================================================= */
-
-  if (mobile) {
-    return (
-      <div className="w-full bg-white">
-        {/* CAPABILITIES HEADING / BUTTON */}
-        <button
-          type="button"
-          onClick={onToggle}
-          className="w-full flex items-center justify-between px-6 py-4 bg-white border-none text-left text-[15px] font-semibold text-gray-900"
-        >
-          <span>Capabilities</span>
-
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={`transition-transform duration-200 ${
-              mobileIsOpen
-                ? "rotate-90 text-[#730042]"
-                : "text-gray-900"
-            }`}
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-        </button>
-
-        {/* ONLY CONTENT GETS EXTRA PADDING */}
-        {mobileIsOpen && (
-          <div className="px-10 pb-6 bg-white">
-            <div className="border-t border-gray-100 pt-2">
-
-              {/* Digital Solutions */}
-              <div className="flex flex-col">
-                <h3 className="pt-2 pb-2 text-[16px] font-semibold text-gray-900 font-plus-jakarta">
-                  Digital Solutions
-                </h3>
-
-                {columns[0].items.map((title) => (
-                  <a
-                    key={title}
-                    href="#"
-                    className="block py-3 text-[14px] text-gray-800 font-inter leading-[1.35] hover:text-[#730042] transition-colors duration-200"
-                  >
-                    {title}
-                  </a>
-                ))}
-              </div>
-
-              {/* IT Augmentation Service */}
-              <div className="flex flex-col mt-5">
-                <h3 className="pt-2 pb-2 text-[16px] font-semibold text-gray-900 font-plus-jakarta">
-                  IT Augmentation Service
-                </h3>
-
-                {columns[1].sections.map((section, idx) => (
-                  <div
-                    key={section.subheading}
-                    className={`flex flex-col ${
-                      idx > 0 ? "mt-4" : ""
-                    }`}
-                  >
-                    <h4 className="py-2 text-[15px] font-semibold text-gray-900 font-plus-jakarta leading-[1.3]">
-                      {section.subheading}
-                    </h4>
-
-                    {section.items.map((title) => (
-                      <a
-                        key={title}
-                        href="#"
-                        className="block py-3 text-[14px] text-gray-800 font-inter leading-[1.35] hover:text-[#730042] transition-colors duration-200"
-                      >
-                        {title}
-                      </a>
-                    ))}
-                  </div>
-                ))}
-              </div>
-
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  /* =========================================================
-     DESKTOP MEGA MENU
-  ========================================================= */
-
   return (
     <div
       ref={wrapperRef}
@@ -204,34 +104,32 @@ function NavCapabilities({
       onMouseLeave={closeMenu}
     >
       {/* ================= NAV LINK ================= */}
-  <span
-  className="
-    relative inline-flex items-center h-full
-    font-inter cursor-pointer
-    text-[17px] text-gray-900
-    hover:text-[#730042]
-    transition-colors duration-300
 
-    after:content-['']
-    after:absolute
-    after:left-0
-    after:-bottom-[1px]
-    after:w-full
-    after:h-[1px]
-    after:bg-[#730042]
-
-    after:translate-y-[5px]
-    after:opacity-0
-    after:transition-all
-    after:duration-500
-    after:ease-out
-
-    hover:after:translate-y-0
-    hover:after:opacity-100
-  "
->
-  Capabilities
-</span>
+      <span
+        className="
+          relative
+          inline-flex
+          items-center
+          h-full
+          cursor-pointer
+          text-[17px]
+          text-gray-900
+          hover:text-[#8a1538]
+          transition-colors
+          duration-200
+          after:absolute
+          after:left-0
+          after:bottom-0
+          after:h-[2px]
+          after:w-0
+          after:bg-[#8a1538]
+          after:transition-all
+          after:duration-200
+          hover:after:w-full
+        "
+      >
+        Capabilities
+      </span>
 
       {/* ================= MEGA MENU ================= */}
 
@@ -375,14 +273,14 @@ function NavCapabilities({
                   {columns[0].items.map((title) => (
                     <a
                       key={title}
-                      href="#"
+                      href={routeFor(title)}
                       className="
                         text-[15px]
                         md:text-[15px]
                         text-gray-800
                         font-inter
                         leading-[1.35]
-                        hover:text-[#970052]
+                        hover:text-[#8a1538]
                         transition-colors
                         duration-200
                       "
@@ -447,14 +345,14 @@ function NavCapabilities({
                       {section.items.map((title) => (
                         <a
                           key={title}
-                          href="#"
+                          href={routeFor(title)}
                           className="
                             text-[15px]
                             md:text-[15px]
                             text-gray-800
                             font-inter
                             leading-[1.35]
-                            hover:text-[#970052]
+                            hover:text-[#8a1538]
                             transition-colors
                             duration-200
                           "

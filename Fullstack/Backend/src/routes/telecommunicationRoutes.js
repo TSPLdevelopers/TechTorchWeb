@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 const {
   createTelecommunication,
@@ -18,20 +19,17 @@ router.post("/", createTelecommunication);
 
 
 // Admin
-router.get("/", getTelecommunications);
+router.get("/", authMiddleware, getTelecommunications);
 
-router.get(
-  "/:id",
+router.get("/:id", authMiddleware,
   getTelecommunicationById
 );
 
-router.patch(
-  "/:id/status",
+router.patch("/:id/status", authMiddleware,
   updateTelecommunicationStatus
 );
 
-router.delete(
-  "/:id",
+router.delete("/:id", authMiddleware,
   deleteTelecommunication
 );
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Link2,
   RefreshCw,
@@ -7,9 +7,10 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 
-const WINE = "#7A1F3D";
+const WINE = "#730042";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
+const LIGHT_PINK = "#fce7f1";
 
 const capabilities = [
   {
@@ -62,17 +63,98 @@ const steps = [
   },
 ];
 
-export default function FintechEngineeringAndApproachSections() {
-  return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+function useRepeatReveal() {
+  const gridRef = useRef(null);
 
-        /* =================================================
-           MAIN WRAPPER
-        ================================================= */
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const items = Array.from(
+      grid.querySelectorAll(".fintech-card-observer")
+    );
+
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let observer;
+
+    function setupAnimation() {
+      observer?.disconnect();
+      grid.classList.remove("fintech-reveal-enabled");
+
+      items.forEach((item) => {
+        item.classList.remove("is-visible");
+      });
+
+      if (
+        motionPreference.matches ||
+        !("IntersectionObserver" in window)
+      ) {
+        return;
+      }
+
+      grid.classList.add("fintech-reveal-enabled");
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entering = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+              (a, b) =>
+                Number(a.target.dataset.index) -
+                Number(b.target.dataset.index)
+            );
+
+          entering.forEach((entry, index) => {
+            entry.target.style.setProperty(
+              "--reveal-delay",
+              `${index * 180}ms`
+            );
+
+            entry.target.classList.add("is-visible");
+          });
+
+          // Reset off-screen cards so they animate again on return.
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              entry.target.classList.remove("is-visible");
+            }
+          });
+        },
+        { threshold: 0 }
+      );
+
+      items.forEach((item) => observer.observe(item));
+    }
+
+    setupAnimation();
+    motionPreference.addEventListener("change", setupAnimation);
+
+    return () => {
+      observer?.disconnect();
+      motionPreference.removeEventListener("change", setupAnimation);
+      grid.classList.remove("fintech-reveal-enabled");
+    };
+  }, []);
+
+  return gridRef;
+}
+
+export default function FintechEngineeringAndApproachSections() {
+  const capabilitiesRef = useRepeatReveal();
+  const stepsRef = useRepeatReveal();
+
+  return (
+    <div className="fintech-sections">
+      <style>{`
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 
         .fintech-sections {
+          --fintech-wine: ${WINE};
+          --fintech-pink: ${LIGHT_PINK};
+
           width: 100%;
           overflow: hidden;
           color: ${INK};
@@ -86,11 +168,7 @@ export default function FintechEngineeringAndApproachSections() {
           box-sizing: border-box;
         }
 
-        /* =================================================
-           COMMON CONTAINER
-        ================================================= */
-
-        .fintech-container {
+        .fintech-sections .fintech-container {
           width: 100%;
           max-width: 1600px;
           margin: 0 auto;
@@ -98,69 +176,57 @@ export default function FintechEngineeringAndApproachSections() {
           padding-right: 100px;
         }
 
-        /* =================================================
-           SECTION 1
-        ================================================= */
-
-        .fintech-engineering {
+        .fintech-sections .fintech-engineering {
           width: 100%;
-          background: ${WINE};
+          background: var(--fintech-wine);
         }
 
-        .fintech-engineering-container {
+        .fintech-sections .fintech-engineering-container {
           padding-top: 78px;
           padding-bottom: 78px;
-
           display: grid;
           grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
           gap: 60px;
           align-items: start;
         }
 
-        /* =================================================
-           BADGES
-        ================================================= */
+        .fintech-sections .fintech-engineering-container > *,
+        .fintech-sections .approach-header > * {
+          min-width: 0;
+        }
 
-        .section-badge {
+        .fintech-sections .section-badge {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-
+          max-width: 100%;
           padding: 6px 12px;
           margin-bottom: 20px;
-
           border-radius: 999px;
-
-          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.04em;
-          line-height: 1;
+          line-height: 1.4;
         }
 
-        .engineering-badge {
+        .fintech-sections .engineering-badge {
           background: rgba(255, 255, 255, 0.12);
           color: #f3d9e2;
         }
 
-        .badge-dot {
+        .fintech-sections .badge-dot {
           width: 6px;
           height: 6px;
           flex-shrink: 0;
           border-radius: 50%;
         }
 
-        .engineering-dot {
+        .fintech-sections .engineering-dot {
           background: #ffffff;
         }
 
-        /* =================================================
-           ENGINEERING CONTENT
-        ================================================= */
-
-        .engineering-heading {
+        .fintech-sections .engineering-heading {
           margin: 0 0 24px;
-
           color: #ffffff;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 38px;
@@ -170,135 +236,151 @@ export default function FintechEngineeringAndApproachSections() {
           max-width: 760px;
         }
 
-        .engineering-copy {
+        .fintech-sections .engineering-copy {
           display: flex;
           flex-direction: column;
           gap: 16px;
           max-width: 780px;
         }
 
-        .engineering-description {
+        .fintech-sections .engineering-description {
           margin: 0;
-
-          color: #e3c3cf;
+          color: #e9c9db;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 15px;
           line-height: 1.75;
           font-weight: 500;
         }
 
-        .engineering-description.highlight {
+        .fintech-sections .engineering-description.highlight {
           color: #f3e2e8;
           font-weight: 600;
         }
 
-        /* =================================================
-           CAPABILITY CARDS
-        ================================================= */
-
-        .capabilities-grid {
+        .fintech-sections .capabilities-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 16px;
         }
 
-        .capability-card {
+        /* Stationary wrapper for reliable viewport detection */
+        .fintech-sections .fintech-card-observer {
+          display: flex;
+          min-width: 0;
+        }
+
+        .fintech-sections .fintech-card-reveal {
+          display: flex;
+          width: 100%;
+          min-width: 0;
+        }
+
+        .fintech-sections .fintech-reveal-enabled
+        > .fintech-card-observer
+        > .fintech-card-reveal {
+          opacity: 0;
+        }
+
+        .fintech-sections .fintech-reveal-enabled
+        > .fintech-card-observer.is-visible
+        > .fintech-card-reveal {
+          animation: fintech-card-enter
+            650ms
+            cubic-bezier(0.22, 1, 0.36, 1)
+            var(--reveal-delay, 0ms)
+            both;
+        }
+
+        @keyframes fintech-card-enter {
+          from {
+            opacity: 0;
+            transform: translateY(32px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .fintech-sections .capability-card {
+          width: 100%;
           min-width: 0;
           padding: 22px;
-
           border-radius: 12px;
-
           background: rgba(255, 255, 255, 0.08);
           border: 1px solid rgba(255, 255, 255, 0.12);
-
           transition:
             transform 0.3s ease,
-            background 0.3s ease,
-            border-color 0.3s ease;
+            background-color 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
         }
 
-        .capability-card:hover {
-          transform: translateY(-4px);
-          background: rgba(255, 255, 255, 0.11);
-          border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .capability-icon {
+        .fintech-sections .capability-icon {
           width: 38px;
           height: 38px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           margin-bottom: 16px;
-
           border-radius: 8px;
-
           background: rgba(255, 255, 255, 0.14);
           color: #ffffff;
+          transition:
+            background-color 0.3s ease,
+            transform 0.3s ease;
         }
 
-        .capability-title {
+        .fintech-sections .capability-title {
           margin: 0 0 6px;
-
           color: #ffffff;
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.4;
           font-weight: 700;
+          transition: color 0.3s ease;
         }
 
-        .capability-body {
+        .fintech-sections .capability-body {
           margin: 0;
-
-          color: #d9b7c4;
-          font-family: "Inter", Arial, sans-serif;
+          color: #e6bfd5;
           font-size: 12px;
           line-height: 1.7;
           font-weight: 400;
+          transition: color 0.3s ease;
         }
 
-        /* =================================================
-           SECTION 2
-        ================================================= */
-
-        .approach-section {
+        .fintech-sections .approach-section {
           width: 100%;
+          margin: 0;
           background: #f4f1ec;
         }
 
-        .approach-container {
+        .fintech-sections .approach-container {
           padding-top: 78px;
           padding-bottom: 78px;
         }
 
-        /* =================================================
-           APPROACH HEADER
-        ================================================= */
-
-        .approach-header {
+        .fintech-sections .approach-header {
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-
           gap: 60px;
           align-items: start;
-
           margin-bottom: 40px;
         }
 
-        .approach-badge {
+        .fintech-sections .approach-badge {
           background: #fbeef1;
-          color: ${WINE};
+          color: var(--fintech-wine);
         }
 
-        .approach-dot {
-          background: ${WINE};
+        .fintech-sections .approach-dot {
+          background: var(--fintech-wine);
         }
 
-        .approach-heading {
+        .fintech-sections .approach-heading {
           margin: 0;
-
           color: ${INK};
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 34px;
@@ -307,14 +389,13 @@ export default function FintechEngineeringAndApproachSections() {
           letter-spacing: -0.025em;
         }
 
-        .approach-heading span {
-          color: ${WINE};
+        .fintech-sections .approach-heading span {
+          color: var(--fintech-wine);
         }
 
-        .approach-description {
+        .fintech-sections .approach-description {
           margin: 0;
           padding-top: 4px;
-
           color: ${MUTED};
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 15px;
@@ -323,500 +404,441 @@ export default function FintechEngineeringAndApproachSections() {
           max-width: 700px;
         }
 
-        /* =================================================
-           STEPS
-        ================================================= */
-
-        .steps-grid {
+        .fintech-sections .steps-grid {
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: 16px;
         }
 
-        .step-card {
+        .fintech-sections .step-card {
+          width: 100%;
           min-width: 0;
           padding: 22px;
-
           background: #ffffff;
           border-radius: 12px;
-
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
           transition:
             transform 0.3s ease,
+            background-color 0.3s ease,
             box-shadow 0.3s ease;
         }
 
-        .step-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-        }
-
-        .step-top {
+        .fintech-sections .step-top {
           display: flex;
           align-items: center;
           justify-content: space-between;
-
+          gap: 8px;
           margin-bottom: 16px;
         }
 
-        .step-number {
+        .fintech-sections .step-number {
           width: 32px;
           height: 32px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
+          flex-shrink: 0;
           border-radius: 50%;
-
-          background: ${WINE};
+          background: var(--fintech-wine);
           color: #ffffff;
-
-          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 600;
         }
 
-        .step-title {
+        .fintech-sections .step-title {
           margin: 0 0 6px;
-
           color: ${INK};
           font-family: "Plus Jakarta Sans", Arial, sans-serif;
           font-size: 14px;
           line-height: 1.4;
           font-weight: 700;
+          transition: color 0.3s ease;
         }
 
-        .step-body {
+        .fintech-sections .step-body {
           margin: 0;
-
           color: ${MUTED};
-          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.7;
           font-weight: 400;
         }
 
-        /* =================================================
-           LAPTOP
-        ================================================= */
+        @media (hover: hover) {
+          .fintech-sections .capability-card:hover {
+            transform: translateY(-4px);
+            background: var(--fintech-pink);
+            border-color: #f2bfd8;
+            box-shadow: 0 12px 28px rgba(40, 0, 24, 0.2);
+          }
+
+          .fintech-sections .capability-card:hover .capability-icon {
+            background: var(--fintech-wine);
+            transform: scale(1.08);
+          }
+
+          .fintech-sections .capability-card:hover .capability-title {
+            color: var(--fintech-wine);
+          }
+
+          .fintech-sections .capability-card:hover .capability-body {
+            color: #68344f;
+          }
+
+          .fintech-sections .step-card:hover {
+            transform: translateY(-4px);
+            background: var(--fintech-pink);
+            box-shadow: 0 10px 25px rgba(115, 0, 66, 0.1);
+          }
+
+          .fintech-sections .step-card:hover .step-title {
+            color: var(--fintech-wine);
+          }
+        }
 
         @media (max-width: 1200px) {
-          .fintech-container {
+          .fintech-sections .fintech-container {
             padding-left: 40px;
             padding-right: 40px;
           }
 
-          .fintech-engineering-container {
+          .fintech-sections .fintech-engineering-container,
+          .fintech-sections .approach-header {
             gap: 42px;
           }
 
-          .engineering-heading {
+          .fintech-sections .engineering-heading {
             font-size: 34px;
           }
 
-          .approach-header {
-            gap: 42px;
-          }
-
-          .approach-heading {
+          .fintech-sections .approach-heading {
             font-size: 31px;
           }
 
-          .steps-grid {
+          .fintech-sections .steps-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
           }
         }
 
-        /* =================================================
-           TABLET
-        ================================================= */
-
         @media (max-width: 900px) {
-          .fintech-container {
-            padding-left: 40px;
-            padding-right: 40px;
-          }
-
-          .fintech-engineering-container {
+          .fintech-sections .fintech-engineering-container {
             grid-template-columns: 1fr;
             gap: 36px;
-
             padding-top: 62px;
             padding-bottom: 62px;
           }
 
-          .engineering-heading {
+          .fintech-sections .engineering-heading {
             max-width: 760px;
             font-size: 32px;
           }
 
-          .engineering-copy {
+          .fintech-sections .engineering-copy {
             max-width: 800px;
           }
 
-          .capabilities-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-
-          .approach-container {
+          .fintech-sections .approach-container {
             padding-top: 62px;
             padding-bottom: 62px;
           }
 
-          .approach-header {
+          .fintech-sections .approach-header {
             grid-template-columns: 1fr;
             gap: 18px;
             margin-bottom: 34px;
           }
 
-          .approach-description {
+          .fintech-sections .approach-description {
             padding-top: 0;
             max-width: 800px;
           }
 
-          .approach-heading {
+          .fintech-sections .approach-heading {
             font-size: 30px;
           }
 
-          .steps-grid {
+          .fintech-sections .steps-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
 
-        /* =================================================
-           MOBILE
-        ================================================= */
-
         @media (max-width: 600px) {
-          .fintech-container {
+          .fintech-sections .fintech-container {
             padding-left: 24px;
             padding-right: 24px;
           }
 
-          .fintech-engineering-container {
+          .fintech-sections .fintech-engineering-container {
             padding-top: 52px;
             padding-bottom: 52px;
             gap: 30px;
           }
 
-          .section-badge {
+          .fintech-sections .section-badge {
             margin-bottom: 16px;
             font-size: 10px;
           }
 
-          .engineering-heading {
+          .fintech-sections .engineering-heading {
             margin-bottom: 20px;
             font-size: 26px;
             line-height: 1.3;
           }
 
-          .engineering-copy {
+          .fintech-sections .engineering-copy {
             gap: 14px;
           }
 
-          .engineering-description {
+          .fintech-sections .engineering-description {
             font-size: 13px;
             line-height: 1.7;
           }
 
-          .capabilities-grid {
-            grid-template-columns: 1fr;
+          .fintech-sections .capabilities-grid,
+          .fintech-sections .steps-grid {
+            grid-template-columns: minmax(0, 1fr);
             gap: 14px;
           }
 
-          .capability-card {
+          .fintech-sections .capability-card,
+          .fintech-sections .step-card {
             padding: 19px;
           }
 
-          .capability-title {
-            font-size: 14px;
-          }
-
-          .capability-body {
-            font-size: 12px;
+          .fintech-sections .capability-body {
             line-height: 1.65;
           }
 
-          .approach-container {
+          .fintech-sections .approach-container {
             padding-top: 52px;
             padding-bottom: 52px;
           }
 
-          .approach-header {
+          .fintech-sections .approach-header {
             gap: 16px;
             margin-bottom: 28px;
           }
 
-          .approach-heading {
+          .fintech-sections .approach-heading {
             font-size: 25px;
             line-height: 1.35;
           }
 
-          .approach-description {
+          .fintech-sections .approach-description {
             font-size: 13px;
             line-height: 1.7;
           }
-
-          .steps-grid {
-            grid-template-columns: 1fr;
-            gap: 14px;
-          }
-
-          .step-card {
-            padding: 19px;
-          }
-
-          .step-title {
-            font-size: 14px;
-          }
-
-          .step-body {
-            font-size: 12px;
-          }
         }
 
-        /* =================================================
-           SMALL MOBILE
-        ================================================= */
-
         @media (max-width: 480px) {
-          .fintech-container {
+          .fintech-sections .fintech-container {
             padding-left: 16px;
             padding-right: 16px;
           }
 
-          .fintech-engineering-container,
-          .approach-container {
+          .fintech-sections .fintech-engineering-container,
+          .fintech-sections .approach-container {
             padding-top: 44px;
             padding-bottom: 44px;
           }
 
-          .engineering-heading {
+          .fintech-sections .engineering-heading {
             font-size: 23px;
           }
 
-          .engineering-description {
+          .fintech-sections .engineering-description,
+          .fintech-sections .approach-description {
             font-size: 12px;
           }
 
-          .approach-heading {
+          .fintech-sections .approach-heading {
             font-size: 22px;
           }
 
-          .approach-description {
-            font-size: 12px;
-          }
-
-          .capability-card,
-          .step-card {
+          .fintech-sections .capability-card,
+          .fintech-sections .step-card {
             padding: 17px;
           }
 
-          .capability-icon {
+          .fintech-sections .capability-icon {
             width: 35px;
             height: 35px;
             margin-bottom: 14px;
           }
 
-          .step-number {
+          .fintech-sections .step-number {
             width: 30px;
             height: 30px;
             font-size: 10px;
           }
         }
 
-        /* =================================================
-           VERY SMALL MOBILE
-        ================================================= */
-
         @media (max-width: 340px) {
-          .fintech-container {
-            padding-left: 16px;
-            padding-right: 16px;
-          }
-
-          .fintech-engineering-container,
-          .approach-container {
+          .fintech-sections .fintech-engineering-container,
+          .fintech-sections .approach-container {
             padding-top: 38px;
             padding-bottom: 38px;
           }
 
-          .engineering-heading {
+          .fintech-sections .engineering-heading {
             font-size: 21px;
           }
 
-          .approach-heading {
+          .fintech-sections .approach-heading {
             font-size: 20px;
           }
 
-          .engineering-description,
-          .approach-description {
+          .fintech-sections .engineering-description,
+          .fintech-sections .approach-description {
             font-size: 11.5px;
           }
 
-          .capability-body,
-          .step-body {
+          .fintech-sections .capability-body,
+          .fintech-sections .step-body {
             font-size: 11px;
           }
         }
 
-        /* =================================================
-           REDUCED MOTION
-        ================================================= */
-
         @media (prefers-reduced-motion: reduce) {
-          .capability-card,
-          .step-card {
+          .fintech-sections .fintech-reveal-enabled
+          > .fintech-card-observer
+          > .fintech-card-reveal,
+          .fintech-sections .fintech-reveal-enabled
+          > .fintech-card-observer.is-visible
+          > .fintech-card-reveal {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
+
+          .fintech-sections .capability-card,
+          .fintech-sections .capability-icon,
+          .fintech-sections .capability-title,
+          .fintech-sections .capability-body,
+          .fintech-sections .step-card,
+          .fintech-sections .step-title {
             transition: none;
           }
 
-          .capability-card:hover,
-          .step-card:hover {
+          .fintech-sections .capability-card:hover,
+          .fintech-sections .capability-card:hover .capability-icon,
+          .fintech-sections .step-card:hover {
             transform: none;
           }
         }
       `}</style>
 
-      <div className="fintech-sections">
+      {/* FINTECH ENGINEERING */}
+      <section className="fintech-engineering">
+        <div className="fintech-container fintech-engineering-container">
+          <div>
+            <span className="section-badge engineering-badge">
+              <span className="badge-dot engineering-dot" />
+              FINTECH ENGINEERING &amp; TRANSFORMATION
+            </span>
 
-        {/* =========================================
-            SECTION 1: FINTECH ENGINEERING
-        ========================================== */}
+            <h2 className="engineering-heading">
+              Modernize the Technology Behind Your Financial Operations
+            </h2>
 
-        <section className="fintech-engineering">
-          <div className="fintech-container fintech-engineering-container">
-
-            {/* Left Content */}
-            <div>
-              <span className="section-badge engineering-badge">
-                <span className="badge-dot engineering-dot" />
-                FINTECH ENGINEERING &amp; TRANSFORMATION
-              </span>
-
-              <h2 className="engineering-heading">
-                Modernize the Technology Behind Your Financial Operations
-              </h2>
-
-              <div className="engineering-copy">
-                <p className="engineering-description">
-                  Legacy financial applications and disjointed spreadsheets
-                  increase compliance liabilities and slow execution.
-                  TechTorch delivers purpose-built software engineering to
-                  refactor, integrate, and modernize critical transaction
-                  platforms.
-                </p>
-
-                <p className="engineering-description">
-                  Our senior engineering teams develop bespoke client portals,
-                  secure API integrations, high-performance microservices,
-                  automated payment gateways, and compliant cloud
-                  infrastructures tailored to stringent financial standards.
-                </p>
-
-                <p className="engineering-description highlight">
-                  We engineer modular systems designed for scale—ensuring your
-                  tech stack evolves as your transaction volume and reporting
-                  mandates expand.
-                </p>
-              </div>
-            </div>
-
-            {/* Capability Cards */}
-            <div className="capabilities-grid">
-              {capabilities.map(({ icon: Icon, title, body }) => (
-                <div
-                  key={title}
-                  className="capability-card"
-                >
-                  <span className="capability-icon">
-                    <Icon
-                      size={16}
-                      strokeWidth={1.8}
-                    />
-                  </span>
-
-                  <h3 className="capability-title">
-                    {title}
-                  </h3>
-
-                  <p className="capability-body">
-                    {body}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </section>
-
-        {/* =========================================
-            SECTION 2: OUR APPROACH
-        ========================================== */}
-
-        <section className="approach-section">
-          <div className="fintech-container approach-container">
-
-            {/* Header */}
-            <div className="approach-header">
-
-              <div>
-                <span className="section-badge approach-badge">
-                  <span className="badge-dot approach-dot" />
-                  OUR APPROACH
-                </span>
-
-                <h2 className="approach-heading">
-                  From Business Requirements
-                  <br />
-                  to Practical{" "}
-                  <span>Technology</span>
-                </h2>
-              </div>
-
-              <p className="approach-description">
-                Every technology initiative begins with an understanding of
-                the business requirement. Our approach focuses on creating
-                practical solutions that align technology with operational
-                objectives.
+            <div className="engineering-copy">
+              <p className="engineering-description">
+                Legacy financial applications and disjointed spreadsheets
+                increase compliance liabilities and slow execution.
+                TechTorch delivers purpose-built software engineering to
+                refactor, integrate, and modernize critical transaction
+                platforms.
               </p>
 
-            </div>
+              <p className="engineering-description">
+                Our senior engineering teams develop bespoke client portals,
+                secure API integrations, high-performance microservices,
+                automated payment gateways, and compliant cloud
+                infrastructures tailored to stringent financial standards.
+              </p>
 
-            {/* Steps */}
-            <div className="steps-grid">
-              {steps.map(({ num, title, body }) => (
-                <div
-                  key={num}
-                  className="step-card"
-                >
-                  <div className="step-top">
-                    <span className="step-number">
-                      {num}
+              <p className="engineering-description highlight">
+                We engineer modular systems designed for scale—ensuring your
+                tech stack evolves as your transaction volume and reporting
+                mandates expand.
+              </p>
+            </div>
+          </div>
+
+          <div ref={capabilitiesRef} className="capabilities-grid">
+            {capabilities.map(({ icon: Icon, title, body }, index) => (
+              <div
+                key={title}
+                className="fintech-card-observer"
+                data-index={index}
+              >
+                <div className="fintech-card-reveal">
+                  <article className="capability-card">
+                    <span className="capability-icon">
+                      <Icon size={16} strokeWidth={1.8} />
                     </span>
 
-                    <MoreHorizontal
-                      size={14}
-                      style={{ color: "#c9c4bc" }}
-                    />
-                  </div>
-
-                  <h3 className="step-title">
-                    {title}
-                  </h3>
-
-                  <p className="step-body">
-                    {body}
-                  </p>
+                    <h3 className="capability-title">{title}</h3>
+                    <p className="capability-body">{body}</p>
+                  </article>
                 </div>
-              ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OUR APPROACH */}
+      <section className="approach-section">
+        <div className="fintech-container approach-container">
+          <div className="approach-header">
+            <div>
+              <span className="section-badge approach-badge">
+                <span className="badge-dot approach-dot" />
+                OUR APPROACH
+              </span>
+
+              <h2 className="approach-heading">
+                From Business Requirements
+                <br />
+                to Practical <span>Technology</span>
+              </h2>
             </div>
 
+            <p className="approach-description">
+              Every technology initiative begins with an understanding of
+              the business requirement. Our approach focuses on creating
+              practical solutions that align technology with operational
+              objectives.
+            </p>
           </div>
-        </section>
 
-      </div>
-    </>
+          <div ref={stepsRef} className="steps-grid">
+            {steps.map(({ num, title, body }, index) => (
+              <div
+                key={num}
+                className="fintech-card-observer"
+                data-index={index}
+              >
+                <div className="fintech-card-reveal">
+                  <article className="step-card">
+                    <div className="step-top">
+                      <span className="step-number">{num}</span>
+
+                      <MoreHorizontal
+                        size={14}
+                        style={{ color: "#c9c4bc" }}
+                      />
+                    </div>
+
+                    <h3 className="step-title">{title}</h3>
+                    <p className="step-body">{body}</p>
+                  </article>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

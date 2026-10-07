@@ -159,8 +159,8 @@ export default function ConnectedBusinessPillarsSection() {
           background:
             linear-gradient(
               160deg,
-              #6e1345 0%,
-              #3a0e20 100%
+              #730042 0%,
+              #4d002c 100%
             );
         }
 

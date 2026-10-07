@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import megaMenuImage from "../../assets/image1.png";
 
@@ -12,12 +13,11 @@ const secondaryLinks = [
 
 const boldLinks = ["News", "Customer Centricity"];
 
-const CLOSE_DELAY = 150;
+const CLOSE_DELAY = 150; // ms - tweak to taste
 
-function NavAboutUs({ mobile = false, isOpen = false, onToggle }) {
-  const [isDesktopOpen, setIsDesktopOpen] = useState(false);
+function NavAboutUs() {
+  const [isOpen, setIsOpen] = useState(false);
   const [navBottom, setNavBottom] = useState(0);
-
   const wrapperRef = useRef(null);
   const closeTimeoutRef = useRef(null);
 
@@ -32,13 +32,10 @@ function NavAboutUs({ mobile = false, isOpen = false, onToggle }) {
     };
 
     updatePosition();
-
     window.addEventListener("resize", updatePosition);
 
-    return () => {
-      window.removeEventListener("resize", updatePosition);
-    };
-  }, [isDesktopOpen]);
+    return () => window.removeEventListener("resize", updatePosition);
+  }, [isOpen]);
 
   const cancelClose = useCallback(() => {
     if (closeTimeoutRef.current) {
@@ -49,104 +46,20 @@ function NavAboutUs({ mobile = false, isOpen = false, onToggle }) {
 
   const scheduleClose = useCallback(() => {
     cancelClose();
-
     closeTimeoutRef.current = setTimeout(() => {
-      setIsDesktopOpen(false);
+      setIsOpen(false);
       closeTimeoutRef.current = null;
     }, CLOSE_DELAY);
   }, [cancelClose]);
 
   const handleOpen = useCallback(() => {
     cancelClose();
-    setIsDesktopOpen(true);
+    setIsOpen(true);
   }, [cancelClose]);
 
   useEffect(() => {
     return () => cancelClose();
   }, [cancelClose]);
-
-  /* =========================================================
-     MOBILE / MEDIUM DROPDOWN
-  ========================================================= */
-
-  if (mobile) {
-    return (
-      <div className="w-full bg-white">
-        {/* ABOUT US HEADING / BUTTON */}
-        <button
-          type="button"
-          onClick={onToggle}
-          className="w-full flex items-center justify-between px-6 py-4 bg-white border-none text-left text-[15px] font-semibold text-gray-900"
-        >
-          <span>About Us</span>
-
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={`transition-transform duration-200 ${
-              isOpen
-                ? "rotate-90 text-[#730042]"
-                : "text-gray-900"
-            }`}
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-        </button>
-
-        {/* ONLY CONTENT GETS EXTRA PADDING */}
-        {isOpen && (
-          <div className="px-10 pb-6 bg-white">
-            <div className="border-t border-gray-100 pt-2">
-
-              {/* Company Overview */}
-              {primaryLinks.map((title) => (
-                <a
-                  key={title}
-                  href="#"
-                  className="block py-4 text-[14px] font-semibold text-gray-900"
-                >
-                  {title}
-                </a>
-              ))}
-
-              {/* Leadership, Idea, Investors, Partners */}
-              {secondaryLinks.map((title) => (
-                <a
-                  key={title}
-                  href="#"
-                  className="block py-4 text-[14px] text-gray-800"
-                >
-                  {title}
-                </a>
-              ))}
-
-              {/* News, Customer Centricity */}
-              {boldLinks.map((title) => (
-                <a
-                  key={title}
-                  href="#"
-                  className="block py-4 text-[14px] font-semibold text-gray-900"
-                >
-                  {title}
-                </a>
-              ))}
-
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  /* =========================================================
-     DESKTOP MEGA MENU
-  ========================================================= */
 
   return (
     <div
@@ -156,35 +69,12 @@ function NavAboutUs({ mobile = false, isOpen = false, onToggle }) {
       onMouseLeave={scheduleClose}
     >
       <span
-        className="
-          relative inline-flex items-center h-full
-          font-inter cursor-pointer
-          text-[17px] text-gray-900
-          hover:text-[#730042]
-          transition-colors duration-300
-
-          after:content-['']
-          after:absolute
-          after:left-0
-          after:-bottom-[1px]
-          after:w-full
-          after:h-[1px]
-          after:bg-[#730042]
-
-          after:translate-y-[5px]
-          after:opacity-0
-          after:transition-all
-          after:duration-500
-          after:ease-out
-
-          hover:after:translate-y-0
-          hover:after:opacity-100
-        "
+        className="relative inline-flex items-center h-full cursor-pointer text-[17px] text-gray-900 hover:text-[#8a1538] transition-colors duration-200 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-[#8a1538] after:transition-all after:duration-200 hover:after:w-full"
       >
         About Us
       </span>
 
-      {isDesktopOpen && (
+      {isOpen && (
         <div
           style={{ top: navBottom }}
           onMouseEnter={handleOpen}
@@ -194,26 +84,22 @@ function NavAboutUs({ mobile = false, isOpen = false, onToggle }) {
           <div className="h-px bg-gray-100 mx-[5px]" />
 
           <div className="px-[11%] pt-[65px] flex gap-[120px]">
-
             <h3 className="text-[25px] font-semibold text-gray-900 font-plus-jakarta whitespace-nowrap">
               About Us
             </h3>
 
             <div className="flex flex-col gap-[22px] pt-2">
-
               {primaryLinks.map((title) => (
                 <a
                   key={title}
-                  href="#"
-                  className="
-                    text-[16px]
-                    md:text-[18px]
-                    font-semibold
-                    hover:text-[#970052]
-                    text-gray-900
-                    font-plus-jakarta
-                    leading-[1.3]
-                  "
+                  href={routeFor(title)}
+                  className=" text-[16px]
+                          md:text-[18px]
+                          font-semibold
+                          hover:text-[#8a1538]
+                          text-gray-900
+                          font-plus-jakarta
+                          leading-[1.3]"
                 >
                   {title}
                 </a>
@@ -222,48 +108,41 @@ function NavAboutUs({ mobile = false, isOpen = false, onToggle }) {
               {secondaryLinks.map((title) => (
                 <a
                   key={title}
-                  href="#"
-                  className="
-                    text-[15px]
-                    md:text-[15px]
-                    text-gray-800
-                    font-inter
-                    leading-[1.35]
-                    hover:text-[#970052]
-                    transition-colors
-                    duration-200
-                  "
+                  href={routeFor(title)}
+                  className="text-[15px]
+                        md:text-[15px]
+                        text-gray-800
+                        font-inter
+                        leading-[1.35]
+                        hover:text-[#8a1538]
+                        transition-colors
+                        duration-200"
                 >
                   {title}
                 </a>
               ))}
 
               <div className="flex flex-col gap-[22px] mt-[25px]">
-
                 {boldLinks.map((title) => (
                   <a
                     key={title}
-                    href="#"
-                    className="
-                      text-[16px]
-                      md:text-[18px]
-                      font-semibold
-                      hover:text-[#970052]
-                      text-gray-900
-                      font-plus-jakarta
-                      leading-[1.3]
-                    "
+                    href={routeFor(title)}
+                    className="text-[16px]
+                          md:text-[18px]
+                          font-semibold
+                          hover:text-[#8a1538]
+                          text-gray-900
+                          font-plus-jakarta
+                          leading-[1.3]"
                   >
                     {title}
                   </a>
                 ))}
-
               </div>
             </div>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="absolute top-0 right-[20px] h-full w-[27%]">
+         <div className="absolute top-0 right-[20px] h-full w-[27%]">
             <img
               src={megaMenuImage}
               alt=""
@@ -271,7 +150,6 @@ function NavAboutUs({ mobile = false, isOpen = false, onToggle }) {
             />
 
             <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
-
               <div className="mt-8">
                 <h2 className="text-[18px] font-bold font-plus-jakarta">
                   AI That Works for
@@ -282,13 +160,9 @@ function NavAboutUs({ mobile = false, isOpen = false, onToggle }) {
                 <div className="w-[255px] h-[2px] bg-white mt-2" />
               </div>
 
-              <a
-                href="#"
-                className="text-[16px] font-bold font-inter text-white mb-8"
-              >
-                LEARN MORE
-              </a>
-
+            <a href="/Philosophy" className="text-[16px] font-bold font-inter text-white mb-8">
+              LEARN MORE
+            </a>
             </div>
           </div>
         </div>

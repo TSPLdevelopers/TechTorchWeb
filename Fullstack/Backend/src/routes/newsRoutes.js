@@ -10,12 +10,13 @@ const {
 
 const router = express.Router();
 const authMiddleware = require("../middlewares/auth.middleware");
+const { optionalAuth } = authMiddleware;
 
 router.post("/", authMiddleware, createNews);
 
-router.get("/", getAllNews);
+router.get("/", optionalAuth, getAllNews);
 
-router.get("/:id", getNewsById);
+router.get("/:id", optionalAuth, getNewsById);
 
 router.put("/:id", authMiddleware, updateNews);
 

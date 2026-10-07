@@ -122,9 +122,7 @@ export default function ITAugmentationHero() {
 
         .it-augmentation-hero {
           width: 100%;
-
           overflow: hidden;
-
           background: #f7f5f3;
         }
 
@@ -274,17 +272,17 @@ export default function ITAugmentationHero() {
           align-items: center;
           justify-content: center;
 
-          gap: 9px;
+          gap: 10px;
 
-          padding: 12px 21px;
+          padding: 14px 26px;
 
           border: none;
           border-radius: 8px;
 
-          background: ${BRAND_COLOR};
+          background: #730042;
 
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
           line-height: 1.4;
 

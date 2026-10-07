@@ -14,6 +14,7 @@ import {
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
+const ICON_BG = "#fbeef1";
 
 const solutions = [
   {
@@ -60,209 +61,136 @@ const solutions = [
 
 export default function SolutionsGridSection() {
   return (
-    <>
+    <section className="solutions-section">
       <style>{`
-        /* =====================================================
-           FONTS
-        ===================================================== */
-
-        @import url(
-          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
-        );
-
-
-        /* =====================================================
-           MAIN SECTION
-        ===================================================== */
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 
         .solutions-section {
-          width: 100%;
-          overflow: hidden;
+          --solutions-sticky-top: 100px;
+          --solutions-icon-bg: ${ICON_BG};
 
+          width: 100%;
           background: #f3f1ec;
           color: ${INK};
-
           font-family: "Inter", sans-serif;
+          overflow: visible;
         }
 
+        .solutions-section,
+        .solutions-section *,
+        .solutions-section *::before,
+        .solutions-section *::after {
+          box-sizing: border-box;
+        }
 
-        /* =====================================================
-           MAIN CONTAINER
-           
-           DESKTOP:
-           100px left/right
-        ===================================================== */
-
-        .solutions-container {
+        .solutions-section .solutions-container {
           width: 100%;
           max-width: 1600px;
-
           margin: 0 auto;
-
-          padding-top: 80px;
-          padding-right: 100px;
-          padding-bottom: 80px;
-          padding-left: 100px;
-
-          box-sizing: border-box;
+          padding: 80px 100px;
 
           display: grid;
-
           grid-template-columns:
             minmax(300px, 0.85fr)
             minmax(0, 1.45fr);
 
           gap: 64px;
-
           align-items: start;
+          overflow: visible;
         }
 
-
-        /* =====================================================
-           LEFT CONTENT
-        ===================================================== */
-
-        .solutions-copy {
+        /* Sticky is bounded by this section's grid container. */
+        .solutions-section .solutions-copy {
+          position: sticky;
+          top: var(--solutions-sticky-top);
+          align-self: start;
           width: 100%;
           min-width: 0;
+          height: fit-content;
         }
 
-
-        /* =====================================================
-           EYEBROW
-           INTER
-        ===================================================== */
-
-        .solutions-eyebrow {
+        .solutions-section .solutions-eyebrow {
           display: flex;
           align-items: center;
-
           gap: 4px;
-
           margin-bottom: 16px;
-
           color: ${WINE};
-
-          font-family: "Inter", sans-serif;
-
           font-size: 12px;
           font-weight: 600;
-
           letter-spacing: 0.04em;
-
           line-height: 1.4;
         }
 
-
-        /* =====================================================
-           HEADING
-           PLUS JAKARTA SANS
-        ===================================================== */
-
-        .solutions-heading {
-          max-width: 560px;
-
-          margin: 0 0 20px;
-
-          color: ${INK};
-
-          font-family: "Plus Jakarta Sans", sans-serif;
-
-          font-size: 38px;
-
-          font-weight: 700;
-
-          line-height: 1.17;
-
-          letter-spacing: -0.65px;
+        .solutions-section .solutions-eyebrow svg {
+          flex-shrink: 0;
         }
 
-
-        /* =====================================================
-           SUBHEADING
-           PLUS JAKARTA SANS
-        ===================================================== */
-
-        .solutions-subheading {
-          max-width: 580px;
-
-          margin: 0 0 30px;
-
-          color: ${MUTED};
-
+        .solutions-section .solutions-heading {
+          max-width: 560px;
+          margin: 0 0 20px;
+          color: ${INK};
           font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 38px;
+          font-weight: 700;
+          line-height: 1.17;
+          letter-spacing: -0.65px;
+          overflow-wrap: break-word;
+        }
 
+        .solutions-section .solutions-subheading {
+          max-width: 580px;
+          margin: 0 0 30px;
+          color: ${MUTED};
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 16px;
-
           font-weight: 500;
-
           line-height: 1.75;
         }
 
-
-        /* =====================================================
-           LABEL
-           INTER
-        ===================================================== */
-
-        .solutions-label {
+        .solutions-section .solutions-label {
           max-width: 500px;
-
           margin: 0;
-
           color: #8a8378;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 11px;
-
           font-weight: 600;
-
           line-height: 1.5;
-
           letter-spacing: 0.06em;
         }
 
-
-        /* =====================================================
-           CARDS GRID
-        ===================================================== */
-
-        .solutions-grid {
+        /* Normal page scrolling, without an inner scrollbar. */
+        .solutions-section .solutions-grid {
           width: 100%;
           min-width: 0;
-
+          height: auto;
+          max-height: none;
+          overflow: visible;
           display: grid;
-
-          grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 20px;
         }
 
+        .solutions-section .solution-card {
+          --card-padding: 24px;
+          --icon-size: 44px;
+          --color-origin: calc(
+            var(--card-padding) + var(--icon-size) / 2
+          );
 
-        /* =====================================================
-           SOLUTION CARD
-        ===================================================== */
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
 
-        .solution-card {
           min-width: 0;
-
-          padding: 24px;
+          padding: var(--card-padding);
 
           display: flex;
           flex-direction: column;
-
           gap: 16px;
 
           background: #ffffff;
-
           border: 1px solid rgba(0, 0, 0, 0.035);
-
           border-radius: 16px;
-
-          box-shadow:
-            0 1px 3px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 
           transition:
             transform 0.3s ease,
@@ -270,25 +198,31 @@ export default function SolutionsGridSection() {
             border-color 0.3s ease;
         }
 
+        /* Background expands outward from the icon center. */
+        .solutions-section .solution-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          background: var(--solutions-icon-bg);
 
-        .solution-card:hover {
-          transform: translateY(-4px);
+          clip-path: circle(
+            0% at var(--color-origin) var(--color-origin)
+          );
 
-          border-color: rgba(122, 31, 61, 0.12);
-
-          box-shadow:
-            0 12px 28px rgba(0, 0, 0, 0.08);
+          transition:
+            clip-path 650ms cubic-bezier(0.22, 1, 0.36, 1);
         }
 
+        .solutions-section .solution-card > * {
+          position: relative;
+          z-index: 1;
+        }
 
-        /* =====================================================
-           ICON
-        ===================================================== */
-
-        .solution-icon {
-          width: 44px;
-          height: 44px;
-
+        .solutions-section .solution-icon {
+          width: var(--icon-size);
+          height: var(--icon-size);
           flex-shrink: 0;
 
           display: flex;
@@ -296,468 +230,301 @@ export default function SolutionsGridSection() {
           justify-content: center;
 
           border-radius: 12px;
-
-          background: #fbeef1;
-
+          background: var(--solutions-icon-bg);
           color: ${WINE};
         }
 
-
-        /* =====================================================
-           CARD CONTENT
-        ===================================================== */
-
-        .solution-content {
+        .solutions-section .solution-content {
           min-width: 0;
         }
 
-
-        /* =====================================================
-           CARD TITLE
-           INTER
-        ===================================================== */
-
-        .solution-title {
+        .solutions-section .solution-title {
           margin: 0 0 7px;
-
           color: ${INK};
-
-          font-family: "Inter", sans-serif;
-
           font-size: 15px;
-
           font-weight: 600;
-
           line-height: 1.4;
+          overflow-wrap: break-word;
         }
 
-
-        /* =====================================================
-           CARD BODY
-           INTER
-        ===================================================== */
-
-        .solution-body {
+        .solutions-section .solution-body {
           margin: 0;
-
           color: ${MUTED};
-
-          font-family: "Inter", sans-serif;
-
           font-size: 14px;
-
           font-weight: 400;
-
           line-height: 1.65;
         }
 
+        @media (hover: hover) {
+          .solutions-section .solution-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(122, 31, 61, 0.12);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+          }
 
-        /* =====================================================
-           LARGE DESKTOP
-        ===================================================== */
+          .solutions-section .solution-card:hover::before {
+            clip-path: circle(
+              150% at var(--color-origin) var(--color-origin)
+            );
+          }
+        }
 
         @media (min-width: 1400px) {
-
-          .solutions-container {
+          .solutions-section .solutions-container {
             padding-top: 88px;
             padding-bottom: 88px;
-
             gap: 76px;
           }
 
-          .solutions-heading {
+          .solutions-section .solutions-heading {
             font-size: 40px;
           }
 
-          .solutions-subheading {
+          .solutions-section .solutions-subheading {
             font-size: 16.5px;
           }
 
-          .solutions-grid {
+          .solutions-section .solutions-grid {
             gap: 22px;
           }
 
-          .solution-card {
-            padding: 26px;
+          .solutions-section .solution-card {
+            --card-padding: 26px;
           }
-
         }
 
-
-        /* =====================================================
-           TABLET / LAPTOP
-           40px left/right
-        ===================================================== */
-
         @media (min-width: 768px) and (max-width: 1199px) {
-
-          .solutions-container {
-            padding-top: 70px;
-            padding-right: 40px;
-            padding-bottom: 70px;
-            padding-left: 40px;
-
+          .solutions-section .solutions-container {
+            padding: 70px 40px;
             grid-template-columns:
               minmax(270px, 0.85fr)
               minmax(0, 1.35fr);
-
             gap: 42px;
           }
 
-          .solutions-heading {
+          .solutions-section .solutions-heading {
             font-size: 33px;
           }
 
-          .solutions-subheading {
+          .solutions-section .solutions-subheading {
             font-size: 15px;
           }
 
-          .solutions-grid {
+          .solutions-section .solutions-grid {
             gap: 16px;
           }
 
-          .solution-card {
-            padding: 21px;
+          .solutions-section .solution-card {
+            --card-padding: 21px;
           }
-
         }
 
+        /* Tablet: stack the introduction above the cards. */
+        @media (max-width: 900px) {
+          .solutions-section .solutions-container {
+            grid-template-columns: minmax(0, 1fr);
+          }
 
-        /* =====================================================
-           TABLET
-           STACK LEFT + GRID
-        ===================================================== */
+          .solutions-section .solutions-copy {
+            position: static;
+            top: auto;
+          }
+        }
 
-        @media (max-width: 900px) and (min-width: 768px) {
-
-          .solutions-container {
-            grid-template-columns: 1fr;
-
+        @media (min-width: 768px) and (max-width: 900px) {
+          .solutions-section .solutions-container {
             gap: 42px;
           }
 
-          .solutions-heading,
-          .solutions-subheading {
+          .solutions-section .solutions-heading,
+          .solutions-section .solutions-subheading {
             max-width: 760px;
           }
 
-          .solutions-grid {
-            grid-template-columns:
-              repeat(2, minmax(0, 1fr));
-
+          .solutions-section .solutions-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 18px;
           }
 
-          .solution-card {
-            padding: 22px;
+          .solutions-section .solution-card {
+            --card-padding: 22px;
           }
-
         }
 
-
-        /* =====================================================
-           MOBILE
-           24px left/right
-        ===================================================== */
-
         @media (max-width: 767px) {
-
-          .solutions-container {
-            padding-top: 56px;
-            padding-right: 24px;
-            padding-bottom: 56px;
-            padding-left: 24px;
-
-            grid-template-columns: 1fr;
-
+          .solutions-section .solutions-container {
+            padding: 56px 24px;
             gap: 32px;
           }
 
-          .solutions-eyebrow {
+          .solutions-section .solutions-eyebrow {
             gap: 3px;
-
             margin-bottom: 13px;
-
             font-size: 11px;
-
             line-height: 1.5;
           }
 
-          .solutions-heading {
+          .solutions-section .solutions-heading {
             max-width: 680px;
-
             margin-bottom: 16px;
-
             font-size: 29px;
-
             line-height: 1.2;
-
             letter-spacing: -0.5px;
           }
 
-          .solutions-subheading {
+          .solutions-section .solutions-subheading {
             max-width: 680px;
-
             margin-bottom: 24px;
-
             font-size: 14px;
-
             line-height: 1.7;
           }
 
-          .solutions-label {
+          .solutions-section .solutions-label {
             font-size: 10px;
-
             line-height: 1.55;
           }
 
-          .solutions-grid {
-            grid-template-columns: 1fr;
-
+          .solutions-section .solutions-grid {
+            grid-template-columns: minmax(0, 1fr);
             gap: 14px;
           }
 
-          .solution-card {
-            padding: 20px;
-
+          .solutions-section .solution-card {
+            --card-padding: 20px;
+            --icon-size: 42px;
             gap: 14px;
-
             border-radius: 14px;
           }
 
-          .solution-icon {
-            width: 42px;
-            height: 42px;
-
+          .solutions-section .solution-icon {
             border-radius: 11px;
           }
 
-          .solution-title {
-            font-size: 15px;
-          }
-
-          .solution-body {
+          .solutions-section .solution-body {
             font-size: 13px;
-
-            line-height: 1.65;
           }
-
         }
 
-
-        /* =====================================================
-           SMALL MOBILE
-           16px left/right
-        ===================================================== */
-
         @media (max-width: 480px) {
-
-          .solutions-container {
-            padding-top: 48px;
-            padding-right: 16px;
-            padding-bottom: 48px;
-            padding-left: 16px;
-
+          .solutions-section .solutions-container {
+            padding: 48px 16px;
             gap: 28px;
           }
 
-          .solutions-heading {
+          .solutions-section .solutions-heading {
             font-size: 26px;
-
             line-height: 1.21;
-
             letter-spacing: -0.4px;
           }
 
-          .solutions-subheading {
+          .solutions-section .solutions-subheading {
             font-size: 13px;
-
-            line-height: 1.7;
           }
 
-          .solutions-label {
+          .solutions-section .solutions-label {
             font-size: 9.5px;
           }
 
-          .solutions-grid {
+          .solutions-section .solutions-grid {
             gap: 11px;
           }
 
-          .solution-card {
-            padding: 17px;
-
+          .solutions-section .solution-card {
+            --card-padding: 17px;
+            --icon-size: 40px;
             border-radius: 13px;
-
             gap: 13px;
           }
 
-          .solution-icon {
-            width: 40px;
-            height: 40px;
-
+          .solutions-section .solution-icon {
             border-radius: 10px;
           }
 
-          .solution-title {
+          .solutions-section .solution-title {
             margin-bottom: 6px;
-
             font-size: 14px;
           }
 
-          .solution-body {
+          .solutions-section .solution-body {
             font-size: 12.5px;
-
-            line-height: 1.65;
           }
-
         }
 
-
-        /* =====================================================
-           VERY SMALL MOBILE
-           16px left/right
-        ===================================================== */
-
         @media (max-width: 360px) {
-
-          .solutions-container {
-            padding-top: 42px;
-            padding-right: 16px;
-            padding-bottom: 42px;
-            padding-left: 16px;
+          .solutions-section .solutions-container {
+            padding: 42px 16px;
           }
 
-          .solutions-heading {
+          .solutions-section .solutions-heading {
             font-size: 24px;
-
             line-height: 1.22;
           }
 
-          .solutions-subheading {
+          .solutions-section .solutions-subheading {
             font-size: 12.5px;
           }
 
-          .solution-card {
-            padding: 16px;
+          .solutions-section .solution-card {
+            --card-padding: 16px;
           }
 
-          .solution-body {
+          .solutions-section .solution-body {
             font-size: 12px;
           }
-
         }
 
-
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
         @media (prefers-reduced-motion: reduce) {
-
-          .solution-card {
+          .solutions-section .solution-card,
+          .solutions-section .solution-card::before {
             transition: none;
           }
 
-          .solution-card:hover {
+          .solutions-section .solution-card:hover {
             transform: none;
           }
-
         }
-
       `}</style>
 
-
-      <section className="solutions-section">
-        <div className="solutions-container">
-
-          {/* =================================================
-              LEFT CONTENT
-          ================================================= */}
-
-          <div className="solutions-copy">
-
-            <div className="solutions-eyebrow">
-              <ChevronRight
-                size={14}
-                strokeWidth={3}
-              />
-
-              <span>
-                BUILT AROUND THE WAY EDUCATION WORKS
-              </span>
-            </div>
-
-
-            {/* PLUS JAKARTA SANS */}
-
-            <h2 className="solutions-heading">
-              Technology that supports real institutional needs.
-            </h2>
-
-
-            {/* PLUS JAKARTA SANS */}
-
-            <p className="solutions-subheading">
-              We believe education technology should adapt to the
-              organization using it. Instead of treating every institution
-              the same, our approach considers its existing processes,
-              people, systems and future requirements.
-            </p>
-
-
-            {/* INTER */}
-
-            <p className="solutions-label">
-              OUR SOLUTIONS CAN SUPPORT KEY AREAS SUCH AS:
-            </p>
-
+      <div className="solutions-container">
+        {/* Left content: sticky until the section ends */}
+        <div className="solutions-copy">
+          <div className="solutions-eyebrow">
+            <ChevronRight size={14} strokeWidth={3} />
+            <span>BUILT AROUND THE WAY EDUCATION WORKS</span>
           </div>
 
+          <h2 className="solutions-heading">
+            Technology that supports real institutional needs.
+          </h2>
 
-          {/* =================================================
-              RIGHT CARD GRID
-          ================================================= */}
+          <p className="solutions-subheading">
+            We believe education technology should adapt to the
+            organization using it. Instead of treating every institution
+            the same, our approach considers its existing processes,
+            people, systems and future requirements.
+          </p>
 
-          <div className="solutions-grid">
-
-            {solutions.map(({ icon: Icon, title, body }) => (
-              <div
-                className="solution-card"
-                key={title}
-              >
-
-                <span className="solution-icon">
-                  <Icon
-                    size={20}
-                    strokeWidth={1.8}
-                  />
-                </span>
-
-
-                <div className="solution-content">
-
-                  {/* INTER */}
-
-                  <h3 className="solution-title">
-                    {title}
-                  </h3>
-
-
-                  {/* INTER */}
-
-                  <p className="solution-body">
-                    {body}
-                  </p>
-
-                </div>
-
-              </div>
-            ))}
-
-          </div>
-
+          <p className="solutions-label">
+            OUR SOLUTIONS CAN SUPPORT KEY AREAS SUCH AS:
+          </p>
         </div>
-      </section>
-    </>
+
+        {/* Right cards: scroll with the page */}
+        <div className="solutions-grid">
+          {solutions.map(({ icon: Icon, title, body }) => (
+            <article className="solution-card" key={title}>
+              <span className="solution-icon">
+                <Icon size={20} strokeWidth={1.8} />
+              </span>
+
+              <div className="solution-content">
+                <h3 className="solution-title">{title}</h3>
+                <p className="solution-body">{body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
