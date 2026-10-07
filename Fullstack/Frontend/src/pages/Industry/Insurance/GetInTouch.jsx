@@ -498,7 +498,7 @@ export default function InsuranceContact() {
           display: block;
           margin-bottom: 5px;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 500;
           color: #263650;
         }
@@ -511,7 +511,7 @@ export default function InsuranceContact() {
           border-radius: 7px;
           outline: none;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           color: #263650;
           background: #ffffff;
           transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -592,7 +592,7 @@ export default function InsuranceContact() {
           flex-shrink: 0;
           color: #61708a;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 9px;
+          font-size: 10px;
         }
 
         .capability-button.selected {
@@ -624,7 +624,7 @@ export default function InsuranceContact() {
           color: #263650;
           cursor: pointer;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 500;
           line-height: 1.3;
           transition: all 0.2s ease;
@@ -670,7 +670,7 @@ export default function InsuranceContact() {
           border-radius: 7px;
           outline: none;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.5;
           color: #263650;
           background: #ffffff;
@@ -699,7 +699,7 @@ export default function InsuranceContact() {
           margin: 8px 0;
           color: #3c4c65;
           font-family: "Inter", Arial, sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.5;
           cursor: pointer;
         }

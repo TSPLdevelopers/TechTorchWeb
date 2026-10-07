@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/TechTorchLogo.png";
 import { NavMenuProvider, useNavMenu } from "./NavbarItem/NavMenuContext";
 import NavAboutUs from "./NavbarItem/NavAboutUs";
@@ -91,13 +92,17 @@ function NavbarInner() {
         className="fixed top-0 left-0 w-full z-[1000] flex items-center justify-between px-4 sm:px-6 lg:px-10 py-2.5 lg:py-3 border-b border-gray-200 bg-white"
       >
         {/* Logo */}
-        <div className="flex items-center gap-2.5">
+        <Link
+          to="/"
+          className="flex items-center gap-2.5 cursor-pointer"
+          aria-label="TechTorch Solutions Home"
+        >
           <img
             src={logo}
             alt="TechTorch Solutions"
             className="h-12 sm:h-13 lg:h-13 w-auto"
           />
-        </div>
+        </Link>
 
         {/* Desktop Links */}
         <ul

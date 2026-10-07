@@ -368,7 +368,7 @@ export default function ScheduleDiscovery() {
           background: #ECEFF1;
           color: #29292B;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           outline: none;
           transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
@@ -430,7 +430,7 @@ export default function ScheduleDiscovery() {
           background: #ECEFF1;
           color: #29292B;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 500;
           line-height: 1.5;
           text-align: center;
@@ -526,7 +526,7 @@ export default function ScheduleDiscovery() {
           margin-top: 2px;
           color: #65595E;
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 400;
           line-height: 1.5;
         }
@@ -574,7 +574,7 @@ export default function ScheduleDiscovery() {
         .consent-text {
           color: #65595E;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.7;
         }
 
