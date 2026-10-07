@@ -106,15 +106,15 @@ export default function StartConversation() {
         }
 
         .conversation-main-title {
-         font-size: 38px;
+         font-size: 34px;
           line-height: 1.08;
         }
 
         .conversation-main-description {
-          max-width: 900px;
+          max-width: 950px;
           margin-top: 16px;
           color: #5e6a7e;
-          font-size: 17px;
+          font-size: 15px;
           line-height: 1.65;
         }
 
@@ -147,7 +147,7 @@ export default function StartConversation() {
         .form-card-description {
           max-width: 720px;
           margin-top: 5px;
-          font-size: 12px;
+          font-size: 14px;
           line-height: 1.55;
         }
 
@@ -186,7 +186,7 @@ export default function StartConversation() {
         .form-section-title h3 {
           margin: 0;
           color: #1c2434;
-          font-size: 14px;
+          font-size: 15px;
           font-weight: 700;
         }
 
@@ -206,7 +206,7 @@ export default function StartConversation() {
           display: block;
           margin-bottom: 7px;
           color: #374153;
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.4;
           font-weight: 600;
         }
@@ -224,7 +224,7 @@ export default function StartConversation() {
           outline: none;
           background: #ffffff;
           color: #313b4d;
-          font-size: 12px;
+          font-size: 13px;
           transition: 0.2s ease;
         }
 
@@ -284,7 +284,7 @@ export default function StartConversation() {
         .connect-title {
           margin: 0 0 9px;
           color: #374153;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 600;
         }
 
@@ -304,7 +304,7 @@ export default function StartConversation() {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 500;
           cursor: pointer;
         }
@@ -355,7 +355,7 @@ export default function StartConversation() {
 
         .nda-label {
           color: #718095;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.5;
         }
 
@@ -391,7 +391,7 @@ export default function StartConversation() {
           max-width: 700px;
           margin-top: 10px;
           color: #8592a5;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.5;
         }
 
@@ -462,14 +462,14 @@ export default function StartConversation() {
         .step-title {
           margin: 0;
           color: #293243;
-          font-size: 13px;
-          font-weight: 700;
+          font-size: 15px;
+          font-weight: 600;
         }
 
         .step-description {
           margin-top: 4px;
           color: #738095;
-          font-size: 10px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -492,7 +492,7 @@ export default function StartConversation() {
           border-radius: 20px;
           background: rgba(255,255,255,0.1);
           color: #ffffff;
-          font-size: 9px;
+          font-size: 10px;
           font-weight: 600;
         }
 
@@ -507,7 +507,7 @@ export default function StartConversation() {
           max-width: 330px;
           margin-top: 8px;
           color: rgba(255,255,255,0.84);
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.55;
         }
 
@@ -522,7 +522,7 @@ export default function StartConversation() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          font-size: 10px;
+          font-size: 11px;
           font-weight: 600;
         }
 
@@ -572,21 +572,21 @@ export default function StartConversation() {
         .channel-name {
           margin: 0;
           color: #374153;
-          font-size: 10px;
+          font-size: 13px;
           font-weight: 700;
         }
 
         .channel-value {
           margin-top: 2px;
           color: #730042;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 600;
         }
 
         .channel-subvalue {
           margin-top: 2px;
           color: #758195;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 1.45;
         }
 
@@ -604,7 +604,7 @@ export default function StartConversation() {
 
         .contact-description {
           margin-top: 5px;
-          font-size: 12px;
+          font-size: 14px;
         }
 
         .contact-card {
@@ -643,7 +643,7 @@ export default function StartConversation() {
         .office-title {
           margin: 0;
           color: #293243;
-          font-size: 11px;
+          font-size: 13px;
           line-height: 1.4;
           font-weight: 700;
         }
@@ -651,7 +651,7 @@ export default function StartConversation() {
         .office-address {
           margin-top: 5px;
           color: #6f7d91;
-          font-size: 10px;
+          font-size: 13px;
           line-height: 1.6;
         }
 
@@ -663,7 +663,7 @@ export default function StartConversation() {
           padding-top: 17px;
           border-top: 1px solid #edf0f3;
           color: #4d596b;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 600;
         }
 
@@ -1340,7 +1340,7 @@ export default function StartConversation() {
             <div className="map-wrapper">
 
               <img
-                src="/GlobalPresence.png"
+                src="/GlobalPresenceMap.png"
                 alt="TechTorch Global Presence"
                 className="map-image"
               />

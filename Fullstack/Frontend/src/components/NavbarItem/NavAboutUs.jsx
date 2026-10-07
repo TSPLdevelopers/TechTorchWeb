@@ -68,10 +68,33 @@ function NavAboutUs() {
       onMouseLeave={scheduleClose}
     >
       <span
-        className="relative inline-flex items-center h-full cursor-pointer text-[17px] text-gray-900 hover:text-[#8a1538] transition-colors duration-200 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-[#8a1538] after:transition-all after:duration-200 hover:after:w-full"
-      >
-        About Us
-      </span>
+  className="
+    relative inline-flex items-center h-full
+    font-inter cursor-pointer
+    text-[17px] text-gray-900
+    hover:text-[#730042]
+    transition-colors duration-300
+
+    after:content-['']
+    after:absolute
+    after:left-0
+    after:-bottom-[1px]
+    after:w-full
+    after:h-[1px]
+    after:bg-[#730042]
+
+    after:translate-y-[5px]
+    after:opacity-0
+    after:transition-all
+    after:duration-500
+    after:ease-out
+
+    hover:after:translate-y-0
+    hover:after:opacity-100
+  "
+>
+  About Us
+</span>
 
       {isOpen && (
         <div
@@ -95,7 +118,7 @@ function NavAboutUs() {
                   className=" text-[16px]
                           md:text-[18px]
                           font-semibold
-                          hover:text-[#8a1538]
+                          hover:text-[#970052]
                           text-gray-900
                           font-plus-jakarta
                           leading-[1.3]"
@@ -113,7 +136,7 @@ function NavAboutUs() {
                         text-gray-800
                         font-inter
                         leading-[1.35]
-                        hover:text-[#8a1538]
+                        hover:text-[#970052]
                         transition-colors
                         duration-200"
                 >
@@ -129,7 +152,7 @@ function NavAboutUs() {
                     className="text-[16px]
                           md:text-[18px]
                           font-semibold
-                          hover:text-[#8a1538]
+                          hover:text-[#970052]
                           text-gray-900
                           font-plus-jakarta
                           leading-[1.3]"
