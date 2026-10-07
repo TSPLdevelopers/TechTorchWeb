@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   User,
   Video,
@@ -11,8 +11,11 @@ import {
 } from "lucide-react";
 
 const WINE = "#7A1F3D";
+const BRAND = "#730042";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
+
+/* ================= PATIENT FEATURES ================= */
 
 const patientFeatures = [
   {
@@ -37,6 +40,8 @@ const patientFeatures = [
   },
 ];
 
+/* ================= SECURITY FEATURES ================= */
+
 const securityFeatures = [
   {
     icon: Shield,
@@ -60,9 +65,55 @@ const securityFeatures = [
   },
 ];
 
+/* ================= COMPONENT ================= */
+
 export default function PatientExperienceAndSecuritySections() {
+  const pageRef = useRef(null);
+
+  /* ================= VIEWPORT ANIMATION ================= */
+
+  useEffect(() => {
+    const container = pageRef.current;
+
+    if (!container) return;
+
+    const cards = container.querySelectorAll(
+      ".patient-feature-card, .security-feature-card"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+
+            const index = Number(card.dataset.index || 0);
+
+            setTimeout(() => {
+              card.classList.add("card-visible");
+            }, index * 150);
+
+            observer.unobserve(card);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -60px 0px",
+      }
+    );
+
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="patient-security-page">
+    <div ref={pageRef} className="patient-security-page">
       <style>{`
         /* =====================================================
            FONTS
@@ -92,14 +143,12 @@ export default function PatientExperienceAndSecuritySections() {
 
         /* =====================================================
            COMMON CONTAINER
-           SAME HERO SPACING SYSTEM
         ===================================================== */
 
         .patient-security-container {
           width: 100%;
           max-width: 1600px;
           margin: 0 auto;
-
           padding: 78px 100px;
         }
 
@@ -124,20 +173,17 @@ export default function PatientExperienceAndSecuritySections() {
 
         .security-section {
           width: 100%;
-          background: ${WINE};
+          background: #730042;
         }
 
 
         /* =====================================================
            SECTION LABEL
-           INTER
         ===================================================== */
 
         .section-label {
           display: block;
-
           margin: 0 0 12px;
-
           font-family: "Inter", sans-serif;
           font-size: 11px;
           line-height: 1.4;
@@ -157,12 +203,10 @@ export default function PatientExperienceAndSecuritySections() {
 
         /* =====================================================
            MAIN HEADINGS
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .section-heading {
           margin: 0 0 16px;
-
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 34px;
           line-height: 1.2;
@@ -186,14 +230,11 @@ export default function PatientExperienceAndSecuritySections() {
 
         /* =====================================================
            DESCRIPTIONS
-           INTER
         ===================================================== */
 
         .section-description {
           margin: 0;
-
           max-width: 720px;
-
           font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.75;
@@ -208,7 +249,6 @@ export default function PatientExperienceAndSecuritySections() {
         .security-description-wrapper {
           max-width: 720px;
           margin-bottom: 42px;
-
           display: flex;
           flex-direction: column;
           gap: 10px;
@@ -225,11 +265,31 @@ export default function PatientExperienceAndSecuritySections() {
 
         .feature-grid {
           display: grid;
-
-          grid-template-columns:
-            repeat(4, minmax(0, 1fr));
-
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 20px;
+        }
+
+
+        /* =====================================================
+           COMMON CARD ANIMATION
+        ===================================================== */
+
+        .patient-feature-card,
+        .security-feature-card {
+          opacity: 0;
+          transform: translateY(35px);
+          transition:
+            opacity 0.65s ease,
+            transform 0.65s ease,
+            box-shadow 0.3s ease,
+            background 0.3s ease,
+            border-color 0.3s ease;
+        }
+
+        .patient-feature-card.card-visible,
+        .security-feature-card.card-visible {
+          opacity: 1;
+          transform: translateY(0);
         }
 
 
@@ -239,26 +299,15 @@ export default function PatientExperienceAndSecuritySections() {
 
         .patient-feature-card {
           min-width: 0;
-
           background: #ffffff;
-
           border-radius: 14px;
-
           padding: 22px;
-
-          box-shadow:
-            0 1px 4px rgba(0, 0, 0, 0.05);
-
-          transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         }
 
         .patient-feature-card:hover {
-          transform: translateY(-4px);
-
-          box-shadow:
-            0 12px 28px rgba(0, 0, 0, 0.08);
+          transform: translateY(-6px);
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.10);
         }
 
 
@@ -268,25 +317,41 @@ export default function PatientExperienceAndSecuritySections() {
 
         .security-feature-card {
           min-width: 0;
-
           padding: 22px;
-
           border-radius: 14px;
-
           background: rgba(255, 255, 255, 0.08);
-
-          border:
-            1px solid rgba(255, 255, 255, 0.12);
-
-          transition:
-            transform 0.25s ease,
-            background 0.25s ease;
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          cursor: pointer;
         }
 
-        .security-feature-card:hover {
-          transform: translateY(-4px);
+        /*
+          SECOND SECTION HOVER
+          Card color changes on hover
+        */
 
-          background: rgba(255, 255, 255, 0.11);
+        .security-feature-card:hover {
+          transform: translateY(-6px);
+          background: #ffffff;
+          border-color: #ffffff;
+          box-shadow: 0 16px 34px rgba(0, 0, 0, 0.20);
+        }
+
+
+        /* =====================================================
+           SECURITY CARD HOVER TEXT
+        ===================================================== */
+
+        .security-feature-card:hover .security-icon {
+          background: #fbeef1;
+          color: ${BRAND};
+        }
+
+        .security-feature-card:hover .security-feature-title {
+          color: ${BRAND};
+        }
+
+        .security-feature-card:hover .security-feature-body {
+          color: ${MUTED};
         }
 
 
@@ -297,17 +362,15 @@ export default function PatientExperienceAndSecuritySections() {
         .feature-icon {
           width: 40px;
           height: 40px;
-
           display: flex;
-
           align-items: center;
           justify-content: center;
-
           border-radius: 9px;
-
           margin-bottom: 17px;
-
           flex-shrink: 0;
+          transition:
+            background 0.3s ease,
+            color 0.3s ease;
         }
 
         .patient-icon {
@@ -323,17 +386,15 @@ export default function PatientExperienceAndSecuritySections() {
 
         /* =====================================================
            CARD TITLES
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .feature-title {
           margin: 0 0 8px;
-
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 14px;
           line-height: 1.4;
           font-weight: 700;
+          transition: color 0.3s ease;
         }
 
         .patient-feature-title {
@@ -347,17 +408,15 @@ export default function PatientExperienceAndSecuritySections() {
 
         /* =====================================================
            CARD BODY
-           INTER
         ===================================================== */
 
         .feature-body {
           margin: 0;
-
           font-family: "Inter", sans-serif;
-
           font-size: 12px;
           line-height: 1.7;
           font-weight: 400;
+          transition: color 0.3s ease;
         }
 
         .patient-feature-body {
@@ -374,15 +433,13 @@ export default function PatientExperienceAndSecuritySections() {
         ===================================================== */
 
         @media (max-width: 1200px) {
-
           .patient-security-container {
             padding-left: 40px;
             padding-right: 40px;
           }
 
           .feature-grid {
-            grid-template-columns:
-              repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
           }
         }
 
@@ -392,11 +449,9 @@ export default function PatientExperienceAndSecuritySections() {
         ===================================================== */
 
         @media (max-width: 900px) {
-
           .patient-security-container {
             padding-top: 65px;
             padding-bottom: 65px;
-
             padding-left: 40px;
             padding-right: 40px;
           }
@@ -406,9 +461,7 @@ export default function PatientExperienceAndSecuritySections() {
           }
 
           .feature-grid {
-            grid-template-columns:
-              repeat(2, minmax(0, 1fr));
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 18px;
           }
         }
@@ -419,11 +472,9 @@ export default function PatientExperienceAndSecuritySections() {
         ===================================================== */
 
         @media (max-width: 700px) {
-
           .patient-security-container {
             padding-top: 58px;
             padding-bottom: 58px;
-
             padding-left: 40px;
             padding-right: 40px;
           }
@@ -462,10 +513,8 @@ export default function PatientExperienceAndSecuritySections() {
         ===================================================== */
 
         @media (max-width: 600px) {
-
           .patient-security-container {
-            padding:
-              48px 24px 52px;
+            padding: 48px 24px 52px;
           }
 
           .section-label {
@@ -527,10 +576,8 @@ export default function PatientExperienceAndSecuritySections() {
         ===================================================== */
 
         @media (max-width: 480px) {
-
           .patient-security-container {
-            padding:
-              42px 16px 46px;
+            padding: 42px 16px 46px;
           }
 
           .section-heading {
@@ -577,10 +624,8 @@ export default function PatientExperienceAndSecuritySections() {
         ===================================================== */
 
         @media (max-width: 340px) {
-
           .patient-security-container {
-            padding:
-              38px 16px 42px;
+            padding: 38px 16px 42px;
           }
 
           .section-heading {
@@ -602,10 +647,11 @@ export default function PatientExperienceAndSecuritySections() {
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
-
           .patient-feature-card,
           .security-feature-card {
             transition: none;
+            opacity: 1;
+            transform: none;
           }
 
           .patient-feature-card:hover,
@@ -613,9 +659,7 @@ export default function PatientExperienceAndSecuritySections() {
             transform: none;
           }
         }
-
       `}</style>
-
 
       {/* =====================================================
           SECTION 1
@@ -623,26 +667,22 @@ export default function PatientExperienceAndSecuritySections() {
       ===================================================== */}
 
       <section className="patient-experience-section">
-
         <div className="patient-security-container">
-
           <div className="patient-experience-content">
 
-            {/* Label - Inter */}
+            {/* LABEL */}
 
             <p className="section-label patient-label">
               DIGITAL PATIENT EXPERIENCE
             </p>
 
-
-            {/* Heading - Plus Jakarta Sans */}
+            {/* HEADING */}
 
             <h2 className="section-heading patient-heading">
               Make Healthcare Access More Connected
             </h2>
 
-
-            {/* Description - Inter */}
+            {/* DESCRIPTION */}
 
             <p className="section-description patient-description">
               Digital services can help healthcare providers extend
@@ -652,18 +692,16 @@ export default function PatientExperienceAndSecuritySections() {
               follow-up communication.
             </p>
 
-
-            {/* Feature Cards */}
+            {/* FEATURE CARDS */}
 
             <div className="feature-grid">
-
               {patientFeatures.map(
-                ({ icon: Icon, title, body }) => (
+                ({ icon: Icon, title, body }, index) => (
                   <div
                     key={title}
+                    data-index={index}
                     className="patient-feature-card"
                   >
-
                     <span className="feature-icon patient-icon">
                       <Icon
                         size={17}
@@ -671,30 +709,20 @@ export default function PatientExperienceAndSecuritySections() {
                       />
                     </span>
 
-
-                    {/* Card Heading - Plus Jakarta Sans */}
-
                     <h3 className="feature-title patient-feature-title">
                       {title}
                     </h3>
 
-
-                    {/* Card Text - Inter */}
-
                     <p className="feature-body patient-feature-body">
                       {body}
                     </p>
-
                   </div>
                 )
               )}
-
             </div>
 
           </div>
-
         </div>
-
       </section>
 
 
@@ -704,17 +732,15 @@ export default function PatientExperienceAndSecuritySections() {
       ===================================================== */}
 
       <section className="security-section">
-
         <div className="patient-security-container">
 
-          {/* Label - Inter */}
+          {/* LABEL */}
 
           <p className="section-label security-label">
             DATA &amp; SECURITY
           </p>
 
-
-          {/* Heading - Plus Jakarta Sans */}
+          {/* HEADING */}
 
           <h2 className="section-heading security-heading">
             Manage Healthcare Information With
@@ -722,8 +748,7 @@ export default function PatientExperienceAndSecuritySections() {
             Greater Control
           </h2>
 
-
-          {/* Descriptions - Inter */}
+          {/* DESCRIPTIONS */}
 
           <div className="security-description-wrapper">
 
@@ -734,7 +759,6 @@ export default function PatientExperienceAndSecuritySections() {
               accessible to authorized users.
             </p>
 
-
             <p className="section-description security-description">
               TechTorch's published healthcare solution includes role-based
               access, data encryption and audit trails, together with
@@ -743,18 +767,16 @@ export default function PatientExperienceAndSecuritySections() {
 
           </div>
 
-
-          {/* Security Feature Cards */}
+          {/* SECURITY CARDS */}
 
           <div className="feature-grid">
-
             {securityFeatures.map(
-              ({ icon: Icon, title, body }) => (
+              ({ icon: Icon, title, body }, index) => (
                 <div
                   key={title}
+                  data-index={index}
                   className="security-feature-card"
                 >
-
                   <span className="feature-icon security-icon">
                     <Icon
                       size={17}
@@ -762,28 +784,19 @@ export default function PatientExperienceAndSecuritySections() {
                     />
                   </span>
 
-
-                  {/* Card Heading - Plus Jakarta Sans */}
-
                   <h3 className="feature-title security-feature-title">
                     {title}
                   </h3>
 
-
-                  {/* Card Text - Inter */}
-
                   <p className="feature-body security-feature-body">
                     {body}
                   </p>
-
                 </div>
               )
             )}
-
           </div>
 
         </div>
-
       </section>
 
     </div>
