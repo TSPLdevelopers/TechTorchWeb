@@ -225,7 +225,7 @@ export default function Footer() {
 
               <SocialIcon
                 label="LinkedIn"
-                href="https://www.linkedin.com/company/techtorch_sol/"
+                href="https://www.linkedin.com/company/techtorch_sol/                                                                                                                                                                                                                                                                                                                                                     "
               >
                 <LinkedInIcon />
               </SocialIcon>
