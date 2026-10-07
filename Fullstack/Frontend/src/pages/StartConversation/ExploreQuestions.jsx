@@ -197,7 +197,7 @@ export default function AskQuestion() {
 
         .question-title {
           max-width: 650px;
-         font-size: 38px;
+          font-size: clamp(42px, 4.5vw, 58px);
           line-height: 1.04;
         }
 
@@ -209,7 +209,7 @@ export default function AskQuestion() {
         .question-description {
           max-width: 650px;
           margin-top: 25px;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.65;
         }
 
@@ -283,7 +283,7 @@ export default function AskQuestion() {
           margin: 0;
           color: #151b2b;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 17px;
+          font-size: 18px;
           font-weight: 700;
         }
 
@@ -292,7 +292,7 @@ export default function AskQuestion() {
           margin: 9px 0 0;
           color: #7a8290;
           font-family: "Inter", sans-serif;
-          font-size: 14px;
+          font-size: 13px;
           line-height: 1.55;
         }
 
@@ -327,7 +327,7 @@ export default function AskQuestion() {
         }
 
         .form-title {
-         font-size: 34px;
+          font-size: clamp(30px, 3.5vw, 41px);
           line-height: 1.15;
         }
 
@@ -379,7 +379,7 @@ export default function AskQuestion() {
           background: #ffffff;
           color: #252b38;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           transition: 0.2s ease;
         }
 
@@ -450,7 +450,7 @@ export default function AskQuestion() {
           background: #ffffff;
           color: #444b58;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 600;
 
           display: flex;
@@ -525,7 +525,6 @@ export default function AskQuestion() {
         }
 
         .submit-button:hover {
-         background: #970052;
           transform: translateY(-2px);
           box-shadow: 0 8px 18px rgba(115, 0, 66, 0.22);
         }
@@ -557,7 +556,7 @@ export default function AskQuestion() {
         }
 
         .faq-title {
-         font-size: 36px;
+          font-size: clamp(32px, 4vw, 43px);
           line-height: 1.12;
         }
 
@@ -608,7 +607,7 @@ export default function AskQuestion() {
           gap: 15px;
 
           font-family: "Inter", sans-serif;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 600;
           text-align: left;
 
@@ -630,7 +629,7 @@ export default function AskQuestion() {
           padding: 0 17px 17px;
           color: #727b89;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 12px;
           line-height: 1.6;
         }
 
@@ -666,7 +665,7 @@ export default function AskQuestion() {
 
         .another-title {
           margin-top: 12px;
-        font-size: 26px;
+          font-size: clamp(22px, 2.5vw, 29px);
           line-height: 1.2;
         }
 
@@ -687,7 +686,7 @@ export default function AskQuestion() {
         .direct-label {
           color: #9aa1ac;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 12px;
         }
 
         .direct-link {
@@ -754,7 +753,7 @@ export default function AskQuestion() {
         }
 
         .reach-title {
-        font-size: 32px;
+          font-size: clamp(30px, 3.5vw, 40px);
           line-height: 1.15;
         }
 
@@ -805,8 +804,8 @@ export default function AskQuestion() {
         }
 
         .reach-icon {
-          width: 35px;
-          height: 35px;
+          width: 62px;
+          height: 62px;
           flex-shrink: 0;
           border-radius: 17px;
           background: #f9edf4;
@@ -818,15 +817,15 @@ export default function AskQuestion() {
         }
 
         .reach-icon svg {
-          width: 20px;
-          height: 20px;
+          width: 27px;
+          height: 27px;
         }
 
         .reach-label {
           margin: 1px 0 5px;
           color: #a3aab6;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.5px;
         }
@@ -835,7 +834,7 @@ export default function AskQuestion() {
           margin: 0;
           color: #252c39;
           font-family: "Inter", sans-serif;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.45;
           font-weight: 700;
         }
@@ -844,7 +843,7 @@ export default function AskQuestion() {
           margin: 3px 0 0;
           color: #8b929e;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 12px;
           line-height: 1.45;
         }
 
@@ -890,7 +889,7 @@ export default function AskQuestion() {
 
         .final-title {
           color: #ffffff;
-         font-size: 34px;
+          font-size: clamp(34px, 4vw, 48px);
           line-height: 1.1;
         }
 
@@ -909,8 +908,8 @@ export default function AskQuestion() {
         }
 
         .white-button {
-          min-height: 50px;
-          padding: 0 30px;
+          min-height: 61px;
+          padding: 0 34px;
           border: none;
           border-radius: 32px;
           background: #ffffff;
@@ -935,8 +934,8 @@ export default function AskQuestion() {
         }
 
         .outline-button {
-          min-height: 50px;
-          padding: 0 30px;
+          min-height: 61px;
+          padding: 0 34px;
           border: 2px solid rgba(255, 255, 255, 0.55);
           border-radius: 32px;
           background: transparent;
@@ -1639,7 +1638,7 @@ export default function AskQuestion() {
             <button
               type="button"
               className="question-button"
-              onClick={() => navigate("/ask-question")}
+              onClick={() => navigate("/explore-questions")}
             >
               ASK YOUR QUESTION
               <ArrowRight size={15} />

@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import megaMenuImage from "../../assets/image1.png";
 
@@ -68,33 +69,10 @@ function NavAboutUs() {
       onMouseLeave={scheduleClose}
     >
       <span
-  className="
-    relative inline-flex items-center h-full
-    font-inter cursor-pointer
-    text-[17px] text-gray-900
-    hover:text-[#730042]
-    transition-colors duration-300
-
-    after:content-['']
-    after:absolute
-    after:left-0
-    after:-bottom-[1px]
-    after:w-full
-    after:h-[1px]
-    after:bg-[#730042]
-
-    after:translate-y-[5px]
-    after:opacity-0
-    after:transition-all
-    after:duration-500
-    after:ease-out
-
-    hover:after:translate-y-0
-    hover:after:opacity-100
-  "
->
-  About Us
-</span>
+        className="relative inline-flex items-center h-full cursor-pointer text-[17px] text-gray-900 hover:text-[#8a1538] transition-colors duration-200 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-[#8a1538] after:transition-all after:duration-200 hover:after:w-full"
+      >
+        About Us
+      </span>
 
       {isOpen && (
         <div
@@ -114,11 +92,11 @@ function NavAboutUs() {
               {primaryLinks.map((title) => (
                 <a
                   key={title}
-                  href="#"
+                  href={routeFor(title)}
                   className=" text-[16px]
                           md:text-[18px]
                           font-semibold
-                          hover:text-[#970052]
+                          hover:text-[#8a1538]
                           text-gray-900
                           font-plus-jakarta
                           leading-[1.3]"
@@ -130,13 +108,13 @@ function NavAboutUs() {
               {secondaryLinks.map((title) => (
                 <a
                   key={title}
-                  href="#"
+                  href={routeFor(title)}
                   className="text-[15px]
                         md:text-[15px]
                         text-gray-800
                         font-inter
                         leading-[1.35]
-                        hover:text-[#970052]
+                        hover:text-[#8a1538]
                         transition-colors
                         duration-200"
                 >
@@ -148,11 +126,11 @@ function NavAboutUs() {
                 {boldLinks.map((title) => (
                   <a
                     key={title}
-                    href="#"
+                    href={routeFor(title)}
                     className="text-[16px]
                           md:text-[18px]
                           font-semibold
-                          hover:text-[#970052]
+                          hover:text-[#8a1538]
                           text-gray-900
                           font-plus-jakarta
                           leading-[1.3]"
@@ -182,7 +160,7 @@ function NavAboutUs() {
                 <div className="w-[255px] h-[2px] bg-white mt-2" />
               </div>
 
-            <a href="#" className="text-[16px] font-bold font-inter text-white mb-8">
+            <a href="/Philosophy" className="text-[16px] font-bold font-inter text-white mb-8">
               LEARN MORE
             </a>
             </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import backgroundImage from "/hero5slide1.png";
+const backgroundImage = "/hero5slide1.png";
 
 const MAROON = "#7a1338";
 

@@ -1,3 +1,4 @@
+import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import image4 from "../../assets/image4.png";
 import image5 from "../../assets/image5.png";
@@ -63,11 +64,11 @@ function NavCareers() {
     >
       {/* NAV LABEL */}
       <span
-        className={`relative font-inter inline-flex items-center h-full cursor-pointer text-[17px]
+        className={`relative inline-flex items-center h-full cursor-pointer text-[17px]
           transition-colors duration-200
-          ${isOpen ? "text-[#730042]" : "text-gray-900"}
+          ${isOpen ? "text-[#8a1538]" : "text-gray-900"}
           after:absolute after:left-0 after:bottom-0 after:h-[2px]
-          after:bg-[#730042] after:transition-all after:duration-200
+          after:bg-[#8a1538] after:transition-all after:duration-200
           ${isOpen ? "after:w-full" : "after:w-0"}`}
       >
         Careers
@@ -104,13 +105,13 @@ function NavCareers() {
               {links.map((title) => (
                 <a
                   key={title}
-                  href="#"
+                  href={routeFor(title)}
                   className=" text-[15px]
                         md:text-[15px]
                         text-gray-800
                         font-inter
                         leading-[1.35]
-                        hover:text-[#970052]
+                        hover:text-[#8a1538]
                         transition-colors
                         duration-200"
                 >
@@ -132,16 +133,16 @@ function NavCareers() {
               />
 
               <div className="absolute inset-0 p-5 flex flex-col text-white">
-                <span className="text-[15px] font-plus-jakarta">
+                <span className="text-[16px] font-plus-jakarta">
                   Featured Story
                 </span>
 
                 <div className="mt-[65px]">
-                  <h2 className="text-[17px] font-medium font-plus-jakarta">
+                  <h2 className="text-[18px] font-medium font-plus-jakarta">
                     Life & Culture at TechTorch
                   </h2>
 
-                  <p className="text-[15px] font-inter mt-[20px] max-w-[330px]">
+                  <p className="text-[16px] font-inter mt-[20px] max-w-[330px]">
                     Discover our people, culture and the
                     <br />
                     values that shape the way we work
@@ -151,8 +152,8 @@ function NavCareers() {
                 </div>
 
                 <a
-                  href="#"
-                  className="mt-[10px] text-[15px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
+                  href="/careers"
+                  className="mt-[10px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   READ MORE
                 </a>
@@ -168,16 +169,16 @@ function NavCareers() {
               />
 
               <div className="absolute inset-0 p-5 flex flex-col text-white">
-                <span className="text-[15px] font-plus-jakarta">
+                <span className="text-[16px] font-plus-jakarta">
                   Featured Story
                 </span>
 
                 <div className="mt-[65px]">
-                  <h2 className="text-[17px] font-medium font-plus-jakarta">
+                  <h2 className="text-[18px] font-medium font-plus-jakarta">
                     Opportunities at TechTorch
                   </h2>
 
-                  <p className="text-[15px] font-inter mt-[20px] max-w-[330px]">
+                  <p className="text-[16px] font-inter mt-[20px] max-w-[330px]">
                     Explore opportunities to learn, contribute
                     <br />
                     and build your career with a growing
@@ -187,8 +188,8 @@ function NavCareers() {
                 </div>
 
                 <a
-                  href="#"
-                  className="mt-[10px] text-[15px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
+                  href="/careers"
+                  className="mt-[10px] text-[16px] font-bold font-inter text-white hover:text-gray-300 transition-colors"
                 >
                   READ MORE
                 </a>
