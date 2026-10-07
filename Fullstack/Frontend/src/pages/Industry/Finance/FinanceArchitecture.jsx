@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   FileText,
   CreditCard,
@@ -13,6 +13,7 @@ import {
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
+const ICON_BG = "#fbeef1";
 
 const cards = [
   {
@@ -66,16 +67,90 @@ const cards = [
 ];
 
 export default function CoreArchitectureGridSection() {
-  return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+  const gridRef = useRef(null);
 
-        /* =================================================
-           SECTION
-        ================================================= */
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const items = Array.from(
+      grid.querySelectorAll(".core-card-observer")
+    );
+
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let observer;
+
+    function setupAnimation() {
+      observer?.disconnect();
+      grid.classList.remove("core-reveal-enabled");
+
+      items.forEach((item) => {
+        item.classList.remove("is-visible");
+      });
+
+      if (
+        motionPreference.matches ||
+        !("IntersectionObserver" in window)
+      ) {
+        return;
+      }
+
+      grid.classList.add("core-reveal-enabled");
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          // Cards entering together reveal in their original order.
+          const entering = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+              (a, b) =>
+                Number(a.target.dataset.index) -
+                Number(b.target.dataset.index)
+            );
+
+          entering.forEach((entry, index) => {
+            entry.target.style.setProperty(
+              "--reveal-delay",
+              `${index * 160}ms`
+            );
+
+            entry.target.classList.add("is-visible");
+          });
+
+          // Reset when off-screen so the animation plays again.
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              entry.target.classList.remove("is-visible");
+            }
+          });
+        },
+        { threshold: 0 }
+      );
+
+      items.forEach((item) => observer.observe(item));
+    }
+
+    setupAnimation();
+    motionPreference.addEventListener("change", setupAnimation);
+
+    return () => {
+      observer?.disconnect();
+      motionPreference.removeEventListener("change", setupAnimation);
+      grid.classList.remove("core-reveal-enabled");
+    };
+  }, []);
+
+  return (
+    <section className="core-architecture-section">
+      <style>{`
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 
         .core-architecture-section {
+          --core-icon-bg: ${ICON_BG};
+
           width: 100%;
           background: #f7f7fa;
           color: ${INK};
@@ -97,10 +172,6 @@ export default function CoreArchitectureGridSection() {
           padding: 78px 100px;
         }
 
-        /* =================================================
-           HEADER
-        ================================================= */
-
         .core-architecture-header {
           display: grid;
           grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -109,24 +180,24 @@ export default function CoreArchitectureGridSection() {
           margin-bottom: 40px;
         }
 
-        /* =================================================
-           BADGE
-        ================================================= */
+        .core-architecture-header > * {
+          min-width: 0;
+        }
 
         .core-architecture-badge {
           display: inline-flex;
           align-items: center;
           gap: 6px;
+          max-width: 100%;
           padding: 6px 12px;
           margin-bottom: 16px;
           border-radius: 999px;
-          background: #fbeef1;
+          background: var(--core-icon-bg);
           color: ${WINE};
-          font-family: "Inter", Arial, sans-serif;
           font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.04em;
-          line-height: 1;
+          line-height: 1.3;
         }
 
         .core-architecture-badge-dot {
@@ -136,10 +207,6 @@ export default function CoreArchitectureGridSection() {
           border-radius: 50%;
           background: ${WINE};
         }
-
-        /* =================================================
-           HEADING
-        ================================================= */
 
         .core-architecture-heading {
           margin: 0;
@@ -155,10 +222,6 @@ export default function CoreArchitectureGridSection() {
           color: ${WINE};
         }
 
-        /* =================================================
-           SUBHEADING
-        ================================================= */
-
         .core-architecture-subheading {
           margin: 0;
           padding-top: 4px;
@@ -170,56 +233,117 @@ export default function CoreArchitectureGridSection() {
           max-width: 680px;
         }
 
-        /* =================================================
-           CARDS GRID
-        ================================================= */
-
         .core-architecture-grid {
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 20px;
         }
 
-        /* =================================================
-           CARD
-        ================================================= */
+        /* Observe a stationary wrapper to avoid animation flicker. */
+        .core-card-observer {
+          display: flex;
+          min-width: 0;
+        }
+
+        .core-card-reveal {
+          display: flex;
+          width: 100%;
+          min-width: 0;
+        }
+
+        .core-reveal-enabled
+        > .core-card-observer
+        > .core-card-reveal {
+          opacity: 0;
+        }
+
+        .core-reveal-enabled
+        > .core-card-observer.is-visible
+        > .core-card-reveal {
+          animation: core-card-enter
+            650ms
+            cubic-bezier(0.22, 1, 0.36, 1)
+            var(--reveal-delay, 0ms)
+            both;
+        }
+
+        @keyframes core-card-enter {
+          from {
+            opacity: 0;
+            transform: translateY(32px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
         .core-architecture-card {
+          --card-padding: 22px;
+          --icon-size: 38px;
+          --spread-origin: calc(
+            var(--card-padding) + var(--icon-size) / 2
+          );
+
+          position: relative;
+          isolation: isolate;
+          width: 100%;
           min-width: 0;
-          padding: 22px;
+          padding: var(--card-padding);
+          overflow: hidden;
           background: #ffffff;
           border-radius: 12px;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
           transition:
             transform 0.3s ease,
             box-shadow 0.3s ease;
         }
 
-        .core-architecture-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+        /* Pink layer expands from the exact center of the icon. */
+        .core-architecture-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          pointer-events: none;
+          background: var(--core-icon-bg);
+          clip-path: circle(
+            0% at var(--spread-origin) var(--spread-origin)
+          );
+          transition: clip-path 650ms cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* =================================================
-           CARD ICON
-        ================================================= */
+        /* Keep all content above the expanding background. */
+        .core-architecture-card > * {
+          position: relative;
+          z-index: 1;
+        }
+
+        @media (hover: hover) {
+          .core-architecture-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+          }
+
+          .core-architecture-card:hover::before {
+            clip-path: circle(
+              150% at var(--spread-origin) var(--spread-origin)
+            );
+          }
+        }
 
         .core-architecture-icon {
-          width: 38px;
-          height: 38px;
+          width: var(--icon-size);
+          height: var(--icon-size);
           display: flex;
           align-items: center;
           justify-content: center;
           margin-bottom: 16px;
           border-radius: 8px;
-          background: #fbeef1;
+          background: var(--core-icon-bg);
           color: ${WINE};
         }
-
-        /* =================================================
-           CARD TITLE
-        ================================================= */
 
         .core-architecture-card-title {
           margin: 0 0 8px;
@@ -228,24 +352,16 @@ export default function CoreArchitectureGridSection() {
           font-size: 14px;
           line-height: 1.4;
           font-weight: 700;
+          overflow-wrap: break-word;
         }
-
-        /* =================================================
-           CARD BODY
-        ================================================= */
 
         .core-architecture-card-body {
           margin: 0 0 16px;
           color: ${MUTED};
-          font-family: "Inter", Arial, sans-serif;
           font-size: 12px;
           line-height: 1.7;
           font-weight: 400;
         }
-
-        /* =================================================
-           TAGS
-        ================================================= */
 
         .core-architecture-tags {
           display: flex;
@@ -256,19 +372,16 @@ export default function CoreArchitectureGridSection() {
         .core-architecture-tag {
           display: inline-flex;
           align-items: center;
+          max-width: 100%;
           padding: 4px 8px;
           border-radius: 6px;
           background: #f2f1f5;
           color: ${MUTED};
-          font-family: "Inter", Arial, sans-serif;
           font-size: 10px;
           line-height: 1.4;
           font-weight: 500;
+          overflow-wrap: anywhere;
         }
-
-        /* =================================================
-           LAPTOP
-        ================================================= */
 
         @media (max-width: 1200px) {
           .core-architecture-container {
@@ -289,16 +402,9 @@ export default function CoreArchitectureGridSection() {
           }
         }
 
-        /* =================================================
-           TABLET
-        ================================================= */
-
         @media (max-width: 900px) {
           .core-architecture-container {
-            padding-top: 62px;
-            padding-bottom: 62px;
-            padding-left: 40px;
-            padding-right: 40px;
+            padding: 62px 40px;
           }
 
           .core-architecture-header {
@@ -322,20 +428,13 @@ export default function CoreArchitectureGridSection() {
           }
 
           .core-architecture-card {
-            padding: 20px;
+            --card-padding: 20px;
           }
         }
 
-        /* =================================================
-           MOBILE
-        ================================================= */
-
         @media (max-width: 600px) {
           .core-architecture-container {
-            padding-top: 52px;
-            padding-bottom: 52px;
-            padding-left: 24px;
-            padding-right: 24px;
+            padding: 52px 24px;
           }
 
           .core-architecture-header {
@@ -359,39 +458,22 @@ export default function CoreArchitectureGridSection() {
           }
 
           .core-architecture-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 16px;
           }
 
           .core-architecture-card {
-            padding: 19px;
-            border-radius: 12px;
-          }
-
-          .core-architecture-card-title {
-            font-size: 14px;
+            --card-padding: 19px;
           }
 
           .core-architecture-card-body {
-            font-size: 12px;
             line-height: 1.65;
-          }
-
-          .core-architecture-tag {
-            font-size: 10px;
           }
         }
 
-        /* =================================================
-           SMALL MOBILE
-        ================================================= */
-
         @media (max-width: 480px) {
           .core-architecture-container {
-            padding-top: 44px;
-            padding-bottom: 44px;
-            padding-left: 16px;
-            padding-right: 16px;
+            padding: 44px 16px;
           }
 
           .core-architecture-heading {
@@ -403,17 +485,12 @@ export default function CoreArchitectureGridSection() {
           }
 
           .core-architecture-card {
-            padding: 17px;
+            --card-padding: 17px;
+            --icon-size: 35px;
           }
 
           .core-architecture-icon {
-            width: 35px;
-            height: 35px;
             margin-bottom: 14px;
-          }
-
-          .core-architecture-card-body {
-            font-size: 12px;
           }
 
           .core-architecture-tag {
@@ -422,16 +499,9 @@ export default function CoreArchitectureGridSection() {
           }
         }
 
-        /* =================================================
-           VERY SMALL DEVICES
-        ================================================= */
-
         @media (max-width: 340px) {
           .core-architecture-container {
-            padding-top: 38px;
-            padding-bottom: 38px;
-            padding-left: 16px;
-            padding-right: 16px;
+            padding: 38px 16px;
           }
 
           .core-architecture-heading {
@@ -443,7 +513,7 @@ export default function CoreArchitectureGridSection() {
           }
 
           .core-architecture-card {
-            padding: 16px;
+            --card-padding: 16px;
           }
 
           .core-architecture-card-body {
@@ -455,12 +525,20 @@ export default function CoreArchitectureGridSection() {
           }
         }
 
-        /* =================================================
-           REDUCED MOTION
-        ================================================= */
-
         @media (prefers-reduced-motion: reduce) {
-          .core-architecture-card {
+          .core-reveal-enabled
+          > .core-card-observer
+          > .core-card-reveal,
+          .core-reveal-enabled
+          > .core-card-observer.is-visible
+          > .core-card-reveal {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
+
+          .core-architecture-card,
+          .core-architecture-card::before {
             transition: none;
           }
 
@@ -470,70 +548,63 @@ export default function CoreArchitectureGridSection() {
         }
       `}</style>
 
-      <section className="core-architecture-section">
-        <div className="core-architecture-container">
+      <div className="core-architecture-container">
+        <div className="core-architecture-header">
+          <div>
+            <span className="core-architecture-badge">
+              <span className="core-architecture-badge-dot" />
+              TECHTORCH CORE ARCHITECTURE
+            </span>
 
-          {/* Header */}
-          <div className="core-architecture-header">
-            <div>
-              <span className="core-architecture-badge">
-                <span className="core-architecture-badge-dot" />
-                TECHTORCH CORE ARCHITECTURE
-              </span>
-
-              <h2 className="core-architecture-heading">
-                Digital Solutions Designed
-                <br />
-                <span>Around Operational Precision</span>
-              </h2>
-            </div>
-
-            <p className="core-architecture-subheading">
-              Every financial organization demands tailored compliance, speed,
-              and reliability. TechTorch builds, modernizes, and deploys
-              cohesive digital infrastructure engineered around your exact
-              workflows.
-            </p>
+            <h2 className="core-architecture-heading">
+              Digital Solutions Designed
+              <br />
+              <span>Around Operational Precision</span>
+            </h2>
           </div>
 
-          {/* Cards */}
-          <div className="core-architecture-grid">
-            {cards.map(({ icon: Icon, title, body, tags }) => (
-              <div
-                key={title}
-                className="core-architecture-card"
-              >
-                <span className="core-architecture-icon">
-                  <Icon
-                    size={16}
-                    strokeWidth={1.8}
-                  />
-                </span>
-
-                <h3 className="core-architecture-card-title">
-                  {title}
-                </h3>
-
-                <p className="core-architecture-card-body">
-                  {body}
-                </p>
-
-                <div className="core-architecture-tags">
-                  {tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="core-architecture-tag"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
+          <p className="core-architecture-subheading">
+            Every financial organization demands tailored compliance, speed,
+            and reliability. TechTorch builds, modernizes, and deploys
+            cohesive digital infrastructure engineered around your exact
+            workflows.
+          </p>
         </div>
-      </section>
-    </>
+
+        <div ref={gridRef} className="core-architecture-grid">
+          {cards.map(({ icon: Icon, title, body, tags }, index) => (
+            <div
+              key={title}
+              className="core-card-observer"
+              data-index={index}
+            >
+              <div className="core-card-reveal">
+                <article className="core-architecture-card">
+                  <span className="core-architecture-icon">
+                    <Icon size={16} strokeWidth={1.8} />
+                  </span>
+
+                  <h3 className="core-architecture-card-title">
+                    {title}
+                  </h3>
+
+                  <p className="core-architecture-card-body">
+                    {body}
+                  </p>
+
+                  <div className="core-architecture-tags">
+                    {tags.map((tag) => (
+                      <span key={tag} className="core-architecture-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

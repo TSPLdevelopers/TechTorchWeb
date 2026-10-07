@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Smartphone,
   ShieldCheck,
@@ -16,6 +16,7 @@ import {
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
 const MUTED = "#5b5a63";
+const CARD_BG = "#fbeef1";
 
 const experienceFeatures = [
   {
@@ -87,22 +88,92 @@ function Pill({ children }) {
   );
 }
 
+// Each grid animates independently as its cards enter the viewport.
+function useCardReveal() {
+  const gridRef = useRef(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cards = Array.from(
+      grid.querySelectorAll(".digital-card-reveal")
+    );
+
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let observer;
+
+    function setup() {
+      observer?.disconnect();
+      grid.classList.remove("reveal-enabled");
+
+      cards.forEach((card) => {
+        card.classList.remove("is-visible");
+      });
+
+      if (
+        motionPreference.matches ||
+        !("IntersectionObserver" in window)
+      ) {
+        return;
+      }
+
+      grid.classList.add("reveal-enabled");
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entering = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+              (a, b) =>
+                Number(a.target.dataset.index) -
+                Number(b.target.dataset.index)
+            );
+
+          entering.forEach((entry, index) => {
+            entry.target.style.setProperty(
+              "--reveal-delay",
+              `${index * 180}ms`
+            );
+            entry.target.classList.add("is-visible");
+          });
+
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              entry.target.classList.remove("is-visible");
+            }
+          });
+        },
+        { threshold: 0 }
+      );
+
+      cards.forEach((card) => observer.observe(card));
+    }
+
+    setup();
+    motionPreference.addEventListener("change", setup);
+
+    return () => {
+      observer?.disconnect();
+      motionPreference.removeEventListener("change", setup);
+      grid.classList.remove("reveal-enabled");
+    };
+  }, []);
+
+  return gridRef;
+}
+
 export default function DigitalExperienceAndApproachSections() {
+  const featuresRef = useCardReveal();
+  const phasesRef = useCardReveal();
+
   return (
     <section className="digital-experience-section">
       <style>{`
-        /* =====================================================
-           GOOGLE FONTS
-        ===================================================== */
-
-        @import url(
-          'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap'
-        );
-
-
-        /* =====================================================
-           MAIN SECTION
-        ===================================================== */
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 
         .digital-experience-section {
           width: 100%;
@@ -112,23 +183,19 @@ export default function DigitalExperienceAndApproachSections() {
           overflow: hidden;
         }
 
-
-        /* =====================================================
-           COMMON CONTAINER
-        ===================================================== */
+        .digital-experience-section,
+        .digital-experience-section *,
+        .digital-experience-section *::before,
+        .digital-experience-section *::after {
+          box-sizing: border-box;
+        }
 
         .digital-main-container {
           width: 100%;
           max-width: 1440px;
           margin: 0 auto;
           padding: 75px 100px 85px;
-          box-sizing: border-box;
         }
-
-
-        /* =====================================================
-           SECTION 1
-        ===================================================== */
 
         .digital-experience-grid {
           display: grid;
@@ -137,19 +204,12 @@ export default function DigitalExperienceAndApproachSections() {
           align-items: center;
         }
 
-
-        /* =====================================================
-           IMAGE AREA
-        ===================================================== */
-
         .digital-image-area {
           position: relative;
           width: 100%;
           min-width: 0;
           padding: 0 24px 22px 0;
-          box-sizing: border-box;
         }
-
 
         .digital-main-image {
           width: 100%;
@@ -161,147 +221,88 @@ export default function DigitalExperienceAndApproachSections() {
           background: #e2e5e7;
         }
 
-
-        /* =====================================================
-           FLOATING ICON CARD
-        ===================================================== */
-
         .digital-icon-stack {
           position: absolute;
           top: 25px;
           left: 25px;
-
           display: flex;
           flex-direction: column;
           gap: 8px;
-
           padding: 9px;
-
           border-radius: 12px;
           background: #ffffff;
-
-          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
-
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
           z-index: 2;
         }
-
 
         .digital-icon-box {
           width: 34px;
           height: 34px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           border-radius: 8px;
-
-          background: #fbeef1;
+          background: ${CARD_BG};
           color: ${WINE};
         }
 
-
-        /* =====================================================
-           CONTENT
-        ===================================================== */
-
         .digital-content {
           min-width: 0;
+          width: 100%;
         }
-
-
-        /* =====================================================
-           PILL
-           INTER
-        ===================================================== */
 
         .digital-pill {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-
+          max-width: 100%;
           margin-bottom: 18px;
           padding: 6px 11px;
-
           border-radius: 999px;
-
-          background: #fbeef1;
+          background: ${CARD_BG};
           color: ${WINE};
-
-          font-family: "Inter", sans-serif;
           font-size: 9px;
           line-height: 1.3;
           font-weight: 700;
           letter-spacing: 0.06em;
         }
 
-
         .digital-pill-dot {
           width: 6px;
           height: 6px;
-
           flex-shrink: 0;
-
           border-radius: 50%;
           background: ${WINE};
         }
 
-
-        /* =====================================================
-           MAIN HEADING
-           PLUS JAKARTA SANS
-        ===================================================== */
-
         .digital-heading {
           max-width: 600px;
-
           margin: 0 0 18px;
-
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 36px;
           line-height: 1.16;
           font-weight: 700;
           letter-spacing: -0.8px;
-
           color: ${INK};
         }
 
-
-        .digital-heading-highlight {
+        .digital-heading-highlight,
+        .approach-heading-highlight {
           color: ${WINE};
         }
 
-
-        /* =====================================================
-           DESCRIPTION
-           INTER
-        ===================================================== */
-
         .digital-description {
           max-width: 590px;
-
           margin: 0 0 13px;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 14px;
           line-height: 1.72;
           font-weight: 400;
-
           color: ${MUTED};
         }
-
 
         .digital-description:last-of-type {
           margin-bottom: 30px;
         }
-
-
-        /* =====================================================
-           EXPERIENCE FEATURES
-           INTER
-        ===================================================== */
 
         .digital-features-grid {
           display: grid;
@@ -310,175 +311,134 @@ export default function DigitalExperienceAndApproachSections() {
           row-gap: 24px;
         }
 
-
         .digital-feature {
           display: flex;
           align-items: flex-start;
           gap: 11px;
+          width: 100%;
           min-width: 0;
         }
-
 
         .digital-feature-icon {
           width: 36px;
           height: 36px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           flex-shrink: 0;
-
           border-radius: 50%;
-
           background: ${WINE};
           color: #ffffff;
         }
-
 
         .digital-feature-content {
           min-width: 0;
         }
 
-
         .digital-feature-title {
           margin: 0 0 5px;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 13px;
           line-height: 1.45;
           font-weight: 700;
-
           color: ${INK};
         }
 
-
         .digital-feature-body {
           margin: 0;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 11px;
           line-height: 1.65;
-
           color: ${MUTED};
         }
-
-
-        /* =====================================================
-           APPROACH SECTION
-        ===================================================== */
 
         .approach-section {
           margin-top: 10px;
         }
 
-
         .approach-header {
           display: grid;
-
-          grid-template-columns:
-            minmax(0, 1fr)
-            minmax(0, 1fr);
-
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 48px;
-
           align-items: start;
-
           margin-bottom: 45px;
         }
 
-
-        .approach-header-left {
+        .approach-header-left,
+        .approach-header-right {
           min-width: 0;
         }
 
-
         .approach-header-right {
-          min-width: 0;
           padding-top: 7px;
         }
 
-
-        /* =====================================================
-           APPROACH HEADING
-           PLUS JAKARTA SANS
-        ===================================================== */
-
         .approach-heading {
           max-width: 580px;
-
           margin: 0;
-
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 36px;
           line-height: 1.16;
           font-weight: 700;
           letter-spacing: -0.8px;
-
           color: ${INK};
         }
 
-
-        .approach-heading-highlight {
-          color: ${WINE};
-        }
-
-
-        /* =====================================================
-           APPROACH DESCRIPTION
-           INTER
-        ===================================================== */
-
         .approach-description {
           max-width: 560px;
-
           margin: 0;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 14px;
           line-height: 1.72;
           font-weight: 400;
-
           color: ${MUTED};
         }
 
-
-        /* =====================================================
-           PHASES GRID
-        ===================================================== */
-
         .phases-grid {
           display: grid;
-
-          grid-template-columns:
-            repeat(5, minmax(0, 1fr));
-
+          grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: 16px;
         }
 
+        /* Reveal wrapper keeps entrance and hover independent. */
+        .digital-card-reveal {
+          display: flex;
+          min-width: 0;
+        }
 
-        /* =====================================================
-           PHASE CARD
-        ===================================================== */
+        .digital-experience-section .reveal-enabled
+        > .digital-card-reveal {
+          opacity: 0;
+        }
+
+        .digital-experience-section .reveal-enabled
+        > .digital-card-reveal.is-visible {
+          animation: digital-card-enter
+            650ms
+            cubic-bezier(0.22, 1, 0.36, 1)
+            var(--reveal-delay, 0ms)
+            both;
+        }
+
+        @keyframes digital-card-enter {
+          from {
+            opacity: 0;
+            transform: translateY(28px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
         .phase-card {
+          width: 100%;
           min-width: 0;
           min-height: 245px;
-
           display: flex;
           flex-direction: column;
-
           padding: 19px;
-
-          box-sizing: border-box;
-
           border: 1px solid #ece9e4;
           border-radius: 12px;
 
+          /* Same background as the phase icon */
           background: #ffffff;
 
           transition:
@@ -487,131 +447,71 @@ export default function DigitalExperienceAndApproachSections() {
             border-color 0.25s ease;
         }
 
-
         .phase-card:hover {
+        background: #fbeef1;
           transform: translateY(-3px);
-
           border-color: #e2d8dc;
-
-          box-shadow:
-            0 10px 25px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
         }
-
-
-        /* =====================================================
-           PHASE TOP
-           INTER
-        ===================================================== */
 
         .phase-top {
           display: flex;
           align-items: center;
           gap: 8px;
-
           margin-bottom: 20px;
-
           min-width: 0;
         }
-
 
         .phase-icon {
           width: 32px;
           height: 32px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           flex-shrink: 0;
-
           border-radius: 8px;
-
-          background: #fbeef1;
+          background: ${CARD_BG};
           color: ${WINE};
         }
 
-
         .phase-label {
           min-width: 0;
-
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-
-          font-family: "Inter", sans-serif;
-
+          white-space: normal;
+          overflow-wrap: anywhere;
           font-size: 9px;
           line-height: 1.4;
           font-weight: 700;
           letter-spacing: 0.04em;
-
           color: ${WINE};
         }
 
-
-        /* =====================================================
-           PHASE TITLE
-           PLUS JAKARTA SANS
-        ===================================================== */
-
         .phase-title {
           margin: 0 0 8px;
-
           font-family: "Plus Jakarta Sans", sans-serif;
-
           font-size: 15px;
           line-height: 1.4;
           font-weight: 700;
-
           color: ${INK};
         }
 
-
-        /* =====================================================
-           PHASE BODY
-           INTER
-        ===================================================== */
-
         .phase-body {
           margin: 0;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 11px;
           line-height: 1.65;
-
           color: ${MUTED};
         }
 
-
-        /* =====================================================
-           PHASE FOOTER
-           INTER
-        ===================================================== */
-
         .phase-footer {
           margin-top: auto;
-
           padding-top: 13px;
-
           border-top: 1px solid #ece9e4;
-
-          font-family: "Inter", sans-serif;
-
           font-size: 10px;
           line-height: 1.4;
           font-weight: 500;
-
           color: #a29b8f;
         }
 
-
-        /* =====================================================
-           TABLET / MEDIUM
-        ===================================================== */
-
         @media (max-width: 1199px) {
-
           .digital-main-container {
             padding-left: 40px;
             padding-right: 40px;
@@ -625,18 +525,13 @@ export default function DigitalExperienceAndApproachSections() {
             height: 350px;
           }
 
-          .digital-heading {
-            font-size: 33px;
-          }
-
+          .digital-heading,
           .approach-heading {
             font-size: 33px;
           }
 
           .phases-grid {
-            grid-template-columns:
-              repeat(3, minmax(0, 1fr));
-
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 17px;
           }
 
@@ -645,13 +540,7 @@ export default function DigitalExperienceAndApproachSections() {
           }
         }
 
-
-        /* =====================================================
-           TABLET
-        ===================================================== */
-
         @media (max-width: 900px) {
-
           .digital-main-container {
             padding-top: 60px;
             padding-bottom: 70px;
@@ -677,11 +566,13 @@ export default function DigitalExperienceAndApproachSections() {
             margin: 0 auto;
           }
 
-          .digital-heading {
+          .digital-heading,
+          .approach-heading {
             font-size: 34px;
           }
 
-          .digital-description {
+          .digital-description,
+          .approach-description {
             max-width: 700px;
           }
 
@@ -695,34 +586,15 @@ export default function DigitalExperienceAndApproachSections() {
             padding-top: 0;
           }
 
-          .approach-heading {
-            font-size: 34px;
-          }
-
-          .approach-description {
-            max-width: 700px;
-          }
-
           .phases-grid {
-            grid-template-columns:
-              repeat(2, minmax(0, 1fr));
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 17px;
           }
         }
 
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
         @media (max-width: 767px) {
-
           .digital-main-container {
-            padding-left: 24px;
-            padding-right: 24px;
-            padding-top: 50px;
-            padding-bottom: 58px;
+            padding: 50px 24px 58px;
           }
 
           .digital-experience-grid {
@@ -768,16 +640,12 @@ export default function DigitalExperienceAndApproachSections() {
             height: 5px;
           }
 
-          /* MAIN HEADING */
-
           .digital-heading {
             margin-bottom: 16px;
             font-size: 29px;
             line-height: 1.18;
             letter-spacing: -0.5px;
           }
-
-          /* DESCRIPTION */
 
           .digital-description {
             font-size: 13px;
@@ -788,10 +656,8 @@ export default function DigitalExperienceAndApproachSections() {
             margin-bottom: 25px;
           }
 
-          /* FEATURES */
-
           .digital-features-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 20px;
           }
 
@@ -818,10 +684,6 @@ export default function DigitalExperienceAndApproachSections() {
             line-height: 1.65;
           }
 
-          /* =========================================
-             APPROACH
-          ========================================= */
-
           .approach-section {
             margin-top: 0;
           }
@@ -842,10 +704,8 @@ export default function DigitalExperienceAndApproachSections() {
             line-height: 1.7;
           }
 
-          /* PHASE CARDS */
-
           .phases-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 14px;
           }
 
@@ -869,18 +729,9 @@ export default function DigitalExperienceAndApproachSections() {
           }
         }
 
-
-        /* =====================================================
-           SMALL MOBILE
-        ===================================================== */
-
         @media (max-width: 480px) {
-
           .digital-main-container {
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 42px;
-            padding-bottom: 50px;
+            padding: 42px 16px 50px;
           }
 
           .digital-image-area {
@@ -931,309 +782,158 @@ export default function DigitalExperienceAndApproachSections() {
           }
         }
 
-
-        /* =====================================================
-           VERY SMALL MOBILE
-        ===================================================== */
-
         @media (max-width: 340px) {
-
           .digital-main-image {
             height: 235px;
           }
 
-          .digital-heading {
-            font-size: 24px;
-          }
-
+          .digital-heading,
           .approach-heading {
             font-size: 24px;
           }
         }
 
-
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
         @media (prefers-reduced-motion: reduce) {
+          .digital-experience-section .reveal-enabled
+          > .digital-card-reveal,
+          .digital-experience-section .reveal-enabled
+          > .digital-card-reveal.is-visible {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
 
           .phase-card {
             transition: none;
           }
+
+          .phase-card:hover {
+            transform: none;
+          }
         }
       `}</style>
 
-
-      {/* =====================================================
-          MAIN CONTAINER
-      ===================================================== */}
-
       <div className="digital-main-container">
-
-        {/* ===================================================
-            SECTION 1
-        =================================================== */}
-
         <div className="digital-experience-grid">
-
-          {/* =================================================
-              IMAGE
-          ================================================= */}
-
           <div className="digital-image-area">
-
             <img
               src="/DevelopmentTeam.png"
               alt="Digital customer experience"
               className="digital-main-image"
             />
 
-            {/* FLOATING ICONS */}
-
             <div className="digital-icon-stack">
-
-              {[Smartphone, ShieldCheck, FileText].map(
-                (Icon, index) => (
-                  <span
-                    key={index}
-                    className="digital-icon-box"
-                  >
-                    <Icon
-                      size={15}
-                      strokeWidth={1.8}
-                    />
-                  </span>
-                )
-              )}
-
+              {[Smartphone, ShieldCheck, FileText].map((Icon, index) => (
+                <span key={index} className="digital-icon-box">
+                  <Icon size={15} strokeWidth={1.8} />
+                </span>
+              ))}
             </div>
-
           </div>
 
-
-          {/* =================================================
-              CONTENT
-          ================================================= */}
-
           <div className="digital-content">
-
-            <Pill>
-              DIGITAL CUSTOMER EXPERIENCE
-            </Pill>
-
-
-            {/* HEADING — PLUS JAKARTA SANS */}
+            <Pill>DIGITAL CUSTOMER EXPERIENCE</Pill>
 
             <h2 className="digital-heading">
-
               Create Consistent{" "}
-
               <span className="digital-heading-highlight">
                 Digital Experiences
               </span>
-
             </h2>
 
-
-            {/* DESCRIPTION — INTER */}
-
             <p className="digital-description">
-
-              Customers increasingly interact with businesses
-              through digital channels. These interactions need to
-              be supported by reliable applications, accessible
-              information and well-connected systems.
-
+              Customers increasingly interact with businesses through digital
+              channels. These interactions need to be supported by reliable
+              applications, accessible information and well-connected systems.
             </p>
 
-
             <p className="digital-description">
-
-              TechTorch helps organizations develop digital
-              platforms and applications that support both
-              customer-facing experiences and internal business
-              operations.
-
+              TechTorch helps organizations develop digital platforms and
+              applications that support both customer-facing experiences and
+              internal business operations.
             </p>
 
-
-            {/* FEATURES — INTER */}
-
-            <div className="digital-features-grid">
-
+            <div
+              ref={featuresRef}
+              className="digital-features-grid"
+            >
               {experienceFeatures.map(
-                ({
-                  icon: Icon,
-                  title,
-                  body,
-                }) => (
-
+                ({ icon: Icon, title, body }, index) => (
                   <div
                     key={title}
-                    className="digital-feature"
+                    data-index={index}
+                    className="digital-card-reveal"
                   >
+                    <div className="digital-feature">
+                      <span className="digital-feature-icon">
+                        <Icon size={16} strokeWidth={1.8} />
+                      </span>
 
-                    <span className="digital-feature-icon">
-
-                      <Icon
-                        size={16}
-                        strokeWidth={1.8}
-                      />
-
-                    </span>
-
-
-                    <div className="digital-feature-content">
-
-                      <h3 className="digital-feature-title">
-                        {title}
-                      </h3>
-
-                      <p className="digital-feature-body">
-                        {body}
-                      </p>
-
+                      <div className="digital-feature-content">
+                        <h3 className="digital-feature-title">
+                          {title}
+                        </h3>
+                        <p className="digital-feature-body">
+                          {body}
+                        </p>
+                      </div>
                     </div>
-
                   </div>
-
                 )
               )}
-
             </div>
-
           </div>
-
         </div>
 
-
-        {/* ===================================================
-            SECTION 2 — OUR APPROACH
-        =================================================== */}
-
         <div className="approach-section">
-
-          {/* APPROACH HEADER */}
-
           <div className="approach-header">
-
-            {/* LEFT */}
-
             <div className="approach-header-left">
-
-              <Pill>
-                OUR APPROACH
-              </Pill>
-
-
-              {/* HEADING — PLUS JAKARTA SANS */}
+              <Pill>OUR APPROACH</Pill>
 
               <h2 className="approach-heading">
-
                 From Business Requirements
-
                 <br />
-
                 <span className="approach-heading-highlight">
                   to Technology
                 </span>
-
               </h2>
-
             </div>
-
-
-            {/* RIGHT */}
 
             <div className="approach-header-right">
-
-              {/* DESCRIPTION — INTER */}
-
               <p className="approach-description">
-
-                We start with your business requirements and build
-                the technology approach around them.
-
+                We start with your business requirements and build the
+                technology approach around them.
               </p>
-
             </div>
-
           </div>
 
-
-          {/* =================================================
-              PHASE CARDS
-          ================================================= */}
-
-          <div className="phases-grid">
-
+          <div ref={phasesRef} className="phases-grid">
             {phases.map(
-              ({
-                icon: Icon,
-                phase,
-                title,
-                body,
-                footer,
-              }) => (
-
+              ({ icon: Icon, phase, title, body, footer }, index) => (
                 <div
                   key={title}
-                  className="phase-card"
+                  data-index={index}
+                  className="digital-card-reveal"
                 >
+                  <div className="phase-card">
+                    <div className="phase-top">
+                      <span className="phase-icon">
+                        <Icon size={15} strokeWidth={1.8} />
+                      </span>
 
-                  {/* TOP — INTER */}
+                      <span className="phase-label">{phase}</span>
+                    </div>
 
-                  <div className="phase-top">
-
-                    <span className="phase-icon">
-
-                      <Icon
-                        size={15}
-                        strokeWidth={1.8}
-                      />
-
-                    </span>
-
-
-                    <span className="phase-label">
-                      {phase}
-                    </span>
-
+                    <h3 className="phase-title">{title}</h3>
+                    <p className="phase-body">{body}</p>
+                    <p className="phase-footer">{footer}</p>
                   </div>
-
-
-                  {/* TITLE — PLUS JAKARTA SANS */}
-
-                  <h3 className="phase-title">
-                    {title}
-                  </h3>
-
-
-                  {/* BODY — INTER */}
-
-                  <p className="phase-body">
-                    {body}
-                  </p>
-
-
-                  {/* FOOTER — INTER */}
-
-                  <p className="phase-footer">
-                    {footer}
-                  </p>
-
                 </div>
-
               )
             )}
-
           </div>
-
         </div>
-
       </div>
-
     </section>
   );
 }
