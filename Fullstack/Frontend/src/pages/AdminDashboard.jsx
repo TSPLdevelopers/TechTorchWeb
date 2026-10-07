@@ -916,7 +916,7 @@ function TopNavbar({ search, setSearch, onMenu }) {
           </div>
 
           {/* TechTorch Favicon */}
-          <div className="ttad-avatar">
+          
   <img
     src="/Tech-Torch2.png"
     alt="TechTorch"
@@ -925,7 +925,7 @@ function TopNavbar({ search, setSearch, onMenu }) {
 </div>
         </div>
 
-      </div>
+  
 
     </header>
   );
