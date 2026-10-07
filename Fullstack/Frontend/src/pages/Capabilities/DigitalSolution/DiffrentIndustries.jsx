@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Landmark,
   Heart,
@@ -72,9 +72,41 @@ const INDUSTRIES = [
 ];
 
 export default function IndustriesSection() {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(section);
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <>
-      <section className="industries-section">
+      <section
+        ref={sectionRef}
+        className={`industries-section ${
+          isVisible ? "industries-visible" : ""
+        }`}
+      >
         <div className="industries-container">
           {/* =====================================================
               HEADER
@@ -116,16 +148,25 @@ export default function IndustriesSection() {
 
           <div className="industries-grid">
             {INDUSTRIES.map(
-              ({
-                icon: Icon,
-                tag,
-                title,
-                description,
-                focus,
-                image,
-                alt,
-              }) => (
-                <article className="industry-card" key={title}>
+              (
+                {
+                  icon: Icon,
+                  tag,
+                  title,
+                  description,
+                  focus,
+                  image,
+                  alt,
+                },
+                index
+              ) => (
+                <article
+                  className="industry-card"
+                  key={title}
+                  style={{
+                    "--card-delay": `${index * 140}ms`,
+                  }}
+                >
                   {/* ================= IMAGE ================= */}
 
                   <div className="industry-image-wrapper">
@@ -163,7 +204,9 @@ export default function IndustriesSection() {
 
                     {/* Description */}
 
-                    <p className="industry-description">{description}</p>
+                    <p className="industry-description">
+                      {description}
+                    </p>
 
                     {/* Core Focus */}
 
@@ -278,18 +321,33 @@ export default function IndustriesSection() {
           width: 100%;
           height: 100%;
           overflow: hidden;
+
           border: 1px solid #e8e8ec;
           border-radius: 14px;
+
           background: #ffffff;
+
           box-shadow: 0 4px 16px rgba(15, 23, 42, 0.045);
+
+          opacity: 0;
+          transform: translateY(35px) scale(0.96);
+
           transition:
-            transform 0.3s ease,
+            opacity 0.6s ease,
+            transform 0.6s ease,
             box-shadow 0.3s ease,
             border-color 0.3s ease;
+
+          transition-delay: var(--card-delay);
+        }
+
+        .industries-visible .industry-card {
+          opacity: 1;
+          transform: translateY(0) scale(1);
         }
 
         .industry-card:hover {
-          transform: translateY(-5px);
+          transform: translateY(-5px) scale(1);
           border-color: #ead8e1;
           box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09);
         }
@@ -345,11 +403,14 @@ export default function IndustriesSection() {
           display: flex;
           align-items: center;
           justify-content: center;
+
           width: 38px;
           height: 38px;
           flex-shrink: 0;
+
           border: 1px solid #e5e7eb;
           border-radius: 9px;
+
           background: #ffffff;
           color: #334155;
         }
@@ -359,14 +420,18 @@ export default function IndustriesSection() {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+
           padding: 6px 10px;
           border-radius: 999px;
+
           background: #fdeef4;
+
           font-family: "Inter", sans-serif;
           font-size: 9px;
           font-weight: 700;
           line-height: 1.2;
           letter-spacing: 0.045em;
+
           color: #9d174d;
         }
 
@@ -376,11 +441,13 @@ export default function IndustriesSection() {
 
         .industry-title {
           margin: 0 0 9px;
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 16px;
           font-weight: 700;
           line-height: 1.35;
           letter-spacing: -0.015em;
+
           color: #0f172a;
         }
 
@@ -391,10 +458,12 @@ export default function IndustriesSection() {
         .industry-description {
           flex: 1;
           margin: 0 0 20px;
+
           font-family: "Inter", sans-serif;
           font-size: 12.5px;
           font-weight: 400;
           line-height: 1.7;
+
           color: #64748b;
         }
 
@@ -407,31 +476,35 @@ export default function IndustriesSection() {
           align-items: center;
           justify-content: space-between;
           gap: 14px;
+
           padding-top: 14px;
           border-top: 1px solid #edf0f2;
         }
 
         .industry-focus-label {
           flex-shrink: 0;
+
           font-family: "Inter", sans-serif;
           font-size: 10.5px;
           font-weight: 400;
           line-height: 1.3;
+
           color: #94a3b8;
         }
 
         .industry-focus-value {
           text-align: right;
+
           font-family: "Inter", sans-serif;
           font-size: 11.5px;
           font-weight: 600;
           line-height: 1.35;
+
           color: #334155;
         }
 
         /* =========================================================
            TABLET - 1200px
-           Horizontal spacing: 40px
         ========================================================= */
 
         @media (max-width: 1200px) {
@@ -490,7 +563,6 @@ export default function IndustriesSection() {
 
         /* =========================================================
            MOBILE - 700px
-           Horizontal spacing: 24px
         ========================================================= */
 
         @media (max-width: 700px) {
@@ -579,7 +651,6 @@ export default function IndustriesSection() {
 
         /* =========================================================
            SMALL MOBILE - 480px
-           Horizontal spacing: 16px
         ========================================================= */
 
         @media (max-width: 480px) {
@@ -692,6 +763,22 @@ export default function IndustriesSection() {
 
           .industry-description {
             font-size: 11px;
+          }
+        }
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          .industry-card {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+
+          .industry-image {
+            transition: none;
           }
         }
       `}</style>

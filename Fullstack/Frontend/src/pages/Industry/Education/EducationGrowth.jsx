@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ChevronRight,
   Cloud,
@@ -6,11 +6,6 @@ import {
   LayoutGrid,
   ShieldCheck,
 } from "lucide-react";
-
-const WINE = "#7A1F3D";
-const WINE_DARK = "#5F1830";
-const CARD_BG = "rgba(255,255,255,0.06)";
-const CARD_BORDER = "rgba(255,255,255,0.12)";
 
 const features = [
   {
@@ -36,121 +31,53 @@ const features = [
 ];
 
 export default function EvolveWithInstitutionSection() {
+  const cardsRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const element = cardsRef.current;
+    if (!element) return;
+
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section
-      style={{ background: WINE }}
-      className="w-full overflow-hidden"
-    >
-      <div
-        className="
-          w-full
-          max-w-[1600px]
-          mx-auto
-
-          px-4
-          sm:px-6
-          md:px-10
-          lg:px-[100px]
-
-          py-14
-          sm:py-16
-          md:py-20
-          lg:py-24
-        "
-      >
+    <section className="evolve-section">
+      <div className="evolve-container">
         {/* Header */}
-        <div
-          className="
-            w-full
-            max-w-[850px]
-            mx-auto
-            text-center
-
-            mb-10
-            sm:mb-12
-            md:mb-14
-          "
-        >
-          {/* Badge */}
-          <span
-            className="
-              inline-flex
-              items-center
-              justify-center
-              gap-1.5
-
-              px-3
-              sm:px-3.5
-              py-1.5
-
-              mb-5
-              sm:mb-6
-
-              rounded-full
-
-              text-[9px]
-              sm:text-[10px]
-              md:text-xs
-
-              font-semibold
-              tracking-wide
-              font-['Inter']
-
-              whitespace-nowrap
-            "
-            style={{
-              background: "rgba(255,255,255,0.1)",
-              color: "#f3d9e2",
-            }}
-          >
-            <ChevronRight
-              size={12}
-              className="sm:w-[13px] sm:h-[13px]"
-              strokeWidth={3}
-            />
-
+        <div className="evolve-header">
+          <span className="evolve-badge">
+            <ChevronRight size={13} strokeWidth={3} />
             READY FOR THE NEXT STAGE OF GROWTH
           </span>
 
-          {/* Heading */}
-          <h2
-            className="
-              font-['Plus_Jakarta_Sans']
-              text-white
-              font-semibold
-              tracking-tight
-              leading-[1.15]
-
-              text-2xl
-              sm:text-3xl
-              md:text-[2.2rem]
-              lg:text-[2.4rem]
-
-              mb-4
-              sm:mb-5
-            "
-          >
+          <h2 className="evolve-heading">
             Technology that can evolve with your institution.
           </h2>
 
-          {/* Description */}
-          <p
-            className="
-              font-['Plus_Jakarta_Sans']
-
-              text-[13px]
-              sm:text-[14px]
-              md:text-[15px]
-
-              leading-[1.7]
-              sm:leading-relaxed
-
-              px-0
-              sm:px-1
-              md:px-2
-            "
-            style={{ color: "#e3c3cf" }}
-          >
+          <p className="evolve-description">
             Your institution today may not look the same a few years from
             now. More students, new programs, additional departments, new
             locations and changing expectations can all create new technology
@@ -160,152 +87,317 @@ export default function EvolveWithInstitutionSection() {
           </p>
         </div>
 
-        {/* Cards */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-4
-
-            gap-4
-            sm:gap-5
-            lg:gap-5
-            xl:gap-6
-          "
-        >
-          {features.map(({ icon: Icon, title, body }) => (
+        {/* Staggered card entrance */}
+        <div ref={cardsRef} className="evolve-grid">
+          {features.map(({ icon: Icon, title, body }, index) => (
             <div
               key={title}
-              className="
-                group
-                w-full
-                min-w-0
-
-                rounded-xl
-                sm:rounded-[14px]
-
-                p-5
-                sm:p-5
-                md:p-6
-                lg:p-6
-
-                border
-
-                transition-all
-                duration-300
-                ease-out
-
-                hover:-translate-y-1
-              "
-              style={{
-                background: CARD_BG,
-                borderColor: CARD_BORDER,
-              }}
+              className={`evolve-card-reveal ${
+                isVisible ? "is-visible" : ""
+              }`}
+              style={{ "--reveal-delay": `${index * 180}ms` }}
             >
-              {/* Icon */}
-              <span
-                className="
-                  flex
-                  items-center
-                  justify-center
+              <article className="evolve-card">
+                <span className="evolve-icon">
+                  <Icon size={19} strokeWidth={1.8} />
+                </span>
 
-                  w-10
-                  h-10
-                  sm:w-11
-                  sm:h-11
+                <h3 className="evolve-card-title">{title}</h3>
 
-                  rounded-lg
-                  bg-white
-
-                  mb-4
-                  sm:mb-5
-
-                  transition-transform
-                  duration-300
-
-                  group-hover:scale-105
-                "
-                style={{ color: WINE_DARK }}
-              >
-                <Icon
-                  size={18}
-                  className="sm:w-[19px] sm:h-[19px]"
-                  strokeWidth={1.8}
-                />
-              </span>
-
-              {/* Card Heading */}
-              <h3
-                className="
-                  font-['Inter']
-                  text-[14px]
-                  sm:text-[15px]
-
-                  font-semibold
-                  text-white
-
-                  mb-2
-                  leading-snug
-                "
-              >
-                {title}
-              </h3>
-
-              {/* Card Body */}
-              <p
-                className="
-                  font-['Inter']
-
-                  text-[13px]
-                  sm:text-sm
-
-                  leading-[1.65]
-                  break-words
-                "
-                style={{ color: "#d9b7c4" }}
-              >
-                {body}
-              </p>
+                <p className="evolve-card-body">{body}</p>
+              </article>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Small Mobile: 16px horizontal spacing */}
       <style>{`
-        @media (max-width: 639px) {
-          section > div {
-            padding-left: 24px;
+        .evolve-section {
+          --evolve-wine: #730042;
+          --evolve-pink: #fce7f1;
+
+          width: 100%;
+          overflow: hidden;
+          background: var(--evolve-wine);
+        }
+
+        .evolve-section,
+        .evolve-section * {
+          box-sizing: border-box;
+        }
+
+        .evolve-section .evolve-container {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding: 56px 16px;
+        }
+
+        .evolve-section .evolve-header {
+          width: 100%;
+          max-width: 850px;
+          margin: 0 auto 40px;
+          text-align: center;
+        }
+
+        .evolve-section .evolve-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          max-width: 100%;
+          margin-bottom: 20px;
+          padding: 6px 12px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.1);
+          color: #f8d8e9;
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 1.5;
+          letter-spacing: 0.04em;
+        }
+
+        .evolve-section .evolve-badge svg {
+          flex-shrink: 0;
+        }
+
+        .evolve-section .evolve-heading {
+          margin: 0 0 16px;
+          color: #ffffff;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 24px;
+          font-weight: 600;
+          line-height: 1.15;
+          letter-spacing: -0.025em;
+        }
+
+        .evolve-section .evolve-description {
+          margin: 0;
+          color: #ebcada;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 13px;
+          line-height: 1.7;
+        }
+
+        .evolve-section .evolve-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr);
+          gap: 16px;
+        }
+
+        /* Separate wrapper keeps hover independent of entrance delay. */
+        .evolve-section .evolve-card-reveal {
+          display: flex;
+          min-width: 0;
+          opacity: 0;
+          transform: translateY(36px) scale(0.96);
+          transition:
+            opacity 650ms ease,
+            transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+          transition-delay: var(--reveal-delay, 0ms);
+        }
+
+        .evolve-section .evolve-card-reveal.is-visible {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        .evolve-section .evolve-card {
+          width: 100%;
+          min-width: 0;
+          padding: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.06);
+          transition:
+            background-color 300ms ease,
+            border-color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease;
+        }
+
+        .evolve-section .evolve-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          margin-bottom: 16px;
+          border-radius: 8px;
+          background: #ffffff;
+          color: var(--evolve-wine);
+          transition:
+            background-color 300ms ease,
+            color 300ms ease,
+            transform 300ms ease;
+        }
+
+        .evolve-section .evolve-card-title {
+          margin: 0 0 8px;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.4;
+          transition: color 300ms ease;
+        }
+
+        .evolve-section .evolve-card-body {
+          margin: 0;
+          color: #e5bfd5;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1.65;
+          overflow-wrap: break-word;
+          transition: color 300ms ease;
+        }
+
+        /* Light pink hover */
+        @media (hover: hover) {
+          .evolve-section .evolve-card:hover {
+            background: var(--evolve-pink);
+            border-color: #f5bfd9;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(40, 0, 23, 0.2);
+          }
+
+          .evolve-section .evolve-card:hover .evolve-icon {
+            background: var(--evolve-wine);
+            color: #ffffff;
+            transform: scale(1.06);
+          }
+
+          .evolve-section .evolve-card:hover .evolve-card-title {
+            color: var(--evolve-wine);
+          }
+
+          .evolve-section .evolve-card:hover .evolve-card-body {
+            color: #68344f;
+          }
+        }
+
+        @media (min-width: 481px) {
+          .evolve-section .evolve-container {
             padding-right: 24px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          section > div {
-            padding-left: 16px;
-            padding-right: 16px;
-          }
-        }
-
-        @media (min-width: 640px) and (max-width: 767px) {
-          section > div {
             padding-left: 24px;
-            padding-right: 24px;
           }
         }
 
-        @media (min-width: 768px) and (max-width: 1023px) {
-          section > div {
-            padding-left: 40px;
-            padding-right: 40px;
+        @media (min-width: 640px) {
+          .evolve-section .evolve-container {
+            padding-top: 64px;
+            padding-bottom: 64px;
+          }
+
+          .evolve-section .evolve-header {
+            margin-bottom: 48px;
+          }
+
+          .evolve-section .evolve-badge {
+            margin-bottom: 24px;
+            padding-right: 14px;
+            padding-left: 14px;
+            font-size: 10px;
+          }
+
+          .evolve-section .evolve-heading {
+            margin-bottom: 20px;
+            font-size: 30px;
+          }
+
+          .evolve-section .evolve-description {
+            font-size: 14px;
+          }
+
+          .evolve-section .evolve-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+          }
+
+          .evolve-section .evolve-card {
+            border-radius: 14px;
+          }
+
+          .evolve-section .evolve-icon {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 20px;
+          }
+
+          .evolve-section .evolve-card-title {
+            font-size: 15px;
+          }
+
+          .evolve-section .evolve-card-body {
+            font-size: 14px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .evolve-section .evolve-container {
+            padding: 80px 40px;
+          }
+
+          .evolve-section .evolve-header {
+            margin-bottom: 56px;
+          }
+
+          .evolve-section .evolve-badge {
+            font-size: 12px;
+          }
+
+          .evolve-section .evolve-heading {
+            font-size: 2.2rem;
+          }
+
+          .evolve-section .evolve-description {
+            padding: 0 8px;
+            font-size: 15px;
+          }
+
+          .evolve-section .evolve-card {
+            padding: 24px;
           }
         }
 
         @media (min-width: 1024px) {
-          section > div {
-            padding-left: 100px;
-            padding-right: 100px;
+          .evolve-section .evolve-container {
+            padding: 96px 100px;
+          }
+
+          .evolve-section .evolve-heading {
+            font-size: 2.4rem;
+          }
+
+          .evolve-section .evolve-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .evolve-section .evolve-grid {
+            gap: 24px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .evolve-section .evolve-card-reveal,
+          .evolve-section .evolve-card,
+          .evolve-section .evolve-icon,
+          .evolve-section .evolve-card-title,
+          .evolve-section .evolve-card-body {
+            transition: none;
+          }
+
+          .evolve-section .evolve-card-reveal {
+            opacity: 1;
+            transform: none;
+          }
+
+          .evolve-section .evolve-card:hover,
+          .evolve-section .evolve-card:hover .evolve-icon {
+            transform: none;
           }
         }
       `}</style>

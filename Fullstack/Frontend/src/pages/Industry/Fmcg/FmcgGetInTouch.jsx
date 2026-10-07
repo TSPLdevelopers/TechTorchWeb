@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CircleCheck } from "lucide-react";
 
 const helpOptions = [
   {
@@ -89,6 +90,7 @@ const FMCGGetInTouch = () => {
   const [selectedHelp, setSelectedHelp] = useState([]);
   const [selectedTechnology, setSelectedTechnology] = useState([]);
   const [projectStage, setProjectStage] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -126,12 +128,35 @@ const FMCGGetInTouch = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const form = e.currentTarget;
+
+    if (!form.checkValidity()) {
+      const invalidField = form.querySelector(":invalid");
+
+      if (invalidField) {
+        invalidField.focus();
+        form.reportValidity();
+
+        setTimeout(() => {
+          invalidField.blur();
+        }, 4000);
+      }
+
+      return;
+    }
+
     console.log({
       ...formData,
       helpAreas: selectedHelp,
       technologyRequirements: selectedTechnology,
       projectStage,
     });
+
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
 
   return (
@@ -141,6 +166,99 @@ const FMCGGetInTouch = () => {
 
         * {
           box-sizing: border-box;
+        }
+
+        /* =========================
+           SUCCESS DIALOG
+        ========================= */
+
+        .fmcg-success-dialog {
+          position: fixed;
+          top: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          width: min(420px, calc(100% - 32px));
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 16px 20px;
+          background: #ffffff;
+          border: 1px solid #E5D3DC;
+          border-radius: 10px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+          font-family: "Inter", sans-serif;
+          animation: fmcgSuccessDialogIn 0.25s ease-out;
+        }
+
+        .fmcg-success-dialog-icon {
+          width: 44px;
+          height: 44px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #ffffff;
+          color: #22824D;
+        }
+
+        .fmcg-success-dialog-content {
+          min-width: 0;
+        }
+
+        .fmcg-success-dialog-title {
+          margin: 0;
+          color: #202022;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .fmcg-success-dialog-text {
+          margin: 2px 0 0;
+          color: #65595E;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .fmcg-success-dialog-ok {
+          width: 34px;
+          height: 34px;
+          margin-left: auto;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: none;
+          border-radius: 50%;
+          background: #730042;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .fmcg-success-dialog-ok:hover {
+          background: #620038;
+          transform: scale(1.05);
+        }
+
+        @keyframes fmcgSuccessDialogIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -12px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
         }
 
         /* =========================
@@ -227,9 +345,9 @@ const FMCGGetInTouch = () => {
           color: var(--dark);
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 46px;
+          font-size: 38px;
           line-height: 1.12;
-          font-weight: 700;
+          font-weight: 600;
           letter-spacing: -1.7px;
         }
 
@@ -1025,6 +1143,30 @@ const FMCGGetInTouch = () => {
         ========================= */
 
         @media (max-width: 600px) {
+          .fmcg-success-dialog {
+            top: 16px;
+            width: calc(100% - 28px);
+            padding: 14px 16px;
+          }
+
+          .fmcg-success-dialog-title {
+            font-size: 13px;
+          }
+
+          .fmcg-success-dialog-text {
+            font-size: 11px;
+          }
+
+          .fmcg-success-dialog-icon {
+            width: 40px;
+            height: 40px;
+          }
+
+          .fmcg-success-dialog-icon svg {
+            width: 28px;
+            height: 28px;
+          }
+
           .fmcg-page {
             padding: 35px 16px 45px;
           }
@@ -1326,6 +1468,32 @@ const FMCGGetInTouch = () => {
           }
         }
       `}</style>
+
+      {showSuccess && (
+        <div className="fmcg-success-dialog" role="alert">
+          <div className="fmcg-success-dialog-icon">
+            <CircleCheck size={32} strokeWidth={2.2} />
+          </div>
+
+          <div className="fmcg-success-dialog-content">
+            <p className="fmcg-success-dialog-title">
+              Request Submitted
+            </p>
+            <p className="fmcg-success-dialog-text">
+              Thank you! Our team will review your enquiry and get in touch with you.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            className="fmcg-success-dialog-ok"
+            onClick={() => setShowSuccess(false)}
+            aria-label="Close success message"
+          >
+            OK
+          </button>
+        </div>
+      )}
 
       <main className="fmcg-page">
 
@@ -1690,7 +1858,6 @@ const FMCGGetInTouch = () => {
 
                 <input
                   type="checkbox"
-                  required
                 />
 
                 <span className="consent-checkbox"></span>

@@ -12,6 +12,7 @@ import {
   Headphones,
   Route,
   Check,
+  CircleCheck,
 } from "lucide-react";
 
 const PRACTICE_AREAS = [
@@ -62,6 +63,7 @@ const TIMELINES = [
 export default function FinancialContact() {
   const [selectedAreas, setSelectedAreas] = useState([]);
   const [timeline, setTimeline] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -94,19 +96,136 @@ export default function FinancialContact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const form = e.currentTarget;
+
+    // Only fields marked with * / required must be filled.
+    // Practice areas, timeline, NDA and video session remain optional.
+    if (!form.checkValidity()) {
+      const invalidField = form.querySelector(":invalid");
+
+      if (invalidField) {
+        invalidField.focus();
+        form.reportValidity();
+
+        setTimeout(() => {
+          invalidField.blur();
+        }, 4000);
+      }
+
+      return;
+    }
+
     console.log({
       ...formData,
       practiceAreas: selectedAreas,
       timeline,
     });
 
-    alert("Financial consultation request submitted.");
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
 
   return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+        /* ================================
+           SUCCESS DIALOG
+        ================================= */
+
+        .financial-success-dialog {
+          position: fixed;
+          top: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          width: min(420px, calc(100% - 32px));
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 16px 20px;
+          background: #ffffff;
+          border: 1px solid #E5D3DC;
+          border-radius: 10px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+          font-family: "Inter", sans-serif;
+          animation: financialSuccessDialogIn 0.25s ease-out;
+        }
+
+        .financial-success-dialog-icon {
+          width: 44px;
+          height: 44px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: #ffffff;
+          color: #22824D;
+          border: none;
+        }
+
+        .financial-success-dialog-content {
+          min-width: 0;
+        }
+
+        .financial-success-dialog-title {
+          margin: 0;
+          color: #202022;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.4;
+        }
+
+        .financial-success-dialog-text {
+          margin: 2px 0 0;
+          color: #65595E;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .financial-success-dialog-ok {
+          width: 34px;
+          height: 34px;
+          margin-left: auto;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: none;
+          border-radius: 50%;
+          background: #730042;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .financial-success-dialog-ok:hover {
+          background: #620038;
+          transform: scale(1.05);
+        }
+
+        @keyframes financialSuccessDialogIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -12px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
+        }
 
         * {
           box-sizing: border-box;
@@ -549,9 +668,9 @@ export default function FinancialContact() {
           margin: 0;
 
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.4;
-          font-weight: 700;
+          font-weight: 600;
 
           color: #343138;
         }
@@ -681,7 +800,7 @@ export default function FinancialContact() {
           color: #6d5961;
 
           font-family: "Inter", sans-serif;
-          font-size: 9px;
+          font-size: 10px;
           font-weight: 700;
 
           text-transform: uppercase;
@@ -721,7 +840,7 @@ export default function FinancialContact() {
           color: #35343a;
 
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
         }
 
         .input-field input {
@@ -749,7 +868,7 @@ export default function FinancialContact() {
           color: #777078;
 
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
         }
 
         .timeline-grid {
@@ -768,7 +887,7 @@ export default function FinancialContact() {
           color: #4e454b;
 
           font-family: "Inter", sans-serif;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1.4;
 
           cursor: pointer;
@@ -855,7 +974,7 @@ export default function FinancialContact() {
 
           margin: 1px 0 0;
 
-          accent-color: #650037;
+          accent-color: #730042;
 
           cursor: pointer;
         }
@@ -1001,6 +1120,30 @@ export default function FinancialContact() {
         ====================================== */
 
         @media (max-width: 600px) {
+          .financial-success-dialog {
+            top: 16px;
+            width: calc(100% - 28px);
+            padding: 14px 16px;
+          }
+
+          .financial-success-dialog-title {
+            font-size: 13px;
+          }
+
+          .financial-success-dialog-text {
+            font-size: 11px;
+          }
+
+          .financial-success-dialog-icon {
+            width: 40px;
+            height: 40px;
+          }
+
+          .financial-success-dialog-icon svg {
+            width: 28px;
+            height: 28px;
+          }
+
           .financial-page {
             padding: 38px 16px;
           }
@@ -1288,6 +1431,45 @@ export default function FinancialContact() {
           }
         }
       `}</style>
+
+      {showSuccess && (
+        <div
+          className="financial-success-dialog"
+          role="alert"
+          aria-live="polite"
+          tabIndex={-1}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              setShowSuccess(false);
+            }
+          }}
+        >
+          <div className="financial-success-dialog-icon">
+            <CircleCheck size={30} strokeWidth={2.5} />
+          </div>
+
+          <div className="financial-success-dialog-content">
+            <p className="financial-success-dialog-title">
+              Request Submitted
+            </p>
+
+            <p className="financial-success-dialog-text">
+              Your intake request has been submitted successfully.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            className="financial-success-dialog-ok"
+            onClick={() => setShowSuccess(false)}
+            autoFocus
+            aria-label="Close"
+          >
+            OK
+          </button>
+        </div>
+      )}
 
       <section className="financial-page">
         <div className="financial-container">

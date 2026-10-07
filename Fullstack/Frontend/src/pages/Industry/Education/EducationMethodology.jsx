@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ChevronRight,
   Headphones,
@@ -8,24 +8,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-const WINE = "#7A1F3D";
-const INK = "#1B1B2A";
-const MUTED = "#5b5a63";
-
-/* =====================================================
-   IMAGE PATHS
-===================================================== */
-
-const INSTITUTION_IMAGES = {
-  schools: "/Education2.png",
-  colleges: "/college.png",
-  universities: "/rrmain.png",
-  multiCampus: "/campus.png",
-};
-
-/* =====================================================
-   METHODOLOGY STEPS
-===================================================== */
+const WINE = "#730042";
 
 const steps = [
   {
@@ -33,8 +16,7 @@ const steps = [
     stage: "DISCOVERY",
     icon: Headphones,
     title: "Listen",
-    body:
-      "Engage campus leaders, educators, and administrators to uncover nuanced daily pain points and operational aspirations.",
+    body: "Engage campus leaders, educators, and administrators to uncover nuanced daily pain points and operational aspirations.",
     bullets: ["Stakeholder Discovery", "Pain-Point Mapping"],
   },
   {
@@ -42,8 +24,7 @@ const steps = [
     stage: "DEEP-DIVE",
     icon: Search,
     title: "Understand",
-    body:
-      "Audit existing databases, legacy spreadsheets, and siloed software to map true departmental dependencies and compliance needs.",
+    body: "Audit existing databases, legacy spreadsheets, and siloed software to map true departmental dependencies and compliance needs.",
     bullets: ["Workflow Analysis", "Data Interoperability"],
   },
   {
@@ -51,8 +32,7 @@ const steps = [
     stage: "ARCHITECTURE",
     icon: Compass,
     title: "Design",
-    body:
-      "Architect unified data models and intuitive user journeys configured specifically around your academic calendar and governance.",
+    body: "Architect unified data models and intuitive user journeys configured specifically around your academic calendar and governance.",
     bullets: ["Tailored Architecture", "User Journeys"],
   },
   {
@@ -60,8 +40,7 @@ const steps = [
     stage: "DEPLOYMENT",
     icon: Rocket,
     title: "Implement",
-    body:
-      "Execute controlled phased migrations with parallel testing and high-touch staff enablement for immediate trust and comfort.",
+    body: "Execute controlled phased migrations with parallel testing and high-touch staff enablement for immediate trust and comfort.",
     bullets: ["Phased Migration", "Staff Training"],
   },
   {
@@ -69,50 +48,87 @@ const steps = [
     stage: "MOMENTUM",
     icon: TrendingUp,
     title: "Evolve",
-    body:
-      "Continuous performance reviews, automated updates, and capability expansions as campus demographics and pedagogy expand.",
+    body: "Continuous performance reviews, automated updates, and capability expansions as campus demographics and pedagogy expand.",
     bullets: ["AI Optimization", "Long-Term Scaling"],
   },
 ];
 
-/* =====================================================
-   INSTITUTIONS
-===================================================== */
-
 const institutions = [
   {
     label: "Schools",
-    body:
-      "Support academics, attendance, communication and everyday classroom operations.",
-    image: INSTITUTION_IMAGES.schools,
+    body: "Support academics, attendance, communication and everyday classroom operations.",
+    image: "/Education2.png",
     alt: "Students working at a school library",
   },
   {
     label: "Colleges",
-    body:
-      "Manage academic and administrative requirements, registration, and courses with ease.",
-    image: INSTITUTION_IMAGES.colleges,
+    body: "Manage academic and administrative requirements, registration, and courses with ease.",
+    image: "/college.png",
     alt: "College students studying together",
   },
   {
     label: "Universities",
-    body:
-      "Connect multiple departments, research functions and complex academic structures.",
-    image: INSTITUTION_IMAGES.universities,
+    body: "Connect multiple departments, research functions and complex academic structures.",
+    image: "/rrmain.png",
     alt: "University laboratory and lecture environment",
   },
   {
     label: "Multi-Campus Institutions",
-    body:
-      "Bring centralized visibility and synchronized coordination across all regional locations.",
-    image: INSTITUTION_IMAGES.multiCampus,
+    body: "Bring centralized visibility and synchronized coordination across all regional locations.",
+    image: "/campus.png",
     alt: "Students walking through a university campus",
   },
 ];
 
-/* =====================================================
-   EYEBROW
-===================================================== */
+// Reset when the section leaves the viewport; replay on re-entry.
+function useRepeatReveal() {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    let observer;
+
+    function setupObserver() {
+      observer?.disconnect();
+
+      if (
+        motionPreference.matches ||
+        !("IntersectionObserver" in window)
+      ) {
+        setIsVisible(true);
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsVisible(entry.isIntersecting);
+        },
+        {
+          threshold: 0,
+        }
+      );
+
+      observer.observe(section);
+    }
+
+    setupObserver();
+    motionPreference.addEventListener("change", setupObserver);
+
+    return () => {
+      observer?.disconnect();
+      motionPreference.removeEventListener("change", setupObserver);
+    };
+  }, []);
+
+  return { sectionRef, isVisible };
+}
 
 function Eyebrow({ children }) {
   return (
@@ -123,154 +139,150 @@ function Eyebrow({ children }) {
   );
 }
 
-/* =====================================================
-   MAIN COMPONENT
-===================================================== */
-
 export default function MethodologyAndInstitutionsSections() {
+  const methodology = useRepeatReveal();
+  const environments = useRepeatReveal();
+
   return (
     <div className="methodology-page">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
-
-        /* =====================================================
-           MAIN
-        ===================================================== */
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
 
         .methodology-page {
+          --wine: ${WINE};
+          --wine-light: #f4e6ee;
+          --ink: #1b1b2a;
+          --muted: #5b5a63;
+
           width: 100%;
           overflow: hidden;
           font-family: "Inter", sans-serif;
-          color: ${INK};
+          color: var(--ink);
         }
 
-        /* =====================================================
-           COMMON CONTAINER
-
-           DESKTOP  : 100px
-           TABLET   : 40px
-           MOBILE   : 24px
-           SMALL    : 16px
-        ===================================================== */
-
-        .methodology-container {
-          width: 100%;
-          max-width: 1600px;
-          margin: 0 auto;
-          padding-left: 100px;
-          padding-right: 100px;
+        .methodology-page,
+        .methodology-page * {
           box-sizing: border-box;
         }
 
-        /* =====================================================
-           EYEBROW
-           INTER
-        ===================================================== */
+        .methodology-page .methodology-container {
+          width: 100%;
+          max-width: 1600px;
+          margin: 0 auto;
+          padding: 0 100px;
+        }
 
-        .methodology-eyebrow {
+        .methodology-page .methodology-eyebrow {
           display: flex;
           align-items: center;
           gap: 4px;
           margin-bottom: 16px;
-
-          font-family: "Inter", sans-serif;
+          color: var(--wine);
           font-size: 11px;
           line-height: 1.5;
           font-weight: 700;
           letter-spacing: 0.06em;
-
-          color: ${WINE};
         }
 
-        /* =====================================================
-           HEADINGS
-           PLUS JAKARTA SANS
-        ===================================================== */
+        .methodology-page .methodology-eyebrow svg {
+          flex-shrink: 0;
+        }
 
-        .methodology-heading,
-        .institutions-heading {
+        .methodology-page .methodology-heading,
+        .methodology-page .institutions-heading {
           margin: 0;
           max-width: 760px;
-
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 40px;
           line-height: 1.15;
           font-weight: 700;
           letter-spacing: -0.7px;
-
-          color: ${INK};
+          color: var(--ink);
         }
 
-        /* =====================================================
-           SUBHEADING
-           PLUS JAKARTA SANS
-        ===================================================== */
-
-        .methodology-subheading {
+        .methodology-page .methodology-subheading {
           margin: 16px 0 0;
           max-width: 760px;
-
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 16px;
           line-height: 1.65;
           font-weight: 500;
-
-          color: ${MUTED};
+          color: var(--muted);
         }
 
-        /* =====================================================
-           METHODOLOGY SECTION
-        ===================================================== */
-
-        .methodology-section {
+        .methodology-page .methodology-section,
+        .methodology-page .institutions-section {
           width: 100%;
-          background: #f4f1ec;
-          padding-top: 80px;
-          padding-bottom: 80px;
+          padding: 80px 0;
         }
 
-        /* =====================================================
-           STEPS GRID
-        ===================================================== */
+        .methodology-page .methodology-section {
+          background: #f4f1ec;
+        }
 
-        .steps-grid {
+        .methodology-page .institutions-section {
+          background: #ffffff;
+        }
+
+        .methodology-page .steps-grid {
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: 16px;
           margin-top: 40px;
         }
 
-        /* =====================================================
-           STEP CARD
-        ===================================================== */
+        .methodology-page .institutions-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 20px;
+          margin-top: 40px;
+        }
 
-        .step-card {
+        /* Entrance wrapper: resets immediately when section exits. */
+        .methodology-page .card-reveal {
+          display: flex;
+          min-width: 0;
+          opacity: 0;
+          transform: translateY(35px) scale(0.96);
+        }
+
+        .methodology-page .reveal-active .card-reveal {
+          animation: methodology-card-open
+            650ms
+            cubic-bezier(0.22, 1, 0.36, 1)
+            var(--card-delay, 0ms)
+            both;
+        }
+
+        @keyframes methodology-card-open {
+          from {
+            opacity: 0;
+            transform: translateY(35px) scale(0.96);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        .methodology-page .step-card {
+          width: 100%;
           min-width: 0;
           display: flex;
           flex-direction: column;
-
           padding: 20px;
+          border: 1px solid transparent;
           border-radius: 12px;
-
           background: #ffffff;
-
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
           transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
+            background-color 300ms ease,
+            border-color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease;
         }
 
-        .step-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        }
-
-        /* =====================================================
-           STEP TOP
-        ===================================================== */
-
-        .step-top {
+        .methodology-page .step-top {
           display: flex;
           align-items: center;
           gap: 8px;
@@ -278,469 +290,372 @@ export default function MethodologyAndInstitutionsSections() {
           flex-wrap: wrap;
         }
 
-        .step-number {
+        .methodology-page .step-number {
           width: 28px;
           height: 28px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           flex-shrink: 0;
-
           border-radius: 50%;
-
-          background: ${WINE};
+          background: var(--wine);
           color: #ffffff;
-
-          font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 700;
         }
 
-        .step-stage {
+        .methodology-page .step-stage {
           padding: 5px 8px;
           border-radius: 999px;
-
-          background: #fbeef1;
-          color: ${WINE};
-
-          font-family: "Inter", sans-serif;
+          background: var(--wine-light);
+          color: var(--wine);
           font-size: 9px;
           line-height: 1.2;
           font-weight: 700;
           letter-spacing: 0.05em;
         }
 
-        /* =====================================================
-           STEP ICON
-        ===================================================== */
-
-        .step-icon {
-          width: 32px;
-          height: 32px;
-
+        .methodology-page .step-icon {
+          width: 36px;
+          height: 36px;
           display: flex;
           align-items: center;
           justify-content: center;
-
           margin-bottom: 16px;
-
           border-radius: 8px;
-
-          background: #fbeef1;
-          color: ${WINE};
+          background: var(--wine-light);
+          color: var(--wine);
+          transition:
+            background-color 300ms ease,
+            color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease;
         }
 
-        /* =====================================================
-           STEP TITLE
-        ===================================================== */
-
-        .step-title {
+        .methodology-page .step-title,
+        .methodology-page .institution-title {
           margin: 0 0 8px;
-
-          font-family: "Inter", sans-serif;
           font-size: 15px;
           line-height: 1.4;
           font-weight: 700;
-
-          color: ${INK};
+          color: var(--ink);
+          transition: color 300ms ease;
         }
 
-        /* =====================================================
-           STEP BODY
-        ===================================================== */
-
-        .step-body {
+        .methodology-page .step-body {
           margin: 0 0 16px;
-
-          font-family: "Inter", sans-serif;
           font-size: 12px;
           line-height: 1.7;
-
-          color: ${MUTED};
+          color: var(--muted);
         }
 
-        /* =====================================================
-           BULLETS
-        ===================================================== */
-
-        .step-bullets {
+        .methodology-page .step-bullets {
           display: flex;
           flex-direction: column;
           gap: 7px;
-
-          margin-top: auto;
+          margin: auto 0 0;
           padding: 0;
-
           list-style: none;
         }
 
-        .step-bullet {
+        .methodology-page .step-bullet {
           display: flex;
           align-items: flex-start;
           gap: 8px;
-
-          font-family: "Inter", sans-serif;
           font-size: 11px;
           line-height: 1.5;
-
-          color: ${MUTED};
+          color: var(--muted);
         }
 
-        .step-bullet-dot {
+        .methodology-page .step-bullet-dot {
           width: 4px;
           height: 4px;
-
           flex-shrink: 0;
           margin-top: 6px;
-
           border-radius: 50%;
-          background: ${WINE};
+          background: var(--wine);
         }
 
-        /* =====================================================
-           INSTITUTIONS SECTION
-        ===================================================== */
-
-        .institutions-section {
+        .methodology-page .institution-card {
           width: 100%;
-          background: #ffffff;
-
-          padding-top: 80px;
-          padding-bottom: 80px;
-        }
-
-        /* =====================================================
-           INSTITUTIONS GRID
-        ===================================================== */
-
-        .institutions-grid {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-
-          gap: 20px;
-          margin-top: 40px;
-        }
-
-        /* =====================================================
-           INSTITUTION CARD
-        ===================================================== */
-
-        .institution-card {
           min-width: 0;
           overflow: hidden;
+          border-radius: 12px;
+          background: #ffffff;
+          transition:
+            background-color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease;
         }
 
-        /* =====================================================
-           IMAGE
-        ===================================================== */
-
-        .institution-image-wrapper {
+        .methodology-page .institution-image-wrapper {
           width: 100%;
           height: 180px;
-
           margin-bottom: 16px;
           overflow: hidden;
-
           border-radius: 12px;
-
           background: #e9e4e0;
         }
 
-        .institution-image {
+        .methodology-page .institution-image {
           display: block;
-
           width: 100%;
           height: 100%;
-
           object-fit: cover;
           object-position: center;
-
-          transition: transform 0.4s ease;
+          transition: transform 400ms ease;
         }
 
-        .institution-card:hover .institution-image {
-          transform: scale(1.04);
+        .methodology-page .institution-content {
+          padding: 0 12px 16px;
         }
 
-        /* =====================================================
-           INSTITUTION TITLE
-        ===================================================== */
-
-        .institution-title {
-          margin: 0 0 8px;
-
-          font-family: "Inter", sans-serif;
-          font-size: 15px;
-          line-height: 1.4;
-          font-weight: 700;
-
-          color: ${INK};
-        }
-
-        /* =====================================================
-           INSTITUTION BODY
-        ===================================================== */
-
-        .institution-body {
+        .methodology-page .institution-body {
           margin: 0;
-
-          font-family: "Inter", sans-serif;
           font-size: 13px;
           line-height: 1.7;
-
-          color: ${MUTED};
+          color: var(--muted);
         }
 
-        /* =====================================================
-           LARGE DESKTOP
-        ===================================================== */
-
-        @media (min-width: 1440px) {
-          .methodology-container {
-            padding-left: 100px;
-            padding-right: 100px;
+        @media (hover: hover) {
+          .methodology-page .step-card:hover {
+            background: var(--wine-light);
+            border-color: rgba(115, 0, 66, 0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(115, 0, 66, 0.12);
           }
 
-          .steps-grid {
+          .methodology-page .step-card:hover .step-icon {
+            background: var(--wine);
+            color: #ffffff;
+            transform: translateY(-2px) scale(1.12);
+            box-shadow:
+              0 0 0 5px rgba(115, 0, 66, 0.08),
+              0 8px 18px rgba(115, 0, 66, 0.22);
+          }
+
+          .methodology-page .step-card:hover .step-title,
+          .methodology-page .institution-card:hover .institution-title {
+            color: var(--wine);
+          }
+
+          .methodology-page .institution-card:hover {
+            background: var(--wine-light);
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(115, 0, 66, 0.1);
+          }
+
+          .methodology-page .institution-card:hover .institution-image {
+            transform: scale(1.05);
+          }
+        }
+
+        @media (min-width: 1440px) {
+          .methodology-page .steps-grid {
             gap: 20px;
           }
 
-          .step-card {
+          .methodology-page .step-card {
             padding: 22px;
           }
 
-          .methodology-heading,
-          .institutions-heading {
+          .methodology-page .methodology-heading,
+          .methodology-page .institutions-heading {
             font-size: 42px;
           }
         }
 
-        /* =====================================================
-           TABLET
-        ===================================================== */
-
         @media (min-width: 768px) and (max-width: 1100px) {
-          .methodology-container {
-            padding-left: 40px;
-            padding-right: 40px;
+          .methodology-page .methodology-container {
+            padding: 0 40px;
           }
 
-          .methodology-section,
-          .institutions-section {
-            padding-top: 64px;
-            padding-bottom: 64px;
+          .methodology-page .methodology-section,
+          .methodology-page .institutions-section {
+            padding: 64px 0;
           }
 
-          .methodology-heading,
-          .institutions-heading {
+          .methodology-page .methodology-heading,
+          .methodology-page .institutions-heading {
             font-size: 36px;
           }
 
-          .methodology-subheading {
+          .methodology-page .methodology-subheading {
             font-size: 15px;
           }
 
-          .steps-grid {
+          .methodology-page .steps-grid {
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
           }
 
-          .institutions-grid {
+          .methodology-page .institutions-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 24px;
           }
 
-          .institution-image-wrapper {
+          .methodology-page .institution-image-wrapper {
             height: 190px;
           }
         }
 
-        /* =====================================================
-           MOBILE / TABLET
-        ===================================================== */
-
         @media (max-width: 767px) {
-          .methodology-container {
-            padding-left: 24px;
-            padding-right: 24px;
+          .methodology-page .methodology-container {
+            padding: 0 24px;
           }
 
-          .methodology-section,
-          .institutions-section {
-            padding-top: 60px;
-            padding-bottom: 60px;
+          .methodology-page .methodology-section,
+          .methodology-page .institutions-section {
+            padding: 60px 0;
           }
 
-          .methodology-heading,
-          .institutions-heading {
+          .methodology-page .methodology-heading,
+          .methodology-page .institutions-heading {
             font-size: 32px;
             line-height: 1.18;
             letter-spacing: -0.5px;
           }
 
-          .methodology-subheading {
+          .methodology-page .methodology-subheading {
             margin-top: 14px;
             font-size: 14px;
             line-height: 1.7;
           }
 
-          .steps-grid {
+          .methodology-page .steps-grid,
+          .methodology-page .institutions-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
             margin-top: 32px;
           }
 
-          .step-card {
+          .methodology-page .steps-grid {
+            gap: 14px;
+          }
+
+          .methodology-page .step-card {
             padding: 18px;
           }
 
-          .step-top {
+          .methodology-page .step-top {
             margin-bottom: 16px;
           }
 
-          .step-title {
+          .methodology-page .step-title,
+          .methodology-page .institution-title {
             font-size: 14px;
           }
 
-          .step-body {
+          .methodology-page .step-body,
+          .methodology-page .institution-body {
             font-size: 12px;
             line-height: 1.65;
           }
 
-          .institutions-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
-            margin-top: 32px;
-          }
-
-          .institution-image-wrapper {
+          .methodology-page .institution-image-wrapper {
             height: 170px;
-          }
-
-          .institution-title {
-            font-size: 14px;
-          }
-
-          .institution-body {
-            font-size: 12px;
-            line-height: 1.65;
           }
         }
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
         @media (max-width: 480px) {
-          .methodology-container {
-            padding-left: 16px;
-            padding-right: 16px;
+          .methodology-page .methodology-container {
+            padding: 0 16px;
           }
 
-          .methodology-section,
-          .institutions-section {
-            padding-top: 48px;
-            padding-bottom: 48px;
+          .methodology-page .methodology-section,
+          .methodology-page .institutions-section {
+            padding: 48px 0;
           }
 
-          .methodology-eyebrow {
+          .methodology-page .methodology-eyebrow {
             margin-bottom: 12px;
             font-size: 10px;
             letter-spacing: 0.045em;
           }
 
-          .methodology-heading,
-          .institutions-heading {
+          .methodology-page .methodology-heading,
+          .methodology-page .institutions-heading {
             font-size: 27px;
             line-height: 1.2;
           }
 
-          .methodology-subheading {
+          .methodology-page .methodology-subheading {
             margin-top: 12px;
             font-size: 13px;
-            line-height: 1.7;
           }
 
-          /* One card per row on small mobile */
-          .steps-grid {
-            grid-template-columns: 1fr;
-            gap: 12px;
+          .methodology-page .steps-grid,
+          .methodology-page .institutions-grid {
+            grid-template-columns: minmax(0, 1fr);
             margin-top: 28px;
           }
 
-          .step-card {
+          .methodology-page .steps-grid {
+            gap: 12px;
+          }
+
+          .methodology-page .step-card {
             padding: 17px;
           }
 
-          .step-body {
-            font-size: 12px;
-            line-height: 1.65;
-          }
-
-          /* One institution per row */
-          .institutions-grid {
-            grid-template-columns: 1fr;
+          .methodology-page .institutions-grid {
             gap: 28px;
-            margin-top: 28px;
           }
 
-          .institution-image-wrapper {
+          .methodology-page .institution-image-wrapper {
             height: 210px;
-            border-radius: 14px;
             margin-bottom: 14px;
           }
 
-          .institution-title {
-            font-size: 14px;
-          }
-
-          .institution-body {
+          .methodology-page .institution-body {
             font-size: 12.5px;
             line-height: 1.7;
           }
         }
 
-        /* =====================================================
-           VERY SMALL MOBILE
-        ===================================================== */
-
         @media (max-width: 360px) {
-          .methodology-container {
-            padding-left: 16px;
-            padding-right: 16px;
-          }
-
-          .methodology-heading,
-          .institutions-heading {
+          .methodology-page .methodology-heading,
+          .methodology-page .institutions-heading {
             font-size: 25px;
           }
 
-          .institution-image-wrapper {
+          .methodology-page .institution-image-wrapper {
             height: 190px;
           }
         }
 
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
         @media (prefers-reduced-motion: reduce) {
-          .step-card,
-          .institution-image {
+          .methodology-page .card-reveal,
+          .methodology-page .reveal-active .card-reveal {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
+
+          .methodology-page .step-card,
+          .methodology-page .step-icon,
+          .methodology-page .step-title,
+          .methodology-page .institution-card,
+          .methodology-page .institution-title,
+          .methodology-page .institution-image {
             transition: none;
+          }
+
+          .methodology-page .step-card:hover,
+          .methodology-page .step-card:hover .step-icon,
+          .methodology-page .institution-card:hover,
+          .methodology-page .institution-card:hover .institution-image {
+            transform: none;
           }
         }
       `}</style>
 
-      {/* =====================================================
-          SECTION 1: METHODOLOGY
-      ===================================================== */}
-
-      <section className="methodology-section">
+      {/* SECTION 1: METHODOLOGY */}
+      <section
+        ref={methodology.sectionRef}
+        className={`methodology-section ${
+          methodology.isVisible ? "reveal-active" : ""
+        }`}
+      >
         <div className="methodology-container">
-
           <Eyebrow>
             OUR METHODOLOGY &amp; DELIVERY FRAMEWORK
           </Eyebrow>
@@ -757,72 +672,49 @@ export default function MethodologyAndInstitutionsSections() {
 
           <div className="steps-grid">
             {steps.map(
-              ({
-                num,
-                stage,
-                icon: Icon,
-                title,
-                body,
-                bullets,
-              }) => (
+              ({ num, stage, icon: Icon, title, body, bullets }, index) => (
                 <div
                   key={num}
-                  className="step-card"
+                  className="card-reveal"
+                  style={{ "--card-delay": `${index * 180}ms` }}
                 >
-                  <div className="step-top">
-                    <span className="step-number">
-                      {num}
+                  <article className="step-card">
+                    <div className="step-top">
+                      <span className="step-number">{num}</span>
+                      <span className="step-stage">{stage}</span>
+                    </div>
+
+                    <span className="step-icon">
+                      <Icon size={18} strokeWidth={1.8} />
                     </span>
 
-                    <span className="step-stage">
-                      {stage}
-                    </span>
-                  </div>
+                    <h3 className="step-title">{title}</h3>
+                    <p className="step-body">{body}</p>
 
-                  <span className="step-icon">
-                    <Icon
-                      size={16}
-                      strokeWidth={1.8}
-                    />
-                  </span>
-
-                  <h3 className="step-title">
-                    {title}
-                  </h3>
-
-                  <p className="step-body">
-                    {body}
-                  </p>
-
-                  <ul className="step-bullets">
-                    {bullets.map((bullet) => (
-                      <li
-                        key={bullet}
-                        className="step-bullet"
-                      >
-                        <span className="step-bullet-dot" />
-
-                        <span>
-                          {bullet}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="step-bullets">
+                      {bullets.map((bullet) => (
+                        <li key={bullet} className="step-bullet">
+                          <span className="step-bullet-dot" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
                 </div>
               )
             )}
           </div>
-
         </div>
       </section>
 
-      {/* =====================================================
-          SECTION 2: INSTITUTIONS
-      ===================================================== */}
-
-      <section className="institutions-section">
+      {/* SECTION 2: INSTITUTIONS */}
+      <section
+        ref={environments.sectionRef}
+        className={`institutions-section ${
+          environments.isVisible ? "reveal-active" : ""
+        }`}
+      >
         <div className="methodology-container">
-
           <Eyebrow>
             SOLUTIONS FOR DIFFERENT EDUCATIONAL ENVIRONMENTS
           </Eyebrow>
@@ -832,37 +724,30 @@ export default function MethodologyAndInstitutionsSections() {
           </h2>
 
           <div className="institutions-grid">
-            {institutions.map(
-              ({
-                label,
-                body,
-                image,
-                alt,
-              }) => (
-                <div
-                  key={label}
-                  className="institution-card"
-                >
+            {institutions.map(({ label, body, image, alt }, index) => (
+              <div
+                key={label}
+                className="card-reveal"
+                style={{ "--card-delay": `${index * 180}ms` }}
+              >
+                <article className="institution-card">
                   <div className="institution-image-wrapper">
                     <img
                       src={image}
                       alt={alt}
                       className="institution-image"
+                      loading="lazy"
                     />
                   </div>
 
-                  <h3 className="institution-title">
-                    {label}
-                  </h3>
-
-                  <p className="institution-body">
-                    {body}
-                  </p>
-                </div>
-              )
-            )}
+                  <div className="institution-content">
+                    <h3 className="institution-title">{label}</h3>
+                    <p className="institution-body">{body}</p>
+                  </div>
+                </article>
+              </div>
+            ))}
           </div>
-
         </div>
       </section>
     </div>

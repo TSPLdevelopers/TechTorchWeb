@@ -319,9 +319,9 @@ export default function DigitalSolutionsHero() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 9px;
+          gap: 10px;
 
-          padding: 12px 24px;
+          padding: 14px 28px;
 
           border: 0;
           border-radius: 6px;
@@ -329,7 +329,7 @@ export default function DigitalSolutionsHero() {
           background: #730042;
 
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
           line-height: 1.2;
 
@@ -339,13 +339,15 @@ export default function DigitalSolutionsHero() {
           transition:
             opacity 0.3s ease,
             transform 0.3s ease,
-            background 0.3s ease;
+            background 0.3s ease,
+            color 0.3s ease;
         }
 
         .digital-cta:hover {
-          opacity: 0.92;
-          background: #730042;
-          transform: translateY(-1px);
+          opacity: 1;
+          background: #ffffff;
+          color: #730042;
+          transform: translateY(-2px);
         }
 
         .digital-cta-icon {
@@ -501,8 +503,8 @@ export default function DigitalSolutionsHero() {
           }
 
           .digital-cta {
-            padding: 11px 21px;
-            font-size: 11px;
+            padding: 12px 23px;
+            font-size: 11.5px;
           }
 
           .digital-divider {
@@ -562,9 +564,9 @@ export default function DigitalSolutionsHero() {
           }
 
           .digital-cta {
-            gap: 7px;
-            padding: 10px 18px;
-            font-size: 10px;
+            gap: 8px;
+            padding: 11px 20px;
+            font-size: 10.5px;
           }
 
           .digital-cta-icon {

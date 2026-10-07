@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Zap, ArrowDown, RefreshCw } from "lucide-react";
 
 const PILLARS = [
@@ -45,9 +45,39 @@ const STEPS = [
 ];
 
 export default function StrategicTransformationSection() {
+  const sectionRef = useRef(null);
+  const [stepsVisible, setStepsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStepsVisible(true);
+          observer.unobserve(section);
+        }
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <section className="strategic-transformation">
+      <section
+        ref={sectionRef}
+        className={`strategic-transformation ${
+          stepsVisible ? "strategic-steps-visible" : ""
+        }`}
+      >
         {/* =====================================================
             MAIN CONTAINER
         ====================================================== */}
@@ -144,6 +174,9 @@ export default function StrategicTransformationSection() {
                       className={`strategic-step ${
                         step.highlight ? "strategic-step-highlight" : ""
                       }`}
+                      style={{
+                        "--step-delay": `${index * 220}ms`,
+                      }}
                     >
                       {/* Step Header */}
 
@@ -188,7 +221,12 @@ export default function StrategicTransformationSection() {
                     {/* Arrow */}
 
                     {index < STEPS.length - 1 && (
-                      <div className="strategic-arrow">
+                      <div
+                        className="strategic-arrow"
+                        style={{
+                          "--arrow-delay": `${index * 220 + 150}ms`,
+                        }}
+                      >
                         <ArrowDown size={15} strokeWidth={2} />
                       </div>
                     )}
@@ -293,12 +331,14 @@ export default function StrategicTransformationSection() {
           align-items: center;
           gap: 8px;
           margin-bottom: 20px;
+
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 700;
           line-height: 1.2;
           letter-spacing: 0.1em;
           text-transform: uppercase;
+
           color: #730024;
         }
 
@@ -309,11 +349,13 @@ export default function StrategicTransformationSection() {
         .strategic-heading {
           max-width: 700px;
           margin: 0 0 18px;
+
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 36px;
           font-weight: 700;
           line-height: 1.18;
           letter-spacing: -0.025em;
+
           color: #0f172a;
         }
 
@@ -324,10 +366,12 @@ export default function StrategicTransformationSection() {
         .strategic-description {
           max-width: 720px;
           margin: 0 0 32px;
+
           font-family: "Inter", sans-serif;
           font-size: 14px;
           font-weight: 400;
           line-height: 1.7;
+
           color: #64748b;
         }
 
@@ -353,21 +397,25 @@ export default function StrategicTransformationSection() {
 
         .strategic-pillar-label {
           margin: 0 0 7px;
+
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 700;
           line-height: 1.2;
           letter-spacing: 0.08em;
           text-transform: uppercase;
+
           color: #730024;
         }
 
         .strategic-pillar-description {
           margin: 0;
+
           font-family: "Inter", sans-serif;
           font-size: 12.5px;
           font-weight: 400;
           line-height: 1.6;
+
           color: #64748b;
         }
 
@@ -379,9 +427,12 @@ export default function StrategicTransformationSection() {
           width: 100%;
           min-width: 0;
           box-sizing: border-box;
+
           padding: 24px;
+
           border: 1px solid #f4c9dd;
           border-radius: 18px;
+
           background: #fdf6f9;
         }
 
@@ -394,6 +445,7 @@ export default function StrategicTransformationSection() {
           align-items: center;
           justify-content: space-between;
           gap: 12px;
+
           margin-bottom: 22px;
         }
 
@@ -402,12 +454,14 @@ export default function StrategicTransformationSection() {
           align-items: center;
           gap: 8px;
           min-width: 0;
+
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 700;
           line-height: 1.2;
           letter-spacing: 0.08em;
           text-transform: uppercase;
+
           color: #730024;
         }
 
@@ -415,19 +469,24 @@ export default function StrategicTransformationSection() {
           width: 6px;
           height: 6px;
           flex-shrink: 0;
+
           border-radius: 50%;
           background: #730024;
         }
 
         .strategic-flow-badge {
           flex-shrink: 0;
+
           padding: 6px 10px;
           border-radius: 999px;
+
           background: #fbe4ed;
+
           font-family: "Inter", sans-serif;
           font-size: 9px;
           font-weight: 600;
           line-height: 1.2;
+
           color: #730024;
         }
 
@@ -441,21 +500,40 @@ export default function StrategicTransformationSection() {
           width: 100%;
         }
 
+        /* =========================================================
+           STEP — VIEWPORT REVEAL
+        ========================================================= */
+
         .strategic-step {
           width: 100%;
           box-sizing: border-box;
+
           padding: 16px;
+
           border: 1px solid #eef0f2;
           border-radius: 12px;
+
           background: #ffffff;
+
+          opacity: 0;
+          transform: translateX(35px) scale(0.96);
+
           transition:
-            transform 0.3s ease,
+            opacity 0.55s ease,
+            transform 0.55s ease,
             box-shadow 0.3s ease,
             border-color 0.3s ease;
+
+          transition-delay: var(--step-delay);
+        }
+
+        .strategic-steps-visible .strategic-step {
+          opacity: 1;
+          transform: translateX(0) scale(1);
         }
 
         .strategic-step:hover {
-          transform: translateY(-2px);
+          transform: translateY(-2px) scale(1);
           box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
         }
 
@@ -473,6 +551,7 @@ export default function StrategicTransformationSection() {
           align-items: flex-start;
           justify-content: space-between;
           gap: 12px;
+
           margin-bottom: 8px;
         }
 
@@ -487,15 +566,19 @@ export default function StrategicTransformationSection() {
           display: flex;
           align-items: center;
           justify-content: center;
+
           width: 25px;
           height: 25px;
           flex-shrink: 0;
+
           border-radius: 6px;
           background: #f1f5f9;
+
           font-family: "Inter", sans-serif;
           font-size: 9px;
           font-weight: 700;
           line-height: 1;
+
           color: #64748b;
         }
 
@@ -507,10 +590,12 @@ export default function StrategicTransformationSection() {
         .strategic-step-title {
           min-width: 0;
           margin: 0;
+
           font-family: "Inter", sans-serif;
           font-size: 13px;
           font-weight: 700;
           line-height: 1.35;
+
           color: #0f172a;
         }
 
@@ -521,6 +606,7 @@ export default function StrategicTransformationSection() {
         .strategic-step-tag {
           flex-shrink: 0;
           margin-top: 3px;
+
           font-family: "Inter", sans-serif;
           font-size: 9px;
           font-weight: 600;
@@ -536,23 +622,41 @@ export default function StrategicTransformationSection() {
         .strategic-step-description {
           margin: 0;
           padding-left: 35px;
+
           font-family: "Inter", sans-serif;
           font-size: 12px;
           font-weight: 400;
           line-height: 1.65;
+
           color: #64748b;
         }
 
         /* =========================================================
-           ARROW
+           ARROW — VIEWPORT REVEAL
         ========================================================= */
 
         .strategic-arrow {
           display: flex;
           align-items: center;
           justify-content: center;
+
           height: 28px;
+
           color: #730024;
+
+          opacity: 0;
+          transform: translateY(-6px);
+
+          transition:
+            opacity 0.35s ease,
+            transform 0.35s ease;
+
+          transition-delay: var(--arrow-delay);
+        }
+
+        .strategic-steps-visible .strategic-arrow {
+          opacity: 1;
+          transform: translateY(0);
         }
 
         /* =========================================================
@@ -564,8 +668,10 @@ export default function StrategicTransformationSection() {
           align-items: center;
           justify-content: space-between;
           gap: 12px;
+
           margin-top: 20px;
           padding-top: 16px;
+
           border-top: 1px solid #f4c9dd;
         }
 
@@ -573,10 +679,12 @@ export default function StrategicTransformationSection() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
+
           font-family: "Inter", sans-serif;
           font-size: 11px;
           font-weight: 500;
           line-height: 1.3;
+
           color: #64748b;
         }
 
@@ -585,12 +693,12 @@ export default function StrategicTransformationSection() {
           font-size: 11px;
           font-weight: 700;
           line-height: 1.3;
+
           color: #730024;
         }
 
         /* =========================================================
            TABLET - 1200px
-           Horizontal spacing: 40px
         ========================================================= */
 
         @media (max-width: 1200px) {
@@ -617,7 +725,6 @@ export default function StrategicTransformationSection() {
 
         /* =========================================================
            TABLET - 900px
-           Horizontal spacing: 40px
         ========================================================= */
 
         @media (max-width: 900px) {
@@ -651,7 +758,6 @@ export default function StrategicTransformationSection() {
 
         /* =========================================================
            MOBILE - 700px
-           Horizontal spacing: 24px
         ========================================================= */
 
         @media (max-width: 700px) {
@@ -739,7 +845,6 @@ export default function StrategicTransformationSection() {
 
         /* =========================================================
            SMALL MOBILE - 480px
-           Horizontal spacing: 16px
         ========================================================= */
 
         @media (max-width: 480px) {
@@ -899,6 +1004,19 @@ export default function StrategicTransformationSection() {
 
           .strategic-step-description {
             font-size: 10px;
+          }
+        }
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+          .strategic-step,
+          .strategic-arrow {
+            opacity: 1;
+            transform: none;
+            transition: none;
           }
         }
       `}</style>
