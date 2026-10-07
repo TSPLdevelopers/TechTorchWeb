@@ -114,8 +114,11 @@ export default function AskQuestion() {
         }
 
         .aq-container {
-          width: min(1100px, calc(100% - 48px));
-          margin: 0 auto;
+          width: 100%;
+          max-width: none;
+          margin: 0;
+          padding-left: 100px;
+          padding-right: 100px;
         }
 
         .aq-heading {
@@ -961,7 +964,10 @@ export default function AskQuestion() {
 
         @media (max-width: 1024px) {
           .aq-container {
-            width: min(920px, calc(100% - 40px));
+            width: 100%;
+            max-width: none;
+            padding-left: 40px;
+            padding-right: 40px;
           }
 
           .question-hero-grid {
@@ -991,7 +997,10 @@ export default function AskQuestion() {
 
         @media (max-width: 768px) {
           .aq-container {
-            width: min(100% - 32px, 680px);
+            width: 100%;
+            max-width: none;
+            padding-left: 24px;
+            padding-right: 24px;
           }
 
           .question-hero {
@@ -1106,9 +1115,19 @@ export default function AskQuestion() {
            SMALL MOBILE
         ========================================================= */
 
+        @media (max-width: 639px) {
+          .aq-container {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
+
         @media (max-width: 480px) {
           .aq-container {
-            width: calc(100% - 28px);
+            width: 100%;
+            max-width: none;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .question-hero {
