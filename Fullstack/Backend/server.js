@@ -63,6 +63,11 @@ const dataDecisionRoutes = require(
   "./src/routes/dataDecisionRoutes"
 );
 const ourstoryRoutes = require("./src/routes/ourstoryRoutes");
+const startConversationRoutes = require("./src/routes/startConversationRoutes");
+const needsRoutes = require("./src/routes/needsRoutes");
+const exploreQuestionRoutes = require(
+  "./src/routes/exploreQuestionRoutes"
+);
 
 const app = express();
 
@@ -138,6 +143,12 @@ app.use(
 );
 
 app.use("/api/ourstory", ourstoryRoutes);
+
+app.use("/api/start-conversation", startConversationRoutes);
+
+app.use("/api/needs", needsRoutes);
+
+app.use("/api/explore-question", exploreQuestionRoutes);
 
 // 404
 app.use((req, res) => {
