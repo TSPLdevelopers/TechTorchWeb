@@ -8,7 +8,7 @@ import {
   Users,
 } from "lucide-react";
 
-const WINE = "#7A1F3D";
+const WINE = "#730042";
 
 const cards = [
   {
@@ -62,14 +62,15 @@ export default function TechnologyServicesWineGridSection() {
         .technology-services-section {
           width: 100%;
           overflow: hidden;
+
           color: #ffffff;
 
           background:
             linear-gradient(
               135deg,
-              #3d0d28 0%,
-              #5c1730 60%,
-              #3d0d28 100%
+              #730042 0%,
+              #5c1533 55%,
+              #730042 100%
             );
 
           font-family: "Inter", sans-serif;
@@ -104,7 +105,7 @@ export default function TechnologyServicesWineGridSection() {
         .technology-services-label {
           margin: 0 0 12px;
 
-          color: #e3a9c1;
+          color: #f1cbd9;
 
           font-family: "Inter", sans-serif;
           font-size: 11px;
@@ -130,7 +131,7 @@ export default function TechnologyServicesWineGridSection() {
           max-width: 650px;
           margin: 0 0 52px;
 
-          color: #d9b7c4;
+          color: #e7c5d2;
 
           font-family: "Inter", sans-serif;
           font-size: 15px;
@@ -144,7 +145,9 @@ export default function TechnologyServicesWineGridSection() {
 
         .technology-services-grid {
           display: grid;
+
           grid-template-columns: repeat(3, minmax(0, 1fr));
+
           gap: 22px;
         }
 
@@ -161,10 +164,10 @@ export default function TechnologyServicesWineGridSection() {
           display: flex;
           flex-direction: column;
 
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           border-radius: 18px;
 
-          background: rgba(255, 255, 255, 0.06);
+          background: rgba(255, 255, 255, 0.08);
 
           transition:
             transform 0.35s ease,
@@ -173,15 +176,19 @@ export default function TechnologyServicesWineGridSection() {
             box-shadow 0.35s ease;
         }
 
+        /* =========================================
+           CARD HOVER
+        ========================================= */
+
         .technology-service-card:hover {
           transform: translateY(-6px);
 
-          border-color: rgba(255, 255, 255, 0.18);
+          border-color: rgba(255, 255, 255, 0.35);
 
-          background: rgba(255, 255, 255, 0.085);
+          background: #730042;
 
           box-shadow:
-            0 18px 45px rgba(0, 0, 0, 0.16);
+            0 18px 45px rgba(0, 0, 0, 0.22);
         }
 
         /* =========================================
@@ -213,10 +220,10 @@ export default function TechnologyServicesWineGridSection() {
         .technology-service-icon {
           transform: scale(1.12);
 
-          background: rgba(255, 255, 255, 0.18);
+          background: rgba(255, 255, 255, 0.2);
 
           box-shadow:
-            0 8px 20px rgba(0, 0, 0, 0.12);
+            0 8px 20px rgba(0, 0, 0, 0.14);
         }
 
         /* =========================================
@@ -233,6 +240,13 @@ export default function TechnologyServicesWineGridSection() {
           font-weight: 700;
           line-height: 1.4;
           letter-spacing: -0.01em;
+
+          transition: color 0.3s ease;
+        }
+
+        .technology-service-card:hover
+        .technology-service-title {
+          color: #ffffff;
         }
 
         /* =========================================
@@ -242,12 +256,19 @@ export default function TechnologyServicesWineGridSection() {
         .technology-service-body {
           margin: 0 0 22px;
 
-          color: #d9b7c4;
+          color: #e7c5d2;
 
           font-family: "Inter", sans-serif;
           font-size: 12.5px;
           font-weight: 400;
           line-height: 1.7;
+
+          transition: color 0.3s ease;
+        }
+
+        .technology-service-card:hover
+        .technology-service-body {
+          color: #f8e8ee;
         }
 
         /* =========================================
@@ -258,18 +279,25 @@ export default function TechnologyServicesWineGridSection() {
           margin-top: auto;
           margin-bottom: 0;
 
-          color: #a9738a;
+          color: #c993a9;
 
           font-family: "Inter", sans-serif;
           font-size: 10px;
           font-weight: 600;
           line-height: 1.4;
           letter-spacing: 0.08em;
+
+          transition: color 0.3s ease;
+        }
+
+        .technology-service-card:hover
+        .technology-service-capability {
+          color: #f1cbd9;
         }
 
         /* =========================================
            LARGE TABLET
-           100px → 40px
+           1200px
         ========================================= */
 
         @media (max-width: 1200px) {
@@ -349,7 +377,7 @@ export default function TechnologyServicesWineGridSection() {
 
         /* =========================================
            MOBILE
-           40px → 24px
+           24px
         ========================================= */
 
         @media (max-width: 600px) {
@@ -390,12 +418,14 @@ export default function TechnologyServicesWineGridSection() {
           .technology-service-card {
             min-height: auto;
             padding: 22px;
+
             border-radius: 16px;
           }
 
           .technology-service-icon {
             width: 43px;
             height: 43px;
+
             margin-bottom: 20px;
           }
 
@@ -405,6 +435,7 @@ export default function TechnologyServicesWineGridSection() {
 
           .technology-service-body {
             margin-bottom: 20px;
+
             font-size: 12px;
             line-height: 1.65;
           }
@@ -416,7 +447,7 @@ export default function TechnologyServicesWineGridSection() {
 
         /* =========================================
            SMALL MOBILE
-           24px → 16px
+           16px
         ========================================= */
 
         @media (max-width: 400px) {
@@ -451,7 +482,10 @@ export default function TechnologyServicesWineGridSection() {
 
         @media (prefers-reduced-motion: reduce) {
           .technology-service-card,
-          .technology-service-icon {
+          .technology-service-icon,
+          .technology-service-title,
+          .technology-service-body,
+          .technology-service-capability {
             transition: none !important;
           }
         }
@@ -459,9 +493,7 @@ export default function TechnologyServicesWineGridSection() {
 
       <div className="technology-services-container">
 
-        {/* =========================================
-            HEADER
-        ========================================= */}
+        {/* HEADER */}
 
         <p className="technology-services-label">
           Our Technology Services
@@ -476,9 +508,7 @@ export default function TechnologyServicesWineGridSection() {
           technology requirements.
         </p>
 
-        {/* =========================================
-            CARDS
-        ========================================= */}
+        {/* CARDS */}
 
         <div className="technology-services-grid">
           {cards.map(({ icon: Icon, cap, title, body }) => (
