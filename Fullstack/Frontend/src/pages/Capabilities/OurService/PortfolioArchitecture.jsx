@@ -808,7 +808,7 @@ export default function TechTorchServices() {
           border: 0;
           border-radius: 7px;
 
-          background: ${BRAND_COLOR};
+          background: #730042;
 
           font-family: "Inter", sans-serif;
           font-size: 10px;
