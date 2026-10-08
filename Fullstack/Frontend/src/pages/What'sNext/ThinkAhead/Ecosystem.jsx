@@ -146,7 +146,7 @@ export default function EcosystemHeroSection() {
             items-center
             justify-center
             gap-2
-            bg-[#8A1538]
+            bg-[#730042]
             px-5
             py-3
             text-[11px]

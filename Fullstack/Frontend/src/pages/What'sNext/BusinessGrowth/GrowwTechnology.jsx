@@ -64,7 +64,30 @@ export default function GrowWithBusinessSection() {
             {/* ================= BUTTON ================= */}
             <button
               type="button"
-              className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#5C1533] px-5 py-3 text-[11px] font-semibold tracking-wide text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4A1029] active:translate-y-0 sm:mt-7 sm:px-6 sm:text-xs md:text-sm"
+              className="
+                mt-6
+                inline-flex
+                w-fit
+                items-center
+                gap-2
+                rounded-[6px]
+                bg-[#730042]
+                px-5
+                py-3
+                text-[11px]
+                font-semibold
+                tracking-wide
+                text-white
+                transition-all
+                duration-300
+                hover:-translate-y-0.5
+                
+                active:translate-y-0
+                sm:mt-7
+                sm:px-6
+                sm:text-xs
+                md:text-sm
+              "
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               TALK TO OUR EXPERTS

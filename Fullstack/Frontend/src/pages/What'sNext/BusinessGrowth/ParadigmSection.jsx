@@ -9,14 +9,14 @@ export default function ParadigmSection() {
         overflow-hidden
         bg-white
         px-4
-        py-8
+        py-5
         sm:px-6
-        sm:py-9
+        sm:py-6
         md:px-10
-        md:py-10
+        md:py-7
         lg:px-[100px]
-        lg:py-12
-        xl:py-14
+        lg:py-8
+        xl:py-9
       "
     >
       <div className="mx-auto w-full max-w-[1320px] text-center">
@@ -32,11 +32,11 @@ export default function ParadigmSection() {
         <h1
           className="
             mx-auto
-            mt-2
+            mt-1.5
             max-w-3xl
             text-[21px]
             font-semibold
-            leading-[1.3]
+            leading-[1.25]
             text-[#730042]
             sm:text-[25px]
             md:text-[30px]
@@ -52,10 +52,10 @@ export default function ParadigmSection() {
         <p
           className="
             mx-auto
-            mt-4
+            mt-3
             max-w-2xl
             text-[12px]
-            leading-[1.65]
+            leading-[1.55]
             text-slate-600
             sm:text-[13px]
             md:text-[14px]
@@ -73,11 +73,11 @@ export default function ParadigmSection() {
         <p
           className="
             mx-auto
-            mt-3
+            mt-2
             max-w-2xl
             text-[12px]
             font-semibold
-            leading-[1.6]
+            leading-[1.5]
             text-[#730042]
             sm:text-[13px]
             md:text-[14px]
@@ -91,10 +91,10 @@ export default function ParadigmSection() {
         <p
           className="
             mx-auto
-            mt-3
+            mt-2
             max-w-2xl
             text-[12px]
-            leading-[1.65]
+            leading-[1.55]
             text-slate-600
             sm:text-[13px]
             md:text-[14px]
@@ -112,7 +112,7 @@ export default function ParadigmSection() {
         <div
           className="
             mx-auto
-            mt-5
+            mt-3
             inline-flex
             max-w-full
             items-center
@@ -120,9 +120,9 @@ export default function ParadigmSection() {
             rounded-full
             bg-[#730042]
             px-4
-            py-2
+            py-1.5
             sm:px-5
-            sm:py-2.5
+            sm:py-2
           "
         >
           <span
@@ -144,44 +144,43 @@ export default function ParadigmSection() {
 
         {/* Image */}
         <div
-          className="
-            relative
-            mt-5
-            w-full
-            overflow-hidden
-            rounded-lg
-            sm:mt-6
-            sm:rounded-xl
-            md:mt-7
-          "
-        >
+  className="
+    relative
+    mt-3
+    w-full
+    h-[660px]
+    overflow-hidden
+    rounded-lg
+    sm:mt-4
+    sm:rounded-xl
+    md:mt-5
+    lg:mt-6
+  "
+>
+
           <img
             src="/Senior cybersecurity advisors consulting around a digital holographic security display.png"
             alt="Executives discussing enterprise architecture"
             className="
-              block
-              h-[10px]
-              w-full
-              object-cover
-              object-center
-              sm:h-[105px]
-              md:h-[120px]
-              lg:h-[135px]
-              xl:h-[145px]
-            "
-          />
+  
+      h-full
+      w-full
+      object-cover
+      object-bottom
+    "
+  />
 
           {/* Gradient Overlay */}
           <div
-            className="
-              absolute
-              inset-0
-              bg-gradient-to-t
-              from-[#3A0A22]/80
-              via-[#3A0A22]/20
-              to-transparent
-            "
-          />
+    className="
+      absolute
+      inset-0
+      bg-gradient-to-t
+      from-[#3A0A22]/80
+      via-[#3A0A22]/20
+      to-transparent
+    "
+  />
 
           {/* Image Bottom Content */}
           <div
@@ -191,15 +190,15 @@ export default function ParadigmSection() {
               bottom-0
               flex
               flex-col
-              gap-1
-              p-2.5
+              gap-0.5
+              p-2
               text-left
-              sm:p-3
+              sm:p-2.5
               md:flex-row
               md:items-end
               md:justify-between
               md:gap-4
-              lg:p-4
+              lg:p-3
             "
           >
             {/* Image Text */}
@@ -224,7 +223,7 @@ export default function ParadigmSection() {
                   max-w-xl
                   text-[8px]
                   font-medium
-                  leading-[1.3]
+                  leading-[1.2]
                   text-white
                   sm:text-[9px]
                   md:text-[10px]
@@ -247,7 +246,7 @@ export default function ParadigmSection() {
                 rounded-full
                 bg-white
                 px-2
-                py-1
+                py-0.5
                 text-[6px]
                 font-semibold
                 text-slate-800
