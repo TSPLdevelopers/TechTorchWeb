@@ -670,58 +670,60 @@ export default function IntegratedResourcing() {
         }
 
         /* =====================================================
-           CTA BUTTON
-        ===================================================== */
+   CTA BUTTON
+===================================================== */
 
-        .integrated-resourcing-cta-button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
+.integrated-resourcing-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-          gap: 8px;
+  gap: 8px;
 
-          padding: 12px 21px;
+  padding: 12px 21px;
 
-          border: none;
-          border-radius: 999px;
+  border: none;
+  border-radius: 6px;
 
-          background: ${BRAND_COLOR};
+  background: #730042;
 
-          font-family: "Inter", sans-serif;
-          font-size: 11px;
-          font-weight: 600;
-          line-height: 1.4;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
 
-          color: #ffffff;
+  color: #ffffff;
 
-          cursor: pointer;
+  cursor: pointer;
 
-          transition:
-            transform 0.3s ease,
-            opacity 0.3s ease,
-            box-shadow 0.3s ease;
-        }
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
 
-        .integrated-resourcing-cta-button:hover {
-          transform: translateY(-2px);
+.integrated-resourcing-cta-button:hover {
+  transform: translateY(-2px);
 
-          opacity: 0.92;
+  background: #ffffff;
+  color: #730042;
 
-          box-shadow:
-            0 10px 25px rgba(115, 0, 36, 0.35);
-        }
+  box-shadow:
+    0 10px 25px rgba(115, 0, 66, 0.25);
+}
 
-        .integrated-resourcing-cta-arrow {
-          width: 15px;
-          height: 15px;
+.integrated-resourcing-cta-arrow {
+  width: 15px;
+  height: 15px;
 
-          transition: transform 0.3s ease;
-        }
+  transition: transform 0.3s ease;
+}
 
-        .integrated-resourcing-cta-button:hover
-          .integrated-resourcing-cta-arrow {
-          transform: translateX(3px);
-        }
+.integrated-resourcing-cta-button:hover
+  .integrated-resourcing-cta-arrow {
+  transform: translateX(3px);
+}
 
         /* =====================================================
            TABLET — 1200px
