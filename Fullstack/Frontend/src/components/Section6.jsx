@@ -470,372 +470,289 @@ export default function CapabilitiesMarquee() {
 
 
         /* =====================================================
-           CONTROLS
-        ===================================================== */
+   CONTROLS
+===================================================== */
 
-        .cap-controls {
-          display: flex;
+.cap-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+}
 
-          justify-content: center;
 
-          align-items: center;
+/* =====================================================
+   CONTROL BUTTON
+===================================================== */
 
-          gap: 14px;
+.cap-control-btn {
+  position: relative;
 
-          margin-top: 5px;
-        }
+  width: 50px;
+  height: 50px;
 
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
 
-        .cap-control-btn {
-          width: 42px;
-          height: 42px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.06)
+    );
 
-          border-radius: 50%;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-          border: 2px solid #ffffff;
+  color: #ffffff;
 
-          background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-          color: #ffffff;
+  font-size: 21px;
+  font-weight: 500;
 
-          display: flex;
+  cursor: pointer;
 
-          align-items: center;
+  overflow: hidden;
 
-          justify-content: center;
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 
-          font-size: 23px;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
 
-          cursor: pointer;
 
-          transition:
-            background 0.3s ease,
-            color 0.3s ease,
-            transform 0.25s ease;
-        }
+/* =====================================================
+   SHINE EFFECT
+===================================================== */
 
+.cap-control-btn::before {
+  content: "";
 
-        .cap-control-btn:hover {
-          background: #ffffff;
+  position: absolute;
 
-          color: #6d0e42;
+  top: 0;
+  left: -120%;
 
-          transform: scale(1.08);
-        }
+  width: 80%;
+  height: 100%;
 
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
 
-        .cap-control-btn:active {
-          transform: scale(0.94);
-        }
+  transform: skewX(-20deg);
 
+  transition: left 0.6s ease;
 
-        /* =====================================================
-           SMALL
-        ===================================================== */
+  pointer-events: none;
+}
 
-        @media (min-width: 640px) {
-          .cap-header {
-            padding-left: 24px;
-            padding-right: 24px;
-          }
-        }
 
+/* =====================================================
+   INNER GLOW
+===================================================== */
 
-        /* =====================================================
-           TABLET
-        ===================================================== */
+.cap-control-btn::after {
+  content: "";
 
-        @media (min-width: 768px) {
-          .cap-header {
-            padding-left: 40px;
-            padding-right: 40px;
-          }
+  position: absolute;
+  inset: 1px;
 
-          .cap-title {
-            font-size: 36px;
-            transform: none;
-          }
+  border-radius: 13px;
 
-          .cap-desc {
-            font-size: 16px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08),
+    transparent 55%
+  );
 
-            font-family: "Inter", sans-serif;
+  pointer-events: none;
+}
 
-            transform: none;
-          }
 
-          .cap-card {
-            width: 270px;
-          }
+/* =====================================================
+   HOVER
+===================================================== */
 
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 300px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.86);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 300px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.86);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1.03);
-          }
-        }
-
-
-        /* =====================================================
-           DESKTOP
-        ===================================================== */
-
-        @media (min-width: 1024px) {
-          .cap-header {
-            padding-left: 100px;
-            padding-right: 100px;
-          }
-
-          .cap-card {
-            width: 285px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 325px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.90);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 325px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.90);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1.07);
-          }
-        }
-
-
-        /* =====================================================
-           LARGE DESKTOP
-        ===================================================== */
-
-        @media (min-width: 1200px) {
-          .cap-card {
-            width: 300px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 345px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.90);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 345px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.90);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1.10);
-          }
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 767px) {
-          .cap-section {
-            padding-top: 48px;
-            padding-bottom: 55px;
-          }
-
-          .cap-header {
-            padding-left: 16px;
-            padding-right: 16px;
-
-            margin-bottom: 10px;
-          }
-
-          .cap-title {
-            font-size: 30px;
-
-            transform: none;
-          }
-
-          .cap-desc {
-            font-size: 16px;
-
-            max-width: 100%;
-
-            transform: none;
-          }
-
-          .cap-slider {
-            padding: 20px 0 30px;
-          }
-
-          .cap-slider-track {
-            height: 350px;
-          }
-
-          .cap-card {
-            width: 240px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 258px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.82);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 258px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.82);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1);
-          }
-
-          .cap-card-label {
-            font-size: 14px;
-
-            padding:
-              13px 15px 15px;
-          }
-        }
-
-
-        /* =====================================================
-           SMALL MOBILE
-        ===================================================== */
-
-        @media (max-width: 480px) {
-          .cap-section {
-            padding:
-              42px 0 50px;
-          }
-
-          .cap-header {
-            padding-left: 16px;
-            padding-right: 16px;
-
-            gap: 16px;
-          }
-
-          .cap-title {
-            font-size: 27px;
-          }
-
-          .cap-desc {
-            font-size: 14px;
-
-            line-height: 1.6;
-          }
-
-          .cap-slider-track {
-            height: 330px;
-          }
-
-          .cap-card {
-            width: 220px;
-
-            border-radius: 14px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 232px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.82);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 232px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.82);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1);
-          }
-
-          .cap-control-btn {
-            width: 40px;
-            height: 40px;
-
-            font-size: 20px;
-          }
-        }
-
-
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
-        @media (prefers-reduced-motion: reduce) {
-          .cap-card,
-          .cap-control-btn,
-          .cap-card-arrow {
-            transition: none !important;
-          }
-        }
+.cap-control-btn:hover {
+  background: #ffffff;
+
+  border-color: #ffffff;
+
+  color: #730042;
+
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.24),
+    0 0 20px rgba(255, 255, 255, 0.12);
+
+  transform: translateY(-4px) scale(1.04);
+}
+
+
+/* Shine */
+
+.cap-control-btn:hover::before {
+  left: 130%;
+}
+
+
+/* =====================================================
+   FIRST BUTTON HOVER
+===================================================== */
+
+.cap-control-btn:first-child:hover {
+  transform: translate(-4px, -4px) scale(1.04);
+}
+
+
+/* =====================================================
+   LAST BUTTON HOVER
+===================================================== */
+
+.cap-control-btn:last-child:hover {
+  transform: translate(4px, -4px) scale(1.04);
+}
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.cap-control-btn svg {
+  position: relative;
+  z-index: 2;
+
+  width: 21px;
+  height: 21px;
+
+  stroke-width: 1.8;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    stroke-width 0.3s ease;
+}
+
+
+/* Left Arrow */
+
+.cap-control-btn:first-child:hover svg {
+  transform: translateX(-3px);
+  stroke-width: 2.2;
+}
+
+
+/* Right Arrow */
+
+.cap-control-btn:last-child:hover svg {
+  transform: translateX(3px);
+  stroke-width: 2.2;
+}
+
+
+/* =====================================================
+   ACTIVE / CLICK
+===================================================== */
+
+.cap-control-btn:active {
+  transform: scale(0.92);
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.18);
+}
+
+.cap-control-btn:first-child:active,
+.cap-control-btn:last-child:active {
+  transform: scale(0.92);
+}
+
+
+/* =====================================================
+   FOCUS
+===================================================== */
+
+.cap-control-btn:focus-visible {
+  outline: none;
+
+  border-color: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.22),
+    0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 767px) {
+  .cap-controls {
+    gap: 11px;
+    margin-top: 2px;
+  }
+
+  .cap-control-btn {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 13px;
+
+    font-size: 20px;
+  }
+
+  .cap-control-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+  .cap-controls {
+    gap: 9px;
+  }
+
+  .cap-control-btn {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 11px;
+  }
+
+  .cap-control-btn svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .cap-control-btn,
+  .cap-control-btn::before,
+  .cap-control-btn svg {
+    transition: none;
+  }
+}
       `}</style>
 
 
