@@ -8,7 +8,7 @@ import {
   FolderOpen,
   X,
 } from "lucide-react";
-
+import logo from "../../public/logo.png?url";
 import {
   getNews,
   getJobs,
@@ -106,38 +106,12 @@ const SIDEBAR_CSS = `
   min-height: 56px;
 }
 
-.ttsb-mark {
-  width: 40px;
+.ttsb-logo-img {
   height: 40px;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex-shrink: 0;
-  background: #780042;
-}
-
-.ttsb-mark img {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  max-width: 170px;
   object-fit: contain;
   display: block;
-}
-
-.ttsb-name {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.25;
-  color: #1c1917;
-}
-
-.ttsb-sub {
-  font-size: 10px;
-  color: #a8a29e;
-  letter-spacing: .025em;
-  line-height: 1.25;
-  margin-top: 2px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -425,22 +399,11 @@ export default function AdminSidebar({
 
         <div className="ttsb-logo">
 
-          <div className="ttsb-mark">
-            <img
-              src="/Tech-Torch2.png"
-              alt="TechTorch"
-            />
-          </div>
-
-          <div>
-            <div className="ttsb-name">
-              TechTorch
-            </div>
-
-            <div className="ttsb-sub">
-              ENTERPRISE CORE
-            </div>
-          </div>
+          <img
+            src={logo}
+            alt="TechTorch"
+            className="ttsb-logo-img"
+          />
 
           {/* MOBILE CLOSE */}
 
