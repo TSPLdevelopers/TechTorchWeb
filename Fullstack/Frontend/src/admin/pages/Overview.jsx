@@ -9,6 +9,7 @@ import {
   Download,
   Users,
 } from "lucide-react";
+import logo from "../../../public/logo.png";
 
 import { useList } from "../hooks/useResource";
 import { useProfile } from "../hooks/useAuth";
@@ -119,7 +120,7 @@ export default function Overview() {
       </h1>
 
       <p className="mb-6 text-sm text-stone-500">
-        Here is what is happening across TechTorch content today.
+        Here is what is happening across TechTorch content today
       </p>
 
       {/* Dashboard Cards */}

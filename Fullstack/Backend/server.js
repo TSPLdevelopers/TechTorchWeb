@@ -65,6 +65,13 @@ const dataDecisionRoutes = require(
   "./src/routes/dataDecisionRoutes"
 );
 const ourstoryRoutes = require("./src/routes/ourstoryRoutes");
+const secureBusinessRoutes = require("./src/routes/secureBusinessRoutes");
+const digitalSolutionRoutes = require(
+  "./src/routes/digitalSolutionRoutes"
+);
+const sendQuestionRoutes = require(
+  "./src/routes/sendQuestionRoutes"
+);
 
 const app = express();
 
@@ -142,6 +149,13 @@ app.use(
 );
 
 app.use("/api/ourstory", ourstoryRoutes);
+app.use("/api/secure-business", secureBusinessRoutes);
+app.use(
+  "/api/digital-solutions",
+  digitalSolutionRoutes
+);
+
+app.use("/api/send-question", sendQuestionRoutes);
 
 // 404
 app.use((req, res) => {
