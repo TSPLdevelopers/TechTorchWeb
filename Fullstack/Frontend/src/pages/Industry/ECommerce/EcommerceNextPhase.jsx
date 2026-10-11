@@ -218,14 +218,13 @@ export default function BuildOnlineBusinessCtaSection() {
 
         .build-online-secondary {
           border: 1px solid rgba(255, 255, 255, 0.12);
-          background: rgba(255, 255, 255, 0.12);
-          color: #ffffff;
+          background: #ffffff;
+          color: #730042;
         }
 
         .build-online-secondary:hover {
           transform: translateY(-3px);
-          background: rgba(255, 255, 255, 0.20);
-          border-color: rgba(255, 255, 255, 0.30);
+          
         }
 
         /* =========================================

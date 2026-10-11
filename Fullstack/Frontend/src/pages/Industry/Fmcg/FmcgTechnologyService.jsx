@@ -229,34 +229,37 @@ export default function TechServicesSection() {
         }
 
         /* =========================
-           CARD
-        ========================= */
+   CARD
+========================= */
 
-        .tech-service-card {
-          display: flex;
-          flex-direction: column;
+.tech-service-card {
+  display: flex;
+  flex-direction: column;
 
-          min-width: 0;
-          overflow: hidden;
+  min-width: 0;
+  overflow: hidden;
 
-          background: #ffffff;
+  background: #ffffff;
 
-          border-radius: 16px;
+  border-radius: 16px;
 
-          box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.05);
 
-          transition:
-            transform 0.28s ease,
-            box-shadow 0.28s ease;
-        }
+  transition:
+    transform 0.28s ease,
+    background-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
 
-        .tech-service-card:hover {
-          transform: translateY(-5px);
+.tech-service-card:hover {
+  transform: translateY(-5px);
 
-          box-shadow:
-            0 14px 35px rgba(0, 0, 0, 0.08);
-        }
+  background: #fff1f4;
+
+  box-shadow:
+    0 14px 35px rgba(122, 31, 61, 0.10);
+}
 
         /* =========================
            IMAGE

@@ -194,7 +194,7 @@ export default function CtaBannerSection() {
 
           border-radius: 6px;
 
-          background: ${WINE};
+          background: #730042;
 
           color: #ffffff;
 
@@ -217,7 +217,8 @@ export default function CtaBannerSection() {
 
 
         .cta-primary-button:hover {
-          background: #651831;
+          background: #ffffff;
+          color: #730042;
 
           border-color: #651831;
 

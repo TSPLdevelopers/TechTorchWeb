@@ -15,28 +15,39 @@ export default function CreateTechnologyCtaSection() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-        /* =================================================
-           CREATE TECHNOLOGY CTA
-        ================================================= */
-
         .create-tech-cta,
         .create-tech-cta * {
           box-sizing: border-box;
         }
+
+        /* =================================================
+           MAIN CTA
+        ================================================= */
 
         .create-tech-cta {
           position: relative;
           width: 100%;
           overflow: hidden;
 
-          background: ${WINE};
           color: #ffffff;
 
           font-family: "Inter", Arial, sans-serif;
+
+          background:
+            linear-gradient(
+              90deg,
+              rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.25)
+            ),
+            url("/it.png");
+
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
         }
 
         /* =================================================
-           BACKGROUND GLOW
+           BACKGROUND OVERLAY
         ================================================= */
 
         .create-tech-cta-glow {
@@ -48,18 +59,21 @@ export default function CreateTechnologyCtaSection() {
           background:
             radial-gradient(
               circle at 50% 35%,
-              rgba(255, 255, 255, 0.12) 0%,
-              transparent 60%
+              rgba(255, 255, 00, 0.0) 100%,
+              rgba(255, 255, 255, 0.0) 100%,
+              transparent 65%
             );
+
+          z-index: 0;
         }
 
         /* =================================================
            CONTAINER
-           Same Hero spacing system
         ================================================= */
 
         .create-tech-cta-container {
           position: relative;
+          z-index: 1;
 
           width: 100%;
           max-width: 1600px;
@@ -70,10 +84,6 @@ export default function CreateTechnologyCtaSection() {
 
           text-align: center;
         }
-
-        /* =================================================
-           INNER CONTENT WIDTH
-        ================================================= */
 
         .create-tech-cta-content {
           width: 100%;
@@ -159,8 +169,6 @@ export default function CreateTechnologyCtaSection() {
           margin-bottom: 30px;
 
           border: none;
-
-          /* UPDATED: 999px -> 6px */
           border-radius: 6px;
 
           background: #ffffff;
@@ -175,14 +183,19 @@ export default function CreateTechnologyCtaSection() {
 
           transition:
             transform 0.25s ease,
-            box-shadow 0.25s ease;
+            box-shadow 0.25s ease,
+            background-color 0.25s ease,
+            color 0.25s ease;
         }
 
         .create-tech-cta-button:hover {
           transform: translateY(-2px);
 
+          background: #730042;
+          color: #ffffff;
+
           box-shadow:
-            0 8px 22px rgba(0, 0, 0, 0.15);
+            0 8px 22px rgba(0, 0, 0, 0.18);
         }
 
         .create-tech-cta-button svg {
@@ -218,7 +231,6 @@ export default function CreateTechnologyCtaSection() {
 
         .create-tech-trust-item svg {
           flex-shrink: 0;
-
           color: #e3c3cf;
         }
 
@@ -232,7 +244,6 @@ export default function CreateTechnologyCtaSection() {
         }
 
         /* =================================================
-           LARGE TABLET / SMALL LAPTOP
            1200px
         ================================================= */
 
@@ -248,7 +259,6 @@ export default function CreateTechnologyCtaSection() {
         }
 
         /* =================================================
-           TABLET
            900px
         ================================================= */
 
@@ -273,11 +283,14 @@ export default function CreateTechnologyCtaSection() {
         }
 
         /* =================================================
-           MOBILE
            700px
         ================================================= */
 
         @media (max-width: 700px) {
+          .create-tech-cta {
+            background-position: center;
+          }
+
           .create-tech-cta-container {
             padding-top: 56px;
             padding-bottom: 56px;
@@ -288,9 +301,7 @@ export default function CreateTechnologyCtaSection() {
 
           .create-tech-cta-badge {
             margin-bottom: 19px;
-
             padding: 6px 11px;
-
             font-size: 9px;
           }
 
@@ -311,13 +322,11 @@ export default function CreateTechnologyCtaSection() {
 
           .create-tech-cta-button {
             min-height: 47px;
-
             padding: 12px 22px;
 
             margin-bottom: 26px;
 
             font-size: 12px;
-
             border-radius: 6px;
           }
 
@@ -336,7 +345,6 @@ export default function CreateTechnologyCtaSection() {
         }
 
         /* =================================================
-           SMALL MOBILE
            480px
         ================================================= */
 
@@ -360,13 +368,10 @@ export default function CreateTechnologyCtaSection() {
           }
 
           .create-tech-cta-button {
-            width: auto;
             min-height: 46px;
-
             padding: 12px 20px;
 
             font-size: 11.5px;
-
             border-radius: 6px;
           }
 
@@ -380,7 +385,6 @@ export default function CreateTechnologyCtaSection() {
         }
 
         /* =================================================
-           VERY SMALL MOBILE
            340px
         ================================================= */
 
@@ -404,11 +408,9 @@ export default function CreateTechnologyCtaSection() {
 
           .create-tech-cta-button {
             min-height: 44px;
-
             padding: 11px 18px;
 
             font-size: 11px;
-
             border-radius: 6px;
           }
 
@@ -443,25 +445,21 @@ export default function CreateTechnologyCtaSection() {
       `}</style>
 
       <section className="create-tech-cta">
-        {/* Background Glow */}
         <div className="create-tech-cta-glow" />
 
         <div className="create-tech-cta-container">
           <div className="create-tech-cta-content">
 
-            {/* Badge */}
             <span className="create-tech-cta-badge">
               BUILD YOUR TECHNOLOGY FOUNDATION
             </span>
 
-            {/* Main Heading */}
             <h2 className="create-tech-cta-heading">
               Let's Create Technology Around
               <br className="cta-heading-break" />
               Your Business
             </h2>
 
-            {/* Description */}
             <p className="create-tech-cta-description">
               Whether you are building a new application, modernizing an
               existing system, strengthening your IT environment or looking
@@ -469,7 +467,6 @@ export default function CreateTechnologyCtaSection() {
               capabilities needed to address your business requirements.
             </p>
 
-            {/* CTA Button */}
             <button className="create-tech-cta-button">
               <span>Talk to Our Experts</span>
 
@@ -479,7 +476,6 @@ export default function CreateTechnologyCtaSection() {
               />
             </button>
 
-            {/* Trust Items */}
             <div className="create-tech-trust-list">
               {trustItems.map(({ icon: Icon, label }) => (
                 <div

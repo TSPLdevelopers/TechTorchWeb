@@ -337,69 +337,67 @@ export default function TechTorchHero() {
         }
 
         /* =====================================================
-           CTA
-        ===================================================== */
+   CTA
+===================================================== */
 
-        .techtorch-hero-button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 9px;
+.techtorch-hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
 
-          margin-bottom: 34px;
+  margin-bottom: 34px;
 
-          padding: 13px 25px;
+  padding: 13px 25px;
 
-          border: 0;
-          border-radius: 9px;
+  border: 0;
+  border-radius: 9px;
 
-          background:
-            linear-gradient(
-              135deg,
-              #e63980,
-              #c41c6e
-            );
+  background: #730042;
 
-          font-family: "Inter", sans-serif;
-          font-size: 12px;
-          font-weight: 600;
-          line-height: 1;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
 
-          color: #ffffff;
+  color: #ffffff;
 
-          cursor: pointer;
+  cursor: pointer;
 
-          box-shadow:
-            0 8px 24px rgba(196, 28, 110, 0.35);
+  box-shadow:
+    0 8px 24px rgba(115, 0, 66, 0.35);
 
-          transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
-        }
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
 
-        .techtorch-hero-button:hover {
-          transform: translateY(-3px);
+.techtorch-hero-button:hover {
+  transform: translateY(-3px);
 
-          box-shadow:
-            0 13px 30px rgba(196, 28, 110, 0.45);
-        }
+  background: #ffffff;
+  color: #730042;
 
-        .techtorch-hero-button svg {
-          width: 14px;
-          height: 14px;
+  box-shadow:
+    0 13px 30px rgba(115, 0, 66, 0.3);
+}
 
-          transition:
-            transform 0.3s ease;
-        }
+.techtorch-hero-button svg {
+  width: 14px;
+  height: 14px;
 
-        .techtorch-hero-button:hover svg {
-          transform: translateY(2px);
-        }
+  transition: transform 0.3s ease;
+}
 
-        .techtorch-hero-button:focus-visible {
-          outline: 2px solid rgba(255, 255, 255, 0.8);
-          outline-offset: 4px;
-        }
+.techtorch-hero-button:hover svg {
+  transform: translateY(2px);
+}
+
+.techtorch-hero-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 4px;
+}
 
         /* =====================================================
            DIVIDER

@@ -97,29 +97,33 @@ export default function EnterpriseHero() {
 
           {/* Button */}
           <button
-            className="
-              inline-flex
-              items-center
-              justify-center
-              mt-2
-              sm:mt-4
-              px-5
-              sm:px-6
-              py-3
-              text-[13px]
-              sm:text-sm
-              font-semibold
-              text-white
-              rounded-sm
-              transition-all
-              duration-300
-              hover:brightness-110
-              hover:scale-[1.02]
-            "
-            style={{ backgroundColor: "#b0184f" }}
-          >
-            Talk To Experts
-          </button>
+  className="
+    inline-flex
+    items-center
+    justify-center
+    mt-2
+    sm:mt-4
+    px-5
+    sm:px-6
+    py-3
+    text-[13px]
+    sm:text-sm
+    font-semibold
+    text-white
+    rounded-sm
+    border
+    border-[#730042]
+    bg-[#730042]
+    transition-all
+    duration-300
+    hover:bg-white
+    hover:text-[#730042]
+    hover:border-white
+    hover:scale-[1.02]
+  "
+>
+  Talk To Experts
+</button>
         </div>
       </div>
     </section>

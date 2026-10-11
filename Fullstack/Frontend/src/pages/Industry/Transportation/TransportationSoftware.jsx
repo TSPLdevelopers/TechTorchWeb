@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
+const WINE = "#730042";
+const LIGHT_PINK = "#FFF1F4";
+
 const capabilities = [
   { num: "01", title: "Custom Software" },
   { num: "02", title: "Web & Mobile Applications" },
@@ -61,7 +64,14 @@ export default function SoftwareCapabilitiesGridSection() {
           width: 100%;
           overflow: hidden;
 
-          background: #3d0d28;
+          background:
+            linear-gradient(
+              135deg,
+              #730042 0%,
+              #5c1533 55%,
+              #730042 100%
+            );
+
           color: #ffffff;
 
           font-family: "Inter", sans-serif;
@@ -105,8 +115,8 @@ export default function SoftwareCapabilitiesGridSection() {
 
           border-radius: 999px;
 
-          background: rgba(255, 255, 255, 0.1);
-          color: #e3c3cf;
+          background: rgba(255, 255, 255, 0.12);
+          color: #f3d9e2;
 
           font-family: "Inter", sans-serif;
           font-size: 9px;
@@ -144,7 +154,7 @@ export default function SoftwareCapabilitiesGridSection() {
 
           margin: 0 0 48px;
 
-          color: #d9b7c4;
+          color: #e7c5d2;
 
           font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 13px;
@@ -179,10 +189,10 @@ export default function SoftwareCapabilitiesGridSection() {
           flex-direction: column;
           justify-content: space-between;
 
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           border-radius: 14px;
 
-          background: rgba(255, 255, 255, 0.06);
+          background: rgba(255, 255, 255, 0.08);
 
           overflow: hidden;
 
@@ -195,9 +205,9 @@ export default function SoftwareCapabilitiesGridSection() {
           transition:
             opacity 0.65s ease,
             transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-            background 0.3s ease,
-            border-color 0.3s ease,
-            box-shadow 0.3s ease;
+            background-color 0.35s ease,
+            border-color 0.35s ease,
+            box-shadow 0.35s ease;
         }
 
         /* =========================================
@@ -214,15 +224,16 @@ export default function SoftwareCapabilitiesGridSection() {
 
         /* =========================================
            CARD HOVER
+           LIGHT PINK
         ========================================= */
 
         .software-capability-card:hover {
-          background: rgba(255, 255, 255, 0.1);
+          background: #fff1f4;
 
-          border-color: rgba(255, 255, 255, 0.18);
+          border-color: #fff1f4;
 
           box-shadow:
-            0 14px 35px rgba(0, 0, 0, 0.15);
+            0 18px 40px rgba(0, 0, 0, 0.18);
 
           transform:
             translateY(-5px)
@@ -247,7 +258,7 @@ export default function SoftwareCapabilitiesGridSection() {
           background: linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, 0.07),
+            rgba(255, 255, 255, 0.18),
             transparent
           );
 
@@ -270,13 +281,20 @@ export default function SoftwareCapabilitiesGridSection() {
         .software-capability-number {
           margin: 0 0 25px;
 
-          color: #c48fa4;
+          color: #d7a9bb;
 
           font-family: "Inter", sans-serif;
           font-size: 9px;
           font-weight: 700;
           line-height: 1.3;
           letter-spacing: 0.1em;
+
+          transition: color 0.3s ease;
+        }
+
+        .software-capability-card:hover
+        .software-capability-number {
+          color: #730042;
         }
 
         /* =========================================
@@ -293,6 +311,13 @@ export default function SoftwareCapabilitiesGridSection() {
           font-size: 13px;
           font-weight: 600;
           line-height: 1.5;
+
+          transition: color 0.3s ease;
+        }
+
+        .software-capability-card:hover
+        .software-capability-title {
+          color: #730042;
         }
 
         /* =========================================
@@ -473,25 +498,19 @@ export default function SoftwareCapabilitiesGridSection() {
 
       <div className="software-capabilities-container">
 
-        {/* =====================================
-            BADGE
-        ===================================== */}
+        {/* BADGE */}
 
         <span className="software-capabilities-badge">
           SOFTWARE &amp; ENGINEERING
         </span>
 
-        {/* =====================================
-            HEADING
-        ===================================== */}
+        {/* HEADING */}
 
         <h2 className="software-capabilities-heading">
           Build Technology Around Your Requirements
         </h2>
 
-        {/* =====================================
-            SUBHEADING
-        ===================================== */}
+        {/* SUBHEADING */}
 
         <p className="software-capabilities-subheading">
           When existing systems need improvement or new applications are
@@ -499,9 +518,7 @@ export default function SoftwareCapabilitiesGridSection() {
           development lifecycle.
         </p>
 
-        {/* =====================================
-            CAPABILITIES GRID
-        ===================================== */}
+        {/* CAPABILITIES GRID */}
 
         <div className="software-capabilities-grid">
           {capabilities.map(({ num, title }, index) => (

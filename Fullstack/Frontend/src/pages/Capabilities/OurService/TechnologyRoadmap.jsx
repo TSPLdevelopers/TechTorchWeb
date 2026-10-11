@@ -288,7 +288,7 @@ export default function TechTorchFinalCTA() {
           border: 0;
           border-radius: 8px;
 
-          background: ${BRAND_COLOR};
+          background: #730042;
 
           font-family: "Inter", sans-serif;
           font-size: 11px;
@@ -308,7 +308,8 @@ export default function TechTorchFinalCTA() {
         .techtorch-final-cta-button:hover {
           transform: translateY(-2px);
 
-          background: #8a1644;
+          background: #ffffff;
+          color: #730042;
 
           box-shadow:
             0 10px 24px rgba(115, 0, 36, 0.28);

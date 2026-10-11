@@ -129,37 +129,38 @@ export default function ReadyForNextThreatSection() {
 
           {/* Button */}
           <button
-            type="button"
-            className="
-              mt-7
-              inline-flex
-              w-fit
-              items-center
-              gap-2
-              rounded-md
-              bg-[#730042]
-              px-5
-              py-3
-              text-[12px]
-              font-semibold
-              tracking-wide
-              text-white
-              transition-all
-              duration-300
-              hover:-translate-y-0.5
-              hover:bg-[#8F1945]
-              active:translate-y-0
-              sm:mt-8
-              sm:px-6
-              sm:text-sm
-            "
-            style={{
-              fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            Talk to Our Experts
-            <span aria-hidden="true">&rarr;</span>
-          </button>
+  type="button"
+  className="
+    mt-7
+    inline-flex
+    w-fit
+    items-center
+    gap-2
+    rounded-md
+    bg-[#730042]
+    px-5
+    py-3
+    text-[12px]
+    font-semibold
+    tracking-wide
+    text-white
+    transition-all
+    duration-300
+    hover:-translate-y-0.5
+    hover:bg-white
+    hover:text-[#730042]
+    active:translate-y-0
+    sm:mt-8
+    sm:px-6
+    sm:text-sm
+  "
+  style={{
+    fontFamily: "'Inter', sans-serif",
+  }}
+>
+  Talk to Our Experts
+  <span aria-hidden="true">&rarr;</span>
+</button>
         </div>
 
         {/* ================= RIGHT IMAGE ================= */}
