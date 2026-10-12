@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Mail,
@@ -16,8 +16,26 @@ export default function AskQuestion() {
   const navigate = useNavigate();
 
   const [openFaq, setOpenFaq] = useState(null);
-  const [urgency, setUrgency] = useState("general");
+  const [urgency, setUrgency] = useState(null);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
+  useEffect(() => {
+  if (!showSuccessDialog) return;
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      event.stopPropagation();
+      setShowSuccessDialog(false);
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
+  };
+}, [showSuccessDialog]);
   const faqData = [
     {
       category: "SERVICES & CAPABILITIES",
@@ -186,7 +204,7 @@ export default function AskQuestion() {
           background: rgba(115, 0, 66, 0.025);
           color: #730042;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 11px;
+          font-size: 10px;
           font-weight: 700;
           letter-spacing: 0.4px;
         }
@@ -200,7 +218,7 @@ export default function AskQuestion() {
 
         .question-title {
           max-width: 650px;
-          font-size: clamp(42px, 4.5vw, 58px);
+          font-size: 38px;
           line-height: 1.04;
         }
 
@@ -212,7 +230,7 @@ export default function AskQuestion() {
         .question-description {
           max-width: 650px;
           margin-top: 25px;
-          font-size: 17px;
+          font-size: 15px;
           line-height: 1.65;
         }
 
@@ -295,7 +313,7 @@ export default function AskQuestion() {
           margin: 9px 0 0;
           color: #7a8290;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.55;
         }
 
@@ -330,7 +348,7 @@ export default function AskQuestion() {
         }
 
         .form-title {
-          font-size: clamp(30px, 3.5vw, 41px);
+          font-size: 38px;
           line-height: 1.15;
         }
 
@@ -364,7 +382,7 @@ export default function AskQuestion() {
           margin-bottom: 8px;
           color: #303847;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
         }
 
@@ -453,7 +471,7 @@ export default function AskQuestion() {
           background: #ffffff;
           color: #444b58;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
 
           display: flex;
@@ -559,7 +577,7 @@ export default function AskQuestion() {
         }
 
         .faq-title {
-          font-size: clamp(32px, 4vw, 43px);
+          font-size: 36px;
           line-height: 1.12;
         }
 
@@ -632,7 +650,7 @@ export default function AskQuestion() {
           padding: 0 17px 17px;
           color: #727b89;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.6;
         }
 
@@ -668,14 +686,14 @@ export default function AskQuestion() {
 
         .another-title {
           margin-top: 12px;
-          font-size: clamp(22px, 2.5vw, 29px);
+          font-size: 28px;
           line-height: 1.2;
         }
 
         .another-description {
           max-width: 620px;
           margin-top: 8px;
-          font-size: 13px;
+          font-size: 14px;
         }
 
         .direct-links {
@@ -698,7 +716,7 @@ export default function AskQuestion() {
           background: transparent;
           color: #730042;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
           cursor: pointer;
         }
@@ -756,7 +774,7 @@ export default function AskQuestion() {
         }
 
         .reach-title {
-          font-size: clamp(30px, 3.5vw, 40px);
+          font-size: 32px;
           line-height: 1.15;
         }
 
@@ -807,8 +825,8 @@ export default function AskQuestion() {
         }
 
         .reach-icon {
-          width: 62px;
-          height: 62px;
+          width: 32px;
+          height: 32px;
           flex-shrink: 0;
           border-radius: 17px;
           background: #f9edf4;
@@ -820,15 +838,15 @@ export default function AskQuestion() {
         }
 
         .reach-icon svg {
-          width: 27px;
-          height: 27px;
+          width: 18px;
+          height: 18px;
         }
 
         .reach-label {
           margin: 1px 0 5px;
           color: #a3aab6;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 700;
           letter-spacing: 0.5px;
         }
@@ -837,7 +855,7 @@ export default function AskQuestion() {
           margin: 0;
           color: #252c39;
           font-family: "Inter", sans-serif;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 1.45;
           font-weight: 700;
         }
@@ -846,7 +864,7 @@ export default function AskQuestion() {
           margin: 3px 0 0;
           color: #8b929e;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 1.45;
         }
 
@@ -892,9 +910,9 @@ export default function AskQuestion() {
 
         .final-title {
           color: #ffffff;
-          font-size: clamp(34px, 4vw, 48px);
+          font-size: 34px;
           line-height: 1.1;
-        }
+        }  
 
         .final-description {
           max-width: 690px;
@@ -911,8 +929,8 @@ export default function AskQuestion() {
         }
 
         .white-button {
-          min-height: 61px;
-          padding: 0 34px;
+          min-height: 41px;
+          padding: 0 30px;
           border: none;
           border-radius: 32px;
           background: #ffffff;
@@ -937,8 +955,8 @@ export default function AskQuestion() {
         }
 
         .outline-button {
-          min-height: 61px;
-          padding: 0 34px;
+          min-height: 41px;
+          padding: 0 30px;
           border: 2px solid rgba(255, 255, 255, 0.55);
           border-radius: 32px;
           background: transparent;
@@ -1252,6 +1270,70 @@ export default function AskQuestion() {
           }
         }
 
+
+        .aq-success-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          background: rgba(21, 27, 43, 0.55);
+        }
+
+        .aq-success-dialog {
+          width: min(100%, 420px);
+          padding: 32px 28px;
+          border-radius: 16px;
+          background: #ffffff;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+          text-align: center;
+        }
+
+        .aq-success-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 58px;
+          height: 58px;
+          margin: 0 auto 16px;
+          border-radius: 50%;
+          background: rgba(115, 0, 66, 0.09);
+          color: #730042;
+          font-size: 28px;
+          font-weight: 700;
+        }
+
+        .aq-success-dialog h3 {
+          margin: 0 0 10px;
+          color: #151b2b;
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 21px;
+          font-weight: 700;
+        }
+
+        .aq-success-dialog p {
+          margin: 0 0 24px;
+          color: #687184;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        .aq-success-close {
+          min-height: 43px;
+          padding: 0 26px;
+          border: 0;
+          border-radius: 24px;
+          background: #730042;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+        }
+
       `}</style>
 
       {/* =========================================================
@@ -1349,7 +1431,14 @@ export default function AskQuestion() {
 
           <form
             className="question-form"
-            onSubmit={(e) => e.preventDefault()}
+           onSubmit={(e) => {
+  e.preventDefault();
+  setShowSuccessDialog(true);
+
+  window.setTimeout(() => {
+    setShowSuccessDialog(false);
+  }, 3000);
+}}
           >
 
             <div className="form-grid">
@@ -1849,6 +1938,35 @@ export default function AskQuestion() {
         </div>
 
       </section>
+
+      {showSuccessDialog && (
+        <div
+          className="aq-success-overlay"
+          role="presentation"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowSuccessDialog(false);
+          }}
+        >
+          
+          <div
+            className="aq-success-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="aq-success-title"
+          >
+            <div className="aq-success-icon" aria-hidden="true">✓</div>
+            <h3 id="aq-success-title">Question submitted successfully</h3>
+            <p>Thank you for reaching out. Your question has been submitted successfully.</p>
+            <button
+              type="button"
+              className="aq-success-close"
+              onClick={() => setShowSuccessDialog(false)}
+            >
+              Okay
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   );
