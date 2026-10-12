@@ -1018,12 +1018,12 @@ export default function GetInTouch() {
         .contact-hero {
           width: 100%;
           background: #ffffff;
-          padding: 70px 20px 78px;
+          padding: 70px 100px 78px;
         }
 
         .contact-hero-inner {
           width: 100%;
-          max-width: 1180px;
+          max-width: none;
           margin: 0 auto;
 
           display: grid;
@@ -1143,12 +1143,12 @@ export default function GetInTouch() {
         .contact-form-section {
           width: 100%;
           background: #faf9fb;
-          padding: 90px 20px;
+          padding: 90px 100px;
         }
 
         .contact-grid {
           width: 100%;
-          max-width: 1180px;
+          max-width: none;
           margin: 0 auto;
 
           display: grid;
@@ -1686,12 +1686,12 @@ export default function GetInTouch() {
 
           background: #8a0048;
 
-          padding: 72px 20px;
+          padding: 72px 100px;
         }
 
         .question-cta-inner {
           width: 100%;
-          max-width: 1180px;
+          max-width: none;
 
           margin: 0 auto;
 
@@ -1771,12 +1771,12 @@ export default function GetInTouch() {
           width: 100%;
           background: #ffffff;
 
-          padding: 78px 20px;
+          padding: 78px 100px;
         }
 
         .office-inner {
           width: 100%;
-          max-width: 1180px;
+          max-width: none;
 
           margin: 0 auto;
 
@@ -1996,7 +1996,7 @@ export default function GetInTouch() {
         .final-cta {
           width: 100%;
 
-          padding: 55px 20px;
+          padding: 55px 100px;
 
           background:
             linear-gradient(
@@ -2038,7 +2038,7 @@ export default function GetInTouch() {
           z-index: 1;
 
           width: 100%;
-          max-width: 1180px;
+          max-width: none;
 
           margin: 0 auto;
 
@@ -2115,6 +2115,22 @@ export default function GetInTouch() {
 
 
         /* =====================================================
+           FOOTER-ALIGNED HORIZONTAL PADDING
+        ===================================================== */
+
+        @media (min-width: 1024px) {
+          .contact-hero,
+          .contact-form-section,
+          .question-cta,
+          .office-section,
+          .final-cta {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+        }
+
+
+        /* =====================================================
            LARGE TABLET
         ===================================================== */
 
@@ -2163,7 +2179,7 @@ export default function GetInTouch() {
         @media (max-width: 900px) {
 
           .contact-hero {
-            padding: 55px 30px 65px;
+            padding: 55px 40px 65px;
           }
 
           .contact-hero-inner {
@@ -2191,7 +2207,7 @@ export default function GetInTouch() {
 
 
           .contact-form-section {
-            padding: 65px 30px;
+            padding: 65px 40px;
           }
 
           .contact-grid {
@@ -2205,7 +2221,7 @@ export default function GetInTouch() {
 
 
           .question-cta {
-            padding: 60px 30px;
+            padding: 60px 40px;
           }
 
           .question-cta-inner {
@@ -2214,7 +2230,7 @@ export default function GetInTouch() {
 
 
           .office-section {
-            padding: 65px 30px;
+            padding: 65px 40px;
           }
 
           .office-inner {
@@ -2232,7 +2248,7 @@ export default function GetInTouch() {
 
 
           .final-cta {
-            padding: 50px 30px;
+            padding: 50px 40px;
           }
 
         }
@@ -2342,7 +2358,7 @@ export default function GetInTouch() {
           /* HERO */
 
           .contact-hero {
-            padding: 42px 18px 48px;
+            padding: 42px 16px 48px;
           }
 
           .contact-hero-inner {
@@ -2480,7 +2496,7 @@ export default function GetInTouch() {
           /* QUESTION CTA */
 
           .question-cta {
-            padding: 48px 18px;
+            padding: 48px 16px;
           }
 
           .question-cta-inner {
@@ -2511,7 +2527,7 @@ export default function GetInTouch() {
           /* OFFICES */
 
           .office-section {
-            padding: 45px 18px;
+            padding: 45px 24px;
           }
 
           .office-left h2 {
@@ -2558,7 +2574,7 @@ export default function GetInTouch() {
           /* FINAL CTA */
 
           .final-cta {
-            padding: 42px 18px;
+            padding: 42px 16px;
           }
 
           .final-cta-inner {
@@ -2596,8 +2612,8 @@ export default function GetInTouch() {
         @media (max-width: 380px) {
 
           .contact-hero {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .contact-hero-content h1 {
@@ -2614,8 +2630,8 @@ export default function GetInTouch() {
 
 
           .contact-form-section {
-            padding-left: 12px;
-            padding-right: 12px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .contact-form-card {
@@ -2637,8 +2653,8 @@ export default function GetInTouch() {
 
 
           .question-cta {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .question-cta h2 {
@@ -2647,8 +2663,8 @@ export default function GetInTouch() {
 
 
           .office-section {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .office-left h2 {
@@ -2657,8 +2673,8 @@ export default function GetInTouch() {
 
 
           .final-cta {
-            padding-left: 14px;
-            padding-right: 14px;
+            padding-left: 16px;
+            padding-right: 16px;
           }
 
           .final-buttons {
