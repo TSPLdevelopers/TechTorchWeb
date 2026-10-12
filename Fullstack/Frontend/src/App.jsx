@@ -15,6 +15,7 @@ import Careers from "./pages/Careers.jsx";
 import Blogs from "./pages/Blogs.jsx";
 import BlogDetail from "./pages/BlogDetail.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import FormAuthGuard from "./components/FormAuthGuard.jsx";
 
 // =================================================
 // COMMON COMPONENTS
@@ -485,9 +486,12 @@ function ScrollToTop() {
 // =================================================
 // COMMON LAYOUT
 // =================================================
+
 function MainLayout() {
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Login restriction for public forms */}
+      <FormAuthGuard />
 
       {/* NAVBAR */}
       <Navbar />
@@ -499,10 +503,10 @@ function MainLayout() {
 
       {/* FOOTER */}
       <Footer />
-
     </div>
   );
 }
+
 
 // =================================================
 // HOME PAGE
