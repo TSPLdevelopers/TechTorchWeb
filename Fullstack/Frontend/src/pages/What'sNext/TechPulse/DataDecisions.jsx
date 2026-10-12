@@ -68,18 +68,21 @@ export default function DataDecisions() {
           <div className="data-decisions-buttons">
             {/* EXPLORE DIGITAL SOLUTIONS */}
 
-            <Link
-              to="/digital-solutions"
-              className="data-decisions-primary-btn"
-            >
-              Explore Digital Solutions
-            </Link>
+           {/* EXPLORE DIGITAL SOLUTIONS */}
+<Link
+  to="/talk-to-expert"
+  className="data-decisions-primary-btn"
+>
+  Explore Digital Solutions
+</Link>
 
-            {/* TALK TO EXPERTS */}
-
-            <Link to="/start-conversation" className="data-decisions-secondary-btn">
-              Talk to Our Experts
-            </Link>
+{/* TALK TO EXPERTS */}
+<Link
+  to="/talk-to-expert"
+  className="data-decisions-secondary-btn"
+>
+  Talk to Our Experts
+</Link>
           </div>
         </div>
       </section>

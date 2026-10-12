@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const stats = [
   {
     num: "01",
@@ -80,21 +80,24 @@ export default function TechTorchHero() {
                 CTA
             ================================================= */}
 
-            <button className="techtorch-hero-button">
-              <span>Talk to Our Experts</span>
+            <Link
+  to="/talk-to-expert"
+  className="techtorch-hero-button"
+>
+  <span>Talk to Our Experts</span>
 
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+</Link>
 
             {/* =================================================
                 DIVIDER

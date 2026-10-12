@@ -627,13 +627,7 @@ export default function FinancialHeroSection() {
           {/* Buttons */}
           <div className="financial-buttons">
 
-            <button
-              type="button"
-              className="financial-primary-button"
-            >
-              CONSULT OUR SOLUTION ARCHITECTS
-              <ArrowRight size={14} />
-            </button>
+            
 
             <button
               type="button"

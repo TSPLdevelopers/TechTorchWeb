@@ -1,6 +1,6 @@
 
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function TechnologyMovesForward() {
   return (
     <section className="relative w-full overflow-hidden">
@@ -77,33 +77,23 @@ export default function TechnologyMovesForward() {
 
             {/* BUTTON — SLIGHTLY BIGGER AND LOWER */}
             <div className="mt-5 sm:mt-6 md:mt-7 translate-y-2">
-              <button
-                type="button"
-                className="
-                  group inline-flex items-center gap-2
-                  rounded-[5px] border border-white
-                  bg-transparent
-                  !px-[12px] !py-[8px]
-                  font-['Inter'] text-[12px]
-                  font-medium leading-none text-white
-                  transition-all duration-300
-                  hover:bg-white hover:text-[#22091f]
-                  sm:text-[13px]
-                  md:!px-[14px] md:!py-[9px] md:text-[14px]
-                "
-              >
-                <span>Talk to Our Experts</span>
-
-                <span
-                  className="
-                    text-[19px] leading-none
-                    transition-transform duration-300
-                    group-hover:translate-x-1
-                  "
-                >
-                  →
-                </span>
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="
+    group inline-flex items-center gap-2
+    rounded-[5px] border border-white
+    bg-transparent
+    !px-[12px] !py-[8px]
+    font-['Inter'] text-[12px]
+    font-medium leading-none text-white
+    transition-all duration-300
+    hover:bg-white hover:text-[#22091f]
+    sm:text-[13px]
+    md:!px-[14px] md:!py-[9px] md:text-[14px]
+  "
+>
+  <span>Talk to Our Experts</span>
+</Link>
             </div>
           </div>
         </div>

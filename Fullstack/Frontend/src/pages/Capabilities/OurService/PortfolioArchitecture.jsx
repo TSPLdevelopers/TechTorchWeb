@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Wrench,
   Zap,
@@ -284,11 +285,14 @@ export default function TechTorchServices() {
 
               {/* Button */}
 
-              <button className="integrated-capabilities-button">
-                <span>Talk to Our Experts</span>
+              <Link
+  to="/talk-to-expert"
+  className="integrated-capabilities-button"
+>
+  <span>Talk to Our Experts</span>
 
-                <ArrowRight size={14} strokeWidth={2} />
-              </button>
+  <ArrowRight size={14} strokeWidth={2} />
+</Link>
             </div>
           </div>
         </div>

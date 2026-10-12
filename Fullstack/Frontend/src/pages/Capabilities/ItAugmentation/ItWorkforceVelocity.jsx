@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Zap, ArrowRight } from "lucide-react";
 
 const BRAND_COLOR = "#730024";
@@ -49,11 +50,14 @@ export default function ITAugmentationHero() {
           </div>
 
           {/* CTA */}
-          <button className="it-augmentation-hero-button">
-            <span>Talk to Our Experts</span>
+          <Link
+  to="/talk-to-expert"
+  className="it-augmentation-hero-button"
+>
+  <span>Talk to Our Experts</span>
 
-            <ArrowRight className="it-augmentation-hero-button-icon" />
-          </button>
+  <ArrowRight className="it-augmentation-hero-button-icon" />
+</Link>
         </div>
 
         {/* =====================================================

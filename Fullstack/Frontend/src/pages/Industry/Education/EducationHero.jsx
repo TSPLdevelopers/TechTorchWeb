@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   ChevronRight,
@@ -825,12 +826,12 @@ export default function EducationSection() {
                 <ArrowRight size={16} />
               </button>
 
-              <button
-                type="button"
-                className="education-secondary-button"
-              >
-                Talk to Our Experts
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="education-secondary-button"
+>
+  Talk to Our Experts
+</Link>
 
             </div>
 

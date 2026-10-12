@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   User,
   Link2,
@@ -935,13 +936,13 @@ export default function WhyTechTorchAndReadySections() {
           {/* CTA BUTTONS */}
 
           <div className="ready-buttons">
-            <button
-              type="button"
-              className="ready-primary-button"
-            >
-              Talk to Our Experts
-              <ArrowRight size={15} />
-            </button>
+            <Link
+  to="/talk-to-expert"
+  className="ready-primary-button"
+>
+  Talk to Our Experts
+  <ArrowRight size={15} />
+</Link>
 
             <button
               type="button"
