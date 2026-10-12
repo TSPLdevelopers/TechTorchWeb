@@ -46,25 +46,34 @@ export default function GetInTouch() {
       case "fullName":
         if (!trimmedValue) return "Full name is required.";
         if (!/^[A-Za-zÀ-ÖØ-öø-ÿ .'-]+$/.test(trimmedValue)) {
-          return "Enter a valid name using letters only.";
+          return "Enter a valid name .";
         }
         return "";
-      case "email":
-        if (!trimmedValue) return "Work email is required.";
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedValue)) {
-          return "Enter a valid email address.";
-        }
+      
+case "email":
+  if (!trimmedValue) return "Work email is required.";
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedValue)) {
+    return "Please enter a valid email address.";
+  }
+
+  return "";
+
+
         return "";
       case "company":
         if (trimmedValue && !/^[A-Za-zÀ-ÖØ-öø-ÿ ]+$/.test(trimmedValue)) {
-          return "Company name must contain letters and spaces only; numbers are not allowed.";
+          return "Enter a valid name.";
         }
         return "";
-      case "phone":
-        if (trimmedValue && !/^\d{10}$/.test(trimmedValue)) {
-          return "Phone number must contain exactly 10 digits.";
-        }
-        return "";
+      
+case "phone":
+  if (trimmedValue && !/^[6-9]\d{9}$/.test(trimmedValue)) {
+    return "Enter a valid mobile number ";
+  }
+  return "";
+
+
       case "service":
         return value ? "" : "Please select a service.";
       case "requirement":
@@ -993,7 +1002,7 @@ export default function GetInTouch() {
             </span>
 
             <img
-              src="/GlobalPresence.png"
+              src="/GlobalPresenceMap.png"
               alt="Global presence map"
             />
 
