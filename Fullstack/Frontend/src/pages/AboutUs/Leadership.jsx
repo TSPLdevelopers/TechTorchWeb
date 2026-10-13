@@ -4,9 +4,9 @@
 ------------------------------------------------------------------- */
 import heroBg from "/leadership.png";      // top hero background
 import visionImg from "/meetingroom.png";   // "Better Ideas. Stronger Together." image
-import siddharthImg from "/sidhart.png";
-import amitImg from "/amitkaur.png";
-import pradipImg from "/pradeep.png";
+import siddharthImg from "/sidhart1.png";
+import amitImg from "/amitkaur1.png";
+import pradipImg from "/pradeep1.png";
 // import riyaImg from "/riya.png";
  import anshikaImg from "/anshika.png";
 import futureBg from "/future.png";         // last purple section background
