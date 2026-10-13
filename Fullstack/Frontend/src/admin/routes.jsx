@@ -10,6 +10,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import CandidateBlogs from "./pages/CandidateBlogs";
 import CandidateInterests from "./pages/CandidateInterests";
 import { EventsPage, JobsPage, NewsPage, UpdatesPage, WhitepapersPage } from "./pages/ContentPages";
+import Queries from "./pages/Queries.jsx";
 
 // Drop this into <Routes> in App.jsx:  {adminRoutes}
 export const adminRoutes = (
@@ -29,6 +30,7 @@ export const adminRoutes = (
       <Route path="/latest-updates" element={<UpdatesPage />} />
       <Route path="/candidate-blogs" element={<CandidateBlogs />} />
       <Route path="/candidate-interests" element={<CandidateInterests />} />
+      <Route path="/admin-queries" element={<Queries />} />
       <Route path="/account" element={<Account />} />
       <Route path="/admin-accounts" element={<Admins />} />
     </Route>

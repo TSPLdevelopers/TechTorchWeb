@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import {
   ArrowRight,
   Cloud,
@@ -96,14 +98,55 @@ export default function EnergyGetInTouch() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
-    setShowAlert(true);
+    if (!formData.businessArea) {
+      setSubmitError("Please select your primary business area.");
+      return;
+    }
+    if (selectedTechnology.length === 0) {
+      setSubmitError("Please select at least one technology area.");
+      return;
+    }
+    if (!formData.consent) {
+      setSubmitError("Please agree to be contacted by TechTorch.");
+      return;
+    }
+    setSubmitError("");
+    setSending(true);
 
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 3000);
+    try {
+      await submitQuery("energy", {
+        fullName: formData.fullName.trim(),
+        businessEmail: formData.email.trim(),
+        companyOrganization: formData.company.trim(),
+        phoneNumber: formData.phone.trim(),
+        primaryBusinessArea: formData.businessArea,
+        technologyAreas: selectedTechnology,
+        currentProjectStage: selectedStage,
+        requirement: formData.requirements.trim(),
+        preferredContactMethod: contactMethod || "Email",
+        preferredContactTime: formData.contactTime,
+        contactConsent: formData.consent === true,
+      });
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+      setFormData({ fullName: "", email: "", company: "", phone: "", businessArea: "", requirements: "", contactTime: "", consent: false });
+      setSelectedTechnology([]);
+      setSelectedStage("");
+      setContactMethod("");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -1849,8 +1892,10 @@ export default function EnergyGetInTouch() {
                   SUBMIT
               ================================================= */}
 
+              <FormNotice error={submitError} />
               <button
                 type="submit"
+                disabled={sending}
                 className="energy-submit"
               >
                 SUBMIT ENQUIRY

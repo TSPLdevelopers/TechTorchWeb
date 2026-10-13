@@ -1,5 +1,4 @@
 const express = require("express");
-
 const {
   createDigitalSolution,
   getDigitalSolutions,
@@ -9,15 +8,12 @@ const {
 } = require("../controllers/digitalSolutionController");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
 router.post("/", createDigitalSolution);
-
-router.get("/", getDigitalSolutions);
-
-router.get("/:id", getDigitalSolutionById);
-
-router.patch("/:id/status", updateDigitalSolutionStatus);
-
-router.delete("/:id", deleteDigitalSolution);
+router.get("/", authMiddleware, getDigitalSolutions);
+router.get("/:id", authMiddleware, getDigitalSolutionById);
+router.patch("/:id/status", authMiddleware, updateDigitalSolutionStatus);
+router.delete("/:id", authMiddleware, deleteDigitalSolution);
 
 module.exports = router;

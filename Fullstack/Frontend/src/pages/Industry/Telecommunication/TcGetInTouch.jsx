@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import {
   ArrowRight,
   ShieldCheck,
@@ -72,9 +74,43 @@ export default function TelecommunicationsGetInTouch() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
+<<<<<<< HEAD
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+
+    if (selectedAreas.length === 0) {
+      setSubmitError("Please select at least one focus area.");
+      return;
+    }
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
+
+    try {
+      await submitQuery("telecom", {
+        focusAreas: selectedAreas,
+        fullName: formData.fullName.trim(),
+        corporateEmail: formData.email.trim(),
+        companyOrganizationName: formData.company.trim(),
+        phoneNumber: formData.phone.trim(),
+        projectDetails: formData.requirements.trim(),
+        mutualNdaRequested: !!formData.nda,
+        immediateConsultationRequested: !!formData.consultation,
+      });
+      setSubmitted(true);
+      setFormData({ fullName: "", email: "", company: "", phone: "", requirements: "", nda: false, consultation: false });
+      setSelectedAreas([]);
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
+=======
     const form = e.currentTarget;
 
     if (!form.checkValidity()) {
@@ -102,6 +138,7 @@ export default function TelecommunicationsGetInTouch() {
     setTimeout(() => {
       setShowSuccess(false);
     }, 3000);
+>>>>>>> 532542ecc0db000882b434b541adcfe5c57155b3
   };
 
   return (
@@ -1478,8 +1515,10 @@ export default function TelecommunicationsGetInTouch() {
 
               <div className="tc-submit-wrap">
 
+                <FormNotice error={submitError} success={submitted} />
                 <button
                   type="submit"
+                  disabled={sending}
                   className="tc-submit"
                 >
                   SUBMIT REQUIREMENTS & REQUEST CONSULTATION

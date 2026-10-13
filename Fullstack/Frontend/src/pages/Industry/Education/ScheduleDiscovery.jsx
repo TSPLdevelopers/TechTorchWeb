@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import {
   ArrowRight,
   ShieldCheck,
@@ -29,8 +31,12 @@ export default function ScheduleDiscovery() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
     const form = e.currentTarget;
 
@@ -49,20 +55,65 @@ export default function ScheduleDiscovery() {
       return;
     }
 
-    console.log({
-      institutionType,
-      studentScale,
-      timeline,
-      areas,
-    });
+    if (!institutionType) {
+      setSubmitError("Please select your institution type.");
+      return;
+    }
+    if (!studentScale) {
+      setSubmitError("Please select your student count / scale.");
+      return;
+    }
+    if (!Object.values(areas).some(Boolean)) {
+      setSubmitError("Please select at least one area of interest.");
+      return;
+    }
+    if (!timeline) {
+      setSubmitError("Please select your expected timeline.");
+      return;
+    }
+    const data = new FormData(form);
+    const field = (key) => (data.get(key) || "").toString().trim();
+    const AREA_LABELS = {
+      sis: "Student Information System (SIS)",
+      admissions: "Admissions & Enrollment Automation",
+      academic: "Academic Management & Grading",
+      campus: "Campus Operations & Attendance",
+      tuition: "Tuition & Financial Operations",
+      analytics: "Analytics & Institutional Reporting",
+    };
 
-    // Show success dialog
-    setShowSuccess(true);
+    setSubmitError("");
+    setSending(true);
 
-    // Automatically hide after 3 seconds
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
+    try {
+      await submitQuery("education", {
+        institutionName: field("institutionName"),
+        institutionType,
+        studentScale,
+        areasOfInterest: Object.keys(areas).filter((k) => areas[k]).map((k) => AREA_LABELS[k]),
+        fullName: field("fullName"),
+        officialEmail: field("officialEmail"),
+        designation: field("designation"),
+        phone: field("phone"),
+        expectedTimeline: timeline,
+        additionalNotes: field("additionalNotes"),
+        confidentialityConsent: data.get("consent") === "on",
+      });
+
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+      form.reset();
+      setInstitutionType("");
+      setStudentScale("");
+      setTimeline("");
+      setAreas({ sis: false, admissions: false, academic: false, campus: false, tuition: false, analytics: false });
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -990,6 +1041,7 @@ export default function ScheduleDiscovery() {
 
               <input
                 type="text"
+                name="institutionName"
                 placeholder="e.g. Cambridge Global University"
                 required
                 className="form-input"
@@ -1128,6 +1180,7 @@ export default function ScheduleDiscovery() {
 
                   <input
                     type="text"
+                    name="fullName"
                     placeholder="Dr. Sarah Jenkins"
                     required
                     className="form-input"
@@ -1144,6 +1197,7 @@ export default function ScheduleDiscovery() {
 
                   <input
                     type="email"
+                    name="officialEmail"
                     placeholder="sjenkins@institution.edu"
                     required
                     className="form-input"
@@ -1160,6 +1214,7 @@ export default function ScheduleDiscovery() {
 
                   <input
                     type="text"
+                    name="designation"
                     placeholder="e.g. Provost, CIO, Registrar, Dean, Director of IT"
                     required
                     className="form-input"
@@ -1176,6 +1231,7 @@ export default function ScheduleDiscovery() {
 
                   <input
                     type="tel"
+                    name="phone"
                     placeholder="+1 (555) 382-9011"
                     className="form-input"
                   />
@@ -1218,6 +1274,7 @@ export default function ScheduleDiscovery() {
 
                 <textarea
                   rows={3}
+                  name="additionalNotes"
                   placeholder="Share any key friction points, current tech stack challenges, or specific deployment goals..."
                   className="form-textarea"
                 />
@@ -1232,6 +1289,7 @@ export default function ScheduleDiscovery() {
 
                 <input
                   type="checkbox"
+                  name="consent"
                   required
                   className="consent-checkbox"
                 />
@@ -1248,8 +1306,10 @@ export default function ScheduleDiscovery() {
 
             {/* SUBMIT */}
 
+            <FormNotice error={submitError} />
             <button
               type="submit"
+              disabled={sending}
               className="submit-button"
             >
               Submit Consultation Request

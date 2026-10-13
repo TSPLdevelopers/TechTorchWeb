@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../../api/queryForms";
+import FormNotice from "../../../../components/FormNotice";
 import {
   TrendingDown,
   Network,
@@ -78,10 +80,32 @@ export default function ImpactAndConsultation() {
     return (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    // Wire this up to your CRM / lead endpoint.
-    console.log("Consultation request:", form);
+    if (sending) return;
+
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
+    try {
+      await submitQuery("digital", {
+        executiveFullName: form.name.trim(),
+        corporateWorkEmail: form.email.trim(),
+        enterpriseOrganization: form.organization.trim(),
+        primarySolutionFocus: form.focus,
+        architectureScope: form.scope.trim(),
+      });
+      setSubmitted(true);
+      setForm({ name: "", email: "", organization: "", focus: "", scope: "" });
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -258,8 +282,10 @@ export default function ImpactAndConsultation() {
                 />
               </div>
 
+              <FormNotice error={submitError} success={submitted} />
               <button
                 type="submit"
+                disabled={sending}
                 className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
                 style={{ backgroundColor: "#7a1750" }}
               >
