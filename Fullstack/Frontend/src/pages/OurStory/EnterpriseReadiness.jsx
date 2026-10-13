@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BG_IMAGE = "/Enterprise.png";
 
@@ -96,7 +97,8 @@ export default function EnterpriseHero() {
           </p>
 
           {/* Button */}
-          <button
+          <Link
+  to="/talk-to-expert"
   className="
     inline-flex
     items-center
@@ -123,7 +125,7 @@ export default function EnterpriseHero() {
   "
 >
   Talk To Experts
-</button>
+</Link>
         </div>
       </div>
     </section>

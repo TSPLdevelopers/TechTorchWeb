@@ -15,6 +15,8 @@ import Careers from "./pages/Careers.jsx";
 import Blogs from "./pages/Blogs.jsx";
 import BlogDetail from "./pages/BlogDetail.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import FormAuthGuard from "./components/FormAuthGuard.jsx";
+import TalkToExpert from "./components/TalkToExpert";
 
 // =================================================
 // COMMON COMPONENTS
@@ -106,7 +108,7 @@ import TechTorchView from "./pages/What'sNext/TechTorchView/TechTorchView.jsx";
 import Philosophy from "./pages/What'sNext/TechTorchView/Philosophy.jsx";
 import Capabilities from "./pages/What'sNext/TechTorchView/Capabilities.jsx";
 import Methodology from "./pages/What'sNext/TechTorchView/DeploymentMethodology.jsx";
-import ReadyScale from "./pages/What'sNext/TechTorchView/ReadyScale.jsx";
+// import ReadyScale from "./pages/What'sNext/TechTorchView/ReadyScale.jsx";
 
 // =================================================
 // FIELD NOTE
@@ -323,7 +325,7 @@ import EducationWork from "./pages/Industry/Education/EducationWork.jsx";
 import EducationTechnology from "./pages/Industry/Education/EducationTechnology.jsx";
 import EducationGrowth from "./pages/Industry/Education/EducationGrowth.jsx";
 import EducationMethodology from "./pages/Industry/Education/EducationMethodology.jsx";
-import EducationTransform from "./pages/Industry/Education/EducationTransform.jsx";
+// import EducationTransform from "./pages/Industry/Education/EducationTransform.jsx";
 import EducationSolutions from "./pages/Industry/Education/EducationSolutions.jsx";
 import ScheduleDiscovery  from "./pages/Industry/Education/ScheduleDiscovery.jsx";
 
@@ -485,9 +487,12 @@ function ScrollToTop() {
 // =================================================
 // COMMON LAYOUT
 // =================================================
+
 function MainLayout() {
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Login restriction for public forms */}
+      <FormAuthGuard />
 
       {/* NAVBAR */}
       <Navbar />
@@ -499,10 +504,10 @@ function MainLayout() {
 
       {/* FOOTER */}
       <Footer />
-
     </div>
   );
 }
+
 
 // =================================================
 // HOME PAGE
@@ -639,7 +644,7 @@ function WhatNextPage() {
       <Philosophy />
       <Capabilities />
       <Methodology />
-      <ReadyScale />
+      {/* <ReadyScale /> */}
     </>
   );
 }
@@ -980,7 +985,7 @@ function Education(){
     <EducationTechnology />
     <EducationGrowth />
     <EducationMethodology />
-    <EducationTransform />
+    {/* <EducationTransform /> */}
     </>
   )
 }
@@ -1521,6 +1526,14 @@ function App() {
         <Route path="/dashboard" element={<Navigate to="/admin-dashboard" replace />} />
         <Route path="/login" element={<Navigate to="/signin" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+      
+  {/* Tumhare existing routes yahan rahenge */}
+
+  <Route
+    path="/talk-to-expert"
+    element={<TalkToExpert />}
+  />
+
 
       </Routes>
     </>

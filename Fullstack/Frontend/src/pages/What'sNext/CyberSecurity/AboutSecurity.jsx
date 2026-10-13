@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function ReadyForNextThreatSection() {
   return (
     /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
@@ -128,8 +128,8 @@ export default function ReadyForNextThreatSection() {
           </p>
 
           {/* Button */}
-          <button
-  type="button"
+          <Link
+  to="/talk-to-expert"
   className="
     mt-7
     inline-flex
@@ -160,7 +160,7 @@ export default function ReadyForNextThreatSection() {
 >
   Talk to Our Experts
   <span aria-hidden="true">&rarr;</span>
-</button>
+</Link>
         </div>
 
         {/* ================= RIGHT IMAGE ================= */}

@@ -160,26 +160,42 @@ export default function CapabilitiesMarquee() {
            HEADER
         ===================================================== */
 
-        .cap-header {
-          width: 100%;
-          max-width: none;
+        
+.cap-header {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 25px;
+  padding: 0 100px;
+  box-sizing: border-box;
 
-          margin: 0 auto 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+}
 
-          padding-left: 16px;
-          padding-right: 16px;
+/* Tablet */
+@media (max-width: 1023px) {
+  .cap-header {
+    padding: 0 40px;
+  }
+}
 
-          box-sizing: border-box;
+/* Mobile */
+@media (max-width: 767px) {
+  .cap-header {
+    padding: 0 24px;
+  }
+}
 
-          display: flex;
+/* Small mobile */
+@media (max-width: 480px) {
+  .cap-header {
+    padding: 0 16px;
+  }
+}
 
-          justify-content: space-between;
-          align-items: flex-start;
-
-          gap: 30px;
-
-          flex-wrap: wrap;
-        }
 
 
         /* =====================================================

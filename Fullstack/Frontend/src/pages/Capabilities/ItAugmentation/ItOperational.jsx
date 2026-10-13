@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const BRAND_COLOR = "#730024";
@@ -183,11 +184,14 @@ export default function IntegratedResourcing() {
 
             {/* Button */}
 
-            <button className="integrated-resourcing-cta-button">
-              <span>Talk to Our Experts</span>
+            <Link
+  to="/talk-to-expert"
+  className="integrated-resourcing-cta-button"
+>
+  <span>Talk to Our Experts</span>
 
-              <ArrowRight className="integrated-resourcing-cta-arrow" />
-            </button>
+  <ArrowRight className="integrated-resourcing-cta-arrow" />
+</Link>
           </div>
         </div>
       </section>

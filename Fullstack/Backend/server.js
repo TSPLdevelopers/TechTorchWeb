@@ -3,10 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
 const { connectDB } = require("./src/config/db");
 const errorMiddleware = require("./src/middlewares/error.middleware");
-
 const authRoutes = require("./src/routes/authRoutes");
 const adminRoutes = require("./src/routes/adminRoutes");
 const newsRoutes = require("./src/routes/newsRoutes");

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import {
   Phone,
@@ -6,6 +7,10 @@ import {
   ArrowUpRight,
   X,
 } from "lucide-react";
+
+
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function TechHero() {
   const [showOptions, setShowOptions] = useState(false);
@@ -100,6 +105,7 @@ export default function TechHero() {
           create solutions that fit the way your business works.
         </p>
 
+
         {/* BUTTON AND SIDE OPTIONS */}
         <div
           ref={contactRef}
@@ -122,6 +128,30 @@ export default function TechHero() {
             "
           >
             Talk to Our Experts
+
+        <div className="mt-20">
+          <Link
+  to="/talk-to-expert"
+  className="
+    inline-block
+    border
+    border-white/70
+    text-white
+    text-[14px]
+    font-medium
+    tracking-wide
+    px-4
+    py-2
+    hover:bg-white
+    hover:text-[#0a1128]
+    transition-colors
+    duration-300
+  "
+>
+  Talk to Our Experts
+</Link>
+        </div>
+
 
             <span className="transition-transform duration-300 group-hover:translate-x-1">
               {showOptions ? <X size={16} /> : <ArrowUpRight size={16} />}

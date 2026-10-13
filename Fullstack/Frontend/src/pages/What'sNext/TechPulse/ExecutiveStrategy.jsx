@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function ExecutiveStrategy() {
   return (
     <section className="executive-strategy">
@@ -41,9 +41,10 @@ export default function ExecutiveStrategy() {
 
           {/* BUTTON */}
           <div className="strategy-buttons">
-            <button className="strategy-primary">
+            <Link to="/talk-to-expert"
+             className="strategy-primary">
               Talk to Our Experts <span>→</span>
-            </button>
+            </Link>
           </div>
         </div>
 

@@ -87,7 +87,7 @@ function LinkedInIcon() {
         items-center
         justify-center
         rounded-[3px]
-        bg-[#7a0046]
+        bg-[#730042]
         text-white
       "
     >

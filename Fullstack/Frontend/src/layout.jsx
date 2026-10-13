@@ -1,17 +1,15 @@
-import { Outlet } from "react-router-dom";
-import NavBar from "./components/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
-
-export default function Layout() {
+function MainLayout() {
   return (
-    <>
-      <NavBar />
+    <div className="min-h-screen flex flex-col">
+      <FormAuthGuard />
 
-      <main>
+      <Navbar />
+
+      <main className="flex-1 w-full">
         <Outlet />
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }

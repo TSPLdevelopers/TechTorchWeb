@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Users,
   Clipboard,
@@ -303,17 +304,17 @@ export default function ApproachAndCtaSection() {
           ================================================= */}
 
           <div className="approach-cta-button-wrapper">
-            <button
-              type="button"
-              className="approach-cta-button"
-            >
-              <span>Talk to Our Experts</span>
+            <Link
+  to="/talk-to-expert"
+  className="approach-cta-button"
+>
+  <span>Talk to Our Experts</span>
 
-              <ArrowRight
-                size={16}
-                strokeWidth={2}
-              />
-            </button>
+  <ArrowRight
+    size={16}
+    strokeWidth={2}
+  />
+</Link>
           </div>
 
           {/* =================================================

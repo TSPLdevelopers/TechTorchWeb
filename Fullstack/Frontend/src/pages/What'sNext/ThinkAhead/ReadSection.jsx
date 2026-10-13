@@ -115,53 +115,11 @@ export default function TechHeroSection() {
           organizations to improve the way they work.
         </p>
 
-        {/* ================= BUTTON ================= */}
-        <button
-          type="button"
-          className="
-            mt-6
-            inline-flex
-            w-full
-            max-w-[300px]
-            items-center
-            justify-center
-            gap-2
-            rounded-md
-            bg-[#730042]
-            px-5
-            py-3
-            text-[11px]
-            font-semibold
-            tracking-[0.05em]
-            text-white
-            transition-all
-            duration-300
-            hover:-translate-y-0.5
-            hover:bg-white
-            hover:text-[#730042]
-            active:translate-y-0
-            sm:mt-7
-            sm:w-auto
-            sm:max-w-none
-            sm:px-6
-            sm:py-3
-            sm:text-xs
-            md:mt-8
-            md:text-sm
-          "
-          style={{
-            fontFamily: "'Inter', sans-serif",
-          }}
-        >
-          <span>EXPLORE OUR TECHNOLOGY CAPABILITIES</span>
+        
+          
 
-          <span
-            aria-hidden="true"
-            className="text-base leading-none"
-          >
-            →
-          </span>
-        </button>
+          
+    
       </div>
     </section>
   );

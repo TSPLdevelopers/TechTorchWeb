@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const STATS = [
@@ -113,15 +114,18 @@ export default function DigitalSolutionsHero() {
             ================================================= */}
 
             <div className="digital-cta-wrapper">
-              <button className="digital-cta">
-                <span>Talk to Our Experts</span>
+              <Link
+  to="/talk-to-expert"
+  className="digital-cta"
+>
+  <span>Talk to Our Experts</span>
 
-                <ArrowRight
-                  size={14}
-                  strokeWidth={2}
-                  className="digital-cta-icon"
-                />
-              </button>
+  <ArrowRight
+    size={14}
+    strokeWidth={2}
+    className="digital-cta-icon"
+  />
+</Link>
             </div>
 
             {/* =================================================

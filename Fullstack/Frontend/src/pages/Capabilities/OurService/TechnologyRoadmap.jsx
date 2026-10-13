@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const BRAND_COLOR = "#730024";
@@ -55,11 +56,14 @@ export default function TechTorchFinalCTA() {
 
               {/* CTA */}
 
-              <button className="techtorch-final-cta-button">
-                <span>Talk to Our Experts</span>
+              <Link
+  to="/talk-to-expert"
+  className="techtorch-final-cta-button"
+>
+  <span>Talk to Our Experts</span>
 
-                <ArrowRight className="techtorch-final-cta-arrow" />
-              </button>
+  <ArrowRight className="techtorch-final-cta-arrow" />
+</Link>
             </div>
 
             {/* =================================================
