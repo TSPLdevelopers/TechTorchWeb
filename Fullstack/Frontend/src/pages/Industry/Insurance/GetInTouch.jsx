@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import {
   ArrowRight,
   FileText,
@@ -59,8 +61,12 @@ export default function InsuranceContact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
     const form = e.currentTarget;
 
@@ -79,17 +85,41 @@ export default function InsuranceContact() {
       return;
     }
 
-    console.log({
-      ...formData,
-      capabilities: selectedCapabilities,
-      timeline: selectedTimeline,
-    });
+    if (selectedCapabilities.length === 0) {
+      setSubmitError("Please select at least one insurance capability.");
+      return;
+    }
+    if (!selectedTimeline) {
+      setSubmitError("Please select your target timeline.");
+      return;
+    }
+    setSubmitError("");
+    setSending(true);
 
-    setShowSuccess(true);
-
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
+    try {
+      await submitQuery("insurance", {
+        fullName: formData.fullName.trim(),
+        corporateWorkEmail: formData.email.trim(),
+        organizationName: formData.organization.trim(),
+        phone: formData.phone.trim(),
+        insuranceCapabilities: selectedCapabilities,
+        targetTimeline: selectedTimeline,
+        technicalObjectives: formData.objectives.trim(),
+        mutualNda: !!formData.nda,
+        architectureBriefing: !!formData.briefing,
+      });
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+      setFormData({ fullName: "", email: "", organization: "", phone: "", objectives: "", nda: false, briefing: false });
+      setSelectedCapabilities([]);
+      setSelectedTimeline("");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -1580,8 +1610,10 @@ export default function InsuranceContact() {
 
               {/* ================= SUBMIT ================= */}
 
+              <FormNotice error={submitError} />
               <button
                 type="submit"
+                disabled={sending}
                 className="insurance-submit-button"
               >
                 Submit Intake &amp; Connect with Architects

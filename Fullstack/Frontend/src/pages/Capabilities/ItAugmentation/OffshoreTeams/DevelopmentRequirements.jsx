@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../../api/queryForms";
+import FormNotice from "../../../../components/FormNotice";
 import { ArrowRight } from "lucide-react";
 
 const BRAND = "#8B0046";
@@ -115,21 +117,48 @@ export default function DevelopmentConsultation() {
     );
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-    console.log({
-      support,
-      supportType,
-      capabilities: selectedCapabilities,
-      project: formData.project,
-      projectStage,
-      supportLevel,
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      phone: formData.phone,
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+
+
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
+
+    try {
+      await submitQuery("inquiry", {
+        formType: "offshore-requirements",
+        fullName: formData.name.trim(),
+        email: formData.email.trim(),
+        company: formData.company.trim(),
+        phone: formData.phone.trim(),
+        topic: support || supportType,
+        message: formData.project.trim(),
+        details: {
+          developmentSupportFor: support,
+          supportType,
+          capabilities: selectedCapabilities,
+          projectStage,
+          supportLevel,
+        },
+      });
+      setSubmitted(true);
+      setFormData({ project: "", name: "", email: "", company: "", phone: "" });
+      setSupport("");
+      setSupportType("");
+      setSelectedCapabilities([]);
+      setProjectStage("");
+      setSupportLevel("");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -440,8 +469,10 @@ export default function DevelopmentConsultation() {
 
               <div className="submit-area">
 
+                <FormNotice error={submitError} success={submitted} />
                 <button
                   type="submit"
+                  disabled={sending}
                   className="submit-button"
                 >
                   <span>

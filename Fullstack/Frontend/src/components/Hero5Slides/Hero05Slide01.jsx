@@ -40,7 +40,7 @@ export default function TorchXSuiteSection() {
 
         {/* BUTTON */}
 
-        <a href="#" className="torchx-button">
+        <a href="https://torchxsuite.com/" className="torchx-button">
           Explore TorchX Suite →
         </a>
       </div>

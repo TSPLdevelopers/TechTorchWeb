@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Lock, Users } from "lucide-react";
 
 const WINE = "#7A1F3D";
@@ -547,10 +548,13 @@ export default function HealthcareCtaBarSection() {
           {/* BUTTONS */}
           <div className="healthcare-cta-buttons">
 
-            <button className="healthcare-cta-primary">
-              Talk to Our Healthcare Experts
-              <ArrowRight size={15} />
-            </button>
+            <Link
+  to="/talk-to-expert"
+  className="healthcare-cta-primary"
+>
+  Talk to Our Experts
+  <ArrowRight size={15} />
+</Link>
 
             <button className="healthcare-cta-secondary">
               Get in Touch

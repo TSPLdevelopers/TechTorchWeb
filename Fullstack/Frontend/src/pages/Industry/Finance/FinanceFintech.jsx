@@ -1,844 +1,2059 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import {
-  Link2,
-  RefreshCw,
-  Briefcase,
-  LifeBuoy,
-  MoreHorizontal,
+  ArrowRight,
+  Mail,
+  Phone,
+  Building2,
+  User,
+  BriefcaseBusiness,
+  Shield,
+  BadgeCheck,
+  LockKeyhole,
+  Headphones,
+  Route,
+  Check,
+  CircleCheck,
 } from "lucide-react";
 
-const WINE = "#730042";
-const INK = "#1B1B2A";
-const MUTED = "#5b5a63";
-const LIGHT_PINK = "#fce7f1";
-
-const capabilities = [
+const PRACTICE_AREAS = [
   {
-    icon: Link2,
-    title: "Integrate",
-    body: "Connect applications and systems for better information flow.",
+    title: "Financial Management & General Ledgers",
+    description: "Accounts, Invoicing, Ledger reconciliation",
   },
   {
-    icon: RefreshCw,
-    title: "Modernize",
-    body: "Upgrade and improve existing technology environments.",
+    title: "Payment Management & Clearing",
+    description: "ISO20022, Swift, automated payment gateways",
   },
   {
-    icon: Briefcase,
-    title: "Build",
-    body: "Develop custom solutions for specific business needs.",
+    title: "Enterprise Resource Planning (ERP)",
+    description: "Multi-ERP integration, SAP, NetSuite, Dynamics 365",
   },
   {
-    icon: LifeBuoy,
-    title: "Support",
-    body: "Ensure systems stay reliable with ongoing maintenance and assistance.",
-  },
-];
-
-const steps = [
-  {
-    num: "01",
-    title: "Understand",
-    body: "Analyze requirements and existing technology.",
+    title: "Customer Relationship Management (CRM)",
+    description: "Client lifecycle, secure client portals",
   },
   {
-    num: "02",
-    title: "Plan",
-    body: "Define solution and implementation approach.",
+    title: "Cyber Security & SOX Audit Readiness",
+    description:
+      "Financial compliance, immutable audit trails, data protection",
   },
   {
-    num: "03",
-    title: "Develop",
-    body: "Build and integrate the required technology.",
+    title: "Cloud Infrastructure & Microservices",
+    description:
+      "High-frequency institutional portals, mainframe offloading",
   },
   {
-    num: "04",
-    title: "Deploy",
-    body: "Test and implement with focus on usability.",
+    title: "Software Development & API Modernization",
+    description: "Custom finance applications, API integration",
   },
   {
-    num: "05",
-    title: "Support",
-    body: "Provide ongoing maintenance and technical support.",
+    title: "TorchX Finance Suite Platform",
+    description:
+      "Automated invoicing, expense & payroll control, real-time reporting",
   },
 ];
 
-function useRepeatReveal() {
-  const gridRef = useRef(null);
+const TIMELINES = [
+  "Immediate (<2 wks)",
+  "Within 30 Days",
+  "1–3 Months",
+  "Exploratory / Feasibility Review",
+];
 
-  useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
+export default function FinancialContact() {
+  const [selectedAreas, setSelectedAreas] = useState([]);
+  const [timeline, setTimeline] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
-    const items = Array.from(
-      grid.querySelectorAll(".fintech-card-observer")
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    organization: "",
+    designation: "",
+    phone: "",
+    scope: "",
+    nda: false,
+    videoSession: false,
+  });
+
+  const toggleArea = (title) => {
+    setSelectedAreas((prev) =>
+      prev.includes(title)
+        ? prev.filter((item) => item !== title)
+        : [...prev, title]
     );
+  };
 
-    const motionPreference = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    );
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
 
-    let observer;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
 
-    function setupAnimation() {
-      observer?.disconnect();
-      grid.classList.remove("fintech-reveal-enabled");
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-      items.forEach((item) => {
-        item.classList.remove("is-visible");
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
 
-      if (
-        motionPreference.matches ||
-        !("IntersectionObserver" in window)
-      ) {
-        return;
+    const form = e.currentTarget;
+
+    // Only fields marked with * / required must be filled.
+    // Practice areas, timeline, NDA and video session remain optional.
+    if (!form.checkValidity()) {
+      const invalidField = form.querySelector(":invalid");
+
+      if (invalidField) {
+        invalidField.focus();
+        form.reportValidity();
+
+        setTimeout(() => {
+          invalidField.blur();
+        }, 4000);
       }
 
-      grid.classList.add("fintech-reveal-enabled");
-
-      observer = new IntersectionObserver(
-        (entries) => {
-          const entering = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort(
-              (a, b) =>
-                Number(a.target.dataset.index) -
-                Number(b.target.dataset.index)
-            );
-
-          entering.forEach((entry, index) => {
-            entry.target.style.setProperty(
-              "--reveal-delay",
-              `${index * 180}ms`
-            );
-
-            entry.target.classList.add("is-visible");
-          });
-
-          // Reset off-screen cards so they animate again on return.
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-              entry.target.classList.remove("is-visible");
-            }
-          });
-        },
-        { threshold: 0 }
-      );
-
-      items.forEach((item) => observer.observe(item));
+      return;
     }
 
-    setupAnimation();
-    motionPreference.addEventListener("change", setupAnimation);
+    if (selectedAreas.length === 0) {
+      setSubmitError("Please select at least one practice area.");
+      return;
+    }
+    if (!timeline) {
+      setSubmitError("Please select your target commencement horizon.");
+      return;
+    }
+    setSubmitError("");
+    setSending(true);
 
-    return () => {
-      observer?.disconnect();
-      motionPreference.removeEventListener("change", setupAnimation);
-      grid.classList.remove("fintech-reveal-enabled");
-    };
-  }, []);
-
-  return gridRef;
-}
-
-export default function FintechEngineeringAndApproachSections() {
-  const capabilitiesRef = useRepeatReveal();
-  const stepsRef = useRepeatReveal();
+    try {
+      await submitQuery("finance", {
+        practiceAreas: selectedAreas,
+        fullName: formData.fullName.trim(),
+        corporateEmail: formData.email.trim(),
+        organizationName: formData.organization.trim(),
+        designation: formData.designation.trim(),
+        phone: formData.phone.trim(),
+        targetTimeline: timeline,
+        technicalScope: formData.scope.trim(),
+        mutualNda: !!formData.nda,
+        architectureSession: !!formData.videoSession,
+      });
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+      setFormData({ fullName: "", email: "", organization: "", designation: "", phone: "", scope: "", nda: false, videoSession: false });
+      setSelectedAreas([]);
+      setTimeline("");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
-    <div className="fintech-sections">
+    <>
       <style>{`
-        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-        .fintech-sections {
-          --fintech-wine: ${WINE};
-          --fintech-pink: ${LIGHT_PINK};
+        /* ================================
+           SUCCESS DIALOG
+        ================================= */
 
-          width: 100%;
-          overflow: hidden;
-          color: ${INK};
-          font-family: "Inter", Arial, sans-serif;
-          box-sizing: border-box;
-        }
-
-        .fintech-sections *,
-        .fintech-sections *::before,
-        .fintech-sections *::after {
-          box-sizing: border-box;
-        }
-
-        .fintech-sections .fintech-container {
-          width: 100%;
-          max-width: 1600px;
-          margin: 0 auto;
-          padding-left: 100px;
-          padding-right: 100px;
-        }
-
-        .fintech-sections .fintech-engineering {
-          width: 100%;
-          background: var(--fintech-wine);
-        }
-
-        .fintech-sections .fintech-engineering-container {
-          padding-top: 78px;
-          padding-bottom: 78px;
-          display: grid;
-          grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-          gap: 60px;
-          align-items: start;
-        }
-
-        .fintech-sections .fintech-engineering-container > *,
-        .fintech-sections .approach-header > * {
-          min-width: 0;
-        }
-
-        .fintech-sections .section-badge {
-          display: inline-flex;
+        .financial-success-dialog {
+          position: fixed;
+          top: 24px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          width: min(420px, calc(100% - 32px));
+          display: flex;
           align-items: center;
-          gap: 6px;
-          max-width: 100%;
-          padding: 6px 12px;
-          margin-bottom: 20px;
-          border-radius: 999px;
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          line-height: 1.4;
-        }
-
-        .fintech-sections .engineering-badge {
-          background: rgba(255, 255, 255, 0.12);
-          color: #f3d9e2;
-        }
-
-        .fintech-sections .badge-dot {
-          width: 6px;
-          height: 6px;
-          flex-shrink: 0;
-          border-radius: 50%;
-        }
-
-        .fintech-sections .engineering-dot {
+          gap: 14px;
+          padding: 16px 20px;
           background: #ffffff;
+          border: 1px solid #E5D3DC;
+          border-radius: 10px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+          font-family: "Inter", sans-serif;
+          animation: financialSuccessDialogIn 0.25s ease-out;
         }
 
-        .fintech-sections .engineering-heading {
-          margin: 0 0 24px;
-          color: #ffffff;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 38px;
-          line-height: 1.25;
-          font-weight: 700;
-          letter-spacing: -0.025em;
-          max-width: 760px;
-        }
-
-        .fintech-sections .engineering-copy {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          max-width: 780px;
-        }
-
-        .fintech-sections .engineering-description {
-          margin: 0;
-          color: #e9c9db;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 15px;
-          line-height: 1.75;
-          font-weight: 500;
-        }
-
-        .fintech-sections .engineering-description.highlight {
-          color: #f3e2e8;
-          font-weight: 600;
-        }
-
-        .fintech-sections .capabilities-grid {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 16px;
-        }
-
-        /* Stationary wrapper for reliable viewport detection */
-        .fintech-sections .fintech-card-observer {
-          display: flex;
-          min-width: 0;
-        }
-
-        .fintech-sections .fintech-card-reveal {
-          display: flex;
-          width: 100%;
-          min-width: 0;
-        }
-
-        .fintech-sections .fintech-reveal-enabled
-        > .fintech-card-observer
-        > .fintech-card-reveal {
-          opacity: 0;
-        }
-
-        .fintech-sections .fintech-reveal-enabled
-        > .fintech-card-observer.is-visible
-        > .fintech-card-reveal {
-          animation: fintech-card-enter
-            650ms
-            cubic-bezier(0.22, 1, 0.36, 1)
-            var(--reveal-delay, 0ms)
-            both;
-        }
-
-        @keyframes fintech-card-enter {
-          from {
-            opacity: 0;
-            transform: translateY(32px);
-          }
-
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .fintech-sections .capability-card {
-          width: 100%;
-          min-width: 0;
-          padding: 22px;
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          transition:
-            transform 0.3s ease,
-            background-color 0.3s ease,
-            border-color 0.3s ease,
-            box-shadow 0.3s ease;
-        }
-
-        .fintech-sections .capability-icon {
-          width: 38px;
-          height: 38px;
+        .financial-success-dialog-icon {
+          width: 44px;
+          height: 44px;
+          flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 16px;
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.14);
-          color: #ffffff;
-          transition:
-            background-color 0.3s ease,
-            transform 0.3s ease;
+          border-radius: 50%;
+          background: #ffffff;
+          color: #22824D;
+          border: none;
         }
 
-        .fintech-sections .capability-title {
-          margin: 0 0 6px;
-          color: #ffffff;
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        .financial-success-dialog-content {
+          min-width: 0;
+        }
+
+        .financial-success-dialog-title {
+          margin: 0;
+          color: #202022;
+          font-family: "Inter", sans-serif;
           font-size: 14px;
+          font-weight: 700;
           line-height: 1.4;
-          font-weight: 700;
-          transition: color 0.3s ease;
         }
 
-        .fintech-sections .capability-body {
-          margin: 0;
-          color: #e6bfd5;
+        .financial-success-dialog-text {
+          margin: 2px 0 0;
+          color: #65595E;
+          font-family: "Inter", sans-serif;
           font-size: 12px;
-          line-height: 1.7;
           font-weight: 400;
-          transition: color 0.3s ease;
+          line-height: 1.5;
         }
 
-        .fintech-sections .approach-section {
+        .financial-success-dialog-ok {
+          width: 34px;
+          height: 34px;
+          margin-left: auto;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: none;
+          border-radius: 50%;
+          background: #730042;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .financial-success-dialog-ok:hover {
+          background: #620038;
+          transform: scale(1.05);
+        }
+
+        @keyframes financialSuccessDialogIn {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -12px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        /* =====================================
+           MAIN PAGE
+        ====================================== */
+
+        .financial-page {
           width: 100%;
-          margin: 0;
-          background: #f4f1ec;
+          min-height: 100vh;
+          background: #f8f9fa;
+          padding: 64px 24px;
+          color: #24242a;
+          font-family: "Inter", Arial, sans-serif;
+          overflow: hidden;
         }
 
-        .fintech-sections .approach-container {
-          padding-top: 78px;
-          padding-bottom: 78px;
-        }
+        .financial-container {
+          width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
 
-        .fintech-sections .approach-header {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-          gap: 60px;
+          grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.22fr);
+          gap: 46px;
           align-items: start;
-          margin-bottom: 40px;
         }
 
-        .fintech-sections .approach-badge {
-          background: #fbeef1;
-          color: var(--fintech-wine);
+        /* =====================================
+           LEFT SIDE
+        ====================================== */
+
+        .financial-left {
+          min-width: 0;
         }
 
-        .fintech-sections .approach-dot {
-          background: var(--fintech-wine);
-        }
+        .financial-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
 
-        .fintech-sections .approach-heading {
-          margin: 0;
-          color: ${INK};
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 34px;
-          line-height: 1.3;
+          padding: 6px 12px;
+          border-radius: 20px;
+
+          background: #ffdce9;
+          color: #57002e;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
           font-weight: 700;
-          letter-spacing: -0.025em;
+          letter-spacing: 0.3px;
+          line-height: 1.3;
         }
 
-        .fintech-sections .approach-heading span {
-          color: var(--fintech-wine);
+        .financial-badge svg {
+          width: 12px;
+          height: 12px;
+          flex-shrink: 0;
         }
 
-        .fintech-sections .approach-description {
-          margin: 0;
-          padding-top: 4px;
-          color: ${MUTED};
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
-          font-size: 15px;
+        /* =====================================
+           MAIN HEADING
+           PLUS JAKARTA SANS
+        ====================================== */
+
+        .financial-left h1 {
+          margin: 18px 0 14px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 36px;
+          line-height: 1.2;
+          font-weight: 700;
+          letter-spacing: -1.2px;
+
+          color: #202027;
+        }
+
+        /* =====================================
+           MAIN SUBHEADING
+           PLUS JAKARTA SANS
+        ====================================== */
+
+        .financial-intro {
+          max-width: 500px;
+          margin: 0 0 28px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 14px;
           line-height: 1.75;
           font-weight: 500;
-          max-width: 700px;
+
+          color: #66545c;
         }
 
-        .fintech-sections .steps-grid {
-          display: grid;
-          grid-template-columns: repeat(5, minmax(0, 1fr));
-          gap: 16px;
-        }
+        /* =====================================
+           IMAGE
+        ====================================== */
 
-        .fintech-sections .step-card {
+        .financial-image-card {
+          position: relative;
+
           width: 100%;
-          min-width: 0;
-          padding: 22px;
-          background: #ffffff;
-          border-radius: 12px;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-          transition:
-            transform 0.3s ease,
-            background-color 0.3s ease,
-            box-shadow 0.3s ease;
+          height: 270px;
+
+          overflow: hidden;
+          border-radius: 15px;
+
+          background: #35001e;
+
+          box-shadow: 0 5px 16px rgba(70, 0, 40, 0.13);
         }
 
-        .fintech-sections .step-top {
+        .financial-image {
+          width: 100%;
+          height: 100%;
+
+          display: block;
+
+          object-fit: cover;
+        }
+
+        .financial-image-overlay {
+          position: absolute;
+
+          left: 14px;
+          right: 14px;
+          bottom: 13px;
+
+          min-height: 58px;
+
+          padding: 11px 13px;
+
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 8px;
-          margin-bottom: 16px;
+
+          gap: 12px;
+
+          background: rgba(255, 255, 255, 0.97);
+          border-radius: 15px;
+
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
         }
 
-        .fintech-sections .step-number {
-          width: 32px;
-          height: 32px;
+        .architecture-desk {
+          min-width: 0;
+
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .architecture-icon {
+          width: 35px;
+          height: 35px;
+
+          flex-shrink: 0;
+
           display: flex;
           align-items: center;
           justify-content: center;
+
+          background: #ffe0ec;
+          color: #650037;
+
+          border-radius: 8px;
+        }
+
+        .architecture-text {
+          min-width: 0;
+        }
+
+        /* Card heading - Plus Jakarta Sans */
+
+        .architecture-text h3 {
+          margin: 0 0 3px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+
+          color: #222228;
+        }
+
+        /* Card text - Inter */
+
+        .architecture-text p {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          color: #68646a;
+        }
+
+        .online-badge {
           flex-shrink: 0;
-          border-radius: 50%;
-          background: var(--fintech-wine);
-          color: #ffffff;
+
+          padding: 7px 11px;
+
+          border-radius: 5px;
+
+          background: #a8f49d;
+          color: #154d19;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 800;
+        }
+
+        /* =====================================
+           LEFT INFO CARDS
+        ====================================== */
+
+        .financial-info-card {
+          display: flex;
+          gap: 12px;
+
+          margin-top: 18px;
+          padding: 17px 15px;
+
+          background: white;
+          border: 1px solid #ededee;
+          border-radius: 12px;
+
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.025);
+        }
+
+        .financial-info-icon {
+          width: 38px;
+          height: 38px;
+
+          flex-shrink: 0;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 8px;
+
+          background: #f8e9f0;
+          color: #68003a;
+        }
+
+        /* Info card heading - Plus Jakarta Sans */
+
+        .financial-info-card h3 {
+          margin: 0 0 4px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-weight: 700;
+          font-size: 13px;
+          line-height: 1.45;
+
+          color: #27272d;
+        }
+
+        /* Info card body - Inter */
+
+        .financial-info-card p {
+          margin: 0;
+
+          font-family: "Inter", sans-serif;
+          color: #696269;
+          font-size: 12px;
+          line-height: 1.6;
+        }
+
+        /* =====================================
+           SUPPORT BOX
+        ====================================== */
+
+        .financial-support-box {
+          margin-top: 27px;
+          padding: 19px 17px;
+
+          background: #e8e8e9;
+          border-radius: 13px;
+        }
+
+        .support-title {
+          margin-bottom: 12px;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 1px;
+
+          color: #646166;
+        }
+
+        .support-details {
+          display: flex;
+          align-items: center;
+
+          gap: 22px;
+          margin-bottom: 13px;
+        }
+
+        .support-item {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+
+          color: #363038;
+
+          font-family: "Inter", sans-serif;
           font-size: 11px;
+        }
+
+        .support-item svg {
+          color: #70003e;
+          width: 14px;
+          height: 14px;
+          flex-shrink: 0;
+        }
+
+        .support-email {
+          color: #630037;
           font-weight: 600;
         }
 
-        .fintech-sections .step-title {
-          margin: 0 0 6px;
-          color: ${INK};
-          font-family: "Plus Jakarta Sans", Arial, sans-serif;
+        .support-description {
+          margin: 0;
+
+          color: #6e6a70;
+
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          line-height: 1.6;
+        }
+
+        /* =====================================
+           RIGHT FORM
+        ====================================== */
+
+        .financial-form-card {
+          min-width: 0;
+
+          background: white;
+          border-radius: 17px;
+
+          padding: 31px 32px 27px;
+
+          box-shadow: 0 11px 30px rgba(20, 20, 30, 0.08);
+        }
+
+        .form-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+
+          gap: 20px;
+
+          padding-bottom: 20px;
+          border-bottom: 1px solid #ededee;
+        }
+
+        /* Form heading - Plus Jakarta Sans */
+
+        .form-top h2 {
+          margin: 0 0 5px;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          font-size: 22px;
+          line-height: 1.35;
+          font-weight: 700;
+
+          color: #222228;
+        }
+
+        /* Form subheading - Plus Jakarta Sans */
+
+        .form-top p {
+          max-width: 500px;
+          margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
+          color: #77727a;
+          font-size: 12px;
+          line-height: 1.6;
+          font-weight: 500;
+        }
+
+        .step-badge {
+          flex-shrink: 0;
+
+          padding: 7px 10px;
+
+          border-radius: 4px;
+
+          background: #f0f0f1;
+          color: #424148;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+
+        /* =====================================
+           FORM SECTION
+        ====================================== */
+
+        .form-section {
+          margin-top: 24px;
+        }
+
+        .form-section-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          gap: 12px;
+
+          margin-bottom: 10px;
+        }
+
+        .form-section-title-left {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          min-width: 0;
+        }
+
+        .section-dot {
+          width: 5px;
+          height: 5px;
+
+          flex-shrink: 0;
+
+          border-radius: 50%;
+          background: #750040;
+        }
+
+        /* Form section headings - Plus Jakarta Sans */
+
+        .form-section-title h3 {
+          margin: 0;
+
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 14px;
           line-height: 1.4;
-          font-weight: 700;
-          transition: color 0.3s ease;
+          font-weight: 600;
+
+          color: #343138;
         }
 
-        .fintech-sections .step-body {
-          margin: 0;
-          color: ${MUTED};
+        .form-section-title > span {
+          color: #777178;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          white-space: nowrap;
+        }
+
+        /* =====================================
+           PRACTICE AREA GRID
+        ====================================== */
+
+        .practice-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 9px 12px;
+        }
+
+        .practice-button {
+          min-height: 73px;
+
+          padding: 11px 12px;
+
+          border: 1px solid transparent;
+          border-radius: 10px;
+
+          background: #f1f1f2;
+
+          text-align: left;
+
+          font-family: "Inter", sans-serif;
+
+          cursor: pointer;
+
+          transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .practice-button:hover {
+          background: #ecebee;
+          transform: translateY(-1px);
+        }
+
+        .practice-button.selected {
+          border-color: #f0d3df;
+          background: #f7f4f5;
+        }
+
+        .practice-top {
+          display: flex;
+          align-items: flex-start;
+          gap: 9px;
+        }
+
+        .practice-check {
+          width: 16px;
+          height: 16px;
+
+          flex-shrink: 0;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 4px;
+
+          background: #dedfe0;
+          color: white;
+        }
+
+        .practice-button.selected .practice-check {
+          background: #650037;
+        }
+
+        /* Practice heading - Plus Jakarta Sans */
+
+        .practice-title {
+          font-family: "Plus Jakarta Sans", sans-serif;
           font-size: 12px;
-          line-height: 1.7;
-          font-weight: 400;
+          line-height: 1.4;
+          font-weight: 700;
+
+          color: #2d2d32;
         }
 
-        @media (hover: hover) {
-          .fintech-sections .capability-card:hover {
-            transform: translateY(-4px);
-            background: var(--fintech-pink);
-            border-color: #f2bfd8;
-            box-shadow: 0 12px 28px rgba(40, 0, 24, 0.2);
-          }
+        /* Practice description - Inter */
 
-          .fintech-sections .capability-card:hover .capability-icon {
-            background: var(--fintech-wine);
-            transform: scale(1.08);
-          }
+        .practice-description {
+          margin: 7px 0 0 25px;
 
-          .fintech-sections .capability-card:hover .capability-title {
-            color: var(--fintech-wine);
-          }
+          color: #777278;
 
-          .fintech-sections .capability-card:hover .capability-body {
-            color: #68344f;
-          }
-
-          .fintech-sections .step-card:hover {
-            transform: translateY(-4px);
-            background: var(--fintech-pink);
-            box-shadow: 0 10px 25px rgba(115, 0, 66, 0.1);
-          }
-
-          .fintech-sections .step-card:hover .step-title {
-            color: var(--fintech-wine);
-          }
+          font-family: "Inter", sans-serif;
+          font-size: 11px;
+          line-height: 1.5;
         }
 
-        @media (max-width: 1200px) {
-          .fintech-sections .fintech-container {
-            padding-left: 40px;
-            padding-right: 40px;
+        /* =====================================
+           INPUT GRID
+        ====================================== */
+
+        .contact-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 13px;
+        }
+
+        .input-field {
+          min-width: 0;
+        }
+
+        .input-field.full {
+          grid-column: 1 / -1;
+        }
+
+        .input-field label {
+          display: block;
+
+          margin-bottom: 6px;
+
+          color: #6d5961;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+        }
+
+        .input-wrapper {
+          position: relative;
+        }
+
+        .input-wrapper svg {
+          position: absolute;
+
+          left: 12px;
+          top: 50%;
+
+          transform: translateY(-50%);
+
+          width: 14px;
+          height: 14px;
+
+          color: #77747a;
+
+          pointer-events: none;
+        }
+
+        .input-field input,
+        .scope-textarea {
+          width: 100%;
+
+          border: none;
+          outline: none;
+
+          background: #f1f1f2;
+          border-radius: 9px;
+
+          color: #35343a;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+        }
+
+        .input-field input {
+          height: 38px;
+          padding: 0 12px 0 36px;
+        }
+
+        .input-field input::placeholder,
+        .scope-textarea::placeholder {
+          color: #858187;
+        }
+
+        .input-field input:focus,
+        .scope-textarea:focus {
+          box-shadow: 0 0 0 2px rgba(101, 0, 55, 0.12);
+        }
+
+        /* =====================================
+           TIMELINE
+        ====================================== */
+
+        .timeline-label {
+          margin: 0 0 9px;
+
+          color: #777078;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+        }
+
+        .timeline-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 7px;
+        }
+
+        .timeline-button {
+          min-height: 56px;
+
+          border: none;
+          border-radius: 8px;
+
+          background: #f1f1f2;
+          color: #4e454b;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.4;
+
+          cursor: pointer;
+
+          transition:
+            background 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .timeline-button:hover {
+          background: #ecebed;
+          transform: translateY(-1px);
+        }
+
+        .timeline-button.selected {
+          background: #ffd5e4;
+          color: #5b0033;
+          font-weight: 700;
+        }
+
+        /* =====================================
+           SCOPE
+        ====================================== */
+
+        .scope-label {
+          margin: 18px 0 8px;
+
+          color: #6d5961;
+
+          font-family: "Inter", sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+        }
+
+        .scope-textarea {
+          height: 105px;
+
+          padding: 13px;
+
+          resize: vertical;
+
+          line-height: 1.55;
+        }
+
+        /* =====================================
+           REQUEST OPTIONS
+        ====================================== */
+
+        .request-options {
+          margin-top: 24px;
+
+          padding: 13px;
+
+          border-radius: 10px;
+
+          background: #f1f1f2;
+        }
+
+        .request-option {
+          display: flex;
+          align-items: flex-start;
+
+          gap: 9px;
+
+          margin: 8px 0;
+
+          color: #37343a;
+
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.45;
+
+          cursor: pointer;
+        }
+
+        .request-option input {
+          width: 13px;
+          height: 13px;
+
+          flex-shrink: 0;
+
+          margin: 1px 0 0;
+
+          accent-color: #730042;
+
+          cursor: pointer;
+        }
+
+        /* =====================================
+           SUBMIT
+        ====================================== */
+
+        .financial-submit {
+          width: 100%;
+          min-height: 58px;
+
+          margin-top: 28px;
+          padding: 10px 20px;
+
+          border: none;
+          border-radius: 10px;
+
+          background: #730042;
+          color: white;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 12px;
+
+          text-align: center;
+
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          line-height: 1.4;
+
+          cursor: pointer;
+
+          box-shadow: 0 5px 13px rgba(96, 0, 47, 0.2);
+
+          transition:
+            background 0.2s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+        }
+
+        .financial-submit:hover {
+          background: #620038;
+          transform: translateY(-1px);
+          box-shadow: 0 8px 18px rgba(96, 0, 47, 0.24);
+        }
+
+        .financial-submit svg {
+          margin-left: 10px;
+          flex-shrink: 0;
+        }
+
+        .form-note {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          gap: 6px;
+
+          margin: 13px 0 0;
+
+          color: #756b72;
+
+          font-family: "Inter", sans-serif;
+          font-size: 9px;
+          line-height: 1.5;
+
+          text-align: center;
+        }
+
+        .form-note svg {
+          width: 12px;
+          height: 12px;
+
+          flex-shrink: 0;
+
+          color: #650037;
+        }
+
+        /* =====================================
+           LARGE TABLET
+        ====================================== */
+
+        @media (max-width: 1100px) {
+          .financial-page {
+            padding: 55px 24px;
           }
 
-          .fintech-sections .fintech-engineering-container,
-          .fintech-sections .approach-header {
-            gap: 42px;
+          .financial-container {
+            grid-template-columns: 1fr;
+            max-width: 850px;
+            gap: 35px;
           }
 
-          .fintech-sections .engineering-heading {
+          .financial-left {
+            width: 100%;
+          }
+
+          .financial-intro {
+            max-width: 680px;
+          }
+
+          .financial-form-card {
+            width: 100%;
+          }
+
+          .financial-left h1 {
             font-size: 34px;
           }
+        }
 
-          .fintech-sections .approach-heading {
+        /* =====================================
+           TABLET
+        ====================================== */
+
+        @media (max-width: 800px) {
+          .financial-page {
+            padding: 48px 20px;
+          }
+
+          .financial-left h1 {
             font-size: 31px;
           }
 
-          .fintech-sections .steps-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-          }
-        }
-
-        @media (max-width: 900px) {
-          .fintech-sections .fintech-engineering-container {
-            grid-template-columns: 1fr;
-            gap: 36px;
-            padding-top: 62px;
-            padding-bottom: 62px;
+          .financial-form-card {
+            padding: 26px 24px;
           }
 
-          .fintech-sections .engineering-heading {
-            max-width: 760px;
-            font-size: 32px;
+          .practice-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
 
-          .fintech-sections .engineering-copy {
-            max-width: 800px;
-          }
-
-          .fintech-sections .approach-container {
-            padding-top: 62px;
-            padding-bottom: 62px;
-          }
-
-          .fintech-sections .approach-header {
-            grid-template-columns: 1fr;
-            gap: 18px;
-            margin-bottom: 34px;
-          }
-
-          .fintech-sections .approach-description {
-            padding-top: 0;
-            max-width: 800px;
-          }
-
-          .fintech-sections .approach-heading {
-            font-size: 30px;
-          }
-
-          .fintech-sections .steps-grid {
+          .timeline-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
         }
 
+        /* =====================================
+           MOBILE
+        ====================================== */
+
         @media (max-width: 600px) {
-          .fintech-sections .fintech-container {
-            padding-left: 24px;
-            padding-right: 24px;
+          .financial-success-dialog {
+            top: 16px;
+            width: calc(100% - 28px);
+            padding: 14px 16px;
           }
 
-          .fintech-sections .fintech-engineering-container {
-            padding-top: 52px;
-            padding-bottom: 52px;
-            gap: 30px;
+          .financial-success-dialog-title {
+            font-size: 13px;
           }
 
-          .fintech-sections .section-badge {
-            margin-bottom: 16px;
+          .financial-success-dialog-text {
+            font-size: 11px;
+          }
+
+          .financial-success-dialog-icon {
+            width: 40px;
+            height: 40px;
+          }
+
+          .financial-success-dialog-icon svg {
+            width: 28px;
+            height: 28px;
+          }
+
+          .financial-page {
+            padding: 38px 16px;
+          }
+
+          .financial-container {
+            gap: 26px;
+          }
+
+          .financial-badge {
+            font-size: 9px;
+            padding: 6px 10px;
+          }
+
+          .financial-left h1 {
+            margin-top: 15px;
+            font-size: 27px;
+            line-height: 1.25;
+            letter-spacing: -0.8px;
+          }
+
+          .financial-intro {
+            margin-bottom: 22px;
+
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .financial-image-card {
+            height: 220px;
+            border-radius: 13px;
+          }
+
+          .financial-image-overlay {
+            left: 9px;
+            right: 9px;
+            bottom: 9px;
+
+            min-height: 53px;
+
+            padding: 9px 10px;
+
+            border-radius: 12px;
+          }
+
+          .architecture-icon {
+            width: 32px;
+            height: 32px;
+          }
+
+          .architecture-text h3 {
             font-size: 10px;
           }
 
-          .fintech-sections .engineering-heading {
-            margin-bottom: 20px;
-            font-size: 26px;
-            line-height: 1.3;
+          .architecture-text p {
+            font-size: 8px;
           }
 
-          .fintech-sections .engineering-copy {
-            gap: 14px;
+          .online-badge {
+            padding: 6px 8px;
+            font-size: 8px;
           }
 
-          .fintech-sections .engineering-description {
-            font-size: 13px;
-            line-height: 1.7;
+          .financial-info-card {
+            padding: 15px 13px;
           }
 
-          .fintech-sections .capabilities-grid,
-          .fintech-sections .steps-grid {
-            grid-template-columns: minmax(0, 1fr);
-            gap: 14px;
-          }
-
-          .fintech-sections .capability-card,
-          .fintech-sections .step-card {
-            padding: 19px;
-          }
-
-          .fintech-sections .capability-body {
-            line-height: 1.65;
-          }
-
-          .fintech-sections .approach-container {
-            padding-top: 52px;
-            padding-bottom: 52px;
-          }
-
-          .fintech-sections .approach-header {
-            gap: 16px;
-            margin-bottom: 28px;
-          }
-
-          .fintech-sections .approach-heading {
-            font-size: 25px;
-            line-height: 1.35;
-          }
-
-          .fintech-sections .approach-description {
-            font-size: 13px;
-            line-height: 1.7;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .fintech-sections .fintech-container {
-            padding-left: 16px;
-            padding-right: 16px;
-          }
-
-          .fintech-sections .fintech-engineering-container,
-          .fintech-sections .approach-container {
-            padding-top: 44px;
-            padding-bottom: 44px;
-          }
-
-          .fintech-sections .engineering-heading {
-            font-size: 23px;
-          }
-
-          .fintech-sections .engineering-description,
-          .fintech-sections .approach-description {
+          .financial-info-card h3 {
             font-size: 12px;
           }
 
-          .fintech-sections .approach-heading {
-            font-size: 22px;
+          .financial-info-card p {
+            font-size: 11px;
           }
 
-          .fintech-sections .capability-card,
-          .fintech-sections .step-card {
-            padding: 17px;
+          .support-details {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 9px;
           }
 
-          .fintech-sections .capability-icon {
-            width: 35px;
-            height: 35px;
-            margin-bottom: 14px;
+          .financial-form-card {
+            padding: 21px 17px;
+            border-radius: 14px;
           }
 
-          .fintech-sections .step-number {
-            width: 30px;
-            height: 30px;
+          .form-top {
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .form-top h2 {
+            font-size: 19px;
+          }
+
+          .form-top p {
+            font-size: 11px;
+          }
+
+          .step-badge {
+            align-self: flex-start;
+          }
+
+          .form-section-title {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 5px;
+          }
+
+          .form-section-title > span {
+            margin-left: 12px;
+          }
+
+          .practice-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .contact-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .input-field.full {
+            grid-column: auto;
+          }
+
+          .timeline-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .financial-submit {
+            min-height: 56px;
+            padding: 10px 14px;
+
+            font-size: 11px;
+          }
+
+          .financial-submit svg {
+            margin-left: 4px;
+          }
+
+          .form-note {
+            font-size: 8px;
+          }
+        }
+
+        /* =====================================
+           SMALL MOBILE
+        ====================================== */
+
+        @media (max-width: 400px) {
+          .financial-page {
+            padding: 30px 12px;
+          }
+
+          .financial-left h1 {
+            font-size: 24px;
+          }
+
+          .financial-intro {
+            font-size: 12px;
+          }
+
+          .financial-image-card {
+            height: 195px;
+          }
+
+          .financial-image-overlay {
+            gap: 7px;
+          }
+
+          .architecture-desk {
+            gap: 7px;
+          }
+
+          .architecture-text h3 {
+            font-size: 9px;
+          }
+
+          .architecture-text p {
+            font-size: 7px;
+          }
+
+          .online-badge {
+            font-size: 7px;
+            padding: 5px 7px;
+          }
+
+          .financial-info-card {
+            gap: 9px;
+          }
+
+          .financial-info-icon {
+            width: 34px;
+            height: 34px;
+          }
+
+          .financial-info-card h3 {
+            font-size: 11px;
+          }
+
+          .financial-info-card p {
+            font-size: 10px;
+          }
+
+          .financial-support-box {
+            padding: 16px 13px;
+          }
+
+          .financial-form-card {
+            padding: 18px 13px;
+          }
+
+          .form-top h2 {
+            font-size: 17px;
+          }
+
+          .form-section-title h3 {
+            font-size: 12px;
+          }
+
+          .practice-title {
+            font-size: 11px;
+          }
+
+          .practice-description {
+            font-size: 10px;
+          }
+
+          .timeline-button {
+            min-height: 52px;
+            font-size: 10px;
+          }
+
+          .financial-submit {
             font-size: 10px;
           }
         }
 
+        /* =====================================
+           VERY SMALL MOBILE
+        ====================================== */
+
         @media (max-width: 340px) {
-          .fintech-sections .fintech-engineering-container,
-          .fintech-sections .approach-container {
-            padding-top: 38px;
-            padding-bottom: 38px;
+          .financial-page {
+            padding-left: 10px;
+            padding-right: 10px;
           }
 
-          .fintech-sections .engineering-heading {
-            font-size: 21px;
+          .financial-left h1 {
+            font-size: 22px;
           }
 
-          .fintech-sections .approach-heading {
-            font-size: 20px;
-          }
-
-          .fintech-sections .engineering-description,
-          .fintech-sections .approach-description {
-            font-size: 11.5px;
-          }
-
-          .fintech-sections .capability-body,
-          .fintech-sections .step-body {
+          .financial-intro {
             font-size: 11px;
+          }
+
+          .financial-form-card {
+            padding: 16px 11px;
+          }
+
+          .timeline-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .financial-submit {
+            min-height: 54px;
+            font-size: 9px;
           }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-          .fintech-sections .fintech-reveal-enabled
-          > .fintech-card-observer
-          > .fintech-card-reveal,
-          .fintech-sections .fintech-reveal-enabled
-          > .fintech-card-observer.is-visible
-          > .fintech-card-reveal {
-            animation: none;
-            opacity: 1;
-            transform: none;
-          }
+        /* =====================================
+           REDUCED MOTION
+        ====================================== */
 
-          .fintech-sections .capability-card,
-          .fintech-sections .capability-icon,
-          .fintech-sections .capability-title,
-          .fintech-sections .capability-body,
-          .fintech-sections .step-card,
-          .fintech-sections .step-title {
+        @media (prefers-reduced-motion: reduce) {
+          .practice-button,
+          .timeline-button,
+          .financial-submit {
             transition: none;
           }
 
-          .fintech-sections .capability-card:hover,
-          .fintech-sections .capability-card:hover .capability-icon,
-          .fintech-sections .step-card:hover {
+          .practice-button:hover,
+          .timeline-button:hover,
+          .financial-submit:hover {
             transform: none;
           }
         }
       `}</style>
 
-      {/* FINTECH ENGINEERING */}
-      <section className="fintech-engineering">
-        <div className="fintech-container fintech-engineering-container">
-          <div>
-            <span className="section-badge engineering-badge">
-              <span className="badge-dot engineering-dot" />
-              FINTECH ENGINEERING &amp; TRANSFORMATION
-            </span>
-
-            <h2 className="engineering-heading">
-              Modernize the Technology Behind Your Financial Operations
-            </h2>
-
-            <div className="engineering-copy">
-              <p className="engineering-description">
-                Legacy financial applications and disjointed spreadsheets
-                increase compliance liabilities and slow execution.
-                TechTorch delivers purpose-built software engineering to
-                refactor, integrate, and modernize critical transaction
-                platforms.
-              </p>
-
-              <p className="engineering-description">
-                Our senior engineering teams develop bespoke client portals,
-                secure API integrations, high-performance microservices,
-                automated payment gateways, and compliant cloud
-                infrastructures tailored to stringent financial standards.
-              </p>
-
-              <p className="engineering-description highlight">
-                We engineer modular systems designed for scale—ensuring your
-                tech stack evolves as your transaction volume and reporting
-                mandates expand.
-              </p>
-            </div>
+      {showSuccess && (
+        <div
+          className="financial-success-dialog"
+          role="alert"
+          aria-live="polite"
+          tabIndex={-1}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              setShowSuccess(false);
+            }
+          }}
+        >
+          <div className="financial-success-dialog-icon">
+            <CircleCheck size={30} strokeWidth={2.5} />
           </div>
 
-          <div ref={capabilitiesRef} className="capabilities-grid">
-            {capabilities.map(({ icon: Icon, title, body }, index) => (
-              <div
-                key={title}
-                className="fintech-card-observer"
-                data-index={index}
-              >
-                <div className="fintech-card-reveal">
-                  <article className="capability-card">
-                    <span className="capability-icon">
-                      <Icon size={16} strokeWidth={1.8} />
-                    </span>
+          <div className="financial-success-dialog-content">
+            <p className="financial-success-dialog-title">
+              Request Submitted
+            </p>
 
-                    <h3 className="capability-title">{title}</h3>
-                    <p className="capability-body">{body}</p>
-                  </article>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* OUR APPROACH */}
-      <section className="approach-section">
-        <div className="fintech-container approach-container">
-          <div className="approach-header">
-            <div>
-              <span className="section-badge approach-badge">
-                <span className="badge-dot approach-dot" />
-                OUR APPROACH
-              </span>
-
-              <h2 className="approach-heading">
-                From Business Requirements
-                <br />
-                to Practical <span>Technology</span>
-              </h2>
-            </div>
-
-            <p className="approach-description">
-              Every technology initiative begins with an understanding of
-              the business requirement. Our approach focuses on creating
-              practical solutions that align technology with operational
-              objectives.
+            <p className="financial-success-dialog-text">
+              Your intake request has been submitted successfully.
             </p>
           </div>
 
-          <div ref={stepsRef} className="steps-grid">
-            {steps.map(({ num, title, body }, index) => (
-              <div
-                key={num}
-                className="fintech-card-observer"
-                data-index={index}
-              >
-                <div className="fintech-card-reveal">
-                  <article className="step-card">
-                    <div className="step-top">
-                      <span className="step-number">{num}</span>
+          <button
+            type="button"
+            className="financial-success-dialog-ok"
+            onClick={() => setShowSuccess(false)}
+            autoFocus
+            aria-label="Close"
+          >
+            OK
+          </button>
+        </div>
+      )}
 
-                      <MoreHorizontal
-                        size={14}
-                        style={{ color: "#c9c4bc" }}
+      <section className="financial-page">
+        <div className="financial-container">
+
+          {/* =====================================================
+              LEFT SIDE
+          ===================================================== */}
+
+          <div className="financial-left">
+
+            <div className="financial-badge">
+              <BadgeCheck size={12} />
+              DIRECT FINANCIAL ARCHITECTURE CONSULTATION
+            </div>
+
+            {/* PLUS JAKARTA SANS */}
+            <h1>
+              Connect with TechTorch
+              <br />
+              Financial Technology Architects
+            </h1>
+
+            {/* PLUS JAKARTA SANS */}
+            <p className="financial-intro">
+              Discuss your institution’s core modernization,
+              integrated accounting workflows, multi-ERP
+              reconciliation, regulatory audit readiness, or bespoke
+              fintech development with practicing senior solutions
+              engineers.
+            </p>
+
+            {/* IMAGE */}
+
+            <div className="financial-image-card">
+              <img
+                src="/FinanceGetInTouch.png"
+                alt="Financial technology architecture team"
+                className="financial-image"
+              />
+
+              <div className="financial-image-overlay">
+
+                <div className="architecture-desk">
+
+                  <div className="architecture-icon">
+                    <Check size={20} />
+                  </div>
+
+                  <div className="architecture-text">
+                    <h3>
+                      Principal Architecture Desk
+                    </h3>
+
+                    <p>
+                      Direct engagement • Guaranteed &lt;24h turn
+                    </p>
+                  </div>
+
+                </div>
+
+                <span className="online-badge">
+                  ONLINE
+                </span>
+
+              </div>
+            </div>
+
+            {/* INFO CARD 1 */}
+
+            <div className="financial-info-card">
+
+              <div className="financial-info-icon">
+                <Shield size={18} />
+              </div>
+
+              <div>
+                <h3>
+                  Strict Financial Data Privacy &amp; SOC2 Controls
+                </h3>
+
+                <p>
+                  Every technical exchange is insulated under
+                  sovereign data mandates, banking-grade encryption,
+                  and zero third-party disclosure policies.
+                </p>
+              </div>
+
+            </div>
+
+            {/* INFO CARD 2 */}
+
+            <div className="financial-info-card">
+
+              <div className="financial-info-icon">
+                <Headphones size={18} />
+              </div>
+
+              <div>
+                <h3>
+                  Direct Engineering Interaction
+                </h3>
+
+                <p>
+                  Skip commercial gatekeepers. Engage directly with
+                  Principal Architects versed in distributed ledger
+                  engines, Swift MT/MX parsing, and multi-ERP schemas.
+                </p>
+              </div>
+
+            </div>
+
+            {/* INFO CARD 3 */}
+
+            <div className="financial-info-card">
+
+              <div className="financial-info-icon">
+                <Route size={18} />
+              </div>
+
+              <div>
+                <h3>
+                  Tailored Milestones &amp; Architecture Roadmap
+                </h3>
+
+                <p>
+                  Receive an objective initial blueprint mapping
+                  architectural risk vectors, schema reconciliations,
+                  and phased deployment windows.
+                </p>
+              </div>
+
+            </div>
+
+            {/* SUPPORT */}
+
+            <div className="financial-support-box">
+
+              <div className="support-title">
+                ENTERPRISE SUPPORT &amp; LEGAL HQ
+              </div>
+
+              <div className="support-details">
+
+                <div className="support-item">
+                  <Mail size={14} />
+
+                  <span className="support-email">
+                    contact@techtorch.solutions
+                  </span>
+                </div>
+
+                <div className="support-item">
+                  <Headphones size={14} />
+                  24/7 Enterprise Tier-1 Desk
+                </div>
+
+              </div>
+
+              <p className="support-description">
+                TechTorch Solutions Private Limited • Global
+                Operations • Sovereign Cloud &amp; High-Frequency
+                FinTech Practices
+              </p>
+
+            </div>
+
+          </div>
+
+          {/* =====================================================
+              RIGHT FORM
+          ===================================================== */}
+
+          <div className="financial-form-card">
+
+            <div className="form-top">
+
+              <div>
+                {/* PLUS JAKARTA SANS */}
+                <h2>
+                  Institutional Inquiry Console
+                </h2>
+
+                {/* PLUS JAKARTA SANS */}
+                <p>
+                  Specify your technical challenges to route this
+                  directly to the appropriate domain architects.
+                </p>
+              </div>
+
+              <span className="step-badge">
+                Step 1 of 1
+              </span>
+
+            </div>
+
+            <form onSubmit={handleSubmit}>
+
+              {/* =================================================
+                  PRACTICE AREAS
+              ================================================= */}
+
+              <div className="form-section">
+
+                <div className="form-section-title">
+
+                  <div className="form-section-title-left">
+
+                    <span className="section-dot"></span>
+
+                    {/* PLUS JAKARTA SANS */}
+                    <h3>
+                      1. Financial Practice Areas of Interest
+                    </h3>
+
+                  </div>
+
+                  <span>
+                    (Select one or more)
+                  </span>
+
+                </div>
+
+                <div className="practice-grid">
+
+                  {PRACTICE_AREAS.map((area) => {
+
+                    const selected =
+                      selectedAreas.includes(area.title);
+
+                    return (
+                      <button
+                        key={area.title}
+                        type="button"
+                        className={`practice-button ${
+                          selected ? "selected" : ""
+                        }`}
+                        onClick={() =>
+                          toggleArea(area.title)
+                        }
+                      >
+
+                        <div className="practice-top">
+
+                          <span className="practice-check">
+                            {selected && <Check size={11} />}
+                          </span>
+
+                          <span className="practice-title">
+                            {area.title}
+                          </span>
+
+                        </div>
+
+                        <p className="practice-description">
+                          {area.description}
+                        </p>
+
+                      </button>
+                    );
+                  })}
+
+                </div>
+
+              </div>
+
+              {/* =================================================
+                  CONTACT INFORMATION
+              ================================================= */}
+
+              <div className="form-section">
+
+                <div className="form-section-title">
+
+                  <div className="form-section-title-left">
+
+                    <span className="section-dot"></span>
+
+                    {/* PLUS JAKARTA SANS */}
+                    <h3>
+                      2. Institution &amp; Executive Contact Information
+                    </h3>
+
+                  </div>
+
+                </div>
+
+                <div className="contact-grid">
+
+                  {/* NAME */}
+
+                  <div className="input-field">
+
+                    <label>
+                      Full Name *
+                    </label>
+
+                    <div className="input-wrapper">
+
+                      <User />
+
+                      <input
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        placeholder="e.g. Vikram Malhotra"
+                        required
                       />
+
                     </div>
 
-                    <h3 className="step-title">{title}</h3>
-                    <p className="step-body">{body}</p>
-                  </article>
+                  </div>
+
+                  {/* EMAIL */}
+
+                  <div className="input-field">
+
+                    <label>
+                      Corporate / Institutional Email *
+                    </label>
+
+                    <div className="input-wrapper">
+
+                      <Mail />
+
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="e.g. v.malhotra@finbank.com"
+                        required
+                      />
+
+                    </div>
+
+                  </div>
+
+                  {/* ORGANIZATION */}
+
+                  <div className="input-field">
+
+                    <label>
+                      Institution / Organization Name *
+                    </label>
+
+                    <div className="input-wrapper">
+
+                      <Building2 />
+
+                      <input
+                        type="text"
+                        name="organization"
+                        value={formData.organization}
+                        onChange={handleChange}
+                        placeholder="e.g. Apex Global Financial Services"
+                        required
+                      />
+
+                    </div>
+
+                  </div>
+
+                  {/* DESIGNATION */}
+
+                  <div className="input-field">
+
+                    <label>
+                      Executive Designation / Role
+                    </label>
+
+                    <div className="input-wrapper">
+
+                      <BriefcaseBusiness />
+
+                      <input
+                        type="text"
+                        name="designation"
+                        value={formData.designation}
+                        onChange={handleChange}
+                        placeholder="e.g. Chief Technology Officer / Chief..."
+                      />
+
+                    </div>
+
+                  </div>
+
+                  {/* PHONE */}
+
+                  <div className="input-field full">
+
+                    <label>
+                      Direct Phone or Secure WhatsApp{" "}
+                      <span style={{ fontWeight: 400 }}>
+                        (E.G. +1 (555) 019-2834 OR +91 98765 43210)
+                      </span>
+                    </label>
+
+                    <div className="input-wrapper">
+
+                      <Phone />
+
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+1 (555) 019-2834 or +91 98765 43210"
+                      />
+
+                    </div>
+
+                  </div>
+
                 </div>
+
               </div>
-            ))}
+
+              {/* =================================================
+                  TIMELINE
+              ================================================= */}
+
+              <div className="form-section">
+
+                <div className="form-section-title">
+
+                  <div className="form-section-title-left">
+
+                    <span className="section-dot"></span>
+
+                    {/* PLUS JAKARTA SANS */}
+                    <h3>
+                      3. Deployment Timeline &amp; Architecture Scope
+                    </h3>
+
+                  </div>
+
+                </div>
+
+                <p className="timeline-label">
+                  Target Commencement Horizon:
+                </p>
+
+                <div className="timeline-grid">
+
+                  {TIMELINES.map((item) => (
+
+                    <button
+                      type="button"
+                      key={item}
+                      className={`timeline-button ${
+                        timeline === item ? "selected" : ""
+                      }`}
+                      onClick={() => setTimeline(item)}
+                    >
+                      {item}
+                    </button>
+
+                  ))}
+
+                </div>
+
+                <p className="scope-label">
+                  Technical Architecture Scope &amp; Current Bottlenecks
+                </p>
+
+                <textarea
+                  className="scope-textarea"
+                  name="scope"
+                  value={formData.scope}
+                  onChange={handleChange}
+                  placeholder="Briefly outline your systems architecture, data integration bottlenecks, current software stack (SAP, Oracle, NetSuite, custom ledger), or key regulatory delivery milestones..."
+                />
+
+              </div>
+
+              {/* =================================================
+                  REQUEST OPTIONS
+              ================================================= */}
+
+              <div className="request-options">
+
+                <label className="request-option">
+
+                  <input
+                    type="checkbox"
+                    name="nda"
+                    checked={formData.nda}
+                    onChange={handleChange}
+                  />
+
+                  <span>
+                    Execute Bilateral Mutual Non-Disclosure Agreement
+                    (NDA) prior to our initial technical briefing and
+                    architecture review.
+                  </span>
+
+                </label>
+
+                <label className="request-option">
+
+                  <input
+                    type="checkbox"
+                    name="videoSession"
+                    checked={formData.videoSession}
+                    onChange={handleChange}
+                  />
+
+                  <span>
+                    Request Direct Video Architecture Session with a
+                    designated TechTorch Principal Engineering Lead.
+                  </span>
+
+                </label>
+
+              </div>
+
+              {/* =================================================
+                  SUBMIT
+              ================================================= */}
+
+              <FormNotice error={submitError} />
+              <button
+                type="submit"
+                disabled={sending}
+                className="financial-submit"
+              >
+
+                <span>
+                  Submit Financial Consultation Request &amp; Connect with
+                  <br />
+                  Architects
+                </span>
+
+                <ArrowRight size={18} />
+
+              </button>
+
+              <p className="form-note">
+
+                <LockKeyhole size={12} />
+
+                Strict Confidentiality Guaranteed • Routed directly
+                to FinTech Solutions Pod Leads
+
+              </p>
+
+            </form>
+
           </div>
+
         </div>
       </section>
-    </div>
+    </>
   );
 }

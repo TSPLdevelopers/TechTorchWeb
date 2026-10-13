@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 const ctaBackground = "/energy2.png";
 
@@ -330,7 +331,7 @@ export default function ApproachAndImageCtaSections() {
         .cta-secondary {
           color: #ffffff;
 
-          background: rgba(255, 255, 255, 0.04);
+          background: #730042;
 
           border: 1px solid rgba(255, 255, 255, 0.45);
 
@@ -339,9 +340,10 @@ export default function ApproachAndImageCtaSections() {
         }
 
         .cta-secondary:hover {
-          border-color: rgba(255, 255, 255, 0.8);
+          border-color: #730042;
+          color: #730042;
 
-          background: rgba(255, 255, 255, 0.1);
+          background: #ffffff;
         }
 
 
@@ -356,7 +358,8 @@ export default function ApproachAndImageCtaSections() {
         }
 
         .cta-primary:hover {
-          background: #f7f7f7;
+          background: #730042;
+          color: #ffffff;
 
           box-shadow:
             0 8px 20px rgba(0, 0, 0, 0.15);
@@ -697,13 +700,13 @@ export default function ApproachAndImageCtaSections() {
             <div className="cta-buttons">
 
               {/* LEFT BUTTON */}
-              <button
-                type="button"
-                className="cta-button cta-secondary"
-              >
-                Talk to Our Experts
-                <ArrowRight size={15} />
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="cta-button cta-secondary"
+>
+  Talk to Our Experts
+  <ArrowRight size={15} />
+</Link>
 
 
               {/* RIGHT BUTTON */}

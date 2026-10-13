@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Target,
   Link2,
@@ -526,10 +527,13 @@ export default function WhyTechTorchAndBuildCtaSections() {
             requirements.
           </p>
 
-          <button className="build-cta-button">
-            Talk to Our Experts
-            <ArrowRight size={16} />
-          </button>
+          <Link
+  to="/talk-to-expert"
+  className="build-cta-button"
+>
+  Talk to Our Experts
+  <ArrowRight size={16} />
+</Link>
         </div>
 
       </div>

@@ -3,10 +3,11 @@ import { adminApi, authApi } from "../api/endpoints";
 
 export const PROFILE_KEY = ["admin", "profile"];
 
-export const useProfile = () =>
+export const useProfile = (enabled = true) =>
   useQuery({
     queryKey: PROFILE_KEY,
     queryFn: adminApi.profile,
+    enabled,
     retry: false,
     staleTime: 5 * 60 * 1000,
   });

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   Zap,
   AlignLeft,
@@ -785,13 +786,13 @@ export default function WhyTechTorchAndCtaSections() {
             </p>
 
             <div className="cta-buttons">
-              <button
-                type="button"
-                className="cta-primary-button"
-              >
-                TALK TO OUR EXPERTS
-                <ArrowRight size={15} strokeWidth={1.8} />
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="cta-primary-button"
+>
+  TALK TO OUR EXPERTS
+  <ArrowRight size={15} strokeWidth={1.8} />
+</Link>
 
               <button
                 type="button"

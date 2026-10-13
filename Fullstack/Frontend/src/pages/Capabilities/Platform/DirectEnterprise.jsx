@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Zap,
   Handshake,
@@ -80,15 +81,18 @@ export default function FinalCtaSection() {
 
             {/* ================= CTA ================= */}
 
-            <button className="final-cta-button">
-              <span>Talk to Us</span>
+            <Link
+  to="/talk-to-expert"
+  className="final-cta-button"
+>
+  <span>Talk to Us</span>
 
-              <ArrowRight
-                size={15}
-                strokeWidth={2}
-                className="final-cta-arrow"
-              />
-            </button>
+  <ArrowRight
+    size={15}
+    strokeWidth={2}
+    className="final-cta-arrow"
+  />
+</Link>
           </div>
 
           {/* ===================================================

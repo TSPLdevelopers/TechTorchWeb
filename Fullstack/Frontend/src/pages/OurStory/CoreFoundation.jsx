@@ -14,6 +14,7 @@ export default function CoreFoundation() {
   return (
     <section className="w-full overflow-hidden bg-[#F4F6FB] px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-14 lg:px-[100px] lg:py-16 xl:py-20 font-inter">
       <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8 xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-10">
+
         {/* ================= LEFT COLUMN ================= */}
         <div className="w-full max-w-xl lg:max-w-none lg:self-start">
           <h2
@@ -39,11 +40,14 @@ export default function CoreFoundation() {
 
         {/* ================= RIGHT COLUMN ================= */}
         <div className="flex min-w-0 flex-col gap-5 font-inter sm:gap-6">
+
           {/* ================= MISSION / VISION ================= */}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+
             {/* Mission */}
             <div className="overflow-hidden rounded-xl bg-white shadow-sm">
-              <div className="aspect-[16/10] w-full sm:aspect-[4/3] lg:aspect-[16/10]">
+              {/* Reduced image height */}
+              <div className="aspect-[16/8] w-full sm:aspect-[16/8] lg:aspect-[16/8]">
                 <img
                   src={MISSION_IMG}
                   alt="Mission"
@@ -51,15 +55,16 @@ export default function CoreFoundation() {
                 />
               </div>
 
-              <div className="p-4 sm:p-5 md:p-6">
+              {/* Reduced content spacing */}
+              <div className="px-4 pb-4 pt-3 sm:px-5 sm:pb-4 sm:pt-3">
                 <h3
-                  className="mb-2 text-[17px] font-semibold sm:text-[18px]"
+                  className="mb-1.5 text-[17px] font-semibold sm:text-[18px]"
                   style={{ color: "#111827" }}
                 >
                   Mission
                 </h3>
 
-                <p className="text-sm leading-relaxed text-gray-500">
+                <p className="text-sm leading-[1.5] text-gray-500">
                   Unlock transformative growth through trust, precision
                   engineering, and human ingenuity. We deliver solutions
                   that move markets.
@@ -69,7 +74,8 @@ export default function CoreFoundation() {
 
             {/* Vision */}
             <div className="overflow-hidden rounded-xl bg-white shadow-sm">
-              <div className="aspect-[16/10] w-full sm:aspect-[4/3] lg:aspect-[16/10]">
+              {/* Reduced image height */}
+              <div className="aspect-[16/8] w-full sm:aspect-[16/8] lg:aspect-[16/8]">
                 <img
                   src={VISION_IMG}
                   alt="Vision"
@@ -77,15 +83,16 @@ export default function CoreFoundation() {
                 />
               </div>
 
-              <div className="p-4 sm:p-5 md:p-6">
+              {/* Reduced content spacing */}
+              <div className="px-4 pb-4 pt-3 sm:px-5 sm:pb-4 sm:pt-3">
                 <h3
-                  className="mb-2 text-[17px] font-semibold sm:text-[18px]"
+                  className="mb-1.5 text-[17px] font-semibold sm:text-[18px]"
                   style={{ color: "#111827" }}
                 >
                   Vision
                 </h3>
 
-                <p className="text-sm leading-relaxed text-gray-500">
+                <p className="text-sm leading-[1.5] text-gray-500">
                   Building the world's most resilient digital foundations.
                   We envision an enterprise landscape where technology is
                   a frictionless enabler.
@@ -97,6 +104,7 @@ export default function CoreFoundation() {
           {/* ================= CORE VALUES ================= */}
           <div className="rounded-xl bg-white p-4 shadow-sm sm:p-6 lg:p-8">
             <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:gap-8">
+
               {/* Core Values Text */}
               <div className="w-full flex-shrink-0 lg:w-64">
                 <h3
@@ -128,8 +136,10 @@ export default function CoreFoundation() {
                   </div>
                 ))}
               </div>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>

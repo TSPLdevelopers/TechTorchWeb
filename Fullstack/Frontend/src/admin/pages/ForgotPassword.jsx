@@ -46,14 +46,14 @@ export default function ForgotPassword() {
     if (pw.newPassword !== pw.confirm) throw new Error("Passwords do not match");
     await authApi.reset({ email: email.trim(), newPassword: pw.newPassword, resetToken });
     toast("Password reset — please sign in");
-    navigate("/admin-login", { replace: true });
+    navigate("/signin", { replace: true });
   });
 
   return (
     <AuthShell
       title="Reset Password"
       subtitle={["", "Enter your registered email", "Enter the 6-digit code we emailed you", "Choose a new password"][step]}
-      footer={<Link to="/admin-login" className="font-medium text-[#780042]">Back to login</Link>}
+      footer={<Link to="/signin" className="font-medium text-[#780042]">Back to login</Link>}
     >
       {step === 1 && (
         <form onSubmit={sendCode} className="space-y-4">

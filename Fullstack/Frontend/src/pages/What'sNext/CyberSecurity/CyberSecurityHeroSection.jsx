@@ -23,7 +23,7 @@ export default function CyberSecurityHeroSection() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            "url('/Futuristic Cybersecurity Operations Center with global threat visualization.png')",
+            "url('/Card4hero.png')",
         }}
       />
 
@@ -128,31 +128,33 @@ export default function CyberSecurityHeroSection() {
 
         {/* ================= BUTTON ================= */}
         <button
-          type="button"
-          onClick={() => navigate("/secure-business")}
-          className="
-            mt-8
-            inline-flex
-            w-fit
-            items-center
-            gap-2
-            rounded-full
-            bg-[#730042]
-            px-6
-            py-3
-            text-xs
-            font-semibold
-            tracking-wide
-            text-white
-            transition-colors
-            hover:bg-[#8F1945]
-            sm:text-sm
-          "
-          style={{ fontFamily: "'Inter', sans-serif" }}
-        >
-          Secure Your Business
-          <span aria-hidden="true">→</span>
-        </button>
+  type="button"
+  onClick={() => navigate("/secure-business")}
+  className="
+    mt-8
+    inline-flex
+    w-fit
+    items-center
+    gap-2
+    rounded-[6px]
+    bg-[#730042]
+    px-6
+    py-3
+    text-xs
+    font-semibold
+    tracking-wide
+    text-white
+    transition-colors
+    duration-300
+    hover:bg-white
+    hover:text-[#730042]
+    sm:text-sm
+  "
+  style={{ fontFamily: "'Inter', sans-serif" }}
+>
+  Secure Your Business
+  <span aria-hidden="true">→</span>
+</button>
       </div>
     </section>
   );

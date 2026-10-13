@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   Network,
@@ -68,11 +69,14 @@ export default function AIServiceHero() {
 
           {/* ================= CTA ================= */}
 
-          <button className="ai-service-cta">
-            <span>Talk to Our Experts</span>
+          <Link
+  to="/talk-to-expert"
+  className="ai-service-cta"
+>
+  <span>Talk to Our Experts</span>
 
-            <ArrowRight className="ai-service-cta-icon" />
-          </button>
+  <ArrowRight className="ai-service-cta-icon" />
+</Link>
 
           {/* ================= DIVIDER ================= */}
 

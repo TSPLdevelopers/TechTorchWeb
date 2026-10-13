@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Download, ShoppingBag } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -593,18 +594,18 @@ export default function EcommerceHeroSection() {
           {/* Buttons */}
           <div className="ecommerce-hero-actions">
             {/* Primary */}
-            <button
-              type="button"
-              className="ecommerce-hero-button ecommerce-primary-button"
-            >
-              Talk to Our Experts
+            <Link
+  to="/talk-to-expert"
+  className="ecommerce-hero-button ecommerce-primary-button"
+>
+  Talk to Our Experts
 
-              <ArrowRight
-                size={16}
-                strokeWidth={1.8}
-                className="ecommerce-button-icon"
-              />
-            </button>
+  <ArrowRight
+    size={16}
+    strokeWidth={1.8}
+    className="ecommerce-button-icon"
+  />
+</Link>
 
             {/* Secondary */}
             <button

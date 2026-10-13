@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const WINE = "#7A1F3D";
 const INK = "#1B1B2A";
@@ -662,17 +663,17 @@ export default function InsuranceHeroBgSection() {
 
           {/* BUTTONS */}
           <div className="insurance-buttons">
-            <button
-              type="button"
-              className="insurance-primary-button"
-            >
-              TALK TO OUR EXPERTS
+            <Link
+  to="/talk-to-expert"
+  className="insurance-primary-button"
+>
+  TALK TO OUR EXPERTS
 
-              <ArrowRight
-                size={14}
-                strokeWidth={1.8}
-              />
-            </button>
+  <ArrowRight
+    size={14}
+    strokeWidth={1.8}
+  />
+</Link>
 
             <button
               type="button"

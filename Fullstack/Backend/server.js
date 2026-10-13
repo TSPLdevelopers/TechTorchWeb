@@ -3,10 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
 const { connectDB } = require("./src/config/db");
 const errorMiddleware = require("./src/middlewares/error.middleware");
-
 const authRoutes = require("./src/routes/authRoutes");
 const adminRoutes = require("./src/routes/adminRoutes");
 const newsRoutes = require("./src/routes/newsRoutes");
@@ -65,6 +63,19 @@ const dataDecisionRoutes = require(
   "./src/routes/dataDecisionRoutes"
 );
 const ourstoryRoutes = require("./src/routes/ourstoryRoutes");
+const secureBusinessRoutes = require("./src/routes/secureBusinessRoutes");
+const digitalSolutionRoutes = require(
+  "./src/routes/digitalSolutionRoutes"
+);
+const sendQuestionRoutes = require(
+  "./src/routes/sendQuestionRoutes"
+);
+const startConversationRoutes = require("./src/routes/startConversationRoutes");
+const exploreQuestionRoutes = require("./src/routes/exploreQuestionRoutes");
+const needsRoutes = require("./src/routes/needsRoutes");
+const inquiryRoutes = require("./src/routes/inquiryRoutes");
+const expertQueryRoutes = require("./src/routes/expertQueryRoutes");
+const queryRoutes = require("./src/routes/queryRoutes");
 
 const app = express();
 
@@ -142,6 +153,25 @@ app.use(
 );
 
 app.use("/api/ourstory", ourstoryRoutes);
+app.use("/api/secure-business", secureBusinessRoutes);
+app.use(
+  "/api/digital-solutions",
+  digitalSolutionRoutes
+);
+
+app.use("/api/send-question", sendQuestionRoutes);
+app.use("/api/start-conversations", startConversationRoutes);
+app.use("/api/explore-questions", exploreQuestionRoutes);
+app.use("/api/needs", needsRoutes);
+app.use("/api/inquiries", inquiryRoutes);
+
+// Talk to Expert form (public). "/expert-queries" without /api is kept
+// so the form works even if VITE_API_URL has no "/api" in it.
+app.use("/api/expert-queries", expertQueryRoutes);
+app.use("/expert-queries", expertQueryRoutes);
+
+// Admin dashboard -> Queries section
+app.use("/api/queries", queryRoutes);
 
 // 404
 app.use((req, res) => {
@@ -156,5 +186,5 @@ app.use(errorMiddleware);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`server is running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

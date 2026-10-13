@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../../api/queryForms";
+import FormNotice from "../../../../components/FormNotice";
 
 export default function AdvisoryFramework() {
   const [timeline, setTimeline] = useState("");
@@ -37,8 +39,13 @@ export default function AdvisoryFramework() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
     const newErrors = {};
 
@@ -76,8 +83,31 @@ export default function AdvisoryFramework() {
 
     setErrors(newErrors);
 
-    if (Object.keys(newErrors).length === 0) {
-      alert("Inquiry submitted successfully!");
+
+    if (Object.keys(newErrors).length > 0) return;
+
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
+
+    try {
+      await submitQuery("secure", {
+        executiveFullName: formData.name.trim(),
+        corporateWorkEmail: formData.email.trim(),
+        organizationName: formData.organization.trim(),
+        industryVertical: formData.industry,
+        currentCriticalChallenge: formData.challenge.trim(),
+        targetTimeline: timeline,
+        infrastructureNotes: formData.context.trim(),
+      });
+
+      setSubmitted(true);
+      setFormData({ email: "", name: "", organization: "", industry: "", challenge: "", context: "" });
+      setTimeline("");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
     }
   };
 
@@ -469,8 +499,10 @@ export default function AdvisoryFramework() {
 
             {/* SUBMIT */}
 
+            <FormNotice error={submitError} success={submitted} />
             <button
               type="submit"
+              disabled={sending}
               className="advisory-submit"
             >
               DEPLOY SECURITY ADVISORY BRIEFING

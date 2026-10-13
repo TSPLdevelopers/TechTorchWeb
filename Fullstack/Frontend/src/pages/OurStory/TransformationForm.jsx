@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../api/queryForms";
+import FormNotice from "../../components/FormNotice";
 import { Mail, ChevronDown, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const INDUSTRIES = [
@@ -51,11 +53,27 @@ export default function TransformationForm() {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-    if (validate()) {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending || !validate()) return;
+
+    setSubmitError("");
+    setSending(true);
+    try {
+      await submitQuery("ourstory", {
+        fullName: form.fullName.trim(),
+        companyEmail: form.email.trim(),
+        industry: form.industry,
+        message: form.message.trim(),
+      });
       setSubmitted(true);
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
     }
   };
 
@@ -256,8 +274,10 @@ export default function TransformationForm() {
                 </div>
 
                 {/* ================= SUBMIT ================= */}
+                <FormNotice error={submitError} />
                 <button
                   type="submit"
+                  disabled={sending}
                   className="mt-1 inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-[14px] font-medium text-white transition-all duration-300 hover:brightness-110 active:scale-[0.99] sm:py-3.5 sm:text-[15px]"
                   style={{
                     background:

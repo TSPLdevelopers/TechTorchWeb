@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Target,
   Share2,
@@ -68,9 +68,58 @@ const reasons = [
 ];
 
 export default function ApproachAndWhyTechTorchSections() {
+  const pageRef = useRef(null);
+
+  /* =====================================================
+     VIEWPORT CARD ANIMATION
+  ===================================================== */
+
+  useEffect(() => {
+    const container = pageRef.current;
+
+    if (!container) return;
+
+    const cards = container.querySelectorAll(
+      ".step-card, .reason-card"
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const card = entry.target;
+          const index = Number(card.dataset.index || 0);
+
+          setTimeout(() => {
+            card.classList.add("card-visible");
+          }, index * 140);
+
+          observer.unobserve(card);
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -50px 0px",
+      }
+    );
+
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="approach-why-page">
+    <div
+      ref={pageRef}
+      className="approach-why-page"
+    >
       <style>{`
+
         /* =====================================================
            FONTS
         ===================================================== */
@@ -92,22 +141,18 @@ export default function ApproachAndWhyTechTorchSections() {
         .approach-why-page {
           width: 100%;
           overflow: hidden;
-
           color: ${INK};
-
           font-family: "Inter", sans-serif;
         }
 
 
         /* =====================================================
            COMMON CONTAINER
-           SAME HERO SPACING SYSTEM
         ===================================================== */
 
         .approach-why-container {
           width: 100%;
           max-width: 1600px;
-
           margin: 0 auto;
 
           padding: 78px 100px;
@@ -136,14 +181,12 @@ export default function ApproachAndWhyTechTorchSections() {
 
         /* =====================================================
            SECTION LABEL
-           INTER
         ===================================================== */
 
         .section-label {
           margin: 0 0 12px;
 
           font-family: "Inter", sans-serif;
-
           font-size: 11px;
           line-height: 1.4;
           font-weight: 700;
@@ -157,7 +200,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
         /* =====================================================
            MAIN HEADINGS
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .main-heading {
@@ -173,7 +215,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
           color: ${INK};
         }
-
 
         .desktop-break {
           display: block;
@@ -206,19 +247,37 @@ export default function ApproachAndWhyTechTorchSections() {
           padding: 22px;
 
           border: 1px solid #ece9e4;
-
           border-radius: 14px;
 
           background: #ffffff;
 
+          /* Initial animation state */
+          opacity: 0;
+          transform: translateY(45px);
+
           transition:
-            transform 0.25s ease,
+            opacity 0.65s ease,
+            transform 0.65s ease,
             box-shadow 0.25s ease;
         }
 
 
-        .step-card:hover {
-          transform: translateY(-4px);
+        /* =====================================================
+           CARD VISIBLE STATE
+        ===================================================== */
+
+        .step-card.card-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           STEP CARD HOVER
+        ===================================================== */
+
+        .step-card.card-visible:hover {
+          transform: translateY(-5px);
 
           box-shadow:
             0 10px 25px rgba(0, 0, 0, 0.06);
@@ -227,7 +286,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
         /* =====================================================
            NUMBER
-           INTER
         ===================================================== */
 
         .step-number {
@@ -256,7 +314,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
         /* =====================================================
            CARD HEADINGS
-           PLUS JAKARTA SANS
         ===================================================== */
 
         .card-title {
@@ -274,7 +331,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
         /* =====================================================
            CARD BODY
-           INTER
         ===================================================== */
 
         .card-body {
@@ -303,7 +359,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
           background: #f4f1ec;
         }
-
 
         .approach-info-text {
           margin: 0;
@@ -348,14 +403,33 @@ export default function ApproachAndWhyTechTorchSections() {
           box-shadow:
             0 1px 4px rgba(0, 0, 0, 0.05);
 
+          /* Initial animation */
+          opacity: 0;
+          transform: translateY(45px);
+
           transition:
-            transform 0.25s ease,
+            opacity 0.65s ease,
+            transform 0.65s ease,
             box-shadow 0.25s ease;
         }
 
 
-        .reason-card:hover {
-          transform: translateY(-4px);
+        /* =====================================================
+           REASON CARD VISIBLE
+        ===================================================== */
+
+        .reason-card.card-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           REASON CARD HOVER
+        ===================================================== */
+
+        .reason-card.card-visible:hover {
+          transform: translateY(-5px);
 
           box-shadow:
             0 12px 28px rgba(0, 0, 0, 0.08);
@@ -464,9 +538,7 @@ export default function ApproachAndWhyTechTorchSections() {
 
           .main-heading {
             font-size: 30px;
-
             line-height: 1.22;
-
             margin-bottom: 28px;
           }
         }
@@ -485,17 +557,13 @@ export default function ApproachAndWhyTechTorchSections() {
 
           .section-label {
             margin-bottom: 10px;
-
             font-size: 9px;
           }
 
           .main-heading {
             font-size: 27px;
-
             line-height: 1.2;
-
             letter-spacing: -0.5px;
-
             margin-bottom: 26px;
           }
 
@@ -506,7 +574,6 @@ export default function ApproachAndWhyTechTorchSections() {
           .steps-grid,
           .reasons-grid {
             grid-template-columns: 1fr;
-
             gap: 14px;
           }
 
@@ -533,13 +600,11 @@ export default function ApproachAndWhyTechTorchSections() {
 
           .card-title {
             font-size: 13px;
-
             margin-bottom: 7px;
           }
 
           .card-body {
             font-size: 11px;
-
             line-height: 1.68;
           }
 
@@ -549,7 +614,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
           .approach-info-text {
             font-size: 10.5px;
-
             line-height: 1.65;
           }
         }
@@ -568,7 +632,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
           .main-heading {
             font-size: 24px;
-
             line-height: 1.2;
           }
 
@@ -583,7 +646,6 @@ export default function ApproachAndWhyTechTorchSections() {
 
           .card-body {
             font-size: 10.5px;
-
             line-height: 1.65;
           }
 
@@ -627,6 +689,8 @@ export default function ApproachAndWhyTechTorchSections() {
           .step-card,
           .reason-card {
             transition: none;
+            opacity: 1;
+            transform: none;
           }
 
           .step-card:hover,
@@ -646,14 +710,14 @@ export default function ApproachAndWhyTechTorchSections() {
 
         <div className="approach-why-container">
 
-          {/* Label - Inter */}
+          {/* LABEL */}
 
           <p className="section-label">
             OUR APPROACH
           </p>
 
 
-          {/* Main Heading - Plus Jakarta Sans */}
+          {/* HEADING */}
 
           <h2 className="main-heading">
             From Healthcare Requirements to Practical
@@ -662,31 +726,32 @@ export default function ApproachAndWhyTechTorchSections() {
           </h2>
 
 
-          {/* Steps */}
+          {/* STEPS */}
 
           <div className="steps-grid">
 
-            {steps.map(({ num, title, body }) => (
+            {steps.map(({ num, title, body }, index) => (
               <div
                 key={num}
+                data-index={index}
                 className="step-card"
               >
 
-                {/* Number - Inter */}
+                {/* NUMBER */}
 
                 <span className="step-number">
                   {num}
                 </span>
 
 
-                {/* Card Heading - Plus Jakarta Sans */}
+                {/* TITLE */}
 
                 <h3 className="card-title">
                   {title}
                 </h3>
 
 
-                {/* Card Text - Inter */}
+                {/* BODY */}
 
                 <p className="card-body">
                   {body}
@@ -698,7 +763,7 @@ export default function ApproachAndWhyTechTorchSections() {
           </div>
 
 
-          {/* Supporting Information - Inter */}
+          {/* SUPPORTING INFORMATION */}
 
           <div className="approach-info">
 
@@ -723,14 +788,14 @@ export default function ApproachAndWhyTechTorchSections() {
 
         <div className="approach-why-container">
 
-          {/* Label - Inter */}
+          {/* LABEL */}
 
           <p className="section-label">
             WHY TECHTORCH
           </p>
 
 
-          {/* Main Heading - Plus Jakarta Sans */}
+          {/* HEADING */}
 
           <h2 className="main-heading">
             Technology Built Around Healthcare
@@ -739,41 +804,44 @@ export default function ApproachAndWhyTechTorchSections() {
           </h2>
 
 
-          {/* Reasons */}
+          {/* REASONS */}
 
           <div className="reasons-grid">
 
-            {reasons.map(({ icon: Icon, title, body }) => (
-              <div
-                key={title}
-                className="reason-card"
-              >
+            {reasons.map(
+              ({ icon: Icon, title, body }, index) => (
+                <div
+                  key={title}
+                  data-index={index}
+                  className="reason-card"
+                >
 
-                {/* Icon */}
+                  {/* ICON */}
 
-                <span className="reason-icon">
-                  <Icon
-                    size={17}
-                    strokeWidth={1.8}
-                  />
-                </span>
-
-
-                {/* Card Heading - Plus Jakarta Sans */}
-
-                <h3 className="card-title">
-                  {title}
-                </h3>
+                  <span className="reason-icon">
+                    <Icon
+                      size={17}
+                      strokeWidth={1.8}
+                    />
+                  </span>
 
 
-                {/* Card Text - Inter */}
+                  {/* TITLE */}
 
-                <p className="card-body">
-                  {body}
-                </p>
+                  <h3 className="card-title">
+                    {title}
+                  </h3>
 
-              </div>
-            ))}
+
+                  {/* BODY */}
+
+                  <p className="card-body">
+                    {body}
+                  </p>
+
+                </div>
+              )
+            )}
 
           </div>
 

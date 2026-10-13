@@ -34,6 +34,10 @@ const CARDS = [
   },
 ];
 
+/* =====================================================
+   CARD
+===================================================== */
+
 function Card({ title, img, href, position }) {
   return (
     <div
@@ -57,12 +61,24 @@ function Card({ title, img, href, position }) {
   );
 }
 
+/* =====================================================
+   MAIN COMPONENT
+===================================================== */
+
 export default function CapabilitiesMarquee() {
   const [activeIndex, setActiveIndex] = useState(1);
+
+  /* =====================================================
+     NEXT
+  ===================================================== */
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % CARDS.length);
   };
+
+  /* =====================================================
+     PREVIOUS
+  ===================================================== */
 
   const handlePrevious = () => {
     setActiveIndex(
@@ -70,9 +86,9 @@ export default function CapabilitiesMarquee() {
     );
   };
 
-  /* =========================================================
+  /* =====================================================
      AUTO SLIDE
-     ========================================================= */
+  ===================================================== */
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -82,9 +98,9 @@ export default function CapabilitiesMarquee() {
     return () => clearInterval(interval);
   }, []);
 
-  /* =========================================================
-     GET SMALLEST CIRCULAR DISTANCE
-     ========================================================= */
+  /* =====================================================
+     GET RELATIVE POSITION
+  ===================================================== */
 
   const getRelativePosition = (index) => {
     const total = CARDS.length;
@@ -105,6 +121,7 @@ export default function CapabilitiesMarquee() {
   return (
     <section className="cap-section">
       <style>{`
+
         /* =====================================================
            SECTION
         ===================================================== */
@@ -143,26 +160,42 @@ export default function CapabilitiesMarquee() {
            HEADER
         ===================================================== */
 
-        .cap-header {
-          width: 100%;
-          max-width: none;
+        
+.cap-header {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 25px;
+  padding: 0 100px;
+  box-sizing: border-box;
 
-          margin: 0 auto 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+}
 
-          padding-left: 16px;
-          padding-right: 16px;
+/* Tablet */
+@media (max-width: 1023px) {
+  .cap-header {
+    padding: 0 40px;
+  }
+}
 
-          box-sizing: border-box;
+/* Mobile */
+@media (max-width: 767px) {
+  .cap-header {
+    padding: 0 24px;
+  }
+}
 
-          display: flex;
+/* Small mobile */
+@media (max-width: 480px) {
+  .cap-header {
+    padding: 0 16px;
+  }
+}
 
-          justify-content: space-between;
-          align-items: flex-start;
-
-          gap: 30px;
-
-          flex-wrap: wrap;
-        }
 
 
         /* =====================================================
@@ -220,10 +253,6 @@ export default function CapabilitiesMarquee() {
 
         /* =====================================================
            TRACK
-
-           IMPORTANT:
-           Cards are now positioned continuously instead of
-           remounting left / center / right.
         ===================================================== */
 
         .cap-slider-track {
@@ -266,10 +295,6 @@ export default function CapabilitiesMarquee() {
           box-shadow:
             0 14px 34px rgba(0, 0, 0, 0.30);
 
-          /*
-             THIS IS THE MAIN SMOOTHING FIX
-          */
-
           transition:
             transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
             opacity 0.7s ease,
@@ -305,7 +330,7 @@ export default function CapabilitiesMarquee() {
 
 
         /* =====================================================
-           LEFT / RIGHT
+           LEFT
         ===================================================== */
 
         .cap-card--1 {
@@ -325,6 +350,10 @@ export default function CapabilitiesMarquee() {
             0 14px 34px rgba(0, 0, 0, 0.30);
         }
 
+
+        /* =====================================================
+           RIGHT
+        ===================================================== */
 
         .cap-card-1 {
           transform:
@@ -346,9 +375,6 @@ export default function CapabilitiesMarquee() {
 
         /* =====================================================
            HIDDEN CARDS
-
-           They remain mounted so the browser can smoothly
-           move them into the visible positions.
         ===================================================== */
 
         .cap-card--2,
@@ -389,10 +415,6 @@ export default function CapabilitiesMarquee() {
           object-fit: cover;
 
           display: block;
-
-          /*
-             Prevent image rendering jitter
-          */
 
           user-select: none;
           -webkit-user-drag: none;
@@ -438,7 +460,7 @@ export default function CapabilitiesMarquee() {
 
 
         /* =====================================================
-           ARROW
+           CARD ARROW
         ===================================================== */
 
         .cap-card-arrow {
@@ -477,201 +499,257 @@ export default function CapabilitiesMarquee() {
           display: flex;
 
           justify-content: center;
-
           align-items: center;
 
           gap: 14px;
 
-          margin-top: 5px;
+          margin-top: 4px;
         }
 
 
+        /* =====================================================
+           CONTROL BUTTON
+        ===================================================== */
+
         .cap-control-btn {
-          width: 42px;
-          height: 42px;
+          position: relative;
 
-          border-radius: 50%;
+          width: 50px;
+          height: 50px;
 
-          border: 2px solid #ffffff;
+          padding: 0;
+          margin: 0;
 
-          background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.42);
+
+          border-radius: 14px;
+
+          background:
+            linear-gradient(
+              145deg,
+              rgba(255, 255, 255, 0.20),
+              rgba(255, 255, 255, 0.07)
+            );
+
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
 
           color: #ffffff;
 
           display: flex;
 
           align-items: center;
-
           justify-content: center;
 
-          font-size: 23px;
+          font-family:
+            "Plus Jakarta Sans",
+            sans-serif;
+
+          font-size: 24px;
+
+          font-weight: 400;
+
+          line-height: 1;
 
           cursor: pointer;
 
+          overflow: hidden;
+
+          box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.20);
+
           transition:
-            background 0.3s ease,
-            color 0.3s ease,
-            transform 0.25s ease;
+            background 0.35s ease,
+            border-color 0.35s ease,
+            color 0.35s ease,
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.35s ease;
+
+          -webkit-tap-highlight-color: transparent;
         }
 
+
+        /* =====================================================
+           ARROW
+        ===================================================== */
+
+        .cap-control-arrow {
+          position: relative;
+
+          z-index: 3;
+
+          display: flex;
+
+          align-items: center;
+          justify-content: center;
+
+          width: 100%;
+          height: 100%;
+
+          color: inherit;
+
+          line-height: 1;
+
+          transform: translateX(0);
+
+          transition:
+            color 0.3s ease,
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+
+        /* =====================================================
+           SHINE
+        ===================================================== */
+
+        .cap-control-btn::before {
+          content: "";
+
+          position: absolute;
+
+          top: 0;
+          left: -130%;
+
+          width: 80%;
+          height: 100%;
+
+          background:
+            linear-gradient(
+              90deg,
+              transparent,
+              rgba(255, 255, 255, 0.30),
+              transparent
+            );
+
+          transform: skewX(-20deg);
+
+          transition:
+            left 0.65s ease;
+
+          pointer-events: none;
+
+          z-index: 1;
+        }
+
+
+        /* =====================================================
+           INNER HIGHLIGHT
+        ===================================================== */
+
+        .cap-control-btn::after {
+          content: "";
+
+          position: absolute;
+
+          inset: 1px;
+
+          border-radius: 13px;
+
+          background:
+            linear-gradient(
+              145deg,
+              rgba(255, 255, 255, 0.10),
+              transparent 55%
+            );
+
+          pointer-events: none;
+
+          z-index: 1;
+        }
+
+
+        /* =====================================================
+           HOVER
+        ===================================================== */
 
         .cap-control-btn:hover {
           background: #ffffff;
 
-          color: #6d0e42;
+          border-color: #ffffff;
 
-          transform: scale(1.08);
+          color: #730042;
+
+          box-shadow:
+            0 14px 32px rgba(0, 0, 0, 0.24),
+            0 0 24px rgba(255, 255, 255, 0.14);
+
+          transform:
+            translateY(-4px)
+            scale(1.04);
         }
 
+
+        /* =====================================================
+           HOVER SHINE
+        ===================================================== */
+
+        .cap-control-btn:hover::before {
+          left: 130%;
+        }
+
+
+        /* =====================================================
+           LEFT ARROW HOVER
+        ===================================================== */
+
+        .cap-control-btn:first-child:hover {
+          transform:
+            translate(-4px, -4px)
+            scale(1.04);
+        }
+
+        .cap-control-btn:first-child:hover .cap-control-arrow {
+          transform: translateX(-3px);
+        }
+
+
+        /* =====================================================
+           RIGHT ARROW HOVER
+        ===================================================== */
+
+        .cap-control-btn:last-child:hover {
+          transform:
+            translate(4px, -4px)
+            scale(1.04);
+        }
+
+        .cap-control-btn:last-child:hover .cap-control-arrow {
+          transform: translateX(3px);
+        }
+
+
+        /* =====================================================
+           ACTIVE
+        ===================================================== */
 
         .cap-control-btn:active {
-          transform: scale(0.94);
+          transform:
+            scale(0.92);
+
+          box-shadow:
+            0 5px 14px rgba(0, 0, 0, 0.18);
+        }
+
+
+        .cap-control-btn:first-child:active,
+        .cap-control-btn:last-child:active {
+          transform: scale(0.92);
         }
 
 
         /* =====================================================
-           SMALL
+           FOCUS
         ===================================================== */
 
-        @media (min-width: 640px) {
-          .cap-header {
-            padding-left: 24px;
-            padding-right: 24px;
-          }
-        }
+        .cap-control-btn:focus-visible {
+          outline: none;
 
+          border-color: #ffffff;
 
-        /* =====================================================
-           TABLET
-        ===================================================== */
-
-        @media (min-width: 768px) {
-          .cap-header {
-            padding-left: 40px;
-            padding-right: 40px;
-          }
-
-          .cap-title {
-            font-size: 36px;
-            transform: none;
-          }
-
-          .cap-desc {
-            font-size: 16px;
-
-            font-family: "Inter", sans-serif;
-
-            transform: none;
-          }
-
-          .cap-card {
-            width: 270px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 300px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.86);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 300px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.86);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1.03);
-          }
-        }
-
-
-        /* =====================================================
-           DESKTOP
-        ===================================================== */
-
-        @media (min-width: 1024px) {
-          .cap-header {
-            padding-left: 100px;
-            padding-right: 100px;
-          }
-
-          .cap-card {
-            width: 285px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 325px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.90);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 325px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.90);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1.07);
-          }
-        }
-
-
-        /* =====================================================
-           LARGE DESKTOP
-        ===================================================== */
-
-        @media (min-width: 1200px) {
-          .cap-card {
-            width: 300px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 345px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.90);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 345px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.90);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1.10);
-          }
+          box-shadow:
+            0 0 0 3px rgba(255, 255, 255, 0.24),
+            0 10px 28px rgba(0, 0, 0, 0.22);
         }
 
 
@@ -680,75 +758,20 @@ export default function CapabilitiesMarquee() {
         ===================================================== */
 
         @media (max-width: 767px) {
-          .cap-section {
-            padding-top: 48px;
-            padding-bottom: 55px;
+
+          .cap-controls {
+            gap: 11px;
+
+            margin-top: 2px;
           }
 
-          .cap-header {
-            padding-left: 16px;
-            padding-right: 16px;
+          .cap-control-btn {
+            width: 46px;
+            height: 46px;
 
-            margin-bottom: 10px;
-          }
+            border-radius: 13px;
 
-          .cap-title {
-            font-size: 30px;
-
-            transform: none;
-          }
-
-          .cap-desc {
-            font-size: 16px;
-
-            max-width: 100%;
-
-            transform: none;
-          }
-
-          .cap-slider {
-            padding: 20px 0 30px;
-          }
-
-          .cap-slider-track {
-            height: 350px;
-          }
-
-          .cap-card {
-            width: 240px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 258px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.82);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 258px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.82);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1);
-          }
-
-          .cap-card-label {
-            font-size: 14px;
-
-            padding:
-              13px 15px 15px;
+            font-size: 22px;
           }
         }
 
@@ -758,67 +781,16 @@ export default function CapabilitiesMarquee() {
         ===================================================== */
 
         @media (max-width: 480px) {
-          .cap-section {
-            padding:
-              42px 0 50px;
-          }
 
-          .cap-header {
-            padding-left: 16px;
-            padding-right: 16px;
-
-            gap: 16px;
-          }
-
-          .cap-title {
-            font-size: 27px;
-          }
-
-          .cap-desc {
-            font-size: 14px;
-
-            line-height: 1.6;
-          }
-
-          .cap-slider-track {
-            height: 330px;
-          }
-
-          .cap-card {
-            width: 220px;
-
-            border-radius: 14px;
-          }
-
-          .cap-card--1 {
-            transform:
-              translate3d(
-                calc(-50% - 232px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.82);
-          }
-
-          .cap-card-1 {
-            transform:
-              translate3d(
-                calc(-50% + 232px),
-                calc(-50% + 8px),
-                0
-              )
-              scale(0.82);
-          }
-
-          .cap-card-0 {
-            transform:
-              translate3d(-50%, -50%, 0)
-              scale(1);
+          .cap-controls {
+            gap: 9px;
           }
 
           .cap-control-btn {
-            width: 40px;
-            height: 40px;
+            width: 43px;
+            height: 43px;
+
+            border-radius: 11px;
 
             font-size: 20px;
           }
@@ -830,12 +802,14 @@ export default function CapabilitiesMarquee() {
         ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
-          .cap-card,
+
           .cap-control-btn,
-          .cap-card-arrow {
-            transition: none !important;
+          .cap-control-btn::before,
+          .cap-control-arrow {
+            transition: none;
           }
         }
+
       `}</style>
 
 
@@ -844,6 +818,7 @@ export default function CapabilitiesMarquee() {
       ===================================================== */}
 
       <div className="cap-header">
+
         <h2 className="cap-title">
           Capabilities
         </h2>
@@ -853,17 +828,22 @@ export default function CapabilitiesMarquee() {
           to solve complex business challenges. From digital platforms to
           AI, we help businesses work smarter, adapt and grow.
         </p>
+
       </div>
 
 
       {/* =====================================================
-          SMOOTH SLIDER
+          SLIDER
       ===================================================== */}
 
       <div className="cap-slider">
+
         <div className="cap-slider-track">
+
           {CARDS.map((card, index) => {
-            const position = getRelativePosition(index);
+
+            const position =
+              getRelativePosition(index);
 
             return (
               <Card
@@ -873,7 +853,9 @@ export default function CapabilitiesMarquee() {
               />
             );
           })}
+
         </div>
+
       </div>
 
 
@@ -882,14 +864,18 @@ export default function CapabilitiesMarquee() {
       ===================================================== */}
 
       <div className="cap-controls">
+
         <button
           type="button"
           className="cap-control-btn"
           onClick={handlePrevious}
           aria-label="Previous card"
         >
-          ←
+          <span className="cap-control-arrow">
+            ←
+          </span>
         </button>
+
 
         <button
           type="button"
@@ -897,9 +883,13 @@ export default function CapabilitiesMarquee() {
           onClick={handleNext}
           aria-label="Next card"
         >
-          →
+          <span className="cap-control-arrow">
+            →
+          </span>
         </button>
+
       </div>
+
     </section>
   );
 }

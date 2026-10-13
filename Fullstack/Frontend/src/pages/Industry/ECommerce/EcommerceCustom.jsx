@@ -8,7 +8,7 @@ import {
   Headphones,
 } from "lucide-react";
 
-const WINE = "#7A1F3D";
+const WINE = "#730042";
 
 const cards = [
   {

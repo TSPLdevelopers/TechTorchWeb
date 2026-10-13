@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, ShieldCheck, Activity, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -853,13 +854,13 @@ export default function HealthcareHeroSection() {
 
             {/* BUTTONS */}
             <div className="healthcare-hero-actions">
-              <button
-                type="button"
-                className="healthcare-primary-btn"
-              >
-                Talk to Our Healthcare Experts
-                <ArrowRight size={15} />
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="healthcare-primary-btn"
+>
+  Talk to Our Experts
+  <ArrowRight size={15} />
+</Link>
 
               <button
                 type="button"

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ChevronRight, ArrowRight } from "lucide-react";
 
 const WINE = "#7A1F3D";
@@ -218,14 +219,13 @@ export default function BuildOnlineBusinessCtaSection() {
 
         .build-online-secondary {
           border: 1px solid rgba(255, 255, 255, 0.12);
-          background: rgba(255, 255, 255, 0.12);
-          color: #ffffff;
+          background: #ffffff;
+          color: #730042;
         }
 
         .build-online-secondary:hover {
           transform: translateY(-3px);
-          background: rgba(255, 255, 255, 0.20);
-          border-color: rgba(255, 255, 255, 0.30);
+          
         }
 
         /* =========================================
@@ -414,21 +414,21 @@ export default function BuildOnlineBusinessCtaSection() {
           {/* Buttons */}
           <div className="build-online-actions">
             {/* Primary Button */}
-            <button
-              type="button"
-              className="
-                build-online-button
-                build-online-primary
-              "
-            >
-              Talk to Our Experts
+            <Link
+  to="/talk-to-expert"
+  className="
+    build-online-button
+    build-online-primary
+  "
+>
+  Talk to Our Experts
 
-              <ArrowRight
-                size={15}
-                strokeWidth={1.8}
-                className="build-online-arrow"
-              />
-            </button>
+  <ArrowRight
+    size={15}
+    strokeWidth={1.8}
+    className="build-online-arrow"
+  />
+</Link>
 
             {/* Secondary Button */}
             <button

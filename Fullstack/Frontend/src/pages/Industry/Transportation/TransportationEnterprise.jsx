@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
-const WINE = "#7A1F3D";
+const WINE = "#730042";
 
 export default function TransportationImageCtaSection() {
   return (
@@ -185,8 +186,10 @@ export default function TransportationImageCtaSection() {
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 7px;
 
-          background: ${WINE};
+          background: #730042;
           color: #ffffff;
+
+          
 
           font-family: "Inter", sans-serif;
           font-size: 10px;
@@ -210,7 +213,8 @@ export default function TransportationImageCtaSection() {
 
         .transportation-cta-button:hover {
           transform: translateY(-3px);
-          background: #8e294d;
+          background: #ffffff;
+          color: #730042; 
           box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
         }
 
@@ -429,13 +433,13 @@ export default function TransportationImageCtaSection() {
           together with solutions designed around your requirements.
         </p>
 
-        <button
-          type="button"
-          className="transportation-cta-button"
-        >
-          TALK TO OUR EXPERTS
-          <ArrowRight size={14} strokeWidth={2} />
-        </button>
+        <Link
+  to="/talk-to-expert"
+  className="transportation-cta-button"
+>
+  TALK TO OUR EXPERTS
+  <ArrowRight size={14} strokeWidth={2} />
+</Link>
 
       </div>
     </section>

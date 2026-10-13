@@ -1,5 +1,4 @@
 const express = require("express");
-
 const {
   createStartConversation,
   getStartConversations,
@@ -9,20 +8,12 @@ const {
 } = require("../controllers/startConversationController");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
-// Submit enquiry
 router.post("/", createStartConversation);
-
-// Get all enquiries
-router.get("/", getStartConversations);
-
-// Get single enquiry
-router.get("/:id", getStartConversationById);
-
-// Update enquiry status
-router.patch("/:id/status", updateStartConversationStatus);
-
-// Delete enquiry
-router.delete("/:id", deleteStartConversation);
+router.get("/", authMiddleware, getStartConversations);
+router.get("/:id", authMiddleware, getStartConversationById);
+router.patch("/:id/status", authMiddleware, updateStartConversationStatus);
+router.delete("/:id", authMiddleware, deleteStartConversation);
 
 module.exports = router;
