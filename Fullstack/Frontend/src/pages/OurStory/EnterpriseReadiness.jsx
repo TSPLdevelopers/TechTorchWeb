@@ -1,9 +1,84 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  ArrowUpRight,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const BG_IMAGE = "/Enterprise.png";
 
 export default function EnterpriseHero() {
+  const [showOptions, setShowOptions] = useState(false);
+  const contactRef = useRef(null);
+  const hideTimeout = useRef(null);
+
+  // Show icons and cancel pending hide
+  const handleMouseEnter = () => {
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+    }
+
+    setShowOptions(true);
+  };
+
+  // Hide icons after a short delay
+  const handleMouseLeave = () => {
+    hideTimeout.current = setTimeout(() => {
+      setShowOptions(false);
+    }, 400);
+  };
+
+  // Close options on outside click or Escape
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        contactRef.current &&
+        !contactRef.current.contains(event.target)
+      ) {
+        setShowOptions(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setShowOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+      }
+    };
+  }, []);
+
+  const contactOptions = [
+    {
+      label: "Call Us",
+      Icon: Phone,
+      href: "tel:+915813500381",
+    },
+    {
+      label: "WhatsApp",
+      Icon: MessageCircle,
+      href: "https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20enterprise%20technology%20solutions.",
+      external: true,
+    },
+    {
+      label: "Email Us",
+      Icon: Mail,
+      href: "mailto:contact@techtorch.solutions",
+    },
+  ];
+
   return (
     <section
       className="w-full bg-black font-inter"
@@ -96,36 +171,121 @@ export default function EnterpriseHero() {
             clarity to deliver unshakeable performance.
           </p>
 
-          {/* Button */}
-          <Link
-  to="/talk-to-expert"
-  className="
-    inline-flex
-    items-center
-    justify-center
-    mt-2
-    sm:mt-4
-    px-5
-    sm:px-6
-    py-3
-    text-[13px]
-    sm:text-sm
-    font-semibold
-    text-white
-    rounded-sm
-    border
-    border-[#730042]
-    bg-[#730042]
-    transition-all
-    duration-300
-    hover:bg-white
-    hover:text-[#730042]
-    hover:border-white
-    hover:scale-[1.02]
-  "
->
-  Talk To Experts
-</Link>
+          {/* Button + Contact Icons */}
+          <div
+            ref={contactRef}
+            className="relative inline-block mt-2 sm:mt-4"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {/* Talk To Experts Button */}
+            <Link
+              to="/talk-to-expert"
+              className="
+                group
+                inline-flex
+                items-center
+                justify-center
+                gap-2
+                px-5
+                sm:px-6
+                py-3
+                text-[13px]
+                sm:text-sm
+                font-semibold
+                text-white
+                rounded-sm
+                border
+                border-[#730042]
+                bg-[#730042]
+                transition-all
+                duration-300
+                hover:bg-white
+                hover:text-[#730042]
+                hover:border-white
+                hover:scale-[1.02]
+                whitespace-nowrap
+              "
+            >
+              Talk To Experts
+
+              <ArrowUpRight
+                size={16}
+                strokeWidth={1.8}
+                className="
+                  shrink-0
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                  group-hover:-translate-y-1
+                "
+              />
+            </Link>
+
+            {/* Contact Icons — button position remains unchanged */}
+            <div
+              className={`
+                absolute
+                left-full
+                top-1/2
+                ml-2
+                flex
+                -translate-y-1/2
+                items-center
+                gap-2
+                transition-all
+                duration-300
+                ${
+                  showOptions
+                    ? "visible opacity-100"
+                    : "invisible opacity-0 pointer-events-none"
+                }
+              `}
+              aria-hidden={!showOptions}
+            >
+              {contactOptions.map(
+                ({ label, Icon, href, external }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    title={label}
+                    aria-label={label}
+                    target={external ? "_blank" : undefined}
+                    rel={
+                      external
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    tabIndex={showOptions ? 0 : -1}
+                    onClick={() => setShowOptions(false)}
+                    className="
+                      flex
+                      h-10
+                      w-10
+                      sm:h-11
+                      sm:w-11
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      border
+                      border-white/50
+                      bg-black/80
+                      text-white
+                      backdrop-blur-md
+                      transition-all
+                      duration-300
+                      hover:scale-110
+                      hover:border-[#730042]
+                      hover:bg-[#730042]
+                    "
+                  >
+                    <Icon size={18} />
+                  </a>
+                )
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
