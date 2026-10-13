@@ -78,7 +78,7 @@ export default function TelecommunicationsGetInTouch() {
   const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-<<<<<<< HEAD
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (sending) return;
@@ -110,7 +110,7 @@ export default function TelecommunicationsGetInTouch() {
     } finally {
       setSending(false);
     }
-=======
+
     const form = e.currentTarget;
 
     if (!form.checkValidity()) {
@@ -138,7 +138,7 @@ export default function TelecommunicationsGetInTouch() {
     setTimeout(() => {
       setShowSuccess(false);
     }, 3000);
->>>>>>> 532542ecc0db000882b434b541adcfe5c57155b3
+
   };
 
   return (
