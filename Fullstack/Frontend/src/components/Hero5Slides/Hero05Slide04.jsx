@@ -1,8 +1,84 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  ArrowUpRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 const backgroundImage = "/Hero5slide4.png";
 
 export default function BringBusinessTogetherSection() {
+  const [showOptions, setShowOptions] = useState(false);
+  const contactRef = useRef(null);
+  const hideTimeout = useRef(null);
+
+  // Show icons and cancel pending hide
+  const handleMouseEnter = () => {
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+    }
+
+    setShowOptions(true);
+  };
+
+  // Hide icons after a short delay
+  const handleMouseLeave = () => {
+    hideTimeout.current = setTimeout(() => {
+      setShowOptions(false);
+    }, 400);
+  };
+
+  // Close options on outside click or Escape
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        contactRef.current &&
+        !contactRef.current.contains(event.target)
+      ) {
+        setShowOptions(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setShowOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+      }
+    };
+  }, []);
+
+  const contactOptions = [
+    {
+      label: "Call Us",
+      Icon: Phone,
+      href: "tel:+915813500381",
+    },
+    {
+      label: "WhatsApp",
+      Icon: MessageCircle,
+      href: "https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20TorchX%20Suite.",
+      external: true,
+    },
+    {
+      label: "Email Us",
+      Icon: Mail,
+      href: "mailto:contact@techtorch.solutions",
+    },
+  ];
+
   return (
     <section className="business-together-section">
 
@@ -13,7 +89,7 @@ export default function BringBusinessTogetherSection() {
         className="business-bg-image"
       />
 
-      {/* Dark Gradient Overlay */}
+      {/* DARK GRADIENT OVERLAY */}
       <div className="business-overlay" />
 
       <div className="business-content">
@@ -38,12 +114,58 @@ export default function BringBusinessTogetherSection() {
           </p>
         </div>
 
-        {/* BUTTON */}
-        <a href="#" className="business-button">
-          Talk to Our Experts →
-        </a>
-      </div>
+        {/* BUTTON + CONTACT ICONS */}
+        <div
+          ref={contactRef}
+          className="business-contact-wrapper"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* TALK TO OUR EXPERTS BUTTON */}
+          <Link
+            to="/talk-to-expert"
+            className="business-button"
+          >
+            <span>Talk to Our Experts</span>
 
+            <ArrowUpRight
+              size={18}
+              strokeWidth={1.8}
+              className="business-button-arrow"
+            />
+          </Link>
+
+          {/* CONTACT ICONS */}
+          <div
+            className={`business-contact-options ${
+              showOptions ? "show" : ""
+            }`}
+            aria-hidden={!showOptions}
+          >
+            {contactOptions.map(
+              ({ label, Icon, href, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  title={label}
+                  aria-label={label}
+                  target={external ? "_blank" : undefined}
+                  rel={
+                    external
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  tabIndex={showOptions ? 0 : -1}
+                  onClick={() => setShowOptions(false)}
+                  className="business-contact-icon"
+                >
+                  <Icon size={18} />
+                </a>
+              )
+            )}
+          </div>
+        </div>
+      </div>
 
       <style>{`
 
@@ -63,17 +185,13 @@ export default function BringBusinessTogetherSection() {
           box-sizing: border-box;
         }
 
-
         /* ================= BACKGROUND IMAGE ================= */
 
         .business-bg-image {
           position: absolute;
 
-          /* MAKE IMAGE WIDER */
           width: 100%;
           height: auto;
-
-          /* Keep complete image */
           max-width: none;
 
           left: 0;
@@ -85,7 +203,6 @@ export default function BringBusinessTogetherSection() {
 
           z-index: 0;
         }
-
 
         /* ================= OVERLAY ================= */
 
@@ -105,7 +222,6 @@ export default function BringBusinessTogetherSection() {
           z-index: 1;
         }
 
-
         /* ================= CONTENT ================= */
 
         .business-content {
@@ -114,11 +230,9 @@ export default function BringBusinessTogetherSection() {
 
           max-width: 560px;
 
-          /* Vertical padding */
           padding-top: 45px;
           padding-bottom: 45px;
 
-          /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
           padding-left: 16px;
           padding-right: 16px;
 
@@ -146,11 +260,9 @@ export default function BringBusinessTogetherSection() {
           }
         }
 
-
         .business-text {
           transform: translateY(-25px);
         }
-
 
         .business-content h1 {
           font-size: 28px;
@@ -162,7 +274,6 @@ export default function BringBusinessTogetherSection() {
           margin: 0 0 18px 0;
         }
 
-
         .business-content p {
           font-size: 14px;
           line-height: 1.7;
@@ -172,7 +283,6 @@ export default function BringBusinessTogetherSection() {
           margin: 0 0 14px 0;
         }
 
-
         .business-content .business-highlight {
           color: #ffffff;
           font-weight: 700;
@@ -180,11 +290,21 @@ export default function BringBusinessTogetherSection() {
           margin-bottom: 30px;
         }
 
+        /* ================= BUTTON WRAPPER ================= */
+
+        .business-contact-wrapper {
+          position: relative;
+          display: inline-block;
+        }
 
         /* ================= BUTTON ================= */
 
         .business-button {
-          display: inline-block;
+          display: inline-flex;
+
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
 
           background: transparent;
           color: #ffffff;
@@ -200,15 +320,92 @@ export default function BringBusinessTogetherSection() {
 
           text-decoration: none;
 
-          transition: all 0.3s ease;
-        }
+          white-space: nowrap;
 
+          transition:
+            background 0.3s ease,
+            color 0.3s ease,
+            transform 0.3s ease;
+        }
 
         .business-button:hover {
           background: #ffffff;
           color: #0a0a0f;
         }
 
+        /* ================= ARROW ================= */
+
+        .business-button-arrow {
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+
+        .business-button:hover .business-button-arrow {
+          transform: translate(3px, -3px);
+        }
+
+        /* ================= CONTACT ICONS ================= */
+
+        .business-contact-options {
+          position: absolute;
+          left: 100%;
+          top: 50%;
+
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          margin-left: 10px;
+
+          transform: translateY(-50%);
+
+          visibility: hidden;
+          opacity: 0;
+          pointer-events: none;
+
+          transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+
+          z-index: 5;
+        }
+
+        .business-contact-options.show {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .business-contact-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 42px;
+          height: 42px;
+          flex-shrink: 0;
+
+          border: 1px solid rgba(255,255,255,0.6);
+          border-radius: 50%;
+
+          background: rgba(10,10,15,0.9);
+          color: #ffffff;
+
+          text-decoration: none;
+
+          transition:
+            background 0.25s ease,
+            color 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease;
+        }
+
+        .business-contact-icon:hover {
+          background: #730042;
+          color: #ffffff;
+          border-color: #730042;
+          transform: scale(1.08);
+        }
 
         /* ================= LAPTOP ================= */
 
@@ -224,7 +421,6 @@ export default function BringBusinessTogetherSection() {
           }
 
         }
-
 
         /* ================= TABLET ================= */
 
@@ -248,8 +444,17 @@ export default function BringBusinessTogetherSection() {
             transform: translateY(-15px);
           }
 
-        }
+          .business-contact-options {
+            gap: 6px;
+            margin-left: 8px;
+          }
 
+          .business-contact-icon {
+            width: 38px;
+            height: 38px;
+          }
+
+        }
 
         /* ================= MOBILE ================= */
 
@@ -294,8 +499,22 @@ export default function BringBusinessTogetherSection() {
             font-size: 14px;
           }
 
-        }
+          .business-contact-options {
+            gap: 6px;
+            margin-left: 7px;
+          }
 
+          .business-contact-icon {
+            width: 34px;
+            height: 34px;
+          }
+
+          .business-contact-icon svg {
+            width: 16px;
+            height: 16px;
+          }
+
+        }
 
         /* ================= SMALL MOBILE ================= */
 
@@ -330,6 +549,21 @@ export default function BringBusinessTogetherSection() {
           .business-button {
             padding: 11px 18px;
             font-size: 13px;
+          }
+
+          .business-contact-options {
+            gap: 5px;
+            margin-left: 6px;
+          }
+
+          .business-contact-icon {
+            width: 31px;
+            height: 31px;
+          }
+
+          .business-contact-icon svg {
+            width: 15px;
+            height: 15px;
           }
 
         }
