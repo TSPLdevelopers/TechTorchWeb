@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
-  Briefcase, Calendar, FileText, FolderOpen, LayoutGrid, LogOut, Megaphone, Menu, UserCog, Users, X,
+  Briefcase, Calendar, FileText, FolderOpen, Inbox, LayoutGrid, LogOut, Megaphone, Menu, UserCog, Users, X,
 } from "lucide-react";
 import { useLogout, useProfile } from "../hooks/useAuth";
 import { useList } from "../hooks/useResource";
+import { useQueryStats } from "../hooks/useQueries";
+import { useMe } from "../../account/useAccount";
 import { ACCENT, PageLoader } from "../components/ui";
 
 // Logo public folder se serve hota hai (public/Tech-Torch2.png)
@@ -19,6 +21,7 @@ const NAV = [
   { label: "Enterprise Events", to: "/events", icon: Calendar, count: "events" },
   { label: "Whitepapers", to: "/whitepapers", icon: FolderOpen, count: "whitepapers" },
   { label: "Latest Updates", to: "/latest-updates", icon: Megaphone, count: "updates" },
+  { label: "Queries", to: "/admin-queries", icon: Inbox, queryBadge: true },
 ];
 
 function Count({ resource }) {
@@ -27,8 +30,26 @@ function Count({ resource }) {
   return <span className="ml-auto rounded-full bg-stone-100 px-2 py-0.5 text-xs text-stone-500">{data.length}</span>;
 }
 
+// "Queries" sidebar badge: number of new / unattended enquiries
+function QueryBadge() {
+  const { data } = useQueryStats();
+  const count = data?.new ?? 0;
+  if (!count) return null;
+  return (
+    <span className="ml-auto rounded-full bg-[#780042] px-2 py-0.5 text-xs font-semibold text-white">
+      {count > 99 ? "99+" : count}
+    </span>
+  );
+}
+
 export default function AdminLayout() {
-  const { data: me, isLoading, isError } = useProfile();
+  // 1) who is signed in? (admin or candidate)
+  const { data: account, isLoading: accountLoading } = useMe();
+  const isAdmin = account?.accountType === "admin";
+
+  // 2) only admins are allowed to load the admin profile
+  const { data: me, isLoading: profileLoading, isError } = useProfile(isAdmin);
+  const isLoading = accountLoading || (isAdmin && profileLoading);
   const logout = useLogout();
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,7 +58,15 @@ export default function AdminLayout() {
   useEffect(() => setOpen(false), [location.pathname]);
 
   if (isLoading) return <PageLoader />;
-  if (isError || !me) return <Navigate to="/admin-login" replace state={{ from: location.pathname }} />;
+
+  // not signed in -> common sign-in page
+  if (!account) return <Navigate to="/signin" replace state={{ from: location.pathname }} />;
+
+  // signed in as a candidate -> never show the admin dashboard
+  if (!isAdmin) return <Navigate to="/candidate" replace />;
+
+  // admin cookie expired / account disabled
+  if (isError || !me) return <Navigate to="/signin" replace state={{ from: location.pathname }} />;
 
   const handleLogout = async () => {
     try {
@@ -45,7 +74,7 @@ export default function AdminLayout() {
     } catch {
       /* cookie may already be expired – still leave */
     }
-    navigate("/admin-login", { replace: true });
+    navigate("/signin", { replace: true });
   };
 
   const linkClass = ({ isActive }) =>
@@ -58,6 +87,7 @@ export default function AdminLayout() {
       <n.icon size={17} />
       <span>{n.label}</span>
       {n.count && <Count resource={n.count} />}
+      {n.queryBadge && <QueryBadge />}
     </NavLink>
   );
 

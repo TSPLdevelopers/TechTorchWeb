@@ -1,9 +1,85 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  ArrowUpRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 const bgImage = "/bgslide07.png";
 const photoImage = "/hero03slide07.png";
 
 export default function BusinessChallengeSection() {
+  const [showOptions, setShowOptions] = useState(false);
+  const contactRef = useRef(null);
+  const hideTimeout = useRef(null);
+
+  // Show icons and cancel pending hide
+  const handleMouseEnter = () => {
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+    }
+
+    setShowOptions(true);
+  };
+
+  // Hide icons after a short delay
+  const handleMouseLeave = () => {
+    hideTimeout.current = setTimeout(() => {
+      setShowOptions(false);
+    }, 400);
+  };
+
+  // Close icons on outside click or Escape
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        contactRef.current &&
+        !contactRef.current.contains(event.target)
+      ) {
+        setShowOptions(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setShowOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+      }
+    };
+  }, []);
+
+  const contactOptions = [
+    {
+      label: "Call Us",
+      Icon: Phone,
+      href: "tel:+915813500381",
+    },
+    {
+      label: "WhatsApp",
+      Icon: MessageCircle,
+      href: "https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20discuss%20my%20business%20challenge.",
+      external: true,
+    },
+    {
+      label: "Email Us",
+      Icon: Mail,
+      href: "mailto:contact@techtorch.solutions",
+    },
+  ];
+
   return (
     <section className="business-challenge-section">
       <div className="business-challenge-container">
@@ -28,9 +104,57 @@ export default function BusinessChallengeSection() {
             business works.
           </p>
 
-          <a href="#" className="business-challenge-button">
-            Talk to Experts
-          </a>
+          {/* ================= BUTTON + CONTACT ICONS ================= */}
+          <div
+            ref={contactRef}
+            className="business-challenge-contact-wrapper"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {/* TALK TO EXPERTS BUTTON */}
+            <Link
+              to="/talk-to-expert"
+              className="business-challenge-button"
+            >
+              <span>Talk to Experts</span>
+
+              <ArrowUpRight
+                size={18}
+                strokeWidth={1.8}
+                className="business-challenge-arrow"
+              />
+            </Link>
+
+            {/* CONTACT ICONS */}
+            <div
+              className={`business-challenge-contact-options ${
+                showOptions ? "show" : ""
+              }`}
+              aria-hidden={!showOptions}
+            >
+              {contactOptions.map(
+                ({ label, Icon, href, external }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    title={label}
+                    aria-label={label}
+                    target={external ? "_blank" : undefined}
+                    rel={
+                      external
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    tabIndex={showOptions ? 0 : -1}
+                    onClick={() => setShowOptions(false)}
+                    className="business-challenge-contact-icon"
+                  >
+                    <Icon size={18} />
+                  </a>
+                )
+              )}
+            </div>
+          </div>
         </div>
 
         {/* ================= IMAGE ================= */}
@@ -41,7 +165,6 @@ export default function BusinessChallengeSection() {
             alt="Team discussing business challenge"
           />
         </div>
-
       </div>
 
       <style>{`
@@ -64,7 +187,6 @@ export default function BusinessChallengeSection() {
           box-sizing: border-box;
         }
 
-
         /* ================= CONTAINER ================= */
 
         .business-challenge-container {
@@ -83,7 +205,6 @@ export default function BusinessChallengeSection() {
           gap: 60px;
         }
 
-
         /* ================= LEFT CONTENT ================= */
 
         .business-challenge-content {
@@ -92,10 +213,8 @@ export default function BusinessChallengeSection() {
           width: 100%;
           max-width: 500px;
 
-          /* Halka sa right shift */
           transform: translateX(15px);
         }
-
 
         /* ================= HEADING ================= */
 
@@ -108,7 +227,6 @@ export default function BusinessChallengeSection() {
 
           color: #1a1a1a;
         }
-
 
         /* ================= PARAGRAPH ================= */
 
@@ -123,6 +241,13 @@ export default function BusinessChallengeSection() {
           color: #4a4a4a;
         }
 
+        /* ================= BUTTON WRAPPER ================= */
+
+        .business-challenge-contact-wrapper {
+          position: relative;
+          display: inline-block;
+          margin-top: 25px;
+        }
 
         /* ================= BUTTON ================= */
 
@@ -131,8 +256,7 @@ export default function BusinessChallengeSection() {
 
           align-items: center;
           justify-content: center;
-
-          margin-top: 25px;
+          gap: 8px;
 
           padding: 14px 30px;
 
@@ -148,14 +272,92 @@ export default function BusinessChallengeSection() {
 
           transition:
             background 0.25s ease,
+            color 0.25s ease,
             transform 0.25s ease;
+
+          white-space: nowrap;
         }
 
         .business-challenge-button:hover {
           background: #5c0e2a;
+          color: #ffffff;
           transform: translateY(-2px);
         }
 
+        /* ================= ARROW ================= */
+
+        .business-challenge-arrow {
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+
+        .business-challenge-button:hover
+        .business-challenge-arrow {
+          transform: translate(3px, -3px);
+        }
+
+        /* ================= CONTACT ICONS ================= */
+
+        .business-challenge-contact-options {
+          position: absolute;
+          left: 100%;
+          top: 50%;
+
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          margin-left: 10px;
+
+          transform: translateY(-50%);
+
+          visibility: hidden;
+          opacity: 0;
+          pointer-events: none;
+
+          transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+
+          z-index: 5;
+        }
+
+        .business-challenge-contact-options.show {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .business-challenge-contact-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 42px;
+          height: 42px;
+          flex-shrink: 0;
+
+          border: 1px solid rgba(122, 19, 56, 0.35);
+          border-radius: 50%;
+
+          background: #ffffff;
+          color: #7a1338;
+
+          text-decoration: none;
+
+          transition:
+            background 0.25s ease,
+            color 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease;
+        }
+
+        .business-challenge-contact-icon:hover {
+          background: #730042;
+          color: #ffffff;
+          border-color: #730042;
+          transform: scale(1.08);
+        }
 
         /* ================= IMAGE WRAPPER ================= */
 
@@ -167,7 +369,6 @@ export default function BusinessChallengeSection() {
 
           transform: translateX(40px);
         }
-
 
         /* ================= IMAGE ================= */
 
@@ -188,13 +389,11 @@ export default function BusinessChallengeSection() {
             0 25px 50px rgba(122, 19, 56, 0.15);
         }
 
-
         /* =====================================================
            LARGE LAPTOP
         ====================================================== */
 
         @media (max-width: 1200px) {
-
           .business-challenge-section {
             padding: 55px 50px;
             background-size: 60% auto;
@@ -224,13 +423,11 @@ export default function BusinessChallengeSection() {
           }
         }
 
-
         /* =====================================================
            TABLET / SMALL LAPTOP
         ====================================================== */
 
         @media (max-width: 950px) {
-
           .business-challenge-section {
             padding: 50px 35px;
             background-size: 65% auto;
@@ -266,15 +463,23 @@ export default function BusinessChallengeSection() {
             min-height: 380px;
             max-height: 430px;
           }
-        }
 
+          .business-challenge-contact-options {
+            gap: 6px;
+            margin-left: 8px;
+          }
+
+          .business-challenge-contact-icon {
+            width: 38px;
+            height: 38px;
+          }
+        }
 
         /* =====================================================
            MOBILE / TABLET PORTRAIT
         ====================================================== */
 
         @media (max-width: 700px) {
-
           .business-challenge-section {
             padding: 50px 25px;
 
@@ -316,8 +521,12 @@ export default function BusinessChallengeSection() {
             margin-bottom: 18px;
           }
 
-          .business-challenge-button {
+          .business-challenge-contact-wrapper {
             margin-top: 20px;
+          }
+
+          .business-challenge-button {
+            margin-top: 0;
 
             padding: 13px 26px;
 
@@ -343,15 +552,28 @@ export default function BusinessChallengeSection() {
 
             object-fit: cover;
           }
-        }
 
+          .business-challenge-contact-options {
+            gap: 6px;
+            margin-left: 7px;
+          }
+
+          .business-challenge-contact-icon {
+            width: 34px;
+            height: 34px;
+          }
+
+          .business-challenge-contact-icon svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
 
         /* =====================================================
            SMALL MOBILE
         ====================================================== */
 
         @media (max-width: 480px) {
-
           .business-challenge-section {
             padding: 40px 20px;
           }
@@ -387,15 +609,28 @@ export default function BusinessChallengeSection() {
 
             border-radius: 14px;
           }
-        }
 
+          .business-challenge-contact-options {
+            gap: 5px;
+            margin-left: 6px;
+          }
+
+          .business-challenge-contact-icon {
+            width: 31px;
+            height: 31px;
+          }
+
+          .business-challenge-contact-icon svg {
+            width: 15px;
+            height: 15px;
+          }
+        }
 
         /* =====================================================
            VERY SMALL MOBILE
         ====================================================== */
 
         @media (max-width: 360px) {
-
           .business-challenge-section {
             padding: 35px 16px;
           }
@@ -406,6 +641,21 @@ export default function BusinessChallengeSection() {
 
           .business-challenge-paragraph {
             font-size: 13.5px;
+          }
+
+          .business-challenge-contact-options {
+            gap: 4px;
+            margin-left: 5px;
+          }
+
+          .business-challenge-contact-icon {
+            width: 28px;
+            height: 28px;
+          }
+
+          .business-challenge-contact-icon svg {
+            width: 14px;
+            height: 14px;
           }
         }
       `}</style>

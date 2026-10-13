@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../../api/queryForms";
+import FormNotice from "../../../../components/FormNotice";
 import {
   User,
   AtSign,
@@ -40,9 +42,42 @@ const ConnectWithTechTorch = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("MSP Engagement Request:", formData);
+    if (sending) return;
+
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
+
+    try {
+      await submitQuery("inquiry", {
+        formType: "msp-support",
+        fullName: formData.fullName.trim(),
+        email: formData.email.trim(),
+        company: formData.company.trim(),
+        phone: formData.phone.trim(),
+        topic: formData.serviceScope,
+        message: formData.painPoints.trim(),
+        details: {
+          supportTier: formData.supportTier,
+          infrastructure: formData.infrastructure,
+          endpointScale: formData.endpointScale,
+          briefingMode: formData.briefingMode,
+          mutualNdaRequested: !!formData.nda,
+        },
+      });
+      setSubmitted(true);
+      setFormData({ fullName: "", email: "", company: "", phone: "", serviceScope: "", supportTier: "", infrastructure: "", endpointScale: "", briefingMode: "30-Min Video Call", painPoints: "", nda: false });
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -1248,8 +1283,10 @@ const ConnectWithTechTorch = () => {
                   SUBMIT
               ===================================================== */}
 
+              <FormNotice error={submitError} success={submitted} />
               <button
                 type="submit"
+                disabled={sending}
                 className="msp-submit"
               >
                 SUBMIT MSP ENGAGEMENT REQUEST

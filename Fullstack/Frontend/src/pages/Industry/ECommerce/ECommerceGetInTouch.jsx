@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 
 const assistanceOptions = [
   {
@@ -102,18 +104,50 @@ function EcommerceGetInTouch() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
-    console.log({
-      ...formData,
-      assistance,
-      achievement,
-      projectStage,
-      contactMethod,
-    });
+    if (assistance.length === 0) {
+      setSubmitError("Please select at least one service area.");
+      return;
+    }
+    if (!formData.consent) {
+      setSubmitError("Please agree to be contacted by TechTorch.");
+      return;
+    }
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
 
-    alert("Thank you! Your enquiry has been submitted.");
+    try {
+      await submitQuery("ecommerce", {
+        serviceAreas: assistance,
+        objectives: [achievement],
+        currentProjectStage: projectStage,
+        requirementDetails: formData.requirement.trim(),
+        fullName: formData.fullName.trim(),
+        businessEmail: formData.email.trim(),
+        companyOrganization: formData.company.trim(),
+        phoneNumber: formData.phone.trim(),
+        preferredContactMethod: contactMethod || "Email",
+        contactConsent: formData.consent === true,
+      });
+      setSubmitted(true);
+      setFormData({ requirement: "", fullName: "", email: "", company: "", phone: "", consent: false });
+      setAssistance(["E-Commerce Solutions"]);
+      setAchievement("New E-Commerce Solution");
+      setProjectStage("Initial Discussion");
+      setContactMethod("Email");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -1971,8 +2005,10 @@ function EcommerceGetInTouch() {
 
                 <div className="ecom-submit-wrapper">
 
+                  <FormNotice error={submitError} success={submitted} />
                   <button
                     type="submit"
+                    disabled={sending}
                     className="ecom-submit-button"
                   >
 

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import {
@@ -8,21 +9,23 @@ import {
   Megaphone,
   Download,
   Users,
+  Inbox,
 } from "lucide-react";
-import logo from "../../../public/logo.png";
 
 import { useList } from "../hooks/useResource";
 import { useProfile } from "../hooks/useAuth";
+import { useQueryStats } from "../hooks/useQueries";
 import { PageLoader, StatusBadge } from "../components/ui";
 import { formatDate, formatNumber } from "../utils/india";
 
 const isLive = (r) =>
-  ["Published", "published", "Active / Open", "upcoming"].includes(r.status);
+  ["Published", "published", "Active / Open", "upcoming"].includes(
+    r.status
+  );
 
 export default function Overview() {
   const { data: me } = useProfile();
 
-  // Greeting according to current time
   const getGreeting = () => {
     const hour = new Date().getHours();
 
@@ -37,7 +40,9 @@ export default function Overview() {
   const wps = useList("whitepapers");
   const updates = useList("updates");
 
-  const all = [news, jobs, events, wps, updates];
+  const queryStats = useQueryStats();
+
+  const all = [news, jobs, events, wps, updates, queryStats];
 
   if (all.some((q) => q.isLoading)) {
     return <PageLoader />;
@@ -48,6 +53,9 @@ export default function Overview() {
   const e = events.data || [];
   const w = wps.data || [];
   const u = updates.data || [];
+
+  const totalQueries = queryStats.data?.total ?? 0;
+  const newQueries = queryStats.data?.new ?? 0;
 
   const cards = [
     {
@@ -88,12 +96,12 @@ export default function Overview() {
   ];
 
   const applicants = j.reduce(
-    (s, x) => s + (x.applicants || 0),
+    (sum, item) => sum + (item.applicants || 0),
     0
   );
 
   const downloads = w.reduce(
-    (s, x) => s + (x.downloads || 0),
+    (sum, item) => sum + (item.downloads || 0),
     0
   );
 
@@ -113,10 +121,12 @@ export default function Overview() {
 
   return (
     <div className="p-4 sm:p-8">
-
       {/* Greeting */}
       <h1 className="text-2xl font-semibold text-stone-900">
+       {getGreeting()},  Admin
+
         {getGreeting()}, Admin
+
       </h1>
 
       <p className="mb-6 text-sm text-stone-500">
@@ -124,36 +134,62 @@ export default function Overview() {
       </p>
 
       {/* Dashboard Cards */}
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
-        {cards.map((c) => (
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
+        {cards.map((card) => (
           <Link
-            key={c.label}
-            to={c.to}
-            className="rounded-xl border border-stone-200 bg-white p-4 transition hover:border-[#780042]"
+            key={card.label}
+            to={card.to}
+            className="rounded-xl border border-stone-200 bg-white p-4 transition hover:border-[#730042] hover:shadow-sm"
           >
-            <c.icon size={20} className="text-[#780042]" />
+            <card.icon size={20} className="text-[#730042]" />
 
             <div className="mt-3 text-3xl font-semibold text-stone-900">
-              {formatNumber(c.total)}
+              {formatNumber(card.total)}
             </div>
 
             <div className="text-sm text-stone-600">
-              {c.label}
+              {card.label}
             </div>
 
             <div className="mt-1 text-xs text-stone-400">
-              {c.live} live · {c.total - c.live} other
+              {card.live} live · {card.total - card.live} other
             </div>
           </Link>
         ))}
+
+        {/* Total Queries Card */}
+        <Link
+          to="/admin-queries"
+          className="cursor-pointer rounded-xl border border-stone-200 bg-white p-4 transition hover:border-[#730042] hover:shadow-sm"
+        >
+          <div className="flex items-center justify-between">
+            <Inbox size={20} className="text-[#730042]" />
+
+            {newQueries > 0 && (
+              <span className="rounded-full bg-[#730042] px-2 py-1 text-xs font-semibold text-white">
+  {newQueries > 99 ? "99+" : newQueries} new
+</span>
+            )}
+          </div>
+
+          <div className="mt-3 text-3xl font-semibold text-stone-900">
+            {formatNumber(totalQueries)}
+          </div>
+
+          <div className="text-sm text-stone-600">
+            Total Queries
+          </div>
+
+          <div className="mt-1 text-xs text-stone-400">
+            {formatNumber(newQueries)} new / unattended
+          </div>
+        </Link>
       </div>
 
       {/* Applicants & Downloads */}
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-
-        {/* Total Applicants */}
         <div className="flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-4">
-          <Users className="text-[#780042]" />
+          <Users className="text-[#730042]" />
 
           <div>
             <div className="text-2xl font-semibold">
@@ -166,9 +202,8 @@ export default function Overview() {
           </div>
         </div>
 
-        {/* Whitepaper Downloads */}
         <div className="flex items-center gap-4 rounded-xl border border-stone-200 bg-white p-4">
-          <Download className="text-[#780042]" />
+          <Download className="text-[#730042]" />
 
           <div>
             <div className="text-2xl font-semibold">
@@ -180,20 +215,16 @@ export default function Overview() {
             </div>
           </div>
         </div>
-
       </div>
 
       {/* Recent Activity */}
       <div className="mt-6 overflow-x-auto rounded-xl border border-stone-200 bg-white">
-
         <div className="border-b border-stone-200 px-4 py-3 text-sm font-semibold text-stone-800">
           Recent activity
         </div>
 
         <table className="w-full text-left text-sm">
           <tbody className="divide-y divide-stone-100">
-
-            {/* No Data */}
             {recent.length === 0 && (
               <tr>
                 <td className="px-4 py-10 text-center text-stone-400">
@@ -202,37 +233,28 @@ export default function Overview() {
               </tr>
             )}
 
-            {/* Recent Data */}
-            {recent.map((r) => (
-              <tr key={r.type + r._id}>
-
+            {recent.map((item) => (
+              <tr key={item.type + item._id}>
                 <td className="px-4 py-3 text-xs font-medium uppercase text-stone-400">
-                  {r.type}
+                  {item.type}
                 </td>
 
                 <td className="px-4 py-3 font-medium text-stone-800">
-                  {r.title}
+                  {item.title}
                 </td>
 
                 <td className="px-4 py-3">
-                  <StatusBadge value={r.status} />
+                  <StatusBadge value={item.status} />
                 </td>
 
-                <td className="px-4 py-3 whitespace-nowrap text-stone-500">
-                  {formatDate(
-                    r.updatedAt || r.createdAt,
-                    true
-                  )}
+                <td className="whitespace-nowrap px-4 py-3 text-stone-500">
+                  {formatDate(item.updatedAt || item.createdAt, true)}
                 </td>
-
               </tr>
             ))}
-
           </tbody>
         </table>
-
       </div>
-
     </div>
   );
 }

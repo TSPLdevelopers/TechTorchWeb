@@ -70,6 +70,11 @@ const digitalSolutionRoutes = require(
 const sendQuestionRoutes = require(
   "./src/routes/sendQuestionRoutes"
 );
+const startConversationRoutes = require("./src/routes/startConversationRoutes");
+const exploreQuestionRoutes = require("./src/routes/exploreQuestionRoutes");
+const needsRoutes = require("./src/routes/needsRoutes");
+const inquiryRoutes = require("./src/routes/inquiryRoutes");
+const queryRoutes = require("./src/routes/queryRoutes");
 
 const app = express();
 
@@ -154,6 +159,13 @@ app.use(
 );
 
 app.use("/api/send-question", sendQuestionRoutes);
+app.use("/api/start-conversations", startConversationRoutes);
+app.use("/api/explore-questions", exploreQuestionRoutes);
+app.use("/api/needs", needsRoutes);
+app.use("/api/inquiries", inquiryRoutes);
+
+// Admin dashboard -> Queries section
+app.use("/api/queries", queryRoutes);
 
 // 404
 app.use((req, res) => {

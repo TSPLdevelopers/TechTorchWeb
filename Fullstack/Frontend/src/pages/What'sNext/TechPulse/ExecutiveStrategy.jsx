@@ -1,6 +1,50 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Phone, MessageCircle, Mail, ArrowUpRight } from "lucide-react";
 export default function ExecutiveStrategy() {
+  const [showOptions, setShowOptions] = useState(false);
+  const contactRef = useRef(null);
+  const hideTimeout = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (hideTimeout.current) clearTimeout(hideTimeout.current);
+    setShowOptions(true);
+  };
+
+  const handleMouseLeave = () => {
+    hideTimeout.current = setTimeout(() => setShowOptions(false), 450);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (contactRef.current && !contactRef.current.contains(event.target)) {
+        setShowOptions(false);
+      }
+    };
+    const handleEscape = (event) => {
+      if (event.key === "Escape") setShowOptions(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+      if (hideTimeout.current) clearTimeout(hideTimeout.current);
+    };
+  }, []);
+
+  const contactOptions = [
+    { label: "Call us", icon: <Phone size={17} />, href: "tel:+915813500381" },
+    {
+      label: "WhatsApp",
+      icon: <MessageCircle size={17} />,
+      href: "https://wa.me/91XXXXXXXXXX?text=Hello%20TechTorch%20Solutions",
+      external: true,
+    },
+    { label: "Email us", icon: <Mail size={17} />, href: "mailto:contact@techtorch.solutions" },
+  ];
+
   return (
     <section className="executive-strategy">
       <div className="executive-strategy-card">
@@ -41,10 +85,38 @@ export default function ExecutiveStrategy() {
 
           {/* BUTTON */}
           <div className="strategy-buttons">
-            <Link to="/talk-to-expert"
-             className="strategy-primary">
-              Talk to Our Experts <span>→</span>
-            </Link>
+            <div
+              className="strategy-contact-wrapper"
+              ref={contactRef}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to="/talk-to-expert" className="strategy-primary">
+                <span className="strategy-button-label">Talk to Our Experts</span>
+                <ArrowUpRight size={16} strokeWidth={1.8} className="strategy-arrow" />
+              </Link>
+
+              <div
+                className={`strategy-contact-options ${showOptions ? "show" : ""}`}
+                aria-hidden={!showOptions}
+              >
+                {contactOptions.map((option) => (
+                  <a
+                    key={option.label}
+                    href={option.href}
+                    aria-label={option.label}
+                    title={option.label}
+                    tabIndex={showOptions ? 0 : -1}
+                    target={option.external ? "_blank" : undefined}
+                    rel={option.external ? "noopener noreferrer" : undefined}
+                    className="strategy-contact-icon"
+                    onClick={() => setShowOptions(false)}
+                  >
+                    {option.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -204,9 +276,9 @@ export default function ExecutiveStrategy() {
         /* PRIMARY BUTTON */
 
         .strategy-primary {
-          min-width: 255px;
-          height: 45px;
-          padding: 0 14px;
+          min-width: 230px;
+          height: 43px;
+          padding: 0 10px;
           border: 1px solid #970052;
           border-radius: 10px;
 
@@ -217,7 +289,7 @@ export default function ExecutiveStrategy() {
 
           color: #ffffff;
           font-family: "Inter", sans-serif;
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 600;
           cursor: pointer;
           white-space: nowrap;
@@ -247,6 +319,80 @@ export default function ExecutiveStrategy() {
           display: inline;
           margin-left: 5px;
           font-size: 17px;
+        }
+
+        /* BUTTON ARROW AND CONTACT OPTIONS */
+
+        .strategy-contact-wrapper {
+          position: relative;
+          display: inline-block;
+        }
+
+        .strategy-primary {
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 9px;
+          text-decoration: none;
+        }
+
+        .strategy-button-label {
+          display: inline;
+          margin: 0;
+          font-size: inherit;
+        }
+
+        .strategy-arrow {
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+
+        .strategy-primary:hover .strategy-arrow {
+          transform: translate(4px, -4px);
+        }
+
+        .strategy-contact-options {
+          position: absolute;
+          left: 100%;
+          top: 50%;
+          z-index: 20;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-left: 10px;
+          transform: translateY(-50%);
+          visibility: hidden;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .strategy-contact-options.show {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .strategy-contact-icon {
+          width: 36px;
+          height: 36px;
+          flex: 0 0 36px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(115, 0, 66, 0.2);
+          border-radius: 50%;
+          background: #ffffff;
+          color: #730042;
+          text-decoration: none;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+          transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .strategy-contact-icon:hover {
+          background: #730042;
+          color: #ffffff;
+          transform: translateY(-2px);
         }
 
         /* IMAGE */
@@ -459,16 +605,24 @@ export default function ExecutiveStrategy() {
             margin-top: 20px;
           }
 
+          .strategy-contact-wrapper {
+            width: 100%;
+          }
+
           .strategy-primary {
             width: 100%;
             min-width: 0;
             height: 44px;
-            padding: 0 11px;
-            font-size: 12px;
+            padding: 0 8px;
+            font-size: 11.5px;
           }
 
-          .strategy-primary span {
-            font-size: 16px;
+          .strategy-contact-options {
+            left: auto;
+            right: 0;
+            top: calc(100% + 8px);
+            margin-left: 0;
+            transform: none;
           }
 
           .executive-strategy-image {
@@ -500,7 +654,8 @@ export default function ExecutiveStrategy() {
           .strategy-primary {
             width: 100%;
             height: 42px;
-            font-size: 11px;
+            font-size: 10.5px;
+            padding: 0 7px;
           }
 
           .executive-strategy-image {
@@ -537,8 +692,8 @@ export default function ExecutiveStrategy() {
 
           .strategy-primary {
             height: 41px;
-            font-size: 10.5px;
-            padding: 0 8px;
+            font-size: 10px;
+            padding: 0 6px;
           }
 
           .executive-strategy-image {

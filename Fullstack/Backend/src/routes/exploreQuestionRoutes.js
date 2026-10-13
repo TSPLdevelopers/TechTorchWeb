@@ -1,5 +1,4 @@
 const express = require("express");
-
 const {
   createExploreQuestion,
   getExploreQuestions,
@@ -9,20 +8,12 @@ const {
 } = require("../controllers/exploreQuestionController");
 
 const router = express.Router();
+const authMiddleware = require("../middlewares/auth.middleware");
 
-// Submit question
 router.post("/", createExploreQuestion);
-
-// Get all questions
-router.get("/", getExploreQuestions);
-
-// Get single question
-router.get("/:id", getExploreQuestionById);
-
-// Update status
-router.patch("/:id/status", updateExploreQuestionStatus);
-
-// Delete question
-router.delete("/:id", deleteExploreQuestion);
+router.get("/", authMiddleware, getExploreQuestions);
+router.get("/:id", authMiddleware, getExploreQuestionById);
+router.patch("/:id/status", authMiddleware, updateExploreQuestionStatus);
+router.delete("/:id", authMiddleware, deleteExploreQuestion);
 
 module.exports = router;
