@@ -10,7 +10,31 @@ import { Link } from "react-router-dom";
 
 export default function TechHero() {
   const [showOptions, setShowOptions] = useState(false);
+
   const contactRef = useRef(null);
+  const hideTimeout = useRef(null);
+
+  // Show icons and cancel pending hide timer
+  const handleMouseEnter = () => {
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+      hideTimeout.current = null;
+    }
+
+    setShowOptions(true);
+  };
+
+  // Hide icons after a short delay
+  const handleMouseLeave = () => {
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+    }
+
+    hideTimeout.current = setTimeout(() => {
+      setShowOptions(false);
+      hideTimeout.current = null;
+    }, 500);
+  };
 
   // Close options on outside click or Escape
   useEffect(() => {
@@ -19,12 +43,22 @@ export default function TechHero() {
         contactRef.current &&
         !contactRef.current.contains(event.target)
       ) {
+        if (hideTimeout.current) {
+          clearTimeout(hideTimeout.current);
+          hideTimeout.current = null;
+        }
+
         setShowOptions(false);
       }
     };
 
     const handleEscape = (event) => {
       if (event.key === "Escape") {
+        if (hideTimeout.current) {
+          clearTimeout(hideTimeout.current);
+          hideTimeout.current = null;
+        }
+
         setShowOptions(false);
       }
     };
@@ -35,6 +69,10 @@ export default function TechHero() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
+
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+      }
     };
   }, []);
 
@@ -155,13 +193,14 @@ export default function TechHero() {
         <div
           ref={contactRef}
           className="relative mt-20 w-fit"
-          onMouseEnter={() => setShowOptions(true)}
-          onMouseLeave={() => setShowOptions(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           {/* TALK TO OUR EXPERTS BUTTON */}
 
           <Link
             to="/talk-to-expert"
+            onMouseEnter={handleMouseEnter}
             className="
               group
               inline-flex
@@ -196,19 +235,19 @@ export default function TechHero() {
             />
           </Link>
 
-          {/* CONTACT ICONS */}
+          {/* ================= CONTACT ICONS ================= */}
 
           <div
             className={`
               absolute
               left-full
               top-1/2
-              ml-2
+              ml-1
               flex
               -translate-y-1/2
               items-center
               gap-2
-              transition-opacity
+              transition-all
               duration-300
               ${
                 showOptions
@@ -229,7 +268,6 @@ export default function TechHero() {
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}
                   tabIndex={showOptions ? 0 : -1}
-                  onClick={() => setShowOptions(false)}
                   className="
                     flex
                     h-11

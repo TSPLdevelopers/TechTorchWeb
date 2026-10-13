@@ -170,5 +170,4 @@ function NavAboutUs() {
     </div>
   );
 }
-
 export default NavAboutUs;
