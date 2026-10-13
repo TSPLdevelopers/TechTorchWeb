@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ContactAccountSection from "../../account/ContactAccountSection";
 import { enquiryApi } from "../../admin/api/endpoints";
@@ -14,20 +14,109 @@ export default function GetInTouch() {
     requirement: "",
     stage: "",
     timeline: "",
-    contactMethod: "Email",
+    contactMethod: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
+  const errorTimers = useRef({});
+
+  const setTemporaryFieldError = (name, message) => {
+    if (errorTimers.current[name]) {
+      clearTimeout(errorTimers.current[name]);
+      delete errorTimers.current[name];
+    }
+
+    setFieldErrors((prev) => ({ ...prev, [name]: message }));
+
+    if (message) {
+      errorTimers.current[name] = setTimeout(() => {
+        setFieldErrors((prev) => ({ ...prev, [name]: "" }));
+        delete errorTimers.current[name];
+      }, 3000);
+    }
+  };
+
+  const validateField = (name, value) => {
+    const trimmedValue = value.trim();
+
+    switch (name) {
+      case "fullName":
+        if (!trimmedValue) return "Full name is required.";
+        if (!/^[A-Za-zÀ-ÖØ-öø-ÿ .'-]+$/.test(trimmedValue)) {
+          return "Enter a valid name .";
+        }
+        return "";
+      
+case "email":
+  if (!trimmedValue) return "Work email is required.";
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedValue)) {
+    return "Please enter a valid email address.";
+  }
+
+  return "";
+
+
+        return "";
+      case "company":
+        if (trimmedValue && !/^[A-Za-zÀ-ÖØ-öø-ÿ ]+$/.test(trimmedValue)) {
+          return "Enter a valid name.";
+        }
+        return "";
+      
+case "phone":
+  if (trimmedValue && !/^[6-9]\d{9}$/.test(trimmedValue)) {
+    return "Enter a valid mobile number ";
+  }
+  return "";
+
+
+      case "service":
+        return value ? "" : "Please select a service.";
+      case "requirement":
+        if (!trimmedValue) return "Please describe your requirement.";
+        if (trimmedValue.length > 500) return "Requirement must be 500 characters or fewer.";
+        return "";
+      default:
+        return "";
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let nextValue = value;
+
+    if (name === "phone") {
+      const hasNonDigits = /\D/.test(value);
+      const hasTooManyDigits = value.replace(/\D/g, "").length > 10;
+      nextValue = value.replace(/\D/g, "").slice(0, 10);
+
+      setFormData((prev) => ({
+        ...prev,
+        [name]: nextValue,
+      }));
+
+      if (hasNonDigits) {
+        setTemporaryFieldError(name, "Phone number must contain digits only.");
+      } else if (hasTooManyDigits) {
+        setTemporaryFieldError(name, "Phone number can contain only 10 digits.");
+      } else {
+        setTemporaryFieldError(name, validateField(name, nextValue));
+      }
+      return;
+    }
 
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: nextValue,
     }));
+
+    if (["fullName", "email", "company", "service", "requirement"].includes(name)) {
+      setTemporaryFieldError(name, validateField(name, nextValue));
+    }
   };
 
   // select value -> label the backend stores
@@ -42,6 +131,17 @@ export default function GetInTouch() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (sending) return;
+
+    const fieldsToValidate = ["fullName", "email", "company", "phone", "service", "requirement"];
+    const nextErrors = fieldsToValidate.reduce((errors, name) => {
+      errors[name] = validateField(name, formData[name]);
+      return errors;
+    }, {});
+    Object.entries(nextErrors).forEach(([name, message]) => {
+      setTemporaryFieldError(name, message);
+    });
+
+    if (Object.values(nextErrors).some(Boolean)) return;
 
     setSubmitError("");
     setSending(true);
@@ -70,8 +170,9 @@ export default function GetInTouch() {
         requirement: "",
         stage: "",
         timeline: "",
-        contactMethod: "Email",
+        contactMethod: "",
       });
+      setFieldErrors({});
       setTimeout(() => setSubmitted(false), 6000);
     } catch (err) {
       setSubmitError(err.message || "Could not send your enquiry. Please try again.");
@@ -199,7 +300,10 @@ export default function GetInTouch() {
                     onChange={handleChange}
                     placeholder="Enter your full name"
                     required
+                    aria-invalid={Boolean(fieldErrors.fullName)}
+                    aria-describedby={fieldErrors.fullName ? "fullName-error" : undefined}
                   />
+                  {fieldErrors.fullName && <small id="fullName-error" className="field-error" role="alert">{fieldErrors.fullName}</small>}
                 </div>
 
                 <div className="field">
@@ -214,7 +318,10 @@ export default function GetInTouch() {
                     onChange={handleChange}
                     placeholder="Enter your business email"
                     required
+                    aria-invalid={Boolean(fieldErrors.email)}
+                    aria-describedby={fieldErrors.email ? "email-error" : undefined}
                   />
+                  {fieldErrors.email && <small id="email-error" className="field-error" role="alert">{fieldErrors.email}</small>}
                 </div>
 
               </div>
@@ -233,7 +340,10 @@ export default function GetInTouch() {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="Enter your company name"
+                    aria-invalid={Boolean(fieldErrors.company)}
+                    aria-describedby={fieldErrors.company ? "company-error" : undefined}
                   />
+                  {fieldErrors.company && <small id="company-error" className="field-error" role="alert">{fieldErrors.company}</small>}
                 </div>
 
                 <div className="field">
@@ -243,11 +353,17 @@ export default function GetInTouch() {
 
                   <input
                     type="tel"
+                    maxLength={10}
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Enter your phone number"
+                    inputMode="numeric"
+                    autoComplete="tel"
+                    aria-invalid={Boolean(fieldErrors.phone)}
+                    aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
                   />
+                  {fieldErrors.phone && <small id="phone-error" className="field-error" role="alert">{fieldErrors.phone}</small>}
                 </div>
 
               </div>
@@ -275,6 +391,8 @@ export default function GetInTouch() {
                   value={formData.service}
                   onChange={handleChange}
                   required
+                  aria-invalid={Boolean(fieldErrors.service)}
+                  aria-describedby={fieldErrors.service ? "service-error" : undefined}
                 >
                   <option value="">
                     Select a service
@@ -301,6 +419,7 @@ export default function GetInTouch() {
                   </option>
 
                 </select>
+                {fieldErrors.service && <small id="service-error" className="field-error" role="alert">{fieldErrors.service}</small>}
 
               </div>
 
@@ -318,7 +437,10 @@ export default function GetInTouch() {
                   maxLength={500}
                   placeholder="Briefly describe your project, business challenge or technology requirement..."
                   required
+                  aria-invalid={Boolean(fieldErrors.requirement)}
+                  aria-describedby={fieldErrors.requirement ? "requirement-error" : undefined}
                 />
+                {fieldErrors.requirement && <small id="requirement-error" className="field-error" role="alert">{fieldErrors.requirement}</small>}
 
                 <div className="character-count">
                   {formData.requirement.length}/500
@@ -605,6 +727,7 @@ export default function GetInTouch() {
                 <button
                   type="button"
                   className="outline-button"
+                  onClick={() => navigate("/explore-questions")}
                 >
                   Ask a Question
                   <span>→</span>
@@ -879,7 +1002,7 @@ export default function GetInTouch() {
             </span>
 
             <img
-              src="/GlobalPresence.png"
+              src="/GlobalPresenceMap.png"
               alt="Global presence map"
             />
 
@@ -931,6 +1054,7 @@ export default function GetInTouch() {
             <button
               type="button"
               className="final-outline-button"
+              onClick={() => navigate("/explore-questions")}
             >
               Ask a Question
               <span>→</span>
@@ -1265,6 +1389,21 @@ export default function GetInTouch() {
           font-size: 12px;
           line-height: 1.4;
           font-weight: 600;
+        }
+
+        .contact-page .field-error {
+          display: block;
+          margin-top: 6px;
+          color: #b42318;
+          font-family: "Inter", sans-serif;
+          font-size: 12px;
+          line-height: 1.4;
+        }
+
+        .contact-page .field input[aria-invalid="true"],
+        .contact-page .field select[aria-invalid="true"],
+        .contact-page .field textarea[aria-invalid="true"] {
+          border-color: #b42318;
         }
 
         .field label span {

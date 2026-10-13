@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 export default function ErpHero() {
   return (
     <section
@@ -174,37 +174,45 @@ export default function ErpHero() {
 
         {/* ================= BUTTON ================= */}
 
-        <Link
-          to="/talk-to-expert"
+        <button
+          type="button"
           className="
-    inline-block
-    border
-    border-white/70
-    bg-transparent
-    text-white
-    text-[11px]
-    sm:text-xs
-    md:text-sm
-    font-medium
-    tracking-wide
-    px-5
-    sm:px-6
-    md:px-7
-    py-2.5
-    sm:py-3
-    md:py-3.5
-    whitespace-nowrap
-    transition-all
-    duration-300
-    ease-in-out
-    hover:bg-white
-    hover:text-[#0c140c]
-    hover:border-white
-    active:scale-95
-  "
+            border
+            border-white/70
+
+            bg-transparent
+            text-white
+
+            text-[11px]
+            sm:text-xs
+            md:text-sm
+
+            font-medium
+            tracking-wide
+
+            px-5
+            sm:px-6
+            md:px-7
+
+            py-2.5
+            sm:py-3
+            md:py-3.5
+
+            whitespace-nowrap
+
+            transition-all
+            duration-300
+            ease-in-out
+
+            hover:bg-white
+            hover:text-[#0c140c]
+            hover:border-white
+
+            active:scale-95
+          "
         >
           Talk to Our Experts
-        </Link>
+        </button>
 
       </div>
     </section>

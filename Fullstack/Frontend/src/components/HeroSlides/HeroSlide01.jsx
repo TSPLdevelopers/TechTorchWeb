@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 export default function TechHero() {
   return (
     <div className="relative w-full min-h-[550px] overflow-hidden bg-[#0a1128] font-['Plus Jakarta Sans']">
@@ -81,26 +81,24 @@ export default function TechHero() {
         </p>
 
         <div className="mt-20">
-          <Link
-  to="/talk-to-expert"
-  className="
-    inline-block
-    border
-    border-white/70
-    text-white
-    text-[14px]
-    font-medium
-    tracking-wide
-    px-4
-    py-2
-    hover:bg-white
-    hover:text-[#0a1128]
-    transition-colors
-    duration-300
-  "
->
-  Talk to Our Experts
-</Link>
+          <button
+            className="
+              border
+              border-white/70
+              text-white
+              text-[14px]
+              font-medium
+              tracking-wide
+              px-4
+              py-2
+              hover:bg-white
+              hover:text-[#0a1128]
+              transition-colors
+              duration-300
+            "
+          >
+            Talk to Our Experts
+          </button>
         </div>
 
       </div>
