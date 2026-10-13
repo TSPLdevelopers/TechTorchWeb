@@ -311,24 +311,7 @@ export default function Footer() {
               Let's talk.
             </p>
 
-            <a
-              href="#"
-              className="
-                mb-5
-                inline-flex
-                items-center
-                gap-2
-                text-[14px]
-                font-semibold
-                uppercase
-                tracking-wide
-                transition-all
-                hover:gap-3
-              "
-            >
-              Talk to our experts
-              <ArrowRight size={16} />
-            </a>
+            
 
             <div className="flex flex-col gap-1 text-[14px] text-white/80">
 

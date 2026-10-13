@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 const ctaBackground = "/energy2.png";
 
@@ -699,13 +700,13 @@ export default function ApproachAndImageCtaSections() {
             <div className="cta-buttons">
 
               {/* LEFT BUTTON */}
-              <button
-                type="button"
-                className="cta-button cta-secondary"
-              >
-                Talk to Our Experts
-                <ArrowRight size={15} />
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="cta-button cta-secondary"
+>
+  Talk to Our Experts
+  <ArrowRight size={15} />
+</Link>
 
 
               {/* RIGHT BUTTON */}

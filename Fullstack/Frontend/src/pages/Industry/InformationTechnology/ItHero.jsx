@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Share2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -688,13 +689,13 @@ export default function ItHeroSection() {
 
             <div className="it-hero-actions">
 
-              <button
-                type="button"
-                className="it-hero-button it-hero-primary"
-              >
-                Talk to Our Experts
-                <ArrowRight size={15} />
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="it-hero-button it-hero-primary"
+>
+  Talk to Our Experts
+  <ArrowRight size={15} />
+</Link>
 
               <button
                 type="button"

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const WINE = "#730042";
@@ -432,13 +433,13 @@ export default function TransportationImageCtaSection() {
           together with solutions designed around your requirements.
         </p>
 
-        <button
-          type="button"
-          className="transportation-cta-button"
-        >
-          TALK TO OUR EXPERTS
-          <ArrowRight size={14} strokeWidth={2} />
-        </button>
+        <Link
+  to="/talk-to-expert"
+  className="transportation-cta-button"
+>
+  TALK TO OUR EXPERTS
+  <ArrowRight size={14} strokeWidth={2} />
+</Link>
 
       </div>
     </section>

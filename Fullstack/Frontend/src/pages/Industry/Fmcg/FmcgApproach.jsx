@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -803,17 +804,17 @@ export default function ApproachSection() {
 
             <div className="approach-cta-buttons">
 
-              <button
-                type="button"
-                className="approach-primary-button"
-              >
-                Talk to our experts
+              <Link
+  to="/talk-to-expert"
+  className="approach-primary-button"
+>
+  Talk to our experts
 
-                <ArrowRight
-                  size={16}
-                  strokeWidth={2}
-                />
-              </button>
+  <ArrowRight
+    size={16}
+    strokeWidth={2}
+  />
+</Link>
 
 
               <button

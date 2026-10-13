@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Lock, Heart } from "lucide-react";
 
 const WINE = "#7A1F3D";
@@ -467,14 +468,17 @@ export default function CreateTechnologyCtaSection() {
               capabilities needed to address your business requirements.
             </p>
 
-            <button className="create-tech-cta-button">
-              <span>Talk to Our Experts</span>
+            <Link
+  to="/talk-to-expert"
+  className="create-tech-cta-button"
+>
+  <span>Talk to Our Experts</span>
 
-              <ArrowRight
-                size={16}
-                strokeWidth={1.8}
-              />
-            </button>
+  <ArrowRight
+    size={16}
+    strokeWidth={1.8}
+  />
+</Link>
 
             <div className="create-tech-trust-list">
               {trustItems.map(({ icon: Icon, label }) => (
