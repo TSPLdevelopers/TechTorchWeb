@@ -1,5 +1,5 @@
 // 👇 Apni boardroom image yahan import karo (path apne project ke hisaab se badlo)
-import heroBg from "../assets/boardroom.jpg";
+import heroBg from "/leadership.png";
 
 const styles = `
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap");

@@ -160,7 +160,7 @@ function NavAboutUs() {
                 <div className="w-[255px] h-[2px] bg-white mt-2" />
               </div>
 
-            <a href="/Philosophy" className="text-[16px] font-bold font-inter text-white mb-8">
+            <a href="/leadership" className="text-[16px] font-bold font-inter text-white mb-8">
               LEARN MORE
             </a>
             </div>

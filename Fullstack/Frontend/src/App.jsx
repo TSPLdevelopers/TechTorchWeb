@@ -466,6 +466,12 @@ import StartConversation from "./pages/StartConversation/StartConversation.jsx";
 import ExploreQuestions from "./pages/StartConversation/ExploreQuestions.jsx";
 import ConversationToggle from "./pages/StartConversation/ConversationToggle.jsx";
 
+// =================================================
+// ABOUT US
+// =================================================
+
+import Leadership from "./pages/AboutUs/Leadership/Leadership.jsx";
+
 
 // =================================================
 // SCROLL TO TOP
@@ -1122,6 +1128,13 @@ function ECommerce(){
     </>
   )
 }
+function AboutUs(){
+  return(
+    <>
+    <Leadership />
+    </>
+  )
+}
 // =================================================
 // APP
 // =================================================
@@ -1533,8 +1546,10 @@ function App() {
     path="/talk-to-expert"
     element={<TalkToExpert />}
   />
-
-
+  <Route
+  path="/aboutus"
+  element={<AboutUs />}
+  />
       </Routes>
     </>
   );
