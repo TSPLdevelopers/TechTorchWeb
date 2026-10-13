@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../../api/queryForms";
+import FormNotice from "../../../../components/FormNotice";
 import { ArrowRight, Check } from "lucide-react";
 
 const BRAND = "#8B0046";
@@ -111,21 +113,48 @@ export default function DevelopmentConsultation() {
       });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-    console.log({
-      requirement,
-      teamType,
-      expertise: selectedExpertise,
-      project: formData.project,
-      teamSize,
-      timeline,
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      phone: formData.phone,
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+
+
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
+
+    try {
+      await submitQuery("inquiry", {
+        formType: "offshore-team",
+        fullName: formData.name.trim(),
+        email: formData.email.trim(),
+        company: formData.company.trim(),
+        phone: formData.phone.trim(),
+        topic: requirement || teamType,
+        message: formData.project.trim(),
+        details: {
+          requirement,
+          teamType,
+          expertise: selectedExpertise,
+          teamSize,
+          timeline,
+        },
+      });
+      setSubmitted(true);
+      setFormData({ project: "", name: "", email: "", company: "", phone: "" });
+      setRequirement("");
+      setTeamType("");
+      setSelectedExpertise([]);
+      setTeamSize("");
+      setTimeline("");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -1625,8 +1654,10 @@ export default function DevelopmentConsultation() {
                   {/* SUBMIT */}
                   <div className="dc-submit-area">
 
+                    <FormNotice error={submitError} success={submitted} />
                     <button
                       type="submit"
+                      disabled={sending}
                       className="dc-submit-button"
                     >
                       Submit Development Requirements

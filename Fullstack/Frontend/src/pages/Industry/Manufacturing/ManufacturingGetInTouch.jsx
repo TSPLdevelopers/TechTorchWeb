@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -83,6 +85,14 @@ const ENGAGEMENT_STEPS = [
   },
 ];
 
+const MFG_SERVICE_LABELS = {
+  erp: "ERP & Business Processes",
+  "supply-chain": "Supply Chain",
+  software: "Software & Integration",
+  "digital-transformation": "Digital Transformation",
+  "technology-support": "Technology Support",
+};
+
 export default function ManufacturingGetInTouch() {
   const navigate = useNavigate();
 
@@ -108,8 +118,12 @@ export default function ManufacturingGetInTouch() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
     const form = e.currentTarget;
 
@@ -128,13 +142,41 @@ export default function ManufacturingGetInTouch() {
       return;
     }
 
-    console.log("Manufacturing enquiry:", formData);
+    if (!formData.contactMethod) {
+      setSubmitError("Please choose how you would like to be contacted.");
+      return;
+    }
+    if (!formData.consent) {
+      setSubmitError("Please agree to be contacted regarding your enquiry.");
+      return;
+    }
+    setSubmitError("");
+    setSending(true);
 
-    setShowSuccess(true);
-
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
+    try {
+      await submitQuery("inquiry", {
+        formType: "manufacturing",
+        fullName: formData.fullName.trim(),
+        email: formData.email.trim(),
+        company: formData.company.trim(),
+        phone: formData.phone.trim(),
+        topic: MFG_SERVICE_LABELS[formData.service] || formData.service,
+        message: formData.requirement.trim(),
+        details: {
+          preferredContactMethod: formData.contactMethod === "phone" ? "Phone" : "Email",
+          contactConsent: formData.consent === true,
+        },
+      });
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+      setFormData({ fullName: "", email: "", phone: "", company: "", service: "", requirement: "", contactMethod: "", consent: false });
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   const scrollToForm = () => {
@@ -1688,8 +1730,10 @@ export default function ManufacturingGetInTouch() {
 
                   </label>
 
+                  <FormNotice error={submitError} />
                   <button
                     type="submit"
+                    disabled={sending}
                     className="mfg-submit-btn"
                   >
                     SUBMIT ENQUIRY

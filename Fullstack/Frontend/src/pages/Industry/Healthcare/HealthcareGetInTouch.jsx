@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import {
   ArrowRight,
   User,
@@ -97,8 +99,12 @@ export default function HealthcareContact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
     const form = e.currentTarget;
 
@@ -132,21 +138,48 @@ export default function HealthcareContact() {
       return;
     }
 
-    const submissionData = {
-      ...formData,
-      healthcareRequirements: selectedRequirements,
-      facilityType,
-      patientVolume,
-      consultationWindow,
-    };
+    if (selectedRequirements.length === 0) {
+      setSubmitError("Please select at least one healthcare requirement.");
+      return;
+    }
+    if (!consultationWindow) {
+      setSubmitError("Please choose a preferred consultation window.");
+      return;
+    }
+    if (!formData.phone.trim()) {
+      setSubmitError("Phone / WhatsApp number is required.");
+      return;
+    }
+    setSubmitError("");
+    setSending(true);
 
-    console.log("Healthcare Consultation:", submissionData);
-
-    setShowSuccess(true);
-
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
+    try {
+      await submitQuery("healthcare", {
+        healthcareRequirements: selectedRequirements,
+        facilityType,
+        patientVolume,
+        fullNameDesignation: formData.name.trim(),
+        workEmail: formData.email.trim(),
+        organizationName: formData.organization.trim(),
+        phone: formData.phone.trim(),
+        consultationWindow,
+        challengeScope: formData.challenge.trim(),
+        healthcareNdaRequested: !!formData.nda,
+      });
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+      setFormData({ name: "", email: "", organization: "", phone: "", challenge: "", nda: false });
+      setSelectedRequirements([]);
+      setFacilityType("");
+      setPatientVolume("");
+      setConsultationWindow("");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -2336,8 +2369,10 @@ export default function HealthcareContact() {
                 SUBMIT
             ================================================= */}
 
+            <FormNotice error={submitError} />
             <button
               type="submit"
+              disabled={sending}
               className="healthcare-submit"
             >
 

@@ -10,6 +10,7 @@ export default function FormAuthGuard() {
   useEffect(() => {
     const path = location.pathname.toLowerCase();
 
+    // Auth pages aur admin routes par prompt nahi dikhana
     if (
       path.startsWith("/admin") ||
       path === "/signin" ||
@@ -21,11 +22,15 @@ export default function FormAuthGuard() {
       return;
     }
 
+    let cancelled = false;
+
     const checkAuth = async () => {
       try {
         const base = (
           import.meta.env.VITE_API_URL || "http://localhost:5000"
-        ).replace(/\/api\/?$/, "").replace(/\/$/, "");
+        )
+          .replace(/\/api\/?$/, "")
+          .replace(/\/$/, "");
 
         const response = await fetch(`${base}/api/auth/me`, {
           credentials: "include",
@@ -43,28 +48,36 @@ export default function FormAuthGuard() {
 
     const handleFieldClick = async (event) => {
       const field = event.target.closest(
-        "input:not([type=button]):not([type=submit]), textarea, select, [contenteditable=true]"
+        'input:not([type="button"]):not([type="submit"]), textarea, select, [contenteditable="true"]'
       );
 
       if (!field || !document.contains(field)) return;
 
       const loggedIn = await checkAuth();
 
-      if (!loggedIn) {
-        event.preventDefault();
-        field.blur();
-        setShowPrompt(true);
-      }
+      if (cancelled || loggedIn) return;
+
+      event.preventDefault();
+      field.blur();
+      setShowPrompt(true);
     };
 
     document.addEventListener("focusin", handleFieldClick, true);
 
     return () => {
+      cancelled = true;
       document.removeEventListener("focusin", handleFieldClick, true);
     };
   }, [location.pathname]);
 
   if (!showPrompt) return null;
+
+  // Current form URL, query string aur hash preserve karo
+  const returnTo = {
+    pathname: location.pathname,
+    search: location.search,
+    hash: location.hash,
+  };
 
   return (
     <div
@@ -82,6 +95,7 @@ export default function FormAuthGuard() {
       <div
         role="dialog"
         aria-modal="true"
+        aria-labelledby="auth-prompt-title"
         style={{
           background: "#fff",
           color: "#111",
@@ -92,18 +106,41 @@ export default function FormAuthGuard() {
           textAlign: "center",
         }}
       >
-        <h2>Sign in to continue</h2>
-        <p>Please sign in or create an account before submitting a query.</p>
+        <h2 id="auth-prompt-title">Sign in to continue</h2>
 
-        <button onClick={() => navigate("/signin")} style={{ margin: 8 }}>
+        <p>
+          Please sign in or create an account before submitting a query.
+        </p>
+
+        <button
+          type="button"
+          onClick={() =>
+            navigate("/signin", {
+              state: { from: returnTo },
+            })
+          }
+          style={{ margin: 8 }}
+        >
           Sign In
         </button>
 
-        <button onClick={() => navigate("/signup")} style={{ margin: 8 }}>
+        <button
+          type="button"
+          onClick={() =>
+            navigate("/signup", {
+              state: { from: returnTo },
+            })
+          }
+          style={{ margin: 8 }}
+        >
           Create Account
         </button>
 
-        <button onClick={() => setShowPrompt(false)} style={{ margin: 8 }}>
+        <button
+          type="button"
+          onClick={() => setShowPrompt(false)}
+          style={{ margin: 8 }}
+        >
           Cancel
         </button>
       </div>

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -57,6 +59,16 @@ const ENGAGEMENT_STEPS = [
   },
 ];
 
+const IT_SERVICE_LABELS = {
+  "software-development": "Software Development",
+  "it-consulting": "IT Consulting",
+  cloud: "Cloud Infrastructure",
+  cybersecurity: "Cybersecurity",
+  ai: "Artificial Intelligence",
+  "digital-transformation": "Digital Transformation",
+  "technology-support": "Technology Support",
+};
+
 export default function InformationTechnologyGetInTouch() {
   const navigate = useNavigate();
 
@@ -80,15 +92,45 @@ export default function InformationTechnologyGetInTouch() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
     if (!formData.consent) {
       alert("Please agree to be contacted regarding your enquiry.");
       return;
     }
 
-    console.log("Technology enquiry:", formData);
+    if (!formData.contactMethod) {
+      setSubmitError("Please choose how you would like to be contacted.");
+      return;
+    }
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
+
+    try {
+      await submitQuery("information", {
+        fullName: formData.fullName.trim(),
+        businessEmail: formData.email.trim(),
+        phoneNumber: formData.phone.trim(),
+        companyOrganization: formData.company.trim(),
+        serviceArea: IT_SERVICE_LABELS[formData.service] || formData.service,
+        requirement: formData.requirement.trim(),
+        preferredContactMethod: formData.contactMethod === "phone" ? "Phone" : "Email",
+        contactConsent: formData.consent === true,
+      });
+      setSubmitted(true);
+      setFormData({ fullName: "", email: "", phone: "", company: "", service: "", requirement: "", contactMethod: "", consent: false });
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   const scrollToForm = () => {
@@ -1721,8 +1763,10 @@ export default function InformationTechnologyGetInTouch() {
 
               </label>
 
+              <FormNotice error={submitError} success={submitted} />
               <button
                 type="submit"
+                disabled={sending}
                 className="it-submit-btn"
               >
                 SUBMIT ENQUIRY

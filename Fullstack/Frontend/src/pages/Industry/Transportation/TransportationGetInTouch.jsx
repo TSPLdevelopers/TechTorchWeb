@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -149,14 +151,59 @@ export default function TransportationGetInTouch() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
-    setShowAlert(true);
+    if (selectedTechnology.length === 0) {
+      setSubmitError("Please select at least one technology area.");
+      return;
+    }
+    if (!selectedAchievement) {
+      setSubmitError("Please select what you are looking to achieve.");
+      return;
+    }
+    if (!selectedStage) {
+      setSubmitError("Please select your current project stage.");
+      return;
+    }
+    if (!formData.consent) {
+      setSubmitError("Please agree to be contacted by TechTorch.");
+      return;
+    }
+    setSubmitError("");
+    setSending(true);
 
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 3000);
+    try {
+      await submitQuery("transportation", {
+        technologyAreas: selectedTechnology,
+        objectives: [selectedAchievement],
+        currentProjectStage: selectedStage,
+        requirement: formData.requirements.trim(),
+        fullName: formData.fullName.trim(),
+        businessEmail: formData.email.trim(),
+        companyOrganization: formData.company.trim(),
+        phoneNumber: formData.phone.trim(),
+        preferredContactMethod: contactMethod || "Email",
+        contactConsent: formData.consent === true,
+      });
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 3000);
+      setFormData({ requirements: "", fullName: "", email: "", company: "", phone: "", consent: false });
+      setSelectedTechnology([]);
+      setSelectedAchievement("");
+      setSelectedStage("");
+      setContactMethod("");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -2402,8 +2449,10 @@ export default function TransportationGetInTouch() {
 
               <div className="transport-submit-row">
 
+                <FormNotice error={submitError} />
                 <button
                   type="submit"
+                  disabled={sending}
                   className="transport-submit"
                 >
                   SUBMIT ENQUIRY

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../../api/queryForms";
+import FormNotice from "../../../components/FormNotice";
 import { CircleCheck } from "lucide-react";
 
 const helpOptions = [
@@ -125,8 +127,13 @@ const FMCGGetInTouch = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [consent, setConsent] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (sending) return;
 
     const form = e.currentTarget;
 
@@ -145,18 +152,51 @@ const FMCGGetInTouch = () => {
       return;
     }
 
-    console.log({
-      ...formData,
-      helpAreas: selectedHelp,
-      technologyRequirements: selectedTechnology,
-      projectStage,
-    });
+    if (selectedHelp.length === 0) {
+      setSubmitError("Please select at least one business area.");
+      return;
+    }
+    if (selectedTechnology.length === 0) {
+      setSubmitError("Please select at least one technology requirement.");
+      return;
+    }
+    if (!projectStage) {
+      setSubmitError("Please select your current project stage.");
+      return;
+    }
+    if (!consent) {
+      setSubmitError("Please agree to be contacted by TechTorch.");
+      return;
+    }
+    setSubmitError("");
+    setSending(true);
 
-    setShowSuccess(true);
-
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 3000);
+    try {
+      await submitQuery("fmcg", {
+        businessAreas: selectedHelp,
+        technologyRequirements: selectedTechnology,
+        projectStage,
+        fullName: formData.fullName.trim(),
+        businessEmail: formData.email.trim(),
+        companyOrganization: formData.company.trim(),
+        phoneNumber: formData.phone.trim(),
+        requirement: formData.requirement.trim(),
+        contactConsent: consent === true,
+      });
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 3000);
+      setFormData({ fullName: "", email: "", company: "", phone: "", requirement: "" });
+      setSelectedHelp([]);
+      setSelectedTechnology([]);
+      setProjectStage("");
+      setConsent(false);
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -1858,6 +1898,8 @@ const FMCGGetInTouch = () => {
 
                 <input
                   type="checkbox"
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
                 />
 
                 <span className="consent-checkbox"></span>
@@ -1887,8 +1929,10 @@ const FMCGGetInTouch = () => {
 
                 </div>
 
+                <FormNotice error={submitError} />
                 <button
                   type="submit"
+                  disabled={sending}
                   className="submit-button"
                 >
                   <span>SUBMIT ENQUIRY</span>

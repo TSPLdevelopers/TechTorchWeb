@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { submitQuery, submitErrorMessage } from "../../api/queryForms";
+import FormNotice from "../../components/FormNotice";
 import { useNavigate } from "react-router-dom";
 import {
   Mail,
@@ -17,6 +19,44 @@ export default function AskQuestion() {
 
   const [openFaq, setOpenFaq] = useState(null);
   const [urgency, setUrgency] = useState("general");
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const URGENCY_LABELS = {
+    general: "General Inquiry",
+    active: "Active Project",
+    immediate: "Immediate Need",
+  };
+
+  const handleQuestionSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const field = (k) => (data.get(k) || "").toString().trim();
+
+    setSubmitError("");
+    setSubmitted(false);
+    setSending(true);
+    try {
+      await submitQuery("question", {
+        fullName: field("fullName"),
+        businessEmail: field("businessEmail"),
+        companyOrganizationName: field("company"),
+        topicArea: field("topicArea"),
+        questionBusinessChallenge: field("question"),
+        urgencyTimeline: URGENCY_LABELS[urgency],
+      });
+      setSubmitted(true);
+      form.reset();
+      setUrgency("general");
+    } catch (err) {
+      setSubmitError(submitErrorMessage(err));
+    } finally {
+      setSending(false);
+    }
+  };
 
   const faqData = [
     {
@@ -1330,7 +1370,7 @@ export default function AskQuestion() {
 
           <form
             className="question-form"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleQuestionSubmit}
           >
 
             <div className="form-grid">
@@ -1343,6 +1383,7 @@ export default function AskQuestion() {
                 <input
                   type="text"
                   className="form-input"
+                  name="fullName"
                   placeholder="Enter your full name"
                   required
                 />
@@ -1356,6 +1397,7 @@ export default function AskQuestion() {
                 <input
                   type="email"
                   className="form-input"
+                  name="businessEmail"
                   placeholder="Enter your business email"
                   required
                 />
@@ -1369,6 +1411,7 @@ export default function AskQuestion() {
                 <input
                   type="text"
                   className="form-input"
+                  name="company"
                   placeholder="Enter company name"
                 />
               </div>
@@ -1381,6 +1424,7 @@ export default function AskQuestion() {
 
                 <select
                   className="form-select"
+                  name="topicArea"
                   defaultValue=""
                   required
                 >
@@ -1411,6 +1455,7 @@ export default function AskQuestion() {
 
                 <textarea
                   className="form-textarea"
+                  name="question"
                   maxLength={500}
                   placeholder="Briefly describe your project, technical constraint, architecture question, or business challenge..."
                   required
@@ -1491,8 +1536,10 @@ export default function AskQuestion() {
 
             <div className="form-bottom">
 
+              <FormNotice error={submitError} success={submitted} />
               <button
                 type="submit"
+                disabled={sending}
                 className="submit-button"
               >
                 Send Question
