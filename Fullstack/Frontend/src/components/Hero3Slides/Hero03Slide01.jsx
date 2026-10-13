@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 export default function SoftwareDevelopmentHero() {
   return (
     <section
@@ -223,48 +223,37 @@ export default function SoftwareDevelopmentHero() {
 
           {/* ================= BUTTON ================= */}
 
-          <button
-            type="button"
-            className="
-              mt-7
-
-              inline-flex
-              items-center
-              justify-center
-
-              rounded-[3px]
-
-              bg-[#730042]
-
-              px-5
-              py-[10px]
-
-              font-['Inter']
-
-              text-[13px]
-              font-semibold
-              text-white
-
-              transition-all
-              duration-300
-
-              hover:bg-white
-              hover:text-[#730042]
-
-              sm:mt-8
-              sm:px-6
-              sm:py-[11px]
-              sm:text-[15px]
-
-              md:mt-8
-
-              lg:mt-8
-              lg:px-5
-              lg:py-[10px]
-            "
-          >
-            Talk To Experts
-          </button>
+          <Link
+  to="/talk-to-expert"
+  className="
+    mt-7
+    inline-flex
+    items-center
+    justify-center
+    rounded-[3px]
+    bg-[#730042]
+    px-5
+    py-[10px]
+    font-['Inter']
+    text-[13px]
+    font-semibold
+    text-white
+    transition-all
+    duration-300
+    hover:bg-white
+    hover:text-[#730042]
+    sm:mt-8
+    sm:px-6
+    sm:py-[11px]
+    sm:text-[15px]
+    md:mt-8
+    lg:mt-8
+    lg:px-5
+    lg:py-[10px]
+  "
+>
+  Talk To Experts
+</Link>
         </div>
       </div>
     </section>

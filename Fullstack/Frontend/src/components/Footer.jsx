@@ -87,7 +87,7 @@ function LinkedInIcon() {
         items-center
         justify-center
         rounded-[3px]
-        bg-[#7a0046]
+        bg-[#730042]
         text-white
       "
     >
@@ -225,7 +225,7 @@ export default function Footer() {
 
               <SocialIcon
                 label="LinkedIn"
-                href="https://www.linkedin.com/company/techtorch_sol/posts/?feedView=all"
+                href="https://www.linkedin.com/company/techtorch_sol/                                                                                                                                                                                                                                                                                                                                                     "
               >
                 <LinkedInIcon />
               </SocialIcon>
@@ -311,24 +311,7 @@ export default function Footer() {
               Let's talk.
             </p>
 
-            <a
-              href="#"
-              className="
-                mb-5
-                inline-flex
-                items-center
-                gap-2
-                text-[14px]
-                font-semibold
-                uppercase
-                tracking-wide
-                transition-all
-                hover:gap-3
-              "
-            >
-              Talk to our experts
-              <ArrowRight size={16} />
-            </a>
+            
 
             <div className="flex flex-col gap-1 text-[14px] text-white/80">
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Cpu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -495,10 +496,13 @@ export default function ManufacturingHeroSection() {
 
             <div className="manufacturing-hero-actions">
 
-              <button className="manufacturing-hero-primary">
-                Talk to Our Experts
-                <ArrowRight size={16} />
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="manufacturing-hero-primary"
+>
+  Talk to Our Experts
+  <ArrowRight size={16} />
+</Link>
 
               <button
                 className="manufacturing-hero-secondary"

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Headphones, Sparkle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -388,28 +389,27 @@ export default function TelecomHeroSection() {
               </button>
 
               {/* Talk to Experts */}
-              <button
-                type="button"
-                className="
-                  telecom-secondary-btn
-                  inline-flex
-                  items-center
-                  gap-2
-                  px-5
-                  py-3
-                  rounded-[6px]
-                  text-sm
-                  font-medium
-                  border
-                "
-                style={{
-                  borderColor: "#d8d5d0",
-                  color: INK,
-                }}
-              >
-                Talk to Our Experts
-                
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="
+    telecom-secondary-btn
+    inline-flex
+    items-center
+    gap-2
+    px-5
+    py-3
+    rounded-[6px]
+    text-sm
+    font-medium
+    border
+  "
+  style={{
+    borderColor: "#d8d5d0",
+    color: INK,
+  }}
+>
+  Talk to Our Experts
+</Link>
             </div>
           </div>
 

@@ -123,7 +123,10 @@ export default function Overview() {
     <div className="p-4 sm:p-8">
       {/* Greeting */}
       <h1 className="text-2xl font-semibold text-stone-900">
-        {getGreeting()},  Admin
+       {getGreeting()},  Admin
+
+        {getGreeting()}, Admin
+
       </h1>
 
       <p className="mb-6 text-sm text-stone-500">

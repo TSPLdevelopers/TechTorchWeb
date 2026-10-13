@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const WINE = "#7A1F3D";
@@ -498,10 +499,13 @@ export default function FmcgHeroSection() {
             technology environment.
           </p>
 
-          <button className="fmcg-hero-button">
-            TALK TO OUR EXPERTS
-            <ArrowRight size={14} />
-          </button>
+          <Link
+  to="/talk-to-expert"
+  className="fmcg-hero-button"
+>
+  TALK TO OUR EXPERTS
+  <ArrowRight size={14} />
+</Link>
 
         </div>
 

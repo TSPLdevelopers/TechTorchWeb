@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 export default function BusinessPlatformsHero() {
@@ -45,11 +46,14 @@ export default function BusinessPlatformsHero() {
 
             {/* ================= CTA ================= */}
 
-            <button className="business-platforms-cta">
-              <span>Talk to Our Experts</span>
+            <Link
+  to="/talk-to-expert"
+  className="business-platforms-cta"
+>
+  <span>Talk to Our Experts</span>
 
-              <ArrowRight size={15} strokeWidth={2} />
-            </button>
+  <ArrowRight size={15} strokeWidth={2} />
+</Link>
 
             {/* ================= DIVIDER ================= */}
 

@@ -597,10 +597,7 @@ export default function ModernizeTechnologySection() {
               long-term requirements.
             </p>
 
-            <button type="button" className="modernize-button">
-              EXPLORE OUR SOLUTIONS
-              <ArrowRight size={14} strokeWidth={1.8} />
-            </button>
+            
           </div>
 
           {/* Right cards */}

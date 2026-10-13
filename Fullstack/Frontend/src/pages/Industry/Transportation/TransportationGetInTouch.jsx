@@ -851,11 +851,11 @@ export default function TransportationGetInTouch() {
 
           color: #33363b;
 
-          font-size: 10px;
+          font-size: 13px;
 
           line-height: 1.2;
 
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .transport-achievement-card p {
@@ -863,7 +863,7 @@ export default function TransportationGetInTouch() {
 
           color: #777b82;
 
-          font-size: 8px;
+          font-size: 12px;
 
           line-height: 1.25;
         }
@@ -898,7 +898,7 @@ export default function TransportationGetInTouch() {
 
           color: #44474c;
 
-          font-size: 9px;
+          font-size: 12px;
 
           font-weight: 600;
 
@@ -949,7 +949,7 @@ export default function TransportationGetInTouch() {
 
           font-family: inherit;
 
-          font-size: 11px;
+          font-size: 13px;
 
           line-height: 1.5;
 
@@ -995,9 +995,9 @@ export default function TransportationGetInTouch() {
 
           color: #33363b;
 
-          font-size: 9px;
+          font-size: 12px;
 
-          font-weight: 800;
+          font-weight: 700;
 
           text-transform: uppercase;
         }
@@ -1055,7 +1055,7 @@ export default function TransportationGetInTouch() {
 
           color: #41454a;
 
-          font-size: 10px;
+          font-size: 13px;
 
           font-weight: 600;
         }
@@ -1065,9 +1065,9 @@ export default function TransportationGetInTouch() {
 
           color: #34373c;
 
-          font-size: 10px;
+          font-size: 12px;
 
-          font-weight: 700;
+          font-weight: 600;
         }
 
         .transport-radio {
@@ -1102,7 +1102,7 @@ export default function TransportationGetInTouch() {
 
           color: #41454a;
 
-          font-size: 10px;
+          font-size: 13px;
 
           line-height: 1.4;
 
@@ -1158,9 +1158,9 @@ export default function TransportationGetInTouch() {
 
           color: #ffffff;
 
-          font-size: 10px;
+          font-size: 12px;
 
-          font-weight: 700;
+          font-weight: 600;
 
           cursor: pointer;
 
@@ -1183,7 +1183,7 @@ export default function TransportationGetInTouch() {
 
           color: #747980;
 
-          font-size: 9px;
+          font-size: 11px;
 
           line-height: 1.4;
         }
@@ -1209,9 +1209,9 @@ export default function TransportationGetInTouch() {
 
           color: var(--transport-beetroot);
 
-          font-size: 9px;
+          font-size: 11px;
 
-          font-weight: 800;
+          font-weight: 600;
 
           text-transform: uppercase;
         }
@@ -1223,11 +1223,9 @@ export default function TransportationGetInTouch() {
 
           font-family:
             "Plus Jakarta Sans",
-            Arial,
-            Helvetica,
             sans-serif;
 
-          font-size: 26px;
+          font-size: 24px;
 
           line-height: 1.2;
 
@@ -1239,7 +1237,7 @@ export default function TransportationGetInTouch() {
 
           color: #74787f;
 
-          font-size: 12px;
+          font-size: 13px;
 
           line-height: 1.5;
         }
@@ -1283,9 +1281,9 @@ export default function TransportationGetInTouch() {
         .transport-stage-label {
           color: var(--transport-beetroot);
 
-          font-size: 9px;
+          font-size: 10px;
 
-          font-weight: 800;
+          font-weight: 700;
         }
 
         .transport-tag {
@@ -1297,9 +1295,9 @@ export default function TransportationGetInTouch() {
 
           color: #777a80;
 
-          font-size: 8px;
+          font-size: 9px;
 
-          font-weight: 800;
+          font-weight: 700;
 
           text-transform: uppercase;
         }
@@ -1309,7 +1307,7 @@ export default function TransportationGetInTouch() {
 
           color: #2c3035;
 
-          font-size: 17px;
+          font-size: 16px;
 
           line-height: 1.25;
 
@@ -1321,7 +1319,7 @@ export default function TransportationGetInTouch() {
 
           color: #70747a;
 
-          font-size: 11px;
+          font-size: 13px;
 
           line-height: 1.45;
         }
@@ -1336,9 +1334,9 @@ export default function TransportationGetInTouch() {
 
           color: var(--transport-beetroot);
 
-          font-size: 8px;
+          font-size: 10px;
 
-          font-weight: 800;
+          font-weight: 700;
 
           text-transform: uppercase;
         }
@@ -1885,6 +1883,41 @@ export default function TransportationGetInTouch() {
             font-size: 10px;
           }
         }
+
+
+        /* =====================================================
+           FOOTER-ALIGNED OUTER PADDING ONLY
+           No typography, content, sizing, colors, or functionality changed.
+        ===================================================== */
+
+        @media (max-width: 639px) {
+          .transportation-page {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
+
+        @media (min-width: 640px) and (max-width: 767px) {
+          .transportation-page {
+            padding-left: 24px;
+            padding-right: 24px;
+          }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .transportation-page {
+            padding-left: 40px;
+            padding-right: 40px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .transportation-page {
+            padding-left: 100px;
+            padding-right: 100px;
+          }
+        }
+
       `}</style>
 
       {/* =====================================================
