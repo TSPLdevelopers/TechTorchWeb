@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Mail, Sparkle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -539,13 +540,13 @@ export default function TransportationHeroSection() {
 
           <div className="transportation-hero-actions">
 
-            <button
-              type="button"
-              className="transportation-primary-btn"
-            >
-              TALK TO OUR EXPERTS
-              <ArrowRight size={14} />
-            </button>
+           <Link
+  to="/talk-to-expert"
+  className="transportation-primary-btn"
+>
+  TALK TO OUR EXPERTS
+  <ArrowRight size={14} />
+</Link>
 
             <button
               type="button"

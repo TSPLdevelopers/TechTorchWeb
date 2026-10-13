@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Settings } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -637,13 +638,13 @@ export default function EnergyHeroSection() {
             <div className="energy-hero-actions">
 
               {/* LEFT */}
-              <button
-                type="button"
-                className="energy-hero-button energy-hero-button-secondary"
-              >
-                Talk to Our Experts
-                <ArrowRight size={16} />
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="energy-hero-button energy-hero-button-secondary"
+>
+  Talk to Our Experts
+  <ArrowRight size={16} />
+</Link>
 
               {/* RIGHT */}
               <button

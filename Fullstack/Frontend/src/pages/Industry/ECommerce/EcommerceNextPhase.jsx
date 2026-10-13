@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ChevronRight, ArrowRight } from "lucide-react";
 
 const WINE = "#7A1F3D";
@@ -413,21 +414,21 @@ export default function BuildOnlineBusinessCtaSection() {
           {/* Buttons */}
           <div className="build-online-actions">
             {/* Primary Button */}
-            <button
-              type="button"
-              className="
-                build-online-button
-                build-online-primary
-              "
-            >
-              Talk to Our Experts
+            <Link
+  to="/talk-to-expert"
+  className="
+    build-online-button
+    build-online-primary
+  "
+>
+  Talk to Our Experts
 
-              <ArrowRight
-                size={15}
-                strokeWidth={1.8}
-                className="build-online-arrow"
-              />
-            </button>
+  <ArrowRight
+    size={15}
+    strokeWidth={1.8}
+    className="build-online-arrow"
+  />
+</Link>
 
             {/* Secondary Button */}
             <button
