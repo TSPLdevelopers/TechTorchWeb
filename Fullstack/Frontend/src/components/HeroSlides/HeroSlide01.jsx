@@ -1,11 +1,12 @@
+
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function TechHero() {
   return (
-    <div className="relative w-full min-h-[550px] overflow-hidden bg-[#0a1128] font-['Plus Jakarta Sans']">
+    <div className="relative w-full min-h-[550px] overflow-hidden bg-[#0a1128] font-['Plus_Jakarta_Sans']">
 
-      {/* ================= BACKGROUND IMAGE ================= */}
-
+      {/* BACKGROUND IMAGE */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -13,8 +14,7 @@ export default function TechHero() {
         }}
       />
 
-      {/* ================= DARK OVERLAY ================= */}
-
+      {/* DARK OVERLAY */}
       <div
         className="absolute inset-0"
         style={{
@@ -23,40 +23,18 @@ export default function TechHero() {
         }}
       />
 
-      {/* ================= CONTENT ================= */}
-
+      {/* CONTENT */}
       <div
         className="
-          relative
-          z-10
-          flex
-          min-h-[450px]
-          flex-col
-          justify-center
-          max-w-2xl
-
-          px-4
-
-          sm:px-6
-
-          md:px-10
-
-          lg:px-[100px]
+          relative z-10 flex min-h-[450px] flex-col justify-center
+          max-w-2xl px-4 sm:px-6 md:px-10 lg:px-[100px]
         "
       >
-
         <h1
           className="
-            text-white
-            font-['Plus_Jakarta_Sans']
-            font-semibold
-            leading-[1.09]
-            text-[34px]
-            sm:text-[34px]
-            md:text-[36px]
-            tracking-tight
-            translate-y-8
-            whitespace-nowrap
+            text-white font-['Plus_Jakarta_Sans'] font-semibold
+            leading-[1.09] text-[34px] sm:text-[34px] md:text-[36px]
+            tracking-tight translate-y-8 whitespace-nowrap
           "
         >
           Technology Solutions Built
@@ -66,13 +44,8 @@ export default function TechHero() {
 
         <p
           className="
-            mt-20
-            text-white/85
-            font-['Inter']
-            text-[15px]
-            sm:text-[16px]
-            leading-relaxed
-            max-w-md
+            mt-20 text-white/85 font-['Inter'] text-[15px]
+            sm:text-[16px] leading-relaxed max-w-md
           "
         >
           Every business has its own challenges, priorities and goals. We
@@ -80,27 +53,26 @@ export default function TechHero() {
           create solutions that fit the way your business works.
         </p>
 
+        {/* TALK TO EXPERT BUTTON */}
         <div className="mt-20">
-          <button
+          <Link
+            to="/talk-to-expert"
             className="
-              border
-              border-white/70
-              text-white
-              text-[14px]
-              font-medium
-              tracking-wide
-              px-4
-              py-2
-              hover:bg-white
-              hover:text-[#0a1128]
-              transition-colors
-              duration-300
+              inline-flex items-center justify-center
+               border border-white
+              bg-transparent px-7 py-3.5
+              font-['Inter'] text-sm font-semibold
+              text-white no-underline
+              transition-all duration-300 ease-in-out
+              hover:bg-white hover:text-[#730042]
+              focus:outline-none focus:ring-2
+              focus:ring-white focus:ring-offset-2
+              focus:ring-offset-[#0a1128]
             "
           >
             Talk to Our Experts
-          </button>
+          </Link>
         </div>
-
       </div>
     </div>
   );

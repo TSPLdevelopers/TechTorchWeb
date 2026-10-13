@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
       </p>
       <p className="mt-4">
         We do not sell your personal information. You can ask us to correct or delete your data at any time by
-        contacting our team through the <Link to="/start-conversation" className="text-[#780042] underline">Contact Us</Link> page.
+        contacting our team through the <Link to="/start-conversation" className="text-[#730042] underline">Contact Us</Link> page.
       </p>
       <p className="mt-4 text-sm text-stone-500">Replace this placeholder with your company's final legal text.</p>
     </div>
