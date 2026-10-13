@@ -470,7 +470,7 @@ import ConversationToggle from "./pages/StartConversation/ConversationToggle.jsx
 // ABOUT US
 // =================================================
 
-import Leadership from "./pages/AboutUs/Leadership/Leadership.jsx";
+import Leadership from "./pages/AboutUs/Leadership.jsx";
 
 
 // =================================================
@@ -1128,12 +1128,12 @@ function ECommerce(){
     </>
   )
 }
-function AboutUs(){
-  return(
+function AboutUs() {
+  return (
     <>
-    <Leadership />
+      <Leadership />
     </>
-  )
+  );
 }
 // =================================================
 // APP
@@ -1546,10 +1546,19 @@ function App() {
     path="/talk-to-expert"
     element={<TalkToExpert />}
   />
-  <Route
-  path="/aboutus"
+  {/* ================= ABOUT US ================= */}
+
+<Route
+  path="/about-us"
   element={<AboutUs />}
-  />
+/>
+
+{/* ================= LEADERSHIP ================= */}
+
+<Route
+  path="/leadership"
+  element={<AboutUs />}
+/>
       </Routes>
     </>
   );

@@ -33,7 +33,7 @@ export default function ConnectedExperienceSection() {
           to work.
         </p>
 
-        <a href="#">Explore TorchX Suite →</a>
+        <a href="https://torchxsuite.com/">Explore TorchX Suite →</a>
       </div>
 
       <style>{`
