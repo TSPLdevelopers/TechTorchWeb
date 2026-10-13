@@ -1,14 +1,68 @@
-
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function TechHero() {
-  return (
-    <div className="relative w-full min-h-[550px] overflow-hidden bg-[#0a1128] font-['Plus_Jakarta_Sans']">
+  const [showOptions, setShowOptions] = useState(false);
+  const contactRef = useRef(null);
 
-      {/* BACKGROUND IMAGE */}
+  // Close options on outside click or Escape
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        contactRef.current &&
+        !contactRef.current.contains(event.target)
+      ) {
+        setShowOptions(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setShowOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  // Contact options
+  const contactOptions = [
+    {
+      label: "Call Us",
+      Icon: Phone,
+      href: "tel:+915813500381",
+    },
+    {
+      label: "WhatsApp",
+      Icon: MessageCircle,
+      href: "https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20technology%20solutions.",
+      external: true,
+    },
+    {
+      label: "Email Us",
+      Icon: Mail,
+      href: "mailto:contact@techtorch.solutions",
+    },
+  ];
+
+  return (
+    <div className="relative w-full min-h-[550px] overflow-hidden bg-[#0a1128] font-['Plus Jakarta Sans']">
+
+      {/* ================= BACKGROUND IMAGE ================= */}
+
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          bg-no-repeat
+        "
         style={{
           backgroundImage: "url('/slide1.1.png')",
         }}
@@ -26,10 +80,24 @@ export default function TechHero() {
       {/* CONTENT */}
       <div
         className="
-          relative z-10 flex min-h-[450px] flex-col justify-center
-          max-w-2xl px-4 sm:px-6 md:px-10 lg:px-[100px]
+          relative
+          z-10
+          flex
+          min-h-[450px]
+          flex-col
+          justify-center
+          max-w-2xl
+
+          px-4
+
+          sm:px-6
+
+          md:px-10
+
+          lg:px-[100px]
         "
       >
+
         <h1
           className="
             text-white font-['Plus_Jakarta_Sans'] font-semibold
@@ -42,6 +110,8 @@ export default function TechHero() {
           Around Your Business
         </h1>
 
+        {/* ================= DESCRIPTION ================= */}
+
         <p
           className="
             mt-20 text-white/85 font-['Inter'] text-[15px]
@@ -53,27 +123,27 @@ export default function TechHero() {
           create solutions that fit the way your business works.
         </p>
 
-        {/* TALK TO EXPERT BUTTON */}
         <div className="mt-20">
-          <Link
-            to="/talk-to-expert"
+          <button
             className="
-              inline-flex items-center justify-center
-               border border-white
-              bg-transparent px-7 py-3.5
-              font-['Inter'] text-sm font-semibold
-              text-white no-underline
-              transition-all duration-300 ease-in-out
-              hover:bg-white hover:text-[#730042]
-              focus:outline-none focus:ring-2
-              focus:ring-white focus:ring-offset-2
-              focus:ring-offset-[#0a1128]
+              border
+              border-white/70
+              text-white
+              text-[14px]
+              font-medium
+              tracking-wide
+              px-4
+              py-2
+              hover:bg-white
+              hover:text-[#0a1128]
+              transition-colors
+              duration-300
             "
           >
             Talk to Our Experts
-          </Link>
+          </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
