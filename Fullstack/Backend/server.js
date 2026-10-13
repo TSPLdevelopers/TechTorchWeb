@@ -74,6 +74,7 @@ const startConversationRoutes = require("./src/routes/startConversationRoutes");
 const exploreQuestionRoutes = require("./src/routes/exploreQuestionRoutes");
 const needsRoutes = require("./src/routes/needsRoutes");
 const inquiryRoutes = require("./src/routes/inquiryRoutes");
+const expertQueryRoutes = require("./src/routes/expertQueryRoutes");
 const queryRoutes = require("./src/routes/queryRoutes");
 
 const app = express();
@@ -163,6 +164,11 @@ app.use("/api/start-conversations", startConversationRoutes);
 app.use("/api/explore-questions", exploreQuestionRoutes);
 app.use("/api/needs", needsRoutes);
 app.use("/api/inquiries", inquiryRoutes);
+
+// Talk to Expert form (public). "/expert-queries" without /api is kept
+// so the form works even if VITE_API_URL has no "/api" in it.
+app.use("/api/expert-queries", expertQueryRoutes);
+app.use("/expert-queries", expertQueryRoutes);
 
 // Admin dashboard -> Queries section
 app.use("/api/queries", queryRoutes);

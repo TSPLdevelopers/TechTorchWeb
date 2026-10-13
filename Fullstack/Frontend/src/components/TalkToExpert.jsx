@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -8,8 +7,10 @@ const CONTACT = {
   whatsapp: "+91 72510 90147",
 };
 
-const API_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+// VITE_API_URL mein "/api" ho ya na ho, dono case mein sahi URL banega
+const API_URL = (
+  import.meta.env.VITE_API_URL || "http://localhost:5000"
+).replace(/\/api\/?$/, "");
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PHONE_REGEX = /^[6-9]\d{9}$/;
@@ -76,7 +77,7 @@ export default function TalkToExpert() {
     setSubmitting(true);
 
     try {
-      await axios.post(`${API_URL}/expert-queries`, {
+      await axios.post(`${API_URL}/api/expert-queries`, {
         fullName: form.fullName.trim(),
         email: form.email.trim(),
         phone: form.phone,
@@ -139,30 +140,30 @@ export default function TalkToExpert() {
             </a>
 
             <a
-  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-    CONTACT.email
-  )}`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="expert-contact-item"
->
-  <span className="expert-contact-icon" aria-hidden="true">
-    <svg viewBox="0 0 24 24">
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-      <path d="m22 7-10 7L2 7" />
-    </svg>
-  </span>
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                CONTACT.email
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="expert-contact-item"
+            >
+              <span className="expert-contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 7L2 7" />
+                </svg>
+              </span>
 
-  <span className="expert-contact-copy">
-    <span className="expert-contact-label">Email Us</span>
-    <strong>{CONTACT.email}</strong>
-  </span>
-</a>
+              <span className="expert-contact-copy">
+                <span className="expert-contact-label">Email Us</span>
+                <strong>{CONTACT.email}</strong>
+              </span>
+            </a>
 
             <a
-              href={`https://wa.me/91${CONTACT.whatsapp}`}
+              href={`https://wa.me/${CONTACT.whatsapp.replace(/\D/g, "")}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="expert-contact-item"
             >
               <span className="expert-contact-icon" aria-hidden="true">

@@ -23,6 +23,8 @@ const SOURCES = [
   { key: "ecommerce",          label: "E-Commerce",               model: require("../models/ecommerce.model") },
   { key: "transportation",     label: "Transportation",           model: require("../models/transportation.model") },
   { key: "inquiry",            label: "Manufacturing / MSP / Offshore", model: require("../models/Inquiry.model") },
+  { key: "talk-to-expert", label: "Talk to Expert", model: require("../models/TalkToExpert.model") },
+  { key: "expert-query",       label: "Talk to Expert",           model: require("../models/ExpertQuery.model") },
 ];
 
 const BY_KEY = Object.fromEntries(SOURCES.map((s) => [s.key, s]));
