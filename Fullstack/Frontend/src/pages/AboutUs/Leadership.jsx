@@ -191,8 +191,8 @@ const styles = `
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 18px;
   background: radial-gradient(120% 60% at 100% 0%, rgba(236,72,153,.35), transparent 60%), rgba(255,255,255,.06);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
 }
 .lp-glass__badge {
   display: inline-block;
