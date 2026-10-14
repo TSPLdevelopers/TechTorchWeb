@@ -8,7 +8,7 @@ const slides = [
     body:
       "We bring technology, business processes and people together to create practical digital solutions that help businesses work smarter and grow with confidence.",
     ctaText: "EXPLORE OUR SOLUTIONS",
-    ctaHref: "/slide1",
+    ctaHref: "/explore-solutions",
     focus: "center",
   },
   {
@@ -17,7 +17,7 @@ const slides = [
     body:
       "From custom applications to enterprise platforms, we create software that fits the way your business works today—and gives you room to grow tomorrow.",
     ctaText: "EXPLORE ERP",
-    ctaHref: "/Slide2",
+    ctaHref: "/explore-erp",
     focus: "65% 40%",
   },
   {
@@ -26,7 +26,7 @@ const slides = [
     body:
       "From custom applications to enterprise platforms, we create software that fits the way your business works today—and gives you room to grow tomorrow.",
     ctaText: "BUILD WITH TECHTORCH",
-    ctaHref: "/Slide3",
+    ctaHref: "/build-with-techtorch",
     focus: "70% 50%",
   },
   {
@@ -35,7 +35,7 @@ const slides = [
     body:
       "From AI and cloud to cybersecurity, we help businesses adopt modern technology with the reliability, security and flexibility they need to grow.",
     ctaText: "EXPLORE TECHNOLOGY SERVICES",
-    ctaHref: "/Slide4",
+    ctaHref: "/explore-services",
     focus: "100% 45%",
   },
   {
@@ -44,7 +44,7 @@ const slides = [
     body:
       "TorchX Suite brings key business functions into one connected platform, helping teams manage people, customers, finance and operations with greater clarity.",
     ctaText: "EXPLORE TORCHX SUITE",
-    ctaHref: "/Slide5",
+    ctaHref: "/explore-torchXsuite",
     focus: "100% 40%",
   },
 ];
