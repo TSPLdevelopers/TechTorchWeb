@@ -4,8 +4,8 @@
 
 export const ROUTES = {
   // About Us
-  "Company Overview": "/Philosophy",
-  Leadership: "/Philosophy",
+  "Company Overview": "/company-overview",
+  Leadership: "/Leadership",
   Idea: "/KnowMore",
   Investors: "/Philosophy",
   "Partners Ecosystem": "/vendor-partnership",

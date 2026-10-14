@@ -1,3 +1,5 @@
+
+import { Link } from "react-router-dom";
 import { routeFor } from "./navRoutes";
 import { useState, useRef, useEffect, useCallback } from "react";
 import megaMenuImage from "../../assets/image1.png";
@@ -11,13 +13,14 @@ const secondaryLinks = [
   "Partners Ecosystem",
 ];
 
-const boldLinks = ["News", "Customer Centricity"];
+const boldLinks = ["News"];
 
-const CLOSE_DELAY = 150; // ms - tweak to taste
+const CLOSE_DELAY = 150;
 
 function NavAboutUs() {
   const [isOpen, setIsOpen] = useState(false);
   const [navBottom, setNavBottom] = useState(0);
+
   const wrapperRef = useRef(null);
   const closeTimeoutRef = useRef(null);
 
@@ -26,15 +29,23 @@ function NavAboutUs() {
       if (!wrapperRef.current) return;
 
       const navEl =
-        wrapperRef.current.closest("header, nav") || wrapperRef.current;
+        wrapperRef.current.closest("header, nav") ||
+        wrapperRef.current;
 
       setNavBottom(navEl.getBoundingClientRect().bottom);
     };
 
     updatePosition();
-    window.addEventListener("resize", updatePosition);
 
-    return () => window.removeEventListener("resize", updatePosition);
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition);
+    };
   }, [isOpen]);
 
   const cancelClose = useCallback(() => {
@@ -46,6 +57,7 @@ function NavAboutUs() {
 
   const scheduleClose = useCallback(() => {
     cancelClose();
+
     closeTimeoutRef.current = setTimeout(() => {
       setIsOpen(false);
       closeTimeoutRef.current = null;
@@ -56,6 +68,19 @@ function NavAboutUs() {
     cancelClose();
     setIsOpen(true);
   }, [cancelClose]);
+
+  const handleLinkClick = () => {
+    cancelClose();
+    setIsOpen(false);
+  };
+
+  const getLinkPath = (title) => {
+    if (title === "Leadership") {
+      return "/leadership";
+    }
+
+    return routeFor(title);
+  };
 
   useEffect(() => {
     return () => cancelClose();
@@ -68,12 +93,14 @@ function NavAboutUs() {
       onMouseEnter={handleOpen}
       onMouseLeave={scheduleClose}
     >
+      {/* NAVIGATION TITLE */}
       <span
         className="relative inline-flex items-center h-full cursor-pointer text-[17px] text-gray-900 hover:text-[#8a1538] transition-colors duration-200 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-[#8a1538] after:transition-all after:duration-200 hover:after:w-full"
       >
         About Us
       </span>
 
+      {/* MEGA MENU */}
       {isOpen && (
         <div
           style={{ top: navBottom }}
@@ -89,63 +116,51 @@ function NavAboutUs() {
             </h3>
 
             <div className="flex flex-col gap-[22px] pt-2">
+              {/* PRIMARY LINKS */}
               {primaryLinks.map((title) => (
-                <a
+                <Link
                   key={title}
-                  href={routeFor(title)}
-                  className=" text-[16px]
-                          md:text-[18px]
-                          font-semibold
-                          hover:text-[#8a1538]
-                          text-gray-900
-                          font-plus-jakarta
-                          leading-[1.3]"
+                  to={getLinkPath(title)}
+                  onClick={handleLinkClick}
+                  className="text-[16px] md:text-[18px] font-semibold hover:text-[#8a1538] text-gray-900 font-plus-jakarta leading-[1.3]"
                 >
                   {title}
-                </a>
+                </Link>
               ))}
 
+              {/* SECONDARY LINKS */}
               {secondaryLinks.map((title) => (
-                <a
+                <Link
                   key={title}
-                  href={routeFor(title)}
-                  className="text-[15px]
-                        md:text-[15px]
-                        text-gray-800
-                        font-inter
-                        leading-[1.35]
-                        hover:text-[#8a1538]
-                        transition-colors
-                        duration-200"
+                  to={getLinkPath(title)}
+                  onClick={handleLinkClick}
+                  className="text-[15px] md:text-[15px] text-gray-800 font-inter leading-[1.35] hover:text-[#8a1538] transition-colors duration-200"
                 >
                   {title}
-                </a>
+                </Link>
               ))}
 
+              {/* BOLD LINKS */}
               <div className="flex flex-col gap-[22px] mt-[25px]">
                 {boldLinks.map((title) => (
-                  <a
+                  <Link
                     key={title}
-                    href={routeFor(title)}
-                    className="text-[16px]
-                          md:text-[18px]
-                          font-semibold
-                          hover:text-[#8a1538]
-                          text-gray-900
-                          font-plus-jakarta
-                          leading-[1.3]"
+                    to={getLinkPath(title)}
+                    onClick={handleLinkClick}
+                    className="text-[16px] md:text-[18px] font-semibold hover:text-[#8a1538] text-gray-900 font-plus-jakarta leading-[1.3]"
                   >
                     {title}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
 
-         <div className="absolute top-0 right-[20px] h-full w-[27%]">
+          {/* RIGHT IMAGE SECTION */}
+          <div className="absolute top-0 right-[20px] h-full w-[27%]">
             <img
               src={megaMenuImage}
-              alt=""
+              alt="Business technology"
               className="w-full h-full object-cover"
             />
 
@@ -160,9 +175,13 @@ function NavAboutUs() {
                 <div className="w-[255px] h-[2px] bg-white mt-2" />
               </div>
 
-            <a href="/Philosophy" className="text-[16px] font-bold font-inter text-white mb-8">
-              LEARN MORE
-            </a>
+              <Link
+                to="/leadership"
+                onClick={handleLinkClick}
+                className="text-[16px] font-bold font-inter text-white mb-8"
+              >
+                LEARN MORE
+              </Link>
             </div>
           </div>
         </div>
@@ -170,4 +189,5 @@ function NavAboutUs() {
     </div>
   );
 }
+
 export default NavAboutUs;

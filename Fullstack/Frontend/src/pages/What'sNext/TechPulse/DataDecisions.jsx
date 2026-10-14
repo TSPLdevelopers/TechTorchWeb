@@ -1,7 +1,73 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { Phone, MessageCircle, Mail, ArrowUpRight } from "lucide-react";
 
 export default function DataDecisions() {
+  const [showOptions, setShowOptions] = useState(false);
+  const contactRef = useRef(null);
+  const hideTimeout = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+    }
+    setShowOptions(true);
+  };
+
+  const handleMouseLeave = () => {
+    hideTimeout.current = setTimeout(() => {
+      setShowOptions(false);
+    }, 450);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        contactRef.current &&
+        !contactRef.current.contains(event.target)
+      ) {
+        setShowOptions(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setShowOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+      }
+    };
+  }, []);
+
+  const contactOptions = [
+    {
+      label: "Call us",
+      icon: <Phone size={17} />,
+      href: "tel:+915813500381",
+    },
+    {
+      label: "WhatsApp",
+      icon: <MessageCircle size={17} />,
+      href: "https://wa.me/91XXXXXXXXXX?text=Hello%20TechTorch%20Solutions",
+      external: true,
+    },
+    {
+      label: "Email us",
+      icon: <Mail size={17} />,
+      href: "mailto:contact@techtorch.solutions",
+    },
+  ];
+
   return (
     <div className="data-decisions-page">
       {/* ================= HERO ================= */}
@@ -68,21 +134,63 @@ export default function DataDecisions() {
           <div className="data-decisions-buttons">
             {/* EXPLORE DIGITAL SOLUTIONS */}
 
-           {/* EXPLORE DIGITAL SOLUTIONS */}
-<Link
-  to="/talk-to-expert"
-  className="data-decisions-primary-btn"
->
-  Explore Digital Solutions
-</Link>
+            <Link
+              to="/talk-to-expert"
+              className="data-decisions-primary-btn"
+            >
+              Explore Digital Solutions
+            </Link>
 
-{/* TALK TO EXPERTS */}
-<Link
-  to="/talk-to-expert"
-  className="data-decisions-secondary-btn"
->
-  Talk to Our Experts
-</Link>
+            {/* TALK TO EXPERTS */}
+
+            <div
+              className="data-decisions-contact-wrapper"
+              ref={contactRef}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link
+                to="/talk-to-expert"
+                className="data-decisions-secondary-btn group"
+              >
+                Talk to Our Experts
+
+                <ArrowUpRight
+                  size={18}
+                  strokeWidth={1.8}
+                  className="data-decisions-arrow"
+                />
+              </Link>
+
+              {/* CONTACT OPTIONS */}
+
+              <div
+                className={`data-decisions-contact-options ${
+                  showOptions ? "show" : ""
+                }`}
+                aria-hidden={!showOptions}
+              >
+                {contactOptions.map((option) => (
+                  <a
+                    key={option.label}
+                    href={option.href}
+                    aria-label={option.label}
+                    title={option.label}
+                    tabIndex={showOptions ? 0 : -1}
+                    target={option.external ? "_blank" : undefined}
+                    rel={
+                      option.external
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="data-decisions-contact-icon"
+                    onClick={() => setShowOptions(false)}
+                  >
+                    {option.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -139,7 +247,7 @@ export default function DataDecisions() {
             );
         }
 
-        /* ================= HERO CONTENT (padding same as other sections) ================= */
+        /* ================= HERO CONTENT ================= */
 
         .data-decisions-hero-content {
           position: relative;
@@ -284,10 +392,78 @@ export default function DataDecisions() {
           background: rgba(255, 255, 255, 0.08);
           color: #ffffff;
           backdrop-filter: blur(5px);
+          gap: 8px;
         }
 
         .data-decisions-secondary-btn:hover {
           background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* ================= ARROW ================= */
+
+        .data-decisions-arrow {
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+
+        .data-decisions-secondary-btn:hover .data-decisions-arrow {
+          transform: translate(4px, -4px);
+        }
+
+        /* ================= CONTACT ICONS ================= */
+
+        .data-decisions-contact-wrapper {
+          position: relative;
+          display: inline-block;
+        }
+
+        .data-decisions-contact-options {
+          position: absolute;
+          left: 100%;
+          top: 50%;
+          z-index: 10;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-left: 10px;
+          transform: translateY(-50%);
+          visibility: hidden;
+          opacity: 0;
+          pointer-events: none;
+          transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+        }
+
+        .data-decisions-contact-options.show {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .data-decisions-contact-icon {
+          width: 36px;
+          height: 36px;
+          flex: 0 0 36px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.95);
+          color: #730042;
+          text-decoration: none;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+          transition:
+            background 0.2s ease,
+            color 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .data-decisions-contact-icon:hover {
+          background: #730042;
+          color: #ffffff;
+          transform: translateY(-2px);
         }
 
         /* ================= TABLET ================= */
@@ -333,6 +509,18 @@ export default function DataDecisions() {
           .data-decisions-primary-btn,
           .data-decisions-secondary-btn {
             width: 210px;
+          }
+
+          .data-decisions-contact-wrapper {
+            width: 210px;
+          }
+
+          .data-decisions-contact-options {
+            left: auto;
+            right: 0;
+            top: calc(100% + 8px);
+            margin-left: 0;
+            transform: none;
           }
         }
 
