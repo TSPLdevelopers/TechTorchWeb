@@ -870,12 +870,14 @@ export default function Footer() {
                 www.techtorch.solutions
               </a>
 
-              <a
-                href="tel:+915813500381"
-                className="transition-colors hover:text-white"
-              >
-                +91 581 350 0381
-              </a>
+              
+<a
+  href="tel:+917251090147"
+  className="transition-colors hover:text-white"
+>
+  +91 7251090147
+</a>
+
             </div>
           </div>
         </div>
