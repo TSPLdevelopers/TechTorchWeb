@@ -241,6 +241,8 @@ export default function CompanyOverview() {
       <style>{`
         .company-overview-page {
           width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
           overflow: hidden;
           color: #151c2c;
           background: #fff;
@@ -250,8 +252,17 @@ export default function CompanyOverview() {
         /* Same horizontal alignment system as the site footer */
         .co-container {
           width: 100%;
+          max-width: 100%;
+          min-width: 0;
           margin-inline: auto;
           padding-inline: 16px;
+          box-sizing: border-box;
+        }
+
+        .co-container *,
+        .co-container *::before,
+        .co-container *::after {
+          box-sizing: border-box;
         }
 
         @media (min-width: 640px) {
@@ -338,7 +349,7 @@ export default function CompanyOverview() {
           margin: 0;
           color: #fff;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: clamp(34px, 4.2vw, 58px);
+          font-size: 40px;
           font-weight: 700;
           line-height: 1.08;
           letter-spacing: -1.8px;
@@ -352,7 +363,7 @@ export default function CompanyOverview() {
           max-width: 570px;
           margin: 23px 0 0;
           color: rgba(255,255,255,.78);
-          font-size: 15px;
+          font-size: 16px;
           line-height: 1.75;
         }
 
@@ -390,7 +401,7 @@ export default function CompanyOverview() {
           margin: 0 0 25px;
           color: #151c2c;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: clamp(30px, 3.1vw, 44px);
+          font-size: 40px;
           font-weight: 700;
           line-height: 1.16;
           letter-spacing: -1.2px;
@@ -400,7 +411,7 @@ export default function CompanyOverview() {
         .co-who-intro p {
           margin: 0 0 20px;
           color: #687383;
-          font-size: 16px;
+          font-size: 15px;
           line-height: 1.75;
           font-weight: 400;
         }
@@ -413,10 +424,10 @@ export default function CompanyOverview() {
         .co-story-image-wrap {
           width: 100%;
           min-width: 0;
+          height: clamp(220px, 28vw, 360px);
           overflow: hidden;
           border-radius: 18px;
           background: #e9edf1;
-          aspect-ratio: 1.28 / 1;
         }
 
         .co-story-image {
@@ -488,10 +499,11 @@ export default function CompanyOverview() {
           cursor: pointer;
         }
 
+
         .co-principle-symbol {
           display: flex;
-          width: 58px;
-          height: 58px;
+          width: 40px;
+          height: 48px;
           flex: 0 0 58px;
           align-items: center;
           justify-content: center;
@@ -519,8 +531,8 @@ export default function CompanyOverview() {
 
         .co-principle-heading strong {
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 21px;
-          font-weight: 700;
+          font-size: 16px;
+          font-weight: 600;
           line-height: 1.3;
         }
 
@@ -540,7 +552,7 @@ export default function CompanyOverview() {
         }
 
         .co-principle.is-active .co-principle-control {
-          color: #ffffff;
+          color: #730042;
         }
 
         .co-principle.is-active .co-principle-toggle {
@@ -561,7 +573,7 @@ export default function CompanyOverview() {
         .co-principle-body {
           margin: 0 0 24px 80px;
           color: #687383;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 1.75;
         }
 
@@ -592,7 +604,7 @@ export default function CompanyOverview() {
         .co-value-item p {
           margin: 0;
           color: #687383;
-          font-size: 15px;
+          font-size: 13px;
           line-height: 1.7;
         }
 
@@ -640,7 +652,7 @@ export default function CompanyOverview() {
           margin: 0 0 15px;
           color: #fff;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: clamp(24px, 2.5vw, 34px);
+          font-size: 40px;
           font-weight: 700;
           line-height: 1.2;
           letter-spacing: -.7px;
@@ -702,7 +714,7 @@ export default function CompanyOverview() {
 
           .co-story-copy h2,
           .co-who-intro h2 {
-            font-size: clamp(27px, 3.4vw, 34px);
+            font-size: 40px;
           }
 
           .co-story-copy p,
@@ -731,7 +743,7 @@ export default function CompanyOverview() {
         }
 
         /* MOBILE */
-        @media (max-width: 650px) {
+        @media (max-width: 767px) {
           .co-hero {
             min-height: 420px;
           }
@@ -788,7 +800,7 @@ export default function CompanyOverview() {
           }
 
           .co-story-image-wrap {
-            aspect-ratio: 1.2 / 1;
+            height: clamp(200px, 58vw, 300px);
             border-radius: 14px;
           }
 
@@ -843,6 +855,10 @@ export default function CompanyOverview() {
         }
 
         @media (max-width: 380px) {
+          .co-container {
+            padding-inline: 16px;
+          }
+
           .co-hero h1 {
             font-size: 29px;
           }
