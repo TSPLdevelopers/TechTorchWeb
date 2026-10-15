@@ -49,7 +49,7 @@ export default function BuildConnectGrow() {
             </Link>
 
             <Link
-              to="/Our-story"
+              to="/Our-Story"
               className="px-6 py-2.5 rounded-md border border-[#730042] text-[#730042] text-[13px] font-inter font-semibold tracking-wide no-underline hover:bg-[#730042] hover:text-white transition-colors duration-200"
             >
               OUR STORY
