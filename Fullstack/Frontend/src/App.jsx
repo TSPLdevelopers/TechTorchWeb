@@ -1049,7 +1049,7 @@ function App() {
 
           {/* ================= OUR STORY ================= */}
           <Route
-            path="/Philosophy"
+            path="/Our-story"
             element={<PhilosophyPage />}
           />
 
