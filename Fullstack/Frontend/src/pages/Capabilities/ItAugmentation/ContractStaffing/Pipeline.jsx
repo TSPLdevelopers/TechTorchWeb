@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Handshake, ArrowRight } from "lucide-react";
 
 export default function StrengthenEngineeringPipelineCTA() {
@@ -44,16 +45,16 @@ export default function StrengthenEngineeringPipelineCTA() {
           <div className="engineering-pipeline-actions">
 
             {/* Primary Button */}
-            <button
-              type="button"
-              className="engineering-pipeline-primary"
-            >
-              <span>
-                Talk to Our Augmentation Experts
-              </span>
+            
+<Link
+  to="/talk-to-expert"
+  className="engineering-pipeline-primary"
+>
+  <span>Talk to Our Augmentation Experts</span>
 
-              <ArrowRight className="engineering-pipeline-arrow" />
-            </button>
+  <ArrowRight className="engineering-pipeline-arrow" />
+</Link>
+
 
             {/* Secondary Button */}
             <button

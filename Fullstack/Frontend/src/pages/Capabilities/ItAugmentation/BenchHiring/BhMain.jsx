@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Zap,
   ArrowRight,
@@ -265,10 +266,15 @@ export default function BenchHiringPage() {
                   changing business and technology requirements.
                 </p>
 
-                <button type="button" className="bench-primary-button">
+
+                <Link
+                  to="/talk-to-expert"
+                  className="bench-primary-button"
+                >
                   Talk to Our Experts
                   <ArrowRight />
-                </button>
+                </Link>
+
 
                 <div className="bench-hero-tags">
                   {heroTags.map((tag) => (
@@ -718,10 +724,13 @@ export default function BenchHiringPage() {
                 solutions aligned with your requirements.
               </p>
 
-              <button type="button" className="bench-primary-button">
+              <Link
+                to="/talk-to-expert"
+                className="bench-primary-button"
+              >
                 Talk to Our Experts
                 <ArrowRight />
-              </button>
+              </Link>
 
               <div className="bench-final-tags">
                 {finalTags.map((tag) => (

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Target,
   Layers,
@@ -175,14 +176,17 @@ export default function WhyTechTorchSection() {
           </p>
 
           {/* Button */}
-          <button className="why-cta-button">
-            <span>Talk to Our Experts</span>
+          <Link
+  to="/talk-to-expert"
+  className="why-cta-button"
+>
+  <span>Talk to Our Experts</span>
 
-            <ArrowRight
-              className="why-cta-arrow"
-              strokeWidth={2}
-            />
-          </button>
+  <ArrowRight
+    className="why-cta-arrow"
+    strokeWidth={2}
+  />
+</Link>
 
           {/* CTA Tags */}
           <div className="why-cta-tags">

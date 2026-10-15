@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Cloud,
@@ -1199,10 +1200,13 @@ const MSPSupport = () => {
                 operations aligned with your business requirements.
               </p>
 
-              <button className="msp-primary-btn">
-                Talk to Our IT Experts
-                <ArrowRight size={15} />
-              </button>
+              <Link
+  to="/talk-to-expert"
+  className="msp-primary-btn"
+>
+  Talk to Our Experts
+  <ArrowRight size={15} />
+</Link>
 
               <div className="msp-hero-line" />
 

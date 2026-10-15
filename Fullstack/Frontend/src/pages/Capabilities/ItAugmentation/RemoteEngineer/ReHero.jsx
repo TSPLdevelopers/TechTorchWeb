@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Zap,
   ArrowRight,
@@ -804,11 +805,13 @@ export default function RemoteEngineersHero() {
             </p>
 
             {/* CTA */}
-            <button className="remote-cta">
-              Talk to Our Experts
-
-              <ArrowRight />
-            </button>
+            <Link
+  to="/talk-to-expert"
+  className="remote-cta"
+>
+  Talk to Our Experts
+  <ArrowRight />
+</Link>
           </div>
 
           {/* =================================================

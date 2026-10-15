@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function LifecycleGovernance() {
@@ -738,9 +739,12 @@ export default function LifecycleGovernance() {
                 <span className="lifecycle-primary-arrow">→</span>
               </button>
 
-              <button className="lifecycle-secondary-btn">
+              <Link
+                to="/talk-to-expert"
+                className="lifecycle-secondary-btn"
+              >
                 Talk to Our Experts
-              </button>
+              </Link>
             </div>
 
             {/* Bottom Benefits */}
