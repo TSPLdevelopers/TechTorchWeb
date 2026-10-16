@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Lightbulb,
   Users,
@@ -35,10 +35,46 @@ const principles = [
   },
 ];
 
+/* Name: numbers type ya paste nahi ho paayenge */
+const handleNameInput = (e) => {
+  e.target.value = e.target.value.replace(/[0-9]/g, "");
+};
+
 export default function IdeasPage() {
+  const [phoneError, setPhoneError] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const PHONE_ERROR = "Please enter a valid 10-digit number";
+
+  /* Phone: sirf digits, pehla digit 6-9, max 10 digits */
+  const handlePhoneInput = (e) => {
+    const value = e.target.value
+      .replace(/\D/g, "")
+      .replace(/^[0-5]+/, "")
+      .slice(0, 10);
+    e.target.value = value;
+
+    // Jab tak 10 digit poore nahi, error dikhao (khali ho to nahi)
+    setPhoneError(value.length > 0 && value.length < 10 ? PHONE_ERROR : "");
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    const phone = form.elements.phone.value;
+
+    if (phone && phone.length < 10) {
+      setPhoneError(PHONE_ERROR);
+      form.elements.phone.focus();
+      return;
+    }
+
     // Connect your backend/API here.
+
+    setSent(true);
+    setPhoneError("");
+    form.reset();
+    setTimeout(() => setSent(false), 4000);
   };
 
   return (
@@ -411,6 +447,26 @@ export default function IdeasPage() {
         .ideas-contact-form textarea:focus {
           border-color: #a51a63;
           box-shadow: 0 0 0 3px rgba(165, 26, 99, 0.08);
+        }
+
+        .ideas-contact-form .ideas-input-invalid {
+          border-color: #d93025;
+        }
+
+        .ideas-contact-form .ideas-field-error {
+          display: block;
+          margin-top: 6px;
+          color: #d93025;
+          font-size: 12px;
+          font-weight: 500;
+        }
+
+        .ideas-contact-form .ideas-success {
+          margin-top: 14px;
+          color: #1e8e3e;
+          font-size: 14px;
+          font-weight: 600;
+          text-align: center;
         }
 
         .ideas-contact-form button {
@@ -875,6 +931,9 @@ export default function IdeasPage() {
                 type="text"
                 placeholder="Jane Doe"
                 required
+                onInput={handleNameInput}
+                pattern="[^0-9]+"
+                title="Name me numbers allowed nahi hain"
               />
             </label>
 
@@ -893,8 +952,18 @@ export default function IdeasPage() {
               <input
                 name="phone"
                 type="tel"
-                placeholder="+1(555) 000-0000"
+                inputMode="numeric"
+                placeholder="9876543210"
+                maxLength={10}
+                onInput={handlePhoneInput}
+                aria-invalid={phoneError ? "true" : "false"}
+                className={phoneError ? "ideas-input-invalid" : ""}
               />
+              {phoneError && (
+                <span className="ideas-field-error" role="alert">
+                  {phoneError}
+                </span>
+              )}
             </label>
 
             <label>
@@ -910,6 +979,12 @@ export default function IdeasPage() {
             <button type="submit">
               Send Message <ArrowRight size={15} />
             </button>
+
+            {sent && (
+              <div className="ideas-success" role="status">
+                Message sent successfully!
+              </div>
+            )}
           </form>
         </section>
 

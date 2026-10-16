@@ -1,242 +1,425 @@
 import React, { useRef, useState } from "react";
-import { Cloud, Puzzle, Settings, Link2, Target, UsersRound, ShieldCheck, ArrowRight } from "lucide-react";
+import {
+  Cloud,
+  Puzzle,
+  Settings,
+  Link2,
+  Target,
+  UsersRound,
+  ShieldCheck,
+  ArrowRight,
+} from "lucide-react";
 
-// Place partner-handshake.png, partner-network.png, partner-building.png in public/.
 const IMAGES = {
   handshake: "/PartnersEcosystem1.png",
   network: "/PartnersEcosystem2.png",
   building: "/PartnersEcosystem3.png",
 };
 
-const opportunities = [
+const OPPORTUNITIES = [
   {
     icon: Cloud,
     title: "Technology Partnerships",
-    description: "Explore opportunities to collaborate on software, technology platforms, and digital capabilities that support changing business requirements.",
+    description:
+      "Explore opportunities to collaborate on software, technology platforms, and digital capabilities that support changing business requirements.",
   },
   {
     icon: Puzzle,
     title: "Solution Partnerships",
-    description: "Combine complementary products and expertise to address specific customer needs and deliver relevant business solutions.",
+    description:
+      "Combine complementary products and expertise to address specific customer needs and deliver relevant business solutions.",
   },
   {
     icon: Settings,
     title: "Service Partnerships",
-    description: "Work together across implementation, technical services, and delivery capabilities to support customer projects and operational requirements.",
+    description:
+      "Work together across implementation, technical services, and delivery capabilities to support customer projects and operational requirements.",
   },
 ];
 
-const benefits = [
+const BENEFITS = [
   {
     icon: Link2,
     title: "Complementary Capabilities",
-    description: "Bring together relevant expertise and services to address a broader range of business and technology requirements.",
+    description:
+      "Bring together relevant expertise and services to address a broader range of business and technology requirements.",
   },
   {
     icon: Target,
     title: "Business Collaboration",
-    description: "Identify opportunities to work together on customer projects and shared business objectives.",
+    description:
+      "Identify opportunities to work together on customer projects and shared business objectives.",
   },
   {
     icon: UsersRound,
     title: "Customer-Focused Solutions",
-    description: "Align technology and service capabilities with customer requirements and practical business outcomes.",
+    description:
+      "Align technology and service capabilities with customer requirements and practical business outcomes.",
   },
   {
     icon: ShieldCheck,
     title: "Professional Relationships",
-    description: "Build partnerships grounded in transparency, accountability, and mutual value.",
+    description:
+      "Build partnerships grounded in transparency, accountability, and mutual value.",
   },
 ];
+
+/* Footer jaisi hi horizontal padding: 16 / 24 / 40 / 100 */
+const PAGE_X = "px-4 sm:px-6 md:px-10 lg:px-[100px]";
+const SECTION_Y = "py-12 md:py-16 lg:py-24";
+
+const Eyebrow = ({ children, light }) => (
+  <span
+    className={`mb-3 block text-[11px] font-bold uppercase tracking-wide sm:text-xs ${
+      light ? "text-[#e6b6ca]" : "text-[#b31962]"
+    }`}
+  >
+    {children}
+  </span>
+);
+
+const inputClass =
+  "w-full rounded border border-[#cbd2dc] px-3 py-2.5 text-[13px] text-[#111a2e] placeholder:text-[#a7b0be] focus:border-[#730042] focus:outline-none focus:ring-2 focus:ring-[#730042]/20";
+const labelClass = "mb-1.5 mt-3.5 block text-xs font-semibold text-[#4c5768]";
 
 export default function PartnersEcosystem() {
   const formRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const scrollToForm = () => formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  const scrollToForm = () =>
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Connect this handler to your API/email service to actually send enquiries.
+    const form = event.currentTarget;
+    // TODO: yahan apni API / email service connect karo
     setSubmitted(true);
-    event.currentTarget.reset();
-    window.setTimeout(() => setSubmitted(false), 3500);
+    form.reset();
+    setTimeout(() => setSubmitted(false), 3500);
   };
 
   return (
-    <main className="pe-page">
-      <style>{styles}</style>
-
-      <section className="pe-section pe-hero">
-        <div className="pe-container pe-two-column">
-          <div className="pe-copy">
-            <span className="pe-eyebrow">PARTNERS ECOSYSTEM</span>
-            <h1>Partnerships That Create Business Value</h1>
-            <p>
-              At TechTorch Solutions, we recognise the role of strong partnerships in delivering effective technology solutions. We aim to build relationships with organisations whose expertise, capabilities, and business objectives complement our own.
+    <main className="partners-ecosystem-page w-full overflow-x-hidden font-inter text-[#111a2e]">
+      {/* ================= HERO ================= */}
+      <section className={`bg-[#faf9f4] ${SECTION_Y} ${PAGE_X}`}>
+        <div className="grid min-w-0 grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
+          <div>
+            <Eyebrow>Partners Ecosystem</Eyebrow>
+            <h1 className="text-[32px] font-extrabold leading-[1.1] tracking-tight sm:text-[40px] lg:text-[48px]">
+              Partnerships That Create Business Value
+            </h1>
+            <p className="mt-5 max-w-[560px] text-[14px] leading-relaxed text-[#5b6b80] sm:text-[15px]">
+              At TechTorch Solutions, we recognise the role of strong
+              partnerships in delivering effective technology solutions. We aim
+              to build relationships with organisations whose expertise,
+              capabilities, and business objectives complement our own.
             </p>
           </div>
-          <div className="pe-hero-art">
-            <div className="pe-image-shadow" />
-            <img src={IMAGES.handshake} alt="Technology-enabled business handshake" />
-            <div className="pe-image-corner" />
+          <div className="pe-hero-image-wrap relative min-w-0">
+            <img
+              src={IMAGES.handshake}
+              alt="Technology-enabled business handshake"
+              className="pe-hero-image aspect-[3/2] w-full max-w-full rounded-xl object-cover object-center shadow-xl"
+            />
           </div>
         </div>
       </section>
 
-      <section className="pe-section pe-network">
-        <div className="pe-container pe-two-column">
-          <div className="pe-copy">
-            <span className="pe-eyebrow">OUR PARTNER NETWORK</span>
-            <h2>Collaboration Built Around Shared Objectives</h2>
-            <p>
-              Our partner ecosystem is focused on bringing together complementary technology, services, and expertise. We believe effective collaboration starts with a clear understanding of customer requirements and a shared commitment to delivering relevant solutions.
+      {/* ================= NETWORK ================= */}
+      <section className={`bg-white ${SECTION_Y} ${PAGE_X}`}>
+        <div className="grid min-w-0 grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
+          <div>
+            <Eyebrow>Our Partner Network</Eyebrow>
+            <h2 className="text-[26px] font-extrabold leading-tight tracking-tight sm:text-[32px] lg:text-[38px]">
+              Collaboration Built Around Shared Objectives
+            </h2>
+            <p className="mt-5 max-w-[560px] text-[14px] leading-relaxed text-[#5b6b80] sm:text-[15px]">
+              Our partner ecosystem is focused on bringing together
+              complementary technology, services, and expertise. We believe
+              effective collaboration starts with a clear understanding of
+              customer requirements and a shared commitment to delivering
+              relevant solutions.
             </p>
-            <p>
-              We look for opportunities to work with organisations that value professional integrity, technical expertise, and long-term business relationships.
+            <p className="mt-4 max-w-[560px] text-[14px] leading-relaxed text-[#5b6b80] sm:text-[15px]">
+              We look for opportunities to work with organisations that value
+              professional integrity, technical expertise, and long-term
+              business relationships.
             </p>
           </div>
-          <div className="pe-network-art">
-            <img src={IMAGES.network} alt="Professionals collaborating around a glowing digital structure" />
-          </div>
+          <img
+            src={IMAGES.network}
+            alt="Professionals collaborating around a glowing digital structure"
+            className="w-full max-w-[90%] aspect-[3/2] rounded-2xl object-cover object-center shadow-xl md:order-last"
+          />
         </div>
       </section>
 
-      <section className="pe-section pe-opportunities">
-        <div className="pe-container">
-          <span className="pe-eyebrow">PARTNERSHIP OPPORTUNITIES</span>
-          <h2>Areas of Collaboration</h2>
-          <div className="pe-card-grid">
-            {opportunities.map(({ icon: Icon, title, description }) => (
-              <article className="pe-card" key={title}>
-                <span className="pe-card-icon"><Icon size={25} strokeWidth={1.9} /></span>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </article>
-            ))}
-          </div>
+      {/* ================= OPPORTUNITIES ================= */}
+      <section className={`bg-[#faf9f4] ${SECTION_Y} ${PAGE_X}`}>
+        <Eyebrow>Partnership Opportunities</Eyebrow>
+        <h2 className="text-[26px] font-extrabold leading-tight tracking-tight sm:text-[32px] lg:text-[38px]">
+          Areas of Collaboration
+        </h2>
+
+        <div className="mt-8 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-3 md:gap-6">
+          {OPPORTUNITIES.map(({ icon: Icon, title, description }) => (
+            <article
+              key={title}
+              className="rounded-xl border border-[#e6eaf0] bg-white p-6 lg:p-7"
+            >
+              <span className="mb-5 grid h-11 w-11 place-items-center rounded-[10px] bg-[#fdf0f6] text-[#b31962]">
+                <Icon size={22} />
+              </span>
+              <h3 className="text-[17px] font-bold leading-snug">{title}</h3>
+              <p className="mt-3 text-[14px] leading-relaxed text-[#5b6b80]">
+                {description}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="pe-section pe-benefits">
-        <div className="pe-container">
-          <span className="pe-eyebrow">WHY PARTNER WITH TECHTORCH?</span>
-          <h2>Building Stronger Together</h2>
-          <div className="pe-benefits-grid">
-            {benefits.map(({ icon: Icon, title, description }) => (
-              <article className="pe-benefit" key={title}>
-                <Icon className="pe-benefit-icon" size={27} strokeWidth={2.2} />
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </article>
-            ))}
-          </div>
+      {/* ================= BENEFITS ================= */}
+      <section className={`bg-white ${SECTION_Y} ${PAGE_X}`}>
+        <Eyebrow>Why Partner With TechTorch?</Eyebrow>
+        <h2 className="text-[26px] font-extrabold leading-tight tracking-tight sm:text-[32px] lg:text-[38px]">
+          Building Stronger Together
+        </h2>
+
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:mt-12 lg:grid-cols-4">
+          {BENEFITS.map(({ icon: Icon, title, description }) => (
+            <article key={title}>
+              <Icon size={26} className="mb-4 text-[#b31962]" />
+              <h3 className="text-[16px] font-bold leading-snug">{title}</h3>
+              <p className="mt-2.5 text-[14px] leading-relaxed text-[#5b6b80]">
+                {description}
+              </p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="pe-section pe-cta" id="partner-enquiry">
-        <div className="pe-container pe-cta-grid">
-          <div className="pe-cta-copy">
-            <span className="pe-eyebrow">START A PARTNERSHIP CONVERSATION</span>
-            <h2>Let's Explore Opportunities Together</h2>
-            <p>Are you a technology provider, software company, or service organisation looking to explore potential collaboration?</p>
-            <p>Share your organisation's capabilities and partnership objectives with TechTorch Solutions. Our team can review your enquiry and discuss potential areas of alignment.</p>
-            <div className="pe-actions">
-              <button type="button" className="pe-button pe-button-light" onClick={scrollToForm}>
-                Submit a Partnership Enquiry <ArrowRight size={19} />
+      {/* ================= CTA + FORM ================= */}
+      <section
+        id="partner-enquiry"
+        className={`bg-gradient-to-br from-[#4b0021] to-[#730042] ${SECTION_Y} ${PAGE_X}`}
+      >
+        <div className="grid min-w-0 grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-14">
+          <div>
+            <Eyebrow light>Start a Partnership Conversation</Eyebrow>
+            <h2 className="text-[28px] font-extrabold leading-tight tracking-tight text-white sm:text-[34px] lg:text-[40px]">
+              Let's Explore Opportunities Together
+            </h2>
+            <p className="mt-5 max-w-[560px] text-[14px] leading-relaxed text-[#e8becd] sm:text-[15px]">
+              Are you a technology provider, software company, or service
+              organisation looking to explore potential collaboration?
+            </p>
+            <p className="mt-4 max-w-[560px] text-[14px] leading-relaxed text-[#e8becd] sm:text-[15px]">
+              Share your organisation's capabilities and partnership objectives
+              with TechTorch Solutions. Our team can review your enquiry and
+              discuss potential areas of alignment.
+            </p>
+
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                onClick={scrollToForm}
+                className="inline-flex min-h-[46px] items-center justify-center gap-2.5 rounded-md border border-white bg-white px-5 text-[13px] font-bold text-[#730042] transition-colors hover:bg-[#f8eaf0]"
+              >
+                Submit a Partnership Enquiry <ArrowRight size={18} />
               </button>
-              <button type="button" className="pe-button pe-button-outline" onClick={scrollToForm}>Contact Us</button>
+              <button
+                type="button"
+                onClick={scrollToForm}
+                className="inline-flex min-h-[46px] items-center justify-center rounded-md border border-[#d49cb5] px-5 text-[13px] font-bold text-white transition-colors hover:bg-white/10"
+              >
+                Contact Us
+              </button>
             </div>
           </div>
 
-          <div className="pe-contact-panel" ref={formRef}>
-            <div className="pe-building"><img src={IMAGES.building} alt="Modern illuminated corporate office building" /></div>
-            <form className="pe-form" onSubmit={handleSubmit}>
-              <label htmlFor="pe-name">Your Name <b>*</b></label>
-              <input id="pe-name" name="name" type="text" placeholder="Enter your name" pattern="[A-Za-z ]+" title="Please enter letters only" required />
+          <div
+            ref={formRef}
+            className="grid grid-cols-1 overflow-hidden rounded-2xl bg-white shadow-2xl sm:grid-cols-[0.8fr_1fr]"
+          >
+            <img
+              src={IMAGES.building}
+              alt="Modern illuminated corporate office building"
+              className="h-[180px] w-full max-w-full object-cover object-[58%_center] sm:h-full sm:min-h-[320px] lg:min-h-[420px]"
+            />
 
-              <label htmlFor="pe-email">Business Email <b>*</b></label>
-              <input id="pe-email" name="email" type="email" placeholder="Enter your email" required />
+            <form onSubmit={handleSubmit} className="p-5 sm:p-6 lg:p-8">
+              <label htmlFor="pe-name" className={`${labelClass} !mt-0`}>
+                Your Name <b className="text-[#b31962]">*</b>
+              </label>
+              <input
+                id="pe-name"
+                name="name"
+                type="text"
+                placeholder="Enter your name"
+                required
+                className={inputClass}
+              />
 
-              <label htmlFor="pe-organisation">Organisation Name <b>*</b></label>
-              <input id="pe-organisation" name="organisation" type="text" placeholder="Enter your organisation" required />
+              <label htmlFor="pe-email" className={labelClass}>
+                Business Email <b className="text-[#b31962]">*</b>
+              </label>
+              <input
+                id="pe-email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+                className={inputClass}
+              />
 
-              <label htmlFor="pe-message">Message (Optional)</label>
-              <textarea id="pe-message" name="message" placeholder="Tell us about your partnership interest" rows={4} />
+              <label htmlFor="pe-org" className={labelClass}>
+                Organisation Name <b className="text-[#b31962]">*</b>
+              </label>
+              <input
+                id="pe-org"
+                name="organisation"
+                type="text"
+                placeholder="Enter your organisation"
+                required
+                className={inputClass}
+              />
 
-              <button className="pe-submit" type="submit">Submit</button>
-              {submitted && <p className="pe-success" role="status">Enquiry form completed. Connect an API to send it.</p>}
+              <label htmlFor="pe-message" className={labelClass}>
+                Message (Optional)
+              </label>
+              <textarea
+                id="pe-message"
+                name="message"
+                rows={4}
+                placeholder="Tell us about your partnership interest"
+                className={`${inputClass} resize-y`}
+              />
+
+              <button
+                type="submit"
+                className="mt-6 min-h-[44px] w-full rounded bg-[#730042] text-[13px] font-bold text-white transition-colors hover:bg-[#59002d]"
+              >
+                Submit
+              </button>
+
+              {submitted && (
+                <p role="status" className="mt-3 text-xs text-[#27633e]">
+                  Thank you! Your enquiry has been received.
+                </p>
+              )}
             </form>
           </div>
         </div>
       </section>
+
+      {/* Additional responsive CSS media queries */}
+      <style>{`
+        .partners-ecosystem-page,
+        .partners-ecosystem-page * {
+          box-sizing: border-box;
+        }
+
+        .partners-ecosystem-page img {
+          display: block;
+          max-width: 100%;
+        }
+
+        /* Hero image decoration to match the reference screenshot */
+        .pe-hero-image-wrap { isolation: isolate; }
+        .pe-hero-image-wrap::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          width: 44%;
+          height: 70%;
+          right: -4%;
+          bottom: -7%;
+          border-radius: 18px;
+          background: #f0dfe5;
+          transform: rotate(-5deg);
+        }
+        .pe-hero-image-wrap::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 24%;
+          height: 28%;
+          background: #730042;
+          clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+          border-bottom-right-radius: 12px;
+          pointer-events: none;
+        }
+        .pe-hero-image { position: relative; z-index: 0; }
+
+        /* Mobile phones */
+        @media (max-width: 767px) {
+          .partners-ecosystem-page > section > div {
+            min-width: 0;
+          }
+
+          .partners-ecosystem-page > section:nth-of-type(1) .pe-hero-image,
+          .partners-ecosystem-page > section:nth-of-type(2) img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .partners-ecosystem-page > section:nth-of-type(5) > div > div:nth-child(2) > img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .partners-ecosystem-page input,
+          .partners-ecosystem-page textarea,
+          .partners-ecosystem-page button {
+            max-width: 100%;
+          }
+        }
+
+        /* Tablets and small laptops */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .partners-ecosystem-page > section:nth-of-type(1) .pe-hero-image,
+          .partners-ecosystem-page > section:nth-of-type(2) img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .partners-ecosystem-page > section:nth-of-type(5) > div > div:nth-child(2) > img {
+            min-height: 320px;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+
+        /* Desktop screens */
+        @media (min-width: 1024px) {
+          .partners-ecosystem-page > section:nth-of-type(1) .pe-hero-image,
+          .partners-ecosystem-page > section:nth-of-type(2) img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .partners-ecosystem-page > section:nth-of-type(5) > div > div:nth-child(2) > img {
+            min-height: 420px;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+      `}</style>
     </main>
   );
 }
-
-const styles = `
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-.pe-page{--pe-dark:#111a2e;--pe-muted:#5b6b80;--pe-pink:#b31962;--pe-cream:#faf9f4;font-family:'Inter',sans-serif;color:var(--pe-dark);width:100%;max-width:100%;overflow:hidden}
-.pe-page *{box-sizing:border-box;min-width:0}
-.pe-page img{max-width:100%}
-.pe-container{width:min(100% - 64px,1320px);margin-inline:auto}
-.pe-section{padding:clamp(64px,7.5vw,112px) 0}
-.pe-eyebrow{display:block;font-size:12px;font-weight:800;color:var(--pe-pink);letter-spacing:.04em;margin-bottom:16px;line-height:1.4}
-.pe-page h1,.pe-page h2,.pe-page h3{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.045em;margin:0}
-.pe-page h1{font-size:clamp(34px,3.4vw,54px);line-height:1.08;font-weight:800;max-width:680px;overflow-wrap:break-word}
-.pe-page h2{font-size:clamp(28px,2.6vw,40px);line-height:1.16;font-weight:800;overflow-wrap:break-word}
-.pe-page h3{line-height:1.35}
-.pe-page p{color:var(--pe-muted);font-size:15px;line-height:1.72;margin:20px 0 0;overflow-wrap:break-word}
-.pe-two-column{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,68px);align-items:center}
-.pe-hero{background:var(--pe-cream);padding-top:clamp(72px,8vw,120px);padding-bottom:clamp(80px,9vw,130px)}
-.pe-hero .pe-copy p,.pe-network .pe-copy p{max-width:650px}
-.pe-hero-art{position:relative;isolation:isolate;margin:0 5px 20px 0}
-.pe-hero-art img{display:block;width:100%;aspect-ratio:1.45;object-fit:cover;border-radius:16px;box-shadow:0 22px 30px rgba(0,0,0,.12);position:relative;z-index:2}
-.pe-image-shadow{position:absolute;inset:12% -3% -8% 58%;border-radius:28px;background:#eadbe0;transform:rotate(-5deg);z-index:-1}
-.pe-image-corner{position:absolute;right:0;bottom:0;width:25%;height:26%;background:#730b39;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%);z-index:3;border-bottom-right-radius:16px}
-.pe-network{background:#fff}
-.pe-network-art img{display:block;width:100%;aspect-ratio:1.49;object-fit:cover;border-radius:14px;box-shadow:0 10px 18px rgba(0,0,0,.12)}
-.pe-opportunities{background:var(--pe-cream)}
-.pe-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px}
-.pe-card{background:#fff;border:1px solid #e6eaf0;border-radius:12px;padding:28px 26px 30px;box-shadow:0 2px 2px rgba(16,25,40,.04);min-height:220px}
-.pe-card-icon{width:46px;height:46px;display:grid;place-items:center;background:#fdf0f6;color:var(--pe-pink);border-radius:9px;margin-bottom:22px}
-.pe-card h3{font-size:18px;font-weight:800;letter-spacing:-.035em}
-.pe-card p{margin-top:12px;font-size:14px;line-height:1.65}
-.pe-benefits{background:#fff}
-.pe-benefits-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px;margin-top:60px}
-.pe-benefit-icon{color:var(--pe-pink);margin-bottom:18px}
-.pe-benefit h3{font-size:16px;font-weight:800;letter-spacing:-.035em}
-.pe-benefit p{font-size:13px;line-height:1.7;margin-top:12px}
-.pe-cta{background:linear-gradient(112deg,#4b0021 0%,#730b39 55%,#5c002b 100%);padding-block:clamp(64px,7.5vw,110px)}
-.pe-cta-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(28px,4vw,58px);align-items:center}
-.pe-cta .pe-eyebrow{color:#e6b6ca}
-.pe-cta h2{color:#fff;max-width:580px;font-size:clamp(30px,3vw,44px)}
-.pe-cta-copy p{color:#e8becd;max-width:560px;font-size:15px;line-height:1.7}
-.pe-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.pe-button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:12px 20px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.35;transition:background .2s ease,color .2s ease}
-.pe-button-light{color:#760b3b;background:#fff;border:1px solid #fff}
-.pe-button-light:hover{background:#f8eaf0}
-.pe-button-outline{color:#fff;background:transparent;border:1px solid #d49cb5}
-.pe-button-outline:hover{background:#ffffff16}
-.pe-contact-panel{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1fr);background:#fff;border-radius:14px;overflow:hidden;min-height:430px;box-shadow:0 12px 30px #24001425}
-.pe-building{min-height:100%;overflow:hidden}
-.pe-building img{width:100%;height:100%;min-height:430px;object-fit:cover;object-position:58% center;display:block}
-.pe-form{padding:clamp(20px,2.3vw,32px);display:flex;flex-direction:column;justify-content:center;background:#fff}
-.pe-form label{font-size:12px;font-weight:700;color:#4c5768;margin-bottom:7px;line-height:1.4}
-.pe-form label:not(:first-child){margin-top:14px}
-.pe-form b{color:#bc1c65}
-.pe-form input,.pe-form textarea{display:block;width:100%;min-width:0;border:1px solid #cbd2dc;border-radius:4px;padding:11px 12px;outline:none;font:13px 'Inter',sans-serif;color:#182136;background:#fff}
-.pe-form input{min-height:42px}
-.pe-form input:focus,.pe-form textarea:focus{border-color:#730042;box-shadow:0 0 0 2px #73004220}
-.pe-form input::placeholder,.pe-form textarea::placeholder{color:#a7b0be}
-.pe-form textarea{resize:vertical;min-height:78px}
-.pe-submit{border:0;border-radius:4px;background:#730b39;color:#fff;min-height:44px;margin-top:24px;font-weight:700;font-size:13px;cursor:pointer}
-.pe-submit:hover{background:#59002d}
-.pe-success{font-size:12px!important;margin:10px 0 0!important;color:#27633e!important}
-@media(min-width:1500px){.pe-container{width:min(100% - 100px,1400px)}}
-@media(max-width:1100px){.pe-container{width:calc(100% - 56px)}.pe-two-column{gap:32px}.pe-card-grid{gap:18px}.pe-card{padding:24px 20px}.pe-benefits-grid{gap:22px}.pe-cta-grid{gap:28px}.pe-contact-panel{grid-template-columns:minmax(0,.7fr) minmax(0,1fr)}.pe-form{padding:20px}}
-@media(max-width:900px){.pe-section{padding-block:68px}.pe-two-column{grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:26px}.pe-page h1{font-size:clamp(32px,4.2vw,42px)}.pe-page h2{font-size:clamp(27px,3.2vw,34px)}.pe-page p{font-size:14px}.pe-card-grid{margin-top:38px}.pe-card h3{font-size:16px}.pe-card p{font-size:13px}.pe-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:34px}.pe-cta-grid{grid-template-columns:1fr;gap:34px}.pe-cta-copy{max-width:680px}.pe-contact-panel{max-width:760px;width:100%;margin-inline:auto;grid-template-columns:minmax(0,.8fr) minmax(0,1fr)}}
-@media(max-width:640px){.pe-container{width:calc(100% - 36px)}.pe-section{padding-block:54px}.pe-hero{padding-top:58px;padding-bottom:68px}.pe-two-column{grid-template-columns:1fr;gap:30px}.pe-page h1{font-size:clamp(32px,8vw,39px);line-height:1.1}.pe-page h2{font-size:clamp(27px,6.5vw,32px);line-height:1.17}.pe-page p{font-size:14px;line-height:1.7;margin-top:16px}.pe-eyebrow{font-size:10px;margin-bottom:12px}.pe-hero-art{margin:0 5px 10px 0}.pe-hero-art img{aspect-ratio:1.42;border-radius:12px}.pe-image-shadow{inset:12% -2% -6% 58%;border-radius:18px}.pe-image-corner{border-bottom-right-radius:12px}.pe-network-art img{aspect-ratio:1.42;border-radius:12px}.pe-card-grid{grid-template-columns:1fr;gap:14px;margin-top:30px}.pe-card{padding:22px;min-height:0}.pe-card-icon{width:42px;height:42px;margin-bottom:17px}.pe-card h3{font-size:17px}.pe-card p{font-size:13px;margin-top:9px}.pe-benefits-grid{grid-template-columns:1fr;gap:26px;margin-top:36px}.pe-benefit{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:12px;align-items:start}.pe-benefit-icon{grid-row:span 2;width:25px;height:25px;margin:0}.pe-benefit h3{font-size:16px}.pe-benefit p{grid-column:2;margin-top:7px;font-size:13px}.pe-cta{padding-block:58px}.pe-cta-grid{gap:28px}.pe-cta h2{font-size:clamp(30px,7.5vw,36px)}.pe-actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:24px}.pe-button{width:100%;min-height:46px}.pe-contact-panel{grid-template-columns:1fr;border-radius:12px}.pe-building{height:220px;min-height:220px}.pe-building img{height:220px;min-height:220px;object-position:center 42%}.pe-form{padding:22px}.pe-form label{font-size:12px}.pe-form label:not(:first-child){margin-top:13px}.pe-form input,.pe-form textarea{font-size:14px}.pe-submit{margin-top:20px}}
-@media(max-width:380px){.pe-container{width:calc(100% - 28px)}.pe-section{padding-block:46px}.pe-page h1{font-size:31px}.pe-page h2{font-size:26px}.pe-card{padding:18px}.pe-form{padding:18px}.pe-building,.pe-building img{height:190px;min-height:190px}.pe-button{font-size:12px;padding:11px 14px}}
-@media(prefers-reduced-motion:reduce){.pe-page *{scroll-behavior:auto!important;transition:none!important}}
-`;
