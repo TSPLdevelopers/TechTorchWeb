@@ -432,6 +432,8 @@ import ConversationToggle from "./pages/StartConversation/ConversationToggle.jsx
 
 import Leadership from "./pages/AboutUs/Leadership.jsx";
 import CompanyOverview from "./pages/AboutUs/CompanyOverview.jsx";
+import Idea from "./pages/AboutUs/Idea.jsx";
+import PartnersEcosystem from "./pages/AboutUs/PartnersEcosystem.jsx";
 
 
 // =================================================
@@ -1449,6 +1451,16 @@ function App() {
 <Route
   path="/company-overview"
   element={<CompanyOverview/>}
+/>
+
+<Route
+  path="/idea"
+  element={<Idea/>}
+/>
+
+<Route
+  path="/partners-ecosystem"
+  element={<PartnersEcosystem/>}
 />
       </Routes>
     </>
