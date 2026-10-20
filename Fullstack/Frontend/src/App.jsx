@@ -1406,31 +1406,7 @@ function App() {
             path="/conversation-toggle"
             element={<ConversationToggle/>}
           />
-
-          {/* ================= ACCOUNTS (candidates + admins share one sign-in) ================= */}
-          <Route path="/signin" element={<AccessPage initialTab="signin" />} />
-          <Route path="/signup" element={<AccessPage initialTab="signup" />} />
-          <Route path="/candidate" element={<CandidateDashboard />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/:id" element={<BlogDetail />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-
-        </Route>
-
-        {/* =================================================
-            ADMIN DASHBOARD (login, signup, forgot password,
-            dashboard + all content modules) - no site navbar/footer
-        ================================================= */}
-        {adminRoutes}
-        <Route path="/admin" element={<Navigate to="/admin-dashboard" replace />} />
-        <Route path="/dashboard" element={<Navigate to="/admin-dashboard" replace />} />
-        <Route path="/login" element={<Navigate to="/signin" replace />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      
-  {/* Tumhare existing routes yahan rahenge */}
-
-  <Route
+          <Route
     path="/talk-to-expert"
     element={<TalkToExpert />}
   />
@@ -1462,6 +1438,31 @@ function App() {
   path="/partners-ecosystem"
   element={<PartnersEcosystem/>}
 />
+
+          {/* ================= ACCOUNTS (candidates + admins share one sign-in) ================= */}
+          <Route path="/signin" element={<AccessPage initialTab="signin" />} />
+          <Route path="/signup" element={<AccessPage initialTab="signup" />} />
+          <Route path="/candidate" element={<CandidateDashboard />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:id" element={<BlogDetail />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+        </Route>
+
+        {/* =================================================
+            ADMIN DASHBOARD (login, signup, forgot password,
+            dashboard + all content modules) - no site navbar/footer
+        ================================================= */}
+        {adminRoutes}
+        <Route path="/admin" element={<Navigate to="/admin-dashboard" replace />} />
+        <Route path="/dashboard" element={<Navigate to="/admin-dashboard" replace />} />
+        <Route path="/login" element={<Navigate to="/signin" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      
+  {/* Tumhare existing routes yahan rahenge */}
+
+  
       </Routes>
     </>
   );
