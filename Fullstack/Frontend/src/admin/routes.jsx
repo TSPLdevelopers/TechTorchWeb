@@ -11,6 +11,7 @@ import CandidateBlogs from "./pages/CandidateBlogs";
 import CandidateInterests from "./pages/CandidateInterests";
 import { EventsPage, JobsPage, NewsPage, UpdatesPage, WhitepapersPage } from "./pages/ContentPages";
 import Queries from "./pages/Queries.jsx";
+import PermissionGate from "../components/PermissionGate.jsx";
 
 // Drop this into <Routes> in App.jsx:  {adminRoutes}
 export const adminRoutes = (
@@ -21,18 +22,24 @@ export const adminRoutes = (
     <Route path="/admin-verify-otp" element={<Navigate to="/admin-forgot-password" replace />} />
     <Route path="/admin-reset-password" element={<Navigate to="/admin-forgot-password" replace />} />
 
-    <Route element={<AdminLayout />}>
-      <Route path="/admin-dashboard" element={<Overview />} />
-      <Route path="/news-insights" element={<NewsPage />} />
-      <Route path="/job-openings" element={<JobsPage />} />
-      <Route path="/events" element={<EventsPage />} />
-      <Route path="/whitepapers" element={<WhitepapersPage />} />
-      <Route path="/latest-updates" element={<UpdatesPage />} />
-      <Route path="/candidate-blogs" element={<CandidateBlogs />} />
-      <Route path="/candidate-interests" element={<CandidateInterests />} />
-      <Route path="/admin-queries" element={<Queries />} />
-      <Route path="/account" element={<Account />} />
-      <Route path="/admin-accounts" element={<Admins />} />
-    </Route>
+    
+   
+<Route element={<PermissionGate allowedRoles={["admin", "superadmin"]} />}>
+  <Route element={<AdminLayout />}>
+    <Route path="/admin-dashboard" element={<Overview />} />
+    <Route path="/news-insights" element={<NewsPage />} />
+    <Route path="/job-openings" element={<JobsPage />} />
+    <Route path="/events" element={<EventsPage />} />
+    <Route path="/whitepapers" element={<WhitepapersPage />} />
+    <Route path="/latest-updates" element={<UpdatesPage />} />
+    <Route path="/candidate-blogs" element={<CandidateBlogs />} />
+    <Route path="/candidate-interests" element={<CandidateInterests />} />
+    <Route path="/admin-queries" element={<Queries />} />
+    <Route path="/account" element={<Account />} />
+    <Route path="/admin-accounts" element={<Admins />} />
+  </Route>
+</Route>
+
+
   </>
 );

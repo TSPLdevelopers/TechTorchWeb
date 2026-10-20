@@ -125,7 +125,7 @@ export default function Overview() {
       <h1 className="text-2xl font-semibold text-stone-900">
        {getGreeting()},  Admin
 
-        {getGreeting()}, Admin
+       
 
       </h1>
 

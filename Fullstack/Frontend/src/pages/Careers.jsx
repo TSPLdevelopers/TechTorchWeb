@@ -17,8 +17,17 @@ function InterestModal({ job, onClose }) {
   const submit = async (e) => {
     e.preventDefault();
     setError("");
+
+    const msg = message.trim();
+    const resume = resumeUrl.trim();
+
+    // required sirf khali field pakadta hai, spaces wala nahi — isliye ye check bhi
+    if (msg.length < 10) return setError("Please write at least 10 characters about why you're a good fit");
+    if (!resume) return setError("Please add your résumé / LinkedIn link");
+    if (!/^https?:\/\/\S+$/i.test(resume)) return setError("Link must start with http:// or https://");
+
     try {
-      await show.mutateAsync({ jobId: job._id, message, resumeUrl });
+      await show.mutateAsync({ jobId: job._id, message: msg, resumeUrl: resume });
       toast("Interest sent — our team will get in touch");
       onClose();
     } catch (err) {
@@ -29,8 +38,27 @@ function InterestModal({ job, onClose }) {
   return (
     <Modal title={`Interested in ${job.title}`} onClose={onClose}>
       <form onSubmit={submit} className="space-y-4 p-5">
-        <textarea rows={4} maxLength={1000} placeholder="Tell us why you're a good fit (optional)" className={field} value={message} onChange={(e) => setMessage(e.target.value)} />
-        <input type="url" placeholder="Link to your résumé / LinkedIn (optional)" className={field} value={resumeUrl} onChange={(e) => setResumeUrl(e.target.value)} />
+        <div>
+          <textarea
+            required
+            minLength={10}
+            rows={4}
+            maxLength={1000}
+            placeholder="Tell us why you're a good fit *"
+            className={field}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <p className="mt-1 text-xs text-stone-400">{message.trim().length}/1000 (minimum 10)</p>
+        </div>
+        <input
+          required
+          type="url"
+          placeholder="Link to your résumé / LinkedIn (https://...) *"
+          className={field}
+          value={resumeUrl}
+          onChange={(e) => setResumeUrl(e.target.value)}
+        />
         {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
         <div className="flex justify-end gap-2">
           <Button type="button" variant="ghost" onClick={onClose}>Cancel</Button>

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Blog = require("../models/Blog.model");
 const asyncHandler = require("../utils/asyncHandler");
+const { syncInquiry, removeInquiry } = require("../utils/candidateInquiry");
 
 const fail = (res, code, message) => res.status(code).json({ success: false, message });
 const isId = (id) => mongoose.Types.ObjectId.isValid(id);
@@ -13,6 +14,17 @@ const cleanTags = (tags) =>
     .map((t) => String(t).trim())
     .filter(Boolean)
     .slice(0, 8);
+
+// candidate ke blog ko admin ke Queries mein bhejta hai
+const blogInquiry = (candidate, blog, prefix) =>
+  syncInquiry({
+    formType: "candidate-blog",
+    refId: blog._id,
+    user: candidate,
+    topic: `${prefix}: ${blog.title}`,
+    message: blog.excerpt || blog.content,
+    details: { title: blog.title, category: blog.category, tags: blog.tags, blogStatus: blog.status },
+  });
 
 const pick = (b) => ({
   title: b.title?.trim(),
@@ -57,6 +69,7 @@ const createBlog = asyncHandler(async (req, res) => {
     authorName: req.candidate.name,
     status: "pending",
   });
+  await blogInquiry(req.candidate, blog, "Candidate Blog");
   res.status(201).json({ success: true, message: "Blog submitted for review", data: blog });
 });
 
@@ -70,6 +83,7 @@ const updateMyBlog = asyncHandler(async (req, res) => {
 
   Object.assign(blog, data, { slug: slugify(data.title), status: "pending", reviewNote: "", publishedAt: null });
   await blog.save(); // edits go back to review
+  await blogInquiry(req.candidate, blog, "Candidate Blog (edited)");
   res.json({ success: true, message: "Blog updated and sent for review again", data: blog });
 });
 
@@ -77,6 +91,7 @@ const deleteMyBlog = asyncHandler(async (req, res) => {
   if (!isId(req.params.id)) return fail(res, 400, "Invalid blog id");
   const blog = await Blog.findOneAndDelete({ _id: req.params.id, candidate: req.candidate._id });
   if (!blog) return fail(res, 404, "Blog not found");
+  await removeInquiry("candidate-blog", blog._id);
   res.json({ success: true, message: "Blog deleted" });
 });
 
@@ -128,6 +143,7 @@ const adminDelete = asyncHandler(async (req, res) => {
   if (!isId(req.params.id)) return fail(res, 400, "Invalid blog id");
   const blog = await Blog.findByIdAndDelete(req.params.id);
   if (!blog) return fail(res, 404, "Blog not found");
+  await removeInquiry("candidate-blog", blog._id);
   res.json({ success: true, message: "Blog deleted" });
 });
 

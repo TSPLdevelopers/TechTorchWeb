@@ -104,17 +104,23 @@ const exploreQuestionRoutes = require(
 
 const needsRoutes = require("./src/routes/needsRoutes");
 const inquiryRoutes = require("./src/routes/inquiryRoutes");
-const expertQueryRoutes = require("./src/routes/expertQueryRoutes");
 const queryRoutes = require("./src/routes/queryRoutes");
 
 const app = express();
 
+<<<<<<< HEAD
 // ================================
 // CORS CONFIGURATION
 // ================================
 const allowedOrigins = (
   process.env.CLIENT_URL || "http://localhost:5173"
 )
+=======
+
+
+// Allow one or more frontend origins (comma separated in CLIENT_URL)
+const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
+>>>>>>> 658edc946de6d9bb4b428dbdb77e6811a45ae2d6
   .split(",")
   .map((origin) => origin.trim());
 
@@ -130,6 +136,19 @@ app.use(
 // ================================
 app.use(express.json({ limit: "2mb" }));
 app.use(cookieParser());
+// Har request se pehle DB connected hona chahiye
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("MongoDB Connection Error:", err.message);
+    res.status(500).json({
+      success: false,
+      message: "Database connection failed",
+    });
+  }
+});
 
 // ================================
 // HEALTH CHECK
@@ -185,8 +204,12 @@ app.use("/api/explore-questions", exploreQuestionRoutes);
 app.use("/api/needs", needsRoutes);
 app.use("/api/inquiries", inquiryRoutes);
 
+<<<<<<< HEAD
 app.use("/api/expert-queries", expertQueryRoutes);
 app.use("/expert-queries", expertQueryRoutes);
+=======
+// Admin dashboard -> Queries section
+>>>>>>> 658edc946de6d9bb4b428dbdb77e6811a45ae2d6
 app.use("/api/queries", queryRoutes);
 
 // ================================
@@ -209,6 +232,7 @@ app.use(errorMiddleware);
 // ================================
 const PORT = process.env.PORT || 5000;
 
+<<<<<<< HEAD
 const startServer = async () => {
   try {
     await connectDB();
@@ -223,3 +247,14 @@ const startServer = async () => {
 };
 
 startServer();
+=======
+// Local par server chalao, Vercel par nahi
+if (process.env.VERCEL !== "1") {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+// Vercel ke liye zaruri
+module.exports = app;
+>>>>>>> 658edc946de6d9bb4b428dbdb77e6811a45ae2d6
