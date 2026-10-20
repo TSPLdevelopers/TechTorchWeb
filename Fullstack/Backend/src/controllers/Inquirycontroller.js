@@ -12,7 +12,7 @@ const createInquiry = async (req, res) => {
   try {
     const { formType, fullName, email, company, phone, topic, message, details } = req.body || {};
 
-    if (!Inquiry.FORM_TYPES.includes(formType)) {
+    if (!Inquiry.PUBLIC_FORM_TYPES.includes(formType)) {
       return res.status(400).json({ success: false, message: "Unknown form type." });
     }
 

@@ -8,7 +8,12 @@ const FORM_TYPES = [
   "msp-support",
   "offshore-requirements",
   "offshore-team",
+  "candidate-blog",
+  "candidate-interest",
 ];
+
+// Public website forms ke liye allowed types (candidate types sirf server banata hai)
+const PUBLIC_FORM_TYPES = FORM_TYPES.filter((t) => !t.startsWith("candidate-"));
 
 const inquirySchema = new mongoose.Schema(
   {
@@ -35,6 +40,11 @@ const inquirySchema = new mongoose.Schema(
     topic: { type: String, trim: true, default: "" },
     message: { type: String, trim: true, default: "", maxlength: 5000 },
     details: { type: mongoose.Schema.Types.Mixed, default: {} },
+
+    // candidate blog/interest ko inquiry se jodne ke liye
+    refId: { type: mongoose.Schema.Types.ObjectId, index: true },
+    candidate: { type: mongoose.Schema.Types.ObjectId, ref: "Candidate" },
+
     status: {
       type: String,
       enum: ["new", "contacted", "in-progress", "completed", "rejected"],
@@ -47,3 +57,4 @@ const inquirySchema = new mongoose.Schema(
 module.exports =
   mongoose.models.Inquiry || mongoose.model("Inquiry", inquirySchema);
 module.exports.FORM_TYPES = FORM_TYPES;
+module.exports.PUBLIC_FORM_TYPES = PUBLIC_FORM_TYPES;
