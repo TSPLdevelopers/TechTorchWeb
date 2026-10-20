@@ -22,6 +22,7 @@ import TalkToExpert from "./components/TalkToExpert";
 // COMMON COMPONENTS
 // =================================================
 import Navbar from "./components/Navbar";
+import BackNavbar from "./components/BackNavbar";
 import Footer from "./components/Footer";
 
 // =================================================
@@ -465,6 +466,8 @@ function MainLayout() {
 
       {/* NAVBAR */}
       <Navbar />
+      
+      <BackNavbar />
 
       {/* PAGE CONTENT */}
       <main className="flex-1 w-full">
