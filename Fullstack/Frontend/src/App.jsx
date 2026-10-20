@@ -434,7 +434,10 @@ import Leadership from "./pages/AboutUs/Leadership.jsx";
 import CompanyOverview from "./pages/AboutUs/CompanyOverview.jsx";
 import Idea from "./pages/AboutUs/Idea.jsx";
 import PartnersEcosystem from "./pages/AboutUs/PartnersEcosystem.jsx";
+import Investors  from "./pages/AboutUs/Investors.jsx";
 
+
+import Media from "./pages/Insights/Media.jsx";
 
 // =================================================
 // SCROLL TO TOP
@@ -1461,6 +1464,16 @@ function App() {
 <Route
   path="/partners-ecosystem"
   element={<PartnersEcosystem/>}
+/>
+
+<Route
+  path="/investors"
+  element={<Investors/>}
+/>
+
+<Route
+  path="/media"
+  element={<Media/>}
 />
       </Routes>
     </>
