@@ -1,3 +1,4 @@
+
 const express = require("express");
 
 const router = express.Router();
@@ -13,6 +14,7 @@ const {
   logoutAdmin,
   getAdminProfile,
 } = require("../controllers/authController");
+
 const {
   getAdminById,
   updateAdmin,
@@ -24,21 +26,24 @@ const {
 const authMiddleware = require("../middlewares/auth.middleware");
 const { anyAuth } = authMiddleware;
 
+// ================= AUTH ROUTES =================
+
 router.post("/register", registerAdmin);
 router.post("/register-candidate", registerCandidate);
 
 router.post("/login", loginAdmin);
-
 router.post("/forgot-password", forgotPassword);
-
 router.post("/verify-otp", verifyOTP);
-
 router.post("/reset-password", resetPassword);
+router.post("/logout", logoutAdmin);
 
-router.post("/logout", logoutAdmin); // works for admins and candidates, even with an expired session
-router.get("/me", anyAuth, getMe);
+// Admin or Candidate: Get logged-in account
+router.get("/me", protect, getMe);
 
+// Admin only: Get admin profile
 router.get("/profile", authMiddleware, getAdminProfile);
+
+// ================= ADMIN MANAGEMENT ROUTES =================
 
 router.get("/:id", authMiddleware, getAdminById);
 
