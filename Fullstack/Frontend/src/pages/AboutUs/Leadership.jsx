@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import heroBg from "/leadership.png";
 import visionImg from "/meetingroom.png";
@@ -236,6 +236,22 @@ function PersonCard({ p, badge, onReadMore }) {
 }
 
 function ArticleModal({ person, onClose }) {
+  useEffect(() => {
+    if (!person) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [person, onClose]);
+
   if (!person) return null;
 
   const article = articles[person.name];
@@ -499,25 +515,32 @@ const styles = `
   margin-top: 18px;
 }
 
+/* FULL INTRO IMAGE - NO CROPPING */
+
 .lp-feature {
   position: relative;
   width: 100%;
-  aspect-ratio: 1.34 / 1;
+  height: auto;
+  aspect-ratio: auto;
   border-radius: 20px;
   overflow: hidden;
+  background: #f1f5f9;
   box-shadow: 0 24px 50px -20px rgba(15, 23, 42, 0.3);
 }
 
 .lp-feature img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .lp-feature::after {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: linear-gradient(
     180deg,
     transparent 45%,
@@ -617,27 +640,34 @@ const styles = `
   box-shadow: 0 18px 35px -20px rgba(15, 23, 42, 0.32);
 }
 
-.lp-card__img {
+/* TEAM IMAGES - KEEP THE WHOLE IMAGE VISIBLE */
+
+.lp-card__img,
+.lp-grid--2 .lp-card__img {
   position: relative;
   width: 100%;
-  aspect-ratio: 1.46 / 1;
-  background: #1f2937;
+  height: auto;
+  aspect-ratio: auto;
+  background: #f1f5f9;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.lp-grid--2 .lp-card__img {
-  aspect-ratio: 1.68 / 1;
-}
-
-.lp-card__img img {
+.lp-card__img img,
+.lp-grid--2 .lp-card__img img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.45s ease;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: none;
 }
 
 .lp-card:hover .lp-card__img img {
-  transform: scale(1.035);
+  transform: none;
 }
 
 .lp-card__badge {
@@ -975,7 +1005,7 @@ const styles = `
   }
 }
 
-/* RESPONSIVE PADDING: matches other website sections */
+/* RESPONSIVE PADDING */
 
 @media (min-width: 640px) {
   .lp-wrap {
@@ -1083,8 +1113,15 @@ const styles = `
   }
 
   .lp-feature {
-    aspect-ratio: 1.15 / 1;
+    height: auto;
+    aspect-ratio: auto;
     border-radius: 16px;
+  }
+
+  .lp-feature img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .lp-team__head {
@@ -1100,7 +1137,15 @@ const styles = `
 
   .lp-card__img,
   .lp-grid--2 .lp-card__img {
-    aspect-ratio: 1.35 / 1;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  .lp-card__img img,
+  .lp-grid--2 .lp-card__img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
   .lp-card__body {
@@ -1153,7 +1198,8 @@ const styles = `
 
   .lp-card__img,
   .lp-grid--2 .lp-card__img {
-    aspect-ratio: 1.2 / 1;
+    height: auto;
+    aspect-ratio: auto;
   }
 
   .lp-modal-backdrop {
@@ -1176,126 +1222,107 @@ const styles = `
 `;
 
 export default function Leadership() {
-  const [selectedPerson, setSelectedPerson] = React.useState(null);
-
-  React.useEffect(() => {
-    if (!selectedPerson) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        setSelectedPerson(null);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [selectedPerson]);
+  const [selectedPerson, setSelectedPerson] = useState(null);
 
   return (
-    <main className="lp">
+    <div className="lp">
       <style>{styles}</style>
 
-      {/* HERO */}
+      {/* HERO SECTION */}
       <section
         className="lp-hero"
-        style={{ "--img": `url(${heroBg})` }}
-        aria-labelledby="lp-hero-title"
+        style={{ "--img": `url("${heroBg}")` }}
       >
-        <div className="lp-wrap lp-hero__grid">
-          <div>
-            <div className="lp-eyebrow lp-eyebrow--pink">Leadership</div>
+        <div className="lp-wrap">
+          <div className="lp-hero__grid">
+            <div>
+              <div className="lp-eyebrow lp-eyebrow--pink">
+                Meet Our Leadership
+              </div>
 
-            <h1 id="lp-hero-title">
-              <span>Guiding Vision.</span>
-              <span className="accent">Inspiring Innovation.</span>
-              <span>Building the Future.</span>
-            </h1>
+              <h1>
+                <span>People Behind</span>
+                <span className="accent">Our Purpose</span>
+              </h1>
 
-            <p className="lp-hero__text">
-              At TechTorch, leadership is about creating a clear vision,
-              fostering innovation, and building an organization prepared for
-              the future. Our leadership philosophy is rooted in strategic
-              thinking, responsible decision-making, and a commitment to
-              continuous progress.
-            </p>
+              <p className="lp-hero__text">
+                Meet the people shaping our vision, guiding our teams, and
+                helping businesses move forward through technology,
+                collaboration, and purposeful innovation.
+              </p>
+            </div>
+
+            <div className="lp-glass">
+              <span className="lp-glass__badge">Our Leadership</span>
+              <p>
+                We bring people, ideas, and technology together to build
+                meaningful solutions and create lasting business value.
+              </p>
+            </div>
           </div>
-
-          <aside className="lp-glass">
-            <span className="lp-glass__badge">Corporate Governance</span>
-
-            <p>
-              Strategic direction guided by integrity, driving impactful
-              results worldwide.
-            </p>
-          </aside>
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className="lp-section lp-intro">
-        <div className="lp-wrap lp-intro__grid">
-          <div>
-            <div className="lp-eyebrow">Leadership at TechTorch</div>
+      {/* INTRO SECTION */}
+      <section className="lp-intro lp-section">
+        <div className="lp-wrap">
+          <div className="lp-intro__grid">
+            <div>
+              <div className="lp-eyebrow">Who We Are</div>
 
-            <h2 className="lp-h2">
-              A Vision Built on Purpose and Progress.
-            </h2>
+              <h2 className="lp-h2">
+                Leadership With Purpose. Technology With Impact.
+              </h2>
 
-            <p>
-              The direction of an organization is shaped by its vision, its
-              values, and the people responsible for bringing them to life. At
-              TechTorch, we believe leadership means looking beyond immediate
-              challenges, recognizing future opportunities, and encouraging a
-              mindset of continuous improvement.
-            </p>
+              <p>
+                At TechTorch Solutions, we believe strong leadership starts
+                with a clear vision, responsible decisions, and a commitment
+                to people. Our team brings together different strengths to
+                help organizations navigate business challenges and embrace
+                digital opportunities.
+              </p>
 
-            <p>
-              Our leadership philosophy reflects our commitment to creating a
-              culture that values innovation, accountability, professional
-              growth, and long-term business development.
-            </p>
+              <p>
+                By combining strategic thinking, operational discipline, and
+                continuous improvement, we work to build a culture where
+                collaboration and innovation can thrive.
+              </p>
+            </div>
+
+            <div className="lp-feature">
+              <img
+                src={visionImg}
+                alt="Team collaborating in a meeting room"
+                loading="lazy"
+              />
+
+              <div className="lp-feature__caption">
+                Better Together
+                <span>Building What's Next</span>
+              </div>
+            </div>
           </div>
-
-          <figure className="lp-feature" style={{ margin: 0 }}>
-            <img
-              src={visionImg}
-              alt="Leadership team in a boardroom meeting"
-            />
-
-            <figcaption className="lp-feature__caption">
-              Better Ideas.
-              <span>Stronger Together.</span>
-            </figcaption>
-          </figure>
         </div>
       </section>
 
-      {/* TEAM */}
-      <section className="lp-section lp-team">
+      {/* LEADERSHIP TEAM */}
+      <section className="lp-team lp-section">
         <div className="lp-wrap">
           <div className="lp-team__head">
             <div>
-              <div className="lp-eyebrow">Our Leadership Team</div>
+              <div className="lp-eyebrow">Our Leadership</div>
 
-              <h2 className="lp-h2">The People Behind Our Vision</h2>
+              <h2 className="lp-h2">Meet the People Leading the Way</h2>
 
-              <p style={{ marginTop: 18 }}>
-                Leadership brings vision and execution together. This section
-                introduces the individuals whose experience, responsibilities,
-                and leadership help guide TechTorch Solutions.
+              <p>
+                Our leadership team brings together strategic direction,
+                organizational management, and operational expertise to
+                support our shared goals.
               </p>
             </div>
 
             <p className="lp-team__note">
-              Experienced leaders. A shared commitment to innovation and
-              growth.
+              Click Read More to learn about each team member.
             </p>
           </div>
 
@@ -1312,7 +1339,7 @@ export default function Leadership() {
           <div className="lp-divider" />
 
           <div className="lp-subhead">
-            <div className="lp-eyebrow">Corporate Service Team</div>
+            <div className="lp-eyebrow">Our Team</div>
           </div>
 
           <div className="lp-grid lp-grid--2">
@@ -1320,7 +1347,7 @@ export default function Leadership() {
               <PersonCard
                 key={person.name}
                 p={person}
-                badge="Corporate Service Team"
+                badge="PEOPLE & CULTURE"
                 onReadMore={setSelectedPerson}
               />
             ))}
@@ -1328,70 +1355,70 @@ export default function Leadership() {
         </div>
       </section>
 
-      {/* VALUES */}
-      <section className="lp-section lp-values">
+      {/* VALUES SECTION */}
+      <section className="lp-values lp-section">
         <div className="lp-wrap">
-          <div className="lp-eyebrow">Our Leadership Principles</div>
+          <div className="lp-eyebrow">What Guides Us</div>
 
-          <h2 className="lp-h2">The Values That Guide Our Direction</h2>
+          <h2 className="lp-h2">The Values Behind Our Decisions</h2>
 
           <div className="lp-values__grid">
             {values.map((value) => (
-              <div className="lp-value" key={value.title}>
+              <article className="lp-value" key={value.title}>
                 <div className="lp-value__icon">
                   <LineIcon>{value.icon}</LineIcon>
                 </div>
 
                 <h3>{value.title}</h3>
-
                 <p>{value.text}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FUTURE */}
+      {/* FUTURE SECTION */}
       <section
-        className="lp-section lp-future"
-        style={{ "--img": `url(${futureBg})` }}
+        className="lp-future lp-section"
+        style={{ "--img": `url("${futureBg}")` }}
       >
         <div className="lp-wrap">
-          <div className="lp-eyebrow lp-eyebrow--pink">
-            Looking Toward the Future
-          </div>
-
-          <h2 className="lp-h2">
-            Leading Change. Creating Possibilities.
-          </h2>
-
           <div className="lp-future__copy">
+            <div className="lp-eyebrow lp-eyebrow--pink">
+              Looking Ahead
+            </div>
+
+            <h2 className="lp-h2">
+              Building the Future, One Meaningful Solution at a Time
+            </h2>
+
             <p>
-              As TechTorch continues to evolve, our focus remains on
-              strengthening our organizational vision, embracing new
-              opportunities, and building a culture that supports progress.
+              We believe progress happens when people share a vision, embrace
+              change, and turn ideas into practical solutions. Our focus
+              remains on building strong relationships, improving how work
+              gets done, and creating technology that serves real business
+              needs.
             </p>
 
             <p>
-              We believe the future is shaped by leaders who think ahead, act
-              responsibly, and inspire others to move forward with confidence.
+              Together, we continue learning, adapting, and working toward
+              sustainable growth for our team, our clients, and the
+              businesses we support.
             </p>
-          </div>
 
-          <div className="lp-future__brand">
-            <strong>TechTorch Solutions</strong>
-
-            <em>
-              Innovation in Action, Solutions Beyond Imagination.
-            </em>
+            <div className="lp-future__brand">
+              <strong>TechTorch Solutions</strong>
+              <em>Turning business challenges into digital possibilities.</em>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* READ MORE ARTICLE MODAL */}
       <ArticleModal
         person={selectedPerson}
         onClose={() => setSelectedPerson(null)}
       />
-    </main>
+    </div>
   );
 }
