@@ -13,7 +13,7 @@ const secondaryLinks = [
   "Partners Ecosystem",
 ];
 
-const boldLinks = ["News"];
+const boldLinks = [ "News", "Customer Centricity" ];
 
 const CLOSE_DELAY = 150;
 

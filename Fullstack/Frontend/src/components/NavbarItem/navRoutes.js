@@ -7,7 +7,7 @@ export const ROUTES = {
   "Company Overview": "/company-overview",
   Leadership: "/Leadership",
   Idea: "/Idea",
-  Investors: "/Philosophy",
+  Investors: "/investors",
   "Partners Ecosystem": "/partners-ecosystem",
   News: "/blogs",
   "Customer Centricity": "/KnowMore",
@@ -52,7 +52,7 @@ export const ROUTES = {
 
   // Insights
   "Case Studies": "/TechTorchView",
-  Media: "/think-ahead",
+  Media: "/media",
   "Company Profile": "/Philosophy",
   "Quick Brochure": "/KnowMore",
 
