@@ -22,6 +22,7 @@ import TalkToExpert from "./components/TalkToExpert";
 // COMMON COMPONENTS
 // =================================================
 import Navbar from "./components/Navbar";
+import BackNavbar from "./components/BackNavbar";
 import Footer from "./components/Footer";
 
 // =================================================
@@ -432,7 +433,12 @@ import ConversationToggle from "./pages/StartConversation/ConversationToggle.jsx
 
 import Leadership from "./pages/AboutUs/Leadership.jsx";
 import CompanyOverview from "./pages/AboutUs/CompanyOverview.jsx";
+import Idea from "./pages/AboutUs/Idea.jsx";
+import PartnersEcosystem from "./pages/AboutUs/PartnersEcosystem.jsx";
+import Investors  from "./pages/AboutUs/Investors.jsx";
 
+
+import Media from "./pages/Insights/Media.jsx";
 
 // =================================================
 // SCROLL TO TOP
@@ -463,6 +469,8 @@ function MainLayout() {
 
       {/* NAVBAR */}
       <Navbar />
+      
+      <BackNavbar />
 
       {/* PAGE CONTENT */}
       <main className="flex-1 w-full">
@@ -1049,7 +1057,7 @@ function App() {
 
           {/* ================= OUR STORY ================= */}
           <Route
-            path="/Philosophy"
+            path="/Our-Story"
             element={<PhilosophyPage />}
           />
 
@@ -1404,6 +1412,38 @@ function App() {
             path="/conversation-toggle"
             element={<ConversationToggle/>}
           />
+          <Route
+    path="/talk-to-expert"
+    element={<TalkToExpert />}
+  />
+  {/* ================= ABOUT US ================= */}
+
+<Route
+  path="/about-us"
+  element={<AboutUs />}
+/>
+
+{/* ================= LEADERSHIP ================= */}
+
+<Route
+  path="/leadership"
+  element={<AboutUs />}
+/>
+
+<Route
+  path="/company-overview"
+  element={<CompanyOverview/>}
+/>
+
+<Route
+  path="/idea"
+  element={<Idea/>}
+/>
+
+<Route
+  path="/partners-ecosystem"
+  element={<PartnersEcosystem/>}
+/>
 
           {/* ================= ACCOUNTS (candidates + admins share one sign-in) ================= */}
           <Route path="/signin" element={<AccessPage initialTab="signin" />} />
@@ -1428,28 +1468,7 @@ function App() {
       
   {/* Tumhare existing routes yahan rahenge */}
 
-  <Route
-    path="/talk-to-expert"
-    element={<TalkToExpert />}
-  />
-  {/* ================= ABOUT US ================= */}
-
-<Route
-  path="/about-us"
-  element={<AboutUs />}
-/>
-
-{/* ================= LEADERSHIP ================= */}
-
-<Route
-  path="/leadership"
-  element={<AboutUs />}
-/>
-
-<Route
-  path="/company-overview"
-  element={<CompanyOverview/>}
-/>
+  
       </Routes>
     </>
   );

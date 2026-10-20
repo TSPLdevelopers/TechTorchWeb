@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   Check,
@@ -1326,13 +1327,13 @@ const MSPSupportSections = () => {
                 </button>
 
                 <button
-                  type="button"
-                  className="msp-secondary-btn"
-                  onClick={() => navigate("/connect-msp")}
-                >
-                  <Headphones />
-                  Talk to IT Specialist
-                </button>
+  type="button"
+  className="msp-secondary-btn"
+  onClick={() => navigate("/talk-to-expert")}
+>
+  <Headphones />
+  Talk to IT Specialist
+</button>
 
               </div>
             </div>

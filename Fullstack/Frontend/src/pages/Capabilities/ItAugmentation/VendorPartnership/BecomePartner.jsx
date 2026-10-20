@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Code2,
@@ -155,14 +156,13 @@ export default function BecomePartner() {
             expertise to support customer and project requirements.
           </p>
 
-          <button
-            type="button"
-            className="bp-primary-btn"
-            onClick={scrollToApplication}
-          >
-            Talk to an Expert
-            <ArrowRight />
-          </button>
+          <Link
+  to="/talk-to-expert"
+  className="bp-primary-btn"
+>
+  Talk to an Expert
+  <ArrowRight />
+</Link>
 
           <div className="bp-hero-tags">
 
@@ -771,14 +771,13 @@ export default function BecomePartner() {
           to build together.
         </p>
 
-        <button
-          type="button"
-          className="bp-primary-btn"
-          onClick={scrollToApplication}
-        >
-          Talk to an Expert
-          <ArrowRight />
-        </button>
+        <Link
+  to="/talk-to-expert"
+  className="bp-primary-btn"
+>
+  Talk to an Expert
+  <ArrowRight />
+</Link>
 
         <div className="bp-cta-divider" />
 

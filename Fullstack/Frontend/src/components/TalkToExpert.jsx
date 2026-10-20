@@ -1,5 +1,7 @@
+
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CONTACT = {
   phone: "+91 72510 90147",
@@ -7,7 +9,6 @@ const CONTACT = {
   whatsapp: "+91 72510 90147",
 };
 
-// VITE_API_URL mein "/api" ho ya na ho, dono case mein sahi URL banega
 const API_URL = (
   import.meta.env.VITE_API_URL || "http://localhost:5000"
 ).replace(/\/api\/?$/, "");
@@ -25,6 +26,8 @@ const INITIAL_FORM = {
 };
 
 export default function TalkToExpert() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ type: "", message: "" });
@@ -107,8 +110,9 @@ export default function TalkToExpert() {
 
   return (
     <section className="expert-section">
+      
+
       <div className="expert-layout">
-        {/* LEFT CONTENT */}
         <div className="expert-left">
           <span className="expert-eyebrow">LET'S TALK</span>
 
@@ -124,7 +128,7 @@ export default function TalkToExpert() {
 
           <div className="expert-contact-list">
             <a
-              href={`tel:${CONTACT.phone}`}
+              href="tel:+917251090147"
               className="expert-contact-item"
             >
               <span className="expert-contact-icon" aria-hidden="true">
@@ -186,7 +190,6 @@ export default function TalkToExpert() {
           </div>
         </div>
 
-        {/* RIGHT FORM */}
         <div className="expert-form-card">
           <div className="expert-form-heading">
             <span className="expert-eyebrow">GET IN TOUCH</span>
@@ -267,7 +270,9 @@ export default function TalkToExpert() {
               </div>
 
               <div className="expert-field expert-field-full">
-                <label htmlFor="preferredTime">Preferred Time to Connect</label>
+                <label htmlFor="preferredTime">
+                  Preferred Time to Connect
+                </label>
                 <select
                   id="preferredTime"
                   name="preferredTime"
@@ -335,20 +340,14 @@ export default function TalkToExpert() {
 
         .expert-section {
           width: 100%;
-          padding: 70px 0;
+          padding: 35px 0 70px;
           background: #efefef;
           color: #1b1b2a;
           font-family: 'Inter', sans-serif;
         }
 
         .expert-section h1,
-        .expert-section h2,
-        .expert-section h3,
-        .expert-section h4,
-        .expert-section h5,
-        .expert-section h6,
-        .expert-section h1 span,
-        .expert-section h2 span {
+        .expert-section h2 {
           font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
@@ -364,6 +363,32 @@ export default function TalkToExpert() {
         .expert-section .expert-eyebrow,
         .expert-section .expert-contact-label {
           font-family: 'Inter', sans-serif;
+        }
+
+        .expert-back-home {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+          margin: 0 100px 28px;
+          padding: 11px 17px;
+          border: 1px solid #730042;
+          border-radius: 8px;
+          background: #ffffff;
+          color: #730042;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.25s ease, color 0.25s ease;
+        }
+
+        .expert-back-home:hover {
+          background: #730042;
+          color: #ffffff;
+        }
+
+        .expert-back-home svg {
+          flex-shrink: 0;
         }
 
         .expert-layout {
@@ -676,12 +701,16 @@ export default function TalkToExpert() {
           text-align: center;
         }
 
-        /* Tablet */
         @media (max-width: 1100px) {
           .expert-layout {
             padding: 0 40px;
             grid-template-columns: minmax(0, 1fr) minmax(340px, 430px);
             gap: 35px;
+          }
+
+          .expert-back-home {
+            margin-left: 40px;
+            margin-right: 40px;
           }
 
           .expert-form-card {
@@ -693,10 +722,9 @@ export default function TalkToExpert() {
           }
         }
 
-        /* Tablet and smaller laptops */
         @media (max-width: 850px) {
           .expert-section {
-            padding: 55px 0;
+            padding: 30px 0 55px;
           }
 
           .expert-layout {
@@ -723,10 +751,15 @@ export default function TalkToExpert() {
           }
         }
 
-        /* Mobile */
         @media (max-width: 600px) {
           .expert-section {
-            padding: 42px 0;
+            padding: 25px 0 42px;
+          }
+
+          .expert-back-home {
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-bottom: 22px;
           }
 
           .expert-layout {
@@ -773,14 +806,18 @@ export default function TalkToExpert() {
           }
         }
 
-        /* Small mobile */
         @media (max-width: 380px) {
+          .expert-back-home {
+            margin-left: 16px;
+            margin-right: 16px;
+          }
+
           .expert-layout {
             padding: 0 16px;
           }
 
           .expert-section {
-            padding: 35px 0;
+            padding: 22px 0 35px;
           }
 
           .expert-main-heading {

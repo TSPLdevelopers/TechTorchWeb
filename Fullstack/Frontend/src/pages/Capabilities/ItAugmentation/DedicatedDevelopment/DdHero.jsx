@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Zap,
   ArrowRight,
@@ -82,11 +83,14 @@ export default function DedicatedTeamPodHero() {
             </p>
 
             {/* CTA */}
-            <button className="dedicated-team-button">
-              <span>Talk to Our Experts</span>
+            <Link
+  to="/talk-to-expert"
+  className="dedicated-team-button"
+>
+  <span>Talk to Our Experts</span>
 
-              <ArrowRight />
-            </button>
+  <ArrowRight />
+</Link>
 
           </div>
 

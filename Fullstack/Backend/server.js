@@ -1,10 +1,25 @@
-require("dotenv").config();
+
+const path = require("path");
+const dotenv = require("dotenv");
+
+// Load .env from the same directory as server.js
+const envResult = dotenv.config({
+  path: path.join(__dirname, ".env"),
+  override: true,
+});
+
+if (envResult.error) {
+  console.error("❌ Failed to load .env:", envResult.error.message);
+  process.exit(1);
+}
 
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+
 const { connectDB } = require("./src/config/db");
-const errorMiddleware = require("./src/middlewares/error.middleware.js");
+const errorMiddleware = require("./src/middlewares/error.middleware");
+
 const authRoutes = require("./src/routes/authRoutes");
 const adminRoutes = require("./src/routes/adminRoutes");
 const newsRoutes = require("./src/routes/newsRoutes");
@@ -62,28 +77,45 @@ const ecommerceRoutes = require(
 const dataDecisionRoutes = require(
   "./src/routes/dataDecisionRoutes"
 );
-const ourstoryRoutes = require("./src/routes/ourstoryRoutes");
-const secureBusinessRoutes = require("./src/routes/secureBusinessRoutes");
+
+const ourstoryRoutes = require(
+  "./src/routes/ourstoryRoutes"
+);
+
+const secureBusinessRoutes = require(
+  "./src/routes/secureBusinessRoutes"
+);
+
 const digitalSolutionRoutes = require(
   "./src/routes/digitalSolutionRoutes"
 );
+
 const sendQuestionRoutes = require(
   "./src/routes/sendQuestionRoutes"
 );
-const startConversationRoutes = require("./src/routes/startConversationRoutes");
-const exploreQuestionRoutes = require("./src/routes/exploreQuestionRoutes");
+
+const startConversationRoutes = require(
+  "./src/routes/startConversationRoutes"
+);
+
+const exploreQuestionRoutes = require(
+  "./src/routes/exploreQuestionRoutes"
+);
+
 const needsRoutes = require("./src/routes/needsRoutes");
 const inquiryRoutes = require("./src/routes/inquiryRoutes");
 const queryRoutes = require("./src/routes/queryRoutes");
 
 const app = express();
 
-
-
-// Allow one or more frontend origins (comma separated in CLIENT_URL)
-const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
+// ================================
+// CORS CONFIGURATION
+// ================================
+const allowedOrigins = (
+  process.env.CLIENT_URL || "http://localhost:5173"
+)
   .split(",")
-  .map((o) => o.trim());
+  .map((origin) => origin.trim());
 
 app.use(
   cors({
@@ -92,6 +124,9 @@ app.use(
   })
 );
 
+// ================================
+// MIDDLEWARES
+// ================================
 app.use(express.json({ limit: "2mb" }));
 app.use(cookieParser());
 // Har request se pehle DB connected hona chahiye
@@ -108,10 +143,16 @@ app.use(async (req, res, next) => {
   }
 });
 
+// ================================
+// HEALTH CHECK
+// ================================
 app.get("/", (req, res) => {
   res.send("TechTorch Backend is running");
 });
 
+// ================================
+// API ROUTES
+// ================================
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/news", newsRoutes);
@@ -127,10 +168,7 @@ app.use(
   institutionConsultationRoutes
 );
 
-app.use(
-  "/api/insurance-intakes",
-  insuranceIntakeRoutes
-);
+app.use("/api/insurance-intakes", insuranceIntakeRoutes);
 
 app.use(
   "/api/financial-consultations",
@@ -142,45 +180,30 @@ app.use(
   healthcareConsultationRoutes
 );
 
-app.use(
-  "/api/general-enquiries",
-  generalEnquiryRoutes
-);
-
+app.use("/api/general-enquiries", generalEnquiryRoutes);
 app.use("/api/transportation", transportationRoutes);
-
 app.use("/api/fmcg-consultations", fmcgConsultationRoutes);
-
 app.use("/api/information", informationRoutes);
-
 app.use("/api/energy", energyRoutes);
-
 app.use("/api/telecommunications", telecommunicationRoutes);
-
 app.use("/api/data-decisions", dataDecisionRoutes);
-
-app.use(
-  "/api/ecommerce",
-  ecommerceRoutes
-);
-
+app.use("/api/ecommerce", ecommerceRoutes);
 app.use("/api/ourstory", ourstoryRoutes);
 app.use("/api/secure-business", secureBusinessRoutes);
-app.use(
-  "/api/digital-solutions",
-  digitalSolutionRoutes
-);
-
+app.use("/api/digital-solutions", digitalSolutionRoutes);
 app.use("/api/send-question", sendQuestionRoutes);
 app.use("/api/start-conversations", startConversationRoutes);
 app.use("/api/explore-questions", exploreQuestionRoutes);
 app.use("/api/needs", needsRoutes);
 app.use("/api/inquiries", inquiryRoutes);
 
-// Admin dashboard -> Queries section
+app.use("/api/expert-queries", expertQueryRoutes);
+app.use("/expert-queries", expertQueryRoutes);
 app.use("/api/queries", queryRoutes);
 
-// 404
+// ================================
+// 404 HANDLER
+// ================================
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -188,16 +211,27 @@ app.use((req, res) => {
   });
 });
 
+// ================================
+// ERROR MIDDLEWARE
+// ================================
 app.use(errorMiddleware);
 
+// ================================
+// START SERVER AFTER DB CONNECTION
+// ================================
 const PORT = process.env.PORT || 5000;
 
-// Local par server chalao, Vercel par nahi
-if (process.env.VERCEL !== "1") {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
+const startServer = async () => {
+  try {
+    await connectDB();
 
-// Vercel ke liye zaruri
-module.exports = app;
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("❌ Server startup failed:", error.message);
+    process.exit(1);
+  }
+};
+
+startServer();
