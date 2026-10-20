@@ -21,7 +21,7 @@ const {
   deleteAdmin,
 } = require("../controllers/adminController");
 
-const authMiddleware = require("../middlewares/auth.middleware");
+const authMiddleware = require("../middlewares/auth.Middleware");
 const { anyAuth } = authMiddleware;
 
 router.post("/register", registerAdmin);
