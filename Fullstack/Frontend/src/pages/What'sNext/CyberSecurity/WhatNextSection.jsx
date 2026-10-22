@@ -50,7 +50,7 @@ export default function WhatsNextSection() {
       "
     >
       <div className="mx-auto w-full max-w-[1320px]">
-        {/* ================= SECTION HEADER ================= */}
+        {/* SECTION HEADER */}
 
         <span
           className="
@@ -87,7 +87,7 @@ export default function WhatsNextSection() {
           WHAT'S NEXT
         </h1>
 
-        {/* ================= CARDS ================= */}
+        {/* CARDS */}
 
         <div
           className="
@@ -125,7 +125,7 @@ export default function WhatsNextSection() {
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:border-fuchsia-900/30
+                hover:border-[#730042]/30
                 hover:shadow-md
                 sm:max-w-[300px]
                 sm:p-6
@@ -136,7 +136,7 @@ export default function WhatsNextSection() {
               "
             >
               <div>
-                {/* ================= TAGS ================= */}
+                {/* TAGS */}
 
                 <div
                   className="
@@ -148,7 +148,7 @@ export default function WhatsNextSection() {
                     text-[8px]
                     font-semibold
                     tracking-[0.08em]
-                    text-fuchsia-900
+                    text-[#730042]
                     sm:text-[9px]
                   "
                   style={{
@@ -166,7 +166,7 @@ export default function WhatsNextSection() {
                   ))}
                 </div>
 
-                {/* ================= CARD TITLE ================= */}
+                {/* CARD TITLE */}
 
                 <h3
                   className="
@@ -185,7 +185,7 @@ export default function WhatsNextSection() {
                   {c.title}
                 </h3>
 
-                {/* ================= DESCRIPTION ================= */}
+                {/* DESCRIPTION */}
 
                 <p
                   className="
@@ -204,7 +204,7 @@ export default function WhatsNextSection() {
                 </p>
               </div>
 
-              {/* ================= LINK ================= */}
+              {/* LINK — NO ARROW */}
 
               <a
                 href="#"
@@ -212,14 +212,12 @@ export default function WhatsNextSection() {
                   mt-5
                   inline-flex
                   w-fit
-                  items-center
-                  gap-1
                   text-[12px]
                   font-semibold
-                  text-fuchsia-900
+                  text-[#730042]
                   transition-colors
                   duration-200
-                  hover:text-fuchsia-700
+                  hover:text-[#5A0033]
                   sm:text-[13px]
                 "
                 style={{
@@ -227,17 +225,6 @@ export default function WhatsNextSection() {
                 }}
               >
                 {c.link}
-
-                <span
-                  aria-hidden="true"
-                  className="
-                    transition-transform
-                    duration-200
-                    group-hover:translate-x-1
-                  "
-                >
-                  &rarr;
-                </span>
               </a>
             </div>
           ))}
