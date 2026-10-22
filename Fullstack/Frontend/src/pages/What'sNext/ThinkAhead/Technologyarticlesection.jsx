@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 
 const sections = [
@@ -56,44 +57,70 @@ const sections = [
 
 export default function TechnologyArticleSection() {
   const [activeId, setActiveId] = useState(sections[0].id);
+
   const sectionRefs = useRef({});
+  const articleRef = useRef(null);
 
   useEffect(() => {
+    const article = articleRef.current;
+
+    if (!article) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              a.boundingClientRect.top - b.boundingClientRect.top
+          );
+
+        if (visibleSections.length > 0) {
+          setActiveId(visibleSections[0].target.id);
+        }
       },
       {
-        rootMargin: "-15% 0px -70% 0px",
+        root: article,
+        rootMargin: "-5% 0px -75% 0px",
         threshold: 0,
       }
     );
 
-    Object.values(sectionRefs.current).forEach((el) => {
-      if (el) observer.observe(el);
+    Object.values(sectionRefs.current).forEach((element) => {
+      if (element) observer.observe(element);
     });
 
     return () => observer.disconnect();
   }, []);
 
+  const handleNavigation = (event, id) => {
+    event.preventDefault();
+
+    const article = articleRef.current;
+    const target = sectionRefs.current[id];
+
+    if (!article || !target) return;
+
+    const articleTop = article.getBoundingClientRect().top;
+    const targetTop = target.getBoundingClientRect().top;
+
+    article.scrollTo({
+      top: article.scrollTop + targetTop - articleTop,
+      behavior: "smooth",
+    });
+
+    setActiveId(id);
+  };
+
   return (
-    /* Left/right padding same as Hero: 16 / 24 / 40 / 100 */
     <section
       className="
         w-full
         bg-[#FAF6F1]
-        px-4
-        py-10
-        sm:px-6
-        sm:py-12
-        md:px-10
-        md:py-14
-        lg:px-[100px]
-        lg:py-16
+        px-4 py-10
+        sm:px-6 sm:py-12
+        md:px-10 md:py-14
+        lg:px-[100px] lg:py-16
         xl:py-20
       "
     >
@@ -102,6 +129,7 @@ export default function TechnologyArticleSection() {
           grid
           w-full
           grid-cols-1
+          items-start
           gap-10
           sm:gap-12
           md:gap-14
@@ -111,16 +139,14 @@ export default function TechnologyArticleSection() {
           xl:gap-16
         "
       >
-        {/* ==================================================
-            LEFT STICKY SIDEBAR
-        ================================================== */}
+        {/* LEFT NAVIGATION - STAYS IN PLACE ON DESKTOP */}
 
         <aside
           className="
             hidden
-            lg:block
             lg:sticky
-            lg:top-16
+            lg:top-20
+            lg:block
             lg:self-start
             lg:h-fit
           "
@@ -140,6 +166,12 @@ export default function TechnologyArticleSection() {
               <a
                 key={s.id}
                 href={`#${s.id}`}
+                onClick={(event) =>
+                  handleNavigation(event, s.id)
+                }
+                aria-current={
+                  activeId === s.id ? "location" : undefined
+                }
                 className={`
                   text-[11px]
                   leading-[1.45]
@@ -163,16 +195,24 @@ export default function TechnologyArticleSection() {
           </nav>
         </aside>
 
-        {/* ==================================================
-            RIGHT MAIN ARTICLE CONTENT
-        ================================================== */}
+        {/* RIGHT CONTENT - INDEPENDENT SCROLL */}
 
         <article
+          ref={articleRef}
           className="
             w-full
             min-w-0
             max-w-3xl
+            lg:h-[calc(100vh-10rem)]
+            lg:overflow-y-auto
+            lg:overscroll-contain
+            lg:pr-4
+            lg:scroll-smooth
           "
+          style={{
+            scrollbarWidth: "thin",
+            scrollbarColor: "#730042 #FAF6F1",
+          }}
         >
           <div
             className="
@@ -185,19 +225,15 @@ export default function TechnologyArticleSection() {
             "
           >
             {sections.map((s) => (
-              <div
+              <section
                 key={s.id}
                 id={s.id}
-                ref={(el) => (sectionRefs.current[s.id] = el)}
-                className="
-                  scroll-mt-20
-                  sm:scroll-mt-24
-                  lg:scroll-mt-28
-                "
+                ref={(element) => {
+                  sectionRefs.current[s.id] = element;
+                }}
+                className="scroll-mt-4"
               >
-                {/* ==================================================
-                    HEADING
-                ================================================== */}
+                {/* HEADING */}
 
                 <div
                   className="
@@ -205,12 +241,9 @@ export default function TechnologyArticleSection() {
                     border-l-[3px]
                     border-[#730042]
                     bg-rose-50/70
-                    py-2.5
-                    pl-3
-                    pr-2
+                    py-2.5 pl-3 pr-2
                     sm:border-l-4
-                    sm:py-3
-                    sm:pl-4
+                    sm:py-3 sm:pl-4
                     md:py-3.5
                   "
                 >
@@ -233,20 +266,15 @@ export default function TechnologyArticleSection() {
                   </h2>
                 </div>
 
-                {/* ==================================================
-                    BODY
-                ================================================== */}
+                {/* DESCRIPTION */}
 
                 <p
                   className="
-                    mt-3
-                    pl-3
+                    mt-3 pl-3
                     text-[13px]
                     leading-[1.75]
                     text-slate-600
-                    sm:mt-4
-                    sm:pl-4
-                    sm:text-[14px]
+                    sm:mt-4 sm:pl-4 sm:text-[14px]
                     md:text-[15px]
                     md:leading-[1.8]
                   "
@@ -257,9 +285,7 @@ export default function TechnologyArticleSection() {
                   {s.body}
                 </p>
 
-                {/* ==================================================
-                    IMAGE
-                ================================================== */}
+                {/* IMAGE */}
 
                 {s.image && (
                   <div
@@ -289,7 +315,7 @@ export default function TechnologyArticleSection() {
                     />
                   </div>
                 )}
-              </div>
+              </section>
             ))}
           </div>
         </article>
