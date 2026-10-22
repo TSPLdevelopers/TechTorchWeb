@@ -14,6 +14,7 @@ if (envResult.error) {
 }
 
 const express = require("express");
+app.set("trust proxy", 1);
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
@@ -117,12 +118,10 @@ const allowedOrigins = (
   .split(",")
   .map((origin) => origin.trim());
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: "https://tech-torch-web.vercel.app",
+  credentials: true,
+}));
 
 // ================================
 // MIDDLEWARES
