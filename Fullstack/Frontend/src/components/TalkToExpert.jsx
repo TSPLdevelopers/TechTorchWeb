@@ -1,4 +1,5 @@
 
+import { API_BASE } from "../apiBase";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +10,13 @@ const CONTACT = {
   whatsapp: "+91 72510 90147",
 };
 
+
+
+
 const API_URL = (
   import.meta.env.VITE_API_URL || "http://localhost:5000"
 ).replace(/\/api\/?$/, "");
+
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PHONE_REGEX = /^[6-9]\d{9}$/;

@@ -16,6 +16,7 @@ import Blogs from "./pages/Blogs.jsx";
 import BlogDetail from "./pages/BlogDetail.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import FormAuthGuard from "./components/FormAuthGuard.jsx";
+import PermissionGate from "./components/PermissionGate.jsx";
 import TalkToExpert from "./components/TalkToExpert";
 
 // =================================================
@@ -1448,7 +1449,9 @@ function App() {
           {/* ================= ACCOUNTS (candidates + admins share one sign-in) ================= */}
           <Route path="/signin" element={<AccessPage initialTab="signin" />} />
           <Route path="/signup" element={<AccessPage initialTab="signup" />} />
-          <Route path="/candidate" element={<CandidateDashboard />} />
+          <Route element={<PermissionGate allowedRoles={["candidate"]} />}>
+            <Route path="/candidate" element={<CandidateDashboard />} />
+          </Route>
           <Route path="/careers" element={<Careers />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogDetail />} />

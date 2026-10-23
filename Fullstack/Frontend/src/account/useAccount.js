@@ -27,6 +27,9 @@ export const useSignIn = () => {
     onSuccess: (user) => {
       qc.setQueryData(ME_KEY, user);
       if (user.accountType === "admin") qc.setQueryData(PROFILE_KEY, user); // admin dashboard reads this
+      // confirm the browser really kept the cookie; if it was blocked, /me returns 401
+      // and the guard sends the user back to sign-in instead of showing a broken dashboard
+      qc.invalidateQueries({ queryKey: ME_KEY });
     },
   });
 };

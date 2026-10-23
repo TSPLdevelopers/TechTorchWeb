@@ -1,4 +1,6 @@
-export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+import { API_BASE } from "../../apiBase";
+
+export const API_URL = API_BASE;
 
 export async function request(path, { method = "GET", body } = {}) {
   let res;
@@ -22,6 +24,11 @@ export async function request(path, { method = "GET", body } = {}) {
   }
 
   if (!res.ok) {
+    // session expired while using the app -> let PermissionGate log the user out.
+    // (login / register / otp calls also return 401 for wrong input, so skip /api/auth/*)
+    if (res.status === 401 && !path.startsWith("/api/auth/")) {
+      window.dispatchEvent(new Event("auth:expired"));
+    }
     const err = new Error(json.message || `Request failed (${res.status})`);
     err.status = res.status;
     throw err;
