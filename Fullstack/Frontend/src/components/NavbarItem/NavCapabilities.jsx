@@ -64,10 +64,13 @@ function NavCapabilities() {
     };
 
     updatePosition();
+
     window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition);
 
     return () => {
       window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition);
     };
   }, [isOpen]);
 
@@ -107,24 +110,12 @@ function NavCapabilities() {
 
       <span
         className="
-          relative
-          inline-flex
-          items-center
-          h-full
-          cursor-pointer
-          text-[17px]
-          text-gray-900
-          hover:text-[#8a1538]
-          transition-colors
-          duration-200
-          after:absolute
-          after:left-0
-          after:bottom-0
-          after:h-[2px]
-          after:w-0
-          after:bg-[#8a1538]
-          after:transition-all
-          after:duration-200
+          relative inline-flex items-center h-full cursor-pointer
+          text-[17px] text-gray-900 hover:text-[#8a1538]
+          transition-colors duration-200
+          after:absolute after:left-0 after:bottom-0 after:h-[2px]
+          after:w-0 after:bg-[#8a1538]
+          after:transition-all after:duration-200
           hover:after:w-full
         "
       >
@@ -135,21 +126,12 @@ function NavCapabilities() {
 
       {isOpen && (
         <div
-          style={{
-            top: navBottom,
-          }}
+          style={{ top: navBottom }}
           onMouseEnter={openMenu}
           onMouseLeave={closeMenu}
           className="
-            fixed
-            left-0
-            right-0
-            w-full
-            bg-white
-            shadow-2xl
-            z-[9999]
-            overflow-y-auto
-            max-h-[calc(100vh-70px)]
+            fixed left-0 right-0 w-full bg-white shadow-2xl
+            z-[9999] overflow-y-auto max-h-[calc(100vh-70px)]
           "
         >
           {/* ================= BACKGROUND IMAGE ================= */}
@@ -157,16 +139,10 @@ function NavCapabilities() {
           <img
             src={Navbarcap}
             alt=""
+            aria-hidden="true"
             className="
-              absolute
-              top-0
-              left-0
-              w-full
-              h-[650px]
-              pointer-events-none
-              select-none
-              opacity-30
-              object-cover
+              absolute top-0 left-0 w-full h-[650px]
+              pointer-events-none select-none opacity-30 object-cover
             "
           />
 
@@ -174,57 +150,34 @@ function NavCapabilities() {
 
           <div
             className="
-              relative
-              z-10
-              px-[11%]
-              pt-7
-              pb-10
-              md:pt-9
-              md:pb-14
+              relative z-10
+              px-4 sm:px-6 md:px-10 lg:px-[100px]
+              pt-7 pb-10 md:pt-9 md:pb-14
             "
           >
             {/* ================= MAIN HEADINGS ================= */}
 
             <div
               className="
-                grid
-                grid-cols-1
-                md:grid-cols-2
-                gap-6
-                md:gap-20
-                mb-6
+                grid grid-cols-1 md:grid-cols-2
+                gap-6 md:gap-20 mb-6
               "
             >
-              {/* IT CAPABILITIES */}
-
               <h2
                 className="
-                  text-[22px]
-                  md:text-[25px]
-                  font-bold
-                  text-gray-900
-                  font-plus-jakarta
-                  text-left
-                  m-0
-                  leading-[1.2]
+                  text-[22px] md:text-[25px] font-bold
+                  text-gray-900 font-plus-jakarta text-left
+                  m-0 leading-[1.2]
                 "
               >
                 IT Capabilities
               </h2>
 
-              {/* AI CAPABILITIES */}
-
               <h2
                 className="
-                  text-[22px]
-                  md:text-[25px]
-                  font-bold
-                  text-gray-900
-                  font-plus-jakarta
-                  text-right
-                  md:text-right
-                  m-0
-                  leading-[1.2]
+                  text-[22px] md:text-[25px] font-bold
+                  text-gray-900 font-plus-jakarta
+                  text-left md:text-right m-0 leading-[1.2]
                 "
               >
                 AI Capabilities
@@ -235,22 +188,16 @@ function NavCapabilities() {
 
             <div
               className="
-                grid
-                grid-cols-1
-                md:grid-cols-2
-                gap-10
-                md:gap-20
+                grid grid-cols-1 md:grid-cols-2
+                gap-10 md:gap-20
               "
             >
               {/* ================= IT CAPABILITIES ================= */}
 
               <div
                 className="
-                  grid
-                  grid-cols-1
-                  sm:grid-cols-2
-                  gap-8
-                  items-start
+                  grid grid-cols-1 sm:grid-cols-2
+                  gap-8 items-start
                 "
               >
                 {/* ================= DIGITAL SOLUTIONS ================= */}
@@ -258,13 +205,8 @@ function NavCapabilities() {
                 <div className="flex flex-col gap-3">
                   <h3
                     className="
-                      text-[20px]
-                      md:text-[20px]
-                      font-semibold
-                      text-gray-900
-                      font-plus-jakarta
-                      mb-2
-                      leading-[1.25]
+                      text-[20px] font-semibold text-gray-900
+                      font-plus-jakarta mb-2 leading-[1.25]
                     "
                   >
                     Digital Solutions
@@ -275,14 +217,9 @@ function NavCapabilities() {
                       key={title}
                       href={routeFor(title)}
                       className="
-                        text-[15px]
-                        md:text-[15px]
-                        text-gray-800
-                        font-inter
-                        leading-[1.35]
-                        hover:text-[#8a1538]
-                        transition-colors
-                        duration-200
+                        text-[15px] text-gray-800 font-inter
+                        leading-[1.35] hover:text-[#8a1538]
+                        transition-colors duration-200
                       "
                     >
                       {title}
@@ -292,24 +229,11 @@ function NavCapabilities() {
 
                 {/* ================= IT AUGMENTATION ================= */}
 
-                <div
-                  className="
-                    flex
-                    flex-col
-                    gap-3
-                    ml-2
-                    md:ml-4
-                  "
-                >
+                <div className="flex flex-col gap-3 ml-0 md:ml-4">
                   <h3
                     className="
-                      text-[20px]
-                      md:text-[20px]
-                      font-semibold
-                      text-gray-900
-                      font-plus-jakarta
-                      mb-2
-                      leading-[1.25]
+                      text-[20px] font-semibold text-gray-900
+                      font-plus-jakarta mb-2 leading-[1.25]
                     "
                   >
                     IT Augmentation Service
@@ -318,22 +242,16 @@ function NavCapabilities() {
                   {columns[1].sections.map((section, idx) => (
                     <div
                       key={section.subheading}
-                      className={`
-                        flex
-                        flex-col
-                        gap-3
-                        ${idx > 0 ? "mt-3" : ""}
-                      `}
+                      className={`flex flex-col gap-3 ${
+                        idx > 0 ? "mt-3" : ""
+                      }`}
                     >
                       {/* SUB HEADING */}
 
                       <h4
                         className="
-                          text-[16px]
-                          md:text-[18px]
-                          font-semibold
-                          text-gray-900
-                          font-plus-jakarta
+                          text-[16px] md:text-[18px] font-semibold
+                          text-gray-900 font-plus-jakarta
                           leading-[1.3]
                         "
                       >
@@ -345,16 +263,17 @@ function NavCapabilities() {
                       {section.items.map((title) => (
                         <a
                           key={title}
-                          href={routeFor(title)}
+                          href={
+                            title === "TorchX Suite"
+                              ? "https://torchxsuite.com/"
+                              : title === "TorchX Campus"
+                              ? "https://torchxsuite.com/"
+                              : routeFor(title)
+                          }
                           className="
-                            text-[15px]
-                            md:text-[15px]
-                            text-gray-800
-                            font-inter
-                            leading-[1.35]
-                            hover:text-[#8a1538]
-                            transition-colors
-                            duration-200
+                            text-[15px] text-gray-800 font-inter
+                            leading-[1.35] hover:text-[#8a1538]
+                            transition-colors duration-200
                           "
                         >
                           {title}
@@ -369,11 +288,7 @@ function NavCapabilities() {
 
               <div
                 className="
-                  flex
-                  flex-col
-                  items-end
-                  text-right
-                  min-h-[200px]
+                  flex flex-col items-end text-right min-h-[200px]
                 "
               >
                 {/* AI CAPABILITIES CONTENT CAN BE ADDED HERE */}

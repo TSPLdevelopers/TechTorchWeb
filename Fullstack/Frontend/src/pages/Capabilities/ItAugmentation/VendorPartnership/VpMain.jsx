@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -719,14 +720,13 @@ export default function VendorPartnershipPage() {
             together.
           </p>
 
-          <button
-            type="button"
-            onClick={goToPartner}
-            className="vendor-primary-btn"
-          >
-            Talk to Expert
-            <ArrowRight size={16} />
-          </button>
+          <Link
+  to="/talk-to-expert"
+  className="vendor-primary-btn"
+>
+  Talk to Expert
+  <ArrowRight size={16} />
+</Link>
 
 
           {/* RESPONSE */}

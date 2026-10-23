@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   ClipboardCheck,
   ArrowRight,
@@ -906,11 +907,13 @@ export default function ProjectBasedEngineeringHero() {
             </p>
 
             {/* CTA */}
-            <button className="project-engineering-cta">
-              Talk to Our Experts
-
-              <ArrowRight />
-            </button>
+            <Link
+  to="/talk-to-expert"
+  className="project-engineering-cta"
+>
+  Talk to Our Experts
+  <ArrowRight />
+</Link>
 
             {/* Tags */}
             <div className="project-engineering-tags">

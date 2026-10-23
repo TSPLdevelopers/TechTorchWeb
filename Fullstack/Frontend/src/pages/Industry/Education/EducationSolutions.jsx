@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -55,11 +56,10 @@ const BODY_FONT = "font-['Inter']";
 function Eyebrow({ icon: Icon, children, light = false }) {
   return (
     <div
-      className={`inline-flex w-fit items-center gap-2 rounded-full border px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] ${BODY_FONT} ${
-        light
+      className={`inline-flex w-fit items-center gap-2 rounded-full border px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] ${BODY_FONT} ${light
           ? "border-white/25 bg-white/10 text-white"
           : "border-[#E4D2DC] bg-[#F8F0F4] text-[#741044]"
-      }`}
+        }`}
     >
       {Icon && <Icon size={12} strokeWidth={2.2} />}
       <span>{children}</span>
@@ -95,11 +95,10 @@ function SecondaryButton({ children }) {
 function IconBox({ children, dark = false }) {
   return (
     <div
-      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${
-        dark
+      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${dark
           ? "border border-white/15 bg-white/10 text-white"
           : "bg-[#F2E7ED] text-[#85004A]"
-      }`}
+        }`}
     >
       {children}
     </div>
@@ -167,39 +166,38 @@ function HeroSection() {
               </p>
 
               <div className="mt-7 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <button
-                  onClick={() => navigate("/start-conversation")}
+                <Link
+                  to="/talk-to-expert"
                   className={`
-                    group
-                    inline-flex
-                    w-full
-                    items-center
-                    justify-center
-                    gap-2.5
-                    rounded-xl
-                    bg-[#730042]
-                    px-5 py-2.5
-                    sm:w-auto
-                    ${BODY_FONT}
-                    text-[11px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.06em]
-                    text-white
-                    shadow-sm
-                    transition-all
-                    duration-200
-                    hover:-translate-y-0.5
-                    hover:bg-[#620038]
-                  `}
+    group
+    inline-flex
+    w-full
+    items-center
+    justify-center
+    gap-2.5
+    rounded-xl
+    bg-[#730042]
+    px-5 py-2.5
+    sm:w-auto
+    ${BODY_FONT}
+    text-[11px]
+    font-semibold
+    uppercase
+    tracking-[0.06em]
+    text-white
+    shadow-sm
+    transition-all
+    duration-200
+    hover:-translate-y-0.5
+    hover:bg-[#620038]
+  `}
                 >
                   Talk to Our Experts
-
                   <ArrowRight
                     size={16}
                     className="transition-transform duration-200 group-hover:translate-x-1"
                   />
-                </button>
+                </Link>
 
                 <button
                   onClick={() => navigate("/schedule-discovery")}
@@ -1104,12 +1102,10 @@ function CTASection() {
             </div>
 
             <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-[280px] lg:flex-col">
-              <PrimaryButton>Talk to Our Experts</PrimaryButton>
+              <Link to="/talk-to-expert" className="inline-block">
+                <PrimaryButton>Talk to Our Experts</PrimaryButton>
+              </Link>
 
-              <SecondaryButton>
-                <CalendarDays size={17} className="text-[#730042]" />
-                Schedule Discovery
-              </SecondaryButton>
             </div>
           </div>
         </div>

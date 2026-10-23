@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   TrendingUp,
   Users,
@@ -972,10 +973,13 @@ export default function ProjectBasedEngineeringDeepDive() {
               requirements and changing business priorities.
             </p>
 
-            <button className="pbe-dark-button">
+            <Link
+              to="/talk-to-expert"
+              className="pbe-dark-button"
+            >
               Talk to Our Experts
               <ArrowRight />
-            </button>
+            </Link>
           </div>
         </div>
 
