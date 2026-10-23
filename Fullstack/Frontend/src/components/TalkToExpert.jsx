@@ -1,4 +1,5 @@
 
+import { API_BASE } from "../apiBase";
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,8 @@ const CONTACT = {
   whatsapp: "+91 72510 90147",
 };
 
+// VITE_API_URL mein "/api" ho ya na ho, dono case mein sahi URL banega
+const API_URL = API_BASE;
 const API_URL = (
   import.meta.env.VITE_API_URL || "http://localhost:5000"
 ).replace(/\/api\/?$/, "");
