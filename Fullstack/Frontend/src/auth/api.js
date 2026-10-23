@@ -1,9 +1,7 @@
 import axios from "axios";
+import { API_BASE } from "../apiBase";
 
-// Same base URL logic as the rest of the app (set VITE_API_URL on Vercel).
-const BASE = (import.meta.env.VITE_API_URL || "http://localhost:5000")
-  .replace(/\/api\/?$/, "")
-  .replace(/\/$/, "");
+const BASE = API_BASE;
 
 const api = axios.create({
   baseURL: `${BASE}/api`,

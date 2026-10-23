@@ -1,4 +1,6 @@
-export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+import { API_BASE } from "../../apiBase";
+
+export const API_URL = API_BASE;
 
 export async function request(path, { method = "GET", body } = {}) {
   let res;

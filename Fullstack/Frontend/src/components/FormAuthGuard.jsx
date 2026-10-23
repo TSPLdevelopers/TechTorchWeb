@@ -1,3 +1,4 @@
+import { API_BASE } from "../apiBase";
 
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -26,11 +27,7 @@ export default function FormAuthGuard() {
 
     const checkAuth = async () => {
       try {
-        const base = (
-          import.meta.env.VITE_API_URL || "http://localhost:5000"
-        )
-          .replace(/\/api\/?$/, "")
-          .replace(/\/$/, "");
+        const base = API_BASE;
 
         const response = await fetch(`${base}/api/auth/me`, {
           credentials: "include",

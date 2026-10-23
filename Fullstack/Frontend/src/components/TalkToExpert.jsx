@@ -1,3 +1,4 @@
+import { API_BASE } from "../apiBase";
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -8,9 +9,7 @@ const CONTACT = {
 };
 
 // VITE_API_URL mein "/api" ho ya na ho, dono case mein sahi URL banega
-const API_URL = (
-  import.meta.env.VITE_API_URL || "http://localhost:5000"
-).replace(/\/api\/?$/, "");
+const API_URL = API_BASE;
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PHONE_REGEX = /^[6-9]\d{9}$/;
