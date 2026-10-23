@@ -24,7 +24,7 @@ export const adminRoutes = (
 
     
    
-<Route element={<PermissionGate allowedRoles={["admin", "superadmin"]} />}>
+<Route element={<PermissionGate allowedRoles={["admin"]} />}>
   <Route element={<AdminLayout />}>
     <Route path="/admin-dashboard" element={<Overview />} />
     <Route path="/news-insights" element={<NewsPage />} />
@@ -36,6 +36,12 @@ export const adminRoutes = (
     <Route path="/candidate-interests" element={<CandidateInterests />} />
     <Route path="/admin-queries" element={<Queries />} />
     <Route path="/account" element={<Account />} />
+  </Route>
+</Route>
+
+{/* team management: superadmin only */}
+<Route element={<PermissionGate allowedRoles={["superadmin"]} />}>
+  <Route element={<AdminLayout />}>
     <Route path="/admin-accounts" element={<Admins />} />
   </Route>
 </Route>

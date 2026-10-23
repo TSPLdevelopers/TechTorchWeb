@@ -1,8 +1,13 @@
 import axios from "axios";
 
+// Same base URL logic as the rest of the app (set VITE_API_URL on Vercel).
+const BASE = (import.meta.env.VITE_API_URL || "http://localhost:5000")
+  .replace(/\/api\/?$/, "")
+  .replace(/\/$/, "");
+
 const api = axios.create({
-  baseURL: "https://techtorchweb.onrender.com/api",
-  withCredentials: true,   // <- ye line add karo
+  baseURL: `${BASE}/api`,
+  withCredentials: true,
 });
 
 export const registerAdmin = (data) => {

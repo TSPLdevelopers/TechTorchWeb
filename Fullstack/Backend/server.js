@@ -14,7 +14,6 @@ if (envResult.error) {
 }
 
 const express = require("express");
-app.set("trust proxy", 1);
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
@@ -108,6 +107,7 @@ const inquiryRoutes = require("./src/routes/inquiryRoutes");
 const queryRoutes = require("./src/routes/queryRoutes");
 
 const app = express();
+app.set("trust proxy", 1);
 
 // ================================
 // CORS CONFIGURATION
@@ -119,7 +119,10 @@ const allowedOrigins = (
   .map((origin) => origin.trim());
 
 app.use(cors({
-  origin: "https://tech-torch-web.vercel.app",
+  origin: (origin, cb) =>
+    !origin || allowedOrigins.includes(origin)
+      ? cb(null, true)
+      : cb(new Error("Not allowed by CORS")),
   credentials: true,
 }));
 
