@@ -116,6 +116,11 @@ app.get("/", (req, res) => {
   res.send("TechTorch Backend is running");
 });
 
+// Quick check that the latest backend code is deployed: open /api/health in the browser
+app.get("/api/health", (req, res) => {
+  res.json({ ok: true, version: "2026-10-23-expert-routes", expertQueries: true });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/news", newsRoutes);
