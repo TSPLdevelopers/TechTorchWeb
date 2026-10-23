@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { UserRound, ArrowRight } from "lucide-react";
 
 export default function BuildYourTeamCTA() {
@@ -41,14 +42,16 @@ export default function BuildYourTeamCTA() {
               CTA BUTTON
           ===================================================== */}
 
-          <button
-            type="button"
-            className="build-team-button"
-          >
-            <span>Talk to Our Experts</span>
+          
+<Link
+  to="/talk-to-expert"
+  className="build-team-button"
+>
+  <span>Talk to Our Experts</span>
 
-            <ArrowRight className="build-team-arrow" />
-          </button>
+  <ArrowRight className="build-team-arrow" />
+</Link>
+
 
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   ShieldCheck,
   ArrowRight,
@@ -90,14 +91,15 @@ export default function FlexibleTechResourcesHero() {
             </p>
 
             {/* CTA */}
-            <button
-              type="button"
-              className="flexible-tech-button"
-            >
-              Talk to Our Experts
+            
+<Link
+  to="/talk-to-expert"
+  className="flexible-tech-button"
+>
+  Talk to Our Experts
+  <ArrowRight className="flexible-tech-button-icon" />
+</Link>
 
-              <ArrowRight className="flexible-tech-button-icon" />
-            </button>
 
           </div>
 

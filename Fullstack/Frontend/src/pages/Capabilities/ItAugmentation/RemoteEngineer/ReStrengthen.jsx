@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Layers, ArrowRight } from "lucide-react";
 
 export default function StrengthenTeamCTA() {
@@ -287,10 +288,13 @@ export default function StrengthenTeamCTA() {
           </p>
 
           {/* CTA */}
-          <button className="strengthen-team-button">
-            Talk to Our Experts
-            <ArrowRight />
-          </button>
+          <Link
+  to="/talk-to-expert"
+  className="strengthen-team-button"
+>
+  Talk to Our Experts
+  <ArrowRight />
+</Link>
 
         </div>
       </div>

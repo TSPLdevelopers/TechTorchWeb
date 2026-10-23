@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Zap,
   ArrowRight,
@@ -1472,10 +1473,13 @@ export default function ResourceReplacementPage() {
                 and expertise they need.
               </p>
 
-              <button className="rr-primary-button">
+              <Link
+                to="/talk-to-expert"
+                className="rr-primary-button"
+              >
                 Talk to Our Experts
                 <ArrowRight />
-              </button>
+              </Link>
 
               <div className="rr-hero-tags">
                 {heroTags.map((tag) => (
@@ -1894,10 +1898,13 @@ export default function ResourceReplacementPage() {
               and technology initiatives.
             </p>
 
-            <button className="rr-primary-button rr-final-button">
+            <Link
+              to="/talk-to-expert"
+              className="rr-primary-button rr-final-button"
+            >
               Talk to Our Experts
               <ArrowRight />
-            </button>
+            </Link>
 
             <div className="rr-final-tags">
               {heroTags.map((tag) => (

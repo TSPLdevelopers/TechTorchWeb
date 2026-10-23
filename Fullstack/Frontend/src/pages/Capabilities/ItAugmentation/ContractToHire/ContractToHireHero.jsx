@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Sparkle,
   ArrowRight,
@@ -76,14 +77,14 @@ export default function ContractToHireHero() {
             </p>
 
             {/* CTA */}
-            <button
-              type="button"
-              className="contract-hire-button"
-            >
-              <span>Talk to Our Experts</span>
+            <Link
+  to="/talk-to-expert"
+  className="contract-hire-button"
+>
+  <span>Talk to Our Experts</span>
 
-              <ArrowRight className="contract-hire-button-icon" />
-            </button>
+  <ArrowRight className="contract-hire-button-icon" />
+</Link>
 
           </div>
 
